@@ -81,6 +81,53 @@ const getData = (coupleNames: string) => ({
       icon: LifeBuoy,
     },
   ],
+  guidedNotes: [
+    {
+      name: "Wedding Planning Timeline",
+      url: "#timeline-guide",
+      emoji: "📅",
+    },
+    {
+      name: "Budget Breakdown Guide",
+      url: "#budget-guide",
+      emoji: "💰",
+    },
+    {
+      name: "Vendor Selection Tips",
+      url: "#vendor-tips",
+      emoji: "🤝",
+    },
+    {
+      name: "Guest List Management",
+      url: "#guest-management",
+      emoji: "👥",
+    },
+    {
+      name: "Venue Booking Checklist",
+      url: "#venue-checklist",
+      emoji: "🏛️",
+    },
+    {
+      name: "Menu Planning Guide",
+      url: "#menu-planning",
+      emoji: "🍽️",
+    },
+    {
+      name: "Photography Planning",
+      url: "#photo-planning",
+      emoji: "📸",
+    },
+    {
+      name: "Decoration Ideas",
+      url: "#decoration-ideas",
+      emoji: "🌸",
+    },
+    {
+      name: "Music & Entertainment",
+      url: "#music-guide",
+      emoji: "🎵",
+    },
+  ],
   favorites: [
     {
       name: "Wedding Timeline & Countdown",
@@ -131,6 +178,30 @@ const getData = (coupleNames: string) => ({
       name: "Thank You Card Tracking",
       url: "#thankyou",
       emoji: "💌",
+    },
+  ],
+  resources: [
+    {
+      name: "Wedding Planning Guide",
+      url: "#planning-guide",
+      emoji: "📖",
+    },
+    {
+      name: "Budget Checklist",
+      url: "#budget-checklist",
+      emoji: "💰",
+    },
+    {
+      name: "Vendor Directory",
+      url: "#vendor-directory",
+      emoji: "📇",
+    },
+  ],
+  myNotes: [
+    {
+      name: "Personal Notes",
+      url: "#my-notes",
+      emoji: "📝",
     },
   ],
   workspaces: [
@@ -245,6 +316,9 @@ export function SidebarLeft({
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
+        <NavFavorites favorites={data.guidedNotes} title="Guided Notes" />
+        <NavFavorites favorites={data.resources} title="Resources" />
+        <NavFavorites favorites={data.myNotes} title="My Notes" />
         <NavFavorites favorites={data.favorites} />
         <NavWorkspaces workspaces={data.workspaces} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />

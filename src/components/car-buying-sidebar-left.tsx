@@ -85,6 +85,53 @@ const getCarBuyingData = (vehicleType: string, budgetRange: string) => ({
       icon: LifeBuoy,
     },
   ],
+  guidedNotes: [
+    {
+      name: "Budget Planning Guide",
+      url: "#budget-guide",
+      emoji: "💰",
+    },
+    {
+      name: "Vehicle Research Notes",
+      url: "#research-notes",
+      emoji: "🔍",
+    },
+    {
+      name: "Test Drive Checklist",
+      url: "#test-drive-checklist",
+      emoji: "✅",
+    },
+    {
+      name: "Financing Comparison",
+      url: "#financing-comparison",
+      emoji: "📊",
+    },
+    {
+      name: "Negotiation Strategy",
+      url: "#negotiation-guide",
+      emoji: "💬",
+    },
+    {
+      name: "Insurance Planning",
+      url: "#insurance-planning",
+      emoji: "🛡️",
+    },
+    {
+      name: "Paperwork Checklist",
+      url: "#paperwork-checklist",
+      emoji: "📋",
+    },
+    {
+      name: "Pre-Purchase Inspection",
+      url: "#inspection-guide",
+      emoji: "🔧",
+    },
+    {
+      name: "Final Purchase Steps",
+      url: "#purchase-steps",
+      emoji: "🎉",
+    },
+  ],
   favorites: [
     {
       name: "Vehicle Valuation",
@@ -284,6 +331,7 @@ export function CarBuyingSidebarLeft({
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
+        <NavFavorites favorites={data.guidedNotes} title="Guided Notes" />
         <NavFavorites favorites={data.favorites} />
         <NavWorkspaces workspaces={data.workspaces} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />

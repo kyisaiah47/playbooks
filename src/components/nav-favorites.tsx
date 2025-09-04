@@ -27,18 +27,20 @@ import {
 
 export function NavFavorites({
   favorites,
+  title = "Favorites",
 }: {
   favorites: {
     name: string
     url: string
     emoji: string
   }[]
+  title?: string
 }) {
   const { isMobile } = useSidebar()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Favorites</SidebarGroupLabel>
+      <SidebarGroupLabel>{title}</SidebarGroupLabel>
       <SidebarMenu>
         {favorites.map((item) => (
           <SidebarMenuItem key={item.name}>
