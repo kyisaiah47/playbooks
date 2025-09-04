@@ -189,7 +189,7 @@ export function VehicleComparison() {
           const value = getValue(vehicle)
           const isBest = bestValue !== null && value === bestValue
           return (
-            <div key={vehicle.id} className={`${isBest ? 'text-green-600 font-semibold' : ''}`}>
+            <div key={vehicle.id} className={`${isBest ? 'text-primary font-semibold' : ''}`}>
               {formatter(value)}
               {isBest && <Check className="inline ml-1 h-3 w-3" />}
             </div>
@@ -250,7 +250,7 @@ export function VehicleComparison() {
                     </h3>
                     <p className="text-xs text-muted-foreground">{vehicle.trim}</p>
                     <div className="flex items-center justify-center mt-1">
-                      <Star className="h-3 w-3 fill-current text-yellow-400 mr-1" />
+                      <Star className="h-3 w-3 fill-current text-primary mr-1" />
                       <span className="text-xs">{vehicle.rating}</span>
                     </div>
                   </CardContent>
@@ -317,22 +317,22 @@ export function VehicleComparison() {
                 {selectedVehicles.map((vehicle) => (
                   <div key={vehicle.id} className="space-y-3">
                     <div>
-                      <h4 className="font-medium text-green-600 text-sm mb-1">Pros</h4>
+                      <h4 className="font-medium text-primary text-sm mb-1">Pros</h4>
                       <ul className="text-xs space-y-1">
                         {vehicle.pros.map((pro, index) => (
                           <li key={index} className="flex items-start">
-                            <Plus className="h-3 w-3 text-green-500 mr-1 mt-0.5 flex-shrink-0" />
+                            <Plus className="h-3 w-3 text-primary mr-1 mt-0.5 flex-shrink-0" />
                             {pro}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-medium text-red-600 text-sm mb-1">Cons</h4>
+                      <h4 className="font-medium text-destructive text-sm mb-1">Cons</h4>
                       <ul className="text-xs space-y-1">
                         {vehicle.cons.map((con, index) => (
                           <li key={index} className="flex items-start">
-                            <Minus className="h-3 w-3 text-red-500 mr-1 mt-0.5 flex-shrink-0" />
+                            <Minus className="h-3 w-3 text-destructive mr-1 mt-0.5 flex-shrink-0" />
                             {con}
                           </li>
                         ))}
@@ -387,7 +387,7 @@ export function VehicleComparison() {
                       <div className="text-right">
                         <p className="font-bold text-primary">${vehicle.price.toLocaleString()}</p>
                         <div className="flex items-center">
-                          <Star className="h-3 w-3 fill-current text-yellow-400 mr-1" />
+                          <Star className="h-3 w-3 fill-current text-primary mr-1" />
                           {vehicle.rating}
                         </div>
                       </div>
@@ -431,8 +431,8 @@ export function VehicleComparison() {
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-3">
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <h3 className="font-semibold text-green-700 mb-1">Best Value</h3>
+              <div className="text-center p-4 bg-primary/10 rounded-lg">
+                <h3 className="font-semibold text-primary mb-1">Best Value</h3>
                 {(() => {
                   const bestValue = selectedVehicles.reduce((best, current) => 
                     current.price < best.price ? current : best
@@ -447,8 +447,8 @@ export function VehicleComparison() {
                 })()}
               </div>
               
-              <div className="text-center p-4 bg-blue-50 rounded-lg">
-                <h3 className="font-semibold text-blue-700 mb-1">Highest Rated</h3>
+              <div className="text-center p-4 bg-primary/10 rounded-lg">
+                <h3 className="font-semibold text-primary mb-1">Highest Rated</h3>
                 {(() => {
                   const bestRated = selectedVehicles.reduce((best, current) => 
                     current.rating > best.rating ? current : best
@@ -463,8 +463,8 @@ export function VehicleComparison() {
                 })()}
               </div>
               
-              <div className="text-center p-4 bg-orange-50 rounded-lg">
-                <h3 className="font-semibold text-orange-700 mb-1">Lowest Mileage</h3>
+              <div className="text-center p-4 bg-muted rounded-lg">
+                <h3 className="font-semibold text-foreground mb-1">Lowest Mileage</h3>
                 {(() => {
                   const lowestMileage = selectedVehicles.reduce((best, current) => 
                     current.mileage < best.mileage ? current : best

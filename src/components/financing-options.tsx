@@ -88,10 +88,10 @@ export function FinancingOptions() {
 
   const getStatusColor = (status: FinancingOption['status']) => {
     switch (status) {
-      case 'approved': return 'bg-green-500/10 text-green-500'
-      case 'applied': return 'bg-blue-500/10 text-blue-500'
-      case 'denied': return 'bg-red-500/10 text-red-500'
-      default: return 'bg-gray-500/10 text-gray-500'
+      case 'approved': return 'bg-primary/10 text-primary'
+      case 'applied': return 'bg-primary/10 text-primary'
+      case 'denied': return 'bg-destructive/10 text-destructive'
+      default: return 'bg-muted text-muted-foreground'
     }
   }
 
@@ -172,7 +172,7 @@ export function FinancingOptions() {
               )}
 
               {option.expirationDate && (
-                <p className="text-xs text-orange-600">
+                <p className="text-xs text-muted-foreground">
                   Expires: {option.expirationDate}
                 </p>
               )}

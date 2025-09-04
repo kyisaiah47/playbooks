@@ -160,10 +160,10 @@ export function DealershipManager() {
 
   const getStatusColor = (status: Dealership['status']) => {
     switch (status) {
-      case 'preferred': return 'bg-green-500/10 text-green-500'
-      case 'contacted': return 'bg-blue-500/10 text-blue-500'
-      case 'avoiding': return 'bg-red-500/10 text-red-500'
-      default: return 'bg-gray-500/10 text-gray-500'
+      case 'preferred': return 'bg-primary/10 text-primary'
+      case 'contacted': return 'bg-primary/10 text-primary'
+      case 'avoiding': return 'bg-destructive/10 text-destructive'
+      default: return 'bg-muted text-muted-foreground'
     }
   }
 
@@ -197,7 +197,7 @@ export function DealershipManager() {
         
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Star className="mr-1 h-4 w-4 fill-current text-yellow-400" />
+            <Star className="mr-1 h-4 w-4 fill-current text-primary" />
             <span className="text-sm">{dealership.rating}</span>
           </div>
           <div className="text-sm text-muted-foreground">
@@ -405,7 +405,7 @@ export function DealershipManager() {
                   <h4 className="font-semibold mb-2">Rating & Status</h4>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center">
-                      <Star className="mr-1 h-4 w-4 fill-current text-yellow-400" />
+                      <Star className="mr-1 h-4 w-4 fill-current text-primary" />
                       {selectedDealership.rating}
                     </div>
                     <Badge className={getStatusColor(selectedDealership.status)}>
@@ -438,7 +438,7 @@ export function DealershipManager() {
                       <p className="font-medium mb-1">{interaction.subject}</p>
                       <p className="text-muted-foreground">{interaction.notes}</p>
                       {interaction.followUpDate && (
-                        <p className="text-xs text-orange-600 mt-1">
+                        <p className="text-xs text-muted-foreground mt-1">
                           Follow-up: {interaction.followUpDate}
                         </p>
                       )}

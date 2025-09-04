@@ -160,7 +160,7 @@ export function HomeBuyingSetupWizard({ isOpen, onClose, onComplete, initialData
       homeInsuranceBudget: initialData?.homeInsuranceBudget || 150,
       closingCostsBudget: initialData?.closingCostsBudget || 15000,
       mortgageType: initialData?.mortgageType || "conventional",
-      loanTerm: initialData?.loanTerm || 30,
+      loanTerm: initialData?.loanTerm ? String(initialData.loanTerm) as "15" | "20" | "30" : "30",
       interestRate: initialData?.interestRate || 6.5,
       lenderPreferences: initialData?.lenderPreferences || [],
       targetMoveInDate: initialData?.targetMoveInDate || new Date(Date.now() + 6 * 30 * 24 * 60 * 60 * 1000),

@@ -119,17 +119,17 @@ export function MaintenanceTracker() {
 
   const getStatusColor = (status: MaintenanceRecord['status']) => {
     switch (status) {
-      case 'completed': return 'bg-green-500/10 text-green-500'
-      case 'scheduled': return 'bg-blue-500/10 text-blue-500'
-      case 'overdue': return 'bg-red-500/10 text-red-500'
+      case 'completed': return 'bg-primary/10 text-primary'
+      case 'scheduled': return 'bg-primary/10 text-primary'
+      case 'overdue': return 'bg-destructive/10 text-destructive'
     }
   }
 
   const getPriorityColor = (priority: MaintenanceRecord['priority']) => {
     switch (priority) {
-      case 'high': return 'bg-red-500/10 text-red-500'
-      case 'medium': return 'bg-yellow-500/10 text-yellow-500'
-      case 'low': return 'bg-green-500/10 text-green-500'
+      case 'high': return 'bg-destructive/10 text-destructive'
+      case 'medium': return 'bg-muted text-muted-foreground'
+      case 'low': return 'bg-primary/10 text-primary'
     }
   }
 
@@ -201,7 +201,7 @@ export function MaintenanceTracker() {
             <CardTitle className="text-sm font-medium">Overdue Services</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-red-500">{records.filter(r => r.status === 'overdue').length}</div>
+            <div className="text-2xl font-bold text-destructive">{records.filter(r => r.status === 'overdue').length}</div>
             <p className="text-xs text-muted-foreground">Need attention</p>
           </CardContent>
         </Card>
@@ -209,9 +209,9 @@ export function MaintenanceTracker() {
 
       {/* Upcoming Services Alert */}
       {upcomingServices.length > 0 && (
-        <Card className="border-orange-200">
+        <Card className="border-destructive/30">
           <CardHeader>
-            <CardTitle className="flex items-center text-orange-700">
+            <CardTitle className="flex items-center text-destructive">
               <AlertTriangle className="mr-2 h-5 w-5" />
               Upcoming Services
             </CardTitle>
@@ -219,13 +219,13 @@ export function MaintenanceTracker() {
           <CardContent>
             <div className="space-y-2">
               {upcomingServices.slice(0, 3).map((service) => (
-                <div key={service.id} className="flex justify-between items-center p-2 bg-orange-50 rounded">
+                <div key={service.id} className="flex justify-between items-center p-2 bg-muted rounded">
                   <div>
                     <span className="font-medium">{service.serviceType}</span>
                     <span className="text-sm text-muted-foreground ml-2">- {service.vehicleName}</span>
                   </div>
                   <div className="text-sm">
-                    <Badge className={service.status === 'overdue' ? 'bg-red-500' : 'bg-orange-500'}>
+                    <Badge variant={service.status === 'overdue' ? 'destructive' : 'secondary'}>
                       {service.status === 'overdue' ? 'Overdue' : service.nextServiceDue}
                     </Badge>
                   </div>

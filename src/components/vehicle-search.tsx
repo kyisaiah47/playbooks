@@ -240,7 +240,7 @@ export function VehicleSearch() {
               className="h-8 w-8 p-0"
               onClick={() => toggleSaved(vehicle.id)}
             >
-              <Heart className={`h-4 w-4 ${vehicle.isSaved ? 'fill-current text-red-500' : ''}`} />
+              <Heart className={`h-4 w-4 ${vehicle.isSaved ? 'fill-current text-primary' : ''}`} />
             </Button>
             <Badge variant={vehicle.status === 'available' ? 'default' : 'secondary'}>
               {vehicle.status}
@@ -262,7 +262,7 @@ export function VehicleSearch() {
             <div className="text-right">
               <p className="text-2xl font-bold text-primary">${vehicle.price.toLocaleString()}</p>
               <div className="flex items-center text-sm text-muted-foreground">
-                <Star className="h-3 w-3 fill-current text-yellow-400 mr-1" />
+                <Star className="h-3 w-3 fill-current text-primary mr-1" />
                 {vehicle.rating}
               </div>
             </div>
@@ -376,7 +376,7 @@ export function VehicleSearch() {
               <DialogHeader>
                 <DialogTitle>Add New Vehicle</DialogTitle>
                 <DialogDescription>
-                  Add a vehicle you've found to track and manage
+                  Add a vehicle you&apos;ve found to track and manage
                 </DialogDescription>
               </DialogHeader>
               <VehicleForm onSubmit={addVehicle} />

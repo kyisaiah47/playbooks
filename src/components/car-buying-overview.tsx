@@ -58,11 +58,11 @@ export function CarBuyingOverview() {
 
   const getActivityColor = (status: string) => {
     switch (status) {
-      case "saved": return "bg-blue-500/10 text-blue-500"
-      case "scheduled": return "bg-green-500/10 text-green-500"
-      case "pre-approved": return "bg-emerald-500/10 text-emerald-500"
-      case "responded": return "bg-orange-500/10 text-orange-500"
-      default: return "bg-gray-500/10 text-gray-500"
+      case "saved": return "bg-primary/10 text-primary"
+      case "scheduled": return "bg-primary/10 text-primary"
+      case "pre-approved": return "bg-primary/10 text-primary"
+      case "responded": return "bg-muted text-muted-foreground"
+      default: return "bg-muted text-muted-foreground"
     }
   }
 
@@ -194,35 +194,35 @@ export function CarBuyingOverview() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <CheckCircle className="h-4 w-4 text-primary" />
                   <span className="text-sm">Preferences Set</span>
                 </div>
                 <Badge variant="secondary">Complete</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <CheckCircle className="h-4 w-4 text-primary" />
                   <span className="text-sm">Vehicle Research</span>
                 </div>
                 <Badge variant="secondary">In Progress</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <AlertCircle className="h-4 w-4 text-yellow-500" />
+                  <AlertCircle className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm">Test Drives</span>
                 </div>
                 <Badge variant="outline">Pending</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <AlertCircle className="h-4 w-4 text-gray-400" />
+                  <AlertCircle className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm">Financing Secured</span>
                 </div>
                 <Badge variant="outline">Not Started</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <AlertCircle className="h-4 w-4 text-gray-400" />
+                  <AlertCircle className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm">Purchase Decision</span>
                 </div>
                 <Badge variant="outline">Not Started</Badge>

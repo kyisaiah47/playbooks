@@ -109,9 +109,9 @@ export function TestDriveManager() {
 
   const getStatusColor = (status: TestDrive['status']) => {
     switch (status) {
-      case 'completed': return 'bg-green-500/10 text-green-500'
-      case 'scheduled': return 'bg-blue-500/10 text-blue-500'
-      case 'cancelled': return 'bg-red-500/10 text-red-500'
+      case 'completed': return 'bg-primary/10 text-primary'
+      case 'scheduled': return 'bg-primary/10 text-primary'
+      case 'cancelled': return 'bg-destructive/10 text-destructive'
     }
   }
 
@@ -125,7 +125,7 @@ export function TestDriveManager() {
         {[1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`h-4 w-4 ${star <= rating ? 'fill-current text-yellow-400' : 'text-gray-300'} ${!readOnly ? 'cursor-pointer' : ''}`}
+            className={`h-4 w-4 ${star <= rating ? 'fill-current text-primary' : 'text-muted-foreground'} ${!readOnly ? 'cursor-pointer' : ''}`}
             onClick={() => !readOnly && onRatingChange?.(star)}
           />
         ))}
@@ -233,7 +233,7 @@ export function TestDriveManager() {
               )}
 
               {drive.followUp && drive.followUpDate && (
-                <p className="text-xs text-orange-600 flex items-center">
+                <p className="text-xs text-muted-foreground flex items-center">
                   <CheckCircle className="mr-1 h-3 w-3" />
                   Follow-up: {drive.followUpDate}
                 </p>
@@ -313,7 +313,7 @@ function TestDriveForm({ drive, onSubmit }: { drive?: TestDrive; onSubmit: (data
         {[1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`h-4 w-4 cursor-pointer ${star <= rating ? 'fill-current text-yellow-400' : 'text-gray-300'}`}
+            className={`h-4 w-4 cursor-pointer ${star <= rating ? 'fill-current text-primary' : 'text-muted-foreground'}`}
             onClick={() => onRatingChange(star)}
           />
         ))}
