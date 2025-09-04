@@ -79,7 +79,7 @@ interface WeddingData {
 const step1Schema = z.object({
 	partner1Name: z.string().min(1, "Partner name is required"),
 	partner2Name: z.string().min(1, "Partner name is required"),
-	weddingDate: z.date({ required_error: "Wedding date is required" }),
+	weddingDate: z.date(),
 	weddingTime: z.string().min(1, "Wedding time is required"),
 	weddingStyle: z.string().min(1, "Wedding style is required"),
 });

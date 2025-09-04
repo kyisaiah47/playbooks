@@ -94,7 +94,7 @@ const formSchema = z.object({
 	homeInsuranceBudget: z.number().min(0),
 	closingCostsBudget: z.number().min(0),
 	mortgageType: z.enum(["conventional", "fha", "va", "usda", "jumbo", "other"]),
-	loanTerm: "15" | "20" | "30",
+	loanTerm: z.enum(["15", "20", "30"]),
 	interestRate: z.number().min(1).max(20),
 	lenderPreferences: z.array(z.string()),
 	targetMoveInDate: z.date(),
@@ -756,8 +756,8 @@ export function HomeBuyingSetupWizard({
 									<FormItem>
 										<FormLabel>Loan Term (Years)</FormLabel>
 										<Select
-											onValueChange={(value) => field.onChange(parseInt(value))}
-											defaultValue={field.value?.toString()}
+											onValueChange={field.onChange}
+											defaultValue={field.value}
 										>
 											<FormControl>
 												<SelectTrigger>
