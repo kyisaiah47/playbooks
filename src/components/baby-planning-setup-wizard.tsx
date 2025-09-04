@@ -201,6 +201,7 @@ export function BabyPlanningSetupWizard({ isOpen, onClose, onComplete, initialDa
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     const data: BabyPlanningData = {
       ...values,
+      parentTwoName: values.parentTwoName || "",
       babyName: values.babyName || "",
       doctorName: values.doctorName || "",
       hospitalName: values.hospitalName || "",
