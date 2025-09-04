@@ -289,7 +289,29 @@ esac
 
 echo ""
 echo "🚀 Next steps:"
-echo "1. Run 'npm run build' to verify everything works"
+echo "1. Running build check to verify everything works..."
+
+# Auto-run build check
+echo "   🔨 Checking build..."
+if npm run build > /dev/null 2>&1; then
+    echo "   ✅ Build passed successfully!"
+else
+    echo "   ❌ Build failed - running auto-fix..."
+    if ./check-all-builds.sh --fix; then
+        echo "   ✅ Build errors fixed automatically!"
+    else
+        echo "   ⚠️  Some build errors need manual attention"
+        echo "   Run './check-all-builds.sh --verbose' for details"
+    fi
+fi
+
+echo ""
 echo "2. Test the new templates in the app"
 echo "3. Commit and push to remote if everything looks good"
 echo "4. Continue with remaining incomplete templates"
+
+echo ""
+echo "🔧 Available build tools:"
+echo "   ./force-build-check.sh     - Force all Claude instances to check builds"
+echo "   ./check-all-builds.sh      - Check build status of all templates"
+echo "   ./check-all-builds.sh --fix - Auto-fix missing components"
