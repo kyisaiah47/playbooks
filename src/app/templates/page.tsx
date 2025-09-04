@@ -20,10 +20,10 @@ import {
 } from "@/components/ui/navigation-menu"
 
 const categories = [
-  { id: "all", name: "All Templates", count: 7 },
+  { id: "all", name: "All Templates", count: 8 },
   { id: "life-events", name: "Life Events", count: 2 },
   { id: "career", name: "Career & Education", count: 3 },
-  { id: "property", name: "Property & Finance", count: 1 },
+  { id: "property", name: "Property & Finance", count: 2 },
   { id: "health", name: "Health & Wellness", count: 1 },
 ]
 
@@ -104,6 +104,17 @@ const templates = [
     popular: false,
     features: ["Property Search", "Budget Tracker", "Inspection Checklist", "Mortgage Calculator"],
     setupTime: "8 min"
+  },
+  {
+    id: "car-buying",
+    title: "Car Buying",
+    description: "Streamline your car buying journey with vehicle search, dealership management, financing options, test drives, and maintenance tracking",
+    category: "property",
+    icon: Car,
+    color: "bg-muted/50 border-border text-foreground",
+    popular: true,
+    features: ["Vehicle Search", "Dealer Management", "Financing Options", "Test Drive Tracker"],
+    setupTime: "8 min"
   }
 ]
 
@@ -178,6 +189,20 @@ export default function TemplatesPage() {
                                 <div>
                                   <div className="font-semibold group-hover:text-primary transition-colors">Home Buying</div>
                                   <div className="text-sm text-muted-foreground">Navigate home buying process</div>
+                                </div>
+                              </div>
+                            </Link>
+                          </NavigationMenuLink>
+
+                          <NavigationMenuLink asChild>
+                            <Link href="/templates/car-buying" className="block group">
+                              <div className="flex items-start space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                                <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                                  <Car className="h-4 w-4 text-muted-foreground" />
+                                </div>
+                                <div>
+                                  <div className="font-semibold group-hover:text-primary transition-colors">Car Buying</div>
+                                  <div className="text-sm text-muted-foreground">Streamline car buying journey</div>
                                 </div>
                               </div>
                             </Link>

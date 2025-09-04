@@ -69,7 +69,7 @@ const formSchema = z.object({
   homeInsuranceBudget: z.number().min(0),
   closingCostsBudget: z.number().min(0),
   mortgageType: z.enum(["conventional", "fha", "va", "usda", "jumbo", "other"]),
-  loanTerm: z.enum([15, 20, 30]),
+  loanTerm: z.enum(["15", "20", "30"]),
   interestRate: z.number().min(1).max(20),
   lenderPreferences: z.array(z.string()),
   targetMoveInDate: z.date(),
