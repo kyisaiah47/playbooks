@@ -390,11 +390,11 @@ export function JobSearchSchedule() {
         </div>
       </div>
 
-      {/* Today's Overview */}
+      {/* Today&apos;s Overview */}
       {todayEvents.length > 0 && (
         <Card className="border-blue-200 bg-blue-50">
           <CardHeader>
-            <CardTitle className="text-blue-800">Today's Schedule</CardTitle>
+            <CardTitle className="text-blue-800">Today&apos;s Schedule</CardTitle>
             <CardDescription className="text-blue-600">
               {todayEvents.length} event{todayEvents.length !== 1 ? 's' : ''} scheduled for today
             </CardDescription>

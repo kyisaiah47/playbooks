@@ -767,7 +767,7 @@ export function NetworkingManager() {
                         id="nextAction"
                         value={activityForm.nextAction}
                         onChange={(e) => setActivityForm(prev => ({ ...prev, nextAction: e.target.value }))}
-                        placeholder="What's the next step?"
+                        placeholder="What&apos;s the next step?"
                       />
                     </div>
                     <div className="space-y-2">

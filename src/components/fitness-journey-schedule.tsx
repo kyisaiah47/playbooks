@@ -121,7 +121,7 @@ export function FitnessJourneySchedule() {
         </div>
       </div>
 
-      {/* Today's Schedule */}
+      {/* Today&apos;s Schedule */}
       <Card>
         <CardHeader>
           <CardTitle>

@@ -177,7 +177,7 @@ export function ResearchSetupWizard({ isOpen, onClose, onComplete, initialData }
               </div>
               <h3 className="text-lg font-semibold">Basic Information</h3>
               <p className="text-sm text-muted-foreground">
-                Let's start with the fundamentals of your research project
+                Let&apos;s start with the fundamentals of your research project
               </p>
             </div>
 
@@ -496,7 +496,7 @@ export function ResearchSetupWizard({ isOpen, onClose, onComplete, initialData }
         <DialogHeader>
           <DialogTitle>Research Project Setup</DialogTitle>
           <DialogDescription>
-            Let's set up your academic research project workspace
+            Let&apos;s set up your academic research project workspace
           </DialogDescription>
         </DialogHeader>
 

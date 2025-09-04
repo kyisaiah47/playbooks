@@ -7,7 +7,7 @@ export function NurseryPlanning() {
     <Card>
       <CardHeader>
         <CardTitle>Nursery Planning</CardTitle>
-        <CardDescription>Plan and design your baby's nursery</CardDescription>
+        <CardDescription>Plan and design your baby&apos;s nursery</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">

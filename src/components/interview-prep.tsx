@@ -730,7 +730,7 @@ export function InterviewPrep() {
                     "How do you measure performance?",
                     "What opportunities exist for growth?",
                     "What do you enjoy most about working here?",
-                    "What's the company's vision for the next 5 years?",
+                    "What&apos;s the company's vision for the next 5 years?",
                     "How does this role contribute to company goals?"
                   ].map((question, index) => (
                     <div key={index} className="text-sm border-l-2 border-muted pl-4 py-1">
