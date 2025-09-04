@@ -47,6 +47,7 @@ interface NoteEditorProps {
 	initialBlocks?: NoteBlock[];
 	onSave?: (title: string, blocks: NoteBlock[]) => void;
 	readOnly?: boolean;
+	showTitle?: boolean;
 }
 
 export function NoteEditor({
@@ -54,6 +55,7 @@ export function NoteEditor({
 	initialBlocks = [],
 	onSave,
 	readOnly = false,
+	showTitle = true,
 }: NoteEditorProps) {
 	const [title, setTitle] = useState(initialTitle);
 	const [blocks, setBlocks] = useState<NoteBlock[]>(
@@ -706,9 +708,9 @@ export function NoteEditor({
 	};
 
 	return (
-		<div className="w-full min-h-screen relative">
+		<div className="w-full relative">
 			{/* Keyboard Shortcuts Panel */}
-			<div className="fixed bottom-4 right-4 z-50">
+			{!readOnly && showTitle && <div className="fixed bottom-4 right-4 z-50">
 				<div
 					className={`bg-background border rounded-lg shadow-lg transition-all duration-200 ${
 						showShortcuts ? "w-72" : "w-auto"
@@ -774,9 +776,9 @@ export function NoteEditor({
 						</div>
 					)}
 				</div>
-			</div>
+			</div>}
 
-			<div className="flex items-center justify-between mb-8 pb-4 border-b">
+			{!readOnly && showTitle && <div className="flex items-center justify-between mb-8 pb-4 border-b">
 				{isEditing ? (
 					<input
 						value={title}
@@ -809,7 +811,7 @@ export function NoteEditor({
 						</>
 					)}
 				</div>
-			</div>
+			</div>}
 
 			<div className="space-y-2">
 				{blocks.map((block, index) => renderBlock(block, index))}

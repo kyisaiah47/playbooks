@@ -5,27 +5,69 @@ import { NoteEditor } from "@/components/note-editor"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Lightbulb, CheckCircle2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { Lightbulb, CheckCircle2, HelpCircle } from "lucide-react"
+
+interface GuidedSection {
+  title: string
+  prompts: string[]
+  examples?: string[]
+}
 
 interface GuidedNotePageProps {
   title: string
   description: string
-  prompts: string[]
-  examples?: string[]
+  sections: GuidedSection[]
   tips?: string[]
 }
 
 export function GuidedNotePage({ 
   title, 
   description, 
-  prompts, 
-  examples = [], 
+  sections,
   tips = [] 
 }: GuidedNotePageProps) {
-  const [noteBlocks, setNoteBlocks] = useState([
-    { id: '1', type: 'heading1' as const, content: title },
-    { id: '2', type: 'text' as const, content: description + '\n\n' }
-  ])
+  // Build note blocks with embedded prompts
+  const buildInitialBlocks = () => {
+    const blocks = []
+    
+    let blockId = 1
+    sections.forEach(section => {
+      // Add section heading
+      blocks.push({
+        id: blockId.toString(),
+        type: 'heading1' as const,
+        content: section.title
+      })
+      blockId++
+      
+      // Add prompts as questions with space for responses
+      section.prompts.forEach(prompt => {
+        blocks.push({
+          id: blockId.toString(),
+          type: 'heading2' as const,
+          content: prompt
+        })
+        blockId++
+        
+        blocks.push({
+          id: blockId.toString(),
+          type: 'text' as const,
+          content: ''
+        })
+        blockId++
+      })
+    })
+    
+    return blocks
+  }
+  
+  const [noteBlocks, setNoteBlocks] = useState(buildInitialBlocks())
 
   const handleSave = (noteTitle: string, blocks: any[]) => {
     // Here you would save to your storage system
@@ -33,83 +75,35 @@ export function GuidedNotePage({
   }
 
   return (
-    <div className="space-y-6">
-      {/* Guidance Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Prompts */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5" />
-              Writing Prompts
-            </CardTitle>
-            <CardDescription>
-              Use these prompts to guide your thinking
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3">
-              {prompts.map((prompt, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <Badge variant="secondary" className="mt-0.5 text-xs">
-                    {index + 1}
-                  </Badge>
-                  <span className="text-sm">{prompt}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
+    <div className="relative">
+      {/* Floating Tips Button */}
+      {tips.length > 0 && (
+        <div className="fixed right-4 bottom-20 z-50">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="rounded-full shadow-lg bg-background"
+              >
+                <Lightbulb className="h-4 w-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <div className="space-y-3">
+                <div className="text-sm font-medium">💡 Planning Tips</div>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  {tips.map((tip, index) => (
+                    <div key={index}>• {tip}</div>
+                  ))}
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
+      )}
 
-        {/* Examples */}
-        {examples.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Lightbulb className="h-5 w-5" />
-                Examples
-              </CardTitle>
-              <CardDescription>
-                Sample ideas to inspire your writing
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {examples.map((example, index) => (
-                  <li key={index} className="text-sm text-muted-foreground">
-                    • {example}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Tips */}
-        {tips.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Tips</CardTitle>
-              <CardDescription>
-                Helpful advice for this section
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {tips.map((tip, index) => (
-                  <li key={index} className="text-sm">
-                    💡 {tip}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        )}
-      </div>
-
-      <Separator />
-
-      {/* Note Editor */}
+      {/* Unified Note Editor */}
       <div>
         <NoteEditor
           title={title}
