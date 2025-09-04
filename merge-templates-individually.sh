@@ -36,7 +36,7 @@ ADDITIONAL_COMPLETED=(
     "home-buying"
 )
 
-# Files that should NOT be merged (will cause conflicts)
+# Files that should NOT be merged (will cause conflicts) - matches linter FORBIDDEN_FILES
 SHARED_FILES=(
     "src/app/layout.tsx"
     "src/app/page.tsx"
@@ -44,6 +44,12 @@ SHARED_FILES=(
     "src/app/templates/page.tsx"
     "src/app/about/page.tsx"
     "src/app/faq/page.tsx"
+    "src/components/sidebar-left.tsx"
+    "src/components/theme-provider.tsx"
+    "src/components/wedding-setup-wizard.tsx"
+    "package.json"
+    "next.config.js"
+    "tailwind.config.js"
 )
 
 # Function to merge a single template with conflict resolution
@@ -120,34 +126,95 @@ integrate_template_shared_files() {
     
     echo "   🔗 Integrating $template_id into shared files..."
     
-    # Add provider to layout.tsx
+    # 1. Add provider to layout.tsx
+    integrate_provider_to_layout "$template_id"
+    
+    # 2. Add navigation entry to app-sidebar.tsx
+    integrate_sidebar_navigation "$template_id" 
+    
+    # 3. Add template to templates gallery page
+    integrate_template_gallery "$template_id"
+    
+    # 4. Update main landing page if needed
+    integrate_landing_page "$template_id"
+    
+    echo "      ✅ Post-merge integration completed for $template_id"
+}
+
+# Add provider to layout.tsx
+integrate_provider_to_layout() {
+    local template_id="$1"
     local provider_name=$(echo "$template_id" | sed 's/-\([a-z]\)/\U\1/g' | sed 's/^./\U&/')
     local context_file="src/contexts/${template_id}-context.tsx"
     
     if [[ -f "$context_file" ]]; then
         # Add import
         if ! grep -q "import.*${provider_name}Provider" src/app/layout.tsx; then
+            # Find the last context import and add after it
             sed -i '' "/import.*contexts.*context/a\\
 import { ${provider_name}Provider } from \"@/contexts/${template_id}-context\"" src/app/layout.tsx
         fi
         
-        # Add provider wrapper (find a good spot in the provider tree)
+        # Add provider wrapper in the provider tree
         if ! grep -q "${provider_name}Provider>" src/app/layout.tsx; then
-            # Add before the closing of another provider
-            sed -i '' "s|                    <HomeBuyingProvider>|                    <${provider_name}Provider>\\
-                      <HomeBuyingProvider>|" src/app/layout.tsx
-            sed -i '' "s|                    </HomeBuyingProvider>|                    </HomeBuyingProvider>\\
-                    </${provider_name}Provider>|" src/app/layout.tsx
+            # Add as outermost provider for now (can be refined)
+            sed -i '' "s|        <ThemeProvider|        <${provider_name}Provider>\\
+          <ThemeProvider|" src/app/layout.tsx
+            
+            # Find the closing and add the closing tag
+            sed -i '' "s|        </body>|          </${provider_name}Provider>\\
+        </body>|" src/app/layout.tsx
         fi
         
-        echo "      ✅ Added provider to layout.tsx"
+        echo "      ✅ Added ${provider_name}Provider to layout.tsx"
+    else
+        echo "      ⚠️  No context file found: $context_file"
     fi
+}
+
+# Add navigation entry to app-sidebar.tsx
+integrate_sidebar_navigation() {
+    local template_id="$1"
+    local template_display_name=$(echo "$template_id" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
     
-    # Add to template gallery (basic entry)
-    local templates_page="src/app/templates/page.tsx"
-    if [[ -f "$templates_page" ]] && ! grep -q "$template_id" "$templates_page"; then
-        # Add template entry to the templates array (this is a simplified approach)
-        echo "      📝 Template should be added to gallery (manual step)"
+    if [[ -f "src/components/app-sidebar.tsx" ]]; then
+        # Check if template already exists in sidebar
+        if ! grep -q "$template_id" src/components/app-sidebar.tsx; then
+            echo "      📝 Add $template_display_name to sidebar navigation (manual step)"
+            echo "         Template ID: $template_id"
+            echo "         Display Name: $template_display_name"
+        else
+            echo "      ✅ Template already in sidebar navigation"
+        fi
+    fi
+}
+
+# Add template to templates gallery page
+integrate_template_gallery() {
+    local template_id="$1"
+    local template_display_name=$(echo "$template_id" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+    
+    if [[ -f "src/app/templates/page.tsx" ]]; then
+        if ! grep -q "$template_id" src/app/templates/page.tsx; then
+            echo "      📝 Add $template_display_name to template gallery (manual step)"
+            echo "         Template route: /$template_id"
+            echo "         Display name: $template_display_name"
+        else
+            echo "      ✅ Template already in gallery"
+        fi
+    fi
+}
+
+# Update main landing page if needed
+integrate_landing_page() {
+    local template_id="$1"
+    
+    if [[ -f "src/app/page.tsx" ]]; then
+        if ! grep -q "$template_id" src/app/page.tsx; then
+            echo "      📝 Consider adding $template_id to landing page features (optional)"
+        else
+            echo "      ✅ Template referenced in landing page"
+        fi
     fi
 }
 
@@ -253,11 +320,19 @@ if [[ ${#successful_merges[@]} -gt 0 ]]; then
     echo ""
     echo "🔄 Next steps:"
     echo "1. Review changes: git log --oneline -${#successful_merges[@]}"
-    echo "2. Test build: npm run build"
-    echo "3. Manual integration:"
-    echo "   - Update template gallery with new templates"
-    echo "   - Update sidebar entries if needed"
-    echo "   - Test each template individually"
-    echo "4. Commit shared file changes"
-    echo "5. Push to remote when ready"
+    echo "2. Manual shared file integration (marked with 📝 above):"
+    echo "   - Update app-sidebar.tsx with navigation entries"
+    echo "   - Update templates gallery page with new templates"
+    echo "   - Add landing page features (optional)"
+    echo "   - Review and test provider integrations in layout.tsx"
+    echo "3. Test build: npm run build"
+    echo "4. Test each template individually:"
+    for template_id in "${successful_merges[@]}"; do
+        echo "   - Test /$template_id route and setup wizard"
+    done
+    echo "5. Commit shared file changes:"
+    echo "   git add -A && git commit -m \"feat: integrate ${#successful_merges[@]} templates into shared files\""
+    echo "6. Push to remote when ready: git push origin main"
+    echo ""
+    echo "💡 Tip: Use 'npm run dev' to test templates interactively"
 fi

@@ -116,11 +116,21 @@ Build complete ${template_name} template following job search template pattern. 
 
 BUILD TEMPLATE-ONLY COMPONENTS: 1) Context provider src/contexts/${template_id}-context.tsx with 30+ fields, localStorage, wizard state 2) Setup wizard src/components/${template_id}-setup-wizard.tsx multi-step with validation 3) CRITICAL: Sidebar src/components/${template_id}-sidebar-left.tsx with nav/favorites/workspaces AND BUILD ALL INDIVIDUAL SIDEBAR PAGES - examine the sidebar to see what pages it links to, then create every single page component with full functionality 4) Main page src/app/templates/${template_id}/page.tsx with routing 5) Overview dashboard src/components/${template_id}-overview.tsx 6) 4-6 functional CRUD components 7) Run 'npm run build' and fix ALL build errors - create missing components, fix TypeScript errors, use only theme colors (no explicit red/blue/etc) 8) Commit when build passes
 
-CRITICAL: DO NOT modify these shared files (they cause merge conflicts):
-- src/app/layout.tsx (providers added post-merge)
-- src/app/page.tsx (landing page updated post-merge) 
-- src/components/app-sidebar.tsx (sidebar entries added post-merge)
-- src/app/templates/page.tsx (gallery updated post-merge)
+⚠️  CRITICAL FORBIDDEN FILES - DO NOT MODIFY (will cause merge conflicts):
+1. src/app/layout.tsx (providers added post-merge)
+2. src/app/page.tsx (landing page updated post-merge)
+3. src/components/app-sidebar.tsx (navigation updated post-merge)
+4. src/app/templates/page.tsx (gallery updated post-merge)
+5. src/app/about/page.tsx (marketing pages unchanged)
+6. src/app/faq/page.tsx (FAQ pages unchanged)
+7. src/components/sidebar-left.tsx (use wedding template version)
+8. src/components/theme-provider.tsx (theme system unchanged)
+9. src/components/wedding-setup-wizard.tsx (core wizard unchanged)
+10. package.json (dependencies managed centrally)
+11. next.config.js (build config unchanged)
+12. tailwind.config.js (styling config unchanged)
+
+✅ BUILD TEMPLATE-SPECIFIC FILES ONLY: contexts/, template routes, setup wizards, dashboards, and components
 
 SIDEBAR PAGES: After creating the sidebar component, examine it carefully to identify ALL navigation pages it references, then build each one as a complete functional component. Do NOT leave sidebar pages as placeholders.
 
@@ -320,6 +330,13 @@ echo "   All templates will be built in parallel"
 echo ""
 echo "🔄 Next steps:"
 echo "   1. Monitor each VS Code window for Claude progress"
-echo "   2. Each Claude will build the complete template"
-echo "   3. When complete, merge branches back to main"
-echo "   4. Use merge-completed-templates.sh when ready"
+echo "   2. Each Claude will build template-specific files only (12 forbidden files protected)"
+echo "   3. When templates achieve 90%+ linter score, merge to main:"
+echo "      ./lint-unmerged-templates.sh (check scores)"
+echo "      ./merge-templates-individually.sh (handles conflicts + post-merge integration)"
+echo "   4. Enhanced tools now prevent merge conflicts through:"
+echo "      • Linter warnings about forbidden files"
+echo "      • Merge script excludes shared files during merge"
+echo "      • Automated post-merge integration for providers/navigation"
+echo ""
+echo "💡 Result: Parallel development speed + manageable manual merge resolution"

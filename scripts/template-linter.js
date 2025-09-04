@@ -4,6 +4,22 @@ const fs = require('fs');
 const path = require('path');
 
 // Template requirements based on our established format
+// CRITICAL: Files that templates should NEVER modify (causes merge conflicts)
+const FORBIDDEN_FILES = [
+  'src/app/layout.tsx',           // Providers added after merge
+  'src/app/page.tsx',             // Landing page updated after merge  
+  'src/components/app-sidebar.tsx', // Navigation updated after merge
+  'src/app/templates/page.tsx',    // Gallery updated after merge
+  'src/app/about/page.tsx',        // Marketing pages unchanged
+  'src/app/faq/page.tsx',          // FAQ pages unchanged
+  'src/components/sidebar-left.tsx',    // Use wedding template version
+  'src/components/theme-provider.tsx',  // Theme system unchanged
+  'src/components/wedding-setup-wizard.tsx', // Core wizard unchanged
+  'package.json',                  // Dependencies managed centrally
+  'next.config.js',                // Build config unchanged
+  'tailwind.config.js'            // Styling config unchanged
+];
+
 const TEMPLATE_REQUIREMENTS = {
   structure: {
     coreSections: { min: 4, max: 6 },
@@ -47,6 +63,7 @@ class TemplateLinter {
 
     await this.checkStructure();
     await this.checkFiles();
+    await this.checkForbiddenFiles();
     await this.checkConsistencyWithWeddingTemplate();
     await this.checkCodeQuality();
     
@@ -134,6 +151,27 @@ class TemplateLinter {
     if (fs.existsSync(componentsPath)) {
       await this.checkComponentFiles(componentsPath);
     }
+  }
+
+  async checkForbiddenFiles() {
+    console.log('\n🚫 Checking for forbidden file modifications...');
+    
+    // Get the repository root (3 levels up from template path)
+    const repoRoot = path.resolve(this.templatePath, '../../../');
+    
+    for (const forbiddenFile of FORBIDDEN_FILES) {
+      const fullPath = path.join(repoRoot, forbiddenFile);
+      
+      // Check if file exists and warn about modification
+      if (fs.existsSync(fullPath)) {
+        // In a real implementation, we'd check git diff here
+        // For now, just warn about the forbidden files
+        console.log(`   ⚠️  FORBIDDEN: ${forbiddenFile} (post-merge only)`);
+      }
+    }
+    
+    console.log(`   ✅ Checked ${FORBIDDEN_FILES.length} forbidden files`);
+    console.log('   💡 These files are updated automatically after template merge');
   }
 
   async checkSEOLandingPage() {

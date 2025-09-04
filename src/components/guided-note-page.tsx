@@ -34,7 +34,7 @@ export function GuidedNotePage({
 }: GuidedNotePageProps) {
   // Build note blocks with embedded prompts
   const buildInitialBlocks = () => {
-    const blocks = []
+    const blocks: any[] = []
     
     let blockId = 1
     sections.forEach(section => {
