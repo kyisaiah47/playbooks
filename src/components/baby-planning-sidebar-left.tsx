@@ -15,7 +15,10 @@ import {
 } from "lucide-react"
 
 import { NavFavorites } from "@/components/nav-favorites"
+import { NavGuidedNotes } from "@/components/nav-guided-notes"
 import { NavMain } from "@/components/nav-main"
+import { NavMyNotes } from "@/components/nav-my-notes"
+import { NavResources } from "@/components/nav-resources"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavWorkspaces } from "@/components/nav-workspaces"
 import { TeamSwitcher } from "@/components/team-switcher"
@@ -89,6 +92,77 @@ const getBabyPlanningData = (babyName: string, weeksRemaining: number) => ({
       title: "Help",
       url: "#help",
       icon: LifeBuoy,
+    },
+  ],
+  guidedNotes: [
+    {
+      name: "Pregnancy Journey Guide",
+      url: "#pregnancy-journey-guide",
+      emoji: "🤱",
+    },
+    {
+      name: "First Trimester Essentials",
+      url: "#first-trimester-guide",
+      emoji: "🌱",
+    },
+    {
+      name: "Second Trimester Prep",
+      url: "#second-trimester-guide",
+      emoji: "🌸",
+    },
+    {
+      name: "Third Trimester Checklist",
+      url: "#third-trimester-guide",
+      emoji: "🌺",
+    },
+    {
+      name: "Labor & Delivery Guide",
+      url: "#labor-delivery-guide",
+      emoji: "👶",
+    },
+    {
+      name: "Baby Gear Essentials",
+      url: "#baby-gear-guide",
+      emoji: "🛍️",
+    },
+    {
+      name: "Nursery Setup Guide",
+      url: "#nursery-setup-guide",
+      emoji: "🏠",
+    },
+    {
+      name: "Hospital Bag Packing",
+      url: "#hospital-bag-guide",
+      emoji: "🎒",
+    },
+    {
+      name: "Birth Plan Templates",
+      url: "#birth-plan-guide",
+      emoji: "📋",
+    },
+    {
+      name: "Newborn Care Guide",
+      url: "#newborn-care-guide",
+      emoji: "👼",
+    },
+  ],
+  resources: [
+    {
+      name: "Baby Planning Checklist",
+      url: "#baby-planning-checklist",
+      emoji: "✅",
+    },
+    {
+      name: "Pregnancy & Baby Tips",
+      url: "#pregnancy-tips",
+      emoji: "💡",
+    },
+  ],
+  myNotes: [
+    {
+      name: "My Baby Notes",
+      url: "#my-notes",
+      emoji: "📝",
     },
   ],
   favorites: [
@@ -326,6 +400,9 @@ export function BabyPlanningSidebarLeft({
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
+        <NavGuidedNotes guidedNotes={data.guidedNotes} />
+        <NavResources resources={data.resources} />
+        <NavMyNotes myNotes={data.myNotes} />
         <NavFavorites favorites={data.favorites} />
         <NavWorkspaces workspaces={data.workspaces} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />

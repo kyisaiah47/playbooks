@@ -16,6 +16,10 @@ const TEMPLATE_REQUIREMENTS = {
       'page.tsx',
       'sidebar-left.tsx'
     ],
+    seoLanding: {
+      required: true,
+      path: 'templates/[template-name]-template/page.tsx'
+    },
     patterns: {
       guidedNotes: /^[a-z-]+\.tsx$/,
       resources: /^[a-z-]+(guide|checklist|tips)\.tsx$/
@@ -43,6 +47,7 @@ class TemplateLinter {
 
     await this.checkStructure();
     await this.checkFiles();
+    await this.checkConsistencyWithWeddingTemplate();
     await this.checkCodeQuality();
     
     this.printResults();
@@ -121,10 +126,56 @@ class TemplateLinter {
       await this.checkPageFile(pagePath);
     }
 
+    // Check SEO landing page
+    await this.checkSEOLandingPage();
+
     // Check component files
     const componentsPath = path.join(this.templatePath, '../../../components');
     if (fs.existsSync(componentsPath)) {
       await this.checkComponentFiles(componentsPath);
+    }
+  }
+
+  async checkSEOLandingPage() {
+    console.log('\n🌐 Checking SEO landing page...');
+    
+    // Determine template type for SEO page path
+    const templateSlug = this.templateName.replace('-planning', '');
+    const seoPagePath = path.join(this.templatePath, `../../../templates/${templateSlug}-template/page.tsx`);
+    
+    if (!fs.existsSync(seoPagePath)) {
+      this.errors.push(`Missing SEO landing page at: templates/${templateSlug}-template/page.tsx`);
+      return;
+    }
+
+    try {
+      const seoContent = fs.readFileSync(seoPagePath, 'utf8');
+      console.log('✅ SEO landing page found');
+
+      // Check for required SEO components (these can vary between templates)
+      const requiredSEOElements = [
+        'metadata', // Next.js metadata export
+        'TemplateHero', // Hero component
+        'FAQ' // FAQ section
+      ];
+
+      for (const element of requiredSEOElements) {
+        if (!seoContent.includes(element)) {
+          this.warnings.push(`SEO page missing recommended element: ${element}`);
+        } else {
+          console.log(`✅ SEO page has ${element}`);
+        }
+      }
+
+      // Check metadata structure
+      if (seoContent.includes('export const metadata') || seoContent.includes('export async function generateMetadata')) {
+        console.log('✅ SEO metadata properly configured');
+      } else {
+        this.warnings.push('SEO page should export metadata for better SEO');
+      }
+
+    } catch (error) {
+      this.errors.push(`Error reading SEO landing page: ${error.message}`);
     }
   }
 
@@ -238,6 +289,148 @@ class TemplateLinter {
     }
   }
 
+  async checkConsistencyWithWeddingTemplate() {
+    console.log('\n🔗 Checking consistency with wedding template (reference)...');
+    
+    // Skip if this is the wedding template itself
+    if (this.templateName.includes('wedding')) {
+      console.log('✅ Wedding template - skipping self-consistency check');
+      return;
+    }
+
+    // Check guided notes structure consistency
+    await this.checkGuidedNotesConsistency();
+    
+    // Check resources structure consistency
+    await this.checkResourcesConsistency();
+    
+    // Check component patterns consistency
+    await this.checkComponentPatternsConsistency();
+  }
+
+  async checkGuidedNotesConsistency() {
+    const weddingGuidedNotesPath = path.join(this.templatePath, '../../../components/wedding-notes');
+    if (!fs.existsSync(weddingGuidedNotesPath)) {
+      this.warnings.push('Cannot verify consistency - wedding template not found for reference');
+      return;
+    }
+
+    // Get wedding guided notes structure as reference
+    const weddingFiles = fs.readdirSync(weddingGuidedNotesPath).filter(f => f.endsWith('.tsx'));
+    const referenceFile = path.join(weddingGuidedNotesPath, weddingFiles[0]);
+    
+    try {
+      const referenceContent = fs.readFileSync(referenceFile, 'utf8');
+      
+      // Check if current template follows same guided notes pattern
+      const currentGuidedNotesPath = this.findGuidedNotesPath();
+      if (!currentGuidedNotesPath) {
+        this.warnings.push('No guided notes found to check consistency');
+        return;
+      }
+
+      const currentFiles = fs.readdirSync(currentGuidedNotesPath).filter(f => f.endsWith('.tsx'));
+      if (currentFiles.length > 0) {
+        const currentFile = path.join(currentGuidedNotesPath, currentFiles[0]);
+        const currentContent = fs.readFileSync(currentFile, 'utf8');
+
+        // Check for GuidedNotePage usage (should be consistent)
+        const referenceUsesGNP = referenceContent.includes('GuidedNotePage');
+        const currentUsesGNP = currentContent.includes('GuidedNotePage');
+        
+        if (referenceUsesGNP && !currentUsesGNP) {
+          this.errors.push('Guided notes should use GuidedNotePage component like wedding template');
+        } else if (referenceUsesGNP && currentUsesGNP) {
+          console.log('✅ Guided notes follow wedding template pattern');
+        }
+
+        // Check for sections and tips structure
+        const referenceSections = referenceContent.includes('sections={[');
+        const currentSections = currentContent.includes('sections={[');
+        const referenceTips = referenceContent.includes('tips={[');
+        const currentTips = currentContent.includes('tips={[');
+
+        if (referenceSections && !currentSections) {
+          this.warnings.push('Guided notes should have sections array like wedding template');
+        }
+        if (referenceTips && !currentTips) {
+          this.warnings.push('Guided notes should have tips array like wedding template');
+        }
+      }
+
+    } catch (error) {
+      this.warnings.push(`Could not check guided notes consistency: ${error.message}`);
+    }
+  }
+
+  async checkResourcesConsistency() {
+    const weddingResourcesPath = path.join(this.templatePath, '../../../components/resources');
+    if (!fs.existsSync(weddingResourcesPath)) {
+      return;
+    }
+
+    const weddingResourceFiles = fs.readdirSync(weddingResourcesPath)
+      .filter(f => f.endsWith('.tsx') && f.includes('wedding'));
+
+    if (weddingResourceFiles.length === 0) return;
+
+    try {
+      const referenceFile = path.join(weddingResourcesPath, weddingResourceFiles[0]);
+      const referenceContent = fs.readFileSync(referenceFile, 'utf8');
+
+      // Check if uses theme colors and proper structure
+      const usesThemeColors = referenceContent.includes('bg-muted') || 
+                            referenceContent.includes('text-muted-foreground');
+      
+      if (usesThemeColors) {
+        console.log('✅ Wedding template uses theme colors - ensure consistency in this template');
+      }
+
+    } catch (error) {
+      this.warnings.push(`Could not check resources consistency: ${error.message}`);
+    }
+  }
+
+  async checkComponentPatternsConsistency() {
+    // Check for consistent button styling (outline variant)
+    const componentFiles = this.getAllTsxFiles(path.join(this.templatePath, '../../../components'));
+    let outlineButtonsFound = 0;
+    let solidButtonsFound = 0;
+
+    for (const file of componentFiles) {
+      if (file.includes(this.templateName.replace('-planning', ''))) {
+        try {
+          const content = fs.readFileSync(file, 'utf8');
+          const outlineMatches = content.match(/variant="outline"/g);
+          const solidMatches = content.match(/<Button(?![^>]*variant=)/g);
+
+          if (outlineMatches) outlineButtonsFound += outlineMatches.length;
+          if (solidMatches) solidButtonsFound += solidMatches.length;
+
+        } catch (error) {
+          // Continue checking other files
+        }
+      }
+    }
+
+    if (solidButtonsFound > outlineButtonsFound) {
+      this.warnings.push('Consider using variant="outline" for action buttons (wedding template standard)');
+    } else if (outlineButtonsFound > 0) {
+      console.log('✅ Uses outline variant buttons consistently with wedding template');
+    }
+  }
+
+  findGuidedNotesPath() {
+    const possiblePaths = [
+      path.join(this.templatePath, '../../../components', `${this.templateName}-notes`),
+      path.join(this.templatePath, '../../../components', `${this.templateName.replace('-planning', '')}-notes`),
+      path.join(this.templatePath, '../../../components', 'baby-notes'),
+      path.join(this.templatePath, '../../../components', 'home-buying-notes')
+    ];
+    
+    return possiblePaths.find(p => fs.existsSync(p));
+  }
+
   async checkCodeQuality() {
     console.log('\n🎨 Checking code quality...');
     
@@ -347,6 +540,16 @@ class TemplateLinter {
     else if (score >= 75) console.log('✅ Good template');
     else if (score >= 50) console.log('⚠️  Needs improvement');
     else console.log('❌ Major issues found');
+    
+    if (!this.templateName.includes('wedding')) {
+      console.log('\n📚 Reference: Use wedding-planning template as the standard for:');
+      console.log('   • Guided notes structure (GuidedNotePage pattern)');
+      console.log('   • Resources layout and styling');
+      console.log('   • Button variants (outline preferred)');
+      console.log('   • Theme color usage');
+      console.log('   • Component patterns and imports');
+      console.log('   ⚠️  Core pages and SEO landing can differ in content/layout');
+    }
   }
 }
 
