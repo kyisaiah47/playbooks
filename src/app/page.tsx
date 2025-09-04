@@ -1,103 +1,92 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CalendarIcon, Clock, DollarSign, Heart, Users, CheckSquare } from "lucide-react"
+import { WeddingOverview } from "@/components/wedding-overview"
+import { VendorManagement } from "@/components/vendor-management"
+import { GuestManagement } from "@/components/guest-management"
+import { BudgetTracking } from "@/components/budget-tracking"
+import { TaskManagement } from "@/components/task-management"
+import { ThemeToggle, ThemeToggleSwitch } from "@/components/theme-toggle"
+
+export default function WeddingDashboard() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-background">
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Heart className="h-8 w-8 text-rose-500" />
+              <div>
+                <h1 className="text-2xl font-bold">Wedding Planning Hub</h1>
+                <p className="text-sm text-muted-foreground">Sarah & Michael Thompson</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Badge variant="secondary" className="text-sm">
+                <CalendarIcon className="mr-1 h-3 w-3" />
+                June 15, 2024
+              </Badge>
+              <Badge variant="outline" className="text-sm">
+                <Clock className="mr-1 h-3 w-3" />
+                142 days left
+              </Badge>
+              <div className="flex items-center space-x-2">
+                <ThemeToggleSwitch />
+                <ThemeToggle />
+              </div>
+            </div>
+          </div>
         </div>
+      </header>
+
+      <main className="container mx-auto px-4 py-6">
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList className="grid w-full grid-cols-5">
+            <TabsTrigger value="overview" className="flex items-center space-x-2">
+              <Heart className="h-4 w-4" />
+              <span>Overview</span>
+            </TabsTrigger>
+            <TabsTrigger value="vendors" className="flex items-center space-x-2">
+              <Users className="h-4 w-4" />
+              <span>Vendors</span>
+            </TabsTrigger>
+            <TabsTrigger value="guests" className="flex items-center space-x-2">
+              <Users className="h-4 w-4" />
+              <span>Guests</span>
+            </TabsTrigger>
+            <TabsTrigger value="budget" className="flex items-center space-x-2">
+              <DollarSign className="h-4 w-4" />
+              <span>Budget</span>
+            </TabsTrigger>
+            <TabsTrigger value="tasks" className="flex items-center space-x-2">
+              <CheckSquare className="h-4 w-4" />
+              <span>Tasks</span>
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="overview" className="space-y-4">
+            <WeddingOverview />
+          </TabsContent>
+
+          <TabsContent value="vendors" className="space-y-4">
+            <VendorManagement />
+          </TabsContent>
+
+          <TabsContent value="guests" className="space-y-4">
+            <GuestManagement />
+          </TabsContent>
+
+          <TabsContent value="budget" className="space-y-4">
+            <BudgetTracking />
+          </TabsContent>
+
+          <TabsContent value="tasks" className="space-y-4">
+            <TaskManagement />
+          </TabsContent>
+        </Tabs>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
