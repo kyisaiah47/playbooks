@@ -39,7 +39,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { CalendarIcon, Clock } from "lucide-react"
+import { CalendarIcon, Clock, Wand2 } from "lucide-react"
 
 export default function Page() {
   const [activeSection, setActiveSection] = useState("overview")
@@ -160,7 +160,7 @@ export default function Page() {
 
   return (
     <SidebarProvider>
-      <SidebarLeft />
+      <SidebarLeft activeSection={activeSection} />
       <SidebarInset>
         <header className="bg-background sticky top-0 flex h-14 shrink-0 items-center gap-2 border-b">
           <div className="flex flex-1 items-center gap-2 px-3">
@@ -189,7 +189,13 @@ export default function Page() {
               {getWeddingDisplayData(weddingData).daysUntil > 0 ? `${getWeddingDisplayData(weddingData).daysUntil} days left` : 'Wedding Day!'}
             </Badge>
             <div className="flex items-center space-x-2">
-              <ThemeToggleSwitch />
+              <button
+                onClick={() => setWizardOpen(true)}
+                className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3"
+                title="Edit Wedding Setup"
+              >
+                <Wand2 className="h-4 w-4" />
+              </button>
               <ThemeToggle />
             </div>
           </div>

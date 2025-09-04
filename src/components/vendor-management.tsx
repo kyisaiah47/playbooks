@@ -90,7 +90,7 @@ export function VendorManagement() {
         </div>
         <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
-            <Button>
+            <Button variant="outline">
               <Plus className="mr-2 h-4 w-4" />
               Add Vendor
             </Button>

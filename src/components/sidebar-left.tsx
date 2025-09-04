@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/sidebar"
 
 // This is sample data.
-const getData = (coupleNames: string) => ({
+const getData = (coupleNames: string, activeSection: string = "overview") => ({
   teams: [
     {
       name: "Wedding Planning",
@@ -42,27 +42,31 @@ const getData = (coupleNames: string) => ({
       title: "Overview",
       url: "#overview",
       icon: Heart,
-      isActive: true,
+      isActive: activeSection === "overview",
     },
     {
       title: "Vendors",
       url: "#vendors",
       icon: Building,
+      isActive: activeSection === "vendors",
     },
     {
       title: "Guest List",
       url: "#guests",
       icon: Users,
+      isActive: activeSection === "guests",
     },
     {
       title: "Budget",
       url: "#budget",
       icon: DollarSign,
+      isActive: activeSection === "budget",
     },
     {
       title: "Tasks",
       url: "#tasks",
       icon: CheckSquare,
+      isActive: activeSection === "tasks",
     },
   ],
   navSecondary: [
@@ -156,11 +160,12 @@ const getData = (coupleNames: string) => ({
 })
 
 export function SidebarLeft({
+  activeSection,
   ...props
-}: React.ComponentProps<typeof Sidebar>) {
+}: React.ComponentProps<typeof Sidebar> & { activeSection?: string }) {
   const { weddingData } = useWedding()
   const displayData = getWeddingDisplayData(weddingData)
-  const data = getData(displayData.coupleNames)
+  const data = getData(displayData.coupleNames, activeSection)
 
   return (
     <Sidebar className="border-r-0" {...props}>
@@ -169,7 +174,7 @@ export function SidebarLeft({
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
-        <NavGuidedNotes guidedNotes={data.guidedNotes} />
+        <NavGuidedNotes guidedNotes={data.guidedNotes} activeSection={activeSection} />
         <NavResources resources={data.resources} />
         <NavMyNotes myNotes={data.myNotes} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />

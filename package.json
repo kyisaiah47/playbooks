@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:template": "node scripts/template-linter.js",
+    "lint:template:wedding": "node scripts/template-linter.js src/app/templates/wedding-planning",
+    "lint:all-templates": "node scripts/lint-all-templates.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",

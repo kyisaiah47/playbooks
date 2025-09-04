@@ -25,12 +25,14 @@ import {
 
 export function NavGuidedNotes({
   guidedNotes,
+  activeSection,
 }: {
   guidedNotes: {
     name: string
     url: string
     emoji: string
   }[]
+  activeSection?: string
 }) {
   const { isMobile } = useSidebar()
 
@@ -38,14 +40,18 @@ export function NavGuidedNotes({
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel>Guided Notes</SidebarGroupLabel>
       <SidebarMenu>
-        {guidedNotes.map((item) => (
-          <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <a href={item.url} title={item.name}>
-                <span>{item.emoji}</span>
-                <span>{item.name}</span>
-              </a>
-            </SidebarMenuButton>
+        {guidedNotes.map((item) => {
+          const sectionId = item.url.replace('#', '')
+          const isActive = activeSection === sectionId
+          
+          return (
+            <SidebarMenuItem key={item.name}>
+              <SidebarMenuButton asChild isActive={isActive}>
+                <a href={item.url} title={item.name}>
+                  <span>{item.emoji}</span>
+                  <span>{item.name}</span>
+                </a>
+              </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuAction showOnHover>
@@ -68,8 +74,9 @@ export function NavGuidedNotes({
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </SidebarMenuItem>
-        ))}
+            </SidebarMenuItem>
+          )
+        })}
       </SidebarMenu>
     </SidebarGroup>
   )

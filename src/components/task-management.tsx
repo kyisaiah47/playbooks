@@ -224,7 +224,7 @@ export function TaskManagement() {
         </div>
         <Dialog open={isAddTaskDialogOpen} onOpenChange={setIsAddTaskDialogOpen}>
           <DialogTrigger asChild>
-            <Button>
+            <Button variant="outline">
               <Plus className="mr-2 h-4 w-4" />
               Add Task
             </Button>

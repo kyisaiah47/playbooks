@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { ChevronDown, Plus } from "lucide-react"
+import { TemplatesModal } from "@/components/templates-modal"
 
 import {
   DropdownMenu,
@@ -28,6 +29,7 @@ export function TeamSwitcher({
   }[]
 }) {
   const [activeTeam, setActiveTeam] = React.useState(teams[0])
+  const [templatesModalOpen, setTemplatesModalOpen] = React.useState(false)
 
   if (!activeTeam) {
     return null
@@ -39,8 +41,8 @@ export function TeamSwitcher({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton className="w-fit px-1.5">
-              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-5 items-center justify-center rounded-md">
-                <activeTeam.logo className="size-3" />
+              <div className="bg-background border flex aspect-square size-5 items-center justify-center rounded-md">
+                <activeTeam.logo className="size-3 text-foreground" />
               </div>
               <span className="truncate font-medium">{activeTeam.name}</span>
               <ChevronDown className="opacity-50" />
@@ -53,7 +55,7 @@ export function TeamSwitcher({
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-muted-foreground text-xs">
-              Teams
+              Templates
             </DropdownMenuLabel>
             {teams.map((team, index) => (
               <DropdownMenuItem
@@ -69,14 +71,22 @@ export function TeamSwitcher({
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 p-2">
+            <DropdownMenuItem 
+              className="gap-2 p-2"
+              onClick={() => setTemplatesModalOpen(true)}
+            >
               <div className="bg-background flex size-6 items-center justify-center rounded-md border">
                 <Plus className="size-4" />
               </div>
-              <div className="text-muted-foreground font-medium">Add team</div>
+              <div className="text-muted-foreground font-medium">Browse all templates</div>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        
+        <TemplatesModal 
+          open={templatesModalOpen} 
+          onOpenChange={setTemplatesModalOpen}
+        />
       </SidebarMenuItem>
     </SidebarMenu>
   )
