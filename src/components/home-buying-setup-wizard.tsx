@@ -94,7 +94,7 @@ const formSchema = z.object({
 	homeInsuranceBudget: z.number().min(0),
 	closingCostsBudget: z.number().min(0),
 	mortgageType: z.enum(["conventional", "fha", "va", "usda", "jumbo", "other"]),
-	loanTerm: z.enum([15, 20, 30]),
+	loanTerm: "15" | "20" | "30",
 	interestRate: z.number().min(1).max(20),
 	lenderPreferences: z.array(z.string()),
 	targetMoveInDate: z.date(),
@@ -213,7 +213,7 @@ export function HomeBuyingSetupWizard({
 			homeInsuranceBudget: initialData?.homeInsuranceBudget || 150,
 			closingCostsBudget: initialData?.closingCostsBudget || 15000,
 			mortgageType: initialData?.mortgageType || "conventional",
-			loanTerm: initialData?.loanTerm || 30,
+			loanTerm: initialData?.loanTerm || "30",
 			interestRate: initialData?.interestRate || 6.5,
 			lenderPreferences: initialData?.lenderPreferences || [],
 			targetMoveInDate:
