@@ -17,6 +17,22 @@ import { ContractionTimer } from "@/components/contraction-timer"
 import { HospitalBag } from "@/components/hospital-bag"
 import { BirthPlan } from "@/components/birth-plan"
 import { BabyRegistry } from "@/components/baby-registry"
+import { FeedingSchedule } from "@/components/feeding-schedule"
+import { SleepTracker } from "@/components/sleep-tracker"
+import { AppointmentLog } from "@/components/appointment-log"
+import { PhotoTimeline } from "@/components/photo-timeline"
+import { MilestonesTracker } from "@/components/milestones-tracker"
+import { FirstTrimester } from "@/components/first-trimester"
+import { SecondTrimester } from "@/components/second-trimester"
+import { ThirdTrimester } from "@/components/third-trimester"
+import { LaborDelivery } from "@/components/labor-delivery"
+import { PostpartumRecovery } from "@/components/postpartum-recovery"
+import { MustHaveGear } from "@/components/must-have-gear"
+import { FeedingSupplies } from "@/components/feeding-supplies"
+import { DiaperBathing } from "@/components/diaper-bathing"
+import { ClothingAccessories } from "@/components/clothing-accessories"
+import { SafetyHealth } from "@/components/safety-health"
+import { NurseryDesign } from "@/components/nursery-design"
 import { BabyPlanningSetupWizard } from "@/components/baby-planning-setup-wizard"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Badge } from "@/components/ui/badge"
@@ -88,6 +104,44 @@ function BabyPlanningTemplatePage() {
         return <BirthPlan />
       case "registry":
         return <BabyRegistry />
+      case "feeding-schedule":
+        return <FeedingSchedule />
+      case "sleep-tracker":
+        return <SleepTracker />
+      case "appointment-log":
+        return <AppointmentLog />
+      case "photo-timeline":
+        return <PhotoTimeline />
+      case "milestones":
+        return <MilestonesTracker />
+      
+      // Workspace pages - Pregnancy Journey
+      case "first-trimester":
+        return <FirstTrimester />
+      case "second-trimester":
+        return <SecondTrimester />
+      case "third-trimester":
+        return <ThirdTrimester />
+      case "labor-delivery":
+        return <LaborDelivery />
+      case "postpartum-recovery":
+        return <PostpartumRecovery />
+      
+      // Workspace pages - Baby Essentials
+      case "must-have-gear":
+        return <MustHaveGear />
+      case "feeding-supplies":
+        return <FeedingSupplies />
+      case "diaper-bathing":
+        return <DiaperBathing />
+      case "clothing-accessories":
+        return <ClothingAccessories />
+      case "safety-health":
+        return <SafetyHealth />
+      
+      // Workspace pages - Home & Family Prep
+      case "nursery-design":
+        return <NurseryDesign />
       
       case "settings":
         return <BabyPlanningSettings />
