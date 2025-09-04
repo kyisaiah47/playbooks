@@ -19,6 +19,7 @@ import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavWorkspaces } from "@/components/nav-workspaces"
 import { TeamSwitcher } from "@/components/team-switcher"
+import { useWedding, getWeddingDisplayData } from "@/contexts/wedding-context"
 import {
   Sidebar,
   SidebarContent,
@@ -27,12 +28,12 @@ import {
 } from "@/components/ui/sidebar"
 
 // This is sample data.
-const data = {
+const getData = (coupleNames: string) => ({
   teams: [
     {
       name: "Wedding Hub",
       logo: Heart,
-      plan: "Sarah & Michael",
+      plan: coupleNames,
     },
   ],
   navMain: [
@@ -228,11 +229,15 @@ const data = {
       ],
     },
   ],
-}
+})
 
 export function SidebarLeft({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
+  const { weddingData } = useWedding()
+  const displayData = getWeddingDisplayData(weddingData)
+  const data = getData(displayData.coupleNames)
+
   return (
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader>

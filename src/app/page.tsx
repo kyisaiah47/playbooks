@@ -8,8 +8,10 @@ import { VendorManagement } from "@/components/vendor-management"
 import { GuestManagement } from "@/components/guest-management"
 import { BudgetTracking } from "@/components/budget-tracking"
 import { TaskManagement } from "@/components/task-management"
+import { WeddingSetupWizard } from "@/components/wedding-setup-wizard"
 import { ThemeToggle, ThemeToggleSwitch } from "@/components/theme-toggle"
 import { Badge } from "@/components/ui/badge"
+import { useWedding, getWeddingDisplayData } from "@/contexts/wedding-context"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -26,6 +28,7 @@ import { CalendarIcon, Clock } from "lucide-react"
 
 export default function Page() {
   const [activeSection, setActiveSection] = useState("overview")
+  const { weddingData, isWizardOpen, setWizardOpen, updateWeddingData } = useWedding()
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -53,11 +56,37 @@ export default function Page() {
         return <BudgetTracking />
       case "tasks":
         return <TaskManagement />
+      case "settings":
+        return <WeddingSettings />
       case "overview":
       default:
         return <WeddingOverview />
     }
   }
+
+  const WeddingSettings = () => (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold">Settings</h1>
+        <p className="text-muted-foreground">Manage your wedding planning preferences and data</p>
+      </div>
+      
+      <div className="grid gap-6">
+        <div className="rounded-lg border p-6">
+          <h3 className="text-lg font-semibold mb-2">Wedding Setup</h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Update your wedding information or restart the setup process
+          </p>
+          <button
+            onClick={() => setWizardOpen(true)}
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          >
+            Edit Wedding Details
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 
   const getSectionTitle = () => {
     switch (activeSection) {
@@ -69,6 +98,8 @@ export default function Page() {
         return "Budget Tracking"
       case "tasks":
         return "Task Management"
+      case "settings":
+        return "Settings"
       case "overview":
       default:
         return "Wedding Overview"
@@ -90,7 +121,7 @@ export default function Page() {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbPage className="line-clamp-1">
-                    {getSectionTitle()} - Sarah & Michael Thompson
+                    {getSectionTitle()} - {getWeddingDisplayData(weddingData).coupleNames}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
@@ -99,11 +130,11 @@ export default function Page() {
           <div className="flex items-center space-x-3 px-3">
             <Badge variant="secondary" className="text-sm hidden sm:flex">
               <CalendarIcon className="mr-1 h-3 w-3" />
-              June 15, 2024
+              {getWeddingDisplayData(weddingData).weddingDate.toLocaleDateString()}
             </Badge>
             <Badge variant="outline" className="text-sm hidden sm:flex">
               <Clock className="mr-1 h-3 w-3" />
-              142 days left
+              {getWeddingDisplayData(weddingData).daysUntil > 0 ? `${getWeddingDisplayData(weddingData).daysUntil} days left` : 'Wedding Day!'}
             </Badge>
             <div className="flex items-center space-x-2">
               <ThemeToggleSwitch />
@@ -116,6 +147,11 @@ export default function Page() {
         </div>
       </SidebarInset>
       <SidebarRight />
+      <WeddingSetupWizard 
+        isOpen={isWizardOpen}
+        onClose={() => setWizardOpen(false)}
+        onComplete={(data) => updateWeddingData(data)}
+      />
     </SidebarProvider>
   )
 }

@@ -5,8 +5,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { CalendarIcon, CheckCircle2, Clock, DollarSign, Heart, MapPin, Users, Star, AlertCircle } from "lucide-react"
+import { useWedding, getWeddingDisplayData } from "@/contexts/wedding-context"
 
 export function WeddingOverview() {
+  const { weddingData } = useWedding()
+  const displayData = getWeddingDisplayData(weddingData)
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card>
@@ -15,9 +18,9 @@ export function WeddingOverview() {
           <CalendarIcon className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">142</div>
+          <div className="text-2xl font-bold">{displayData.daysUntil > 0 ? displayData.daysUntil : 'Today!'}</div>
           <p className="text-xs text-muted-foreground">
-            June 15, 2024 at 4:00 PM
+            {displayData.weddingDate.toLocaleDateString()} at {displayData.weddingTime}
           </p>
         </CardContent>
       </Card>
@@ -30,7 +33,7 @@ export function WeddingOverview() {
         <CardContent>
           <div className="text-2xl font-bold">$28,500</div>
           <p className="text-xs text-muted-foreground">
-            of $45,000 total budget
+            of ${displayData.totalBudget.toLocaleString()} total budget
           </p>
           <Progress value={63.3} className="mt-2" />
         </CardContent>
@@ -44,7 +47,7 @@ export function WeddingOverview() {
         <CardContent>
           <div className="text-2xl font-bold">127</div>
           <p className="text-xs text-muted-foreground">
-            of 180 invited guests
+            of {displayData.guestCount} invited guests
           </p>
           <Progress value={70.5} className="mt-2" />
         </CardContent>
@@ -73,21 +76,21 @@ export function WeddingOverview() {
           <div className="flex items-center space-x-2">
             <MapPin className="h-4 w-4 text-muted-foreground" />
             <div>
-              <p className="text-sm font-medium">St. Mary&apos;s Cathedral</p>
+              <p className="text-sm font-medium">{displayData.ceremonyVenue}</p>
               <p className="text-xs text-muted-foreground">Ceremony Venue</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
             <MapPin className="h-4 w-4 text-muted-foreground" />
             <div>
-              <p className="text-sm font-medium">Grand Ballroom Hotel</p>
+              <p className="text-sm font-medium">{displayData.receptionVenue}</p>
               <p className="text-xs text-muted-foreground">Reception Venue</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
             <Heart className="h-4 w-4 text-rose-500" />
             <div>
-              <p className="text-sm font-medium">Traditional Elegant</p>
+              <p className="text-sm font-medium">{displayData.weddingStyle}</p>
               <p className="text-xs text-muted-foreground">Wedding Style</p>
             </div>
           </div>
