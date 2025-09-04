@@ -31,58 +31,54 @@ export const templataTheme: ThemeColors = {
   ring: 'oklch(0 0 0)' // Black ring
 }
 
-// Wedding template theme - romantic rose/pink (we already have this)
+// Wedding template theme - romantic rose/pink
 export const weddingTheme: ThemeColors = {
-  primary: '350 89% 60%', // Rose
-  primaryForeground: '0 0% 98%',
-  secondary: '350 30% 96%',
-  secondaryForeground: '350 10% 10%',
-  accent: '350 20% 92%',
-  accentForeground: '350 10% 15%',
-  muted: '350 15% 95%',
-  mutedForeground: '350 8% 45%',
-  card: '0 0% 100%',
-  cardForeground: '350 10% 10%',
-  border: '350 20% 88%',
-  input: '350 20% 88%',
-  ring: '350 89% 60%'
+  primary: 'oklch(0.6800 0.1900 350)', // Rose
+  primaryForeground: 'oklch(0.9800 0 0)', // White
+  secondary: 'oklch(0.9600 0.0300 350)', // Very light rose
+  secondaryForeground: 'oklch(0.1000 0.0100 350)', // Dark rose
+  accent: 'oklch(0.9200 0.0200 350)', // Light rose
+  accentForeground: 'oklch(0.1500 0.0100 350)', // Dark rose
+  muted: 'oklch(0.9500 0.0150 350)', // Very light rose
+  mutedForeground: 'oklch(0.4500 0.0080 350)', // Medium rose
+  card: 'oklch(1 0 0)', // Pure white
+  cardForeground: 'oklch(0.1000 0.0100 350)', // Dark rose
+  border: 'oklch(0.8800 0.0200 350)', // Light rose border
+  input: 'oklch(0.8800 0.0200 350)', // Light rose input
+  ring: 'oklch(0.6800 0.1900 350)' // Rose ring
 }
 
-// Business template theme - professional blue
-export const businessTheme: ThemeColors = {
-  primary: '213 94% 68%', // Blue
-  primaryForeground: '0 0% 98%',
-  secondary: '213 30% 96%',
-  secondaryForeground: '213 10% 10%',
-  accent: '213 20% 92%',
-  accentForeground: '213 10% 15%',
-  muted: '213 15% 95%',
-  mutedForeground: '213 8% 45%',
-  card: '0 0% 100%',
-  cardForeground: '213 10% 10%',
-  border: '213 20% 88%',
-  input: '213 20% 88%',
-  ring: '213 94% 68%'
-}
+
 
 export const applyTheme = (theme: ThemeColors) => {
   const root = document.documentElement
   
+  // Map our theme properties to the correct CSS variable names
+  const cssVarMap = {
+    primary: '--primary',
+    primaryForeground: '--primary-foreground',
+    secondary: '--secondary',
+    secondaryForeground: '--secondary-foreground',
+    accent: '--accent',
+    accentForeground: '--accent-foreground',
+    muted: '--muted',
+    mutedForeground: '--muted-foreground',
+    card: '--card',
+    cardForeground: '--card-foreground',
+    border: '--border',
+    input: '--input',
+    ring: '--ring'
+  }
+  
   Object.entries(theme).forEach(([key, value]) => {
-    const cssVar = `--${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`
-    root.style.setProperty(cssVar, value)
+    const cssVar = cssVarMap[key as keyof ThemeColors]
+    if (cssVar) {
+      root.style.setProperty(cssVar, value)
+    }
   })
 }
 
 export const getThemeForTemplate = (templateId: string): ThemeColors => {
-  switch (templateId) {
-    case 'wedding-planning':
-      return weddingTheme
-    case 'home-buying':
-    case 'job-search':
-    case 'college-planning':
-      return businessTheme
-    default:
-      return templataTheme
-  }
+  // Always return the default theme - users can change it manually if they want
+  return templataTheme
 }

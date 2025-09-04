@@ -28,8 +28,23 @@ interface CustomThemeProviderProps {
 export function CustomThemeProvider({ children, defaultTheme = templataTheme }: CustomThemeProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<ThemeColors>(defaultTheme)
 
+  // Load saved theme on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('templata-theme')
+    if (savedTheme) {
+      try {
+        const theme = JSON.parse(savedTheme)
+        setCurrentTheme(theme)
+      } catch (error) {
+        console.error('Failed to parse saved theme:', error)
+      }
+    }
+  }, [])
+
   useEffect(() => {
     applyTheme(currentTheme)
+    // Save theme to localStorage
+    localStorage.setItem('templata-theme', JSON.stringify(currentTheme))
   }, [currentTheme])
 
   const setTheme = (theme: ThemeColors) => {

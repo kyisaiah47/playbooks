@@ -20,11 +20,9 @@ import {
 } from "@/components/ui/navigation-menu"
 
 const categories = [
-  { id: "all", name: "All Templates", count: 12 },
-  { id: "life-events", name: "Life Events", count: 4 },
-  { id: "career", name: "Career & Education", count: 3 },
-  { id: "home", name: "Home & Family", count: 3 },
-  { id: "business", name: "Business", count: 2 },
+  { id: "all", name: "All Templates", count: 2 },
+  { id: "life-events", name: "Life Events", count: 1 },
+  { id: "career", name: "Career & Education", count: 1 },
 ]
 
 const templates = [
@@ -40,59 +38,15 @@ const templates = [
     setupTime: "5 min"
   },
   {
-    id: "home-buying",
-    title: "Home Buying",
-    description: "Navigate the home buying process with checklists, document tracking, mortgage calculations, and timeline management",
-    category: "home",
-    icon: Home,
-    color: "bg-muted/50 border-border text-foreground",
-    popular: true,
-    features: ["Document Tracker", "Mortgage Calculator", "Inspection Checklist", "Timeline"],
-    setupTime: "4 min"
-  },
-  {
-    id: "job-search",
-    title: "Job Search",
-    description: "Track applications, prepare for interviews, manage networking, and organize your career transition",
-    category: "career",
-    icon: Briefcase,
-    color: "bg-muted/50 border-border text-foreground",
-    popular: true,
-    features: ["Application Tracker", "Interview Prep", "Network Management", "Salary Tracker"],
-    setupTime: "3 min"
-  },
-  {
-    id: "college-planning",
-    title: "College Planning",
-    description: "Manage applications, deadlines, essays, financial aid, and decisions for your education journey",
+    id: "academic-research",
+    title: "Academic Research",
+    description: "Comprehensive research management platform for academics, researchers, and students with literature review, data management, and collaboration tools",
     category: "career",
     icon: GraduationCap,
     color: "bg-muted/50 border-border text-foreground",
-    popular: false,
-    features: ["Application Tracker", "Essay Manager", "Financial Aid", "Decision Matrix"],
-    setupTime: "6 min"
-  },
-  {
-    id: "baby-planning",
-    title: "Baby Planning",
-    description: "Prepare for your new arrival with registries, nursery setup, milestone tracking, and appointment scheduling",
-    category: "home",
-    icon: Baby,
-    color: "bg-muted/50 border-border text-foreground",
-    popular: false,
-    features: ["Registry Manager", "Nursery Checklist", "Milestone Tracker", "Appointments"],
+    popular: true,
+    features: ["Literature Review", "Methodology Planning", "Data Management", "Writing Tracker"],
     setupTime: "4 min"
-  },
-  {
-    id: "moving",
-    title: "Moving & Relocation",
-    description: "Organize your relocation with packing lists, utility transfers, address changes, and timeline management",
-    category: "life-events",
-    icon: Car,
-    color: "bg-muted/50 border-border text-foreground",
-    popular: false,
-    features: ["Packing Lists", "Utility Transfers", "Address Changes", "Moving Timeline"],
-    setupTime: "3 min"
   }
 ]
 
@@ -144,19 +98,6 @@ export default function TemplatesPage() {
                             </Link>
                           </NavigationMenuLink>
                           
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="block group">
-                              <div className="flex items-start space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                                <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
-                                  <Home className="h-4 w-4 text-muted-foreground" />
-                                </div>
-                                <div>
-                                  <div className="font-semibold group-hover:text-primary transition-colors">Home Buying</div>
-                                  <div className="text-sm text-muted-foreground">Navigate the home buying process</div>
-                                </div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
                         </div>
                       </div>
                       
@@ -164,28 +105,14 @@ export default function TemplatesPage() {
                         <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Career & Business</h4>
                         <div className="space-y-3">
                           <NavigationMenuLink asChild>
-                            <Link href="#" className="block group">
+                            <Link href="/templates/academic-research" className="block group">
                               <div className="flex items-start space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
                                 <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
-                                  <Briefcase className="h-4 w-4 text-muted-foreground" />
+                                  <GraduationCap className="h-4 w-4 text-muted-foreground" />
                                 </div>
                                 <div>
-                                  <div className="font-semibold group-hover:text-primary transition-colors">Job Search</div>
-                                  <div className="text-sm text-muted-foreground">Track applications & interviews</div>
-                                </div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="block group">
-                              <div className="flex items-start space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                                <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
-                                  <Target className="h-4 w-4 text-muted-foreground" />
-                                </div>
-                                <div>
-                                  <div className="font-semibold group-hover:text-primary transition-colors">Business Launch</div>
-                                  <div className="text-sm text-muted-foreground">Start your business right</div>
+                                  <div className="font-semibold group-hover:text-primary transition-colors">Academic Research</div>
+                                  <div className="text-sm text-muted-foreground">Research management platform</div>
                                 </div>
                               </div>
                             </Link>
@@ -309,7 +236,7 @@ export default function TemplatesPage() {
             if (viewMode === "list") {
               return (
                 <Card key={template.id} className="group hover:shadow-md transition-all duration-200">
-                  <Link href={template.id === "wedding-planning" ? `/templates/${template.id}` : "#"}>
+                  <Link href={`/templates/${template.id}`}>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${template.color}`}>
@@ -359,7 +286,7 @@ export default function TemplatesPage() {
             
             return (
               <Card key={template.id} className="group hover:shadow-md transition-all duration-200">
-                <Link href={template.id === "wedding-planning" ? `/templates/${template.id}` : "#"}>
+                <Link href={`/templates/${template.id}`}>
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${template.color}`}>
