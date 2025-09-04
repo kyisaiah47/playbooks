@@ -509,7 +509,7 @@ export function TaskManagement() {
                               <h5 className="font-medium text-sm">{task.title}</h5>
                               <p className="text-xs text-muted-foreground">{task.assignedTo}</p>
                             </div>
-                            <Badge className={getStatusColor(task.status)} variant="outline" className="text-xs">
+                            <Badge variant="outline" className={`text-xs ${getStatusColor(task.status)}`}>
                               {task.status}
                             </Badge>
                           </div>
@@ -572,7 +572,7 @@ export function TaskManagement() {
                                   </span>
                                 </div>
                               </div>
-                              <Badge className={getStatusColor(task.status)} variant="outline" className="text-xs">
+                              <Badge variant="outline" className={`text-xs ${getStatusColor(task.status)}`}>
                                 {task.status}
                               </Badge>
                             </div>

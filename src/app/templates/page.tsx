@@ -20,9 +20,9 @@ import {
 } from "@/components/ui/navigation-menu"
 
 const categories = [
-  { id: "all", name: "All Templates", count: 2 },
+  { id: "all", name: "All Templates", count: 3 },
   { id: "life-events", name: "Life Events", count: 1 },
-  { id: "career", name: "Career & Education", count: 1 },
+  { id: "career", name: "Career & Education", count: 2 },
 ]
 
 const templates = [
@@ -47,6 +47,17 @@ const templates = [
     popular: true,
     features: ["Literature Review", "Methodology Planning", "Data Management", "Writing Tracker"],
     setupTime: "4 min"
+  },
+  {
+    id: "job-search",
+    title: "Job Search",
+    description: "Track applications, prepare for interviews, manage networking, and organize your career transition with comprehensive job search tools",
+    category: "career",
+    icon: Briefcase,
+    color: "bg-muted/50 border-border text-foreground",
+    popular: true,
+    features: ["Application Tracker", "Interview Prep", "Network Management", "Salary Tracking"],
+    setupTime: "7 min"
   }
 ]
 
@@ -113,6 +124,20 @@ export default function TemplatesPage() {
                                 <div>
                                   <div className="font-semibold group-hover:text-primary transition-colors">Academic Research</div>
                                   <div className="text-sm text-muted-foreground">Research management platform</div>
+                                </div>
+                              </div>
+                            </Link>
+                          </NavigationMenuLink>
+                          
+                          <NavigationMenuLink asChild>
+                            <Link href="/templates/job-search" className="block group">
+                              <div className="flex items-start space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                                <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                                  <Briefcase className="h-4 w-4 text-muted-foreground" />
+                                </div>
+                                <div>
+                                  <div className="font-semibold group-hover:text-primary transition-colors">Job Search</div>
+                                  <div className="text-sm text-muted-foreground">Track applications & interviews</div>
                                 </div>
                               </div>
                             </Link>

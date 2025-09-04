@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { WeddingProvider } from "@/contexts/wedding-context"
+import { JobSearchProvider } from "@/contexts/job-search-context"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <WeddingProvider>
-            {children}
+            <JobSearchProvider>
+              {children}
+            </JobSearchProvider>
           </WeddingProvider>
         </ThemeProvider>
       </body>
