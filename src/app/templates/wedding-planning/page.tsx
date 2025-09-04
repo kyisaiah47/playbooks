@@ -12,6 +12,15 @@ import { CreateNote } from "@/components/create-note"
 import { VendorQuestions } from "@/components/wedding-notes/vendor-questions"
 import { VowsCeremony } from "@/components/wedding-notes/vows-ceremony"
 import { Timeline } from "@/components/wedding-notes/timeline"
+import { RSVP } from "@/components/wedding-notes/rsvp"
+import { Seating } from "@/components/wedding-notes/seating"
+import { Emergency } from "@/components/wedding-notes/emergency"
+import { Photos } from "@/components/wedding-notes/photos"
+import { Music } from "@/components/wedding-notes/music"
+import { Registry } from "@/components/wedding-notes/registry"
+import { Honeymoon } from "@/components/wedding-notes/honeymoon"
+import { ThankYou } from "@/components/wedding-notes/thankyou"
+import { DaySchedule } from "@/components/wedding-notes/day-schedule"
 import { WeddingSetupWizard } from "@/components/wedding-setup-wizard"
 import { ThemeToggle, ThemeToggleSwitch } from "@/components/theme-toggle"
 import { Badge } from "@/components/ui/badge"
@@ -70,6 +79,24 @@ export default function Page() {
         return <VendorQuestions />
       case "vows":
         return <VowsCeremony />
+      case "rsvp":
+        return <RSVP />
+      case "seating":
+        return <Seating />
+      case "emergency":
+        return <Emergency />
+      case "photos":
+        return <Photos />
+      case "music":
+        return <Music />
+      case "registry":
+        return <Registry />
+      case "honeymoon":
+        return <Honeymoon />
+      case "thankyou":
+        return <ThankYou />
+      case "day-schedule":
+        return <DaySchedule />
       
       // My Notes
       case "create-note":
