@@ -178,6 +178,7 @@ export function HomeBuyingSetupWizard({ isOpen, onClose, onComplete, initialData
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     const data: HomeBuyingData = {
       ...values,
+      loanTerm: parseInt(values.loanTerm) as 15 | 20 | 30,
       mustHaveFeatures,
       niceToHaveFeatures,
       dealBreakers,
