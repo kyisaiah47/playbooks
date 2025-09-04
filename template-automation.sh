@@ -114,7 +114,13 @@ generate_template_prompt() {
     cat << EOF
 Build complete ${template_name} template following job search template pattern. ID: ${template_id}
 
-BUILD ALL COMPONENTS: 1) Context provider src/contexts/${template_id}-context.tsx with 30+ fields, localStorage, wizard state 2) Setup wizard src/components/${template_id}-setup-wizard.tsx multi-step with validation 3) CRITICAL: Sidebar src/components/${template_id}-sidebar-left.tsx with nav/favorites/workspaces AND BUILD ALL INDIVIDUAL SIDEBAR PAGES - examine the sidebar to see what pages it links to, then create every single page component with full functionality 4) Main page src/app/templates/${template_id}/page.tsx with routing 5) Overview dashboard src/components/${template_id}-overview.tsx 6) 4-6 functional CRUD components 7) Add provider to layout.tsx and template to gallery 8) Run 'npm run build' and fix ALL build errors - create missing components, fix TypeScript errors, use only theme colors (no explicit red/blue/etc) 9) Commit when build passes
+BUILD TEMPLATE-ONLY COMPONENTS: 1) Context provider src/contexts/${template_id}-context.tsx with 30+ fields, localStorage, wizard state 2) Setup wizard src/components/${template_id}-setup-wizard.tsx multi-step with validation 3) CRITICAL: Sidebar src/components/${template_id}-sidebar-left.tsx with nav/favorites/workspaces AND BUILD ALL INDIVIDUAL SIDEBAR PAGES - examine the sidebar to see what pages it links to, then create every single page component with full functionality 4) Main page src/app/templates/${template_id}/page.tsx with routing 5) Overview dashboard src/components/${template_id}-overview.tsx 6) 4-6 functional CRUD components 7) Run 'npm run build' and fix ALL build errors - create missing components, fix TypeScript errors, use only theme colors (no explicit red/blue/etc) 8) Commit when build passes
+
+CRITICAL: DO NOT modify these shared files (they cause merge conflicts):
+- src/app/layout.tsx (providers added post-merge)
+- src/app/page.tsx (landing page updated post-merge) 
+- src/components/app-sidebar.tsx (sidebar entries added post-merge)
+- src/app/templates/page.tsx (gallery updated post-merge)
 
 SIDEBAR PAGES: After creating the sidebar component, examine it carefully to identify ALL navigation pages it references, then build each one as a complete functional component. Do NOT leave sidebar pages as placeholders.
 
