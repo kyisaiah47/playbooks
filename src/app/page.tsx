@@ -82,7 +82,7 @@ export default function LandingPage() {
 												<div className="space-y-3">
 													<NavigationMenuLink asChild>
 														<Link
-															href="/templates/wedding-planning"
+															href="/templates"
 															className="block group"
 														>
 															<div className="flex items-start space-x-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
@@ -91,7 +91,7 @@ export default function LandingPage() {
 																</div>
 																<div>
 																	<div className="font-semibold group-hover:text-primary transition-colors">
-																		Wedding Planning
+																		Browse Templates
 																	</div>
 																	<div className="text-sm text-muted-foreground">
 																		Complete wedding organization
@@ -243,7 +243,7 @@ export default function LandingPage() {
 						</h1>
 
 						<p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-							From planning weddings to buying homes, organizing life
+							From planning projects to organizing life goals
 							shouldn&apos;t start with a blank page. Get expertly crafted
 							templates that guide you through every step.
 						</p>
@@ -294,7 +294,7 @@ export default function LandingPage() {
 									every life moment
 								</h2>
 								<p className="text-xl text-muted-foreground">
-									From weddings to career changes, home buying to starting a
+									From life planning to career changes, goal setting to starting a
 									business - we have expertly crafted templates for it all.
 								</p>
 							</div>
@@ -693,10 +693,10 @@ export default function LandingPage() {
 							<ul className="space-y-2 text-muted-foreground">
 								<li>
 									<Link
-										href="/templates/wedding-planning"
+										href="/templates"
 										className="hover:text-foreground transition-colors"
 									>
-										Wedding Planning
+										Browse Templates
 									</Link>
 								</li>
 								<li>

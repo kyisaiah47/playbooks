@@ -32,7 +32,7 @@ import {
 const data = {
 	user: {
 		name: "Sarah Thompson",
-		email: "sarah@wedding.com",
+		email: "user@example.com",
 		avatar: "/avatars/sarah.jpg",
 	},
 	navMain: [
@@ -147,7 +147,7 @@ const data = {
 	],
 	navSecondary: [
 		{
-			title: "Wedding Planner",
+			title: "Life Planner",
 			url: "#planner",
 			icon: UserCheck,
 		},
@@ -189,7 +189,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 									<Heart className="size-4" />
 								</div>
 								<div className="grid flex-1 text-left text-sm leading-tight">
-									<span className="truncate font-medium">Wedding Hub</span>
+									<span className="truncate font-medium">Template Hub</span>
 									<span className="truncate text-xs">Sarah & Michael</span>
 								</div>
 							</Link>

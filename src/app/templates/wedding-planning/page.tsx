@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { SidebarLeft } from "@/components/sidebar-left"
+import { SidebarLeft } from "@/components/wedding-sidebar-left"
 import { SidebarRight } from "@/components/sidebar-right"
 import { WeddingOverview } from "@/components/wedding-overview"
 import { VendorManagement } from "@/components/vendor-management"

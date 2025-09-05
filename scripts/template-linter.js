@@ -21,7 +21,6 @@ const FORBIDDEN_FILES = [
   'src/app/templates/page.tsx',    // Gallery updated after merge
   'src/app/about/page.tsx',        // Marketing pages unchanged
   'src/app/faq/page.tsx',          // FAQ pages unchanged
-  'src/components/sidebar-left.tsx',    // Use wedding template version
   'src/components/theme-provider.tsx',  // Theme system unchanged
   'src/components/wedding-setup-wizard.tsx', // Core wizard unchanged
   'package.json',                  // Dependencies managed centrally
@@ -83,9 +82,11 @@ class TemplateLinter {
   async checkStructure() {
     console.log('\n📁 Checking template structure...');
     
-    const sidebarPath = path.join(this.templatePath, '../../../components/sidebar-left.tsx');
+    // Check for template-specific sidebar file
+    const templateSlug = this.templateName.replace('-planning', '');
+    const sidebarPath = path.join(this.templatePath, `../../../components/${templateSlug}-sidebar-left.tsx`);
     if (!fs.existsSync(sidebarPath)) {
-      this.errors.push('Missing sidebar-left.tsx file');
+      this.errors.push(`Missing template-specific sidebar: components/${templateSlug}-sidebar-left.tsx`);
       return;
     }
 
