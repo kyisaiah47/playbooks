@@ -2,26 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Heart, CheckCircle, DollarSign, Users, Calendar, MapPin } from "lucide-react"
+import { ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
-
-const row1Features = [
-  { title: "Budget Tracking", description: "Track expenses and stay within budget", icon: DollarSign },
-  { title: "Guest Management", description: "Organize RSVPs and seating charts", icon: Users },
-  { title: "Timeline Planning", description: "Plan every detail with custom timelines", icon: Calendar },
-  { title: "Vendor Coordination", description: "Manage contracts and communications", icon: MapPin }
-]
-
-const row2Features = [
-  { title: "Vows & Ceremony", description: "Craft meaningful vows and ceremony details", icon: Heart },
-  { title: "Photo Planning", description: "Create shot lists and photo schedules", icon: Calendar },
-  { title: "Music Curation", description: "Build playlists for each wedding moment", icon: Users },
-  { title: "Emergency Kit", description: "Prepare for unexpected wedding day situations", icon: MapPin }
-]
+import { LucideIcon } from "lucide-react"
 
 interface TemplateHeroProps {
-  templateType: 'wedding' | 'baby' | 'home-buying'
+  templateType: string
   title: string
   subtitle: string
   description: string
@@ -29,7 +15,7 @@ interface TemplateHeroProps {
   ctaLink: string
   badge: {
     text: string
-    icon: any
+    icon: LucideIcon
   }
   stats: Array<{
     text: string
@@ -37,39 +23,12 @@ interface TemplateHeroProps {
   features: Array<{
     title: string
     description: string
-    icon: any
+    icon: LucideIcon
   }>
 }
 
-export function WeddingTemplateHero(props?: Partial<TemplateHeroProps>) {
-  const defaultProps: TemplateHeroProps = {
-    templateType: 'wedding',
-    title: 'Plan your perfect',
-    subtitle: 'wedding day',
-    description: 'Everything you need to organize your dream wedding in one beautiful, easy-to-use template. From budget tracking to guest lists.',
-    ctaText: 'Start Planning Free',
-    ctaLink: '/templates/wedding-planning',
-    badge: {
-      text: 'Most Popular Wedding Template',
-      icon: Heart
-    },
-    stats: [
-      { text: '10,000+ couples already planning' },
-      { text: 'Free to start, no credit card required' },
-      { text: 'Set up in under 5 minutes' }
-    ],
-    features: [
-      { title: 'Budget Tracking', description: 'Track expenses and stay within budget', icon: DollarSign },
-      { title: 'Guest Management', description: 'Organize RSVPs and seating charts', icon: Users },
-      { title: 'Timeline Planning', description: 'Plan every detail with custom timelines', icon: Calendar },
-      { title: 'Vendor Coordination', description: 'Manage contracts and communications', icon: MapPin },
-      { title: 'Vows & Ceremony', description: 'Craft meaningful vows and ceremony details', icon: Heart },
-      { title: 'Photo Planning', description: 'Create shot lists and photo schedules', icon: Calendar }
-    ]
-  }
-
-  const config = { ...defaultProps, ...props }
-  const BadgeIcon = config.badge.icon
+export function TemplateHero(props: TemplateHeroProps) {
+  const BadgeIcon = props.badge.icon
   
   return (
     <section className="relative overflow-hidden pt-32 pb-24">
@@ -94,22 +53,22 @@ export function WeddingTemplateHero(props?: Partial<TemplateHeroProps>) {
           <div className="text-center mb-16">
             <Badge variant="secondary" className="mb-6 text-sm px-4 py-2">
               <BadgeIcon className="w-4 h-4 mr-2" />
-              {config.badge.text}
+              {props.badge.text}
             </Badge>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight max-w-4xl mx-auto">
-              {config.title}
-              <span className="block text-primary">{config.subtitle}</span>
+              {props.title}
+              <span className="block text-primary">{props.subtitle}</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-3xl mx-auto">
-              {config.description}
+              {props.description}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button size="lg" asChild className="text-lg px-8 py-4">
-                <Link href={config.ctaLink}>
-                  {config.ctaText}
+                <Link href={props.ctaLink}>
+                  {props.ctaText}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
@@ -122,7 +81,7 @@ export function WeddingTemplateHero(props?: Partial<TemplateHeroProps>) {
 
             {/* Trust indicators */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
-              {config.stats.map((stat, index) => (
+              {props.stats.map((stat, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>{stat.text}</span>
@@ -135,7 +94,7 @@ export function WeddingTemplateHero(props?: Partial<TemplateHeroProps>) {
           <div className="relative">
             {/* Floating feature cards */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {config.features.slice(0, 6).map((feature, index) => {
+              {props.features.slice(0, 6).map((feature, index) => {
                 const Icon = feature.icon
                 return (
                   <div 

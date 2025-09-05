@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { WeddingSetupWizard } from "@/components/wedding-setup-wizard"
+import { WeddingSetupWizard } from "@/components/templates/wedding/wedding-setup-wizard"
 import {
   Dialog,
   DialogContent,
@@ -32,7 +32,7 @@ const templates = [
     description: "Plan your perfect wedding with budget tracking, vendor management, and timeline organization.",
     category: "Personal Life",
     icon: Heart,
-    url: "/templates/wedding-planning",
+    url: "/wedding-planning",
     popular: true,
     color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
     iconColor: "text-pink-600 dark:text-pink-400",

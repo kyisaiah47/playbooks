@@ -1,29 +1,28 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { SidebarLeft } from "@/components/wedding-sidebar-left"
+import { SidebarLeft } from "@/components/templates/wedding/wedding-sidebar-left"
 import { SidebarRight } from "@/components/sidebar-right"
-import { WeddingOverview } from "@/components/wedding-overview"
-import { VendorManagement } from "@/components/vendor-management"
-import { GuestManagement } from "@/components/guest-management"
-import { BudgetTracking } from "@/components/budget-tracking"
-import { TaskManagement } from "@/components/task-management"
+import { WeddingOverview } from "@/components/templates/wedding/wedding-overview"
+import { VendorManagement } from "@/components/templates/wedding/vendor-management"
+import { GuestManagement } from "@/components/templates/wedding/guest-management"
+import { BudgetTracking } from "@/components/templates/wedding/budget-tracking"
 import { CreateNote } from "@/components/create-note"
-import { VendorQuestions } from "@/components/wedding-notes/vendor-questions"
-import { VowsCeremony } from "@/components/wedding-notes/vows-ceremony"
-import { Timeline } from "@/components/wedding-notes/timeline"
-import { RSVP } from "@/components/wedding-notes/rsvp"
-import { Seating } from "@/components/wedding-notes/seating"
-import { Emergency } from "@/components/wedding-notes/emergency"
-import { Photos } from "@/components/wedding-notes/photos"
-import { Music } from "@/components/wedding-notes/music"
-import { Registry } from "@/components/wedding-notes/registry"
-import { Honeymoon } from "@/components/wedding-notes/honeymoon"
-import { ThankYou } from "@/components/wedding-notes/thankyou"
-import { DaySchedule } from "@/components/wedding-notes/day-schedule"
-import { WeddingChecklist } from "@/components/resources/wedding-checklist"
-import { BudgetGuide } from "@/components/resources/budget-guide"
-import { WeddingSetupWizard } from "@/components/wedding-setup-wizard"
+import { VendorQuestions } from "@/components/guided-notes/wedding/vendor-questions"
+import { VowsCeremony } from "@/components/guided-notes/wedding/vows-ceremony"
+import { Timeline } from "@/components/guided-notes/wedding/timeline"
+import { RSVP } from "@/components/guided-notes/wedding/rsvp"
+import { Seating } from "@/components/guided-notes/wedding/seating"
+import { Emergency } from "@/components/guided-notes/wedding/emergency"
+import { Photos } from "@/components/guided-notes/wedding/photos"
+import { Music } from "@/components/guided-notes/wedding/music"
+import { Registry } from "@/components/guided-notes/wedding/registry"
+import { Honeymoon } from "@/components/guided-notes/wedding/honeymoon"
+import { ThankYou } from "@/components/guided-notes/wedding/thankyou"
+import { DaySchedule } from "@/components/guided-notes/wedding/day-schedule"
+import { WeddingChecklist } from "@/components/resources/wedding/wedding-checklist"
+import { BudgetGuide } from "@/components/resources/wedding/budget-guide"
+import { WeddingSetupWizard } from "@/components/templates/wedding/wedding-setup-wizard"
 import { ThemeToggle, ThemeToggleSwitch } from "@/components/theme-toggle"
 import { Badge } from "@/components/ui/badge"
 import { useWedding, getWeddingDisplayData } from "@/contexts/wedding-context"
@@ -70,7 +69,7 @@ export default function Page() {
       case "budget":
         return <BudgetTracking />
       case "tasks":
-        return <TaskManagement />
+        return <div>Task Management - Coming Soon</div>
       case "settings":
         return <WeddingSettings />
       
