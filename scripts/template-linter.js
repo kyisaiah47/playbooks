@@ -188,7 +188,7 @@ class TemplateLinter {
     
     // Determine template type for SEO page path
     const templateSlug = this.templateName.replace('-planning', '');
-    const seoPagePath = path.join(this.templatePath, `../../../templates/${templateSlug}-template/page.tsx`);
+    const seoPagePath = path.join(this.templatePath, `../../${templateSlug}-template/page.tsx`);
     
     if (!fs.existsSync(seoPagePath)) {
       this.errors.push(`Missing SEO landing page at: templates/${templateSlug}-template/page.tsx`);
@@ -257,46 +257,35 @@ class TemplateLinter {
   async checkComponentFiles(componentsPath) {
     console.log('\n🧩 Checking component files...');
     
-    // Check for guided notes components - handle different naming patterns
-    const possibleGuidedNotesPaths = [
-      path.join(componentsPath, `${this.templateName}-notes`),
-      path.join(componentsPath, `${this.templateName.replace('-planning', '')}-notes`),
-      path.join(componentsPath, 'wedding-notes'),
-      path.join(componentsPath, 'baby-notes'),
-      path.join(componentsPath, 'home-buying-notes')
-    ];
+    // Determine template-specific guided notes path
+    const templateSlug = this.templateName.replace('-planning', '');
+    const expectedGuidedNotesPath = path.join(componentsPath, `${templateSlug}-notes`);
     
-    let guidedNotesPath = null;
-    for (const possiblePath of possibleGuidedNotesPaths) {
-      if (fs.existsSync(possiblePath)) {
-        guidedNotesPath = possiblePath;
-        break;
-      }
-    }
-    
-    if (guidedNotesPath) {
-      const guidedNotesFiles = fs.readdirSync(guidedNotesPath).filter(f => f.endsWith('.tsx'));
-      console.log(`✅ Found ${guidedNotesFiles.length} guided notes components in ${path.basename(guidedNotesPath)}`);
+    if (fs.existsSync(expectedGuidedNotesPath)) {
+      const guidedNotesFiles = fs.readdirSync(expectedGuidedNotesPath).filter(f => f.endsWith('.tsx'));
+      console.log(`✅ Found ${guidedNotesFiles.length} guided notes components in ${templateSlug}-notes`);
       
       // Check each guided note component
       for (const file of guidedNotesFiles) {
-        await this.checkGuidedNoteFile(path.join(guidedNotesPath, file), file);
+        await this.checkGuidedNoteFile(path.join(expectedGuidedNotesPath, file), file);
       }
     } else {
-      this.warnings.push(`No guided notes directory found for ${this.templateName}`);
+      this.errors.push(`Missing guided notes directory: components/${templateSlug}-notes`);
     }
 
     // Check for resources components
     const resourcesPath = path.join(componentsPath, 'resources');
     if (fs.existsSync(resourcesPath)) {
       const resourceFiles = fs.readdirSync(resourcesPath)
-        .filter(f => f.endsWith('.tsx') && f.includes(this.templateName.replace('-planning', '')));
+        .filter(f => f.endsWith('.tsx') && f.includes(templateSlug));
       
       if (resourceFiles.length > 0) {
-        console.log(`✅ Found ${resourceFiles.length} resource components`);
+        console.log(`✅ Found ${resourceFiles.length} template-specific resource components`);
       } else {
-        this.warnings.push(`No template-specific resource files found`);
+        this.warnings.push(`No ${templateSlug}-specific resource files found`);
       }
+    } else {
+      this.warnings.push('No resources directory found');
     }
   }
 
@@ -612,29 +601,51 @@ if (require.main === module) {
     if (cwd.includes('/src/app/templates/')) {
       templatePath = cwd;
     }
-    // Check if we're in worktree root
-    else if (fs.existsSync(path.join(cwd, 'src/app/templates'))) {
-      const templatesDir = path.join(cwd, 'src/app/templates');
-      const templates = fs.readdirSync(templatesDir).filter(t => 
-        fs.statSync(path.join(templatesDir, t)).isDirectory() && 
-        !t.startsWith('.') && 
-        t !== 'page.tsx'
-      );
-      
-      if (templates.length === 1) {
-        templatePath = path.join(templatesDir, templates[0]);
-        console.log(`🎯 Auto-detected template: ${templates[0]}`);
-      } else if (templates.length > 1) {
-        console.error(`Multiple templates found: ${templates.join(', ')}`);
-        console.error('Please specify which template to lint:');
-        templates.forEach(t => console.error(`  node scripts/template-linter.js src/app/templates/${t}`));
-        process.exit(1);
+    // Check if we're in a worktree - detect branch name and infer template
+    else if (fs.existsSync(path.join(cwd, '.git')) || fs.existsSync(path.join(cwd, 'src/app/templates'))) {
+      try {
+        // Try to get current branch name
+        const { execSync } = require('child_process');
+        const branchName = execSync('git branch --show-current', { encoding: 'utf8' }).trim();
+        
+        if (branchName.startsWith('feature/template-')) {
+          const templateName = branchName.replace('feature/template-', '');
+          const templatesDir = path.join(cwd, 'src/app/templates');
+          const potentialTemplatePath = path.join(templatesDir, templateName);
+          
+          if (fs.existsSync(potentialTemplatePath)) {
+            templatePath = potentialTemplatePath;
+            console.log(`🌿 Auto-detected from branch: ${branchName} -> ${templateName}`);
+          }
+        }
+        
+        // Fallback: check if only one template exists
+        if (!templatePath && fs.existsSync(path.join(cwd, 'src/app/templates'))) {
+          const templatesDir = path.join(cwd, 'src/app/templates');
+          const templates = fs.readdirSync(templatesDir).filter(t => 
+            fs.statSync(path.join(templatesDir, t)).isDirectory() && 
+            !t.startsWith('.') && 
+            t !== 'page.tsx'
+          );
+          
+          if (templates.length === 1) {
+            templatePath = path.join(templatesDir, templates[0]);
+            console.log(`🎯 Auto-detected template: ${templates[0]}`);
+          } else if (templates.length > 1) {
+            console.error(`Multiple templates found: ${templates.join(', ')}`);
+            console.error('Please specify which template to lint:');
+            templates.forEach(t => console.error(`  node scripts/template-linter.js src/app/templates/${t}`));
+            process.exit(1);
+          }
+        }
+      } catch (error) {
+        // Git command failed, continue with fallback logic
       }
     }
     
     if (!templatePath) {
       console.error('Usage: node template-linter.js [template-path]');
-      console.error('Or run from template directory for auto-detection');
+      console.error('Or run from template directory/worktree for auto-detection');
       process.exit(1);
     }
   }
