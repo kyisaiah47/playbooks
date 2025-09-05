@@ -84,7 +84,7 @@ class TemplateLinter {
     console.log('\n📁 Checking template structure...');
     
     // Check for template-specific sidebar file
-    const templateSlug = this.templateName.replace('-planning', '');
+    const templateSlug = this.templateName;
     const sidebarPath = path.join(this.templatePath, `../../../components/templates/${templateSlug}/${templateSlug}-sidebar-left.tsx`);
     if (!fs.existsSync(sidebarPath)) {
       this.errors.push(`Missing template-specific sidebar: components/templates/${templateSlug}/${templateSlug}-sidebar-left.tsx`);
@@ -188,12 +188,11 @@ class TemplateLinter {
   async checkSEOLandingPage() {
     console.log('\n🌐 Checking SEO landing page...');
     
-    // Determine template type for SEO page path
-    const templateSlug = this.templateName.replace('-planning', '');
-    const seoPagePath = path.join(this.templatePath, `../../${templateSlug}-template/page.tsx`);
+    // Check for SEO landing page at template root (not templates subdirectory)
+    const seoPagePath = path.join(this.templatePath, 'page.tsx');
     
     if (!fs.existsSync(seoPagePath)) {
-      this.errors.push(`Missing SEO landing page at: templates/${templateSlug}-template/page.tsx`);
+      this.errors.push(`Missing SEO landing page at: ${this.templateName}/page.tsx`);
       return;
     }
 
