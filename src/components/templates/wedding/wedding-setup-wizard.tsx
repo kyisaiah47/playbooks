@@ -498,10 +498,10 @@ export function WeddingSetupWizard({
 									</p>
 									<p className="text-2xl font-bold text-primary">
 										$
-										{form.watch("guestCount") > 0 &&
-										form.watch("totalBudget") > 0
+										{(form.watch("guestCount") || 0) > 0 &&
+										(form.watch("totalBudget") || 0) > 0
 											? Math.round(
-													form.watch("totalBudget") / form.watch("guestCount")
+													(form.watch("totalBudget") || 0) / (form.watch("guestCount") || 1)
 											  )
 											: 0}
 									</p>

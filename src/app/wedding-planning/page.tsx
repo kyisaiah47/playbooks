@@ -502,7 +502,7 @@ export default function WeddingPlanningPage() {
                     ))}
                   </div>
                   <CardDescription className="text-base italic mb-4">
-                    "{testimonial.text}"
+                    &ldquo;{testimonial.text}&rdquo;
                   </CardDescription>
                   <CardTitle className="text-lg">— {testimonial.name}</CardTitle>
                 </CardHeader>
