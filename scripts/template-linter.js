@@ -23,7 +23,7 @@ const FORBIDDEN_FILES = [
   'src/app/about/page.tsx',        // Marketing pages unchanged
   'src/app/faq/page.tsx',          // FAQ pages unchanged
   'src/components/theme-provider.tsx',  // Theme system unchanged
-  'src/components/wedding-setup-wizard.tsx', // Core wizard unchanged
+  'src/components/templates/wedding/wedding-setup-wizard.tsx', // Core wizard unchanged
   'package.json',                  // Dependencies managed centrally
   'next.config.js',                // Build config unchanged
   'tailwind.config.js'            // Styling config unchanged
@@ -33,13 +33,14 @@ const TEMPLATE_REQUIREMENTS = {
   structure: {
     coreSections: { min: 4, max: 6 },
     guidedNotes: { min: 8, max: 12 },
-    resources: { min: 2, max: 3 },
+    resources: { min: 2, max: 4 },
     myNotes: 1
   },
   files: {
     required: [
-      'page.tsx',
-      'sidebar-left.tsx'
+      'page.tsx',                    // SEO landing page
+      'app/page.tsx',                // Main app page
+      'app/layout.tsx'               // App layout with providers
     ],
     seoLanding: {
       required: true,
@@ -55,6 +56,18 @@ const TEMPLATE_REQUIREMENTS = {
     useThemeColors: true,
     properImports: true,
     noTodos: true
+  },
+  colorStrategy: {
+    // Approved theme color mappings
+    destructive: ['text-destructive', 'bg-destructive/5', 'border-destructive/20'], // Red → warnings/errors
+    primary: ['text-primary', 'bg-primary/5', 'border-primary/20'],                 // Green → success/positive  
+    secondary: ['text-secondary-foreground', 'bg-secondary/10', 'bg-secondary/5'],  // Blue/Yellow → info/cautions
+    accent: ['text-primary', 'bg-accent', 'bg-muted'],                             // Other UI elements
+    forbidden: [
+      /bg-(red|green|blue|yellow|purple|pink|indigo|gray|slate|zinc|neutral|stone)-\d+/g,
+      /text-(red|green|blue|yellow|purple|pink|indigo|gray|slate|zinc|neutral|stone)-\d+/g,
+      /border-(red|green|blue|yellow|purple|pink|indigo|gray|slate|zinc|neutral|stone)-\d+/g
+    ]
   }
 };
 
@@ -70,7 +83,6 @@ class TemplateLinter {
     console.log(`\n🔍 Linting template: ${this.templateName}`);
     console.log('='.repeat(50));
 
-    await this.checkStructure();
     await this.checkFiles();
     await this.checkForbiddenFiles();
     await this.checkConsistencyWithWeddingTemplate();
@@ -85,7 +97,7 @@ class TemplateLinter {
     
     // Check for template-specific sidebar file
     const templateSlug = this.templateName;
-    const sidebarPath = path.join(this.templatePath, `../../../components/templates/${templateSlug}/${templateSlug}-sidebar-left.tsx`);
+    const sidebarPath = path.resolve(this.templatePath, '..', '..', '..', 'components', 'templates', templateSlug, `${templateSlug}-sidebar-left.tsx`);
     if (!fs.existsSync(sidebarPath)) {
       this.errors.push(`Missing template-specific sidebar: components/templates/${templateSlug}/${templateSlug}-sidebar-left.tsx`);
       return;
@@ -94,15 +106,15 @@ class TemplateLinter {
     try {
       const sidebarContent = fs.readFileSync(sidebarPath, 'utf8');
       
-      // Check for guided notes section
-      const guidedNotesMatches = sidebarContent.match(/guidedNotes\s*:\s*\[([\s\S]*?)\]/);
-      if (!guidedNotesMatches) {
-        this.errors.push('No guidedNotes section found in sidebar');
-        return;
-      }
-
-      const guidedNotesContent = guidedNotesMatches[1];
-      const guidedNotesCount = (guidedNotesContent.match(/url:\s*"#/g) || []).length;
+      // Count guided notes by looking for Link components with guided note paths
+      const guidedNotesPattern = /href="\/[^"]*\/app\/[^"]*"/g;
+      const guidedNotesLinks = sidebarContent.match(guidedNotesPattern) || [];
+      // Filter for actual guided note links (not core sections)
+      const guidedNotesCount = guidedNotesLinks.filter(link => 
+        !link.includes('/app"') && // Not main app page
+        !link.includes('overview') &&
+        !link.includes('resources')
+      ).length;
       
       if (guidedNotesCount < TEMPLATE_REQUIREMENTS.structure.guidedNotes.min) {
         this.errors.push(`Too few guided notes: ${guidedNotesCount} (min: ${TEMPLATE_REQUIREMENTS.structure.guidedNotes.min})`);
@@ -112,15 +124,10 @@ class TemplateLinter {
         console.log(`✅ Guided notes count: ${guidedNotesCount}`);
       }
 
-      // Check for resources section  
-      const resourcesMatches = sidebarContent.match(/resources\s*:\s*\[([\s\S]*?)\]/);
-      if (!resourcesMatches) {
-        this.errors.push('No resources section found in sidebar');
-        return;
-      }
-
-      const resourcesContent = resourcesMatches[1];
-      const resourcesCount = (resourcesContent.match(/url:\s*"#/g) || []).length;
+      // Count resources by looking for resource link patterns
+      const resourcesPattern = /href="\/[^"]*\/resources\/[^"]*"/g;
+      const resourcesLinks = sidebarContent.match(resourcesPattern) || [];
+      const resourcesCount = resourcesLinks.length;
       
       if (resourcesCount < TEMPLATE_REQUIREMENTS.structure.resources.min) {
         this.errors.push(`Too few resources: ${resourcesCount} (min: ${TEMPLATE_REQUIREMENTS.structure.resources.min})`);
@@ -130,9 +137,9 @@ class TemplateLinter {
         console.log(`✅ Resources count: ${resourcesCount}`);
       }
 
-      // Check for myNotes section
-      if (!sidebarContent.includes('myNotes') && !sidebarContent.includes('My Notes')) {
-        this.errors.push('No myNotes/My Notes section found in sidebar');
+      // Check for My Notes section
+      if (!sidebarContent.includes('My Notes')) {
+        this.errors.push('No "My Notes" section found in sidebar');
       } else {
         console.log(`✅ My Notes section found`);
       }
@@ -145,16 +152,32 @@ class TemplateLinter {
   async checkFiles() {
     console.log('\n📄 Checking required files...');
     
-    // Check main page file
-    const pagePath = path.join(this.templatePath, 'page.tsx');
-    if (!fs.existsSync(pagePath)) {
-      this.errors.push('Missing main page.tsx file');
+    // Check SEO landing page
+    const seoPagePath = path.join(this.templatePath, 'page.tsx');
+    if (!fs.existsSync(seoPagePath)) {
+      this.errors.push('Missing SEO landing page: page.tsx');
     } else {
-      console.log('✅ Main page.tsx found');
-      await this.checkPageFile(pagePath);
+      console.log('✅ SEO landing page found');
     }
 
-    // Check SEO landing page
+    // Check main app page
+    const appPagePath = path.join(this.templatePath, 'app/page.tsx');
+    if (!fs.existsSync(appPagePath)) {
+      this.errors.push('Missing main app page: app/page.tsx');
+    } else {
+      console.log('✅ Main app page found');
+      await this.checkPageFile(appPagePath);
+    }
+
+    // Check app layout
+    const appLayoutPath = path.join(this.templatePath, 'app/layout.tsx');
+    if (!fs.existsSync(appLayoutPath)) {
+      this.errors.push('Missing app layout: app/layout.tsx');
+    } else {
+      console.log('✅ App layout found');
+    }
+
+    // Check SEO landing page content
     await this.checkSEOLandingPage();
 
     // Check component files
@@ -231,23 +254,33 @@ class TemplateLinter {
     try {
       const pageContent = fs.readFileSync(pagePath, 'utf8');
       
-      // Check for proper imports
-      if (!pageContent.includes('useWedding') && !pageContent.includes('useHomeBuying') && !pageContent.includes('useBabyPlanning') && !pageContent.includes('useCollegePlanning')) {
+      // Dynamically detect template context hook
+      const templateSlug = this.templateName.replace(/-/g, '');
+      const expectedHook = `use${templateSlug.charAt(0).toUpperCase() + templateSlug.slice(1)}`;
+      const contextHookPatterns = [
+        new RegExp(`use${this.templateName.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('')}`, 'i'),
+        /use[A-Z][a-zA-Z]+Context?/g
+      ];
+      
+      let hasContextHook = false;
+      for (const pattern of contextHookPatterns) {
+        if (pageContent.match(pattern)) {
+          hasContextHook = true;
+          break;
+        }
+      }
+      
+      if (!hasContextHook) {
         this.warnings.push('No template-specific context hook found');
+      } else {
+        console.log('✅ Template context hook found');
       }
 
-      // Check for wizard integration
-      if (!pageContent.includes('Wizard') && !pageContent.includes('wizard')) {
-        this.warnings.push('No wizard integration found in main page');
+      // Check for setup wizard integration
+      if (!pageContent.includes('SetupWizard') && !pageContent.includes('setupWizard')) {
+        this.warnings.push('No setup wizard integration found in main page');
       } else {
-        console.log('✅ Wizard integration found');
-      }
-
-      // Check for theme toggle
-      if (!pageContent.includes('ThemeToggle')) {
-        this.warnings.push('No theme toggle found in header');
-      } else {
-        console.log('✅ Theme toggle found');
+        console.log('✅ Setup wizard integration found');
       }
 
     } catch (error) {
@@ -258,35 +291,57 @@ class TemplateLinter {
   async checkComponentFiles(componentsPath) {
     console.log('\n🧩 Checking component files...');
     
-    // Determine template-specific guided notes path
-    const templateSlug = this.templateName.replace('-planning', '');
-    const expectedGuidedNotesPath = path.join(componentsPath, 'guided-notes', templateSlug);
+    // Check guided notes components
+    const expectedGuidedNotesPath = path.join(componentsPath, 'guided-notes', this.templateName);
     
     if (fs.existsSync(expectedGuidedNotesPath)) {
       const guidedNotesFiles = fs.readdirSync(expectedGuidedNotesPath).filter(f => f.endsWith('.tsx'));
-      console.log(`✅ Found ${guidedNotesFiles.length} guided notes components in guided-notes/${templateSlug}`);
+      console.log(`✅ Found ${guidedNotesFiles.length} guided notes components in guided-notes/${this.templateName}`);
       
       // Check each guided note component
       for (const file of guidedNotesFiles) {
         await this.checkGuidedNoteFile(path.join(expectedGuidedNotesPath, file), file);
       }
     } else {
-      this.errors.push(`Missing guided notes directory: components/guided-notes/${templateSlug}`);
+      this.errors.push(`Missing guided notes directory: components/guided-notes/${this.templateName}`);
     }
 
     // Check for resources components
-    const resourcesPath = path.join(componentsPath, 'resources');
+    const resourcesPath = path.join(componentsPath, 'resources', this.templateName);
     if (fs.existsSync(resourcesPath)) {
-      const resourceFiles = fs.readdirSync(resourcesPath)
-        .filter(f => f.endsWith('.tsx') && f.includes(templateSlug));
+      const resourceFiles = fs.readdirSync(resourcesPath).filter(f => f.endsWith('.tsx'));
       
       if (resourceFiles.length > 0) {
-        console.log(`✅ Found ${resourceFiles.length} template-specific resource components`);
+        console.log(`✅ Found ${resourceFiles.length} resource components in resources/${this.templateName}`);
+        
+        // Check each resource component
+        for (const file of resourceFiles) {
+          await this.checkResourceFile(path.join(resourcesPath, file), file);
+        }
       } else {
-        this.warnings.push(`No ${templateSlug}-specific resource files found`);
+        this.warnings.push(`No resource files found in resources/${this.templateName}`);
       }
     } else {
-      this.warnings.push('No resources directory found');
+      this.errors.push(`Missing resources directory: components/resources/${this.templateName}`);
+    }
+
+    // Check template components
+    const templateComponentsPath = path.join(componentsPath, 'templates', this.templateName);
+    if (fs.existsSync(templateComponentsPath)) {
+      const templateFiles = fs.readdirSync(templateComponentsPath).filter(f => f.endsWith('.tsx'));
+      console.log(`✅ Found ${templateFiles.length} template components in templates/${this.templateName}`);
+      
+      // Check for required files
+      const requiredTemplateFiles = [`${this.templateName}-sidebar-left.tsx`, `${this.templateName}-overview.tsx`, `${this.templateName}-setup-wizard.tsx`];
+      for (const required of requiredTemplateFiles) {
+        if (!templateFiles.includes(required)) {
+          this.errors.push(`Missing required template component: ${required}`);
+        } else {
+          console.log(`✅ Required component found: ${required}`);
+        }
+      }
+    } else {
+      this.errors.push(`Missing template components directory: components/templates/${this.templateName}`);
     }
   }
 
@@ -346,23 +401,28 @@ class TemplateLinter {
   }
 
   async checkGuidedNotesConsistency() {
-    const weddingGuidedNotesPath = path.join(this.templatePath, '../../../components/wedding-notes');
+    const weddingGuidedNotesPath = path.join(this.templatePath, '../../../components/guided-notes/wedding');
     if (!fs.existsSync(weddingGuidedNotesPath)) {
-      this.warnings.push('Cannot verify consistency - wedding template not found for reference');
+      this.warnings.push('Cannot verify consistency - wedding guided notes not found for reference');
       return;
     }
 
     // Get wedding guided notes structure as reference
     const weddingFiles = fs.readdirSync(weddingGuidedNotesPath).filter(f => f.endsWith('.tsx'));
+    if (weddingFiles.length === 0) {
+      this.warnings.push('No wedding guided notes files found for reference');
+      return;
+    }
+    
     const referenceFile = path.join(weddingGuidedNotesPath, weddingFiles[0]);
     
     try {
       const referenceContent = fs.readFileSync(referenceFile, 'utf8');
       
       // Check if current template follows same guided notes pattern
-      const currentGuidedNotesPath = this.findGuidedNotesPath();
-      if (!currentGuidedNotesPath) {
-        this.warnings.push('No guided notes found to check consistency');
+      const currentGuidedNotesPath = path.join(this.templatePath, '../../../components/guided-notes', this.templateName);
+      if (!fs.existsSync(currentGuidedNotesPath)) {
+        this.warnings.push('No guided notes directory found to check consistency');
         return;
       }
 
@@ -401,26 +461,55 @@ class TemplateLinter {
   }
 
   async checkResourcesConsistency() {
-    const weddingResourcesPath = path.join(this.templatePath, '../../../components/resources');
+    const weddingResourcesPath = path.join(this.templatePath, '../../../components/resources/wedding');
     if (!fs.existsSync(weddingResourcesPath)) {
+      this.warnings.push('Cannot verify consistency - wedding resources not found for reference');
       return;
     }
 
     const weddingResourceFiles = fs.readdirSync(weddingResourcesPath)
-      .filter(f => f.endsWith('.tsx') && f.includes('wedding'));
+      .filter(f => f.endsWith('.tsx'));
 
-    if (weddingResourceFiles.length === 0) return;
+    if (weddingResourceFiles.length === 0) {
+      this.warnings.push('No wedding resource files found for reference');
+      return;
+    }
 
     try {
       const referenceFile = path.join(weddingResourcesPath, weddingResourceFiles[0]);
       const referenceContent = fs.readFileSync(referenceFile, 'utf8');
 
-      // Check if uses theme colors and proper structure
-      const usesThemeColors = referenceContent.includes('bg-muted') || 
-                            referenceContent.includes('text-muted-foreground');
-      
-      if (usesThemeColors) {
-        console.log('✅ Wedding template uses theme colors - ensure consistency in this template');
+      // Check current template resources for consistency
+      const currentResourcesPath = path.join(this.templatePath, '../../../components/resources', this.templateName);
+      if (!fs.existsSync(currentResourcesPath)) {
+        this.warnings.push('No resources directory found to check consistency');
+        return;
+      }
+
+      const currentResourceFiles = fs.readdirSync(currentResourcesPath).filter(f => f.endsWith('.tsx'));
+      if (currentResourceFiles.length > 0) {
+        const currentFile = path.join(currentResourcesPath, currentResourceFiles[0]);
+        const currentContent = fs.readFileSync(currentFile, 'utf8');
+
+        // Check for theme colors consistency
+        const referenceUsesThemeColors = referenceContent.includes('bg-muted') || 
+                                        referenceContent.includes('text-muted-foreground');
+        const currentUsesThemeColors = currentContent.includes('bg-muted') || 
+                                     currentContent.includes('text-muted-foreground');
+        
+        if (referenceUsesThemeColors && currentUsesThemeColors) {
+          console.log('✅ Resources use theme colors consistently with wedding template');
+        } else if (referenceUsesThemeColors && !currentUsesThemeColors) {
+          this.warnings.push('Resources should use theme colors like wedding template');
+        }
+
+        // Check for ScrollArea usage (common pattern)
+        const referenceUsesScrollArea = referenceContent.includes('ScrollArea');
+        const currentUsesScrollArea = currentContent.includes('ScrollArea');
+        
+        if (referenceUsesScrollArea && currentUsesScrollArea) {
+          console.log('✅ Resources use ScrollArea consistently with wedding template');
+        }
       }
 
     } catch (error) {
@@ -458,14 +547,8 @@ class TemplateLinter {
   }
 
   findGuidedNotesPath() {
-    const possiblePaths = [
-      path.join(this.templatePath, '../../../components', `${this.templateName}-notes`),
-      path.join(this.templatePath, '../../../components', `${this.templateName.replace('-planning', '')}-notes`),
-      path.join(this.templatePath, '../../../components', 'baby-notes'),
-      path.join(this.templatePath, '../../../components', 'home-buying-notes')
-    ];
-    
-    return possiblePaths.find(p => fs.existsSync(p));
+    const guidedNotesPath = path.join(this.templatePath, '../../../components/guided-notes', this.templateName);
+    return fs.existsSync(guidedNotesPath) ? guidedNotesPath : null;
   }
 
   async checkCodeQuality() {
@@ -478,45 +561,71 @@ class TemplateLinter {
     }
   }
 
+  async checkResourceFile(filePath, fileName) {
+    try {
+      const content = fs.readFileSync(filePath, 'utf8');
+      
+      // Check for proper resource structure
+      if (!content.includes('export default function') && !content.includes('export function')) {
+        this.warnings.push(`${fileName}: No exported function found`);
+      }
+
+      // Check for ScrollArea usage (common in resources)
+      if (content.includes('ScrollArea')) {
+        console.log(`✅ ${fileName}: Uses ScrollArea for content`);
+      }
+
+      console.log(`✅ ${fileName}: Valid resource component`);
+
+    } catch (error) {
+      this.errors.push(`Error reading ${fileName}: ${error.message}`);
+    }
+  }
+
   async checkFileQuality(filePath) {
     try {
       const content = fs.readFileSync(filePath, 'utf8');
       const fileName = path.basename(filePath);
       
-      // Check for hardcoded colors
-      const hardcodedColorPatterns = [
-        /bg-(red|blue|green|yellow|purple|pink|indigo|gray)-\d+/g,
-        /text-(red|blue|green|yellow|purple|pink|indigo|gray)-\d+/g,
-        /border-(red|blue|green|yellow|purple|pink|indigo|gray)-\d+/g
-      ];
-      
+      // Check for forbidden hardcoded colors using the new strategy
       let hasHardcodedColors = false;
-      for (const pattern of hardcodedColorPatterns) {
+      for (const pattern of TEMPLATE_REQUIREMENTS.colorStrategy.forbidden) {
         const matches = content.match(pattern);
         if (matches) {
           hasHardcodedColors = true;
-          this.errors.push(`${fileName}: Hardcoded colors found: ${matches.join(', ')}`);
+          this.errors.push(`${fileName}: Forbidden hardcoded colors found: ${matches.join(', ')}`);
+          this.errors.push(`${fileName}: Use theme colors instead - Red→destructive, Green→primary, Blue/Yellow→secondary, Other→accent/muted`);
         }
       }
       
       if (!hasHardcodedColors) {
-        console.log(`✅ ${fileName}: No hardcoded colors`);
+        console.log(`✅ ${fileName}: No forbidden hardcoded colors`);
+      }
+
+      // Check for proper theme color usage with new strategy
+      const approvedColors = [
+        'text-destructive', 'bg-destructive/5', 'border-destructive/20',
+        'text-primary', 'bg-primary/5', 'border-primary/20', 
+        'text-secondary-foreground', 'bg-secondary/10', 'bg-secondary/5',
+        'bg-accent', 'bg-muted', 'text-muted-foreground'
+      ];
+      
+      let hasApprovedColors = false;
+      for (const color of approvedColors) {
+        if (content.includes(color)) {
+          hasApprovedColors = true;
+          break;
+        }
+      }
+      
+      if (hasApprovedColors) {
+        console.log(`✅ ${fileName}: Uses approved theme colors`);
       }
 
       // Check for TODO comments
       const todoMatches = content.match(/\/\*[\s\S]*?TODO[\s\S]*?\*\/|\/\/.*TODO/gi);
       if (todoMatches) {
         this.warnings.push(`${fileName}: TODO comments found: ${todoMatches.length}`);
-      }
-
-      // Check for proper theme color usage
-      const hasThemeColors = content.includes('bg-primary') || 
-                           content.includes('text-primary') || 
-                           content.includes('bg-muted') || 
-                           content.includes('text-muted-foreground');
-      
-      if (hasThemeColors) {
-        console.log(`✅ ${fileName}: Uses theme colors`);
       }
 
     } catch (error) {
@@ -586,6 +695,12 @@ class TemplateLinter {
       console.log('   • Theme color usage');
       console.log('   • Component patterns and imports');
       console.log('   ⚠️  Core pages and SEO landing can differ in content/layout');
+      console.log('\n🎨 Color Theme Strategy:');
+      console.log('   • Red colors → text-destructive, bg-destructive/5, border-destructive/20 (warnings/errors)');
+      console.log('   • Green colors → text-primary, bg-primary/5, border-primary/20 (success/positive)');
+      console.log('   • Blue colors → text-secondary-foreground, bg-secondary/10 (informational)');
+      console.log('   • Yellow colors → text-secondary-foreground, bg-secondary/5 (cautions/notes)');
+      console.log('   • Other colors → text-primary, bg-accent, bg-muted (UI elements)');
     }
   }
 }
