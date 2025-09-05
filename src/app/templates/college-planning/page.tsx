@@ -342,7 +342,7 @@ function CollegePlanningTemplatePage() {
 				<div className="rounded-lg border p-6">
 					<h3 className="text-lg font-semibold mb-4">Upcoming Deadlines</h3>
 					<div className="space-y-4">
-						<div className="flex items-center justify-between p-3 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg">
+						<div className="flex items-center justify-between p-3 bg-accent/50 rounded-lg">
 							<div>
 								<h4 className="font-medium">Early Action Deadlines</h4>
 								<p className="text-sm text-muted-foreground">
@@ -362,7 +362,7 @@ function CollegePlanningTemplatePage() {
 								</div>
 							</div>
 						</div>
-						<div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+						<div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
 							<div>
 								<h4 className="font-medium">Regular Decision Deadlines</h4>
 								<p className="text-sm text-muted-foreground">
@@ -382,7 +382,7 @@ function CollegePlanningTemplatePage() {
 								</div>
 							</div>
 						</div>
-						<div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-950/20 rounded-lg">
+						<div className="flex items-center justify-between p-3 bg-primary/10 rounded-lg">
 							<div>
 								<h4 className="font-medium">FAFSA Opens</h4>
 								<p className="text-sm text-muted-foreground">
