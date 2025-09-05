@@ -32,7 +32,7 @@ export function WeddingOverview() {
         <CardContent>
           <div className="text-2xl font-bold">$28,500</div>
           <p className="text-xs text-muted-foreground">
-            of ${displayData.totalBudget.toLocaleString()} total budget
+            of ${displayData.totalBudget?.toLocaleString() || '0'} total budget
           </p>
           <Progress value={63.3} className="mt-2" />
         </CardContent>

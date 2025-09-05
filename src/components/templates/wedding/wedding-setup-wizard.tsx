@@ -33,6 +33,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 import { Calendar } from "@/components/ui/calendar";
+import { TimePicker } from "@/components/ui/time-picker";
 import {
 	Popover,
 	PopoverContent,
@@ -63,7 +64,7 @@ interface WeddingData {
 	partner1Name: string;
 	partner2Name: string;
 	weddingDate: Date | undefined;
-	weddingTime: string;
+	weddingTime: Date | undefined;
 	weddingStyle: string;
 	guestCount: number;
 	totalBudget: number;
@@ -77,23 +78,23 @@ interface WeddingData {
 }
 
 const step1Schema = z.object({
-	partner1Name: z.string().min(1, "Partner name is required"),
-	partner2Name: z.string().min(1, "Partner name is required"),
-	weddingDate: z.date(),
-	weddingTime: z.string().min(1, "Wedding time is required"),
-	weddingStyle: z.string().min(1, "Wedding style is required"),
+	partner1Name: z.string().optional(),
+	partner2Name: z.string().optional(),
+	weddingDate: z.date().optional(),
+	weddingTime: z.date().optional(),
+	weddingStyle: z.string().optional(),
 });
 
 const step2Schema = z.object({
-	ceremonyVenue: z.string().min(1, "Ceremony venue is required"),
-	ceremonyAddress: z.string().min(1, "Ceremony address is required"),
-	receptionVenue: z.string().min(1, "Reception venue is required"),
-	receptionAddress: z.string().min(1, "Reception address is required"),
+	ceremonyVenue: z.string().optional(),
+	ceremonyAddress: z.string().optional(),
+	receptionVenue: z.string().optional(),
+	receptionAddress: z.string().optional(),
 });
 
 const step3Schema = z.object({
-	guestCount: z.number().min(1, "Must be at least 1 guest"),
-	totalBudget: z.number().min(1, "Must be at least $1"),
+	guestCount: z.number().optional(),
+	totalBudget: z.number().optional(),
 });
 
 const step4Schema = z.object({
@@ -277,9 +278,9 @@ export function WeddingSetupWizard({
 									<FormItem>
 										<FormLabel>Wedding Time</FormLabel>
 										<FormControl>
-											<Input
-												type="time"
-												{...field}
+											<TimePicker
+												date={field.value}
+												setDate={field.onChange}
 											/>
 										</FormControl>
 										<FormMessage />
@@ -574,7 +575,11 @@ export function WeddingSetupWizard({
 	return (
 		<Dialog
 			open={isOpen}
-			onOpenChange={() => {}}
+			onOpenChange={(open) => {
+				if (!open) {
+					onClose()
+				}
+			}}
 		>
 			<DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
 				<DialogHeader>

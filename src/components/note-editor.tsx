@@ -143,7 +143,7 @@ export function NoteEditor({
 		e.dataTransfer.setData("text/plain", "");
 
 		// Add drag preview styling
-		if (e.currentTarget) {
+		if (e.currentTarget && e.currentTarget instanceof HTMLElement) {
 			e.currentTarget.style.opacity = "0.5";
 		}
 	};
@@ -795,7 +795,7 @@ export function NoteEditor({
 					{!readOnly && (
 						<>
 							{isEditing ? (
-								<Button onClick={handleSave}>
+								<Button onClick={handleSave} variant="outline" className="w-full">
 									<Save className="h-4 w-4 mr-1" />
 									Save
 								</Button>

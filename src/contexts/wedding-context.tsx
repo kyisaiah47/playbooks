@@ -7,7 +7,7 @@ export interface WeddingData {
   partner1Name: string
   partner2Name: string
   weddingDate: Date | undefined
-  weddingTime: string
+  weddingTime: Date | undefined
   weddingStyle: string
   guestCount: number
   totalBudget: number
@@ -39,7 +39,7 @@ const defaultWeddingData: WeddingData = {
   partner1Name: "",
   partner2Name: "",
   weddingDate: undefined,
-  weddingTime: "",
+  weddingTime: undefined,
   weddingStyle: "",
   guestCount: 0,
   totalBudget: 0,
@@ -66,9 +66,12 @@ export function WeddingProvider({ children }: { children: React.ReactNode }) {
       
       if (savedData) {
         const parsedData = JSON.parse(savedData)
-        // Convert date string back to Date object
+        // Convert date strings back to Date objects
         if (parsedData.weddingDate) {
           parsedData.weddingDate = new Date(parsedData.weddingDate)
+        }
+        if (parsedData.weddingTime) {
+          parsedData.weddingTime = new Date(parsedData.weddingTime)
         }
         setWeddingData(parsedData)
       }
@@ -172,7 +175,7 @@ export function getWeddingDisplayData(weddingData: WeddingData | null) {
     partner1Name: weddingData.partner1Name,
     partner2Name: weddingData.partner2Name,
     weddingDate: weddingData.weddingDate || new Date(),
-    weddingTime: weddingData.weddingTime,
+    weddingTime: weddingData.weddingTime ? weddingData.weddingTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "16:00",
     ceremonyVenue: weddingData.ceremonyVenue,
     receptionVenue: weddingData.receptionVenue,
     guestCount: weddingData.guestCount,
