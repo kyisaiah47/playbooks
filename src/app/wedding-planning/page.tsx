@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import {
   Accordion,
@@ -24,7 +24,6 @@ import {
   Home,
   Briefcase,
   Target,
-  DollarSign,
   Users,
   Calendar,
   MapPin,
@@ -38,7 +37,6 @@ import {
   FileText,
   Camera,
   Music,
-  Gift,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -444,11 +442,6 @@ export default function WeddingPlanningPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{step.description}</p>
-                {index < howItWorks.length - 1 && (
-                  <div className="hidden lg:block absolute left-full top-8 w-full">
-                    <ArrowRight className="w-6 h-6 text-muted-foreground mx-auto" />
-                  </div>
-                )}
               </div>
             ))}
           </div>
