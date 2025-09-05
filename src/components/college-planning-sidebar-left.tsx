@@ -16,6 +16,7 @@ import {
 
 import { NavFavorites } from "@/components/nav-favorites"
 import { NavMain } from "@/components/nav-main"
+import { NavResources } from "@/components/nav-resources"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavWorkspaces } from "@/components/nav-workspaces"
 import { TeamSwitcher } from "@/components/team-switcher"
@@ -310,6 +311,48 @@ const getCollegePlanningData = (studentName: string, intendedMajor: string) => (
       ],
     },
   ],
+  resources: [
+    {
+      name: "Common Application",
+      url: "https://www.commonapp.org",
+      emoji: "📝"
+    },
+    {
+      name: "College Board",
+      url: "https://www.collegeboard.org",
+      emoji: "🎯"
+    },
+    {
+      name: "FAFSA",
+      url: "https://studentaid.gov/h/apply-for-aid/fafsa",
+      emoji: "💰"
+    },
+    {
+      name: "Khan Academy SAT",
+      url: "https://www.khanacademy.org/sat",
+      emoji: "📚"
+    },
+    {
+      name: "College Navigator",
+      url: "https://nces.ed.gov/collegenavigator",
+      emoji: "🧭"
+    },
+    {
+      name: "BigFuture (College Board)",
+      url: "https://bigfuture.collegeboard.org",
+      emoji: "🎓"
+    },
+    {
+      name: "Scholarships.com",
+      url: "https://www.scholarships.com",
+      emoji: "🏆"
+    },
+    {
+      name: "Fastweb",
+      url: "https://www.fastweb.com",
+      emoji: "🔍"
+    }
+  ]
 })
 
 export function CollegePlanningSidebarLeft({
@@ -328,6 +371,7 @@ export function CollegePlanningSidebarLeft({
       <SidebarContent>
         <NavFavorites favorites={data.favorites} />
         <NavWorkspaces workspaces={data.workspaces} />
+        <NavResources resources={data.resources} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarRail />

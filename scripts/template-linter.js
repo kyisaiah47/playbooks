@@ -231,7 +231,7 @@ class TemplateLinter {
       const pageContent = fs.readFileSync(pagePath, 'utf8');
       
       // Check for proper imports
-      if (!pageContent.includes('useWedding') && !pageContent.includes('useHomeBuying') && !pageContent.includes('useBabyPlanning')) {
+      if (!pageContent.includes('useWedding') && !pageContent.includes('useHomeBuying') && !pageContent.includes('useBabyPlanning') && !pageContent.includes('useCollegePlanning')) {
         this.warnings.push('No template-specific context hook found');
       }
 
