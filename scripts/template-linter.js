@@ -6,11 +6,12 @@ const path = require('path');
 // Template requirements based on our established format
 // CRITICAL: Templates should ONLY edit these specific file patterns
 const ALLOWED_FILE_PATTERNS = [
-  'src/app/templates/{template-name}/page.tsx',           // Main template page
-  'src/app/templates/{template-name}-template/page.tsx',  // SEO landing page
-  'src/contexts/{template-name}-context.tsx',            // Template context (if needed)
-  'src/components/{template-name}-notes/*.tsx',          // Guided notes components
-  'src/components/resources/{template-name}-*.tsx'       // Resource components
+  'src/app/{template-name}/page.tsx',                         // SEO landing page
+  'src/app/{template-name}/app/page.tsx',                     // Main template app page
+  'src/contexts/{template-name}-context.tsx',                // Template context
+  'src/components/templates/{template-name}/*.tsx',          // Template components
+  'src/components/guided-notes/{template-name}/*.tsx',       // Guided notes components
+  'src/components/resources/{template-name}/*.tsx'           // Resource components
 ];
 
 // CRITICAL: Files that templates should NEVER modify (causes merge conflicts)
@@ -42,7 +43,7 @@ const TEMPLATE_REQUIREMENTS = {
     ],
     seoLanding: {
       required: true,
-      path: 'templates/[template-name]-template/page.tsx'
+      path: '[template-name]/page.tsx'
     },
     patterns: {
       guidedNotes: /^[a-z-]+\.tsx$/,
@@ -84,9 +85,9 @@ class TemplateLinter {
     
     // Check for template-specific sidebar file
     const templateSlug = this.templateName.replace('-planning', '');
-    const sidebarPath = path.join(this.templatePath, `../../../components/${templateSlug}-sidebar-left.tsx`);
+    const sidebarPath = path.join(this.templatePath, `../../../components/templates/${templateSlug}/${templateSlug}-sidebar-left.tsx`);
     if (!fs.existsSync(sidebarPath)) {
-      this.errors.push(`Missing template-specific sidebar: components/${templateSlug}-sidebar-left.tsx`);
+      this.errors.push(`Missing template-specific sidebar: components/templates/${templateSlug}/${templateSlug}-sidebar-left.tsx`);
       return;
     }
 
@@ -260,18 +261,18 @@ class TemplateLinter {
     
     // Determine template-specific guided notes path
     const templateSlug = this.templateName.replace('-planning', '');
-    const expectedGuidedNotesPath = path.join(componentsPath, `${templateSlug}-notes`);
+    const expectedGuidedNotesPath = path.join(componentsPath, 'guided-notes', templateSlug);
     
     if (fs.existsSync(expectedGuidedNotesPath)) {
       const guidedNotesFiles = fs.readdirSync(expectedGuidedNotesPath).filter(f => f.endsWith('.tsx'));
-      console.log(`✅ Found ${guidedNotesFiles.length} guided notes components in ${templateSlug}-notes`);
+      console.log(`✅ Found ${guidedNotesFiles.length} guided notes components in guided-notes/${templateSlug}`);
       
       // Check each guided note component
       for (const file of guidedNotesFiles) {
         await this.checkGuidedNoteFile(path.join(expectedGuidedNotesPath, file), file);
       }
     } else {
-      this.errors.push(`Missing guided notes directory: components/${templateSlug}-notes`);
+      this.errors.push(`Missing guided notes directory: components/guided-notes/${templateSlug}`);
     }
 
     // Check for resources components
@@ -598,12 +599,12 @@ if (require.main === module) {
   if (!templatePath) {
     const cwd = process.cwd();
     
-    // Check if we're in a template directory
-    if (cwd.includes('/src/app/templates/')) {
+    // Check if we're in a template directory  
+    if (cwd.includes('/src/app/') && fs.existsSync(path.join(cwd, 'app/page.tsx'))) {
       templatePath = cwd;
     }
     // Check if we're in a worktree - detect branch name and infer template
-    else if (fs.existsSync(path.join(cwd, '.git')) || fs.existsSync(path.join(cwd, 'src/app/templates'))) {
+    else if (fs.existsSync(path.join(cwd, '.git')) || fs.existsSync(path.join(cwd, 'src/app'))) {
       try {
         // Try to get current branch name
         const { execSync } = require('child_process');
@@ -611,7 +612,7 @@ if (require.main === module) {
         
         if (branchName.startsWith('feature/template-')) {
           const templateName = branchName.replace('feature/template-', '');
-          const templatesDir = path.join(cwd, 'src/app/templates');
+          const templatesDir = path.join(cwd, 'src/app');
           const potentialTemplatePath = path.join(templatesDir, templateName);
           
           if (fs.existsSync(potentialTemplatePath)) {
@@ -620,14 +621,18 @@ if (require.main === module) {
           }
         }
         
-        // Fallback: check if only one template exists
-        if (!templatePath && fs.existsSync(path.join(cwd, 'src/app/templates'))) {
-          const templatesDir = path.join(cwd, 'src/app/templates');
-          const templates = fs.readdirSync(templatesDir).filter(t => 
-            fs.statSync(path.join(templatesDir, t)).isDirectory() && 
-            !t.startsWith('.') && 
-            t !== 'page.tsx'
-          );
+        // Fallback: check if only one template exists  
+        if (!templatePath && fs.existsSync(path.join(cwd, 'src/app'))) {
+          const templatesDir = path.join(cwd, 'src/app');
+          const templates = fs.readdirSync(templatesDir).filter(t => {
+            const fullPath = path.join(templatesDir, t);
+            return fs.statSync(fullPath).isDirectory() && 
+                   !t.startsWith('.') && 
+                   t !== 'globals.css' &&
+                   t !== 'favicon.ico' &&
+                   t !== '(dashboard)' &&
+                   fs.existsSync(path.join(fullPath, 'app', 'page.tsx')); // Must have app/page.tsx
+          });
           
           if (templates.length === 1) {
             templatePath = path.join(templatesDir, templates[0]);
