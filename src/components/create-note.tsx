@@ -50,7 +50,7 @@ const noteTemplates = [
 ]
 
 export function CreateNote() {
-  const handleSaveNote = (title: string, blocks: any[]) => {
+  const handleSaveNote = (title: string, blocks: unknown[]) => {
     // Here you would save to your storage system
     console.log('Saving new note:', title, blocks)
   }
