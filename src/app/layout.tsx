@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import { CustomThemeProvider } from "@/components/theme-provider-custom"
 import { WeddingProvider } from "@/contexts/wedding-context"
 import { HomeBuyingProvider } from "@/contexts/home-buying-context"
 import { BabyPlanningProvider } from "@/contexts/baby-planning-context"
@@ -41,15 +42,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MealPlanningProvider>
-            <BabyPlanningProvider>
-              <HomeBuyingProvider>
-                <WeddingProvider>
-                  {children}
-                </WeddingProvider>
-              </HomeBuyingProvider>
-            </BabyPlanningProvider>
-          </MealPlanningProvider>
+          <CustomThemeProvider>
+            <MealPlanningProvider>
+              <BabyPlanningProvider>
+                <HomeBuyingProvider>
+                  <WeddingProvider>
+                    {children}
+                  </WeddingProvider>
+                </HomeBuyingProvider>
+              </BabyPlanningProvider>
+            </MealPlanningProvider>
+          </CustomThemeProvider>
         </ThemeProvider>
       </body>
     </html>

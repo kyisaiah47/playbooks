@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button"
 import { Badge as BadgeComponent } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useSidebar } from "@/components/ui/sidebar"
-import { ThemeToggle, ThemeToggleSwitch } from "@/components/theme-toggle"
+import { ThemeSelector } from "@/components/theme-selector"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
@@ -55,8 +55,7 @@ export function SiteHeader() {
             142 days left
           </BadgeComponent>
           <div className="flex items-center space-x-2">
-            <ThemeToggleSwitch />
-            <ThemeToggle />
+            <ThemeSelector />
           </div>
         </div>
       </div>

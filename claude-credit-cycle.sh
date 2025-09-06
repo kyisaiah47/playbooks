@@ -225,7 +225,16 @@ merge_completed_templates() {
                 if [[ -f "$worktree_path/src/app/templates/$template_name/page.tsx" ]] || [[ -f "$worktree_path/src/app/$template_name/page.tsx" ]]; then
                     log_colored $GREEN "✅ Merging completed template: $template_name"
                     
+                    # Commit changes in the worktree before merging
+                    cd "$worktree_path"
+                    git add .
+                    git commit -m "feat: implement comprehensive $template_name template
+
+🤖 Generated with Claude Code
+Co-Authored-By: Claude <noreply@anthropic.com>" || log_colored $YELLOW "⚠️ No changes to commit for $template_name"
+                    
                     # Switch to main and merge
+                    cd "$SCRIPT_DIR"
                     git checkout main
                     git merge "$branch_name" --no-edit
                     
@@ -534,6 +543,12 @@ case "${1:-}" in
         run_cycle
         ;;
     
+    "once")
+        log_colored $GREEN "🚀 Running single cycle (no continuous automation)"
+        run_cycle
+        log_colored $GREEN "✅ Single cycle completed!"
+        ;;
+    
     "merge")
         run_merge
         ;;
@@ -563,6 +578,7 @@ case "${1:-}" in
         echo "Commands:"
         echo -e "  ${GREEN}start${NC}      - Start continuous 5-hour automation"
         echo -e "  ${BLUE}cycle${NC}      - Run single cycle (create worktrees + launch)"
+        echo -e "  ${CYAN}once${NC}       - Run single cycle only (no continuous automation)"
         echo -e "  ${PURPLE}merge${NC}      - Merge completed templates and start next cycle"
         echo -e "  ${YELLOW}status${NC}     - Show automation status"
         echo -e "  ${RED}stop${NC}       - Stop continuous automation"

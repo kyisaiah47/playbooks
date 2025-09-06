@@ -183,9 +183,27 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    overflow-y: scroll !important;
+    scrollbar-gutter: stable;
+    width: 100%;
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Prevent layout shifts from modals/dropdowns */
+  [data-radix-popper-content-wrapper] {
+    z-index: 50;
+  }
+  
+  /* Ensure dropdowns don't affect document flow */
+  [data-radix-dropdown-menu-content] {
+    position: fixed !important;
   }
 }
 

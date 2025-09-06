@@ -48,6 +48,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { ThemeSelector } from "@/components/theme-selector";
 
 export default function LandingPage() {
 	return (
@@ -201,6 +202,7 @@ export default function LandingPage() {
 						</NavigationMenu>
 
 						<div className="flex items-center space-x-3">
+							<ThemeSelector />
 							<Button
 								variant="ghost"
 								className="text-base"

@@ -1,13 +1,14 @@
 "use client"
 
 import { createContext, useContext, useEffect, useState } from 'react'
-import { ThemeColors, templataTheme, applyTheme, getThemeForTemplate } from '@/lib/themes'
+import { ThemeColors, templataThemeLight, applyTheme, getThemeForTemplate, themes } from '@/lib/themes'
 
 interface ThemeContextType {
   currentTheme: ThemeColors
   setTheme: (theme: ThemeColors) => void
   applyTemplateTheme: (templateId: string) => void
   resetToDefault: () => void
+  getThemeById: (themeId: string) => ThemeColors | null
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -25,7 +26,7 @@ interface CustomThemeProviderProps {
   defaultTheme?: ThemeColors
 }
 
-export function CustomThemeProvider({ children, defaultTheme = templataTheme }: CustomThemeProviderProps) {
+export function CustomThemeProvider({ children, defaultTheme = templataThemeLight }: CustomThemeProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<ThemeColors>(defaultTheme)
 
   // Load saved theme on mount
@@ -60,12 +61,18 @@ export function CustomThemeProvider({ children, defaultTheme = templataTheme }: 
     setCurrentTheme(defaultTheme)
   }
 
+  const getThemeById = (themeId: string) => {
+    const theme = themes.find(t => t.id === themeId)
+    return theme ? theme.colors : null
+  }
+
   return (
     <ThemeContext.Provider value={{
       currentTheme,
       setTheme,
       applyTemplateTheme,
-      resetToDefault
+      resetToDefault,
+      getThemeById
     }}>
       {children}
     </ThemeContext.Provider>
