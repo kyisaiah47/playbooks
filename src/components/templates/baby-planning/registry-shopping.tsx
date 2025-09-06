@@ -213,6 +213,7 @@ export function RegistryShopping() {
     const newItem: RegistryItem = {
       id: Date.now().toString(),
       ...data,
+      notes: data.notes || "",
       acquired: 0,
       received: false,
     }
