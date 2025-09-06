@@ -15,6 +15,7 @@ export function NavGuidedNotes({
     name: string
     url: string
     emoji: string
+    onClick?: () => void
   }[]
 }) {
   return (
@@ -23,11 +24,17 @@ export function NavGuidedNotes({
       <SidebarMenu>
         {guidedNotes.map((item) => (
           <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <a href={item.url} title={item.name}>
+            <SidebarMenuButton 
+              asChild={false}
+              onClick={(e) => {
+                e.preventDefault()
+                item.onClick?.()
+              }}
+            >
+              <div className="flex items-center gap-2 cursor-pointer">
                 <span>{item.emoji}</span>
                 <span>{item.name}</span>
-              </a>
+              </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
