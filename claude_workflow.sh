@@ -5,33 +5,19 @@ LOGFILE="$HOME/.claude_logs/session.log"
 mkdir -p "$(dirname "$LOGFILE")"
 : > "$LOGFILE"   # empty the log
 
-# Array of prompts
+# Array of prompts - broken into simple, direct commands
 PROMPTS=(
-"PROMPT 1: File Structure Setup
+"Create src/contexts/freelance-business-context.tsx based on src/contexts/wedding-context.tsx but for freelance business data"
 
-You're creating a template for the Templata platform. First, we need to set up the basic file structure.
+"Create src/app/freelance-business/page.tsx with a simple Next.js page component"
 
-Read the detailed specification first: /TEMPLATE_SPECS/1_FILE_STRUCTURE_SPEC.md
+"Create src/app/freelance-business/app/page.tsx based on src/app/wedding-planning/app/page.tsx but for freelance business"
 
-Study the wedding template structure in:
-- /src/components/templates/wedding/
-- /src/app/wedding-planning/
-- /src/contexts/wedding-context.tsx
+"Create src/components/templates/freelance-business/freelance-business-overview.tsx with a placeholder overview component"
 
-Your task: Create the basic file structure with placeholder content
+"Create the directory src/components/guided-notes/freelance-business/ (empty for now)"
 
-1. Create /src/contexts/[your-template]-context.tsx - Copy wedding-context pattern but change the interface name and data fields to match your domain
-2. Create /src/app/[your-template]/page.tsx - Just a simple placeholder page for now
-3. Create /src/app/[your-template]/app/page.tsx - Copy the wedding app page structure but change imports to your template
-4. Create /src/components/templates/[your-template]/[your-template]-overview.tsx - Simple placeholder with \"Overview Coming Soon\"
-5. Create folder /src/components/guided-notes/[your-template]/ (empty for now)
-6. Create folder /src/components/resources/[your-template]/ (empty for now)
-
-Just get the files created with basic content. Don't worry about functionality yet.
-
-Run npm run build to make sure there are no TypeScript errors. Fix any import issues.
-
-When this works, say \"STEP 1 COMPLETE\" and I'll give you the next step."
+"Create the directory src/components/resources/freelance-business/ (empty for now)"
 
 "PROMPT 2: Sidebar Navigation
 
@@ -281,16 +267,10 @@ for i in "${!PROMPTS[@]}"; do
   PROMPT="${PROMPTS[$i]}"
 
   echo ">>> Running Step $STEP..."
-  claude --print -p "$PROMPT" | tee -a "$LOGFILE"
+  cd "$(dirname "$0")" && claude --print --dangerously-skip-permissions --add-dir "$(pwd)" -p "$PROMPT" | tee -a "$LOGFILE"
 
-  # Only wait for a completion marker if there's a next step
-  if (( i < ${#PROMPTS[@]} - 1 )); then
-    echo ">>> Waiting for STEP $STEP COMPLETE..."
-    until grep -q "STEP $STEP COMPLETE" "$LOGFILE"; do
-      sleep 5
-    done
-    echo ">>> Detected STEP $STEP COMPLETE."
-  fi
+  # Brief pause between prompts
+  sleep 2
 done
 
 echo ">>> All steps finished!"
