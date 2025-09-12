@@ -47,11 +47,11 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
       {/* Main Content */}
       {allPrompts.length === 0 ? (
         /* Compact Empty State */
-        <div className="text-center py-8 border-2 border-dashed rounded-lg">
+        <div className="text-center py-8 border-2 border-dashed">
           <Plus className="h-6 w-6 text-muted-foreground mx-auto mb-2" />
           <p className="text-sm font-medium mb-1">Select prompts to begin</p>
           <p className="text-xs text-muted-foreground">
-            Choose from {section.reflectionPrompts.length} prompts in the sidebar
+            Choose prompts from the sidebar to get started
           </p>
         </div>
       ) : (

@@ -173,71 +173,57 @@ export default function BlogPage() {
             </div>
           </div>
 
-          {/* All Posts */}
+          {/* All Posts - New Grid Layout */}
           <div>
-            <h2 className="text-xl font-semibold mb-4">All Articles</h2>
-            <div className="flex flex-col">
-              <Separator />
-              {blogPosts.map((post, index) => (
-                <div key={post.id}>
-                  <div className="grid items-center gap-4 px-4 py-4 md:grid-cols-6">
-                    <div className="order-2 flex items-center gap-2 md:order-none md:col-span-2">
-                      <span className="flex h-12 w-14 shrink-0 items-center justify-center rounded-md bg-muted">
-                        {getCategoryIcon(post.category)}
-                      </span>
-                      <div className="flex flex-col gap-1 min-w-0 flex-1">
-                        <h3 className="font-semibold line-clamp-2">{post.title}</h3>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Badge variant="outline" className="text-xs h-4 px-1.5">
-                            {post.category}
-                          </Badge>
-                          <span>•</span>
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            {post.readTime}
-                          </div>
+            <h2 className="text-xl font-semibold mb-6">All Articles</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {blogPosts.map((post) => (
+                <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
+                  <CardContent className="p-0">
+                    <div className="p-6 pb-4">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                          {getCategoryIcon(post.category)}
+                        </span>
+                        <Badge variant="secondary" className="text-xs">
+                          {post.category}
+                        </Badge>
+                      </div>
+                      <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                        <Link href={`/blog/${post.id}`}>
+                          {post.title}
+                        </Link>
+                      </h3>
+                      <p className="text-muted-foreground mb-4 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <div className="px-6 pb-6">
+                      <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                        <div className="flex items-center gap-1">
+                          <User className="w-4 h-4" />
+                          <span>{post.author}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readTime}</span>
                         </div>
                       </div>
+                      <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground transition-all" asChild>
+                        <Link href={`/blog/${post.id}`}>
+                          <span>Read Article</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </Button>
                     </div>
-                    <p className="order-1 text-base md:order-none md:col-span-3 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                    <Button variant="outline" asChild>
-                      <Link
-                        className="order-3 ml-auto w-fit gap-2 md:order-none"
-                        href={`/blog/${post.id}`}
-                      >
-                        <span>Read Article</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                  <Separator />
-                </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
 
-          {/* Newsletter CTA */}
-          <div className="mt-12">
-            <Card className="max-w-xl mx-auto">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-2">Stay Updated</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Get the latest templates, tips, and insights delivered to your inbox.
-                </p>
-                <div className="flex gap-2">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="flex-1 px-3 py-2 text-sm border rounded-md"
-                  />
-                  <Button size="sm">Subscribe</Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
+        <div className="py-12" />
     </PageLayout>
   );
 }

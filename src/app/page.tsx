@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,12 +31,51 @@ import {
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 
+function RotatingWord() {
+	const words = ['moments', 'weddings', 'moves', 'careers', 'launches', 'events', 'projects', 'decisions', 'changes', 'milestones', 'transitions', 'goals'];
+	const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+	useEffect(() => {
+		// Add CSS animation to head
+		const style = document.createElement('style');
+		style.textContent = `
+			@keyframes wordFadeInOut {
+				0% { opacity: 1; }
+				45% { opacity: 1; }
+				50% { opacity: 0; }
+				95% { opacity: 0; }
+				100% { opacity: 1; }
+			}
+			
+			.word-rotating {
+				animation: wordFadeInOut 2s infinite ease-in-out;
+			}
+		`;
+		document.head.appendChild(style);
+
+		const interval = setInterval(() => {
+			setCurrentWordIndex((prev) => (prev + 1) % words.length);
+		}, 2000);
+
+		return () => {
+			clearInterval(interval);
+			document.head.removeChild(style);
+		};
+	}, []);
+
+	return (
+		<span className="inline-block word-rotating">
+			{words[currentWordIndex]}
+		</span>
+	);
+}
+
 export default function LandingPage() {
 	return (
-		<PageLayout>
+		<PageLayout includeHeaderPadding={false}>
 
 			{/* Hero Section */}
-			<section className="py-24 md:py-32">
+			<section className="h-screen flex items-center justify-center">
 				<div className="container mx-auto max-w-7xl px-4">
 					<div className="text-center space-y-8">
 						<Badge
@@ -50,7 +90,7 @@ export default function LandingPage() {
 							Organize life&apos;s
 							<br />
 							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-								biggest moments
+								biggest <RotatingWord />
 							</span>
 						</h1>
 
@@ -117,7 +157,7 @@ export default function LandingPage() {
 										<CheckCircle2 className="h-5 w-5 text-primary" />
 									</div>
 									<span className="text-lg">
-										Complete guided setup for every template
+										Structured frameworks and reflection prompts
 									</span>
 								</div>
 								<div className="flex items-center gap-3">
@@ -199,7 +239,7 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			{/* Guided Setup Focus */}
+			{/* Template Structure Focus */}
 			<section className="py-24">
 				<div className="container mx-auto max-w-7xl px-4">
 					<div className="text-center space-y-8 max-w-4xl mx-auto">
@@ -207,44 +247,44 @@ export default function LandingPage() {
 							variant="outline"
 							className="px-4 py-2"
 						>
-							<Timer className="mr-2 h-4 w-4" />
-							Guided Setup Process
+							<BookOpen className="mr-2 h-4 w-4" />
+							Structured Approach
 						</Badge>
 
 						<h2 className="text-4xl md:text-5xl font-bold leading-tight">
 							Every template comes with
 							<br />
 							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-								step-by-step guidance
+								expert frameworks
 							</span>
 						</h2>
 
 						<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-							No more staring at blank pages. Our intelligent setup wizards ask
-							the right questions and build your personalized workspace in
-							minutes.
+							No more staring at blank pages. Our templates provide clear 
+							frameworks and reflection prompts to organize your thoughts
+							and plans systematically.
 						</p>
 
 						<div className="grid md:grid-cols-3 gap-8 pt-8">
 							<div className="text-center space-y-4">
 								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-									<MessageSquare className="h-8 w-8 text-primary" />
+									<BookOpen className="h-8 w-8 text-primary" />
 								</div>
-								<h3 className="text-xl font-semibold">Answer Questions</h3>
+								<h3 className="text-xl font-semibold">Choose Template</h3>
 								<p className="text-muted-foreground">
-									Our wizard asks targeted questions about your specific
-									situation and goals.
+									Select from expertly crafted templates designed for
+									your specific life moment or goal.
 								</p>
 							</div>
 
 							<div className="text-center space-y-4">
 								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-									<Sparkles className="h-8 w-8 text-primary" />
+									<MessageSquare className="h-8 w-8 text-primary" />
 								</div>
-								<h3 className="text-xl font-semibold">Get Personalized</h3>
+								<h3 className="text-xl font-semibold">Follow Prompts</h3>
 								<p className="text-muted-foreground">
-									Your template is customized with relevant sections and
-									pre-filled with your details.
+									Work through reflection prompts and structured sections
+									that guide your thinking process.
 								</p>
 							</div>
 
@@ -252,10 +292,10 @@ export default function LandingPage() {
 								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
 									<Rocket className="h-8 w-8 text-primary" />
 								</div>
-								<h3 className="text-xl font-semibold">Start Organizing</h3>
+								<h3 className="text-xl font-semibold">Take Action</h3>
 								<p className="text-muted-foreground">
-									Jump straight into managing your project with expert guidance
-									at every step.
+									Use your organized thoughts and plans to confidently
+									move forward with your goals.
 								</p>
 							</div>
 						</div>
@@ -305,7 +345,7 @@ export default function LandingPage() {
 									</div>
 									<div className="flex items-center gap-3">
 										<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-										<span>Basic setup wizard</span>
+										<span>Structured templates</span>
 									</div>
 									<div className="flex items-center gap-3">
 										<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />

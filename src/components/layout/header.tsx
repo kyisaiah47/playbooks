@@ -43,7 +43,18 @@ export function Header() {
 										href="/templates"
 										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
 									>
-										Browse Templates
+										Templates
+									</Link>
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+
+							<NavigationMenuItem>
+								<NavigationMenuLink asChild>
+									<Link
+										href="/preview"
+										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+									>
+										Preview
 									</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>

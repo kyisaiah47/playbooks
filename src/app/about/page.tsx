@@ -195,10 +195,10 @@ export default function AboutPage() {
 								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
 									<Zap className="h-8 w-8 text-primary" />
 								</div>
-								<CardTitle className="text-xl">Guided Setup Process</CardTitle>
+								<CardTitle className="text-xl">Structured Approach</CardTitle>
 								<CardDescription className="text-base">
-									No more blank pages. Our intelligent wizards ask the right
-									questions to build your personalized workspace in minutes.
+									No more blank pages. Our templates provide clear frameworks 
+									and reflection prompts to organize your thoughts and plans.
 								</CardDescription>
 							</CardHeader>
 						</Card>
@@ -323,10 +323,9 @@ export default function AboutPage() {
 						<Card className="border-0 shadow-none bg-background/50 text-center">
 							<CardHeader>
 								<Sparkles className="h-8 w-8 text-primary mx-auto mb-4" />
-								<CardTitle className="text-lg">Always Free</CardTitle>
+								<CardTitle className="text-lg">Accessible Start</CardTitle>
 								<CardDescription>
-									Life&apos;s important moments shouldn&apos;t come with
-									subscription fees. Our templates are free, forever.
+									Get started for free and upgrade as your needs grow. No hidden fees or surprise charges.
 								</CardDescription>
 							</CardHeader>
 						</Card>
