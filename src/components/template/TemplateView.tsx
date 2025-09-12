@@ -33,7 +33,7 @@ export function TemplateView({ template }: TemplateViewProps) {
 
   return (
     <SidebarProvider>
-      <div className="flex h-screen w-full">
+      <div className="flex h-screen w-full bg-background text-foreground">
         <TemplataContentSidebar
           template={template}
           activeSection={activeSection}
@@ -42,11 +42,11 @@ export function TemplateView({ template }: TemplateViewProps) {
           onOpenResource={handleOpenResource}
         />
         
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto bg-background">
           <div className="p-6">
             <div className="mb-6 flex items-center gap-2">
               <SidebarTrigger />
-              <h1 className="text-2xl font-bold flex items-center gap-2">
+              <h1 className="text-2xl font-bold flex items-center gap-2 text-foreground">
                 <span>{template.icon}</span>
                 {template.title}
               </h1>
