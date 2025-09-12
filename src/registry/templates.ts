@@ -122,10 +122,10 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     description: "Navigate college applications, track deadlines, and plan your academic future.",
     category: "Education",
     icon: "🎓",
-    url: "/templates/college-planning",
+    url: "/college-planning/app",
+    popular: true,
     color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
-    iconColor: "text-yellow-600 dark:text-yellow-400",
-    comingSoon: true
+    iconColor: "text-yellow-600 dark:text-yellow-400"
   },
   {
     id: "academic-research",
@@ -185,10 +185,10 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     description: "Track workouts, nutrition, and progress toward your health and fitness goals.",
     category: "Health & Wellness",
     icon: "💪",
-    url: "/templates/fitness-journey",
+    url: "/fitness-journey/app",
+    popular: true,
     color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
-    iconColor: "text-red-600 dark:text-red-400",
-    comingSoon: true
+    iconColor: "text-red-600 dark:text-red-400"
   }
 ];
 

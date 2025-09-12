@@ -6,7 +6,8 @@ import {
   Home, MapPin, CreditCard, HandCoins, Truck,
   Sparkles, CheckCircle2, Zap, Camera, Music, PartyPopper, MapMarkerIcon, Utensils, Megaphone,
   PenTool, ChefHat, Microphone, Plane, Compass, Globe, Passport, Luggage, Star, Navigation,
-  ShoppingCart, Apple, Leaf, Timer, Scale, Calculator
+  ShoppingCart, Apple, Leaf, Timer, Scale, Calculator, Dumbbell, TrendingUp as Progress, 
+  BarChart3, Trophy, Zap as Energy, GraduationCap, Library, School, MapPinIcon
 } from 'lucide-react';
 
 interface ProcessStep {
@@ -1357,6 +1358,211 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     ctaTitle: 'Ready to Transform Your Eating Habits?',
     ctaDescription: 'Join thousands of people who simplified their meal planning, improved their health, and saved time and money with our comprehensive system.',
     finalCtaText: 'Start Meal Planning',
+  },
+
+  'fitness-journey': {
+    badgeIcon: Dumbbell,
+    badgeText: 'Fitness Journey',
+    heroTitle: 'Transform Your Body,',
+    heroHighlight: 'Mind & Life',
+    heroDescription: 'Achieve your fitness goals with structured workout plans, nutrition tracking, and progress monitoring.',
+    ctaText: 'Start Your Journey',
+    appPath: '/fitness-journey/app',
+    heroCards: [
+      {
+        badge: 'Workout Planning',
+        content: 'Structured exercise routines tailored to your goals and schedule'
+      },
+      {
+        badge: 'Progress Tracking',
+        badgeVariant: 'secondary',
+        content: 'Comprehensive monitoring of strength, endurance, and body changes'
+      },
+      {
+        badge: 'Nutrition Support',
+        badgeVariant: 'outline',
+        content: 'Meal planning and macro tracking for optimal performance'
+      }
+    ],
+    heroBenefits: [
+      'Achieve fitness goals 3x faster',
+      'Build sustainable healthy habits',
+      'Track strength and endurance gains',
+      'Improve energy and mental clarity',
+      'Create lifelong wellness routines'
+    ],
+    processTitle: 'Your Fitness Transformation Journey',
+    processDescription: 'From goal setting to achievement, our comprehensive system guides you through every step of your fitness journey.',
+    processSteps: [
+      {
+        icon: Target,
+        title: 'Set Clear Goals',
+        description: 'Define specific, measurable fitness goals based on your lifestyle and aspirations.'
+      },
+      {
+        icon: Dumbbell,
+        title: 'Plan Your Workouts',
+        description: 'Create structured workout routines that fit your schedule and target your goals.'
+      },
+      {
+        icon: BarChart3,
+        title: 'Track Progress',
+        description: 'Monitor strength gains, endurance improvements, and body composition changes.'
+      },
+      {
+        icon: Trophy,
+        title: 'Celebrate Success',
+        description: 'Recognize achievements and adjust plans for continued growth and motivation.'
+      }
+    ],
+    benefitsTitle: 'Why Choose Our Fitness System',
+    benefitsDescription: 'Trusted by thousands of fitness enthusiasts for sustainable results and long-term success.',
+    benefits: [
+      {
+        icon: Clock,
+        title: 'Time Efficient',
+        description: 'Structured workouts maximize results while fitting into busy schedules'
+      },
+      {
+        icon: Progress,
+        title: 'Measurable Progress',
+        description: 'Track strength, endurance, and body composition changes with precision'
+      },
+      {
+        icon: Target,
+        title: 'Goal Achievement',
+        description: 'Systematic approach to reaching specific fitness milestones and targets'
+      },
+      {
+        icon: Shield,
+        title: 'Injury Prevention',
+        description: 'Proper progression and form guidance reduce injury risk and ensure safety'
+      },
+      {
+        icon: Energy,
+        title: 'Increased Energy',
+        description: 'Balanced training improves daily energy levels and overall life quality'
+      },
+      {
+        icon: Heart,
+        title: 'Holistic Health',
+        description: 'Comprehensive approach improves physical, mental, and emotional well-being'
+      }
+    ],
+    featuresIcon: Activity,
+    featuresTitle: 'Complete Fitness Planning Toolkit',
+    featuresDescription: 'Everything you need to plan, execute, and track your fitness journey effectively.',
+    features: [
+      'Customizable workout routines for all fitness levels',
+      'Progressive overload tracking and planning',
+      'Nutrition planning and macro tracking',
+      'Body measurement and progress photo organization',
+      'Exercise form guides and safety tips',
+      'Recovery and rest day planning',
+      'Goal setting and milestone celebration',
+      'Habit formation and consistency tracking'
+    ],
+    howItWorks: [
+      {
+        step: '1',
+        title: 'Assess & Goal Set',
+        description: 'Evaluate your current fitness level, identify areas for improvement, and set specific, achievable goals that align with your lifestyle and aspirations.'
+      },
+      {
+        step: '2',
+        title: 'Design Your Program',
+        description: 'Create a structured workout plan that targets your goals, fits your schedule, and progresses appropriately to prevent plateaus and injuries.'
+      },
+      {
+        step: '3',
+        title: 'Execute & Track',
+        description: 'Follow your plan consistently while tracking workouts, measurements, and progress photos to monitor your transformation journey.'
+      },
+      {
+        step: '4',
+        title: 'Adapt & Grow',
+        description: 'Regularly assess progress, celebrate achievements, and adjust your program to continue challenging yourself and achieving new goals.'
+      }
+    ],
+    guidedNotes: [
+      {
+        name: 'Start Gradually',
+        icon: Lightbulb,
+        description: 'Begin with manageable workouts and gradually increase intensity to build sustainable habits and prevent burnout.'
+      },
+      {
+        name: 'Consistency Key',
+        icon: Calendar,
+        description: 'Regular, moderate exercise is more effective than sporadic intense sessions for long-term fitness success.'
+      },
+      {
+        name: 'Rest & Recovery',
+        icon: Shield,
+        description: 'Schedule adequate rest days and prioritize sleep for optimal recovery, adaptation, and injury prevention.'
+      },
+      {
+        name: 'Nutrition Matters',
+        icon: Apple,
+        description: 'Fuel your workouts and recovery with proper nutrition aligned with your fitness goals and training demands.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Michael Rodriguez',
+        role: 'Busy Executive',
+        content: 'This system helped me lose 30 pounds and gain strength while working 60-hour weeks. The structured approach made fitness finally sustainable for me.',
+        image: '/testimonial-michael-fitness.jpg'
+      },
+      {
+        name: 'Sarah Johnson',
+        role: 'New Mom',
+        content: 'After having my baby, I thought I\'d never get back in shape. This program helped me rebuild my strength and energy in just 20-minute daily sessions.',
+        image: '/testimonial-sarah-fitness.jpg'
+      },
+      {
+        name: 'David Park',
+        role: 'Former Couch Potato',
+        content: 'I went from never exercising to running my first marathon in 18 months. The progressive approach made the impossible feel achievable.',
+        image: '/testimonial-david-fitness.jpg'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Do I need gym access or can I workout at home?',
+        answer: 'Our template works for both! We include bodyweight routines for home workouts, gym-based programs, and hybrid approaches. You can adapt any plan to your available equipment and space.'
+      },
+      {
+        question: 'Is this suitable for complete beginners?',
+        answer: 'Absolutely! The template includes beginner-friendly routines with proper progression, form guidance, and modification options. We help you build a foundation safely and effectively.'
+      },
+      {
+        question: 'How long before I see results?',
+        answer: 'Most people notice increased energy within 1-2 weeks, strength improvements within 4-6 weeks, and visible body changes within 8-12 weeks with consistent effort and proper nutrition.'
+      },
+      {
+        question: 'Can this help with specific goals like weight loss or muscle building?',
+        answer: 'Yes! Our system includes specialized programs for weight loss, muscle building, endurance improvement, and general fitness with customized workout and nutrition guidance for each goal.'
+      },
+      {
+        question: 'How much time do I need to commit each day?',
+        answer: 'Our programs are flexible, ranging from 20-minute daily sessions to longer workout blocks. We help you find an approach that fits your schedule while still delivering results.'
+      },
+      {
+        question: 'What if I have physical limitations or injuries?',
+        answer: 'The template includes modification options and alternative exercises for common limitations. However, we always recommend consulting with healthcare professionals for specific medical conditions.'
+      },
+      {
+        question: 'How does nutrition tracking work?',
+        answer: 'Our nutrition component helps you understand caloric needs, track macronutrients, and plan meals that support your fitness goals without requiring complex calculations or restrictive dieting.'
+      },
+      {
+        question: 'What about rest days and recovery?',
+        answer: 'Recovery is built into all our programs! We include guidance on rest day planning, active recovery, sleep optimization, and stress management for optimal results and injury prevention.'
+      }
+    ],
+    ctaTitle: 'Ready to Start Your Transformation?',
+    ctaDescription: 'Join thousands of people who achieved their fitness goals with our comprehensive, sustainable approach to health and wellness.',
+    finalCtaText: 'Begin Your Fitness Journey',
   }
 };
 
