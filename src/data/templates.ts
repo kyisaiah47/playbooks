@@ -1275,9 +1275,349 @@ export const jobSearchTemplate: GuidanceTemplate = {
   ]
 };
 
+export const babyPlanningTemplate: GuidanceTemplate = {
+  id: 'baby-planning',
+  title: 'Baby Planning Guide',
+  description: 'Complete guidance for expecting parents from pregnancy through baby\'s first year',
+  category: 'personal-life',
+  icon: '👶',
+  sections: [
+    {
+      id: 'pregnancy-preparation',
+      title: 'Pregnancy Preparation & Health',
+      description: 'Essential health preparations, prenatal care, and lifestyle adjustments for pregnancy',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'prenatal-care-setup',
+          prompt: "Have you selected a healthcare provider and scheduled your first prenatal appointment?",
+          category: 'planning',
+          helpText: 'Schedule your first appointment by 8 weeks. Research OB-GYNs, midwives, and birthing centers in your area.',
+          relatedResources: ['prenatal-care-guide', 'choosing-healthcare-provider']
+        },
+        {
+          id: 'nutrition-supplements',
+          prompt: 'What dietary changes and supplements do you need to support a healthy pregnancy?',
+          category: 'planning',
+          helpText: 'Start prenatal vitamins with folic acid, avoid alcohol/smoking, limit caffeine, focus on nutrient-dense foods.'
+        },
+        {
+          id: 'lifestyle-adjustments',
+          prompt: 'What lifestyle changes will you make to create the healthiest environment for your baby?',
+          category: 'planning',
+          helpText: 'Consider exercise routines, sleep habits, stress management, work adjustments, and environmental toxins.'
+        },
+        {
+          id: 'genetic-testing',
+          prompt: 'What genetic testing and screening options do you want to discuss with your healthcare provider?',
+          category: 'consideration',
+          helpText: 'Learn about carrier screening, NIPT, anatomy scans, and diagnostic tests. Discuss family history.'
+        },
+        {
+          id: 'pregnancy-timeline',
+          prompt: 'How will you track important pregnancy milestones and appointments throughout each trimester?',
+          category: 'planning',
+          helpText: 'Create a pregnancy calendar with key appointments, tests, and developmental milestones for each trimester.'
+        },
+        {
+          id: 'support-system',
+          prompt: 'Who will be part of your support system during pregnancy and after birth?',
+          category: 'consideration',
+          helpText: 'Identify family, friends, healthcare providers, and community resources who can provide emotional and practical support.'
+        }
+      ]
+    },
+    {
+      id: 'financial-planning',
+      title: 'Financial Planning & Insurance',
+      description: 'Budget for baby expenses, understand insurance coverage, and plan for parental leave',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'baby-budget-planning',
+          prompt: "What are the expected costs for your baby's first year, and how will you budget for them?",
+          category: 'planning',
+          helpText: 'Budget $10,000-$15,000 for first year including gear, medical costs, childcare. Track monthly expenses.',
+          relatedResources: ['baby-budget-breakdown', 'cost-saving-strategies']
+        },
+        {
+          id: 'insurance-review',
+          prompt: 'How does your health insurance cover pregnancy, birth, and pediatric care?',
+          category: 'planning',
+          helpText: 'Review coverage for prenatal care, delivery, NICU if needed, and add baby to policy within 30 days of birth.'
+        },
+        {
+          id: 'parental-leave-planning',
+          prompt: 'What are your parental leave options and how will you manage income during time off?',
+          category: 'planning',
+          helpText: 'Research FMLA, state programs, employer policies, and disability insurance. Plan for reduced income.'
+        },
+        {
+          id: 'savings-goals',
+          prompt: 'What savings goals will you set for immediate baby needs and long-term expenses like education?',
+          category: 'planning',
+          helpText: 'Start emergency fund, consider 529 education savings plan, budget for ongoing childcare costs.'
+        },
+        {
+          id: 'life-insurance',
+          prompt: 'Do you need to update or purchase life insurance to protect your growing family?',
+          category: 'consideration',
+          helpText: 'Consider term life insurance to replace income and cover childcare costs if something happens to either parent.'
+        },
+        {
+          id: 'will-estate-planning',
+          prompt: 'How will you update your will and estate planning to include guardianship and inheritance decisions?',
+          category: 'planning',
+          helpText: 'Draft or update wills, name guardians, consider trusts, update beneficiaries on accounts and insurance.'
+        }
+      ]
+    },
+    {
+      id: 'nursery-preparation',
+      title: 'Nursery Setup & Baby Gear',
+      description: 'Plan the nursery layout, select essential gear, and prepare your home for baby\'s arrival',
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: 'nursery-design-planning',
+          prompt: "How will you design and set up the nursery to be both functional and safe for your baby?",
+          category: 'planning',
+          helpText: 'Plan layout for crib, changing station, storage, and nursing area. Ensure good lighting and temperature control.',
+          relatedResources: ['nursery-setup-guide', 'baby-safety-checklist']
+        },
+        {
+          id: 'essential-gear-selection',
+          prompt: 'What essential baby gear do you need for sleeping, feeding, transportation, and daily care?',
+          category: 'planning',
+          helpText: 'Focus on basics: crib, car seat, stroller, changing table, baby clothes, feeding supplies. Avoid overbuying.'
+        },
+        {
+          id: 'baby-registry-planning',
+          prompt: 'How will you organize your baby registry to include items you truly need at different stages?',
+          category: 'planning',
+          helpText: 'Register for essentials first, include items for 0-3 months, 3-6 months, and 6-12 months. Consider practical gifts.'
+        },
+        {
+          id: 'home-safety-preparation',
+          prompt: 'What safety modifications need to be made throughout your home before baby arrives?',
+          category: 'planning',
+          helpText: 'Install safety latches, outlet covers, stair gates, secure furniture, remove choking hazards, check smoke detectors.'
+        },
+        {
+          id: 'storage-organization',
+          prompt: 'How will you organize and store baby items, clothes, and supplies for easy access and rotation?',
+          category: 'planning',
+          helpText: 'Plan storage systems for clothes by size, diaper supplies, toys, and feeding items. Label everything clearly.'
+        },
+        {
+          id: 'nursery-comfort-features',
+          prompt: 'What comfort features will make the nursery pleasant for both baby and parents during long nights?',
+          category: 'consideration',
+          helpText: 'Consider blackout curtains, white noise machine, comfortable nursing chair, good lighting, and temperature control.'
+        }
+      ]
+    },
+    {
+      id: 'birth-preparation',
+      title: 'Birth Planning & Hospital Preparation',
+      description: 'Create your birth plan, prepare for labor and delivery, and organize hospital logistics',
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: 'birth-plan-creation',
+          prompt: "What are your preferences for labor, delivery, and immediate postpartum care?",
+          category: 'planning',
+          helpText: 'Consider pain management options, delivery positions, immediate skin-to-skin contact, and newborn procedures.',
+          relatedResources: ['birth-plan-template', 'labor-delivery-guide']
+        },
+        {
+          id: 'hospital-bag-packing',
+          prompt: 'What items do you need to pack for your hospital stay for both you and baby?',
+          category: 'planning',
+          helpText: 'Pack comfortable clothes, toiletries, phone chargers, car seat, baby outfits, and important documents.'
+        },
+        {
+          id: 'labor-support-team',
+          prompt: 'Who will be your support team during labor and what role will each person play?',
+          category: 'planning',
+          helpText: 'Decide on partner, doula, family members present. Discuss their roles and your preferences with them.'
+        },
+        {
+          id: 'pain-management-research',
+          prompt: 'What pain management options do you want to explore and discuss with your healthcare provider?',
+          category: 'consideration',
+          helpText: 'Learn about epidurals, natural pain relief, breathing techniques, movement, and hydrotherapy options.'
+        },
+        {
+          id: 'postpartum-plan',
+          prompt: 'How will you plan for recovery and support during the first few weeks after birth?',
+          category: 'planning',
+          helpText: 'Arrange for help with meals, household tasks, and baby care. Plan for postpartum checkups and mental health support.'
+        },
+        {
+          id: 'emergency-planning',
+          prompt: 'What contingency plans do you have for unexpected situations during labor or delivery?',
+          category: 'consideration',
+          helpText: 'Discuss C-section possibilities, NICU scenarios, transportation to hospital, and backup support people.'
+        }
+      ]
+    },
+    {
+      id: 'newborn-care',
+      title: 'Newborn Care & Feeding',
+      description: 'Learn essential newborn care skills, establish feeding routines, and understand baby development',
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: 'feeding-method-decision',
+          prompt: "How will you approach feeding your baby, and what support do you need for your chosen method?",
+          category: 'planning',
+          helpText: 'Whether breastfeeding, formula feeding, or combination, research techniques and have supplies and support ready.',
+          relatedResources: ['newborn-feeding-guide', 'breastfeeding-basics']
+        },
+        {
+          id: 'newborn-care-skills',
+          prompt: 'What newborn care skills do you need to learn before baby arrives (diaper changing, bathing, swaddling)?',
+          category: 'planning',
+          helpText: 'Practice diaper changing, swaddling, bathing techniques. Take newborn care class or watch instructional videos.'
+        },
+        {
+          id: 'sleep-safety-planning',
+          prompt: 'How will you create a safe sleep environment and establish healthy sleep habits from the start?',
+          category: 'planning',
+          helpText: 'Follow safe sleep guidelines: back sleeping, firm mattress, no loose bedding. Plan for night feeding logistics.'
+        },
+        {
+          id: 'pediatrician-selection',
+          prompt: 'Have you chosen a pediatrician and scheduled your baby\'s first appointment?',
+          category: 'planning',
+          helpText: 'Interview pediatricians during pregnancy, check insurance coverage, and schedule first appointment within days of birth.'
+        },
+        {
+          id: 'development-tracking',
+          prompt: 'How will you track and support your baby\'s development in the first few months?',
+          category: 'planning',
+          helpText: 'Learn about developmental milestones, tummy time importance, and early stimulation activities appropriate for newborns.'
+        },
+        {
+          id: 'postpartum-support',
+          prompt: 'What resources and support will you have for physical and emotional recovery after birth?',
+          category: 'consideration',
+          helpText: 'Plan for postpartum depression screening, lactation support, pelvic floor recovery, and emotional adjustment help.'
+        }
+      ]
+    },
+    {
+      id: 'work-life-balance',
+      title: 'Work-Life Balance & Future Planning',
+      description: 'Plan your return to work, establish childcare, and adapt to life as new parents',
+      order: 6,
+      reflectionPrompts: [
+        {
+          id: 'childcare-arrangements',
+          prompt: "What childcare arrangements will you need when returning to work or other commitments?",
+          category: 'planning',
+          helpText: 'Research daycare centers, nannies, family care options. Apply early as quality childcare often has waitlists.',
+          relatedResources: ['childcare-options-guide', 'returning-to-work-checklist']
+        },
+        {
+          id: 'work-return-planning',
+          prompt: 'How will you transition back to work while maintaining your commitment to your baby\'s needs?',
+          category: 'planning',
+          helpText: 'Discuss flexible schedules, pumping facilities, gradual return options, and backup childcare with your employer.'
+        },
+        {
+          id: 'household-responsibility-sharing',
+          prompt: 'How will you and your partner divide household and baby care responsibilities?',
+          category: 'planning',
+          helpText: 'Discuss expectations openly, create schedules for night duties, household tasks, and baby care responsibilities.'
+        },
+        {
+          id: 'relationship-maintenance',
+          prompt: 'How will you maintain your relationship as a couple while adapting to parenthood?',
+          category: 'consideration',
+          helpText: 'Plan for date nights, communication strategies, intimacy changes, and support during stressful adjustments.'
+        },
+        {
+          id: 'personal-time-planning',
+          prompt: 'How will you ensure both parents get personal time and self-care opportunities?',
+          category: 'planning',
+          helpText: 'Schedule individual time, maintain friendships and hobbies, prioritize physical and mental health for both parents.'
+        },
+        {
+          id: 'future-family-planning',
+          prompt: 'What are your thoughts on future family planning and spacing between children?',
+          category: 'consideration',
+          helpText: 'Discuss contraception plans, ideal spacing between children, and how you\'ll make future family planning decisions.'
+        }
+      ]
+    }
+  ],
+  resources: [],
+  expertTips: [
+    {
+      id: 'prenatal-tip-1',
+      tip: 'Take prenatal vitamins with folic acid at least one month before trying to conceive and throughout pregnancy to prevent birth defects.',
+      author: 'Dr. Sarah Williams, OB-GYN (12 years)',
+      category: 'Prenatal Health',
+      importance: 'high'
+    },
+    {
+      id: 'budget-tip-1',
+      tip: 'Focus on essentials for the first 3 months. Babies need very little initially - prioritize safe sleep, car seat, and feeding supplies.',
+      author: 'Jennifer Martinez, Certified Financial Planner',
+      category: 'Financial Planning',
+      importance: 'high'
+    },
+    {
+      id: 'feeding-tip-1',
+      tip: 'Whether breastfeeding or formula feeding, having a plan and support system is crucial. Both are valid choices that can nourish your baby.',
+      author: 'Lisa Chen, Lactation Consultant (IBCLC)',
+      category: 'Feeding',
+      importance: 'high'
+    },
+    {
+      id: 'sleep-tip-1',
+      tip: 'Follow safe sleep guidelines religiously: back sleeping, firm mattress, nothing else in the crib. This reduces SIDS risk by 50%.',
+      author: 'Dr. Michael Rodriguez, Pediatrician',
+      category: 'Safe Sleep',
+      importance: 'high'
+    },
+    {
+      id: 'partnership-tip-1',
+      tip: 'Divide night duties in shifts rather than both parents waking up. This ensures at least one parent gets solid sleep.',
+      author: 'Amanda Foster, Parent Coach',
+      category: 'Work-Life Balance',
+      importance: 'medium'
+    },
+    {
+      id: 'preparation-tip-1',
+      tip: 'Prepare freezer meals and organize help for the first 2-3 weeks. You\'ll be too exhausted to cook or clean regularly.',
+      author: 'Rebecca Thompson, Postpartum Doula',
+      category: 'Birth Preparation',
+      importance: 'high'
+    },
+    {
+      id: 'childcare-tip-1',
+      tip: 'Start researching childcare options by your second trimester. Quality providers often have 6-12 month waitlists.',
+      author: 'David Park, Childcare Center Director',
+      category: 'Childcare Planning',
+      importance: 'high'
+    },
+    {
+      id: 'development-tip-1',
+      tip: 'Tummy time starting from day one (when baby is awake and supervised) is crucial for neck strength and motor development.',
+      author: 'Maria Gonzalez, Pediatric Physical Therapist',
+      category: 'Development',
+      importance: 'medium'
+    }
+  ]
+};
+
 export const templates: GuidanceTemplate[] = [
   weddingTemplate,
   homeBuyingTemplate,
   jobSearchTemplate,
+  babyPlanningTemplate,
   // Future templates generated by AI using the same structure
 ];

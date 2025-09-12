@@ -7,7 +7,7 @@ import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
-import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp } from 'lucide-react';
+import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -56,6 +56,14 @@ export function TemplateView({ template }: TemplateViewProps) {
       case 'interview-preparation': return <MessageSquare className="w-4 h-4" />;
       case 'offer-evaluation': return <CheckSquare className="w-4 h-4" />;
       case 'career-development': return <TrendingUp className="w-4 h-4" />;
+      
+      // Baby Planning sections
+      case 'pregnancy-preparation': return <Stethoscope className="w-4 h-4" />;
+      case 'financial-planning': return <DollarSign className="w-4 h-4" />;
+      case 'nursery-preparation': return <Home className="w-4 h-4" />;
+      case 'birth-preparation': return <Calendar className="w-4 h-4" />;
+      case 'newborn-care': return <Baby className="w-4 h-4" />;
+      case 'work-life-balance': return <Activity className="w-4 h-4" />;
       
       default: return <Target className="w-4 h-4" />;
     }

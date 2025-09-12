@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp } from "lucide-react"
+import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -48,6 +48,14 @@ const getSectionIcon = (sectionId: string) => {
     case 'interview-preparation': return <MessageSquare className="w-4 h-4" />;
     case 'offer-evaluation': return <CheckSquare className="w-4 h-4" />;
     case 'career-development': return <TrendingUp className="w-4 h-4" />;
+    
+    // Baby Planning sections
+    case 'pregnancy-preparation': return <Stethoscope className="w-4 h-4" />;
+    case 'financial-planning': return <DollarSign className="w-4 h-4" />;
+    case 'nursery-preparation': return <Home className="w-4 h-4" />;
+    case 'birth-preparation': return <Calendar className="w-4 h-4" />;
+    case 'newborn-care': return <Baby className="w-4 h-4" />;
+    case 'work-life-balance': return <Activity className="w-4 h-4" />;
     
     default: return <Target className="w-4 h-4" />;
   }

@@ -3026,6 +3026,243 @@ Evaluate based on why you were job searching originally. Will the counter-offer 
     tags: ["salary negotiation", "compensation", "career advancement"],
     relatedTemplates: ["job-search"],
     relatedPosts: ["interview-preparation-guide", "offer-evaluation-checklist"]
+  },
+  // Baby Planning blog posts
+  {
+    id: "prenatal-care-essentials",
+    slug: "prenatal-care-essentials",
+    title: "Prenatal Care Essentials: Your Complete Guide to a Healthy Pregnancy",
+    excerpt: "Everything expecting parents need to know about prenatal appointments, tests, and health monitoring",
+    content: `Proper prenatal care is one of the most important factors in ensuring a healthy pregnancy and baby. This comprehensive guide covers everything you need to know about prenatal appointments, essential tests, and monitoring your health throughout pregnancy.
+
+## First Trimester Care (0-12 weeks)
+
+**Initial Appointment (6-8 weeks)**
+Your first prenatal appointment is crucial for establishing baseline health and confirming pregnancy details. Your provider will review medical history, perform physical exam, confirm due date, and order initial blood work.
+
+**Essential Tests and Screenings**
+- Complete blood count and blood type
+- Immunity screening (rubella, varicella, hepatitis B)
+- STI screening (HIV, syphilis, chlamydia, gonorrhea)
+- Pap smear if due
+- Genetic carrier screening (if recommended)
+
+**Lifestyle Guidance**
+Start prenatal vitamins with folic acid (400-800 mcg daily), eliminate alcohol and smoking, limit caffeine to 200mg daily, and maintain appropriate exercise routine.
+
+## Second Trimester Care (13-27 weeks)
+
+**Routine Monitoring**
+Regular appointments every 4 weeks include weight checks, blood pressure monitoring, urine testing for protein and glucose, and listening to baby's heartbeat starting around 12 weeks.
+
+**Important Screenings**
+- Anatomy ultrasound (18-22 weeks) to check baby's development
+- Glucose screening test (24-28 weeks) for gestational diabetes
+- Optional genetic testing (NIPT, quad screen) if not done earlier
+
+**Physical Changes Management**
+Address common concerns like morning sickness, fatigue, back pain, and skin changes. Discuss safe medications and when to call your provider.
+
+## Third Trimester Care (28-40+ weeks)
+
+**Increased Monitoring**
+Appointments become more frequent (every 2 weeks until 36 weeks, then weekly) with continued monitoring of weight gain, blood pressure, and baby's growth and position.
+
+**Preparation for Birth**
+- Discuss birth plan preferences and pain management options
+- Group B strep testing (35-37 weeks)
+- Review signs of labor and when to call
+- Finalize pediatrician selection and hospital registration`,
+    author: "Dr. Sarah Williams",
+    publishedAt: "2024-12-20",
+    readTime: "11 min",
+    category: "Pregnancy & Baby",
+    type: "guide",
+    difficulty: "beginner",
+    tags: ["prenatal care", "pregnancy health", "medical appointments"],
+    relatedTemplates: ["baby-planning"],
+    relatedPosts: ["baby-budget-planning", "nursery-setup-guide"]
+  },
+  {
+    id: "baby-budget-planning",
+    slug: "baby-budget-planning",
+    title: "Complete Baby Budget Guide: First Year Costs and Money-Saving Tips",
+    excerpt: "Realistic breakdown of baby costs and smart strategies to budget for your growing family",
+    content: `Planning for a baby's financial impact is crucial for new parents. This comprehensive guide breaks down realistic first-year costs and provides practical strategies to manage expenses without compromising on safety or quality.
+
+## First Year Cost Breakdown
+
+**Essential One-Time Purchases ($2,000-4,000)**
+- Car seat and base: $100-400
+- Crib and mattress: $200-800
+- Stroller system: $150-600
+- High chair: $75-300
+- Baby monitor: $50-300
+- Initial clothing (0-12 months): $300-600
+
+**Monthly Recurring Expenses ($800-1,500)**
+- Diapers and wipes: $70-100
+- Formula (if not breastfeeding): $150-300
+- Childcare (varies widely): $500-2,000+
+- Healthcare copays and deductibles: $50-200
+- Baby food (after 6 months): $30-80
+
+## Cost-Saving Strategies
+
+**Smart Shopping Approaches**
+Buy generic brands for basics like diapers and wipes (can save 30-40%), accept hand-me-downs for quickly outgrown items, and focus spending on safety essentials like car seats and cribs.
+
+**Registry Optimization**
+Register for essentials first, include items for different ages (0-3, 3-6, 6-12 months), ask for practical items like diapers in various sizes, and consider group gifts for expensive items.
+
+**Long-term Financial Planning**
+Start or increase emergency fund to cover 6 months expenses, research childcare costs early (waitlists can be 6-12 months), consider life insurance to protect your growing family, and explore 529 education savings plans.
+
+## Budgeting Timeline
+
+**During Pregnancy**
+Start saving for one-time purchases, research insurance coverage for delivery and pediatric care, and plan for potential loss of income during parental leave.
+
+**First 3 Months**
+Track actual spending against estimates, adjust budget based on real needs, and identify areas where you can cut costs without sacrificing quality.
+
+**Months 4-12**
+Plan for changing needs (solid food, larger clothing, increased childcare costs) and build long-term savings for ongoing child-related expenses.`,
+    author: "Jennifer Martinez",
+    publishedAt: "2024-12-18",
+    readTime: "13 min",
+    category: "Pregnancy & Baby",
+    type: "guide",
+    difficulty: "intermediate",
+    tags: ["baby budget", "financial planning", "cost saving"],
+    relatedTemplates: ["baby-planning"],
+    relatedPosts: ["prenatal-care-essentials", "childcare-options-guide"]
+  },
+  {
+    id: "nursery-setup-guide",
+    slug: "nursery-setup-guide",
+    title: "Nursery Setup Guide: Creating a Safe, Functional Space for Your Baby",
+    excerpt: "Step-by-step guide to designing a nursery that's safe, organized, and grows with your baby",
+    content: `Creating the perfect nursery involves balancing safety, functionality, and comfort. This comprehensive guide helps you design a space that works for both baby and parents while staying within budget and growing with your child.
+
+## Safety First: Essential Guidelines
+
+**Safe Sleep Environment**
+- Crib meets current safety standards (slats no more than 2-3/8 inches apart)
+- Firm mattress that fits snugly with minimal gap around edges
+- No loose bedding, pillows, bumpers, or toys in crib
+- Crib positioned away from windows, blinds, and electrical cords
+
+**Room Safety Measures**
+Install outlet covers, secure furniture to walls to prevent tipping, use cordless window coverings, and ensure smoke and carbon monoxide detectors are working.
+
+## Essential Nursery Elements
+
+**The Big Four**
+1. **Safe sleep space**: Crib or bassinet with firm mattress
+2. **Changing station**: Changing table or dresser with changing pad
+3. **Storage solutions**: For clothes, diapers, and supplies
+4. **Comfortable seating**: Nursing chair or glider for feeding times
+
+**Lighting Strategy**
+Install dimmer switches for overnight feedings, add blackout curtains for better sleep, include a small nightlight for navigation, and ensure good natural light for daytime activities.
+
+## Organization and Storage
+
+**Clothing Organization**
+Organize by size (newborn, 0-3, 3-6, 6-9, 9-12 months), keep current sizes easily accessible, store future sizes in labeled containers, and separate everyday clothes from special occasion outfits.
+
+**Diaper and Supply Station**
+Stock changing area with diapers, wipes, rash cream, and extra clothes. Keep supplies at both upstairs and downstairs changing areas if possible.
+
+**Toy and Book Storage**
+Plan for growth with bins or shelves that can accommodate increasing toy collection and books for bedtime routines.
+
+## Budget-Friendly Tips
+
+**DIY and Repurpose Options**
+Paint existing furniture instead of buying new, create wall art with family photos, repurpose household items for storage, and make your own mobile or decorative elements.
+
+**Essential vs. Nice-to-Have**
+Focus budget on safety essentials first, then comfort items like a good nursing chair, and finally decorative elements that can be added over time.
+
+## Making It Grow-Friendly
+
+**Flexible Design Elements**
+Choose neutral colors that work as child grows, select furniture that can serve multiple purposes, plan for toddler needs (toy storage, reading nook), and avoid overly baby-specific themes that will quickly be outgrown.`,
+    author: "Rebecca Thompson",
+    publishedAt: "2024-12-15",
+    readTime: "9 min",
+    category: "Pregnancy & Baby",
+    type: "guide",
+    difficulty: "beginner",
+    tags: ["nursery design", "baby safety", "organization"],
+    relatedTemplates: ["baby-planning"],
+    relatedPosts: ["baby-budget-planning", "newborn-care-basics"]
+  },
+  {
+    id: "newborn-care-basics",
+    slug: "newborn-care-basics",
+    title: "Newborn Care Basics: Essential Skills Every New Parent Needs",
+    excerpt: "Master the fundamental newborn care skills from feeding to sleep safety with expert guidance",
+    content: `Caring for a newborn can feel overwhelming, but mastering a few essential skills will build your confidence. This practical guide covers the core newborn care basics every parent needs to know in the first few weeks.
+
+## Feeding Fundamentals
+
+**Breastfeeding Basics**
+- Ensure proper latch (baby's mouth covers areola, not just nipple)
+- Feed on demand, typically 8-12 times per 24 hours
+- Watch for swallowing sounds and wet diapers as signs of adequate intake
+- Burp baby during and after feeds to prevent gas discomfort
+
+**Formula Feeding Guidelines**
+- Prepare bottles according to package instructions (never dilute or concentrate)
+- Feed every 2-3 hours, about 2-3 ounces per feeding initially
+- Hold baby upright during feeding and burp frequently
+- Discard leftover formula after 1 hour at room temperature
+
+## Diaper Changing Mastery
+
+**Step-by-Step Process**
+Gather supplies before starting, clean thoroughly from front to back (especially important for girls), allow air-dry time to prevent rash, and apply thin layer of barrier cream if needed.
+
+**Diaper Rash Prevention**
+Change diapers frequently (every 2-3 hours and after bowel movements), clean gently with warm water and soft cloths, and let baby's bottom air dry when possible.
+
+## Safe Sleep Practices
+
+**ABC Rule: Alone, Back, Crib**
+- Baby sleeps alone (no other people, pets, or objects in crib)
+- Always place on back for sleep (naps and nighttime)
+- Use firm crib mattress with fitted sheet only
+
+**Sleep Environment Setup**
+Room temperature comfortable for lightly clothed adult (68-70°F), avoid overheating with too many blankets, use sleep sacks instead of loose blankets, and keep crib in parents' room for first 6 months if possible.
+
+## Bathing and Hygiene
+
+**First Baths (Until Umbilical Cord Falls Off)**
+Give sponge baths only until cord stump heals, clean face with plain water, wash hair 2-3 times per week with mild baby shampoo, and keep diaper area clean and dry.
+
+**Regular Bath Routine**
+Start with 2-3 baths per week, use lukewarm water (test with elbow), support baby's head and neck always, and keep baths short (5-10 minutes) to prevent chilling.
+
+## When to Call Your Pediatrician
+
+**Immediate Concerns**
+Difficulty breathing, fever over 100.4°F (38°C), signs of dehydration (fewer than 6 wet diapers per day after day 3), excessive crying or lethargy, or any concerns about baby's wellbeing.
+
+**Routine Check-ins**
+Don't hesitate to call with questions about feeding, sleeping, or development. Most pediatricians prefer to address concerns early rather than wait.`,
+    author: "Dr. Michael Rodriguez",
+    publishedAt: "2024-12-12",
+    readTime: "10 min",
+    category: "Pregnancy & Baby",
+    type: "guide",
+    difficulty: "beginner",
+    tags: ["newborn care", "infant feeding", "baby safety"],
+    relatedTemplates: ["baby-planning"],
+    relatedPosts: ["nursery-setup-guide", "prenatal-care-essentials"]
   }
 ];
 

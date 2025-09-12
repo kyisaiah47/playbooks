@@ -1,5 +1,5 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate } from '@/data/templates';
+import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
 
 // Function to sync template resources with blog registry
@@ -81,14 +81,14 @@ export const templateRegistry: TemplateRegistryEntry[] = [
   },
   {
     id: "baby-planning",
-    name: "Baby Planning",
-    description: "Prepare for your little one with pregnancy tracking, nursery planning, and baby essentials.",
+    name: "Baby Planning Guide",
+    description: "Complete guidance for expecting parents from pregnancy through baby's first year.",
     category: "Personal Life",
     icon: "👶",
-    url: "/templates/baby-planning",
+    url: "/baby-planning/app",
     color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
     iconColor: "text-green-600 dark:text-green-400",
-    comingSoon: true
+    template: createTemplateWithSyncedResources(babyPlanningTemplate)
   },
   
   // Career & Business Templates
