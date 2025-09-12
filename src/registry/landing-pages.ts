@@ -61,9 +61,9 @@ interface HeroBenefit {
 
 export interface LandingPageData {
   // SEO & Metadata (optional)
-  metadata?: unknown;
-  jsonLd?: unknown;
-  faqJsonLd?: unknown;
+  metadata?: Metadata;
+  jsonLd?: Record<string, unknown>;
+  faqJsonLd?: Record<string, unknown>;
 
   // Hero Section
   badgeIcon: LucideIcon;
