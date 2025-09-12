@@ -5,6 +5,7 @@ import { GuidanceTemplate, Resource, ReflectionPrompt } from '@/types/template';
 import { EmbeddedPrompts } from '@/components/prompts/EmbeddedPrompts';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { ThemeSelector } from '@/components/theme-selector';
 
 interface TemplateViewProps {
   template: GuidanceTemplate;
@@ -44,12 +45,15 @@ export function TemplateView({ template }: TemplateViewProps) {
         
         <main className="flex-1 overflow-auto bg-background">
           <div className="p-6">
-            <div className="mb-6 flex items-center gap-2">
-              <SidebarTrigger />
-              <h1 className="text-2xl font-bold flex items-center gap-2 text-foreground">
-                <span>{template.icon}</span>
-                {template.title}
-              </h1>
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <SidebarTrigger />
+                <h1 className="text-2xl font-bold flex items-center gap-2 text-foreground">
+                  <span>{template.icon}</span>
+                  {template.title}
+                </h1>
+              </div>
+              <ThemeSelector />
             </div>
             
             <EmbeddedPrompts 

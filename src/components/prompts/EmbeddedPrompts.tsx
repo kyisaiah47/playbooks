@@ -34,13 +34,8 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
     }
   };
 
-  // Combine section prompts with additional prompts, avoiding duplicates
-  const allPrompts = [
-    ...section.reflectionPrompts,
-    ...additionalPrompts.filter(additional => 
-      !section.reflectionPrompts.some(section => section.id === additional.id)
-    )
-  ];
+  // Only show additional prompts that have been explicitly added
+  const allPrompts = additionalPrompts;
 
   return (
     <Card>
