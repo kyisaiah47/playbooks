@@ -5,7 +5,7 @@ import {
   Baby, Stethoscope, Calendar, Activity,
   Home, MapPin, CreditCard, HandCoins, Truck,
   Sparkles, CheckCircle2, Zap, Camera, Music, PartyPopper, MapMarkerIcon, Utensils, Megaphone,
-  PenTool, ChefHat, Microphone, Plane, Compass, Globe, Passport, Luggage, Star, Navigation,
+  PenTool, ChefHat, Microphone, Plane, Compass, Globe, Luggage, Star, Navigation,
   ShoppingCart, Apple, Leaf, Timer, Scale, Calculator, Dumbbell, TrendingUp as Progress, 
   BarChart3, Trophy, Zap as Energy, GraduationCap, Library, School, MapPinIcon,
   Package, CheckSquare, ClipboardList, ArrowRight, PiggyBank, Wallet, Receipt, ChartLine,
@@ -1549,7 +1549,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
         description: 'Comprehensive guides and tips for destinations worldwide, from cities to remote locations'
       }
     ],
-    featuresIcon: Passport,
+    featuresIcon: Plane,
     featuresTitle: 'Complete Travel Planning Toolkit',
     featuresDescription: 'Everything you need to plan and execute amazing trips, from weekend getaways to international adventures.',
     features: [
@@ -1597,7 +1597,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
       },
       {
         name: 'Document Backup',
-        icon: Passport,
+        icon: Plane,
         description: 'Keep digital and physical copies of important documents in separate locations for security.'
       },
       {

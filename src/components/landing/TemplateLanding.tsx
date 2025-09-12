@@ -295,7 +295,7 @@ export function TemplateLanding({
               ))}
             </div>
           </div>
-        </div>
+        </section>
       )}
 
       {/* Process Overview */}

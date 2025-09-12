@@ -290,7 +290,7 @@ export function TemplataContentSidebar({
                       isActive={activeSection === index && activeTab === 'prompts'}
                       className="px-2.5 md:px-2"
                     >
-                      {console.log('ICON FOR:', section.id) || getSectionIcon(section.id)}
+                      {getSectionIcon(section.id)}
                       <span className="text-xs">{section.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

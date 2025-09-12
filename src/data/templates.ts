@@ -6245,7 +6245,7 @@ export const nonProfitLaunchTemplate: GuidanceTemplate = {
     {
       id: 'mission-vision-planning',
       title: 'Mission, Vision & Strategic Planning',
-      description: 'Define your non-profit's purpose, goals, and strategic direction',
+      description: 'Define your non-profit purpose, goals, and strategic direction',
       order: 1,
       reflectionPrompts: [
         {
