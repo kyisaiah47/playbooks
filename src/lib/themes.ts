@@ -39,6 +39,7 @@ export interface Theme {
   description: string
   isPremium?: boolean  // Subscription-based themes
   isExclusive?: boolean  // One-time purchase themes
+  isLimited?: boolean  // Limited time availability themes
   colors: {
     light: ThemeColors
     dark: ThemeColors
@@ -1197,6 +1198,148 @@ export const premiumSageThemeDark: ThemeColors = {
   sidebarRing: 'oklch(0.6762 0.0567 132.4479)'
 }
 
+// Beta theme - limited time for beta users only
+export const betaThemeLight: ThemeColors = {
+  background: 'oklch(0.9613 0.0083 271.3280)',
+  foreground: 'oklch(0.1594 0.0157 266.5941)',
+  card: 'oklch(1.0000 0 0)',
+  cardForeground: 'oklch(0.1594 0.0157 266.5941)',
+  popover: 'oklch(1.0000 0 0)',
+  popoverForeground: 'oklch(0.1594 0.0157 266.5941)',
+  primary: 'oklch(0.5106 0.2301 276.9656)',
+  primaryForeground: 'oklch(1.0000 0 0)',
+  secondary: 'oklch(0.2795 0.0368 260.0310)',
+  secondaryForeground: 'oklch(1.0000 0 0)',
+  muted: 'oklch(0.9288 0.0126 255.5078)',
+  mutedForeground: 'oklch(0.5544 0.0407 257.4166)',
+  accent: 'oklch(0.6668 0.2591 322.1499)',
+  accentForeground: 'oklch(1.0000 0 0)',
+  destructive: 'oklch(0.6368 0.2078 25.3313)',
+  destructiveForeground: 'oklch(1.0000 0 0)',
+  border: 'oklch(0.8690 0.0198 252.8943)',
+  input: 'oklch(0.8690 0.0198 252.8943)',
+  ring: 'oklch(0.5106 0.2301 276.9656)',
+  chart1: 'oklch(0.5106 0.2301 276.9656)',
+  chart2: 'oklch(0.6668 0.2591 322.1499)',
+  chart3: 'oklch(0.6056 0.2189 292.7172)',
+  chart4: 'oklch(0.2795 0.0368 260.0310)',
+  chart5: 'oklch(0.5544 0.0407 257.4166)',
+  sidebar: 'oklch(0.1594 0.0157 266.5941)',
+  sidebarForeground: 'oklch(0.9613 0.0083 271.3280)',
+  sidebarPrimary: 'oklch(0.6668 0.2591 322.1499)',
+  sidebarPrimaryForeground: 'oklch(1.0000 0 0)',
+  sidebarAccent: 'oklch(0.2795 0.0368 260.0310)',
+  sidebarAccentForeground: 'oklch(0.9613 0.0083 271.3280)',
+  sidebarBorder: 'oklch(0.2795 0.0368 260.0310)',
+  sidebarRing: 'oklch(0.6668 0.2591 322.1499)'
+}
+
+export const betaThemeDark: ThemeColors = {
+  background: 'oklch(0.1594 0.0157 266.5941)',
+  foreground: 'oklch(0.9613 0.0083 271.3280)',
+  card: 'oklch(0.2101 0.0318 264.6645)',
+  cardForeground: 'oklch(0.9613 0.0083 271.3280)',
+  popover: 'oklch(0.2101 0.0318 264.6645)',
+  popoverForeground: 'oklch(0.9613 0.0083 271.3280)',
+  primary: 'oklch(0.6056 0.2189 292.7172)',
+  primaryForeground: 'oklch(1.0000 0 0)',
+  secondary: 'oklch(0.3717 0.0392 257.2870)',
+  secondaryForeground: 'oklch(0.9613 0.0083 271.3280)',
+  muted: 'oklch(0.2795 0.0368 260.0310)',
+  mutedForeground: 'oklch(0.7107 0.0351 256.7878)',
+  accent: 'oklch(0.6668 0.2591 322.1499)',
+  accentForeground: 'oklch(1.0000 0 0)',
+  destructive: 'oklch(0.5143 0.1978 16.9350)',
+  destructiveForeground: 'oklch(1.0000 0 0)',
+  border: 'oklch(0.3717 0.0392 257.2870)',
+  input: 'oklch(0.3717 0.0392 257.2870)',
+  ring: 'oklch(0.6056 0.2189 292.7172)',
+  chart1: 'oklch(0.6056 0.2189 292.7172)',
+  chart2: 'oklch(0.6668 0.2591 322.1499)',
+  chart3: 'oklch(0.5106 0.2301 276.9656)',
+  chart4: 'oklch(0.3717 0.0392 257.2870)',
+  chart5: 'oklch(0.7107 0.0351 256.7878)',
+  sidebar: 'oklch(0.1288 0.0406 264.6952)',
+  sidebarForeground: 'oklch(0.9613 0.0083 271.3280)',
+  sidebarPrimary: 'oklch(0.6668 0.2591 322.1499)',
+  sidebarPrimaryForeground: 'oklch(1.0000 0 0)',
+  sidebarAccent: 'oklch(0.2795 0.0368 260.0310)',
+  sidebarAccentForeground: 'oklch(0.9613 0.0083 271.3280)',
+  sidebarBorder: 'oklch(0.2795 0.0368 260.0310)',
+  sidebarRing: 'oklch(0.6668 0.2591 322.1499)'
+}
+
+// Beta Teal theme - limited time for beta users only
+export const betaTealThemeLight: ThemeColors = {
+  background: 'oklch(0.9771 0.0125 236.6197)',
+  foreground: 'oklch(0.2839 0.0734 254.5378)',
+  card: 'oklch(1.0000 0 0)',
+  cardForeground: 'oklch(0.2839 0.0734 254.5378)',
+  popover: 'oklch(1.0000 0 0)',
+  popoverForeground: 'oklch(0.2839 0.0734 254.5378)',
+  primary: 'oklch(0.7038 0.1230 182.5025)',
+  primaryForeground: 'oklch(1.0000 0 0)',
+  secondary: 'oklch(0.8651 0.1153 207.0778)',
+  secondaryForeground: 'oklch(0.3018 0.0541 229.6954)',
+  muted: 'oklch(0.9514 0.0250 236.8242)',
+  mutedForeground: 'oklch(0.7535 0.1390 232.6615)',
+  accent: 'oklch(0.9052 0.1657 98.1108)',
+  accentForeground: 'oklch(0.3466 0.0677 99.9107)',
+  destructive: 'oklch(0.6450 0.2154 16.4393)',
+  destructiveForeground: 'oklch(1.0000 0 0)',
+  border: 'oklch(0.9514 0.0250 236.8242)',
+  input: 'oklch(0.9514 0.0250 236.8242)',
+  ring: 'oklch(0.7038 0.1230 182.5025)',
+  chart1: 'oklch(0.7038 0.1230 182.5025)',
+  chart2: 'oklch(0.8651 0.1153 207.0778)',
+  chart3: 'oklch(0.7535 0.1390 232.6615)',
+  chart4: 'oklch(0.9052 0.1657 98.1108)',
+  chart5: 'oklch(0.9167 0.0772 205.0414)',
+  sidebar: 'oklch(1.0000 0 0)',
+  sidebarForeground: 'oklch(0.2839 0.0734 254.5378)',
+  sidebarPrimary: 'oklch(0.7038 0.1230 182.5025)',
+  sidebarPrimaryForeground: 'oklch(1.0000 0 0)',
+  sidebarAccent: 'oklch(0.9771 0.0125 236.6197)',
+  sidebarAccentForeground: 'oklch(0.2839 0.0734 254.5378)',
+  sidebarBorder: 'oklch(0.9514 0.0250 236.8242)',
+  sidebarRing: 'oklch(0.7038 0.1230 182.5025)'
+}
+
+export const betaTealThemeDark: ThemeColors = {
+  background: 'oklch(0.2103 0.0279 240.9321)',
+  foreground: 'oklch(0.9514 0.0250 236.8242)',
+  card: 'oklch(0.1363 0.0364 259.2010)',
+  cardForeground: 'oklch(0.9514 0.0250 236.8242)',
+  popover: 'oklch(0.1363 0.0364 259.2010)',
+  popoverForeground: 'oklch(0.9514 0.0250 236.8242)',
+  primary: 'oklch(0.7845 0.1325 181.9120)',
+  primaryForeground: 'oklch(0.2103 0.0279 240.9321)',
+  secondary: 'oklch(0.5198 0.0936 223.1280)',
+  secondaryForeground: 'oklch(0.9514 0.0250 236.8242)',
+  muted: 'oklch(0.2795 0.0368 260.0310)',
+  mutedForeground: 'oklch(0.7107 0.0351 256.7878)',
+  accent: 'oklch(0.9052 0.1657 98.1108)',
+  accentForeground: 'oklch(0.3466 0.0677 99.9107)',
+  destructive: 'oklch(0.5858 0.2220 17.5846)',
+  destructiveForeground: 'oklch(1.0000 0 0)',
+  border: 'oklch(0.2795 0.0368 260.0310)',
+  input: 'oklch(0.2795 0.0368 260.0310)',
+  ring: 'oklch(0.7845 0.1325 181.9120)',
+  chart1: 'oklch(0.7845 0.1325 181.9120)',
+  chart2: 'oklch(0.8651 0.1153 207.0778)',
+  chart3: 'oklch(0.7535 0.1390 232.6615)',
+  chart4: 'oklch(0.9052 0.1657 98.1108)',
+  chart5: 'oklch(0.5198 0.0936 223.1280)',
+  sidebar: 'oklch(0.1363 0.0364 259.2010)',
+  sidebarForeground: 'oklch(0.9514 0.0250 236.8242)',
+  sidebarPrimary: 'oklch(0.7845 0.1325 181.9120)',
+  sidebarPrimaryForeground: 'oklch(0.2103 0.0279 240.9321)',
+  sidebarAccent: 'oklch(0.2103 0.0279 240.9321)',
+  sidebarAccentForeground: 'oklch(0.9514 0.0250 236.8242)',
+  sidebarBorder: 'oklch(0.2795 0.0368 260.0310)',
+  sidebarRing: 'oklch(0.7845 0.1325 181.9120)'
+}
+
 export const themes: Theme[] = [
   // Free themes
   {
@@ -1242,6 +1385,26 @@ export const themes: Theme[] = [
     colors: {
       light: purpleThemeLight,
       dark: purpleThemeDark
+    }
+  },
+  {
+    id: 'beta',
+    name: 'Beta Purple',
+    description: 'Exclusive beta theme with purple and magenta accents - limited time only',
+    isLimited: true,
+    colors: {
+      light: betaThemeLight,
+      dark: betaThemeDark
+    }
+  },
+  {
+    id: 'beta-teal',
+    name: 'Beta Teal',
+    description: 'Exclusive beta theme with teal and blue accents - limited time only',
+    isLimited: true,
+    colors: {
+      light: betaTealThemeLight,
+      dark: betaTealThemeDark
     }
   },
   // Premium themes

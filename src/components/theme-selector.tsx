@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Check, Palette, Sun, Moon, MoreHorizontal, Crown, Gem } from "lucide-react"
+import { Check, Palette, Sun, Moon, MoreHorizontal, Crown, Gem, Clock } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useCustomTheme } from "@/components/theme-provider-custom"
 import { themes } from "@/lib/themes"
@@ -68,8 +68,8 @@ export function ThemeSelector() {
     if (selectedTheme) {
       const themeColors = theme === 'dark' ? selectedTheme.colors.dark : selectedTheme.colors.light
       
-      // Check if theme requires purchase and user doesn't have access
-      if (selectedTheme.isPremium || selectedTheme.isExclusive) {
+      // Check if theme requires purchase/access and user doesn't have access
+      if (selectedTheme.isPremium || selectedTheme.isExclusive || selectedTheme.isLimited) {
         // Store current theme before preview
         setPreviousTheme(currentTheme)
         
@@ -89,6 +89,12 @@ export function ThemeSelector() {
             title: 'Exclusive Theme',
             message: 'This is an Exclusive theme! Purchase it once to unlock forever.'
           })
+        } else if (selectedTheme.isLimited) {
+          // Show info about limited theme
+          setAlertDialog({
+            title: 'Limited Time Theme',
+            message: 'This is a Limited Time theme available during beta!'
+          })
         }
         return
       }
@@ -99,8 +105,8 @@ export function ThemeSelector() {
   }
 
   const handleAlertClose = () => {
-    // Revert to previous theme when dismissing alert
-    if (previousTheme) {
+    // Revert to previous theme when dismissing alert (except for limited themes)
+    if (previousTheme && alertDialog?.title !== 'Limited Time Theme') {
       setCustomTheme(previousTheme)
       setPreviousTheme(null)
     }
@@ -140,10 +146,11 @@ export function ThemeSelector() {
                 }
                 ${themeOption.isPremium ? 'ring-2 ring-yellow-400/30' : ''}
                 ${themeOption.isExclusive ? 'ring-2 ring-blue-400/30' : ''}
+                ${themeOption.isLimited ? 'ring-2 ring-purple-400/30 bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-950/20 dark:to-pink-950/20' : ''}
               `}
               onClick={() => {
                 const selectedTheme = themes.find(t => t.id === themeOption.id)
-                if (selectedTheme && !selectedTheme.isPremium && !selectedTheme.isExclusive) {
+                if (selectedTheme && !selectedTheme.isPremium && !selectedTheme.isExclusive && !selectedTheme.isLimited) {
                   handleThemeChange(themeOption.id)
                   setShowAllThemes(false)
                 } else {
@@ -159,6 +166,11 @@ export function ThemeSelector() {
               {themeOption.isExclusive && (
                 <div className="absolute top-2 left-2">
                   <Gem className="h-4 w-4 text-blue-500" />
+                </div>
+              )}
+              {themeOption.isLimited && (
+                <div className="absolute top-2 left-2">
+                  <Clock className="h-4 w-4 text-purple-500" />
                 </div>
               )}
               {isSelected && (
@@ -292,8 +304,10 @@ export function ThemeSelector() {
               <DialogTitle className="flex items-center gap-2">
                 {alertDialog?.title === 'Premium Theme' ? (
                   <Crown className="h-5 w-5 text-yellow-500" />
-                ) : (
+                ) : alertDialog?.title === 'Exclusive Theme' ? (
                   <Gem className="h-5 w-5 text-blue-500" />
+                ) : (
+                  <Clock className="h-5 w-5 text-purple-500" />
                 )}
                 {alertDialog?.title}
               </DialogTitle>
@@ -302,11 +316,15 @@ export function ThemeSelector() {
               </DialogDescription>
             </DialogHeader>
             <div className="flex justify-end gap-2">
-              <Button variant="outline" onClick={handleAlertClose}>
-                Cancel
-              </Button>
-              <Button>
-                {alertDialog?.title === 'Premium Theme' ? 'Upgrade to Pro' : 'Purchase Theme'}
+              {alertDialog?.title !== 'Limited Time Theme' && (
+                <Button variant="outline" onClick={handleAlertClose}>
+                  Cancel
+                </Button>
+              )}
+              <Button onClick={handleAlertClose}>
+                {alertDialog?.title === 'Premium Theme' ? 'Upgrade to Pro' : 
+                 alertDialog?.title === 'Exclusive Theme' ? 'Purchase Theme' : 
+                 'Sweet! 🎨'}
               </Button>
             </div>
           </DialogContent>
@@ -376,8 +394,10 @@ export function ThemeSelector() {
             <DialogTitle className="flex items-center gap-2">
               {alertDialog?.title === 'Premium Theme' ? (
                 <Crown className="h-5 w-5 text-yellow-500" />
-              ) : (
+              ) : alertDialog?.title === 'Exclusive Theme' ? (
                 <Gem className="h-5 w-5 text-blue-500" />
+              ) : (
+                <Clock className="h-5 w-5 text-purple-500" />
               )}
               {alertDialog?.title}
             </DialogTitle>
@@ -386,11 +406,15 @@ export function ThemeSelector() {
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end gap-2">
-            <Button variant="outline" onClick={handleAlertClose}>
-              Cancel
-            </Button>
-            <Button>
-              {alertDialog?.title === 'Premium Theme' ? 'Upgrade to Pro' : 'Purchase Theme'}
+            {alertDialog?.title !== 'Limited Time Theme' && (
+              <Button variant="outline" onClick={handleAlertClose}>
+                Cancel
+              </Button>
+            )}
+            <Button onClick={handleAlertClose}>
+              {alertDialog?.title === 'Premium Theme' ? 'Upgrade to Pro' : 
+               alertDialog?.title === 'Exclusive Theme' ? 'Purchase Theme' : 
+               'Sweet! 🎨'}
             </Button>
           </div>
         </DialogContent>
