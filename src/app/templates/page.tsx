@@ -39,6 +39,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { PageLayout } from "@/components/layout";
 
 const categories = [
 	{ id: "all", name: "All Templates", count: 7 },
