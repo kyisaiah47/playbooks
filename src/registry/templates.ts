@@ -1,9 +1,9 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate } from '@/data/templates';
+import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
 
 // Function to sync template resources with blog registry
-function createTemplateWithSyncedResources(baseTemplate: GuidanceTemplate): GuidanceTemplate {
+export function createTemplateWithSyncedResources(baseTemplate: GuidanceTemplate): GuidanceTemplate {
   // Find all blog posts that should be resources for this template
   const relatedBlogPosts = blogRegistry.filter(post => 
     post.relatedTemplates?.includes(baseTemplate.id) || 
@@ -94,14 +94,14 @@ export const templateRegistry: TemplateRegistryEntry[] = [
   // Career & Business Templates
   {
     id: "job-search",
-    name: "Job Search",
-    description: "Track applications, prepare for interviews, and organize your job search strategy.",
+    name: "Job Search Strategy",
+    description: "Strategic approach to landing your dream position with expert guidance and actionable steps.",
     category: "Career & Business",
     icon: "💼",
-    url: "/templates/job-search",
+    url: "/job-search/app",
     color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
     iconColor: "text-purple-600 dark:text-purple-400",
-    comingSoon: true
+    template: createTemplateWithSyncedResources(jobSearchTemplate)
   },
   {
     id: "business-launch",

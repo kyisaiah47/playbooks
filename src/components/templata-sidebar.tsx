@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target } from "lucide-react"
+import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -40,6 +40,14 @@ const getSectionIcon = (sectionId: string) => {
     case 'making-offers': return <HandCoins className="w-4 h-4" />;
     case 'closing-process': return <FileText className="w-4 h-4" />;
     case 'moving-settling': return <Truck className="w-4 h-4" />;
+    
+    // Job Search sections
+    case 'career-assessment': return <User className="w-4 h-4" />;
+    case 'application-materials': return <PenTool className="w-4 h-4" />;
+    case 'job-searching': return <Network className="w-4 h-4" />;
+    case 'interview-preparation': return <MessageSquare className="w-4 h-4" />;
+    case 'offer-evaluation': return <CheckSquare className="w-4 h-4" />;
+    case 'career-development': return <TrendingUp className="w-4 h-4" />;
     
     default: return <Target className="w-4 h-4" />;
   }

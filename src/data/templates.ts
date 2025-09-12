@@ -936,8 +936,348 @@ export const homeBuyingTemplate: GuidanceTemplate = {
   ]
 };
 
+export const jobSearchTemplate: GuidanceTemplate = {
+  id: 'job-search',
+  title: 'Job Search Strategy',
+  description: 'Strategic approach to landing your dream position with expert guidance and actionable steps',
+  category: 'career',
+  icon: '💼',
+  sections: [
+    {
+      id: 'career-assessment',
+      title: 'Career Assessment & Goals',
+      description: 'Evaluate your skills, interests, and career objectives to target the right opportunities',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'skills-inventory',
+          prompt: "What are your core technical and soft skills, and which ones differentiate you from other candidates?",
+          category: 'planning',
+          helpText: 'List 5-7 key skills with specific examples. Include both hard skills (software, certifications) and soft skills (leadership, communication).',
+          relatedResources: ['skills-assessment-guide', 'resume-optimization-checklist']
+        },
+        {
+          id: 'career-goals',
+          prompt: 'What type of role, company culture, and career progression are you seeking in your next position?',
+          category: 'planning',
+          helpText: 'Be specific about job titles, industry, company size, remote/hybrid preferences, and long-term career aspirations.'
+        },
+        {
+          id: 'value-proposition',
+          prompt: 'What unique value do you bring to employers? What problems can you solve for them?',
+          category: 'planning',
+          helpText: 'Think about your achievements, impact metrics, and what makes you stand out. Focus on results you\'ve delivered.'
+        },
+        {
+          id: 'target-companies',
+          prompt: 'Which specific companies or types of organizations align with your values and career goals?',
+          category: 'research',
+          helpText: 'Research company cultures, values, growth potential, and employee satisfaction. Create a target list of 20-30 companies.'
+        },
+        {
+          id: 'salary-expectations',
+          prompt: 'What salary range and benefits package do you need/want for your next role?',
+          category: 'planning',
+          helpText: 'Research market rates for your role/location using Glassdoor, Payscale, levels.fyi. Consider total compensation including benefits.'
+        },
+        {
+          id: 'deal-breakers',
+          prompt: 'What are your non-negotiables in terms of role responsibilities, company culture, or work environment?',
+          category: 'consideration',
+          helpText: 'Be clear about what you absolutely won\'t accept. This helps you filter opportunities and make decisions faster.'
+        }
+      ]
+    },
+    {
+      id: 'application-materials',
+      title: 'Resume & Application Materials',
+      description: 'Create compelling application materials that showcase your value and get you noticed',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'resume-optimization',
+          prompt: "How can you optimize your resume format, content, and keywords for your target roles?",
+          category: 'planning',
+          helpText: 'Use ATS-friendly formats, include relevant keywords from job descriptions, quantify achievements with metrics.',
+          relatedResources: ['resume-optimization-checklist', 'ats-resume-guide']
+        },
+        {
+          id: 'cover-letter-strategy',
+          prompt: 'What key messages should your cover letters convey, and how will you customize them for each application?',
+          category: 'planning',
+          helpText: 'Focus on 2-3 key achievements that relate to the specific role. Show knowledge of the company and role requirements.'
+        },
+        {
+          id: 'portfolio-showcase',
+          prompt: 'What work samples, projects, or portfolio pieces best demonstrate your capabilities?',
+          category: 'planning',
+          helpText: 'Choose 3-5 diverse examples that show range and impact. Include context, your role, and measurable outcomes.'
+        },
+        {
+          id: 'linkedin-optimization',
+          prompt: 'How can you optimize your LinkedIn profile to attract recruiters and showcase your professional brand?',
+          category: 'planning',
+          helpText: 'Professional photo, compelling headline, keyword-rich summary, complete experience section, recommendations, and active posting.'
+        },
+        {
+          id: 'references-preparation',
+          prompt: 'Who will serve as your professional references, and how will you prepare them?',
+          category: 'planning',
+          helpText: 'Choose 3-5 references who can speak to different aspects of your work. Brief them on roles you\'re pursuing.'
+        },
+        {
+          id: 'application-tracking',
+          prompt: 'How will you organize and track your job applications, interviews, and follow-ups?',
+          category: 'planning',
+          helpText: 'Use a spreadsheet or tool to track company, role, application date, contacts, interview stages, and next steps.'
+        }
+      ]
+    },
+    {
+      id: 'job-searching',
+      title: 'Job Search & Networking',
+      description: 'Execute a strategic job search using multiple channels and networking approaches',
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: 'search-channels',
+          prompt: "Which job search channels will you use, and how much time will you allocate to each?",
+          category: 'planning',
+          helpText: 'Job boards (20%), company websites (30%), networking (40%), recruiters (10%). Adjust based on your industry.',
+          relatedResources: ['job-search-strategy-guide', 'networking-templates']
+        },
+        {
+          id: 'networking-strategy',
+          prompt: 'How will you leverage your professional network and build new connections in your target industry?',
+          category: 'planning',
+          helpText: 'Reach out to former colleagues, attend industry events, join professional associations, engage on LinkedIn.'
+        },
+        {
+          id: 'informational-interviews',
+          prompt: 'Who can you conduct informational interviews with to learn about roles and companies?',
+          category: 'research',
+          helpText: 'Identify people in target roles/companies. Ask about their career path, company culture, and industry trends.'
+        },
+        {
+          id: 'recruiter-outreach',
+          prompt: 'Which recruiters or staffing agencies specialize in your field, and how will you connect with them?',
+          category: 'planning',
+          helpText: 'Research recruiters on LinkedIn who place people in your target roles. Send personalized connection requests.'
+        },
+        {
+          id: 'application-schedule',
+          prompt: 'How many applications will you submit per week, and what\'s your daily/weekly job search schedule?',
+          category: 'planning',
+          helpText: 'Aim for 5-15 quality applications per week. Block dedicated time for searching, applying, and networking daily.'
+        },
+        {
+          id: 'online-presence',
+          prompt: 'How will you maintain visibility and credibility in your industry through online presence?',
+          category: 'planning',
+          helpText: 'Share industry insights on LinkedIn, contribute to discussions, showcase expertise through posts or articles.'
+        }
+      ]
+    },
+    {
+      id: 'interview-preparation',
+      title: 'Interview Preparation',
+      description: 'Master different interview formats and prepare compelling responses that demonstrate your value',
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: 'story-development',
+          prompt: "What are your best STAR method stories that demonstrate key competencies employers value?",
+          category: 'planning',
+          helpText: 'Prepare 5-7 stories covering leadership, problem-solving, teamwork, conflict resolution, and achieving results.',
+          relatedResources: ['interview-preparation-guide', 'star-method-examples']
+        },
+        {
+          id: 'technical-preparation',
+          prompt: 'What technical skills, knowledge, or assessments should you prepare for in your target roles?',
+          category: 'planning',
+          helpText: 'Review job requirements, practice coding challenges, prepare case studies, brush up on industry knowledge.'
+        },
+        {
+          id: 'company-research',
+          prompt: 'How will you research each company before interviews to demonstrate genuine interest and fit?',
+          category: 'research',
+          helpText: 'Study company mission, values, recent news, competitors, challenges, and the role\'s place in the organization.'
+        },
+        {
+          id: 'question-preparation',
+          prompt: 'What thoughtful questions will you ask interviewers to assess fit and show engagement?',
+          category: 'planning',
+          helpText: 'Prepare questions about role expectations, team dynamics, company culture, growth opportunities, and challenges.'
+        },
+        {
+          id: 'virtual-interview-prep',
+          prompt: 'How will you prepare for video interviews to ensure professional presentation and technical readiness?',
+          category: 'planning',
+          helpText: 'Test technology, optimize lighting/background, practice eye contact with camera, have backup plans for technical issues.'
+        },
+        {
+          id: 'salary-negotiation',
+          prompt: 'How will you approach salary negotiation and what\'s your strategy for discussing compensation?',
+          category: 'planning',
+          helpText: 'Research market rates, know your minimum acceptable offer, prepare to discuss total compensation package, not just salary.'
+        }
+      ]
+    },
+    {
+      id: 'offer-evaluation',
+      title: 'Offer Evaluation & Negotiation',
+      description: 'Evaluate job offers comprehensively and negotiate terms that align with your value and goals',
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: 'offer-analysis',
+          prompt: "How will you evaluate job offers beyond just salary to make the best career decision?",
+          category: 'decision',
+          helpText: 'Consider growth potential, company stability, work-life balance, benefits, culture fit, learning opportunities.',
+          relatedResources: ['offer-evaluation-checklist', 'salary-negotiation-guide']
+        },
+        {
+          id: 'negotiation-strategy',
+          prompt: 'What aspects of the offer will you negotiate, and how will you approach these conversations?',
+          category: 'planning',
+          helpText: 'Salary, start date, vacation time, remote work options, professional development budget, title, or responsibilities.'
+        },
+        {
+          id: 'counteroffer-handling',
+          prompt: 'If your current employer makes a counteroffer, how will you evaluate and respond to it?',
+          category: 'decision',
+          helpText: 'Consider why you were job searching originally, long-term career goals, and whether the counteroffer addresses root issues.'
+        },
+        {
+          id: 'decision-timeline',
+          prompt: 'What\'s your timeline for making decisions, and how will you manage multiple offers or opportunities?',
+          category: 'planning',
+          helpText: 'Ask for reasonable time to consider offers, communicate transparently with all parties, make decisions promptly.'
+        },
+        {
+          id: 'reference-checks',
+          prompt: 'How will you prepare for reference checks and ensure your references are ready to support you?',
+          category: 'planning',
+          helpText: 'Give references advance notice, provide context about the role, share your resume and key talking points.'
+        },
+        {
+          id: 'transition-planning',
+          prompt: 'How will you professionally transition out of your current role and into your new position?',
+          category: 'planning',
+          helpText: 'Give appropriate notice, document your work, train replacements, maintain relationships, plan your start date.'
+        }
+      ]
+    },
+    {
+      id: 'career-development',
+      title: 'Ongoing Career Development',
+      description: 'Build long-term career success through continuous learning and professional growth',
+      order: 6,
+      reflectionPrompts: [
+        {
+          id: 'skill-development',
+          prompt: "What skills do you need to develop to advance in your career, and how will you acquire them?",
+          category: 'planning',
+          helpText: 'Identify trending skills in your field, create learning plan, seek mentorship, take courses, get certifications.',
+          relatedResources: ['career-development-plan', 'professional-learning-resources']
+        },
+        {
+          id: 'professional-network',
+          prompt: 'How will you continue building and maintaining your professional network throughout your career?',
+          category: 'planning',
+          helpText: 'Join professional associations, attend conferences, maintain relationships, help others, stay visible in your industry.'
+        },
+        {
+          id: 'performance-tracking',
+          prompt: 'How will you track and document your achievements to support future career moves?',
+          category: 'planning',
+          helpText: 'Keep an achievement log, quantify your impact, collect feedback and testimonials, update LinkedIn regularly.'
+        },
+        {
+          id: 'industry-awareness',
+          prompt: 'How will you stay current with industry trends, technologies, and market changes?',
+          category: 'planning',
+          helpText: 'Follow industry publications, thought leaders, join professional groups, attend webinars and conferences.'
+        },
+        {
+          id: 'mentorship',
+          prompt: 'How will you find mentors and also mentor others to accelerate your career growth?',
+          category: 'planning',
+          helpText: 'Seek mentors 2-3 levels above you, offer to mentor junior colleagues, join formal mentorship programs.'
+        },
+        {
+          id: 'career-pivoting',
+          prompt: 'How will you evaluate and plan for potential career pivots or major transitions?',
+          category: 'consideration',
+          helpText: 'Regularly assess career satisfaction, explore adjacent fields, build transferable skills, network in new areas.'
+        }
+      ]
+    }
+  ],
+  resources: [],
+  expertTips: [
+    {
+      id: 'networking-tip-1',
+      tip: 'Focus on building genuine relationships, not just asking for jobs. Help others first and job opportunities will follow naturally.',
+      author: 'Sarah Chen, Executive Recruiter (15 years)',
+      category: 'Networking',
+      importance: 'high'
+    },
+    {
+      id: 'resume-tip-1',
+      tip: 'Quantify your achievements with specific metrics. "Increased sales by 25%" is much stronger than "improved sales performance."',
+      author: 'Mike Rodriguez, HR Director',
+      category: 'Resume',
+      importance: 'high'
+    },
+    {
+      id: 'interview-tip-1',
+      tip: 'Practice the STAR method (Situation, Task, Action, Result) for behavioral questions. Have 5-7 detailed stories ready.',
+      author: 'Jennifer Liu, Career Coach',
+      category: 'Interviewing',
+      importance: 'high'
+    },
+    {
+      id: 'application-tip-1',
+      tip: 'Apply within the first 48 hours when possible. Early applications get more attention from hiring managers.',
+      author: 'David Park, Talent Acquisition Manager',
+      category: 'Job Applications',
+      importance: 'high'
+    },
+    {
+      id: 'linkedin-tip-1',
+      tip: 'Post valuable industry insights regularly on LinkedIn. Recruiters notice active, engaged professionals.',
+      author: 'Amanda Foster, Personal Branding Expert',
+      category: 'Professional Branding',
+      importance: 'medium'
+    },
+    {
+      id: 'negotiation-tip-1',
+      tip: 'Never negotiate salary in the first interview. Wait until you have an offer and they want you specifically.',
+      author: 'Robert Chen, Negotiation Expert',
+      category: 'Salary Negotiation',
+      importance: 'high'
+    },
+    {
+      id: 'research-tip-1',
+      tip: 'Research the interviewer on LinkedIn beforehand. Finding common connections or interests builds rapport quickly.',
+      author: 'Lisa Chang, Executive Coach',
+      category: 'Interview Preparation',
+      importance: 'medium'
+    },
+    {
+      id: 'follow-up-tip-1',
+      tip: 'Send personalized thank-you emails within 24 hours of each interview. Reference specific conversation points.',
+      author: 'Tom Wilson, Hiring Manager',
+      category: 'Interview Follow-up',
+      importance: 'high'
+    }
+  ]
+};
+
 export const templates: GuidanceTemplate[] = [
   weddingTemplate,
   homeBuyingTemplate,
+  jobSearchTemplate,
   // Future templates generated by AI using the same structure
 ];

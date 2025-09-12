@@ -2787,6 +2787,245 @@ Remember that no house is perfect, and the goal isn't to find a problem-free pro
     tags: ["home inspection", "property evaluation", "negotiations"],
     relatedTemplates: ["home-buying"],
     relatedPosts: ["first-time-home-buyer-guide", "mortgage-pre-approval-checklist"]
+  },
+  // Job Search blog posts
+  {
+    id: "resume-optimization-guide",
+    slug: "resume-optimization-guide",
+    title: "2025 Resume Optimization Guide: Get Past ATS and Impress Hiring Managers",
+    excerpt: "Master resume formatting, keyword optimization, and content strategy to land more interviews",
+    content: `Creating a resume that gets noticed requires understanding both applicant tracking systems (ATS) and human psychology. This comprehensive guide covers everything from formatting to content optimization, helping you craft a resume that opens doors.
+
+## ATS-Friendly Formatting Essentials
+
+**Required Format Elements**
+- Use standard fonts (Arial, Calibri, or Times New Roman)
+- Save as .docx for best ATS compatibility
+- Include clear section headings (Experience, Education, Skills)
+- Use standard bullet points (not decorative symbols)
+- Avoid headers, footers, images, and tables that confuse ATS
+
+## Content Optimization Strategy
+
+**Achievement-Focused Writing**
+Focus on quantifiable results rather than job duties. Replace "responsible for managing team" with "managed 8-person team, increasing productivity by 30% and reducing turnover by 45%."
+
+**Keyword Integration**
+- Mirror language from job descriptions
+- Include both acronyms and full terms (SEO and Search Engine Optimization)
+- Incorporate skills throughout experience descriptions
+- Use industry-specific terminology naturally
+
+## Section-by-Section Breakdown
+
+**Professional Summary (2-3 lines)**
+Lead with your years of experience and core expertise. Example: "Results-driven Marketing Manager with 5+ years driving digital campaigns that increased revenue by $2M+ annually. Expert in Google Ads, SEO, and conversion optimization with proven track record in B2B SaaS environments."
+
+**Experience Optimization**
+- Lead with strong action verbs (achieved, implemented, optimized)
+- Quantify everything possible (percentages, dollar amounts, timeframes)
+- Focus on business impact and outcomes
+- Use reverse chronological order
+- Include relevant context for achievements
+
+**Skills Section Strategy**
+Create tiered skill categories: Core Competencies (your strongest 6-8 skills), Technical Skills (software/tools), and Additional Skills. Match skills to job requirements but only include what you can confidently discuss in interviews.`,
+    author: "Jennifer Liu",
+    publishedAt: "2024-12-15",
+    readTime: "12 min",
+    category: "Career",
+    type: "guide",
+    difficulty: "intermediate",
+    tags: ["resume", "ATS", "job applications", "career"],
+    relatedTemplates: ["job-search"],
+    relatedPosts: ["interview-preparation-guide", "linkedin-profile-optimization"]
+  },
+  {
+    id: "interview-preparation-guide",
+    slug: "interview-preparation-guide", 
+    title: "Complete Interview Preparation Guide: From Research to Follow-Up",
+    excerpt: "Strategic approach to interview preparation including STAR method, company research, and confidence building",
+    content: `Successful interviewing is about preparation, authenticity, and strategic storytelling. This guide provides a systematic approach to interview preparation that builds confidence and demonstrates your value to potential employers.
+
+## Pre-Interview Research Strategy
+
+**Company Deep Dive**
+Research recent company news, financial performance, leadership changes, and market position. Study their website, social media, and employee reviews on Glassdoor. Understand their mission, values, and current challenges.
+
+**Role Analysis**
+Break down the job description into required vs. preferred qualifications. Identify key challenges the role addresses and how your background aligns. Research similar roles at other companies for context.
+
+**Interviewer Research**
+Look up your interviewers on LinkedIn. Note shared connections, career paths, and recent posts or achievements. This helps build rapport and shows genuine interest.
+
+## STAR Method Mastery
+
+**Story Bank Development**
+Prepare 7-10 detailed stories covering:
+- Leadership and influence
+- Problem-solving and innovation
+- Teamwork and collaboration
+- Handling conflict or pressure
+- Learning from failure
+- Achieving difficult goals
+- Managing change or ambiguity
+
+**STAR Structure**
+- **Situation**: Provide context and background
+- **Task**: Explain your responsibility or challenge
+- **Action**: Detail specific steps you took
+- **Result**: Quantify the outcome and impact
+
+**Practice and Refinement**
+Practice stories aloud until they flow naturally. Time each story (2-3 minutes maximum). Prepare multiple stories for common competencies to avoid repetition.
+
+## Question Categories and Strategies
+
+**Behavioral Questions**
+These assess past performance as a predictor of future success. Use STAR method consistently. Examples: "Tell me about a time you had to influence without authority" or "Describe a situation where you had to learn something completely new."
+
+**Technical/Functional Questions**
+Demonstrate depth of knowledge while keeping explanations accessible. Use specific examples from your experience. If you don't know something, explain how you would approach learning it.
+
+**Situational Questions**
+These present hypothetical scenarios. Walk through your thought process step by step. Show analytical thinking and consider multiple perspectives. Ask clarifying questions when appropriate.`,
+    author: "Sarah Chen",
+    publishedAt: "2024-12-10", 
+    readTime: "15 min",
+    category: "Career",
+    type: "guide",
+    difficulty: "intermediate",
+    tags: ["interviews", "career", "STAR method", "preparation"],
+    relatedTemplates: ["job-search"],
+    relatedPosts: ["resume-optimization-guide", "salary-negotiation-guide"]
+  },
+  {
+    id: "linkedin-profile-optimization",
+    slug: "linkedin-profile-optimization",
+    title: "LinkedIn Profile Optimization: Attract Recruiters and Build Your Professional Brand", 
+    excerpt: "Complete guide to optimizing every section of your LinkedIn profile for maximum visibility and engagement",
+    content: `Your LinkedIn profile is your professional storefront, often the first impression recruiters and potential employers get of you. This comprehensive guide covers every element of profile optimization to maximize your visibility and attract the right opportunities.
+
+## Profile Photo and Header Strategy
+
+**Professional Photo Essentials**
+- High-quality, well-lit headshot with neutral background
+- Dress appropriately for your industry (business formal for traditional industries, business casual for tech/startups)
+- Smile genuinely and make eye contact with camera
+- Ensure photo is recent and represents your current appearance
+
+**Background Image Optimization**
+Use your header space strategically. Include your personal brand, company logo, or industry-relevant imagery. Keep text minimal but impactful - your value proposition or key expertise areas.
+
+## Headline Optimization
+
+**Beyond Job Titles**
+Your headline is prime real estate for keywords and value proposition. Instead of just "Marketing Manager," try "Marketing Manager | Driving 40% Revenue Growth Through Data-Driven Digital Campaigns | B2B SaaS Expert."
+
+**Keyword Strategy**
+Include 2-3 key terms recruiters search for in your field. Balance popular keywords with specific niche skills that differentiate you.
+
+## Summary Section Mastery
+
+**Hook, Story, Call-to-Action Structure**
+- **Hook** (first 2 lines): Lead with your strongest value proposition
+- **Story** (middle): Brief career narrative highlighting key achievements
+- **Call-to-Action** (end): Invite connection and specify how people can reach you
+
+**Quantification and Proof Points**
+Include specific metrics and achievements. Use bullet points for readability. Mention recognizable company names, certifications, or awards.
+
+## Experience Section Optimization
+
+**Beyond Copy-Paste Job Descriptions**
+Reframe each role around achievements and impact rather than responsibilities. Use the same principles as resume writing - quantify results, use action verbs, and focus on business outcomes.
+
+**Strategic Keyword Integration**
+Naturally incorporate relevant keywords throughout your experience descriptions. This improves search visibility while maintaining readability.
+
+## Skills and Endorsements Strategy
+
+**Strategic Skill Selection**
+Choose 50 skills maximum, prioritizing those most relevant to your target roles. Order them strategically - your top 3 skills appear prominently and get the most endorsement requests.
+
+**Endorsement Management** 
+Actively endorse others in your network for skills you can genuinely vouch for. This often leads to reciprocal endorsements and strengthens professional relationships.`,
+    author: "Amanda Foster",
+    publishedAt: "2024-12-08",
+    readTime: "10 min", 
+    category: "Career",
+    type: "guide",
+    difficulty: "beginner",
+    tags: ["LinkedIn", "professional branding", "networking", "career"],
+    relatedTemplates: ["job-search"],
+    relatedPosts: ["resume-optimization-guide", "networking-strategy-guide"]
+  },
+  {
+    id: "salary-negotiation-guide",
+    slug: "salary-negotiation-guide",
+    title: "Salary Negotiation Mastery: Get Paid What You're Worth",
+    excerpt: "Strategic approach to salary negotiation including research, timing, and counter-offer techniques", 
+    content: `Salary negotiation is a critical career skill that compounds over time. This guide provides a strategic framework for negotiating compensation packages that reflect your true value and set you up for long-term financial success.
+
+## Pre-Negotiation Research and Preparation
+
+**Market Rate Analysis**
+Research compensation using multiple sources: Glassdoor, PayScale, levels.fyi, Blind, and industry salary surveys. Consider total compensation including base salary, bonuses, equity, and benefits.
+
+**Personal Value Inventory**
+Document your achievements, unique skills, and the specific value you bring. Quantify your impact with metrics and prepare examples of how you've saved or earned money for employers.
+
+**BATNA Development**
+Know your Best Alternative to a Negotiated Agreement. This might be another job offer, staying in your current role, or freelance opportunities. Having alternatives strengthens your negotiating position.
+
+## Timing and Approach Strategy
+
+**The Right Moment**
+Never negotiate salary during the initial interview. Wait until you have an offer and they want you specifically. This shifts the dynamic from "convince us to hire you" to "let's work out the details."
+
+**Opening the Conversation**
+Express enthusiasm about the opportunity first. Then position negotiation as working together to find mutually beneficial terms. Example: "I'm excited about this opportunity and want to make sure we can work out terms that reflect the value I'll bring to the team."
+
+**Anchoring Strategy**
+If asked for salary expectations early, deflect diplomatically: "I'm sure you have a fair range in mind for someone with my experience. What were you thinking?" If pressed, provide a range based on your research.
+
+## Negotiation Tactics and Techniques
+
+**Total Package Thinking**
+Don't focus solely on base salary. Consider:
+- Signing bonus to bridge salary gaps
+- Earlier performance review cycles
+- Additional vacation time
+- Professional development budget
+- Remote work flexibility
+- Stock options or equity
+- Title adjustments that enable future growth
+
+**Multi-Issue Negotiation**
+Present several items together rather than negotiating each separately. This creates more opportunities for mutual gain and prevents the employer from saying no to everything.
+
+**Justification Framework**
+Support every request with market data, your unique qualifications, or the specific value you'll provide. Make it easy for the employer to say yes by giving them business reasons.
+
+## Handling Common Scenarios
+
+**The "Budget Constraints" Response**
+Ask about non-salary benefits that might have budget flexibility. Suggest creative alternatives like performance-based increases or deferred compensation.
+
+**Multiple Offer Leverage**
+Be honest but strategic about other offers. Focus on why this role is your preference while noting the competitive landscape. Never fabricate offers.
+
+**Counter-Offer from Current Employer**
+Evaluate based on why you were job searching originally. Will the counter-offer address the root issues? Consider long-term implications and whether you'll be viewed as a flight risk.`,
+    author: "Robert Chen", 
+    publishedAt: "2024-12-05",
+    readTime: "13 min",
+    category: "Career",
+    type: "guide", 
+    difficulty: "expert",
+    tags: ["salary negotiation", "compensation", "career advancement"],
+    relatedTemplates: ["job-search"],
+    relatedPosts: ["interview-preparation-guide", "offer-evaluation-checklist"]
   }
 ];
 
