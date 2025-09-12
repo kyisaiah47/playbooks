@@ -1,7 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Heart, FileText, Users, Plus } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -67,6 +69,20 @@ export function TemplataContentSidebar({
     }
   }
 
+  const getSectionIcon = (sectionId: string) => {
+    switch (sectionId) {
+      case 'budget-finance': return <DollarSign className="w-4 h-4" />
+      case 'venue-selection': return <MapPin className="w-4 h-4" />
+      case 'guest-management': return <UserCheck className="w-4 h-4" />
+      case 'vendor-selection': return <Briefcase className="w-4 h-4" />
+      case 'ceremony-planning': return <Church className="w-4 h-4" />
+      case 'reception-planning': return <Music className="w-4 h-4" />
+      case 'styling-decor': return <Palette className="w-4 h-4" />
+      case 'attire-beauty': return <Shirt className="w-4 h-4" />
+      default: return <Heart className="w-4 h-4" />
+    }
+  }
+
   return (
     <Sidebar
       collapsible="icon"
@@ -82,15 +98,21 @@ export function TemplataContentSidebar({
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
-                <div>
+                <Link href="/">
                   <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                    <span className="text-lg">{template.icon}</span>
+                    <Image
+                      src="/shift.svg"
+                      alt="Templata"
+                      width={16}
+                      height={16}
+                      className="dark:invert"
+                    />
                   </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-medium">Templata</span>
                     <span className="truncate text-xs">{template.category}</span>
                   </div>
-                </div>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -115,7 +137,7 @@ export function TemplataContentSidebar({
                       isActive={activeSection === index && activeTab === 'prompts'}
                       className="px-2.5 md:px-2"
                     >
-                      <FileText className="w-4 h-4" />
+                      {getSectionIcon(section.id)}
                       <span className="text-xs">{section.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -145,7 +167,7 @@ export function TemplataContentSidebar({
       </Sidebar>
 
       {/* Content Browser Sidebar */}
-      <Sidebar collapsible="none" className="hidden w-80 md:flex h-full">
+      <Sidebar collapsible="none" className="hidden flex-1 md:flex">
         <SidebarHeader className="gap-3.5 border-b p-4 flex-shrink-0">
           <div className="flex w-full items-center justify-between">
             <div className="text-foreground text-base font-medium">
@@ -166,7 +188,7 @@ export function TemplataContentSidebar({
                 <button
                   key={prompt.id}
                   onClick={() => onInsertPrompt?.(prompt)}
-                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight last:border-b-0 w-full text-left group"
+                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight last:border-b-0 w-full text-left group overflow-hidden"
                 >
                   <div className="flex w-full items-center gap-2">
                     <Badge className={`text-xs ${getCategoryColor(prompt.category)}`}>
@@ -176,7 +198,7 @@ export function TemplataContentSidebar({
                   </div>
                   <span className="font-medium line-clamp-2">{prompt.prompt}</span>
                   {prompt.helpText && (
-                    <span className="line-clamp-2 w-full text-xs whitespace-break-spaces text-muted-foreground">
+                    <span className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
                       {prompt.helpText}
                     </span>
                   )}
@@ -187,7 +209,7 @@ export function TemplataContentSidebar({
                 <button
                   key={resource.id}
                   onClick={() => onOpenResource?.(resource)}
-                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight last:border-b-0 w-full text-left group"
+                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight last:border-b-0 w-full text-left group overflow-hidden"
                 >
                   <div className="flex w-full items-center gap-2">
                     <Badge variant="outline" className="text-xs">
@@ -199,7 +221,7 @@ export function TemplataContentSidebar({
                     <span className="ml-auto text-xs text-muted-foreground">{resource.readTime}</span>
                   </div>
                   <span className="font-medium line-clamp-2">{resource.title}</span>
-                  <span className="line-clamp-2 w-full text-xs whitespace-break-spaces text-muted-foreground">
+                  <span className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
                     {resource.excerpt}
                   </span>
                 </button>

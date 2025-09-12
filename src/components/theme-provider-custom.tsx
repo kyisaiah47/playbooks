@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState, useCallback } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { ThemeColors, templataThemeLight, applyTheme, getThemeForTemplate, themes } from '@/lib/themes'
 
 interface ThemeContextType {
@@ -28,11 +28,7 @@ interface CustomThemeProviderProps {
 
 export function CustomThemeProvider({ children, defaultTheme = templataThemeLight }: CustomThemeProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<ThemeColors>(defaultTheme)
-
-  const getThemeById = useCallback((themeId: string) => {
-    const theme = themes.find(t => t.id === themeId)
-    return theme ? theme.colors.light : null // Default to light mode
-  }, [])
+  const [isThemeLoaded, setIsThemeLoaded] = useState(false)
 
   // Load saved theme on mount
   useEffect(() => {
@@ -42,16 +38,10 @@ export function CustomThemeProvider({ children, defaultTheme = templataThemeLigh
         const theme = JSON.parse(savedTheme)
         setCurrentTheme(theme)
       } catch (error) {
-        // Handle case where savedTheme is just a theme ID (string)
-        const themeById = getThemeById(savedTheme)
-        if (themeById) {
-          setCurrentTheme(themeById)
-        } else {
-          console.error('Failed to parse saved theme and theme ID not found:', error)
-          localStorage.removeItem('templata-theme') // Clear invalid theme
-        }
+        console.error('Failed to parse saved theme:', error)
       }
     }
+    setIsThemeLoaded(true)
   }, [])
 
   useEffect(() => {
@@ -73,6 +63,10 @@ export function CustomThemeProvider({ children, defaultTheme = templataThemeLigh
     setCurrentTheme(defaultTheme)
   }
 
+  const getThemeById = (themeId: string) => {
+    const theme = themes.find(t => t.id === themeId)
+    return theme ? theme.colors : null
+  }
 
   return (
     <ThemeContext.Provider value={{
@@ -82,7 +76,11 @@ export function CustomThemeProvider({ children, defaultTheme = templataThemeLigh
       resetToDefault,
       getThemeById
     }}>
-      {children}
+      {!isThemeLoaded ? (
+        <div style={{ visibility: 'hidden' }}>{children}</div>
+      ) : (
+        children
+      )}
     </ThemeContext.Provider>
   )
 }

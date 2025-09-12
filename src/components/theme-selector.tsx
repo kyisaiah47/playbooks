@@ -146,7 +146,7 @@ export function ThemeSelector() {
                 }
                 ${themeOption.isPremium ? 'ring-2 ring-yellow-400/30' : ''}
                 ${themeOption.isExclusive ? 'ring-2 ring-blue-400/30' : ''}
-                ${themeOption.isLimited ? 'ring-2 ring-purple-400/30 bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-950/20 dark:to-pink-950/20' : ''}
+                ${themeOption.isLimited ? 'ring-2 ring-purple-400/30' : ''}
               `}
               onClick={() => {
                 const selectedTheme = themes.find(t => t.id === themeOption.id)

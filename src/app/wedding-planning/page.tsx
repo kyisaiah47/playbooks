@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
 import {
   Accordion,
   AccordionContent,
@@ -12,18 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import {
   Heart,
-  Home,
-  Briefcase,
-  Target,
   Users,
   Calendar,
   MapPin,
@@ -38,6 +25,7 @@ import {
   Camera,
   Music,
 } from "lucide-react"
+import { PageLayout } from "@/components/layout"
 
 export const metadata: Metadata = {
   title: 'Wedding Planning Template | Save 50+ Hours Planning Your Perfect Wedding | Templata',
@@ -221,7 +209,7 @@ export default function WeddingPlanningPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <PageLayout>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -230,100 +218,6 @@ export default function WeddingPlanningPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      {/* Navigation */}
-      <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-6xl mx-auto px-4">
-        <div className="bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-lg">
-          <div className="flex h-16 items-center justify-between px-6">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image src="/shift.svg" alt="Templata" width={28} height={28} className="dark:invert" />
-              <span className="font-bold text-2xl">Templata</span>
-            </Link>
-
-            <NavigationMenu>
-              <NavigationMenuList className="space-x-2">
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-base font-medium">Templates</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid grid-cols-2 gap-6 p-6 w-[500px]">
-                      <div className="space-y-3">
-                        <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Personal Life</h4>
-                        <NavigationMenuLink asChild>
-                          <Link href="/wedding-planning" className="block group p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                            <div className="flex items-start space-x-3">
-                              <Heart className="h-4 w-4 text-primary mt-1" />
-                              <div>
-                                <div className="font-semibold group-hover:text-primary transition-colors">Wedding Planning</div>
-                                <div className="text-sm text-muted-foreground">Complete wedding organization</div>
-                              </div>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link href="#" className="block group p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                            <div className="flex items-start space-x-3">
-                              <Home className="h-4 w-4 text-muted-foreground mt-1" />
-                              <div>
-                                <div className="font-semibold group-hover:text-primary transition-colors">Home Buying</div>
-                                <div className="text-sm text-muted-foreground">Navigate the home buying process</div>
-                              </div>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                      </div>
-                      <div className="space-y-3">
-                        <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Career & Business</h4>
-                        <NavigationMenuLink asChild>
-                          <Link href="#" className="block group p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                            <div className="flex items-start space-x-3">
-                              <Briefcase className="h-4 w-4 text-muted-foreground mt-1" />
-                              <div>
-                                <div className="font-semibold group-hover:text-primary transition-colors">Job Search</div>
-                                <div className="text-sm text-muted-foreground">Track applications & interviews</div>
-                              </div>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                          <Link href="#" className="block group p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                            <div className="flex items-start space-x-3">
-                              <Target className="h-4 w-4 text-muted-foreground mt-1" />
-                              <div>
-                                <div className="font-semibold group-hover:text-primary transition-colors">Business Launch</div>
-                                <div className="text-sm text-muted-foreground">Start your business right</div>
-                              </div>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href="/about" className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors">About</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link href="/faq" className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors">FAQ</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-
-            <div className="flex items-center space-x-3">
-              <Button variant="ghost" className="text-base" asChild>
-                <Link href="/templates">Browse Templates</Link>
-              </Button>
-              <Button className="text-base font-medium" asChild>
-                <Link href="/wedding-planning/app">Start Planning</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="pt-24"></div>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 pb-16 lg:pt-32 lg:pb-24">
@@ -577,62 +471,6 @@ export default function WeddingPlanningPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t bg-background">
-        <div className="container mx-auto max-w-7xl px-4 py-12">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <Link href="/" className="flex items-center space-x-2">
-                <Image src="/shift.svg" alt="Templata" width={24} height={24} className="dark:invert" />
-                <span className="font-bold text-xl">Templata</span>
-              </Link>
-              <p className="text-muted-foreground">
-                Skip the blank page. Start with proven templates for life&apos;s biggest moments.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="font-semibold">Templates</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="/wedding-planning" className="hover:text-foreground transition-colors">Wedding Planning</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition-colors">Home Buying</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition-colors">Job Search</Link></li>
-                <li><Link href="/templates" className="hover:text-foreground transition-colors">View All</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="font-semibold">Company</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="/about" className="hover:text-foreground transition-colors">About</Link></li>
-                <li><Link href="/faq" className="hover:text-foreground transition-colors">FAQ</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="font-semibold">Resources</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li><Link href="#" className="hover:text-foreground transition-colors">Help Center</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition-colors">Community</Link></li>
-                <li><Link href="#" className="hover:text-foreground transition-colors">Privacy</Link></li>
-              </ul>
-            </div>
-          </div>
-
-          <Separator className="my-8" />
-
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">
-              © 2024 Templata. Organize your life with templates.
-            </p>
-            <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-              <Link href="#" className="hover:text-foreground transition-colors">Privacy</Link>
-              <Link href="#" className="hover:text-foreground transition-colors">Terms</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </PageLayout>
   )
 }
