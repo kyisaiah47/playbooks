@@ -4,7 +4,9 @@ import {
   Briefcase, Search, Handshake, Award, BookOpen,
   Baby, Stethoscope, Calendar, Activity,
   Home, MapPin, CreditCard, HandCoins, Truck,
-  Sparkles, CheckCircle2, Zap, Camera, Music
+  Sparkles, CheckCircle2, Zap, Camera, Music, PartyPopper, MapMarkerIcon, Utensils, Megaphone,
+  PenTool, ChefHat, Microphone, Plane, Compass, Globe, Passport, Luggage, Star, Navigation,
+  ShoppingCart, Apple, Leaf, Timer, Scale, Calculator
 } from 'lucide-react';
 
 interface ProcessStep {
@@ -740,6 +742,621 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     ctaTitle: 'Ready to Buy Your Dream Home?',
     ctaDescription: 'Join thousands of successful homeowners who navigated the buying process with confidence using our comprehensive guide.',
     finalCtaText: 'Start Your Home Buying Journey',
+  },
+
+  'event-planning': {
+    badgeIcon: PartyPopper,
+    badgeText: 'Event Planning',
+    heroTitle: 'Create Unforgettable',
+    heroHighlight: 'Events',
+    heroDescription: 'Plan memorable events from conception to execution with comprehensive coordination tools and expert guidance.',
+    ctaText: 'Start Planning',
+    appPath: '/event-planning/app',
+    heroCards: [
+      {
+        badge: 'Concept Planning',
+        content: 'Clear event vision with defined goals and target audience'
+      },
+      {
+        badge: 'Budget Control',
+        badgeVariant: 'secondary',
+        content: 'Detailed budget breakdown with cost tracking and savings tips'
+      },
+      {
+        badge: 'Seamless Execution',
+        badgeVariant: 'outline',
+        content: 'Day-of coordination with backup plans and contingencies'
+      }
+    ],
+    heroBenefits: [
+      'Save 60+ hours of planning time',
+      'Reduce event planning stress by 80%',
+      'Stay within budget with smart tracking',
+      'Professional-level event coordination',
+      'Memorable experiences for your guests'
+    ],
+    processTitle: 'Your Event Planning Journey',
+    processDescription: 'From initial concept to post-event follow-up, our systematic approach ensures nothing is overlooked.',
+    processSteps: [
+      {
+        icon: Lightbulb,
+        title: 'Concept & Vision',
+        description: 'Define your event goals, theme, and overall vision to guide all planning decisions.'
+      },
+      {
+        icon: DollarSign,
+        title: 'Budget Planning',
+        description: 'Create detailed budgets with contingency planning and cost optimization strategies.'
+      },
+      {
+        icon: MapPin,
+        title: 'Venue & Logistics',
+        description: 'Find the perfect venue and coordinate all logistical requirements and timelines.'
+      },
+      {
+        icon: Users,
+        title: 'Vendor Management',
+        description: 'Research, negotiate with, and coordinate multiple vendors for seamless execution.'
+      }
+    ],
+    benefitsTitle: 'Why Choose Our Event Planning System',
+    benefitsDescription: 'Trusted by thousands of event planners for both personal celebrations and corporate gatherings.',
+    benefits: [
+      {
+        icon: Clock,
+        title: 'Time Efficiency',
+        description: 'Structured workflows and templates reduce planning time by up to 70%'
+      },
+      {
+        icon: DollarSign,
+        title: 'Budget Control',
+        description: 'Advanced budget tracking prevents overspending and identifies savings opportunities'
+      },
+      {
+        icon: Shield,
+        title: 'Risk Management',
+        description: 'Comprehensive contingency planning ensures your event runs smoothly'
+      },
+      {
+        icon: Sparkles,
+        title: 'Professional Quality',
+        description: 'Industry-tested processes deliver memorable, high-quality events every time'
+      },
+      {
+        icon: Users,
+        title: 'Guest Experience',
+        description: 'Focus on creating meaningful experiences while we handle the logistics'
+      },
+      {
+        icon: CheckCircle2,
+        title: 'Peace of Mind',
+        description: 'Detailed checklists and timelines ensure nothing important is forgotten'
+      }
+    ],
+    featuresIcon: Camera,
+    featuresTitle: 'Complete Event Planning Toolkit',
+    featuresDescription: 'Everything you need to plan and execute successful events of any size and type.',
+    features: [
+      'Event concept development and theme planning',
+      'Comprehensive budget templates and tracking tools',
+      'Venue research and comparison frameworks',
+      'Vendor evaluation and contract negotiation guides',
+      'Timeline creation and milestone tracking',
+      'Guest list management and invitation coordination',
+      'Day-of event coordination and troubleshooting',
+      'Post-event evaluation and feedback collection'
+    ],
+    howItWorks: [
+      {
+        step: '1',
+        title: 'Define Your Vision',
+        description: 'Start by clarifying your event goals, target audience, and desired outcomes. Our guided questions help you create a clear vision that guides all subsequent decisions.'
+      },
+      {
+        step: '2',
+        title: 'Plan Your Budget',
+        description: 'Use our comprehensive budget templates to allocate funds across all event categories. Track expenses in real-time and identify opportunities for cost savings.'
+      },
+      {
+        step: '3',
+        title: 'Coordinate Logistics',
+        description: 'Find the perfect venue, select reliable vendors, and create detailed timelines. Our coordination tools ensure all moving parts work together seamlessly.'
+      },
+      {
+        step: '4',
+        title: 'Execute Flawlessly',
+        description: 'Follow our day-of coordination guides to ensure smooth event execution. Handle any challenges with confidence using our troubleshooting protocols.'
+      }
+    ],
+    guidedNotes: [
+      {
+        name: 'Start Early',
+        icon: Calendar,
+        description: 'Begin planning 3-6 months in advance for major events to secure the best venues and vendors.'
+      },
+      {
+        name: 'Budget Buffer',
+        icon: DollarSign,
+        description: 'Always include a 10-15% contingency in your budget for unexpected expenses or last-minute changes.'
+      },
+      {
+        name: 'Vendor Contracts',
+        icon: FileText,
+        description: 'Read all vendor contracts carefully and negotiate terms that protect your interests and timeline.'
+      },
+      {
+        name: 'Guest Experience',
+        icon: Heart,
+        description: 'Make decisions with your guests in mind - their comfort and enjoyment should guide your choices.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Sarah Chen',
+        role: 'Corporate Event Manager',
+        content: 'This template helped me plan a 300-person conference with zero stress. The vendor management tools alone saved me 40 hours of work.',
+        image: '/testimonial-sarah.jpg'
+      },
+      {
+        name: 'Michael Rodriguez',
+        role: 'Wedding Planner',
+        content: 'As a professional event planner, I use this system for every event. It ensures consistency and helps me deliver exceptional results for my clients.',
+        image: '/testimonial-michael.jpg'
+      },
+      {
+        name: 'Jennifer Wu',
+        role: 'Birthday Party Host',
+        content: 'Planned my daughter\'s Sweet 16 with this guide. Everything went perfectly and I actually enjoyed the process instead of stressing about it!',
+        image: '/testimonial-jennifer.jpg'
+      }
+    ],
+    faqs: [
+      {
+        question: 'What types of events can I plan with this template?',
+        answer: 'Our template works for any event type - weddings, corporate conferences, birthday parties, fundraisers, product launches, family reunions, and more. The framework is flexible and adaptable to your specific needs.'
+      },
+      {
+        question: 'How far in advance should I start planning?',
+        answer: 'We recommend starting 3-6 months ahead for major events like weddings or conferences, 6-8 weeks for mid-size parties, and 2-4 weeks for smaller gatherings. Earlier planning gives you better vendor selection and cost savings.'
+      },
+      {
+        question: 'Can this help with corporate events and business functions?',
+        answer: 'Absolutely! Our template includes specific sections for corporate events, including stakeholder management, ROI tracking, networking facilitation, and post-event business impact measurement.'
+      },
+      {
+        question: 'What if I\'ve never planned an event before?',
+        answer: 'Perfect! Our template is designed for beginners with step-by-step guidance, expert tips, and common mistake prevention. You\'ll feel confident throughout the entire planning process.'
+      },
+      {
+        question: 'How does the budget tracking work?',
+        answer: 'Our budget templates break down costs by category (venue, catering, entertainment, etc.) with real-time tracking, expense comparison tools, and alerts when you\'re approaching limits.'
+      },
+      {
+        question: 'Do you provide vendor recommendations?',
+        answer: 'We provide vendor evaluation frameworks and negotiation strategies rather than specific recommendations, so you can find the best local vendors for your needs and budget.'
+      },
+      {
+        question: 'What about day-of event coordination?',
+        answer: 'Yes! The template includes detailed day-of coordination checklists, timeline management tools, and emergency protocol guides to ensure smooth event execution.'
+      },
+      {
+        question: 'Can I plan multiple events at once?',
+        answer: 'Definitely! The template structure allows you to manage multiple events simultaneously with separate tracking for budgets, timelines, and vendor relationships.'
+      }
+    ],
+    ctaTitle: 'Ready to Plan Your Perfect Event?',
+    ctaDescription: 'Join thousands of successful event planners who created memorable experiences using our comprehensive planning system.',
+    finalCtaText: 'Start Event Planning',
+  },
+
+  'travel-planning': {
+    badgeIcon: Plane,
+    badgeText: 'Travel Planning',
+    heroTitle: 'Plan Your Perfect',
+    heroHighlight: 'Adventure',
+    heroDescription: 'Create amazing travel experiences with comprehensive trip planning, budget management, and itinerary coordination.',
+    ctaText: 'Start Planning',
+    appPath: '/travel-planning/app',
+    heroCards: [
+      {
+        badge: 'Itinerary Planning',
+        content: 'Detailed day-by-day schedules with activities and reservations'
+      },
+      {
+        badge: 'Budget Control',
+        badgeVariant: 'secondary',
+        content: 'Smart budget tracking with expense monitoring and savings tips'
+      },
+      {
+        badge: 'Travel Coordination',
+        badgeVariant: 'outline',
+        content: 'Seamless booking management and travel document organization'
+      }
+    ],
+    heroBenefits: [
+      'Save 40+ hours of planning time',
+      'Stay within budget with smart tracking',
+      'Never miss a reservation or booking',
+      'Stress-free travel coordination',
+      'Memorable experiences every trip'
+    ],
+    processTitle: 'Your Travel Planning Journey',
+    processDescription: 'From destination research to post-trip memories, our systematic approach ensures unforgettable adventures.',
+    processSteps: [
+      {
+        icon: Compass,
+        title: 'Destination Research',
+        description: 'Explore destinations, compare options, and choose the perfect location for your trip.'
+      },
+      {
+        icon: DollarSign,
+        title: 'Budget Planning',
+        description: 'Set realistic budgets, track expenses, and find the best deals on flights and accommodations.'
+      },
+      {
+        icon: Calendar,
+        title: 'Itinerary Building',
+        description: 'Create detailed daily schedules with activities, reservations, and transportation.'
+      },
+      {
+        icon: Luggage,
+        title: 'Travel Coordination',
+        description: 'Organize documents, pack efficiently, and coordinate all travel logistics.'
+      }
+    ],
+    benefitsTitle: 'Why Choose Our Travel Planning System',
+    benefitsDescription: 'Trusted by thousands of travelers for both leisure vacations and business trips worldwide.',
+    benefits: [
+      {
+        icon: Clock,
+        title: 'Time Efficiency',
+        description: 'Structured planning process reduces research and booking time by up to 75%'
+      },
+      {
+        icon: DollarSign,
+        title: 'Budget Optimization',
+        description: 'Smart budget tracking and deal-finding tools help you save 20-30% on travel costs'
+      },
+      {
+        icon: Shield,
+        title: 'Risk Management',
+        description: 'Comprehensive backup plans and travel insurance guidance protect your investment'
+      },
+      {
+        icon: Star,
+        title: 'Experience Quality',
+        description: 'Curated recommendations and expert tips ensure memorable, high-quality experiences'
+      },
+      {
+        icon: Navigation,
+        title: 'Seamless Coordination',
+        description: 'Centralized booking management and document organization eliminate travel stress'
+      },
+      {
+        icon: Globe,
+        title: 'Global Coverage',
+        description: 'Comprehensive guides and tips for destinations worldwide, from cities to remote locations'
+      }
+    ],
+    featuresIcon: Passport,
+    featuresTitle: 'Complete Travel Planning Toolkit',
+    featuresDescription: 'Everything you need to plan and execute amazing trips, from weekend getaways to international adventures.',
+    features: [
+      'Destination research and comparison tools',
+      'Comprehensive budget planning and expense tracking',
+      'Flight and accommodation booking coordination',
+      'Daily itinerary building and activity planning',
+      'Travel document and insurance organization',
+      'Packing checklists and preparation guides',
+      'Local transportation and navigation planning',
+      'Post-trip memory collection and sharing'
+    ],
+    howItWorks: [
+      {
+        step: '1',
+        title: 'Choose Your Destination',
+        description: 'Research destinations based on your interests, budget, and travel dates. Our comparison tools help you evaluate options and make informed decisions.'
+      },
+      {
+        step: '2',
+        title: 'Plan Your Budget',
+        description: 'Set realistic budgets for all trip categories and track expenses in real-time. Find the best deals on flights, hotels, and activities.'
+      },
+      {
+        step: '3',
+        title: 'Build Your Itinerary',
+        description: 'Create detailed day-by-day plans with activities, dining, and transportation. Balance must-see attractions with relaxation time.'
+      },
+      {
+        step: '4',
+        title: 'Coordinate Everything',
+        description: 'Organize all bookings, documents, and logistics in one place. Prepare for departure with comprehensive checklists and guides.'
+      }
+    ],
+    guidedNotes: [
+      {
+        name: 'Book Early',
+        icon: Calendar,
+        description: 'Start planning 2-6 months ahead for international trips to secure better prices and availability.'
+      },
+      {
+        name: 'Budget Buffer',
+        icon: DollarSign,
+        description: 'Add 15-20% to your budget for unexpected expenses, currency fluctuations, and spontaneous activities.'
+      },
+      {
+        name: 'Document Backup',
+        icon: Passport,
+        description: 'Keep digital and physical copies of important documents in separate locations for security.'
+      },
+      {
+        name: 'Local Research',
+        icon: Globe,
+        description: 'Research local customs, tipping practices, and cultural norms to enhance your travel experience.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Jessica Martinez',
+        role: 'Travel Blogger',
+        content: 'This template transformed how I plan trips! I used it for a 3-week European adventure and everything went perfectly. The budget tracking alone saved me $800.',
+        image: '/testimonial-jessica.jpg'
+      },
+      {
+        name: 'Robert Kim',
+        role: 'Business Executive',
+        content: 'As someone who travels frequently for work, this system keeps all my business and personal trips organized. It\'s saved me countless hours and stress.',
+        image: '/testimonial-robert.jpg'
+      },
+      {
+        name: 'Amanda Foster',
+        role: 'Family Travel Coordinator',
+        content: 'Planning family vacations with kids used to be overwhelming. This template made our Disney trip seamless - everyone had an amazing time!',
+        image: '/testimonial-amanda.jpg'
+      }
+    ],
+    faqs: [
+      {
+        question: 'What types of trips can I plan with this template?',
+        answer: 'Our template works for any type of travel - business trips, family vacations, solo adventures, group travel, honeymoons, study abroad, and more. The framework is flexible and adapts to your specific travel style and needs.'
+      },
+      {
+        question: 'How far in advance should I start planning?',
+        answer: 'We recommend starting 2-3 months ahead for domestic trips and 3-6 months for international travel. This gives you the best selection and prices for flights and accommodations, plus adequate time for visa processing if needed.'
+      },
+      {
+        question: 'Does this help with international travel and visas?',
+        answer: 'Yes! Our template includes comprehensive international travel sections covering visa requirements, passport validity, vaccination needs, currency exchange, and cultural preparation guides.'
+      },
+      {
+        question: 'Can I plan multiple trips at the same time?',
+        answer: 'Absolutely! The template structure allows you to manage multiple trips simultaneously with separate tracking for budgets, itineraries, and booking details for each destination.'
+      },
+      {
+        question: 'What about travel insurance and safety planning?',
+        answer: 'Our template includes detailed travel insurance evaluation guides, emergency contact organization, health and safety preparation, and risk assessment tools for different destinations.'
+      },
+      {
+        question: 'How does the budget tracking work?',
+        answer: 'Our budget system breaks down costs by category (flights, hotels, food, activities, etc.) with real-time tracking, currency conversion tools, and alerts when you\'re approaching your limits.'
+      },
+      {
+        question: 'Do you provide specific destination recommendations?',
+        answer: 'We provide destination research frameworks and evaluation criteria rather than specific recommendations, so you can choose destinations that match your interests, budget, and travel style.'
+      },
+      {
+        question: 'Can this help with group travel coordination?',
+        answer: 'Yes! The template includes special sections for group travel with communication tools, responsibility delegation, group booking coordination, and consensus-building frameworks.'
+      }
+    ],
+    ctaTitle: 'Ready to Plan Your Next Adventure?',
+    ctaDescription: 'Join thousands of travelers who create unforgettable experiences using our comprehensive planning system.',
+    finalCtaText: 'Start Travel Planning',
+  },
+
+  'meal-planning': {
+    badgeIcon: Utensils,
+    badgeText: 'Meal Planning',
+    heroTitle: 'Eat Better, Save',
+    heroHighlight: 'Time & Money',
+    heroDescription: 'Plan healthy, delicious meals with smart grocery lists, budget tracking, and nutrition optimization.',
+    ctaText: 'Start Planning',
+    appPath: '/meal-planning/app',
+    heroCards: [
+      {
+        badge: 'Meal Planning',
+        content: 'Weekly meal plans with balanced nutrition and variety'
+      },
+      {
+        badge: 'Smart Shopping',
+        badgeVariant: 'secondary',
+        content: 'Organized grocery lists that save time and money'
+      },
+      {
+        badge: 'Healthy Choices',
+        badgeVariant: 'outline',
+        content: 'Nutritionally balanced meals for your health goals'
+      }
+    ],
+    heroBenefits: [
+      'Save 8+ hours per week on meal planning',
+      'Reduce grocery spending by 25-30%',
+      'Eat healthier with balanced nutrition',
+      'Eliminate daily "what\'s for dinner?" stress',
+      'Reduce food waste and impulse purchases'
+    ],
+    processTitle: 'Your Meal Planning Journey',
+    processDescription: 'From nutrition goals to grocery shopping, our systematic approach makes healthy eating effortless.',
+    processSteps: [
+      {
+        icon: Target,
+        title: 'Set Nutrition Goals',
+        description: 'Define your dietary preferences, health goals, and family needs for personalized planning.'
+      },
+      {
+        icon: ChefHat,
+        title: 'Plan Weekly Menus',
+        description: 'Create balanced meal plans with recipes that match your schedule and preferences.'
+      },
+      {
+        icon: ShoppingCart,
+        title: 'Generate Shopping Lists',
+        description: 'Automatically organize ingredients into efficient grocery lists by store section.'
+      },
+      {
+        icon: Timer,
+        title: 'Prep & Execute',
+        description: 'Follow prep schedules and cooking timelines for stress-free meal execution.'
+      }
+    ],
+    benefitsTitle: 'Why Choose Our Meal Planning System',
+    benefitsDescription: 'Trusted by thousands of families and individuals for healthier eating and simplified meal management.',
+    benefits: [
+      {
+        icon: Clock,
+        title: 'Time Efficiency',
+        description: 'Streamlined planning process saves 8+ hours per week on meal decisions and shopping'
+      },
+      {
+        icon: DollarSign,
+        title: 'Budget Control',
+        description: 'Strategic meal planning reduces grocery spending by 25-30% while eliminating food waste'
+      },
+      {
+        icon: Apple,
+        title: 'Health Optimization',
+        description: 'Balanced nutrition planning helps achieve health goals and dietary requirements'
+      },
+      {
+        icon: Shield,
+        title: 'Stress Reduction',
+        description: 'Eliminate daily meal decisions and last-minute grocery runs with organized planning'
+      },
+      {
+        icon: Leaf,
+        title: 'Sustainability',
+        description: 'Reduce food waste and make environmentally conscious food choices'
+      },
+      {
+        icon: Scale,
+        title: 'Portion Control',
+        description: 'Better portion planning supports weight management and health goals'
+      }
+    ],
+    featuresIcon: Calculator,
+    featuresTitle: 'Complete Meal Planning Toolkit',
+    featuresDescription: 'Everything you need to plan, shop for, and prepare healthy meals efficiently.',
+    features: [
+      'Weekly and monthly meal planning calendars',
+      'Recipe organization and scaling tools',
+      'Automated grocery list generation',
+      'Nutrition tracking and goal setting',
+      'Budget planning and cost tracking',
+      'Meal prep scheduling and timing guides',
+      'Dietary restriction and allergy management',
+      'Leftover planning and food waste reduction'
+    ],
+    howItWorks: [
+      {
+        step: '1',
+        title: 'Set Your Goals',
+        description: 'Define your nutrition goals, dietary restrictions, budget targets, and family preferences. Our system creates a personalized framework for your meal planning success.'
+      },
+      {
+        step: '2',
+        title: 'Plan Your Meals',
+        description: 'Use our meal planning calendar to schedule breakfast, lunch, dinner, and snacks. Balance nutrition, variety, and preparation time to fit your lifestyle.'
+      },
+      {
+        step: '3',
+        title: 'Shop Efficiently',
+        description: 'Generate organized shopping lists from your meal plans. Group ingredients by store section and track costs to stay within budget while avoiding impulse purchases.'
+      },
+      {
+        step: '4',
+        title: 'Prep and Enjoy',
+        description: 'Follow meal prep schedules and cooking timelines to execute your plans efficiently. Track what works and adjust future plans based on your experience.'
+      }
+    ],
+    guidedNotes: [
+      {
+        name: 'Start Simple',
+        icon: Lightbulb,
+        description: 'Begin with planning just dinners for one week, then gradually expand to include more meals and longer planning periods.'
+      },
+      {
+        name: 'Batch Cooking',
+        icon: Timer,
+        description: 'Plan meals that share ingredients or can be batch-cooked to save time and money while reducing food waste.'
+      },
+      {
+        name: 'Seasonal Planning',
+        icon: Leaf,
+        description: 'Incorporate seasonal produce for better flavor, nutrition, and cost savings while supporting sustainable eating habits.'
+      },
+      {
+        name: 'Flexibility First',
+        icon: Target,
+        description: 'Build flexibility into your plans with backup meals and ingredient substitutions for when life gets busy or plans change.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Maria Gonzalez',
+        role: 'Busy Mom of Three',
+        content: 'This system revolutionized our family meals! We\'re eating healthier, saving $200+ monthly on groceries, and I no longer stress about dinner every day.',
+        image: '/testimonial-maria.jpg'
+      },
+      {
+        name: 'James Wilson',
+        role: 'Fitness Enthusiast',
+        content: 'Perfect for tracking macros and meal prep. I hit my nutrition goals consistently now and save hours each week with organized planning.',
+        image: '/testimonial-james.jpg'
+      },
+      {
+        name: 'Sarah Chen',
+        role: 'Working Professional',
+        content: 'As someone with limited cooking time, this template helps me eat healthy home-cooked meals without the daily stress of figuring out what to make.',
+        image: '/testimonial-sarah-meal.jpg'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Can this work for different dietary restrictions and preferences?',
+        answer: 'Absolutely! Our template accommodates all dietary needs including vegetarian, vegan, keto, paleo, gluten-free, dairy-free, and other restrictions. You can customize meal plans for any combination of dietary requirements.'
+      },
+      {
+        question: 'How much time does meal planning actually save?',
+        answer: 'Most users save 8-12 hours per week by eliminating daily meal decisions, reducing grocery store trips, and streamlining food preparation. The initial setup takes 2-3 hours but pays dividends immediately.'
+      },
+      {
+        question: 'Will this really help me save money on groceries?',
+        answer: 'Yes! Strategic meal planning typically reduces grocery spending by 25-30% by eliminating food waste, preventing impulse purchases, and allowing you to buy ingredients in optimal quantities and take advantage of sales.'
+      },
+      {
+        question: 'What if I don\'t like to cook or I\'m a beginner?',
+        answer: 'Our template includes simple recipes, cooking skill development guides, and meal options for all skill levels. You can start with easy 15-minute meals and gradually build your cooking confidence and repertoire.'
+      },
+      {
+        question: 'Can I plan meals for a family with different preferences?',
+        answer: 'Definitely! The template includes strategies for family meal planning with customizable components, kid-friendly options, and ways to accommodate different taste preferences within the same meal framework.'
+      },
+      {
+        question: 'How does nutrition tracking work?',
+        answer: 'Our system helps you track key nutrients, calories, and macronutrients based on your health goals. You can monitor protein intake, ensure vitamin variety, and balance meals for optimal nutrition without complex calculations.'
+      },
+      {
+        question: 'What about meal prep and food storage?',
+        answer: 'The template includes comprehensive meal prep guides, food storage best practices, and batch cooking strategies to maximize efficiency while maintaining food quality and safety.'
+      },
+      {
+        question: 'Can I use this for weight loss or fitness goals?',
+        answer: 'Yes! The template supports various health goals including weight loss, muscle building, and general wellness with portion control guidance, macro tracking, and meal timing strategies aligned with your fitness objectives.'
+      }
+    ],
+    ctaTitle: 'Ready to Transform Your Eating Habits?',
+    ctaDescription: 'Join thousands of people who simplified their meal planning, improved their health, and saved time and money with our comprehensive system.',
+    finalCtaText: 'Start Meal Planning',
   }
 };
 

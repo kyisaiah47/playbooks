@@ -139,6 +139,45 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     comingSoon: true
   },
   
+  // Event & Entertainment Templates
+  {
+    id: "event-planning",
+    name: "Event Planning",
+    description: "Plan memorable events from conception to execution with comprehensive coordination tools.",
+    category: "Personal Life",
+    icon: "🎉",
+    url: "/event-planning/app",
+    popular: true,
+    color: "bg-violet-50 dark:bg-violet-950/20 border-violet-200 dark:border-violet-800",
+    iconColor: "text-violet-600 dark:text-violet-400"
+  },
+  
+  // Travel & Adventure Templates
+  {
+    id: "travel-planning",
+    name: "Travel Planning",
+    description: "Plan amazing trips with itinerary building, budget tracking, and travel coordination tools.",
+    category: "Personal Life",
+    icon: "✈️",
+    url: "/travel-planning/app",
+    popular: true,
+    color: "bg-sky-50 dark:bg-sky-950/20 border-sky-200 dark:border-sky-800",
+    iconColor: "text-sky-600 dark:text-sky-400"
+  },
+  
+  // Health & Nutrition Templates
+  {
+    id: "meal-planning",
+    name: "Meal Planning",
+    description: "Plan healthy, budget-friendly meals with grocery lists, recipe organization, and nutrition tracking.",
+    category: "Health & Wellness",
+    icon: "🍽️",
+    url: "/meal-planning/app",
+    popular: true,
+    color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
+    iconColor: "text-emerald-600 dark:text-emerald-400"
+  },
+  
   // Health & Wellness Templates
   {
     id: "fitness-journey",
