@@ -28,7 +28,7 @@ interface CustomThemeProviderProps {
 
 export function CustomThemeProvider({ children, defaultTheme = templataThemeLight }: CustomThemeProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<ThemeColors>(defaultTheme)
-  const [isThemeLoaded, setIsThemeLoaded] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   // Load saved theme on mount
   useEffect(() => {
@@ -41,7 +41,7 @@ export function CustomThemeProvider({ children, defaultTheme = templataThemeLigh
         console.error('Failed to parse saved theme:', error)
       }
     }
-    setIsThemeLoaded(true)
+    setMounted(true)
   }, [])
 
   useEffect(() => {
@@ -76,11 +76,7 @@ export function CustomThemeProvider({ children, defaultTheme = templataThemeLigh
       resetToDefault,
       getThemeById
     }}>
-      {!isThemeLoaded ? (
-        <div style={{ visibility: 'hidden' }}>{children}</div>
-      ) : (
-        children
-      )}
+      {children}
     </ThemeContext.Provider>
   )
 }
