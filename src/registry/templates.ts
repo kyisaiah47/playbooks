@@ -1,5 +1,5 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate, personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate, careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate, collegePlanningTemplate } from '@/data/templates';
+import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, fitnessJourneyTemplate, personalDevelopmentCoachingTemplate, retirementLifestylePlanningTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate, personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate, careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate, collegePlanningTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
 
 // Function to sync template resources with blog registry
@@ -314,7 +314,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
     iconColor: "text-red-600 dark:text-red-400",
-    template: createTemplateWithSyncedResources(fitnessAthleticTrainingTemplate)
+    template: createTemplateWithSyncedResources(fitnessJourneyTemplate)
   },
   {
     id: "fitness-athletic-training",
@@ -341,6 +341,32 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     color: "bg-teal-50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-800",
     iconColor: "text-teal-600 dark:text-teal-400",
     template: createTemplateWithSyncedResources(movingRelocationTemplate)
+  },
+  
+  // Personal Development Templates
+  {
+    id: "personal-development-coaching",
+    name: "Personal Development & Life Coaching",
+    description: "Transform your life through structured personal development and coaching strategies.",
+    category: "Personal Development",
+    icon: "🌱",
+    url: "/personal-development-coaching/app",
+    popular: true,
+    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
+    iconColor: "text-green-600 dark:text-green-400",
+    template: createTemplateWithSyncedResources(personalDevelopmentCoachingTemplate)
+  },
+  {
+    id: "retirement-lifestyle-planning",
+    name: "Retirement & Lifestyle Planning",
+    description: "Plan for a fulfilling retirement that aligns with your values and desired lifestyle.",
+    category: "Life Transitions", 
+    icon: "🌅",
+    url: "/retirement-lifestyle-planning/app",
+    popular: true,
+    color: "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800",
+    iconColor: "text-amber-600 dark:text-amber-400",
+    template: createTemplateWithSyncedResources(retirementLifestylePlanningTemplate)
   }
 ];
 
