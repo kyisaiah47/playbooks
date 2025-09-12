@@ -1,17 +1,26 @@
 # Templata Product Specification
 
-> Skip the blank page. Start with proven templates for life's biggest moments.
+> Skip the blank page. Start with abundant guidance for life's biggest moments.
 
 ## Executive Summary
 
-Templata is a free platform that provides expertly crafted templates for organizing life's most important moments. Just like Notion revolutionized note-taking and Canva transformed design, Templata is reimagining how we organize major life events by eliminating the blank page problem and providing structure where it's needed most.
+Templata is a guidance-first platform that provides abundant expert insights, reflection prompts, and resources for life's most important decisions. Rather than gamified task completion, we focus on helping users think through complex decisions with professional guidance and thoughtful reflection.
+
+**New Architecture (2025):** Email-style dual sidebar navigation with insertable prompts, 48+ reflection prompts per template, and comprehensive expert resources.
 
 ## Vision & Philosophy
 
-### Core Philosophy
-**Life shouldn't start with a blank page.**
+### Core Philosophy: The Abundance Mindset
+**Life's biggest moments deserve abundant guidance, not task lists.**
 
-When planning a wedding, buying a home, starting a business, or navigating any major life transition, people deserve more than empty spreadsheets and scattered notes. They need structure, expert guidance, and proven frameworks.
+When planning a wedding, buying a home, starting a business, or making major decisions, people need **tons of reflection prompts, expert insights, and thoughtful guidance** - not checkboxes to complete. We believe in guidance over gamification.
+
+### Our Approach
+- **Abundant Content:** 48+ reflection prompts per template with detailed professional guidance
+- **Expert Insights:** Tips from professionals with 15+ years of experience  
+- **Comprehensive Resources:** Professional guides, checklists, and insider knowledge
+- **Reflection Over Tasks:** Focus on helping users think through complex decisions
+- **Insertable Prompts:** Browse and add relevant prompts to any section dynamically
 
 ### The Problem We Solve
 

@@ -1,53 +1,73 @@
 # Templata
 
-> Skip the blank page. Start with proven templates for life's biggest moments.
+> Skip the blank page. Start with abundant guidance for life's biggest moments.
 
-Templata is a free platform that provides expertly crafted templates for organizing life's most important moments. Just like Notion revolutionized note-taking and Canva transformed design, Templata is reimagining how we organize major life events.
+Templata is a guidance-first platform that provides tons of expert insights, reflection prompts, and resources for life's most important decisions. Rather than gamified task lists, we focus on helping you think through complex decisions with professional guidance and abundant ideas.
 
-## 🌟 Philosophy
+## 🌟 Philosophy: The Abundance Mindset
 
-Life shouldn't start with a blank page. When you're planning a wedding, buying a home, or starting a business, you deserve more than empty spreadsheets and scattered notes. Templata provides structure, expert guidance, and proven frameworks for life's biggest moments.
+Life's biggest moments deserve more than task lists and empty templates. When planning a wedding, buying a home, or making major decisions, you need **abundant guidance, expert insights, and thoughtful reflection prompts** - not just checkboxes to complete.
 
-## ✨ Features
+Templata provides:
+- **Tons of reflection prompts** to guide your thinking
+- **Expert insights** from professionals with 15+ years of experience  
+- **Comprehensive resources** covering every angle of your decision
+- **Guidance over gamification** - we help you think, not just do
 
-- **100+ Expert Templates** - Created by domain experts across Personal Life, Career & Work, Property & Moving, and Business & Finance
-- **Guided Setup Wizards** - Intelligent setup that asks the right questions and builds your personalized workspace
-- **Always Free** - No subscriptions, no hidden fees, no limitations
-- **Beautiful & Functional** - Clean, professional design that works on all devices
-- **Instant Setup** - Get organized in 3-5 minutes with step-by-step guidance
+## ✨ New Architecture Features
 
-## 🎯 Use Cases
+- **Guidance-Focused Templates** - Built around reflection and expert insights, not task completion
+- **Email-Style Sidebar Navigation** - Dual sidebar with insertable prompts and resources
+- **Abundant Content** - 48+ reflection prompts per template with detailed guidance
+- **Expert Resources** - Professional guides, checklists, and insider knowledge
+- **Insertable Prompts** - Browse and add relevant prompts to any section
+- **Theme-Aware Design** - Beautiful scrollbars and consistent theming across all pages
 
-### Personal Life (25+ Templates)
-- Wedding Planning - Complete organization system
-- Baby Planning - Prepare for your new arrival
-- Moving & Relocation - Organize your move
-- And many more...
+## 🎯 Live Templates
 
-### Career & Work (30+ Templates)  
-- Job Search - Track applications & interviews
-- Career Change - Navigate transitions
-- Professional Development - Plan your growth
-- And many more...
+### ✅ Wedding Planning (Complete)
+**48+ Reflection Prompts | 8 Expert Resources | Professional Guidance**
 
-### Property & Moving (20+ Templates)
-- Home Buying - Navigate the buying process
-- Home Selling - Manage your sale
-- Rental Management - Organize properties
-- And many more...
+Our flagship template covers every aspect of wedding planning with abundant guidance:
 
-### Business & Finance (25+ Templates)
-- Business Launch - Start your business right
-- Investment Tracking - Manage your portfolio
-- Financial Planning - Organize your finances
-- And many more...
+- **Budget & Financial Planning** - 6 prompts covering max budget, family contributions, emergency planning
+- **Venue Selection & Logistics** - 6 prompts for venue style, guest count, season flexibility  
+- **Guest List & Invitations** - 6 prompts for guest tiers, family politics, plus-one policies
+- **Vendor Research & Hiring** - 6 prompts for vendor priorities, contract review, backup planning
+- **Ceremony Design & Flow** - 6 prompts for ceremony length, vows, cultural traditions
+- **Reception Flow & Entertainment** - 6 prompts for atmosphere, timeline, special moments
+- **Styling, Decor & Flowers** - 6 prompts for color palettes, floral priorities, personal touches
+- **Attire, Beauty & Getting Ready** - 6 prompts for dress style, beauty prep, weather backup
+
+**Expert Resources Include:**
+- Ultimate Wedding Budget Breakdown by Category
+- 25 Hidden Wedding Costs That Surprise Every Couple  
+- 50 Ways to Cut Wedding Costs Without Sacrificing Style
+- Wedding Vendor Contract Review Checklist
+- Complete Wedding Day Timeline Template
+- Wedding Day Emergency Kit: 40 Must-Have Items
+- Wedding Guest Accommodation Guide
+- Wedding Photography: What to Expect and How to Prepare
+
+### 🚧 Coming Soon
+- **Home Buying Guidance** - Navigate the complex home buying process with expert insights
+- **Career Transition Planning** - Professional guidance for career changes
+- **Business Launch Strategy** - Comprehensive startup guidance and planning
 
 ## 🚀 Getting Started
 
-1. **Browse Templates** - Explore our collection of 100+ templates
-2. **Choose Your Template** - Select the one that fits your needs
-3. **Guided Setup** - Answer a few questions to personalize your workspace
-4. **Start Organizing** - Jump in and manage your project with expert guidance
+### Try the Wedding Template
+1. **Visit the Template** - Go to `/wedding-planning/app`  
+2. **Explore Sections** - Browse 8 comprehensive planning areas
+3. **Add Prompts** - Use the sidebar to insert additional prompts 
+4. **Write & Reflect** - Use the guidance to work through each decision
+5. **Access Resources** - Reference expert guides and professional tips
+
+### For Developers
+Run the development server and explore:
+- **Main Landing:** `http://localhost:3001` 
+- **Wedding Template:** `http://localhost:3001/wedding-planning/app`
+- **Marketing Page:** `http://localhost:3001/wedding-planning`
 
 ### Development Setup
 
@@ -67,30 +87,36 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 14 with TypeScript
+- **Framework**: Next.js 15 with TypeScript  
 - **Styling**: Tailwind CSS v4 + shadcn/ui components
+- **UI Components**: Email-style dual sidebar navigation with insertable prompts
 - **Icons**: Lucide React
-- **Theme System**: CSS custom properties with OKLCH color space
-- **State Management**: React Context API with localStorage persistence
-- **Forms**: react-hook-form with Zod validation
+- **Theme System**: CSS custom properties with OKLCH color space + custom scrollbars
+- **State Management**: React Context API for template data
+- **Content**: Abundant reflection prompts and expert resources
 
-## 🏗 Architecture
+## 🏗 New Guidance-Focused Architecture
 
 ```
 src/
 ├── app/                    # Next.js app router
-│   ├── page.tsx           # Landing page
-│   ├── about/             # About page
-│   ├── faq/               # FAQ page  
-│   └── templates/         # Template routes
-│       ├── page.tsx       # Template gallery
-│       └── wedding-planning/ # Specific templates
+│   ├── page.tsx           # Landing page  
+│   ├── wedding-planning/  # Template routes
+│   │   ├── page.tsx       # Marketing landing page
+│   │   └── app/          # Template application
+│   │       └── page.tsx   # Guidance interface
 ├── components/
 │   ├── ui/                # shadcn/ui components
-│   └── wedding-setup-wizard.tsx # Setup wizards
-├── contexts/              # React Context providers
-├── lib/                   # Utilities and configurations
-└── styles/               # Global styles
+│   ├── prompts/           # NEW: Prompt components
+│   │   └── EmbeddedPrompts.tsx # Main prompt interface
+│   ├── template/          # NEW: Template system  
+│   │   └── TemplateView.tsx    # Email-style layout
+│   └── templata-sidebar.tsx    # NEW: Dual sidebar navigation
+├── types/                 # NEW: Guidance data models
+│   └── template.ts        # GuidanceTemplate, ReflectionPrompt types
+├── data/                  # NEW: Template content
+│   └── templates.ts       # Wedding template with 48+ prompts
+└── contexts/              # Context providers for each template
 ```
 
 ## 🎨 Design System
@@ -103,26 +129,34 @@ Templata uses the Vercel theme from [tweakcn.com](https://tweakcn.com) featuring
 
 ## 🧩 Key Components
 
-### Guided Setup Wizards
-Multi-step forms that personalize each template based on user responses:
-- **Step-by-step guidance** with progress indication
-- **Smart question flow** that adapts to user answers
-- **Instant workspace creation** with pre-filled content
-- **Built with shadcn Form components** and react-hook-form
+### Email-Style Sidebar Navigation
+Dual sidebar system inspired by modern email clients:
+- **Left Navigation** - Template sections with visual indicators
+- **Right Content Browser** - Insertable prompts and resources with search
+- **Collapsible Design** - Clean, space-efficient interface
+- **Search Functionality** - Find relevant prompts and resources quickly
 
-### Template System
-Expert-crafted templates with:
-- **Domain expert creation** by professionals in each field
-- **Structured organization** with proven frameworks
-- **Customizable sections** that adapt to user needs
-- **Export capabilities** for offline access
+### Guidance-Focused Templates  
+Built around reflection and expert insights:
+- **48+ Reflection Prompts** per template with detailed help text
+- **Professional Expert Tips** from 15+ year veterans
+- **Comprehensive Resources** covering every angle
+- **Insertable Prompt System** - Add relevant prompts to any section
+- **No Task Gamification** - Focus on thinking, not checking boxes
 
-### Theme System
-Programmatic theme switching:
-- **CSS custom properties** for dynamic color changes
-- **Per-template theming** capability
-- **OKLCH color space** for better color manipulation
-- **Accessible color contrast** maintained across themes
+### Embedded Prompts Interface
+Rich prompt experience with guidance:
+- **Category-Based Organization** - consideration, planning, decision, research
+- **Helpful Context** - Every prompt includes professional guidance
+- **Dynamic Insertion** - Browse and add prompts without losing context
+- **Rich Text Areas** - Space for detailed reflection and planning
+- **Visual Prompt Categories** - Icons and colors for quick identification
+
+### Custom Scrollbars & Theming
+Polished visual experience:
+- **Theme-Aware Scrollbars** - Custom styling that adapts to light/dark modes
+- **OKLCH Color Space** - Modern color system for better theming
+- **Consistent Visual Language** - Unified design across all interfaces
 
 ## 🤝 Contributing
 
