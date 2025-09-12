@@ -6,6 +6,17 @@ import { EmbeddedPrompts } from '@/components/prompts/EmbeddedPrompts';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
+import { ResourceViewer } from '@/components/resource/ResourceViewer';
+import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart } from 'lucide-react';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 
 interface TemplateViewProps {
   template: GuidanceTemplate;
@@ -14,6 +25,21 @@ interface TemplateViewProps {
 export function TemplateView({ template }: TemplateViewProps) {
   const [activeSection, setActiveSection] = useState(0);
   const [additionalPrompts, setAdditionalPrompts] = useState<ReflectionPrompt[]>([]);
+  const [openResource, setOpenResource] = useState<Resource | null>(null);
+
+  const getSectionIcon = (sectionId: string) => {
+    switch (sectionId) {
+      case 'budget-finance': return <DollarSign className="w-4 h-4" />;
+      case 'venue-selection': return <MapPin className="w-4 h-4" />;
+      case 'guest-management': return <UserCheck className="w-4 h-4" />;
+      case 'vendor-selection': return <Briefcase className="w-4 h-4" />;
+      case 'ceremony-planning': return <Church className="w-4 h-4" />;
+      case 'reception-planning': return <Music className="w-4 h-4" />;
+      case 'styling-decor': return <Palette className="w-4 h-4" />;
+      case 'attire-beauty': return <Shirt className="w-4 h-4" />;
+      default: return <Heart className="w-4 h-4" />;
+    }
+  };
 
   const handleInsertPrompt = (prompt: ReflectionPrompt) => {
     // Check if prompt is already added
@@ -28,8 +54,11 @@ export function TemplateView({ template }: TemplateViewProps) {
   };
 
   const handleOpenResource = (resource: Resource) => {
-    // This could open resource in split screen or modal
-    console.log('Open resource:', resource);
+    setOpenResource(resource);
+  };
+
+  const handleCloseResource = () => {
+    setOpenResource(null);
   };
 
   return (
@@ -43,25 +72,55 @@ export function TemplateView({ template }: TemplateViewProps) {
           onOpenResource={handleOpenResource}
         />
         
-        <main className="flex-1 overflow-auto bg-background">
-          <div className="p-6">
-            <div className="mb-6 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <SidebarTrigger />
-                <h1 className="text-2xl font-bold flex items-center gap-2 text-foreground">
-                  <span>{template.icon}</span>
-                  {template.title}
-                </h1>
+        <main className="flex-1 flex overflow-hidden bg-background">
+          {/* Main Content */}
+          <div className={`${openResource ? 'w-1/2' : 'w-full'} overflow-auto border-r transition-all duration-300`}>
+            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+              <SidebarTrigger className="-ml-1" />
+              <Separator
+                orientation="vertical"
+                className="mr-2 data-[orientation=vertical]:h-4"
+              />
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem className="hidden md:block">
+                    <BreadcrumbLink href="/templates">
+                      {template.title}
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator className="hidden md:block" />
+                  <BreadcrumbItem>
+                    <div className="flex items-center gap-2">
+                      {getSectionIcon(template.sections[activeSection].id)}
+                      <BreadcrumbPage>{template.sections[activeSection].title}</BreadcrumbPage>
+                    </div>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+              <div className="ml-auto">
+                <ThemeSelector />
               </div>
-              <ThemeSelector />
+            </header>
+            <div className="p-6">
+              
+              <EmbeddedPrompts 
+                section={template.sections[activeSection]} 
+                additionalPrompts={additionalPrompts}
+                onRemovePrompt={handleRemovePrompt}
+                hideHeader={true}
+              />
             </div>
-            
-            <EmbeddedPrompts 
-              section={template.sections[activeSection]} 
-              additionalPrompts={additionalPrompts}
-              onRemovePrompt={handleRemovePrompt}
-            />
           </div>
+
+          {/* Resource Panel */}
+          {openResource && (
+            <div className="w-1/2 overflow-auto bg-muted/20">
+              <ResourceViewer 
+                resource={openResource} 
+                onClose={handleCloseResource}
+              />
+            </div>
+          )}
         </main>
       </div>
     </SidebarProvider>
