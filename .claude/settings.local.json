@@ -12,7 +12,8 @@
       "Bash(npm install:*)",
       "Bash(sed:*)",
       "Bash(npm run dev:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

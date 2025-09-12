@@ -41,7 +41,11 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
             </div>
           </div>
           <h2 className="font-semibold text-lg line-clamp-2">{resource.title}</h2>
-          <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{resource.excerpt}</p>
+          <div className="text-sm text-muted-foreground mt-1 line-clamp-2">
+            {resource.excerpt.split('**').map((part, index) => 
+              index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
+            )}
+          </div>
         </div>
         <Button
           variant="ghost"
@@ -60,58 +64,100 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
           <div className="prose prose-sm max-w-none dark:prose-invert text-sm">
             <div className="bg-muted/50 rounded-lg p-3 mb-4">
               <h3 className="text-sm font-medium mb-2">About this resource</h3>
-              <p className="text-sm text-muted-foreground">
-                {resource.excerpt}
-              </p>
+              <div className="text-sm text-muted-foreground">
+                {resource.excerpt.split('**').map((part, index) => 
+                  index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
+                )}
+              </div>
             </div>
 
             {/* Full blog post content */}
-            <div className="space-y-4">
-              {resource.content.split('\n\n').map((paragraph, index) => {
-                if (paragraph.startsWith('##')) {
+            <div className="space-y-2">
+              {resource.content.split('\n').map((line, index) => {
+                const trimmedLine = line.trim();
+                
+                // Skip empty lines
+                if (!trimmedLine) {
+                  return null;
+                }
+                
+                // Handle headers
+                if (trimmedLine.startsWith('##')) {
                   return (
-                    <h3 key={index} className="text-base font-semibold mt-6 mb-3">
-                      {paragraph.replace('##', '').trim()}
+                    <h3 key={index} className="text-base font-semibold mt-4 mb-2">
+                      {trimmedLine.replace('##', '').trim()}
                     </h3>
                   );
                 }
-                if (paragraph.trim()) {
-                  // Enhanced markdown parsing for bold text
+                
+                // Handle standalone bold lines (subheaders)
+                if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && !trimmedLine.includes('**', 2)) {
+                  return (
+                    <h4 key={index} className="text-sm font-semibold mt-2 mb-1">
+                      {trimmedLine.replace(/^\*\*|\*\*$/g, '')}
+                    </h4>
+                  );
+                }
+                
+                // Handle bullet points
+                if (trimmedLine.startsWith('- ')) {
+                  const cleanItem = trimmedLine.replace(/^- /, '');
                   const renderMarkdown = (text: string) => {
                     const parts: (string | React.JSX.Element)[] = [];
                     let currentIndex = 0;
-                    
-                    // Find all bold text matches
                     const boldRegex = /\*\*(.*?)\*\*/g;
                     let match;
                     
                     while ((match = boldRegex.exec(text)) !== null) {
-                      // Add text before the match
                       if (match.index > currentIndex) {
                         parts.push(text.slice(currentIndex, match.index));
                       }
-                      
-                      // Add the bold text
                       parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>);
-                      
                       currentIndex = match.index + match[0].length;
                     }
                     
-                    // Add remaining text
                     if (currentIndex < text.length) {
                       parts.push(text.slice(currentIndex));
                     }
                     
-                    return parts.length > 1 ? parts : text;
+                    return parts.length > 0 ? parts : text;
                   };
-
+                  
                   return (
-                    <p key={index} className="text-sm leading-6 text-foreground">
-                      {renderMarkdown(paragraph)}
-                    </p>
+                    <div key={index} className="flex items-start gap-2 text-sm leading-6 text-foreground">
+                      <span className="text-muted-foreground mt-1.5 w-1 h-1 rounded-full bg-current flex-shrink-0"></span>
+                      <div>{renderMarkdown(cleanItem)}</div>
+                    </div>
                   );
                 }
-                return null;
+                
+                // Handle regular paragraphs with markdown
+                const renderMarkdown = (text: string) => {
+                  const parts: (string | React.JSX.Element)[] = [];
+                  let currentIndex = 0;
+                  const boldRegex = /\*\*(.*?)\*\*/g;
+                  let match;
+                  
+                  while ((match = boldRegex.exec(text)) !== null) {
+                    if (match.index > currentIndex) {
+                      parts.push(text.slice(currentIndex, match.index));
+                    }
+                    parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>);
+                    currentIndex = match.index + match[0].length;
+                  }
+                  
+                  if (currentIndex < text.length) {
+                    parts.push(text.slice(currentIndex));
+                  }
+                  
+                  return parts.length > 0 ? parts : text;
+                };
+                
+                return (
+                  <p key={index} className="text-sm leading-6 text-foreground">
+                    {renderMarkdown(trimmedLine)}
+                  </p>
+                );
               })}
             </div>
           </div>
