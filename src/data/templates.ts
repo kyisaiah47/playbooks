@@ -4,12 +4,14 @@ import { GuidanceTemplate } from '@/types/template';
 export const weddingTemplate: GuidanceTemplate = {
   id: 'wedding-planning',
   title: 'Wedding Planning Guide',
+  description: 'Complete wedding planning guidance from budget to big day',
   category: 'life-events',
   icon: '💒',
   sections: [
     {
       id: 'budget-finance',
       title: 'Budget & Financial Planning',
+      description: 'Establish your wedding budget and financial priorities',
       order: 1,
       reflectionPrompts: [
         {
@@ -55,6 +57,7 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'venue-selection',
       title: 'Venue Selection & Logistics',
+      description: 'Find and evaluate the perfect wedding venue that fits your style and budget',
       order: 2,
       reflectionPrompts: [
         {
@@ -98,6 +101,7 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'guest-management',
       title: 'Guest List & Invitations',
+      description: 'Navigate guest list decisions and invitation logistics',
       order: 3,
       reflectionPrompts: [
         {
@@ -141,6 +145,7 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'vendor-selection',
       title: 'Vendor Research & Hiring',
+      description: 'Research, evaluate, and hire the right wedding vendors for your needs',
       order: 4,
       reflectionPrompts: [
         {
@@ -184,6 +189,7 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'ceremony-planning',
       title: 'Ceremony Design & Flow',
+      description: 'Design your ceremony structure, vows, and special moments',
       order: 5,
       reflectionPrompts: [
         {
@@ -227,6 +233,7 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'reception-planning',
       title: 'Reception Flow & Entertainment',
+      description: 'Plan reception timeline, entertainment, and guest experience',
       order: 6,
       reflectionPrompts: [
         {
@@ -270,6 +277,7 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'styling-decor',
       title: 'Styling, Decor & Flowers',
+      description: 'Create your wedding aesthetic with decor, flowers, and styling choices',
       order: 7,
       reflectionPrompts: [
         {
@@ -313,6 +321,7 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'attire-beauty',
       title: 'Attire, Beauty & Getting Ready',
+      description: 'Plan your wedding day look and getting ready experience',
       order: 8,
       reflectionPrompts: [
         {
@@ -442,6 +451,39 @@ export const weddingTemplate: GuidanceTemplate = {
       readTime: '9 min',
       difficulty: 'intermediate',
       relatedBlogPost: 'wedding-photography-guide'
+    },
+    {
+      id: 'venue-selection-guide',
+      title: 'Wedding Venue Selection & Negotiation Masterclass',
+      type: 'guide',
+      excerpt: 'Master the art of selecting and negotiating with wedding venues to secure your dream location',
+      content: 'Comprehensive guide covering venue types (banquet halls, outdoor spaces, historic venues), essential questions to ask during tours, contract negotiation strategies, identifying hidden fees, and securing backup dates. Includes venue capacity calculations, accessibility considerations, and seasonal booking advantages for maximum value.',
+      tags: ['venue', 'negotiation', 'contracts', 'planning'],
+      readTime: '11 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'venue-selection-guide'
+    },
+    {
+      id: 'wedding-timeline-planner',
+      title: 'Complete Wedding Day Timeline & Logistics Guide',
+      type: 'tool',
+      excerpt: 'Orchestrate flawless ceremony and reception flow with detailed timeline and coordination strategies',
+      content: 'Detailed logistics planner covering ceremony processional timing, reception flow management, vendor coordination schedules, and contingency planning for weather delays. Includes buffer time calculations, photo session scheduling, vendor meal timing, and emergency communication protocols to ensure seamless day-of execution.',
+      tags: ['timeline', 'logistics', 'coordination', 'day-of'],
+      readTime: '8 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'wedding-timeline-planner'
+    },
+    {
+      id: 'photography-investment-guide',
+      title: 'Wedding Photography Investment & Package Selection Guide',
+      type: 'guide',
+      excerpt: 'Navigate photography packages and investments to capture memories that last a lifetime',
+      content: 'Strategic guide for selecting wedding photographers covering portfolio evaluation, package comparison frameworks, shot list creation, engagement session planning, and delivery timeline expectations. Includes budget allocation strategies, additional coverage options, album design considerations, and digital rights negotiation for long-term value.',
+      tags: ['photography', 'investment', 'packages', 'memories'],
+      readTime: '10 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'photography-investment-guide'
     }
   ],
   expertTips: [
@@ -508,12 +550,14 @@ export const weddingTemplate: GuidanceTemplate = {
 export const homeBuyingTemplate: GuidanceTemplate = {
   id: 'home-buying',
   title: 'Home Buying Guide',
+  description: 'Navigate the home buying process from financing to closing',
   category: 'personal-finance',
   icon: '🏠',
   sections: [
     {
       id: 'financial-readiness',
       title: 'Financial Readiness & Budget',
+      description: 'Assess your financial situation and establish your home buying budget',
       order: 1,
       reflectionPrompts: [
         {
@@ -558,6 +602,7 @@ export const homeBuyingTemplate: GuidanceTemplate = {
     {
       id: 'location-preferences',
       title: 'Location & Lifestyle Needs',
+      description: 'Define your ideal location and lifestyle requirements',
       order: 2,
       reflectionPrompts: [
         {
@@ -601,6 +646,7 @@ export const homeBuyingTemplate: GuidanceTemplate = {
     {
       id: 'home-specifications',
       title: 'Home Features & Requirements',
+      description: 'Determine your home size, features, and must-have requirements',
       order: 3,
       reflectionPrompts: [
         {
@@ -644,6 +690,7 @@ export const homeBuyingTemplate: GuidanceTemplate = {
     {
       id: 'mortgage-financing',
       title: 'Mortgage & Financing Options',
+      description: 'Explore mortgage options and secure pre-approval for your home purchase',
       order: 4,
       reflectionPrompts: [
         {
@@ -687,6 +734,7 @@ export const homeBuyingTemplate: GuidanceTemplate = {
     {
       id: 'house-hunting',
       title: 'House Hunting Strategy',
+      description: 'Develop an effective strategy for finding and evaluating properties',
       order: 5,
       reflectionPrompts: [
         {
@@ -730,6 +778,7 @@ export const homeBuyingTemplate: GuidanceTemplate = {
     {
       id: 'making-offers',
       title: 'Offers & Negotiations',
+      description: 'Navigate the offer process and negotiate effectively with sellers',
       order: 6,
       reflectionPrompts: [
         {
@@ -773,6 +822,7 @@ export const homeBuyingTemplate: GuidanceTemplate = {
     {
       id: 'closing-process',
       title: 'Contract to Closing',
+      description: 'Complete inspections, finalize financing, and close on your home',
       order: 7,
       reflectionPrompts: [
         {
@@ -816,6 +866,7 @@ export const homeBuyingTemplate: GuidanceTemplate = {
     {
       id: 'moving-settling',
       title: 'Moving In & Getting Settled',
+      description: 'Plan your move and get settled in your new home',
       order: 8,
       reflectionPrompts: [
         {
@@ -857,7 +908,52 @@ export const homeBuyingTemplate: GuidanceTemplate = {
       ]
     }
   ],
-  resources: [],
+  resources: [
+    {
+      id: 'first-time-buyer-guide',
+      title: 'Complete First-Time Home Buyer\'s Checklist & Guide',
+      type: 'checklist',
+      excerpt: 'Step-by-step comprehensive guide for first-time buyers covering credit preparation, financing options, and the entire purchase process',
+      content: 'This comprehensive guide walks first-time buyers through every step of the home buying process, from initial preparation to closing day. Start by checking and improving your credit score 6-12 months before shopping - even small improvements can save thousands in interest. Determine your realistic budget using the 28/36 rule and get pre-approved for a mortgage to strengthen your negotiating position. Research different loan programs including FHA loans (3.5% down), VA loans (0% down for veterans), USDA loans for rural properties, and conventional loans. Create a prioritized wish list distinguishing must-haves from nice-to-haves to stay focused during your search. The guide includes detailed checklists for each phase: financial preparation, house hunting, making offers, inspections, and closing procedures. Learn about closing costs (typically 2-5% of purchase price), earnest money deposits, and timeline expectations to avoid surprises.',
+      tags: ['first-time-buyer', 'credit-preparation', 'mortgage-pre-approval', 'budget-planning', 'loan-programs'],
+      readTime: '12 min',
+      difficulty: 'beginner',
+      relatedBlogPost: 'first-time-home-buyer-complete-guide'
+    },
+    {
+      id: 'home-inspection-guide',
+      title: 'Home Inspection & Property Evaluation Masterclass',
+      type: 'guide',
+      excerpt: 'Learn what professional inspectors examine and how to conduct your own preliminary property evaluation to avoid costly surprises',
+      content: 'Master the art of property evaluation with this comprehensive guide covering both professional inspection processes and DIY assessment techniques. Professional inspectors examine structural elements (foundation, framing, roof), major systems (electrical, plumbing, HVAC), safety features (smoke detectors, carbon monoxide detectors, GFCI outlets), and interior/exterior conditions. Learn to identify red flags during your initial walkthrough: water damage signs, electrical issues, foundation problems, and deferred maintenance. The guide provides detailed checklists for each room and exterior areas, helping you spot potential issues before making an offer. Understand how to interpret inspection reports, negotiate repairs effectively, and determine when issues are deal-breakers versus manageable concerns. Includes cost estimation guides for common repairs, seasonal inspection considerations, and how to use inspection results in price negotiations. This knowledge empowers you to make informed decisions and potentially save thousands in unexpected repair costs.',
+      tags: ['home-inspection', 'property-evaluation', 'red-flags', 'negotiation', 'repair-costs'],
+      readTime: '10 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'home-inspection-guide-buyers'
+    },
+    {
+      id: 'mortgage-financing-guide',
+      title: 'Mortgage Types & Financing Options Comparison Guide',
+      type: 'guide',
+      excerpt: 'Comprehensive comparison of loan types, interest rate factors, closing costs, and refinancing strategies to optimize your financing',
+      content: 'Navigate the complex world of mortgage financing with this detailed comparison guide covering all major loan types and strategies. Compare conventional loans (typically requiring 20% down for best rates) with government-backed options like FHA loans (3.5% down, mortgage insurance required), VA loans (0% down for qualified veterans), and USDA loans (0% down for rural areas). Understand how interest rates are determined by credit score, down payment amount, loan-to-value ratio, debt-to-income ratio, and market conditions. Learn about different rate structures: fixed-rate mortgages offer stability, while adjustable-rate mortgages (ARMs) may start lower but carry rate risk. The guide breaks down all closing costs including origination fees, appraisal costs, title insurance, and prepaid items, helping you budget accurately. Discover strategies for reducing costs like negotiating lender fees, shopping for title insurance, and timing your closing date. Includes guidance on when refinancing makes sense, how to calculate break-even points, and strategies for paying off your mortgage early.',
+      tags: ['mortgage-types', 'interest-rates', 'closing-costs', 'refinancing', 'loan-comparison'],
+      readTime: '9 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'mortgage-financing-options-comparison'
+    },
+    {
+      id: 'market-analysis-tool',
+      title: 'Real Estate Market Analysis & Timing Strategy Tool',
+      type: 'tool',
+      excerpt: 'Learn to analyze market conditions, pricing trends, and timing strategies to make informed decisions and negotiate effectively',
+      content: 'Develop market analysis skills to time your purchase strategically and negotiate from a position of knowledge. This comprehensive tool teaches you to evaluate local market conditions using key indicators: inventory levels, days on market, price-to-rent ratios, and year-over-year price trends. Learn to research comparable sales (comps) effectively, understanding how location, condition, and timing affect property values. The guide covers seasonal market patterns - typically more inventory in spring/summer but also more competition, while fall/winter may offer better deals with less competition. Analyze neighborhood trends by studying recent sales, pending transactions, price per square foot variations, and development plans that could affect future values. Understand how to use online tools like Zillow, Redfin, and MLS data while recognizing their limitations. Learn negotiation strategies based on market conditions: in buyer\'s markets, you have more leverage for price reductions and concessions, while seller\'s markets require competitive offers and fewer contingencies. The tool includes worksheets for tracking properties, comparing neighborhoods, and calculating true cost of ownership including taxes, insurance, and maintenance.',
+      tags: ['market-analysis', 'pricing-trends', 'negotiation-strategy', 'timing', 'comparable-sales'],
+      readTime: '8 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'real-estate-market-analysis-buyers'
+    }
+  ],
   expertTips: [
     {
       id: 'credit-tip-1',
@@ -921,12 +1017,14 @@ export const homeBuyingTemplate: GuidanceTemplate = {
 export const jobSearchTemplate: GuidanceTemplate = {
   id: 'job-search',
   title: 'Job Search Strategy',
+  description: 'Strategic approach to finding and landing your ideal job',
   category: 'career',
   icon: '💼',
   sections: [
     {
       id: 'career-assessment',
       title: 'Career Assessment & Goals',
+      description: 'Assess your skills, values, and career goals to guide your job search',
       order: 1,
       reflectionPrompts: [
         {
@@ -971,6 +1069,7 @@ export const jobSearchTemplate: GuidanceTemplate = {
     {
       id: 'application-materials',
       title: 'Resume & Application Materials',
+      description: 'Create compelling resumes, cover letters, and portfolios',
       order: 2,
       reflectionPrompts: [
         {
@@ -1015,6 +1114,7 @@ export const jobSearchTemplate: GuidanceTemplate = {
     {
       id: 'job-searching',
       title: 'Job Search & Networking',
+      description: 'Develop effective job search strategies and build professional networks',
       order: 3,
       reflectionPrompts: [
         {
@@ -1059,6 +1159,7 @@ export const jobSearchTemplate: GuidanceTemplate = {
     {
       id: 'interview-preparation',
       title: 'Interview Preparation',
+      description: 'Prepare for interviews and present yourself as the ideal candidate',
       order: 4,
       reflectionPrompts: [
         {
@@ -1103,6 +1204,7 @@ export const jobSearchTemplate: GuidanceTemplate = {
     {
       id: 'offer-evaluation',
       title: 'Offer Evaluation & Negotiation',
+      description: 'Evaluate job offers and negotiate terms effectively',
       order: 5,
       reflectionPrompts: [
         {
@@ -1147,6 +1249,7 @@ export const jobSearchTemplate: GuidanceTemplate = {
     {
       id: 'career-development',
       title: 'Ongoing Career Development',
+      description: 'Plan for continuous learning and long-term career growth',
       order: 6,
       reflectionPrompts: [
         {
@@ -1189,7 +1292,52 @@ export const jobSearchTemplate: GuidanceTemplate = {
       ]
     }
   ],
-  resources: [],
+  resources: [
+    {
+      id: 'ats-resume-guide',
+      title: 'ATS-Optimized Resume Writing & Keyword Strategy Guide',
+      type: 'guide',
+      excerpt: 'Master ATS systems and keyword optimization to ensure your resume gets past automated screening and lands in front of hiring managers',
+      content: 'Navigate modern recruitment technology with this comprehensive ATS optimization guide. Understand how Applicant Tracking Systems parse resumes and learn to format yours for maximum compatibility: use standard section headings, avoid complex formatting, and save as both .docx and .pdf versions. Master keyword strategy by analyzing job descriptions and incorporating relevant terms naturally throughout your resume. Learn industry-specific optimization techniques for different sectors including tech, healthcare, finance, and creative fields. The guide covers advanced strategies like synonym variations, skill clustering, and achievement quantification that resonates with both ATS algorithms and human reviewers. Discover how to structure your resume sections optimally, choose ATS-friendly fonts and layouts, and avoid common formatting pitfalls that cause parsing errors. Includes actionable templates, keyword research techniques, and testing methods to ensure your resume successfully navigates automated screening systems while maintaining readability for hiring managers.',
+      tags: ['resume-optimization', 'ATS-systems', 'keyword-strategy', 'formatting', 'job-applications'],
+      readTime: '10 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'ats-resume-optimization-guide'
+    },
+    {
+      id: 'interview-masterclass',
+      title: 'Interview Preparation & Performance Masterclass',
+      type: 'guide',
+      excerpt: 'Comprehensive interview preparation covering behavioral questions, technical assessments, salary negotiation, and follow-up strategies for career success',
+      content: 'Master every aspect of the interview process with this comprehensive preparation guide. Learn to excel at behavioral interviews using the STAR method (Situation, Task, Action, Result) with detailed frameworks for crafting compelling stories that demonstrate your value. Prepare for technical interviews across different industries with problem-solving strategies, coding challenges, case study approaches, and presentation techniques. Develop confident salary negotiation skills including market research methods, negotiation timing, and strategies for discussing compensation packages beyond base salary. The guide covers different interview formats from phone screenings and video interviews to panel discussions and assessment centers. Learn advanced techniques for reading interviewer cues, managing interview anxiety, and turning potential weaknesses into strengths. Includes post-interview follow-up strategies, thank-you note templates, and methods for maintaining momentum throughout lengthy hiring processes. Practice scenarios and question banks help you prepare for industry-specific interviews while building the confidence needed to perform at your best.',
+      tags: ['interview-preparation', 'behavioral-questions', 'technical-interviews', 'salary-negotiation', 'interview-performance'],
+      readTime: '12 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'interview-mastery-guide'
+    },
+    {
+      id: 'networking-toolkit',
+      title: 'Professional Network Building & LinkedIn Strategy Toolkit',
+      type: 'tool',
+      excerpt: 'Strategic networking approach with LinkedIn optimization, relationship building techniques, and systematic methods for expanding your professional network',
+      content: 'Build a powerful professional network using systematic relationship-building strategies and LinkedIn optimization techniques. Learn to craft a compelling LinkedIn profile that attracts opportunities: optimize your headline, summary, and experience sections with industry keywords while showcasing your unique value proposition. Master the art of meaningful networking both online and offline through industry events, professional associations, and informational interviews. Develop authentic relationship-building skills that focus on providing value to others first, creating lasting professional connections that benefit everyone involved. The toolkit includes templates for LinkedIn connection requests, informational interview scripts, and follow-up communications that maintain relationships over time. Discover advanced LinkedIn strategies like content creation, thought leadership positioning, and leveraging LinkedIn groups for industry visibility. Learn systematic approaches to networking event attendance, conversation starters, and relationship tracking methods. Includes actionable frameworks for identifying key industry contacts, maintaining your network through regular touchpoints, and leveraging relationships ethically for career advancement opportunities.',
+      tags: ['networking-strategy', 'LinkedIn-optimization', 'relationship-building', 'professional-connections', 'career-networking'],
+      readTime: '11 min',
+      difficulty: 'beginner',
+      relatedBlogPost: 'professional-networking-guide'
+    },
+    {
+      id: 'job-market-strategy',
+      title: 'Job Market Research & Application Strategy Framework',
+      type: 'tool',
+      excerpt: 'Systematic approach to job market analysis, company research, application tracking, and strategic positioning within industry trends',
+      content: 'Develop a strategic approach to job searching through comprehensive market research and systematic application management. Learn industry analysis techniques to identify growth sectors, emerging opportunities, and market trends that inform your job search strategy. Master company research methods using multiple sources including financial reports, employee reviews, social media presence, and industry publications to understand organizational culture, growth trajectory, and potential challenges. Create efficient application tracking systems to manage your job search pipeline, monitor application status, and follow up systematically with potential employers. The framework includes methods for identifying hidden job opportunities through industry connections, company growth indicators, and organizational changes that signal hiring needs. Discover how to position yourself strategically within market trends by aligning your skills with in-demand competencies and emerging industry needs. Learn to analyze job market data, salary trends, and geographic opportunities to optimize your search strategy. Includes templates for research documentation, application tracking spreadsheets, and strategic positioning frameworks that help you stand out in competitive job markets while making informed career decisions.',
+      tags: ['job-market-research', 'company-analysis', 'application-tracking', 'industry-trends', 'strategic-job-search'],
+      readTime: '9 min',
+      difficulty: 'expert',
+      relatedBlogPost: 'job-market-research-strategy'
+    }
+  ],
   expertTips: [
     {
       id: 'networking-tip-1',
@@ -1253,12 +1401,14 @@ export const jobSearchTemplate: GuidanceTemplate = {
 export const babyPlanningTemplate: GuidanceTemplate = {
   id: 'baby-planning',
   title: 'Baby Planning Guide',
+  description: 'Complete guidance for preparing for pregnancy, birth, and your baby\'s first year',
   category: 'personal-life',
   icon: '👶',
   sections: [
     {
       id: 'pregnancy-preparation',
       title: 'Pregnancy Preparation & Health',
+      description: 'Establish healthy pregnancy practices and prenatal care routines',
       order: 1,
       reflectionPrompts: [
         {
@@ -1303,6 +1453,7 @@ export const babyPlanningTemplate: GuidanceTemplate = {
     {
       id: 'financial-planning',
       title: 'Financial Planning & Insurance',
+      description: 'Plan your budget, insurance coverage, and financial security for your growing family',
       order: 2,
       reflectionPrompts: [
         {
@@ -1347,6 +1498,7 @@ export const babyPlanningTemplate: GuidanceTemplate = {
     {
       id: 'nursery-preparation',
       title: 'Nursery Setup & Baby Gear',
+      description: 'Create a safe, functional nursery and select essential baby gear',
       order: 3,
       reflectionPrompts: [
         {
@@ -1391,6 +1543,7 @@ export const babyPlanningTemplate: GuidanceTemplate = {
     {
       id: 'birth-preparation',
       title: 'Birth Planning & Hospital Preparation',
+      description: 'Prepare for labor, delivery, and your hospital experience',
       order: 4,
       reflectionPrompts: [
         {
@@ -1435,6 +1588,7 @@ export const babyPlanningTemplate: GuidanceTemplate = {
     {
       id: 'newborn-care',
       title: 'Newborn Care & Feeding',
+      description: 'Learn essential newborn care skills and feeding approaches',
       order: 5,
       reflectionPrompts: [
         {
@@ -1479,6 +1633,7 @@ export const babyPlanningTemplate: GuidanceTemplate = {
     {
       id: 'work-life-balance',
       title: 'Work-Life Balance & Future Planning',
+      description: 'Balance career, childcare, and family life with future planning considerations',
       order: 6,
       reflectionPrompts: [
         {
@@ -1521,7 +1676,52 @@ export const babyPlanningTemplate: GuidanceTemplate = {
       ]
     }
   ],
-  resources: [],
+  resources: [
+    {
+      id: 'baby-essentials-checklist',
+      title: 'Complete Baby Essentials Checklist & Registry Guide',
+      type: 'checklist',
+      excerpt: 'Comprehensive guide to must-have baby items organized by category with budget-friendly alternatives and safety standards',
+      content: 'Navigate baby product overwhelm with this comprehensive essentials checklist organized by immediate needs versus items you can acquire later. Feeding essentials include bottles, nipples, burp cloths, and bibs, with guidance on breastfeeding supplies versus formula feeding needs. Sleep safety is paramount: invest in a firm crib mattress, fitted sheets, sleep sacks, and blackout curtains while avoiding bumpers, pillows, and loose blankets that pose SIDS risks. Diapering basics cover diapers (newborn and size 1), wipes, rash cream, changing pad, and diaper disposal system. Clothing essentials focus on practical pieces: onesies, sleepers, socks, hats, and weather-appropriate outerwear in newborn and 0-3 month sizes. Safety items include car seat installation and inspection, cabinet locks, outlet covers, and baby gates for when mobility begins. The guide distinguishes between marketing hype and genuine needs, provides budget-friendly alternatives for expensive items, and includes safety standards to look for when purchasing products. Learn which items to buy new versus secondhand for safety reasons, and get strategies for building your registry across different budgets.',
+      tags: ['baby-essentials', 'registry-planning', 'budget-friendly', 'safety-standards', 'newborn-prep'],
+      readTime: '12 min',
+      difficulty: 'beginner',
+      relatedBlogPost: 'baby-essentials-complete-guide'
+    },
+    {
+      id: 'pregnancy-health-guide',
+      title: 'Pregnancy Health, Nutrition & Wellness Comprehensive Guide',
+      type: 'guide',
+      excerpt: 'Complete guide to prenatal nutrition, safe exercise, prenatal care timeline, and managing common pregnancy concerns',
+      content: 'Optimize your pregnancy health with evidence-based guidance on nutrition, exercise, and prenatal care throughout all three trimesters. Prenatal nutrition focuses on key nutrients: folate/folic acid for neural tube development, iron for increased blood volume, calcium for bone development, and omega-3 fatty acids for brain development. Learn which foods to emphasize (leafy greens, lean proteins, whole grains, dairy) and which to avoid (high-mercury fish, unpasteurized products, raw meats, alcohol). Safe exercise during pregnancy includes low-impact activities like walking, swimming, prenatal yoga, and modified strength training while avoiding contact sports, hot yoga, and activities with fall risk. The prenatal care timeline outlines essential appointments, screenings, and tests for each trimester including genetic screening options, glucose tolerance testing, and Group B Strep testing. Address common concerns like morning sickness, heartburn, swelling, and sleep difficulties with practical management strategies. Understand warning signs that require immediate medical attention, and learn stress management techniques including meditation, deep breathing, and prenatal massage. The guide includes meal planning templates, safe exercise routines for each trimester, and checklists for prenatal appointments.',
+      tags: ['prenatal-nutrition', 'pregnancy-exercise', 'prenatal-care', 'pregnancy-wellness', 'trimester-guide'],
+      readTime: '10 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'pregnancy-health-comprehensive-guide'
+    },
+    {
+      id: 'newborn-care-manual',
+      title: 'Newborn Care & Early Development Manual',
+      type: 'guide',
+      excerpt: 'Essential guide to newborn feeding schedules, sleep patterns, developmental milestones, and emergency preparedness for new parents',
+      content: 'Master newborn care with this comprehensive manual covering feeding, sleep, development, and health monitoring for your baby\'s first months. Feeding guidance covers both breastfeeding and formula feeding schedules, recognizing hunger and fullness cues, proper latching techniques, and troubleshooting common feeding challenges like cluster feeding and growth spurts. Sleep pattern understanding includes newborn sleep cycles (typically 2-4 hour stretches), safe sleep positioning, swaddling techniques, and establishing day/night differentiation. Developmental milestones for 0-3 months include tracking head control, visual focus, social smiles, and early communication attempts while understanding normal variations in development timing. Learn essential newborn care tasks: diaper changing techniques, umbilical cord care, bathing safety, nail trimming, and recognizing normal newborn behaviors versus concerning symptoms. Pediatric care includes vaccination schedules, well-baby visit expectations, and building a relationship with your healthcare provider. Emergency preparedness covers recognizing signs of illness, fever management, when to call the doctor versus go to emergency room, basic infant CPR, and having emergency contacts readily available. The manual includes feeding and sleep tracking templates, developmental milestone checklists, and emergency action plans that help new parents feel confident in caring for their newborn.',
+      tags: ['newborn-care', 'feeding-schedules', 'sleep-patterns', 'developmental-milestones', 'pediatric-care'],
+      readTime: '11 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'newborn-care-complete-manual'
+    },
+    {
+      id: 'postpartum-toolkit',
+      title: 'Postpartum Recovery & Family Adjustment Toolkit',
+      type: 'tool',
+      excerpt: 'Comprehensive toolkit for physical recovery, emotional adjustment, recognizing postpartum depression, and family transition strategies',
+      content: 'Navigate the postpartum period with confidence using this comprehensive toolkit addressing physical recovery, emotional adjustment, and family dynamics during the fourth trimester. Physical recovery guidance covers healing timelines for vaginal and cesarean deliveries, managing pain and discomfort, breast/chestfeeding challenges, and when to resume normal activities including exercise and intimacy. Emotional adjustment support helps distinguish between normal baby blues (mood swings, crying spells, anxiety in first 2 weeks) and postpartum depression or anxiety that requires professional intervention. Learn warning signs including persistent sadness, loss of interest in activities, overwhelming anxiety, thoughts of harm, and difficulty bonding with baby. Partner support strategies include communication techniques during sleep deprivation, dividing household and baby care responsibilities equitably, and maintaining relationship intimacy during this transition. Practical tools include meal prep strategies, visitor boundary setting, household management systems, and creating support networks with other new parents. Return-to-work planning covers childcare options, pumping schedules, legal rights regarding parental leave, and managing work-life balance expectations. The toolkit provides daily and weekly recovery checklists, mood tracking templates, communication scripts for asking for help, and resource lists for professional support when needed.',
+      tags: ['postpartum-recovery', 'emotional-adjustment', 'postpartum-depression', 'partner-support', 'work-life-balance'],
+      readTime: '9 min',
+      difficulty: 'intermediate',
+      relatedBlogPost: 'postpartum-recovery-complete-toolkit'
+    }
+  ],
   expertTips: [
     {
       id: 'prenatal-tip-1',
@@ -1585,12 +1785,14 @@ export const babyPlanningTemplate: GuidanceTemplate = {
 export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
   id: 'fitness-athletic-training',
   title: 'Fitness & Athletic Training',
+  description: 'Comprehensive fitness and athletic training program design and performance optimization',
   category: 'health-fitness',
   icon: '💪',
   sections: [
     {
       id: 'fitness-assessment-goal-setting',
       title: 'Fitness Assessment & Goal Setting',
+      description: 'Assess your current fitness level and establish specific, measurable performance goals',
       order: 1,
       reflectionPrompts: [
         {
@@ -1635,6 +1837,7 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
     {
       id: 'training-program-design',
       title: 'Training Program Design',
+      description: 'Design a comprehensive training program that matches your goals and constraints',
       order: 2,
       reflectionPrompts: [
         {
@@ -1679,6 +1882,7 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
     {
       id: 'nutrition-supplementation',
       title: 'Nutrition & Supplementation',
+      description: 'Optimize nutrition and supplementation to fuel performance and support recovery',
       order: 3,
       reflectionPrompts: [
         {
@@ -1723,6 +1927,7 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
     {
       id: 'performance-tracking-optimization',
       title: 'Performance Tracking & Optimization',
+      description: 'Implement tracking systems and optimization strategies to monitor progress and breakthrough plateaus',
       order: 4,
       reflectionPrompts: [
         {
@@ -1767,6 +1972,7 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
     {
       id: 'mental-performance-psychology',
       title: 'Mental Performance & Sports Psychology',
+      description: 'Develop mental toughness, focus, and psychological skills for peak performance',
       order: 5,
       reflectionPrompts: [
         {
@@ -1811,6 +2017,7 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
     {
       id: 'injury-prevention-management',
       title: 'Injury Prevention & Management',
+      description: 'Proactively prevent injuries and manage movement quality for long-term athletic health',
       order: 6,
       reflectionPrompts: [
         {
@@ -1857,27 +2064,52 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
     {
       id: 'fitness-assessment-protocols',
       title: 'Comprehensive Fitness Assessment Protocols',
-      content: 'Complete fitness assessments should include multiple components to get a full picture of your current fitness level. Cardiovascular assessments can include a 1-mile walk/run test, step test, or VO2 max estimation. For strength, test major movement patterns with 1-rep max or rep-max tests for bench press, squat, deadlift, and pull-ups. Flexibility should be assessed through sit-and-reach tests, shoulder mobility checks, and hip flexibility screens. Body composition can be measured through bioelectrical impedance, DEXA scans, or circumference measurements. Record all baseline measurements and retest every 4-8 weeks to track progress. Include movement quality assessments like overhead squat screens to identify mobility limitations or muscle imbalances that could lead to injury.'
+      type: 'guide',
+      excerpt: 'Complete fitness assessment protocols to establish baseline measurements and track progress across all fitness components',
+      content: 'Complete fitness assessments should include multiple components to get a full picture of your current fitness level. Cardiovascular assessments can include a 1-mile walk/run test, step test, or VO2 max estimation. For strength, test major movement patterns with 1-rep max or rep-max tests for bench press, squat, deadlift, and pull-ups. Flexibility should be assessed through sit-and-reach tests, shoulder mobility checks, and hip flexibility screens. Body composition can be measured through bioelectrical impedance, DEXA scans, or circumference measurements. Record all baseline measurements and retest every 4-8 weeks to track progress. Include movement quality assessments like overhead squat screens to identify mobility limitations or muscle imbalances that could lead to injury.',
+      tags: ['fitness-assessment', 'baseline-testing', 'progress-tracking', 'movement-screening'],
+      readTime: '8 min',
+      difficulty: 'intermediate'
     },
     {
       id: 'training-split-guide',
       title: 'Training Split Design & Periodization Guide',
-      content: 'Training splits should be designed based on your experience level, goals, and available training time. Beginners benefit from full-body routines 3x per week, focusing on compound movements and basic movement patterns. Intermediate trainees can progress to upper/lower splits or push/pull/legs routines. Advanced athletes may use more specialized splits like body part specialization or conjugate methods. Periodization involves planned variation in training variables over time. Linear periodization gradually increases intensity while decreasing volume. Undulating periodization varies training loads within each week. Block periodization focuses on specific adaptations in 2-4 week blocks. Include deload weeks every 4-6 weeks to promote recovery and prevent overtraining. Match your training split to your recovery capacity and life demands.'
+      type: 'guide',
+      excerpt: 'Design effective training splits and periodization strategies based on experience level and goals',
+      content: 'Training splits should be designed based on your experience level, goals, and available training time. Beginners benefit from full-body routines 3x per week, focusing on compound movements and basic movement patterns. Intermediate trainees can progress to upper/lower splits or push/pull/legs routines. Advanced athletes may use more specialized splits like body part specialization or conjugate methods. Periodization involves planned variation in training variables over time. Linear periodization gradually increases intensity while decreasing volume. Undulating periodization varies training loads within each week. Block periodization focuses on specific adaptations in 2-4 week blocks. Include deload weeks every 4-6 weeks to promote recovery and prevent overtraining. Match your training split to your recovery capacity and life demands.',
+      tags: ['training-splits', 'periodization', 'program-design', 'recovery'],
+      readTime: '10 min',
+      difficulty: 'intermediate'
     },
     {
       id: 'sports-nutrition-guide',
       title: 'Sports Nutrition & Performance Fueling Guide',
-      content: 'Sports nutrition should be tailored to your training demands and body composition goals. Calculate your Total Daily Energy Expenditure (TDEE) and adjust calories based on whether you\'re trying to lose fat, maintain weight, or gain muscle. Protein needs are 0.8-1.2g per pound of body weight for active individuals. Carbohydrates should comprise 3-7g per kg of body weight depending on training volume. Fats should be 0.3-0.4g per pound of body weight for hormone production and vitamin absorption. Time your nutrition around training: consume easily digestible carbs 1-2 hours before training, consider intra-workout nutrition for sessions longer than 90 minutes, and prioritize protein and carbs within 2 hours post-workout. Stay hydrated with 0.5-1 ounce of water per pound of body weight daily, increasing during intense training or hot weather.'
+      type: 'guide',
+      excerpt: 'Comprehensive sports nutrition guidance for optimal performance and body composition goals',
+      content: 'Sports nutrition should be tailored to your training demands and body composition goals. Calculate your Total Daily Energy Expenditure (TDEE) and adjust calories based on whether you\'re trying to lose fat, maintain weight, or gain muscle. Protein needs are 0.8-1.2g per pound of body weight for active individuals. Carbohydrates should comprise 3-7g per kg of body weight depending on training volume. Fats should be 0.3-0.4g per pound of body weight for hormone production and vitamin absorption. Time your nutrition around training: consume easily digestible carbs 1-2 hours before training, consider intra-workout nutrition for sessions longer than 90 minutes, and prioritize protein and carbs within 2 hours post-workout. Stay hydrated with 0.5-1 ounce of water per pound of body weight daily, increasing during intense training or hot weather.',
+      tags: ['sports-nutrition', 'performance-fueling', 'macronutrients', 'meal-timing'],
+      readTime: '12 min',
+      difficulty: 'intermediate'
     },
     {
       id: 'injury-prevention-guide',
       title: 'Injury Prevention & Movement Quality Guide',
-      content: 'Injury prevention should be a cornerstone of any training program. Start with movement quality assessments to identify limitations or imbalances. Common issues include poor hip mobility, thoracic spine stiffness, ankle restrictions, and shoulder impingement. Address these through targeted mobility work and corrective exercises. Implement proper warm-up protocols that include dynamic movements, activation exercises, and movement preparation specific to your training session. Always prioritize technique over load progression. Use the 10% rule for volume increases and avoid rapid training load spikes. Include regular soft tissue work through foam rolling, massage, or self-myofascial release. Monitor training load and recovery markers like sleep quality, resting heart rate, and subjective energy levels. Have protocols in place for addressing pain or injury, including when to modify training, when to seek professional help, and how to safely return to full training.'
+      type: 'guide',
+      excerpt: 'Comprehensive injury prevention strategies and movement quality protocols for long-term athletic health',
+      content: 'Injury prevention should be a cornerstone of any training program. Start with movement quality assessments to identify limitations or imbalances. Common issues include poor hip mobility, thoracic spine stiffness, ankle restrictions, and shoulder impingement. Address these through targeted mobility work and corrective exercises. Implement proper warm-up protocols that include dynamic movements, activation exercises, and movement preparation specific to your training session. Always prioritize technique over load progression. Use the 10% rule for volume increases and avoid rapid training load spikes. Include regular soft tissue work through foam rolling, massage, or self-myofascial release. Monitor training load and recovery markers like sleep quality, resting heart rate, and subjective energy levels. Have protocols in place for addressing pain or injury, including when to modify training, when to seek professional help, and how to safely return to full training.',
+      tags: ['injury-prevention', 'movement-quality', 'warm-up-protocols', 'recovery-monitoring'],
+      readTime: '15 min',
+      difficulty: 'intermediate'
     },
     {
       id: 'fitness-tracking-guide',
       title: 'Performance Tracking & Progress Monitoring Guide',
-      content: 'Effective tracking involves both objective measurements and subjective assessments. Track strength progress through rep maxes, volume progression (sets x reps x weight), and rate of perceived exertion (RPE). Monitor cardiovascular improvements through heart rate data, time trials, and recovery heart rate. Body composition can be tracked through measurements, photos, and how clothes fit rather than just scale weight. Use technology wisely: fitness trackers for daily activity and sleep, heart rate monitors for training intensity, and apps for workout logging. Track recovery markers including sleep quality/duration, resting heart rate, heart rate variability (if available), and subjective energy levels. Maintain training logs with exercises, weights, sets, reps, RPE, and notes about how you felt. Review progress weekly and monthly, looking for trends rather than day-to-day fluctuations. Adjust your program based on data: if strength gains stall, consider deload weeks or program modifications. If recovery markers decline, prioritize rest and stress management.'
+      type: 'guide',
+      excerpt: 'Systematic approach to tracking fitness progress using objective measurements and subjective assessments',
+      content: 'Effective tracking involves both objective measurements and subjective assessments. Track strength progress through rep maxes, volume progression (sets x reps x weight), and rate of perceived exertion (RPE). Monitor cardiovascular improvements through heart rate data, time trials, and recovery heart rate. Body composition can be tracked through measurements, photos, and how clothes fit rather than just scale weight. Use technology wisely: fitness trackers for daily activity and sleep, heart rate monitors for training intensity, and apps for workout logging. Track recovery markers including sleep quality/duration, resting heart rate, heart rate variability (if available), and subjective energy levels. Maintain training logs with exercises, weights, sets, reps, RPE, and notes about how you felt. Review progress weekly and monthly, looking for trends rather than day-to-day fluctuations. Adjust your program based on data: if strength gains stall, consider deload weeks or program modifications. If recovery markers decline, prioritize rest and stress management.',
+      tags: ['fitness-tracking', 'progress-monitoring', 'data-analysis', 'performance-metrics'],
+      readTime: '11 min',
+      difficulty: 'intermediate'
     }
   ],
   expertTips: [
@@ -1943,12 +2175,14 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
 export const travelPlanningAdventureTemplate: GuidanceTemplate = {
   id: 'travel-planning-adventure',
   title: 'Travel Planning & Adventure Design',
+  description: 'Complete travel planning and adventure design from inspiration to execution',
   category: 'travel-adventure',
   icon: '✈️',
   sections: [
     {
       id: 'travel-vision-goals',
       title: 'Travel Vision & Goals',
+      description: 'Define your travel motivations, style, and personal growth intentions',
       order: 1,
       reflectionPrompts: [
         {
@@ -1993,6 +2227,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
     {
       id: 'destination-research-selection',
       title: 'Destination Research & Selection',
+      description: 'Research and select destinations that match your criteria and travel goals',
       order: 2,
       reflectionPrompts: [
         {
@@ -2036,6 +2271,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
     {
       id: 'budget-logistics-planning',
       title: 'Budget & Logistics Planning',
+      description: 'Plan your travel budget, transportation, and essential logistics',
       order: 3,
       reflectionPrompts: [
         {
@@ -2079,6 +2315,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
     {
       id: 'itinerary-experience-design',
       title: 'Itinerary & Experience Design',
+      description: 'Design your itinerary balancing must-do experiences with spontaneous discovery',
       order: 4,
       reflectionPrompts: [
         {
@@ -2122,6 +2359,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
     {
       id: 'travel-documentation-reflection',
       title: 'Travel Documentation & Reflection',
+      description: 'Document your journey and reflect on experiences for personal growth',
       order: 6,
       reflectionPrompts: [
         {
@@ -2253,6 +2491,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
 export const freelanceGigEconomyTemplate: GuidanceTemplate = {
   id: 'freelance-gig-economy',
   title: 'Freelance & Gig Economy Success',
+  description: 'Build a successful freelance career and thrive in the gig economy',
   category: 'career-business',
   icon: '💼',
   sections: [
@@ -2563,6 +2802,7 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
 export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
   id: 'parenting-child-development',
   title: 'Parenting & Child Development',
+  description: 'Navigate parenting challenges and support your child\'s healthy development',
   category: 'family-parenting',
   icon: '👶',
   sections: [
@@ -2916,6 +3156,7 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
 export const productivitySystemTemplate: GuidanceTemplate = {
   id: 'productivity-system',
   title: 'Productivity System & Time Management',
+  description: 'Design and implement a productivity system that maximizes your effectiveness',
   category: 'productivity',
   icon: '⚡',
   sections: [
@@ -3162,6 +3403,7 @@ export const productivitySystemTemplate: GuidanceTemplate = {
 export const movingRelocationTemplate: GuidanceTemplate = {
   id: 'moving-relocation',
   title: 'Moving & Relocation Planning',
+  description: 'Plan and execute a smooth relocation to a new home or city',
   category: 'life-transitions',
   icon: '📦',
   sections: [
@@ -3421,6 +3663,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
 export const eventPlanningTemplate: GuidanceTemplate = {
   id: 'event-planning',
   title: 'Event Planning & Coordination',
+  description: 'Plan and coordinate memorable events from conception to execution',
   category: 'events',
   icon: '🎉',
   sections: [
@@ -3670,6 +3913,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
 export const travelPlanningTemplate: GuidanceTemplate = {
   id: 'travel-planning',
   title: 'Travel Planning & Trip Organization',
+  description: 'Organize and plan memorable travel experiences efficiently',
   category: 'travel',
   icon: '✈️',
   sections: [
@@ -3913,6 +4157,7 @@ export const travelPlanningTemplate: GuidanceTemplate = {
 export const mealPlanningTemplate: GuidanceTemplate = {
   id: 'meal-planning',
   title: 'Meal Planning & Nutrition Management',
+  description: 'Plan nutritious meals and manage your dietary goals effectively',
   category: 'health',
   icon: '🍽️',
   sections: [
@@ -4166,6 +4411,7 @@ export const mealPlanningTemplate: GuidanceTemplate = {
 export const academicResearchTemplate: GuidanceTemplate = {
   id: 'academic-research',
   title: 'Academic Research & Project Management',
+  description: 'Conduct thorough academic research and manage complex projects successfully',
   category: 'education',
   icon: '📚',
   sections: [
@@ -4467,6 +4713,7 @@ export const academicResearchTemplate: GuidanceTemplate = {
 export const freelanceBusinessTemplate: GuidanceTemplate = {
   id: 'freelance-business',
   title: 'Freelance Business & Independent Consulting',
+  description: 'Build and scale a sustainable freelance business and consulting practice',
   category: 'career-business',
   icon: '💼',
   sections: [
@@ -4786,6 +5033,7 @@ export const freelanceBusinessTemplate: GuidanceTemplate = {
 export const personalFinanceInvestmentTemplate: GuidanceTemplate = {
   id: 'personal-finance-investment',
   title: 'Personal Finance & Investment Planning',
+  description: 'Master personal finance management and build long-term wealth through strategic investing',
   category: 'finance',
   icon: '📈',
   sections: [
@@ -5105,6 +5353,7 @@ export const personalFinanceInvestmentTemplate: GuidanceTemplate = {
 export const digitalMarketingSEOTemplate: GuidanceTemplate = {
   id: 'digital-marketing-seo',
   title: 'Digital Marketing & SEO Strategy',
+  description: 'Develop comprehensive digital marketing strategies and optimize search engine performance',
   category: 'marketing',
   icon: '📱',
   sections: [
@@ -5424,6 +5673,7 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
 export const remoteWorkProductivityTemplate: GuidanceTemplate = {
   id: 'remote-work-productivity',
   title: 'Remote Work & Productivity Mastery',
+  description: 'Master remote work productivity and create an effective home office environment',
   category: 'productivity',
   icon: '💻',
   sections: [
@@ -5743,6 +5993,7 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
 export const careerChangeTransitionTemplate: GuidanceTemplate = {
   id: 'career-change-transition',
   title: 'Career Change & Professional Transition',
+  description: 'Navigate career transitions and successfully change professional directions',
   category: 'career-business',
   icon: '🔄',
   sections: [
@@ -6062,6 +6313,7 @@ export const careerChangeTransitionTemplate: GuidanceTemplate = {
 export const smallBusinessExitStrategyTemplate: GuidanceTemplate = {
   id: 'small-business-exit-strategy',
   title: 'Small Business Exit Strategy & Planning',
+  description: 'Plan and execute a successful exit strategy for your small business',
   category: 'career-business',
   icon: '🚪',
   sections: [
@@ -6381,6 +6633,7 @@ export const smallBusinessExitStrategyTemplate: GuidanceTemplate = {
 export const nonProfitLaunchTemplate: GuidanceTemplate = {
   id: 'non-profit-launch',
   title: 'Non-Profit Organization Launch & Development',
+  description: 'Launch and develop a sustainable non-profit organization that creates social impact',
   category: 'career-business',
   icon: '🤝',
   sections: [
@@ -6700,6 +6953,7 @@ export const nonProfitLaunchTemplate: GuidanceTemplate = {
 export const personalHealthWellnessTemplate: GuidanceTemplate = {
   id: 'personal-health-wellness',
   title: 'Personal Health & Wellness Optimization',
+  description: 'Optimize your personal health and wellness through comprehensive lifestyle design',
   category: 'health-wellness',
   icon: '💪',
   sections: [
@@ -7019,6 +7273,7 @@ export const personalHealthWellnessTemplate: GuidanceTemplate = {
 export const sustainableLivingTemplate: GuidanceTemplate = {
   id: 'sustainable-living',
   title: 'Sustainable Living & Environmental Impact',
+  description: 'Adopt sustainable living practices and reduce your environmental footprint',
   category: 'lifestyle',
   icon: '🌱',
   sections: [
@@ -7338,6 +7593,7 @@ export const sustainableLivingTemplate: GuidanceTemplate = {
 export const creativeProjectTemplate: GuidanceTemplate = {
   id: 'creative-project',
   title: 'Creative Project & Artistic Development',
+  description: 'Develop and execute creative projects while building artistic skills and vision',
   category: 'creative-arts',
   icon: '🎨',
   sections: [
@@ -8614,6 +8870,7 @@ export const investmentWealthBuildingTemplate: GuidanceTemplate = {
 export const ecommerceOnlineBusinessTemplate: GuidanceTemplate = {
   id: 'ecommerce-online-business',
   title: 'E-commerce & Online Business Development',
+  description: 'Launch and scale a successful e-commerce business and online presence',
   category: 'business-ecommerce',
   icon: '🛒',
   sections: [
@@ -8933,6 +9190,7 @@ export const ecommerceOnlineBusinessTemplate: GuidanceTemplate = {
 export const personalDevelopmentLifeCoachingTemplate: GuidanceTemplate = {
   id: 'personal-development-life-coaching',
   title: 'Personal Development & Life Coaching',
+  description: 'Design a comprehensive personal development plan and coaching approach',
   category: 'personal-growth',
   icon: '🌱',
   sections: [
@@ -9252,6 +9510,7 @@ export const personalDevelopmentLifeCoachingTemplate: GuidanceTemplate = {
 export const retirementPlanningLifeTransitionTemplate: GuidanceTemplate = {
   id: 'retirement-planning-life-transition',
   title: 'Retirement Planning & Life Transition',
+  description: 'Plan for a fulfilling retirement and navigate major life transitions',
   category: 'life-planning',
   icon: '🏖️',
   sections: [
