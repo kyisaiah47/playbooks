@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Resource } from '@/types/template';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -75,9 +76,38 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                   );
                 }
                 if (paragraph.trim()) {
+                  // Enhanced markdown parsing for bold text
+                  const renderMarkdown = (text: string) => {
+                    const parts: (string | React.JSX.Element)[] = [];
+                    let currentIndex = 0;
+                    
+                    // Find all bold text matches
+                    const boldRegex = /\*\*(.*?)\*\*/g;
+                    let match;
+                    
+                    while ((match = boldRegex.exec(text)) !== null) {
+                      // Add text before the match
+                      if (match.index > currentIndex) {
+                        parts.push(text.slice(currentIndex, match.index));
+                      }
+                      
+                      // Add the bold text
+                      parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>);
+                      
+                      currentIndex = match.index + match[0].length;
+                    }
+                    
+                    // Add remaining text
+                    if (currentIndex < text.length) {
+                      parts.push(text.slice(currentIndex));
+                    }
+                    
+                    return parts.length > 1 ? parts : text;
+                  };
+
                   return (
                     <p key={index} className="text-sm leading-6 text-foreground">
-                      {paragraph}
+                      {renderMarkdown(paragraph)}
                     </p>
                   );
                 }

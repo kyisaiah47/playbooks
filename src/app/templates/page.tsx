@@ -77,7 +77,7 @@ const additionalFeaturedTemplates = [
 ];
 
 // Map each template to unique Lucide icons
-const getTemplateIcon = (template: any) => {
+const getTemplateIcon = (template: { id: string }) => {
 	switch (template.id) {
 		case 'wedding-planning': return Heart;
 		case 'home-buying': return Home;

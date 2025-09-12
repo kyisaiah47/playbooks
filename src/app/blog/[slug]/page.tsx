@@ -9,6 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { PageLayout } from "@/components/layout";
 import { getBlogPostBySlug, getRelatedBlogPosts } from "@/registry/blogs";
 import { use } from "react";
+import React from "react";
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -103,9 +104,38 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   );
                 }
                 if (paragraph.trim()) {
+                  // Parse markdown bold text
+                  const renderMarkdown = (text: string) => {
+                    const parts: (string | React.JSX.Element)[] = [];
+                    let currentIndex = 0;
+                    
+                    // Find all bold text matches
+                    const boldRegex = /\*\*(.*?)\*\*/g;
+                    let match;
+                    
+                    while ((match = boldRegex.exec(text)) !== null) {
+                      // Add text before the match
+                      if (match.index > currentIndex) {
+                        parts.push(text.slice(currentIndex, match.index));
+                      }
+                      
+                      // Add the bold text
+                      parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>);
+                      
+                      currentIndex = match.index + match[0].length;
+                    }
+                    
+                    // Add remaining text
+                    if (currentIndex < text.length) {
+                      parts.push(text.slice(currentIndex));
+                    }
+                    
+                    return parts.length > 1 ? parts : text;
+                  };
+
                   return (
                     <p key={index} className="text-base leading-7 mb-4">
-                      {paragraph}
+                      {renderMarkdown(paragraph)}
                     </p>
                   );
                 }
@@ -138,7 +168,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button size="lg" asChild>
-                  <Link href="/templates/wedding-planning">
+                  <Link href="/wedding-planning/app">
                     Get Wedding Template
                   </Link>
                 </Button>
