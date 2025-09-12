@@ -61,9 +61,9 @@ interface HeroBenefit {
 
 export interface LandingPageData {
   // SEO & Metadata (optional)
-  metadata?: any;
-  jsonLd?: any;
-  faqJsonLd?: any;
+  metadata?: unknown;
+  jsonLd?: unknown;
+  faqJsonLd?: unknown;
 
   // Hero Section
   badgeIcon: LucideIcon;
@@ -5206,6 +5206,318 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     finalCtaText: 'Get Your College Planning Template',
     ctaText: 'Plan Your College Future',
     appPath: '/college-planning/app',
+  },
+
+  'personal-health-wellness': {
+    // Hero Section
+    badgeIcon: Heart,
+    badgeText: 'Health & Wellness',
+    heroTitle: 'Optimize Your Personal',
+    heroHighlight: 'Health & Wellness',
+    heroDescription: 'Transform your health and wellbeing with comprehensive lifestyle planning, evidence-based strategies, and holistic wellness optimization.',
+    ctaText: 'Start Your Wellness Journey',
+    appPath: '/personal-health-wellness/app',
+
+    heroBenefits: [
+      { text: 'Comprehensive health assessment and baseline tracking' },
+      { text: 'Evidence-based fitness and nutrition planning' },
+      { text: 'Mental wellness and stress management strategies' },
+      { text: 'Preventive care and long-term health optimization' },
+    ],
+
+    // Process Section
+    processTitle: 'Your Path to Optimal Health',
+    processDescription: 'Follow our proven system to assess, plan, and optimize every aspect of your health and wellness.',
+    processSteps: [
+      {
+        icon: Stethoscope,
+        title: 'Health Assessment',
+        description: 'Complete comprehensive health evaluation including physical, mental, and lifestyle factors.'
+      },
+      {
+        icon: Target,
+        title: 'Goal Setting',
+        description: 'Set specific, measurable health and wellness goals based on your assessment and priorities.'
+      },
+      {
+        icon: Activity,
+        title: 'Action Planning',
+        description: 'Create detailed action plans for fitness, nutrition, sleep, stress management, and preventive care.'
+      },
+      {
+        icon: TrendingUp,
+        title: 'Track Progress',
+        description: 'Monitor your health metrics, track improvements, and adjust your wellness strategies.'
+      }
+    ],
+
+    // Benefits Section
+    benefitsTitle: 'Transform Your Health and Vitality',
+    benefitsDescription: 'Experience the benefits of optimized health and wellness through our comprehensive system.',
+    benefits: [
+      {
+        icon: Energy,
+        title: 'Increased Energy',
+        description: 'Boost your daily energy levels through optimized nutrition, fitness, and lifestyle habits.'
+      },
+      {
+        icon: Heart,
+        title: 'Better Health Outcomes',
+        description: 'Improve key health markers and reduce risk factors through evidence-based strategies.'
+      },
+      {
+        icon: Brain,
+        title: 'Enhanced Mental Wellness',
+        description: 'Develop resilience, manage stress effectively, and improve mental clarity and focus.'
+      },
+      {
+        icon: Timer,
+        title: 'Long-term Prevention',
+        description: 'Build habits and systems that prevent chronic disease and promote healthy aging.'
+      }
+    ],
+
+    // Features Section
+    featuresIcon: Sparkles,
+    featuresTitle: 'Complete Health Optimization System',
+    featuresDescription: 'Everything you need to transform your health and wellness with evidence-based guidance.',
+    features: [
+      'Comprehensive health assessment and baseline tracking',
+      'Personalized fitness and exercise planning',
+      'Nutrition optimization and meal planning strategies',
+      'Mental health and stress management techniques',
+      'Sleep optimization and recovery protocols',
+      'Preventive care and health screening schedules',
+      'Habit formation and behavior change guidance',
+      'Progress tracking and health metrics monitoring'
+    ],
+
+    faqs: [
+      {
+        question: 'Is this template suitable for beginners to health and wellness?',
+        answer: 'Yes! Our template is designed for all levels, from complete beginners to those looking to optimize existing healthy habits. We provide clear guidance and evidence-based strategies for every stage of your wellness journey.'
+      },
+      {
+        question: 'What health aspects does the template cover?',
+        answer: 'The template covers physical fitness, nutrition, mental wellness, sleep optimization, stress management, preventive healthcare, and lifestyle design. It takes a holistic approach to health and wellbeing.'
+      },
+      {
+        question: 'Do I need any special equipment or memberships?',
+        answer: 'No special equipment is required. The template includes options for home workouts, bodyweight exercises, and budget-friendly nutrition strategies. You can adapt recommendations to your available resources.'
+      },
+      {
+        question: 'How long does it take to see results?',
+        answer: 'While individual results vary, most users report increased energy and improved mood within 2-4 weeks of following the template. Physical changes and health marker improvements typically become noticeable within 6-12 weeks of consistent implementation.'
+      }
+    ]
+  },
+
+  'home-renovation-interior-design': {
+    // Hero Section
+    badgeIcon: Home,
+    badgeText: 'Home & Design',
+    heroTitle: 'Plan Your Dream',
+    heroHighlight: 'Home Renovation',
+    heroDescription: 'Transform your space with comprehensive renovation planning, design guidance, and project management tools for stress-free home improvements.',
+    ctaText: 'Start Your Renovation',
+    appPath: '/home-renovation-interior-design/app',
+
+    heroBenefits: [
+      { text: 'Complete renovation planning and project management' },
+      { text: 'Budget tracking and cost optimization strategies' },
+      { text: 'Contractor vetting and coordination systems' },
+      { text: 'Design guidance and space planning tools' },
+    ],
+
+    // Process Section
+    processTitle: 'Your Renovation Success Plan',
+    processDescription: 'Follow our proven system to plan, budget, and execute your home renovation with confidence.',
+    processSteps: [
+      {
+        icon: Layout,
+        title: 'Vision Planning',
+        description: 'Define your renovation goals, assess your space, and create a comprehensive project vision.'
+      },
+      {
+        icon: Calculator,
+        title: 'Budget & Timeline',
+        description: 'Develop realistic budgets, timelines, and contingency plans for your renovation project.'
+      },
+      {
+        icon: Users,
+        title: 'Team Assembly',
+        description: 'Find and vet contractors, designers, and suppliers for your renovation team.'
+      },
+      {
+        icon: CheckCircle2,
+        title: 'Project Execution',
+        description: 'Coordinate the renovation process, track progress, and ensure quality outcomes.'
+      }
+    ],
+
+    // Benefits Section
+    benefitsTitle: 'Create Your Dream Space',
+    benefitsDescription: 'Transform your home with confidence using our comprehensive renovation planning system.',
+    benefits: [
+      {
+        icon: PiggyBank,
+        title: 'Stay On Budget',
+        description: 'Avoid cost overruns with detailed budget planning, contingency reserves, and cost tracking.'
+      },
+      {
+        icon: Shield,
+        title: 'Avoid Costly Mistakes',
+        description: 'Prevent common renovation pitfalls with expert guidance and proven project management.'
+      },
+      {
+        icon: Clock,
+        title: 'Save Time & Stress',
+        description: 'Streamline your renovation process with organized planning and efficient coordination.'
+      },
+      {
+        icon: Star,
+        title: 'Quality Results',
+        description: 'Achieve professional-quality outcomes with expert design guidance and quality control.'
+      }
+    ],
+
+    // Features Section
+    featuresIcon: Sparkles,
+    featuresTitle: 'Complete Renovation Management System',
+    featuresDescription: 'Everything you need to plan and execute successful home renovations from start to finish.',
+    features: [
+      'Vision planning and space assessment tools',
+      'Detailed budget planning and cost tracking',
+      'Contractor vetting and management systems',
+      'Design guidance and style planning',
+      'Project timeline and milestone tracking',
+      'Quality control and inspection checklists',
+      'Material selection and procurement planning',
+      'Permit and legal compliance guidance'
+    ],
+
+    faqs: [
+      {
+        question: 'Is this template suitable for DIY renovations or just contractor projects?',
+        answer: 'Our template works for both DIY and contractor-managed projects. It includes guidance for self-managing projects as well as systems for hiring and coordinating with professionals.'
+      },
+      {
+        question: 'What size renovations does this template support?',
+        answer: 'The template scales from single-room updates to whole-house renovations. The planning framework adapts to projects of any size and complexity.'
+      },
+      {
+        question: 'How does the template help with budget management?',
+        answer: 'The template includes detailed budget categories, cost estimation guidelines, contingency planning, and expense tracking systems to help you stay on budget throughout your project.'
+      },
+      {
+        question: 'What if I have no design experience?',
+        answer: 'The template includes step-by-step design guidance, style assessment tools, and resources for working with design professionals. No prior design experience is required.'
+      }
+    ]
+  },
+
+  'sustainable-living': {
+    // Hero Section
+    badgeIcon: Leaf,
+    badgeText: 'Sustainability',
+    heroTitle: 'Live Sustainably &',
+    heroHighlight: 'Reduce Your Impact',
+    heroDescription: 'Transform your lifestyle with comprehensive sustainability planning, environmental impact reduction, and eco-friendly living strategies.',
+    ctaText: 'Start Living Sustainably',
+    appPath: '/sustainable-living/app',
+
+    heroBenefits: [
+      { text: 'Carbon footprint assessment and reduction strategies' },
+      { text: 'Sustainable lifestyle planning and habit formation' },
+      { text: 'Waste reduction and circular living practices' },
+      { text: 'Environmental impact tracking and optimization' },
+    ],
+
+    // Process Section
+    processTitle: 'Your Path to Sustainable Living',
+    processDescription: 'Follow our proven system to assess your environmental impact and adopt sustainable practices that make a difference.',
+    processSteps: [
+      {
+        icon: BarChart3,
+        title: 'Impact Assessment',
+        description: 'Measure your current environmental footprint across transportation, energy, consumption, and waste.'
+      },
+      {
+        icon: Target,
+        title: 'Goal Setting',
+        description: 'Set specific sustainability goals based on your values and the areas where you can make the biggest impact.'
+      },
+      {
+        icon: Workflow,
+        title: 'Action Planning',
+        description: 'Create step-by-step plans for reducing consumption, improving efficiency, and adopting eco-friendly habits.'
+      },
+      {
+        icon: TrendingDown,
+        title: 'Track Progress',
+        description: 'Monitor your environmental impact reduction and celebrate your positive contribution to the planet.'
+      }
+    ],
+
+    // Benefits Section
+    benefitsTitle: 'Make a Positive Environmental Impact',
+    benefitsDescription: 'Experience the benefits of sustainable living for both the planet and your personal wellbeing.',
+    benefits: [
+      {
+        icon: Globe,
+        title: 'Reduce Your Footprint',
+        description: 'Significantly decrease your carbon footprint and environmental impact through conscious choices.'
+      },
+      {
+        icon: DollarSign,
+        title: 'Save Money',
+        description: 'Reduce expenses through energy efficiency, waste reduction, and mindful consumption habits.'
+      },
+      {
+        icon: Heart,
+        title: 'Improve Wellbeing',
+        description: 'Enjoy better health and life satisfaction through clean living and connection with nature.'
+      },
+      {
+        icon: Users,
+        title: 'Inspire Others',
+        description: 'Become a positive influence in your community and inspire others to live more sustainably.'
+      }
+    ],
+
+    // Features Section
+    featuresIcon: Sparkles,
+    featuresTitle: 'Complete Sustainability System',
+    featuresDescription: 'Everything you need to live more sustainably and reduce your environmental impact effectively.',
+    features: [
+      'Comprehensive environmental impact assessment',
+      'Carbon footprint calculation and tracking',
+      'Sustainable transportation planning',
+      'Energy efficiency optimization strategies',
+      'Waste reduction and zero-waste guidance',
+      'Sustainable consumption and purchasing guides',
+      'Eco-friendly home and lifestyle practices',
+      'Community engagement and advocacy planning'
+    ],
+
+    faqs: [
+      {
+        question: 'Is sustainable living expensive or inconvenient?',
+        answer: 'Not at all! Our template focuses on practical, cost-effective sustainability strategies. Many sustainable practices actually save money through reduced consumption and improved efficiency.'
+      },
+      {
+        question: 'How much impact can one person really make?',
+        answer: 'Individual actions create significant cumulative impact. Plus, sustainable living often inspires others, multiplying your positive influence. The template helps you identify where your personal choices can make the biggest difference.'
+      },
+      {
+        question: 'What if I live in an apartment or rental property?',
+        answer: 'The template includes many strategies perfect for renters and apartment living, focusing on consumption choices, transportation, waste reduction, and energy use rather than just property modifications.'
+      },
+      {
+        question: 'How do I measure my environmental impact?',
+        answer: 'The template includes tools and guidance for calculating your carbon footprint, tracking resource consumption, and measuring progress over time using simple, practical metrics.'
+      }
+    ]
   }
 };
 

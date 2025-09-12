@@ -63,8 +63,8 @@ interface HeroBenefit {
 interface TemplateLandingProps {
   // SEO & Metadata
   metadata?: Metadata;
-  jsonLd?: any;
-  faqJsonLd?: any;
+  jsonLd?: unknown;
+  faqJsonLd?: unknown;
 
   // Hero Section
   badgeIcon: LucideIcon;

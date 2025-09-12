@@ -1,5 +1,5 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, fitnessJourneyTemplate, personalDevelopmentCoachingTemplate, retirementLifestylePlanningTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate, personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate, careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate, collegePlanningTemplate } from '@/data/templates';
+import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, fitnessJourneyTemplate, personalDevelopmentCoachingTemplate, retirementLifestylePlanningTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate, personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate, careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate, collegePlanningTemplate, personalHealthWellnessTemplate, homeRenovationInteriorDesignTemplate, sustainableLivingTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
 
 // Function to sync template resources with blog registry
@@ -328,6 +328,19 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     iconColor: "text-orange-600 dark:text-orange-400",
     template: createTemplateWithSyncedResources(fitnessAthleticTrainingTemplate)
   },
+  {
+    id: "personal-health-wellness",
+    name: "Personal Health & Wellness",
+    description: "Optimize your overall health and wellness through comprehensive lifestyle design and evidence-based strategies.",
+    category: "Health & Wellness",
+    icon: "🌟",
+    url: "/personal-health-wellness/app",
+    popular: true,
+    featured: true,
+    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
+    iconColor: "text-green-600 dark:text-green-400",
+    template: createTemplateWithSyncedResources(personalHealthWellnessTemplate)
+  },
   
   // Life Transitions Templates
   {
@@ -341,6 +354,19 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     color: "bg-teal-50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-800",
     iconColor: "text-teal-600 dark:text-teal-400",
     template: createTemplateWithSyncedResources(movingRelocationTemplate)
+  },
+  {
+    id: "home-renovation-interior-design",
+    name: "Home Renovation & Interior Design",
+    description: "Plan and execute home renovations with design guidance, budget management, and project coordination.",
+    category: "Personal Life",
+    icon: "🏠",
+    url: "/home-renovation-interior-design/app",
+    popular: true,
+    featured: true,
+    color: "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800",
+    iconColor: "text-amber-600 dark:text-amber-400",
+    template: createTemplateWithSyncedResources(homeRenovationInteriorDesignTemplate)
   },
   
   // Personal Development Templates
@@ -367,6 +393,21 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     color: "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800",
     iconColor: "text-amber-600 dark:text-amber-400",
     template: createTemplateWithSyncedResources(retirementLifestylePlanningTemplate)
+  },
+
+  // Lifestyle & Environment Templates
+  {
+    id: "sustainable-living",
+    name: "Sustainable Living & Environmental Impact",
+    description: "Adopt sustainable living practices and reduce your environmental footprint through conscious choices.",
+    category: "Lifestyle & Environment",
+    icon: "🌱",
+    url: "/sustainable-living/app",
+    popular: true,
+    featured: true,
+    color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    template: createTemplateWithSyncedResources(sustainableLivingTemplate)
   }
 ];
 
