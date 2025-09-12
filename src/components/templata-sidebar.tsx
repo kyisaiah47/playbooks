@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt } from "lucide-react"
+import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -18,6 +18,32 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+
+const getSectionIcon = (sectionId: string) => {
+  switch (sectionId) {
+    // Wedding Planning sections
+    case 'budget-finance': return <DollarSign className="w-4 h-4" />;
+    case 'venue-selection': return <MapPin className="w-4 h-4" />;
+    case 'guest-management': return <UserCheck className="w-4 h-4" />;
+    case 'vendor-selection': return <Briefcase className="w-4 h-4" />;
+    case 'ceremony-planning': return <Church className="w-4 h-4" />;
+    case 'reception-planning': return <Music className="w-4 h-4" />;
+    case 'styling-decor': return <Palette className="w-4 h-4" />;
+    case 'attire-beauty': return <Shirt className="w-4 h-4" />;
+    
+    // Home Buying sections
+    case 'financial-readiness': return <DollarSign className="w-4 h-4" />;
+    case 'location-preferences': return <MapPin className="w-4 h-4" />;
+    case 'home-specifications': return <Home className="w-4 h-4" />;
+    case 'mortgage-financing': return <CreditCard className="w-4 h-4" />;
+    case 'house-hunting': return <Search className="w-4 h-4" />;
+    case 'making-offers': return <HandCoins className="w-4 h-4" />;
+    case 'closing-process': return <FileText className="w-4 h-4" />;
+    case 'moving-settling': return <Truck className="w-4 h-4" />;
+    
+    default: return <Target className="w-4 h-4" />;
+  }
+};
 
 interface TemplataContentSidebarProps {
   template: GuidanceTemplate
@@ -69,19 +95,6 @@ export function TemplataContentSidebar({
     }
   }
 
-  const getSectionIcon = (sectionId: string) => {
-    switch (sectionId) {
-      case 'budget-finance': return <DollarSign className="w-4 h-4" />
-      case 'venue-selection': return <MapPin className="w-4 h-4" />
-      case 'guest-management': return <UserCheck className="w-4 h-4" />
-      case 'vendor-selection': return <Briefcase className="w-4 h-4" />
-      case 'ceremony-planning': return <Church className="w-4 h-4" />
-      case 'reception-planning': return <Music className="w-4 h-4" />
-      case 'styling-decor': return <Palette className="w-4 h-4" />
-      case 'attire-beauty': return <Shirt className="w-4 h-4" />
-      default: return <Heart className="w-4 h-4" />
-    }
-  }
 
   return (
     <Sidebar
@@ -131,7 +144,7 @@ export function TemplataContentSidebar({
                       isActive={activeSection === index && activeTab === 'prompts'}
                       className="px-2.5 md:px-2"
                     >
-                      {getSectionIcon(section.id)}
+                      {console.log('ICON FOR:', section.id) || getSectionIcon(section.id)}
                       <span className="text-xs">{section.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -215,9 +228,11 @@ export function TemplataContentSidebar({
                     <span className="ml-auto text-xs text-muted-foreground">{resource.readTime}</span>
                   </div>
                   <span className="font-medium line-clamp-2">{resource.title}</span>
-                  <span className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
-                    {resource.excerpt}
-                  </span>
+                  <div className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
+                    {resource.excerpt.split('**').map((part, index) => 
+                      index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                    )}
+                  </div>
                 </button>
               ))}
             </SidebarGroupContent>
