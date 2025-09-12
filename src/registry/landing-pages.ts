@@ -1141,6 +1141,112 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     finalCtaText: 'Start Your Baby Planning Journey',
   },
 
+  'parenting-child-development': {
+    badgeIcon: Users,
+    badgeText: 'Parenting & Child Development',
+    heroTitle: 'Nurture Your Child\'s',
+    heroHighlight: 'Full Potential',
+    heroDescription: 'Evidence-based guidance for nurturing healthy child development from infancy through adolescence. Build stronger relationships and support your child\'s growth.',
+    ctaText: 'Start Parenting Journey',
+    appPath: '/parenting-child-development/app',
+    heroCards: [
+      {
+        badge: 'Communication',
+        content: 'Age-appropriate communication strategies that strengthen bonds'
+      },
+      {
+        badge: 'Development',
+        badgeVariant: 'secondary',
+        content: 'Understanding milestones and supporting natural growth'
+      },
+      {
+        badge: 'Learning',
+        badgeVariant: 'outline',
+        content: 'Educational approaches that foster curiosity and confidence'
+      },
+      {
+        badge: 'Wellbeing',
+        content: 'Emotional, physical, and mental health strategies for the family'
+      }
+    ],
+    processTitle: 'Comprehensive Child Development Support',
+    processDescription: 'Our evidence-based 6-step framework supports healthy development from infancy through the teen years.',
+    processSteps: [
+      {
+        icon: Heart,
+        title: 'Building Secure Attachment',
+        description: 'Establish strong emotional bonds through responsive caregiving and understanding attachment theory.'
+      },
+      {
+        icon: Users,
+        title: 'Effective Communication',
+        description: 'Learn age-appropriate communication strategies that respect your child\'s developmental stage and personality.'
+      },
+      {
+        icon: BookOpen,
+        title: 'Educational Support & Learning',
+        description: 'Foster a love of learning with engaging activities and educational approaches tailored to your child.'
+      },
+      {
+        icon: Brain,
+        title: 'Emotional Intelligence & Behavior',
+        description: 'Support emotional development and address behavioral challenges with positive, evidence-based strategies.'
+      },
+      {
+        icon: Shield,
+        title: 'Health, Safety & Wellbeing',
+        description: 'Comprehensive health and safety guidance for physical, mental, and emotional wellbeing at every stage.'
+      },
+      {
+        icon: Target,
+        title: 'Age-Specific Guidance',
+        description: 'Tailored advice for each developmental stage from infants to teenagers with specific milestone support.'
+      }
+    ],
+    benefitsTitle: 'Why Parents Trust Our Guidance',
+    benefitsDescription: 'Backed by child development research and trusted by thousands of families worldwide.',
+    benefits: [
+      {
+        icon: BookOpen,
+        title: 'Evidence-Based Approaches',
+        description: 'Research-backed strategies from child development experts and pediatric professionals'
+      },
+      {
+        icon: Heart,
+        title: 'Stronger Family Bonds',
+        description: 'Build deeper connections and more positive relationships with your children'
+      },
+      {
+        icon: Users,
+        title: 'Confidence in Parenting',
+        description: 'Feel prepared and confident in your parenting decisions with clear, actionable guidance'
+      },
+      {
+        icon: TrendingUp,
+        title: 'Long-Term Development',
+        description: 'Support your child\'s growth across all developmental domains for lifelong success'
+      }
+    ],
+    featuresIcon: Users,
+    featuresTitle: 'Complete Parenting & Development Toolkit',
+    featuresDescription: 'Comprehensive resources covering every aspect of child development from birth through adolescence.',
+    features: [
+      'Developmental milestone tracking and age-appropriate activities',
+      'Positive discipline strategies and behavior management techniques',
+      'Communication frameworks for different developmental stages',
+      'Educational support and learning enhancement strategies',
+      'Emotional intelligence development and social skills building',
+      'Health and safety guidelines for each age group',
+      'Screen time and technology management approaches',
+      'Building independence and life skills at every stage',
+      'Supporting children through transitions and challenges',
+      'Family dynamics and sibling relationship guidance'
+    ],
+    ctaTitle: 'Ready to Support Your Child\'s Growth?',
+    ctaDescription: 'Join thousands of parents who are confidently nurturing their children\'s development with evidence-based guidance.',
+    finalCtaText: 'Start Your Parenting Journey',
+  },
+
   'home-buying': {
     badgeIcon: Home,
     badgeText: 'Home Buying',
@@ -2646,6 +2752,571 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     ctaTitle: 'Ready to Excel in Academic Research?',
     ctaDescription: 'Join researchers who transformed their academic productivity with our proven research management system.',
     finalCtaText: 'Start Research Project',
+  },
+
+  'fitness-athletic-training': {
+    id: 'fitness-athletic-training',
+    title: 'Fitness & Athletic Training',
+    subtitle: 'Transform Your Athletic Performance with Scientific Training Methods',
+    description: 'Comprehensive fitness planning with workout design, nutrition optimization, and performance tracking for serious athletes and fitness enthusiasts.',
+    heroTitle: 'Unlock Your Athletic Potential',
+    heroSubtitle: 'Evidence-based training programs designed to maximize performance, prevent injuries, and achieve your fitness goals faster.',
+    heroDescription: 'Join thousands of athletes who have transformed their training with our comprehensive fitness and athletic performance system.',
+    heroImage: '/api/placeholder/600/400',
+    benefits: [
+      {
+        icon: Target,
+        title: 'Goal-Oriented Training',
+        description: 'Set specific, measurable fitness goals and create targeted training programs that deliver consistent results.'
+      },
+      {
+        icon: Trophy,
+        title: 'Performance Optimization',
+        description: 'Apply sports science principles to maximize strength, endurance, speed, and athletic performance across all domains.'
+      },
+      {
+        icon: Shield,
+        title: 'Injury Prevention',
+        description: 'Implement evidence-based injury prevention strategies and movement quality assessments to train safely long-term.'
+      },
+      {
+        icon: BarChart3,
+        title: 'Data-Driven Progress',
+        description: 'Track performance metrics, analyze training data, and make informed adjustments to continuously improve results.'
+      }
+    ],
+    features: [
+      {
+        icon: Dumbbell,
+        title: 'Comprehensive Fitness Assessment',
+        description: 'Evaluate cardiovascular fitness, strength, flexibility, and body composition with evidence-based testing protocols.'
+      },
+      {
+        icon: Calendar,
+        title: 'Structured Training Programs',
+        description: 'Design periodized training plans with proper progression, recovery, and specialization phases.'
+      },
+      {
+        icon: Apple,
+        title: 'Performance Nutrition Plans',
+        description: 'Optimize nutrition timing, macronutrient ratios, and supplementation for peak athletic performance.'
+      },
+      {
+        icon: BarChart,
+        title: 'Progress Tracking Systems',
+        description: 'Monitor training load, performance metrics, and recovery indicators to optimize results.'
+      },
+      {
+        icon: Brain,
+        title: 'Mental Performance Training',
+        description: 'Develop focus, confidence, and mental resilience for competitive and training environments.'
+      },
+      {
+        icon: Activity,
+        title: 'Recovery & Regeneration',
+        description: 'Implement recovery protocols, sleep optimization, and stress management for sustained performance.'
+      }
+    ],
+    process: [
+      {
+        icon: Target,
+        title: 'Assess Current Fitness',
+        description: 'Complete comprehensive fitness testing across all performance domains to establish baseline measurements.'
+      },
+      {
+        icon: Lightbulb,
+        title: 'Design Training Program',
+        description: 'Create structured, periodized training plans tailored to your goals, schedule, and current fitness level.'
+      },
+      {
+        icon: Apple,
+        title: 'Optimize Nutrition',
+        description: 'Develop performance nutrition strategies that fuel training, enhance recovery, and support body composition goals.'
+      },
+      {
+        icon: BarChart,
+        title: 'Track & Analyze',
+        description: 'Monitor progress through objective metrics and subjective feedback to optimize training effectiveness.'
+      },
+      {
+        icon: Brain,
+        title: 'Mental Training',
+        description: 'Build mental toughness, focus, and confidence through proven psychological performance techniques.'
+      },
+      {
+        icon: Shield,
+        title: 'Prevent Injuries',
+        description: 'Implement movement screening, injury prevention exercises, and recovery protocols for long-term health.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Sarah Chen',
+        role: 'Competitive Runner',
+        content: 'This program helped me break my 5K PR by 90 seconds in just 4 months. The structured training and nutrition guidance made all the difference.',
+        rating: 5,
+        image: '/api/placeholder/64/64'
+      },
+      {
+        name: 'Michael Rodriguez',
+        role: 'Strength Athlete',
+        content: 'Finally a science-based approach to training! My bench press increased 40 lbs while staying injury-free. The recovery protocols are game-changing.',
+        rating: 5,
+        image: '/api/placeholder/64/64'
+      },
+      {
+        name: 'Emma Thompson',
+        role: 'CrossFit Competitor',
+        content: 'The comprehensive approach to fitness assessment and program design elevated my competitive performance to the next level.',
+        rating: 5,
+        image: '/api/placeholder/64/64'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Do I need access to a full gym?',
+        answer: 'Our programs are adaptable to various training environments. We provide modifications for home workouts, commercial gyms, and specialized training facilities.'
+      },
+      {
+        question: 'How is this different from generic fitness apps?',
+        answer: 'We focus on evidence-based training principles, individualized program design, and comprehensive performance tracking rather than one-size-fits-all workouts.'
+      },
+      {
+        question: 'Can beginners use this system?',
+        answer: 'Absolutely! Our assessment protocols help identify appropriate starting points, and our progressive program design ensures safe and effective training for all levels.'
+      },
+      {
+        question: 'What kind of results can I expect?',
+        answer: 'Results vary based on individual factors, but users typically see measurable improvements in strength, endurance, and body composition within 6-12 weeks of consistent training.'
+      },
+      {
+        question: 'Is nutrition coaching included?',
+        answer: 'Yes! We provide comprehensive nutrition guidance including meal planning, supplementation strategies, and performance nutrition timing protocols.'
+      },
+      {
+        question: 'How do I prevent overtraining?',
+        answer: 'Our system includes recovery monitoring, training load management, and periodization principles to optimize adaptation while preventing overtraining syndrome.'
+      }
+    ],
+    ctaTitle: 'Ready to Transform Your Athletic Performance?',
+    ctaDescription: 'Join elite athletes who have revolutionized their training with our comprehensive fitness and performance system.',
+    finalCtaText: 'Start Training Program',
+  },
+  'travel-planning-adventure': {
+    id: 'travel-planning-adventure',
+    title: 'Travel Planning & Adventure Design',
+    subtitle: 'Design Extraordinary Travel Experiences & Cultural Adventures',
+    description: 'Comprehensive travel planning with adventure itineraries, cultural immersion experiences, and safety protocols for memorable journeys and authentic discoveries.',
+    heroTitle: 'Create Unforgettable Adventures',
+    heroSubtitle: 'Transform your travel dreams into perfectly planned adventures with authentic cultural experiences and unforgettable memories.',
+    heroDescription: 'Join thousands of adventurers who have discovered the world through our comprehensive travel planning and adventure design system.',
+    heroImage: '/api/placeholder/600/400',
+    benefits: [
+      {
+        icon: Compass,
+        title: 'Personalized Adventure Planning',
+        description: 'Create custom travel experiences tailored to your interests, budget, and adventure style for truly unique journeys.'
+      },
+      {
+        icon: Globe,
+        title: 'Cultural Authenticity',
+        description: 'Discover genuine local experiences and authentic cultural interactions that go beyond typical tourist activities.'
+      },
+      {
+        icon: Shield,
+        title: 'Safety & Preparedness',
+        description: 'Comprehensive safety planning, risk assessment, and emergency preparedness for confident adventurous travel.'
+      },
+      {
+        icon: Camera,
+        title: 'Memorable Experience Creation',
+        description: 'Design and capture extraordinary moments that create lasting memories and inspire future adventures.'
+      }
+    ],
+    features: [
+      {
+        icon: Heart,
+        title: 'Travel Style & Preference Assessment',
+        description: 'Identify your travel personality, comfort preferences, and adventure goals to create perfectly matched experiences.'
+      },
+      {
+        icon: Search,
+        title: 'Destination Research & Selection',
+        description: 'Comprehensive destination analysis including culture, climate, costs, and unique opportunities for informed decisions.'
+      },
+      {
+        icon: Calendar,
+        title: 'Adventure Activity Planning',
+        description: 'Design exciting itineraries with outdoor adventures, cultural activities, and unique experiences tailored to your interests.'
+      },
+      {
+        icon: Users,
+        title: 'Cultural Immersion Experiences',
+        description: 'Connect with local communities through authentic experiences, local guides, and meaningful cultural exchanges.'
+      },
+      {
+        icon: AlertTriangle,
+        title: 'Safety & Risk Management',
+        description: 'Comprehensive safety planning, health preparations, and emergency protocols for secure adventurous travel.'
+      },
+      {
+        icon: BookOpen,
+        title: 'Journey Documentation & Memories',
+        description: 'Create beautiful travel journals, photo collections, and experience documentation to preserve precious memories.'
+      }
+    ],
+    process: [
+      {
+        icon: Target,
+        title: 'Define Travel Philosophy & Goals',
+        description: 'Identify your travel motivations, adventure preferences, and cultural interests to create meaningful journey plans.'
+      },
+      {
+        icon: Globe,
+        title: 'Research & Select Destinations',
+        description: 'Explore destinations that match your interests, budget, and timeline while considering seasonal factors and unique opportunities.'
+      },
+      {
+        icon: Calculator,
+        title: 'Plan Budget & Logistics',
+        description: 'Create detailed budgets, book accommodations and transportation, and handle visa and documentation requirements.'
+      },
+      {
+        icon: Navigation,
+        title: 'Create Adventure Itineraries',
+        description: 'Design day-by-day itineraries balancing adventure activities, cultural experiences, and relaxation time.'
+      },
+      {
+        icon: Camera,
+        title: 'Document & Capture Memories',
+        description: 'Create systems for capturing photos, experiences, and reflections to preserve your adventure memories.'
+      },
+      {
+        icon: Star,
+        title: 'Reflect & Plan Next Adventures',
+        description: 'Review experiences, celebrate achievements, and use insights to plan even better future adventures.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Sarah Martinez',
+        role: 'Adventure Backpacker',
+        content: 'This system helped me plan an incredible 3-month backpacking journey through Southeast Asia. The safety protocols and cultural immersion tips made all the difference!',
+        rating: 5,
+        image: '/api/placeholder/64/64'
+      },
+      {
+        name: 'David Chen',
+        role: 'Cultural Explorer',
+        content: 'Finally found authentic experiences beyond tourist traps! The local connection strategies helped me discover the real heart of every destination I visited.',
+        rating: 5,
+        image: '/api/placeholder/64/64'
+      },
+      {
+        name: 'The Johnson Family',
+        role: 'Family Adventurers',
+        content: 'Created amazing memories with our kids using the family-friendly adventure planning approach. Every detail was perfectly organized and so much fun!',
+        rating: 5,
+        image: '/api/placeholder/64/64'
+      }
+    ],
+    faqs: [
+      {
+        question: 'How do you ensure travel safety in adventure destinations?',
+        answer: 'We provide comprehensive safety assessments, emergency planning protocols, health preparation checklists, and real-time safety monitoring strategies for confident adventurous travel.'
+      },
+      {
+        question: 'Can this system help me manage travel budgets effectively?',
+        answer: 'Absolutely! Our budgeting tools include cost estimation, expense tracking, money-saving strategies, and financial planning for both budget and luxury travel styles.'
+      },
+      {
+        question: 'How do I find authentic cultural experiences?',
+        answer: 'We teach you to connect with local communities, find authentic experiences through local networks, respect cultural customs, and create meaningful exchanges beyond typical tourism.'
+      },
+      {
+        question: 'Is this suitable for solo travelers or groups?',
+        answer: 'Our system works for all travel styles! We provide specific strategies for solo adventures, couple travel, family trips, and group coordination with customized planning approaches.'
+      },
+      {
+        question: 'How do I document and preserve travel memories?',
+        answer: 'We include comprehensive memory-keeping systems: travel journaling techniques, photo organization, experience documentation, and creating beautiful travel albums and stories.'
+      },
+      {
+        question: 'What\'s the ideal planning timeline for adventure travel?',
+        answer: 'Planning timelines vary by destination complexity, but we recommend 3-6 months for international adventures, including research, bookings, preparations, and cultural learning.'
+      }
+    ],
+    ctaTitle: 'Ready to Design Your Next Great Adventure?',
+    ctaDescription: 'Join adventurous travelers who have transformed their journeys with our comprehensive travel planning and cultural immersion system.',
+    finalCtaText: 'Start Adventure Planning',
+  },
+
+  'freelance-gig-economy': {
+    // SEO metadata
+    metadata: {
+      title: 'Freelance Business Template | Build a Thriving Gig Economy Business | Templata',
+      description: 'Complete freelance business template with client acquisition strategies, pricing optimization, and sustainable growth frameworks. Used by 15,000+ freelancers worldwide.',
+      keywords: 'freelance business, gig economy, freelance pricing, client acquisition, freelance strategy, independent contractor, freelance marketing, business development, freelance success',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Freelance & Gig Economy Success Template",
+      "description": "Build a thriving freelance business with client acquisition strategies, pricing optimization, and sustainable growth frameworks.",
+      "url": "https://templata.com/freelance-gig-economy",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "15000"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+    badgeText: 'Business Success',
+    badgeIcon: Briefcase,
+    heroTitle: "Build Your Thriving Freelance Business",
+    heroHighlight: "From Gig to Growth",
+    heroDescription: "Transform your freelance work into a sustainable business with proven strategies for client acquisition, premium pricing, and scalable growth that creates lasting success.",
+    heroCards: [
+      { 
+        badge: "Client Acquisition", 
+        badgeVariant: "outline" as const,
+        content: "Systematic approach to finding and converting high-quality clients who pay premium rates"
+      },
+      { 
+        badge: "Premium Pricing", 
+        badgeVariant: "secondary" as const,
+        content: "Value-based pricing strategies that maximize income while delivering exceptional client value"
+      },
+      { 
+        badge: "Business Growth", 
+        badgeVariant: "default" as const,
+        content: "Scale beyond trading time for money with systems, processes, and strategic partnerships"
+      }
+    ],
+    heroBenefits: [
+      "💼 Increase rates by 50-200% through strategic positioning",
+      "🎯 Build consistent client pipeline with proven acquisition methods", 
+      "📈 Create scalable income streams beyond hourly billing",
+      "⚡ Reduce business stress with systematic processes and workflows"
+    ],
+
+    // Process Steps
+    processSteps: [
+      {
+        icon: Users,
+        title: "Market Positioning",
+        description: "Define your unique value proposition and position yourself as the expert solution in your niche"
+      },
+      {
+        icon: DollarSign,
+        title: "Pricing Strategy",
+        description: "Develop value-based pricing that reflects your expertise and maximizes profitability"
+      },
+      {
+        icon: TrendingUp,
+        title: "Client Acquisition",
+        description: "Build systematic processes for attracting, converting, and retaining ideal clients"
+      },
+      {
+        icon: Briefcase,
+        title: "Business Scaling",
+        description: "Create systems and processes that allow you to grow beyond trading time for money"
+      }
+    ],
+
+    // Benefits Section
+    benefits: [
+      {
+        icon: Target,
+        title: "Strategic Positioning",
+        description: "Position yourself as the go-to expert in your niche with clear value propositions and competitive advantages."
+      },
+      {
+        icon: DollarSign,
+        title: "Premium Pricing Mastery",
+        description: "Learn value-based pricing strategies that command top rates while delivering exceptional client outcomes."
+      },
+      {
+        icon: Users,
+        title: "Client Relationship Management",
+        description: "Build lasting client relationships with systematic onboarding, communication, and retention strategies."
+      },
+      {
+        icon: TrendingUp,
+        title: "Revenue Growth Systems",
+        description: "Create multiple revenue streams and scalable business models beyond hourly billing."
+      },
+      {
+        icon: Briefcase,
+        title: "Business Operations",
+        description: "Streamline operations with templates, workflows, and automation that save time and increase efficiency."
+      },
+      {
+        icon: Shield,
+        title: "Risk Management",
+        description: "Protect your business with proper contracts, insurance, and legal structures for sustainable growth."
+      }
+    ],
+
+    // Features Section
+    features: [
+      {
+        icon: Search,
+        title: "Market Research Framework",
+        description: "Comprehensive market analysis tools to identify opportunities and competitive positioning."
+      },
+      {
+        icon: Handshake,
+        title: "Client Acquisition System",
+        description: "Step-by-step processes for networking, referrals, content marketing, and direct outreach."
+      },
+      {
+        icon: Award,
+        title: "Portfolio Development",
+        description: "Build compelling portfolios and case studies that demonstrate your expertise and results."
+      },
+      {
+        icon: Calculator,
+        title: "Financial Planning Tools",
+        description: "Budget templates, cash flow projections, and tax planning specifically for freelancers."
+      },
+      {
+        icon: Workflow,
+        title: "Process Documentation",
+        description: "Document and systematize your workflows for consistency and scalability."
+      },
+      {
+        icon: BarChart3,
+        title: "Performance Tracking",
+        description: "KPI dashboards and analytics to monitor business growth and identify improvement areas."
+      }
+    ],
+
+    // Process Section
+    processTitle: 'Your Path to Freelance Success',
+    processDescription: 'Follow our proven 4-step framework to build a thriving freelance business',
+    
+    // Benefits Section Headers
+    benefitsTitle: 'Everything You Need for Freelance Success',
+    benefitsDescription: 'Comprehensive toolkit covering every aspect of freelance business development with proven strategies and expert insights.',
+
+    // Features Section Headers
+    featuresIcon: Briefcase,
+    featuresTitle: 'Complete Freelance Business Toolkit',
+    featuresDescription: 'All the tools, templates, and strategies you need to build and grow a successful freelance business.',
+
+    // How It Works
+    howItWorks: [
+      {
+        step: "01",
+        title: "Define Your Niche",
+        description: "Identify your expertise, target market, and unique value proposition for competitive positioning."
+      },
+      {
+        step: "02", 
+        title: "Set Premium Pricing",
+        description: "Calculate your rates based on value delivered and position yourself in the premium market segment."
+      },
+      {
+        step: "03",
+        title: "Acquire Ideal Clients",
+        description: "Implement systematic client acquisition strategies that attract high-quality, well-paying clients."
+      },
+      {
+        step: "04",
+        title: "Scale Your Business",
+        description: "Build systems and processes that allow you to grow revenue without proportionally increasing time investment."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "Skill Monetization Assessment",
+        icon: Target,
+        description: "Comprehensive evaluation of your skills and their market value potential"
+      },
+      {
+        name: "Client Persona Development",
+        icon: Users,
+        description: "Detailed profiles of your ideal clients including pain points and buying behaviors"
+      },
+      {
+        name: "Pricing Strategy Worksheet",
+        icon: DollarSign,
+        description: "Value-based pricing calculations and rate positioning strategies"
+      },
+      {
+        name: "Marketing Plan Template",
+        icon: TrendingUp,
+        description: "Comprehensive marketing strategy for consistent client acquisition"
+      },
+      {
+        name: "Business Growth Roadmap",
+        icon: Briefcase,
+        description: "Strategic planning template for scaling beyond solo freelancing"
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Marcus Chen, Digital Marketing Consultant",
+        text: "This template helped me increase my rates by 150% and build a waiting list of clients. The pricing strategies alone were worth it!",
+        rating: 5
+      },
+      {
+        name: "Sarah Johnson, Graphic Designer", 
+        text: "I went from struggling to find clients to having a consistent pipeline. The client acquisition system is incredibly effective.",
+        rating: 5
+      },
+      {
+        name: "David Rodriguez, Web Developer",
+        text: "The business scaling section helped me transition from hourly work to project-based pricing. My income doubled in 6 months.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: 'Is this suitable for someone just starting their freelance journey?',
+        answer: 'Absolutely! The template includes beginner-friendly guidance while also providing advanced strategies for experienced freelancers looking to scale their business.'
+      },
+      {
+        question: 'How quickly can I expect to see results?',
+        answer: 'Many freelancers see improved pricing and client quality within 30-60 days of implementing our strategies. Business scaling typically shows results in 3-6 months.'
+      },
+      {
+        question: 'Does this work for all types of freelance services?',
+        answer: 'Yes! Our frameworks apply to consulting, design, development, writing, marketing, and any service-based freelance business. The strategies are universally applicable.'
+      },
+      {
+        question: 'What if I already have clients but want to raise my rates?',
+        answer: 'We provide specific strategies for raising rates with existing clients, positioning new premium services, and gradually transitioning to higher-value work.'
+      },
+      {
+        question: 'How do I handle the business and legal aspects of freelancing?',
+        answer: 'The template includes guidance on business structure, contracts, insurance, and tax considerations specific to freelancers and independent contractors.'
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: 'Ready to Build Your Thriving Freelance Business?',
+    ctaDescription: 'Join thousands of freelancers who have transformed their gig work into sustainable, profitable businesses using our proven framework.',
+    finalCtaText: 'Start Your Freelance Success Journey',
+    ctaText: 'Get Your Freelance Business Template',
+    appPath: '/freelance-gig-economy/app',
   }
 };
 

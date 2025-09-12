@@ -1,5 +1,5 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, fitnessAthleticTrainingTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate } from '@/data/templates';
+import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
 
 // Function to sync template resources with blog registry
@@ -90,6 +90,18 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     iconColor: "text-green-600 dark:text-green-400",
     template: createTemplateWithSyncedResources(babyPlanningTemplate)
   },
+  {
+    id: "parenting-child-development",
+    name: "Parenting & Child Development",
+    description: "Evidence-based guidance for nurturing healthy child development from infancy through adolescence.",
+    category: "Personal Life",
+    icon: "👨‍👩‍👧‍👦",
+    url: "/parenting-child-development/app",
+    popular: true,
+    color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
+    iconColor: "text-pink-600 dark:text-pink-400",
+    template: createTemplateWithSyncedResources(parentingChildDevelopmentTemplate)
+  },
   
   {
     id: "budget-planning",
@@ -127,6 +139,18 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
     iconColor: "text-purple-600 dark:text-purple-400",
     template: createTemplateWithSyncedResources(jobSearchTemplate)
+  },
+  {
+    id: "freelance-gig-economy",
+    name: "Freelance & Gig Economy Success",
+    description: "Build a thriving freelance business with client acquisition, pricing strategies, and sustainable growth.",
+    category: "Career & Business",
+    icon: "💼",
+    url: "/freelance-gig-economy/app",
+    popular: true,
+    color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    template: createTemplateWithSyncedResources(freelanceGigEconomyTemplate)
   },
   {
     id: "business-launch",
@@ -192,6 +216,18 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     iconColor: "text-sky-600 dark:text-sky-400",
     template: createTemplateWithSyncedResources(travelPlanningTemplate)
   },
+  {
+    id: "travel-planning-adventure",
+    name: "Travel Planning & Adventure Design",
+    description: "Design extraordinary travel experiences with adventure planning, cultural immersion, and memorable journey creation.",
+    category: "Travel & Adventure",
+    icon: "🗺️",
+    url: "/travel-planning-adventure/app",
+    popular: true,
+    color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    template: createTemplateWithSyncedResources(travelPlanningAdventureTemplate)
+  },
   
   // Health & Nutrition Templates
   {
@@ -218,6 +254,18 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
     iconColor: "text-red-600 dark:text-red-400",
+    template: createTemplateWithSyncedResources(fitnessAthleticTrainingTemplate)
+  },
+  {
+    id: "fitness-athletic-training",
+    name: "Fitness & Athletic Training",
+    description: "Comprehensive fitness planning with workout design, nutrition optimization, and performance tracking.",
+    category: "Health & Wellness",
+    icon: "🏋️",
+    url: "/fitness-athletic-training/app",
+    popular: true,
+    color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
+    iconColor: "text-orange-600 dark:text-orange-400",
     template: createTemplateWithSyncedResources(fitnessAthleticTrainingTemplate)
   },
   
