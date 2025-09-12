@@ -491,56 +491,56 @@ export const weddingTemplate: GuidanceTemplate = {
       id: 'budget-tip-1',
       tip: 'Book your venue and photographer first - they typically consume 50-70% of your total budget and the best ones book up fastest.',
       author: 'Sarah Chen, Wedding Planner (15 years)',
-      category: 'Budget Priority',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'timing-tip-1',
       tip: 'Friday and Sunday weddings can save you 30-40% on venue costs, and off-season dates offer even bigger savings.',
       author: 'Mike Rodriguez, Venue Manager',
-      category: 'Cost Savings',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'guest-tip-1',
       tip: 'Create your guest list in tiers: must-invite, would like to invite, and if budget allows. This helps with tough decisions.',
       author: 'Jennifer Liu, Event Coordinator',
-      category: 'Guest Management',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'vendor-tip-1',
       tip: 'Always have backup vendors identified. 15% of weddings experience a vendor emergency or no-show.',
       author: 'David Kim, Wedding Planner',
-      category: 'Risk Management',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'timeline-tip-1',
       tip: 'Build 15-30 minute buffers into your wedding day timeline. Things always take longer than expected.',
       author: 'Maria Garcia, Day-of Coordinator',
-      category: 'Timeline Management',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'decor-tip-1',
       tip: 'Repurpose ceremony flowers for reception centerpieces to maximize your floral budget impact.',
       author: 'Amanda Foster, Floral Designer',
-      category: 'Budget Optimization',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'communication-tip-1',
       tip: 'Create a wedding website early and update it regularly. It reduces repetitive questions from guests by 60%.',
       author: 'Rachel Thompson, Wedding Coordinator',
-      category: 'Guest Communication',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'weather-tip-1',
       tip: 'Always have a weather backup plan, even for indoor weddings. Weather affects transportation and guest comfort.',
       author: 'Tom Wilson, Venue Operations',
-      category: 'Contingency Planning',
+      category: 'planning',
       importance: 'high'
     }
   ]
@@ -959,56 +959,56 @@ export const homeBuyingTemplate: GuidanceTemplate = {
       id: 'credit-tip-1',
       tip: 'Check your credit score 6 months before house hunting. Small improvements can save thousands in interest over the loan term.',
       author: 'Jennifer Martinez, Mortgage Broker (12 years)',
-      category: 'Credit & Financing',
+      category: 'research',
       importance: 'high'
     },
     {
       id: 'budget-tip-1',
       tip: 'Use the 28/36 rule: no more than 28% of gross income on housing, 36% on total debt payments including housing.',
       author: 'Robert Chen, Financial Planner',
-      category: 'Budget Planning',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'location-tip-1',
       tip: 'Buy the worst house in the best neighborhood you can afford. Location affects value more than home features.',
       author: 'Sarah Williams, Real Estate Agent (18 years)',
-      category: 'Location Strategy',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'inspection-tip-1',
       tip: 'Never skip the home inspection, even in competitive markets. A $500 inspection can save you tens of thousands.',
       author: 'Mike Thompson, Home Inspector',
-      category: 'Due Diligence',
+      category: 'research',
       importance: 'high'
     },
     {
       id: 'timing-tip-1',
       tip: 'The best time to buy is when you\'re financially ready, not when the market seems perfect. Time in market beats timing the market.',
       author: 'Lisa Chang, Real Estate Economist',
-      category: 'Market Timing',
+      category: 'consideration',
       importance: 'medium'
     },
     {
       id: 'negotiation-tip-1',
       tip: 'In seller\'s markets, consider waiving inspection contingency only if you\'ve done a thorough pre-offer inspection.',
       author: 'David Rodriguez, Buyer\'s Agent',
-      category: 'Competitive Offers',
+      category: 'decision',
       importance: 'high'
     },
     {
       id: 'financing-tip-1',
       tip: 'Get pre-approved, not pre-qualified. Pre-approval carries more weight with sellers and shows you\'re serious.',
       author: 'Amanda Foster, Loan Officer',
-      category: 'Mortgage Process',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'maintenance-tip-1',
       tip: 'Budget 1-3% of your home\'s value annually for maintenance and repairs. Homes always need something fixed.',
       author: 'Tom Wilson, Property Manager',
-      category: 'Homeownership',
+      category: 'consideration',
       importance: 'medium'
     }
   ]
@@ -1343,56 +1343,56 @@ export const jobSearchTemplate: GuidanceTemplate = {
       id: 'networking-tip-1',
       tip: 'Focus on building genuine relationships, not just asking for jobs. Help others first and job opportunities will follow naturally.',
       author: 'Sarah Chen, Executive Recruiter (15 years)',
-      category: 'Networking',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'resume-tip-1',
       tip: 'Quantify your achievements with specific metrics. "Increased sales by 25%" is much stronger than "improved sales performance."',
       author: 'Mike Rodriguez, HR Director',
-      category: 'Resume',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'interview-tip-1',
       tip: 'Practice the STAR method (Situation, Task, Action, Result) for behavioral questions. Have 5-7 detailed stories ready.',
       author: 'Jennifer Liu, Career Coach',
-      category: 'Interviewing',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'application-tip-1',
       tip: 'Apply within the first 48 hours when possible. Early applications get more attention from hiring managers.',
       author: 'David Park, Talent Acquisition Manager',
-      category: 'Job Applications',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'linkedin-tip-1',
       tip: 'Post valuable industry insights regularly on LinkedIn. Recruiters notice active, engaged professionals.',
       author: 'Amanda Foster, Personal Branding Expert',
-      category: 'Professional Branding',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'negotiation-tip-1',
       tip: 'Never negotiate salary in the first interview. Wait until you have an offer and they want you specifically.',
       author: 'Robert Chen, Negotiation Expert',
-      category: 'Salary Negotiation',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'research-tip-1',
       tip: 'Research the interviewer on LinkedIn beforehand. Finding common connections or interests builds rapport quickly.',
       author: 'Lisa Chang, Executive Coach',
-      category: 'Interview Preparation',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'follow-up-tip-1',
       tip: 'Send personalized thank-you emails within 24 hours of each interview. Reference specific conversation points.',
       author: 'Tom Wilson, Hiring Manager',
-      category: 'Interview Follow-up',
+      category: 'planning',
       importance: 'high'
     }
   ]
@@ -1727,56 +1727,56 @@ export const babyPlanningTemplate: GuidanceTemplate = {
       id: 'prenatal-tip-1',
       tip: 'Take prenatal vitamins with folic acid at least one month before trying to conceive and throughout pregnancy to prevent birth defects.',
       author: 'Dr. Sarah Williams, OB-GYN (12 years)',
-      category: 'Prenatal Health',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'budget-tip-1',
       tip: 'Focus on essentials for the first 3 months. Babies need very little initially - prioritize safe sleep, car seat, and feeding supplies.',
       author: 'Jennifer Martinez, Certified Financial Planner',
-      category: 'Financial Planning',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'feeding-tip-1',
       tip: 'Whether breastfeeding or formula feeding, having a plan and support system is crucial. Both are valid choices that can nourish your baby.',
       author: 'Lisa Chen, Lactation Consultant (IBCLC)',
-      category: 'Feeding',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'sleep-tip-1',
       tip: 'Follow safe sleep guidelines religiously: back sleeping, firm mattress, nothing else in the crib. This reduces SIDS risk by 50%.',
       author: 'Dr. Michael Rodriguez, Pediatrician',
-      category: 'Safe Sleep',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'partnership-tip-1',
       tip: 'Divide night duties in shifts rather than both parents waking up. This ensures at least one parent gets solid sleep.',
       author: 'Amanda Foster, Parent Coach',
-      category: 'Work-Life Balance',
+      category: 'consideration',
       importance: 'medium'
     },
     {
       id: 'preparation-tip-1',
       tip: 'Prepare freezer meals and organize help for the first 2-3 weeks. You\'ll be too exhausted to cook or clean regularly.',
       author: 'Rebecca Thompson, Postpartum Doula',
-      category: 'Birth Preparation',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'childcare-tip-1',
       tip: 'Start researching childcare options by your second trimester. Quality providers often have 6-12 month waitlists.',
       author: 'David Park, Childcare Center Director',
-      category: 'Childcare Planning',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'development-tip-1',
       tip: 'Tummy time starting from day one (when baby is awake and supervised) is crucial for neck strength and motor development.',
       author: 'Maria Gonzalez, Pediatric Physical Therapist',
-      category: 'Development',
+      category: 'consideration',
       importance: 'medium'
     }
   ]
@@ -2117,56 +2117,56 @@ export const fitnessAthleticTrainingTemplate: GuidanceTemplate = {
       id: 'consistency-tip-1',
       tip: 'Consistency beats perfection every time. A mediocre workout done regularly will produce better results than perfect workouts done sporadically.',
       author: 'Dr. Brad Schoenfeld, Exercise Scientist',
-      category: 'Training Consistency',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'progressive-overload-tip-1',
       tip: 'Progressive overload is the foundation of all fitness gains. Track your workouts and aim to gradually increase volume, intensity, or complexity over time.',
       author: 'Mike Israetel, Sports Scientist',
-      category: 'Strength Training',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'recovery-tip-1',
       tip: 'Recovery is where adaptation happens. Prioritize 7-9 hours of quality sleep and don\'t underestimate the power of stress management.',
       author: 'Dr. Matthew Walker, Sleep Researcher',
-      category: 'Recovery',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'nutrition-timing-tip-1',
       tip: 'Total daily nutrition matters more than precise timing for most people. Focus on hitting your daily protein and calorie targets consistently.',
       author: 'Eric Helms, Natural Bodybuilding Coach',
-      category: 'Nutrition',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'movement-quality-tip-1',
       tip: 'Master bodyweight movements before adding external load. If you can\'t control your own body weight perfectly, you\'re not ready for heavy weights.',
       author: 'Gray Cook, Functional Movement Systems',
-      category: 'Movement Quality',
+      category: 'consideration',
       importance: 'medium'
     },
     {
       id: 'goal-setting-tip-1',
       tip: 'Set both process goals (workouts per week) and outcome goals (strength targets). Process goals keep you consistent while outcome goals provide direction.',
       author: 'Dr. John Berardi, Precision Nutrition',
-      category: 'Goal Setting',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'plateau-tip-1',
       tip: 'Plateaus are normal and expected. When progress stalls, analyze your program, recovery, and nutrition before making drastic changes.',
       author: 'Chad Wesley Smith, Powerlifting Coach',
-      category: 'Progress',
+      category: 'consideration',
       importance: 'medium'
     },
     {
       id: 'mindset-tip-1',
       tip: 'View fitness as a lifelong practice, not a temporary fix. Small, sustainable changes compound into remarkable results over years.',
       author: 'James Clear, Author of Atomic Habits',
-      category: 'Mindset',
+      category: 'consideration',
       importance: 'medium'
     }
   ]
@@ -2188,14 +2188,14 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
         {
           id: 'travel-motivation',
           prompt: "What draws you to travel? What do you hope to gain from this specific trip or adventure?",
-          category: 'motivation',
+          category: 'consideration',
           helpText: 'Consider adventure, relaxation, cultural immersion, personal growth, photography, food, history, or spiritual reasons.',
           relatedResources: ['travel-style-guide', 'destination-matching-tool']
         },
         {
           id: 'travel-style-preferences',
           prompt: 'What type of traveler are you? Do you prefer luxury, budget, adventure, cultural, or off-the-beaten-path experiences?',
-          category: 'preference',
+          category: 'consideration',
           helpText: 'Understanding your travel style helps narrow destination choices and plan appropriate accommodations and activities.'
         },
         {
@@ -2219,7 +2219,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
         {
           id: 'personal-growth-intentions',
           prompt: 'How do you want to grow or challenge yourself through this travel experience?',
-          category: 'reflection',
+          category: 'consideration',
           helpText: 'Travel can build confidence, cultural awareness, problem-solving skills, and self-reliance. Set intentional growth goals.'
         }
       ]
@@ -2289,7 +2289,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
         {
           id: 'transportation-logistics',
           prompt: 'How will you get to and around your destination? What transportation options best fit your itinerary and budget?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Compare flights, trains, buses, rental cars. Consider internal transportation: public transit, taxis, rideshare, walking.'
         },
         {
@@ -2301,13 +2301,13 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
         {
           id: 'travel-insurance-preparation',
           prompt: 'What travel insurance and emergency preparations do you need for your destination and activities?',
-          category: 'safety',
+          category: 'consideration',
           helpText: 'Consider medical coverage, trip cancellation, adventure activity coverage, and emergency evacuation insurance.'
         },
         {
           id: 'documentation-requirements',
           prompt: 'What travel documents, visas, vaccinations, or permits do you need for your destination?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Check passport validity, visa requirements, vaccination recommendations, and special permits for activities or areas.'
         }
       ]
@@ -2339,7 +2339,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
         {
           id: 'rest-recovery-planning',
           prompt: 'How will you build in rest, recovery, and buffer time to prevent travel burnout?',
-          category: 'wellness',
+          category: 'consideration',
           helpText: 'Plan lighter days, buffer time between activities, and recovery time from long travel days or intense activities.'
         },
         {
@@ -2365,7 +2365,7 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
         {
           id: 'documentation-approach',
           prompt: 'How will you document your travels while staying present and engaged with your experiences?',
-          category: 'reflection',
+          category: 'consideration',
           helpText: 'Balance capturing memories with living in the moment. Consider journaling, photography styles, and social media approaches.'
         },
         {
@@ -2377,25 +2377,25 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
         {
           id: 'travel-learning-goals',
           prompt: 'What do you want to learn or discover about yourself, others, or the world through this travel experience?',
-          category: 'growth',
+          category: 'consideration',
           helpText: 'Set learning intentions: cultural understanding, personal challenges, skill development, or perspective shifts.'
         },
         {
           id: 'post-travel-integration',
           prompt: 'How will you process and integrate your travel experiences into your daily life after returning home?',
-          category: 'integration',
+          category: 'planning',
           helpText: 'Plan reflection time, share experiences, apply lessons learned, maintain connections made, and avoid post-travel depression.'
         },
         {
           id: 'sustainable-travel-impact',
           prompt: 'What steps will you take to minimize negative environmental and cultural impacts of your travel?',
-          category: 'responsibility',
+          category: 'consideration',
           helpText: 'Consider carbon offset, local businesses, sustainable accommodations, waste reduction, and respectful cultural engagement.'
         },
         {
           id: 'future-travel-inspiration',
           prompt: 'How might this travel experience inform and inspire your future adventures and life decisions?',
-          category: 'growth',
+          category: 'consideration',
           helpText: 'Use travel to expand worldview, build confidence, develop interests, create connections, and plan future explorations.'
         }
       ]
@@ -2405,27 +2405,52 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
     {
       id: 'travel-style-guide',
       title: 'Travel Style Assessment & Destination Matching Guide',
-      content: 'Understanding your travel style is crucial for creating satisfying travel experiences that align with your personality, interests, and comfort levels. Travel styles can be broadly categorized into several types: luxury travelers who prioritize comfort and high-end experiences; budget travelers who maximize experiences while minimizing costs; adventure travelers seeking thrilling and challenging activities; cultural immersion travelers focused on authentic local experiences; and relaxation travelers prioritizing rest and rejuvenation. Most travelers are a combination of these styles. Your travel style influences every aspect of your trip planning, from destination selection to accommodation choices, activity planning, and budget allocation. Consider your past travel experiences: what energized you versus what drained you? Do you prefer structured itineraries or spontaneous exploration? Are you comfortable with language barriers and cultural differences? Do you need certain amenities or can you rough it? Understanding these preferences helps you choose destinations and plan experiences that will truly fulfill your travel goals rather than leaving you stressed or unsatisfied.'
+      type: 'guide' as const,
+      excerpt: 'Discover your travel personality and match destinations to your preferences for more fulfilling adventures.',
+      content: 'Understanding your travel style is crucial for creating satisfying travel experiences that align with your personality, interests, and comfort levels. Travel styles can be broadly categorized into several types: luxury travelers who prioritize comfort and high-end experiences; budget travelers who maximize experiences while minimizing costs; adventure travelers seeking thrilling and challenging activities; cultural immersion travelers focused on authentic local experiences; and relaxation travelers prioritizing rest and rejuvenation. Most travelers are a combination of these styles. Your travel style influences every aspect of your trip planning, from destination selection to accommodation choices, activity planning, and budget allocation. Consider your past travel experiences: what energized you versus what drained you? Do you prefer structured itineraries or spontaneous exploration? Are you comfortable with language barriers and cultural differences? Do you need certain amenities or can you rough it? Understanding these preferences helps you choose destinations and plan experiences that will truly fulfill your travel goals rather than leaving you stressed or unsatisfied.',
+      tags: ['travel-style', 'destination-matching', 'personality-assessment'],
+      readTime: 8,
+      difficulty: 'beginner' as const
     },
     {
       id: 'destination-research-methodology',
       title: 'Comprehensive Destination Research Methodology',
-      content: 'Effective destination research involves multiple information sources and systematic evaluation criteria. Start with official tourism boards and government travel advisories for current safety and entry requirements. Use travel blogs and forums like Lonely Planet Thorn Tree or TripAdvisor for real traveler experiences, but verify recent information as conditions change. Social media platforms like Instagram and YouTube provide visual inspiration but may not reflect typical experiences. Research seasonal weather patterns, not just average temperatures - consider rainfall, humidity, natural disaster seasons, and how weather affects activities. Investigate local events, festivals, and holidays that might enhance or complicate your visit. Understand the economic situation: currency strength, cost of living, tipping culture, and payment methods accepted. Research transportation infrastructure: how to get around, safety of public transport, road conditions for driving, and domestic flight options. Look into cultural norms: dress codes, social behaviors, business hours, meal times, and religious considerations. Use multiple sources and cross-reference information, as single sources may be outdated or biased.'
+      type: 'guide' as const,
+      excerpt: 'Master the art of thorough destination research using multiple sources and systematic evaluation.',
+      content: 'Effective destination research involves multiple information sources and systematic evaluation criteria. Start with official tourism boards and government travel advisories for current safety and entry requirements. Use travel blogs and forums like Lonely Planet Thorn Tree or TripAdvisor for real traveler experiences, but verify recent information as conditions change. Social media platforms like Instagram and YouTube provide visual inspiration but may not reflect typical experiences. Research seasonal weather patterns, not just average temperatures - consider rainfall, humidity, natural disaster seasons, and how weather affects activities. Investigate local events, festivals, and holidays that might enhance or complicate your visit. Understand the economic situation: currency strength, cost of living, tipping culture, and payment methods accepted. Research transportation infrastructure: how to get around, safety of public transport, road conditions for driving, and domestic flight options. Look into cultural norms: dress codes, social behaviors, business hours, meal times, and religious considerations. Use multiple sources and cross-reference information, as single sources may be outdated or biased.',
+      tags: ['destination-research', 'travel-planning', 'research-methodology'],
+      readTime: 10,
+      difficulty: 'intermediate' as const
     },
     {
       id: 'travel-budget-planning-tool',
       title: 'Travel Budget Planning & Cost Optimization Tool',
-      content: 'Creating an accurate travel budget requires research and realistic expectations about destination costs and your spending habits. Start by categorizing expenses into major buckets: transportation (flights, local transport, transfers), accommodation (hotels, Airbnb, hostels), food (restaurants, groceries, street food), activities (tours, attractions, experiences), and miscellaneous (shopping, tips, emergencies). Research actual costs using booking sites, local tourism websites, and recent traveler reports. Add a 15-20% buffer for unexpected expenses and currency fluctuations. Transportation typically represents 25-40% of your budget for international trips. Accommodation costs vary dramatically by location and style - hostels might be $15-30/night while luxury hotels can exceed $300. Food costs depend on your dining preferences: street food and local markets offer authentic experiences at low cost, while tourist restaurants can be expensive. Activity costs add up quickly - research free alternatives like hiking, beaches, markets, and cultural sites. Track spending during travel using apps or simple notebooks. Consider travel rewards credit cards, off-season timing, alternative accommodations, and bundled deals for cost savings.'
+      type: 'tool' as const,
+      excerpt: 'Create accurate travel budgets and optimize costs with systematic planning and research strategies.',
+      content: 'Creating an accurate travel budget requires research and realistic expectations about destination costs and your spending habits. Start by categorizing expenses into major buckets: transportation (flights, local transport, transfers), accommodation (hotels, Airbnb, hostels), food (restaurants, groceries, street food), activities (tours, attractions, experiences), and miscellaneous (shopping, tips, emergencies). Research actual costs using booking sites, local tourism websites, and recent traveler reports. Add a 15-20% buffer for unexpected expenses and currency fluctuations. Transportation typically represents 25-40% of your budget for international trips. Accommodation costs vary dramatically by location and style - hostels might be $15-30/night while luxury hotels can exceed $300. Food costs depend on your dining preferences: street food and local markets offer authentic experiences at low cost, while tourist restaurants can be expensive. Activity costs add up quickly - research free alternatives like hiking, beaches, markets, and cultural sites. Track spending during travel using apps or simple notebooks. Consider travel rewards credit cards, off-season timing, alternative accommodations, and bundled deals for cost savings.',
+      tags: ['budget-planning', 'cost-optimization', 'travel-finance'],
+      readTime: 12,
+      difficulty: 'intermediate' as const
     },
     {
       id: 'cultural-sensitivity-travel-guide',
       title: 'Cultural Sensitivity & Respectful Travel Guide',
-      content: 'Respectful travel requires preparation, awareness, and ongoing sensitivity to local cultures and customs. Before traveling, research basic cultural norms: greeting customs, appropriate dress codes, religious practices, social hierarchies, and taboo topics or behaviors. Learn basic phrases in the local language - even simple greetings and "thank you" show respect and often improve interactions. Understand tipping culture, bargaining customs, and appropriate ways to photograph people and places. Dress modestly and appropriately, especially when visiting religious sites or conservative cultures. Be aware of non-verbal communication differences: eye contact, personal space, gestures, and touching norms vary significantly across cultures. Show respect for local customs even if you don\'t understand them - observe how locals behave and follow their lead. Support local economies by choosing locally-owned businesses, buying authentic crafts from artisans, and using local guides and services. Be mindful of your environmental impact: follow local guidelines for waste disposal, water usage, and wildlife interaction. Avoid contributing to overtourism by choosing less crowded alternatives when possible. Remember that you are a guest in someone else\'s home - approach new cultures with humility, curiosity, and respect rather than judgment or comparison to your own culture.'
+      type: 'guide' as const,
+      excerpt: 'Travel respectfully with cultural awareness, local customs knowledge, and sustainable practices.',
+      content: 'Respectful travel requires preparation, awareness, and ongoing sensitivity to local cultures and customs. Before traveling, research basic cultural norms: greeting customs, appropriate dress codes, religious practices, social hierarchies, and taboo topics or behaviors. Learn basic phrases in the local language - even simple greetings and "thank you" show respect and often improve interactions. Understand tipping culture, bargaining customs, and appropriate ways to photograph people and places. Dress modestly and appropriately, especially when visiting religious sites or conservative cultures. Be aware of non-verbal communication differences: eye contact, personal space, gestures, and touching norms vary significantly across cultures. Show respect for local customs even if you don\'t understand them - observe how locals behave and follow their lead. Support local economies by choosing locally-owned businesses, buying authentic crafts from artisans, and using local guides and services. Be mindful of your environmental impact: follow local guidelines for waste disposal, water usage, and wildlife interaction. Avoid contributing to overtourism by choosing less crowded alternatives when possible. Remember that you are a guest in someone else\'s home - approach new cultures with humility, curiosity, and respect rather than judgment or comparison to your own culture.',
+      tags: ['cultural-sensitivity', 'respectful-travel', 'sustainable-tourism'],
+      readTime: 9,
+      difficulty: 'beginner' as const
     },
     {
       id: 'adventure-safety-preparation-guide',
       title: 'Adventure Travel Safety & Preparation Guide',
-      content: 'Adventure travel requires additional safety preparation and risk management beyond typical tourism. Start with honest assessment of your physical fitness, experience level, and risk tolerance. Research specific risks associated with your planned activities: altitude sickness for high-altitude destinations, wildlife encounters, extreme weather, water safety, and equipment requirements. Invest in appropriate travel insurance that covers adventure activities - many standard policies exclude "dangerous" activities like mountaineering, diving, or extreme sports. Get necessary medical clearances and vaccinations, and carry comprehensive first aid supplies appropriate for your activities and destination remoteness. Learn basic emergency procedures relevant to your activities: wilderness first aid, water rescue, or altitude sickness recognition. Research local emergency services and evacuation procedures - how to contact help and how long rescue might take. Pack and understand how to use safety equipment: GPS devices, emergency beacons, water purification, weather protection. Travel with experienced guides for high-risk activities, especially in unfamiliar environments. Inform others of your detailed itinerary and check-in schedule. Consider satellite communication devices for remote areas without cell coverage. Maintain conservative decision-making: turn back if conditions deteriorate, respect local warnings, and don\'t let group pressure override safety judgments.'
+      type: 'guide' as const,
+      excerpt: 'Stay safe during adventure travel with comprehensive risk assessment and emergency preparedness.',
+      content: 'Adventure travel requires additional safety preparation and risk management beyond typical tourism. Start with honest assessment of your physical fitness, experience level, and risk tolerance. Research specific risks associated with your planned activities: altitude sickness for high-altitude destinations, wildlife encounters, extreme weather, water safety, and equipment requirements. Invest in appropriate travel insurance that covers adventure activities - many standard policies exclude "dangerous" activities like mountaineering, diving, or extreme sports. Get necessary medical clearances and vaccinations, and carry comprehensive first aid supplies appropriate for your activities and destination remoteness. Learn basic emergency procedures relevant to your activities: wilderness first aid, water rescue, or altitude sickness recognition. Research local emergency services and evacuation procedures - how to contact help and how long rescue might take. Pack and understand how to use safety equipment: GPS devices, emergency beacons, water purification, weather protection. Travel with experienced guides for high-risk activities, especially in unfamiliar environments. Inform others of your detailed itinerary and check-in schedule. Consider satellite communication devices for remote areas without cell coverage. Maintain conservative decision-making: turn back if conditions deteriorate, respect local warnings, and don\'t let group pressure override safety judgments.',
+      tags: ['adventure-travel', 'safety-preparation', 'risk-management'],
+      readTime: 11,
+      difficulty: 'expert' as const
     }
   ],
   expertTips: [
@@ -2433,56 +2458,56 @@ export const travelPlanningAdventureTemplate: GuidanceTemplate = {
       id: 'travel-planning-tip-1',
       tip: 'Book flights and accommodation first, then build your itinerary around them. Flexibility in dates can save hundreds of dollars on flights.',
       author: 'Rick Steves, Travel Expert',
-      category: 'Budget Planning',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'cultural-immersion-tip-1',
       tip: 'Stay in locally-owned accommodations and eat where locals eat. You\'ll have more authentic experiences and support the local economy.',
       author: 'Anthony Bourdain, Travel & Food Author',
-      category: 'Cultural Experience',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'packing-tip-1',
       tip: 'Pack half the clothes and twice the money you think you need. You\'ll buy clothes locally and need funds for unexpected opportunities.',
       author: 'Samantha Brown, Travel TV Host',
-      category: 'Travel Preparation',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'safety-tip-1',
       tip: 'Trust your instincts about people and situations. If something feels off, remove yourself from the situation politely but quickly.',
       author: 'Patricia Schultz, Travel Safety Expert',
-      category: 'Travel Safety',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'itinerary-tip-1',
       tip: 'Build buffer time into your itinerary. The best travel experiences often come from unexpected detours and spontaneous discoveries.',
       author: 'Paul Theroux, Travel Writer',
-      category: 'Itinerary Planning',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'documentation-tip-1',
       tip: 'Take photos of important documents and store them in cloud storage. Keep physical and digital copies separate from originals.',
       author: 'Pauline Frommer, Travel Guide Author',
-      category: 'Travel Documentation',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'local-connection-tip-1',
       tip: 'Use apps like Meetup or local Facebook groups to connect with locals and fellow travelers. The people you meet often become the highlight of your trip.',
       author: 'Matt Kepnes (Nomadic Matt), Travel Blogger',
-      category: 'Social Travel',
+      category: 'consideration',
       importance: 'medium'
     },
     {
       id: 'sustainable-travel-tip-1',
       tip: 'Choose overland transportation when practical and offset flights when not. Travel slowly to reduce environmental impact and increase cultural immersion.',
       author: 'Juliet Kinsman, Sustainable Travel Expert',
-      category: 'Sustainable Travel',
+      category: 'consideration',
       importance: 'medium'
     }
   ]
@@ -2522,7 +2547,7 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
         {
           id: 'niche-specialization-decision',
           prompt: 'Will you position yourself as a generalist or specialize in a specific niche? What are the trade-offs?',
-          category: 'strategy',
+          category: 'planning',
           helpText: 'Specialists often command higher rates but have smaller markets. Generalists have more opportunities but more competition.'
         },
         {
@@ -2534,7 +2559,7 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
         {
           id: 'continuous-learning-commitment',
           prompt: 'What ongoing learning plan will you implement to stay current and competitive in your field?',
-          category: 'development',
+          category: 'planning',
           helpText: 'Industries evolve rapidly. Plan time and budget for courses, conferences, networking, and staying updated on trends.'
         }
       ]
@@ -2547,37 +2572,37 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
         {
           id: 'business-structure-choice',
           prompt: 'What business structure (sole proprietorship, LLC, corporation) best fits your freelance goals and risk tolerance?',
-          category: 'legal',
+          category: 'research',
           helpText: 'Consider liability protection, tax implications, complexity, and costs. Most freelancers start with sole proprietorship or LLC.'
         },
         {
           id: 'financial-systems-setup',
           prompt: 'How will you manage business finances, taxes, and separate personal from business expenses?',
-          category: 'financial',
+          category: 'planning',
           helpText: 'Open separate business accounts, choose accounting software, understand quarterly tax obligations, track deductible expenses.'
         },
         {
           id: 'contracts-agreements',
           prompt: 'What standard contracts and agreements do you need to protect yourself and set clear expectations?',
-          category: 'legal',
+          category: 'research',
           helpText: 'Create templates for service agreements, NDAs, statement of work documents, and payment terms that protect your interests.'
         },
         {
           id: 'insurance-risk-management',
           prompt: 'What insurance coverage and risk management strategies do you need as a freelancer?',
-          category: 'protection',
+          category: 'consideration',
           helpText: 'Consider professional liability, general liability, cyber liability, and disability insurance based on your services.'
         },
         {
           id: 'intellectual-property-protection',
           prompt: 'How will you protect your intellectual property and respect client intellectual property rights?',
-          category: 'legal',
+          category: 'research',
           helpText: 'Understand copyright, trademark, work-for-hire agreements, and how to retain rights to your processes and methodologies.'
         },
         {
           id: 'workspace-tools-setup',
           prompt: 'What physical workspace, technology tools, and software do you need for professional operation?',
-          category: 'operational',
+          category: 'planning',
           helpText: 'Consider home office deduction requirements, professional equipment, communication tools, project management software.'
         }
       ]
@@ -2596,13 +2621,13 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
         {
           id: 'value-proposition-definition',
           prompt: 'What unique value do you provide that justifies your rates compared to competitors?',
-          category: 'strategy',
+          category: 'planning',
           helpText: 'Consider specialized expertise, faster delivery, better results, industry knowledge, or unique approach that sets you apart.'
         },
         {
           id: 'pricing-model-selection',
           prompt: 'Will you charge hourly, project-based, retainer, or value-based rates? What are the pros and cons of each?',
-          category: 'strategy',
+          category: 'planning',
           helpText: 'Hourly caps your income, project-based requires accurate scoping, retainers provide stability, value-based maximizes profit.'
         },
         {
@@ -2614,13 +2639,13 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
         {
           id: 'client-tier-segmentation',
           prompt: 'How will you segment different client tiers and adapt your pricing and service levels accordingly?',
-          category: 'strategy',
+          category: 'planning',
           helpText: 'Consider budget-conscious startups, established SMBs, and enterprise clients with different needs and payment capabilities.'
         },
         {
           id: 'competitive-positioning',
           prompt: 'How will you position yourself relative to competitors: premium, mid-market, or budget option?',
-          category: 'positioning',
+          category: 'planning',
           helpText: 'Your positioning affects everything from pricing to marketing to client expectations. Choose strategically based on your goals.'
         }
       ]
@@ -2633,37 +2658,37 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
         {
           id: 'target-client-definition',
           prompt: 'Who is your ideal client in terms of industry, company size, project type, and budget?',
-          category: 'strategy',
+          category: 'planning',
           helpText: 'Define specific client personas including pain points, decision-making process, budget ranges, and communication preferences.'
         },
         {
           id: 'marketing-channel-strategy',
           prompt: 'Which marketing channels will you use to reach your target clients most effectively?',
-          category: 'marketing',
+          category: 'planning',
           helpText: 'Consider content marketing, social media, networking events, referrals, freelance platforms, cold outreach, and partnerships.'
         },
         {
           id: 'personal-brand-development',
           prompt: 'How will you build and communicate your personal brand across all touchpoints?',
-          category: 'branding',
+          category: 'planning',
           helpText: 'Define your brand personality, messaging, visual identity, and ensure consistency across website, social media, and communications.'
         },
         {
           id: 'content-marketing-plan',
           prompt: 'What content will you create to demonstrate expertise and attract clients?',
-          category: 'marketing',
+          category: 'planning',
           helpText: 'Consider blog posts, case studies, tutorials, videos, podcasts, or industry insights that showcase your knowledge and problem-solving abilities.'
         },
         {
           id: 'networking-relationship-building',
           prompt: 'How will you build relationships within your industry and target client communities?',
-          category: 'networking',
+          category: 'planning',
           helpText: 'Join professional associations, attend industry events, participate in online communities, and maintain relationships with past clients and colleagues.'
         },
         {
           id: 'referral-system-development',
           prompt: 'What systems will you create to encourage and manage referrals from satisfied clients?',
-          category: 'systems',
+          category: 'planning',
           helpText: 'Develop referral incentives, follow-up processes, and make it easy for clients to recommend you to their network.'
         }
       ]
@@ -2676,31 +2701,31 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
         {
           id: 'growth-goals-vision',
           prompt: 'What does success look like for your freelance business in 1, 3, and 5 years?',
-          category: 'vision',
+          category: 'consideration',
           helpText: 'Define specific revenue goals, client types, service offerings, team size, and lifestyle objectives that guide your strategic decisions.'
         },
         {
           id: 'service-expansion-strategy',
           prompt: 'How will you expand your service offerings or develop new revenue streams over time?',
-          category: 'strategy',
+          category: 'planning',
           helpText: 'Consider complementary services, higher-value offerings, productized services, passive income streams, or adjacent market opportunities.'
         },
         {
           id: 'team-building-delegation',
           prompt: 'When and how will you start building a team or outsourcing work to scale beyond your personal capacity?',
-          category: 'scaling',
+          category: 'planning',
           helpText: 'Plan for hiring contractors, virtual assistants, or employees. Develop systems for training, quality control, and client relationship management.'
         },
         {
           id: 'systems-automation-development',
           prompt: 'What business processes can you systematize or automate to improve efficiency and scalability?',
-          category: 'efficiency',
+          category: 'consideration',
           helpText: 'Identify repetitive tasks, create standard operating procedures, and implement tools that reduce manual work while maintaining quality.'
         },
         {
           id: 'financial-planning-investment',
           prompt: 'How will you manage cash flow, plan for taxes, and invest profits back into business growth?',
-          category: 'financial',
+          category: 'planning',
           helpText: 'Develop budgeting systems, emergency funds, tax planning, and reinvestment strategies for equipment, marketing, or skill development.'
         },
         {
@@ -2744,56 +2769,56 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
       id: 'freelance-pricing-tip-1',
       tip: 'Never compete on price alone. Instead, compete on value, expertise, and results. Clients who choose based solely on price are rarely your best clients.',
       author: 'Seth Godin, Marketing Expert',
-      category: 'Pricing Strategy',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'client-relationship-tip-1',
       tip: 'Treat your freelance work like consulting, not just task completion. Understand your client\'s business goals and position your work as solutions to their problems.',
       author: 'Alan Weiss, Consultant & Author',
-      category: 'Client Relations',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'skill-development-tip-1',
       tip: 'Focus on developing skills that are hard to outsource or automate. Technical skills become obsolete, but problem-solving and strategic thinking remain valuable.',
       author: 'Cal Newport, Author of "So Good They Can\'t Ignore You"',
-      category: 'Skill Development',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'business-systems-tip-1',
       tip: 'Document everything from day one. Your future self (and team) will thank you when you need to scale or take time off.',
       author: 'Michael Gerber, Author of "The E-Myth"',
-      category: 'Business Systems',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'marketing-consistency-tip-1',
       tip: 'Consistency beats perfection in marketing. A weekly blog post for a year is more valuable than one perfect post per month.',
       author: 'Gary Vaynerchuk, Digital Marketing Expert',
-      category: 'Marketing',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'financial-planning-tip-1',
       tip: 'Save 25-30% of your freelance income for taxes and maintain 3-6 months of expenses as an emergency fund. Irregular income requires more financial planning.',
       author: 'Ramit Sethi, Personal Finance Expert',
-      category: 'Financial Planning',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'client-boundaries-tip-1',
       tip: 'Set clear boundaries from the beginning. It\'s easier to relax strict boundaries than to enforce new ones with existing clients.',
       author: 'Brennan Dunn, Freelance Business Expert',
-      category: 'Client Management',
+      category: 'planning',
       importance: 'medium'
     },
     {
       id: 'networking-tip-1',
       tip: 'Give before you receive in networking. Help others, share resources, and make connections. The best networking feels like friendship, not selling.',
       author: 'Keith Ferrazzi, Author of "Never Eat Alone"',
-      category: 'Networking',
+      category: 'planning',
       importance: 'medium'
     }
   ]
@@ -2814,38 +2839,38 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
         {
           id: 'parenting-values-beliefs',
           prompt: "What core values and beliefs do you want to instill in your children?",
-          category: 'values',
+          category: 'consideration',
           helpText: 'Consider kindness, honesty, responsibility, empathy, resilience, curiosity, respect, and how these translate to daily parenting decisions.',
           relatedResources: ['parenting-philosophy-guide', 'child-development-stages']
         },
         {
           id: 'parenting-style-approach',
           prompt: 'What parenting style resonates with you: authoritative, authoritarian, permissive, or uninvolved? Why?',
-          category: 'approach',
+          category: 'consideration',
           helpText: 'Authoritative (high warmth, high expectations) is generally most effective. Consider your own upbringing and what you want to replicate or change.'
         },
         {
           id: 'discipline-guidance-philosophy',
           prompt: 'How will you approach discipline and guidance? What methods align with your values?',
-          category: 'discipline',
+          category: 'planning',
           helpText: 'Consider positive discipline, natural consequences, time-ins vs time-outs, and age-appropriate expectations and boundaries.'
         },
         {
           id: 'family-culture-traditions',
           prompt: 'What kind of family culture and traditions do you want to create?',
-          category: 'culture',
+          category: 'consideration',
           helpText: 'Think about daily routines, holiday celebrations, family meetings, shared activities, and ways to build connection and belonging.'
         },
         {
           id: 'parenting-partnership-alignment',
           prompt: 'If you have a co-parent, how will you align your parenting approaches and handle disagreements?',
-          category: 'partnership',
+          category: 'consideration',
           helpText: 'Discuss major decisions, discipline approaches, screen time rules, and present a united front while respecting different strengths.'
         },
         {
           id: 'extended-family-boundaries',
           prompt: 'How will you navigate relationships with extended family and their opinions about your parenting choices?',
-          category: 'boundaries',
+          category: 'consideration',
           helpText: 'Set respectful boundaries while maintaining relationships. Consider cultural expectations and generational differences in parenting approaches.'
         }
       ]
@@ -2858,37 +2883,37 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
         {
           id: 'developmental-stage-understanding',
           prompt: 'What developmental stage is your child currently in, and what milestones are typical for this age?',
-          category: 'development',
+          category: 'planning',
           helpText: 'Research cognitive, physical, social, and emotional milestones. Remember children develop at their own pace within normal ranges.'
         },
         {
           id: 'age-appropriate-expectations',
           prompt: 'Are your expectations for behavior, chores, and independence appropriate for your child\'s age and development?',
-          category: 'expectations',
+          category: 'consideration',
           helpText: 'Consider attention span, motor skills, emotional regulation, and cognitive abilities when setting expectations for behavior and responsibilities.'
         },
         {
           id: 'individual-temperament-recognition',
           prompt: 'What is your child\'s unique temperament, and how does this influence your parenting approach?',
-          category: 'temperament',
+          category: 'consideration',
           helpText: 'Consider sensitivity, activity level, adaptability, mood, and intensity. Adjust parenting strategies to work with, not against, their temperament.'
         },
         {
           id: 'developmental-challenges-support',
           prompt: 'Are there any areas where your child may need extra support or intervention?',
-          category: 'support',
+          category: 'consideration',
           helpText: 'Consider speech, learning, social skills, or behavioral concerns. Early intervention is often most effective when challenges are identified.'
         },
         {
           id: 'learning-style-preferences',
           prompt: 'How does your child learn best, and how can you support their education at home?',
-          category: 'learning',
+          category: 'consideration',
           helpText: 'Observe whether they learn better through visual, auditory, or kinesthetic methods. Support school learning with appropriate home activities.'
         },
         {
           id: 'developmental-environment-optimization',
           prompt: 'How can you optimize your home environment to support your child\'s current developmental needs?',
-          category: 'environment',
+          category: 'consideration',
           helpText: 'Consider safety, stimulation level, organization, and accessibility of materials that support learning and independence.'
         }
       ]
@@ -2901,37 +2926,37 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
         {
           id: 'emotional-vocabulary-development',
           prompt: 'How will you help your child identify, name, and express their emotions appropriately?',
-          category: 'emotional-intelligence',
+          category: 'consideration',
           helpText: 'Model emotional language, validate feelings, and teach that all emotions are valid but not all behaviors are acceptable.'
         },
         {
           id: 'emotion-regulation-strategies',
           prompt: 'What strategies will you teach your child for managing big emotions and self-regulation?',
-          category: 'regulation',
+          category: 'planning',
           helpText: 'Consider deep breathing, counting, quiet spaces, physical outlets, and age-appropriate coping strategies for overwhelming emotions.'
         },
         {
           id: 'empathy-compassion-building',
           prompt: 'How will you nurture empathy and compassion in your child?',
-          category: 'empathy',
+          category: 'consideration',
           helpText: 'Model empathetic behavior, discuss others\' feelings, encourage perspective-taking, and provide opportunities to help others.'
         },
         {
           id: 'social-skills-friendship',
           prompt: 'What social skills will you actively teach and how will you support healthy friendships?',
-          category: 'social-skills',
+          category: 'consideration',
           helpText: 'Teach sharing, taking turns, conflict resolution, communication skills, and how to be a good friend. Facilitate social opportunities.'
         },
         {
           id: 'conflict-resolution-skills',
           prompt: 'How will you teach your child to handle conflicts and disagreements constructively?',
-          category: 'conflict-resolution',
+          category: 'planning',
           helpText: 'Model problem-solving, teach compromise, encourage communication, and guide them through peaceful resolution strategies.'
         },
         {
           id: 'self-esteem-confidence-building',
           prompt: 'What strategies will you use to build your child\'s self-esteem and confidence?',
-          category: 'self-esteem',
+          category: 'consideration',
           helpText: 'Focus on effort over results, provide specific praise, encourage independence, and help them develop a growth mindset.'
         }
       ]
@@ -2944,37 +2969,37 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
         {
           id: 'active-listening-skills',
           prompt: 'How will you practice active listening and ensure your child feels heard and understood?',
-          category: 'communication',
+          category: 'planning',
           helpText: 'Give full attention, reflect back what you hear, validate emotions, and avoid immediately jumping to solutions or judgments.'
         },
         {
           id: 'age-appropriate-communication',
           prompt: 'How will you adapt your communication style to your child\'s developmental level and personality?',
-          category: 'communication',
+          category: 'planning',
           helpText: 'Use language they understand, get on their physical level, and adjust complexity based on age and individual comprehension.'
         },
         {
           id: 'difficult-conversation-navigation',
           prompt: 'How will you handle difficult topics like death, divorce, peer pressure, or current events?',
-          category: 'communication',
+          category: 'planning',
           helpText: 'Be honest but age-appropriate, check their understanding, provide reassurance, and create safe spaces for questions and concerns.'
         },
         {
           id: 'quality-time-connection',
           prompt: 'What intentional practices will you use to maintain connection and spend quality time together?',
-          category: 'connection',
+          category: 'consideration',
           helpText: 'Plan one-on-one time, engage in their interests, create family rituals, and be present during everyday moments.'
         },
         {
           id: 'trust-respect-building',
           prompt: 'How will you build and maintain trust and mutual respect in your relationship?',
-          category: 'relationship',
+          category: 'consideration',
           helpText: 'Keep promises, admit mistakes, respect their opinions, involve them in age-appropriate decisions, and model the behavior you expect.'
         },
         {
           id: 'independence-support-balance',
           prompt: 'How will you balance providing support with encouraging independence as your child grows?',
-          category: 'independence',
+          category: 'consideration',
           helpText: 'Gradually increase responsibilities, allow safe failures for learning, and provide guidance while letting them make age-appropriate choices.'
         }
       ]
@@ -2987,37 +3012,37 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
         {
           id: 'learning-environment-creation',
           prompt: 'How will you create a supportive learning environment at home?',
-          category: 'environment',
+          category: 'consideration',
           helpText: 'Provide quiet study spaces, organize materials, minimize distractions, and establish routines that support homework and reading.'
         },
         {
           id: 'school-partnership-collaboration',
           prompt: 'How will you partner with teachers and school staff to support your child\'s education?',
-          category: 'partnership',
+          category: 'consideration',
           helpText: 'Maintain regular communication, attend conferences, volunteer when possible, and work collaboratively to address any concerns.'
         },
         {
           id: 'homework-study-habits',
           prompt: 'What strategies will you use to help your child develop good homework and study habits?',
-          category: 'study-habits',
+          category: 'planning',
           helpText: 'Establish consistent routines, teach time management, provide guidance without doing the work, and celebrate effort and improvement.'
         },
         {
           id: 'curiosity-love-of-learning',
           prompt: 'How will you nurture your child\'s natural curiosity and love of learning?',
-          category: 'curiosity',
+          category: 'consideration',
           helpText: 'Encourage questions, explore interests together, provide diverse experiences, and model your own love of learning and discovery.'
         },
         {
           id: 'reading-literacy-support',
           prompt: 'What specific strategies will you use to support reading and literacy development?',
-          category: 'literacy',
+          category: 'planning',
           helpText: 'Read together daily, discuss books, visit libraries, model reading behavior, and make reading enjoyable rather than a chore.'
         },
         {
           id: 'educational-challenges-advocacy',
           prompt: 'How will you advocate for your child if they face educational challenges or need special support?',
-          category: 'advocacy',
+          category: 'planning',
           helpText: 'Stay informed about rights and resources, communicate concerns early, seek evaluations when needed, and be your child\'s strongest advocate.'
         }
       ]
@@ -3030,37 +3055,37 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
         {
           id: 'healthy-habits-establishment',
           prompt: 'What healthy habits will you establish and model for nutrition, exercise, and self-care?',
-          category: 'health-habits',
+          category: 'planning',
           helpText: 'Create consistent meal times, encourage physical activity, establish good hygiene routines, and model healthy lifestyle choices.'
         },
         {
           id: 'safety-awareness-teaching',
           prompt: 'How will you teach age-appropriate safety awareness and personal protection skills?',
-          category: 'safety',
+          category: 'consideration',
           helpText: 'Teach body safety, stranger awareness, internet safety, emergency procedures, and how to seek help when needed.'
         },
         {
           id: 'mental-health-emotional-wellbeing',
           prompt: 'What strategies will you use to support your child\'s mental health and emotional well-being?',
-          category: 'mental-health',
+          category: 'consideration',
           helpText: 'Watch for signs of anxiety or depression, create open communication, teach coping strategies, and seek professional help when needed.'
         },
         {
           id: 'screen-time-technology-management',
           prompt: 'How will you manage screen time and teach healthy technology habits?',
-          category: 'technology',
+          category: 'consideration',
           helpText: 'Set age-appropriate limits, choose quality content, model good tech habits, and balance screen time with physical and social activities.'
         },
         {
           id: 'healthcare-medical-advocacy',
           prompt: 'How will you stay proactive about your child\'s healthcare needs and medical advocacy?',
-          category: 'healthcare',
+          category: 'research',
           helpText: 'Maintain regular checkups, stay up-to-date on vaccinations, trust your instincts about health concerns, and build relationships with healthcare providers.'
         },
         {
           id: 'emergency-preparedness-planning',
           prompt: 'What emergency preparedness plans and safety measures will you have in place?',
-          category: 'emergency',
+          category: 'planning',
           helpText: 'Create emergency contact lists, teach your child important information, have safety plans for different scenarios, and keep emergency supplies ready.'
         }
       ]
@@ -3098,56 +3123,56 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
       id: 'consistency-tip-1',
       tip: 'Children thrive on consistency. Pick your battles wisely, but once you set a boundary, follow through consistently to build trust and security.',
       author: 'Dr. Dan Siegel, Child Psychiatrist',
-      category: 'Discipline',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'connection-before-correction-tip',
       tip: 'Always connect before you correct. A child who feels understood and loved is much more likely to be cooperative and learn from guidance.',
       author: 'Dr. Patty Wipfler, Parenting Expert',
-      category: 'Communication',
+      category: 'planning',
       importance: 'high'
     },
     {
       id: 'model-behavior-tip',
       tip: 'Children learn more from what you do than what you say. Model the emotional regulation, respect, and problem-solving skills you want them to develop.',
       author: 'Dr. Laura Markham, Clinical Psychologist',
-      category: 'Modeling',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'individual-needs-tip',
       tip: 'Fair doesn\'t mean equal. Each child has different needs, temperaments, and developmental timelines. Adjust your parenting accordingly.',
       author: 'Dr. Ross Greene, Child Psychologist',
-      category: 'Individual Differences',
+      category: 'consideration',
       importance: 'medium'
     },
     {
       id: 'mistake-opportunity-tip',
       tip: 'Treat mistakes as learning opportunities, not failures. Your response to their mistakes teaches them how to handle their own setbacks.',
       author: 'Carol Dweck, Growth Mindset Researcher',
-      category: 'Growth Mindset',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'emotional-validation-tip',
       tip: 'Validate emotions even when you can\'t allow the behavior. "You\'re disappointed we can\'t go to the park, and that\'s okay. We still can\'t go today."',
       author: 'Dr. John Gottman, Relationship Researcher',
-      category: 'Emotional Intelligence',
+      category: 'consideration',
       importance: 'medium'
     },
     {
       id: 'self-care-importance-tip',
       tip: 'Take care of yourself so you can take care of your children. Parental stress and exhaustion significantly impact parenting quality and family well-being.',
       author: 'Dr. Shefali Tsabary, Clinical Psychologist',
-      category: 'Self-Care',
+      category: 'consideration',
       importance: 'high'
     },
     {
       id: 'trust-building-tip',
       tip: 'Build trust through small interactions every day. Keep promises, admit when you\'re wrong, and show that your child\'s thoughts and feelings matter to you.',
       author: 'Dr. Brené Brown, Vulnerability Researcher',
-      category: 'Trust Building',
+      category: 'consideration',
       importance: 'medium'
     }
   ]
@@ -3174,25 +3199,25 @@ export const productivitySystemTemplate: GuidanceTemplate = {
         {
           id: 'time-wasters',
           prompt: 'Where do you lose the most time during your day? Social media, meetings, email?',
-          category: 'analysis',
+          category: 'research',
           helpText: 'Track your time for a week to identify patterns and time drains'
         },
         {
           id: 'productivity-goals',
           prompt: 'What specific productivity improvements do you want to achieve?',
-          category: 'goals',
+          category: 'consideration',
           helpText: 'More deep work hours, better work-life balance, less stress, completing projects faster'
         },
         {
           id: 'current-systems',
           prompt: 'What productivity tools and methods have you tried? What worked or didn\'t work?',
-          category: 'experience',
+          category: 'consideration',
           helpText: 'Learn from past attempts: GTD, Pomodoro, task apps, calendars, notebooks'
         },
         {
           id: 'work-style',
           prompt: 'When are you most focused and energetic? What\'s your natural work rhythm?',
-          category: 'self-awareness',
+          category: 'consideration',
           helpText: 'Morning person vs night owl, need for variety vs routine, solo vs collaborative work'
         }
       ]
@@ -3211,25 +3236,25 @@ export const productivitySystemTemplate: GuidanceTemplate = {
         {
           id: 'calendar-blocking',
           prompt: 'How will you block time for different types of work: deep work, admin, meetings?',
-          category: 'scheduling',
+          category: 'planning',
           helpText: 'Color-code different work types, batch similar tasks, protect morning energy'
         },
         {
           id: 'distraction-management',
           prompt: 'What strategies will you use to protect your focused work time?',
-          category: 'focus',
+          category: 'consideration',
           helpText: 'Phone on silent, door closed, notifications off, communication boundaries'
         },
         {
           id: 'energy-management',
           prompt: 'How will you schedule work based on your energy levels throughout the day?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'High-energy work in peak hours, admin during low-energy times, breaks planned'
         },
         {
           id: 'buffer-time',
           prompt: 'How will you build buffers and flexibility into your schedule?',
-          category: 'realistic-planning',
+          category: 'planning',
           helpText: 'Travel time between meetings, unexpected issues, overrunning tasks'
         }
       ]
@@ -3242,31 +3267,31 @@ export const productivitySystemTemplate: GuidanceTemplate = {
         {
           id: 'capture-system',
           prompt: 'How will you capture all tasks, ideas, and commitments as they come up?',
-          category: 'system',
+          category: 'planning',
           helpText: 'Notebook, phone app, voice recorder - needs to be always accessible and reliable'
         },
         {
           id: 'task-organization',
           prompt: 'How will you organize tasks: by project, priority, context, or due date?',
-          category: 'structure',
+          category: 'planning',
           helpText: 'GTD contexts (@calls, @computer), priority matrices, project folders'
         },
         {
           id: 'review-schedule',
           prompt: 'When will you review and update your task lists? Daily, weekly?',
-          category: 'maintenance',
+          category: 'planning',
           helpText: 'Daily planning sessions, weekly reviews, monthly goal check-ins'
         },
         {
           id: 'priority-system',
           prompt: 'How will you decide what to work on when you have multiple options?',
-          category: 'decision-making',
+          category: 'decision',
           helpText: 'Eisenhower matrix, impact vs effort, deadline-driven, energy levels'
         },
         {
           id: 'completion-tracking',
           prompt: 'How will you track progress and celebrate completed tasks?',
-          category: 'motivation',
+          category: 'consideration',
           helpText: 'Checkboxes, progress bars, done lists, weekly accomplishment reviews'
         }
       ]
@@ -3279,31 +3304,31 @@ export const productivitySystemTemplate: GuidanceTemplate = {
         {
           id: 'focus-environment',
           prompt: 'What physical environment helps you focus best?',
-          category: 'environment',
+          category: 'consideration',
           helpText: 'Quiet vs background noise, organized vs messy, home vs office vs cafe'
         },
         {
           id: 'focus-rituals',
           prompt: 'What rituals or routines help you transition into focused work?',
-          category: 'habits',
+          category: 'planning',
           helpText: 'Music, coffee, clearing desk, reviewing goals, meditation, exercise'
         },
         {
           id: 'pomodoro-adaptation',
           prompt: 'How will you use time-boxing techniques like Pomodoro? What durations work for you?',
-          category: 'techniques',
+          category: 'planning',
           helpText: '25-min standard, 50-min for complex tasks, 90-min for deep work sessions'
         },
         {
           id: 'distraction-triggers',
           prompt: 'What typically breaks your focus? How will you minimize these triggers?',
-          category: 'obstacles',
+          category: 'consideration',
           helpText: 'Notifications, noise, hunger, boredom, anxiety, unclear next steps'
         },
         {
           id: 'flow-conditions',
           prompt: 'When do you experience flow states? How can you recreate those conditions?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Time of day, type of work, challenge level, clear goals, immediate feedback'
         }
       ]
@@ -3316,31 +3341,31 @@ export const productivitySystemTemplate: GuidanceTemplate = {
         {
           id: 'weekly-reviews',
           prompt: 'What will you review weekly? What worked well and what needs adjustment?',
-          category: 'reflection',
+          category: 'consideration',
           helpText: 'Time spent vs planned, energy levels, goal progress, system friction points'
         },
         {
           id: 'metric-tracking',
           prompt: 'What metrics will you track to measure productivity improvements?',
-          category: 'measurement',
+          category: 'research',
           helpText: 'Deep work hours, tasks completed, projects finished, stress levels, work satisfaction'
         },
         {
           id: 'system-evolution',
           prompt: 'How will you adapt your system as your work and life change?',
-          category: 'flexibility',
+          category: 'consideration',
           helpText: 'New responsibilities, changed priorities, different energy levels, life transitions'
         },
         {
           id: 'accountability',
           prompt: 'Who or what will help keep you accountable to your productivity goals?',
-          category: 'support',
+          category: 'consideration',
           helpText: 'Productivity partner, coach, team check-ins, public commitments, tracking apps'
         },
         {
           id: 'stress-management',
           prompt: 'How will you maintain productivity without burning out?',
-          category: 'sustainability',
+          category: 'consideration',
           helpText: 'Rest periods, boundaries, saying no, delegation, realistic expectations'
         }
       ]
@@ -3421,13 +3446,13 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'moving-distance',
           prompt: 'Are you moving locally, long-distance, or internationally? What specific challenges does this create?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Local (under 50 miles), long-distance (over 50 miles), or international moves each have different regulations, costs, timelines, and complexity requirements.'
         },
         {
           id: 'moving-budget',
           prompt: 'What\'s your total moving budget? How will you allocate funds across different categories?',
-          category: 'financial',
+          category: 'planning',
           helpText: 'Include professional movers (40-60%), packing supplies (5-10%), travel expenses (10-20%), temporary housing (10-15%), utility deposits and setup (10-15%), contingency (10%).'
         },
         {
@@ -3483,7 +3508,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'decluttering-plan',
           prompt: 'What will you declutter before packing? How will you systematically decide what to keep, donate, sell, or discard?',
-          category: 'organization',
+          category: 'planning',
           helpText: 'Less stuff means lower moving costs and easier unpacking. Use the 1-year rule, condition assessment, and replacement cost evaluation for decisions.'
         },
         {
@@ -3495,13 +3520,13 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'labeling-system',
           prompt: 'What labeling and inventory system will you use to track your belongings and prioritize unpacking?',
-          category: 'organization',
+          category: 'planning',
           helpText: 'Use color coding by room, detailed contents lists, priority labels (essential, important, low priority), and photo inventory for valuable items.'
         },
         {
           id: 'packing-supplies',
           prompt: 'What packing supplies do you need? How will you source boxes, tape, bubble wrap, and protective materials?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Calculate box needs by room size, get various sizes, use wardrobe boxes for clothes, and source free boxes from liquor stores, grocery stores, or online marketplaces.'
         },
         {
@@ -3520,25 +3545,25 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'moving-day-timeline',
           prompt: 'What\'s your moving day schedule? How will you coordinate timing between locations and services?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Plan loader arrival, cleaning services, utility shutoffs/connections, key exchanges, and include buffer time for unexpected delays.'
         },
         {
           id: 'essential-kit',
           prompt: 'What essential items will you pack separately for immediate access on moving day and first few days?',
-          category: 'preparation',
+          category: 'planning',
           helpText: 'Include medications, phone chargers, basic tools, cleaning supplies, snacks, important documents, change of clothes, and toiletries.'
         },
         {
           id: 'communication-plan',
           prompt: 'How will you coordinate communication between movers, real estate agents, utilities, and family members?',
-          category: 'coordination',
+          category: 'planning',
           helpText: 'Create contact lists, share timelines with all parties, designate a point person for decisions, and have backup communication methods.'
         },
         {
           id: 'quality-control',
           prompt: 'How will you ensure your belongings are handled properly and nothing is lost or damaged?',
-          category: 'oversight',
+          category: 'planning',
           helpText: 'Do walk-throughs with movers, check inventory lists, photograph any damage immediately, and keep important documents with you.'
         }
       ]
@@ -3551,7 +3576,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'utility-setup',
           prompt: 'How will you coordinate utility connections, internet setup, and essential services in your new home?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Schedule connections before move-in date, research providers, transfer or cancel old services, and prioritize internet, electricity, gas, water, and trash pickup.'
         },
         {
@@ -3563,13 +3588,13 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'address-changes',
           prompt: 'What address changes do you need to make? How will you systematically update all your accounts and subscriptions?',
-          category: 'administration',
+          category: 'planning',
           helpText: 'Update bank accounts, insurance, employer records, subscription services, government agencies (IRS, DMV, voter registration), and inform friends and family.'
         },
         {
           id: 'community-integration',
           prompt: 'How will you familiarize yourself with your new area and build connections in the community?',
-          category: 'social',
+          category: 'consideration',
           helpText: 'Research local services (grocery, pharmacy, hospital), explore neighborhoods, find recreational activities, and consider joining community groups or clubs.'
         }
       ]
@@ -3582,7 +3607,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'damage-claims',
           prompt: 'How will you handle any damage claims, missing items, or service issues from your move?',
-          category: 'resolution',
+          category: 'decision',
           helpText: 'Document damage with photos, contact movers promptly, understand your insurance coverage, and keep all receipts and correspondence.'
         },
         {
@@ -3594,13 +3619,13 @@ export const movingRelocationTemplate: GuidanceTemplate = {
         {
           id: 'routine-establishment',
           prompt: 'How will you establish new routines and habits that work with your new home and location?',
-          category: 'lifestyle',
+          category: 'consideration',
           helpText: 'Find new grocery stores, commute routes, exercise facilities, entertainment options, and adjust daily routines to fit your new environment.'
         },
         {
           id: 'moving-lessons',
           prompt: 'What lessons have you learned from this move that would help with future relocations?',
-          category: 'reflection',
+          category: 'consideration',
           helpText: 'Document what worked well, what you\'d do differently, successful vendors to remember, and systems that made the process smoother.'
         }
       ]
@@ -3681,13 +3706,13 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'target-audience',
           prompt: 'Who is your target audience? What experience do you want to create for them?',
-          category: 'audience',
+          category: 'consideration',
           helpText: 'Age demographics, interests, expectations, accessibility needs, cultural considerations, professional vs personal'
         },
         {
           id: 'success-metrics',
           prompt: 'How will you measure if your event is successful? What are your key performance indicators?',
-          category: 'goals',
+          category: 'consideration',
           helpText: 'Attendance numbers, engagement levels, feedback scores, funds raised, connections made, brand awareness, media coverage'
         },
         {
@@ -3712,13 +3737,13 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'event-budget',
           prompt: 'What\'s your total budget? How will you allocate it across different categories?',
-          category: 'budget',
+          category: 'planning',
           helpText: 'Venue (30-50%), catering (25-40%), entertainment (10-20%), decorations (5-10%), marketing (5-10%), contingency (10%)'
         },
         {
           id: 'venue-requirements',
           prompt: 'What are your venue requirements? Size, location, amenities, accessibility features?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Capacity for expected attendance, parking availability, kitchen access, AV equipment, indoor/outdoor options, wheelchair accessibility'
         },
         {
@@ -3736,7 +3761,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'permits-insurance',
           prompt: 'What permits, licenses, or insurance do you need for your event? Have you checked local regulations?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Event permits, alcohol licenses, music licensing, liability insurance, vendor insurance requirements, fire department approvals'
         }
       ]
@@ -3767,7 +3792,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'vendor-coordination',
           prompt: 'How will you coordinate between multiple vendors on event day? Who will manage logistics?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Point person for each vendor, contact information, timeline coordination, load-in/load-out schedules, backup communication plans'
         }
       ]
@@ -3780,13 +3805,13 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'marketing-channels',
           prompt: 'What marketing channels will you use to promote your event? Where does your audience spend time?',
-          category: 'marketing',
+          category: 'planning',
           helpText: 'Social media, email marketing, website, print materials, partnerships, word-of-mouth, professional networks, paid advertising'
         },
         {
           id: 'registration-process',
           prompt: 'How will people register for your event? What information do you need from attendees?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Online registration, ticketing platform, payment processing, dietary restrictions, accessibility needs, contact information'
         },
         {
@@ -3798,7 +3823,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'content-strategy',
           prompt: 'What content and messaging will you create to attract attendees? What story will you tell?',
-          category: 'marketing',
+          category: 'planning',
           helpText: 'Event benefits, speaker highlights, networking opportunities, exclusive content, social proof, urgency/scarcity'
         }
       ]
@@ -3811,7 +3836,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'event-timeline',
           prompt: 'What\'s your detailed event day timeline? When does setup begin and breakdown end?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Vendor arrival times, setup sequence, registration opening, program start/end, networking breaks, cleanup responsibilities'
         },
         {
@@ -3823,13 +3848,13 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'attendee-experience',
           prompt: 'How will you ensure attendees have a positive experience from arrival to departure?',
-          category: 'experience',
+          category: 'consideration',
           helpText: 'Clear signage, smooth registration, comfortable seating, good acoustics, networking opportunities, memorable takeaways'
         },
         {
           id: 'problem-solving',
           prompt: 'How will you handle unexpected issues or changes on event day? Who makes final decisions?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Chain of command, emergency contacts, backup plans, quick decision-making process, communication with attendees'
         }
       ]
@@ -3842,13 +3867,13 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'feedback-collection',
           prompt: 'How will you gather feedback from attendees, vendors, and staff? What questions will you ask?',
-          category: 'evaluation',
+          category: 'research',
           helpText: 'Post-event surveys, informal conversations, vendor debriefs, staff feedback sessions, social media monitoring'
         },
         {
           id: 'success-analysis',
           prompt: 'How will you measure your event against the success metrics you defined? What worked well?',
-          category: 'evaluation',
+          category: 'research',
           helpText: 'Compare actual vs. expected attendance, budget vs. actual costs, feedback scores, goals achieved, return on investment'
         },
         {
@@ -3860,7 +3885,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
         {
           id: 'lessons-learned',
           prompt: 'What would you do differently next time? What systems or processes need improvement?',
-          category: 'evaluation',
+          category: 'research',
           helpText: 'Timeline adjustments, vendor performance, budget allocation, marketing effectiveness, logistics improvements, attendee experience'
         }
       ]
@@ -3925,7 +3950,7 @@ export const travelPlanningTemplate: GuidanceTemplate = {
         {
           id: 'travel-goals',
           prompt: "What do you want to get out of this trip? Adventure, relaxation, culture, business, personal growth?",
-          category: 'goals',
+          category: 'consideration',
           helpText: 'Clear goals help you make better decisions about destinations, activities, and budget allocation. Consider if you want active adventure, cultural immersion, relaxation, professional development, or family bonding.'
         },
         {
@@ -3993,7 +4018,7 @@ export const travelPlanningTemplate: GuidanceTemplate = {
         {
           id: 'travel-budget',
           prompt: 'What\'s your total travel budget? How will you allocate it across major categories?',
-          category: 'budget',
+          category: 'planning',
           helpText: 'Typical allocation: Transportation (25%), accommodation (30%), food (25%), activities (15%), miscellaneous/emergency (5%). Adjust based on your priorities and destination costs.'
         },
         {
@@ -4005,7 +4030,7 @@ export const travelPlanningTemplate: GuidanceTemplate = {
         {
           id: 'money-management',
           prompt: 'How will you access and manage money while traveling? What payment methods will you use?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Notify banks of travel, research ATM fees, consider travel credit cards, understand local payment preferences (cash vs card), and have backup payment methods.'
         },
         {
@@ -4036,13 +4061,13 @@ export const travelPlanningTemplate: GuidanceTemplate = {
         {
           id: 'local-experiences',
           prompt: 'What local experiences and cultural activities do you want to include beyond tourist attractions?',
-          category: 'experience',
+          category: 'consideration',
           helpText: 'Cooking classes, local markets, neighborhood walks, cultural performances, festivals, volunteering, or staying with local families for authentic experiences.'
         },
         {
           id: 'booking-strategy',
           prompt: 'What activities need advance booking? What can you decide spontaneously?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Popular attractions, restaurants, shows, tours often need advance booking. Research cancellation policies and peak season requirements.'
         }
       ]
@@ -4055,7 +4080,7 @@ export const travelPlanningTemplate: GuidanceTemplate = {
         {
           id: 'travel-documents',
           prompt: 'What travel documents do you need? Are they current and will they remain valid?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Passport (6+ months validity), visas, travel insurance, vaccination certificates, driver\'s license for rentals, student/senior discounts, emergency contacts.'
         },
         {
@@ -4067,13 +4092,13 @@ export const travelPlanningTemplate: GuidanceTemplate = {
         {
           id: 'transportation-planning',
           prompt: 'How will you get around your destination? What transportation options work best for your itinerary?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Flights, trains, buses, rental cars, rideshare, public transport, walking. Research local transportation systems, costs, and reliability.'
         },
         {
           id: 'packing-preparation',
           prompt: 'What will you pack? How will you prepare for your destination\'s climate and activities?',
-          category: 'preparation',
+          category: 'planning',
           helpText: 'Research weather, dress codes, electrical outlets, and activity requirements. Pack versatile clothing, essential documents, medications, and backup items.'
         }
       ]
@@ -4086,25 +4111,25 @@ export const travelPlanningTemplate: GuidanceTemplate = {
         {
           id: 'flexibility-mindset',
           prompt: 'How will you stay flexible when plans change? What\'s your backup strategy?',
-          category: 'mindset',
+          category: 'consideration',
           helpText: 'Weather, closures, strikes, illness can disrupt plans. Stay positive, have backup activities, and view changes as adventure opportunities.'
         },
         {
           id: 'memory-capture',
           prompt: 'How will you document and remember your experiences beyond just photos?',
-          category: 'experience',
+          category: 'consideration',
           helpText: 'Travel journal, collecting meaningful souvenirs, learning phrases in local language, trying new foods, engaging with locals for deeper memories.'
         },
         {
           id: 'local-connection',
           prompt: 'How will you connect with local culture and people during your trip?',
-          category: 'experience',
+          category: 'consideration',
           helpText: 'Learn basic phrases, eat at local restaurants, use public transport, attend community events, stay in locally-owned accommodations.'
         },
         {
           id: 'post-travel-reflection',
           prompt: 'How will you process and integrate your travel experiences when you return?',
-          category: 'reflection',
+          category: 'consideration',
           helpText: 'Organize photos, write about experiences, share stories, maintain connections made, plan return visits, apply lessons learned to future travels.'
         }
       ]
@@ -4169,13 +4194,13 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'health-goals',
           prompt: "What are your specific nutrition and health goals? Weight management, increased energy, athletic performance, disease prevention?",
-          category: 'goals',
+          category: 'consideration',
           helpText: 'Specific goals help guide your meal planning decisions and food choices. Consider both short-term (3-6 months) and long-term (1+ years) objectives.'
         },
         {
           id: 'dietary-restrictions',
           prompt: 'Do you have any dietary restrictions, allergies, food intolerances, or cultural/religious food preferences?',
-          category: 'requirements',
+          category: 'research',
           helpText: 'Include medical allergies, vegetarian/vegan choices, gluten-free needs, dairy intolerance, cultural/religious restrictions, and personal preferences that affect food choices.'
         },
         {
@@ -4206,7 +4231,7 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'meal-prep-time',
           prompt: 'How much time can you realistically dedicate to meal planning and preparation each week?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Consider your cooking skills, kitchen equipment, schedule constraints, and willingness to meal prep. Be realistic about time available for planning, shopping, and cooking.'
         },
         {
@@ -4237,7 +4262,7 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'grocery-budget',
           prompt: 'What\'s your monthly food budget? How will you allocate it between groceries and dining out?',
-          category: 'budget',
+          category: 'planning',
           helpText: 'Consider your income, other expenses, and health priorities. Track current spending to set realistic goals. Factor in groceries, restaurants, coffee, and snacks.'
         },
         {
@@ -4268,13 +4293,13 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'cooking-skills',
           prompt: 'What are your current cooking skills? Which techniques do you want to learn or improve?',
-          category: 'skills',
+          category: 'consideration',
           helpText: 'Assess knife skills, basic cooking methods, flavor building, timing multiple dishes, and identify areas for improvement to expand your meal options.'
         },
         {
           id: 'kitchen-setup',
           prompt: 'How is your kitchen equipped? What tools or equipment would improve your meal prep efficiency?',
-          category: 'logistics',
+          category: 'planning',
           helpText: 'Consider storage containers, prep tools, appliances, organization systems, and equipment that could streamline your cooking and meal prep process.'
         },
         {
@@ -4286,7 +4311,7 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'meal-assembly',
           prompt: 'How will you organize and store prepared components for easy meal assembly throughout the week?',
-          category: 'organization',
+          category: 'planning',
           helpText: 'Plan for proper storage, labeling, portion sizing, and quick assembly systems that make daily meal preparation simple and appealing.'
         }
       ]
@@ -4299,13 +4324,13 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'tracking-method',
           prompt: 'How will you monitor your nutrition intake and progress toward goals? What tracking methods work for you?',
-          category: 'tracking',
+          category: 'planning',
           helpText: 'Consider food diary apps, photos, portion awareness, energy levels, weight, measurements, or other metrics that help you stay on track without becoming obsessive.'
         },
         {
           id: 'progress-evaluation',
           prompt: 'How will you evaluate if your meal plan is working? What indicators will you monitor?',
-          category: 'evaluation',
+          category: 'research',
           helpText: 'Track energy levels, sleep quality, mood, performance, digestive health, and goal progress to assess plan effectiveness beyond just weight or appearance.'
         },
         {
@@ -4317,7 +4342,7 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'sustainable-habits',
           prompt: 'How will you maintain healthy eating habits long-term while allowing for life\'s variations?',
-          category: 'sustainability',
+          category: 'consideration',
           helpText: 'Balance structure with flexibility, plan for holidays and social events, develop backup strategies, and focus on progress over perfection for lasting change.'
         }
       ]
@@ -4330,7 +4355,7 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'family-coordination',
           prompt: 'How will you coordinate meal planning with family members or household partners? Who has what responsibilities?',
-          category: 'coordination',
+          category: 'planning',
           helpText: 'Discuss preferences, dietary needs, cooking responsibilities, shopping duties, and meal timing to create a system that works for everyone.'
         },
         {
@@ -4348,7 +4373,7 @@ export const mealPlanningTemplate: GuidanceTemplate = {
         {
           id: 'support-systems',
           prompt: 'What support systems will help you maintain your meal planning habits? Who can help when you\'re struggling?',
-          category: 'support',
+          category: 'consideration',
           helpText: 'Identify family support, friends with similar goals, online communities, professionals, or accountability partners who can help maintain motivation and provide assistance.'
         }
       ]
@@ -4441,7 +4466,7 @@ export const academicResearchTemplate: GuidanceTemplate = {
         {
           id: 'methodology-approach',
           prompt: 'What research paradigm and methodology align with your question? Quantitative, qualitative, or mixed methods?',
-          category: 'methodology',
+          category: 'planning',
           helpText: 'Quantitative for measuring relationships/effects, qualitative for understanding experiences/meanings, mixed for comprehensive understanding. Consider your epistemological stance and research objectives.'
         },
         {
@@ -4478,25 +4503,25 @@ export const academicResearchTemplate: GuidanceTemplate = {
         {
           id: 'source-evaluation',
           prompt: 'How will you critically evaluate source quality and relevance? What makes a source trustworthy?',
-          category: 'evaluation',
+          category: 'research',
           helpText: 'Check peer-review status, author credentials, methodology rigor, sample representativeness, funding sources, and potential conflicts of interest. Use quality assessment tools when appropriate.'
         },
         {
           id: 'citation-management',
           prompt: 'How will you organize, tag, and track your growing collection of sources?',
-          category: 'organization',
+          category: 'planning',
           helpText: 'Choose tools like Zotero, Mendeley, or EndNote. Create consistent tagging systems, organize into collections, and start bibliographies early. Back up your library regularly.'
         },
         {
           id: 'synthesis-themes',
           prompt: 'What major themes, theories, and methodological approaches are emerging from your review?',
-          category: 'analysis',
+          category: 'research',
           helpText: 'Group sources by themes, identify competing theories, note methodological trends, and spot areas of consensus vs. debate. Create concept maps or matrices to visualize relationships.'
         },
         {
           id: 'theoretical-framework',
           prompt: 'What theoretical or conceptual framework best fits your research? How will it guide your study?',
-          category: 'analysis',
+          category: 'research',
           helpText: 'Choose frameworks that align with your research question and methodology. Consider established theories vs. emerging frameworks, and how they inform your data collection and analysis.'
         }
       ]
@@ -4509,31 +4534,31 @@ export const academicResearchTemplate: GuidanceTemplate = {
         {
           id: 'ethics-approval',
           prompt: 'What ethical approvals do you need? How will you protect participants and ensure informed consent?',
-          category: 'ethics',
+          category: 'consideration',
           helpText: 'Submit IRB/ethics applications early (6-8 weeks typical). Address risks/benefits, participant anonymity, data storage, vulnerable populations, and withdrawal procedures. Consider cultural sensitivities.'
         },
         {
           id: 'data-collection-methods',
           prompt: 'What specific data collection methods align with your research questions? How will you ensure validity?',
-          category: 'methodology',
+          category: 'planning',
           helpText: 'Match methods to objectives: surveys for attitudes, interviews for experiences, observations for behaviors, experiments for causation. Consider validity threats and mitigation strategies.'
         },
         {
           id: 'sample-strategy',
           prompt: 'Who is your target population and how will you recruit participants? What sampling approach will you use?',
-          category: 'sampling',
+          category: 'planning',
           helpText: 'Define inclusion criteria, calculate sample sizes for quantitative studies, choose sampling methods (random, stratified, purposive, snowball). Plan recruitment strategies and incentives.'
         },
         {
           id: 'data-quality-measures',
           prompt: 'How will you ensure data quality, reliability, and validity throughout collection?',
-          category: 'quality',
+          category: 'consideration',
           helpText: 'Pilot test instruments, train data collectors, implement quality checks, use multiple data sources (triangulation), and establish inter-rater reliability for subjective measures.'
         },
         {
           id: 'data-management-security',
           prompt: 'How will you securely collect, store, and organize your data? What backup systems will you use?',
-          category: 'organization',
+          category: 'planning',
           helpText: 'Use secure platforms, encrypt sensitive data, create version control systems, establish naming conventions, and implement multiple backup strategies (local, cloud, institutional).'
         }
       ]
@@ -4546,37 +4571,37 @@ export const academicResearchTemplate: GuidanceTemplate = {
         {
           id: 'analysis-plan',
           prompt: 'What analytical techniques and software will you use? How will you ensure analytical rigor?',
-          category: 'analysis',
+          category: 'research',
           helpText: 'Choose appropriate statistical tests or qualitative analysis methods. Learn necessary software (SPSS, R, NVivo, Atlas.ti). Consider effect sizes, confidence intervals, and multiple comparisons.'
         },
         {
           id: 'data-preparation',
           prompt: 'How will you clean, code, and prepare your data for analysis? What quality checks will you implement?',
-          category: 'preparation',
+          category: 'planning',
           helpText: 'Check for missing data, outliers, and coding errors. Develop codebooks for qualitative data. Test assumptions for statistical analyses. Document all data processing decisions.'
         },
         {
           id: 'results-interpretation',
           prompt: 'How will you interpret your findings objectively? What alternative explanations should you consider?',
-          category: 'analysis',
+          category: 'research',
           helpText: 'Look for patterns, relationships, and unexpected findings. Consider confounding variables, limitations, and rival explanations. Distinguish between statistical and practical significance.'
         },
         {
           id: 'writing-structure-flow',
           prompt: 'How will you structure your paper for maximum clarity and impact? What story do your findings tell?',
-          category: 'writing',
+          category: 'planning',
           helpText: 'Follow disciplinary conventions (IMRAD for empirical studies). Create clear arguments, logical flow, and compelling narratives. Use headings, transitions, and signposting effectively.'
         },
         {
           id: 'audience-contribution',
           prompt: 'Who is your primary audience and what unique contribution does your work make to the field?',
-          category: 'communication',
+          category: 'planning',
           helpText: 'Write for your intended readers (academics, practitioners, policymakers). Clearly articulate theoretical and practical contributions. Avoid jargon when writing for broader audiences.'
         },
         {
           id: 'revision-feedback-process',
           prompt: 'How will you systematically seek feedback and revise your work? Who are your key reviewers?',
-          category: 'improvement',
+          category: 'planning',
           helpText: 'Plan multiple revision cycles with different focuses (structure, content, clarity, mechanics). Seek feedback from advisors, peers, and potential end-users. Allow substantial time for revisions.'
         }
       ]
@@ -4589,25 +4614,25 @@ export const academicResearchTemplate: GuidanceTemplate = {
         {
           id: 'validity-threats',
           prompt: 'What threats to internal and external validity does your study face? How will you address them?',
-          category: 'methodology',
+          category: 'planning',
           helpText: 'Consider selection bias, history effects, maturation, testing effects, and generalizability limits. Implement design controls, randomization, and replication strategies where possible.'
         },
         {
           id: 'reliability-consistency',
           prompt: 'How will you demonstrate reliability and consistency in your methods and findings?',
-          category: 'quality',
+          category: 'consideration',
           helpText: 'Use standardized instruments, train data collectors consistently, calculate reliability coefficients, and document all procedures clearly for replication.'
         },
         {
           id: 'bias-minimization',
           prompt: 'What potential sources of bias exist in your research? How will you minimize their impact?',
-          category: 'methodology',
+          category: 'planning',
           helpText: 'Identify researcher bias, participant bias, selection bias, and confirmation bias. Use blinding, standardized protocols, and reflexive practices to minimize bias effects.'
         },
         {
           id: 'triangulation-validation',
           prompt: 'How will you use triangulation or other validation strategies to strengthen your findings?',
-          category: 'validation',
+          category: 'research',
           helpText: 'Combine multiple methods, data sources, researchers, or theoretical perspectives. Use member checking, peer debriefing, and external auditing for qualitative research.'
         }
       ]
@@ -4626,25 +4651,25 @@ export const academicResearchTemplate: GuidanceTemplate = {
         {
           id: 'manuscript-preparation',
           prompt: 'How will you prepare your manuscript to meet publication standards? What elements need special attention?',
-          category: 'writing',
+          category: 'planning',
           helpText: 'Follow journal formatting exactly, write compelling abstracts, create clear figures/tables, and ensure ethical compliance statements. Consider professional editing services.'
         },
         {
           id: 'peer-review-process',
           prompt: 'How will you prepare for and respond to peer review? What is your revision strategy?',
-          category: 'publication',
+          category: 'planning',
           helpText: 'Anticipate reviewer concerns, prepare detailed responses, and view feedback constructively. Allow time for major revisions and additional analyses if requested.'
         },
         {
           id: 'broader-dissemination',
           prompt: 'How will you share your findings beyond academic publications? What public engagement is appropriate?',
-          category: 'communication',
+          category: 'planning',
           helpText: 'Consider conference presentations, policy briefs, social media, press releases, practitioner publications, and community presentations. Tailor messages to different audiences.'
         },
         {
           id: 'research-impact',
           prompt: 'How will you track and measure the impact of your research? What metrics matter?',
-          category: 'evaluation',
+          category: 'research',
           helpText: 'Monitor citations, downloads, social media mentions, policy references, and practical applications. Consider both academic and societal impact measures.'
         },
         {
@@ -5100,7 +5125,7 @@ export const personalFinanceInvestmentTemplate: GuidanceTemplate = {
         {
           id: 'expense-reduction-strategy',
           prompt: 'Which expenses can you reduce without significantly impacting quality of life? Where are you overspending?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Review subscriptions, negotiate bills, consider house hacking, optimize transportation costs, meal planning. Focus on big fixed expenses first.'
         },
         {
@@ -5112,7 +5137,7 @@ export const personalFinanceInvestmentTemplate: GuidanceTemplate = {
         {
           id: 'automated-systems',
           prompt: 'How will you automate your finances to remove decision fatigue and ensure consistency?',
-          category: 'systems',
+          category: 'planning',
           helpText: 'Set up automatic transfers to savings, investment accounts, and bill payments. Pay yourself first by automating savings before discretionary spending.'
         },
         {
@@ -5272,7 +5297,7 @@ export const personalFinanceInvestmentTemplate: GuidanceTemplate = {
         {
           id: 'fee-cost-optimization',
           prompt: 'How will you minimize investment fees and costs? These significantly impact long-term returns.',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Choose low-cost index funds (under 0.2% expense ratios), avoid load funds, minimize trading costs, and consider tax implications of frequent trading.'
         },
         {
@@ -5354,7 +5379,7 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
   id: 'digital-marketing-seo',
   title: 'Digital Marketing & SEO Strategy',
   description: 'Develop comprehensive digital marketing strategies and optimize search engine performance',
-  category: 'marketing',
+  category: 'planning',
   icon: '📱',
   sections: [
     {
@@ -5414,7 +5439,7 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
         {
           id: 'on-page-seo-optimization',
           prompt: 'How will you optimize your website pages for search engines? Title tags, meta descriptions, content structure?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Optimize title tags (50-60 chars), meta descriptions (150-160 chars), header structure (H1, H2, H3), URL structure, and internal linking strategy.'
         },
         {
@@ -5426,13 +5451,13 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
         {
           id: 'technical-seo-audit',
           prompt: 'What technical SEO issues need addressing? Site speed, mobile optimization, crawlability?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Audit site speed (Core Web Vitals), mobile-friendliness, XML sitemaps, robots.txt, SSL certificates, and fix crawl errors using Google Search Console.'
         },
         {
           id: 'local-seo-strategy',
           prompt: 'If applicable, how will you optimize for local search? Google My Business, local citations, reviews?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Optimize Google My Business profile, ensure NAP consistency across directories, gather positive reviews, and create location-specific content.'
         },
         {
@@ -5475,13 +5500,13 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
         {
           id: 'content-repurposing-strategy',
           prompt: 'How will you repurpose content to maximize value and reach across different formats and platforms?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Turn blog posts into social media content, videos into podcasts, create infographics from data, and develop email sequences from popular content.'
         },
         {
           id: 'content-performance-measurement',
           prompt: 'How will you measure content performance and optimize based on data?',
-          category: 'measurement',
+          category: 'research',
           helpText: 'Track metrics like page views, time on page, social shares, comments, lead generation, and conversion rates. Use data to improve future content.'
         }
       ]
@@ -5524,7 +5549,7 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
         {
           id: 'social-media-analytics',
           prompt: 'How will you track social media performance and ROI? Engagement, reach, conversions?',
-          category: 'measurement',
+          category: 'research',
           helpText: 'Use platform analytics and tools like Hootsuite, Buffer, or Sprout Social to track engagement rates, reach, click-through rates, and conversions.'
         }
       ]
@@ -5561,13 +5586,13 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
         {
           id: 'email-design-optimization',
           prompt: 'How will you optimize email design for different devices and email clients?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Use responsive design, test across email clients, optimize for mobile viewing, and ensure clear call-to-action buttons and readable fonts.'
         },
         {
           id: 'email-performance-optimization',
           prompt: 'How will you test and optimize email performance? Subject lines, send times, content?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'A/B test subject lines, send times, email content, and CTAs. Monitor open rates, click-through rates, unsubscribe rates, and conversion rates.'
         }
       ]
@@ -5592,13 +5617,13 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
         {
           id: 'conversion-tracking-optimization',
           prompt: 'How will you track and optimize conversions throughout your marketing funnel?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Set up goal tracking, e-commerce tracking, and attribution modeling to understand customer journey and optimize conversion paths.'
         },
         {
           id: 'marketing-attribution',
           prompt: 'How will you attribute conversions to different marketing channels and campaigns?',
-          category: 'measurement',
+          category: 'research',
           helpText: 'Use multi-touch attribution models, UTM parameters for campaign tracking, and marketing attribution software to understand channel effectiveness.'
         },
         {
@@ -5610,7 +5635,7 @@ export const digitalMarketingSEOTemplate: GuidanceTemplate = {
         {
           id: 'continuous-optimization-strategy',
           prompt: 'How will you use data insights to continuously improve marketing performance?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Implement regular testing protocols, performance benchmarks, and optimization workflows based on data insights and industry best practices.'
         }
       ]
@@ -5697,7 +5722,7 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
         {
           id: 'digital-workspace-organization',
           prompt: 'How will you organize your digital workspace and files for easy access and collaboration?',
-          category: 'organization',
+          category: 'planning',
           helpText: 'Create consistent file naming conventions, use cloud storage effectively, organize desktop and folders logically, implement version control for documents, and maintain clean digital workspace.'
         },
         {
@@ -5709,13 +5734,13 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
         {
           id: 'workspace-optimization',
           prompt: 'How will you continuously optimize your workspace for changing needs and improved productivity?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Regularly assess workspace effectiveness, experiment with different setups, upgrade equipment as needed, adjust lighting and temperature, and incorporate feedback from your work experience.'
         },
         {
           id: 'workspace-wellness',
           prompt: 'How will you incorporate wellness elements into your workspace to maintain physical and mental health?',
-          category: 'wellness',
+          category: 'consideration',
           helpText: 'Include plants for air quality, ensure proper posture support, plan movement breaks, consider standing desk options, maintain good air circulation, and create visual elements that reduce stress.'
         }
       ]
@@ -5734,7 +5759,7 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
         {
           id: 'meeting-effectiveness',
           prompt: 'How will you make virtual meetings more effective and engaging?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Prepare agendas in advance, test technology beforehand, use video when appropriate, engage participants actively, take clear notes, and follow up with action items. Keep meetings focused and time-boxed.'
         },
         {
@@ -5795,7 +5820,7 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
         {
           id: 'energy-management',
           prompt: 'How will you manage your energy levels throughout the day for optimal performance?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Identify your peak energy hours and schedule important work then, take regular breaks, get natural light exposure, stay hydrated, plan easier tasks for low-energy periods.'
         },
         {
@@ -5832,13 +5857,13 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
         {
           id: 'social-connection',
           prompt: 'How will you maintain social connections and combat isolation while working remotely?',
-          category: 'wellness',
+          category: 'consideration',
           helpText: 'Schedule regular social activities, maintain friendships outside of work, consider co-working spaces occasionally, join professional networks or hobby groups, and prioritize in-person interactions when possible.'
         },
         {
           id: 'stress-management',
           prompt: 'What stress management techniques will you use to handle remote work challenges?',
-          category: 'wellness',
+          category: 'consideration',
           helpText: 'Practice relaxation techniques, maintain regular exercise routine, use mindfulness or meditation, take actual lunch breaks away from computer, and recognize early signs of burnout.'
         },
         {
@@ -5863,7 +5888,7 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
         {
           id: 'productivity-measurement',
           prompt: 'What metrics will you use to measure your productivity and effectiveness?',
-          category: 'measurement',
+          category: 'research',
           helpText: 'Focus on outcomes rather than hours worked, track project completion rates, measure quality of work, monitor meeting effectiveness, and assess your contribution to team goals.'
         },
         {
@@ -5887,7 +5912,7 @@ export const remoteWorkProductivityTemplate: GuidanceTemplate = {
         {
           id: 'continuous-improvement',
           prompt: 'How will you continuously improve your remote work effectiveness?',
-          category: 'optimization',
+          category: 'planning',
           helpText: 'Regularly assess what\'s working and what isn\'t, experiment with new tools and techniques, learn from other successful remote workers, and adapt your approach based on results.'
         }
       ]
@@ -7274,7 +7299,7 @@ export const sustainableLivingTemplate: GuidanceTemplate = {
   id: 'sustainable-living',
   title: 'Sustainable Living & Environmental Impact',
   description: 'Adopt sustainable living practices and reduce your environmental footprint',
-  category: 'lifestyle',
+  category: 'consideration',
   icon: '🌱',
   sections: [
     {

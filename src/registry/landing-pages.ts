@@ -11,7 +11,7 @@ import {
   Package, CheckSquare, ClipboardList, ArrowRight, PiggyBank, Wallet, Receipt, ChartLine,
   CreditCardIcon, Banknote, TrendingDown, AlertTriangle, Percent, Focus, Layout, Settings,
   Brain, Workflow, CheckCircle, PlayCircle, PauseCircle, RotateCcw, Database, FileSearch,
-  BookmarkIcon, PenSquare, BarChart, Microscope
+  BookmarkIcon, PenSquare, BarChart, Microscope, MessageSquare
 } from 'lucide-react';
 
 interface ProcessStep {
@@ -3317,6 +3317,1274 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     finalCtaText: 'Start Your Freelance Success Journey',
     ctaText: 'Get Your Freelance Business Template',
     appPath: '/freelance-gig-economy/app',
+  },
+
+  'language-learning-cultural-immersion': {
+    // SEO metadata
+    metadata: {
+      title: 'Language Learning & Cultural Immersion Template | Master New Languages Through Cultural Experiences | Templata',
+      description: 'Complete language learning template with cultural immersion strategies, conversation practice, and progress tracking. Master new languages through authentic cultural experiences.',
+      keywords: 'language learning, cultural immersion, language fluency, conversation practice, study abroad, language exchange, cultural understanding, language methodology, immersion learning, multilingual',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Language Learning & Cultural Immersion Template",
+      "description": "Master new languages through immersive cultural experiences with proven methodology and progress tracking.",
+      "url": "https://templata.com/language-learning-cultural-immersion",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "12000"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+    badgeText: 'Language Mastery',
+    badgeIcon: Globe,
+    heroTitle: "Master New Languages Through Cultural Immersion",
+    heroHighlight: "From Beginner to Fluent",
+    heroDescription: "Transform your language learning journey with authentic cultural experiences, proven methodologies, and systematic progress tracking that creates lasting fluency and deep cultural understanding.",
+    heroCards: [
+      { 
+        badge: "Cultural Immersion", 
+        badgeVariant: "outline" as const,
+        content: "Authentic cultural experiences that accelerate language acquisition and deepen understanding"
+      },
+      { 
+        badge: "Conversation Practice", 
+        badgeVariant: "secondary" as const,
+        content: "Systematic speaking practice with native speakers and conversation partners"
+      },
+      { 
+        badge: "Progress Tracking", 
+        badgeVariant: "default" as const,
+        content: "Structured milestone system to monitor fluency development and maintain motivation"
+      }
+    ],
+    heroBenefits: [
+      "🗣️ Achieve conversational fluency 3x faster through immersion",
+      "🌍 Develop deep cultural understanding and global perspective", 
+      "📈 Track progress with structured milestones and assessments",
+      "⚡ Maintain long-term retention with proven maintenance strategies"
+    ],
+
+    // Process Steps
+    processSteps: [
+      {
+        icon: Target,
+        title: "Assess Learning Style & Set Goals",
+        description: "Identify your optimal learning methodology and establish clear, achievable language goals"
+      },
+      {
+        icon: BookOpen,
+        title: "Choose Methods & Resources",
+        description: "Select the most effective combination of learning resources and immersion techniques for your style"
+      },
+      {
+        icon: Globe,
+        title: "Create Immersion Experiences",
+        description: "Design authentic cultural experiences that naturally integrate language learning into daily life"
+      },
+      {
+        icon: MessageSquare,
+        title: "Practice Speaking & Conversation",
+        description: "Engage in systematic conversation practice with native speakers and language exchange partners"
+      },
+      {
+        icon: BarChart3,
+        title: "Track Progress & Celebrate Milestones",
+        description: "Monitor your advancement through structured assessments and celebrate achievements"
+      },
+      {
+        icon: Trophy,
+        title: "Maintain & Expand Fluency",
+        description: "Implement retention strategies and continue expanding your language skills for lifelong fluency"
+      }
+    ],
+
+    // Benefits Section
+    benefits: [
+      {
+        icon: Zap,
+        title: "Accelerated Learning Through Immersion",
+        description: "Experience 3x faster language acquisition through authentic cultural immersion and real-world practice opportunities."
+      },
+      {
+        icon: Globe,
+        title: "Cultural Understanding & Global Perspective",
+        description: "Develop deep cultural insights and global awareness that enhances both language skills and worldview."
+      },
+      {
+        icon: MessageSquare,
+        title: "Practical Communication Skills",
+        description: "Build confident, natural communication abilities for real-world conversations and professional interactions."
+      },
+      {
+        icon: Brain,
+        title: "Lifelong Language Retention",
+        description: "Master proven techniques for maintaining and continuously improving your language skills over time."
+      }
+    ],
+
+    // Features Section
+    features: [
+      {
+        icon: Target,
+        title: "Learning Style Assessment & Methodology Selection",
+        description: "Comprehensive assessment to identify your optimal learning approach and personalized methodology recommendations."
+      },
+      {
+        icon: Compass,
+        title: "Cultural Immersion Planning & Experiences",
+        description: "Strategic planning tools for creating authentic cultural experiences and immersion opportunities."
+      },
+      {
+        icon: Users,
+        title: "Speaking Practice & Conversation Partners",
+        description: "Systems for finding and engaging with native speakers, language exchange partners, and conversation groups."
+      },
+      {
+        icon: BarChart3,
+        title: "Progress Tracking & Milestone Achievement",
+        description: "Structured assessment tools and milestone systems to monitor advancement and maintain motivation."
+      },
+      {
+        icon: Plane,
+        title: "Travel & Study Abroad Coordination",
+        description: "Complete planning resources for language-focused travel and study abroad program coordination."
+      },
+      {
+        icon: Trophy,
+        title: "Long-term Retention & Fluency Maintenance",
+        description: "Proven strategies and systems for maintaining and continuously expanding language skills over time."
+      }
+    ],
+
+    // Process Section
+    processTitle: 'Your Language Learning Journey',
+    processDescription: 'Follow our proven 6-step framework to master new languages through cultural immersion',
+    
+    // Benefits Section Headers
+    benefitsTitle: 'Everything You Need for Language Mastery',
+    benefitsDescription: 'Comprehensive methodology covering every aspect of language learning with cultural immersion and proven retention strategies.',
+
+    // Features Section Headers
+    featuresIcon: Globe,
+    featuresTitle: 'Complete Language Learning Toolkit',
+    featuresDescription: 'All the tools, strategies, and resources you need to achieve fluency through cultural immersion.',
+
+    // How It Works
+    howItWorks: [
+      {
+        step: "01",
+        title: "Assess & Plan",
+        description: "Evaluate your learning style, set clear goals, and create a personalized language learning strategy."
+      },
+      {
+        step: "02", 
+        title: "Build Foundation",
+        description: "Establish core vocabulary and grammar foundation while beginning cultural exploration."
+      },
+      {
+        step: "03",
+        title: "Practice & Immerse",
+        description: "Engage in regular conversation practice while creating authentic cultural immersion experiences."
+      },
+      {
+        step: "04",
+        title: "Track & Maintain",
+        description: "Monitor progress systematically and implement long-term retention strategies for lasting fluency."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "Language Learning Style Assessment",
+        icon: Target,
+        description: "Comprehensive evaluation of your optimal learning methodology and approach"
+      },
+      {
+        name: "Cultural Immersion Planning",
+        icon: Globe,
+        description: "Strategic framework for creating authentic cultural experiences and opportunities"
+      },
+      {
+        name: "Conversation Practice Schedule",
+        icon: MessageSquare,
+        description: "Systematic approach to speaking practice with native speakers and partners"
+      },
+      {
+        name: "Progress Tracking Dashboard",
+        icon: BarChart3,
+        description: "Milestone system and assessment tools for monitoring fluency development"
+      },
+      {
+        name: "Long-term Retention Plan",
+        icon: Trophy,
+        description: "Proven strategies for maintaining and expanding language skills over time"
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Jennifer Martinez, Marketing Executive",
+        text: "This template helped me achieve business-level Spanish fluency in 8 months. The cultural immersion approach made all the difference in my confidence and communication skills.",
+        rating: 5
+      },
+      {
+        name: "Thomas Chen, Travel Blogger", 
+        text: "I used this system to learn Italian before my European travels. The conversation practice strategies helped me achieve conversational fluency that enhanced my entire experience.",
+        rating: 5
+      },
+      {
+        name: "Sarah Kim, University Student",
+        text: "The immersion planning helped me prepare for my study abroad semester in France. I arrived already conversational and could focus on academic success instead of basic communication.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: 'How long does it take to become fluent in a new language?',
+        answer: 'Fluency timelines vary by language complexity and practice intensity. With our immersion approach, most learners achieve conversational fluency in 6-12 months, with business proficiency in 12-18 months.'
+      },
+      {
+        question: "What's the best age to start learning a new language?",
+        answer: 'Any age is great for language learning! While children learn quickly, adults have advantages in analytical thinking and motivation. Our methodology works effectively for learners of all ages.'
+      },
+      {
+        question: 'How do I find conversation partners and practice opportunities?',
+        answer: 'We provide comprehensive strategies for finding language exchange partners, joining conversation groups, connecting with native speakers, and creating immersion opportunities in your local area.'
+      },
+      {
+        question: 'Should I focus on grammar or conversation first?',
+        answer: 'Our approach balances both simultaneously. We start with essential grammar foundations while immediately applying them in conversation practice, ensuring practical communication skills from day one.'
+      },
+      {
+        question: 'How do I maintain motivation throughout my language learning journey?',
+        answer: 'Our system includes milestone celebrations, progress tracking, cultural exploration rewards, and community engagement strategies that maintain excitement and momentum throughout your journey.'
+      },
+      {
+        question: "What's the most effective learning method for busy adults?",
+        answer: 'We emphasize integration into daily life through micro-learning sessions, cultural media consumption, and practical application. Our system adapts to busy schedules while maintaining consistent progress.'
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: 'Ready to Master Your New Language?',
+    ctaDescription: 'Join thousands of successful language learners who have achieved fluency through cultural immersion and proven methodology.',
+    finalCtaText: 'Start Your Language Learning Journey',
+    ctaText: 'Get Your Language Learning Template',
+    appPath: '/language-learning-cultural-immersion/app',
+  },
+
+  'personal-finance-investment': {
+    // SEO metadata
+    metadata: {
+      title: 'Personal Finance & Investment Template | Build Wealth & Secure Your Future | Templata',
+      description: 'Complete personal finance and investment template with portfolio tracking, wealth building strategies, and retirement planning. Build your financial empire with expert guidance.',
+      keywords: 'personal finance, investment planning, wealth building, portfolio management, retirement planning, financial security, investment tracker, asset allocation, passive income, financial freedom',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Personal Finance & Investment Template",
+      "description": "Complete personal finance and investment template with portfolio tracking, wealth building strategies, and retirement planning. Build your financial empire.",
+      "url": "https://templata.com/personal-finance-investment",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "18500"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+
+    // Hero Section
+    badgeIcon: DollarSign,
+    badgeText: "Wealth Building",
+    heroTitle: "Build Wealth & Secure Your Financial Future",
+    heroHighlight: "Master Personal Finance & Investing",
+    heroDescription: "Transform your financial future with comprehensive investment planning and wealth-building strategies. Track portfolios, optimize asset allocation, and build the retirement you deserve with expert guidance.",
+    heroCards: [
+      { 
+        badge: "Investment Tracking", 
+        badgeVariant: "outline" as const,
+        content: "Monitor your entire investment portfolio with real-time performance analysis and asset allocation insights"
+      },
+      { 
+        badge: "Wealth Building", 
+        badgeVariant: "secondary" as const,
+        content: "Strategic wealth accumulation plans with goal-based investing and retirement planning frameworks"
+      },
+      { 
+        badge: "Risk Management", 
+        badgeVariant: "default" as const,
+        content: "Comprehensive risk assessment and portfolio protection strategies for long-term financial security"
+      }
+    ],
+    heroBenefits: [
+      { text: "💰 Build $1M+ retirement nest egg with strategic planning" },
+      { text: "📈 Achieve 8-12% annual returns through diversified investing" },
+      { text: "🛡️ Protect wealth with comprehensive insurance and risk management" },
+      { text: "🎯 Reach financial independence 10+ years earlier than average" }
+    ],
+
+    // Process Section
+    processTitle: "Your Path to Financial Freedom",
+    processDescription: "Follow our proven 6-step process to build wealth and achieve financial independence through strategic planning and smart investing.",
+    processSteps: [
+      {
+        icon: Calculator,
+        title: "Financial Assessment",
+        description: "Analyze your current financial position, net worth, and cash flow to establish your baseline"
+      },
+      {
+        icon: Target,
+        title: "Goal Planning",
+        description: "Set specific wealth-building goals with timeline and strategic milestones for achievement"
+      },
+      {
+        icon: Shield,
+        title: "Risk Management",
+        description: "Implement comprehensive insurance and emergency fund strategies to protect your wealth"
+      },
+      {
+        icon: TrendingUp,
+        title: "Investment Strategy",
+        description: "Develop diversified portfolio allocation aligned with your risk tolerance and time horizon"
+      },
+      {
+        icon: PiggyBank,
+        title: "Wealth Accumulation",
+        description: "Execute systematic investing plan with automated contributions and tax optimization"
+      },
+      {
+        icon: Trophy,
+        title: "Financial Independence",
+        description: "Achieve your wealth goals and maintain financial freedom through ongoing portfolio management"
+      }
+    ],
+
+    // Benefits Section
+    benefitsTitle: "Transform Your Financial Future",
+    benefitsDescription: "Our comprehensive system provides everything you need to build wealth, manage investments, and achieve financial security with confidence.",
+    benefits: [
+      {
+        icon: DollarSign,
+        title: "Financial Security",
+        description: "Build a robust financial foundation with emergency funds, insurance protection, and diversified income streams for lasting peace of mind."
+      },
+      {
+        icon: TrendingUp,
+        title: "Smart Investing",
+        description: "Master investment strategies with portfolio optimization, asset allocation guidance, and performance tracking for maximum returns."
+      },
+      {
+        icon: PiggyBank,
+        title: "Debt Freedom",
+        description: "Eliminate high-interest debt systematically while building wealth through strategic debt payoff and investment balance optimization."
+      },
+      {
+        icon: Target,
+        title: "Retirement Planning",
+        description: "Secure your retirement with comprehensive planning tools, contribution optimization, and withdrawal strategies for financial independence."
+      }
+    ],
+
+    // Features Section
+    featuresIcon: Calculator,
+    featuresTitle: "Complete Financial Planning Toolkit",
+    featuresDescription: "Everything you need to plan, track, and grow your wealth with professional-grade tools and expert guidance.",
+    features: [
+      "Comprehensive budget planning with investment allocation tracking",
+      "Portfolio management with asset allocation and rebalancing tools",
+      "Retirement planning with multiple scenario analysis and projections",
+      "Tax optimization strategies for investment accounts and withdrawals",
+      "Risk assessment and insurance coverage planning",
+      "Goal setting and progress tracking for all financial objectives"
+    ],
+
+    // How It Works Section
+    howItWorks: [
+      {
+        step: "01",
+        title: "Assess Your Financial Position",
+        description: "Complete comprehensive analysis of assets, liabilities, income, and expenses to establish your financial baseline."
+      },
+      {
+        step: "02", 
+        title: "Set Wealth Building Goals",
+        description: "Define specific financial objectives with timelines, from emergency funds to retirement and investment targets."
+      },
+      {
+        step: "03",
+        title: "Create Investment Strategy",
+        description: "Develop diversified portfolio allocation based on your risk tolerance, time horizon, and financial goals."
+      },
+      {
+        step: "04",
+        title: "Implement Protection Plans",
+        description: "Establish insurance coverage and emergency funds to protect your wealth-building progress from unexpected setbacks."
+      },
+      {
+        step: "05",
+        title: "Execute & Monitor",
+        description: "Launch your investment plan with systematic contributions and regular portfolio monitoring and rebalancing."
+      },
+      {
+        step: "06",
+        title: "Optimize & Grow",
+        description: "Continuously improve your strategy with tax optimization, increased contributions, and expanded investment opportunities."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "Asset Allocation Framework",
+        icon: BarChart,
+        description: "Age-appropriate portfolio allocation strategies balancing growth and stability for optimal risk-adjusted returns."
+      },
+      {
+        name: "Tax-Advantaged Investing",
+        icon: Shield,
+        description: "Maximize 401k, IRA, and other tax-preferred accounts to accelerate wealth building and minimize tax burden."
+      },
+      {
+        name: "Dollar-Cost Averaging",
+        icon: TrendingUp,
+        description: "Systematic investment approach that reduces market timing risk while building wealth consistently over time."
+      },
+      {
+        name: "Emergency Fund Priority",
+        icon: PiggyBank,
+        description: "Build 6-month expense buffer before aggressive investing to provide financial security and investment discipline."
+      },
+      {
+        name: "Diversification Strategy",
+        icon: Globe,
+        description: "Spread risk across asset classes, sectors, and geographic regions for stable long-term portfolio growth."
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Michael Thompson, Software Engineer",
+        text: "This template transformed my approach to investing. I've built a $250k portfolio in 5 years and I'm on track to retire by 50. The asset allocation guidance was game-changing.",
+        rating: 5
+      },
+      {
+        name: "Lisa Chen, Marketing Director", 
+        text: "Finally, a system that makes investing simple and stress-free. I've doubled my net worth in 3 years and feel confident about my financial future. The retirement planning tools are incredible.",
+        rating: 5
+      },
+      {
+        name: "David Rodriguez, Small Business Owner",
+        text: "As an entrepreneur, this helped me balance business investment with personal wealth building. I've created multiple income streams and my family's financial security is assured.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: "How much money do I need to start investing?",
+        answer: "You can start investing with as little as $100. The template includes strategies for beginning investors and scaling up as your income grows. Many brokerages now offer commission-free investing with no minimum balance requirements."
+      },
+      {
+        question: "Is this suitable for investment beginners?",
+        answer: "Absolutely! The template includes comprehensive education sections, risk assessment tools, and step-by-step guidance. It's designed to take you from complete beginner to confident investor with clear, actionable strategies."
+      },
+      {
+        question: "How do I choose the right investment allocation?",
+        answer: "The template includes age-based allocation models, risk tolerance assessments, and goal-based investing frameworks. You'll get personalized recommendations based on your timeline, risk comfort, and financial objectives."
+      },
+      {
+        question: "Does this cover retirement account optimization?",
+        answer: "Yes! We provide comprehensive guidance on 401k, IRA, Roth IRA, and other tax-advantaged accounts. You'll learn contribution limits, tax strategies, and withdrawal planning for maximum retirement benefits."
+      },
+      {
+        question: "How do I protect my investments during market downturns?",
+        answer: "The template includes risk management strategies, diversification guidelines, and portfolio protection techniques. You'll learn about asset allocation adjustments and hedging strategies to preserve wealth during volatility."
+      },
+      {
+        question: "Can I track multiple investment accounts?",
+        answer: "Yes! The portfolio tracker handles unlimited accounts including taxable, retirement, and specialty accounts. Everything consolidates into comprehensive net worth and performance reports for complete financial visibility."
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: 'Start Building Wealth Today',
+    ctaDescription: 'Join thousands who have achieved financial independence through strategic planning and smart investing. Secure your financial future with proven wealth-building strategies.',
+    finalCtaText: 'Get Your Investment Planning Template',
+    ctaText: 'Build Your Financial Empire Now',
+    appPath: '/personal-finance-investment/app',
+  },
+
+  'digital-marketing-seo': {
+    // SEO metadata
+    metadata: {
+      title: 'Digital Marketing & SEO Template | Dominate Search Rankings & Drive Traffic | Templata',
+      description: 'Complete digital marketing and SEO template with content strategy, campaign management, and analytics tracking. Boost online visibility and drive qualified traffic with expert strategies.',
+      keywords: 'digital marketing, SEO optimization, content strategy, social media marketing, online marketing, search rankings, traffic generation, campaign management, analytics tracking, brand growth',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Digital Marketing & SEO Template",
+      "description": "Complete digital marketing and SEO template with content strategy, campaign management, and analytics tracking. Dominate search rankings and drive qualified traffic.",
+      "url": "https://templata.com/digital-marketing-seo",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "22000"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+
+    // Hero Section
+    badgeIcon: Search,
+    badgeText: "Digital Growth",
+    heroTitle: "Dominate Search Rankings & Drive Qualified Traffic",
+    heroHighlight: "Master Digital Marketing & SEO",
+    heroDescription: "Transform your online presence with comprehensive digital marketing strategies. Boost search rankings, increase conversions, and build a powerful brand with proven SEO and content marketing frameworks.",
+    heroCards: [
+      { 
+        badge: "SEO Optimization", 
+        badgeVariant: "outline" as const,
+        content: "Complete SEO audit and optimization strategies to dominate search rankings and drive organic traffic"
+      },
+      { 
+        badge: "Content Marketing", 
+        badgeVariant: "secondary" as const,
+        content: "Strategic content planning and creation frameworks that engage audiences and convert leads"
+      },
+      { 
+        badge: "Campaign Analytics", 
+        badgeVariant: "default" as const,
+        content: "Comprehensive tracking and optimization tools to maximize ROI from all digital marketing efforts"
+      }
+    ],
+    heroBenefits: [
+      { text: "📈 Increase organic traffic by 300-500% within 6 months" },
+      { text: "🎯 Achieve 25-40% higher conversion rates through optimization" },
+      { text: "🚀 Build dominant brand presence across all digital channels" },
+      { text: "💰 Generate 10x ROI from digital marketing investments" }
+    ],
+
+    // Process Section
+    processTitle: "Your Path to Digital Dominance",
+    processDescription: "Follow our proven 5-step process to build a powerful online presence and drive consistent, qualified traffic through strategic digital marketing.",
+    processSteps: [
+      {
+        icon: Search,
+        title: "Market Research",
+        description: "Analyze your competitive landscape, audience insights, and keyword opportunities to build winning strategies"
+      },
+      {
+        icon: Target,
+        title: "Strategy Development",
+        description: "Create comprehensive digital marketing strategy aligned with business goals and audience behavior"
+      },
+      {
+        icon: Rocket,
+        title: "Campaign Implementation",
+        description: "Execute SEO optimization, content creation, and multi-channel marketing campaigns"
+      },
+      {
+        icon: BarChart,
+        title: "Performance Optimization",
+        description: "Monitor analytics, optimize campaigns, and scale successful strategies for maximum ROI"
+      },
+      {
+        icon: TrendingUp,
+        title: "Scaling & Growth",
+        description: "Expand successful campaigns and explore new channels to accelerate business growth"
+      }
+    ],
+
+    // Benefits Section
+    benefitsTitle: "Transform Your Online Success",
+    benefitsDescription: "Our comprehensive digital marketing system provides everything you need to increase visibility, drive traffic, and build a dominant online presence.",
+    benefits: [
+      {
+        icon: TrendingUp,
+        title: "Increased Visibility",
+        description: "Dominate search results with proven SEO strategies, content optimization, and local search dominance for maximum online exposure."
+      },
+      {
+        icon: Target,
+        title: "Higher Conversions",
+        description: "Convert more visitors into customers with optimized landing pages, compelling content, and strategic conversion rate optimization."
+      },
+      {
+        icon: Rocket,
+        title: "Brand Growth",
+        description: "Build powerful brand recognition through consistent messaging, social media dominance, and thought leadership content."
+      },
+      {
+        icon: BarChart,
+        title: "Competitive Advantage",
+        description: "Stay ahead of competitors with advanced analytics, market insights, and cutting-edge digital marketing strategies."
+      }
+    ],
+
+    // Features Section
+    featuresIcon: Globe,
+    featuresTitle: "Complete Digital Marketing Toolkit",
+    featuresDescription: "Everything you need to build, execute, and optimize successful digital marketing campaigns across all channels.",
+    features: [
+      "Comprehensive SEO audit and optimization framework with technical and content analysis",
+      "Content strategy and editorial calendar with topic research and optimization guidelines",
+      "Social media campaign planning with platform-specific strategies and scheduling tools",
+      "Email marketing automation with segmentation and personalization frameworks",
+      "Analytics tracking and reporting with custom dashboards and performance insights",
+      "Conversion optimization tools with A/B testing frameworks and landing page templates"
+    ],
+
+    // How It Works Section
+    howItWorks: [
+      {
+        step: "01",
+        title: "Audit Your Current Position",
+        description: "Complete comprehensive analysis of your website, content, and digital presence to identify opportunities and gaps."
+      },
+      {
+        step: "02", 
+        title: "Develop Strategic Framework",
+        description: "Create targeted digital marketing strategy with keyword research, audience analysis, and competitive positioning."
+      },
+      {
+        step: "03",
+        title: "Optimize & Create Content",
+        description: "Implement SEO optimizations and create high-quality content that ranks well and converts visitors effectively."
+      },
+      {
+        step: "04",
+        title: "Launch Multi-Channel Campaigns",
+        description: "Execute integrated campaigns across search, social, email, and other digital channels for maximum reach and impact."
+      },
+      {
+        step: "05",
+        title: "Monitor & Scale Success",
+        description: "Track performance metrics, optimize campaigns based on data, and scale successful strategies for continued growth."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "Keyword Research Mastery",
+        icon: Search,
+        description: "Complete keyword analysis and selection process for maximum search visibility and traffic potential."
+      },
+      {
+        name: "Content Optimization Framework",
+        icon: FileText,
+        description: "Step-by-step process for creating and optimizing content that ranks high and converts effectively."
+      },
+      {
+        name: "Technical SEO Checklist",
+        icon: Settings,
+        description: "Comprehensive technical optimization guide for site speed, mobile-friendliness, and search crawlability."
+      },
+      {
+        name: "Social Media Strategy",
+        icon: Users,
+        description: "Platform-specific content strategies and engagement techniques for building loyal audiences."
+      },
+      {
+        name: "Analytics & Tracking Setup",
+        icon: BarChart,
+        description: "Complete analytics implementation guide with custom tracking for measuring marketing ROI and success."
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Sarah Johnson, E-commerce Owner",
+        text: "This template transformed our online presence! We increased organic traffic by 400% in 6 months and our revenue doubled. The SEO strategies are incredibly effective and easy to follow.",
+        rating: 5
+      },
+      {
+        name: "Mark Stevens, Marketing Consultant", 
+        text: "As a digital marketing professional, this template saved me hundreds of hours. My clients are seeing amazing results - higher rankings, more traffic, and better conversions across the board.",
+        rating: 5
+      },
+      {
+        name: "Jennifer Wu, SaaS Founder",
+        text: "Finally, a system that makes digital marketing manageable for non-experts. We've achieved first-page rankings for our target keywords and our lead generation has increased by 300%.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: "How long does it take to see results from SEO efforts?",
+        answer: "SEO is a long-term strategy, but you can start seeing improvements within 3-6 months. Our template includes quick-win tactics for immediate improvements alongside long-term strategies for sustained growth and rankings."
+      },
+      {
+        question: "Do I need technical knowledge to implement these strategies?",
+        answer: "Not at all! The template includes step-by-step guides for non-technical users, along with clear explanations of what to do and why. We provide beginner-friendly instructions with technical details when needed."
+      },
+      {
+        question: "How do I know which keywords to target?",
+        answer: "The template includes comprehensive keyword research methods, competitor analysis tools, and selection criteria. You'll learn to identify high-opportunity keywords that match your audience and business goals."
+      },
+      {
+        question: "Can this work for local businesses?",
+        answer: "Absolutely! We include dedicated local SEO strategies, Google My Business optimization, local keyword targeting, and reputation management techniques specifically designed for local businesses."
+      },
+      {
+        question: "How do I measure the success of my digital marketing efforts?",
+        answer: "The template includes detailed analytics setup, KPI tracking frameworks, and reporting templates. You'll monitor traffic, rankings, conversions, and ROI to measure and optimize your success."
+      },
+      {
+        question: "Is this suitable for different industries?",
+        answer: "Yes! The strategies are adaptable across industries. We provide industry-specific examples and modifications while teaching universal digital marketing principles that work for any business type."
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: 'Dominate Your Market Online',
+    ctaDescription: 'Join thousands of businesses that have achieved digital marketing success with proven SEO and content strategies. Start driving qualified traffic today.',
+    finalCtaText: 'Get Your Digital Marketing Template',
+    ctaText: 'Start Dominating Search Results',
+    appPath: '/digital-marketing-seo/app',
+  },
+
+  'remote-work-productivity': {
+    // SEO metadata
+    metadata: {
+      title: 'Remote Work & Productivity Template | Master Work-Life Balance & Efficiency | Templata',
+      description: 'Complete remote work and productivity template with workspace optimization, team collaboration tools, and productivity systems. Achieve work-life balance while maximizing efficiency.',
+      keywords: 'remote work, productivity system, work from home, team collaboration, workspace optimization, time management, work-life balance, productivity tools, remote team management, flexible work',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Remote Work & Productivity Template",
+      "description": "Complete remote work and productivity template with workspace optimization, team collaboration tools, and productivity systems. Master remote work success.",
+      "url": "https://templata.com/remote-work-productivity",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "28000"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+
+    // Hero Section
+    badgeIcon: Home,
+    badgeText: "Remote Success",
+    heroTitle: "Master Remote Work & Maximize Your Productivity",
+    heroHighlight: "Work Smarter, Live Better",
+    heroDescription: "Transform your remote work experience with comprehensive productivity systems and workspace optimization. Achieve perfect work-life balance while maintaining peak performance and team collaboration.",
+    heroCards: [
+      { 
+        badge: "Workspace Setup", 
+        badgeVariant: "outline" as const,
+        content: "Optimize your home office environment for maximum productivity and professional video presence"
+      },
+      { 
+        badge: "Productivity Systems", 
+        badgeVariant: "secondary" as const,
+        content: "Implement proven time management and task organization systems for consistent high performance"
+      },
+      { 
+        badge: "Team Collaboration", 
+        badgeVariant: "default" as const,
+        content: "Master virtual communication and collaborative workflows that keep remote teams connected and efficient"
+      }
+    ],
+    heroBenefits: [
+      { text: "⚡ Increase productivity by 40% with optimized remote workflows" },
+      { text: "🏠 Create perfect work-life balance with flexible scheduling systems" },
+      { text: "💰 Save $8,000+ annually on commuting and office expenses" },
+      { text: "🌍 Access global opportunities with location-independent skills" }
+    ],
+
+    // Process Section
+    processTitle: "Your Remote Work Success Journey",
+    processDescription: "Follow our proven 5-step process to build a thriving remote work environment that maximizes productivity while maintaining work-life balance.",
+    processSteps: [
+      {
+        icon: Home,
+        title: "Workspace Setup",
+        description: "Design and optimize your home office environment for productivity, comfort, and professional presentation"
+      },
+      {
+        icon: Settings,
+        title: "Systems Implementation",
+        description: "Install productivity tools, communication platforms, and organizational systems for remote work success"
+      },
+      {
+        icon: Users,
+        title: "Team Communication",
+        description: "Establish effective virtual collaboration practices and maintain strong team relationships remotely"
+      },
+      {
+        icon: Clock,
+        title: "Time Optimization",
+        description: "Master time management, scheduling, and boundary-setting for peak productivity and work-life balance"
+      },
+      {
+        icon: TrendingUp,
+        title: "Continuous Scaling",
+        description: "Refine processes, expand skills, and leverage remote work advantages for career and lifestyle growth"
+      }
+    ],
+
+    // Benefits Section
+    benefitsTitle: "Transform Your Work Experience",
+    benefitsDescription: "Our comprehensive remote work system provides everything you need to thrive in flexible work environments while maintaining peak performance.",
+    benefits: [
+      {
+        icon: Zap,
+        title: "Increased Efficiency",
+        description: "Optimize your workflow with proven productivity techniques, distraction management, and focused work sessions for maximum output."
+      },
+      {
+        icon: Clock,
+        title: "Better Work-Life Balance",
+        description: "Create clear boundaries between work and personal time while maintaining flexibility to enjoy life's moments that matter most."
+      },
+      {
+        icon: Home,
+        title: "Flexible Lifestyle",
+        description: "Design your ideal work environment and schedule while accessing global opportunities without location constraints."
+      },
+      {
+        icon: DollarSign,
+        title: "Cost Savings",
+        description: "Eliminate commuting costs, reduce wardrobe expenses, and save on food while potentially accessing higher-paying remote opportunities."
+      }
+    ],
+
+    // Features Section
+    featuresIcon: Laptop,
+    featuresTitle: "Complete Remote Work Toolkit",
+    featuresDescription: "Everything you need to excel in remote work environments with professional systems and optimization strategies.",
+    features: [
+      "Home office setup and ergonomic workspace optimization guide",
+      "Productivity system implementation with task management and time blocking",
+      "Virtual team communication and collaboration frameworks",
+      "Work-life balance strategies and boundary-setting techniques",
+      "Professional development and skill building for remote careers",
+      "Technology stack optimization for seamless remote operations"
+    ],
+
+    // How It Works Section
+    howItWorks: [
+      {
+        step: "01",
+        title: "Assess Current Situation",
+        description: "Evaluate your current work environment, productivity challenges, and team collaboration needs for targeted improvements."
+      },
+      {
+        step: "02", 
+        title: "Design Optimal Workspace",
+        description: "Create an ergonomic, professional home office setup that maximizes comfort, productivity, and video call presence."
+      },
+      {
+        step: "03",
+        title: "Implement Productivity Systems",
+        description: "Install and customize task management, time tracking, and communication tools for optimal remote work efficiency."
+      },
+      {
+        step: "04",
+        title: "Establish Team Processes",
+        description: "Develop virtual collaboration workflows, meeting structures, and communication protocols for seamless teamwork."
+      },
+      {
+        step: "05",
+        title: "Optimize & Refine",
+        description: "Continuously improve your remote work setup based on performance data and changing needs for sustained success."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "Ergonomic Workspace Design",
+        icon: Home,
+        description: "Complete guide to setting up a comfortable, healthy, and productive home office environment."
+      },
+      {
+        name: "Digital Communication Mastery",
+        icon: Users,
+        description: "Strategies for effective virtual meetings, async communication, and maintaining team connections remotely."
+      },
+      {
+        name: "Distraction Management",
+        icon: Focus,
+        description: "Techniques for maintaining focus and productivity while working from home with family and environmental distractions."
+      },
+      {
+        name: "Time Zone Collaboration",
+        icon: Clock,
+        description: "Best practices for working across time zones and managing global team coordination effectively."
+      },
+      {
+        name: "Professional Development",
+        icon: BookOpen,
+        description: "Strategies for continued learning, skill building, and career advancement in remote work environments."
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Alex Martinez, Software Developer",
+        text: "This template completely transformed my remote work experience. I'm 50% more productive than when I was in the office, and I have amazing work-life balance. The workspace setup guide was game-changing.",
+        rating: 5
+      },
+      {
+        name: "Rachel Kim, Marketing Manager", 
+        text: "As a remote team leader, this helped me build incredible team collaboration systems. Our team productivity increased by 35% and everyone loves the flexible work structure we've created.",
+        rating: 5
+      },
+      {
+        name: "Thomas Anderson, Consultant",
+        text: "I've been remote for 3 years, but this template took my productivity to the next level. The time management strategies alone saved me 15 hours per week. Highly recommended for any remote worker.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: "How do I maintain productivity while working from home?",
+        answer: "The template includes comprehensive productivity strategies including workspace optimization, time-blocking techniques, distraction management, and accountability systems that maintain or even increase your productivity versus office work."
+      },
+      {
+        question: "What equipment do I need for an effective home office?",
+        answer: "We provide complete equipment recommendations for every budget, from basic setups to professional configurations. The guide covers everything from ergonomic furniture to lighting, technology, and video call optimization."
+      },
+      {
+        question: "How can I stay connected with my team while remote?",
+        answer: "The template includes virtual collaboration frameworks, communication protocols, meeting structures, and team-building activities designed to maintain or even strengthen team relationships in remote environments."
+      },
+      {
+        question: "Is remote work suitable for all job types?",
+        answer: "While not every role can be remote, many more positions than expected can adapt to remote work. We provide guidelines for evaluating role compatibility and strategies for transitioning traditionally office-based work remotely."
+      },
+      {
+        question: "How do I separate work and personal life when working from home?",
+        answer: "Our system includes proven boundary-setting techniques, space separation strategies, schedule management, and mental transition practices that create clear distinctions between work and personal time."
+      },
+      {
+        question: "What are the long-term career implications of remote work?",
+        answer: "Remote work can actually accelerate career growth by providing access to global opportunities, flexible skill development time, and results-focused performance evaluation. We include career advancement strategies specific to remote workers."
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: 'Master Remote Work Success',
+    ctaDescription: 'Join thousands of professionals who have transformed their careers with optimized remote work systems. Start building your ideal work-life balance today.',
+    finalCtaText: 'Get Your Remote Work Template',
+    ctaText: 'Optimize Your Remote Work Life',
+    appPath: '/remote-work-productivity/app',
+  },
+
+  'career-change-transition': {
+    // SEO metadata
+    metadata: {
+      title: 'Career Change & Transition Template | Transform Your Professional Life | Templata',
+      description: 'Complete career change and transition template with skills assessment, career mapping, networking strategies, and interview preparation. Navigate career transitions with confidence and purpose.',
+      keywords: 'career change, career transition, career planning, job search, skill development, professional development, career coaching, resume writing, interview preparation, networking strategies',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Career Change & Transition Template",
+      "description": "Complete career change and transition template with skills assessment, career mapping, networking strategies, and interview preparation. Transform your professional life.",
+      "url": "https://templata.com/career-change-transition",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "19500"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+
+    // Hero Section
+    badgeIcon: Target,
+    badgeText: "Career Success",
+    heroTitle: "Transform Your Career & Unlock Your True Potential",
+    heroHighlight: "Navigate Successful Career Transitions",
+    heroDescription: "Take control of your professional future with comprehensive career change planning. Build skills, expand networks, and land the dream job that aligns with your passion and purpose.",
+    heroCards: [
+      { 
+        badge: "Skills Assessment", 
+        badgeVariant: "outline" as const,
+        content: "Discover your strengths, identify gaps, and create targeted skill development plans for career advancement"
+      },
+      { 
+        badge: "Career Mapping", 
+        badgeVariant: "secondary" as const,
+        content: "Strategic career path planning with goal setting and milestone tracking for successful transitions"
+      },
+      { 
+        badge: "Job Search Strategy", 
+        badgeVariant: "default" as const,
+        content: "Proven networking, application, and interview strategies that land offers in your target industry"
+      }
+    ],
+    heroBenefits: [
+      { text: "🎯 Identify your ideal career path aligned with personal values and goals" },
+      { text: "💼 Increase salary potential by 30-50% through strategic career moves" },
+      { text: "🚀 Fast-track career advancement with targeted skill development" },
+      { text: "🤝 Build powerful professional network for ongoing opportunities" }
+    ],
+
+    // Process Section
+    processTitle: "Your Career Transformation Journey",
+    processDescription: "Follow our proven 6-step process to successfully navigate career changes and achieve professional fulfillment in your ideal role.",
+    processSteps: [
+      {
+        icon: Target,
+        title: "Self Assessment",
+        description: "Evaluate your skills, interests, values, and career goals to identify ideal transition directions"
+      },
+      {
+        icon: BookOpen,
+        title: "Career Planning",
+        description: "Research target industries, roles, and required skills while creating strategic transition timeline"
+      },
+      {
+        icon: TrendingUp,
+        title: "Skill Building",
+        description: "Develop in-demand skills through targeted learning, certification, and practical experience"
+      },
+      {
+        icon: Users,
+        title: "Network Expansion",
+        description: "Build relationships with industry professionals and leverage connections for opportunities"
+      },
+      {
+        icon: Award,
+        title: "Job Search Success",
+        description: "Execute targeted application strategy with optimized resume, cover letters, and interview performance"
+      },
+      {
+        icon: Rocket,
+        title: "Career Success",
+        description: "Excel in your new role while continuing professional development for ongoing career growth"
+      }
+    ],
+
+    // Benefits Section
+    benefitsTitle: "Transform Your Professional Life",
+    benefitsDescription: "Our comprehensive career change system provides everything you need to successfully transition to fulfilling work that aligns with your goals.",
+    benefits: [
+      {
+        icon: Target,
+        title: "Career Fulfillment",
+        description: "Find work that aligns with your passions, values, and strengths for lasting professional satisfaction and personal happiness."
+      },
+      {
+        icon: TrendingUp,
+        title: "Skill Advancement",
+        description: "Develop in-demand capabilities through strategic learning plans that position you as a top candidate in your target field."
+      },
+      {
+        icon: DollarSign,
+        title: "Income Growth",
+        description: "Maximize earning potential through strategic career moves, salary negotiation, and high-value skill development."
+      },
+      {
+        icon: Award,
+        title: "Professional Development",
+        description: "Build a powerful personal brand, expand your network, and create ongoing opportunities for career advancement."
+      }
+    ],
+
+    // Features Section
+    featuresIcon: Briefcase,
+    featuresTitle: "Complete Career Transition Toolkit",
+    featuresDescription: "Everything you need to successfully navigate career changes with confidence and strategic planning.",
+    features: [
+      "Comprehensive skills assessment and gap analysis with development recommendations",
+      "Industry research templates and career path mapping with transition timelines",
+      "Professional networking strategies with relationship building and maintenance systems",
+      "Resume optimization and cover letter templates for target industries",
+      "Interview preparation framework with practice questions and negotiation strategies",
+      "Professional development planning with ongoing learning and advancement tracking"
+    ],
+
+    // How It Works Section
+    howItWorks: [
+      {
+        step: "01",
+        title: "Discover Your Direction",
+        description: "Complete comprehensive self-assessment to identify your ideal career path, core strengths, and professional aspirations."
+      },
+      {
+        step: "02", 
+        title: "Research & Plan",
+        description: "Analyze target industries, roles, and requirements while creating strategic transition timeline with milestones."
+      },
+      {
+        step: "03",
+        title: "Build Required Skills",
+        description: "Develop essential competencies through focused learning, certifications, and practical experience opportunities."
+      },
+      {
+        step: "04",
+        title: "Expand Your Network",
+        description: "Connect with industry professionals, join relevant communities, and build relationships that open career doors."
+      },
+      {
+        step: "05",
+        title: "Execute Job Search",
+        description: "Launch targeted job search campaign with optimized materials and strategic application approach."
+      },
+      {
+        step: "06",
+        title: "Succeed & Grow",
+        description: "Excel in your new position while continuing professional development for sustained career advancement."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "Skills Gap Analysis",
+        icon: Target,
+        description: "Systematic approach to identifying skill gaps and creating targeted development plans for career transition success."
+      },
+      {
+        name: "Industry Research Framework",
+        icon: BookOpen,
+        description: "Complete methodology for researching target industries, understanding requirements, and identifying opportunities."
+      },
+      {
+        name: "Professional Networking Strategy",
+        icon: Users,
+        description: "Proven techniques for building meaningful professional relationships and leveraging networks for career opportunities."
+      },
+      {
+        name: "Resume & Application Optimization",
+        icon: FileText,
+        description: "Strategic approach to crafting compelling resumes and applications that stand out to hiring managers."
+      },
+      {
+        name: "Interview Success Framework",
+        icon: Award,
+        description: "Comprehensive interview preparation including behavioral questions, technical assessments, and negotiation strategies."
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Michelle Rodriguez, Data Scientist",
+        text: "This template guided my transition from marketing to data science. The skill development roadmap was perfect - I landed my dream job at a tech startup with a 40% salary increase in just 8 months.",
+        rating: 5
+      },
+      {
+        name: "James Chen, Product Manager", 
+        text: "After 10 years in engineering, I wanted to move into product management. This system helped me identify transferable skills, build a network, and land a PM role at a Fortune 500 company.",
+        rating: 5
+      },
+      {
+        name: "Sarah Williams, UX Designer",
+        text: "I successfully transitioned from graphic design to UX design using this template. The networking strategies alone were worth it - I got my new job through a connection I made following their framework.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: "How long does a typical career transition take?",
+        answer: "Career transitions typically take 6-18 months depending on the industry change scope and skill development needed. Our template includes realistic timelines and milestones to keep you on track for successful transitions."
+      },
+      {
+        question: "Can I change careers without going back to school?",
+        answer: "Absolutely! Many career changes can be accomplished through strategic skill building, online learning, certifications, and practical experience. We provide alternatives to formal education for most transition scenarios."
+      },
+      {
+        question: "How do I identify the right career path for me?",
+        answer: "Our comprehensive assessment process evaluates your skills, interests, values, and goals to identify aligned career options. We include tools for exploring different paths and making informed decisions about your professional future."
+      },
+      {
+        question: "What if I'm not sure what I want to do next?",
+        answer: "The template includes career exploration exercises, informational interview frameworks, and trial methods to help you discover fulfilling career directions even when you're unsure about your next steps."
+      },
+      {
+        question: "How do I explain career gaps or changes to employers?",
+        answer: "We provide proven strategies for positioning career transitions positively, addressing gaps confidently, and highlighting transferable skills that make you an attractive candidate despite unconventional paths."
+      },
+      {
+        question: "Is it possible to change careers later in life?",
+        answer: "Yes! Career changes at any age can be successful with proper planning. We include specific strategies for mid-career and late-career transitions, addressing unique challenges and leveraging experience advantages."
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: 'Start Your Career Transformation',
+    ctaDescription: 'Join thousands of professionals who have successfully transitioned to fulfilling careers. Take the first step toward your dream job today.',
+    finalCtaText: 'Get Your Career Change Template',
+    ctaText: 'Transform Your Career Now',
+    appPath: '/career-change-transition/app',
   }
 };
 

@@ -1,5 +1,5 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate } from '@/data/templates';
+import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate, personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate, careerChangeTransitionTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
 
 // Function to sync template resources with blog registry
@@ -116,6 +116,18 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     template: undefined
   },
   {
+    id: "personal-finance-investment",
+    name: "Personal Finance & Investment",
+    description: "Build wealth through strategic financial planning, budgeting, and smart investment strategies.",
+    category: "Personal Finance",
+    icon: "💰",
+    url: "/personal-finance-investment/app",
+    popular: true,
+    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
+    iconColor: "text-green-600 dark:text-green-400",
+    template: createTemplateWithSyncedResources(personalFinanceInvestmentTemplate)
+  },
+  {
     id: "productivity-system",
     name: "Productivity System & Time Management",
     description: "Maximize your efficiency with proven productivity methods, task management, and time blocking strategies.",
@@ -126,6 +138,18 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
     iconColor: "text-yellow-600 dark:text-yellow-400",
     template: createTemplateWithSyncedResources(productivitySystemTemplate)
+  },
+  {
+    id: "remote-work-productivity",
+    name: "Remote Work & Productivity",
+    description: "Optimize your remote work setup and maximize productivity in distributed work environments.",
+    category: "Productivity",
+    icon: "🏠",
+    url: "/remote-work-productivity/app",
+    popular: true,
+    color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    template: createTemplateWithSyncedResources(remoteWorkProductivityTemplate)
   },
 
   // Career & Business Templates
@@ -163,6 +187,30 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     iconColor: "text-orange-600 dark:text-orange-400",
     template: undefined
   },
+  {
+    id: "digital-marketing-seo",
+    name: "Digital Marketing & SEO",
+    description: "Master digital marketing strategies and search engine optimization to grow your online presence.",
+    category: "Career & Business",
+    icon: "📈",
+    url: "/digital-marketing-seo/app",
+    popular: true,
+    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    template: createTemplateWithSyncedResources(digitalMarketingSEOTemplate)
+  },
+  {
+    id: "career-change-transition",
+    name: "Career Change & Transition",
+    description: "Navigate career transitions successfully with strategic planning and skill development.",
+    category: "Career & Business",
+    icon: "🔄",
+    url: "/career-change-transition/app",
+    popular: true,
+    color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
+    iconColor: "text-orange-600 dark:text-orange-400",
+    template: createTemplateWithSyncedResources(careerChangeTransitionTemplate)
+  },
   
   // Education Templates
   {
@@ -187,6 +235,18 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     color: "bg-indigo-50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800",
     iconColor: "text-indigo-600 dark:text-indigo-400",
     template: createTemplateWithSyncedResources(academicResearchTemplate)
+  },
+  {
+    id: "language-learning-cultural-immersion",
+    name: "Language Learning & Cultural Immersion",
+    description: "Master new languages through immersive cultural experiences and comprehensive learning strategies.",
+    category: "Education",
+    icon: "🌍",
+    url: "/language-learning-cultural-immersion/app",
+    popular: true,
+    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    template: createTemplateWithSyncedResources(languageLearningCulturalImmersionTemplate)
   },
   
   // Event & Entertainment Templates
