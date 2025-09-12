@@ -101,15 +101,12 @@ export function TemplateView({ template }: TemplateViewProps) {
                 <ThemeSelector />
               </div>
             </header>
-            <div className="p-6">
-              
-              <EmbeddedPrompts 
-                section={template.sections[activeSection]} 
-                additionalPrompts={additionalPrompts}
-                onRemovePrompt={handleRemovePrompt}
-                hideHeader={true}
-              />
-            </div>
+            <EmbeddedPrompts 
+              section={template.sections[activeSection]} 
+              additionalPrompts={additionalPrompts}
+              onRemovePrompt={handleRemovePrompt}
+              hideHeader={true}
+            />
           </div>
 
           {/* Resource Panel */}

@@ -24,6 +24,9 @@ import {
 	Timer,
 	MessageSquare,
 	Play,
+	BookOpen,
+	Calendar,
+	TrendingUp,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 

@@ -51,6 +51,17 @@ export function Header() {
 							<NavigationMenuItem>
 								<NavigationMenuLink asChild>
 									<Link
+										href="/blog"
+										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+									>
+										Blog
+									</Link>
+								</NavigationMenuLink>
+							</NavigationMenuItem>
+
+							<NavigationMenuItem>
+								<NavigationMenuLink asChild>
+									<Link
 										href="/about"
 										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
 									>

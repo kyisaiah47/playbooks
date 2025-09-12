@@ -72,6 +72,11 @@ export function CustomThemeProvider({ children, defaultTheme = templataThemeLigh
     return theme ? theme.colors : null
   }
 
+  // Don't render children until theme is loaded
+  if (!mounted) {
+    return null
+  }
+
   return (
     <ThemeContext.Provider value={{
       currentTheme,

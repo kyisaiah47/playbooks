@@ -18,6 +18,8 @@ import {
 	List,
 	Heart,
 	Zap,
+	MoveRight,
+	FileText,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import { templates } from "@/data/templates";
@@ -38,6 +40,38 @@ const allCategories = templates.reduce((acc, template) => {
 const categories = [
 	{ id: "all", name: "All Templates", count: templates.length },
 	...allCategories
+];
+
+// Featured templates data
+const featuredTemplate = {
+	logo: "/shift.svg",
+	company: "Most Popular",
+	tags: "LIFE PLANNING / RELATIONSHIP",
+	title: "Complete Wedding Planning Guide",
+	subtitle: "From engagement to honeymoon.",
+	image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
+	link: "/wedding-planning/app",
+};
+
+const additionalFeaturedTemplates = [
+	{
+		logo: "/shift.svg",
+		company: "Real Estate",
+		tags: "PROPERTY / INVESTMENT",
+		title: "Home Buying Checklist",
+		subtitle: "Navigate your first home purchase.",
+		image: "",
+		link: "/home-buying/app",
+	},
+	{
+		logo: "/shift.svg",
+		company: "Career",
+		tags: "PROFESSIONAL / GROWTH",
+		title: "Job Search Strategy",
+		subtitle: "Land your dream position.",
+		image: "",
+		link: "/job-search/app",
+	},
 ];
 
 // Transform template data for display
@@ -74,13 +108,34 @@ export default function TemplatesPage() {
 
 	return (
 		<PageLayout>
-			<div className="container mx-auto max-w-7xl px-4 py-8">
+			<section className="py-24 md:py-32">
+				<div className="container mx-auto max-w-7xl px-4">
+					<div className="text-center space-y-8">
+						<Badge
+							variant="outline"
+							className="px-4 py-2"
+						>
+							<FileText className="mr-2 h-4 w-4" />
+							Life Templates
+						</Badge>
+
+						<h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+							Choose Your Template
+						</h1>
+
+						<p className="mx-auto max-w-2xl text-xl text-muted-foreground">
+							Get started instantly with expertly designed templates for life's biggest moments.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<div className="container mx-auto max-w-7xl px-4 pb-8">
 				{/* Page Header */}
 				<div className="mb-8">
-					<h1 className="text-3xl font-bold mb-2">Choose Your Template</h1>
+					<h2 className="text-2xl font-semibold mb-2">All Templates</h2>
 					<p className="text-muted-foreground">
-						Get started instantly with expertly designed templates for
-						life&apos;s biggest moments.
+						Browse our complete collection of expertly designed templates.
 					</p>
 				</div>
 

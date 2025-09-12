@@ -56,12 +56,12 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
         </div>
       ) : (
         /* Compact Prompts */
-        <div className="space-y-4">
+        <div className="space-y-0">
           {allPrompts.map((prompt, index) => {
             const isAdditional = additionalPrompts.some(p => p.id === prompt.id) && 
                                  !section.reflectionPrompts.some(s => s.id === prompt.id);
             return (
-              <div key={prompt.id} className="border rounded-lg p-4 space-y-3">
+              <div key={prompt.id} className="border-b p-4 space-y-3">
                 <div className="flex items-start gap-2">
                   <span className="w-5 h-5 bg-primary/10 rounded text-xs text-primary font-medium flex items-center justify-center flex-shrink-0 mt-0.5">
                     {index + 1}
