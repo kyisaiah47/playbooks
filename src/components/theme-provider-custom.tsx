@@ -26,7 +26,7 @@ interface CustomThemeProviderProps {
   defaultTheme?: ThemeColors
 }
 
-export function CustomThemeProvider({ children, defaultTheme = templataThemeLight }: CustomThemeProviderProps) {
+export function CustomThemeProvider({ children, defaultTheme = themes[0].colors.dark }: CustomThemeProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<ThemeColors>(defaultTheme)
   const [mounted, setMounted] = useState(false)
 
@@ -69,7 +69,7 @@ export function CustomThemeProvider({ children, defaultTheme = templataThemeLigh
 
   const getThemeById = (themeId: string) => {
     const theme = themes.find(t => t.id === themeId)
-    return theme ? theme.colors.light : null
+    return theme ? theme.colors.dark : null
   }
 
   // Don't render children until theme is loaded

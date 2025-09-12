@@ -83,17 +83,8 @@ export function TemplateView({ template }: TemplateViewProps) {
               />
               <Breadcrumb>
                 <BreadcrumbList>
-                  <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink href="/templates">
-                      {template.title}
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator className="hidden md:block" />
                   <BreadcrumbItem>
-                    <div className="flex items-center gap-2">
-                      {getSectionIcon(template.sections[activeSection].id)}
-                      <BreadcrumbPage>{template.sections[activeSection].title}</BreadcrumbPage>
-                    </div>
+                    <BreadcrumbPage>{template.title}</BreadcrumbPage>
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>

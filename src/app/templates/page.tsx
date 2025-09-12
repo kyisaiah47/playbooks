@@ -23,6 +23,11 @@ import {
 	Home,
 	Briefcase,
 	Target,
+	Baby,
+	Rocket,
+	GraduationCap,
+	BookOpen,
+	Dumbbell,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import { templateRegistry, getAllCategories } from "@/registry/templates";
@@ -71,21 +76,18 @@ const additionalFeaturedTemplates = [
 	},
 ];
 
-// Map template categories to Lucide icons
+// Map each template to unique Lucide icons
 const getTemplateIcon = (template: any) => {
-	switch (template.category) {
-		case 'Personal Life':
-			if (template.id === 'wedding-planning') return Heart;
-			if (template.id === 'home-buying') return Home;
-			return Heart;
-		case 'Career & Business':
-			return Briefcase;
-		case 'Education':
-			return Target;
-		case 'Health & Wellness':
-			return Heart;
-		default:
-			return Heart;
+	switch (template.id) {
+		case 'wedding-planning': return Heart;
+		case 'home-buying': return Home;
+		case 'baby-planning': return Baby;
+		case 'job-search': return Briefcase;
+		case 'business-launch': return Rocket;
+		case 'college-planning': return GraduationCap;
+		case 'academic-research': return BookOpen;
+		case 'fitness-journey': return Dumbbell;
+		default: return Target;
 	}
 };
 
