@@ -1,5 +1,5 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, businessLaunchTemplate } from '@/data/templates';
+import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, businessLaunchTemplate, fitnessJourneyTemplate, collegePlanningTemplate, budgetPlanningTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
 
 // Function to sync template resources with blog registry
@@ -91,6 +91,31 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     template: createTemplateWithSyncedResources(babyPlanningTemplate)
   },
   
+  {
+    id: "budget-planning",
+    name: "Budget Planning & Financial Management",
+    description: "Master your finances with comprehensive budgeting, debt management, and savings strategies.",
+    category: "Personal Life",
+    icon: "💰",
+    url: "/budget-planning/app",
+    popular: true,
+    color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    template: createTemplateWithSyncedResources(budgetPlanningTemplate)
+  },
+  {
+    id: "productivity-system",
+    name: "Productivity System & Time Management",
+    description: "Maximize your efficiency with proven productivity methods, task management, and time blocking strategies.",
+    category: "Productivity",
+    icon: "⚡",
+    url: "/productivity-system/app",
+    popular: true,
+    color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
+    iconColor: "text-yellow-600 dark:text-yellow-400",
+    template: createTemplateWithSyncedResources(productivitySystemTemplate)
+  },
+
   // Career & Business Templates
   {
     id: "job-search",
@@ -125,7 +150,8 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/college-planning/app",
     popular: true,
     color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
-    iconColor: "text-yellow-600 dark:text-yellow-400"
+    iconColor: "text-yellow-600 dark:text-yellow-400",
+    template: createTemplateWithSyncedResources(collegePlanningTemplate)
   },
   {
     id: "academic-research",
@@ -149,7 +175,8 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/event-planning/app",
     popular: true,
     color: "bg-violet-50 dark:bg-violet-950/20 border-violet-200 dark:border-violet-800",
-    iconColor: "text-violet-600 dark:text-violet-400"
+    iconColor: "text-violet-600 dark:text-violet-400",
+    template: createTemplateWithSyncedResources(eventPlanningTemplate)
   },
   
   // Travel & Adventure Templates
@@ -162,7 +189,8 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/travel-planning/app",
     popular: true,
     color: "bg-sky-50 dark:bg-sky-950/20 border-sky-200 dark:border-sky-800",
-    iconColor: "text-sky-600 dark:text-sky-400"
+    iconColor: "text-sky-600 dark:text-sky-400",
+    template: createTemplateWithSyncedResources(travelPlanningTemplate)
   },
   
   // Health & Nutrition Templates
@@ -175,7 +203,8 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/meal-planning/app",
     popular: true,
     color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
-    iconColor: "text-emerald-600 dark:text-emerald-400"
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    template: createTemplateWithSyncedResources(mealPlanningTemplate)
   },
   
   // Health & Wellness Templates
@@ -188,7 +217,22 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/fitness-journey/app",
     popular: true,
     color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
-    iconColor: "text-red-600 dark:text-red-400"
+    iconColor: "text-red-600 dark:text-red-400",
+    template: createTemplateWithSyncedResources(fitnessJourneyTemplate)
+  },
+  
+  // Life Transitions Templates
+  {
+    id: "moving-relocation",
+    name: "Moving & Relocation",
+    description: "Organize your move with checklists, timeline planning, and coordination tools for a stress-free relocation.",
+    category: "Personal Life",
+    icon: "📦",
+    url: "/moving-relocation/app",
+    popular: true,
+    color: "bg-teal-50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-800",
+    iconColor: "text-teal-600 dark:text-teal-400",
+    template: createTemplateWithSyncedResources(movingRelocationTemplate)
   }
 ];
 

@@ -1953,11 +1953,1289 @@ export const businessLaunchTemplate: GuidanceTemplate = {
   ]
 };
 
+export const fitnessJourneyTemplate: GuidanceTemplate = {
+  id: 'fitness-journey',
+  title: 'Fitness Journey & Transformation',
+  description: 'Complete guidance for achieving your fitness goals with structured workouts, nutrition planning, and progress tracking',
+  category: 'health-wellness',
+  icon: '💪',
+  sections: [
+    {
+      id: 'goal-assessment',
+      title: 'Goal Setting & Assessment',
+      description: 'Define your fitness goals and assess your current state',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'primary-goal',
+          prompt: "What is your main fitness goal? (Weight loss, muscle gain, strength, endurance, general health)",
+          category: 'goal-setting',
+          helpText: 'Be specific. Instead of "get fit," try "lose 20 pounds" or "bench press my body weight"',
+          relatedResources: ['smart-fitness-goals', 'goal-setting-framework']
+        },
+        {
+          id: 'motivation-why',
+          prompt: 'Why is this fitness goal important to you? What will achieving it mean for your life?',
+          category: 'motivation',
+          helpText: 'Connect to deeper motivations: health, confidence, energy, longevity, setting an example'
+        },
+        {
+          id: 'current-fitness-level',
+          prompt: 'How would you honestly assess your current fitness level and activity habits?',
+          category: 'assessment',
+          helpText: 'Be honest about your starting point. This helps create a realistic plan.'
+        },
+        {
+          id: 'past-attempts',
+          prompt: 'What fitness programs have you tried before? What worked and what didn\'t?',
+          category: 'reflection',
+          helpText: 'Learn from past experiences to avoid repeating unsuccessful patterns'
+        },
+        {
+          id: 'time-commitment',
+          prompt: 'How much time can you realistically commit to exercise each week?',
+          category: 'planning',
+          helpText: 'Be realistic. 3-4 hours per week consistently beats 10 hours for two weeks then nothing'
+        },
+        {
+          id: 'obstacles-barriers',
+          prompt: 'What are your biggest barriers to staying consistent with fitness?',
+          category: 'challenge',
+          helpText: 'Common barriers: time, motivation, knowledge, access to gym, injury concerns'
+        }
+      ]
+    },
+    {
+      id: 'nutrition-planning',
+      title: 'Nutrition & Diet Strategy',
+      description: 'Plan your nutrition to support your fitness goals',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'current-diet',
+          prompt: 'Describe your current eating habits. What does a typical day of meals look like?',
+          category: 'assessment',
+          helpText: 'Track for 3-5 days to get an accurate picture of your baseline'
+        },
+        {
+          id: 'nutrition-knowledge',
+          prompt: 'How confident are you in your nutrition knowledge? What areas confuse you most?',
+          category: 'assessment',
+          helpText: 'Common confusing areas: calories, macros, supplements, meal timing'
+        },
+        {
+          id: 'diet-preferences',
+          prompt: 'Do you have any dietary restrictions, allergies, or strong food preferences?',
+          category: 'planning',
+          helpText: 'Account for vegetarian, vegan, gluten-free, cultural preferences, dislikes'
+        },
+        {
+          id: 'meal-prep-capacity',
+          prompt: 'How much time and effort can you realistically put into meal planning and prep?',
+          category: 'logistics',
+          helpText: 'Consider your cooking skills, kitchen setup, and time availability'
+        },
+        {
+          id: 'social-eating',
+          prompt: 'How do social situations, work events, and family meals impact your eating habits?',
+          category: 'challenge',
+          helpText: 'Plan strategies for restaurants, parties, work lunches, family dinners'
+        },
+        {
+          id: 'hydration-habits',
+          prompt: 'How much water do you typically drink per day? Do you consume alcohol regularly?',
+          category: 'habits',
+          helpText: 'Hydration affects performance and recovery. Consider alcohol\'s impact on goals'
+        }
+      ]
+    },
+    {
+      id: 'workout-planning',
+      title: 'Workout & Exercise Design',
+      description: 'Create a sustainable and effective workout routine',
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: 'exercise-preferences',
+          prompt: 'What types of physical activity do you actually enjoy or find interesting?',
+          category: 'preference',
+          helpText: 'You\'re more likely to stick with activities you enjoy: dancing, hiking, sports, lifting'
+        },
+        {
+          id: 'gym-access',
+          prompt: 'What equipment and facilities do you have access to? (Home gym, commercial gym, outdoors)',
+          category: 'logistics',
+          helpText: 'Design your program around what you can consistently access'
+        },
+        {
+          id: 'schedule-constraints',
+          prompt: 'When during the day/week do you have the most energy and availability for workouts?',
+          category: 'scheduling',
+          helpText: 'Morning, lunch, evening? Weekdays vs weekends? Plan around your natural rhythms'
+        },
+        {
+          id: 'injury-concerns',
+          prompt: 'Do you have any current injuries, past injuries, or physical limitations to consider?',
+          category: 'safety',
+          helpText: 'Be honest about physical limitations. Consult professionals for serious concerns'
+        },
+        {
+          id: 'workout-style',
+          prompt: 'Do you prefer structured programs, group classes, personal training, or self-directed workouts?',
+          category: 'preference',
+          helpText: 'Consider your personality: need accountability vs. prefer flexibility'
+        },
+        {
+          id: 'progressive-overload',
+          prompt: 'How will you track progress and gradually increase workout difficulty over time?',
+          category: 'progression',
+          helpText: 'Progressive overload is key: more weight, reps, time, or difficulty each week'
+        }
+      ]
+    },
+    {
+      id: 'tracking-progress',
+      title: 'Progress Tracking & Measurement',
+      description: 'Monitor your progress and stay motivated',
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: 'measurement-methods',
+          prompt: 'How will you track your progress? (Weight, measurements, photos, performance metrics)',
+          category: 'tracking',
+          helpText: 'Use multiple metrics. The scale can lie due to water retention and muscle gain'
+        },
+        {
+          id: 'tracking-frequency',
+          prompt: 'How often will you weigh yourself, take measurements, or assess progress?',
+          category: 'scheduling',
+          helpText: 'Daily weigh-ins can be motivating or discouraging. Weekly may be more sustainable'
+        },
+        {
+          id: 'progress-photos',
+          prompt: 'Are you comfortable taking progress photos? How will you ensure consistency?',
+          category: 'documentation',
+          helpText: 'Same clothing, lighting, poses, and angles. Photos often show changes scales don\'t'
+        },
+        {
+          id: 'performance-metrics',
+          prompt: 'What fitness performance goals can you track? (strength, endurance, flexibility)',
+          category: 'measurement',
+          helpText: 'Track gym performance, run times, flexibility improvements, energy levels'
+        },
+        {
+          id: 'motivation-maintenance',
+          prompt: 'How will you stay motivated during plateaus or when progress slows down?',
+          category: 'psychology',
+          helpText: 'Plateaus are normal. Focus on non-scale victories and process goals'
+        },
+        {
+          id: 'accountability-system',
+          prompt: 'Who will help keep you accountable? How will you build support systems?',
+          category: 'support',
+          helpText: 'Workout buddy, trainer, online community, family support, progress sharing'
+        }
+      ]
+    },
+    {
+      id: 'lifestyle-integration',
+      title: 'Lifestyle Integration & Habits',
+      description: 'Build sustainable habits that support your fitness journey',
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: 'habit-stacking',
+          prompt: 'What existing daily habits can you attach new fitness habits to?',
+          category: 'habit-formation',
+          helpText: 'Stack new habits onto established ones: workout after coffee, protein shake after shower'
+        },
+        {
+          id: 'sleep-recovery',
+          prompt: 'How many hours of sleep do you get? How will you prioritize recovery?',
+          category: 'recovery',
+          helpText: '7-9 hours sleep is crucial for fitness progress. Plan rest days and active recovery'
+        },
+        {
+          id: 'stress-management',
+          prompt: 'How does stress affect your eating and exercise habits? What are your stress management strategies?',
+          category: 'wellness',
+          helpText: 'High stress can sabotage fitness goals through cortisol and emotional eating'
+        },
+        {
+          id: 'social-support',
+          prompt: 'How will your family and friends react to your lifestyle changes? Who will support you?',
+          category: 'relationships',
+          helpText: 'Some may resist your changes. Communicate your goals and find supportive people'
+        },
+        {
+          id: 'setback-recovery',
+          prompt: 'When you inevitably have bad days or weeks, how will you get back on track?',
+          category: 'resilience',
+          helpText: 'Plan for setbacks: illness, vacation, work stress. One bad day doesn\'t ruin everything'
+        },
+        {
+          id: 'long-term-vision',
+          prompt: 'What does your ideal healthy lifestyle look like in 1-2 years? How will you maintain results?',
+          category: 'sustainability',
+          helpText: 'Focus on lifestyle changes, not temporary diets. Build habits you can maintain long-term'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'smart-fitness-goals',
+      title: 'SMART Fitness Goal Setting Framework',
+      type: 'guide',
+      excerpt: 'Learn to set Specific, Measurable, Achievable, Relevant, Time-bound fitness goals',
+      content: 'SMART goals turn vague fitness wishes into actionable plans...',
+      tags: ['goal-setting', 'planning'],
+      readTime: '5 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'beginner-workout-routines',
+      title: 'Beginner-Friendly Workout Routines',
+      type: 'tool',
+      excerpt: 'Simple, effective workout plans for fitness beginners',
+      content: 'Starting your fitness journey can be overwhelming...',
+      tags: ['workouts', 'beginner', 'routines'],
+      readTime: '10 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'nutrition-basics',
+      title: 'Nutrition Fundamentals for Fitness',
+      type: 'guide',
+      excerpt: 'Essential nutrition knowledge to support your fitness goals',
+      content: 'Understanding basic nutrition principles is crucial...',
+      tags: ['nutrition', 'diet', 'health'],
+      readTime: '15 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'progress-tracking-methods',
+      title: 'Effective Ways to Track Fitness Progress',
+      type: 'guide',
+      excerpt: 'Beyond the scale: multiple methods to monitor your fitness journey',
+      content: 'The scale tells only part of the story...',
+      tags: ['tracking', 'progress', 'measurement'],
+      readTime: '8 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'meal-prep-basics',
+      title: 'Meal Prep for Fitness Success',
+      type: 'tool',
+      excerpt: 'Simple meal prep strategies to support your fitness goals',
+      content: 'Meal preparation is one of the most powerful tools...',
+      tags: ['meal-prep', 'nutrition', 'planning'],
+      readTime: '12 min',
+      difficulty: 'intermediate'
+    },
+    {
+      id: 'workout-troubleshooting',
+      title: 'Common Workout Problems & Solutions',
+      type: 'guide',
+      excerpt: 'Overcome plateaus, injuries, and motivation issues',
+      content: 'Every fitness journey has challenges...',
+      tags: ['troubleshooting', 'problems', 'solutions'],
+      readTime: '10 min',
+      difficulty: 'intermediate'
+    }
+  ]
+};
+
+export const collegePlanningTemplate: GuidanceTemplate = {
+  id: 'college-planning',
+  title: 'College Planning & Admissions Guide',
+  description: 'Navigate the college admissions process with application tracking, essay guidance, and financial aid planning',
+  category: 'education',
+  icon: '🎓',
+  sections: [
+    {
+      id: 'college-selection',
+      title: 'College Research & Selection',
+      description: 'Research and narrow down your college choices',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'career-goals',
+          prompt: "What career field or major are you most interested in pursuing?",
+          category: 'goal-setting',
+          helpText: 'Consider your interests, strengths, and potential earning capacity. It\'s okay to be undecided!',
+          relatedResources: ['career-exploration-guide', 'major-selection-tips']
+        },
+        {
+          id: 'college-preferences',
+          prompt: 'What size school, location, and campus culture appeals to you most?',
+          category: 'preferences',
+          helpText: 'Think about urban vs rural, large vs small, Greek life, sports culture, academic intensity'
+        },
+        {
+          id: 'academic-fit',
+          prompt: 'What are your current GPA, test scores, and how do they compare to your target schools?',
+          category: 'assessment',
+          helpText: 'Be realistic about your academic profile. Consider reach, match, and safety schools'
+        },
+        {
+          id: 'financial-constraints',
+          prompt: 'What can your family realistically afford for college expenses?',
+          category: 'financial',
+          helpText: 'Consider tuition, room & board, books, personal expenses. Don\'t forget about student loans'
+        },
+        {
+          id: 'school-list',
+          prompt: 'Which 8-12 schools will you apply to? How do they fit your reach/match/safety strategy?',
+          category: 'planning',
+          helpText: 'Apply to 2-4 reach schools, 4-6 match schools, 2-4 safety schools you\'d actually attend'
+        }
+      ]
+    },
+    {
+      id: 'application-strategy',
+      title: 'Application Planning & Timeline',
+      description: 'Organize your application process and deadlines',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'application-timeline',
+          prompt: 'What are all the key deadlines for each school you\'re applying to?',
+          category: 'planning',
+          helpText: 'Early Decision, Early Action, Regular Decision, scholarship deadlines, FAFSA deadlines'
+        },
+        {
+          id: 'testing-plan',
+          prompt: 'When will you take/retake the SAT, ACT, or subject tests?',
+          category: 'preparation',
+          helpText: 'Plan test dates to allow for retakes. Some schools require subject tests or don\'t accept certain tests'
+        },
+        {
+          id: 'recommendation-letters',
+          prompt: 'Which teachers, counselors, or mentors will write your recommendation letters?',
+          category: 'relationships',
+          helpText: 'Ask teachers who know you well from core academic subjects. Give them plenty of notice'
+        },
+        {
+          id: 'extracurricular-story',
+          prompt: 'What activities, leadership roles, or experiences best show who you are?',
+          category: 'storytelling',
+          helpText: 'Quality over quantity. Show depth, leadership, and impact rather than just participation'
+        },
+        {
+          id: 'application-themes',
+          prompt: 'What makes you unique? What themes will connect all parts of your application?',
+          category: 'branding',
+          helpText: 'Your essays, activities, and recommendations should tell a coherent story about who you are'
+        }
+      ]
+    },
+    {
+      id: 'essay-writing',
+      title: 'Essay Writing & Personal Statement',
+      description: 'Craft compelling essays that showcase your personality',
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: 'personal-story',
+          prompt: 'What experiences have shaped who you are and how you see the world?',
+          category: 'reflection',
+          helpText: 'Think about challenges overcome, values learned, moments of growth or realization'
+        },
+        {
+          id: 'essay-topics',
+          prompt: 'What specific stories or experiences will you write about in your essays?',
+          category: 'content',
+          helpText: 'Avoid generic topics. Choose stories that only you could tell, showing character and growth'
+        },
+        {
+          id: 'writing-process',
+          prompt: 'What\'s your timeline for brainstorming, drafting, and revising your essays?',
+          category: 'process',
+          helpText: 'Start early! Plan multiple drafts and get feedback from teachers, counselors, and family'
+        },
+        {
+          id: 'supplemental-essays',
+          prompt: 'How will you tailor supplemental essays to show genuine interest in each school?',
+          category: 'customization',
+          helpText: 'Research each school thoroughly. Show specific knowledge about programs, professors, opportunities'
+        },
+        {
+          id: 'editing-feedback',
+          prompt: 'Who will help you edit and provide feedback on your essays?',
+          category: 'support',
+          helpText: 'Get feedback from multiple sources: English teachers, counselors, parents, older students'
+        }
+      ]
+    },
+    {
+      id: 'financial-aid',
+      title: 'Financial Aid & Scholarships',
+      description: 'Navigate financial aid applications and scholarship opportunities',
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: 'fafsa-preparation',
+          prompt: 'When will you complete the FAFSA? What financial documents do you need?',
+          category: 'paperwork',
+          helpText: 'File FAFSA as early as possible. Gather tax returns, bank statements, investment records'
+        },
+        {
+          id: 'scholarship-search',
+          prompt: 'What local, national, and school-specific scholarships will you apply for?',
+          category: 'opportunities',
+          helpText: 'Start with local scholarships (less competition), then expand to national ones'
+        },
+        {
+          id: 'merit-aid-strategy',
+          prompt: 'Which schools are likely to offer you merit aid based on your academic profile?',
+          category: 'strategy',
+          helpText: 'Schools where you\'re in the top 25% of applicants are more likely to offer merit aid'
+        },
+        {
+          id: 'work-study-plans',
+          prompt: 'Are you open to work-study programs, part-time jobs, or summer employment?',
+          category: 'earning',
+          helpText: 'Consider your ability to balance work and academics. Some students thrive with structure'
+        },
+        {
+          id: 'loan-understanding',
+          prompt: 'Do you understand the difference between federal and private student loans?',
+          category: 'debt',
+          helpText: 'Federal loans usually have better terms. Understand interest rates and repayment options'
+        }
+      ]
+    },
+    {
+      id: 'final-decisions',
+      title: 'Final Decision & Preparation',
+      description: 'Make your final college choice and prepare for transition',
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: 'acceptance-comparison',
+          prompt: 'How will you compare acceptances, financial aid packages, and final costs?',
+          category: 'decision-making',
+          helpText: 'Create a spreadsheet comparing total costs, aid packages, and program quality'
+        },
+        {
+          id: 'campus-visits',
+          prompt: 'Which schools will you visit (or virtually explore) before making your final decision?',
+          category: 'evaluation',
+          helpText: 'Visit your top choices if possible. Attend admitted student days and talk to current students'
+        },
+        {
+          id: 'gap-year-consideration',
+          prompt: 'Have you considered taking a gap year? What would you do during that time?',
+          category: 'alternatives',
+          helpText: 'Gap years can be valuable for work experience, travel, volunteering, or personal growth'
+        },
+        {
+          id: 'transition-preparation',
+          prompt: 'How will you prepare for the academic and social transition to college?',
+          category: 'preparation',
+          helpText: 'Consider summer programs, reading lists, study skills development, time management'
+        },
+        {
+          id: 'family-communication',
+          prompt: 'How will you communicate with your family about expectations and support during college?',
+          category: 'relationships',
+          helpText: 'Discuss homesickness, frequency of contact, academic pressure, and independence expectations'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'college-search-guide',
+      title: 'Complete College Search Strategy',
+      type: 'guide',
+      excerpt: 'Step-by-step approach to researching and selecting colleges',
+      content: 'Finding the right college fit requires systematic research...',
+      tags: ['college-search', 'research', 'planning'],
+      readTime: '12 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'essay-writing-tips',
+      title: 'College Essay Writing Masterclass',
+      type: 'guide',
+      excerpt: 'Write compelling personal statements and supplemental essays',
+      content: 'Great college essays show, don\'t tell...',
+      tags: ['essays', 'writing', 'personal-statement'],
+      readTime: '15 min',
+      difficulty: 'intermediate'
+    },
+    {
+      id: 'financial-aid-guide',
+      title: 'Financial Aid & Scholarship Guide',
+      type: 'tool',
+      excerpt: 'Navigate FAFSA, scholarships, and financial aid options',
+      content: 'Understanding financial aid can save tens of thousands...',
+      tags: ['financial-aid', 'scholarships', 'fafsa'],
+      readTime: '10 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'application-timeline',
+      title: 'College Application Timeline & Checklist',
+      type: 'checklist',
+      excerpt: 'Month-by-month timeline for junior and senior year',
+      content: 'Stay organized with this comprehensive timeline...',
+      tags: ['timeline', 'deadlines', 'organization'],
+      readTime: '8 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'interview-preparation',
+      title: 'College Interview Preparation Guide',
+      type: 'guide',
+      excerpt: 'Prepare for alumni and admissions interviews',
+      content: 'College interviews are opportunities to show personality...',
+      tags: ['interviews', 'preparation', 'communication'],
+      readTime: '10 min',
+      difficulty: 'intermediate'
+    }
+  ]
+};
+
+export const budgetPlanningTemplate: GuidanceTemplate = {
+  id: 'budget-planning',
+  title: 'Budget Planning & Financial Management',
+  description: 'Master your finances with comprehensive budgeting, debt management, and savings strategies',
+  category: 'finance',
+  icon: '💰',
+  sections: [
+    {
+      id: 'financial-assessment',
+      title: 'Financial Assessment & Goals',
+      description: 'Understand your current financial situation and set clear goals',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'income-sources',
+          prompt: "What are all your sources of income? Include salary, freelance, investments, side hustles.",
+          category: 'assessment',
+          helpText: 'Be comprehensive - even small income sources matter for accurate budgeting'
+        },
+        {
+          id: 'monthly-expenses',
+          prompt: 'List all your monthly expenses: fixed (rent, insurance) and variable (groceries, entertainment).',
+          category: 'assessment',
+          helpText: 'Track expenses for 2-3 months to get accurate averages for variable costs'
+        },
+        {
+          id: 'debt-inventory',
+          prompt: 'What debts do you have? Include balances, minimum payments, and interest rates.',
+          category: 'debt',
+          helpText: 'Credit cards, student loans, car loans, mortgage - list everything with details'
+        },
+        {
+          id: 'financial-goals',
+          prompt: 'What are your short-term (1 year) and long-term (5+ years) financial goals?',
+          category: 'goals',
+          helpText: 'Emergency fund, debt payoff, home down payment, retirement, vacation, etc.'
+        },
+        {
+          id: 'money-mindset',
+          prompt: 'What beliefs and emotions do you have about money? Any financial fears or bad habits?',
+          category: 'psychology',
+          helpText: 'Understanding your relationship with money is crucial for lasting change'
+        }
+      ]
+    },
+    {
+      id: 'budget-creation',
+      title: 'Budget Creation & Allocation',
+      description: 'Build a realistic budget that aligns with your goals and lifestyle',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'budgeting-method',
+          prompt: 'Which budgeting method appeals to you: 50/30/20 rule, zero-based, envelope method?',
+          category: 'method',
+          helpText: '50/30/20: needs/wants/savings. Zero-based: every dollar assigned. Envelope: cash for categories'
+        },
+        {
+          id: 'fixed-expenses',
+          prompt: 'What are your non-negotiable fixed expenses that must be paid each month?',
+          category: 'essentials',
+          helpText: 'Rent/mortgage, insurance, minimum debt payments, utilities, phone, etc.'
+        },
+        {
+          id: 'variable-priorities',
+          prompt: 'How do you prioritize variable expenses? What matters most to your happiness and goals?',
+          category: 'priorities',
+          helpText: 'Food quality, entertainment, hobbies, social activities - what brings you joy?'
+        },
+        {
+          id: 'savings-allocation',
+          prompt: 'How much can you realistically save each month? What percentage of income?',
+          category: 'savings',
+          helpText: 'Start with what\'s achievable (even 5%) rather than an unrealistic high amount'
+        },
+        {
+          id: 'buffer-planning',
+          prompt: 'How will you handle months with unexpected expenses or income fluctuations?',
+          category: 'flexibility',
+          helpText: 'Build in buffers, plan for irregular expenses like car repairs or medical bills'
+        }
+      ]
+    },
+    {
+      id: 'debt-management',
+      title: 'Debt Elimination Strategy',
+      description: 'Create a plan to pay off debt systematically',
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: 'debt-payoff-method',
+          prompt: 'Will you use the debt snowball (smallest balance first) or avalanche (highest interest first) method?',
+          category: 'strategy',
+          helpText: 'Snowball provides psychological wins, avalanche saves more money mathematically'
+        },
+        {
+          id: 'extra-payment-plan',
+          prompt: 'How much extra can you put toward debt each month? Where will this money come from?',
+          category: 'planning',
+          helpText: 'Cut expenses, increase income, use windfalls like tax refunds or bonuses'
+        }
+      ]
+    },
+    {
+      id: 'savings-investment',
+      title: 'Savings & Investment Planning',
+      description: 'Build wealth through systematic saving and investing',
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: 'emergency-fund',
+          prompt: 'How much do you need in your emergency fund? When will you prioritize building it?',
+          category: 'safety-net',
+          helpText: '3-6 months of expenses is standard. Start with $1000 as initial goal'
+        },
+        {
+          id: 'retirement-planning',
+          prompt: 'Are you contributing to retirement accounts? What\'s your retirement savings rate?',
+          category: 'long-term',
+          helpText: 'Aim for 10-15% of income. Take advantage of employer matching'
+        }
+      ]
+    },
+    {
+      id: 'tracking-optimization',
+      title: 'Tracking & Continuous Optimization',
+      description: 'Monitor progress and optimize your financial system',
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: 'expense-tracking',
+          prompt: 'How will you track expenses? What tools or methods work best for you?',
+          category: 'tracking',
+          helpText: 'Apps, spreadsheets, cash envelopes, bank categories - find what you\'ll actually use'
+        },
+        {
+          id: 'budget-reviews',
+          prompt: 'When will you review and adjust your budget? What metrics will you track?',
+          category: 'optimization',
+          helpText: 'Monthly reviews, tracking savings rate, debt reduction progress, goal achievement'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'budgeting-methods-comparison',
+      title: 'Popular Budgeting Methods Compared',
+      type: 'guide',
+      excerpt: 'Find the budgeting approach that fits your lifestyle and personality',
+      content: 'Different budgeting methods work for different people...',
+      tags: ['budgeting', 'methods', 'comparison'],
+      readTime: '8 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'debt-payoff-calculator',
+      title: 'Debt Payoff Strategy Calculator',
+      type: 'tool',
+      excerpt: 'Compare debt snowball vs avalanche methods for your situation',
+      content: 'Use this calculator to determine the best debt payoff strategy...',
+      tags: ['debt', 'calculator', 'payoff'],
+      readTime: '5 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'emergency-fund-guide',
+      title: 'Emergency Fund Building Guide',
+      type: 'guide',
+      excerpt: 'Step-by-step guide to building your financial safety net',
+      content: 'An emergency fund is your first line of financial defense...',
+      tags: ['emergency-fund', 'savings', 'financial-security'],
+      readTime: '10 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'investment-basics',
+      title: 'Investment Basics for Beginners',
+      type: 'guide',
+      excerpt: 'Learn fundamental investing concepts and get started',
+      content: 'Investing doesn\'t have to be complicated...',
+      tags: ['investing', 'retirement', 'wealth-building'],
+      readTime: '15 min',
+      difficulty: 'intermediate'
+    }
+  ]
+};
+
+export const productivitySystemTemplate: GuidanceTemplate = {
+  id: 'productivity-system',
+  title: 'Productivity System & Time Management',
+  description: 'Maximize your efficiency with proven productivity methods and time blocking strategies',
+  category: 'productivity',
+  icon: '⚡',
+  sections: [
+    {
+      id: 'productivity-assessment',
+      title: 'Productivity Assessment & Goals',
+      description: 'Evaluate your current productivity and set improvement goals',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'current-challenges',
+          prompt: "What are your biggest productivity challenges? Procrastination, distractions, overwhelm?",
+          category: 'assessment',
+          helpText: 'Be honest about what\'s not working in your current approach'
+        },
+        {
+          id: 'time-wasters',
+          prompt: 'Where do you lose the most time during your day? Social media, meetings, email?',
+          category: 'analysis',
+          helpText: 'Track your time for a week to identify patterns and time drains'
+        },
+        {
+          id: 'productivity-goals',
+          prompt: 'What specific productivity improvements do you want to achieve?',
+          category: 'goals',
+          helpText: 'More deep work hours, better work-life balance, less stress, completing projects faster'
+        },
+        {
+          id: 'current-systems',
+          prompt: 'What productivity tools and methods have you tried? What worked or didn\'t work?',
+          category: 'experience',
+          helpText: 'Learn from past attempts: GTD, Pomodoro, task apps, calendars, notebooks'
+        },
+        {
+          id: 'work-style',
+          prompt: 'When are you most focused and energetic? What\'s your natural work rhythm?',
+          category: 'self-awareness',
+          helpText: 'Morning person vs night owl, need for variety vs routine, solo vs collaborative work'
+        }
+      ]
+    },
+    {
+      id: 'time-blocking-system',
+      title: 'Time Blocking & Calendar Management',
+      description: 'Master time blocking to protect your most important work',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'deep-work-needs',
+          prompt: 'What work requires your deepest focus? How much uninterrupted time do you need?',
+          category: 'planning',
+          helpText: 'Writing, coding, strategy, creative work - identify tasks needing sustained attention'
+        },
+        {
+          id: 'calendar-blocking',
+          prompt: 'How will you block time for different types of work: deep work, admin, meetings?',
+          category: 'scheduling',
+          helpText: 'Color-code different work types, batch similar tasks, protect morning energy'
+        },
+        {
+          id: 'distraction-management',
+          prompt: 'What strategies will you use to protect your focused work time?',
+          category: 'focus',
+          helpText: 'Phone on silent, door closed, notifications off, communication boundaries'
+        },
+        {
+          id: 'energy-management',
+          prompt: 'How will you schedule work based on your energy levels throughout the day?',
+          category: 'optimization',
+          helpText: 'High-energy work in peak hours, admin during low-energy times, breaks planned'
+        },
+        {
+          id: 'buffer-time',
+          prompt: 'How will you build buffers and flexibility into your schedule?',
+          category: 'realistic-planning',
+          helpText: 'Travel time between meetings, unexpected issues, overrunning tasks'
+        }
+      ]
+    },
+    {
+      id: 'task-management',
+      title: 'Task Capture & Organization',
+      description: 'Build a trusted system to capture and organize all your commitments',
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: 'capture-system',
+          prompt: 'How will you capture all tasks, ideas, and commitments as they come up?',
+          category: 'system',
+          helpText: 'Notebook, phone app, voice recorder - needs to be always accessible and reliable'
+        },
+        {
+          id: 'task-organization',
+          prompt: 'How will you organize tasks: by project, priority, context, or due date?',
+          category: 'structure',
+          helpText: 'GTD contexts (@calls, @computer), priority matrices, project folders'
+        },
+        {
+          id: 'review-schedule',
+          prompt: 'When will you review and update your task lists? Daily, weekly?',
+          category: 'maintenance',
+          helpText: 'Daily planning sessions, weekly reviews, monthly goal check-ins'
+        },
+        {
+          id: 'priority-system',
+          prompt: 'How will you decide what to work on when you have multiple options?',
+          category: 'decision-making',
+          helpText: 'Eisenhower matrix, impact vs effort, deadline-driven, energy levels'
+        },
+        {
+          id: 'completion-tracking',
+          prompt: 'How will you track progress and celebrate completed tasks?',
+          category: 'motivation',
+          helpText: 'Checkboxes, progress bars, done lists, weekly accomplishment reviews'
+        }
+      ]
+    },
+    {
+      id: 'focus-techniques',
+      title: 'Focus & Deep Work Strategies',
+      description: 'Develop techniques to maintain focus and enter flow states',
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: 'focus-environment',
+          prompt: 'What physical environment helps you focus best?',
+          category: 'environment',
+          helpText: 'Quiet vs background noise, organized vs messy, home vs office vs cafe'
+        },
+        {
+          id: 'focus-rituals',
+          prompt: 'What rituals or routines help you transition into focused work?',
+          category: 'habits',
+          helpText: 'Music, coffee, clearing desk, reviewing goals, meditation, exercise'
+        },
+        {
+          id: 'pomodoro-adaptation',
+          prompt: 'How will you use time-boxing techniques like Pomodoro? What durations work for you?',
+          category: 'techniques',
+          helpText: '25-min standard, 50-min for complex tasks, 90-min for deep work sessions'
+        },
+        {
+          id: 'distraction-triggers',
+          prompt: 'What typically breaks your focus? How will you minimize these triggers?',
+          category: 'obstacles',
+          helpText: 'Notifications, noise, hunger, boredom, anxiety, unclear next steps'
+        },
+        {
+          id: 'flow-conditions',
+          prompt: 'When do you experience flow states? How can you recreate those conditions?',
+          category: 'optimization',
+          helpText: 'Time of day, type of work, challenge level, clear goals, immediate feedback'
+        }
+      ]
+    },
+    {
+      id: 'system-optimization',
+      title: 'Continuous Improvement & Optimization',
+      description: 'Regularly review and improve your productivity systems',
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: 'weekly-reviews',
+          prompt: 'What will you review weekly? What worked well and what needs adjustment?',
+          category: 'reflection',
+          helpText: 'Time spent vs planned, energy levels, goal progress, system friction points'
+        },
+        {
+          id: 'metric-tracking',
+          prompt: 'What metrics will you track to measure productivity improvements?',
+          category: 'measurement',
+          helpText: 'Deep work hours, tasks completed, projects finished, stress levels, work satisfaction'
+        },
+        {
+          id: 'system-evolution',
+          prompt: 'How will you adapt your system as your work and life change?',
+          category: 'flexibility',
+          helpText: 'New responsibilities, changed priorities, different energy levels, life transitions'
+        },
+        {
+          id: 'accountability',
+          prompt: 'Who or what will help keep you accountable to your productivity goals?',
+          category: 'support',
+          helpText: 'Productivity partner, coach, team check-ins, public commitments, tracking apps'
+        },
+        {
+          id: 'stress-management',
+          prompt: 'How will you maintain productivity without burning out?',
+          category: 'sustainability',
+          helpText: 'Rest periods, boundaries, saying no, delegation, realistic expectations'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'time-blocking-guide',
+      title: 'Master Time Blocking for Deep Work',
+      type: 'guide',
+      excerpt: 'Learn to schedule focused work sessions and eliminate distractions',
+      content: 'Time blocking is the practice of scheduling specific time slots for different types of work...',
+      tags: ['time-blocking', 'deep-work', 'focus'],
+      readTime: '10 min',
+      difficulty: 'intermediate'
+    },
+    {
+      id: 'gtd-implementation',
+      title: 'Getting Things Done (GTD) Implementation Guide',
+      type: 'guide',
+      excerpt: 'Step-by-step guide to implementing David Allen\'s GTD methodology',
+      content: 'Getting Things Done is a comprehensive productivity system...',
+      tags: ['GTD', 'task-management', 'organization'],
+      readTime: '15 min',
+      difficulty: 'intermediate'
+    },
+    {
+      id: 'pomodoro-mastery',
+      title: 'Pomodoro Technique Mastery',
+      type: 'tool',
+      excerpt: 'Advanced strategies for using the Pomodoro Technique effectively',
+      content: 'The Pomodoro Technique can be adapted for different types of work...',
+      tags: ['pomodoro', 'focus', 'time-management'],
+      readTime: '8 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'focus-apps-tools',
+      title: 'Best Productivity Apps and Tools',
+      type: 'tool',
+      excerpt: 'Curated list of apps and tools for different productivity needs',
+      content: 'The right tools can enhance your productivity system...',
+      tags: ['apps', 'tools', 'technology'],
+      readTime: '12 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'energy-management',
+      title: 'Energy Management for Peak Performance',
+      type: 'guide',
+      excerpt: 'Learn to manage your energy, not just your time',
+      content: 'Managing energy is often more important than managing time...',
+      tags: ['energy', 'performance', 'wellness'],
+      readTime: '10 min',
+      difficulty: 'intermediate'
+    }
+  ]
+};
+
+export const movingRelocationTemplate: GuidanceTemplate = {
+  id: 'moving-relocation',
+  title: 'Moving & Relocation Planning',
+  description: 'Organize your move with comprehensive planning and coordination tools',
+  category: 'life-transitions',
+  icon: '📦',
+  sections: [
+    {
+      id: 'moving-planning',
+      title: 'Moving Timeline & Planning',
+      description: 'Plan your move with detailed timelines and checklists',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'moving-timeline',
+          prompt: "When is your move date? How much time do you have to plan?",
+          category: 'planning',
+          helpText: 'Start planning 8-12 weeks before your move date for best results'
+        },
+        {
+          id: 'moving-distance',
+          prompt: 'Are you moving locally, long-distance, or internationally? What are the implications?',
+          category: 'logistics',
+          helpText: 'Different distances require different planning approaches, timelines, and regulations'
+        },
+        {
+          id: 'moving-budget',
+          prompt: 'What\'s your total moving budget? What are your cost priorities?',
+          category: 'financial',
+          helpText: 'Include moving company, packing supplies, travel, temporary housing, utility deposits'
+        }
+      ]
+    },
+    {
+      id: 'vendor-selection',
+      title: 'Moving Company & Service Selection',
+      description: 'Choose reliable moving services and vendors',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'moving-company',
+          prompt: 'Will you hire professional movers or move yourself? What factors influence this decision?',
+          category: 'decision',
+          helpText: 'Consider cost, convenience, time, physical ability, valuable items, distance'
+        }
+      ]
+    },
+    {
+      id: 'packing-organization',
+      title: 'Packing & Organization Strategy',
+      description: 'Develop an efficient packing and labeling system',
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: 'decluttering-plan',
+          prompt: 'What will you declutter before packing? How will you decide what to keep?',
+          category: 'organization',
+          helpText: 'Less stuff = lower moving costs. Consider donation, selling, or storage options'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'moving-checklist',
+      title: '8-Week Moving Timeline Checklist',
+      type: 'checklist',
+      excerpt: 'Comprehensive week-by-week moving checklist',
+      content: 'A detailed timeline to keep your move organized...',
+      tags: ['checklist', 'timeline', 'organization'],
+      readTime: '5 min',
+      difficulty: 'beginner'
+    }
+  ]
+};
+
+export const eventPlanningTemplate: GuidanceTemplate = {
+  id: 'event-planning',
+  title: 'Event Planning & Coordination',
+  description: 'Plan memorable events with budget tracking and vendor management',
+  category: 'events',
+  icon: '🎉',
+  sections: [
+    {
+      id: 'event-vision',
+      title: 'Event Vision & Goals',
+      description: 'Define your event concept and success metrics',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'event-type',
+          prompt: "What type of event are you planning? What's the main purpose?",
+          category: 'planning',
+          helpText: 'Corporate event, wedding, birthday, fundraiser, conference - each has different requirements'
+        },
+        {
+          id: 'target-audience',
+          prompt: 'Who is your target audience? What experience do you want to create for them?',
+          category: 'audience',
+          helpText: 'Age, interests, expectations, accessibility needs, cultural considerations'
+        },
+        {
+          id: 'success-metrics',
+          prompt: 'How will you measure if your event is successful?',
+          category: 'goals',
+          helpText: 'Attendance numbers, engagement, feedback scores, funds raised, connections made'
+        }
+      ]
+    },
+    {
+      id: 'budget-logistics',
+      title: 'Budget & Logistics Planning',
+      description: 'Set budget and plan essential logistics',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'event-budget',
+          prompt: 'What\'s your total budget? How will you allocate it across different categories?',
+          category: 'budget',
+          helpText: 'Venue (30-50%), catering (25-40%), entertainment (10-20%), decorations (5-10%)'
+        },
+        {
+          id: 'venue-requirements',
+          prompt: 'What are your venue requirements? Size, location, amenities, accessibility?',
+          category: 'logistics',
+          helpText: 'Capacity, parking, kitchen access, AV equipment, indoor/outdoor, accessibility'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'event-budget-calculator',
+      title: 'Event Budget Planning Calculator',
+      type: 'tool',
+      excerpt: 'Calculate and allocate your event budget across categories',
+      content: 'Proper budget allocation is crucial for event success...',
+      tags: ['budget', 'calculator', 'planning'],
+      readTime: '5 min',
+      difficulty: 'beginner'
+    }
+  ]
+};
+
+export const travelPlanningTemplate: GuidanceTemplate = {
+  id: 'travel-planning',
+  title: 'Travel Planning & Trip Organization',
+  description: 'Plan amazing trips with itinerary building and budget management',
+  category: 'travel',
+  icon: '✈️',
+  sections: [
+    {
+      id: 'trip-planning',
+      title: 'Trip Goals & Planning',
+      description: 'Define your travel goals and plan your journey',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'travel-goals',
+          prompt: "What do you want to get out of this trip? Adventure, relaxation, culture, business?",
+          category: 'goals',
+          helpText: 'Clear goals help you make better decisions about destinations and activities'
+        },
+        {
+          id: 'destination-selection',
+          prompt: 'What destinations are you considering? What factors are most important to you?',
+          category: 'planning',
+          helpText: 'Weather, cost, safety, activities, culture, language, visa requirements'
+        },
+        {
+          id: 'travel-budget',
+          prompt: 'What\'s your total travel budget? How will you allocate it?',
+          category: 'budget',
+          helpText: 'Transportation (25%), accommodation (30%), food (25%), activities (15%), miscellaneous (5%)'
+        }
+      ]
+    },
+    {
+      id: 'itinerary-building',
+      title: 'Itinerary & Booking',
+      description: 'Create detailed itineraries and make bookings',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'must-see-activities',
+          prompt: 'What are your must-see attractions and must-do activities?',
+          category: 'planning',
+          helpText: 'Research top attractions, local experiences, seasonal activities, booking requirements'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'travel-planning-checklist',
+      title: 'Complete Travel Planning Checklist',
+      type: 'checklist',
+      excerpt: 'Step-by-step checklist for planning any trip',
+      content: 'Comprehensive travel planning checklist...',
+      tags: ['checklist', 'planning', 'travel'],
+      readTime: '8 min',
+      difficulty: 'beginner'
+    }
+  ]
+};
+
+export const mealPlanningTemplate: GuidanceTemplate = {
+  id: 'meal-planning',
+  title: 'Meal Planning & Nutrition Management',
+  description: 'Plan healthy meals with grocery lists and nutrition tracking',
+  category: 'health',
+  icon: '🍽️',
+  sections: [
+    {
+      id: 'nutrition-assessment',
+      title: 'Nutrition Goals & Assessment',
+      description: 'Define your dietary goals and assess current habits',
+      order: 1,
+      reflectionPrompts: [
+        {
+          id: 'health-goals',
+          prompt: "What are your nutrition and health goals? Weight management, energy, athletic performance?",
+          category: 'goals',
+          helpText: 'Specific goals help guide your meal planning decisions and food choices'
+        },
+        {
+          id: 'dietary-restrictions',
+          prompt: 'Do you have any dietary restrictions, allergies, or food preferences?',
+          category: 'requirements',
+          helpText: 'Vegetarian, vegan, gluten-free, dairy-free, cultural/religious restrictions'
+        },
+        {
+          id: 'current-eating-habits',
+          prompt: 'What do your current eating patterns look like? What works and what doesn\'t?',
+          category: 'assessment',
+          helpText: 'Meal timing, portion sizes, snacking habits, eating out frequency, cooking skills'
+        }
+      ]
+    },
+    {
+      id: 'meal-planning-system',
+      title: 'Meal Planning & Preparation',
+      description: 'Create efficient meal planning and prep systems',
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: 'meal-prep-time',
+          prompt: 'How much time can you dedicate to meal planning and preparation each week?',
+          category: 'logistics',
+          helpText: 'Consider cooking skills, kitchen equipment, schedule, and willingness to meal prep'
+        },
+        {
+          id: 'grocery-strategy',
+          prompt: 'How will you approach grocery shopping? Budget, frequency, meal planning integration?',
+          category: 'planning',
+          helpText: 'Weekly planning, budget allocation, seasonal ingredients, bulk buying, list organization'
+        }
+      ]
+    }
+  ],
+  resources: [
+    {
+      id: 'healthy-meal-prep-guide',
+      title: 'Healthy Meal Prep for Beginners',
+      type: 'guide',
+      excerpt: 'Learn efficient meal preparation techniques for busy schedules',
+      content: 'Meal prep can save time and improve nutrition...',
+      tags: ['meal-prep', 'healthy-eating', 'time-saving'],
+      readTime: '12 min',
+      difficulty: 'beginner'
+    },
+    {
+      id: 'grocery-list-templates',
+      title: 'Smart Grocery List Templates',
+      type: 'tool',
+      excerpt: 'Organized grocery list templates for efficient shopping',
+      content: 'Well-organized grocery lists save time and money...',
+      tags: ['grocery-shopping', 'templates', 'organization'],
+      readTime: '5 min',
+      difficulty: 'beginner'
+    }
+  ]
+};
+
 export const templates: GuidanceTemplate[] = [
   weddingTemplate,
   homeBuyingTemplate,
   jobSearchTemplate,
   babyPlanningTemplate,
   businessLaunchTemplate,
+  fitnessJourneyTemplate,
+  collegePlanningTemplate,
+  budgetPlanningTemplate,
+  productivitySystemTemplate,
+  movingRelocationTemplate,
+  eventPlanningTemplate,
+  travelPlanningTemplate,
+  mealPlanningTemplate,
   // Future templates generated by AI using the same structure
 ];

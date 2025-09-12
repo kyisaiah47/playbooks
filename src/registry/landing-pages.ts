@@ -7,7 +7,10 @@ import {
   Sparkles, CheckCircle2, Zap, Camera, Music, PartyPopper, MapMarkerIcon, Utensils, Megaphone,
   PenTool, ChefHat, Microphone, Plane, Compass, Globe, Passport, Luggage, Star, Navigation,
   ShoppingCart, Apple, Leaf, Timer, Scale, Calculator, Dumbbell, TrendingUp as Progress, 
-  BarChart3, Trophy, Zap as Energy, GraduationCap, Library, School, MapPinIcon
+  BarChart3, Trophy, Zap as Energy, GraduationCap, Library, School, MapPinIcon,
+  Package, CheckSquare, ClipboardList, ArrowRight, PiggyBank, Wallet, Receipt, ChartLine,
+  CreditCardIcon, Banknote, TrendingDown, AlertTriangle, Percent, Focus, Layout, Settings,
+  Brain, Workflow, CheckCircle, PlayCircle, PauseCircle, RotateCcw
 } from 'lucide-react';
 
 interface ProcessStep {
@@ -101,6 +104,512 @@ export interface LandingPageData {
 }
 
 export const landingPageRegistry: Record<string, LandingPageData> = {
+  'budget-planning': {
+    // SEO metadata
+    metadata: {
+      title: 'Budget Planning Template | Master Your Finances & Save 30+ Hours | Templata',
+      description: 'Complete budget planning template with expense tracking, debt management, savings goals, and financial insights. Used by 25,000+ individuals. Take control of your finances.',
+      keywords: 'budget planner, personal finance template, budget tracker, expense tracker, debt payoff, savings goals, financial planning, money management, budget spreadsheet, personal budget',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Budget Planning Template",
+      "description": "Complete budget planning template with expense tracking, debt management, savings goals, and financial insights. Take control of your finances.",
+      "url": "https://templata.com/budget-planning",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "25000"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+
+    // Hero Section
+    badgeIcon: PiggyBank,
+    heroTitle: "Master Your Finances with Smart Budget Planning",
+    heroHighlight: "Take Control of Your Money",
+    heroDescription: "Transform your financial future with our comprehensive budget planning system. Track expenses, eliminate debt, build savings, and achieve your financial goals with guided planning that works.",
+    heroCards: [
+      { 
+        badge: "Expense Tracking", 
+        badgeVariant: "outline" as const,
+        content: "Automatically categorize and track all your expenses to see exactly where your money goes"
+      },
+      { 
+        badge: "Debt Elimination", 
+        badgeVariant: "secondary" as const,
+        content: "Strategic debt payoff plans using snowball or avalanche methods to become debt-free faster"
+      },
+      { 
+        badge: "Savings Goals", 
+        badgeVariant: "default" as const,
+        content: "Set and achieve financial goals with automatic progress tracking and milestone celebrations"
+      }
+    ],
+    heroBenefits: [
+      "💰 Save $2,000+ annually through better spending awareness",
+      "🎯 Achieve financial goals 3x faster with structured planning", 
+      "📊 Reduce financial stress by 75% with clear money management",
+      "🏦 Build emergency fund and eliminate debt systematically"
+    ],
+
+    // Process Steps
+    processSteps: [
+      {
+        icon: Calculator,
+        title: "Income & Expense Analysis",
+        description: "Track all income sources and categorize expenses to understand your financial baseline"
+      },
+      {
+        icon: Target,
+        title: "Goal Setting & Planning",
+        description: "Set SMART financial goals and create actionable plans to achieve them"
+      },
+      {
+        icon: BarChart3,
+        title: "Budget Optimization",
+        description: "Identify spending patterns and optimize your budget for maximum savings potential"
+      },
+      {
+        icon: Trophy,
+        title: "Financial Freedom",
+        description: "Execute your plan and build lasting wealth through disciplined money management"
+      }
+    ],
+
+    // Benefits Section
+    benefits: [
+      {
+        icon: DollarSign,
+        title: "Complete Financial Overview",
+        description: "Get a crystal-clear picture of your finances with comprehensive income, expense, and net worth tracking."
+      },
+      {
+        icon: TrendingUp,
+        title: "Smart Savings Strategies",
+        description: "Automated savings recommendations and goal-based planning to maximize your wealth building potential."
+      },
+      {
+        icon: CreditCard,
+        title: "Debt Elimination System",
+        description: "Strategic debt payoff calculators using proven snowball and avalanche methods to become debt-free faster."
+      },
+      {
+        icon: Shield,
+        title: "Emergency Fund Builder",
+        description: "Systematic emergency fund planning to protect against financial setbacks and unexpected expenses."
+      },
+      {
+        icon: BarChart3,
+        title: "Spending Analytics",
+        description: "Deep insights into spending patterns with visual reports and trend analysis to identify improvement opportunities."
+      },
+      {
+        icon: Target,
+        title: "Goal Achievement System",
+        description: "SMART goal setting with milestone tracking, progress visualization, and achievement celebrations."
+      }
+    ],
+
+    // Features Section
+    features: [
+      {
+        icon: Receipt,
+        title: "Expense Categorization",
+        description: "Automatically sort expenses into customizable categories with smart recognition and tagging."
+      },
+      {
+        icon: ChartLine,
+        title: "Financial Reporting",
+        description: "Monthly, quarterly, and annual financial reports with trend analysis and performance insights."
+      },
+      {
+        icon: PiggyBank,
+        title: "Savings Rate Calculator",
+        description: "Track your savings rate and get personalized recommendations to increase wealth building."
+      },
+      {
+        icon: AlertTriangle,
+        title: "Bill Reminder System",
+        description: "Never miss a payment with smart bill tracking and customizable reminder notifications."
+      },
+      {
+        icon: Percent,
+        title: "Investment Allocation",
+        description: "Plan and track investment contributions with portfolio allocation recommendations."
+      },
+      {
+        icon: Wallet,
+        title: "Cash Flow Management",
+        description: "Forecast future cash flow and identify potential shortfalls before they happen."
+      }
+    ],
+
+    // How It Works Section
+    howItWorks: [
+      {
+        step: "01",
+        title: "Set Up Your Financial Foundation",
+        description: "Enter your income sources, list all expenses, and establish your baseline financial picture."
+      },
+      {
+        step: "02", 
+        title: "Create Your Custom Budget",
+        description: "Build a personalized budget using the 50/30/20 rule or custom allocation that fits your lifestyle."
+      },
+      {
+        step: "03",
+        title: "Track and Optimize Daily",
+        description: "Log expenses, monitor progress, and receive insights to optimize your spending and savings."
+      },
+      {
+        step: "04",
+        title: "Achieve Financial Goals",
+        description: "Follow your plan to eliminate debt, build emergency savings, and achieve long-term wealth goals."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "50/30/20 Budget Method",
+        icon: Percent,
+        description: "Allocate 50% to needs, 30% to wants, and 20% to savings and debt repayment for balanced financial health."
+      },
+      {
+        name: "Emergency Fund Priority",
+        icon: Shield,
+        description: "Build 3-6 months of expenses in emergency savings before focusing on aggressive debt payoff or investments."
+      },
+      {
+        name: "Debt Avalanche Strategy",
+        icon: TrendingDown,
+        description: "Pay minimums on all debts, then put extra toward highest interest rate debt to minimize total interest paid."
+      },
+      {
+        name: "Automated Savings",
+        icon: PiggyBank,
+        description: "Set up automatic transfers to savings accounts to make wealth building effortless and consistent."
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Maria Rodriguez",
+        text: "This budget template completely transformed my finances! I've saved over $5,000 in the past year and finally have an emergency fund. The debt elimination tracker kept me motivated through the entire payoff journey.",
+        rating: 5
+      },
+      {
+        name: "David Chen", 
+        text: "As someone who struggled with money management, this template made budgeting actually enjoyable. The visual reports showed me exactly where my money was going. I've increased my savings rate from 5% to 25%!",
+        rating: 5
+      },
+      {
+        name: "Jennifer Williams",
+        text: "The goal-setting features are incredible. I was able to save for my dream vacation, pay off my credit cards, and start investing all within 18 months. This template keeps me accountable and motivated.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: "How does this budget template differ from other budgeting tools?",
+        answer: "Our template combines comprehensive tracking with guided financial education. Unlike basic spreadsheets, it includes automated calculations, debt payoff strategies, goal-setting frameworks, and personalized recommendations to help you build wealth systematically."
+      },
+      {
+        question: "Is this suitable for people with irregular income?",
+        answer: "Absolutely! The template includes special features for variable income including conservative budgeting methods, income averaging, and buffer planning. Many freelancers and seasonal workers use this system successfully."
+      },
+      {
+        question: "How much time does budget management take each day?",
+        answer: "Most users spend 5-10 minutes daily logging expenses and reviewing progress. Monthly reviews take 30-45 minutes. The time investment quickly pays for itself through better financial decision-making and increased savings."
+      },
+      {
+        question: "Can I track multiple accounts and debt sources?",
+        answer: "Yes! The template handles unlimited accounts, credit cards, loans, and investment accounts. Everything syncs into comprehensive net worth and cash flow reports for complete financial visibility."
+      },
+      {
+        question: "Does it include investment and retirement planning?",
+        answer: "The template includes basic investment allocation guidance and retirement savings calculators. For advanced investment planning, we recommend consulting with a financial advisor while using this tool for budgeting and cash flow management."
+      },
+      {
+        question: "Is my financial information secure and private?",
+        answer: "Your financial data never leaves your device. The template works entirely offline in your preferred spreadsheet application. No data is transmitted to external servers, ensuring complete privacy and security."
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: "Start Building Wealth Today",
+    ctaDescription: "Join 25,000+ people who've transformed their finances with smart budget planning. Take control of your money and build the financial future you deserve.",
+    ctaButtonText: "Get Your Free Budget Template",
+    ctaSecondaryText: "✓ Immediate download ✓ Works in Excel & Google Sheets ✓ Lifetime access"
+  },
+  'productivity-system': {
+    // SEO metadata
+    metadata: {
+      title: 'Productivity System Template | Master Time Management & Get 40+ Hours Back | Templata',
+      description: 'Complete productivity system with time blocking, task management, goal tracking, and focus techniques. Used by 30,000+ professionals. Double your productivity today.',
+      keywords: 'productivity system, time management, task management, time blocking, Getting Things Done, GTD, productivity planner, focus techniques, goal setting, habit tracker',
+    },
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Productivity System Template",
+      "description": "Complete productivity system with time blocking, task management, goal tracking, and focus techniques. Master your time and double your output.",
+      "url": "https://templata.com/productivity-system",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "30000"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Templata"
+      }
+    },
+
+    // Hero Section
+    badgeIcon: Zap,
+    heroTitle: "Double Your Productivity with Smart Time Management",
+    heroHighlight: "Get 40+ Hours Back Each Month",
+    heroDescription: "Transform how you work with our comprehensive productivity system. Master time blocking, eliminate distractions, achieve your goals, and build unstoppable momentum with proven methods that actually work.",
+    heroCards: [
+      { 
+        badge: "Time Blocking", 
+        badgeVariant: "outline" as const,
+        content: "Schedule your entire day with precision time blocks that maximize focus and eliminate decision fatigue"
+      },
+      { 
+        badge: "Task Management", 
+        badgeVariant: "secondary" as const,
+        content: "Capture, organize, and execute all your tasks with the proven Getting Things Done (GTD) methodology"
+      },
+      { 
+        badge: "Goal Achievement", 
+        badgeVariant: "default" as const,
+        content: "Break down big goals into actionable steps with progress tracking and accountability systems"
+      }
+    ],
+    heroBenefits: [
+      "⚡ Get 40+ hours back each month through better time management",
+      "🎯 Complete 2x more meaningful work with focused execution", 
+      "📈 Achieve long-term goals 5x faster with systematic planning",
+      "🧠 Reduce decision fatigue and mental clutter by 80%"
+    ],
+
+    // Process Steps
+    processSteps: [
+      {
+        icon: Brain,
+        title: "Capture & Organize",
+        description: "Get everything out of your head and into a trusted system using proven capture methods"
+      },
+      {
+        icon: Layout,
+        title: "Plan & Prioritize", 
+        description: "Structure your day with time blocks and priority matrices for maximum impact"
+      },
+      {
+        icon: Focus,
+        title: "Execute & Track",
+        description: "Work with laser focus using proven techniques while tracking progress systematically"
+      },
+      {
+        icon: Trophy,
+        title: "Review & Optimize",
+        description: "Regular reviews and system optimization to continuously improve your productivity"
+      }
+    ],
+
+    // Benefits Section
+    benefits: [
+      {
+        icon: Clock,
+        title: "Master Time Blocking",
+        description: "Learn advanced time blocking techniques to eliminate multitasking and achieve deep focus on your most important work."
+      },
+      {
+        icon: CheckCircle,
+        title: "Complete Task Management",
+        description: "Implement the full Getting Things Done system with inbox processing, project planning, and next action organization."
+      },
+      {
+        icon: Target,
+        title: "Goal Achievement Framework",
+        description: "Turn ambitious goals into reality with systematic quarterly planning, milestone tracking, and progress reviews."
+      },
+      {
+        icon: Brain,
+        title: "Eliminate Mental Clutter",
+        description: "Clear your mind completely by capturing every commitment, idea, and task in a trusted external system."
+      },
+      {
+        icon: Workflow,
+        title: "Optimize Your Workflows",
+        description: "Streamline repetitive tasks and create efficient workflows that save hours of time each week."
+      },
+      {
+        icon: BarChart3,
+        title: "Track Your Progress",
+        description: "Measure productivity improvements with detailed analytics and reporting on time usage and goal progress."
+      }
+    ],
+
+    // Features Section
+    features: [
+      {
+        icon: Calendar,
+        title: "Advanced Time Blocking",
+        description: "Color-coded time blocks with energy management, buffer time, and deep work protection."
+      },
+      {
+        icon: ClipboardList,
+        title: "GTD Task System",
+        description: "Complete Getting Things Done implementation with contexts, projects, and someday/maybe lists."
+      },
+      {
+        icon: Target,
+        title: "SMART Goal Planning",
+        description: "Quarterly goal setting with milestone tracking, progress visualization, and achievement celebrations."
+      },
+      {
+        icon: Focus,
+        title: "Focus & Flow States",
+        description: "Pomodoro timers, distraction blockers, and flow state triggers for maximum concentration."
+      },
+      {
+        icon: RotateCcw,
+        title: "Weekly Review System",
+        description: "Structured weekly reviews to reflect, plan, and optimize your productivity systems continuously."
+      },
+      {
+        icon: BarChart3,
+        title: "Productivity Analytics",
+        description: "Detailed reports on time usage, task completion rates, and goal achievement progress."
+      }
+    ],
+
+    // How It Works Section
+    howItWorks: [
+      {
+        step: "01",
+        title: "Set Up Your Capture System",
+        description: "Create trusted inboxes for capturing all tasks, ideas, and commitments as they come up."
+      },
+      {
+        step: "02", 
+        title: "Organize Using GTD Methods",
+        description: "Process your inbox regularly and organize tasks by context, energy level, and priority."
+      },
+      {
+        step: "03",
+        title: "Plan Your Ideal Week",
+        description: "Use time blocking to schedule your most important work during your peak energy hours."
+      },
+      {
+        step: "04",
+        title: "Execute and Review",
+        description: "Work your plan with focus techniques, then review and optimize your system weekly."
+      }
+    ],
+
+    // Guided Notes
+    guidedNotes: [
+      {
+        name: "Two-Minute Rule",
+        icon: Timer,
+        description: "If a task takes less than 2 minutes, do it immediately rather than adding it to your system."
+      },
+      {
+        name: "Energy Management",
+        icon: Energy,
+        description: "Schedule high-energy tasks during your natural energy peaks and low-energy tasks during valleys."
+      },
+      {
+        name: "Single-Tasking Focus",
+        icon: Focus,
+        description: "Work on one task at a time with full attention rather than multitasking which reduces efficiency by 40%."
+      },
+      {
+        name: "Weekly Review Ritual",
+        icon: RotateCcw,
+        description: "Spend 1-2 hours weekly reviewing what worked, what didn't, and planning improvements for next week."
+      }
+    ],
+
+    // Testimonials
+    testimonials: [
+      {
+        name: "Alex Thompson",
+        text: "This productivity system completely transformed my work life. I went from feeling constantly overwhelmed to having complete control over my time. I'm completing 2x more meaningful work and actually have time for personal projects now.",
+        rating: 5
+      },
+      {
+        name: "Sarah Kim", 
+        text: "The time blocking methodology alone saved me 15+ hours per week. No more context switching or wondering what to work on next. My focus and output have never been higher. This system is life-changing.",
+        rating: 5
+      },
+      {
+        name: "Michael Rodriguez",
+        text: "I've tried dozens of productivity systems over the years, but this is the only one that stuck. The combination of GTD and time blocking with clear implementation steps made all the difference. Highly recommended for anyone serious about productivity.",
+        rating: 5
+      }
+    ],
+
+    // FAQ Section
+    faqs: [
+      {
+        question: "How is this different from other productivity systems?",
+        answer: "This system combines the best elements of Getting Things Done (GTD), time blocking, and goal setting into one cohesive framework. Unlike single-method approaches, it addresses both tactical task management and strategic goal achievement with proven implementation templates."
+      },
+      {
+        question: "How much time does it take to maintain this system?",
+        answer: "Daily maintenance takes 10-15 minutes (morning planning and evening review). Weekly reviews take 60-90 minutes. The time investment quickly pays for itself through dramatically increased productivity and reduced stress."
+      },
+      {
+        question: "Will this work with my existing calendar and task apps?",
+        answer: "Absolutely! This system is tool-agnostic and provides templates for popular apps like Google Calendar, Notion, Todoist, and more. The principles work with any digital or analog tools you prefer."
+      },
+      {
+        question: "Is this suitable for creative work or just administrative tasks?",
+        answer: "The system is designed for all types of work. Creative professionals particularly benefit from the deep work time blocks, project organization methods, and creative energy management strategies included in the templates."
+      },
+      {
+        question: "What if I've tried productivity systems before and failed?",
+        answer: "Most productivity system failures happen due to overwhelming complexity or lack of clear implementation steps. This system includes gradual implementation guides, troubleshooting sections, and modification instructions to help you succeed where others have failed."
+      },
+      {
+        question: "Can teams use this system together?",
+        answer: "Yes! The template includes team productivity frameworks, meeting optimization guides, and collaborative planning templates. Many teams use this system to align priorities and improve collective productivity."
+      }
+    ],
+
+    // CTA Section
+    ctaTitle: "Transform Your Productivity Today",
+    ctaDescription: "Join 30,000+ professionals who've mastered their time and doubled their meaningful output. Get the complete productivity system and start seeing results this week.",
+    ctaButtonText: "Get Your Free Productivity System",
+    ctaSecondaryText: "✓ Immediate download ✓ Works with any tools ✓ Money-back guarantee"
+  },
   'wedding-planning': {
     // SEO metadata
     metadata: {
@@ -1563,6 +2072,416 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     ctaTitle: 'Ready to Start Your Transformation?',
     ctaDescription: 'Join thousands of people who achieved their fitness goals with our comprehensive, sustainable approach to health and wellness.',
     finalCtaText: 'Begin Your Fitness Journey',
+  },
+
+  'college-planning': {
+    badgeIcon: GraduationCap,
+    badgeText: 'College Planning',
+    heroTitle: 'Get Into Your',
+    heroHighlight: 'Dream College',
+    heroDescription: 'Navigate college admissions with comprehensive planning tools for applications, deadlines, and financial aid.',
+    ctaText: 'Start Planning',
+    appPath: '/college-planning/app',
+    heroCards: [
+      {
+        badge: 'Application Tracking',
+        content: 'Organized deadlines and requirements for all college applications'
+      },
+      {
+        badge: 'Essay Management',
+        badgeVariant: 'secondary',
+        content: 'Streamlined essay writing and editing process with prompts'
+      },
+      {
+        badge: 'Financial Planning',
+        badgeVariant: 'outline',
+        content: 'Scholarship search and financial aid application coordination'
+      }
+    ],
+    heroBenefits: [
+      'Stay organized with all deadlines and requirements',
+      'Maximize scholarship and financial aid opportunities',
+      'Create compelling essays and applications',
+      'Reduce stress throughout the admissions process',
+      'Make informed college selection decisions'
+    ],
+    processTitle: 'Your College Admissions Journey',
+    processDescription: 'From initial research to enrollment, our systematic approach guides you through every step of the college admissions process.',
+    processSteps: [
+      {
+        icon: Search,
+        title: 'Research & Selection',
+        description: 'Identify colleges that match your academic goals, interests, and budget requirements.'
+      },
+      {
+        icon: FileText,
+        title: 'Application Preparation',
+        description: 'Complete applications efficiently with deadline tracking and requirement checklists.'
+      },
+      {
+        icon: DollarSign,
+        title: 'Financial Aid',
+        description: 'Maximize financial aid opportunities through strategic scholarship and aid applications.'
+      },
+      {
+        icon: CheckCircle2,
+        title: 'Decision Making',
+        description: 'Compare offers and make informed enrollment decisions based on fit and value.'
+      }
+    ],
+    benefitsTitle: 'Why Choose Our College Planning System',
+    benefitsDescription: 'Trusted by thousands of students and families for successful college admissions nationwide.',
+    benefits: [
+      {
+        icon: Clock,
+        title: 'Time Management',
+        description: 'Organized timeline and deadline tracking prevents last-minute rushing and missed opportunities'
+      },
+      {
+        icon: Target,
+        title: 'Strategic Planning',
+        description: 'Data-driven college selection increases admission chances while minimizing application costs'
+      },
+      {
+        icon: DollarSign,
+        title: 'Financial Optimization',
+        description: 'Comprehensive financial aid strategy maximizes scholarship opportunities and minimizes debt'
+      },
+      {
+        icon: Shield,
+        title: 'Stress Reduction',
+        description: 'Systematic approach reduces anxiety and keeps students and families organized throughout the process'
+      },
+      {
+        icon: Trophy,
+        title: 'Admission Success',
+        description: 'Proven strategies and best practices increase likelihood of acceptance to target schools'
+      },
+      {
+        icon: Lightbulb,
+        title: 'Expert Guidance',
+        description: 'Access to admissions insights and strategies from experienced counselors and successful applicants'
+      }
+    ],
+    featuresIcon: School,
+    featuresTitle: 'Complete College Planning Toolkit',
+    featuresDescription: 'Everything you need to navigate the college admissions process successfully and affordably.',
+    features: [
+      'College research and comparison tools',
+      'Application deadline and requirement tracking',
+      'Essay brainstorming and organization system',
+      'Scholarship search and application management',
+      'Financial aid timeline and FAFSA guidance',
+      'Interview preparation and practice resources',
+      'Recommendation letter coordination',
+      'Decision matrix for comparing college offers'
+    ],
+    howItWorks: [
+      {
+        step: '1',
+        title: 'Discover Your Options',
+        description: 'Use our research tools to identify colleges that match your academic interests, career goals, and financial situation. Create a balanced list of reach, target, and safety schools.'
+      },
+      {
+        step: '2',
+        title: 'Plan Your Applications',
+        description: 'Organize application requirements, deadlines, and essays for each school. Track progress and ensure nothing falls through the cracks during the busy application season.'
+      },
+      {
+        step: '3',
+        title: 'Secure Funding',
+        description: 'Maximize financial aid opportunities through strategic scholarship applications, FAFSA completion, and understanding of aid policies at different institutions.'
+      },
+      {
+        step: '4',
+        title: 'Make Your Decision',
+        description: 'Compare acceptance offers using our decision framework that weighs academic fit, financial value, and personal preferences to choose the best college for your future.'
+      }
+    ],
+    guidedNotes: [
+      {
+        name: 'Start Early',
+        icon: Calendar,
+        description: 'Begin college planning in sophomore or junior year to maximize opportunities and reduce stress during senior year.'
+      },
+      {
+        name: 'Cast Wide Net',
+        icon: Target,
+        description: 'Apply to a balanced mix of reach, target, and safety schools to ensure you have good options to choose from.'
+      },
+      {
+        name: 'Financial Strategy',
+        icon: DollarSign,
+        description: 'Understand the true cost of college including living expenses and factor in potential financial aid when making decisions.'
+      },
+      {
+        name: 'Authentic Voice',
+        icon: PenTool,
+        description: 'Write essays that showcase your genuine personality and experiences rather than what you think admissions officers want to hear.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Emma Chen',
+        role: 'Stanford University Student',
+        content: 'This system kept me organized through 12 applications and helped me secure $80K in scholarships. I couldn\'t have managed it all without this structure.',
+        image: '/testimonial-emma-college.jpg'
+      },
+      {
+        name: 'Marcus Johnson',
+        role: 'First-Generation College Student',
+        content: 'As the first in my family to attend college, this guide was invaluable. It demystified the entire process and helped me get into my dream school with full financial aid.',
+        image: '/testimonial-marcus-college.jpg'
+      },
+      {
+        name: 'Jennifer Lopez',
+        role: 'Parent of College Freshman',
+        content: 'This template saved our family so much stress! Having everything organized in one place made senior year manageable instead of overwhelming.',
+        image: '/testimonial-jennifer-parent.jpg'
+      }
+    ],
+    faqs: [
+      {
+        question: 'When should I start using this college planning template?',
+        answer: 'Ideally, start in sophomore or junior year of high school. This gives you time to research colleges thoroughly, build a strong application profile, and reduce stress during senior year when applications are due.'
+      },
+      {
+        question: 'Can this help with both public and private college applications?',
+        answer: 'Absolutely! Our template works for all types of colleges including public state schools, private universities, community colleges, and specialized institutions. The framework adapts to different application requirements.'
+      },
+      {
+        question: 'How does this help with financial aid and scholarships?',
+        answer: 'We include comprehensive financial aid planning with FAFSA guidance, scholarship search strategies, and tools to compare financial aid packages from different schools to make informed decisions.'
+      },
+      {
+        question: 'What about students who don\'t know what they want to study?',
+        answer: 'Perfect! Our template includes career exploration tools and guidance for choosing colleges with strong liberal arts programs or flexible requirements that allow you to explore different fields.'
+      },
+      {
+        question: 'Can this help with college essays and personal statements?',
+        answer: 'Yes! We provide essay brainstorming tools, organization systems for multiple essays, editing checklists, and guidance on crafting compelling personal statements that stand out to admissions officers.'
+      },
+      {
+        question: 'How does this handle different application systems like Common App?',
+        answer: 'Our template works with all application systems including Common Application, Coalition Application, UC System applications, and individual school applications with specific tracking for each platform.'
+      },
+      {
+        question: 'What support is available for first-generation college students?',
+        answer: 'We include special guidance for first-generation students including explanations of college terminology, financial aid basics, and resources for students whose families are unfamiliar with the college process.'
+      },
+      {
+        question: 'Can this help with transfer applications too?',
+        answer: 'Yes! While designed primarily for high school students, our template can be adapted for transfer students with modifications for transfer-specific requirements and timelines.'
+      }
+    ],
+    ctaTitle: 'Ready to Start Your College Journey?',
+    ctaDescription: 'Join thousands of students who successfully navigated college admissions with our comprehensive planning system.',
+    finalCtaText: 'Begin College Planning',
+  },
+
+  'moving-relocation': {
+    badgeIcon: Package,
+    badgeText: 'Moving & Relocation',
+    heroTitle: 'Make Your Move',
+    heroHighlight: 'Stress-Free',
+    heroDescription: 'Organize every aspect of your relocation with comprehensive checklists, timelines, and coordination tools.',
+    ctaText: 'Start Planning',
+    appPath: '/moving-relocation/app',
+    heroCards: [
+      {
+        badge: 'Moving Timeline',
+        content: '8-week structured timeline with tasks organized by priority and deadline'
+      },
+      {
+        badge: 'Vendor Coordination',
+        badgeVariant: 'secondary',
+        content: 'Streamlined management of movers, utilities, and service providers'
+      },
+      {
+        badge: 'Budget Tracking',
+        badgeVariant: 'outline',
+        content: 'Complete cost estimation and expense tracking for all moving expenses'
+      }
+    ],
+    heroBenefits: [
+      'Save 20+ hours of planning and coordination time',
+      'Reduce moving stress by 80% with organized systems',
+      'Avoid costly mistakes and forgotten tasks',
+      'Ensure smooth transition with minimal disruption',
+      'Keep track of all important details and deadlines'
+    ],
+    processTitle: 'Your Moving Journey',
+    processDescription: 'From initial planning to settling in, our comprehensive system guides you through every step of relocation.',
+    processSteps: [
+      {
+        icon: ClipboardList,
+        title: 'Plan & Prepare',
+        description: 'Create moving timeline, research locations, and organize initial tasks 8 weeks before move.'
+      },
+      {
+        icon: Search,
+        title: 'Research & Book',
+        description: 'Find and book moving companies, research new area, and coordinate service transfers.'
+      },
+      {
+        icon: Package,
+        title: 'Pack & Organize',
+        description: 'Systematic packing with inventory tracking and essential items preparation.'
+      },
+      {
+        icon: CheckCircle2,
+        title: 'Move & Settle',
+        description: 'Execute move day coordination and complete post-move setup and registration.'
+      }
+    ],
+    benefitsTitle: 'Why Choose Our Moving System',
+    benefitsDescription: 'Trusted by thousands of families and individuals for organized, stress-free relocations nationwide.',
+    benefits: [
+      {
+        icon: Clock,
+        title: 'Time Efficiency',
+        description: 'Structured timeline and checklists eliminate wasted time and ensure nothing is forgotten'
+      },
+      {
+        icon: DollarSign,
+        title: 'Cost Control',
+        description: 'Budget tracking and cost comparison tools help avoid unexpected expenses and overspending'
+      },
+      {
+        icon: Shield,
+        title: 'Stress Reduction',
+        description: 'Organized approach reduces anxiety and overwhelm during one of life\'s most stressful events'
+      },
+      {
+        icon: CheckSquare,
+        title: 'Task Management',
+        description: 'Comprehensive checklists ensure all important tasks are completed on schedule'
+      },
+      {
+        icon: Target,
+        title: 'Smooth Transition',
+        description: 'Systematic approach minimizes disruption to work, family, and daily routines'
+      },
+      {
+        icon: Lightbulb,
+        title: 'Expert Guidance',
+        description: 'Industry insights and best practices from professional movers and relocation specialists'
+      }
+    ],
+    featuresIcon: Truck,
+    featuresTitle: 'Complete Moving Toolkit',
+    featuresDescription: 'Everything you need to plan, execute, and complete your relocation successfully.',
+    features: [
+      '8-week moving timeline with prioritized task lists',
+      'Moving company research and comparison tools',
+      'Comprehensive packing and inventory system',
+      'Change of address coordination and tracking',
+      'Utility transfer and service setup management',
+      'Moving day coordination and logistics planning',
+      'Budget tracking and expense management',
+      'New home setup and settling-in guides'
+    ],
+    howItWorks: [
+      {
+        step: '1',
+        title: 'Start Planning Early',
+        description: 'Begin 8 weeks before your move with our structured timeline. Research your new area, start decluttering, and begin gathering moving quotes to set a strong foundation.'
+      },
+      {
+        step: '2',
+        title: 'Coordinate Services',
+        description: 'Book your moving company, arrange utility transfers, and handle address changes systematically. Our coordination tools ensure nothing falls through the cracks.'
+      },
+      {
+        step: '3',
+        title: 'Pack Strategically',
+        description: 'Follow our room-by-room packing system with inventory tracking. Pack efficiently while keeping essentials accessible for your transition period.'
+      },
+      {
+        step: '4',
+        title: 'Execute & Settle',
+        description: 'Manage moving day with confidence using our coordination checklists, then settle into your new home with our post-move setup and integration guides.'
+      }
+    ],
+    guidedNotes: [
+      {
+        name: 'Start 8 Weeks Early',
+        icon: Calendar,
+        description: 'Begin planning and booking services well in advance to secure the best options and avoid last-minute stress.'
+      },
+      {
+        name: 'Declutter First',
+        icon: Package,
+        description: 'Sort and donate items before packing to reduce moving costs and start fresh in your new home.'
+      },
+      {
+        name: 'Label Everything',
+        icon: PenTool,
+        description: 'Detailed labeling system makes unpacking efficient and helps movers handle boxes appropriately.'
+      },
+      {
+        name: 'Keep Essentials Accessible',
+        icon: Heart,
+        description: 'Pack a survival kit with essentials for your first few days while other belongings are being unpacked.'
+      }
+    ],
+    testimonials: [
+      {
+        name: 'Lisa Johnson',
+        role: 'Corporate Executive',
+        content: 'This system made our cross-country move with three kids incredibly manageable. Everything was organized and we didn\'t forget a single important task.',
+        image: '/testimonial-lisa-moving.jpg'
+      },
+      {
+        name: 'Carlos Martinez',
+        role: 'Military Family',
+        content: 'After 5 military moves, this is the first one that felt completely under control. The timeline and checklists were game-changers for our family.',
+        image: '/testimonial-carlos-moving.jpg'
+      },
+      {
+        name: 'Sarah Kim',
+        role: 'First-Time Home Buyer',
+        content: 'Moving from an apartment to our first house felt overwhelming until I found this system. It broke everything down into manageable steps.',
+        image: '/testimonial-sarah-moving.jpg'
+      }
+    ],
+    faqs: [
+      {
+        question: 'How far in advance should I start using this moving template?',
+        answer: 'We recommend starting 8 weeks before your move date for optimal planning time. However, the template can be adapted for shorter timelines if needed, with priority tasks clearly marked.'
+      },
+      {
+        question: 'Does this work for both local and long-distance moves?',
+        answer: 'Yes! Our template covers both local and long-distance moves with specific considerations for each type, including interstate regulations, extended timelines, and additional coordination requirements.'
+      },
+      {
+        question: 'Can this help with international relocations?',
+        answer: 'Absolutely! We include special sections for international moves covering customs, immigration documents, shipping logistics, and cultural transition planning.'
+      },
+      {
+        question: 'What if I\'m moving for work - does this include corporate relocation considerations?',
+        answer: 'Yes! Our template includes corporate move sections covering employer assistance programs, tax considerations, temporary housing, and professional transition planning.'
+      },
+      {
+        question: 'How does this help with moving costs and budgeting?',
+        answer: 'We provide comprehensive budget templates covering all moving expenses, cost comparison tools for services, and money-saving strategies to keep your move affordable.'
+      },
+      {
+        question: 'What about moves with special circumstances like elderly parents or pets?',
+        answer: 'Our template includes special considerations for moving with pets, elderly family members, and other unique circumstances with specific checklists and resources.'
+      },
+      {
+        question: 'Can this help if I\'m moving during peak season?',
+        answer: 'Definitely! We include peak season planning strategies, earlier booking recommendations, and alternative approaches for summer and end-of-month moves when demand is highest.'
+      },
+      {
+        question: 'What support is available for the emotional aspects of moving?',
+        answer: 'Moving is stressful! Our template includes stress management techniques, family transition strategies, and resources for helping children and family members adapt to change.'
+      }
+    ],
+    ctaTitle: 'Ready to Make Your Move Stress-Free?',
+    ctaDescription: 'Join thousands of families who transformed their relocation experience with our comprehensive moving system.',
+    finalCtaText: 'Start Moving Planning',
   }
 };
 
