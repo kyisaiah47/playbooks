@@ -1,78 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
+import { blogRegistry, getFeaturedBlogPosts, getAllBlogCategories } from "@/registry/blogs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar, Clock, User, BookOpen, Heart, Home, Briefcase, DollarSign, Calendar as CalendarIcon, TrendingUp } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { PageLayout } from "@/components/layout";
 
-// Mock blog data - in a real app this would come from a CMS or database
-const blogPosts = [
-  {
-    id: "wedding-planning-timeline",
-    title: "The Complete Wedding Planning Timeline: 12 Months to Your Perfect Day",
-    excerpt: "Navigate your wedding planning journey with confidence using our comprehensive month-by-month guide that ensures nothing gets overlooked.",
-    category: "Wedding Planning",
-    author: "Sarah Johnson",
-    publishedAt: "2024-03-15",
-    readTime: "8 min read",
-    featured: true,
-  },
-  {
-    id: "home-buying-checklist",
-    title: "First-Time Home Buyer's Essential Checklist",
-    excerpt: "From pre-approval to closing day, discover the critical steps and documents you need for a smooth home buying experience.",
-    category: "Real Estate",
-    author: "Michael Chen",
-    publishedAt: "2024-03-10",
-    readTime: "6 min read",
-    featured: false,
-  },
-  {
-    id: "career-change-guide",
-    title: "Making a Career Change at 30: A Strategic Approach",
-    excerpt: "Learn how to pivot your career successfully with practical steps for networking, skill building, and financial planning.",
-    category: "Career",
-    author: "Emily Rodriguez",
-    publishedAt: "2024-03-05",
-    readTime: "10 min read",
-    featured: false,
-  },
-  {
-    id: "small-business-launch",
-    title: "From Idea to Launch: Your Small Business Startup Roadmap",
-    excerpt: "Transform your business idea into reality with our step-by-step guide covering planning, legal setup, and marketing strategies.",
-    category: "Business",
-    author: "David Park",
-    publishedAt: "2024-02-28",
-    readTime: "12 min read",
-    featured: true,
-  },
-  {
-    id: "event-planning-tips",
-    title: "10 Event Planning Mistakes That Could Ruin Your Special Day",
-    excerpt: "Avoid common pitfalls with expert insights on budget management, vendor selection, and timeline planning for memorable events.",
-    category: "Event Planning",
-    author: "Lisa Thompson",
-    publishedAt: "2024-02-20",
-    readTime: "7 min read",
-    featured: false,
-  },
-  {
-    id: "financial-planning-basics",
-    title: "Building Your Emergency Fund: A Beginner's Guide",
-    excerpt: "Establish financial security with practical strategies for saving, budgeting, and growing your emergency fund over time.",
-    category: "Personal Finance",
-    author: "Robert Kim",
-    publishedAt: "2024-02-15",
-    readTime: "5 min read",
-    featured: false,
-  },
-];
-
-const categories = ["All", "Wedding Planning", "Real Estate", "Career", "Business", "Event Planning", "Personal Finance"];
+const categories = ["All", ...getAllBlogCategories()];
 
 const getCategoryIcon = (category: string) => {
   switch (category) {
@@ -129,7 +66,7 @@ export default function BlogPage() {
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-4">Featured Articles</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              {blogPosts.filter(post => post.featured).map((post) => (
+              {getFeaturedBlogPosts().map((post) => (
                 <Card key={post.id} className="group hover:shadow-md transition-shadow duration-200">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -143,7 +80,7 @@ export default function BlogPage() {
                       </div>
                     </div>
                     <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                      <Link href={`/blog/${post.id}`}>
+                      <Link href={`/blog/${post.slug}`}>
                         {post.title}
                       </Link>
                     </h3>
@@ -162,7 +99,7 @@ export default function BlogPage() {
                         </div>
                       </div>
                       <Button variant="ghost" size="sm" className="h-6 text-xs" asChild>
-                        <Link href={`/blog/${post.id}`}>
+                        <Link href={`/blog/${post.slug}`}>
                           Read More <ArrowRight className="w-3 h-3 ml-1" />
                         </Link>
                       </Button>
@@ -177,7 +114,7 @@ export default function BlogPage() {
           <div>
             <h2 className="text-xl font-semibold mb-6">All Articles</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogPosts.map((post) => (
+              {blogRegistry.map((post) => (
                 <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
                   <CardContent className="p-0">
                     <div className="p-6 pb-4">
@@ -190,7 +127,7 @@ export default function BlogPage() {
                         </Badge>
                       </div>
                       <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                        <Link href={`/blog/${post.id}`}>
+                        <Link href={`/blog/${post.slug}`}>
                           {post.title}
                         </Link>
                       </h3>
@@ -210,7 +147,7 @@ export default function BlogPage() {
                         </div>
                       </div>
                       <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground transition-all" asChild>
-                        <Link href={`/blog/${post.id}`}>
+                        <Link href={`/blog/${post.slug}`}>
                           <span>Read Article</span>
                           <ArrowRight className="w-4 h-4" />
                         </Link>

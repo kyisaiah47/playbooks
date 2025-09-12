@@ -372,7 +372,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Comprehensive budget allocation guide with average percentages: Venue (40-50%), Photography (10-15%), Catering (25-35%), Music (8-12%), Flowers (6-10%), Attire (4-8%), Transportation (2-5%), Favors (1-3%). Includes regional variations and money-saving alternatives for each category.',
       tags: ['budget', 'planning', 'finance'],
       readTime: '8 min',
-      difficulty: 'beginner'
+      difficulty: 'beginner',
+      relatedBlogPost: 'wedding-budget-breakdown'
     },
     {
       id: 'hidden-wedding-costs',
@@ -382,7 +383,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Complete list of surprise costs including: gratuities, vendor meals, alterations, marriage license, wedding insurance, overtime charges, delivery fees, setup/breakdown costs, taxes, and more. Includes cost ranges and prevention strategies.',
       tags: ['budget', 'planning', 'tips'],
       readTime: '10 min',
-      difficulty: 'intermediate'
+      difficulty: 'intermediate',
+      relatedBlogPost: 'hidden-wedding-costs'
     },
     {
       id: 'wedding-cost-cutting-tips',
@@ -392,7 +394,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Strategic cost-cutting ideas organized by category: venue alternatives, catering hacks, DIY opportunities, timing strategies, and vendor negotiations. Includes potential savings amounts and implementation difficulty.',
       tags: ['budget', 'savings', 'DIY'],
       readTime: '12 min',
-      difficulty: 'intermediate'
+      difficulty: 'intermediate',
+      relatedBlogPost: 'wedding-cost-cutting-tips'
     },
     {
       id: 'vendor-contract-checklist',
@@ -402,7 +405,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Comprehensive checklist covering payment terms, cancellation policies, force majeure clauses, service details, backup plans, overtime rates, and liability coverage. Includes red flags to watch for.',
       tags: ['vendors', 'contracts', 'legal'],
       readTime: '6 min',
-      difficulty: 'expert'
+      difficulty: 'expert',
+      relatedBlogPost: 'vendor-contract-checklist'
     },
     {
       id: 'wedding-timeline-template',
@@ -412,7 +416,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Detailed timeline starting 2 hours before ceremony through last dance, including vendor arrival times, photo opportunities, meal service, and buffer time for delays.',
       tags: ['timeline', 'planning', 'day-of'],
       readTime: '4 min',
-      difficulty: 'beginner'
+      difficulty: 'beginner',
+      relatedBlogPost: 'wedding-timeline-template'
     },
     {
       id: 'emergency-kit-checklist',
@@ -422,7 +427,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Complete emergency kit including fashion fixes, beauty touch-ups, comfort items, vendor communications, and guest accommodation essentials.',
       tags: ['day-of', 'preparation', 'emergency'],
       readTime: '5 min',
-      difficulty: 'beginner'
+      difficulty: 'beginner',
+      relatedBlogPost: 'emergency-kit-checklist'
     },
     {
       id: 'guest-accommodation-guide',
@@ -432,7 +438,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Strategies for guest comfort including hotel blocks, welcome bags, local recommendations, transportation options, and communication timeline.',
       tags: ['guests', 'hospitality', 'planning'],
       readTime: '7 min',
-      difficulty: 'intermediate'
+      difficulty: 'intermediate',
+      relatedBlogPost: 'guest-accommodation-guide'
     },
     {
       id: 'wedding-photography-guide',
@@ -442,7 +449,8 @@ export const weddingTemplate: GuidanceTemplate = {
       content: 'Guide covering photography styles, shot lists, timeline planning, family photo organization, and working effectively with your photographer.',
       tags: ['photography', 'planning', 'memories'],
       readTime: '9 min',
-      difficulty: 'intermediate'
+      difficulty: 'intermediate',
+      relatedBlogPost: 'wedding-photography-guide'
     }
   ],
   expertTips: [

@@ -20,25 +20,22 @@ import {
 	Zap,
 	MoveRight,
 	FileText,
+	Home,
+	Briefcase,
+	Target,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { templates } from "@/data/templates";
+import { templateRegistry, getAllCategories } from "@/registry/templates";
 
-// Generate categories dynamically from templates
-const allCategories = templates.reduce((acc, template) => {
-	if (!acc.find(cat => cat.id === template.category)) {
-		acc.push({
-			id: template.category,
-			name: template.category === 'life-events' ? 'Life Events' : 
-				  template.category.charAt(0).toUpperCase() + template.category.slice(1),
-			count: templates.filter(t => t.category === template.category).length
-		});
-	}
-	return acc;
-}, [] as Array<{ id: string, name: string, count: number }>);
+// Generate categories dynamically from template registry
+const allCategories = getAllCategories().map(category => ({
+	id: category.toLowerCase().replace(/ /g, '-'),
+	name: category,
+	count: templateRegistry.filter(t => t.category === category).length
+}));
 
 const categories = [
-	{ id: "all", name: "All Templates", count: templates.length },
+	{ id: "all", name: "All Templates", count: templateRegistry.length },
 	...allCategories
 ];
 
@@ -74,22 +71,35 @@ const additionalFeaturedTemplates = [
 	},
 ];
 
-// Transform template data for display
-const displayTemplates = templates.map(template => ({
-	id: template.id,
-	title: template.title,
-	description: template.description,
-	category: template.category,
-	icon: Heart, // Default icon for now, could be mapped later
-	color: "bg-muted/50 border-border text-foreground",
-	popular: template.id === "wedding-planning", // Mark wedding as popular
-	features: [
-		`${template.sections.length} Planning Sections`,
-		`${template.sections.reduce((acc, s) => acc + s.reflectionPrompts.length, 0)} Reflection Prompts`,
-		`${template.resources.length} Expert Resources`,
-		"Guided Templates"
+// Map template categories to Lucide icons
+const getTemplateIcon = (template: any) => {
+	switch (template.category) {
+		case 'Personal Life':
+			if (template.id === 'wedding-planning') return Heart;
+			if (template.id === 'home-buying') return Home;
+			return Heart;
+		case 'Career & Business':
+			return Briefcase;
+		case 'Education':
+			return Target;
+		case 'Health & Wellness':
+			return Heart;
+		default:
+			return Heart;
+	}
+};
+
+// Use template registry for display (add features for display)
+const displayTemplates = templateRegistry.map(template => ({
+	...template,
+	features: template.comingSoon ? ["Coming Soon"] : [
+		"Expert Guidance",
+		"Reflection Prompts", 
+		"Resource Library",
+		"Step-by-Step Process"
 	],
 	setupTime: "5 min",
+	icon: getTemplateIcon(template)
 }));
 
 export default function TemplatesPage() {
@@ -99,7 +109,7 @@ export default function TemplatesPage() {
 
 	const filteredTemplates = displayTemplates.filter((template) => {
 		const matchesSearch =
-			template.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+			template.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
 			template.description.toLowerCase().includes(searchTerm.toLowerCase());
 		const matchesCategory =
 			selectedCategory === "all" || template.category === selectedCategory;
@@ -227,19 +237,15 @@ export default function TemplatesPage() {
 									key={template.id}
 									className="group hover:shadow-md transition-all duration-200"
 								>
-									<Link href={`/${template.id}/app`}>
+									<Link href={template.url}>
 										<CardContent className="p-6">
 											<div className="flex items-start gap-4">
-												<div
-													className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${template.color}`}
-												>
-													<Icon className="h-6 w-6" />
-												</div>
+												<Icon className="h-8 w-8 flex-shrink-0" />
 
 												<div className="flex-1 min-w-0">
 													<div className="flex items-center gap-2 mb-2">
 														<h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-															{template.title}
+															{template.name}
 														</h3>
 														{template.popular && (
 															<Badge
@@ -256,7 +262,7 @@ export default function TemplatesPage() {
 													</p>
 
 													<div className="flex items-center justify-between">
-														<div className="flex flex-wrap gap-2">
+														<div className="flex flex-wrap gap-2 mt-3">
 															{template.features.slice(0, 2).map((feature) => (
 																<Badge
 																	key={feature}
@@ -273,10 +279,6 @@ export default function TemplatesPage() {
 															)}
 														</div>
 
-														<div className="flex items-center text-sm text-muted-foreground">
-															<Zap className="mr-1 h-3 w-3" />
-															{template.setupTime} setup
-														</div>
 													</div>
 												</div>
 											</div>
@@ -291,14 +293,10 @@ export default function TemplatesPage() {
 								key={template.id}
 								className="group hover:shadow-md transition-all duration-200"
 							>
-								<Link href={`/${template.id}/app`}>
+								<Link href={template.url}>
 									<CardHeader>
 										<div className="flex items-center justify-between mb-2">
-											<div
-												className={`w-10 h-10 rounded-lg flex items-center justify-center ${template.color}`}
-											>
-												<Icon className="h-5 w-5" />
-											</div>
+											<Icon className="h-6 w-6" />
 											{template.popular && (
 												<Badge
 													variant="secondary"
@@ -309,7 +307,7 @@ export default function TemplatesPage() {
 											)}
 										</div>
 										<CardTitle className="group-hover:text-primary transition-colors">
-											{template.title}
+											{template.name}
 										</CardTitle>
 										<CardDescription className="line-clamp-3">
 											{template.description}
@@ -318,7 +316,7 @@ export default function TemplatesPage() {
 
 									<CardContent>
 										<div className="space-y-3">
-											<div className="flex flex-wrap gap-1">
+											<div className="flex flex-wrap gap-1 mt-3">
 												{template.features.slice(0, 2).map((feature) => (
 													<Badge
 														key={feature}
@@ -335,10 +333,6 @@ export default function TemplatesPage() {
 												)}
 											</div>
 
-											<div className="flex items-center text-sm text-muted-foreground">
-												<Zap className="mr-1 h-3 w-3" />
-												{template.setupTime} setup time
-											</div>
 										</div>
 									</CardContent>
 								</Link>

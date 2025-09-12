@@ -1,0 +1,196 @@
+import { GuidanceTemplate } from '@/types/template';
+import { weddingTemplate } from '@/data/templates';
+import { blogRegistry } from '@/registry/blogs';
+
+// Function to sync template resources with blog registry
+function createTemplateWithSyncedResources(baseTemplate: GuidanceTemplate): GuidanceTemplate {
+  // Find all blog posts that should be resources for this template
+  const relatedBlogPosts = blogRegistry.filter(post => 
+    post.relatedTemplates?.includes(baseTemplate.id) || 
+    // Also include wedding-related posts that aren't explicitly linked
+    (baseTemplate.id === 'wedding-planning' && (
+      post.tags.includes('wedding') || 
+      post.category === 'Wedding Planning' ||
+      post.slug.includes('wedding')
+    ))
+  );
+
+  // Convert blog posts to resources
+  const dynamicResources = relatedBlogPosts.map(post => ({
+    id: post.slug,
+    title: post.title,
+    type: (post.type || 'article') as 'article' | 'checklist' | 'tool' | 'guide',
+    excerpt: post.excerpt,
+    content: post.content, // Full content from blog post
+    tags: post.tags,
+    readTime: post.readTime,
+    difficulty: (post.difficulty || 'beginner') as 'beginner' | 'intermediate' | 'expert',
+    relatedBlogPost: post.slug
+  }));
+
+  // Merge existing resources with dynamic ones (remove duplicates)
+  const existingResourceIds = new Set(baseTemplate.resources.map(r => r.id));
+  const newResources = dynamicResources.filter(r => !existingResourceIds.has(r.id));
+
+  return {
+    ...baseTemplate,
+    resources: [...baseTemplate.resources, ...newResources]
+  };
+}
+
+export interface TemplateRegistryEntry {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  icon: string; // Using emoji strings for consistency
+  url: string;
+  popular?: boolean;
+  featured?: boolean;
+  comingSoon?: boolean;
+  color?: string;
+  iconColor?: string;
+  // Reference to full template data
+  template?: GuidanceTemplate;
+}
+
+// Template registry with all available templates
+export const templateRegistry: TemplateRegistryEntry[] = [
+  // Personal Life Templates
+  {
+    id: "wedding-planning",
+    name: "Wedding Planning",
+    description: "Plan your perfect wedding with budget tracking, vendor management, and timeline organization.",
+    category: "Personal Life",
+    icon: "💒",
+    url: "/wedding-planning/app",
+    popular: true,
+    featured: true,
+    color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
+    iconColor: "text-pink-600 dark:text-pink-400",
+    template: createTemplateWithSyncedResources(weddingTemplate)
+  },
+  {
+    id: "home-buying",
+    name: "Home Buying",
+    description: "Navigate the home buying process with mortgage tracking, property comparisons, and checklists.",
+    category: "Personal Life",
+    icon: "🏠",
+    url: "/templates/home-buying",
+    popular: true,
+    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    comingSoon: true
+  },
+  {
+    id: "baby-planning",
+    name: "Baby Planning",
+    description: "Prepare for your little one with pregnancy tracking, nursery planning, and baby essentials.",
+    category: "Personal Life",
+    icon: "👶",
+    url: "/templates/baby-planning",
+    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
+    iconColor: "text-green-600 dark:text-green-400",
+    comingSoon: true
+  },
+  
+  // Career & Business Templates
+  {
+    id: "job-search",
+    name: "Job Search",
+    description: "Track applications, prepare for interviews, and organize your job search strategy.",
+    category: "Career & Business",
+    icon: "💼",
+    url: "/templates/job-search",
+    color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    comingSoon: true
+  },
+  {
+    id: "business-launch",
+    name: "Business Launch",
+    description: "Launch your business with market research, business planning, and launch checklists.",
+    category: "Career & Business",
+    icon: "🚀",
+    url: "/templates/business-launch",
+    color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
+    iconColor: "text-orange-600 dark:text-orange-400",
+    comingSoon: true
+  },
+  
+  // Education Templates
+  {
+    id: "college-planning",
+    name: "College Planning",
+    description: "Navigate college applications, track deadlines, and plan your academic future.",
+    category: "Education",
+    icon: "🎓",
+    url: "/templates/college-planning",
+    color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
+    iconColor: "text-yellow-600 dark:text-yellow-400",
+    comingSoon: true
+  },
+  {
+    id: "academic-research",
+    name: "Academic Research",
+    description: "Organize research projects, track sources, and manage academic workflows.",
+    category: "Education",
+    icon: "📚",
+    url: "/templates/academic-research",
+    color: "bg-indigo-50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800",
+    iconColor: "text-indigo-600 dark:text-indigo-400",
+    comingSoon: true
+  },
+  
+  // Health & Wellness Templates
+  {
+    id: "fitness-journey",
+    name: "Fitness Journey",
+    description: "Track workouts, nutrition, and progress toward your health and fitness goals.",
+    category: "Health & Wellness",
+    icon: "💪",
+    url: "/templates/fitness-journey",
+    color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
+    iconColor: "text-red-600 dark:text-red-400",
+    comingSoon: true
+  }
+];
+
+// Registry helper functions
+export const getTemplateById = (id: string): TemplateRegistryEntry | undefined => {
+  return templateRegistry.find(template => template.id === id);
+};
+
+export const getTemplatesByCategory = (category: string): TemplateRegistryEntry[] => {
+  return templateRegistry.filter(template => template.category === category);
+};
+
+export const getPopularTemplates = (): TemplateRegistryEntry[] => {
+  return templateRegistry.filter(template => template.popular);
+};
+
+export const getFeaturedTemplates = (): TemplateRegistryEntry[] => {
+  return templateRegistry.filter(template => template.featured);
+};
+
+export const getAvailableTemplates = (): TemplateRegistryEntry[] => {
+  return templateRegistry.filter(template => !template.comingSoon);
+};
+
+export const getComingSoonTemplates = (): TemplateRegistryEntry[] => {
+  return templateRegistry.filter(template => template.comingSoon);
+};
+
+export const getAllCategories = (): string[] => {
+  return Array.from(new Set(templateRegistry.map(template => template.category)));
+};
+
+// Search functionality
+export const searchTemplates = (query: string): TemplateRegistryEntry[] => {
+  const lowercaseQuery = query.toLowerCase();
+  return templateRegistry.filter(template =>
+    template.name.toLowerCase().includes(lowercaseQuery) ||
+    template.description.toLowerCase().includes(lowercaseQuery) ||
+    template.category.toLowerCase().includes(lowercaseQuery)
+  );
+};

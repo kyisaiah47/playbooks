@@ -34,6 +34,7 @@ export interface Resource {
   tags: string[];
   readTime: string;
   difficulty: 'beginner' | 'intermediate' | 'expert';
+  relatedBlogPost?: string; // ID of related blog post
 }
 
 export interface ExpertTip {
