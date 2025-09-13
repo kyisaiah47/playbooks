@@ -12397,7 +12397,7 @@ export const fitnessJourneyTemplate: GuidanceTemplate = {
   ]
 };
 
-// Quick comprehensive personal development coaching template
+// Comprehensive personal development coaching guidance with extensive prompts and resources
 export const personalDevelopmentCoachingTemplate: GuidanceTemplate = {
   id: "personal-development-coaching",
   title: "Personal Development & Life Coaching",
@@ -12406,46 +12406,237 @@ export const personalDevelopmentCoachingTemplate: GuidanceTemplate = {
   icon: "🌱",
   sections: [
     {
-      id: "life-vision-values",
-      title: "Life Vision & Values Clarification",
-      description: "Define your core values and create a compelling vision for your life",
+      id: "self-awareness-assessment",
+      title: "Self-Awareness & Life Assessment",
+      description: "Gain deep insight into your current life situation, values, and authentic self",
       order: 1,
       reflectionPrompts: [
         {
           id: "core-values-identification",
           prompt: "What are your top 5-7 core values that you want to guide all your life decisions?",
           category: "consideration",
-          helpText: "Consider values like growth, family, creativity, integrity, adventure, security, contribution, freedom."
+          helpText: "Consider values like growth, family, creativity, integrity, adventure, security, contribution, freedom, authenticity, excellence. Rank importance and identify conflicts.",
+          relatedResources: ['values-assessment-guide', 'life-wheel-evaluation']
         },
         {
+          id: "life-satisfaction-audit",
+          prompt: "Rate your current satisfaction (1-10) in each major life area: career, relationships, health, finances, personal growth, recreation, contribution?",
+          category: "research",
+          helpText: "Be brutally honest. Areas consistently below 7 need attention. Look for patterns and connections between low-scoring areas."
+        },
+        {
+          id: "strengths-talents-assessment",
+          prompt: "What are your natural strengths, talents, and unique abilities that others consistently recognize in you?",
+          category: "research",
+          helpText: "Ask friends, family, and colleagues what they see as your greatest strengths. Look for patterns across feedback from different contexts."
+        },
+        {
+          id: "limiting-beliefs-identification", 
+          prompt: "What limiting beliefs or inner critic messages hold you back from pursuing your dreams?",
+          category: "research",
+          helpText: "Common limiting beliefs: 'I'm not smart enough,' 'I don't deserve success,' 'I'm too old to change,' 'I'll probably fail anyway.' Notice the voice's tone and origin.",
+          relatedResources: ['limiting-beliefs-workbook']
+        },
+        {
+          id: "authentic-self-exploration",
+          prompt: "When do you feel most authentic and alive? What activities, environments, and relationships bring out your truest self?",
+          category: "consideration",
+          helpText: "Notice when you lose track of time, feel energized rather than drained, and receive genuine compliments. These are clues to your authentic nature."
+        }
+      ]
+    },
+    {
+      id: "vision-goal-creation",
+      title: "Vision Creation & Goal Setting",
+      description: "Design a compelling future vision and set meaningful goals aligned with your values",
+      order: 2,
+      reflectionPrompts: [
+        {
           id: "life-vision-creation", 
-          prompt: "What would your ideal life look like in 10 years across all major areas?",
+          prompt: "What would your ideal life look like in 10 years across all major areas? Be specific and vivid in your descriptions.",
           category: "planning",
-          helpText: "Envision career, relationships, health, finances, personal growth, contribution - be specific and inspiring."
+          helpText: "Envision career, relationships, health, finances, personal growth, living situation, daily routines, contribution - write as if it's already happening.",
+          relatedResources: ['vision-board-guide', 'goal-setting-framework']
         },
         {
           id: "purpose-meaning-exploration",
-          prompt: "What gives your life the deepest sense of purpose and meaning?",
+          prompt: "What gives your life the deepest sense of purpose and meaning? How can you incorporate more of this?",
           category: "consideration", 
-          helpText: "Look for patterns in what energizes you, activities where you lose track of time, what impact you want to make."
+          helpText: "Look for patterns in what energizes you, activities where you lose track of time, moments you feel most useful and valued, impact you want to make."
         },
         {
           id: "legacy-impact-vision",
-          prompt: "What legacy do you want to leave? How do you want to be remembered?",
+          prompt: "What legacy do you want to leave? How do you want to be remembered by family, friends, and community?",
           category: "consideration",
-          helpText: "Think about the impact on family, community, profession, and the values you want to embody and pass on."
+          helpText: "Think about the impact on family, community, profession, and the values you want to embody and pass on. What would your eulogy highlight?"
         },
         {
-          id: "values-alignment-assessment",
-          prompt: "How well does your current life align with your values and vision?",
-          category: "research",
-          helpText: "Rate each life area 1-10 for values alignment. Identify biggest gaps between current reality and values."
+          id: "breakthrough-goals-identification",
+          prompt: "What 3-5 breakthrough goals would transform your life if achieved in the next 2-3 years?",
+          category: "planning",
+          helpText: "Think beyond incremental improvements to goals that would fundamentally change your life trajectory. Examples: career transition, relationship goals, health transformations, creative projects."
         },
         {
-          id: "authentic-self-expression",
-          prompt: "Where in your life are you not being authentic to who you really are?",
+          id: "values-alignment-check",
+          prompt: "How do your goals align with your core values? Which goals might conflict with what matters most to you?",
           category: "research",
-          helpText: "Consider relationships, work, social situations where you feel you cannot express your true self."
+          helpText: "Test each goal against your values. Goals misaligned with values often lead to success without fulfillment. Adjust goals to honor your authentic priorities."
+        }
+      ]
+    },
+    {
+      id: "obstacle-mindset-work",
+      title: "Mindset Transformation & Obstacle Navigation",
+      description: "Overcome limiting beliefs, develop resilience, and cultivate empowering mindsets",
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: "fear-resistance-analysis",
+          prompt: "What fears or forms of resistance come up when you think about pursuing your biggest goals?",
+          category: "research",
+          helpText: "Common fears: failure, success, judgment, rejection, inadequacy, change itself. Notice physical sensations and emotional responses to goal visualization.",
+          relatedResources: ['fear-analysis-worksheet', 'resistance-breakthrough-guide']
+        },
+        {
+          id: "growth-mindset-assessment",
+          prompt: "In what areas of life do you have a fixed mindset versus a growth mindset? How does this impact your progress?",
+          category: "consideration",
+          helpText: "Fixed mindset says 'I can't do this' while growth mindset says 'I can't do this yet.' Identify areas where you avoid challenges or give up easily."
+        },
+        {
+          id: "failure-reframe-strategy",
+          prompt: "How can you reframe failure and setbacks as learning opportunities rather than evidence of inadequacy?",
+          category: "planning",
+          helpText: "Develop phrases like 'What can I learn from this?' and 'This is data for improvement.' Create a failure resumé celebrating lessons learned from setbacks."
+        },
+        {
+          id: "confidence-building-plan",
+          prompt: "What specific actions could you take to build unshakeable confidence in your ability to achieve your goals?",
+          category: "planning",
+          helpText: "Consider skill development, mindset practices, success tracking, mentor relationships, visualization, small wins celebration, body language changes."
+        },
+        {
+          id: "inner-critic-management",
+          prompt: "What strategies will you use to manage your inner critic and cultivate self-compassion during challenging times?",
+          category: "planning",
+          helpText: "Techniques: naming the critic voice, questioning negative thoughts, speaking to yourself as you would a dear friend, celebrating progress over perfection."
+        }
+      ]
+    },
+    {
+      id: "action-planning-systems",
+      title: "Action Planning & System Creation",
+      description: "Create actionable plans and systems to consistently move toward your goals",
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: "goal-breakdown-strategy",
+          prompt: "How will you break down your major goals into specific, measurable milestones and daily actions?",
+          category: "planning",
+          helpText: "Use SMART criteria: Specific, Measurable, Achievable, Relevant, Time-bound. Create quarterly milestones, monthly targets, weekly projects, daily actions.",
+          relatedResources: ['goal-breakdown-template', 'tracking-systems-guide']
+        },
+        {
+          id: "habit-formation-plan",
+          prompt: "What keystone habits, if developed consistently, would create the biggest positive impact on your life?",
+          category: "decision",
+          helpText: "Focus on 1-3 core habits that naturally trigger other positive behaviors. Examples: morning routine, exercise, reading, meditation, planning time."
+        },
+        {
+          id: "accountability-support-system",
+          prompt: "Who will hold you accountable and support your growth journey? How will you structure this accountability?",
+          category: "planning",
+          helpText: "Consider coaches, mentors, accountability partners, mastermind groups, or progress check-ins with friends. Set regular review schedules and consequences."
+        },
+        {
+          id: "time-energy-management",
+          prompt: "How will you protect and optimize your time and energy for what matters most to you?",
+          category: "planning",
+          helpText: "Audit current time use, identify energy patterns, eliminate time wasters, batch similar tasks, say no to non-essential commitments, create focused work blocks."
+        },
+        {
+          id: "progress-measurement-system",
+          prompt: "How will you track progress, celebrate wins, and adjust course when needed?",
+          category: "planning",
+          helpText: "Create metrics for each goal, schedule regular reviews (weekly/monthly), document lessons learned, celebrate milestones, and build in course correction mechanisms."
+        }
+      ]
+    },
+    {
+      id: "relationship-communication",
+      title: "Relationship Dynamics & Communication",
+      description: "Enhance relationships and communication skills for personal and professional success",
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: "relationship-audit-assessment",
+          prompt: "Which relationships in your life energize you versus drain you? What patterns do you notice?",
+          category: "research",
+          helpText: "Categorize relationships as energizing, neutral, or draining. Look for common traits in each category and how you feel after interactions.",
+          relatedResources: ['relationship-mapping-tool', 'communication-styles-guide']
+        },
+        {
+          id: "communication-style-analysis",
+          prompt: "How would you describe your communication style? What triggers conflict or misunderstanding in your relationships?",
+          category: "research",
+          helpText: "Consider directness vs. diplomacy, emotional expression, listening skills, conflict avoidance, assertiveness levels, and non-verbal communication patterns."
+        },
+        {
+          id: "boundary-setting-strategy",
+          prompt: "Where in your life do you need to set better boundaries? What would healthy boundaries look like?",
+          category: "decision",
+          helpText: "Identify areas where you say yes when you mean no, give too much, accept disrespectful treatment, or sacrifice your needs for others' approval."
+        },
+        {
+          id: "difficult-conversation-preparation",
+          prompt: "What difficult conversations have you been avoiding? How could you approach these with courage and compassion?",
+          category: "planning",
+          helpText: "Practice key messages, focus on specific behaviors rather than character, use 'I' statements, listen for understanding, find common ground."
+        },
+        {
+          id: "network-expansion-plan", 
+          prompt: "How will you expand your network to include people who inspire and support your growth?",
+          category: "planning",
+          helpText: "Consider professional groups, hobby communities, online communities, volunteering, classes, mentorship programs, or industry events aligned with your goals."
+        }
+      ]
+    },
+    {
+      id: "continuous-growth-mastery",
+      title: "Continuous Growth & Life Mastery",
+      description: "Develop systems for lifelong learning and continuous personal evolution",
+      order: 6,
+      reflectionPrompts: [
+        {
+          id: "learning-development-plan",
+          prompt: "What skills, knowledge areas, or competencies do you need to develop to achieve your vision?",
+          category: "planning", 
+          helpText: "Consider technical skills, soft skills, industry knowledge, personal effectiveness, creative abilities. Prioritize based on impact and align with goals.",
+          relatedResources: ['skill-development-roadmap', 'learning-acceleration-guide']
+        },
+        {
+          id: "mastery-mindset-cultivation",
+          prompt: "How will you cultivate a mastery mindset that embraces challenges, persists through obstacles, and finds lessons in setbacks?",
+          category: "consideration",
+          helpText: "Focus on process over outcomes, effort over talent, learning over looking good, progress over perfection. Develop patience with the learning curve."
+        },
+        {
+          id: "reflection-review-rhythm",
+          prompt: "What rhythm of reflection and review will you establish to stay aligned with your values and adjust your path?",
+          category: "planning",
+          helpText: "Consider daily reflection questions, weekly reviews, monthly assessments, quarterly planning, annual vision checks. Build in time for deep thinking."
+        },
+        {
+          id: "contribution-impact-plan",
+          prompt: "How will you use your growth and development to make a positive impact on others and contribute to something larger than yourself?",
+          category: "consideration",
+          helpText: "Consider mentoring, teaching, volunteering, creating, innovating, or leading initiatives that align with your values and utilize your unique strengths."
+        },
+        {
+          id: "life-integration-balance",
+          prompt: "How will you integrate personal development with other life priorities to create sustainable growth without burnout?",
+          category: "planning",
+          helpText: "Balance growth activities with rest, relationships, fun, and existing responsibilities. Create realistic expectations and honor your natural rhythms and seasons."
         }
       ]
     }
@@ -12456,24 +12647,206 @@ export const personalDevelopmentCoachingTemplate: GuidanceTemplate = {
       title: "Core Values Assessment & Life Alignment Guide", 
       type: "guide",
       excerpt: "Discover your authentic core values and align your life choices with what matters most",
-      content: "Your core values are the fundamental beliefs that guide your decisions and behavior...",
+      content: "Comprehensive values identification process with 100+ values to consider, ranking exercises, and alignment assessment tools. Includes practical strategies for making values-based decisions and creating accountability systems to live authentically.",
       tags: ["values", "authenticity", "life-planning", "self-awareness"],
+      readTime: "15 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'values-based-living'
+    },
+    {
+      id: "life-wheel-evaluation",
+      title: "Life Wheel Assessment & Balance Planning Tool",
+      type: "tool",
+      excerpt: "Evaluate satisfaction across all life areas and create an integrated improvement plan",
+      content: "Interactive life wheel covering 8 key areas: career, finances, health, relationships, personal growth, recreation, physical environment, and contribution. Includes satisfaction scoring, gap analysis, and priority-setting framework for balanced development.",
+      tags: ["life-balance", "assessment", "planning", "holistic-development"],
       readTime: "12 min",
-      difficulty: "beginner"
+      difficulty: "beginner",
+      relatedBlogPost: 'life-balance-mastery'
+    },
+    {
+      id: "limiting-beliefs-workbook",
+      title: "Limiting Beliefs Breakthrough Workbook",
+      type: "guide",
+      excerpt: "Identify, challenge, and transform the beliefs that hold you back from your potential",
+      content: "Step-by-step process for uncovering limiting beliefs, understanding their origins, questioning their validity, and installing empowering beliefs. Includes belief transformation exercises, affirmation creation, and evidence-building strategies.",
+      tags: ["mindset", "beliefs", "transformation", "breakthrough"],
+      readTime: "18 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'limiting-beliefs-breakthrough'
+    },
+    {
+      id: "vision-board-guide",
+      title: "Vision Board Creation & Manifestation Guide",
+      type: "guide",
+      excerpt: "Create powerful visual representations of your goals and dreams to accelerate manifestation",
+      content: "Complete guide to creating effective vision boards including image selection, layout principles, activation rituals, and daily practice routines. Covers both physical and digital vision board options with manifestation psychology insights.",
+      tags: ["vision", "manifestation", "visualization", "goal-achievement"],
+      readTime: "10 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'vision-board-manifestation'
+    },
+    {
+      id: "goal-setting-framework",
+      title: "Advanced Goal Setting & Achievement Framework",
+      type: "tool",
+      excerpt: "Systematic approach to setting and achieving meaningful goals aligned with your values",
+      content: "Comprehensive framework combining SMART goals, OKRs, and values alignment. Includes goal hierarchy mapping, milestone planning, obstacle anticipation, and progress tracking systems for maximum achievement probability.",
+      tags: ["goal-setting", "achievement", "planning", "success-systems"],
+      readTime: "14 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'goal-achievement-mastery'
+    },
+    {
+      id: "fear-analysis-worksheet",
+      title: "Fear Analysis & Courage Building Worksheet",
+      type: "checklist",
+      excerpt: "Systematic approach to understanding and overcoming fears that block your growth",
+      content: "Detailed worksheet for fear identification, impact analysis, worst-case scenario planning, and courage-building action steps. Includes fear categorization, rationality assessment, and progressive exposure planning for systematic fear reduction.",
+      tags: ["fear", "courage", "breakthrough", "mindset"],
+      readTime: "8 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'fear-breakthrough-courage'
+    },
+    {
+      id: "resistance-breakthrough-guide",
+      title: "Internal Resistance & Procrastination Breakthrough Guide",
+      type: "guide",
+      excerpt: "Understand and overcome internal resistance patterns that sabotage your progress",
+      content: "Deep dive into resistance psychology covering fear of failure, success, judgment, and change. Includes resistance pattern identification, root cause analysis, and breakthrough strategies for consistent action-taking despite internal objections.",
+      tags: ["resistance", "procrastination", "breakthrough", "psychology"],
+      readTime: "16 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'resistance-breakthrough'
+    },
+    {
+      id: "goal-breakdown-template",
+      title: "Goal Breakdown & Milestone Planning Template",
+      type: "tool",
+      excerpt: "Transform big goals into actionable steps with clear milestones and deadlines",
+      content: "Systematic template for breaking down major goals into yearly themes, quarterly objectives, monthly projects, weekly priorities, and daily actions. Includes dependency mapping, resource planning, and contingency strategies.",
+      tags: ["goal-planning", "project-management", "milestones", "action-planning"],
+      readTime: "9 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'goal-breakdown-mastery'
+    },
+    {
+      id: "tracking-systems-guide",
+      title: "Progress Tracking & Measurement Systems Guide",
+      type: "guide", 
+      excerpt: "Create effective systems to track progress, maintain motivation, and adjust course",
+      content: "Comprehensive guide to progress tracking including metric selection, tracking tools, review rhythms, and course correction protocols. Covers both quantitative and qualitative measurement approaches for sustainable motivation.",
+      tags: ["tracking", "measurement", "progress", "accountability"],
+      readTime: "11 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'progress-tracking-systems'
+    },
+    {
+      id: "relationship-mapping-tool",
+      title: "Relationship Mapping & Network Analysis Tool",
+      type: "tool",
+      excerpt: "Visualize and optimize your personal and professional relationship network",
+      content: "Interactive tool for mapping relationship dynamics including energy assessment, influence analysis, support evaluation, and growth opportunity identification. Helps prioritize relationship investments and identify network gaps.",
+      tags: ["relationships", "networking", "social-capital", "analysis"],
+      readTime: "13 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'relationship-network-optimization'
+    },
+    {
+      id: "communication-styles-guide",
+      title: "Communication Styles & Conflict Resolution Guide",
+      type: "guide",
+      excerpt: "Master different communication styles and resolve conflicts with grace and effectiveness",
+      content: "Detailed guide covering communication style assessment, adaptation strategies, active listening techniques, and conflict resolution frameworks. Includes scripts for difficult conversations and boundary-setting communications.",
+      tags: ["communication", "conflict-resolution", "relationships", "soft-skills"],
+      readTime: "17 min",
+      difficulty: "intermediate", 
+      relatedBlogPost: 'communication-mastery'
+    },
+    {
+      id: "skill-development-roadmap",
+      title: "Strategic Skill Development Roadmap",
+      type: "guide",
+      excerpt: "Create a strategic plan for developing skills that will accelerate your personal and professional growth",
+      content: "Framework for skill gap analysis, priority matrix creation, learning path design, and competency development tracking. Includes industry trend analysis and future skills identification for strategic advantage.",
+      tags: ["skill-development", "learning", "career-growth", "strategic-planning"],
+      readTime: "12 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'skill-development-strategy'
+    },
+    {
+      id: "learning-acceleration-guide",
+      title: "Accelerated Learning & Skill Acquisition Guide",
+      type: "guide",
+      excerpt: "Master the science of rapid learning and skill acquisition for faster personal development",
+      content: "Evidence-based learning acceleration techniques including spaced repetition, deliberate practice, mental models, and transfer strategies. Covers different learning styles and optimization techniques for maximum retention and application.",
+      tags: ["learning", "skill-acquisition", "acceleration", "neuroscience"],
+      readTime: "14 min",
+      difficulty: "expert",
+      relatedBlogPost: 'accelerated-learning-mastery'
     }
   ],
   expertTips: [
     {
-      id: "values-tip-1",
-      tip: "Living according to your values, even when difficult, creates deep fulfillment and inner peace.",
-      author: "Dr. Sarah Chen, Life Coach & Psychologist",
+      id: "values-alignment-tip",
+      tip: "Living according to your values, even when difficult, creates deep fulfillment and inner peace while compromising values leads to internal conflict and dissatisfaction.",
+      author: "Dr. Sarah Chen, Life Coach & Psychologist (12 years)",
       category: "consideration",
       importance: "high"
+    },
+    {
+      id: "small-wins-momentum-tip", 
+      tip: "Build momentum through small, consistent wins rather than waiting for perfect conditions. Small daily actions compound into remarkable transformations over time.",
+      author: "Marcus Johnson, Performance Coach",
+      category: "planning",
+      importance: "high"
+    },
+    {
+      id: "growth-mindset-tip",
+      tip: "Replace 'I can't do this' with 'I can't do this yet.' Adding 'yet' transforms fixed mindset limitations into growth opportunities and maintains hope for improvement.",
+      author: "Dr. Rebecca Martinez, Developmental Psychologist",
+      category: "consideration", 
+      importance: "high"
+    },
+    {
+      id: "accountability-power-tip",
+      tip: "People with accountability partners achieve their goals 65% more often than those who only commit privately. Make your commitments social for maximum success.",
+      author: "Jennifer Kim, Executive Coach",
+      category: "planning",
+      importance: "high"
+    },
+    {
+      id: "fear-courage-tip",
+      tip: "Courage isn't the absence of fear - it's feeling the fear and taking action anyway. Start with small brave actions to build your courage muscle gradually.",
+      author: "Tony Rodriguez, Leadership Development Expert",
+      category: "consideration",
+      importance: "medium"
+    },
+    {
+      id: "progress-over-perfection-tip",
+      tip: "Focus on progress over perfection. A 1% daily improvement compounds to 37x improvement over a year, while waiting for perfection leads to zero progress.",
+      author: "Lisa Thompson, Productivity Coach", 
+      category: "planning",
+      importance: "high"
+    },
+    {
+      id: "identity-change-tip",
+      tip: "Change your identity, not just your behavior. Instead of 'I'm trying to exercise,' say 'I'm someone who prioritizes health.' Identity drives consistent action.",
+      author: "Dr. Michael Chang, Behavioral Scientist",
+      category: "consideration",
+      importance: "medium"
+    },
+    {
+      id: "environment-design-tip",
+      tip: "Design your environment to support your goals automatically. Remove friction for good habits and add friction for bad habits to make success easier.",
+      author: "Amanda Foster, Habits Expert",
+      category: "planning", 
+      importance: "medium"
     }
   ]
 };
 
-// Quick comprehensive retirement lifestyle planning template  
+// Comprehensive retirement lifestyle planning guidance with extensive prompts and resources
 export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
   id: "retirement-lifestyle-planning",
   title: "Retirement & Lifestyle Planning", 
@@ -12482,46 +12855,236 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
   icon: "🌅",
   sections: [
     {
-      id: "retirement-vision-lifestyle",
-      title: "Retirement Vision & Lifestyle Design",
-      description: "Envision and plan your ideal retirement lifestyle across all dimensions",
+      id: "retirement-vision-assessment",
+      title: "Retirement Vision & Current Assessment", 
+      description: "Envision your ideal retirement lifestyle and assess your current readiness across all dimensions",
       order: 1,
       reflectionPrompts: [
         {
           id: "retirement-lifestyle-vision",
-          prompt: "What does your ideal retirement lifestyle look like day-to-day and year-to-year?", 
+          prompt: "What does your ideal retirement lifestyle look like day-to-day and year-to-year? Be specific about routines, activities, and experiences.", 
           category: "consideration",
-          helpText: "Consider daily routines, activities, travel, hobbies, social connections, learning, contribution, and living arrangements."
+          helpText: "Consider daily routines, seasonal patterns, travel frequency, hobbies, social connections, learning activities, volunteer work, family time, and living arrangements. Write as if describing a typical week.",
+          relatedResources: ['retirement-lifestyle-calculator', 'retirement-vision-worksheet']
         },
         {
-          id: "retirement-timeline-planning",
-          prompt: "When do you want to retire and what phases do you envision for your retirement?",
+          id: "retirement-values-priorities",
+          prompt: "What are your top 5 values that you want to guide your retirement decisions and lifestyle choices?",
+          category: "consideration", 
+          helpText: "Consider values like family time, adventure, security, learning, contribution, health, independence, legacy, creativity, or spiritual growth. Rank by importance."
+        },
+        {
+          id: "current-retirement-readiness",
+          prompt: "How prepared are you currently across financial, health, social, and emotional aspects of retirement?",
+          category: "research",
+          helpText: "Rate yourself 1-10 in each area. Financial: savings, income sources, expenses. Health: fitness, preventive care. Social: relationships, community. Emotional: purpose, identity."
+        },
+        {
+          id: "retirement-fears-concerns",
+          prompt: "What fears or concerns do you have about retirement? What keeps you awake at night thinking about your future?",
+          category: "research",
+          helpText: "Common concerns: financial security, health decline, boredom, loss of identity, social isolation, becoming a burden, running out of money, losing mental sharpness."
+        },
+        {
+          id: "legacy-impact-goals",
+          prompt: "What legacy do you want to create during your retirement years? How do you want to impact family, community, or causes you care about?",
+          category: "consideration",
+          helpText: "Think about knowledge to pass on, causes to support, family relationships to nurture, community contributions, or creative works to complete."
+        }
+      ]
+    },
+    {
+      id: "financial-security-planning",
+      title: "Financial Security & Resource Planning",
+      description: "Develop comprehensive financial strategies to support your desired retirement lifestyle",
+      order: 2,
+      reflectionPrompts: [
+        {
+          id: "retirement-expense-calculation",
+          prompt: "What will your annual living expenses be in retirement? Break down housing, healthcare, food, transportation, entertainment, and discretionary spending.",
           category: "planning",
-          helpText: "Consider early retirement (60s), traditional (65-70), phased retirement, or never fully retiring. Plan active, reflective, and legacy phases."
+          helpText: "Use the 70-90% of pre-retirement income rule as a starting point, then customize based on your specific lifestyle plans. Don't forget taxes, inflation, and potential care costs.",
+          relatedResources: ['retirement-budget-planner', 'healthcare-cost-estimator']
         },
         {
-          id: "retirement-location-living",
-          prompt: "Where do you want to live in retirement? Stay local, relocate, or split time between locations?",
+          id: "income-source-strategy",
+          prompt: "What income sources will fund your retirement? How will you optimize Social Security, pensions, savings, and potential part-time work?",
+          category: "planning",
+          helpText: "Consider the retirement income 'three-legged stool': Social Security, employer benefits, personal savings. Also factor in rental income, business income, or part-time work."
+        },
+        {
+          id: "healthcare-cost-planning",
+          prompt: "How will you plan for healthcare costs, long-term care, and medical emergencies in retirement?",
           category: "planning", 
-          helpText: "Consider cost of living, climate, healthcare, family proximity, community, activities, and housing preferences."
+          helpText: "Healthcare costs typically increase in retirement. Consider Medicare supplements, long-term care insurance, Health Savings Accounts, and emergency medical funds."
         },
         {
-          id: "retirement-health-wellness",
-          prompt: "How will you maintain physical and mental health throughout your retirement years?",
+          id: "inflation-protection-strategy",
+          prompt: "How will you protect your retirement income and savings from inflation over 20-30 years?",
           category: "planning",
-          helpText: "Plan for preventive care, fitness routines, mental stimulation, social connections, and adapting to age-related changes."
+          helpText: "Consider inflation-adjusted income sources, investments that historically outpace inflation, and lifestyle flexibility to adapt to changing costs over time."
         },
         {
-          id: "retirement-financial-security",
-          prompt: "What financial resources will you need to support your desired retirement lifestyle?",
+          id: "estate-inheritance-planning",
+          prompt: "What are your goals for estate planning and leaving an inheritance? How much do you want to spend versus preserve?",
+          category: "decision",
+          helpText: "Clarify your priorities: maximizing your lifestyle vs. preserving wealth for heirs vs. charitable giving. This affects withdrawal strategies and risk tolerance."
+        }
+      ]
+    },
+    {
+      id: "health-wellness-aging",
+      title: "Health, Wellness & Aging Gracefully",
+      description: "Create strategies to maintain physical, mental, and emotional health throughout retirement",
+      order: 3,
+      reflectionPrompts: [
+        {
+          id: "health-maintenance-plan",
+          prompt: "What proactive steps will you take to maintain your physical health and prevent age-related decline?",
           category: "planning",
-          helpText: "Calculate living expenses, healthcare costs, travel budget, hobbies, and inflation. Consider income sources and withdrawal strategies."
+          helpText: "Consider regular exercise routines, preventive medical care, nutrition planning, sleep hygiene, stress management, and adapting activities as you age.",
+          relatedResources: ['retirement-fitness-guide', 'preventive-care-checklist']
         },
         {
-          id: "retirement-purpose-contribution",
-          prompt: "How will you find purpose and make meaningful contributions during retirement?",
+          id: "mental-cognitive-health",
+          prompt: "How will you keep your mind sharp and engaged throughout retirement to prevent cognitive decline?",
+          category: "planning",
+          helpText: "Consider lifelong learning, reading, puzzles, social engagement, new skill development, creative pursuits, volunteering, or part-time work that challenges you mentally."
+        },
+        {
+          id: "healthcare-provider-access",
+          prompt: "How will you ensure access to quality healthcare providers and services as you age?",
+          category: "planning",
+          helpText: "Consider proximity to hospitals, specialist access, insurance networks, relationship with primary care, and potential need for assisted living or home care services."
+        },
+        {
+          id: "mobility-independence-planning",
+          prompt: "How will you plan for potential mobility changes and maintain independence as long as possible?",
+          category: "planning",
+          helpText: "Consider home modifications, transportation alternatives, assistive technologies, community resources, and criteria for when you might need additional support."
+        },
+        {
+          id: "emotional-mental-wellness",
+          prompt: "What strategies will you use to maintain emotional health, cope with losses, and find joy throughout retirement?",
           category: "consideration",
-          helpText: "Consider volunteering, mentoring, teaching, consulting, creative pursuits, or causes you care about."
+          helpText: "Consider support systems, grief counseling resources, purpose and meaning activities, social connections, spiritual practices, or professional mental health support."
+        }
+      ]
+    },
+    {
+      id: "lifestyle-location-housing",
+      title: "Lifestyle Design & Housing Decisions", 
+      description: "Make strategic decisions about where and how you want to live in retirement",
+      order: 4,
+      reflectionPrompts: [
+        {
+          id: "retirement-location-criteria",
+          prompt: "What are your must-haves and deal-breakers for where you live in retirement?",
+          category: "decision",
+          helpText: "Consider climate, cost of living, healthcare access, family proximity, cultural activities, safety, transportation, taxes, and community amenities. Rank importance.",
+          relatedResources: ['retirement-location-comparison', 'cost-of-living-analyzer']
+        },
+        {
+          id: "housing-modification-planning",
+          prompt: "How might your housing needs change as you age? What modifications or moves might be necessary?",
+          category: "planning",
+          helpText: "Consider accessibility needs, maintenance capacity, size requirements, proximity to services, and aging-in-place modifications versus planned relocations."
+        },
+        {
+          id: "seasonal-lifestyle-options",
+          prompt: "Are you interested in seasonal living, such as being a 'snowbird' or having multiple residences?",
+          category: "consideration",
+          helpText: "Consider the costs and logistics of maintaining multiple residences, seasonal migration patterns, and how this fits with your budget and lifestyle goals."
+        },
+        {
+          id: "community-social-environment",
+          prompt: "What type of community and social environment will support your retirement happiness and engagement?",
+          category: "consideration",
+          helpText: "Consider age-restricted vs. mixed-age communities, urban vs. rural settings, proximity to like-minded people, activity levels, and opportunities for new friendships."
+        },
+        {
+          id: "transportation-mobility-needs",
+          prompt: "How will you handle transportation and mobility needs if you can no longer drive safely?",
+          category: "planning",
+          helpText: "Consider public transportation, ride services, walkability, family support, community transportation programs, and timeline for transportation transitions."
+        }
+      ]
+    },
+    {
+      id: "purpose-engagement-activities",
+      title: "Purpose, Engagement & Meaningful Activities",
+      description: "Discover and plan meaningful ways to spend your time and contribute during retirement",
+      order: 5,
+      reflectionPrompts: [
+        {
+          id: "retirement-purpose-exploration",
+          prompt: "How will you find purpose and meaning in retirement? What will give you a reason to get up each morning?",
+          category: "consideration",
+          helpText: "Consider volunteer work, mentoring, teaching, creative pursuits, entrepreneurship, caregiving, activism, religious/spiritual activities, or pursuing delayed dreams.",
+          relatedResources: ['purpose-discovery-guide', 'volunteer-matching-tool']
+        },
+        {
+          id: "skills-knowledge-sharing",
+          prompt: "How can you use your professional skills and life experience to contribute to others or society?",
+          category: "consideration",
+          helpText: "Consider consulting, mentoring, teaching, nonprofit board service, writing, speaking, or creating educational content to share your expertise and wisdom."
+        },
+        {
+          id: "learning-growth-goals",
+          prompt: "What new skills, knowledge areas, or experiences do you want to pursue in retirement?",
+          category: "planning",
+          helpText: "Consider formal education, online courses, travel learning, hobby development, artistic pursuits, languages, technology skills, or spiritual exploration."
+        },
+        {
+          id: "social-connection-maintenance",
+          prompt: "How will you maintain and build meaningful social connections and friendships in retirement?",
+          category: "planning",
+          helpText: "Consider joining clubs, volunteering, continuing work relationships, developing neighbor relationships, or participating in religious/community organizations."
+        },
+        {
+          id: "creative-personal-projects",
+          prompt: "What creative projects, personal interests, or 'bucket list' items do you want to pursue?",
+          category: "consideration",
+          helpText: "Think about artistic projects, writing, gardening, genealogy, collections, travel goals, adventure activities, or other personal interests you've deferred."
+        }
+      ]
+    },
+    {
+      id: "transition-implementation",
+      title: "Retirement Transition & Implementation Planning",
+      description: "Create actionable plans for transitioning into retirement and adjusting over time",
+      order: 6,
+      reflectionPrompts: [
+        {
+          id: "retirement-timeline-strategy",
+          prompt: "What's your timeline for retirement? Will you retire all at once, phase out gradually, or continue working part-time?",
+          category: "decision",
+          helpText: "Consider full retirement, phased retirement, consulting, part-time work, or 'encore careers.' Think about financial readiness, work satisfaction, and personal goals.",
+          relatedResources: ['retirement-timeline-planner', 'phased-retirement-guide']
+        },
+        {
+          id: "career-transition-planning",
+          prompt: "How will you transition from your work identity and relationships to retirement life?",
+          category: "planning",
+          helpText: "Consider maintaining professional relationships, transferring knowledge, celebrating career achievements, and developing new sources of identity and self-worth."
+        },
+        {
+          id: "first-year-retirement-plan",
+          prompt: "What will your first year of retirement look like? How will you structure your time and establish new routines?",
+          category: "planning",
+          helpText: "Plan a mix of rest, exploration, relationship building, routine establishment, and gradual activity increase. Avoid over-scheduling initially while you adjust."
+        },
+        {
+          id: "retirement-adjustment-expectations",
+          prompt: "What challenges do you anticipate in adjusting to retirement life? How will you handle the psychological transition?",
+          category: "consideration",
+          helpText: "Common challenges: loss of structure, identity shifts, relationship changes, financial anxiety, health concerns. Consider professional support, gradual transitions, or peer groups."
+        },
+        {
+          id: "flexibility-adaptation-planning",
+          prompt: "How will you build flexibility into your retirement plans to adapt to changing health, finances, or interests?",
+          category: "planning",
+          helpText: "Create Plan A, B, and C scenarios. Build in regular review periods to assess and adjust your retirement plans as circumstances and preferences change."
         }
       ]
     }
@@ -12529,22 +13092,193 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
   resources: [
     {
       id: "retirement-lifestyle-calculator",
-      title: "Retirement Lifestyle Planning Calculator",
+      title: "Comprehensive Retirement Lifestyle Planning Calculator",
       type: "tool",
-      excerpt: "Calculate the costs and resources needed for your desired retirement lifestyle",
-      content: "Plan your retirement expenses across housing, healthcare, travel, hobbies, and daily living...",
+      excerpt: "Calculate the costs and resources needed for your desired retirement lifestyle across all major categories",
+      content: "Interactive calculator covering housing costs, healthcare expenses, travel budgets, hobby costs, daily living expenses, and inflation adjustments. Includes scenario planning for different lifestyle choices and cost comparisons by geographic location.",
       tags: ["retirement-planning", "lifestyle-design", "financial-planning", "calculator"],
-      readTime: "8 min", 
-      difficulty: "intermediate"
+      readTime: "12 min", 
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-lifestyle-costs'
+    },
+    {
+      id: "retirement-vision-worksheet",
+      title: "Retirement Vision & Values Clarification Worksheet",
+      type: "guide",
+      excerpt: "Create a clear, inspiring vision for your retirement years aligned with your deepest values",
+      content: "Step-by-step process for clarifying retirement values, envisioning ideal lifestyle scenarios, identifying potential challenges, and creating actionable vision statements. Includes exercises for couples to align their retirement visions.",
+      tags: ["retirement-vision", "values", "planning", "couples"],
+      readTime: "15 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-vision-planning'
+    },
+    {
+      id: "retirement-budget-planner",
+      title: "Detailed Retirement Budget Planning Guide",
+      type: "guide",
+      excerpt: "Create realistic retirement budgets that align with your lifestyle goals and income sources",
+      content: "Comprehensive budgeting framework covering all retirement expense categories, income source optimization, tax planning, inflation adjustments, and emergency fund planning. Includes budget templates and tracking tools.",
+      tags: ["retirement-budget", "financial-planning", "expenses", "income"],
+      readTime: "18 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-budget-mastery'
+    },
+    {
+      id: "healthcare-cost-estimator",
+      title: "Retirement Healthcare Cost Planning Guide",
+      type: "tool",
+      excerpt: "Estimate and plan for healthcare costs throughout your retirement years",
+      content: "Healthcare cost calculator including Medicare premiums, supplement insurance, prescription costs, dental and vision care, long-term care expenses, and emergency medical funds. Includes state-by-state cost variations.",
+      tags: ["healthcare", "medicare", "long-term-care", "medical-costs"],
+      readTime: "10 min",
+      difficulty: "intermediate", 
+      relatedBlogPost: 'retirement-healthcare-planning'
+    },
+    {
+      id: "retirement-fitness-guide",
+      title: "Retirement Fitness & Healthy Aging Guide",
+      type: "guide",
+      excerpt: "Maintain and improve your physical health throughout retirement with age-appropriate fitness strategies",
+      content: "Comprehensive fitness guide covering exercise routines for different fitness levels, injury prevention, nutrition guidelines, sleep optimization, and adapting activities as you age. Includes home workout options and community fitness resources.",
+      tags: ["fitness", "healthy-aging", "exercise", "wellness"],
+      readTime: "16 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-fitness-wellness'
+    },
+    {
+      id: "preventive-care-checklist",
+      title: "Retirement Preventive Healthcare Checklist",
+      type: "checklist", 
+      excerpt: "Stay on top of preventive healthcare to maintain your health and catch issues early",
+      content: "Age-appropriate preventive care schedule including screenings, vaccinations, dental care, vision care, and specialist consultations. Organized by age groups with frequency recommendations and preparation tips.",
+      tags: ["preventive-care", "health-screening", "medical-checkups", "wellness"],
+      readTime: "8 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'preventive-care-retirement'
+    },
+    {
+      id: "retirement-location-comparison",
+      title: "Retirement Location Analysis & Comparison Tool",
+      type: "tool",
+      excerpt: "Compare potential retirement locations across all factors important to your lifestyle and budget",
+      content: "Interactive comparison tool evaluating locations on cost of living, climate, healthcare access, taxes, safety, cultural amenities, and community resources. Includes ranking system and decision framework.",
+      tags: ["retirement-location", "cost-of-living", "relocation", "comparison"],
+      readTime: "14 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-location-guide'
+    },
+    {
+      id: "cost-of-living-analyzer",
+      title: "Retirement Cost of Living State-by-State Analyzer",
+      type: "tool",
+      excerpt: "Analyze how far your retirement income will go in different states and cities",
+      content: "Detailed cost analysis covering housing, taxes, utilities, transportation, healthcare, and daily expenses across all US states and major cities. Includes retirement income purchasing power calculations.",
+      tags: ["cost-of-living", "retirement-income", "state-comparison", "purchasing-power"],
+      readTime: "11 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-cost-comparison'
+    },
+    {
+      id: "purpose-discovery-guide",
+      title: "Finding Purpose & Meaning in Retirement Guide",
+      type: "guide",
+      excerpt: "Discover meaningful ways to spend your retirement years and create lasting impact",
+      content: "Purpose exploration framework including values assessment, passion identification, skill inventory, community needs analysis, and purpose statement creation. Includes exercises for transitioning from career identity to retirement purpose.",
+      tags: ["purpose", "meaning", "retirement-transition", "identity"],
+      readTime: "17 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-purpose-meaning'
+    },
+    {
+      id: "volunteer-matching-tool",
+      title: "Retirement Volunteer & Service Opportunity Matching Guide",
+      type: "tool", 
+      excerpt: "Find volunteer opportunities that match your skills, interests, and desired time commitment",
+      content: "Volunteer opportunity database with matching algorithm based on skills, interests, availability, and location. Includes nonprofit research tools, volunteer role descriptions, and application guidance.",
+      tags: ["volunteering", "service", "nonprofit", "community-engagement"],
+      readTime: "9 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-volunteering-guide'
+    },
+    {
+      id: "retirement-timeline-planner",
+      title: "Strategic Retirement Transition Timeline Planner",
+      type: "tool",
+      excerpt: "Create a detailed timeline for transitioning from career to retirement with key milestones",
+      content: "Timeline planning tool covering financial preparation, career wind-down, lifestyle transitions, and retirement activation phases. Includes milestone checklists and contingency planning for different retirement scenarios.",
+      tags: ["retirement-timeline", "transition-planning", "career-exit", "milestones"],
+      readTime: "13 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-transition-timeline'
+    },
+    {
+      id: "phased-retirement-guide", 
+      title: "Phased Retirement & Gradual Transition Guide",
+      type: "guide",
+      excerpt: "Plan a gradual transition to retirement through reduced hours, consulting, or part-time work",
+      content: "Framework for phased retirement including negotiating with current employers, consulting transition strategies, part-time work planning, and financial implications of gradual retirement approaches.",
+      tags: ["phased-retirement", "gradual-transition", "part-time-work", "consulting"],
+      readTime: "15 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'phased-retirement-strategies'
     }
   ],
   expertTips: [
     {
-      id: "retirement-tip-1",
-      tip: "Start retirement lifestyle planning at least 10-15 years before retiring to make informed decisions and adjustments.",
-      author: "Janet Rodriguez, Certified Retirement Coach",
+      id: "early-planning-tip",
+      tip: "Start retirement lifestyle planning at least 10-15 years before retiring to make informed decisions and course corrections. The earlier you start, the more options you'll have.",
+      author: "Janet Rodriguez, Certified Retirement Coach (20 years)",
       category: "planning",
       importance: "high"
+    },
+    {
+      id: "healthcare-priority-tip",
+      tip: "Healthcare costs are often the biggest wild card in retirement. Build in a 20-30% buffer above estimates and prioritize maintaining excellent health through prevention.",
+      author: "Dr. Michael Chen, Retirement Planning Specialist",
+      category: "planning", 
+      importance: "high"
+    },
+    {
+      id: "purpose-before-retirement-tip",
+      tip: "Develop your retirement purpose and activities before you retire. The happiest retirees have something meaningful to retire TO, not just FROM.",
+      author: "Sarah Thompson, Retirement Transition Coach",
+      category: "consideration",
+      importance: "high"
+    },
+    {
+      id: "flexibility-planning-tip",
+      tip: "Build flexibility into all retirement plans. Your interests, health, and finances will change over 20-30 years of retirement, so avoid rigid long-term commitments.",
+      author: "Robert Kim, Financial Planner",
+      category: "planning",
+      importance: "high"
+    },
+    {
+      id: "social-connection-tip",
+      tip: "Retirement can be socially isolating if not planned well. Actively cultivate relationships and community connections before and during retirement for better mental health.",
+      author: "Dr. Lisa Martinez, Geriatric Psychologist",
+      category: "consideration",
+      importance: "medium"
+    },
+    {
+      id: "phased-transition-tip",
+      tip: "Consider a phased retirement approach rather than stopping work abruptly. Gradual transitions often lead to higher retirement satisfaction and better financial outcomes.",
+      author: "Jennifer Wilson, Career Transition Specialist",
+      category: "planning",
+      importance: "medium"
+    },
+    {
+      id: "inflation-protection-tip",
+      tip: "Don't underestimate inflation's impact over 20-30 years. What costs $100 today will cost $180 in 20 years with 3% inflation. Plan accordingly.",
+      author: "David Foster, Retirement Investment Advisor",
+      category: "planning",
+      importance: "high"
+    },
+    {
+      id: "couples-alignment-tip",
+      tip: "If married, ensure you and your spouse are aligned on retirement vision, timeline, and finances. Misaligned expectations cause significant retirement stress.",
+      author: "Amanda Rodriguez, Couples Financial Planner",
+      category: "consideration",
+      importance: "medium"
     }
   ]
 };

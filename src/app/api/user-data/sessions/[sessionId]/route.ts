@@ -4,14 +4,15 @@ import { authOptions } from '@/lib/auth';
 import { UserDataService } from '@/lib/services/user-data';
 
 // GET /api/user-data/sessions/[sessionId] - Get specific template session
-export async function GET(request: NextRequest, { params }: { params: { sessionId: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ sessionId: string }> }) {
+  const resolvedParams = await params;
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const templateSession = await UserDataService.getTemplateSession(params.sessionId);
+    const templateSession = await UserDataService.getTemplateSession(resolvedParams.sessionId);
     
     if (!templateSession || templateSession.userId !== session.user.id) {
       return NextResponse.json({ error: 'Session not found' }, { status: 404 });
@@ -25,7 +26,8 @@ export async function GET(request: NextRequest, { params }: { params: { sessionI
 }
 
 // PATCH /api/user-data/sessions/[sessionId] - Update template session progress
-export async function PATCH(request: NextRequest, { params }: { params: { sessionId: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ sessionId: string }> }) {
+  const resolvedParams = await params;
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
@@ -36,13 +38,13 @@ export async function PATCH(request: NextRequest, { params }: { params: { sessio
     const { progress, currentSection, isCompleted, metadata } = body;
 
     // Verify session ownership
-    const templateSession = await UserDataService.getTemplateSession(params.sessionId);
+    const templateSession = await UserDataService.getTemplateSession(resolvedParams.sessionId);
     if (!templateSession || templateSession.userId !== session.user.id) {
       return NextResponse.json({ error: 'Session not found' }, { status: 404 });
     }
 
     const updatedSession = await UserDataService.updateTemplateSession({
-      sessionId: params.sessionId,
+      sessionId: resolvedParams.sessionId,
       progress,
       currentSection,
       isCompleted,

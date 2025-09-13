@@ -152,7 +152,7 @@ export function TemplateLanding({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      )}
+      ) as React.ReactNode}
       {faqJsonLd && (
         <script
           type="application/ld+json"

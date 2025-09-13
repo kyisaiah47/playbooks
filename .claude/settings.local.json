@@ -20,7 +20,12 @@
       "Bash(npm run type-check:*)",
       "Bash(timeout 30 npx tsc --noEmit --project .)",
       "Bash(npx prisma:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Read(///**)",
+      "Bash(chmod:*)",
+      "Bash(/Users/ikim1/Documents/GitHub/templata/audit_script.sh)",
+      "Bash(/Users/ikim1/Documents/GitHub/templata/helptext_audit.sh:*)",
+      "Bash(/Users/ikim1/Documents/GitHub/templata/section_icon_audit.sh:*)"
     ],
     "deny": [],
     "ask": []
