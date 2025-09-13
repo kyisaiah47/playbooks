@@ -2523,6 +2523,7 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
     {
       id: 'skill-assessment-development',
       title: 'Skill Assessment & Development',
+      description: 'Assess your current professional skills and create a development plan for career growth.',
       order: 1,
       reflectionPrompts: [
         {
@@ -2567,6 +2568,7 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
     {
       id: 'business-setup-legalities',
       title: 'Business Setup & Legal Framework',
+      description: 'Establish proper business structure and legal foundations for your freelance practice.',
       order: 2,
       reflectionPrompts: [
         {
@@ -2610,6 +2612,7 @@ export const freelanceGigEconomyTemplate: GuidanceTemplate = {
     {
       id: 'pricing-positioning-strategy',
       title: 'Pricing & Market Positioning',
+      description: 'Develop competitive pricing strategies and position your services effectively in the market.',
       order: 3,
       reflectionPrompts: [
         {
@@ -2834,6 +2837,7 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
     {
       id: 'parenting-philosophy-foundation',
       title: 'Parenting Philosophy & Foundation',
+      description: 'Establish your core parenting values, discipline approach, and family culture foundation',
       order: 1,
       reflectionPrompts: [
         {
@@ -2878,6 +2882,7 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
     {
       id: 'child-development-understanding',
       title: 'Child Development & Age-Appropriate Expectations',
+      description: 'Understand developmental stages and set appropriate expectations for your child\'s age and temperament',
       order: 2,
       reflectionPrompts: [
         {
@@ -2921,6 +2926,7 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
     {
       id: 'emotional-social-development',
       title: 'Emotional Intelligence & Social Skills',
+      description: 'Foster emotional intelligence, social skills, and healthy relationship building',
       order: 3,
       reflectionPrompts: [
         {
@@ -2964,6 +2970,7 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
     {
       id: 'communication-relationship-building',
       title: 'Communication & Parent-Child Relationship',
+      description: 'Build strong communication skills and deepen your parent-child relationship through connection',
       order: 4,
       reflectionPrompts: [
         {
@@ -3007,6 +3014,7 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
     {
       id: 'education-learning-support',
       title: 'Education & Learning Support',
+      description: 'Create supportive learning environments and partner with schools for academic success',
       order: 5,
       reflectionPrompts: [
         {
@@ -3050,6 +3058,7 @@ export const parentingChildDevelopmentTemplate: GuidanceTemplate = {
     {
       id: 'health-wellness-safety',
       title: 'Health, Wellness & Safety',
+      description: 'Establish healthy habits, safety awareness, and comprehensive child protection strategies',
       order: 6,
       reflectionPrompts: [
         {
@@ -3188,6 +3197,7 @@ export const productivitySystemTemplate: GuidanceTemplate = {
     {
       id: 'productivity-assessment',
       title: 'Productivity Assessment & Goals',
+      description: 'Assess your current productivity challenges and define specific improvement goals',
       order: 1,
       reflectionPrompts: [
         {
@@ -3225,6 +3235,7 @@ export const productivitySystemTemplate: GuidanceTemplate = {
     {
       id: 'time-blocking-system',
       title: 'Time Blocking & Calendar Management',
+      description: 'Design an effective time blocking system to protect focus time and manage energy',
       order: 2,
       reflectionPrompts: [
         {
@@ -3262,6 +3273,7 @@ export const productivitySystemTemplate: GuidanceTemplate = {
     {
       id: 'task-management',
       title: 'Task Capture & Organization',
+      description: 'Create systems to capture, organize, and prioritize tasks and commitments effectively',
       order: 3,
       reflectionPrompts: [
         {
@@ -3299,6 +3311,7 @@ export const productivitySystemTemplate: GuidanceTemplate = {
     {
       id: 'focus-techniques',
       title: 'Focus & Deep Work Strategies',
+      description: 'Develop techniques and environments to maximize focus and achieve deep work states',
       order: 4,
       reflectionPrompts: [
         {
@@ -3336,6 +3349,7 @@ export const productivitySystemTemplate: GuidanceTemplate = {
     {
       id: 'system-optimization',
       title: 'Continuous Improvement & Optimization',
+      description: 'Establish review processes to continuously improve and adapt your productivity system',
       order: 5,
       reflectionPrompts: [
         {
@@ -3435,6 +3449,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
     {
       id: 'moving-planning',
       title: 'Moving Timeline & Planning Foundation',
+      description: 'Establish moving timeline, budget, and foundational planning for a smooth relocation',
       order: 1,
       reflectionPrompts: [
         {
@@ -3472,6 +3487,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
     {
       id: 'vendor-selection',
       title: 'Moving Company & Service Selection',
+      description: 'Research, evaluate, and select moving companies and related services for your relocation',
       order: 2,
       reflectionPrompts: [
         {
@@ -3503,6 +3519,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
     {
       id: 'packing-organization',
       title: 'Decluttering, Packing & Organization Strategy',
+      description: 'Declutter belongings and develop systematic packing and organization strategies',
       order: 3,
       reflectionPrompts: [
         {
@@ -3540,6 +3557,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
     {
       id: 'logistics-coordination',
       title: 'Moving Day Logistics & Coordination',
+      description: 'Plan and coordinate moving day logistics for efficient and stress-free execution',
       order: 4,
       reflectionPrompts: [
         {
@@ -3571,6 +3589,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
     {
       id: 'new-location-setup',
       title: 'New Home Setup & Integration',
+      description: 'Set up utilities, unpack systematically, and integrate into your new community',
       order: 5,
       reflectionPrompts: [
         {
@@ -3602,6 +3621,7 @@ export const movingRelocationTemplate: GuidanceTemplate = {
     {
       id: 'post-move-settling',
       title: 'Post-Move Follow-up & Long-term Settling',
+      description: 'Handle post-move issues, complete settling tasks, and adapt to your new environment',
       order: 6,
       reflectionPrompts: [
         {
@@ -3695,6 +3715,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
     {
       id: 'event-vision',
       title: 'Event Vision & Goals',
+      description: 'Define your event purpose, target audience, and success metrics for effective planning',
       order: 1,
       reflectionPrompts: [
         {
@@ -3732,6 +3753,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
     {
       id: 'budget-logistics',
       title: 'Budget & Logistics Planning',
+      description: 'Establish budget allocation, venue requirements, and logistical planning framework',
       order: 2,
       reflectionPrompts: [
         {
@@ -3769,6 +3791,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
     {
       id: 'vendor-management',
       title: 'Vendor Selection & Management',
+      description: 'Research, select, and coordinate with vendors to deliver exceptional event experiences',
       order: 3,
       reflectionPrompts: [
         {
@@ -3800,6 +3823,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
     {
       id: 'marketing-promotion',
       title: 'Marketing & Promotion Strategy',
+      description: 'Develop and execute marketing campaigns to attract and register your target audience',
       order: 4,
       reflectionPrompts: [
         {
@@ -3831,6 +3855,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
     {
       id: 'day-of-execution',
       title: 'Event Day Execution',
+      description: 'Execute flawless event day coordination and handle real-time logistics management',
       order: 5,
       reflectionPrompts: [
         {
@@ -3862,6 +3887,7 @@ export const eventPlanningTemplate: GuidanceTemplate = {
     {
       id: 'follow-up-evaluation',
       title: 'Post-Event Follow-up & Evaluation',
+      description: 'Gather feedback, analyze success metrics, and capture lessons learned for future events',
       order: 6,
       reflectionPrompts: [
         {
@@ -4745,6 +4771,7 @@ export const freelanceBusinessTemplate: GuidanceTemplate = {
     {
       id: 'service-definition',
       title: 'Service Definition & Positioning',
+      description: 'Define your services, identify your niche, and position yourself competitively in the market',
       order: 1,
       reflectionPrompts: [
         {
@@ -4831,6 +4858,7 @@ export const freelanceBusinessTemplate: GuidanceTemplate = {
     {
       id: 'pricing-strategy',
       title: 'Pricing Strategy & Financial Planning',
+      description: 'Develop a profitable pricing strategy and establish financial management systems',
       order: 3,
       reflectionPrompts: [
         {
@@ -4874,6 +4902,7 @@ export const freelanceBusinessTemplate: GuidanceTemplate = {
     {
       id: 'client-acquisition',
       title: 'Client Acquisition & Marketing',
+      description: 'Build effective marketing strategies and sales processes to attract and convert clients',
       order: 4,
       reflectionPrompts: [
         {
@@ -4960,6 +4989,7 @@ export const freelanceBusinessTemplate: GuidanceTemplate = {
     {
       id: 'growth-scaling',
       title: 'Business Growth & Scaling Strategies',
+      description: 'Scale your business sustainably through automation, partnerships, and strategic growth',
       order: 6,
       reflectionPrompts: [
         {
@@ -12001,13 +12031,7 @@ export const templates: GuidanceTemplate[] = [
   languageLearningCulturalImmersionTemplate,
   budgetPlanningTemplate,
   businessLaunchTemplate,
-  collegePlanningTemplate,
-  fitnessJourneyTemplate,
-  personalDevelopmentCoachingTemplate,
-  retirementLifestylePlanningTemplate,
-  personalHealthWellnessTemplate,
-  homeRenovationInteriorDesignTemplate,
-  sustainableLivingTemplate
+  collegePlanningTemplate
 ];
 
 // Comprehensive fitness journey guidance focused on personal transformation
@@ -13282,3 +13306,15 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
     }
   ]
 };
+
+
+// Complete templates array with all defined templates  
+export const allTemplates: GuidanceTemplate[] = [
+  ...templates,
+  fitnessJourneyTemplate,
+  personalDevelopmentCoachingTemplate, 
+  retirementLifestylePlanningTemplate,
+  personalHealthWellnessTemplate,
+  homeRenovationInteriorDesignTemplate,
+  sustainableLivingTemplate
+];

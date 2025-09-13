@@ -25,7 +25,9 @@
       "Bash(chmod:*)",
       "Bash(/Users/ikim1/Documents/GitHub/templata/audit_script.sh)",
       "Bash(/Users/ikim1/Documents/GitHub/templata/helptext_audit.sh:*)",
-      "Bash(/Users/ikim1/Documents/GitHub/templata/section_icon_audit.sh:*)"
+      "Bash(/Users/ikim1/Documents/GitHub/templata/section_icon_audit.sh:*)",
+      "Bash(rg:*)",
+      "Bash(./section_icon_audit.sh:*)"
     ],
     "deny": [],
     "ask": []

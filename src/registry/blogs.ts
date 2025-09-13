@@ -560,7 +560,7 @@ Remember: the cheapest option isn't always the best value. Focus on finding the 
       metaDescription: "Plan your moving budget with our detailed cost breakdown covering all expenses plus 15 proven strategies to save money on your relocation.",
       ogImage: "/blog/moving-budget-guide.jpg"
     },
-    relatedTemplates: ["moving-relocation"],
+    relatedTemplates: ["moving-relocation", "personal-finance-investment"],
     relatedPosts: ["complete-moving-timeline", "packing-strategies-guide"]
   },
   {
@@ -1107,7 +1107,7 @@ The key to successful wedding budget management is flexibility within structure.
     difficulty: "beginner",
     featured: true,
     tags: ["budget", "planning", "finance"],
-    relatedTemplates: ["wedding-planning"],
+    relatedTemplates: ["wedding-planning", "personal-finance-investment"],
     relatedPosts: ["top-10-wedding-mistakes", "hidden-wedding-costs", "wedding-cost-cutting-tips"]
   },
   
@@ -1234,7 +1234,7 @@ The key is knowledge and preparation. Use this list as your hidden costs prevent
     type: "article",
     difficulty: "intermediate",
     tags: ["budget", "planning", "tips"],
-    relatedTemplates: ["wedding-planning"],
+    relatedTemplates: ["wedding-planning", "personal-finance-investment"],
     relatedPosts: ["wedding-budget-breakdown", "wedding-cost-cutting-tips"]
   },
 
@@ -1441,7 +1441,7 @@ Remember: your guests will remember the love, joy, and celebration - not whether
     type: "guide",
     difficulty: "intermediate",
     tags: ["budget", "savings", "DIY"],
-    relatedTemplates: ["wedding-planning"],
+    relatedTemplates: ["wedding-planning", "personal-finance-investment"],
     relatedPosts: ["wedding-budget-breakdown", "hidden-wedding-costs"]
   },
 
@@ -2830,7 +2830,7 @@ Remember: there's rarely a "perfect" time to buy or a "perfect" house. Focus on 
     difficulty: "beginner",
     featured: true,
     tags: ["first-time buyer", "home buying", "mortgage", "real estate"],
-    relatedTemplates: ["home-buying"],
+    relatedTemplates: ["home-buying", "personal-finance-investment"],
     relatedPosts: ["credit-improvement-guide", "mortgage-pre-approval-checklist", "home-inspection-checklist"]
   },
 
@@ -3049,7 +3049,7 @@ Remember that credit improvement is a marathon, not a sprint. Even modest improv
     type: "guide",
     difficulty: "intermediate",
     tags: ["credit score", "mortgage rates", "financial planning"],
-    relatedTemplates: ["home-buying"],
+    relatedTemplates: ["home-buying", "personal-finance-investment"],
     relatedPosts: ["first-time-home-buyer-guide", "mortgage-pre-approval-checklist"]
   },
 
@@ -3728,7 +3728,7 @@ Create tiered skill categories: Core Competencies (your strongest 6-8 skills), T
     type: "guide",
     difficulty: "intermediate",
     tags: ["resume", "ATS", "job applications", "career"],
-    relatedTemplates: ["job-search"],
+    relatedTemplates: ["job-search", "remote-work-productivity", "career-change-transition"],
     relatedPosts: ["interview-preparation-guide", "linkedin-profile-optimization"]
   },
   {
@@ -3787,7 +3787,7 @@ These present hypothetical scenarios. Walk through your thought process step by 
     type: "guide",
     difficulty: "intermediate",
     tags: ["interviews", "career", "STAR method", "preparation"],
-    relatedTemplates: ["job-search"],
+    relatedTemplates: ["job-search", "career-change-transition"],
     relatedPosts: ["resume-optimization-guide", "salary-negotiation-guide"]
   },
   {
@@ -3848,7 +3848,7 @@ Actively endorse others in your network for skills you can genuinely vouch for. 
     type: "guide",
     difficulty: "beginner",
     tags: ["LinkedIn", "professional branding", "networking", "career"],
-    relatedTemplates: ["job-search"],
+    relatedTemplates: ["job-search", "digital-marketing-seo", "career-change-transition"],
     relatedPosts: ["resume-optimization-guide", "networking-strategy-guide"]
   },
   {
@@ -3915,7 +3915,7 @@ Evaluate based on why you were job searching originally. Will the counter-offer 
     type: "guide", 
     difficulty: "expert",
     tags: ["salary negotiation", "compensation", "career advancement"],
-    relatedTemplates: ["job-search"],
+    relatedTemplates: ["job-search", "personal-finance-investment", "career-change-transition"],
     relatedPosts: ["interview-preparation-guide", "offer-evaluation-checklist"]
   },
   // Baby Planning blog posts
@@ -4026,7 +4026,7 @@ Plan for changing needs (solid food, larger clothing, increased childcare costs)
     type: "guide",
     difficulty: "intermediate",
     tags: ["baby budget", "financial planning", "cost saving"],
-    relatedTemplates: ["baby-planning"],
+    relatedTemplates: ["baby-planning", "personal-finance-investment"],
     relatedPosts: ["prenatal-care-essentials", "childcare-options-guide"]
   },
   {
@@ -4396,7 +4396,7 @@ Market validation is an ongoing process that continues beyond launch. Successful
     type: "guide",
     difficulty: "intermediate",
     tags: ["market validation", "startup research", "business planning"],
-    relatedTemplates: ["business-launch"],
+    relatedTemplates: ["business-launch", "digital-marketing-seo"],
     relatedPosts: ["business-structure-guide", "startup-funding-guide", "digital-marketing-strategy"]
   },
   
@@ -4706,7 +4706,7 @@ Your business structure isn't permanent, but changing later can be complex and e
     type: "guide",
     difficulty: "intermediate",
     tags: ["business formation", "legal structure", "LLC", "corporation"],
-    relatedTemplates: ["business-launch"],
+    relatedTemplates: ["business-launch", "remote-work-productivity"],
     relatedPosts: ["market-validation-guide", "startup-funding-guide", "digital-marketing-strategy"]
   },
   
@@ -5093,7 +5093,7 @@ Remember that fundraising is a means to an end, not the goal itself. Focus on bu
     type: "guide", 
     difficulty: "expert",
     tags: ["startup funding", "venture capital", "angel investors", "fundraising"],
-    relatedTemplates: ["business-launch"],
+    relatedTemplates: ["business-launch", "personal-finance-investment"],
     relatedPosts: ["market-validation-guide", "business-structure-guide", "digital-marketing-strategy"]
   },
   
@@ -5556,7 +5556,7 @@ Success in digital marketing comes from consistent execution, continuous testing
     type: "guide",
     difficulty: "intermediate",
     tags: ["digital marketing", "SEO", "content marketing", "social media"],
-    relatedTemplates: ["business-launch"],
+    relatedTemplates: ["business-launch", "digital-marketing-seo"],
     relatedPosts: ["market-validation-guide", "business-structure-guide", "startup-funding-guide"]
   },
   
@@ -5764,7 +5764,7 @@ Start planning early, stay organized, communicate clearly, and don't forget to e
     type: "guide",
     difficulty: "beginner",
     tags: ["event planning", "project management", "event coordination", "event marketing"],
-    relatedTemplates: ["event-planning"],
+    relatedTemplates: ["event-planning", "remote-work-productivity"],
     relatedPosts: ["corporate-event-planning", "wedding-planning-timeline", "vendor-negotiation-tips"]
   },
   
@@ -5987,7 +5987,7 @@ Corporate events are powerful business tools that, when executed professionally,
     type: "guide", 
     difficulty: "intermediate",
     tags: ["corporate events", "business planning", "ROI", "networking", "brand building"],
-    relatedTemplates: ["event-planning", "business-launch"],
+    relatedTemplates: ["event-planning", "business-launch", "digital-marketing-seo"],
     relatedPosts: ["event-planning-ultimate-guide", "vendor-negotiation-tips", "event-marketing-strategies"]
   },
 
@@ -6475,7 +6475,7 @@ Remember that authentic marketing built on real value and genuine connections wi
     type: "guide",
     difficulty: "intermediate",
     tags: ["event marketing", "digital marketing", "social media", "email marketing", "event promotion"],
-    relatedTemplates: ["event-planning"],
+    relatedTemplates: ["event-planning", "digital-marketing-seo"],
     relatedPosts: ["event-planning-ultimate-guide", "corporate-event-planning", "vendor-negotiation-tips"]
   },
   
@@ -6741,7 +6741,7 @@ Remember that the best trips often include unexpected moments and serendipitous 
     type: "guide",
     difficulty: "beginner",
     tags: ["travel planning", "trip planning", "travel tips", "budget travel", "travel coordination"],
-    relatedTemplates: ["travel-planning"],
+    relatedTemplates: ["travel-planning", "language-learning-cultural-immersion"],
     relatedPosts: ["budget-travel-strategies", "solo-travel-planning", "international-travel-guide"]
   },
   
@@ -7002,7 +7002,7 @@ Remember that the most valuable travel experiences often cost very little—conv
     type: "guide", 
     difficulty: "intermediate",
     tags: ["budget travel", "travel hacks", "cheap flights", "travel deals", "backpacking"],
-    relatedTemplates: ["travel-planning"],
+    relatedTemplates: ["travel-planning", "language-learning-cultural-immersion"],
     relatedPosts: ["travel-planning-ultimate-guide", "solo-travel-planning", "international-travel-guide"]
   },
 
@@ -7291,7 +7291,7 @@ Remember that solo travel doesn't mean being antisocial—it means having the fr
     type: "guide",
     difficulty: "intermediate", 
     tags: ["solo travel", "travel safety", "women travel", "backpacking", "travel confidence"],
-    relatedTemplates: ["travel-planning"],
+    relatedTemplates: ["travel-planning", "language-learning-cultural-immersion"],
     relatedPosts: ["travel-planning-ultimate-guide", "budget-travel-strategies", "international-travel-guide"]
   },
   
@@ -7575,7 +7575,7 @@ Remember that perfect meal planning doesn't exist—the best system is the one y
     type: "guide",
     difficulty: "beginner",
     tags: ["meal planning", "nutrition", "grocery shopping", "budget meals", "healthy eating"],
-    relatedTemplates: ["meal-planning"],
+    relatedTemplates: ["meal-planning", "remote-work-productivity"],
     relatedPosts: ["healthy-meal-prep-guide", "budget-grocery-shopping", "family-meal-planning"]
   },
   
@@ -8000,7 +8000,7 @@ Your research matters. Your voice adds something unique to the scholarly convers
     type: "guide",
     difficulty: "beginner",
     tags: ["academic-writing", "productivity", "writing-habits", "time-management"],
-    relatedTemplates: ["academic-research"],
+    relatedTemplates: ["academic-research", "remote-work-productivity"],
     relatedPosts: ["research-proposal-writing", "literature-review-mastery"]
   }
 ];

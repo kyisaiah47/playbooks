@@ -146,19 +146,18 @@ export function TemplateLanding({
 
   return (
     <PageLayout>
-      {/* SEO JSON-LD */}
-      {jsonLd && (
+      {jsonLd ? (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      ) as React.ReactNode}
-      {faqJsonLd && (
+      ) : null}
+      {faqJsonLd ? (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
-      )}
+      ) : null}
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-20 pb-16 lg:pt-32 lg:pb-24">
