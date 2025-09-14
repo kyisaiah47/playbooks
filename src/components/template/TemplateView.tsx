@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { GuidanceTemplate, Resource, ReflectionPrompt } from '@/types/template';
+import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/template';
 import { EmbeddedPrompts } from '@/components/prompts/EmbeddedPrompts';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
@@ -13,7 +13,7 @@ import { PDFExportButton } from '@/components/pdf/export-button';
 import { ExpertBadgeList } from '@/components/expert/expert-badge';
 import { getTemplateExperts } from '@/lib/expert-badges';
 import { SharePanel } from '@/components/collaboration/share-panel';
-import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity } from 'lucide-react';
+import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -23,6 +23,13 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface TemplateViewProps {
   template: GuidanceTemplate;
@@ -31,8 +38,24 @@ interface TemplateViewProps {
 export function TemplateView({ template }: TemplateViewProps) {
   const [activeSection, setActiveSection] = useState(0);
   const [additionalPrompts, setAdditionalPrompts] = useState<ReflectionPrompt[]>([]);
+  const [additionalNotes, setAdditionalNotes] = useState<FreeformNote[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
   const [responses, setResponses] = useState<Record<string, string>>({});
+
+  // Workspace management
+  const [workspaces, setWorkspaces] = useState<Workspace[]>([
+    {
+      id: 'default',
+      name: 'Main Workspace',
+      templateId: template.id,
+      additionalPrompts: [],
+      additionalNotes: [],
+      responses: {},
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+  ]);
+  const [activeWorkspaceId, setActiveWorkspaceId] = useState<string>('default');
 
   const getSectionIcon = (sectionId: string) => {
     switch (sectionId) {
@@ -81,11 +104,70 @@ export function TemplateView({ template }: TemplateViewProps) {
     if (additionalPrompts.some(p => p.id === prompt.id)) {
       return; // Don't add duplicates
     }
-    setAdditionalPrompts(prev => [...prev, prompt]);
+    const newPrompts = [...additionalPrompts, prompt];
+    setAdditionalPrompts(newPrompts);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, additionalPrompts: newPrompts, updatedAt: new Date() }
+        : workspace
+    ));
   };
 
   const handleRemovePrompt = (promptId: string) => {
-    setAdditionalPrompts(prev => prev.filter(p => p.id !== promptId));
+    const newPrompts = additionalPrompts.filter(p => p.id !== promptId);
+    setAdditionalPrompts(newPrompts);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, additionalPrompts: newPrompts, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleInsertNote = (note: { id: string; title: string }) => {
+    const freeformNote: FreeformNote = {
+      id: note.id,
+      title: note.title,
+      content: ''
+    };
+    const newNotes = [...additionalNotes, freeformNote];
+    setAdditionalNotes(newNotes);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, additionalNotes: newNotes, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleRemoveNote = (noteId: string) => {
+    const newNotes = additionalNotes.filter(n => n.id !== noteId);
+    setAdditionalNotes(newNotes);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, additionalNotes: newNotes, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleUpdateNote = (noteId: string, updates: Partial<FreeformNote>) => {
+    const newNotes = additionalNotes.map(note =>
+      note.id === noteId ? { ...note, ...updates } : note
+    );
+    setAdditionalNotes(newNotes);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, additionalNotes: newNotes, updatedAt: new Date() }
+        : workspace
+    ));
   };
 
   const handleOpenResource = (resource: Resource) => {
@@ -98,6 +180,52 @@ export function TemplateView({ template }: TemplateViewProps) {
 
   const handleResponsesChange = (newResponses: Record<string, string>) => {
     setResponses(newResponses);
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, responses: newResponses, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleWorkspaceChange = (workspaceId: string) => {
+    // Save current state to current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? {
+            ...workspace,
+            additionalPrompts,
+            additionalNotes,
+            responses,
+            updatedAt: new Date()
+          }
+        : workspace
+    ));
+
+    // Load new workspace state
+    const newWorkspace = workspaces.find(w => w.id === workspaceId);
+    if (newWorkspace) {
+      setActiveWorkspaceId(workspaceId);
+      setAdditionalPrompts(newWorkspace.additionalPrompts);
+      setAdditionalNotes(newWorkspace.additionalNotes);
+      setResponses(newWorkspace.responses);
+    }
+  };
+
+  const handleCreateWorkspace = () => {
+    const newWorkspace: Workspace = {
+      id: `workspace-${Date.now()}`,
+      name: `Workspace ${workspaces.length}`,
+      templateId: template.id,
+      additionalPrompts: [],
+      additionalNotes: [],
+      responses: {},
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    setWorkspaces(prev => [...prev, newWorkspace]);
+    handleWorkspaceChange(newWorkspace.id);
   };
 
 
@@ -122,8 +250,13 @@ export function TemplateView({ template }: TemplateViewProps) {
           activeSection={activeSection}
           onSectionChange={setActiveSection}
           onInsertPrompt={handleInsertPrompt}
+          onInsertNote={handleInsertNote}
           onOpenResource={handleOpenResource}
           responses={responses}
+          workspaces={workspaces.map(w => ({ id: w.id, name: w.name }))}
+          activeWorkspaceId={activeWorkspaceId}
+          onWorkspaceChange={handleWorkspaceChange}
+          onCreateWorkspace={handleCreateWorkspace}
         />
         
         <main className="flex-1 flex overflow-hidden bg-background">
@@ -165,7 +298,10 @@ export function TemplateView({ template }: TemplateViewProps) {
             <EmbeddedPrompts
               section={template.sections[activeSection]}
               additionalPrompts={additionalPrompts}
+              additionalNotes={additionalNotes}
               onRemovePrompt={handleRemovePrompt}
+              onRemoveNote={handleRemoveNote}
+              onUpdateNote={handleUpdateNote}
               onResponsesChange={handleResponsesChange}
               responses={responses}
               hideHeader={true}

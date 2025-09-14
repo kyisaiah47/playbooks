@@ -37,10 +37,9 @@ export function SharePanel({
         variant="outline"
         size="sm"
         onClick={handleCopyLink}
-        className={cn("flex items-center gap-2", className)}
+        className={cn("w-9 h-9 p-0", className)}
       >
         <Copy className="w-4 h-4" />
-        Copy Link
       </Button>
 
       {showToast && (

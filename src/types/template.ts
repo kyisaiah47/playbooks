@@ -29,6 +29,18 @@ export interface FreeformNote {
   id: string;
   title: string;
   content?: string;
+  category?: string;
+}
+
+export interface Workspace {
+  id: string;
+  name: string;
+  templateId: string;
+  additionalPrompts: ReflectionPrompt[];
+  additionalNotes: FreeformNote[];
+  responses: Record<string, string>;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface Resource {

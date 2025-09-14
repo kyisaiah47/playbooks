@@ -22,11 +22,12 @@ interface EmbeddedPromptsProps {
   onResponsesChange?: (responses: Record<string, string>) => void;
   onRemovePrompt?: (promptId: string) => void;
   onRemoveNote?: (noteId: string) => void;
+  onUpdateNote?: (noteId: string, updates: Partial<FreeformNote>) => void;
   hideHeader?: boolean;
   responses?: Record<string, string>;
 }
 
-export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNotes = [], onResponsesChange, onRemovePrompt, onRemoveNote, hideHeader, responses: externalResponses }: EmbeddedPromptsProps) {
+export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNotes = [], onResponsesChange, onRemovePrompt, onRemoveNote, onUpdateNote, hideHeader, responses: externalResponses }: EmbeddedPromptsProps) {
   const [responses, setResponses] = useState<Record<string, string>>(externalResponses || {});
   const [draggedOver, setDraggedOver] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
@@ -84,8 +85,9 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
     }
   };
 
-  // Only show additional prompts that have been explicitly added
+  // Combine prompts and notes for rendering
   const allPrompts = additionalPrompts;
+  const allItems = [...additionalPrompts, ...additionalNotes];
 
   const progressPercentage = Math.round((additionalPrompts.length / section.reflectionPrompts.length) * 100);
 
@@ -103,7 +105,7 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
         )}
 
       {/* Main Content */}
-      {allPrompts.length === 0 ? (
+      {allItems.length === 0 ? (
         /* Aspirational Empty State */
         <div className="text-center py-12 border-2 border-dashed border-primary/20 bg-gradient-to-br from-primary/5 to-transparent rounded-lg">
           <div className="flex items-center justify-center mb-4">
@@ -122,12 +124,18 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
           </div>
         </div>
       ) : (
-        /* Compact Prompts */
+        /* Compact Prompts and Notes */
         <div className="space-y-0">
-          {allPrompts.map((prompt, index) => {
-            const isAdditional = additionalPrompts.some(p => p.id === prompt.id) && 
-                                 !section.reflectionPrompts.some(s => s.id === prompt.id);
-            return (
+          {allItems.map((item, index) => {
+            // Check if this is a prompt or a note
+            const isPrompt = 'prompt' in item;
+            const isNote = 'title' in item && !('prompt' in item);
+
+            if (isPrompt) {
+              const prompt = item as ReflectionPrompt;
+              const isAdditional = additionalPrompts.some(p => p.id === prompt.id) &&
+                                   !section.reflectionPrompts.some(s => s.id === prompt.id);
+              return (
               <div key={prompt.id} className="border-b p-4 space-y-3">
                 <div className="flex items-start gap-2">
                   <div className="flex items-center gap-2 flex-shrink-0 mt-0.5">
@@ -196,7 +204,73 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
                   />
                 </div>
               </div>
-            );
+              )
+            } else if (isNote) {
+              const note = item as FreeformNote;
+              return (
+                <div key={note.id} className="border-b p-4 space-y-3">
+                  <div className="flex items-start gap-2">
+                    <div className="flex items-center gap-2 flex-shrink-0 mt-0.5">
+                      <span className="w-5 h-5 bg-primary/10 rounded text-xs text-primary font-medium flex items-center justify-center">
+                        <FileText className="w-3 h-3" />
+                      </span>
+                      {responses[note.id]?.trim() ? (
+                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+                      ) : (
+                        <Circle className="w-4 h-4 text-muted-foreground" />
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex items-start gap-1.5 flex-1 min-w-0">
+                          <input
+                            type="text"
+                            value={note.title}
+                            onChange={(e) => onUpdateNote?.(note.id, { title: e.target.value })}
+                            className="font-medium text-sm flex-1 bg-transparent border-none outline-none focus:ring-0 p-0"
+                            placeholder="Note title..."
+                          />
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => onRemoveNote?.(note.id)}
+                          className="h-6 w-6 p-0 text-muted-foreground hover:text-destructive flex-shrink-0"
+                        >
+                          <X className="w-3 h-3" />
+                        </Button>
+                      </div>
+                      <div className="flex items-center gap-2 mt-1">
+                        <FileText className="w-4 h-4 text-muted-foreground" />
+                        <input
+                          type="text"
+                          value={note.category || ''}
+                          onChange={(e) => onUpdateNote?.(note.id, { category: e.target.value })}
+                          className="text-xs text-muted-foreground bg-transparent border-none outline-none focus:ring-0 p-0"
+                          placeholder="Add category/tag..."
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <Textarea
+                      placeholder="Add your notes here... (drag text from resources to add here)"
+                      value={responses[note.id] || ''}
+                      onChange={(e) => handleResponseChange(note.id, e.target.value)}
+                      onDragOver={(e) => handleDragOver(e, note.id)}
+                      onDragLeave={handleDragLeave}
+                      onDrop={(e) => handleDrop(e, note.id)}
+                      className={`min-h-[80px] text-sm transition-all duration-200 ${
+                        draggedOver === note.id
+                          ? 'ring-2 ring-blue-500 ring-opacity-50 bg-blue-50/50 dark:bg-blue-900/10 scale-[1.02]'
+                          : 'hover:ring-1 hover:ring-muted-foreground/20'
+                      }`}
+                    />
+                  </div>
+                </div>
+              )
+            }
+            return null;
           })}
         </div>
       )}

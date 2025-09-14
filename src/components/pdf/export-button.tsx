@@ -121,15 +121,14 @@ export function PDFExportButton({ template, responses, className }: PDFExportBut
           <Button
             variant="outline"
             size="sm"
-            className={className}
+            className={`w-9 h-9 p-0 ${className || ""}`}
             disabled={isExporting}
           >
             {isExporting ? (
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
-              <FileText className="w-4 h-4 mr-2" />
+              <Download className="w-4 h-4" />
             )}
-            {isExporting ? "Exporting..." : "Export PDF"}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48">

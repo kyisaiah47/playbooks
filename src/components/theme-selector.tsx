@@ -37,7 +37,7 @@ export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="sm" className={iconOnly ? "" : "gap-2"} disabled>
+      <Button variant="outline" size="sm" className={iconOnly ? "w-9 h-9 p-0" : "gap-2"} disabled>
         <Palette className="h-4 w-4" />
         {!iconOnly && <span className="hidden sm:inline">Loading...</span>}
       </Button>
@@ -60,7 +60,7 @@ export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className={iconOnly ? "" : "gap-2"}>
+        <Button variant="outline" size="sm" className={iconOnly ? "w-9 h-9 p-0" : "gap-2"}>
           <Palette className="h-4 w-4" />
           {!iconOnly && <span className="hidden sm:inline">{currentThemeInfo.name}</span>}
         </Button>

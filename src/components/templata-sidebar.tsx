@@ -329,8 +329,13 @@ interface TemplataContentSidebarProps {
   activeSection: number
   onSectionChange: (section: number) => void
   onInsertPrompt?: (prompt: ReflectionPrompt) => void
+  onInsertNote?: (note: { id: string; title: string }) => void
   onOpenResource?: (resource: Resource) => void
   responses?: Record<string, string>
+  workspaces?: { id: string; name: string }[]
+  activeWorkspaceId?: string
+  onWorkspaceChange?: (workspaceId: string) => void
+  onCreateWorkspace?: () => void
 }
 
 export function TemplataContentSidebar({
@@ -338,8 +343,13 @@ export function TemplataContentSidebar({
   activeSection,
   onSectionChange,
   onInsertPrompt,
+  onInsertNote,
   onOpenResource,
   responses,
+  workspaces = [],
+  activeWorkspaceId,
+  onWorkspaceChange,
+  onCreateWorkspace,
   ...props
 }: TemplataContentSidebarProps & React.ComponentProps<typeof Sidebar>) {
   const [activeTab, setActiveTab] = React.useState<'prompts' | 'resources' | 'related'>('prompts')
@@ -466,22 +476,56 @@ export function TemplataContentSidebar({
                     <span className="text-xs">Related</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+
+                {/* Divider */}
+                <div className="mx-2 my-2 h-px bg-border" />
+
+                {/* Workspaces section */}
+                {workspaces.map((workspace) => (
+                  <SidebarMenuItem key={workspace.id}>
+                    <SidebarMenuButton
+                      tooltip={{
+                        children: workspace.name,
+                        hidden: false,
+                      }}
+                      onClick={() => onWorkspaceChange?.(workspace.id)}
+                      isActive={activeWorkspaceId === workspace.id}
+                      className="px-2.5 md:px-2"
+                    >
+                      <Bookmark className="w-4 h-4" />
+                      <span className="text-xs truncate">{workspace.name}</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+
+                {/* Add workspace button */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    tooltip={{
+                      children: "Create Workspace",
+                      hidden: false,
+                    }}
+                    onClick={() => onCreateWorkspace?.()}
+                    className="px-2.5 md:px-2 text-muted-foreground hover:text-foreground"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span className="text-xs">Add Workspace</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
 
-        <SidebarFooter className="flex flex-row gap-2 p-4">
+        <SidebarFooter className="flex flex-col gap-2 p-4 items-center">
           <SharePanel
             templateId={template.id}
             templateTitle={template.title}
             responses={responses || {}}
-            className="flex-1"
           />
           <PDFExportButton
             template={template}
             responses={responses || {}}
-            className="flex-1"
           />
           <ThemeSelector iconOnly />
         </SidebarFooter>
@@ -508,6 +552,19 @@ export function TemplataContentSidebar({
         <SidebarContent className="flex-1 overflow-hidden">
           <SidebarGroup className="px-0 h-full">
             <SidebarGroupContent className="h-full overflow-y-auto">
+              {activeTab === 'prompts' && (
+                <button
+                  onClick={() => onInsertNote?.({
+                    id: `note-${Date.now()}`,
+                    title: "New Note"
+                  })}
+                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex items-center gap-2 border-b p-4 text-sm w-full text-left group"
+                >
+                  <FileText className="w-4 h-4 text-muted-foreground" />
+                  <span>Add Note</span>
+                  <Plus className="ml-auto w-3 h-3 opacity-30 group-hover:opacity-100 transition-opacity duration-200" />
+                </button>
+              )}
               {activeTab === 'prompts' && filteredPrompts.map((prompt) => (
                 <button
                   key={prompt.id}
