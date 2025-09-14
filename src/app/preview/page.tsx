@@ -80,8 +80,18 @@ export default function PreviewPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button size="lg" asChild>
-                <Link onClick={() => { const event = new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }); document.dispatchEvent(event); }}>Browse Templates</Link>
+              <Button
+                size="lg"
+                onClick={() => {
+                  const event = new KeyboardEvent('keydown', {
+                    key: 'k',
+                    metaKey: true,
+                    bubbles: true
+                  });
+                  document.dispatchEvent(event);
+                }}
+              >
+                Browse Templates
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="/wedding-planning/app">Try Demo</Link>

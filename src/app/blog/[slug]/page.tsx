@@ -182,10 +182,19 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                     Get Wedding Template
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link onClick={() => { const event = new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }); document.dispatchEvent(event); }}>
-                    Browse All Templates
-                  </Link>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => {
+                    const event = new KeyboardEvent('keydown', {
+                      key: 'k',
+                      metaKey: true,
+                      bubbles: true
+                    });
+                    document.dispatchEvent(event);
+                  }}
+                >
+                  Browse All Templates
                 </Button>
               </div>
             </CardContent>

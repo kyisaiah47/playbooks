@@ -494,10 +494,20 @@ export function TemplateLanding({
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-4 h-auto" asChild>
-              <Link onClick={() => { const event = new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }); document.dispatchEvent(event); }}>
-                Browse All Templates
-              </Link>
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 py-4 h-auto"
+              onClick={() => {
+                const event = new KeyboardEvent('keydown', {
+                  key: 'k',
+                  metaKey: true,
+                  bubbles: true
+                });
+                document.dispatchEvent(event);
+              }}
+            >
+              Browse All Templates
             </Button>
           </div>
 
