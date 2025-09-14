@@ -55,95 +55,109 @@ export function Header() {
 					}}
 				>
 					<div className="flex items-center justify-between">
-					<Link href="/" className="flex items-center space-x-2">
-						<Image
-							src="/shift.svg"
-							alt="Templata"
-							width={28}
-							height={28}
-							className="dark:invert"
-						/>
-						<div className="flex items-center gap-3">
-							<span className="font-bold text-2xl">Templata</span>
-							<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
-								Beta
-							</span>
+						{/* Left side - Logo and Theme */}
+						<div className="flex items-center space-x-4">
+							<Link href="/" className="flex items-center space-x-2">
+								<Image
+									src="/shift.svg"
+									alt="Templata"
+									width={28}
+									height={28}
+									className="dark:invert"
+								/>
+								<div className="flex items-center gap-3">
+									<span className="font-bold text-2xl">Templata</span>
+									<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
+										Beta
+									</span>
+								</div>
+							</Link>
+
+							<ThemeSelector />
 						</div>
-					</Link>
 
-					<NavigationMenu>
-						<NavigationMenuList className="space-x-2">
-							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link
-										href="/preview"
-										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
-									>
-										Preview
-									</Link>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
+						{/* Center - Navigation */}
+						<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+							<NavigationMenu className="pointer-events-auto">
+								<NavigationMenuList className="space-x-2">
+									<NavigationMenuItem>
+										<NavigationMenuLink asChild>
+											<Link
+												href="/preview"
+												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+											>
+												Preview
+											</Link>
+										</NavigationMenuLink>
+									</NavigationMenuItem>
 
-							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link
-										href="/partners"
-										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
-									>
-										Partners
-									</Link>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
+									<NavigationMenuItem>
+										<NavigationMenuLink asChild>
+											<Link
+												href="/partners"
+												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+											>
+												Partners
+											</Link>
+										</NavigationMenuLink>
+									</NavigationMenuItem>
 
-							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link
-										href="/about"
-										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
-									>
-										About
-									</Link>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
+									<NavigationMenuItem>
+										<NavigationMenuLink asChild>
+											<Link
+												href="/about"
+												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+											>
+												About
+											</Link>
+										</NavigationMenuLink>
+									</NavigationMenuItem>
 
-							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link
-										href="/faq"
-										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
-									>
-										FAQ
-									</Link>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
-						</NavigationMenuList>
-					</NavigationMenu>
+									<NavigationMenuItem>
+										<NavigationMenuLink asChild>
+											<Link
+												href="/faq"
+												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+											>
+												FAQ
+											</Link>
+										</NavigationMenuLink>
+									</NavigationMenuItem>
+								</NavigationMenuList>
+							</NavigationMenu>
+						</div>
 
-					<div className="flex items-center space-x-3">
-						{/* Search Hint - hide when scrolled */}
-						<Button
-							variant="outline"
-							size="sm"
-							className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground border-muted-foreground/20 hover:border-primary/50 transition-all"
-						>
-							<Search className="h-3 w-3" />
-							<span className="hidden md:inline">Search</span>
-							<div className="flex items-center gap-0.5 text-xs bg-muted/60 px-1.5 py-0.5 rounded">
-								<Command className="h-2 w-2" />
-								<span>K</span>
-							</div>
-						</Button>
+						{/* Right side - Actions */}
+						<div className="flex items-center space-x-3">
+							<Button
+								variant="outline"
+								size="sm"
+								onClick={() => {
+									const event = new KeyboardEvent('keydown', {
+										key: 'k',
+										metaKey: true,
+										ctrlKey: false
+									});
+									document.dispatchEvent(event);
+								}}
+								className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground border-muted-foreground/20 hover:border-primary/50 transition-all"
+							>
+								<Search className="h-3 w-3" />
+								<span className="hidden md:inline">Search</span>
+								<div className="flex items-center gap-0.5 text-xs bg-muted/60 px-1.5 py-0.5 rounded">
+									<Command className="h-2 w-2" />
+									<span>K</span>
+								</div>
+							</Button>
 
-						<ChangelogWidget variant="bell" />
-
-						<ThemeSelector />
-						<Button
-							className="text-base font-medium"
-							asChild
-						>
-							<Link href="/login">Get Started</Link>
-						</Button>
-					</div>
+							<ChangelogWidget variant="bell" />
+							<Button
+								className="text-base font-medium"
+								asChild
+							>
+								<Link href="/login">Get Started</Link>
+							</Button>
+						</div>
 					</div>
 				</div>
 			</nav>

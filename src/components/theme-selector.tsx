@@ -77,10 +77,7 @@ export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
               case 'rose': return 'bg-gradient-to-r from-purple-300 to-purple-400';
               case 'neutral': return 'bg-gradient-to-r from-orange-300 to-orange-400';
               case 'emerald': return 'bg-gradient-to-r from-emerald-400 to-emerald-500';
-              case 'magenta': return 'bg-gradient-to-r from-fuchsia-400 to-pink-500';
               case 'violet': return 'bg-gradient-to-r from-violet-400 to-purple-500';
-              case 'ocean': return 'bg-gradient-to-r from-cyan-400 to-teal-400';
-              case 'amber': return 'bg-gradient-to-r from-orange-400 to-orange-500';
               default: return 'bg-gradient-to-r from-gray-400 to-gray-600';
             }
           };

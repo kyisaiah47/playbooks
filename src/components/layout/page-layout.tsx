@@ -2,7 +2,7 @@
 
 import { Header } from "./header";
 import { Footer } from "./footer";
-import { RecentlyUsedStrip } from "@/components/recently-used-strip";
+import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
 import { FullscreenCommandPalette } from "@/components/fullscreen-command-palette";
 import { useCommandPalette } from "@/hooks/use-command-palette";
 
@@ -29,11 +29,12 @@ export function PageLayout({
 				<div className="pt-24" />
 			)}
 
-			<RecentlyUsedStrip />
-
 			{children}
 
 			{includeFooter && <Footer />}
+
+			{/* Recently Used Footer - shows as sticky footer */}
+			<RecentlyUsedFooter />
 
 			{/* Global Command Palette */}
 			<FullscreenCommandPalette

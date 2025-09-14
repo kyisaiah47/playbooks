@@ -1380,15 +1380,6 @@ export const themes: Theme[] = [
     }
   },
   {
-    id: 'purple',
-    name: 'Magenta',
-    description: 'Vibrant magenta and pink with creative energy',
-    colors: {
-      light: purpleThemeLight,
-      dark: purpleThemeDark
-    }
-  },
-  {
     id: 'beta',
     name: 'Violet',
     description: 'Rich purple and magenta tones for creative work',
@@ -1396,27 +1387,6 @@ export const themes: Theme[] = [
     colors: {
       light: betaThemeLight,
       dark: betaThemeDark
-    }
-  },
-  {
-    id: 'beta-teal',
-    name: 'Ocean',
-    description: 'Calming teal and blue hues for focused productivity',
-    isLimited: true,
-    colors: {
-      light: betaTealThemeLight,
-      dark: betaTealThemeDark
-    }
-  },
-  // Premium themes
-  {
-    id: 'amber',
-    name: 'Amber',
-    description: 'Rich amber and golden tones with warm highlights',
-    isPremium: true,
-    colors: {
-      light: premiumAmberThemeLight,
-      dark: premiumAmberThemeDark
     }
   },
 ]

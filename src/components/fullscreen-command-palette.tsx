@@ -310,33 +310,14 @@ export function FullscreenCommandPalette({
               className="pl-12 pr-24 h-14 text-lg bg-transparent border-2 border-primary/20 focus:border-primary rounded-xl"
               autoFocus={autoFocus}
             />
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center gap-2 text-sm text-muted-foreground">
-              <kbd className="px-2 py-1 bg-muted rounded text-xs">Esc</kbd>
-              <span>to close</span>
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 border border-muted rounded-lg px-2 py-1">
+                <kbd className="px-1.5 py-0.5 bg-background border border-border rounded text-xs font-mono">Esc</kbd>
+                <span>to close</span>
+              </div>
             </div>
           </div>
 
-          {/* Suggestion Pills */}
-          {!query && (
-            <div className="flex flex-wrap gap-2 mt-4">
-              <span className="text-sm text-muted-foreground mr-2">Try:</span>
-              {suggestionPills.map((pill) => {
-                const Icon = pill.icon
-                return (
-                  <Button
-                    key={pill.label}
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setQuery(pill.query)}
-                    className="h-7 text-xs hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <Icon className="w-3 h-3 mr-1" />
-                    {pill.label}
-                  </Button>
-                )
-              })}
-            </div>
-          )}
 
           {/* Mode Tabs */}
           <div className="flex items-center gap-1 mt-4 p-1 bg-muted/30 rounded-lg w-fit">
@@ -506,18 +487,6 @@ export function FullscreenCommandPalette({
                                       Popular
                                     </Badge>
                                   )}
-                                  {template.expertVerified && (
-                                    <Badge variant="outline" className="text-xs border-blue-200 bg-blue-50/50 text-blue-700">
-                                      <Verified className="w-3 h-3 mr-1 text-blue-500 fill-blue-500" />
-                                      Expert
-                                    </Badge>
-                                  )}
-                                  {isCurrentTemplateOfWeek(template.id) && (
-                                    <Badge className="text-xs bg-yellow-500/90 hover:bg-yellow-500 text-white">
-                                      <Trophy className="w-3 h-3 mr-1" />
-                                      This Week
-                                    </Badge>
-                                  )}
                                   <Button
                                     variant="ghost"
                                     size="sm"
@@ -593,11 +562,6 @@ export function FullscreenCommandPalette({
               {/* Smart Recommendations View */}
               {mode === "smart" && (
                 <div className="space-y-8">
-                  {/* Template of the Week */}
-                  <div>
-                    <TemplateOfWeekShowcase variant="banner" className="mb-4" />
-                  </div>
-
                   {/* Platform Updates */}
                   <div>
                     <ChangelogWidget variant="banner" className="mb-6" />
@@ -820,18 +784,6 @@ export function FullscreenCommandPalette({
                               {template.popular && (
                                 <Badge variant="secondary" className="text-xs">
                                   Popular
-                                </Badge>
-                              )}
-                              {template.expertVerified && (
-                                <Badge variant="outline" className="text-xs border-blue-200 bg-blue-50/50 text-blue-700">
-                                  <Verified className="w-3 h-3 mr-1 text-blue-500 fill-blue-500" />
-                                  Expert
-                                </Badge>
-                              )}
-                              {isCurrentTemplateOfWeek(template.id) && (
-                                <Badge className="text-xs bg-yellow-500/90 hover:bg-yellow-500 text-white">
-                                  <Trophy className="w-3 h-3 mr-1" />
-                                  This Week
                                 </Badge>
                               )}
                               <Button

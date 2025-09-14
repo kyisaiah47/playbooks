@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 export function RecentlyUsedFooter() {
   const { recentItems, clearRecentItems, hasRecentItems } = useRecentTemplates()
-  const [isMinimized, setIsMinimized] = useState(false)
+  const [isMinimized, setIsMinimized] = useState(true)
 
   // Just show the most recent template
   const recentTemplate = recentItems[0]
