@@ -95,6 +95,7 @@ export function TemplateView({ template }: TemplateViewProps) {
     setResponses(newResponses);
   };
 
+
   // Calculate completion stats
   const completedPrompts = Object.values(responses).filter(response => response.trim() !== '').length;
   const totalPrompts = additionalPrompts.length;
@@ -149,6 +150,7 @@ export function TemplateView({ template }: TemplateViewProps) {
               additionalPrompts={additionalPrompts}
               onRemovePrompt={handleRemovePrompt}
               onResponsesChange={handleResponsesChange}
+              responses={responses}
               hideHeader={true}
             />
           </div>
@@ -156,8 +158,8 @@ export function TemplateView({ template }: TemplateViewProps) {
           {/* Resource Panel */}
           {openResource && (
             <div className="w-1/2 overflow-auto bg-muted/20">
-              <ResourceViewer 
-                resource={openResource} 
+              <ResourceViewer
+                resource={openResource}
                 onClose={handleCloseResource}
               />
             </div>

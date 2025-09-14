@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GuidanceSection, ReflectionPrompt } from '@/types/template';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,15 +21,55 @@ interface EmbeddedPromptsProps {
   onResponsesChange?: (responses: Record<string, string>) => void;
   onRemovePrompt?: (promptId: string) => void;
   hideHeader?: boolean;
+  responses?: Record<string, string>;
 }
 
-export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesChange, onRemovePrompt, hideHeader }: EmbeddedPromptsProps) {
-  const [responses, setResponses] = useState<Record<string, string>>({});
+export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesChange, onRemovePrompt, hideHeader, responses: externalResponses }: EmbeddedPromptsProps) {
+  const [responses, setResponses] = useState<Record<string, string>>(externalResponses || {});
+  const [draggedOver, setDraggedOver] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
+
+  // Sync external responses
+  useEffect(() => {
+    if (externalResponses) {
+      setResponses(externalResponses);
+    }
+  }, [externalResponses]);
 
   const handleResponseChange = (promptId: string, value: string) => {
     const newResponses = { ...responses, [promptId]: value };
     setResponses(newResponses);
     onResponsesChange?.(newResponses);
+  };
+
+  const handleDragOver = (e: React.DragEvent, promptId: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    setDraggedOver(promptId);
+  };
+
+  const handleDragLeave = () => {
+    setDraggedOver(null);
+  };
+
+  const handleDrop = (e: React.DragEvent, promptId: string) => {
+    e.preventDefault();
+    const text = e.dataTransfer.getData('text/plain');
+
+    if (text) {
+      const currentText = responses[promptId] || '';
+      const newText = currentText ? `${currentText}\n\n${text}` : text;
+
+      const newResponses = { ...responses, [promptId]: newText };
+      setResponses(newResponses);
+      onResponsesChange?.(newResponses);
+
+      // Show success toast
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+    }
+
+    setDraggedOver(null);
   };
 
   const getCategoryIcon = (category: string) => {
@@ -49,7 +89,16 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
 
   return (
     <TooltipProvider>
-      <div className="space-y-4">
+      <div className="space-y-4 relative">
+        {/* Success Toast */}
+        {showToast && (
+          <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-right-5 duration-300 animate-out fade-out-0 slide-out-to-right-5">
+            <div className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4" />
+              <span className="text-sm font-medium">Text added to note!</span>
+            </div>
+          </div>
+        )}
 
       {/* Main Content */}
       {allPrompts.length === 0 ? (
@@ -120,12 +169,21 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
                     </div>
                   </div>
                 </div>
-                <Textarea
-                  placeholder="Your notes..."
-                  value={responses[prompt.id] || ''}
-                  onChange={(e) => handleResponseChange(prompt.id, e.target.value)}
-                  className="min-h-[80px] text-sm"
-                />
+                <div className="relative">
+                  <Textarea
+                    placeholder="Your notes... (drag text from resources to add here)"
+                    value={responses[prompt.id] || ''}
+                    onChange={(e) => handleResponseChange(prompt.id, e.target.value)}
+                    onDragOver={(e) => handleDragOver(e, prompt.id)}
+                    onDragLeave={handleDragLeave}
+                    onDrop={(e) => handleDrop(e, prompt.id)}
+                    className={`min-h-[80px] text-sm transition-all duration-200 ${
+                      draggedOver === prompt.id
+                        ? 'ring-2 ring-blue-500 ring-opacity-50 bg-blue-50/50 dark:bg-blue-900/10 scale-[1.02]'
+                        : 'hover:ring-1 hover:ring-muted-foreground/20'
+                    }`}
+                  />
+                </div>
               </div>
             );
           })}

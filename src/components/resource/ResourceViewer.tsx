@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Resource } from '@/types/template';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Clock, BookOpen, ExternalLink } from 'lucide-react';
+import { X, Clock, BookOpen, ExternalLink, Plus } from 'lucide-react';
 import Link from 'next/link';
 
 interface ResourceViewerProps {
@@ -22,6 +22,49 @@ const getDifficultyColor = (difficulty: string) => {
 };
 
 export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
+  const [selectedText, setSelectedText] = useState('');
+  const [isDragReady, setIsDragReady] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleTextSelection = useCallback(() => {
+    const selection = window.getSelection();
+    if (selection && selection.toString().trim()) {
+      const text = selection.toString().trim();
+      setSelectedText(text);
+      setIsDragReady(true);
+    } else {
+      setSelectedText('');
+      setIsDragReady(false);
+    }
+  }, []);
+
+  const handleDragStart = useCallback((e: React.DragEvent) => {
+    const selection = window.getSelection();
+    if (selection && selection.toString().trim()) {
+      const text = selection.toString().trim();
+      e.dataTransfer.setData('text/plain', text);
+      e.dataTransfer.effectAllowed = 'copy';
+
+      // Custom drag image
+      const dragImage = document.createElement('div');
+      dragImage.textContent = text.length > 50 ? text.substring(0, 50) + '...' : text;
+      dragImage.style.cssText = 'position: absolute; top: -1000px; background: #3b82f6; color: white; padding: 8px 12px; border-radius: 6px; font-size: 14px; max-width: 300px; word-wrap: break-word; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+      document.body.appendChild(dragImage);
+      e.dataTransfer.setDragImage(dragImage, 0, 0);
+
+      setTimeout(() => {
+        if (document.body.contains(dragImage)) {
+          document.body.removeChild(dragImage);
+        }
+      }, 0);
+    }
+  }, []);
+
+  const handleDragEnd = useCallback(() => {
+    setIsDragReady(false);
+    // Keep selection but remove drag state
+  }, []);
+
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
@@ -58,8 +101,28 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-auto">
-        <div className="p-4 space-y-4">
+      <div className="flex-1 overflow-auto relative">
+        <div
+          ref={contentRef}
+          className={`p-4 space-y-4 select-text transition-all duration-300 ${
+            isDragReady
+              ? 'cursor-grab [&::selection]:bg-blue-500 [&::selection]:text-white'
+              : 'cursor-text'
+          }`}
+          draggable={isDragReady}
+          onMouseUp={handleTextSelection}
+          onKeyUp={handleTextSelection}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+        >
+          {isDragReady && (
+            <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-right-5 duration-300">
+              <div className="bg-blue-500 text-white px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                <Plus className="w-3 h-3" />
+                <span className="text-xs font-medium">Drag selected text to any note field</span>
+              </div>
+            </div>
+          )}
           {/* Resource content would go here */}
           <div className="prose prose-sm max-w-none dark:prose-invert text-sm">
             <div className="bg-muted/50 rounded-lg p-3 mb-4">
@@ -124,7 +187,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                   };
                   
                   return (
-                    <div key={index} className="flex items-start gap-2 text-sm leading-6 text-foreground">
+                    <div key={index} className="flex items-start gap-2 text-sm leading-6 text-foreground select-text">
                       <span className="text-muted-foreground mt-1.5 w-1 h-1 rounded-full bg-current flex-shrink-0"></span>
                       <div>{renderMarkdown(cleanItem)}</div>
                     </div>
@@ -154,7 +217,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 };
                 
                 return (
-                  <p key={index} className="text-sm leading-6 text-foreground">
+                  <p key={index} className="text-sm leading-6 text-foreground select-text">
                     {renderMarkdown(trimmedLine)}
                   </p>
                 );
