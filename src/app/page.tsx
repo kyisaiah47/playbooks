@@ -67,7 +67,7 @@ export default function LandingPage() {
 					<div className="text-center space-y-8">
 						<Badge
 							variant="outline"
-							className="px-4 py-2 border-white text-white"
+							className="px-4 py-2 border-white/30 text-white bg-white/10 backdrop-blur-sm"
 						>
 							<Sparkles className="mr-2 h-4 w-4" />
 							Skip the blank page
@@ -89,7 +89,7 @@ export default function LandingPage() {
 						<div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
 							<Button
 								size="lg"
-								className="h-12 px-8 text-base"
+								className="h-12 px-8 text-base bg-white/80 backdrop-blur-sm text-black hover:bg-white/90"
 								asChild
 							>
 								<Link href="/templates">
@@ -99,7 +99,7 @@ export default function LandingPage() {
 							</Button>
 							<Button
 								size="lg"
-								className="h-12 px-8 text-base bg-transparent text-white hover:bg-white hover:text-black border border-white"
+								className="h-12 px-8 text-base bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border border-white/30"
 								asChild
 							>
 								<Link href="/templates/wedding-planning">

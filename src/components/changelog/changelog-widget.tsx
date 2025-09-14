@@ -54,13 +54,7 @@ function getTypeIcon(type: ChangelogEntry["type"]) {
 }
 
 function getTypeColor(type: ChangelogEntry["type"]) {
-  switch (type) {
-    case "feature": return "bg-blue-100 text-blue-800 border-blue-200"
-    case "improvement": return "bg-green-100 text-green-800 border-green-200"
-    case "bugfix": return "bg-red-100 text-red-800 border-red-200"
-    case "template": return "bg-purple-100 text-purple-800 border-purple-200"
-    case "announcement": return "bg-yellow-100 text-yellow-800 border-yellow-200"
-  }
+  return "text-muted-foreground"
 }
 
 interface ChangelogDialogProps {
@@ -83,171 +77,51 @@ function ChangelogDialog({ children }: ChangelogDialogProps) {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-4xl max-h-[80vh] p-0">
-        <div className="flex h-full">
-          {/* Sidebar */}
-          <div className="w-1/3 border-r bg-muted/20 p-6 overflow-y-auto">
-            <DialogHeader className="pb-4">
-              <DialogTitle className="flex items-center gap-2">
-                <Bell className="w-5 h-5" />
-                What's New
-              </DialogTitle>
-            </DialogHeader>
+      <DialogContent className="sm:max-w-2xl max-h-[70vh] p-0">
+        <div className="p-4">
+          <DialogHeader className="pb-3">
+            <DialogTitle className="text-lg">What's New</DialogTitle>
+          </DialogHeader>
 
-            {/* Progress Section */}
-            <div className="mb-6 p-4 bg-background rounded-lg border">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium">Platform Progress</span>
-                <Badge variant="outline" className="text-xs">
-                  {completionPercentage}% Complete
-                </Badge>
-              </div>
-              <Progress value={completionPercentage} className="mb-3" />
-              <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <CheckCircle className="w-3 h-3 text-green-500" />
-                  {progressStats.completedFeatures} features
-                </div>
-                <div className="flex items-center gap-1">
-                  <FileText className="w-3 h-3 text-blue-500" />
-                  {progressStats.templatesCount}+ templates
-                </div>
-                <div className="flex items-center gap-1">
-                  <Users className="w-3 h-3 text-purple-500" />
-                  {progressStats.expertsCount} experts
-                </div>
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3 text-orange-500" />
-                  {progressStats.weeksSincelaunch} weeks live
-                </div>
-              </div>
-            </div>
-
-            {/* Changelog Entries */}
-            <div className="space-y-2">
-              {entries.map((entry) => (
-                <button
-                  key={entry.id}
-                  onClick={() => handleEntryClick(entry)}
-                  className={cn(
-                    "w-full text-left p-3 rounded-lg border transition-all hover:bg-background/50",
-                    selectedEntry?.id === entry.id && "bg-background border-primary/20"
-                  )}
-                >
-                  <div className="flex items-start gap-2 mb-2">
-                    <Badge
-                      variant="outline"
-                      className={cn("text-xs", getTypeColor(entry.type))}
-                    >
-                      {getTypeIcon(entry.type)}
-                      <span className="ml-1 capitalize">{entry.type}</span>
-                    </Badge>
-                    {entry.important && (
-                      <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
-                    )}
+          {/* Changelog Entries */}
+          <div className="space-y-1 max-h-[50vh] overflow-y-auto">
+            {entries.map((entry) => (
+              <button
+                key={entry.id}
+                onClick={() => handleEntryClick(entry)}
+                className={cn(
+                  "w-full text-left p-3 rounded-md hover:bg-muted/50 transition-colors",
+                  selectedEntry?.id === entry.id && "bg-muted"
+                )}
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex-1">
+                    <h4 className="font-medium text-sm">{entry.title}</h4>
+                    <p className="text-xs text-muted-foreground line-clamp-1 mt-1">
+                      {entry.description}
+                    </p>
                   </div>
-                  <h4 className="font-semibold text-sm line-clamp-1">{entry.title}</h4>
-                  <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
-                    {entry.description}
-                  </p>
-                  <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-muted-foreground">v{entry.version}</span>
-                    <span className="text-xs text-muted-foreground">
-                      {new Date(entry.date).toLocaleDateString()}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
+                  <span className="text-xs text-muted-foreground shrink-0">
+                    {new Date(entry.date).toLocaleDateString()}
+                  </span>
+                </div>
+              </button>
+            ))}
           </div>
 
-          {/* Main Content */}
-          <div className="flex-1 p-6 overflow-y-auto">
-            {selectedEntry && (
-              <div>
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge className={cn("text-xs", getTypeColor(selectedEntry.type))}>
-                        {getTypeIcon(selectedEntry.type)}
-                        <span className="ml-1 capitalize">{selectedEntry.type}</span>
-                      </Badge>
-                      <Badge variant="outline" className="text-xs">
-                        v{selectedEntry.version}
-                      </Badge>
-                      {selectedEntry.important && (
-                        <Badge className="text-xs bg-yellow-500/90 text-white">
-                          <Star className="w-3 h-3 mr-1" />
-                          Important
-                        </Badge>
-                      )}
-                    </div>
-                    <h2 className="text-2xl font-bold mb-2">{selectedEntry.title}</h2>
-                    <p className="text-muted-foreground">{selectedEntry.description}</p>
+          {/* Selected Entry Details */}
+          {selectedEntry && (
+            <div className="mt-4 pt-4 border-t">
+              <h3 className="font-medium mb-2">{selectedEntry.title}</h3>
+              <div className="space-y-1">
+                {selectedEntry.items.map((item) => (
+                  <div key={item.id} className="text-sm text-muted-foreground">
+                    • {item.text}
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    {new Date(selectedEntry.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {/* Group items by category */}
-                  {(() => {
-                    const categorizedItems = selectedEntry.items.reduce((acc, item) => {
-                      const category = item.category || "General"
-                      if (!acc[category]) acc[category] = []
-                      acc[category].push(item)
-                      return acc
-                    }, {} as Record<string, ChangelogItem[]>)
-
-                    return Object.entries(categorizedItems).map(([category, items]) => (
-                      <div key={category}>
-                        <h3 className="font-semibold mb-3 text-lg">{category}</h3>
-                        <div className="space-y-2">
-                          {items.map((item) => (
-                            <div key={item.id} className="flex items-start gap-3 p-3 rounded-lg bg-muted/30">
-                              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                              <div className="flex-1">
-                                <p className="text-sm">{item.text}</p>
-                                {item.templateId && (
-                                  <Badge variant="outline" className="text-xs mt-2">
-                                    <FileText className="w-3 h-3 mr-1" />
-                                    Template Update
-                                  </Badge>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))
-                  })()}
-                </div>
-
-                {/* Call to Action */}
-                <div className="mt-8 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-semibold mb-1">Experience the improvements</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Try out these new features in your templates
-                      </p>
-                    </div>
-                    <Button asChild>
-                      <a href="/templates" className="flex items-center gap-2">
-                        Explore Templates
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </Button>
-                  </div>
-                </div>
+                ))}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>

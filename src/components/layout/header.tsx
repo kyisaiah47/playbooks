@@ -45,13 +45,18 @@ export function Header() {
 		<header>
 			<nav className="fixed z-50 w-full px-4">
 				<div
-					className="mx-auto mt-4 transition-all duration-300 ease-out border backdrop-blur-lg"
+					className={cn(
+						"mx-auto mt-4 transition-all duration-300 ease-out",
+						isScrolled ? "border backdrop-blur-lg" : "border-transparent"
+					)}
 					style={{
 						width: `${headerWidth}%`,
 						borderRadius: `${borderRadius}px`,
-						backgroundColor: `rgba(var(--background-rgb), ${backgroundOpacity})`,
-						borderColor: `rgba(var(--border-rgb), ${backgroundOpacity})`,
-						padding: `${16 - scrollProgress * 4}px ${24 - scrollProgress * 8}px`
+						backgroundColor: isScrolled ? `rgba(var(--background-rgb), ${backgroundOpacity})` : 'transparent',
+						paddingTop: '16px',
+						paddingBottom: '16px',
+						paddingLeft: `${24 - scrollProgress * 8}px`,
+						paddingRight: `${24 - scrollProgress * 8}px`
 					}}
 				>
 					<div className="flex items-center justify-between">
