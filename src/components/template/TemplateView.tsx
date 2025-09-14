@@ -123,6 +123,7 @@ export function TemplateView({ template }: TemplateViewProps) {
           onSectionChange={setActiveSection}
           onInsertPrompt={handleInsertPrompt}
           onOpenResource={handleOpenResource}
+          responses={responses}
         />
         
         <main className="flex-1 flex overflow-hidden bg-background">
@@ -134,31 +135,14 @@ export function TemplateView({ template }: TemplateViewProps) {
                 orientation="vertical"
                 className="mr-2 data-[orientation=vertical]:h-4"
               />
-              <div className="flex items-center gap-2">
-                <Breadcrumb>
-                  <BreadcrumbList>
-                    <BreadcrumbItem>
-                      <BreadcrumbPage className="text-sm font-medium">{template.title}</BreadcrumbPage>
-                    </BreadcrumbItem>
-                  </BreadcrumbList>
-                </Breadcrumb>
-                {templateExperts.length > 0 && (
-                  <>
-                    <span className="text-muted-foreground text-xs">by</span>
-                    <ExpertBadgeList experts={templateExperts} variant="inline" maxDisplay={2} />
-                  </>
-                )}
-              </div>
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbPage className="text-sm font-medium">{template.title}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
               <div className="ml-auto flex items-center gap-3">
-                <SharePanel
-                  templateId={template.id}
-                  templateTitle={template.title}
-                  responses={responses}
-                />
-                <PDFExportButton
-                  template={template}
-                  responses={responses}
-                />
                 <div className="flex flex-col items-end gap-1">
                   {totalPrompts > 0 && (
                     <>

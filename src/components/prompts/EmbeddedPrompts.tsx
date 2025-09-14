@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GuidanceSection, ReflectionPrompt } from '@/types/template';
+import { GuidanceSection, ReflectionPrompt, FreeformNote } from '@/types/template';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb, Circle, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb, Circle, CheckCircle2, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import {
@@ -18,13 +18,15 @@ import {
 interface EmbeddedPromptsProps {
   section: GuidanceSection;
   additionalPrompts?: ReflectionPrompt[];
+  additionalNotes?: FreeformNote[];
   onResponsesChange?: (responses: Record<string, string>) => void;
   onRemovePrompt?: (promptId: string) => void;
+  onRemoveNote?: (noteId: string) => void;
   hideHeader?: boolean;
   responses?: Record<string, string>;
 }
 
-export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesChange, onRemovePrompt, hideHeader, responses: externalResponses }: EmbeddedPromptsProps) {
+export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNotes = [], onResponsesChange, onRemovePrompt, onRemoveNote, hideHeader, responses: externalResponses }: EmbeddedPromptsProps) {
   const [responses, setResponses] = useState<Record<string, string>>(externalResponses || {});
   const [draggedOver, setDraggedOver] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);

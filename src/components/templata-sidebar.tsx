@@ -8,6 +8,8 @@ import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import { ThemeSelector } from "@/components/theme-selector"
 import { RelatedTemplates } from "@/components/template/related-templates"
+import { SharePanel } from "@/components/collaboration/share-panel"
+import { PDFExportButton } from "@/components/pdf/export-button"
 import {
   Sidebar,
   SidebarContent,
@@ -328,6 +330,7 @@ interface TemplataContentSidebarProps {
   onSectionChange: (section: number) => void
   onInsertPrompt?: (prompt: ReflectionPrompt) => void
   onOpenResource?: (resource: Resource) => void
+  responses?: Record<string, string>
 }
 
 export function TemplataContentSidebar({
@@ -336,6 +339,7 @@ export function TemplataContentSidebar({
   onSectionChange,
   onInsertPrompt,
   onOpenResource,
+  responses,
   ...props
 }: TemplataContentSidebarProps & React.ComponentProps<typeof Sidebar>) {
   const [activeTab, setActiveTab] = React.useState<'prompts' | 'resources' | 'related'>('prompts')
@@ -467,7 +471,18 @@ export function TemplataContentSidebar({
           </SidebarGroup>
         </SidebarContent>
 
-        <SidebarFooter>
+        <SidebarFooter className="flex flex-row gap-2 p-4">
+          <SharePanel
+            templateId={template.id}
+            templateTitle={template.title}
+            responses={responses || {}}
+            className="flex-1"
+          />
+          <PDFExportButton
+            template={template}
+            responses={responses || {}}
+            className="flex-1"
+          />
           <ThemeSelector iconOnly />
         </SidebarFooter>
       </Sidebar>

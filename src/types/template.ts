@@ -25,6 +25,12 @@ export interface ReflectionPrompt {
   relatedResources?: string[];
 }
 
+export interface FreeformNote {
+  id: string;
+  title: string;
+  content?: string;
+}
+
 export interface Resource {
   id: string;
   title: string;
