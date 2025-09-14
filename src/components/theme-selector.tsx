@@ -78,6 +78,7 @@ export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
               case 'neutral': return 'bg-gradient-to-r from-orange-300 to-orange-400';
               case 'emerald': return 'bg-gradient-to-r from-emerald-400 to-emerald-500';
               case 'violet': return 'bg-gradient-to-r from-violet-400 to-purple-500';
+              case 'midnight': return 'bg-gradient-to-r from-indigo-600 to-teal-500';
               default: return 'bg-gradient-to-r from-gray-400 to-gray-600';
             }
           };
