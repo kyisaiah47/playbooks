@@ -89,7 +89,7 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/preview"
-												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+												className="text-base font-medium px-4 py-2 rounded-md "
 											>
 												Preview
 											</Link>
@@ -100,7 +100,7 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/partners"
-												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+												className="text-base font-medium px-4 py-2 rounded-md "
 											>
 												Partners
 											</Link>
@@ -111,7 +111,7 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/about"
-												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+												className="text-base font-medium px-4 py-2 rounded-md "
 											>
 												About
 											</Link>
@@ -122,7 +122,7 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/faq"
-												className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
+												className="text-base font-medium px-4 py-2 rounded-md "
 											>
 												FAQ
 											</Link>
