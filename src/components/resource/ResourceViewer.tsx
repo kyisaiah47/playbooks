@@ -24,6 +24,7 @@ const getDifficultyColor = (difficulty: string) => {
 export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
   const [selectedText, setSelectedText] = useState('');
   const [isDragReady, setIsDragReady] = useState(false);
+  const [fontSize, setFontSize] = useState(14); // Start with original text-sm size
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleTextSelection = useCallback(() => {
@@ -124,18 +125,30 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
             </div>
           )}
           {/* Resource content */}
-          <div className="max-w-none">
-            <div className="bg-muted/50 rounded-lg p-3 mb-4">
-              <h3 className="text-sm font-medium mb-2">About this resource</h3>
-              <div className="text-sm text-muted-foreground">
-                {resource.excerpt.split('**').map((part, index) => 
-                  index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
+          <div
+            className="max-w-2xl mx-auto"
+            style={{
+              '--font-size': `${fontSize}px`,
+              '--font-size-sm': `${Math.max(fontSize - 2, 12)}px`,
+              '--font-size-lg': `${fontSize + 2}px`,
+              '--font-size-xl': `${fontSize + 4}px`,
+              '--line-height': fontSize <= 14 ? '1.5' : '1.6', // Original spacing for small sizes
+              '--spacing': fontSize <= 14 ? '0.125rem' : 'calc(var(--font-size) * 0.125)', // Tighter spacing for small fonts
+              '--header-margin-top': fontSize <= 14 ? '1rem' : '2rem',
+              '--header-margin-bottom': fontSize <= 14 ? '0.5rem' : '1rem'
+            } as React.CSSProperties}
+          >
+            <div className="bg-muted/30 rounded-lg" style={{ padding: fontSize <= 14 ? '0.75rem' : '1rem', marginBottom: fontSize <= 14 ? '1rem' : '1.5rem' }}>
+              <h3 className="font-medium text-gray-800 dark:text-gray-200" style={{ fontSize: 'var(--font-size)', marginBottom: fontSize <= 14 ? '0.5rem' : '0.75rem' }}>About this resource</h3>
+              <div className="text-gray-600 dark:text-gray-300" style={{ fontSize: 'var(--font-size)', lineHeight: 'var(--line-height)' }}>
+                {resource.excerpt.split('**').map((part, index) =>
+                  index % 2 === 1 ? <strong key={index} className="font-semibold text-gray-800 dark:text-gray-200">{part}</strong> : part
                 )}
               </div>
             </div>
 
             {/* Full blog post content */}
-            <div className="space-y-3">
+            <div style={{ marginTop: fontSize <= 14 ? '1rem' : '1.5rem', gap: fontSize <= 14 ? '0.75rem' : '1.5rem', display: 'flex', flexDirection: 'column' }}>
               {resource.content.split('\n').map((line, index) => {
                 const trimmedLine = line.trim();
                 
@@ -147,7 +160,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 // Handle headers
                 if (trimmedLine.startsWith('##')) {
                   return (
-                    <h3 key={index} className="text-lg font-semibold mt-6 mb-3 text-foreground">
+                    <h3 key={index} className="font-semibold text-gray-900 dark:text-gray-100" style={{ fontSize: 'var(--font-size-xl)', marginTop: 'var(--header-margin-top)', marginBottom: 'var(--header-margin-bottom)', lineHeight: 'var(--line-height)' }}>
                       {trimmedLine.replace('##', '').trim()}
                     </h3>
                   );
@@ -156,7 +169,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 // Handle standalone bold lines (subheaders)
                 if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && !trimmedLine.includes('**', 2)) {
                   return (
-                    <h4 key={index} className="text-base font-semibold mt-4 mb-2 text-foreground ml-2">
+                    <h4 key={index} className="font-semibold text-gray-800 dark:text-gray-200 ml-2" style={{ fontSize: 'var(--font-size-lg)', marginTop: 'calc(var(--header-margin-top) * 0.75)', marginBottom: 'calc(var(--header-margin-bottom) * 0.75)', lineHeight: 'var(--line-height)' }}>
                       {trimmedLine.replace(/^\*\*|\*\*$/g, '')}
                     </h4>
                   );
@@ -176,7 +189,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                       if (match.index > currentIndex) {
                         parts.push(text.slice(currentIndex, match.index));
                       }
-                      parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>);
+                      parts.push(<strong key={match.index} className="font-semibold text-gray-900 dark:text-gray-100">{match[1]}</strong>);
                       currentIndex = match.index + match[0].length;
                     }
 
@@ -188,8 +201,8 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                   };
 
                   return (
-                    <div key={index} className="flex items-start gap-2 text-sm leading-relaxed text-foreground select-text py-1 ml-6">
-                      <span className="text-muted-foreground mt-0.5 font-medium text-sm">{number}.</span>
+                    <div key={index} className="flex items-start gap-3 leading-8 text-gray-700 dark:text-gray-300 select-text py-2 ml-6" style={{ fontSize: 'var(--font-size)' }}>
+                      <span className="text-gray-500 dark:text-gray-400 mt-0.5 font-medium" style={{ fontSize: 'var(--font-size)' }}>{number}.</span>
                       <div className="flex-1">{renderMarkdown(cleanItem)}</div>
                     </div>
                   );
@@ -208,7 +221,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                       if (match.index > currentIndex) {
                         parts.push(text.slice(currentIndex, match.index));
                       }
-                      parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>);
+                      parts.push(<strong key={match.index} className="font-semibold text-gray-900 dark:text-gray-100">{match[1]}</strong>);
                       currentIndex = match.index + match[0].length;
                     }
                     
@@ -220,8 +233,8 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                   };
                   
                   return (
-                    <div key={index} className="flex items-start gap-3 text-sm leading-relaxed text-foreground select-text py-1 ml-6">
-                      <span className="text-muted-foreground mt-2 w-1.5 h-1.5 rounded-full bg-current flex-shrink-0"></span>
+                    <div key={index} className="flex items-start gap-3 leading-8 text-gray-700 dark:text-gray-300 select-text py-2 ml-6" style={{ fontSize: 'var(--font-size)' }}>
+                      <span className="text-gray-400 dark:text-gray-500 mt-3 w-2 h-2 rounded-full bg-current flex-shrink-0"></span>
                       <div className="flex-1">{renderMarkdown(cleanItem)}</div>
                     </div>
                   );
@@ -250,7 +263,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 };
                 
                 return (
-                  <p key={index} className="text-sm leading-relaxed text-foreground select-text py-1 ml-6">
+                  <p key={index} className="text-gray-700 dark:text-gray-300 select-text ml-6" style={{ fontSize: 'var(--font-size)', lineHeight: 'var(--line-height)', paddingTop: 'var(--spacing)', paddingBottom: 'var(--spacing)' }}>
                     {renderMarkdown(trimmedLine)}
                   </p>
                 );
@@ -266,6 +279,21 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
           <div className="text-xs text-muted-foreground">
             Resource • {resource.readTime} read
           </div>
+
+          {/* Font Size Slider */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground">A</span>
+            <input
+              type="range"
+              min="12"
+              max="20"
+              value={fontSize}
+              onChange={(e) => setFontSize(parseInt(e.target.value))}
+              className="w-16 h-1 bg-muted rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+            />
+            <span className="text-sm text-muted-foreground font-medium">A</span>
+          </div>
+
           {resource.relatedBlogPost ? (
             <Button variant="outline" size="sm" className="h-7 text-xs" asChild>
               <Link href={`/blog/${resource.relatedBlogPost}`} target="_blank" rel="noopener noreferrer">
