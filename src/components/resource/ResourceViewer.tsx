@@ -123,8 +123,8 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
               </div>
             </div>
           )}
-          {/* Resource content would go here */}
-          <div className="prose prose-sm max-w-none dark:prose-invert text-sm">
+          {/* Resource content */}
+          <div className="max-w-none">
             <div className="bg-muted/50 rounded-lg p-3 mb-4">
               <h3 className="text-sm font-medium mb-2">About this resource</h3>
               <div className="text-sm text-muted-foreground">
@@ -135,7 +135,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
             </div>
 
             {/* Full blog post content */}
-            <div className="space-y-2">
+            <div className="space-y-3">
               {resource.content.split('\n').map((line, index) => {
                 const trimmedLine = line.trim();
                 
@@ -147,7 +147,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 // Handle headers
                 if (trimmedLine.startsWith('##')) {
                   return (
-                    <h3 key={index} className="text-base font-semibold mt-4 mb-2">
+                    <h3 key={index} className="text-lg font-semibold mt-6 mb-3 text-foreground">
                       {trimmedLine.replace('##', '').trim()}
                     </h3>
                   );
@@ -156,12 +156,45 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 // Handle standalone bold lines (subheaders)
                 if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && !trimmedLine.includes('**', 2)) {
                   return (
-                    <h4 key={index} className="text-sm font-semibold mt-2 mb-1">
+                    <h4 key={index} className="text-base font-semibold mt-4 mb-2 text-foreground ml-2">
                       {trimmedLine.replace(/^\*\*|\*\*$/g, '')}
                     </h4>
                   );
                 }
                 
+                // Handle numbered lists
+                if (/^\d+\. /.test(trimmedLine)) {
+                  const cleanItem = trimmedLine.replace(/^\d+\. /, '');
+                  const number = trimmedLine.match(/^(\d+)\./)?.[1] || '1';
+                  const renderMarkdown = (text: string) => {
+                    const parts: (string | React.JSX.Element)[] = [];
+                    let currentIndex = 0;
+                    const boldRegex = /\*\*(.*?)\*\*/g;
+                    let match;
+
+                    while ((match = boldRegex.exec(text)) !== null) {
+                      if (match.index > currentIndex) {
+                        parts.push(text.slice(currentIndex, match.index));
+                      }
+                      parts.push(<strong key={match.index} className="font-semibold">{match[1]}</strong>);
+                      currentIndex = match.index + match[0].length;
+                    }
+
+                    if (currentIndex < text.length) {
+                      parts.push(text.slice(currentIndex));
+                    }
+
+                    return parts.length > 0 ? parts : text;
+                  };
+
+                  return (
+                    <div key={index} className="flex items-start gap-2 text-sm leading-relaxed text-foreground select-text py-1 ml-6">
+                      <span className="text-muted-foreground mt-0.5 font-medium text-sm">{number}.</span>
+                      <div className="flex-1">{renderMarkdown(cleanItem)}</div>
+                    </div>
+                  );
+                }
+
                 // Handle bullet points
                 if (trimmedLine.startsWith('- ')) {
                   const cleanItem = trimmedLine.replace(/^- /, '');
@@ -187,9 +220,9 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                   };
                   
                   return (
-                    <div key={index} className="flex items-start gap-2 text-sm leading-6 text-foreground select-text">
-                      <span className="text-muted-foreground mt-1.5 w-1 h-1 rounded-full bg-current flex-shrink-0"></span>
-                      <div>{renderMarkdown(cleanItem)}</div>
+                    <div key={index} className="flex items-start gap-3 text-sm leading-relaxed text-foreground select-text py-1 ml-6">
+                      <span className="text-muted-foreground mt-2 w-1.5 h-1.5 rounded-full bg-current flex-shrink-0"></span>
+                      <div className="flex-1">{renderMarkdown(cleanItem)}</div>
                     </div>
                   );
                 }
@@ -217,7 +250,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 };
                 
                 return (
-                  <p key={index} className="text-sm leading-6 text-foreground select-text">
+                  <p key={index} className="text-sm leading-relaxed text-foreground select-text py-1 ml-6">
                     {renderMarkdown(trimmedLine)}
                   </p>
                 );
