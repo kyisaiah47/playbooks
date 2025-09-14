@@ -23,9 +23,11 @@ import {
 	Command
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { usePathname } from "next/navigation"
 
 export function Header() {
 	const [scrollY, setScrollY] = React.useState(0)
+	const pathname = usePathname()
 
 	React.useEffect(() => {
 		const handleScroll = () => {
@@ -40,6 +42,7 @@ export function Header() {
 	const headerWidth = 100 - (scrollProgress * 30) // Goes from 100% to 70%
 	const borderRadius = scrollProgress * 16 // Goes from 0 to 16px
 	const backgroundOpacity = scrollProgress * 0.8
+	const isHomePage = pathname === "/"
 
 	return (
 		<header>
@@ -47,16 +50,16 @@ export function Header() {
 				<div
 					className={cn(
 						"mx-auto mt-4 transition-all duration-300 ease-out",
-						isScrolled ? "border backdrop-blur-lg" : "border-transparent"
+						isScrolled && isHomePage ? "border backdrop-blur-lg" : "border-transparent"
 					)}
 					style={{
-						width: `${headerWidth}%`,
-						borderRadius: `${borderRadius}px`,
-						backgroundColor: isScrolled ? `rgba(var(--background-rgb), ${backgroundOpacity})` : 'transparent',
+						width: isHomePage ? `${headerWidth}%` : '100%',
+						borderRadius: isHomePage ? `${borderRadius}px` : '0px',
+						backgroundColor: isScrolled && isHomePage ? `rgba(var(--background-rgb), ${backgroundOpacity})` : 'transparent',
 						paddingTop: '16px',
 						paddingBottom: '16px',
-						paddingLeft: `${24 - scrollProgress * 8}px`,
-						paddingRight: `${24 - scrollProgress * 8}px`
+						paddingLeft: isHomePage ? `${24 - scrollProgress * 8}px` : '24px',
+						paddingRight: isHomePage ? `${24 - scrollProgress * 8}px` : '24px'
 					}}
 				>
 					<div className="flex items-center justify-between relative">
@@ -89,7 +92,10 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/preview"
-												className="text-base font-medium px-4 py-2 rounded-md "
+												className={cn(
+											"text-base font-medium px-4 py-2 rounded-md",
+											!isHomePage && "hover:bg-muted/50 transition-colors"
+										)}
 											>
 												Preview
 											</Link>
@@ -100,7 +106,10 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/partners"
-												className="text-base font-medium px-4 py-2 rounded-md "
+												className={cn(
+											"text-base font-medium px-4 py-2 rounded-md",
+											!isHomePage && "hover:bg-muted/50 transition-colors"
+										)}
 											>
 												Partners
 											</Link>
@@ -111,7 +120,10 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/about"
-												className="text-base font-medium px-4 py-2 rounded-md "
+												className={cn(
+											"text-base font-medium px-4 py-2 rounded-md",
+											!isHomePage && "hover:bg-muted/50 transition-colors"
+										)}
 											>
 												About
 											</Link>
@@ -122,7 +134,10 @@ export function Header() {
 										<NavigationMenuLink asChild>
 											<Link
 												href="/faq"
-												className="text-base font-medium px-4 py-2 rounded-md "
+												className={cn(
+											"text-base font-medium px-4 py-2 rounded-md",
+											!isHomePage && "hover:bg-muted/50 transition-colors"
+										)}
 											>
 												FAQ
 											</Link>
