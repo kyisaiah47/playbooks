@@ -112,7 +112,7 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
           <h3 className="text-lg font-semibold mb-2">Build your personalized guide</h3>
           <p className="text-sm text-muted-foreground mb-4 max-w-sm mx-auto">
             Add prompts from the sidebar to create your customized planning experience.
-            Your journey starts here. →
+            ← Your journey starts here.
           </p>
           <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
             <Plus className="h-4 w-4" />

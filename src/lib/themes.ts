@@ -334,6 +334,7 @@ export const premiumAmberThemeDark: ThemeColors = {
   sidebarRing: 'oklch(0.7731 0 0)'
 }
 
+
 // Emerald theme (light) - Free
 export const emeraldThemeLight: ThemeColors = {
   background: 'oklch(0.9711 0.0074 80.7211)',
@@ -1418,67 +1419,6 @@ export const themes: Theme[] = [
       dark: premiumAmberThemeDark
     }
   },
-  {
-    id: 'cyan',
-    name: 'Cyan',
-    description: 'Cool cyan blues with modern tech vibes',
-    isPremium: true,
-    colors: {
-      light: premiumCyanThemeLight,
-      dark: premiumCyanThemeDark
-    }
-  },
-  {
-    id: 'ruby',
-    name: 'Ruby',
-    description: 'Luxurious ruby red with elegant pink accents',
-    isPremium: true,
-    colors: {
-      light: premiumRubyThemeLight,
-      dark: premiumRubyThemeDark
-    }
-  },
-  {
-    id: 'sage',
-    name: 'Sage',
-    description: 'Earthy sage greens with natural sophistication',
-    isPremium: true,
-    colors: {
-      light: premiumSageThemeLight,
-      dark: premiumSageThemeDark
-    }
-  },
-  // Exclusive themes
-  {
-    id: 'spectrum',
-    name: 'Spectrum',
-    description: 'Vibrant rainbow colors with playful energy',
-    isExclusive: true,
-    colors: {
-      light: exclusiveSpectrumThemeLight,
-      dark: exclusiveSpectrumThemeDark
-    }
-  },
-  {
-    id: 'electric',
-    name: 'Electric',
-    description: 'High-voltage pink and cyan with modern typography',
-    isExclusive: true,
-    colors: {
-      light: exclusiveElectricThemeLight,
-      dark: exclusiveElectricThemeDark
-    }
-  },
-  {
-    id: 'vintage',
-    name: 'Vintage',
-    description: 'Classic purple hues with elegant serif typography',
-    isExclusive: true,
-    colors: {
-      light: exclusiveVintageThemeLight,
-      dark: exclusiveVintageThemeDark
-    }
-  }
 ]
 
 

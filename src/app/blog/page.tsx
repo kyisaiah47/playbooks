@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button"
-import { blogRegistry, getFeaturedBlogPosts, getAllBlogCategories } from "@/registry/blogs";
+import { blogRegistry, getAllBlogCategories } from "@/registry/blogs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar, Clock, User, BookOpen, Heart, Home, Briefcase, DollarSign, Calendar as CalendarIcon, TrendingUp } from "lucide-react";
@@ -24,6 +25,12 @@ const getCategoryIcon = (category: string) => {
 };
 
 export default function BlogPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredPosts = blogRegistry.filter(post =>
+    selectedCategory === "All" || post.category === selectedCategory
+  );
+
   return (
     <PageLayout>
       <section className="py-24 md:py-32">
@@ -52,69 +59,29 @@ export default function BlogPage() {
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 justify-center mb-12">
             {categories.map((category) => (
-              <Button 
-                key={category} 
-                variant={category === "All" ? "default" : "outline"} 
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
                 size="sm"
+                onClick={() => setSelectedCategory(category)}
+                className="transition-all hover:scale-105"
               >
                 {category}
               </Button>
             ))}
           </div>
 
-          {/* Featured Posts */}
-          <div className="mb-12">
-            <h2 className="text-xl font-semibold mb-4">Featured Articles</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {getFeaturedBlogPosts().map((post) => (
-                <Card key={post.id} className="group hover:shadow-md transition-shadow duration-200">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="outline" className="text-xs h-4 px-1.5">
-                        {post.category}
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">•</span>
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Clock className="w-3 h-3" />
-                        {post.readTime}
-                      </div>
-                    </div>
-                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                      <Link href={`/blog/${post.slug}`}>
-                        {post.title}
-                      </Link>
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
-                      <div className="flex items-center gap-3">
-                        <div className="flex items-center gap-1">
-                          <User className="w-3 h-3" />
-                          {post.author}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {new Date(post.publishedAt).toLocaleDateString()}
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm" className="h-6 text-xs" asChild>
-                        <Link href={`/blog/${post.slug}`}>
-                          Read More <ArrowRight className="w-3 h-3 ml-1" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
 
           {/* All Posts - New Grid Layout */}
           <div>
-            <h2 className="text-xl font-semibold mb-6">All Articles</h2>
+            <h2 className="text-xl font-semibold mb-6">
+              {selectedCategory === "All" ? "All Articles" : `${selectedCategory} Articles`}
+              <span className="text-sm font-normal text-muted-foreground ml-2">
+                ({filteredPosts.length} posts)
+              </span>
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogRegistry.map((post) => (
+              {filteredPosts.map((post) => (
                 <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
                   <CardContent className="p-0">
                     <div className="p-6 pb-4">
@@ -137,8 +104,10 @@ export default function BlogPage() {
                     </div>
                     <div className="px-6 pb-6">
                       <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center gap-1">
-                          <User className="w-4 h-4" />
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
+                            {post.author.split(' ').map(n => n[0]).join('').toUpperCase()}
+                          </div>
                           <span>{post.author}</span>
                         </div>
                         <div className="flex items-center gap-1">

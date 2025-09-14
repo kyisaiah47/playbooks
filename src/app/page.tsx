@@ -28,37 +28,27 @@ import {
 	BookOpen,
 	Calendar,
 	TrendingUp,
+	Layout,
+	Users,
+	Crown,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 
 function RotatingWord() {
 	const words = ['moments', 'weddings', 'moves', 'careers', 'launches', 'events', 'projects', 'decisions', 'changes', 'milestones', 'transitions', 'goals'];
 	const [currentWordIndex, setCurrentWordIndex] = useState(0);
-	const [isAnimating, setIsAnimating] = useState(false);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setIsAnimating(true);
-			setTimeout(() => {
-				setCurrentWordIndex((prev) => (prev + 1) % words.length);
-				setIsAnimating(false);
-			}, 300); // Half of animation duration
-		}, 2500); // Slightly longer interval for better readability
+			setCurrentWordIndex((prev) => (prev + 1) % words.length);
+		}, 2000);
 
 		return () => clearInterval(interval);
 	}, []);
 
 	return (
-		<span className="relative inline-block min-w-[180px] h-[1.2em]">
-			<span
-				className={`absolute inset-0 transition-all duration-600 ease-in-out ${
-					isAnimating
-						? 'opacity-0 transform translate-y-4'
-						: 'opacity-100 transform translate-y-0'
-				}`}
-			>
-				{words[currentWordIndex]}
-			</span>
+		<span className="inline-block">
+			{words[currentWordIndex]}
 		</span>
 	);
 }
@@ -145,24 +135,24 @@ export default function LandingPage() {
 
 							<div className="space-y-4">
 								<div className="flex items-center gap-3">
-									<div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-										<CheckCircle2 className="h-5 w-5 text-primary" />
+									<div className="w-8 h-8 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+										<Layout className="h-5 w-5 text-blue-600 dark:text-blue-400" />
 									</div>
 									<span className="text-lg">
 										Structured frameworks and reflection prompts
 									</span>
 								</div>
 								<div className="flex items-center gap-3">
-									<div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-										<CheckCircle2 className="h-5 w-5 text-primary" />
+									<div className="w-8 h-8 bg-green-50 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+										<Users className="h-5 w-5 text-green-600 dark:text-green-400" />
 									</div>
 									<span className="text-lg">
 										Expert insights and best practices included
 									</span>
 								</div>
 								<div className="flex items-center gap-3">
-									<div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
-										<CheckCircle2 className="h-5 w-5 text-primary" />
+									<div className="w-8 h-8 bg-amber-50 dark:bg-amber-900/20 rounded-lg flex items-center justify-center">
+										<Crown className="h-5 w-5 text-amber-600 dark:text-amber-400" />
 									</div>
 									<span className="text-lg">
 										Start free, upgrade for full access to all templates

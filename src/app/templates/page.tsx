@@ -151,60 +151,59 @@ export default function TemplatesPage() {
 					</p>
 				</div>
 
-				{/* Search and Filters */}
-				<div className="flex flex-col lg:flex-row gap-4 mb-8">
-					<div className="relative flex-1">
-						<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+				{/* Modern Search and Filters */}
+				<div className="mb-12">
+					{/* Search Bar */}
+					<div className="relative max-w-2xl mx-auto mb-8">
+						<Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
 						<Input
-							placeholder="Search templates..."
+							placeholder="Search templates by name, category, or use case..."
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="pl-10"
+							className="pl-12 pr-4 h-14 text-lg bg-muted/30 border-2 border-transparent focus:border-primary focus:bg-background transition-all duration-200 rounded-xl"
 						/>
 					</div>
 
-					<div className="flex items-center gap-2">
-						<div className="flex items-center border rounded-md">
-							{categories.map((category) => (
-								<button
-									key={category.id}
-									onClick={() => setSelectedCategory(category.id)}
-									className={`px-3 py-2 text-sm font-medium transition-colors ${
-										selectedCategory === category.id
-											? "bg-primary text-primary-foreground"
-											: "hover:bg-muted"
-									} ${category.id === categories[0].id ? "rounded-l-md" : ""} ${
-										category.id === categories[categories.length - 1].id
-											? "rounded-r-md"
-											: ""
-									}`}
-								>
-									{category.name}
-									<span className="ml-1 text-xs opacity-70">
-										({category.count})
-									</span>
-								</button>
-							))}
-						</div>
+					{/* Category Pills */}
+					<div className="flex flex-wrap items-center justify-center gap-3">
+						{categories.map((category) => (
+							<button
+								key={category.id}
+								onClick={() => setSelectedCategory(category.id)}
+								className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
+									selectedCategory === category.id
+										? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105"
+										: "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground hover:scale-105"
+								}`}
+							>
+								<span>{category.name}</span>
+								<Badge variant={selectedCategory === category.id ? "secondary" : "outline"} className="text-xs bg-background/20">
+									{category.count}
+								</Badge>
+							</button>
+						))}
+					</div>
 
-						<div className="flex items-center border rounded-md">
+					{/* View Mode Toggle - Moved to bottom right */}
+					<div className="flex justify-end mt-6">
+						<div className="flex items-center bg-muted/30 rounded-lg p-1">
 							<button
 								onClick={() => setViewMode("grid")}
-								className={`p-2 ${
+								className={`px-3 py-2 rounded-md transition-all ${
 									viewMode === "grid"
-										? "bg-primary text-primary-foreground"
-										: "hover:bg-muted"
-								} rounded-l-md`}
+										? "bg-background shadow-sm text-foreground"
+										: "text-muted-foreground hover:text-foreground"
+								}`}
 							>
 								<Grid3X3 className="h-4 w-4" />
 							</button>
 							<button
 								onClick={() => setViewMode("list")}
-								className={`p-2 ${
+								className={`px-3 py-2 rounded-md transition-all ${
 									viewMode === "list"
-										? "bg-primary text-primary-foreground"
-										: "hover:bg-muted"
-								} rounded-r-md`}
+										? "bg-background shadow-sm text-foreground"
+										: "text-muted-foreground hover:text-foreground"
+								}`}
 							>
 								<List className="h-4 w-4" />
 							</button>

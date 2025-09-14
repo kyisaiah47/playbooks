@@ -481,7 +481,7 @@ export function TemplataContentSidebar({
                     <Badge className={`text-xs ${getCategoryColor(prompt.category)}`}>
                       {prompt.category}
                     </Badge>
-                    <Plus className="ml-auto w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Plus className="ml-auto w-3 h-3 opacity-30 group-hover:opacity-100 transition-opacity duration-200" />
                   </div>
                   <span className="font-medium line-clamp-2">{prompt.prompt}</span>
                   {prompt.helpText && (

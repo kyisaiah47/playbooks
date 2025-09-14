@@ -90,6 +90,16 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             </div>
           </header>
 
+          {/* Header Image */}
+          <div className="mb-12 rounded-xl overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-background h-48 flex items-center justify-center">
+            <div className="text-center space-y-2">
+              <div className="w-16 h-16 mx-auto rounded-full bg-primary/20 flex items-center justify-center">
+                <Heart className="w-8 h-8 text-primary" />
+              </div>
+              <p className="text-sm text-muted-foreground font-medium">{blogPost.category}</p>
+            </div>
+          </div>
+
           <Separator className="mb-12" />
 
           {/* Article Content */}
