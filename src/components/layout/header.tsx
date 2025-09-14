@@ -59,7 +59,7 @@ export function Header() {
 						paddingRight: `${24 - scrollProgress * 8}px`
 					}}
 				>
-					<div className="flex items-center justify-between">
+					<div className="flex items-center justify-between relative">
 						{/* Left side - Logo and Theme */}
 						<div className="flex items-center space-x-4">
 							<Link href="/" className="flex items-center space-x-2">
