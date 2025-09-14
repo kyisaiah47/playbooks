@@ -7,6 +7,7 @@ import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
+import { Progress } from '@/components/ui/progress';
 import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity } from 'lucide-react';
 import {
   Breadcrumb,
@@ -26,6 +27,7 @@ export function TemplateView({ template }: TemplateViewProps) {
   const [activeSection, setActiveSection] = useState(0);
   const [additionalPrompts, setAdditionalPrompts] = useState<ReflectionPrompt[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
+  const [responses, setResponses] = useState<Record<string, string>>({});
 
   const getSectionIcon = (sectionId: string) => {
     switch (sectionId) {
@@ -89,6 +91,14 @@ export function TemplateView({ template }: TemplateViewProps) {
     setOpenResource(null);
   };
 
+  const handleResponsesChange = (newResponses: Record<string, string>) => {
+    setResponses(newResponses);
+  };
+
+  // Calculate completion stats
+  const completedPrompts = Object.values(responses).filter(response => response.trim() !== '').length;
+  const totalPrompts = additionalPrompts.length;
+
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground">
@@ -116,14 +126,29 @@ export function TemplateView({ template }: TemplateViewProps) {
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>
-              <div className="ml-auto">
-                <ThemeSelector />
+              <div className="ml-auto flex flex-col items-end gap-1">
+                {totalPrompts > 0 && (
+                  <>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <span className="font-medium">{completedPrompts}/{totalPrompts}</span>
+                      <span>completed</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Progress
+                        value={(completedPrompts / totalPrompts) * 100}
+                        className="w-20 h-2 [&>div]:bg-green-500"
+                      />
+                      <span className="text-xs font-medium text-muted-foreground">{Math.round((completedPrompts / totalPrompts) * 100)}%</span>
+                    </div>
+                  </>
+                )}
               </div>
             </header>
-            <EmbeddedPrompts 
-              section={template.sections[activeSection]} 
+            <EmbeddedPrompts
+              section={template.sections[activeSection]}
               additionalPrompts={additionalPrompts}
               onRemovePrompt={handleRemovePrompt}
+              onResponsesChange={handleResponsesChange}
               hideHeader={true}
             />
           </div>

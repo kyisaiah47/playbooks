@@ -15,7 +15,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function ThemeSelector() {
+interface ThemeSelectorProps {
+  iconOnly?: boolean;
+}
+
+export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
   const { setTheme } = useTheme()
   const { currentTheme, setTheme: setCustomTheme } = useCustomTheme()
   const [mounted, setMounted] = React.useState(false)
@@ -33,9 +37,9 @@ export function ThemeSelector() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="sm" className="gap-2" disabled>
+      <Button variant="outline" size="sm" className={iconOnly ? "" : "gap-2"} disabled>
         <Palette className="h-4 w-4" />
-        <span className="hidden sm:inline">Loading...</span>
+        {!iconOnly && <span className="hidden sm:inline">Loading...</span>}
       </Button>
     )
   }
@@ -56,9 +60,9 @@ export function ThemeSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
+        <Button variant="outline" size="sm" className={iconOnly ? "" : "gap-2"}>
           <Palette className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentThemeInfo.name}</span>
+          {!iconOnly && <span className="hidden sm:inline">{currentThemeInfo.name}</span>}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">

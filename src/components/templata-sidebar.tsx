@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
+import { ThemeSelector } from "@/components/theme-selector"
 import {
   Sidebar,
   SidebarContent,
@@ -17,6 +18,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
+  SidebarFooter,
 } from "@/components/ui/sidebar"
 
 const getSectionIcon = (sectionId: string) => {
@@ -445,6 +447,10 @@ export function TemplataContentSidebar({
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+
+        <SidebarFooter>
+          <ThemeSelector iconOnly />
+        </SidebarFooter>
       </Sidebar>
 
       {/* Content Browser Sidebar */}

@@ -5,7 +5,7 @@ import { GuidanceSection, ReflectionPrompt } from '@/types/template';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb } from 'lucide-react';
+import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb, Circle, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import {
@@ -70,9 +70,16 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
             return (
               <div key={prompt.id} className="border-b p-4 space-y-3">
                 <div className="flex items-start gap-2">
-                  <span className="w-5 h-5 bg-primary/10 rounded text-xs text-primary font-medium flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {index + 1}
-                  </span>
+                  <div className="flex items-center gap-2 flex-shrink-0 mt-0.5">
+                    <span className="w-5 h-5 bg-primary/10 rounded text-xs text-primary font-medium flex items-center justify-center">
+                      {index + 1}
+                    </span>
+                    {responses[prompt.id]?.trim() ? (
+                      <CheckCircle2 className="w-4 h-4 text-green-500" />
+                    ) : (
+                      <Circle className="w-4 h-4 text-muted-foreground" />
+                    )}
+                  </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-start gap-1.5 flex-1 min-w-0">
