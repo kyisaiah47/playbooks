@@ -9,6 +9,10 @@ import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
 import { Progress } from '@/components/ui/progress';
 import { CommandPalette } from '@/components/command-palette';
+import { PDFExportButton } from '@/components/pdf/export-button';
+import { ExpertBadgeList } from '@/components/expert/expert-badge';
+import { getTemplateExperts } from '@/lib/expert-badges';
+import { SharePanel } from '@/components/collaboration/share-panel';
 import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity } from 'lucide-react';
 import {
   Breadcrumb,
@@ -101,6 +105,9 @@ export function TemplateView({ template }: TemplateViewProps) {
   const completedPrompts = Object.values(responses).filter(response => response.trim() !== '').length;
   const totalPrompts = additionalPrompts.length;
 
+  // Get experts for this template
+  const templateExperts = getTemplateExperts(template.id);
+
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground">
@@ -127,29 +134,45 @@ export function TemplateView({ template }: TemplateViewProps) {
                 orientation="vertical"
                 className="mr-2 data-[orientation=vertical]:h-4"
               />
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>{template.title}</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
-              <div className="ml-auto flex flex-col items-end gap-1">
-                {totalPrompts > 0 && (
-                  <>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <span className="font-medium">{completedPrompts}/{totalPrompts}</span>
-                      <span>completed</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Progress
-                        value={(completedPrompts / totalPrompts) * 100}
-                        className="w-20 h-2 [&>div]:bg-green-500"
-                      />
-                      <span className="text-xs font-medium text-muted-foreground">{Math.round((completedPrompts / totalPrompts) * 100)}%</span>
-                    </div>
-                  </>
+              <div className="flex flex-col gap-2">
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>{template.title}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
+                {templateExperts.length > 0 && (
+                  <ExpertBadgeList experts={templateExperts} variant="inline" maxDisplay={2} />
                 )}
+              </div>
+              <div className="ml-auto flex items-center gap-3">
+                <SharePanel
+                  templateId={template.id}
+                  templateTitle={template.title}
+                  responses={responses}
+                />
+                <PDFExportButton
+                  template={template}
+                  responses={responses}
+                />
+                <div className="flex flex-col items-end gap-1">
+                  {totalPrompts > 0 && (
+                    <>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span className="font-medium">{completedPrompts}/{totalPrompts}</span>
+                        <span>completed</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Progress
+                          value={(completedPrompts / totalPrompts) * 100}
+                          className="w-20 h-2 [&>div]:bg-green-500"
+                        />
+                        <span className="text-xs font-medium text-muted-foreground">{Math.round((completedPrompts / totalPrompts) * 100)}%</span>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </header>
             <EmbeddedPrompts

@@ -7,6 +7,7 @@ import { WeddingProvider } from "@/contexts/wedding-context"
 import { HomeBuyingProvider } from "@/contexts/home-buying-context"
 import { BabyPlanningProvider } from "@/contexts/baby-planning-context"
 import { MealPlanningProvider } from "@/contexts/meal-planning-context"
+import { UIProvider } from "@/components/providers/ui-provider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,15 +44,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CustomThemeProvider>
-            <MealPlanningProvider>
-              <BabyPlanningProvider>
-                <HomeBuyingProvider>
-                  <WeddingProvider>
-                    {children}
-                  </WeddingProvider>
-                </HomeBuyingProvider>
-              </BabyPlanningProvider>
-            </MealPlanningProvider>
+            <UIProvider>
+              <MealPlanningProvider>
+                <BabyPlanningProvider>
+                  <HomeBuyingProvider>
+                    <WeddingProvider>
+                      {children}
+                    </WeddingProvider>
+                  </HomeBuyingProvider>
+                </BabyPlanningProvider>
+              </MealPlanningProvider>
+            </UIProvider>
           </CustomThemeProvider>
         </ThemeProvider>
       </body>

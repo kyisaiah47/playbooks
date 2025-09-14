@@ -32,8 +32,20 @@ import {
   User,
   Zap,
   Sparkles,
-  ChevronRight
+  ChevronRight,
+  Star,
+  Brain,
+  Compass,
+  Lightbulb,
+  Verified,
+  Trophy
 } from "lucide-react"
+import { useFavorites } from "@/hooks/use-favorites"
+import { useRecentTemplates } from "@/hooks/use-recent-templates"
+import { useSmartRecommendations } from "@/hooks/use-smart-recommendations"
+import { TemplateOfWeekShowcase } from "@/components/template-of-week/showcase"
+import { isCurrentTemplateOfWeek } from "@/lib/template-of-week"
+import { ChangelogWidget } from "@/components/changelog/changelog-widget"
 
 // Import data
 import { templateRegistry } from "@/registry/templates"
@@ -42,7 +54,7 @@ import { blogRegistry } from "@/registry/blogs"
 interface FullscreenCommandPaletteProps {
   isOpen: boolean
   onClose: () => void
-  mode?: "templates" | "articles" | "all"
+  mode?: "templates" | "articles" | "all" | "smart"
   autoFocus?: boolean
 }
 
@@ -82,13 +94,30 @@ export function FullscreenCommandPalette({
   const [debouncedQuery, setDebouncedQuery] = useState("")
   const [mode, setMode] = useState(initialMode)
 
+  // Favorites and recent items
+  const { favorites, isFavorited, toggleFavorite } = useFavorites()
+  const { addRecentItem } = useRecentTemplates()
+
+  // Smart recommendations
+  const {
+    getRecommendationsByType,
+    getContextualRecommendations,
+    getDiscoveryRecommendations,
+    trackView,
+    trackSearch
+  } = useSmartRecommendations()
+
   // Debounce search query for better performance
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query)
+      // Track search queries for recommendations
+      if (query.trim().length >= 3) {
+        trackSearch(query.trim())
+      }
     }, 200)
     return () => clearTimeout(timer)
-  }, [query])
+  }, [query, trackSearch])
 
   // Show onboarding hint for new users
   useEffect(() => {
@@ -218,6 +247,42 @@ export function FullscreenCommandPalette({
     onClose()
   }
 
+  const handleTemplateClick = (template: any) => {
+    addRecentItem({
+      id: template.id,
+      name: template.name,
+      url: template.url,
+      category: template.category,
+      type: "template" as const
+    })
+    trackView(template.id, template.category, "template")
+    handleClose()
+  }
+
+  const handleArticleClick = (article: any) => {
+    addRecentItem({
+      id: article.id,
+      name: article.title,
+      url: `/blog/${article.slug}`,
+      category: article.category,
+      type: "article" as const
+    })
+    trackView(article.id, article.category, "article")
+    handleClose()
+  }
+
+  const handleToggleFavorite = (e: React.MouseEvent, item: any, type: "template" | "article") => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleFavorite({
+      id: item.id,
+      name: type === "template" ? item.name : item.title,
+      url: type === "template" ? item.url : `/blog/${item.slug}`,
+      category: item.category,
+      type
+    })
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       handleClose()
@@ -284,6 +349,15 @@ export function FullscreenCommandPalette({
               All
             </Button>
             <Button
+              variant={mode === "smart" ? "default" : "ghost"}
+              size="sm"
+              className="h-7 text-xs flex items-center gap-1"
+              onClick={() => setMode("smart")}
+            >
+              <Brain className="w-3 h-3" />
+              Smart
+            </Button>
+            <Button
               variant={mode === "templates" ? "default" : "ghost"}
               size="sm"
               className="h-7 text-xs"
@@ -346,6 +420,55 @@ export function FullscreenCommandPalette({
             <div className="space-y-8 p-6">
               {mode === "all" && (
                 <>
+                  {/* Favorites Section */}
+                  {favorites.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-semibold text-lg">Your Favorites</h3>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <span>{favorites.length} saved</span>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        {favorites.slice(0, 4).map((favorite) => {
+                          const Icon = favorite.type === "template" ? getTemplateIcon(favorite.id) : getCategoryIcon(favorite.category)
+                          return (
+                            <Link key={favorite.id} href={favorite.url} onClick={() => favorite.type === "template" ? handleTemplateClick(favorite) : handleArticleClick(favorite)}>
+                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                  <Icon className="w-4 h-4 text-primary" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                    {favorite.name}
+                                  </h4>
+                                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                    <Badge variant="outline" className="text-xs">
+                                      {favorite.category}
+                                    </Badge>
+                                    <span>{favorite.type === "template" ? "Template" : "Article"}</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={(e) => handleToggleFavorite(e, favorite, favorite.type)}
+                                    className="h-7 w-7 p-0 opacity-100 hover:bg-yellow-100 hover:text-yellow-600"
+                                  >
+                                    <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                                  </Button>
+                                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                </div>
+                              </div>
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Featured Templates */}
                   {templates.length > 0 && (
                     <div>
@@ -359,9 +482,10 @@ export function FullscreenCommandPalette({
                       <div className="space-y-2">
                         {templates.slice(0, 4).map((template) => {
                           const Icon = getTemplateIcon(template.id)
+                          const isStarred = isFavorited(template.id)
                           return (
-                            <Link key={template.id} href={template.url} onClick={handleClose}>
-                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50">
+                            <Link key={template.id} href={template.url} onClick={() => handleTemplateClick(template)}>
+                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
                                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                                   <Icon className="w-4 h-4 text-primary" />
                                 </div>
@@ -382,6 +506,26 @@ export function FullscreenCommandPalette({
                                       Popular
                                     </Badge>
                                   )}
+                                  {template.expertVerified && (
+                                    <Badge variant="outline" className="text-xs border-blue-200 bg-blue-50/50 text-blue-700">
+                                      <Verified className="w-3 h-3 mr-1 text-blue-500 fill-blue-500" />
+                                      Expert
+                                    </Badge>
+                                  )}
+                                  {isCurrentTemplateOfWeek(template.id) && (
+                                    <Badge className="text-xs bg-yellow-500/90 hover:bg-yellow-500 text-white">
+                                      <Trophy className="w-3 h-3 mr-1" />
+                                      This Week
+                                    </Badge>
+                                  )}
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={(e) => handleToggleFavorite(e, template, "template")}
+                                    className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                  >
+                                    <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                  </Button>
                                   <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                                 </div>
                               </div>
@@ -405,9 +549,10 @@ export function FullscreenCommandPalette({
                       <div className="space-y-2">
                         {articles.slice(0, 4).map((article) => {
                           const Icon = getCategoryIcon(article.category)
+                          const isStarred = isFavorited(article.id)
                           return (
-                            <Link key={article.id} href={`/blog/${article.slug}`} onClick={handleClose}>
-                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50">
+                            <Link key={article.id} href={`/blog/${article.slug}`} onClick={() => handleArticleClick(article)}>
+                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
                                 <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
                                   <Icon className="w-4 h-4" />
                                 </div>
@@ -423,7 +568,17 @@ export function FullscreenCommandPalette({
                                     <span>{article.category}</span>
                                   </div>
                                 </div>
-                                <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                <div className="flex items-center gap-2">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={(e) => handleToggleFavorite(e, article, "article")}
+                                    className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                  >
+                                    <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                  </Button>
+                                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                </div>
                               </div>
                             </Link>
                           )
@@ -431,24 +586,222 @@ export function FullscreenCommandPalette({
                       </div>
                     </div>
                   )}
+
                 </>
+              )}
+
+              {/* Smart Recommendations View */}
+              {mode === "smart" && (
+                <div className="space-y-8">
+                  {/* Template of the Week */}
+                  <div>
+                    <TemplateOfWeekShowcase variant="banner" className="mb-4" />
+                  </div>
+
+                  {/* Platform Updates */}
+                  <div>
+                    <ChangelogWidget variant="banner" className="mb-6" />
+                  </div>
+
+                  {/* Smart Picks Section */}
+                  {(() => {
+                    const contextual = getContextualRecommendations(6)
+                    if (contextual.length === 0) return null
+
+                    return (
+                      <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Smart Picks</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Brain className="w-4 h-4 text-blue-500" />
+                            <span>Personalized for you</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {contextual.map((rec) => {
+                            const Icon = rec.type === "template" ? getTemplateIcon(rec.id) : getCategoryIcon(rec.category)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link
+                                key={rec.id}
+                                href={rec.url}
+                                onClick={() => rec.type === "template" ? handleTemplateClick(rec) : handleArticleClick(rec)}
+                              >
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1">
+                                      {rec.description}
+                                    </p>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="text-xs">
+                                      {rec.category}
+                                    </Badge>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, rec.type)}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+
+                  {/* Discover More Section */}
+                  {(() => {
+                    const discovery = getDiscoveryRecommendations(6)
+                    if (discovery.length === 0) return null
+
+                    return (
+                      <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Discover More</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Compass className="w-4 h-4 text-green-500" />
+                            <span>Expand your horizons</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {discovery.map((rec) => {
+                            const Icon = rec.type === "template" ? getTemplateIcon(rec.id) : getCategoryIcon(rec.category)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link
+                                key={rec.id}
+                                href={rec.url}
+                                onClick={() => rec.type === "template" ? handleTemplateClick(rec) : handleArticleClick(rec)}
+                              >
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1">
+                                      {rec.description}
+                                    </p>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="text-xs">
+                                      {rec.category}
+                                    </Badge>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, rec.type)}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+                </div>
               )}
 
               {/* All Templates View */}
               {mode === "templates" && (
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-lg">All Templates</h3>
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <span>{searchableTemplates.length} templates</span>
+                <>
+                  {/* Template Recommendations */}
+                  {(() => {
+                    const templateRecs = getRecommendationsByType("template", 3)
+                    if (templateRecs.length === 0) return null
+
+                    return (
+                      <div className="mb-8">
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Recommended Templates</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Brain className="w-4 h-4 text-blue-500" />
+                            <span>Based on your activity</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {templateRecs.map((rec) => {
+                            const Icon = getTemplateIcon(rec.id)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link key={rec.id} href={rec.url} onClick={() => handleTemplateClick(rec)}>
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1">
+                                      {rec.description}
+                                    </p>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
+                                      <Badge variant="outline" className="text-xs text-xs">
+                                        {rec.category}
+                                      </Badge>
+                                      <span>•</span>
+                                      <span className="flex items-center gap-1">
+                                        <Lightbulb className="w-3 h-3" />
+                                        {rec.reason}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, "template")}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="font-semibold text-lg">All Templates</h3>
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <span>{searchableTemplates.length} templates</span>
+                      </div>
                     </div>
-                  </div>
                   <div className="space-y-2">
                     {searchableTemplates.map((template) => {
                       const Icon = getTemplateIcon(template.id)
+                      const isStarred = isFavorited(template.id)
                       return (
-                        <Link key={template.id} href={template.url} onClick={handleClose}>
-                          <div className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50">
+                        <Link key={template.id} href={template.url} onClick={() => handleTemplateClick(template)}>
+                          <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
                             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                               <Icon className="w-4 h-4 text-primary" />
                             </div>
@@ -469,6 +822,26 @@ export function FullscreenCommandPalette({
                                   Popular
                                 </Badge>
                               )}
+                              {template.expertVerified && (
+                                <Badge variant="outline" className="text-xs border-blue-200 bg-blue-50/50 text-blue-700">
+                                  <Verified className="w-3 h-3 mr-1 text-blue-500 fill-blue-500" />
+                                  Expert
+                                </Badge>
+                              )}
+                              {isCurrentTemplateOfWeek(template.id) && (
+                                <Badge className="text-xs bg-yellow-500/90 hover:bg-yellow-500 text-white">
+                                  <Trophy className="w-3 h-3 mr-1" />
+                                  This Week
+                                </Badge>
+                              )}
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, template, "template")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
                               <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                             </div>
                           </div>
@@ -477,23 +850,88 @@ export function FullscreenCommandPalette({
                     })}
                   </div>
                 </div>
+                </>
               )}
 
               {/* All Articles View */}
               {mode === "articles" && (
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-lg">All Articles</h3>
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                      <span>{searchableArticles.length} articles</span>
+                <>
+                  {/* Article Recommendations */}
+                  {(() => {
+                    const articleRecs = getRecommendationsByType("article", 3)
+                    if (articleRecs.length === 0) return null
+
+                    return (
+                      <div className="mb-8">
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Recommended Articles</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Brain className="w-4 h-4 text-purple-500" />
+                            <span>Curated for you</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {articleRecs.map((rec) => {
+                            const Icon = getCategoryIcon(rec.category)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link key={rec.id} href={rec.url} onClick={() => handleArticleClick(rec)}>
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-1">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1 mt-1">
+                                      {rec.description}
+                                    </p>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
+                                      <Badge variant="outline" className="text-xs text-xs">
+                                        {rec.category}
+                                      </Badge>
+                                      <span>•</span>
+                                      <span className="flex items-center gap-1">
+                                        <Lightbulb className="w-3 h-3" />
+                                        {rec.reason}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, "article")}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="font-semibold text-lg">All Articles</h3>
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <span>{searchableArticles.length} articles</span>
+                      </div>
                     </div>
-                  </div>
                   <div className="space-y-2">
                     {searchableArticles.map((article) => {
                       const Icon = getCategoryIcon(article.category)
+                      const isStarred = isFavorited(article.id)
                       return (
-                        <Link key={article.id} href={`/blog/${article.slug}`} onClick={handleClose}>
-                          <div className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50">
+                        <Link key={article.id} href={`/blog/${article.slug}`} onClick={() => handleArticleClick(article)}>
+                          <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
                             <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
                               <Icon className="w-4 h-4" />
                             </div>
@@ -509,13 +947,24 @@ export function FullscreenCommandPalette({
                                 <span>{article.category}</span>
                               </div>
                             </div>
-                            <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            <div className="flex items-center gap-2">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, article, "article")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
                           </div>
                         </Link>
                       )
                     })}
                   </div>
                 </div>
+                </>
               )}
             </div>
           )}
@@ -533,9 +982,10 @@ export function FullscreenCommandPalette({
                     {templates.map((template, index) => {
                       const Icon = getTemplateIcon(template.id)
                       const isSelected = selectedIndex === index
+                      const isStarred = isFavorited(template.id)
                       return (
-                        <Link key={template.id} href={template.url} onClick={handleClose}>
-                          <div className={`group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50 ${
+                        <Link key={template.id} href={template.url} onClick={() => handleTemplateClick(template)}>
+                          <div className={`group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm ${
                             isSelected ? 'bg-primary/10 border border-primary/20' : ''
                           }`}>
                             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -553,6 +1003,14 @@ export function FullscreenCommandPalette({
                               <Badge variant="outline" className="text-xs">
                                 {template.category}
                               </Badge>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, template, "template")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
                               <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                             </div>
                           </div>
@@ -574,9 +1032,10 @@ export function FullscreenCommandPalette({
                       const Icon = getCategoryIcon(article.category)
                       const resultIndex = templates.length + index
                       const isSelected = selectedIndex === resultIndex
+                      const isStarred = isFavorited(article.id)
                       return (
-                        <Link key={article.id} href={`/blog/${article.slug}`} onClick={handleClose}>
-                          <div className={`group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50 ${
+                        <Link key={article.id} href={`/blog/${article.slug}`} onClick={() => handleArticleClick(article)}>
+                          <div className={`group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm ${
                             isSelected ? 'bg-primary/10 border border-primary/20' : ''
                           }`}>
                             <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
@@ -594,7 +1053,17 @@ export function FullscreenCommandPalette({
                                 <span>{article.category}</span>
                               </div>
                             </div>
-                            <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            <div className="flex items-center gap-2">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, article, "article")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
                           </div>
                         </Link>
                       )
@@ -603,19 +1072,27 @@ export function FullscreenCommandPalette({
                 </div>
               )}
 
-              {/* No Results */}
+              {/* Motivational Empty State */}
               {templates.length === 0 && articles.length === 0 && (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Search className="h-6 w-6 text-muted-foreground" />
+                <div className="text-center py-16">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse">
+                    <Sparkles className="h-8 w-8 text-primary animate-bounce" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">No results found</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Try adjusting your search or browse our suggestions above
+                  <h3 className="text-xl font-bold mb-3">Life shouldn't start with a blank page</h3>
+                  <p className="text-muted-foreground mb-6 max-w-md mx-auto leading-relaxed">
+                    We couldn't find exactly what you're looking for, but every journey begins somewhere.
+                    Try browsing our suggestions or search for something different.
                   </p>
-                  <Button variant="outline" onClick={() => setQuery("")}>
-                    Clear search
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Button variant="outline" onClick={() => setQuery("")} className="flex items-center gap-2">
+                      <ArrowRight className="h-4 w-4 rotate-180" />
+                      Browse suggestions
+                    </Button>
+                    <Button onClick={() => setQuery("wedding")} className="flex items-center gap-2">
+                      <Heart className="h-4 w-4" />
+                      Try "wedding"
+                    </Button>
+                  </div>
                 </div>
               )}
             </div>

@@ -12,6 +12,7 @@ import {
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { ThemeSelector } from "@/components/theme-selector"
+import { ChangelogWidget } from "@/components/changelog/changelog-widget"
 import {
 	Heart,
 	Home,
@@ -104,6 +105,8 @@ export function Header() {
 								<span>K</span>
 							</div>
 						</Button>
+
+						<ChangelogWidget variant="bell" />
 
 						<ThemeSelector />
 						<Button

@@ -3,10 +3,11 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon } from "lucide-react"
+import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon, ExternalLink } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import { ThemeSelector } from "@/components/theme-selector"
+import { RelatedTemplates } from "@/components/template/related-templates"
 import {
   Sidebar,
   SidebarContent,
@@ -337,7 +338,7 @@ export function TemplataContentSidebar({
   onOpenResource,
   ...props
 }: TemplataContentSidebarProps & React.ComponentProps<typeof Sidebar>) {
-  const [activeTab, setActiveTab] = React.useState<'prompts' | 'resources'>('prompts')
+  const [activeTab, setActiveTab] = React.useState<'prompts' | 'resources' | 'related'>('prompts')
   const [searchQuery, setSearchQuery] = React.useState('')
   const { setOpen } = useSidebar()
 
@@ -443,6 +444,24 @@ export function TemplataContentSidebar({
                     <span className="text-xs">Resources</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    tooltip={{
+                      children: "Related Templates",
+                      hidden: false,
+                    }}
+                    onClick={() => {
+                      setActiveTab('related')
+                      setOpen(true)
+                    }}
+                    isActive={activeTab === 'related'}
+                    className="px-2.5 md:px-2"
+                  >
+                    <Network className="w-4 h-4" />
+                    <span className="text-xs">Related</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -458,14 +477,17 @@ export function TemplataContentSidebar({
         <SidebarHeader className="gap-3.5 border-b p-4 flex-shrink-0">
           <div className="flex w-full items-center justify-between">
             <div className="text-foreground text-base font-medium">
-              {activeTab === 'prompts' ? currentSection?.title : 'Resources'}
+              {activeTab === 'prompts' ? currentSection?.title :
+               activeTab === 'resources' ? 'Resources' : 'Related Templates'}
             </div>
           </div>
-          <SidebarInput 
-            placeholder="Search prompts and resources..." 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+          {activeTab !== 'related' && (
+            <SidebarInput
+              placeholder={activeTab === 'prompts' ? 'Search prompts...' : 'Search resources...'}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          )}
         </SidebarHeader>
         
         <SidebarContent className="flex-1 overflow-hidden">
@@ -509,12 +531,18 @@ export function TemplataContentSidebar({
                   </div>
                   <span className="font-medium line-clamp-2">{resource.title}</span>
                   <div className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
-                    {resource.excerpt.split('**').map((part, index) => 
+                    {resource.excerpt.split('**').map((part, index) =>
                       index % 2 === 1 ? <strong key={index}>{part}</strong> : part
                     )}
                   </div>
                 </button>
               ))}
+
+              {activeTab === 'related' && (
+                <div className="p-4">
+                  <RelatedTemplates templateId={template.id} />
+                </div>
+              )}
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>

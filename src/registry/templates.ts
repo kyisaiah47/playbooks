@@ -1,6 +1,7 @@
 import { GuidanceTemplate } from '@/types/template';
 import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, fitnessJourneyTemplate, personalDevelopmentCoachingTemplate, retirementLifestylePlanningTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate, personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate, careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate, collegePlanningTemplate } from '@/data/templates';
 import { blogRegistry } from '@/registry/blogs';
+import { getTemplateExperts } from '@/lib/expert-badges';
 
 // Function to sync template resources with blog registry
 export function createTemplateWithSyncedResources(baseTemplate: GuidanceTemplate): GuidanceTemplate {
@@ -49,6 +50,8 @@ export interface TemplateRegistryEntry {
   iconColor?: string;
   // Reference to full template data
   template?: GuidanceTemplate;
+  // Expert verification
+  expertVerified?: boolean;
 }
 
 // Template registry with all available templates
@@ -63,6 +66,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/wedding-planning/app",
     popular: true,
     featured: true,
+    expertVerified: true,
     color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
     iconColor: "text-pink-600 dark:text-pink-400",
     template: createTemplateWithSyncedResources(weddingTemplate)
@@ -75,6 +79,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     icon: "🏠",
     url: "/home-buying/app",
     popular: true,
+    expertVerified: true,
     color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
     iconColor: "text-blue-600 dark:text-blue-400",
     template: createTemplateWithSyncedResources(homeBuyingTemplate)
@@ -86,6 +91,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     category: "Personal Life",
     icon: "👶",
     url: "/baby-planning/app",
+    expertVerified: true,
     color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
     iconColor: "text-green-600 dark:text-green-400",
     template: createTemplateWithSyncedResources(babyPlanningTemplate)
