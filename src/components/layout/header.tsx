@@ -17,6 +17,8 @@ import {
 	Home,
 	Briefcase,
 	Target,
+	Search,
+	Command
 } from "lucide-react"
 
 export function Header() {
@@ -45,32 +47,10 @@ export function Header() {
 							<NavigationMenuItem>
 								<NavigationMenuLink asChild>
 									<Link
-										href="/templates"
-										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
-									>
-										Templates
-									</Link>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
-
-							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link
 										href="/preview"
 										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
 									>
 										Preview
-									</Link>
-								</NavigationMenuLink>
-							</NavigationMenuItem>
-
-							<NavigationMenuItem>
-								<NavigationMenuLink asChild>
-									<Link
-										href="/blog"
-										className="text-base font-medium px-4 py-2 rounded-md hover:bg-muted/50 transition-colors"
-									>
-										Blog
 									</Link>
 								</NavigationMenuLink>
 							</NavigationMenuItem>
@@ -100,6 +80,20 @@ export function Header() {
 					</NavigationMenu>
 
 					<div className="flex items-center space-x-3">
+						{/* Search Hint */}
+						<Button
+							variant="outline"
+							size="sm"
+							className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground border-muted-foreground/20 hover:border-primary/50 transition-all"
+						>
+							<Search className="h-3 w-3" />
+							<span className="hidden md:inline">Search</span>
+							<div className="flex items-center gap-0.5 text-xs bg-muted/60 px-1.5 py-0.5 rounded">
+								<Command className="h-2 w-2" />
+								<span>K</span>
+							</div>
+						</Button>
+
 						<ThemeSelector />
 						<Button
 							className="text-base font-medium"

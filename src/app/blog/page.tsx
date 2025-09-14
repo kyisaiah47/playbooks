@@ -1,35 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button"
 import { blogRegistry, getAllBlogCategories } from "@/registry/blogs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Calendar, Clock, User, BookOpen, Heart, Home, Briefcase, DollarSign, Calendar as CalendarIcon, TrendingUp } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Search, BookOpen, Sparkles, Command, ArrowRight, Zap } from "lucide-react";
 import { PageLayout } from "@/components/layout";
+import { FullscreenCommandPalette } from "@/components/fullscreen-command-palette";
 
-const categories = ["All", ...getAllBlogCategories()];
-
-const getCategoryIcon = (category: string) => {
-  switch (category) {
-    case "Wedding Planning": return <Heart className="h-5 w-5" />;
-    case "Real Estate": return <Home className="h-5 w-5" />;
-    case "Career": return <Briefcase className="h-5 w-5" />;
-    case "Business": return <TrendingUp className="h-5 w-5" />;
-    case "Event Planning": return <CalendarIcon className="h-5 w-5" />;
-    case "Personal Finance": return <DollarSign className="h-5 w-5" />;
-    default: return <BookOpen className="h-5 w-5" />;
-  }
-};
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const filteredPosts = blogRegistry.filter(post =>
-    selectedCategory === "All" || post.category === selectedCategory
-  );
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   return (
     <PageLayout>
@@ -45,215 +26,99 @@ export default function BlogPage() {
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Templata Blog
+              Search-First Resources
             </h1>
 
             <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-              Expert guidance, practical tips, and insights to help you navigate life&apos;s biggest moments with confidence.
+              Find exactly the guidance you need. Skip the scrolling, start with search.
             </p>
+
+            {/* Main Search CTA */}
+            <div className="flex flex-col items-center gap-6 mt-12">
+              <Button
+                size="lg"
+                onClick={() => setIsCommandOpen(true)}
+                className="h-16 px-8 text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                <Search className="mr-3 h-5 w-5" />
+                Search Articles & Resources
+                <div className="ml-3 flex items-center gap-1 text-sm opacity-75">
+                  <Command className="h-3 w-3" />
+                  <span>K</span>
+                </div>
+              </Button>
+
+              <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <Sparkles className="h-4 w-4" />
+                Or press <kbd className="px-2 py-1 bg-muted rounded text-xs font-medium">Cmd+K</kbd> anytime
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-        <div className="container mx-auto max-w-7xl px-4">
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-2 justify-center mb-12">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedCategory(category)}
-                className="transition-all hover:scale-105"
-              >
-                {category}
-              </Button>
-            ))}
+      {/* Quick Preview Section */}
+      <div className="container mx-auto max-w-7xl px-4 pb-16">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl font-semibold mb-4">What you'll discover</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Our smart search covers {blogRegistry.length} expert articles across {getAllBlogCategories().length} specialized topics.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+              <Search className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Expert Insights</h3>
+            <p className="text-sm text-muted-foreground">
+              In-depth articles from specialists in each life domain
+            </p>
           </div>
 
-
-          {/* Magazine Layout */}
-          {selectedCategory === "All" ? (
-            <div className="space-y-12">
-              {/* Featured Article Hero */}
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Featured Article</h2>
-                {filteredPosts.slice(0, 1).map((post) => (
-                  <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-primary/5 to-background border-primary/20">
-                    <CardContent className="p-8">
-                      <div className="flex flex-col lg:flex-row gap-8 items-start">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-4">
-                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
-                              {getCategoryIcon(post.category)}
-                            </span>
-                            <Badge variant="secondary" className="text-sm font-medium">
-                              Featured • {post.category}
-                            </Badge>
-                          </div>
-                          <h3 className="text-3xl font-bold mb-4 group-hover:text-primary transition-colors">
-                            <Link href={`/blog/${post.slug}`}>
-                              {post.title}
-                            </Link>
-                          </h3>
-                          <p className="text-lg text-muted-foreground mb-6 line-clamp-3">
-                            {post.excerpt}
-                          </p>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                              <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
-                                  {post.author.split(' ').map(n => n[0]).join('').toUpperCase()}
-                                </div>
-                                <span className="font-medium">{post.author}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Calendar className="w-4 h-4" />
-                                <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Clock className="w-4 h-4" />
-                                <span>{post.readTime}</span>
-                              </div>
-                            </div>
-                            <Button className="group-hover:bg-primary/90 transition-all" asChild>
-                              <Link href={`/blog/${post.slug}`}>
-                                <span>Read Article</span>
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                              </Link>
-                            </Button>
-                          </div>
-                        </div>
-                        <div className="lg:w-80 h-48 lg:h-64 rounded-xl bg-gradient-to-br from-primary/10 via-primary/5 to-background flex items-center justify-center">
-                          <div className="text-center">
-                            <div className="w-16 h-16 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-3">
-                              {getCategoryIcon(post.category)}
-                            </div>
-                            <p className="text-sm text-muted-foreground font-medium">{post.category}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Latest Articles */}
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold">Latest Articles</h2>
-                  <p className="text-sm text-muted-foreground">
-                    {filteredPosts.length - 1} more articles
-                  </p>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredPosts.slice(1).map((post) => (
-                <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
-                  <CardContent className="p-0">
-                    <div className="p-6 pb-4">
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                          {getCategoryIcon(post.category)}
-                        </span>
-                        <Badge variant="secondary" className="text-xs">
-                          {post.category}
-                        </Badge>
-                      </div>
-                      <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                        <Link href={`/blog/${post.slug}`}>
-                          {post.title}
-                        </Link>
-                      </h3>
-                      <p className="text-muted-foreground mb-4 line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                    <div className="px-6 pb-6">
-                      <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
-                            {post.author.split(' ').map(n => n[0]).join('').toUpperCase()}
-                          </div>
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{post.readTime}</span>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground transition-all" asChild>
-                        <Link href={`/blog/${post.slug}`}>
-                          <span>Read Article</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-                  ))}
-                </div>
-              </div>
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+              <Zap className="h-6 w-6 text-primary" />
             </div>
-          ) : (
-            /* Filtered View */
-            <div>
-              <h2 className="text-xl font-semibold mb-6">
-                {selectedCategory === "All" ? "All Articles" : `${selectedCategory} Articles`}
-                <span className="text-sm font-normal text-muted-foreground ml-2">
-                  ({filteredPosts.length} posts)
-                </span>
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredPosts.map((post) => (
-                  <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
-                    <CardContent className="p-0">
-                      <div className="p-6 pb-4">
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                            {getCategoryIcon(post.category)}
-                          </span>
-                          <Badge variant="secondary" className="text-xs">
-                            {post.category}
-                          </Badge>
-                        </div>
-                        <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                          <Link href={`/blog/${post.slug}`}>
-                            {post.title}
-                          </Link>
-                        </h3>
-                        <p className="text-muted-foreground mb-4 line-clamp-3">
-                          {post.excerpt}
-                        </p>
-                      </div>
-                      <div className="px-6 pb-6">
-                        <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                          <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
-                              {post.author.split(' ').map(n => n[0]).join('').toUpperCase()}
-                            </div>
-                            <span>{post.author}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
-                            <span>{post.readTime}</span>
-                          </div>
-                        </div>
-                        <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground transition-all" asChild>
-                          <Link href={`/blog/${post.slug}`}>
-                            <span>Read Article</span>
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          )}
+            <h3 className="font-semibold">Practical Tips</h3>
+            <p className="text-sm text-muted-foreground">
+              Actionable advice you can apply to real situations
+            </p>
+          </div>
 
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+              <BookOpen className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Resource Library</h3>
+            <p className="text-sm text-muted-foreground">
+              Curated resources and tools for every major life decision
+            </p>
+          </div>
         </div>
-        <div className="py-12" />
+
+        {/* Alternative Action */}
+        <div className="text-center">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => setIsCommandOpen(true)}
+            className="group"
+          >
+            Start exploring
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Command Palette */}
+      <FullscreenCommandPalette
+        isOpen={isCommandOpen}
+        onClose={() => setIsCommandOpen(false)}
+        mode="articles"
+        autoFocus={true}
+      />
     </PageLayout>
   );
 }
