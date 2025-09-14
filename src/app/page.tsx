@@ -34,25 +34,9 @@ import {
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import BackgroundPaperShaders from "@/components/ui/background-paper-shaders";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { Typewriter } from "@/components/ui/typewriter";
 
-function RotatingWord() {
-	const words = ['moments', 'weddings', 'moves', 'careers', 'launches', 'events', 'projects', 'decisions', 'changes', 'milestones', 'transitions', 'goals', 'adventures', 'journeys', 'challenges', 'achievements', 'dreams', 'plans', 'ventures', 'celebrations', 'opportunities', 'transformations', 'breakthroughs', 'endeavors', 'ambitions', 'aspirations', 'commitments', 'undertakings', 'pursuits', 'accomplishments', 'innovations', 'creations', 'investments', 'purchases', 'relocations', 'graduations', 'startups', 'relationships', 'partnerships', 'collaborations', 'renovations', 'expeditions', 'missions', 'quests', 'initiatives', 'campaigns', 'proposals', 'presentations', 'negotiations', 'acquisitions', 'mergers', 'expansions', 'discoveries', 'inventions', 'experiments', 'explorations', 'productions', 'constructions', 'developments', 'implementations', 'executions', 'deliveries', 'launches'];
-	const [currentWordIndex, setCurrentWordIndex] = useState(0);
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setCurrentWordIndex((prev) => (prev + 1) % words.length);
-		}, 1500);
-
-		return () => clearInterval(interval);
-	}, []);
-
-	return (
-		<span className="inline-block">
-			{words[currentWordIndex]}
-		</span>
-	);
-}
 
 export default function LandingPage() {
 	return (
@@ -77,7 +61,36 @@ export default function LandingPage() {
 							Organize life&apos;s
 							<br />
 							<span className="text-white">
-								biggest <RotatingWord />
+								biggest{" "}
+								<Typewriter
+									text={[
+										"moments",
+										"weddings",
+										"moves",
+										"careers",
+										"launches",
+										"events",
+										"projects",
+										"decisions",
+										"changes",
+										"milestones",
+										"transitions",
+										"goals",
+										"adventures",
+										"journeys",
+										"challenges",
+										"achievements",
+										"dreams",
+										"plans",
+										"ventures",
+										"celebrations"
+									]}
+									speed={70}
+									className="text-white"
+									waitTime={1500}
+									deleteSpeed={40}
+									cursorChar={"_"}
+								/>
 							</span>
 						</h1>
 
@@ -115,7 +128,7 @@ export default function LandingPage() {
 			{/* Key Value Props */}
 			<section className="py-24 border-t bg-muted/10">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="grid md:grid-cols-2 gap-16 items-center">
+					<div className="grid md:grid-cols-2 gap-16 items-start">
 						<div className="space-y-8">
 							<div className="space-y-4">
 								<Badge
@@ -165,58 +178,135 @@ export default function LandingPage() {
 						</div>
 
 						<div className="space-y-6">
-							<div className="grid grid-cols-2 gap-4">
-								<Card className="p-6 text-center">
-									<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-										<Heart className="h-6 w-6 text-primary" />
+							<ul className="grid grid-cols-2 gap-4">
+								<li className="min-h-[14rem] list-none">
+									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+										<GlowingEffect
+											spread={40}
+											glow={true}
+											disabled={false}
+											proximity={64}
+											inactiveZone={0.01}
+											borderWidth={3}
+										/>
+										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+											<div className="relative flex flex-1 flex-col justify-between gap-3">
+												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+													<Heart className="h-4 w-4" />
+												</div>
+												<div className="space-y-3">
+													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+														Personal Life
+													</h3>
+													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+														25+ templates for weddings, relationships, personal growth, and life transitions.
+													</h2>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div className="font-semibold">Personal Life</div>
-									<div className="text-sm text-muted-foreground">
-										25+ templates
-									</div>
-								</Card>
+								</li>
 
-								<Card className="p-6 text-center">
-									<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-										<Briefcase className="h-6 w-6 text-primary" />
+								<li className="min-h-[14rem] list-none">
+									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+										<GlowingEffect
+											spread={40}
+											glow={true}
+											disabled={false}
+											proximity={64}
+											inactiveZone={0.01}
+											borderWidth={3}
+										/>
+										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+											<div className="relative flex flex-1 flex-col justify-between gap-3">
+												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+													<Briefcase className="h-4 w-4" />
+												</div>
+												<div className="space-y-3">
+													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+														Career & Work
+													</h3>
+													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+														30+ templates for job searches, career changes, interviews, and professional development.
+													</h2>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div className="font-semibold">Career & Work</div>
-									<div className="text-sm text-muted-foreground">
-										30+ templates
-									</div>
-								</Card>
+								</li>
 
-								<Card className="p-6 text-center">
-									<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-										<Home className="h-6 w-6 text-primary" />
+								<li className="min-h-[14rem] list-none">
+									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+										<GlowingEffect
+											spread={40}
+											glow={true}
+											disabled={false}
+											proximity={64}
+											inactiveZone={0.01}
+											borderWidth={3}
+										/>
+										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+											<div className="relative flex flex-1 flex-col justify-between gap-3">
+												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+													<Home className="h-4 w-4" />
+												</div>
+												<div className="space-y-3">
+													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+														Property & Moving
+													</h3>
+													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+														20+ templates for home buying, selling, moving, and real estate decisions.
+													</h2>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div className="font-semibold">Property & Moving</div>
-									<div className="text-sm text-muted-foreground">
-										20+ templates
-									</div>
-								</Card>
+								</li>
 
-								<Card className="p-6 text-center">
-									<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-										<Target className="h-6 w-6 text-primary" />
+								<li className="min-h-[14rem] list-none">
+									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
+										<GlowingEffect
+											spread={40}
+											glow={true}
+											disabled={false}
+											proximity={64}
+											inactiveZone={0.01}
+											borderWidth={3}
+										/>
+										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
+											<div className="relative flex flex-1 flex-col justify-between gap-3">
+												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
+													<Target className="h-4 w-4" />
+												</div>
+												<div className="space-y-3">
+													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
+														Business & Finance
+													</h3>
+													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
+														25+ templates for startups, business planning, budgeting, and financial decisions.
+													</h2>
+												</div>
+											</div>
+										</div>
 									</div>
-									<div className="font-semibold">Business & Finance</div>
-									<div className="text-sm text-muted-foreground">
-										25+ templates
-									</div>
-								</Card>
-							</div>
+								</li>
+							</ul>
 
 							<div className="text-center">
 								<Button
 									variant="outline"
 									size="lg"
-									asChild
+									onClick={() => {
+										const event = new KeyboardEvent('keydown', {
+											key: 'k',
+											metaKey: true,
+											bubbles: true
+										});
+										document.dispatchEvent(event);
+									}}
 								>
-									<Link href="/templates">
-										Browse All Templates
-										<ArrowRight className="ml-2 h-4 w-4" />
-									</Link>
+									Browse All Templates
+									<ArrowRight className="ml-2 h-4 w-4" />
 								</Button>
 							</div>
 						</div>
@@ -344,9 +434,16 @@ export default function LandingPage() {
 								<Button
 									className="w-full mt-8"
 									variant="outline"
-									asChild
+									onClick={() => {
+										const event = new KeyboardEvent('keydown', {
+											key: 'k',
+											metaKey: true,
+											bubbles: true
+										});
+										document.dispatchEvent(event);
+									}}
 								>
-									<Link href="/templates">Get Started Free</Link>
+									Get Started Free
 								</Button>
 							</CardContent>
 						</Card>
@@ -487,12 +584,17 @@ export default function LandingPage() {
 							<Button
 								size="lg"
 								className="h-12 px-8 text-base"
-								asChild
+								onClick={() => {
+									const event = new KeyboardEvent('keydown', {
+										key: 'k',
+										metaKey: true,
+										bubbles: true
+									});
+									document.dispatchEvent(event);
+								}}
 							>
-								<Link href="/templates">
-									Browse Templates
-									<ArrowRight className="ml-2 h-5 w-5" />
-								</Link>
+								Browse Templates
+								<ArrowRight className="ml-2 h-5 w-5" />
 							</Button>
 							<Button
 								variant="outline"
