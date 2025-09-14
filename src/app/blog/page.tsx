@@ -72,16 +72,82 @@ export default function BlogPage() {
           </div>
 
 
-          {/* All Posts - New Grid Layout */}
-          <div>
-            <h2 className="text-xl font-semibold mb-6">
-              {selectedCategory === "All" ? "All Articles" : `${selectedCategory} Articles`}
-              <span className="text-sm font-normal text-muted-foreground ml-2">
-                ({filteredPosts.length} posts)
-              </span>
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPosts.map((post) => (
+          {/* Magazine Layout */}
+          {selectedCategory === "All" ? (
+            <div className="space-y-12">
+              {/* Featured Article Hero */}
+              <div>
+                <h2 className="text-2xl font-bold mb-6">Featured Article</h2>
+                {filteredPosts.slice(0, 1).map((post) => (
+                  <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-primary/5 to-background border-primary/20">
+                    <CardContent className="p-8">
+                      <div className="flex flex-col lg:flex-row gap-8 items-start">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-4">
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
+                              {getCategoryIcon(post.category)}
+                            </span>
+                            <Badge variant="secondary" className="text-sm font-medium">
+                              Featured • {post.category}
+                            </Badge>
+                          </div>
+                          <h3 className="text-3xl font-bold mb-4 group-hover:text-primary transition-colors">
+                            <Link href={`/blog/${post.slug}`}>
+                              {post.title}
+                            </Link>
+                          </h3>
+                          <p className="text-lg text-muted-foreground mb-6 line-clamp-3">
+                            {post.excerpt}
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                              <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
+                                  {post.author.split(' ').map(n => n[0]).join('').toUpperCase()}
+                                </div>
+                                <span className="font-medium">{post.author}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Calendar className="w-4 h-4" />
+                                <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                <span>{post.readTime}</span>
+                              </div>
+                            </div>
+                            <Button className="group-hover:bg-primary/90 transition-all" asChild>
+                              <Link href={`/blog/${post.slug}`}>
+                                <span>Read Article</span>
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Link>
+                            </Button>
+                          </div>
+                        </div>
+                        <div className="lg:w-80 h-48 lg:h-64 rounded-xl bg-gradient-to-br from-primary/10 via-primary/5 to-background flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="w-16 h-16 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-3">
+                              {getCategoryIcon(post.category)}
+                            </div>
+                            <p className="text-sm text-muted-foreground font-medium">{post.category}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Latest Articles */}
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-semibold">Latest Articles</h2>
+                  <p className="text-sm text-muted-foreground">
+                    {filteredPosts.length - 1} more articles
+                  </p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredPosts.slice(1).map((post) => (
                 <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
                   <CardContent className="p-0">
                     <div className="p-6 pb-4">
@@ -124,9 +190,67 @@ export default function BlogPage() {
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            /* Filtered View */
+            <div>
+              <h2 className="text-xl font-semibold mb-6">
+                {selectedCategory === "All" ? "All Articles" : `${selectedCategory} Articles`}
+                <span className="text-sm font-normal text-muted-foreground ml-2">
+                  ({filteredPosts.length} posts)
+                </span>
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredPosts.map((post) => (
+                  <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
+                    <CardContent className="p-0">
+                      <div className="p-6 pb-4">
+                        <div className="flex items-center gap-3 mb-4">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                            {getCategoryIcon(post.category)}
+                          </span>
+                          <Badge variant="secondary" className="text-xs">
+                            {post.category}
+                          </Badge>
+                        </div>
+                        <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                          <Link href={`/blog/${post.slug}`}>
+                            {post.title}
+                          </Link>
+                        </h3>
+                        <p className="text-muted-foreground mb-4 line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                      <div className="px-6 pb-6">
+                        <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-medium">
+                              {post.author.split(' ').map(n => n[0]).join('').toUpperCase()}
+                            </div>
+                            <span>{post.author}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-4 h-4" />
+                            <span>{post.readTime}</span>
+                          </div>
+                        </div>
+                        <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground transition-all" asChild>
+                          <Link href={`/blog/${post.slug}`}>
+                            <span>Read Article</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
 
         </div>
         <div className="py-12" />

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
+import { FeedbackModal } from "@/components/feedback-modal"
 
 export function Footer() {
 	return (
@@ -125,10 +126,16 @@ export function Footer() {
 
 				<Separator className="my-8" />
 
-				<div className="flex items-center justify-between">
-					<p className="text-sm text-muted-foreground">
-						© 2024 Templata. Organize your life with templates.
-					</p>
+				<div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+					<div className="flex flex-col lg:flex-row items-center gap-4">
+						<p className="text-sm text-muted-foreground">
+							© 2024 Templata. Organize your life with templates.
+						</p>
+						<div className="flex items-center gap-1 text-sm text-muted-foreground bg-muted/30 px-3 py-1 rounded-full">
+							<span className="w-2 h-2 bg-green-500 rounded-full"></span>
+							<span>Your data is private. No ads, no resale.</span>
+						</div>
+					</div>
 					<div className="flex items-center space-x-4 text-sm text-muted-foreground">
 						<Link
 							href="#"
@@ -142,6 +149,11 @@ export function Footer() {
 						>
 							Terms
 						</Link>
+						<FeedbackModal>
+							<button className="hover:text-foreground transition-colors flex items-center gap-1">
+								💬 Feedback
+							</button>
+						</FeedbackModal>
 					</div>
 				</div>
 			</div>

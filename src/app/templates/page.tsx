@@ -211,25 +211,171 @@ export default function TemplatesPage() {
 					</div>
 				</div>
 
-				{/* Results count */}
-				<div className="mb-6">
-					<p className="text-sm text-muted-foreground">
-						Showing {filteredTemplates.length} template
-						{filteredTemplates.length !== 1 ? "s" : ""}
-						{selectedCategory !== "all" &&
-							` in ${categories.find((c) => c.id === selectedCategory)?.name}`}
-					</p>
-				</div>
+				{/* Category-Cluster Layout */}
+				{selectedCategory === "all" ? (
+					<div className="space-y-12">
+						{/* Featured Templates Section */}
+						<div>
+							<div className="flex items-center justify-between mb-6">
+								<h2 className="text-2xl font-bold">Featured Templates</h2>
+								<p className="text-sm text-muted-foreground">Most popular choices</p>
+							</div>
+							<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+								{displayTemplates
+									.filter(template => template.popular)
+									.slice(0, 6)
+									.map((template) => {
+										const Icon = template.icon;
+										return (
+											<Card
+												key={template.id}
+												className="group hover:shadow-lg transition-all duration-200 bg-gradient-to-br from-primary/5 to-background border-primary/20"
+											>
+												<Link href={template.url}>
+													<CardHeader>
+														<div className="flex items-center justify-between mb-2">
+															<Icon className="h-6 w-6 text-primary" />
+															<Badge variant="secondary" className="text-xs">
+																Featured
+															</Badge>
+														</div>
+														<CardTitle className="group-hover:text-primary transition-colors">
+															{template.name}
+														</CardTitle>
+														<CardDescription className="line-clamp-3">
+															{template.description}
+														</CardDescription>
+													</CardHeader>
+													<CardContent>
+														<div className="flex flex-wrap gap-1">
+															{template.features.slice(0, 2).map((feature) => (
+																<Badge
+																	key={feature}
+																	variant="outline"
+																	className="text-xs"
+																>
+																	{feature}
+																</Badge>
+															))}
+															{template.features.length > 2 && (
+																<span className="text-xs text-muted-foreground">
+																	+{template.features.length - 2} more
+																</span>
+															)}
+														</div>
+													</CardContent>
+												</Link>
+											</Card>
+										);
+									})}
+							</div>
+						</div>
 
-				{/* Templates Grid/List */}
-				<div
-					className={
-						viewMode === "grid"
-							? "grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-							: "space-y-4"
-					}
-				>
-					{filteredTemplates.map((template) => {
+						{/* Category Sections */}
+						{categories.slice(1).map((category, index) => {
+							const categoryTemplates = displayTemplates.filter(
+								template => template.category === category.name
+							);
+
+							if (categoryTemplates.length === 0) return null;
+
+							return (
+								<div
+									key={category.id}
+									className={`relative rounded-2xl p-8 ${
+										index % 2 === 0 ? 'bg-muted/20' : 'bg-background'
+									}`}
+								>
+									<div className="flex items-center justify-between mb-6">
+										<h2 className="text-xl font-semibold">{category.name}</h2>
+										<div className="flex items-center gap-2 text-sm text-muted-foreground">
+											<span>{categoryTemplates.length} templates</span>
+											<Button
+												variant="ghost"
+												size="sm"
+												onClick={() => setSelectedCategory(category.id)}
+												className="text-xs"
+											>
+												View all →
+											</Button>
+										</div>
+									</div>
+
+									{/* Horizontal scroll for categories */}
+									<div
+										className="flex gap-4 overflow-x-auto pb-2"
+										style={{
+											scrollbarWidth: 'none',
+											msOverflowStyle: 'none'
+										}}
+									>
+										{categoryTemplates.slice(0, 6).map((template) => {
+											const Icon = template.icon;
+											return (
+												<Card
+													key={template.id}
+													className="group hover:shadow-md transition-all duration-200 min-w-[280px] flex-shrink-0"
+												>
+													<Link href={template.url}>
+														<CardHeader className="pb-3">
+															<div className="flex items-center justify-between mb-2">
+																<Icon className="h-5 w-5" />
+																{template.popular && (
+																	<Badge variant="secondary" className="text-xs">
+																		Popular
+																	</Badge>
+																)}
+															</div>
+															<CardTitle className="group-hover:text-primary transition-colors text-base">
+																{template.name}
+															</CardTitle>
+														</CardHeader>
+														<CardContent className="pt-0">
+															<p className="text-sm text-muted-foreground line-clamp-2 mb-3">
+																{template.description}
+															</p>
+															<div className="flex flex-wrap gap-1">
+																{template.features.slice(0, 2).map((feature) => (
+																	<Badge
+																		key={feature}
+																		variant="outline"
+																		className="text-xs"
+																	>
+																		{feature}
+																	</Badge>
+																))}
+															</div>
+														</CardContent>
+													</Link>
+												</Card>
+											);
+										})}
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				) : (
+					<>
+						{/* Results count for filtered view */}
+						<div className="mb-6">
+							<p className="text-sm text-muted-foreground">
+								Showing {filteredTemplates.length} template
+								{filteredTemplates.length !== 1 ? "s" : ""}
+								{selectedCategory !== "all" &&
+									` in ${categories.find((c) => c.id === selectedCategory)?.name}`}
+							</p>
+						</div>
+
+						{/* Templates Grid/List */}
+						<div
+							className={
+								viewMode === "grid"
+									? "grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+									: "space-y-4"
+							}
+						>
+							{filteredTemplates.map((template) => {
 						const Icon = template.icon;
 
 						if (viewMode === "list") {
@@ -339,8 +485,10 @@ export default function TemplatesPage() {
 								</Link>
 							</Card>
 						);
-					})}
-				</div>
+							})}
+						</div>
+					</>
+				)}
 
 				{/* Empty State */}
 				{filteredTemplates.length === 0 && (

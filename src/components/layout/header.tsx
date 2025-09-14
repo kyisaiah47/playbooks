@@ -32,7 +32,12 @@ export function Header() {
 							height={28}
 							className="dark:invert"
 						/>
-						<span className="font-bold text-2xl">Templata</span>
+						<div className="flex items-center gap-3">
+							<span className="font-bold text-2xl">Templata</span>
+							<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
+								Beta
+							</span>
+						</div>
 					</Link>
 
 					<NavigationMenu>
