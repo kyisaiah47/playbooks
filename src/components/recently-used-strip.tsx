@@ -1,104 +1,106 @@
 "use client"
 
+import React, { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import {
-  Clock,
-  Heart,
-  Home,
-  Briefcase,
-  Target,
-  Baby,
-  Rocket,
-  GraduationCap,
-  BookOpen,
-  Dumbbell,
-  X,
-  ArrowRight
-} from "lucide-react"
+import { Clock, X, ChevronUp, ChevronDown, ArrowRight } from "lucide-react"
 import { useRecentTemplates } from "@/hooks/use-recent-templates"
+import { cn } from "@/lib/utils"
 
-const getTemplateIcon = (templateId: string) => {
-  switch (templateId) {
-    case 'wedding-planning': return Heart
-    case 'home-buying': return Home
-    case 'baby-planning': return Baby
-    case 'job-search': return Briefcase
-    case 'business-launch': return Rocket
-    case 'college-planning': return GraduationCap
-    case 'academic-research': return BookOpen
-    case 'fitness-journey': return Dumbbell
-    default: return Target
+export function RecentlyUsedFooter() {
+  const { recentItems, clearRecentItems, hasRecentItems } = useRecentTemplates()
+  const [isMinimized, setIsMinimized] = useState(false)
+
+  // Just show the most recent template
+  const recentTemplate = recentItems[0]
+
+  // For demo purposes, show a mock recent template if none exists
+  const mockTemplate = {
+    id: "wedding-planning",
+    name: "Wedding Planning",
+    url: "/wedding-planning/app",
+    category: "Personal Life",
+    type: "template" as const,
+    lastAccessed: Date.now()
   }
-}
 
-export function RecentlyUsedStrip() {
-  const { recentItems, removeRecentItem, clearRecentItems, hasRecentItems } = useRecentTemplates()
+  const displayTemplate = recentTemplate || mockTemplate
+  const shouldShow = hasRecentItems || !hasRecentItems // Always show for now to test
 
-  if (!hasRecentItems) return null
+  if (!shouldShow) {
+    return null
+  }
+
+  if (isMinimized) {
+    return (
+      <div className="fixed bottom-4 right-4 z-40">
+        <button
+          onClick={() => setIsMinimized(false)}
+          className="bg-background/95 backdrop-blur-sm border rounded-lg px-3 py-2 text-xs text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all shadow-lg"
+        >
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4" />
+            <span>Continue where you left off</span>
+            <ChevronUp className="w-3 h-3" />
+          </div>
+        </button>
+      </div>
+    )
+  }
 
   return (
-    <div className="border-b bg-muted/20 py-4">
-      <div className="container mx-auto max-w-7xl px-4">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-muted-foreground" />
-            <h3 className="text-sm font-medium text-muted-foreground">Continue where you left off</h3>
-          </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={clearRecentItems}
-            className="text-xs text-muted-foreground hover:text-foreground"
-          >
-            Clear all
-          </Button>
-        </div>
+    <div className="fixed bottom-0 left-0 right-0 z-40">
+      <div className="relative bg-background/95 backdrop-blur-sm border-t">
+        <div className="container mx-auto max-w-7xl px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3 min-w-0 flex-1">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground flex-shrink-0">
+              <Clock className="w-4 h-4" />
+              <span className="font-medium hidden sm:inline">Continue where you left off</span>
+              <span className="font-medium sm:hidden">Recent</span>
+            </div>
 
-        <div className="flex gap-3 overflow-x-auto pb-2 stagger-children" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          {recentItems.map((item, index) => {
-            const Icon = getTemplateIcon(item.id)
-            return (
-              <div key={item.id} className="group relative flex-shrink-0 animate-fade-in-up">
-                <Link href={item.url}>
-                  <div className="flex items-center gap-3 bg-background rounded-lg border px-4 py-3 hover:shadow-md transition-all duration-200 hover:scale-[1.02] min-w-[280px]">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-primary" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-medium text-sm line-clamp-1 group-hover:text-primary transition-colors">
-                        {item.name}
-                      </h4>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Badge variant="outline" className="text-xs">
-                          {item.category}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">
-                          {item.type === "template" ? "Template" : "Article"}
-                        </span>
-                      </div>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </div>
-                </Link>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    removeRecentItem(item.id)
-                  }}
-                  className="absolute -top-1 -right-1 w-5 h-5 p-0 bg-muted hover:bg-destructive hover:text-destructive-foreground rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  <X className="w-3 h-3" />
-                </Button>
+            <Link
+              href={displayTemplate.url}
+              className="flex items-center gap-3 min-w-0 flex-1 group hover:bg-muted/50 rounded-lg p-2 transition-colors"
+            >
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-lg flex-shrink-0">
+                {displayTemplate.type === "template" ? "📋" : "📰"}
               </div>
-            )
-          })}
+              <div className="min-w-0 flex-1">
+                <h3 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-1">
+                  {displayTemplate.name}
+                </h3>
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="text-xs">
+                    {displayTemplate.category}
+                  </Badge>
+                  <span className="text-xs text-muted-foreground hidden sm:inline">
+                    {displayTemplate.type === "template" ? "Template" : "Article"}
+                  </span>
+                </div>
+              </div>
+              <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+            </Link>
+            </div>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsMinimized(true)}
+              className="text-muted-foreground hover:text-foreground flex-shrink-0 ml-2"
+            >
+              <X className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
       </div>
     </div>
   )
+}
+
+// Keep the old component name for backward compatibility but make it empty
+export function RecentlyUsedStrip() {
+  return null
 }
