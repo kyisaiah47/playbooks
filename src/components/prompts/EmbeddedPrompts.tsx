@@ -102,13 +102,22 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], onResponsesCh
 
       {/* Main Content */}
       {allPrompts.length === 0 ? (
-        /* Compact Empty State */
-        <div className="text-center py-8 border-2 border-dashed">
-          <Plus className="h-6 w-6 text-muted-foreground mx-auto mb-2" />
-          <p className="text-sm font-medium mb-1">Select prompts to begin</p>
-          <p className="text-xs text-muted-foreground">
-            Choose prompts from the sidebar to get started
+        /* Aspirational Empty State */
+        <div className="text-center py-12 border-2 border-dashed border-primary/20 bg-gradient-to-br from-primary/5 to-transparent rounded-lg">
+          <div className="flex items-center justify-center mb-4">
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+              <Target className="h-6 w-6 text-primary" />
+            </div>
+          </div>
+          <h3 className="text-lg font-semibold mb-2">Build your personalized guide</h3>
+          <p className="text-sm text-muted-foreground mb-4 max-w-sm mx-auto">
+            Add prompts from the sidebar to create your customized planning experience.
+            Your journey starts here. →
           </p>
+          <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+            <Plus className="h-4 w-4" />
+            <span>Select prompts to begin your planning</span>
+          </div>
         </div>
       ) : (
         /* Compact Prompts */

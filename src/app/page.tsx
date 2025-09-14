@@ -34,18 +34,31 @@ import { PageLayout } from "@/components/layout";
 function RotatingWord() {
 	const words = ['moments', 'weddings', 'moves', 'careers', 'launches', 'events', 'projects', 'decisions', 'changes', 'milestones', 'transitions', 'goals'];
 	const [currentWordIndex, setCurrentWordIndex] = useState(0);
+	const [isAnimating, setIsAnimating] = useState(false);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setCurrentWordIndex((prev) => (prev + 1) % words.length);
-		}, 2000);
+			setIsAnimating(true);
+			setTimeout(() => {
+				setCurrentWordIndex((prev) => (prev + 1) % words.length);
+				setIsAnimating(false);
+			}, 300); // Half of animation duration
+		}, 2500); // Slightly longer interval for better readability
 
 		return () => clearInterval(interval);
 	}, []);
 
 	return (
-		<span className="inline-block">
-			{words[currentWordIndex]}
+		<span className="relative inline-block min-w-[180px] h-[1.2em]">
+			<span
+				className={`absolute inset-0 transition-all duration-600 ease-in-out ${
+					isAnimating
+						? 'opacity-0 transform translate-y-4'
+						: 'opacity-100 transform translate-y-0'
+				}`}
+			>
+				{words[currentWordIndex]}
+			</span>
 		</span>
 	);
 }
@@ -75,9 +88,8 @@ export default function LandingPage() {
 						</h1>
 
 						<p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-							From planning projects to organizing life goals
-							shouldn&apos;t start with a blank page. Get expertly crafted
-							templates that guide you through every step.
+							Life shouldn&apos;t start with a blank page. Get expertly crafted
+							templates that guide you through every step of your biggest moments.
 						</p>
 
 						<div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -99,7 +111,7 @@ export default function LandingPage() {
 							>
 								<Link href="/templates/wedding-planning">
 									<Play className="mr-2 h-4 w-4" />
-									Try Demo
+									See Templates in Action
 								</Link>
 							</Button>
 						</div>
@@ -347,9 +359,12 @@ export default function LandingPage() {
 						</Card>
 
 						{/* Plus Tier */}
-						<Card className="relative bg-background border-2 border-primary shadow-lg">
+						<Card className="relative bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary shadow-xl ring-2 ring-primary/20 transform scale-105">
 							<div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-								<Badge className="px-3 py-1">Most Popular</Badge>
+								<Badge className="px-4 py-1.5 bg-gradient-to-r from-primary to-primary/80 shadow-lg">
+									<Star className="mr-1 h-3 w-3" />
+									Most Popular
+								</Badge>
 							</div>
 							<CardHeader className="text-center pb-8 pt-8">
 								<CardTitle className="text-2xl font-bold">Plus</CardTitle>
