@@ -54,7 +54,7 @@ export default function LandingPage() {
 							className="px-4 py-2 border-white/30 text-white bg-white/10 backdrop-blur-sm"
 						>
 							<Sparkles className="mr-2 h-4 w-4" />
-							Skip the blank page
+							Welcome to your organized life
 						</Badge>
 
 						<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">

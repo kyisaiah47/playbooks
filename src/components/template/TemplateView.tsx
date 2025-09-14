@@ -8,7 +8,7 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
 import { Progress } from '@/components/ui/progress';
-import { CommandPalette } from '@/components/command-palette';
+import { CommandPalette } from '@/components/template-command-palette';
 import { PDFExportButton } from '@/components/pdf/export-button';
 import { ExpertBadgeList } from '@/components/expert/expert-badge';
 import { getTemplateExperts } from '@/lib/expert-badges';

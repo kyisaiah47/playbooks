@@ -14,20 +14,30 @@ import {
 } from "@/components/ui/navigation-menu"
 import { ThemeSelector } from "@/components/theme-selector"
 import { ChangelogWidget } from "@/components/changelog/changelog-widget"
+import { useAuth } from "@/contexts/auth-context"
 import {
 	Heart,
 	Home,
 	Briefcase,
 	Target,
 	Search,
-	Command
+	Command,
+	LogOut,
+	User
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export function Header() {
 	const [scrollY, setScrollY] = React.useState(0)
 	const pathname = usePathname()
+	const { isLoggedIn, user, logout } = useAuth()
 
 	React.useEffect(() => {
 		const handleScroll = () => {
@@ -171,12 +181,30 @@ export function Header() {
 							</Button>
 
 							<ChangelogWidget variant="bell" />
-							<Button
-								className="text-base font-medium"
-								asChild
-							>
-								<Link href="/login">Get Started</Link>
-							</Button>
+
+							{isLoggedIn ? (
+								<DropdownMenu>
+									<DropdownMenuTrigger asChild>
+										<Button variant="outline" size="sm" className="flex items-center gap-2">
+											<User className="h-4 w-4" />
+											<span className="hidden sm:inline">{user?.email}</span>
+										</Button>
+									</DropdownMenuTrigger>
+									<DropdownMenuContent align="end">
+										<DropdownMenuItem onClick={logout} className="flex items-center gap-2">
+											<LogOut className="h-4 w-4" />
+											<span>Logout</span>
+										</DropdownMenuItem>
+									</DropdownMenuContent>
+								</DropdownMenu>
+							) : (
+								<Button
+									className="text-base font-medium"
+									asChild
+								>
+									<Link href="/login">Get Started</Link>
+								</Button>
+							)}
 						</div>
 					</div>
 				</div>

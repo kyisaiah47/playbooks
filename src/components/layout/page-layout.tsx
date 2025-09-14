@@ -3,7 +3,7 @@
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
-import { FullscreenCommandPalette } from "@/components/fullscreen-command-palette";
+import { CommandPalette } from "@/components/command-palette";
 import { useCommandPalette } from "@/hooks/use-command-palette";
 
 interface PageLayoutProps {
@@ -37,7 +37,7 @@ export function PageLayout({
 			<RecentlyUsedFooter />
 
 			{/* Global Command Palette */}
-			<FullscreenCommandPalette
+			<CommandPalette
 				isOpen={isOpen}
 				onClose={close}
 				mode="all"

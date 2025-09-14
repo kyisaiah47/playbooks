@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { CustomThemeProvider } from "@/components/theme-provider-custom"
+import { AuthProvider } from "@/contexts/auth-context"
 import { WeddingProvider } from "@/contexts/wedding-context"
 import { HomeBuyingProvider } from "@/contexts/home-buying-context"
 import { BabyPlanningProvider } from "@/contexts/baby-planning-context"
@@ -44,17 +45,19 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CustomThemeProvider>
-            <UIProvider>
-              <MealPlanningProvider>
-                <BabyPlanningProvider>
-                  <HomeBuyingProvider>
-                    <WeddingProvider>
-                      {children}
-                    </WeddingProvider>
-                  </HomeBuyingProvider>
-                </BabyPlanningProvider>
-              </MealPlanningProvider>
-            </UIProvider>
+            <AuthProvider>
+              <UIProvider>
+                <MealPlanningProvider>
+                  <BabyPlanningProvider>
+                    <HomeBuyingProvider>
+                      <WeddingProvider>
+                        {children}
+                      </WeddingProvider>
+                    </HomeBuyingProvider>
+                  </BabyPlanningProvider>
+                </MealPlanningProvider>
+              </UIProvider>
+            </AuthProvider>
           </CustomThemeProvider>
         </ThemeProvider>
       </body>

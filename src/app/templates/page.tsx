@@ -12,7 +12,7 @@ import {
 	ArrowRight
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { FullscreenCommandPalette } from "@/components/fullscreen-command-palette";
+import { CommandPalette } from "@/components/command-palette";
 import { templateRegistry, getAllCategories } from "@/registry/templates";
 
 
@@ -120,7 +120,7 @@ export default function TemplatesPage() {
 			</div>
 
 			{/* Command Palette */}
-			<FullscreenCommandPalette
+			<CommandPalette
 				isOpen={isCommandOpen}
 				onClose={() => setIsCommandOpen(false)}
 				mode="templates"

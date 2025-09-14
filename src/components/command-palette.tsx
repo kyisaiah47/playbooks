@@ -1,260 +1,1101 @@
-'use client';
+"use client"
 
-import { useEffect, useState } from 'react';
-import { GuidanceTemplate, Resource, ReflectionPrompt } from '@/types/template';
-import { templateRegistry, searchTemplates } from '@/registry/templates';
+import React, { useState, useEffect, useMemo } from "react"
+import Link from "next/link"
+import { useAuth } from "@/contexts/auth-context"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import {
-  CommandDialog,
+  Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import { BookOpen, MessageCircle, Target, Hash, Search } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+} from "@/components/ui/command"
+import {
+  Search,
+  Heart,
+  Home,
+  Briefcase,
+  Target,
+  Baby,
+  Rocket,
+  GraduationCap,
+  BookOpen,
+  Dumbbell,
+  ArrowRight,
+  TrendingUp,
+  Clock,
+  User,
+  Zap,
+  Sparkles,
+  ChevronRight,
+  Star,
+  Brain,
+  Compass,
+  Lightbulb,
+  Verified,
+  Trophy
+} from "lucide-react"
+import { useFavorites } from "@/hooks/use-favorites"
+import { useRecentTemplates } from "@/hooks/use-recent-templates"
+import { useSmartRecommendations } from "@/hooks/use-smart-recommendations"
+import { TemplateOfWeekShowcase } from "@/components/template-of-week/showcase"
+import { isCurrentTemplateOfWeek } from "@/lib/template-of-week"
+import { ChangelogWidget } from "@/components/changelog/changelog-widget"
+
+// Import data
+import { templateRegistry } from "@/registry/templates"
+import { blogRegistry } from "@/registry/blogs"
 
 interface CommandPaletteProps {
-  template: GuidanceTemplate;
-  onSectionChange: (sectionIndex: number) => void;
-  onInsertPrompt: (prompt: ReflectionPrompt) => void;
-  onOpenResource: (resource: Resource) => void;
+  isOpen: boolean
+  onClose: () => void
+  mode?: "templates" | "articles" | "all" | "smart"
+  autoFocus?: boolean
+}
+
+const getTemplateIcon = (templateId: string) => {
+  switch (templateId) {
+    case 'wedding-planning': return Heart
+    case 'home-buying': return Home
+    case 'baby-planning': return Baby
+    case 'job-search': return Briefcase
+    case 'business-launch': return Rocket
+    case 'college-planning': return GraduationCap
+    case 'academic-research': return BookOpen
+    case 'fitness-journey': return Dumbbell
+    default: return Target
+  }
+}
+
+const getCategoryIcon = (category: string) => {
+  switch (category) {
+    case "Wedding Planning": return Heart
+    case "Real Estate": return Home
+    case "Career": return Briefcase
+    case "Business": return TrendingUp
+    default: return BookOpen
+  }
 }
 
 export function CommandPalette({
-  template,
-  onSectionChange,
-  onInsertPrompt,
-  onOpenResource
+  isOpen,
+  onClose,
+  mode: initialMode = "all",
+  autoFocus = true
 }: CommandPaletteProps) {
-  const [open, setOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const router = useRouter();
+  const [query, setQuery] = useState("")
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [showOnboarding, setShowOnboarding] = useState(false)
+  const [debouncedQuery, setDebouncedQuery] = useState("")
+  const [mode, setMode] = useState(initialMode)
 
+  // Auth state
+  const { isLoggedIn } = useAuth()
+
+  // Favorites and recent items
+  const { favorites, isFavorited, toggleFavorite } = useFavorites()
+  const { addRecentItem } = useRecentTemplates()
+
+  // Smart recommendations
+  const {
+    getRecommendationsByType,
+    getContextualRecommendations,
+    getDiscoveryRecommendations,
+    trackView,
+    trackSearch
+  } = useSmartRecommendations()
+
+  // Debounce search query for better performance
   useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query)
+      // Track search queries for recommendations
+      if (query.trim().length >= 3) {
+        trackSearch(query.trim())
       }
-    };
+    }, 200)
+    return () => clearTimeout(timer)
+  }, [query, trackSearch])
 
-    document.addEventListener('keydown', down);
-    return () => document.removeEventListener('keydown', down);
-  }, []);
-
-  const handleSectionSelect = (sectionIndex: number) => {
-    onSectionChange(sectionIndex);
-    setOpen(false);
-  };
-
-  const handlePromptSelect = (prompt: ReflectionPrompt) => {
-    onInsertPrompt(prompt);
-    setOpen(false);
-  };
-
-  const handleResourceSelect = (resource: Resource) => {
-    onOpenResource(resource);
-    setOpen(false);
-  };
-
-  const handleTemplateSelect = (templateUrl: string) => {
-    router.push(templateUrl);
-    setOpen(false);
-  };
-
-  const allPrompts = template.sections.flatMap(section =>
-    section.reflectionPrompts.map(prompt => ({ ...prompt, sectionTitle: section.title }))
-  );
-
-  const allResources = template.sections.flatMap(section =>
-    (section.resources || []).map(resource => ({ ...resource, sectionTitle: section.title }))
-  );
-
-  // Parse prefix commands
-  const parseQuery = (query: string) => {
-    const prefixMatch = query.match(/^@(template|section|prompt|resource)\s+(.*)$/);
-    if (prefixMatch) {
-      return {
-        prefix: prefixMatch[1],
-        search: prefixMatch[2]
-      };
+  // Show onboarding hint for new users
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem('templata-cmdk-onboarding')
+    if (!hasSeenOnboarding && isOpen) {
+      setShowOnboarding(true)
+      localStorage.setItem('templata-cmdk-onboarding', 'true')
     }
-    return { prefix: null, search: query };
-  };
+  }, [isOpen])
 
-  const { prefix, search } = parseQuery(searchQuery);
+  // Prepare searchable data with enhanced metadata
+  const searchableTemplates = useMemo(() => {
+    return templateRegistry.map(template => ({
+      ...template,
+      searchableText: `${template.name} ${template.description} ${template.category}`.toLowerCase(),
+      type: 'template' as const
+    }))
+  }, [])
 
-  // Filter based on search query and prefix
-  const filteredTemplates = (!prefix || prefix === 'template')
-    ? (search ? searchTemplates(search) : templateRegistry.slice(0, 8))
-    : [];
+  const searchableArticles = useMemo(() => {
+    return blogRegistry.map(article => ({
+      ...article,
+      searchableText: `${article.title} ${article.excerpt} ${article.category}`.toLowerCase(),
+      type: 'article' as const
+    }))
+  }, [])
 
-  const filteredSections = (!prefix || prefix === 'section')
-    ? template.sections.filter(section =>
-        section.title.toLowerCase().includes(search.toLowerCase())
-      )
-    : [];
+  // Enhanced result grouping with visual hierarchy
+  const resultGroups = useMemo(() => {
+    if (!debouncedQuery) {
+      // Featured/popular items when no search
+      const featuredTemplates = searchableTemplates.filter(t => t.popular).slice(0, 6)
+      const recentArticles = searchableArticles.slice(0, 6)
 
-  const filteredPrompts = (!prefix || prefix === 'prompt')
-    ? allPrompts.filter(prompt =>
-        prompt.prompt.toLowerCase().includes(search.toLowerCase()) ||
-        prompt.category.toLowerCase().includes(search.toLowerCase())
-      )
-    : [];
+      return {
+        templates: mode === "articles" ? [] : featuredTemplates,
+        articles: mode === "templates" ? [] : recentArticles,
+        all: mode === "all" ? [...featuredTemplates.slice(0, 3), ...recentArticles.slice(0, 3)] : []
+      }
+    }
 
-  const filteredResources = (!prefix || prefix === 'resource')
-    ? allResources.filter(resource =>
-        resource.title.toLowerCase().includes(search.toLowerCase()) ||
-        resource.type.toLowerCase().includes(search.toLowerCase())
-      )
-    : [];
+    // Search results with relevance scoring
+    const templateResults = mode === "articles" ? [] : searchableTemplates
+      .map(template => {
+        let score = 0
+        const queryLower = debouncedQuery.toLowerCase()
+
+        if (template.name.toLowerCase().includes(queryLower)) score += 5
+        if (template.name.toLowerCase().startsWith(queryLower)) score += 3
+        if (template.description.toLowerCase().includes(queryLower)) score += 2
+        if (template.category.toLowerCase().includes(queryLower)) score += 1
+        if (template.popular) score += 1
+
+        return { ...template, relevanceScore: score }
+      })
+      .filter(t => t.relevanceScore > 0)
+      .sort((a, b) => b.relevanceScore - a.relevanceScore)
+
+    const articleResults = mode === "templates" ? [] : searchableArticles
+      .map(article => {
+        let score = 0
+        const queryLower = debouncedQuery.toLowerCase()
+
+        if (article.title.toLowerCase().includes(queryLower)) score += 5
+        if (article.title.toLowerCase().startsWith(queryLower)) score += 3
+        if (article.excerpt.toLowerCase().includes(queryLower)) score += 2
+        if (article.category.toLowerCase().includes(queryLower)) score += 1
+        if (article.featured) score += 1
+
+        return { ...article, relevanceScore: score }
+      })
+      .filter(a => a.relevanceScore > 0)
+      .sort((a, b) => b.relevanceScore - a.relevanceScore)
+
+    return {
+      templates: templateResults.slice(0, 8),
+      articles: articleResults.slice(0, 8),
+      all: [...templateResults.slice(0, 4), ...articleResults.slice(0, 4)]
+    }
+  }, [debouncedQuery, searchableTemplates, searchableArticles, mode])
+
+  // Get current results based on mode
+  const currentResults = useMemo(() => {
+    switch (mode) {
+      case "templates":
+        return resultGroups.templates
+      case "articles":
+        return resultGroups.articles
+      default:
+        return resultGroups.all
+    }
+  }, [resultGroups, mode])
+
+  const templates = mode === "all" ? resultGroups.templates : (mode === "templates" ? currentResults : [])
+  const articles = mode === "all" ? resultGroups.articles : (mode === "articles" ? currentResults : [])
+
+  const suggestionPills = [
+    { label: "Wedding Planning", icon: Heart, query: "wedding" },
+    { label: "Career Change", icon: Briefcase, query: "career" },
+    { label: "Home Buying", icon: Home, query: "home" },
+    { label: "Business Launch", icon: Rocket, query: "business" },
+  ]
+
+  const trendingQueries = [
+    "wedding planning checklist",
+    "career transition guide",
+    "home buying timeline",
+    "startup business plan",
+    "budget planning"
+  ]
+
+  const [currentTrendingIndex, setCurrentTrendingIndex] = useState(0)
+
+  // Rotate trending queries
+  useEffect(() => {
+    if (!query) {
+      const interval = setInterval(() => {
+        setCurrentTrendingIndex((prev) => (prev + 1) % trendingQueries.length)
+      }, 2500)
+      return () => clearInterval(interval)
+    }
+  }, [query])
+
+  const handleClose = () => {
+    setQuery("")
+    setSelectedIndex(0)
+    onClose()
+  }
+
+  const handleTemplateClick = (template: any) => {
+    addRecentItem({
+      id: template.id,
+      name: template.name,
+      url: template.url,
+      category: template.category,
+      type: "template" as const
+    })
+    trackView(template.id, template.category, "template")
+    handleClose()
+  }
+
+  const handleArticleClick = (article: any) => {
+    addRecentItem({
+      id: article.id,
+      name: article.title,
+      url: `/blog/${article.slug}`,
+      category: article.category,
+      type: "article" as const
+    })
+    trackView(article.id, article.category, "article")
+    handleClose()
+  }
+
+  const handleToggleFavorite = (e: React.MouseEvent, item: any, type: "template" | "article") => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleFavorite({
+      id: item.id,
+      name: type === "template" ? item.name : item.title,
+      url: type === "template" ? item.url : `/blog/${item.slug}`,
+      category: item.category,
+      type
+    })
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      handleClose()
+    }
+  }
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput
-        placeholder="Search or use @template, @section, @prompt, @resource..."
-        value={searchQuery}
-        onValueChange={setSearchQuery}
-      />
-      <CommandList className="max-h-[500px]">
-        <CommandEmpty>
-          <div className="py-6 text-center">
-            <div className="text-sm text-muted-foreground mb-4">No results found</div>
-            <div className="text-xs text-muted-foreground space-y-1">
-              <div>Try: <code className="bg-muted px-1 rounded">@template wedding</code></div>
-              <div>Or: <code className="bg-muted px-1 rounded">@prompt budget</code></div>
-            </div>
-          </div>
-        </CommandEmpty>
-
-        {!searchQuery && (
-          <CommandGroup heading="Search Prefixes">
-            <div className="px-2 py-2 space-y-2">
-              <div className="grid grid-cols-2 gap-2">
-                <div className="flex items-center justify-between p-2 bg-muted/30 rounded text-xs">
-                  <span>Switch templates</span>
-                  <code className="bg-background px-1.5 py-0.5 rounded font-mono">@template</code>
-                </div>
-                <div className="flex items-center justify-between p-2 bg-muted/30 rounded text-xs">
-                  <span>Jump to sections</span>
-                  <code className="bg-background px-1.5 py-0.5 rounded font-mono">@section</code>
-                </div>
-                <div className="flex items-center justify-between p-2 bg-muted/30 rounded text-xs">
-                  <span>Find prompts</span>
-                  <code className="bg-background px-1.5 py-0.5 rounded font-mono">@prompt</code>
-                </div>
-                <div className="flex items-center justify-between p-2 bg-muted/30 rounded text-xs">
-                  <span>Open resources</span>
-                  <code className="bg-background px-1.5 py-0.5 rounded font-mono">@resource</code>
-                </div>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
+      <DialogContent
+        className="!max-w-5xl w-[92vw] h-[85vh] p-0 gap-0 bg-background/95 backdrop-blur-xl border-2"
+        showCloseButton={false}
+        onKeyDown={handleKeyDown}
+      >
+        <DialogTitle className="sr-only">
+          Search Templates and Resources
+        </DialogTitle>
+        {/* Header */}
+        <div className="border-b bg-background/50 p-6">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={query ? "Search templates, guides, and articles..." : `Try searching "${trendingQueries[currentTrendingIndex]}"`}
+              className="pl-12 pr-24 h-14 text-lg bg-transparent border-2 border-primary/20 focus:border-primary rounded-xl"
+              autoFocus={autoFocus}
+            />
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 border border-muted rounded-lg px-2 py-1">
+                <kbd className="px-1.5 py-0.5 bg-background border border-border rounded text-xs font-mono">Esc</kbd>
+                <span>to close</span>
               </div>
             </div>
-          </CommandGroup>
-        )}
-
-        {filteredTemplates.length > 0 && (
-          <CommandGroup heading="Switch Template">
-            {filteredTemplates.map((templateEntry) => (
-              <CommandItem
-                key={templateEntry.id}
-                onSelect={() => handleTemplateSelect(templateEntry.url)}
-                className="flex items-center gap-2"
-              >
-                <span className="text-lg">{templateEntry.icon}</span>
-                <div className="flex flex-col flex-1">
-                  <span>{templateEntry.name}</span>
-                  <span className="text-xs text-muted-foreground truncate">
-                    {templateEntry.description}
-                  </span>
-                </div>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        )}
-
-        {filteredSections.length > 0 && (
-          <CommandGroup heading="Sections">
-            {filteredSections.map((section, index) => {
-              const actualIndex = template.sections.findIndex(s => s.id === section.id);
-              return (
-                <CommandItem
-                  key={section.id}
-                  onSelect={() => handleSectionSelect(actualIndex)}
-                  className="flex items-center gap-2"
-                >
-                  <Hash className="w-4 h-4" />
-                  <span>{section.title}</span>
-                </CommandItem>
-              );
-            })}
-          </CommandGroup>
-        )}
-
-        {filteredPrompts.length > 0 && (
-          <CommandGroup heading="Prompts">
-            {filteredPrompts.slice(0, 8).map((prompt) => (
-              <CommandItem
-                key={prompt.id}
-                onSelect={() => handlePromptSelect(prompt)}
-                className="flex flex-col items-start gap-1"
-              >
-                <div className="flex items-center gap-2 w-full">
-                  <MessageCircle className="w-4 h-4 flex-shrink-0" />
-                  <span className="flex-1 truncate">{prompt.prompt}</span>
-                </div>
-                <span className="text-xs text-muted-foreground ml-6">
-                  {prompt.category} • from {prompt.sectionTitle}
-                </span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        )}
-
-        {filteredResources.length > 0 && (
-          <CommandGroup heading="Resources">
-            {filteredResources.slice(0, 8).map((resource) => (
-              <CommandItem
-                key={resource.id}
-                onSelect={() => handleResourceSelect(resource)}
-                className="flex flex-col items-start gap-1"
-              >
-                <div className="flex items-center gap-2 w-full">
-                  <BookOpen className="w-4 h-4 flex-shrink-0" />
-                  <span className="flex-1 truncate">{resource.title}</span>
-                </div>
-                <span className="text-xs text-muted-foreground ml-6">
-                  {resource.type} • {resource.readTime} • from {resource.sectionTitle}
-                </span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        )}
-      </CommandList>
-
-      {/* Footer with keyboard shortcuts */}
-      <div className="border-t bg-muted/20 p-2">
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1">
-              <code className="bg-background px-1.5 py-0.5 rounded font-mono">↑↓</code>
-              <span>Navigate</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <code className="bg-background px-1.5 py-0.5 rounded font-mono">Enter</code>
-              <span>Select</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <code className="bg-background px-1.5 py-0.5 rounded font-mono">Esc</code>
-              <span>Close</span>
-            </div>
           </div>
-          <div className="flex items-center gap-1">
-            <span>Open with</span>
-            <code className="bg-background px-1.5 py-0.5 rounded font-mono">⌘K</code>
+
+
+          {/* Mode Tabs */}
+          <div className="flex items-center gap-1 mt-4 p-1 bg-muted/30 rounded-lg w-fit">
+            {isLoggedIn && (
+              <Button
+                variant={mode === "my-work" ? "default" : "ghost"}
+                size="sm"
+                className="h-7 text-xs flex items-center gap-1"
+                onClick={() => setMode("my-work")}
+              >
+                <User className="w-3 h-3" />
+                My Work
+              </Button>
+            )}
+            <Button
+              variant={mode === "all" ? "default" : "ghost"}
+              size="sm"
+              className="h-7 text-xs"
+              onClick={() => setMode("all")}
+            >
+              {isLoggedIn ? "Explore" : "All"}
+            </Button>
+            {isLoggedIn && (
+              <Button
+                variant={mode === "favorites" ? "default" : "ghost"}
+                size="sm"
+                className="h-7 text-xs flex items-center gap-1"
+                onClick={() => setMode("favorites")}
+              >
+                <Star className="w-3 h-3" />
+                Favorites
+              </Button>
+            )}
+            <Button
+              variant={mode === "smart" ? "default" : "ghost"}
+              size="sm"
+              className="h-7 text-xs flex items-center gap-1"
+              onClick={() => setMode("smart")}
+            >
+              <Brain className="w-3 h-3" />
+              Smart
+            </Button>
+            <Button
+              variant={mode === "templates" ? "default" : "ghost"}
+              size="sm"
+              className="h-7 text-xs"
+              onClick={() => setMode("templates")}
+            >
+              Templates
+            </Button>
+            <Button
+              variant={mode === "articles" ? "default" : "ghost"}
+              size="sm"
+              className="h-7 text-xs"
+              onClick={() => setMode("articles")}
+            >
+              Articles
+            </Button>
           </div>
         </div>
-      </div>
-    </CommandDialog>
-  );
+
+        {/* Results */}
+        <div className="flex-1 overflow-y-auto">
+          {/* Progressive Discovery Banner */}
+          {showOnboarding && (
+            <div className="mx-6 mt-4 p-4 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-xl border border-primary/20 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-50" />
+              <div className="relative flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-5 h-5 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-sm mb-2 text-foreground">🎉 Welcome to search-first navigation!</h3>
+                  <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+                    Skip the browsing. Just press <kbd className="px-1.5 py-0.5 bg-primary/20 text-primary rounded text-xs font-medium">Cmd+K</kbd> anytime to find what you need instantly.
+                    We've organized everything so you never start with a blank page.
+                  </p>
+                  <div className="flex items-center gap-3 text-xs">
+                    <div className="flex items-center gap-1.5 text-primary">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                      <span className="font-medium">Try searching "wedding"</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-muted-foreground">
+                      <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40"></div>
+                      <span>Or browse featured items below</span>
+                    </div>
+                  </div>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowOnboarding(false)}
+                  className="h-7 w-7 p-0 hover:bg-primary/10 rounded-lg"
+                >
+                  <span className="text-muted-foreground text-sm">×</span>
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* No Query - Discovery Mode */}
+          {!query && (
+            <div className="space-y-8 p-6">
+              {mode === "all" && (
+                <>
+                  {/* Favorites Section */}
+                  {favorites.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-semibold text-lg">Your Favorites</h3>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <span>{favorites.length} saved</span>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        {favorites.slice(0, 4).map((favorite) => {
+                          const Icon = favorite.type === "template" ? getTemplateIcon(favorite.id) : getCategoryIcon(favorite.category)
+                          return (
+                            <Link key={favorite.id} href={favorite.url} onClick={() => favorite.type === "template" ? handleTemplateClick(favorite) : handleArticleClick(favorite)}>
+                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                  <Icon className="w-4 h-4 text-primary" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                    {favorite.name}
+                                  </h4>
+                                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                    <Badge variant="outline" className="text-xs">
+                                      {favorite.category}
+                                    </Badge>
+                                    <span>{favorite.type === "template" ? "Template" : "Article"}</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={(e) => handleToggleFavorite(e, favorite, favorite.type)}
+                                    className="h-7 w-7 p-0 opacity-100 hover:bg-yellow-100 hover:text-yellow-600"
+                                  >
+                                    <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                                  </Button>
+                                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                </div>
+                              </div>
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Featured Templates */}
+                  {templates.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-semibold text-lg">Featured Templates</h3>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <TrendingUp className="w-4 h-4" />
+                          <span>Most popular</span>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        {templates.slice(0, 4).map((template) => {
+                          const Icon = getTemplateIcon(template.id)
+                          const isStarred = isFavorited(template.id)
+                          return (
+                            <Link key={template.id} href={template.url} onClick={() => handleTemplateClick(template)}>
+                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                  <Icon className="w-4 h-4 text-primary" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                    {template.name}
+                                  </h4>
+                                  <p className="text-xs text-muted-foreground line-clamp-1">
+                                    {template.description}
+                                  </p>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <Badge variant="outline" className="text-xs">
+                                    {template.category}
+                                  </Badge>
+                                  {template.popular && (
+                                    <Badge variant="secondary" className="text-xs">
+                                      Popular
+                                    </Badge>
+                                  )}
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={(e) => handleToggleFavorite(e, template, "template")}
+                                    className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                  >
+                                    <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                  </Button>
+                                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                </div>
+                              </div>
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Featured Articles */}
+                  {articles.length > 0 && (
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-semibold text-lg">Featured Articles</h3>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <Sparkles className="w-4 h-4" />
+                          <span>Expert insights</span>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        {articles.slice(0, 4).map((article) => {
+                          const Icon = getCategoryIcon(article.category)
+                          const isStarred = isFavorited(article.id)
+                          return (
+                            <Link key={article.id} href={`/blog/${article.slug}`} onClick={() => handleArticleClick(article)}>
+                              <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
+                                  <Icon className="w-4 h-4" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-1">
+                                    {article.title}
+                                  </h4>
+                                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                                    <span>{article.author}</span>
+                                    <span>•</span>
+                                    <span>{article.readTime}</span>
+                                    <span>•</span>
+                                    <span>{article.category}</span>
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={(e) => handleToggleFavorite(e, article, "article")}
+                                    className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                  >
+                                    <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                  </Button>
+                                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                </div>
+                              </div>
+                            </Link>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                </>
+              )}
+
+              {/* Smart Recommendations View */}
+              {mode === "smart" && (
+                <div className="space-y-8">
+                  {/* Smart Picks Section */}
+                  {(() => {
+                    const contextual = getContextualRecommendations(6)
+                    if (contextual.length === 0) return null
+
+                    return (
+                      <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Smart Picks</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Brain className="w-4 h-4 text-blue-500" />
+                            <span>Personalized for you</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {contextual.map((rec) => {
+                            const Icon = rec.type === "template" ? getTemplateIcon(rec.id) : getCategoryIcon(rec.category)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link
+                                key={rec.id}
+                                href={rec.url}
+                                onClick={() => rec.type === "template" ? handleTemplateClick(rec) : handleArticleClick(rec)}
+                              >
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1">
+                                      {rec.description}
+                                    </p>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="text-xs">
+                                      {rec.category}
+                                    </Badge>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, rec.type)}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+
+                  {/* Discover More Section */}
+                  {(() => {
+                    const discovery = getDiscoveryRecommendations(6)
+                    if (discovery.length === 0) return null
+
+                    return (
+                      <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Discover More</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Compass className="w-4 h-4 text-green-500" />
+                            <span>Expand your horizons</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {discovery.map((rec) => {
+                            const Icon = rec.type === "template" ? getTemplateIcon(rec.id) : getCategoryIcon(rec.category)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link
+                                key={rec.id}
+                                href={rec.url}
+                                onClick={() => rec.type === "template" ? handleTemplateClick(rec) : handleArticleClick(rec)}
+                              >
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1">
+                                      {rec.description}
+                                    </p>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Badge variant="outline" className="text-xs">
+                                      {rec.category}
+                                    </Badge>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, rec.type)}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+                </div>
+              )}
+
+              {/* All Templates View */}
+              {mode === "templates" && (
+                <>
+                  {/* Template Recommendations */}
+                  {(() => {
+                    const templateRecs = getRecommendationsByType("template", 3)
+                    if (templateRecs.length === 0) return null
+
+                    return (
+                      <div className="mb-8">
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Recommended Templates</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Brain className="w-4 h-4 text-blue-500" />
+                            <span>Based on your activity</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {templateRecs.map((rec) => {
+                            const Icon = getTemplateIcon(rec.id)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link key={rec.id} href={rec.url} onClick={() => handleTemplateClick(rec)}>
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1">
+                                      {rec.description}
+                                    </p>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
+                                      <Badge variant="outline" className="text-xs text-xs">
+                                        {rec.category}
+                                      </Badge>
+                                      <span>•</span>
+                                      <span className="flex items-center gap-1">
+                                        <Lightbulb className="w-3 h-3" />
+                                        {rec.reason}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, "template")}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="font-semibold text-lg">All Templates</h3>
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <span>{searchableTemplates.length} templates</span>
+                      </div>
+                    </div>
+                  <div className="space-y-2">
+                    {searchableTemplates.map((template) => {
+                      const Icon = getTemplateIcon(template.id)
+                      const isStarred = isFavorited(template.id)
+                      return (
+                        <Link key={template.id} href={template.url} onClick={() => handleTemplateClick(template)}>
+                          <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                              <Icon className="w-4 h-4 text-primary" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                {template.name}
+                              </h4>
+                              <p className="text-xs text-muted-foreground line-clamp-1">
+                                {template.description}
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Badge variant="outline" className="text-xs">
+                                {template.category}
+                              </Badge>
+                              {template.popular && (
+                                <Badge variant="secondary" className="text-xs">
+                                  Popular
+                                </Badge>
+                              )}
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, template, "template")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+                </>
+              )}
+
+              {/* All Articles View */}
+              {mode === "articles" && (
+                <>
+                  {/* Article Recommendations */}
+                  {(() => {
+                    const articleRecs = getRecommendationsByType("article", 3)
+                    if (articleRecs.length === 0) return null
+
+                    return (
+                      <div className="mb-8">
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="font-semibold text-lg">Recommended Articles</h3>
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                            <Brain className="w-4 h-4 text-purple-500" />
+                            <span>Curated for you</span>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          {articleRecs.map((rec) => {
+                            const Icon = getCategoryIcon(rec.category)
+                            const isStarred = isFavorited(rec.id)
+                            return (
+                              <Link key={rec.id} href={rec.url} onClick={() => handleArticleClick(rec)}>
+                                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50">
+                                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <Icon className="w-4 h-4 text-primary" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-1">
+                                      {rec.name}
+                                    </h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-1 mt-1">
+                                      {rec.description}
+                                    </p>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
+                                      <Badge variant="outline" className="text-xs text-xs">
+                                        {rec.category}
+                                      </Badge>
+                                      <span>•</span>
+                                      <span className="flex items-center gap-1">
+                                        <Lightbulb className="w-3 h-3" />
+                                        {rec.reason}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={(e) => handleToggleFavorite(e, rec, "article")}
+                                      className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                                    >
+                                      <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                                    </Button>
+                                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })()}
+
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="font-semibold text-lg">All Articles</h3>
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <span>{searchableArticles.length} articles</span>
+                      </div>
+                    </div>
+                  <div className="space-y-2">
+                    {searchableArticles.map((article) => {
+                      const Icon = getCategoryIcon(article.category)
+                      const isStarred = isFavorited(article.id)
+                      return (
+                        <Link key={article.id} href={`/blog/${article.slug}`} onClick={() => handleArticleClick(article)}>
+                          <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
+                            <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
+                              <Icon className="w-4 h-4" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-1">
+                                {article.title}
+                              </h4>
+                              <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                                <span>{article.author}</span>
+                                <span>•</span>
+                                <span>{article.readTime}</span>
+                                <span>•</span>
+                                <span>{article.category}</span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, article, "article")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Query Results */}
+          {query && (
+            <div className="p-6 space-y-6">
+              {/* Templates Results */}
+              {templates.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Templates
+                  </h3>
+                  <div className="space-y-2">
+                    {templates.map((template, index) => {
+                      const Icon = getTemplateIcon(template.id)
+                      const isSelected = selectedIndex === index
+                      const isStarred = isFavorited(template.id)
+                      return (
+                        <Link key={template.id} href={template.url} onClick={() => handleTemplateClick(template)}>
+                          <div className={`group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm ${
+                            isSelected ? 'bg-primary/10 border border-primary/20' : ''
+                          }`}>
+                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                              <Icon className="w-4 h-4 text-primary" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-semibold text-sm group-hover:text-primary transition-colors">
+                                {template.name}
+                              </h4>
+                              <p className="text-xs text-muted-foreground line-clamp-1">
+                                {template.description}
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Badge variant="outline" className="text-xs">
+                                {template.category}
+                              </Badge>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, template, "template")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Articles Results */}
+              {articles.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Resources & Articles
+                  </h3>
+                  <div className="space-y-2">
+                    {articles.map((article, index) => {
+                      const Icon = getCategoryIcon(article.category)
+                      const resultIndex = templates.length + index
+                      const isSelected = selectedIndex === resultIndex
+                      const isStarred = isFavorited(article.id)
+                      return (
+                        <Link key={article.id} href={`/blog/${article.slug}`} onClick={() => handleArticleClick(article)}>
+                          <div className={`group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm ${
+                            isSelected ? 'bg-primary/10 border border-primary/20' : ''
+                          }`}>
+                            <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
+                              <Icon className="w-4 h-4" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-1">
+                                {article.title}
+                              </h4>
+                              <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                                <span>{article.author}</span>
+                                <span>•</span>
+                                <span>{article.readTime}</span>
+                                <span>•</span>
+                                <span>{article.category}</span>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={(e) => handleToggleFavorite(e, article, "article")}
+                                className={`h-7 w-7 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 ${isStarred ? 'opacity-100 hover:bg-yellow-100 hover:text-yellow-600' : 'hover:bg-muted'}`}
+                              >
+                                <Star className={`w-3 h-3 ${isStarred ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-foreground'}`} />
+                              </Button>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </div>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Motivational Empty State */}
+              {templates.length === 0 && articles.length === 0 && (
+                <div className="text-center py-16">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse">
+                    <Sparkles className="h-8 w-8 text-primary animate-bounce" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Life shouldn't start with a blank page</h3>
+                  <p className="text-muted-foreground mb-6 max-w-md mx-auto leading-relaxed">
+                    We couldn't find exactly what you're looking for, but every journey begins somewhere.
+                    Try browsing our suggestions or search for something different.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Button variant="outline" onClick={() => setQuery("")} className="flex items-center gap-2">
+                      <ArrowRight className="h-4 w-4 rotate-180" />
+                      Browse suggestions
+                    </Button>
+                    <Button onClick={() => setQuery("wedding")} className="flex items-center gap-2">
+                      <Heart className="h-4 w-4" />
+                      Try "wedding"
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="border-t bg-muted/20 px-6 py-3">
+          <div className="flex items-center justify-between text-xs text-muted-foreground">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1">
+                <kbd className="px-1.5 py-0.5 bg-muted rounded">↑↓</kbd>
+                <span>navigate</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <kbd className="px-1.5 py-0.5 bg-muted rounded">Enter</kbd>
+                <span>select</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <kbd className="px-1.5 py-0.5 bg-muted rounded">Esc</kbd>
+                <span>close</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-1">
+              <Zap className="w-3 h-3" />
+              <span>Life shouldn't start with a blank page</span>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
 }
