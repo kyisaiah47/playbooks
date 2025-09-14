@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -21,12 +22,39 @@ import {
 	Search,
 	Command
 } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export function Header() {
+	const [scrollY, setScrollY] = React.useState(0)
+
+	React.useEffect(() => {
+		const handleScroll = () => {
+			setScrollY(window.scrollY)
+		}
+		window.addEventListener('scroll', handleScroll)
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
+
+	const scrollProgress = Math.min(scrollY / 100, 1)
+	const isScrolled = scrollY > 10
+	const headerWidth = 100 - (scrollProgress * 30) // Goes from 100% to 70%
+	const borderRadius = scrollProgress * 16 // Goes from 0 to 16px
+	const backgroundOpacity = scrollProgress * 0.8
+
 	return (
-		<header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-6xl mx-auto px-4">
-			<div className="bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl shadow-lg">
-				<div className="flex h-16 items-center justify-between px-6">
+		<header>
+			<nav className="fixed z-50 w-full px-4">
+				<div
+					className="mx-auto mt-4 transition-all duration-300 ease-out border backdrop-blur-lg"
+					style={{
+						width: `${headerWidth}%`,
+						borderRadius: `${borderRadius}px`,
+						backgroundColor: `rgba(var(--background-rgb), ${backgroundOpacity})`,
+						borderColor: `rgba(var(--border-rgb), ${backgroundOpacity})`,
+						padding: `${16 - scrollProgress * 4}px ${24 - scrollProgress * 8}px`
+					}}
+				>
+					<div className="flex items-center justify-between">
 					<Link href="/" className="flex items-center space-x-2">
 						<Image
 							src="/shift.svg"
@@ -92,7 +120,7 @@ export function Header() {
 					</NavigationMenu>
 
 					<div className="flex items-center space-x-3">
-						{/* Search Hint */}
+						{/* Search Hint - hide when scrolled */}
 						<Button
 							variant="outline"
 							size="sm"
@@ -116,8 +144,9 @@ export function Header() {
 							<Link href="/login">Get Started</Link>
 						</Button>
 					</div>
+					</div>
 				</div>
-			</div>
+			</nav>
 		</header>
 	)
 }
