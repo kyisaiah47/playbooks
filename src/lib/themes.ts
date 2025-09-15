@@ -334,6 +334,7 @@ export const premiumAmberThemeDark: ThemeColors = {
   sidebarRing: 'oklch(0.7731 0 0)'
 }
 
+
 // Emerald theme (light) - Free
 export const emeraldThemeLight: ThemeColors = {
   background: 'oklch(0.9711 0.0074 80.7211)',
@@ -946,6 +947,77 @@ export const sunsetThemeLight: ThemeColors = {
   sidebarRing: 'oklch(0.55 0.18 40)'
 }
 
+// Midnight theme - optimized for long-form reading and focused work
+export const midnightThemeDark: ThemeColors = {
+  background: 'oklch(0.13 0.01 260)', // deep navy/black
+  foreground: 'oklch(0.95 0.01 260)', // light gray
+  card: 'oklch(0.18 0.01 260)',
+  cardForeground: 'oklch(0.95 0.01 260)',
+  popover: 'oklch(0.18 0.01 260)',
+  popoverForeground: 'oklch(0.95 0.01 260)',
+  primary: 'oklch(0.60 0.2 275)', // indigo-purple accent
+  primaryForeground: 'oklch(1 0 0)',
+  secondary: 'oklch(0.30 0.01 260)',
+  secondaryForeground: 'oklch(0.95 0.01 260)',
+  muted: 'oklch(0.25 0.01 260)',
+  mutedForeground: 'oklch(0.70 0.01 260)', // muted gray
+  accent: 'oklch(0.70 0.15 180)', // teal-green accent2
+  accentForeground: 'oklch(0.13 0.01 260)',
+  destructive: 'oklch(0.65 0.2 30)',
+  destructiveForeground: 'oklch(1 0 0)',
+  border: 'oklch(0.30 0.01 260)', // divider gray
+  input: 'oklch(0.30 0.01 260)',
+  ring: 'oklch(0.60 0.2 275)',
+  chart1: 'oklch(0.60 0.2 275)',
+  chart2: 'oklch(0.70 0.15 180)',
+  chart3: 'oklch(0.90 0.18 95)', // bright yellow highlight
+  chart4: 'oklch(0.50 0.15 320)',
+  chart5: 'oklch(0.75 0.12 60)',
+  sidebar: 'oklch(0.16 0.01 260)',
+  sidebarForeground: 'oklch(0.95 0.01 260)',
+  sidebarPrimary: 'oklch(0.60 0.2 275)',
+  sidebarPrimaryForeground: 'oklch(1 0 0)',
+  sidebarAccent: 'oklch(0.25 0.01 260)',
+  sidebarAccentForeground: 'oklch(0.95 0.01 260)',
+  sidebarBorder: 'oklch(0.30 0.01 260)',
+  sidebarRing: 'oklch(0.60 0.2 275)'
+}
+
+export const midnightThemeLight: ThemeColors = {
+  background: 'oklch(0.98 0.005 260)', // warm off-white
+  foreground: 'oklch(0.15 0.01 260)', // dark navy text
+  card: 'oklch(1 0 0)',
+  cardForeground: 'oklch(0.15 0.01 260)',
+  popover: 'oklch(1 0 0)',
+  popoverForeground: 'oklch(0.15 0.01 260)',
+  primary: 'oklch(0.55 0.2 275)', // indigo-purple accent
+  primaryForeground: 'oklch(1 0 0)',
+  secondary: 'oklch(0.94 0.01 260)',
+  secondaryForeground: 'oklch(0.15 0.01 260)',
+  muted: 'oklch(0.96 0.005 260)',
+  mutedForeground: 'oklch(0.45 0.01 260)',
+  accent: 'oklch(0.65 0.15 180)', // teal-green accent2
+  accentForeground: 'oklch(1 0 0)',
+  destructive: 'oklch(0.60 0.2 30)',
+  destructiveForeground: 'oklch(1 0 0)',
+  border: 'oklch(0.88 0.005 260)',
+  input: 'oklch(0.88 0.005 260)',
+  ring: 'oklch(0.55 0.2 275)',
+  chart1: 'oklch(0.55 0.2 275)',
+  chart2: 'oklch(0.65 0.15 180)',
+  chart3: 'oklch(0.75 0.18 95)', // bright yellow highlight
+  chart4: 'oklch(0.45 0.15 320)',
+  chart5: 'oklch(0.65 0.12 60)',
+  sidebar: 'oklch(0.96 0.005 260)',
+  sidebarForeground: 'oklch(0.15 0.01 260)',
+  sidebarPrimary: 'oklch(0.55 0.2 275)',
+  sidebarPrimaryForeground: 'oklch(1 0 0)',
+  sidebarAccent: 'oklch(0.92 0.005 260)',
+  sidebarAccentForeground: 'oklch(0.15 0.01 260)',
+  sidebarBorder: 'oklch(0.88 0.005 260)',
+  sidebarRing: 'oklch(0.55 0.2 275)'
+}
+
 // Sunset theme (dark)
 export const sunsetThemeDark: ThemeColors = {
   background: 'oklch(0.08 0.08 40)',
@@ -1379,15 +1451,6 @@ export const themes: Theme[] = [
     }
   },
   {
-    id: 'purple',
-    name: 'Magenta',
-    description: 'Vibrant magenta and pink with creative energy',
-    colors: {
-      light: purpleThemeLight,
-      dark: purpleThemeDark
-    }
-  },
-  {
     id: 'beta',
     name: 'Violet',
     description: 'Rich purple and magenta tones for creative work',
@@ -1398,87 +1461,14 @@ export const themes: Theme[] = [
     }
   },
   {
-    id: 'beta-teal',
-    name: 'Ocean',
-    description: 'Calming teal and blue hues for focused productivity',
-    isLimited: true,
+    id: 'midnight',
+    name: 'Midnight',
+    description: 'Deep navy theme optimized for focused reading and long-form work',
     colors: {
-      light: betaTealThemeLight,
-      dark: betaTealThemeDark
+      light: midnightThemeLight,
+      dark: midnightThemeDark
     }
   },
-  // Premium themes
-  {
-    id: 'amber',
-    name: 'Amber',
-    description: 'Rich amber and golden tones with warm highlights',
-    isPremium: true,
-    colors: {
-      light: premiumAmberThemeLight,
-      dark: premiumAmberThemeDark
-    }
-  },
-  {
-    id: 'cyan',
-    name: 'Cyan',
-    description: 'Cool cyan blues with modern tech vibes',
-    isPremium: true,
-    colors: {
-      light: premiumCyanThemeLight,
-      dark: premiumCyanThemeDark
-    }
-  },
-  {
-    id: 'ruby',
-    name: 'Ruby',
-    description: 'Luxurious ruby red with elegant pink accents',
-    isPremium: true,
-    colors: {
-      light: premiumRubyThemeLight,
-      dark: premiumRubyThemeDark
-    }
-  },
-  {
-    id: 'sage',
-    name: 'Sage',
-    description: 'Earthy sage greens with natural sophistication',
-    isPremium: true,
-    colors: {
-      light: premiumSageThemeLight,
-      dark: premiumSageThemeDark
-    }
-  },
-  // Exclusive themes
-  {
-    id: 'spectrum',
-    name: 'Spectrum',
-    description: 'Vibrant rainbow colors with playful energy',
-    isExclusive: true,
-    colors: {
-      light: exclusiveSpectrumThemeLight,
-      dark: exclusiveSpectrumThemeDark
-    }
-  },
-  {
-    id: 'electric',
-    name: 'Electric',
-    description: 'High-voltage pink and cyan with modern typography',
-    isExclusive: true,
-    colors: {
-      light: exclusiveElectricThemeLight,
-      dark: exclusiveElectricThemeDark
-    }
-  },
-  {
-    id: 'vintage',
-    name: 'Vintage',
-    description: 'Classic purple hues with elegant serif typography',
-    isExclusive: true,
-    colors: {
-      light: exclusiveVintageThemeLight,
-      dark: exclusiveVintageThemeDark
-    }
-  }
 ]
 
 

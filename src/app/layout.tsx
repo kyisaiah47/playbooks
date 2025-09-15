@@ -3,10 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { CustomThemeProvider } from "@/components/theme-provider-custom"
+import { AuthProvider } from "@/contexts/auth-context"
 import { WeddingProvider } from "@/contexts/wedding-context"
 import { HomeBuyingProvider } from "@/contexts/home-buying-context"
 import { BabyPlanningProvider } from "@/contexts/baby-planning-context"
 import { MealPlanningProvider } from "@/contexts/meal-planning-context"
+import { UIProvider } from "@/components/providers/ui-provider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
   title: "Templata",
   description: "Organize your life with curated templates and guided setups",
   icons: {
-    icon: "/favicon-black.svg",
+    icon: "/favicon-white.svg",
   },
 };
 
@@ -43,15 +45,19 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CustomThemeProvider>
-            <MealPlanningProvider>
-              <BabyPlanningProvider>
-                <HomeBuyingProvider>
-                  <WeddingProvider>
-                    {children}
-                  </WeddingProvider>
-                </HomeBuyingProvider>
-              </BabyPlanningProvider>
-            </MealPlanningProvider>
+            <AuthProvider>
+              <UIProvider>
+                <MealPlanningProvider>
+                  <BabyPlanningProvider>
+                    <HomeBuyingProvider>
+                      <WeddingProvider>
+                        {children}
+                      </WeddingProvider>
+                    </HomeBuyingProvider>
+                  </BabyPlanningProvider>
+                </MealPlanningProvider>
+              </UIProvider>
+            </AuthProvider>
           </CustomThemeProvider>
         </ThemeProvider>
       </body>

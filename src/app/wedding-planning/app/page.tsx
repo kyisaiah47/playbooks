@@ -1,8 +1,14 @@
 'use client';
 
 import { TemplateView } from '@/components/template/TemplateView';
-import { weddingTemplate } from '@/data/templates';
+import { getTemplateById } from '@/registry/templates';
 
 export default function WeddingPlanningApp() {
-  return <TemplateView template={weddingTemplate} />;
+  const template = getTemplateById('wedding-planning');
+  
+  if (!template?.template) {
+    return <div>Template not found</div>;
+  }
+  
+  return <TemplateView template={template.template} />;
 }

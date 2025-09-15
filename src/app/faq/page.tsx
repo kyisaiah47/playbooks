@@ -287,12 +287,17 @@ export default function FAQPage() {
 							<Button
 								size="lg"
 								className="h-12 px-8 text-base"
-								asChild
+								onClick={() => {
+									const event = new KeyboardEvent('keydown', {
+										key: 'k',
+										metaKey: true,
+										bubbles: true
+									});
+									document.dispatchEvent(event);
+								}}
 							>
-								<Link href="/templates">
-									Browse Templates
-									<ArrowRight className="ml-2 h-5 w-5" />
-								</Link>
+								Browse Templates
+								<ArrowRight className="ml-2 h-5 w-5" />
 							</Button>
 							<Button
 								variant="ghost"

@@ -1,92 +1,17 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState } from "react";
+import { Button } from "@/components/ui/button"
+import { blogRegistry, getAllBlogCategories } from "@/registry/blogs";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Calendar, Clock, User, BookOpen, Heart, Home, Briefcase, DollarSign, Calendar as CalendarIcon, TrendingUp } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Search, BookOpen, Sparkles, Command, ArrowRight, Zap } from "lucide-react";
 import { PageLayout } from "@/components/layout";
+import { CommandPalette } from "@/components/command-palette";
 
-// Mock blog data - in a real app this would come from a CMS or database
-const blogPosts = [
-  {
-    id: "wedding-planning-timeline",
-    title: "The Complete Wedding Planning Timeline: 12 Months to Your Perfect Day",
-    excerpt: "Navigate your wedding planning journey with confidence using our comprehensive month-by-month guide that ensures nothing gets overlooked.",
-    category: "Wedding Planning",
-    author: "Sarah Johnson",
-    publishedAt: "2024-03-15",
-    readTime: "8 min read",
-    featured: true,
-  },
-  {
-    id: "home-buying-checklist",
-    title: "First-Time Home Buyer's Essential Checklist",
-    excerpt: "From pre-approval to closing day, discover the critical steps and documents you need for a smooth home buying experience.",
-    category: "Real Estate",
-    author: "Michael Chen",
-    publishedAt: "2024-03-10",
-    readTime: "6 min read",
-    featured: false,
-  },
-  {
-    id: "career-change-guide",
-    title: "Making a Career Change at 30: A Strategic Approach",
-    excerpt: "Learn how to pivot your career successfully with practical steps for networking, skill building, and financial planning.",
-    category: "Career",
-    author: "Emily Rodriguez",
-    publishedAt: "2024-03-05",
-    readTime: "10 min read",
-    featured: false,
-  },
-  {
-    id: "small-business-launch",
-    title: "From Idea to Launch: Your Small Business Startup Roadmap",
-    excerpt: "Transform your business idea into reality with our step-by-step guide covering planning, legal setup, and marketing strategies.",
-    category: "Business",
-    author: "David Park",
-    publishedAt: "2024-02-28",
-    readTime: "12 min read",
-    featured: true,
-  },
-  {
-    id: "event-planning-tips",
-    title: "10 Event Planning Mistakes That Could Ruin Your Special Day",
-    excerpt: "Avoid common pitfalls with expert insights on budget management, vendor selection, and timeline planning for memorable events.",
-    category: "Event Planning",
-    author: "Lisa Thompson",
-    publishedAt: "2024-02-20",
-    readTime: "7 min read",
-    featured: false,
-  },
-  {
-    id: "financial-planning-basics",
-    title: "Building Your Emergency Fund: A Beginner's Guide",
-    excerpt: "Establish financial security with practical strategies for saving, budgeting, and growing your emergency fund over time.",
-    category: "Personal Finance",
-    author: "Robert Kim",
-    publishedAt: "2024-02-15",
-    readTime: "5 min read",
-    featured: false,
-  },
-];
-
-const categories = ["All", "Wedding Planning", "Real Estate", "Career", "Business", "Event Planning", "Personal Finance"];
-
-const getCategoryIcon = (category: string) => {
-  switch (category) {
-    case "Wedding Planning": return <Heart className="h-5 w-5" />;
-    case "Real Estate": return <Home className="h-5 w-5" />;
-    case "Career": return <Briefcase className="h-5 w-5" />;
-    case "Business": return <TrendingUp className="h-5 w-5" />;
-    case "Event Planning": return <CalendarIcon className="h-5 w-5" />;
-    case "Personal Finance": return <DollarSign className="h-5 w-5" />;
-    default: return <BookOpen className="h-5 w-5" />;
-  }
-};
 
 export default function BlogPage() {
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
+
   return (
     <PageLayout>
       <section className="py-24 md:py-32">
@@ -101,129 +26,99 @@ export default function BlogPage() {
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Templata Blog
+              Search-First Resources
             </h1>
 
             <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-              Expert guidance, practical tips, and insights to help you navigate life&apos;s biggest moments with confidence.
+              Find exactly the guidance you need. Skip the scrolling, start with search.
             </p>
+
+            {/* Main Search CTA */}
+            <div className="flex flex-col items-center gap-6 mt-12">
+              <Button
+                size="lg"
+                onClick={() => setIsCommandOpen(true)}
+                className="h-16 px-8 text-lg font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                <Search className="mr-3 h-5 w-5" />
+                Search Articles & Resources
+                <div className="ml-3 flex items-center gap-1 text-sm opacity-75">
+                  <Command className="h-3 w-3" />
+                  <span>K</span>
+                </div>
+              </Button>
+
+              <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <Sparkles className="h-4 w-4" />
+                Or press <kbd className="px-2 py-1 bg-muted rounded text-xs font-medium">Cmd+K</kbd> anytime
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-        <div className="container mx-auto max-w-7xl px-4">
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-2 justify-center mb-12">
-            {categories.map((category) => (
-              <Button 
-                key={category} 
-                variant={category === "All" ? "default" : "outline"} 
-                size="sm"
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-
-          {/* Featured Posts */}
-          <div className="mb-12">
-            <h2 className="text-xl font-semibold mb-4">Featured Articles</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {blogPosts.filter(post => post.featured).map((post) => (
-                <Card key={post.id} className="group hover:shadow-md transition-shadow duration-200">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="outline" className="text-xs h-4 px-1.5">
-                        {post.category}
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">•</span>
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Clock className="w-3 h-3" />
-                        {post.readTime}
-                      </div>
-                    </div>
-                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                      <Link href={`/blog/${post.id}`}>
-                        {post.title}
-                      </Link>
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
-                      <div className="flex items-center gap-3">
-                        <div className="flex items-center gap-1">
-                          <User className="w-3 h-3" />
-                          {post.author}
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {new Date(post.publishedAt).toLocaleDateString()}
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm" className="h-6 text-xs" asChild>
-                        <Link href={`/blog/${post.id}`}>
-                          Read More <ArrowRight className="w-3 h-3 ml-1" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* All Posts - New Grid Layout */}
-          <div>
-            <h2 className="text-xl font-semibold mb-6">All Articles</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogPosts.map((post) => (
-                <Card key={post.id} className="group hover:shadow-lg transition-all duration-200 border-0 bg-muted/30">
-                  <CardContent className="p-0">
-                    <div className="p-6 pb-4">
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                          {getCategoryIcon(post.category)}
-                        </span>
-                        <Badge variant="secondary" className="text-xs">
-                          {post.category}
-                        </Badge>
-                      </div>
-                      <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                        <Link href={`/blog/${post.id}`}>
-                          {post.title}
-                        </Link>
-                      </h3>
-                      <p className="text-muted-foreground mb-4 line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                    <div className="px-6 pb-6">
-                      <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center gap-1">
-                          <User className="w-4 h-4" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          <span>{post.readTime}</span>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground transition-all" asChild>
-                        <Link href={`/blog/${post.id}`}>
-                          <span>Read Article</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
+      {/* Quick Preview Section */}
+      <div className="container mx-auto max-w-7xl px-4 pb-16">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl font-semibold mb-4">What you'll discover</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Our smart search covers {blogRegistry.length} expert articles across {getAllBlogCategories().length} specialized topics.
+          </p>
         </div>
-        <div className="py-12" />
+
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+              <Search className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Expert Insights</h3>
+            <p className="text-sm text-muted-foreground">
+              In-depth articles from specialists in each life domain
+            </p>
+          </div>
+
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+              <Zap className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Practical Tips</h3>
+            <p className="text-sm text-muted-foreground">
+              Actionable advice you can apply to real situations
+            </p>
+          </div>
+
+          <div className="text-center space-y-3">
+            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+              <BookOpen className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Resource Library</h3>
+            <p className="text-sm text-muted-foreground">
+              Curated resources and tools for every major life decision
+            </p>
+          </div>
+        </div>
+
+        {/* Alternative Action */}
+        <div className="text-center">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => setIsCommandOpen(true)}
+            className="group"
+          >
+            Start exploring
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Command Palette */}
+      <CommandPalette
+        isOpen={isCommandOpen}
+        onClose={() => setIsCommandOpen(false)}
+        mode="articles"
+        autoFocus={true}
+      />
     </PageLayout>
   );
 }

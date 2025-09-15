@@ -25,6 +25,23 @@ export interface ReflectionPrompt {
   relatedResources?: string[];
 }
 
+export interface FreeformNote {
+  id: string;
+  title: string;
+  content?: string;
+  category?: string;
+}
+
+export interface Workspace {
+  id: string;
+  name: string;
+  templateId: string;
+  allItems: (ReflectionPrompt | FreeformNote)[];
+  responses: Record<string, string>;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Resource {
   id: string;
   title: string;
@@ -34,6 +51,7 @@ export interface Resource {
   tags: string[];
   readTime: string;
   difficulty: 'beginner' | 'intermediate' | 'expert';
+  relatedBlogPost?: string; // ID of related blog post
 }
 
 export interface ExpertTip {

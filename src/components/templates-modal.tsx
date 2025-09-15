@@ -12,97 +12,13 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
+import { templateRegistry, getAllCategories } from "@/registry/templates"
 import {
-  Heart,
-  Home,
-  Baby,
-  Briefcase,
-  GraduationCap,
-  Dumbbell,
-  BookOpen,
   Search,
   ArrowRight,
 } from "lucide-react"
+import { InteractiveGlow, SubtleGlow } from "@/components/ui/glow-variants"
 
-const templates = [
-  {
-    id: "wedding-planning",
-    name: "Wedding Planning",
-    description: "Plan your perfect wedding with budget tracking, vendor management, and timeline organization.",
-    category: "Personal Life",
-    icon: Heart,
-    url: "/wedding-planning",
-    popular: true,
-    color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
-    iconColor: "text-pink-600 dark:text-pink-400",
-  },
-  {
-    id: "home-buying",
-    name: "Home Buying",
-    description: "Navigate the home buying process with mortgage tracking, property comparisons, and checklists.",
-    category: "Personal Life", 
-    icon: Home,
-    url: "/templates/home-buying",
-    popular: true,
-    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
-    iconColor: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    id: "baby-planning",
-    name: "Baby Planning",
-    description: "Prepare for your little one with pregnancy tracking, nursery planning, and baby essentials.",
-    category: "Personal Life",
-    icon: Baby,
-    url: "/templates/baby-planning", 
-    popular: false,
-    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
-    iconColor: "text-green-600 dark:text-green-400",
-  },
-  {
-    id: "job-search",
-    name: "Job Search",
-    description: "Track applications, prepare for interviews, and organize your job search strategy.",
-    category: "Career & Business",
-    icon: Briefcase,
-    url: "/templates/job-search",
-    popular: false,
-    color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
-    iconColor: "text-purple-600 dark:text-purple-400",
-  },
-  {
-    id: "college-planning", 
-    name: "College Planning",
-    description: "Navigate college applications, track deadlines, and plan your academic future.",
-    category: "Education",
-    icon: GraduationCap,
-    url: "/templates/college-planning",
-    popular: false,
-    color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
-    iconColor: "text-yellow-600 dark:text-yellow-400",
-  },
-  {
-    id: "fitness-journey",
-    name: "Fitness Journey", 
-    description: "Track workouts, nutrition, and progress toward your health and fitness goals.",
-    category: "Health & Wellness",
-    icon: Dumbbell,
-    url: "/templates/fitness-journey",
-    popular: false,
-    color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
-    iconColor: "text-red-600 dark:text-red-400",
-  },
-  {
-    id: "academic-research",
-    name: "Academic Research",
-    description: "Organize research projects, track sources, and manage academic workflows.",
-    category: "Education",
-    icon: BookOpen,
-    url: "/templates/academic-research",
-    popular: false,
-    color: "bg-indigo-50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800",
-    iconColor: "text-indigo-600 dark:text-indigo-400",
-  },
-]
 
 interface TemplatesModalProps {
   open: boolean
@@ -113,10 +29,11 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
 
-  const categories = ["All", "Personal Life", "Career & Business", "Education", "Health & Wellness"]
+  const categories = ["All", ...getAllCategories()]
 
-  const filteredTemplates = templates.filter(template => {
-    const matchesSearch = template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  const filteredTemplates = templateRegistry.filter(template => {
+    const matchesSearch = searchQuery === "" || 
+                         template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          template.description.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory = selectedCategory === "All" || template.category === selectedCategory
     return matchesSearch && matchesCategory
@@ -171,32 +88,48 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {popularTemplates.map((template) => {
-                  const Icon = template.icon
-                  return (
-                    <Link
-                      key={template.id}
-                      href={template.url}
-                      className={`block p-6 rounded-2xl border-2 hover:shadow-md transition-all hover:scale-[1.02] ${template.color}`}
-                      onClick={() => onOpenChange(false)}
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 rounded-xl bg-background border flex items-center justify-center flex-shrink-0`}>
-                          <Icon className={`w-6 h-6 ${template.iconColor}`} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-2">
-                            <h4 className="font-semibold text-lg">{template.name}</h4>
-                            <ArrowRight className="w-4 h-4 text-muted-foreground" />
-                          </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
-                            {template.description}
-                          </p>
-                          <Badge variant="outline" className="mt-3 text-xs">
-                            {template.category}
-                          </Badge>
-                        </div>
+                  const isComingSoon = template.comingSoon
+                  const CardContent = () => (
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 rounded-xl bg-background border flex items-center justify-center flex-shrink-0`}>
+                        <div className={`text-2xl ${template.iconColor}`}>{template.icon}</div>
                       </div>
-                    </Link>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-2">
+                          <h4 className="font-semibold text-lg">{template.name}</h4>
+                          {isComingSoon ? (
+                            <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
+                          ) : (
+                            <ArrowRight className="w-4 h-4 text-muted-foreground" />
+                          )}
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {template.description}
+                        </p>
+                        <Badge variant="outline" className="mt-3 text-xs">
+                          {template.category}
+                        </Badge>
+                      </div>
+                    </div>
+                  )
+
+                  return isComingSoon ? (
+                    <div
+                      key={template.id}
+                      className={`block p-6 rounded-2xl border-2 opacity-75 ${template.color}`}
+                    >
+                      <CardContent />
+                    </div>
+                  ) : (
+                    <InteractiveGlow key={template.id}>
+                      <Link
+                        href={template.url}
+                        className={`block p-6 rounded-2xl transition-all hover:scale-[1.02] ${template.color}`}
+                        onClick={() => onOpenChange(false)}
+                      >
+                        <CardContent />
+                      </Link>
+                    </InteractiveGlow>
                   )
                 })}
               </div>
@@ -209,20 +142,20 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
               <h3 className="text-lg font-semibold mb-4">All Templates</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {otherTemplates.map((template) => {
-                  const Icon = template.icon
-                  return (
-                    <Link
-                      key={template.id}
-                      href={template.url}
-                      className="block p-4 rounded-xl border hover:shadow-md transition-all hover:scale-[1.02] bg-card"
-                      onClick={() => onOpenChange(false)}
-                    >
+                  const isComingSoon = template.comingSoon
+                  const CardContent = () => (
+                    <>
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
-                          <Icon className="w-5 h-5 text-muted-foreground" />
+                          <div className="text-lg text-muted-foreground">{template.icon}</div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold truncate">{template.name}</h4>
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-semibold truncate">{template.name}</h4>
+                            {isComingSoon && (
+                              <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
+                            )}
+                          </div>
                           <Badge variant="outline" className="text-xs">
                             {template.category}
                           </Badge>
@@ -231,7 +164,26 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {template.description}
                       </p>
-                    </Link>
+                    </>
+                  )
+
+                  return isComingSoon ? (
+                    <div
+                      key={template.id}
+                      className="block p-4 rounded-xl border opacity-75 bg-card"
+                    >
+                      <CardContent />
+                    </div>
+                  ) : (
+                    <SubtleGlow key={template.id}>
+                      <Link
+                        href={template.url}
+                        className="block p-4 rounded-xl transition-all hover:scale-[1.02] bg-card"
+                        onClick={() => onOpenChange(false)}
+                      >
+                        <CardContent />
+                      </Link>
+                    </SubtleGlow>
                   )
                 })}
               </div>

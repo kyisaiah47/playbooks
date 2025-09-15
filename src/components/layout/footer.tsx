@@ -1,6 +1,16 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
+import { FeedbackModal } from "@/components/feedback-modal"
+
+const openCommandPalette = () => {
+	const event = new KeyboardEvent('keydown', {
+		key: 'k',
+		metaKey: true,
+		bubbles: true
+	});
+	document.dispatchEvent(event);
+};
 
 export function Footer() {
 	return (
@@ -28,12 +38,12 @@ export function Footer() {
 						<h4 className="font-semibold">Templates</h4>
 						<ul className="space-y-2 text-muted-foreground">
 							<li>
-								<Link
-									href="/templates"
-									className="hover:text-foreground transition-colors"
+								<button
+									onClick={openCommandPalette}
+									className="hover:text-foreground transition-colors text-left"
 								>
 									Browse Templates
-								</Link>
+								</button>
 							</li>
 							<li>
 								<Link
@@ -52,12 +62,12 @@ export function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link
-									href="/templates"
-									className="hover:text-foreground transition-colors"
+								<button
+									onClick={openCommandPalette}
+									className="hover:text-foreground transition-colors text-left"
 								>
 									View All
-								</Link>
+								</button>
 							</li>
 						</ul>
 					</div>
@@ -125,10 +135,16 @@ export function Footer() {
 
 				<Separator className="my-8" />
 
-				<div className="flex items-center justify-between">
-					<p className="text-sm text-muted-foreground">
-						© 2024 Templata. Organize your life with templates.
-					</p>
+				<div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+					<div className="flex flex-col lg:flex-row items-center gap-4">
+						<p className="text-sm text-muted-foreground">
+							© 2024 Templata. Organize your life with templates.
+						</p>
+						<div className="flex items-center gap-1 text-sm text-muted-foreground bg-muted/30 px-3 py-1 rounded-full">
+							<span className="w-2 h-2 bg-green-500 rounded-full"></span>
+							<span>Your data is private. No ads, no resale.</span>
+						</div>
+					</div>
 					<div className="flex items-center space-x-4 text-sm text-muted-foreground">
 						<Link
 							href="#"
@@ -142,6 +158,15 @@ export function Footer() {
 						>
 							Terms
 						</Link>
+						<FeedbackModal>
+							<button className="hover:text-foreground transition-colors flex items-center gap-1">
+								💬 Feedback
+							</button>
+						</FeedbackModal>
+						<div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-muted/30 rounded-full text-xs">
+							<div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+							<span>Try <kbd className="px-1 bg-muted/60 rounded">Cmd+K</kbd> to search</span>
+						</div>
 					</div>
 				</div>
 			</div>

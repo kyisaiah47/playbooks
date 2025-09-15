@@ -1,17 +1,40 @@
+"use client";
+
 import { GalleryVerticalEnd } from "lucide-react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useAuth } from "@/contexts/auth-context"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [email, setEmail] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setIsLoggingIn(true);
+      login(email);
+
+      // Show success message briefly before redirecting
+      setTimeout(() => {
+        router.push('/');
+      }, 1500);
+    }
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center gap-2">
             <a
@@ -23,13 +46,22 @@ export function LoginForm({
               </div>
               <span className="sr-only">Templata</span>
             </a>
-            <h1 className="text-xl font-bold">Welcome to Templata</h1>
-            <div className="text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4">
-                Sign up
-              </a>
-            </div>
+            <h1 className="text-xl font-bold">
+              {isLoggingIn ? "Welcome back!" : "Welcome to Templata"}
+            </h1>
+            {!isLoggingIn && (
+              <div className="text-center text-sm">
+                Don&apos;t have an account?{" "}
+                <a href="#" className="underline underline-offset-4">
+                  Sign up
+                </a>
+              </div>
+            )}
+            {isLoggingIn && (
+              <div className="text-center text-sm text-green-600">
+                Logging you in...
+              </div>
+            )}
           </div>
           <div className="flex flex-col gap-6">
             <div className="grid gap-3">
@@ -38,19 +70,27 @@ export function LoginForm({
                 id="email"
                 type="email"
                 placeholder="m@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
-            <Button type="submit" className="w-full">
-              Send Magic Link
+            <Button type="submit" className="w-full" disabled={isLoggingIn}>
+              {isLoggingIn ? "Logging in..." : "Send Magic Link"}
             </Button>
           </div>
         </div>
       </form>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
-      </div>
+      {isLoggingIn ? (
+        <div className="text-center text-sm text-green-600 font-medium">
+          ✨ Success! Redirecting you to your dashboard...
+        </div>
+      ) : (
+        <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+          By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
+          and <a href="#">Privacy Policy</a>.
+        </div>
+      )}
     </div>
   )
 }

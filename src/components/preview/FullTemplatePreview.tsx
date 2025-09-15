@@ -28,7 +28,24 @@ import {
   Lightbulb,
   Target,
   Users,
-  Plus
+  Plus,
+  CreditCard,
+  Search,
+  ClipboardCheck,
+  Handshake,
+  Key,
+  User,
+  Send,
+  MessageCircle,
+  Scale,
+  PiggyBank,
+  Megaphone,
+  Settings,
+  CheckSquare,
+  Utensils,
+  PartyPopper,
+  Calendar as CalendarIcon,
+  UserPlus
 } from 'lucide-react';
 import {
   Breadcrumb,
@@ -74,11 +91,11 @@ const templateData = {
   "Home Buying": {
     icon: Home,
     sections: [
-      { id: 'pre-approval', title: 'Pre-Approval', icon: DollarSign },
-      { id: 'house-hunting', title: 'House Hunting', icon: Target },
-      { id: 'inspections', title: 'Inspections', icon: FileText },
-      { id: 'negotiations', title: 'Negotiations', icon: Users },
-      { id: 'closing', title: 'Closing Process', icon: BookOpen },
+      { id: 'pre-approval', title: 'Pre-Approval', icon: CreditCard },
+      { id: 'house-hunting', title: 'House Hunting', icon: Search },
+      { id: 'inspections', title: 'Inspections', icon: ClipboardCheck },
+      { id: 'negotiations', title: 'Negotiations', icon: Handshake },
+      { id: 'closing', title: 'Closing Process', icon: Key },
     ],
     prompts: [
       "What's your target price range?",
@@ -98,11 +115,11 @@ const templateData = {
   "Career Change": {
     icon: Briefcase,
     sections: [
-      { id: 'self-assessment', title: 'Self Assessment', icon: Target },
+      { id: 'self-assessment', title: 'Self Assessment', icon: User },
       { id: 'resume-portfolio', title: 'Resume & Portfolio', icon: FileText },
-      { id: 'networking', title: 'Networking', icon: Users },
-      { id: 'job-applications', title: 'Job Applications', icon: Briefcase },
-      { id: 'interviews', title: 'Interviews', icon: Users },
+      { id: 'networking', title: 'Networking', icon: UserPlus },
+      { id: 'job-applications', title: 'Job Applications', icon: Send },
+      { id: 'interviews', title: 'Interviews', icon: MessageCircle },
     ],
     prompts: [
       "What are your key transferable skills?",
@@ -122,11 +139,11 @@ const templateData = {
   "Business Launch": {
     icon: TrendingUp,
     sections: [
-      { id: 'business-plan', title: 'Business Plan', icon: FileText },
-      { id: 'legal-setup', title: 'Legal Setup', icon: BookOpen },
-      { id: 'financial-planning', title: 'Financial Planning', icon: DollarSign },
-      { id: 'marketing-strategy', title: 'Marketing Strategy', icon: Target },
-      { id: 'operations', title: 'Operations', icon: Users },
+      { id: 'business-plan', title: 'Business Plan', icon: BookOpen },
+      { id: 'legal-setup', title: 'Legal Setup', icon: Scale },
+      { id: 'financial-planning', title: 'Financial Planning', icon: PiggyBank },
+      { id: 'marketing-strategy', title: 'Marketing Strategy', icon: Megaphone },
+      { id: 'operations', title: 'Operations', icon: Settings },
     ],
     prompts: [
       "What's your business concept in one sentence?",
@@ -147,10 +164,10 @@ const templateData = {
     icon: Calendar,
     sections: [
       { id: 'event-concept', title: 'Event Concept', icon: Lightbulb },
-      { id: 'venue-catering', title: 'Venue & Catering', icon: MapPin },
-      { id: 'entertainment', title: 'Entertainment', icon: Music },
-      { id: 'logistics', title: 'Logistics', icon: Target },
-      { id: 'day-of-coordination', title: 'Day-of Coordination', icon: Users },
+      { id: 'venue-catering', title: 'Venue & Catering', icon: Utensils },
+      { id: 'entertainment', title: 'Entertainment', icon: PartyPopper },
+      { id: 'logistics', title: 'Logistics', icon: CheckSquare },
+      { id: 'day-of-coordination', title: 'Day-of Coordination', icon: CalendarIcon },
     ],
     prompts: [
       "What type of event are you planning?",
@@ -249,8 +266,10 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
                 <Breadcrumb>
                   <BreadcrumbList>
                     <BreadcrumbItem className="hidden md:block">
-                      <BreadcrumbLink href="/templates">
-                        {templateType}
+                      <BreadcrumbLink asChild>
+                        <button onClick={() => { const event = new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }); document.dispatchEvent(event); }}>
+                          {templateType}
+                        </button>
                       </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="hidden md:block" />

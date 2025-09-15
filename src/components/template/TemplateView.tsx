@@ -1,13 +1,19 @@
 'use client';
 
-import { useState } from 'react';
-import { GuidanceTemplate, Resource, ReflectionPrompt } from '@/types/template';
+import { useState, useEffect } from 'react';
+import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/template';
 import { EmbeddedPrompts } from '@/components/prompts/EmbeddedPrompts';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
-import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
+import { CommandPalette } from '@/components/command-palette';
+import { PDFExportButton } from '@/components/pdf/export-button';
+import { ExpertBadgeList } from '@/components/expert/expert-badge';
+import { getTemplateExperts } from '@/lib/expert-badges';
+import { SharePanel } from '@/components/collaboration/share-panel';
+import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3, AlertCircle } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -17,6 +23,13 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface TemplateViewProps {
   template: GuidanceTemplate;
@@ -24,11 +37,45 @@ interface TemplateViewProps {
 
 export function TemplateView({ template }: TemplateViewProps) {
   const [activeSection, setActiveSection] = useState(0);
-  const [additionalPrompts, setAdditionalPrompts] = useState<ReflectionPrompt[]>([]);
+  const [allItems, setAllItems] = useState<(ReflectionPrompt | FreeformNote)[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
+  const [responses, setResponses] = useState<Record<string, string>>({});
+  const [editMode, setEditMode] = useState(false);
+  const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [duplicateError, setDuplicateError] = useState<string | null>(null);
+  const [highlightedItem, setHighlightedItem] = useState<string | null>(null);
+
+  // Command palette keyboard shortcut
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setCommandPaletteOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
+  }, []);
+
+  // Workspace management
+  const [workspaces, setWorkspaces] = useState<Workspace[]>([
+    {
+      id: 'default',
+      name: 'Main Workspace',
+      templateId: template.id,
+      allItems: [],
+      responses: {},
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+  ]);
+  const [activeWorkspaceId, setActiveWorkspaceId] = useState<string>('default');
 
   const getSectionIcon = (sectionId: string) => {
     switch (sectionId) {
+      // Wedding Planning sections
       case 'budget-finance': return <DollarSign className="w-4 h-4" />;
       case 'venue-selection': return <MapPin className="w-4 h-4" />;
       case 'guest-management': return <UserCheck className="w-4 h-4" />;
@@ -37,20 +84,128 @@ export function TemplateView({ template }: TemplateViewProps) {
       case 'reception-planning': return <Music className="w-4 h-4" />;
       case 'styling-decor': return <Palette className="w-4 h-4" />;
       case 'attire-beauty': return <Shirt className="w-4 h-4" />;
-      default: return <Heart className="w-4 h-4" />;
+      
+      // Home Buying sections
+      case 'financial-readiness': return <DollarSign className="w-4 h-4" />;
+      case 'location-preferences': return <MapPin className="w-4 h-4" />;
+      case 'home-specifications': return <Home className="w-4 h-4" />;
+      case 'mortgage-financing': return <CreditCard className="w-4 h-4" />;
+      case 'house-hunting': return <Search className="w-4 h-4" />;
+      case 'making-offers': return <HandCoins className="w-4 h-4" />;
+      case 'closing-process': return <FileText className="w-4 h-4" />;
+      case 'moving-settling': return <Truck className="w-4 h-4" />;
+      
+      // Job Search sections
+      case 'career-assessment': return <User className="w-4 h-4" />;
+      case 'application-materials': return <PenTool className="w-4 h-4" />;
+      case 'job-searching': return <Network className="w-4 h-4" />;
+      case 'interview-preparation': return <MessageSquare className="w-4 h-4" />;
+      case 'offer-evaluation': return <CheckSquare className="w-4 h-4" />;
+      case 'career-development': return <TrendingUp className="w-4 h-4" />;
+      
+      // Baby Planning sections
+      case 'pregnancy-preparation': return <Stethoscope className="w-4 h-4" />;
+      case 'financial-planning': return <DollarSign className="w-4 h-4" />;
+      case 'nursery-preparation': return <Home className="w-4 h-4" />;
+      case 'birth-preparation': return <Calendar className="w-4 h-4" />;
+      case 'newborn-care': return <Baby className="w-4 h-4" />;
+      case 'work-life-balance': return <Activity className="w-4 h-4" />;
+      
+      default: return <Target className="w-4 h-4" />;
     }
   };
 
   const handleInsertPrompt = (prompt: ReflectionPrompt) => {
     // Check if prompt is already added
-    if (additionalPrompts.some(p => p.id === prompt.id)) {
+    if (allItems.some(item => item.id === prompt.id)) {
+      // Highlight existing item with error state
+      setHighlightedItem(prompt.id);
+
+      // Clear highlight after 1.5 seconds
+      setTimeout(() => {
+        setHighlightedItem(null);
+      }, 1500);
+
       return; // Don't add duplicates
     }
-    setAdditionalPrompts(prev => [...prev, prompt]);
+
+    const newItems = [prompt, ...allItems];
+    setAllItems(newItems);
+
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
+        : workspace
+    ));
   };
 
   const handleRemovePrompt = (promptId: string) => {
-    setAdditionalPrompts(prev => prev.filter(p => p.id !== promptId));
+    const newItems = allItems.filter(item => item.id !== promptId);
+    setAllItems(newItems);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleInsertNote = (note: { id: string; title: string }) => {
+    const freeformNote: FreeformNote = {
+      id: note.id,
+      title: note.title,
+      content: ''
+    };
+    const newItems = [freeformNote, ...allItems];
+    setAllItems(newItems);
+
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleRemoveNote = (noteId: string) => {
+    const newItems = allItems.filter(item => item.id !== noteId);
+    setAllItems(newItems);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleUpdateNote = (noteId: string, updates: Partial<FreeformNote>) => {
+    const newItems = allItems.map(item =>
+      item.id === noteId && 'title' in item ? { ...item, ...updates } : item
+    );
+    setAllItems(newItems);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleReorderItems = (items: (ReflectionPrompt | FreeformNote)[]) => {
+    setAllItems(items);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, allItems: items, updatedAt: new Date() }
+        : workspace
+    ));
   };
 
   const handleOpenResource = (resource: Resource) => {
@@ -61,15 +216,99 @@ export function TemplateView({ template }: TemplateViewProps) {
     setOpenResource(null);
   };
 
+  const handleResponsesChange = (newResponses: Record<string, string>) => {
+    setResponses(newResponses);
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, responses: newResponses, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleWorkspaceChange = (workspaceId: string) => {
+    // Save current state to current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? {
+            ...workspace,
+            allItems,
+            responses,
+            updatedAt: new Date()
+          }
+        : workspace
+    ));
+
+    // Load new workspace state
+    const newWorkspace = workspaces.find(w => w.id === workspaceId);
+    if (newWorkspace) {
+      setActiveWorkspaceId(workspaceId);
+      setAllItems(newWorkspace.allItems || []);
+      setResponses(newWorkspace.responses);
+    }
+  };
+
+  const handleCreateWorkspace = () => {
+    const newWorkspace: Workspace = {
+      id: `workspace-${Date.now()}`,
+      name: `Workspace ${workspaces.length}`,
+      templateId: template.id,
+      allItems: [],
+      responses: {},
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    setWorkspaces(prev => [...prev, newWorkspace]);
+    handleWorkspaceChange(newWorkspace.id);
+  };
+
+  const handleToggleComplete = (itemId: string) => {
+    const newCompletedItems = new Set(completedItems);
+    if (newCompletedItems.has(itemId)) {
+      newCompletedItems.delete(itemId);
+    } else {
+      newCompletedItems.add(itemId);
+    }
+    setCompletedItems(newCompletedItems);
+  };
+
+
+  // Calculate completion stats
+  const completedPrompts = completedItems.size;
+  const totalPrompts = allItems.length;
+
+  // Get experts for this template
+  const templateExperts = getTemplateExperts(template.id);
+
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground">
+        <CommandPalette
+          isOpen={commandPaletteOpen}
+          onClose={() => setCommandPaletteOpen(false)}
+          mode="template-mode"
+          templateMode={{
+            template,
+            onSectionChange: setActiveSection,
+            onInsertPrompt: handleInsertPrompt,
+            onOpenResource: handleOpenResource
+          }}
+        />
         <TemplataContentSidebar
           template={template}
           activeSection={activeSection}
           onSectionChange={setActiveSection}
           onInsertPrompt={handleInsertPrompt}
+          onInsertNote={handleInsertNote}
           onOpenResource={handleOpenResource}
+          responses={responses}
+          workspaces={workspaces.map(w => ({ id: w.id, name: w.name }))}
+          activeWorkspaceId={activeWorkspaceId}
+          onWorkspaceChange={handleWorkspaceChange}
+          onCreateWorkspace={handleCreateWorkspace}
+          highlightedItem={highlightedItem}
+          allItems={allItems}
         />
         
         <main className="flex-1 flex overflow-hidden bg-background">
@@ -83,37 +322,63 @@ export function TemplateView({ template }: TemplateViewProps) {
               />
               <Breadcrumb>
                 <BreadcrumbList>
-                  <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink href="/templates">
-                      {template.title}
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator className="hidden md:block" />
                   <BreadcrumbItem>
-                    <div className="flex items-center gap-2">
-                      {getSectionIcon(template.sections[activeSection].id)}
-                      <BreadcrumbPage>{template.sections[activeSection].title}</BreadcrumbPage>
-                    </div>
+                    <BreadcrumbPage className="text-sm font-medium">{template.title}</BreadcrumbPage>
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>
-              <div className="ml-auto">
-                <ThemeSelector />
+              <div className="ml-auto flex items-center gap-3">
+                <div className="flex flex-col items-end gap-1">
+                  {totalPrompts > 0 && (
+                    <>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span className="font-medium">{completedPrompts}/{totalPrompts}</span>
+                        <span>completed</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Progress
+                          value={(completedPrompts / totalPrompts) * 100}
+                          className="w-20 h-2 [&>div]:bg-green-500"
+                        />
+                        <span className="text-xs font-medium text-muted-foreground">{Math.round((completedPrompts / totalPrompts) * 100)}%</span>
+                      </div>
+                    </>
+                  )}
+                </div>
+                {allItems.length > 0 && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setEditMode(!editMode)}
+                    className={`h-8 w-8 p-0 ${editMode ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+                  >
+                    <Edit3 className="w-4 h-4" />
+                  </Button>
+                )}
               </div>
             </header>
-            <EmbeddedPrompts 
-              section={template.sections[activeSection]} 
-              additionalPrompts={additionalPrompts}
+            <EmbeddedPrompts
+              section={template.sections[activeSection]}
+              allItems={allItems}
               onRemovePrompt={handleRemovePrompt}
+              onRemoveNote={handleRemoveNote}
+              onUpdateNote={handleUpdateNote}
+              onReorderItems={handleReorderItems}
+              onResponsesChange={handleResponsesChange}
+              responses={responses}
               hideHeader={true}
+              editMode={editMode}
+              completedItems={completedItems}
+              onToggleComplete={handleToggleComplete}
+              highlightedItem={highlightedItem}
             />
           </div>
 
           {/* Resource Panel */}
           {openResource && (
             <div className="w-1/2 overflow-auto bg-muted/20">
-              <ResourceViewer 
-                resource={openResource} 
+              <ResourceViewer
+                resource={openResource}
                 onClose={handleCloseResource}
               />
             </div>
