@@ -34,7 +34,18 @@
       "Bash(timeout 5 npx shadcn@latest add \"https://21st.dev/r/reuno-ui/background-paper-shaders\")",
       "Bash(npm i:*)",
       "Bash(git restore:*)",
-      "Read(//Users/ikim1/Desktop/**)"
+      "Read(//Users/ikim1/Desktop/**)",
+      "Bash(for dir in */)",
+      "Bash(do echo \"=== $dir ===\")",
+      "Bash(if [ -f \"$dirpage.tsx\" ])",
+      "Bash(then echo \"✅ Landing page exists\")",
+      "Bash(else echo \"❌ Landing page missing\")",
+      "Bash(fi)",
+      "Bash(if [ -f \"$dirapp/page.tsx\" ])",
+      "Bash(then echo \"✅ App page exists\")",
+      "Bash(else echo \"❌ App page missing\")",
+      "Bash(done)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
