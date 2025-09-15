@@ -45,7 +45,7 @@ import {
   Globe,
   FileText
 } from "lucide-react"
-import { GlowingEffect } from "@/components/ui/glowing-effect"
+import { PremiumGlow } from "@/components/ui/glow-variants"
 import { useFavorites } from "@/hooks/use-favorites"
 import { useRecentTemplates } from "@/hooks/use-recent-templates"
 import { useSmartRecommendations } from "@/hooks/use-smart-recommendations"
@@ -613,18 +613,10 @@ export function CommandPalette({
                       </div>
                       <div className="space-y-3">
                         {templateSpecificData.prompts.slice(0, 8).map((prompt: any) => (
-                          <div key={prompt.id} className="relative rounded-[1.25rem] border-[0.75px] border-border p-2">
-                            <GlowingEffect
-                              spread={40}
-                              glow={true}
-                              disabled={false}
-                              proximity={64}
-                              inactiveZone={0.01}
-                              borderWidth={3}
-                            />
+                          <PremiumGlow key={prompt.id}>
                             <button
                               onClick={() => handlePromptClick(prompt)}
-                              className="relative w-full group flex items-start gap-3 p-4 rounded-xl border-[0.75px] bg-background transition-all duration-200 hover:shadow-sm text-left dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]"
+                              className="w-full group flex items-start gap-3 p-4 transition-all duration-200 text-left"
                             >
                               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                                 <MessageCircle className="w-4 h-4 text-primary" />
@@ -641,7 +633,7 @@ export function CommandPalette({
                               </div>
                               <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
                             </button>
-                          </div>
+                          </PremiumGlow>
                         ))}
                       </div>
                     </div>

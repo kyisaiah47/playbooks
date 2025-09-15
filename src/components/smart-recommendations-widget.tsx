@@ -22,6 +22,7 @@ import {
 } from "lucide-react"
 import { useSmartRecommendations } from "@/hooks/use-smart-recommendations"
 import { useFavorites } from "@/hooks/use-favorites"
+import { SubtleGlow } from "@/components/ui/glow-variants"
 
 const getTemplateIcon = (templateId: string) => {
   switch (templateId) {
@@ -130,13 +131,13 @@ export function SmartRecommendationsWidget({
             const isStarred = isFavorited(rec.id)
 
             return (
-              <Link
-                key={rec.id}
-                href={rec.url}
-                onClick={() => handleClick(rec)}
-                className="block"
-              >
-                <div className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50 bg-gradient-to-r from-blue-50/50 to-transparent border border-blue-100/50 hover:border-blue-200/70">
+              <SubtleGlow key={rec.id}>
+                <Link
+                  href={rec.url}
+                  onClick={() => handleClick(rec)}
+                  className="block"
+                >
+                  <div className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:bg-muted/50 bg-gradient-to-r from-blue-50/50 to-transparent">
                   <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
                     <Icon className="w-4 h-4 text-blue-600" />
                   </div>
@@ -166,8 +167,9 @@ export function SmartRecommendationsWidget({
                     </Button>
                     <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-blue-600 transition-colors" />
                   </div>
-                </div>
-              </Link>
+                  </div>
+                </Link>
+              </SubtleGlow>
             )
           })}
         </div>

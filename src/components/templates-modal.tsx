@@ -17,6 +17,7 @@ import {
   Search,
   ArrowRight,
 } from "lucide-react"
+import { InteractiveGlow, SubtleGlow } from "@/components/ui/glow-variants"
 
 
 interface TemplatesModalProps {
@@ -120,14 +121,15 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
                       <CardContent />
                     </div>
                   ) : (
-                    <Link
-                      key={template.id}
-                      href={template.url}
-                      className={`block p-6 rounded-2xl border-2 hover:shadow-md transition-all hover:scale-[1.02] ${template.color}`}
-                      onClick={() => onOpenChange(false)}
-                    >
-                      <CardContent />
-                    </Link>
+                    <InteractiveGlow key={template.id}>
+                      <Link
+                        href={template.url}
+                        className={`block p-6 rounded-2xl transition-all hover:scale-[1.02] ${template.color}`}
+                        onClick={() => onOpenChange(false)}
+                      >
+                        <CardContent />
+                      </Link>
+                    </InteractiveGlow>
                   )
                 })}
               </div>
@@ -173,14 +175,15 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
                       <CardContent />
                     </div>
                   ) : (
-                    <Link
-                      key={template.id}
-                      href={template.url}
-                      className="block p-4 rounded-xl border hover:shadow-md transition-all hover:scale-[1.02] bg-card"
-                      onClick={() => onOpenChange(false)}
-                    >
-                      <CardContent />
-                    </Link>
+                    <SubtleGlow key={template.id}>
+                      <Link
+                        href={template.url}
+                        className="block p-4 rounded-xl transition-all hover:scale-[1.02] bg-card"
+                        onClick={() => onOpenChange(false)}
+                      >
+                        <CardContent />
+                      </Link>
+                    </SubtleGlow>
                   )
                 })}
               </div>

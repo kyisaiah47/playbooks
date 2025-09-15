@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb, Circle, CheckCircle2, FileText, GripVertical, Edit3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { PremiumGlow } from '@/components/ui/glow-variants';
 import { Progress } from '@/components/ui/progress';
 import {
   Tooltip,
@@ -221,20 +221,12 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
                   const isAdditional = additionalPrompts.some(p => p.id === prompt.id);
                   const hasContent = responses[prompt.id]?.trim();
                   return (
-                    <div className="relative rounded-[1.25rem] border-[0.75px] border-border p-2">
-                      <GlowingEffect
-                        spread={40}
-                        glow={true}
-                        disabled={false}
-                        proximity={64}
-                        inactiveZone={0.01}
-                        borderWidth={3}
-                      />
+                    <PremiumGlow>
                       <div
                         draggable={editMode}
                         onDragStart={(e) => handleDragStart(e, prompt.id, 'prompt')}
                         onDragEnd={handleDragEnd}
-                        className={`group relative bg-background border-[0.75px] rounded-xl p-4 transition-all duration-200 hover:shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] ${
+                        className={`group p-4 transition-all duration-200 ${
                           editMode ? 'cursor-move' : ''
                         } ${
                           draggedItem === prompt.id ? 'opacity-50 scale-95' : ''
@@ -311,7 +303,7 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
                         💡 Drag resources from the right panel to auto-fill
                       </div>
                       </div>
-                    </div>
+                    </PremiumGlow>
                   );
                 })()}
 
