@@ -7,6 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { X, Clock, BookOpen, ExternalLink, Plus, CheckCircle, ArrowLeft, Circle, Lightbulb, DollarSign, Calendar, Users, Camera } from 'lucide-react';
 import Link from 'next/link';
 import { InteractiveGlow } from '@/components/ui/glow-variants';
+import { Highlighter } from '@/components/ui/highlighter';
+import { motion, useScroll } from 'motion/react';
 
 interface ResourceViewerProps {
   resource: Resource;
@@ -29,6 +31,11 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Use framer motion's useScroll with specific container
+  const { scrollYProgress } = useScroll({
+    container: scrollContainerRef
+  });
 
   // Track reading progress
   const handleScroll = useCallback(() => {
@@ -133,12 +140,12 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
         }
       `}</style>
       {/* Reading Progress Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-muted/30 z-10">
-        <div
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 ease-out"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-1 z-10 origin-left bg-gradient-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]"
+        style={{
+          scaleX: scrollYProgress,
+        }}
+      />
 
       {/* Gradient Header Background */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-primary/5 via-primary/2 to-transparent pointer-events-none" />
@@ -167,7 +174,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
           <div className="text-sm text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
             {resource.excerpt.split('**').map((part, index) =>
               index % 2 === 1 ? (
-                <strong key={index} className="font-semibold text-foreground/90 bg-primary/10 px-1 rounded">
+                <strong key={index} className="font-semibold text-foreground/90">
                   {part}
                 </strong>
               ) : part
@@ -238,7 +245,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 <div className="text-muted-foreground leading-relaxed" style={{ fontSize: 'var(--font-size)', lineHeight: 'var(--line-height)' }}>
                   {resource.excerpt.split('**').map((part, index) =>
                     index % 2 === 1 ? (
-                      <strong key={index} className="font-semibold text-foreground bg-primary/10 px-1.5 py-0.5 rounded-md">
+                      <strong key={index} className="font-semibold text-foreground">
                         {part}
                       </strong>
                     ) : part
@@ -290,7 +297,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
 
                   return (
                     <div key={index} className="my-6 ml-2">
-                      <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 border-l-2 border-primary/40">
+                      <div className="flex items-center gap-3 p-3">
                         <span className="text-lg">{getSubheaderIcon(subheaderText)}</span>
                         <h4 className="font-bold text-lg text-foreground/90">
                           {subheaderText}
@@ -350,7 +357,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                       if (match.index > currentIndex) {
                         parts.push(text.slice(currentIndex, match.index));
                       }
-                      parts.push(<strong key={match.index} className="font-semibold text-foreground bg-primary/10 px-1 rounded">{match[1]}</strong>);
+                      parts.push(<strong key={match.index} className="font-semibold text-foreground">{match[1]}</strong>);
                       currentIndex = match.index + match[0].length;
                     }
 
@@ -378,8 +385,8 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                   const parts: (string | React.JSX.Element)[] = [];
                   let currentIndex = 0;
 
-                  // Combined regex for bold text, percentages, and dollar amounts
-                  const combinedRegex = /(\*\*(.*?)\*\*|(\d+(?:\.\d+)?(?:–|-)\d+(?:\.\d+)?%|\d+(?:\.\d+)?%)|(\$[\d,]+(?:–|-\$[\d,]+)?|\$\d+(?:\.\d+)?(?:k|K|m|M)?(?:–|-\$\d+(?:\.\d+)?(?:k|K|m|M)?)?))/g;
+                  // Combined regex for bold text, highlights, underlines, percentages, and dollar amounts
+                  const combinedRegex = /(\*\*(.*?)\*\*|==(.*?)==|__(.*?)__|(\d+(?:\.\d+)?(?:–|-)\d+(?:\.\d+)?%|\d+(?:\.\d+)?%)|(\$[\d,]+(?:–|-\$[\d,]+)?|\$\d+(?:\.\d+)?(?:k|K|m|M)?(?:–|-\$\d+(?:\.\d+)?(?:k|K|m|M)?)?))/g;
                   let match;
 
                   while ((match = combinedRegex.exec(text)) !== null) {
@@ -389,10 +396,40 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
 
                     if (match[1].startsWith('**')) {
                       // Bold text
-                      parts.push(<strong key={match.index} className="font-semibold text-foreground bg-primary/10 px-1 rounded">{match[2]}</strong>);
-                    } else if (match[3]) {
+                      parts.push(<strong key={match.index} className="font-semibold text-foreground">{match[2]}</strong>);
+                    } else if (match[1].startsWith('==')) {
+                      // Highlighted text - subtle yellow highlight with underline
+                      const highlightedText = match[3];
+                      parts.push(
+                        <Highlighter
+                          key={match.index}
+                          action="underline"
+                          color="#fbbf24"
+                          isView={true}
+                          animationDuration={800}
+                          strokeWidth={2}
+                        >
+{highlightedText}
+                        </Highlighter>
+                      );
+                    } else if (match[1].startsWith('__')) {
+                      // Underlined text - purple underline
+                      const underlinedText = match[4];
+                      parts.push(
+                        <Highlighter
+                          key={match.index}
+                          action="underline"
+                          color="#a855f7"
+                          isView={true}
+                          animationDuration={600}
+                          strokeWidth={2}
+                        >
+                          {underlinedText}
+                        </Highlighter>
+                      );
+                    } else if (match[5]) {
                       // Percentage or range
-                      const percentage = match[3];
+                      const percentage = match[5];
                       const badgeColor = percentage.includes('–') || percentage.includes('-')
                         ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 border border-purple-200 dark:border-purple-700'
                         : 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700';
@@ -402,9 +439,9 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                           {percentage}
                         </span>
                       );
-                    } else if (match[4]) {
+                    } else if (match[6]) {
                       // Dollar amount
-                      const dollarAmount = match[4];
+                      const dollarAmount = match[6];
                       const dollarBadgeColor = 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700';
 
                       parts.push(

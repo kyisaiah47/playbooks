@@ -283,7 +283,7 @@ export function TemplateView({ template }: TemplateViewProps) {
 
   return (
     <SidebarProvider>
-      <div className="flex h-screen w-full bg-background text-foreground">
+      <div className="flex h-screen w-full bg-background text-foreground overflow-hidden [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [-ms-overflow-style:none] [scrollbar-width:none]">
         <CommandPalette
           isOpen={commandPaletteOpen}
           onClose={() => setCommandPaletteOpen(false)}
