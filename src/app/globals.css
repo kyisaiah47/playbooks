@@ -69,6 +69,24 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --font-geist-mono: var(----font-geist-mono);
   --font-geist-sans: var(----font-geist-sans);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
 }
 
 :root {
@@ -264,4 +282,27 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+/* Marquee animation classes */
+.animate-marquee {
+  animation: marquee var(--duration, 20s) infinite linear;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 20s) infinite linear;
+}
+
+/* Reverse marquee animation */
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration, 20s) infinite linear;
 }
