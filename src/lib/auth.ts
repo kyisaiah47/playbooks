@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
       // Send properties to the client
       if (token) {
         session.user.id = token.userId as string;
-        session.accessToken = token.accessToken;
+        session.accessToken = token.accessToken as string;
       }
       return session;
     },

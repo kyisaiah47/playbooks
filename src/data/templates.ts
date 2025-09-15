@@ -11716,6 +11716,7 @@ export const podcastContentCreationTemplate: GuidanceTemplate = {
 export const languageLearningCulturalImmersionTemplate: GuidanceTemplate = {
   id: 'language-learning-cultural-immersion',
   title: 'Language Learning & Cultural Immersion',
+  description: 'Master a new language through structured learning and authentic cultural immersion',
   category: 'education-culture',
   icon: '🌏',
   sections: [
@@ -12034,6 +12035,43 @@ export const languageLearningCulturalImmersionTemplate: GuidanceTemplate = {
       tags: ['advanced-proficiency', 'certification-prep', 'specialized-applications', 'long-term-maintenance'],
       readTime: '24 min',
       difficulty: 'expert'
+    }
+  ],
+  expertTips: [
+    {
+      id: 'immersion-mindset-tip',
+      tip: 'Think in the target language daily, even for simple thoughts. This builds neural pathways faster than translation.',
+      author: 'Benny Lewis, Fluent in 3 Months',
+      category: 'execution',
+      importance: 'high'
+    },
+    {
+      id: 'mistake-embrace-tip',
+      tip: 'Make mistakes early and often. Speaking imperfectly builds confidence faster than studying grammar perfectly.',
+      author: 'Gabriel Wyner, Fluent Forever',
+      category: 'execution',
+      importance: 'high'
+    },
+    {
+      id: 'cultural-context-tip',
+      tip: 'Learn cultural context alongside language. Understanding why people say things helps retention more than memorizing phrases.',
+      author: 'Olly Richards, I Will Teach You A Language',
+      category: 'planning',
+      importance: 'medium'
+    },
+    {
+      id: 'consistency-over-intensity-tip',
+      tip: 'Study 30 minutes daily rather than 3 hours weekly. Consistent exposure builds lasting language skills.',
+      author: 'Duolingo Research Team',
+      category: 'execution',
+      importance: 'high'
+    },
+    {
+      id: 'native-content-tip',
+      tip: 'Consume content created for native speakers as soon as possible, even if you understand little at first.',
+      author: 'Steve Kaufmann, LingQ',
+      category: 'optimization',
+      importance: 'medium'
     }
   ]
 };

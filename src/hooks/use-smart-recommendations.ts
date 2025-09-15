@@ -162,7 +162,7 @@ export function useSmartRecommendations() {
       let reason = ""
 
       // Base popularity score
-      if (item.popular || item.featured) score += 10
+      if ((item as any).popular || (item as any).featured) score += 10
 
       // Category affinity based on viewing history
       const categoryViews = context.viewedCategories[item.category] || 0
@@ -263,7 +263,7 @@ export function useSmartRecommendations() {
 
       // Default reason if none set
       if (!reason && score > 0) {
-        reason = item.popular ? "Popular choice" : "Recommended for you"
+        reason = (item as any).popular ? "Popular choice" : "Recommended for you"
       }
 
       // Only include items with a reasonable score
@@ -277,9 +277,9 @@ export function useSmartRecommendations() {
           url: item.url,
           reason,
           score,
-          icon: item.icon,
-          popular: item.popular,
-          featured: item.featured
+          icon: (item as any).icon,
+          popular: (item as any).popular,
+          featured: (item as any).featured
         })
       }
     }
