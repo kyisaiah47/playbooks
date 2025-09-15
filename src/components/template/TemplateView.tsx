@@ -132,6 +132,7 @@ export function TemplateView({ template }: TemplateViewProps) {
     const newItems = [prompt, ...allItems];
     setAllItems(newItems);
 
+
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
@@ -160,6 +161,7 @@ export function TemplateView({ template }: TemplateViewProps) {
     };
     const newItems = [freeformNote, ...allItems];
     setAllItems(newItems);
+
 
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
