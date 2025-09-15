@@ -31,14 +31,16 @@ interface EmbeddedPromptsProps {
   editMode?: boolean;
   completedItems?: Set<string>;
   onToggleComplete?: (itemId: string) => void;
+  highlightedItem?: string | null;
 }
 
-export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onRemovePrompt, onRemoveNote, onUpdateNote, onReorderItems, hideHeader, responses: externalResponses, editMode: externalEditMode = false, completedItems = new Set(), onToggleComplete }: EmbeddedPromptsProps) {
+export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onRemovePrompt, onRemoveNote, onUpdateNote, onReorderItems, hideHeader, responses: externalResponses, editMode: externalEditMode = false, completedItems = new Set(), onToggleComplete, highlightedItem }: EmbeddedPromptsProps) {
   const [responses, setResponses] = useState<Record<string, string>>(externalResponses || {});
   const [draggedOver, setDraggedOver] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
+  const [newlyAddedItems, setNewlyAddedItems] = useState<Set<string>>(new Set());
   const editMode = externalEditMode;
 
   // Sync external responses
@@ -47,6 +49,20 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
       setResponses(externalResponses);
     }
   }, [externalResponses]);
+
+  // Scroll highlighted item into view
+  useEffect(() => {
+    if (highlightedItem) {
+      const element = document.querySelector(`[data-item-id="${highlightedItem}"]`);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'nearest'
+        });
+      }
+    }
+  }, [highlightedItem]);
 
   const handleResponseChange = (promptId: string, value: string) => {
     const newResponses = { ...responses, [promptId]: value };
@@ -244,6 +260,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                   return (
                     <PremiumGlow>
                       <div
+                        data-item-id={prompt.id}
                         draggable={editMode}
                         onDragStart={(e) => handleDragStart(e, prompt.id, 'prompt')}
                         onDragEnd={handleDragEnd}
@@ -251,6 +268,8 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                           editMode ? 'cursor-move' : ''
                         } ${
                           draggedItem === prompt.id ? 'opacity-50 scale-95' : ''
+                        } ${
+                          highlightedItem === prompt.id ? 'animate-pulse border-2 border-blue-500 bg-blue-50/50 dark:bg-blue-950/30 shadow-lg shadow-blue-500/20 rounded-xl' : ''
                         }`}
                       >
                       <div className="flex items-start gap-3 mb-3">

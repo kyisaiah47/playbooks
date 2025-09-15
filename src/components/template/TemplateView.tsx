@@ -13,7 +13,7 @@ import { PDFExportButton } from '@/components/pdf/export-button';
 import { ExpertBadgeList } from '@/components/expert/expert-badge';
 import { getTemplateExperts } from '@/lib/expert-badges';
 import { SharePanel } from '@/components/collaboration/share-panel';
-import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3 } from 'lucide-react';
+import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3, AlertCircle } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -43,6 +43,8 @@ export function TemplateView({ template }: TemplateViewProps) {
   const [editMode, setEditMode] = useState(false);
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [duplicateError, setDuplicateError] = useState<string | null>(null);
+  const [highlightedItem, setHighlightedItem] = useState<string | null>(null);
 
   // Command palette keyboard shortcut
   useEffect(() => {
@@ -116,8 +118,17 @@ export function TemplateView({ template }: TemplateViewProps) {
   const handleInsertPrompt = (prompt: ReflectionPrompt) => {
     // Check if prompt is already added
     if (allItems.some(item => item.id === prompt.id)) {
+      // Highlight existing item with error state
+      setHighlightedItem(prompt.id);
+
+      // Clear highlight after 1.5 seconds
+      setTimeout(() => {
+        setHighlightedItem(null);
+      }, 1500);
+
       return; // Don't add duplicates
     }
+
     const newItems = [prompt, ...allItems];
     setAllItems(newItems);
 
@@ -294,6 +305,7 @@ export function TemplateView({ template }: TemplateViewProps) {
           activeWorkspaceId={activeWorkspaceId}
           onWorkspaceChange={handleWorkspaceChange}
           onCreateWorkspace={handleCreateWorkspace}
+          highlightedItem={highlightedItem}
         />
         
         <main className="flex-1 flex overflow-hidden bg-background">
@@ -355,6 +367,7 @@ export function TemplateView({ template }: TemplateViewProps) {
               editMode={editMode}
               completedItems={completedItems}
               onToggleComplete={handleToggleComplete}
+              highlightedItem={highlightedItem}
             />
           </div>
 

@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon, ExternalLink } from "lucide-react"
+import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon, ExternalLink, Ban } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import { ThemeSelector } from "@/components/theme-selector"
@@ -337,6 +337,7 @@ interface TemplataContentSidebarProps {
   activeWorkspaceId?: string
   onWorkspaceChange?: (workspaceId: string) => void
   onCreateWorkspace?: () => void
+  highlightedItem?: string | null
 }
 
 export function TemplataContentSidebar({
@@ -351,6 +352,7 @@ export function TemplataContentSidebar({
   activeWorkspaceId,
   onWorkspaceChange,
   onCreateWorkspace,
+  highlightedItem,
   ...props
 }: TemplataContentSidebarProps & React.ComponentProps<typeof Sidebar>) {
   const [activeTab, setActiveTab] = React.useState<'prompts' | 'resources' | 'related'>('prompts')
@@ -592,13 +594,20 @@ export function TemplataContentSidebar({
                   <SubtleGlow>
                     <button
                       onClick={() => onInsertPrompt?.(prompt)}
-                      className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 p-4 text-sm leading-tight w-full text-left group/prompt overflow-hidden rounded-lg"
+                      className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 p-4 text-sm leading-tight w-full text-left group/prompt overflow-hidden rounded-lg transition-all duration-200"
                     >
                     <div className="flex w-full items-center gap-2">
                       <Badge className={`text-xs ${getCategoryColor(prompt.category)}`}>
                         {prompt.category}
                       </Badge>
-                      <ArrowRight className="ml-auto w-3 h-3 opacity-30 group-hover/prompt:opacity-100 group-hover/prompt:translate-x-1 transition-all duration-200" />
+                      {highlightedItem === prompt.id ? (
+                        <div className="ml-auto flex items-center gap-1 text-destructive animate-pulse">
+                          <span className="text-xs font-medium">Already added</span>
+                          <Ban className="w-4 h-4" />
+                        </div>
+                      ) : (
+                        <ArrowRight className="ml-auto w-3 h-3 opacity-30 group-hover/prompt:opacity-100 group-hover/prompt:translate-x-1 transition-all duration-200" />
+                      )}
                     </div>
                     <span className="font-medium line-clamp-2">{prompt.prompt}</span>
                     {prompt.helpText && (
