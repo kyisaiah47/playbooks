@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb, Circle, CheckCircle2, FileText, GripVertical, Edit3 } from 'lucide-react';
+import Prism from '@/components/ui/prism';
+import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal';
 import { Button } from '@/components/ui/button';
 import { PremiumGlow } from '@/components/ui/glow-variants';
 import { Progress } from '@/components/ui/progress';
@@ -156,27 +158,64 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
         )}
 
       {/* Main Content */}
-      {activeItems.length === 0 && completedItemsList.length === 0 ? (
-        /* Aspirational Empty State */
-        <div className="text-center py-12 border-2 border-dashed border-primary/20 bg-gradient-to-br from-primary/5 to-transparent rounded-lg">
-          <div className="flex items-center justify-center mb-4">
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-              <Target className="h-6 w-6 text-primary" />
+      <div className="relative">
+        {activeItems.length === 0 && completedItemsList.length === 0 ? (
+          /* Empty State with Prism Background */
+          <div className="relative h-[93vh]">
+            {/* Prism Background - Only in Empty State */}
+            <div className="absolute inset-0 rounded-lg overflow-hidden">
+              <Prism
+                height={3.5}
+                baseWidth={5.5}
+                animationType="rotate"
+                glow={0.8}
+                noise={0.3}
+                transparent={true}
+                scale={2.8}
+                hueShift={0.5}
+                colorFrequency={1.2}
+                timeScale={0.3}
+                suspendWhenOffscreen={true}
+              />
+            </div>
+            <div className="relative flex flex-col items-center justify-center h-full z-10 bg-background/10 backdrop-blur-[1px]">
+            <div className="text-center p-8">
+              <div className="flex items-center justify-start mb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
+                  <Target className="h-6 w-6 text-primary" />
+                </div>
+              </div>
+              <VerticalCutReveal
+                staggerDuration={0.1}
+                staggerFrom="center"
+                transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                containerClassName="text-lg font-semibold mb-2 text-foreground"
+              >
+                Build your personalized guide
+              </VerticalCutReveal>
+              <VerticalCutReveal
+                staggerDuration={0.05}
+                staggerFrom="first"
+                transition={{ type: "spring", stiffness: 180, damping: 20, delay: 0.8 }}
+                containerClassName="text-sm text-muted-foreground mb-4 max-w-sm mx-auto"
+              >
+                Add prompts from the sidebar to create your customized planning experience. ← Your journey starts here.
+              </VerticalCutReveal>
+              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <Plus className="h-4 w-4" />
+                <VerticalCutReveal
+                  staggerDuration={0.08}
+                  transition={{ type: "spring", stiffness: 160, damping: 18, delay: 1.5 }}
+                >
+                  Select prompts to begin your planning
+                </VerticalCutReveal>
+              </div>
+            </div>
             </div>
           </div>
-          <h3 className="text-lg font-semibold mb-2">Build your personalized guide</h3>
-          <p className="text-sm text-muted-foreground mb-4 max-w-sm mx-auto">
-            Add prompts from the sidebar to create your customized planning experience.
-            ← Your journey starts here.
-          </p>
-          <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <Plus className="h-4 w-4" />
-            <span>Select prompts to begin your planning</span>
-          </div>
-        </div>
-      ) : (
+        ) : (
         /* Enhanced Prompts and Notes with Drop Zones */
-        <div className="p-4 space-y-6">
+        <div className="relative p-4 space-y-6 z-10 bg-background/20 backdrop-blur-[2px]">
           {/* Active Items Section */}
           {activeItems.length > 0 && (
             <div>
@@ -439,7 +478,8 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
             </div>
           )}
         </div>
-      )}
+        )}
+      </div>
       </div>
     </TooltipProvider>
   );
