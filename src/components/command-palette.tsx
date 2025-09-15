@@ -613,27 +613,26 @@ export function CommandPalette({
                       </div>
                       <div className="space-y-3">
                         {templateSpecificData.prompts.slice(0, 8).map((prompt: any) => (
-                          <PremiumGlow key={prompt.id}>
-                            <button
-                              onClick={() => handlePromptClick(prompt)}
-                              className="w-full group flex items-start gap-3 p-4 transition-all duration-200 text-left"
-                            >
-                              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                                <MessageCircle className="w-4 h-4 text-primary" />
+                          <button
+                            key={prompt.id}
+                            onClick={() => handlePromptClick(prompt)}
+                            className="w-full group flex items-start gap-3 p-4 transition-all duration-200 text-left rounded-lg border bg-background hover:bg-muted/50"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <MessageCircle className="w-4 h-4 text-primary" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h5 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-2 mb-1">
+                                {prompt.prompt}
+                              </h5>
+                              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                <span className="px-2 py-1 bg-muted/50 rounded-md">{prompt.category}</span>
+                                <span>•</span>
+                                <span>from {prompt.sectionTitle}</span>
                               </div>
-                              <div className="flex-1 min-w-0">
-                                <h5 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-2 mb-1">
-                                  {prompt.prompt}
-                                </h5>
-                                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                                  <span className="px-2 py-1 bg-muted/50 rounded-md">{prompt.category}</span>
-                                  <span>•</span>
-                                  <span>from {prompt.sectionTitle}</span>
-                                </div>
-                              </div>
-                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
-                            </button>
-                          </PremiumGlow>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
+                          </button>
                         ))}
                       </div>
                     </div>
