@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/template';
 import { EmbeddedPrompts } from '@/components/prompts/EmbeddedPrompts';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
@@ -8,12 +8,12 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
 import { Progress } from '@/components/ui/progress';
-import { CommandPalette } from '@/components/template-command-palette';
+import { CommandPalette } from '@/components/command-palette';
 import { PDFExportButton } from '@/components/pdf/export-button';
 import { ExpertBadgeList } from '@/components/expert/expert-badge';
 import { getTemplateExperts } from '@/lib/expert-badges';
 import { SharePanel } from '@/components/collaboration/share-panel';
-import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus } from 'lucide-react';
+import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3 } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -41,6 +41,22 @@ export function TemplateView({ template }: TemplateViewProps) {
   const [additionalNotes, setAdditionalNotes] = useState<FreeformNote[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
   const [responses, setResponses] = useState<Record<string, string>>({});
+  const [editMode, setEditMode] = useState(false);
+  const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+
+  // Command palette keyboard shortcut
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setCommandPaletteOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
+  }, []);
 
   // Workspace management
   const [workspaces, setWorkspaces] = useState<Workspace[]>([
@@ -104,7 +120,7 @@ export function TemplateView({ template }: TemplateViewProps) {
     if (additionalPrompts.some(p => p.id === prompt.id)) {
       return; // Don't add duplicates
     }
-    const newPrompts = [...additionalPrompts, prompt];
+    const newPrompts = [prompt, ...additionalPrompts];
     setAdditionalPrompts(newPrompts);
 
     // Update current workspace
@@ -133,7 +149,7 @@ export function TemplateView({ template }: TemplateViewProps) {
       title: note.title,
       content: ''
     };
-    const newNotes = [...additionalNotes, freeformNote];
+    const newNotes = [freeformNote, ...additionalNotes];
     setAdditionalNotes(newNotes);
 
     // Update current workspace
@@ -166,6 +182,28 @@ export function TemplateView({ template }: TemplateViewProps) {
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
         ? { ...workspace, additionalNotes: newNotes, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleReorderPrompts = (prompts: ReflectionPrompt[]) => {
+    setAdditionalPrompts(prompts);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, additionalPrompts: prompts, updatedAt: new Date() }
+        : workspace
+    ));
+  };
+
+  const handleReorderNotes = (notes: FreeformNote[]) => {
+    setAdditionalNotes(notes);
+
+    // Update current workspace
+    setWorkspaces(prev => prev.map(workspace =>
+      workspace.id === activeWorkspaceId
+        ? { ...workspace, additionalNotes: notes, updatedAt: new Date() }
         : workspace
     ));
   };
@@ -228,10 +266,20 @@ export function TemplateView({ template }: TemplateViewProps) {
     handleWorkspaceChange(newWorkspace.id);
   };
 
+  const handleToggleComplete = (itemId: string) => {
+    const newCompletedItems = new Set(completedItems);
+    if (newCompletedItems.has(itemId)) {
+      newCompletedItems.delete(itemId);
+    } else {
+      newCompletedItems.add(itemId);
+    }
+    setCompletedItems(newCompletedItems);
+  };
+
 
   // Calculate completion stats
-  const completedPrompts = Object.values(responses).filter(response => response.trim() !== '').length;
-  const totalPrompts = additionalPrompts.length;
+  const completedPrompts = completedItems.size;
+  const totalPrompts = additionalPrompts.length + additionalNotes.length;
 
   // Get experts for this template
   const templateExperts = getTemplateExperts(template.id);
@@ -240,10 +288,15 @@ export function TemplateView({ template }: TemplateViewProps) {
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground">
         <CommandPalette
-          template={template}
-          onSectionChange={setActiveSection}
-          onInsertPrompt={handleInsertPrompt}
-          onOpenResource={handleOpenResource}
+          isOpen={commandPaletteOpen}
+          onClose={() => setCommandPaletteOpen(false)}
+          mode="template-mode"
+          templateMode={{
+            template,
+            onSectionChange: setActiveSection,
+            onInsertPrompt: handleInsertPrompt,
+            onOpenResource: handleOpenResource
+          }}
         />
         <TemplataContentSidebar
           template={template}
@@ -293,6 +346,16 @@ export function TemplateView({ template }: TemplateViewProps) {
                     </>
                   )}
                 </div>
+                {(additionalPrompts.length > 0 || additionalNotes.length > 0) && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setEditMode(!editMode)}
+                    className={`h-8 w-8 p-0 ${editMode ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+                  >
+                    <Edit3 className="w-4 h-4" />
+                  </Button>
+                )}
               </div>
             </header>
             <EmbeddedPrompts
@@ -302,9 +365,14 @@ export function TemplateView({ template }: TemplateViewProps) {
               onRemovePrompt={handleRemovePrompt}
               onRemoveNote={handleRemoveNote}
               onUpdateNote={handleUpdateNote}
+              onReorderPrompts={handleReorderPrompts}
+              onReorderNotes={handleReorderNotes}
               onResponsesChange={handleResponsesChange}
               responses={responses}
               hideHeader={true}
+              editMode={editMode}
+              completedItems={completedItems}
+              onToggleComplete={handleToggleComplete}
             />
           </div>
 
