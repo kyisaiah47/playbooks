@@ -5,7 +5,7 @@ import { GuidanceSection, ReflectionPrompt, FreeformNote } from '@/types/templat
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb, Circle, CheckCircle2, FileText, GripVertical, Edit3 } from 'lucide-react';
+import { MessageCircle, HelpCircle, X, ArrowLeft, Plus, Target, BookOpen, Lightbulb, Circle, CheckCircle2, FileText, GripVertical, Edit3, Check, Square } from 'lucide-react';
 import Prism from '@/components/ui/prism';
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal';
 import { Button } from '@/components/ui/button';
@@ -274,9 +274,25 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                       >
                       <div className="flex items-start gap-3 mb-3">
                         {editMode && <GripVertical className="w-4 h-4 text-muted-foreground mt-1 opacity-60 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing" />}
-                        <span className={`w-6 h-6 rounded-full text-xs font-medium flex items-center justify-center flex-shrink-0 transition-colors bg-primary/10 text-primary group-hover:bg-primary/20`}>
-                          {index + 1}
-                        </span>
+                        <div className="flex flex-col items-center gap-2">
+                          <span className={`w-6 h-6 rounded-full text-xs font-medium flex items-center justify-center flex-shrink-0 transition-colors bg-primary/10 text-primary group-hover:bg-primary/20`}>
+                            {index + 1}
+                          </span>
+                          {hasContent && (
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => onToggleComplete?.(prompt.id)}
+                              className="h-6 w-6 p-0 hover:bg-primary/10 rounded-full border-2 border-border hover:border-primary/30 transition-all flex-shrink-0"
+                            >
+                              {completedItems.has(prompt.id) ? (
+                                <Check className="w-5 h-5 text-primary" />
+                              ) : (
+                                <Square className="w-5 h-5 text-muted-foreground" />
+                              )}
+                            </Button>
+                          )}
+                        </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-2 mb-2">
                             <div className="flex-1 min-w-0">
@@ -286,16 +302,6 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                               <h4 className="font-medium text-sm leading-relaxed">{prompt.prompt}</h4>
                             </div>
                             <div className="flex items-center gap-1">
-                              {hasContent && (
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => onToggleComplete?.(prompt.id)}
-                                  className="h-6 w-6 p-0 text-muted-foreground hover:text-primary flex-shrink-0"
-                                >
-                                  <CheckCircle2 className="w-4 h-4" />
-                                </Button>
-                              )}
                               {prompt.helpText && (
                                 <Tooltip>
                                   <TooltipTrigger asChild>
@@ -364,10 +370,24 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                       >
                       <div className="flex items-start gap-3">
                         {editMode && <GripVertical className="w-4 h-4 text-muted-foreground mt-1 opacity-60 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing" />}
-                        <div className="flex items-center gap-2 flex-shrink-0 mt-0.5">
+                        <div className="flex flex-col items-center gap-2">
                           <span className="w-6 h-6 rounded-full text-xs font-medium flex items-center justify-center transition-colors bg-primary/10 text-primary group-hover:bg-primary/20">
                             <FileText className="w-3 h-3" />
                           </span>
+                          {hasContent && (
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => onToggleComplete?.(note.id)}
+                              className="h-6 w-6 p-0 hover:bg-primary/10 rounded-full border-2 border-border hover:border-primary/30 transition-all flex-shrink-0"
+                            >
+                              {completedItems.has(note.id) ? (
+                                <Check className="w-5 h-5 text-primary" />
+                              ) : (
+                                <Square className="w-5 h-5 text-muted-foreground" />
+                              )}
+                            </Button>
+                          )}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-2">
@@ -381,16 +401,6 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                               />
                             </div>
                             <div className="flex items-center gap-1">
-                              {hasContent && (
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => onToggleComplete?.(note.id)}
-                                  className="h-6 w-6 p-0 text-muted-foreground hover:text-green-600 flex-shrink-0"
-                                >
-                                  <CheckCircle2 className="w-4 h-4" />
-                                </Button>
-                              )}
                               <Button
                                 variant="ghost"
                                 size="sm"
