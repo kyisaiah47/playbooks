@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Resource } from '@/types/template';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Clock, BookOpen, ExternalLink, Plus } from 'lucide-react';
+import { X, Clock, BookOpen, ExternalLink, Plus, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import { InteractiveGlow } from '@/components/ui/glow-variants';
 
 interface ResourceViewerProps {
   resource: Resource;
@@ -24,8 +25,29 @@ const getDifficultyColor = (difficulty: string) => {
 export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
   const [selectedText, setSelectedText] = useState('');
   const [isDragReady, setIsDragReady] = useState(false);
-  const [fontSize, setFontSize] = useState(14); // Start with original text-sm size
+  const [fontSize, setFontSize] = useState(14);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Track reading progress
+  const handleScroll = useCallback(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight - container.clientHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    setScrollProgress(Math.min(100, Math.max(0, progress)));
+  }, []);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   const handleTextSelection = useCallback(() => {
     const selection = window.getSelection();
@@ -67,27 +89,46 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
   }, []);
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col relative overflow-hidden">
+      {/* Reading Progress Bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-muted/30 z-10">
+        <div
+          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
+      {/* Gradient Header Background */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-primary/5 via-primary/2 to-transparent pointer-events-none" />
+
       {/* Header */}
-      <div className="flex items-start justify-between p-4 border-b bg-background/50 backdrop-blur">
+      <div className="relative flex items-start justify-between p-6 border-b bg-background/80 backdrop-blur-md">
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-2">
-            <BookOpen className="w-4 h-4 text-primary flex-shrink-0" />
-            <Badge variant="outline" className="text-xs">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+              <BookOpen className="w-4 h-4 text-primary" />
+            </div>
+            <Badge variant="outline" className="text-xs bg-background/50 backdrop-blur">
               {resource.type}
             </Badge>
-            <Badge className={`text-xs ${getDifficultyColor(resource.difficulty)}`}>
+            <Badge className={`text-xs ${getDifficultyColor(resource.difficulty)} backdrop-blur`}>
               {resource.difficulty}
             </Badge>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground ml-auto">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground ml-auto bg-background/30 backdrop-blur px-2 py-1 rounded-full">
               <Clock className="w-3 h-3" />
               {resource.readTime}
             </div>
           </div>
-          <h2 className="font-semibold text-lg line-clamp-2">{resource.title}</h2>
-          <div className="text-sm text-muted-foreground mt-1 line-clamp-2">
-            {resource.excerpt.split('**').map((part, index) => 
-              index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
+          <h2 className="font-bold text-xl line-clamp-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
+            {resource.title}
+          </h2>
+          <div className="text-sm text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
+            {resource.excerpt.split('**').map((part, index) =>
+              index % 2 === 1 ? (
+                <strong key={index} className="font-semibold text-foreground/90 bg-primary/10 px-1 rounded">
+                  {part}
+                </strong>
+              ) : part
             )}
           </div>
         </div>
@@ -95,19 +136,22 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
           variant="ghost"
           size="sm"
           onClick={onClose}
-          className="h-8 w-8 p-0 ml-3 flex-shrink-0"
+          className="h-8 w-8 p-0 ml-4 flex-shrink-0 hover:bg-destructive/10 hover:text-destructive"
         >
           <X className="w-4 h-4" />
         </Button>
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-auto relative">
+      <div
+        ref={scrollContainerRef}
+        className="flex-1 overflow-auto relative bg-gradient-to-b from-background via-background/95 to-background"
+      >
         <div
           ref={contentRef}
-          className={`p-4 space-y-4 select-text transition-all duration-300 ${
+          className={`p-6 space-y-6 select-text transition-all duration-300 ${
             isDragReady
-              ? 'cursor-grab [&::selection]:bg-blue-500 [&::selection]:text-white'
+              ? 'cursor-grab [&::selection]:bg-gradient-to-r [&::selection]:from-blue-500 [&::selection]:to-purple-500 [&::selection]:text-white'
               : 'cursor-text'
           }`}
           draggable={isDragReady}
@@ -118,9 +162,9 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
         >
           {isDragReady && (
             <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-right-5 duration-300">
-              <div className="bg-blue-500 text-white px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                <Plus className="w-3 h-3" />
-                <span className="text-xs font-medium">Drag selected text to any note field</span>
+              <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-full shadow-xl border border-white/20 backdrop-blur flex items-center gap-2">
+                <Plus className="w-4 h-4" />
+                <span className="text-sm font-medium">Drag selected text to any note field</span>
               </div>
             </div>
           )}
@@ -138,14 +182,27 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
               '--header-margin-bottom': fontSize <= 14 ? '0.5rem' : '1rem'
             } as React.CSSProperties}
           >
-            <div className="bg-muted/30 rounded-lg" style={{ padding: fontSize <= 14 ? '0.75rem' : '1rem', marginBottom: fontSize <= 14 ? '1rem' : '1.5rem' }}>
-              <h3 className="font-medium text-gray-800 dark:text-gray-200" style={{ fontSize: 'var(--font-size)', marginBottom: fontSize <= 14 ? '0.5rem' : '0.75rem' }}>About this resource</h3>
-              <div className="text-gray-600 dark:text-gray-300" style={{ fontSize: 'var(--font-size)', lineHeight: 'var(--line-height)' }}>
-                {resource.excerpt.split('**').map((part, index) =>
-                  index % 2 === 1 ? <strong key={index} className="font-semibold text-gray-800 dark:text-gray-200">{part}</strong> : part
-                )}
+            <InteractiveGlow className="mb-6">
+              <div className="p-6 space-y-3">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                    <BookOpen className="w-4 h-4 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-lg bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
+                    About this resource
+                  </h3>
+                </div>
+                <div className="text-muted-foreground leading-relaxed" style={{ fontSize: 'var(--font-size)', lineHeight: 'var(--line-height)' }}>
+                  {resource.excerpt.split('**').map((part, index) =>
+                    index % 2 === 1 ? (
+                      <strong key={index} className="font-semibold text-foreground bg-primary/10 px-1.5 py-0.5 rounded-md">
+                        {part}
+                      </strong>
+                    ) : part
+                  )}
+                </div>
               </div>
-            </div>
+            </InteractiveGlow>
 
             {/* Full blog post content */}
             <div style={{ marginTop: fontSize <= 14 ? '1rem' : '1.5rem', gap: fontSize <= 14 ? '0.75rem' : '1.5rem', display: 'flex', flexDirection: 'column' }}>
@@ -160,18 +217,25 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 // Handle headers
                 if (trimmedLine.startsWith('##')) {
                   return (
-                    <h3 key={index} className="font-semibold text-gray-900 dark:text-gray-100" style={{ fontSize: 'var(--font-size-xl)', marginTop: 'var(--header-margin-top)', marginBottom: 'var(--header-margin-bottom)', lineHeight: 'var(--line-height)' }}>
-                      {trimmedLine.replace('##', '').trim()}
-                    </h3>
+                    <div key={index} className="flex items-center gap-3 my-8">
+                      <div className="h-px bg-gradient-to-r from-primary/50 to-transparent flex-1" />
+                      <h3 className="font-bold text-xl bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text px-4">
+                        {trimmedLine.replace('##', '').trim()}
+                      </h3>
+                      <div className="h-px bg-gradient-to-l from-primary/50 to-transparent flex-1" />
+                    </div>
                   );
                 }
                 
                 // Handle standalone bold lines (subheaders)
                 if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && !trimmedLine.includes('**', 2)) {
                   return (
-                    <h4 key={index} className="font-semibold text-gray-800 dark:text-gray-200 ml-2" style={{ fontSize: 'var(--font-size-lg)', marginTop: 'calc(var(--header-margin-top) * 0.75)', marginBottom: 'calc(var(--header-margin-bottom) * 0.75)', lineHeight: 'var(--line-height)' }}>
-                      {trimmedLine.replace(/^\*\*|\*\*$/g, '')}
-                    </h4>
+                    <div key={index} className="flex items-center gap-3 my-6">
+                      <div className="w-1 h-6 bg-gradient-to-b from-primary/80 to-primary/40 rounded-full" />
+                      <h4 className="font-semibold text-lg text-foreground/90">
+                        {trimmedLine.replace(/^\*\*|\*\*$/g, '')}
+                      </h4>
+                    </div>
                   );
                 }
                 
@@ -201,9 +265,13 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                   };
 
                   return (
-                    <div key={index} className="flex items-start gap-3 leading-8 text-gray-700 dark:text-gray-300 select-text py-2 ml-6" style={{ fontSize: 'var(--font-size)' }}>
-                      <span className="text-gray-500 dark:text-gray-400 mt-0.5 font-medium" style={{ fontSize: 'var(--font-size)' }}>{number}.</span>
-                      <div className="flex-1">{renderMarkdown(cleanItem)}</div>
+                    <div key={index} className="flex items-start gap-4 py-3 ml-6 group">
+                      <div className="mt-1 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                        <span className="text-white text-xs font-bold">{number}</span>
+                      </div>
+                      <div className="flex-1 text-muted-foreground leading-relaxed" style={{ fontSize: 'var(--font-size)' }}>
+                        {renderMarkdown(cleanItem)}
+                      </div>
                     </div>
                   );
                 }
@@ -216,26 +284,30 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                     let currentIndex = 0;
                     const boldRegex = /\*\*(.*?)\*\*/g;
                     let match;
-                    
+
                     while ((match = boldRegex.exec(text)) !== null) {
                       if (match.index > currentIndex) {
                         parts.push(text.slice(currentIndex, match.index));
                       }
-                      parts.push(<strong key={match.index} className="font-semibold text-gray-900 dark:text-gray-100">{match[1]}</strong>);
+                      parts.push(<strong key={match.index} className="font-semibold text-foreground bg-primary/10 px-1 rounded">{match[1]}</strong>);
                       currentIndex = match.index + match[0].length;
                     }
-                    
+
                     if (currentIndex < text.length) {
                       parts.push(text.slice(currentIndex));
                     }
-                    
+
                     return parts.length > 0 ? parts : text;
                   };
-                  
+
                   return (
-                    <div key={index} className="flex items-start gap-3 leading-8 text-gray-700 dark:text-gray-300 select-text py-2 ml-6" style={{ fontSize: 'var(--font-size)' }}>
-                      <span className="text-gray-400 dark:text-gray-500 mt-3 w-2 h-2 rounded-full bg-current flex-shrink-0"></span>
-                      <div className="flex-1">{renderMarkdown(cleanItem)}</div>
+                    <div key={index} className="flex items-start gap-4 py-3 ml-6 group">
+                      <div className="mt-1.5 w-5 h-5 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+                        <CheckCircle className="w-3 h-3 text-white" />
+                      </div>
+                      <div className="flex-1 text-muted-foreground leading-relaxed" style={{ fontSize: 'var(--font-size)' }}>
+                        {renderMarkdown(cleanItem)}
+                      </div>
                     </div>
                   );
                 }
@@ -263,7 +335,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
                 };
                 
                 return (
-                  <p key={index} className="text-gray-700 dark:text-gray-300 select-text ml-6" style={{ fontSize: 'var(--font-size)', lineHeight: 'var(--line-height)', paddingTop: 'var(--spacing)', paddingBottom: 'var(--spacing)' }}>
+                  <p key={index} className="text-muted-foreground select-text ml-6 leading-relaxed py-2" style={{ fontSize: 'var(--font-size)' }}>
                     {renderMarkdown(trimmedLine)}
                   </p>
                 );
@@ -274,14 +346,18 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
       </div>
 
       {/* Footer */}
-      <div className="border-t p-4 bg-background/50">
-        <div className="flex items-center justify-between">
-          <div className="text-xs text-muted-foreground">
-            Resource • {resource.readTime} read
+      <div className="border-t bg-background/80 backdrop-blur-md p-6">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary/60 to-primary/30" />
+            <span>Resource • {resource.readTime} read</span>
+            <div className="flex items-center gap-1 ml-2 text-xs bg-primary/10 px-2 py-1 rounded-full">
+              <span>{Math.round(scrollProgress)}% complete</span>
+            </div>
           </div>
 
           {/* Font Size Slider */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3 bg-muted/50 px-3 py-2 rounded-full">
             <span className="text-xs text-muted-foreground">A</span>
             <input
               type="range"
@@ -289,21 +365,21 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
               max="20"
               value={fontSize}
               onChange={(e) => setFontSize(parseInt(e.target.value))}
-              className="w-16 h-1 bg-muted rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+              className="w-20 h-1 bg-muted rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:shadow-md"
             />
             <span className="text-sm text-muted-foreground font-medium">A</span>
           </div>
 
           {resource.relatedBlogPost ? (
-            <Button variant="outline" size="sm" className="h-7 text-xs" asChild>
+            <Button variant="outline" size="sm" className="h-8 text-xs bg-background/50 backdrop-blur hover:bg-primary/10 border-primary/20" asChild>
               <Link href={`/blog/${resource.relatedBlogPost}`} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-3 h-3 mr-1" />
+                <ExternalLink className="w-3 h-3 mr-2" />
                 Open Full View
               </Link>
             </Button>
           ) : (
-            <Button variant="outline" size="sm" className="h-7 text-xs" disabled>
-              <ExternalLink className="w-3 h-3 mr-1" />
+            <Button variant="outline" size="sm" className="h-8 text-xs bg-muted/30" disabled>
+              <ExternalLink className="w-3 h-3 mr-2" />
               Preview Only
             </Button>
           )}
