@@ -32,7 +32,8 @@
       "WebFetch(domain:21st.dev)",
       "Bash(cat:*)",
       "Bash(timeout 5 npx shadcn@latest add \"https://21st.dev/r/reuno-ui/background-paper-shaders\")",
-      "Bash(npm i:*)"
+      "Bash(npm i:*)",
+      "Bash(git restore:*)"
     ],
     "deny": [],
     "ask": []
