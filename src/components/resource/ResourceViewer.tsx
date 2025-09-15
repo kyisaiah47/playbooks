@@ -4,7 +4,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Resource } from '@/types/template';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Clock, BookOpen, ExternalLink, Plus, CheckCircle } from 'lucide-react';
+import { X, Clock, BookOpen, ExternalLink, Plus, CheckCircle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { InteractiveGlow } from '@/components/ui/glow-variants';
 
@@ -61,10 +61,33 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
     }
   }, []);
 
+  const handleClick = useCallback(() => {
+    // Reset drag state on any click
+    const selection = window.getSelection();
+    if (!selection || !selection.toString().trim()) {
+      setSelectedText('');
+      setIsDragReady(false);
+    }
+  }, []);
+
   const handleDragStart = useCallback((e: React.DragEvent) => {
     const selection = window.getSelection();
     if (selection && selection.toString().trim()) {
       const text = selection.toString().trim();
+
+      // Check if the drag started within the selected text
+      const range = selection.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      // If drag didn't start near the selection, prevent it
+      if (mouseX < rect.left - 10 || mouseX > rect.right + 10 ||
+          mouseY < rect.top - 10 || mouseY > rect.bottom + 10) {
+        e.preventDefault();
+        return;
+      }
+
       e.dataTransfer.setData('text/plain', text);
       e.dataTransfer.effectAllowed = 'copy';
 
@@ -80,16 +103,35 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
           document.body.removeChild(dragImage);
         }
       }, 0);
+    } else {
+      // No text selected, prevent drag
+      e.preventDefault();
     }
   }, []);
 
   const handleDragEnd = useCallback(() => {
     setIsDragReady(false);
-    // Keep selection but remove drag state
+    setSelectedText('');
+    // Clear selection to prevent stuck state
+    const selection = window.getSelection();
+    if (selection) {
+      selection.removeAllRanges();
+    }
   }, []);
 
   return (
     <div className="h-full flex flex-col relative overflow-hidden">
+      {/* Enhanced Selection Styles */}
+      <style jsx>{`
+        .drag-ready-content ::selection {
+          background: #3b82f6 !important;
+          color: white !important;
+        }
+        .normal-selection ::selection {
+          background: rgba(59, 130, 246, 0.3) !important;
+          color: inherit !important;
+        }
+      `}</style>
       {/* Reading Progress Bar */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-muted/30 z-10">
         <div
@@ -151,20 +193,21 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
           ref={contentRef}
           className={`p-6 space-y-6 select-text transition-all duration-300 ${
             isDragReady
-              ? 'cursor-grab [&::selection]:bg-gradient-to-r [&::selection]:from-blue-500 [&::selection]:to-purple-500 [&::selection]:text-white'
-              : 'cursor-text'
+              ? 'cursor-grab drag-ready-content'
+              : 'cursor-text normal-selection'
           }`}
-          draggable={isDragReady}
+          draggable={isDragReady && selectedText.length > 0}
           onMouseUp={handleTextSelection}
           onKeyUp={handleTextSelection}
+          onClick={handleClick}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
           {isDragReady && (
             <div className="fixed top-4 right-4 z-50 animate-in slide-in-from-right-5 duration-300">
-              <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-full shadow-xl border border-white/20 backdrop-blur flex items-center gap-2">
-                <Plus className="w-4 h-4" />
-                <span className="text-sm font-medium">Drag selected text to any note field</span>
+              <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-2 py-1 rounded-full shadow-lg border border-white/20 backdrop-blur flex items-center gap-1">
+                <ArrowLeft className="w-3 h-3" />
+                <span className="text-xs font-medium">Drag selected text to any note field</span>
               </div>
             </div>
           )}
