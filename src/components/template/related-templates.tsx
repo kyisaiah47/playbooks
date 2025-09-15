@@ -4,6 +4,7 @@ import React from "react"
 import { getRelatedTemplates, getComplementaryTemplates, getProgressionPath } from "@/lib/related-templates"
 import { TemplateRegistryEntry } from "@/registry/templates"
 import { cn } from "@/lib/utils"
+import { SubtleGlow } from "@/components/ui/glow-variants"
 
 interface RelatedTemplatesProps {
   templateId: string
@@ -26,15 +27,17 @@ function TemplateCard({ template, reason, onNavigate }: TemplateCardProps) {
   }
 
   return (
-    <button
-      className="group flex items-center gap-3 w-full text-left py-2 px-3 rounded-md hover:bg-muted transition-colors"
-      onClick={handleClick}
-    >
-      <div className="w-4 h-4 flex items-center justify-center text-sm shrink-0">
-        {template.icon}
-      </div>
-      <span className="text-xs truncate">{template.name}</span>
-    </button>
+    <SubtleGlow>
+      <button
+        className="group flex items-center gap-3 w-full text-left py-2 px-3 rounded-md hover:bg-muted transition-colors"
+        onClick={handleClick}
+      >
+        <div className="w-4 h-4 flex items-center justify-center text-sm shrink-0">
+          {template.icon}
+        </div>
+        <span className="text-xs truncate">{template.name}</span>
+      </button>
+    </SubtleGlow>
   )
 }
 

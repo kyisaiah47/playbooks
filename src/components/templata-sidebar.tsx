@@ -23,6 +23,7 @@ import {
   useSidebar,
   SidebarFooter,
 } from "@/components/ui/sidebar"
+import { SubtleGlow } from "@/components/ui/glow-variants"
 
 const getSectionIcon = (sectionId: string) => {
   switch (sectionId) {
@@ -562,52 +563,58 @@ export function TemplataContentSidebar({
                 >
                   <FileText className="w-4 h-4 text-muted-foreground" />
                   <span>Add Note</span>
-                  <Plus className="ml-auto w-3 h-3 opacity-30 group-hover:opacity-100 transition-opacity duration-200" />
+                  <Plus className="ml-auto w-3 h-3 opacity-30 hover:opacity-100 transition-opacity duration-200" />
                 </button>
               )}
               {activeTab === 'prompts' && filteredPrompts.map((prompt) => (
-                <button
-                  key={prompt.id}
-                  onClick={() => onInsertPrompt?.(prompt)}
-                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight last:border-b-0 w-full text-left group overflow-hidden"
-                >
-                  <div className="flex w-full items-center gap-2">
-                    <Badge className={`text-xs ${getCategoryColor(prompt.category)}`}>
-                      {prompt.category}
-                    </Badge>
-                    <Plus className="ml-auto w-3 h-3 opacity-30 group-hover:opacity-100 transition-opacity duration-200" />
-                  </div>
-                  <span className="font-medium line-clamp-2">{prompt.prompt}</span>
-                  {prompt.helpText && (
-                    <span className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
-                      {prompt.helpText}
-                    </span>
-                  )}
-                </button>
+                <div key={prompt.id} className="px-2 py-1">
+                  <SubtleGlow>
+                    <button
+                      onClick={() => onInsertPrompt?.(prompt)}
+                      className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 p-4 text-sm leading-tight w-full text-left group overflow-hidden rounded-lg"
+                    >
+                    <div className="flex w-full items-center gap-2">
+                      <Badge className={`text-xs ${getCategoryColor(prompt.category)}`}>
+                        {prompt.category}
+                      </Badge>
+                      <Plus className="ml-auto w-3 h-3 opacity-30 hover:opacity-100 transition-opacity duration-200" />
+                    </div>
+                    <span className="font-medium line-clamp-2">{prompt.prompt}</span>
+                    {prompt.helpText && (
+                      <span className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
+                        {prompt.helpText}
+                      </span>
+                    )}
+                    </button>
+                  </SubtleGlow>
+                </div>
               ))}
               
               {activeTab === 'resources' && filteredResources.map((resource) => (
-                <button
-                  key={resource.id}
-                  onClick={() => onOpenResource?.(resource)}
-                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight last:border-b-0 w-full text-left group overflow-hidden"
-                >
-                  <div className="flex w-full items-center gap-2">
-                    <Badge variant="outline" className="text-xs">
-                      {resource.type}
-                    </Badge>
-                    <Badge className={`text-xs ${getDifficultyColor(resource.difficulty)}`}>
-                      {resource.difficulty}
-                    </Badge>
-                    <span className="ml-auto text-xs text-muted-foreground">{resource.readTime}</span>
-                  </div>
-                  <span className="font-medium line-clamp-2">{resource.title}</span>
-                  <div className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
-                    {resource.excerpt.split('**').map((part, index) =>
-                      index % 2 === 1 ? <strong key={index}>{part}</strong> : part
-                    )}
-                  </div>
-                </button>
+                <div key={resource.id} className="px-2 py-1">
+                  <SubtleGlow>
+                    <button
+                      onClick={() => onOpenResource?.(resource)}
+                      className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 p-4 text-sm leading-tight w-full text-left group overflow-hidden rounded-lg"
+                    >
+                    <div className="flex w-full items-center gap-2">
+                      <Badge variant="outline" className="text-xs">
+                        {resource.type}
+                      </Badge>
+                      <Badge className={`text-xs ${getDifficultyColor(resource.difficulty)}`}>
+                        {resource.difficulty}
+                      </Badge>
+                      <span className="ml-auto text-xs text-muted-foreground">{resource.readTime}</span>
+                    </div>
+                    <span className="font-medium line-clamp-2">{resource.title}</span>
+                    <div className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
+                      {resource.excerpt.split('**').map((part, index) =>
+                        index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                      )}
+                    </div>
+                    </button>
+                  </SubtleGlow>
+                </div>
               ))}
 
               {activeTab === 'related' && (

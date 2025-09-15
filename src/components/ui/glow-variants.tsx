@@ -74,7 +74,7 @@ export function GlowVariant({
     case "subtle":
       // Light GlowingEffect - for secondary elements
       return shouldUseFullGlow ? (
-        <div className={cn("relative rounded-lg border-[0.75px] border-border p-1", className)}>
+        <div className={cn("relative rounded-lg border-[0.75px] border-border", className)}>
           <GlowingEffect
             spread={20}
             glow={true}

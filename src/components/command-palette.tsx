@@ -45,7 +45,7 @@ import {
   Globe,
   FileText
 } from "lucide-react"
-import { PremiumGlow } from "@/components/ui/glow-variants"
+import { PremiumGlow, SubtleGlow } from "@/components/ui/glow-variants"
 import { useFavorites } from "@/hooks/use-favorites"
 import { useRecentTemplates } from "@/hooks/use-recent-templates"
 import { useSmartRecommendations } from "@/hooks/use-smart-recommendations"
@@ -659,20 +659,21 @@ export function CommandPalette({
                       </div>
                       <div className="grid grid-cols-2 gap-3">
                         {templateSpecificData.sections.map((section: any) => (
-                          <button
-                            key={section.id}
-                            onClick={() => handleSectionClick(section)}
-                            className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 text-left border border-transparent hover:border-primary/20"
-                          >
-                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                              <Hash className="w-4 h-4 text-primary" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h5 className="font-medium text-sm group-hover:text-primary transition-colors">
-                                {section.title}
-                              </h5>
-                            </div>
-                          </button>
+                          <SubtleGlow key={section.id}>
+                            <button
+                              onClick={() => handleSectionClick(section)}
+                              className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 text-left"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                <Hash className="w-4 h-4 text-primary" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h5 className="font-medium text-sm group-hover:text-primary transition-colors">
+                                  {section.title}
+                                </h5>
+                              </div>
+                            </button>
+                          </SubtleGlow>
                         ))}
                       </div>
                     </div>
@@ -690,30 +691,31 @@ export function CommandPalette({
                       </div>
                       <div className="space-y-2">
                         {templateSpecificData.resources.slice(0, 6).map((resource: any) => (
-                          <button
-                            key={resource.id}
-                            onClick={() => handleResourceClick(resource)}
-                            className="w-full group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 text-left border border-transparent hover:border-primary/20"
-                          >
-                            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                              <BookOpen className="w-4 h-4 text-primary" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h5 className="font-medium text-sm group-hover:text-primary transition-colors">
-                                {resource.title}
-                              </h5>
-                              <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
-                                <span>{resource.type}</span>
-                                {resource.readTime && (
-                                  <>
-                                    <span>•</span>
-                                    <span>{resource.readTime}</span>
-                                  </>
-                                )}
+                          <SubtleGlow key={resource.id}>
+                            <button
+                              onClick={() => handleResourceClick(resource)}
+                              className="w-full group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 text-left"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                <BookOpen className="w-4 h-4 text-primary" />
                               </div>
-                            </div>
-                            <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                          </button>
+                              <div className="flex-1 min-w-0">
+                                <h5 className="font-medium text-sm group-hover:text-primary transition-colors">
+                                  {resource.title}
+                                </h5>
+                                <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
+                                  <span>{resource.type}</span>
+                                  {resource.readTime && (
+                                    <>
+                                      <span>•</span>
+                                      <span>{resource.readTime}</span>
+                                    </>
+                                  )}
+                                </div>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                            </button>
+                          </SubtleGlow>
                         ))}
                       </div>
                     </div>
