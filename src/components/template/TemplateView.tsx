@@ -37,8 +37,7 @@ interface TemplateViewProps {
 
 export function TemplateView({ template }: TemplateViewProps) {
   const [activeSection, setActiveSection] = useState(0);
-  const [additionalPrompts, setAdditionalPrompts] = useState<ReflectionPrompt[]>([]);
-  const [additionalNotes, setAdditionalNotes] = useState<FreeformNote[]>([]);
+  const [allItems, setAllItems] = useState<(ReflectionPrompt | FreeformNote)[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
   const [responses, setResponses] = useState<Record<string, string>>({});
   const [editMode, setEditMode] = useState(false);
@@ -117,28 +116,28 @@ export function TemplateView({ template }: TemplateViewProps) {
 
   const handleInsertPrompt = (prompt: ReflectionPrompt) => {
     // Check if prompt is already added
-    if (additionalPrompts.some(p => p.id === prompt.id)) {
+    if (allItems.some(item => item.id === prompt.id)) {
       return; // Don't add duplicates
     }
-    const newPrompts = [prompt, ...additionalPrompts];
-    setAdditionalPrompts(newPrompts);
+    const newItems = [prompt, ...allItems];
+    setAllItems(newItems);
 
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
-        ? { ...workspace, additionalPrompts: newPrompts, updatedAt: new Date() }
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
         : workspace
     ));
   };
 
   const handleRemovePrompt = (promptId: string) => {
-    const newPrompts = additionalPrompts.filter(p => p.id !== promptId);
-    setAdditionalPrompts(newPrompts);
+    const newItems = allItems.filter(item => item.id !== promptId);
+    setAllItems(newItems);
 
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
-        ? { ...workspace, additionalPrompts: newPrompts, updatedAt: new Date() }
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
         : workspace
     ));
   };
@@ -149,61 +148,50 @@ export function TemplateView({ template }: TemplateViewProps) {
       title: note.title,
       content: ''
     };
-    const newNotes = [freeformNote, ...additionalNotes];
-    setAdditionalNotes(newNotes);
+    const newItems = [freeformNote, ...allItems];
+    setAllItems(newItems);
 
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
-        ? { ...workspace, additionalNotes: newNotes, updatedAt: new Date() }
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
         : workspace
     ));
   };
 
   const handleRemoveNote = (noteId: string) => {
-    const newNotes = additionalNotes.filter(n => n.id !== noteId);
-    setAdditionalNotes(newNotes);
+    const newItems = allItems.filter(item => item.id !== noteId);
+    setAllItems(newItems);
 
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
-        ? { ...workspace, additionalNotes: newNotes, updatedAt: new Date() }
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
         : workspace
     ));
   };
 
   const handleUpdateNote = (noteId: string, updates: Partial<FreeformNote>) => {
-    const newNotes = additionalNotes.map(note =>
-      note.id === noteId ? { ...note, ...updates } : note
+    const newItems = allItems.map(item =>
+      item.id === noteId && 'title' in item ? { ...item, ...updates } : item
     );
-    setAdditionalNotes(newNotes);
+    setAllItems(newItems);
 
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
-        ? { ...workspace, additionalNotes: newNotes, updatedAt: new Date() }
+        ? { ...workspace, allItems: newItems, updatedAt: new Date() }
         : workspace
     ));
   };
 
-  const handleReorderPrompts = (prompts: ReflectionPrompt[]) => {
-    setAdditionalPrompts(prompts);
+  const handleReorderItems = (items: (ReflectionPrompt | FreeformNote)[]) => {
+    setAllItems(items);
 
     // Update current workspace
     setWorkspaces(prev => prev.map(workspace =>
       workspace.id === activeWorkspaceId
-        ? { ...workspace, additionalPrompts: prompts, updatedAt: new Date() }
-        : workspace
-    ));
-  };
-
-  const handleReorderNotes = (notes: FreeformNote[]) => {
-    setAdditionalNotes(notes);
-
-    // Update current workspace
-    setWorkspaces(prev => prev.map(workspace =>
-      workspace.id === activeWorkspaceId
-        ? { ...workspace, additionalNotes: notes, updatedAt: new Date() }
+        ? { ...workspace, allItems: items, updatedAt: new Date() }
         : workspace
     ));
   };
@@ -232,8 +220,7 @@ export function TemplateView({ template }: TemplateViewProps) {
       workspace.id === activeWorkspaceId
         ? {
             ...workspace,
-            additionalPrompts,
-            additionalNotes,
+            allItems,
             responses,
             updatedAt: new Date()
           }
@@ -244,8 +231,7 @@ export function TemplateView({ template }: TemplateViewProps) {
     const newWorkspace = workspaces.find(w => w.id === workspaceId);
     if (newWorkspace) {
       setActiveWorkspaceId(workspaceId);
-      setAdditionalPrompts(newWorkspace.additionalPrompts);
-      setAdditionalNotes(newWorkspace.additionalNotes);
+      setAllItems(newWorkspace.allItems || []);
       setResponses(newWorkspace.responses);
     }
   };
@@ -255,8 +241,7 @@ export function TemplateView({ template }: TemplateViewProps) {
       id: `workspace-${Date.now()}`,
       name: `Workspace ${workspaces.length}`,
       templateId: template.id,
-      additionalPrompts: [],
-      additionalNotes: [],
+      allItems: [],
       responses: {},
       createdAt: new Date(),
       updatedAt: new Date()
@@ -279,7 +264,7 @@ export function TemplateView({ template }: TemplateViewProps) {
 
   // Calculate completion stats
   const completedPrompts = completedItems.size;
-  const totalPrompts = additionalPrompts.length + additionalNotes.length;
+  const totalPrompts = allItems.length;
 
   // Get experts for this template
   const templateExperts = getTemplateExperts(template.id);
@@ -360,13 +345,11 @@ export function TemplateView({ template }: TemplateViewProps) {
             </header>
             <EmbeddedPrompts
               section={template.sections[activeSection]}
-              additionalPrompts={additionalPrompts}
-              additionalNotes={additionalNotes}
+              allItems={allItems}
               onRemovePrompt={handleRemovePrompt}
               onRemoveNote={handleRemoveNote}
               onUpdateNote={handleUpdateNote}
-              onReorderPrompts={handleReorderPrompts}
-              onReorderNotes={handleReorderNotes}
+              onReorderItems={handleReorderItems}
               onResponsesChange={handleResponsesChange}
               responses={responses}
               hideHeader={true}

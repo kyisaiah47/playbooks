@@ -18,14 +18,12 @@ import {
 
 interface EmbeddedPromptsProps {
   section: GuidanceSection;
-  additionalPrompts?: ReflectionPrompt[];
-  additionalNotes?: FreeformNote[];
+  allItems?: (ReflectionPrompt | FreeformNote)[];
   onResponsesChange?: (responses: Record<string, string>) => void;
   onRemovePrompt?: (promptId: string) => void;
   onRemoveNote?: (noteId: string) => void;
   onUpdateNote?: (noteId: string, updates: Partial<FreeformNote>) => void;
-  onReorderPrompts?: (prompts: ReflectionPrompt[]) => void;
-  onReorderNotes?: (notes: FreeformNote[]) => void;
+  onReorderItems?: (items: (ReflectionPrompt | FreeformNote)[]) => void;
   hideHeader?: boolean;
   responses?: Record<string, string>;
   editMode?: boolean;
@@ -33,7 +31,7 @@ interface EmbeddedPromptsProps {
   onToggleComplete?: (itemId: string) => void;
 }
 
-export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNotes = [], onResponsesChange, onRemovePrompt, onRemoveNote, onUpdateNote, onReorderPrompts, onReorderNotes, hideHeader, responses: externalResponses, editMode: externalEditMode = false, completedItems = new Set(), onToggleComplete }: EmbeddedPromptsProps) {
+export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onRemovePrompt, onRemoveNote, onUpdateNote, onReorderItems, hideHeader, responses: externalResponses, editMode: externalEditMode = false, completedItems = new Set(), onToggleComplete }: EmbeddedPromptsProps) {
   const [responses, setResponses] = useState<Record<string, string>>(externalResponses || {});
   const [draggedOver, setDraggedOver] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
@@ -69,31 +67,15 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
     const draggedItemId = e.dataTransfer.getData('application/json');
 
     if (draggedItemId && draggedItem) {
-      const draggedData = JSON.parse(draggedItemId);
+      const draggedIndex = allItems.findIndex(item => item.id === draggedItem);
+      if (draggedIndex !== -1) {
+        const newItems = [...allItems];
+        const [removed] = newItems.splice(draggedIndex, 1);
 
-      if (draggedData.type === 'prompt') {
-        const draggedIndex = additionalPrompts.findIndex(p => p.id === draggedItem);
-        if (draggedIndex !== -1) {
-          const newPrompts = [...additionalPrompts];
-          const [removed] = newPrompts.splice(draggedIndex, 1);
-
-          // Adjust insert index if dragging down
-          const adjustedIndex = draggedIndex < insertIndex ? insertIndex - 1 : insertIndex;
-          newPrompts.splice(adjustedIndex, 0, removed);
-          onReorderPrompts?.(newPrompts);
-        }
-      } else if (draggedData.type === 'note') {
-        const draggedIndex = additionalNotes.findIndex(n => n.id === draggedItem);
-        if (draggedIndex !== -1) {
-          const newNotes = [...additionalNotes];
-          const [removed] = newNotes.splice(draggedIndex, 1);
-
-          // Calculate insert index within notes array
-          const noteInsertIndex = Math.max(0, insertIndex - additionalPrompts.length);
-          const adjustedIndex = draggedIndex < noteInsertIndex ? noteInsertIndex - 1 : noteInsertIndex;
-          newNotes.splice(adjustedIndex, 0, removed);
-          onReorderNotes?.(newNotes);
-        }
+        // Adjust insert index if dragging down
+        const adjustedIndex = draggedIndex < insertIndex ? insertIndex - 1 : insertIndex;
+        newItems.splice(adjustedIndex, 0, removed);
+        onReorderItems?.(newItems);
       }
     }
 
@@ -150,9 +132,9 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
     }
   };
 
-  // Combine prompts and notes for rendering in chronological order
-  const allPrompts = additionalPrompts;
-  const allItems = [...additionalPrompts, ...additionalNotes];
+  // Items are already unified and ordered chronologically
+  const additionalPrompts = allItems.filter(item => 'prompt' in item) as ReflectionPrompt[];
+  const additionalNotes = allItems.filter(item => 'title' in item && !('prompt' in item)) as FreeformNote[];
 
   // Separate active and completed items
   const activeItems = allItems.filter(item => !completedItems.has(item.id));
@@ -311,16 +293,17 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
                   const note = item as FreeformNote;
                   const hasContent = responses[note.id]?.trim();
                   return (
-                    <div
-                      draggable={editMode}
-                      onDragStart={(e) => handleDragStart(e, note.id, 'note')}
-                      onDragEnd={handleDragEnd}
-                      className={`group bg-background border rounded-lg p-4 space-y-3 transition-all duration-200 hover:shadow-sm hover:border-primary/20 ${
-                        editMode ? 'cursor-move' : ''
-                      } ${
-                        draggedItem === note.id ? 'opacity-50 scale-95' : ''
-                      }`}
-                    >
+                    <PremiumGlow>
+                      <div
+                        draggable={editMode}
+                        onDragStart={(e) => handleDragStart(e, note.id, 'note')}
+                        onDragEnd={handleDragEnd}
+                        className={`group p-4 space-y-3 transition-all duration-200 ${
+                          editMode ? 'cursor-move' : ''
+                        } ${
+                          draggedItem === note.id ? 'opacity-50 scale-95' : ''
+                        }`}
+                      >
                       <div className="flex items-start gap-3">
                         {editMode && <GripVertical className="w-4 h-4 text-muted-foreground mt-1 opacity-60 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing" />}
                         <div className="flex items-center gap-2 flex-shrink-0 mt-0.5">
@@ -387,7 +370,8 @@ export function EmbeddedPrompts({ section, additionalPrompts = [], additionalNot
                       <div className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
                         💡 Perfect for capturing insights and ideas
                       </div>
-                    </div>
+                      </div>
+                    </PremiumGlow>
                   );
                 })()}
 

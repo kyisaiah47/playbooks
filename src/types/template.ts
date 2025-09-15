@@ -36,8 +36,7 @@ export interface Workspace {
   id: string;
   name: string;
   templateId: string;
-  additionalPrompts: ReflectionPrompt[];
-  additionalNotes: FreeformNote[];
+  allItems: (ReflectionPrompt | FreeformNote)[];
   responses: Record<string, string>;
   createdAt: Date;
   updatedAt: Date;
