@@ -402,14 +402,14 @@ export function TemplataContentSidebar({
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0 justify-center">
+              <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0 justify-center hover:[&_img]:scale-110 hover:[&_img]:animate-bounce">
                 <Link href="/" className="flex justify-center">
                   <Image
                     src="/shift.svg"
                     alt="Templata"
                     width={16}
                     height={16}
-                    className="dark:invert"
+                    className="dark:invert transition-transform duration-200"
                   />
                 </Link>
               </SidebarMenuButton>
@@ -434,14 +434,21 @@ export function TemplataContentSidebar({
                         setOpen(true)
                       }}
                       isActive={activeSection === index && activeTab === 'prompts'}
-                      className="px-2.5 md:px-2"
+                      className="px-2.5 md:px-2 hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
                     >
-                      {getSectionIcon(section.id)}
+                      <div className="transition-transform duration-200">
+                        {getSectionIcon(section.id)}
+                      </div>
                       <span className="text-xs">{section.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
-                
+
+                {/* Horizontal divider */}
+                <div className="px-2 py-2">
+                  <div className="h-px bg-border opacity-50"></div>
+                </div>
+
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     tooltip={{
@@ -453,9 +460,11 @@ export function TemplataContentSidebar({
                       setOpen(true)
                     }}
                     isActive={activeTab === 'resources'}
-                    className="px-2.5 md:px-2"
+                    className="px-2.5 md:px-2 hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
                   >
-                    <FileText className="w-4 h-4" />
+                    <div className="transition-transform duration-200">
+                      <FileText className="w-4 h-4" />
+                    </div>
                     <span className="text-xs">Resources</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -471,9 +480,11 @@ export function TemplataContentSidebar({
                       setOpen(true)
                     }}
                     isActive={activeTab === 'related'}
-                    className="px-2.5 md:px-2"
+                    className="px-2.5 md:px-2 hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
                   >
-                    <Network className="w-4 h-4" />
+                    <div className="transition-transform duration-200">
+                      <Network className="w-4 h-4" />
+                    </div>
                     <span className="text-xs">Related</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -491,9 +502,11 @@ export function TemplataContentSidebar({
                       }}
                       onClick={() => onWorkspaceChange?.(workspace.id)}
                       isActive={activeWorkspaceId === workspace.id}
-                      className="px-2.5 md:px-2"
+                      className="px-2.5 md:px-2 hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
                     >
-                      <Bookmark className="w-4 h-4" />
+                      <div className="transition-transform duration-200">
+                        <Bookmark className="w-4 h-4" />
+                      </div>
                       <span className="text-xs truncate">{workspace.name}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -507,9 +520,11 @@ export function TemplataContentSidebar({
                       hidden: false,
                     }}
                     onClick={() => onCreateWorkspace?.()}
-                    className="px-2.5 md:px-2 text-muted-foreground hover:text-foreground"
+                    className="px-2.5 md:px-2 text-muted-foreground hover:text-foreground hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
                   >
-                    <Plus className="w-4 h-4" />
+                    <div className="transition-transform duration-200">
+                      <Plus className="w-4 h-4" />
+                    </div>
                     <span className="text-xs">Add Workspace</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -559,11 +574,13 @@ export function TemplataContentSidebar({
                     id: `note-${Date.now()}`,
                     title: "New Note"
                   })}
-                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex items-center gap-2 border-b p-4 text-sm w-full text-left group"
+                  className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex items-center gap-2 border-b p-4 text-sm w-full text-left group hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
                 >
-                  <FileText className="w-4 h-4 text-muted-foreground" />
+                  <div className="transition-transform duration-200">
+                    <FileText className="w-4 h-4 text-muted-foreground" />
+                  </div>
                   <span>Add Note</span>
-                  <Plus className="ml-auto w-3 h-3 opacity-30 hover:opacity-100 transition-opacity duration-200" />
+                  <Plus className="ml-auto w-3 h-3 opacity-30 group-hover:opacity-100 group-hover:rotate-90 transition-all duration-200" />
                 </button>
               )}
               {activeTab === 'prompts' && filteredPrompts.map((prompt) => (
@@ -577,7 +594,7 @@ export function TemplataContentSidebar({
                       <Badge className={`text-xs ${getCategoryColor(prompt.category)}`}>
                         {prompt.category}
                       </Badge>
-                      <Plus className="ml-auto w-3 h-3 opacity-30 hover:opacity-100 transition-opacity duration-200" />
+                      <Plus className="ml-auto w-3 h-3 opacity-30 group-hover:opacity-100 group-hover:rotate-90 transition-all duration-200" />
                     </div>
                     <span className="font-medium line-clamp-2">{prompt.prompt}</span>
                     {prompt.helpText && (
