@@ -63,8 +63,7 @@ export function TemplateView({ template }: TemplateViewProps) {
       id: 'default',
       name: 'Main Workspace',
       templateId: template.id,
-      additionalPrompts: [],
-      additionalNotes: [],
+      allItems: [],
       responses: {},
       createdAt: new Date(),
       updatedAt: new Date()
@@ -331,7 +330,7 @@ export function TemplateView({ template }: TemplateViewProps) {
                     </>
                   )}
                 </div>
-                {(additionalPrompts.length > 0 || additionalNotes.length > 0) && (
+                {allItems.length > 0 && (
                   <Button
                     variant="ghost"
                     size="sm"
