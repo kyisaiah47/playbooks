@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, User, Heart, Home, Briefcase, Target, Lightbulb, ChevronRight } from "lucide-react";
 import { Marquee } from "@/components/ui/marquee";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { PageLayout } from "@/components/layout";
 import { getBlogPostBySlug, getRelatedBlogPosts, getBlogPostsByCategory, blogRegistry } from "@/registry/blogs";
 import { use } from "react";
@@ -42,7 +43,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     // Third try: any other posts
     return blogRegistry.filter(post => post.id !== blogPost.id).slice(0, 6);
   }, [blogPost]);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('');
 
   // Generate table of contents from content
@@ -67,14 +67,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     return headings;
   }, [blogPost]);
 
-  // Simple scroll progress tracking
+  // Track active section for table of contents
   const handleScroll = useCallback(() => {
-    const scrollTop = window.scrollY;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-    setScrollProgress(Math.min(100, Math.max(0, progress)));
-
-    // Update active section based on scroll position
     const headingElements = tableOfContents.map(heading =>
       document.getElementById(heading.id)
     ).filter(Boolean);
@@ -106,13 +100,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
   return (
     <PageLayout>
-      {/* Subtle reading progress bar */}
-      <div className="fixed top-0 left-0 right-0 h-0.5 bg-border/20 z-50">
-        <div
-          className="h-full bg-primary transition-all duration-200"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
+      {/* Scroll Progress Bar */}
+      <ScrollProgress className="fixed top-0 z-50" />
 
       <div className="min-h-screen bg-background">
         {/* Header Section - Above Everything */}
