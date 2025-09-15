@@ -207,13 +207,13 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   }
 
                   if (paragraph.trim()) {
-                    // Enhanced markdown parsing with links
+                    // Enhanced markdown parsing with links, percentages, and dollar amounts
                     const renderText = (text: string) => {
                       const parts: (string | React.JSX.Element)[] = [];
                       let currentIndex = 0;
 
-                      // Combined regex for bold text and links
-                      const combinedRegex = /(\*\*(.*?)\*\*|\[([^\]]+)\]\(([^)]+)\))/g;
+                      // Combined regex for bold text, links, percentages, and dollar amounts
+                      const combinedRegex = /(\*\*(.*?)\*\*|\[([^\]]+)\]\(([^)]+)\)|\$[\d,]+(?:\.\d{2})?(?:-\$[\d,]+(?:\.\d{2})?)?|\d+(?:\.\d+)?(?:-\d+(?:\.\d+)?)?%)/g;
                       let match;
 
                       while ((match = combinedRegex.exec(text)) !== null) {
@@ -221,21 +221,53 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                           parts.push(text.slice(currentIndex, match.index));
                         }
 
-                        if (match[1].startsWith('**')) {
-                          // Bold text
-                          parts.push(<strong key={match.index} className="font-semibold">{match[2]}</strong>);
-                        } else if (match[1].startsWith('[')) {
-                          // Link
-                          const linkText = match[3];
-                          const linkUrl = match[4];
+                        if (match[0].startsWith('**')) {
+                          // Bold text - extract text between **
+                          const boldText = match[0].slice(2, -2);
+                          parts.push(<strong key={match.index} className="font-semibold">{boldText}</strong>);
+                        } else if (match[0].startsWith('[')) {
+                          // Link - extract from full match
+                          const linkMatch = match[0].match(/\[([^\]]+)\]\(([^)]+)\)/);
+                          if (linkMatch) {
+                            parts.push(
+                              <Link
+                                key={match.index}
+                                href={linkMatch[2]}
+                                className="text-primary hover:text-primary/80 underline underline-offset-2"
+                              >
+                                {linkMatch[1]}
+                              </Link>
+                            );
+                          }
+                        } else if (match[0].startsWith('$')) {
+                          // Dollar amounts - emerald for single, purple for ranges
+                          const isDollarRange = match[0].includes('-');
                           parts.push(
-                            <Link
+                            <span
                               key={match.index}
-                              href={linkUrl}
-                              className="text-primary hover:text-primary/80 underline underline-offset-2"
+                              className={`inline-flex items-center px-2 py-1 rounded-full text-sm font-medium mx-1 ${
+                                isDollarRange
+                                  ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300'
+                                  : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300'
+                              }`}
                             >
-                              {linkText}
-                            </Link>
+                              {match[0]}
+                            </span>
+                          );
+                        } else if (match[0].includes('%')) {
+                          // Percentages - green for single, purple for ranges
+                          const isPercentRange = match[0].includes('-');
+                          parts.push(
+                            <span
+                              key={match.index}
+                              className={`inline-flex items-center px-2 py-1 rounded-full text-sm font-medium mx-1 ${
+                                isPercentRange
+                                  ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300'
+                                  : 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300'
+                              }`}
+                            >
+                              {match[0]}
+                            </span>
                           );
                         }
 
