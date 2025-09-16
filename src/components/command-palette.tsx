@@ -157,13 +157,18 @@ export function CommandPalette({
     }))
   }, [])
 
+  // Lazy load articles - only load first 50 initially, load more on demand
+  const [articlesLimit, setArticlesLimit] = useState(50)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
+
   const searchableArticles = useMemo(() => {
-    return blogRegistry.map(article => ({
+    const limitedArticles = blogRegistry.slice(0, articlesLimit)
+    return limitedArticles.map(article => ({
       ...article,
       searchableText: `${(article as any).title} ${(article as any).excerpt} ${(article as any).category}`.toLowerCase(),
       type: 'article' as const
     }))
-  }, [])
+  }, [articlesLimit])
 
   // Template-specific data when in template mode
   const templateSpecificData = useMemo(() => {
@@ -329,6 +334,7 @@ export function CommandPalette({
       })
       .filter(a => a.relevanceScore > 0)
       .sort((a, b) => b.relevanceScore - a.relevanceScore)
+      .slice(0, 20) // Limit search results to 20 articles
 
     return {
       templates: templateResults.slice(0, 8),
@@ -385,6 +391,7 @@ export function CommandPalette({
   const handleClose = () => {
     setQuery("")
     setSelectedIndex(0)
+    setArticlesLimit(50) // Reset to initial limit
     onClose()
   }
 
@@ -444,6 +451,16 @@ export function CommandPalette({
       category: item.category,
       type
     })
+  }
+
+  const loadMoreArticles = async () => {
+    if (isLoadingMore || articlesLimit >= blogRegistry.length) return
+
+    setIsLoadingMore(true)
+    // Simulate loading delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 300))
+    setArticlesLimit(prev => Math.min(prev + 50, blogRegistry.length))
+    setIsLoadingMore(false)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -1209,7 +1226,7 @@ export function CommandPalette({
                       </div>
                     </div>
                   <div className="space-y-2">
-                    {searchableArticles.map((article) => {
+                    {searchableArticles.slice(0, 20).map((article) => {
                       const Icon = getCategoryIcon((article as any).category)
                       const isStarred = isFavorited(article.id)
                       return (
@@ -1246,6 +1263,32 @@ export function CommandPalette({
                       )
                     })}
                   </div>
+
+                  {/* Load More Button */}
+                  {articlesLimit < blogRegistry.length && (
+                    <div className="text-center pt-4">
+                      <Button
+                        variant="outline"
+                        onClick={loadMoreArticles}
+                        disabled={isLoadingMore}
+                        className="w-full"
+                      >
+                        {isLoadingMore ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin mr-2" />
+                            Loading more articles...
+                          </>
+                        ) : (
+                          <>
+                            Load {Math.min(50, blogRegistry.length - articlesLimit)} more articles
+                            <span className="ml-2 text-muted-foreground">
+                              ({articlesLimit} of {blogRegistry.length})
+                            </span>
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  )}
                 </div>
                 </>
               )}
