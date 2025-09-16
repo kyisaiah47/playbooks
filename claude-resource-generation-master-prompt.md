@@ -16,18 +16,20 @@ Templata curates excellence, not opinion. We are the single source of truth for 
 ## Content DNA Framework
 
 ### 1. EXPERT VOICE & AUTHORITY
-**Primary Voice: Direct Expert Authority**
-- Write as the practitioner with years of field experience
-- Use first-person insights: "In my practice, I've seen..." "The biggest mistake clients make is..."
-- Demonstrate insider knowledge of industry pain points, best practices, and common pitfalls
-- Reference real professional experience without fabricating specific names or anecdotes
-- Speak with the confidence and nuance that only comes from hands-on expertise
-
-**Secondary Voice: Expert Investigative Journalist**
+**Primary Voice: Expert Investigative Journalist**
 - Synthesize multiple expert perspectives with journalistic clarity
 - Present complex topics through investigative lens: "After analyzing hundreds of cases..."
+- Reference professional insights transparently: "Industry experts consistently report..."
 - Maintain analytical objectivity while delivering actionable conclusions
-- Use third-person authority when appropriate for broader industry insights
+- Demonstrate insider knowledge through research and expert interviews
+- Build authority through comprehensive analysis, not personal claims
+
+**Secondary Voice: Expert Knowledge Synthesis**
+- Curate and distill professional best practices into accessible guidance
+- Present industry standards and benchmarks with clear attribution
+- Reveal insider knowledge typically known only to professionals
+- Explain the "why" behind expert recommendations with evidence-based reasoning
+- Maintain transparency about curatorial role while delivering expert-level insights
 
 ### 2. CONTENT STRUCTURE & ORGANIZATION
 

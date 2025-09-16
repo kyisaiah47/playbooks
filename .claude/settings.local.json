@@ -45,7 +45,9 @@
       "Bash(then echo \"✅ App page exists\")",
       "Bash(else echo \"❌ App page missing\")",
       "Bash(done)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "WebSearch",
+      "WebFetch(domain:medium.com)"
     ],
     "deny": [],
     "ask": []

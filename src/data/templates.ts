@@ -490,21 +490,21 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'budget-tip-1',
       tip: 'Book your venue and photographer first - they typically consume 50-70% of your total budget and the best ones book up fastest.',
-      author: 'Sarah Chen, Wedding Planner (15 years)',
+      author: 'Wedding Planner (15 years)',
       category: 'planning',
       importance: 'high'
     },
     {
       id: 'timing-tip-1',
       tip: 'Friday and Sunday weddings can save you 30-40% on venue costs, and off-season dates offer even bigger savings.',
-      author: 'Mike Rodriguez, Venue Manager',
+      author: 'Venue Manager',
       category: 'planning',
       importance: 'high'
     },
     {
       id: 'guest-tip-1',
       tip: 'Create your guest list in tiers: must-invite, would like to invite, and if budget allows. This helps with tough decisions.',
-      author: 'Jennifer Liu, Event Coordinator',
+      author: 'Event Coordinator',
       category: 'planning',
       importance: 'medium'
     },
@@ -525,21 +525,21 @@ export const weddingTemplate: GuidanceTemplate = {
     {
       id: 'decor-tip-1',
       tip: 'Repurpose ceremony flowers for reception centerpieces to maximize your floral budget impact.',
-      author: 'Amanda Foster, Floral Designer',
+      author: 'Floral Designer',
       category: 'planning',
       importance: 'medium'
     },
     {
       id: 'communication-tip-1',
       tip: 'Create a wedding website early and update it regularly. It reduces repetitive questions from guests by 60%.',
-      author: 'Rachel Thompson, Wedding Coordinator',
+      author: 'Wedding Coordinator',
       category: 'planning',
       importance: 'medium'
     },
     {
       id: 'weather-tip-1',
       tip: 'Always have a weather backup plan, even for indoor weddings. Weather affects transportation and guest comfort.',
-      author: 'Tom Wilson, Venue Operations',
+      author: 'Venue Operations',
       category: 'planning',
       importance: 'high'
     }
@@ -15221,7 +15221,7 @@ Smart retirees don't follow rigid rules—they adapt their withdrawal strategy b
 **Low-Income Years Are Roth Conversion Gold**
 Maybe you retire early and have a few years before Social Security kicks in, creating unusually low income years. This is the perfect time to convert some traditional IRA money to a Roth, paying taxes now at low rates rather than higher rates later.
 
-Take Sarah, a client who retired at 62. Her income dropped from $120,000 to just $40,000 from part-time consulting. Instead of just living off savings, she converted $30,000 from her traditional IRA to her Roth IRA, filling up the 12% tax bracket. When her Social Security started and pushed her into higher brackets, she was grateful for that tax-free Roth money.
+For example, if you retire early and have low income years before Social Security kicks in, this creates an opportunity to convert traditional IRA money to a Roth at low tax rates. Converting $30,000 while in the 12% tax bracket instead of waiting for higher income years can result in significant long-term tax savings.
 
 **Market Downturns Create Opportunities**
 When the market crashes, it's often the perfect time to harvest tax losses in your taxable accounts while doing Roth conversions at "discounted" share prices. You're essentially buying future tax-free income at a steep discount.
@@ -16059,29 +16059,44 @@ Successful retirement income planning requires ongoing attention and adjustment.
       title: "Long-Term Care Planning & Insurance Guide",
       type: "guide",
       excerpt: "Plan for potential long-term care needs and explore insurance options to protect your assets",
-      content: `# Long-Term Care Planning & Insurance Guide
+      content: `Nobody wants to think about the day they might need help getting dressed, bathing, or remembering to take their medication. But here's the uncomfortable reality: ==70% of people over 65 will need some form of long-term care during their lifetime==.
 
-## Understanding Long-Term Care
+Unfortunately, many families face the financial and emotional shock of unexpected long-term care needs. A fall requiring months of rehabilitation, followed by ongoing help at home, can quickly result in $8,000 monthly care costs with no insurance coverage. The difference between those who weather such storms and those who lose everything often comes down to one thing: planning ahead.
 
-Long-term care refers to assistance with daily activities when you can no longer manage them independently due to chronic illness, disability, or cognitive impairment. Planning for these potential needs is crucial for protecting your financial security and ensuring quality care.
+## The Reality of Long-Term Care Costs
 
-### Types of Long-Term Care Services
+Long-term care isn't just about nursing homes, though that's what most people picture. It's a spectrum of services designed to help when you can no longer handle basic daily activities independently—what professionals call "Activities of Daily Living" or ADLs.
 
-**Activities of Daily Living (ADLs):**
-- Bathing and personal hygiene
-- Dressing and grooming
-- Eating and meal preparation
-- Mobility and transferring
-- Toileting and incontinence care
-- Medication management
+These include fundamental tasks like bathing, dressing, eating, moving around, toileting, and managing medications. You might also need help with "Instrumental Activities of Daily Living"—things like housekeeping, transportation, shopping, managing finances, and meal preparation.
 
-**Instrumental Activities of Daily Living (IADLs):**
-- Housekeeping and home maintenance
-- Transportation and driving
-- Shopping and errands
-- Financial management
-- Communication and technology use
-- Meal planning and cooking
+The settings where you receive this care vary dramatically, and so do the costs. Home care might run $5,000-$6,000 monthly for part-time help, while assisted living averages around $4,500 monthly nationwide. But if you need skilled nursing care? The national average exceeds $9,000 monthly, with costs in high-cost areas reaching $15,000 or more.
+
+Here's what really shocks people: **Medicare doesn't cover long-term custodial care**. It covers short-term skilled nursing after a hospital stay, but the ongoing personal care that most people actually need? You're on your own.
+## The Four Paths to Paying for Long-Term Care
+
+When it comes to funding long-term care, you essentially have four options. Each has trade-offs, and the best approach often combines multiple strategies.
+
+### Option 1: Self-Insurance (The "Hope and Pray" Method)
+
+This means setting aside enough assets to pay for care out of pocket. Financial planners typically recommend having $500,000 to $1 million in liquid assets earmarked for potential care costs.
+
+The advantage? Complete control over your care choices and no insurance premiums. The downside? You need substantial assets, and even wealthy families can see their savings devastated by extended care needs.
+
+Even families with substantial savings can see their nest egg devastated by extended care needs. For instance, early-onset Alzheimer's requiring four years of memory care at $120,000 annually can quickly deplete $800,000 in retirement savings, leaving a surviving spouse facing retirement insecurity.
+
+### Option 2: Traditional Long-Term Care Insurance
+
+Traditional LTC insurance pays benefits when you can't perform certain daily activities or have cognitive impairment. You pay premiums for years, and if you need care, the policy kicks in.
+
+The good news: Comprehensive coverage can protect your assets and give you choices about care. The bad news: Premiums have skyrocketed, many insurers have left the market, and some policies have had dramatic rate increases.
+
+Here's what to know if you're considering traditional coverage:
+
+**Buy it while you're healthy and relatively young.** The sweet spot is typically ages 50-65. Wait too long, and you might not qualify or the premiums become prohibitive.
+
+**Plan for premium increases.** Even "level premium" policies can increase if the entire class of policyholders faces rate hikes. Budget for potential increases of 20-40% over time.
+
+**Understand the elimination period.** This is like a deductible—you pay out of pocket for 30, 60, or 90 days before benefits begin. Longer elimination periods mean lower premiums but more out-of-pocket risk.
 
 ### Care Settings
 
@@ -16451,7 +16466,46 @@ Long-term care refers to assistance with daily activities when you can no longer
 3. **Care option research** and relationship building
 4. **Family communication** and coordination
 
-Long-term care planning requires careful consideration of your health, finances, and personal preferences. Start planning early, but don't delay action indefinitely. The best plan is one that addresses your specific situation while providing flexibility for changing circumstances.`,
+### Option 3: Hybrid Policies (The Best of Both Worlds?)
+
+Recognizing the problems with traditional LTC insurance, insurers have developed hybrid policies that combine life insurance or annuities with long-term care benefits.
+
+**Life Insurance + LTC Hybrids:** If you never need care, your heirs get a death benefit. If you do need care, you can access the death benefit to pay for it. These policies typically require a larger upfront premium but offer more certainty than traditional LTC insurance.
+
+**Annuity + LTC Hybrids:** These combine the guaranteed income of an annuity with enhanced payouts if you need long-term care. They can provide income in retirement and leverage that income for care if needed.
+
+The appeal of hybrids is clear: you're not "losing" your premium dollars if you never need care. However, they're complex products with their own trade-offs and typically cost more than standalone LTC insurance.
+
+### Option 4: Medicaid Planning (The Nuclear Option)
+
+Medicaid will pay for long-term care, but only after you've spent down most of your assets. For middle-class families, this often means losing the family home and life savings.
+
+However, legitimate Medicaid planning strategies can help protect some assets while still qualifying for benefits. This might include spending down assets on home modifications, purchasing certain types of annuities, or establishing specific types of trusts.
+
+**Important caveat:** Medicaid planning is complex, state-specific, and subject to strict rules. Any planning should be done with experienced elder law attorneys, and there are serious penalties for improper asset transfers.
+
+## Your Long-Term Care Planning Action Steps
+
+The perfect long-term care plan doesn't exist, but the right plan for your situation does. Here's how to find it:
+
+**Step 1: Start the Conversation**
+Talk with your family about preferences and expectations. Where would you want to receive care? What role would family members play? These conversations are uncomfortable but essential.
+
+**Step 2: Assess Your Financial Capacity**
+Calculate your retirement income and expenses to determine how much you could realistically pay for care without depleting your savings. This helps determine how much insurance coverage you might need.
+
+**Step 3: Get Quotes While You're Healthy**
+If you're interested in insurance, get quotes from multiple carriers while you're in good health. Prices and availability change quickly in this market.
+
+**Step 4: Consider Your Health History**
+Family history of Alzheimer's, Parkinson's, or other conditions that often require extended care might influence your planning decisions.
+
+**Step 5: Don't Procrastinate**
+The biggest risk in long-term care planning isn't choosing the wrong strategy—it's choosing no strategy at all. Even an imperfect plan is better than being caught unprepared.
+
+Planning ahead prevents families from facing difficult decisions and financial sacrifices when long-term care needs arise unexpectedly.
+
+Long-term care planning isn't about pessimistically assuming the worst—it's about optimistically ensuring that whatever challenges arise, you'll face them with dignity, choice, and financial security intact.`,
       tags: ["long-term-care", "ltc-insurance", "medicaid-planning", "care-options"],
       readTime: "17 min",
       difficulty: "intermediate",
@@ -18176,11 +18230,11 @@ Technology can greatly enhance retirement life when chosen thoughtfully and impl
       title: "Social Security Claiming Strategies & Optimization",
       type: "tool",
       excerpt: "Maximize your Social Security benefits through strategic claiming decisions and timing",
-      content: `# Social Security Claiming Strategies & Optimization
+      content: `The Social Security claiming decision might be ==the most important financial choice you'll make in retirement==. Get it wrong, and you could be leaving tens of thousands of dollars on the table—money you'll never recover.
 
-## Understanding Social Security Basics
+Many people want to claim Social Security as soon as possible, echoing the sentiment "We want to get our money while we can." However, for many couples, waiting just a few years could result in an additional $180,000 or more over their lifetimes.
 
-Social Security is likely to be a significant portion of your retirement income, making optimization crucial for financial security. The program is complex, but understanding key concepts can help you maximize lifetime benefits.
+The good news? With the right strategy, you can maximize your benefits and ensure your Social Security works as hard as possible for your retirement.
 
 ### How Social Security Benefits Are Calculated
 
