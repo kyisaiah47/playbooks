@@ -31323,11 +31323,11 @@ Financial planning transforms business ownership from stressful uncertainty to c
 ];
 
 // Create unified blog registry from template resources + manual posts
-import { getResourcesAsBlogPosts } from './templates';
+import { allTemplateBlogPosts } from './templates/index';
 
 export const blogRegistry: BlogPost[] = [
   ...manualBlogPosts,
-  ...getResourcesAsBlogPosts()
+  ...allTemplateBlogPosts
 ];
 
 // Helper functions

@@ -62,7 +62,11 @@
       "Bash(if [ -d \"../templata-$template\" ])",
       "Bash(then cd \"../templata-$template\")",
       "Bash(echo:*)",
-      "Bash(else echo \"❌ Worktree ../templata-$template not found\")"
+      "Bash(else echo \"❌ Worktree ../templata-$template not found\")",
+      "Bash(git merge:*)",
+      "Bash(mkdir:*)",
+      "Bash(for template in home-buying wedding-planning baby-planning job-search college-planning budget-planning fitness-journey travel-planning moving-relocation retirement-planning)",
+      "Bash(do echo \"=== Removing worktree: $template ===\")"
     ],
     "deny": [],
     "ask": []
