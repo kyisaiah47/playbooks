@@ -54,7 +54,9 @@
       "Bash(bash:*)",
       "Bash(./article-generation-cycle.sh:*)",
       "Read(//Users/ikim1/Documents/GitHub/templata-home-buying/**)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(awk:*)",
+      "Bash(xargs kill:*)"
     ],
     "deny": [],
     "ask": []

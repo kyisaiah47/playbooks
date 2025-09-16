@@ -12,28 +12,8 @@ WORKTREE_DIR="../templata-${TEMPLATE_NAME}"
 LOGFILE="$SCRIPT_DIR/article-generation-${TEMPLATE_NAME}.log"
 PROGRESS_FILE="$SCRIPT_DIR/.article-progress-${TEMPLATE_NAME}"
 
-# Template-specific article topics
-get_topics_for_template() {
-    local template="$1"
-    case "$template" in
-        "home-buying")
-            echo "homeowners-insurance-comprehensive-guide property-tax-assessment-appeals-guide home-warranty-coverage-analysis closing-day-preparation-procedures real-estate-agent-selection-management escrow-title-insurance-protection new-construction-vs-resale-comparison condo-townhome-hoa-buying-guide investment-property-analysis-strategy luxury-home-market-considerations rural-property-land-purchasing foreclosure-distressed-property-guide senior-retirement-home-buying energy-efficiency-green-homes home-buying-scams-protection corporate-relocation-assistance international-buyer-us-real-estate home-buying-technology-tools multi-family-property-investment home-buying-divorce-separation"
-            ;;
-        "wedding-planning")
-            echo "wedding-budget-management vendor-selection-guide venue-booking-strategy guest-list-management wedding-timeline-planning catering-food-selection wedding-photography-videography music-entertainment-planning wedding-attire-shopping ceremony-reception-coordination honeymoon-planning wedding-insurance-protection destination-wedding-guide outdoor-wedding-considerations wedding-vendor-contracts wedding-day-coordination wedding-etiquette-guide wedding-invitation-design cultural-wedding-traditions wedding-stress-management"
-            ;;
-        "baby-planning")
-            echo "pregnancy-preparation-guide prenatal-care-essentials baby-gear-essentials nursery-setup-planning childcare-options-guide feeding-nutrition-planning sleep-training-strategies pediatric-care-selection baby-safety-childproofing postpartum-recovery-support early-childhood-development baby-budget-financial-planning maternity-paternity-leave birth-plan-preparation newborn-care-basics baby-milestone-tracking childhood-immunization-schedule parenting-class-selection baby-emergency-preparedness baby-travel-planning"
-            ;;
-        *)
-            echo "comprehensive-guide getting-started-basics advanced-strategies expert-techniques troubleshooting-guide best-practices-checklist cost-analysis-budgeting timeline-planning safety-considerations legal-requirements maintenance-guide comparison-analysis tools-resources professional-services market-trends future-planning common-mistakes expert-tips industry-insights case-studies"
-            ;;
-    esac
-}
-
-# Convert space-separated string to array
-TOPICS_STRING=$(get_topics_for_template "$TEMPLATE_NAME")
-read -ra TOPICS <<< "$TOPICS_STRING"
+# Generate 20 articles for any template
+TOPICS=(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
 
 # Colors
 RED='\033[0;31m'
@@ -99,32 +79,29 @@ get_category_for_template() {
 
 # Create generation prompt
 create_generation_prompt() {
-    local topic="$1"
-    local topic_readable=$(echo "$topic" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+    local article_number="$1"
     local category=$(get_category_for_template "$TEMPLATE_NAME")
     local template_readable=$(echo "$TEMPLATE_NAME" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
 
     cat << EOF
 Read the master prompt at claude-resource-generation-master-prompt.md then generate ONE comprehensive article for the $template_readable template.
 
-TOPIC: $topic_readable
+ARTICLE #$article_number for $template_readable
 
 REQUIREMENTS:
 - 1,200-1,600 words (8-12 minute read)
-- No first person language ("I", "my", "we")
-- Objective, authoritative voice
-- Flowing paragraphs with strategically placed bold numbers
+- Follow the master prompt voice and character guidelines
 - Author: "Templata"
 - Category: "$category"
 - Add to src/registry/blogs.ts in manualBlogPosts array
 - Include proper SEO metadata
-- Choose appropriate type (guide/article/checklist/tool)
-- Choose appropriate difficulty (beginner/intermediate/expert)
+- Choose appropriate type (guide/article/checklist/tool) and difficulty (beginner/intermediate/expert)
 - Focus on $template_readable context and needs
+- Pick your own relevant topic that would help people with $template_readable
 
-Follow all master prompt guidelines for quality and readability.
+Follow all master prompt guidelines for sophisticated, caring voice and readability.
 
-When complete, respond exactly: "ARTICLE GENERATION COMPLETE - $topic_readable"
+When complete, respond exactly: "ARTICLE GENERATION COMPLETE - Article #$article_number"
 EOF
 }
 
@@ -164,7 +141,7 @@ run_article_generation() {
     local generation_prompt=$(create_generation_prompt "$topic")
     log_colored "$YELLOW" "Running article generation..."
 
-    claude --print --dangerously-skip-permissions --add-dir "$(pwd)" -p "$generation_prompt" | tee -a "$LOGFILE"
+    cd "$WORKTREE_DIR" && claude --print --dangerously-skip-permissions --add-dir "$(pwd)" -p "$generation_prompt" | tee -a "$LOGFILE"
 
     # Brief pause
     sleep 3
