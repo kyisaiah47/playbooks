@@ -27,9 +27,9 @@ export const manualBlogPosts: BlogPost[] = [
   {
     id: "complete-first-time-home-buyer-guide-2025",
     slug: "complete-first-time-home-buyer-guide-2025",
-    title: "Buying Your First House in 2025: What I Wish Someone Had Told Me",
-    excerpt: "Look, buying your first home is overwhelming as hell. I went through it recently and learned some stuff the hard way. Here's everything I wish someone had just laid out for me straight up.",
-    content: `So you're thinking about buying your first house? Cool. Also, good luck, because holy crap is this process confusing.
+    title: "First-Time Home Buyer Timeline & Checklist: Complete Planning Guide",
+    excerpt: "Essential timelines, costs, and decision criteria for first-time home buyers. Get the specific numbers, deadlines, and frameworks you need for your home buying plan.",
+    content: `Buying your first home involves coordinating multiple professionals, meeting strict deadlines, and making financial decisions that will impact you for decades. This guide provides the specific timelines, costs, and decision criteria you need to plan effectively.
 
 I bought my first place about a year ago, and honestly, I had no idea what I was doing for most of it. Everyone kept giving me advice that sounded smart but wasn't actually helpful. "Get pre-approved!" they'd say. Okay, but like... how? And for how much? And what does that even mean?
 
@@ -158,15 +158,15 @@ Start getting your finances in order 6-12 months before you want to buy. Take ti
 The goal isn't just to buy any house. It's to buy the right house at a price that makes sense for your financial situation. Take your time, do your homework, and trust the process. You've got this.`,
     author: "Templata",
     publishedAt: "2025-01-15",
-    readTime: "10 min read",
+    readTime: "11 min read",
     category: "Real Estate & Home Buying",
     tags: ["first-time home buyer", "real estate", "mortgage", "home buying process", "financial planning"],
     type: "guide",
     difficulty: "beginner",
     featured: true,
     seo: {
-      metaTitle: "First-Time Home Buyer Guide 2025 - Real Talk About Buying Your First House",
-      metaDescription: "Buying your first house is overwhelming. Here's what actually matters, what you can ignore, and the mistakes to avoid - written by someone who just went through it.",
+      metaTitle: "Complete First-Time Home Buyer Guide 2025 - Timeline & Checklist",
+      metaDescription: "Essential timeline, costs, and decision criteria for first-time home buyers. Get specific numbers, deadlines, and frameworks for your home buying plan.",
       ogImage: "/blog/first-time-home-buyer-guide-2025.jpg"
     },
     relatedTemplates: ["home-buying"],

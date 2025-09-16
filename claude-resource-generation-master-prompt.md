@@ -53,16 +53,19 @@ Users have these articles open split-screen with prompts and note-taking tools. 
 ### 3. WORKING DOCUMENT OPTIMIZATION
 
 **Highlight-Worthy Content**
-- Every section contains specific information users will want to save
-- Include exact numbers, percentages, timelines, and cost ranges
-- Provide quotable insights and decision criteria
-- Present frameworks and processes they can copy into their planning
+- Every section contains bite-sized, specific information users will want to save
+- Include exact numbers, percentages, timelines, and cost ranges in bold for scanning
+- Provide quotable insights and decision criteria as standalone statements
+- Present frameworks, templates, and scripts they can copy directly into their planning
+- Create "Key Takeaway" insights that work perfectly as highlights
 
 **Reference Material Structure**
 - Headers that clearly indicate the actionable content inside
-- Key information presented in easily scannable format
-- Decision trees and evaluation criteria clearly laid out
+- Key information presented in easily scannable format with aggressive bolding
+- Decision trees and evaluation criteria in simple, text-based format
 - Important details that stand alone when highlighted
+- Action-ready formatting: checklists, templates, scripts, calculators
+- Timeline blocks users can drag into their planning schedules
 
 **Immediate Application Focus**
 - Information users can act on today, this week, this month
@@ -80,9 +83,11 @@ Users have these articles open split-screen with prompts and note-taking tools. 
 
 **Scannable Structure**
 - Use headers that clearly indicate what actionable content follows
-- Bold key numbers, timelines, and criteria for easy scanning
+- Bold key numbers, timelines, and criteria aggressively for instant recognition
 - Structure information so highlighted sections make sense standalone
 - Use bullet points strategically for lists of criteria or steps
+- Format decision trees, timelines, and calculations in copy-ready text blocks
+- Create "highlight-ready" standalone insights and key takeaways
 
 **Reference Quality**
 - Ensure all information is accurate and current
@@ -138,21 +143,25 @@ Users have these articles open split-screen with prompts and note-taking tools. 
 ### Writing Phase Checklist
 - [ ] Authoritative, knowledgeable voice established immediately
 - [ ] Clear preview of exactly what actionable information users will get
-- [ ] Each section contains specific, highlight-worthy information
-- [ ] Key numbers, timelines, and criteria clearly presented and scannable
-- [ ] Decision frameworks and evaluation criteria included
+- [ ] Each section contains bite-sized, highlight-worthy information
+- [ ] Key numbers, timelines, and criteria aggressively bolded for scanning
+- [ ] Decision frameworks and evaluation criteria in copy-ready text blocks
 - [ ] Headers clearly indicate what actionable content follows
-- [ ] Information structured so highlighted sections stand alone
+- [ ] Information structured so highlighted sections stand alone perfectly
+- [ ] Action-ready templates, scripts, and checklists included
+- [ ] Timeline blocks and decision trees formatted for easy copying
+- [ ] "Key Takeaway" insights that work as perfect highlights
 - [ ] Insider knowledge and specific details throughout
 - [ ] Author set to "Templata" (never use made-up individual names)
-- [ ] Content optimized for active use as working reference material
+- [ ] Content optimized for split-screen active planning and note-taking
 
 ### Quality Validation Phase
-- [ ] Can users highlight multiple valuable insights from each section?
-- [ ] Are key numbers, timelines, and criteria easily scannable?
-- [ ] Do highlighted sections make sense when pulled into notes?
-- [ ] Would users reference this while making actual decisions?
-- [ ] Does this provide specific, actionable information they can't get elsewhere?
+- [ ] Can users highlight multiple bite-sized insights from each section?
+- [ ] Are key numbers, timelines, and criteria aggressively bolded and scannable?
+- [ ] Do highlighted sections make perfect sense when pulled into notes?
+- [ ] Are there ready-to-copy templates, scripts, and checklists?
+- [ ] Would users reference this while actively planning and making decisions?
+- [ ] Does this provide specific, actionable information optimized for working document use?
 
 ## Content Differentiation Strategy
 
@@ -163,11 +172,12 @@ Users have these articles open split-screen with prompts and note-taking tools. 
 - Articles filled with fluff or unnecessary length
 
 **Always Create:**
-- Working documents with highlight-worthy insights in every section
-- Content with specific numbers, timelines, and decision criteria
-- Reference material users will drag into their planning
-- Information structured for active use and note-taking
-- Articles optimized for split-screen reference while users work
+- Working documents with bite-sized, highlight-worthy insights in every section
+- Content with aggressively bolded numbers, timelines, and decision criteria
+- Ready-to-copy templates, scripts, checklists, and decision trees
+- Timeline blocks and calculation formulas users can drag into planning
+- Reference material structured for active split-screen use and note-taking
+- Articles optimized for highlighting and copying while users actively plan
 
 ## Success Metrics
 
