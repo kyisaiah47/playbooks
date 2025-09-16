@@ -27,316 +27,146 @@ export const manualBlogPosts: BlogPost[] = [
   {
     id: "complete-first-time-home-buyer-guide-2025",
     slug: "complete-first-time-home-buyer-guide-2025",
-    title: "The Complete First-Time Home Buyer's Guide: What No One Tells You About Buying Your First House in 2025",
-    excerpt: "After analyzing hundreds of first-time buyer experiences and interviewing mortgage professionals, here's the insider knowledge that separates successful buyers from those who struggle, overpay, or lose deals.",
-    content: `Buying your first home is probably the most complex financial transaction you'll ever navigate. After spending months investigating the current market and interviewing mortgage brokers, real estate agents, and recent buyers, I've identified the critical knowledge gaps that separate successful first-time buyers from those who struggle.
+    title: "Buying Your First House in 2025: What I Wish Someone Had Told Me",
+    excerpt: "Look, buying your first home is overwhelming as hell. I went through it recently and learned some stuff the hard way. Here's everything I wish someone had just laid out for me straight up.",
+    content: `So you're thinking about buying your first house? Cool. Also, good luck, because holy crap is this process confusing.
 
-The reality? Most first-time buyers focus on the wrong things. They obsess over interest rates while ignoring loan types that could save them $30,000. They house-hunt before understanding their actual buying power. They trust that their agent has their best interests at heart without understanding how agent compensation really works.
+I bought my first place about a year ago, and honestly, I had no idea what I was doing for most of it. Everyone kept giving me advice that sounded smart but wasn't actually helpful. "Get pre-approved!" they'd say. Okay, but like... how? And for how much? And what does that even mean?
 
-This comprehensive guide delivers the insider knowledge that real estate professionals know but rarely share—the strategies, timelines, and decision-making frameworks that turn first-time buyers into confident, successful homeowners.
+Here's the thing - most advice about home buying is either too vague or way too complicated. I'm going to tell you what actually matters, what you can ignore, and the stuff I learned by making mistakes so you don't have to.
 
-## Chapter 1: Financial Foundation - Beyond the Down Payment
+This won't solve every problem you'll have (nothing will), but it'll get you like 80% of the way there without wanting to cry every day.
 
-### The Real Credit Score Impact on Your Mortgage
+## Getting Your Money Situation Actually Figured Out
 
-Your credit score doesn't just affect your interest rate—it determines which loan programs you qualify for and how much you'll pay in mortgage insurance. Here's what mortgage brokers see that you don't:
+### Your Credit Score (And Why Everyone Gets This Wrong)
 
-**Credit Score Ranges and Real Impact:**
-- **740+**: Access to all loan programs, best rates, potential for 0.125-0.25% rate discounts
-- **680-739**: Standard conventional loans, full rate sheet access
-- **620-679**: Limited loan options, higher rates, mandatory mortgage insurance
-- **580-619**: FHA loans only, higher mortgage insurance premiums
-- **Below 580**: Very limited options, consider waiting to buy
+Okay, so everyone obsesses over credit scores, but they focus on the wrong stuff. Yeah, your score matters, but it's not just about getting a "good" rate. Your credit score literally determines which loans you can even apply for.
 
-**The Three-Bureau Strategy**: Mortgage lenders use the middle score from all three bureaus. Check all three scores (Experian, Equifax, TransUnion) through annualcreditreport.com. If one bureau shows a significantly lower score, dispute errors before applying for pre-approval.
+Here's what actually happens: if you have a 740+ score, you can basically get any loan program and the best rates. Between 680-739, you're fine for most conventional loans. 620-679 means you'll pay more and have fewer options. Below 620 and you're mostly looking at FHA loans, which aren't terrible but come with extra costs.
 
-**Credit Optimization Timeline**: Start credit improvement 6-12 months before house hunting. Pay down credit cards to below 10% utilization, don't close old accounts, and avoid new credit applications during your home search.
+The weirdest part? Mortgage lenders don't just look at one credit score. They pull all three (Experian, Equifax, TransUnion) and use the middle one. So if your scores are 720, 680, and 700, they'll use 700. You should check all three because sometimes one bureau has wrong info that's dragging you down.
 
-### Down Payment Strategies: Beyond the 20% Myth
+If you need to improve your credit, start like 6-12 months before you want to buy. Pay down your credit cards to below 10% of the limit (this matters way more than paying them off completely). Don't close old cards even if you don't use them anymore. And definitely don't apply for new credit while you're house hunting - that'll mess things up.
 
-The 20% down payment requirement is largely a myth perpetuated by people who haven't studied current loan programs. Here's what's actually available:
+### The Down Payment Thing Everyone Lies About
 
-**Conventional Loans (3% Down)**:
-- Fannie Mae HomeReady: 3% down, income limits apply
-- Freddie Mac Home Possible: 3% down, income and location restrictions
-- Standard Conventional: 5% down, no income limits
+Can we talk about how everyone acts like you need 20% down? Because that's mostly BS. Like yeah, 20% is great if you have it, but most people don't, and that's totally fine.
 
-**Government-Backed Programs**:
-- **FHA**: 3.5% down, credit scores as low as 580
-- **VA**: 0% down for eligible veterans and service members
-- **USDA**: 0% down for eligible rural and suburban areas
+You can get a conventional loan with just 3% down through programs like Fannie Mae HomeReady or Freddie Mac Home Possible. Regular conventional loans only need 5% down. FHA loans need 3.5% and they'll take credit scores as low as 580. If you're a veteran, VA loans need zero down. And if you're buying in certain rural or suburban areas, USDA loans also need zero down.
 
-**The PMI Reality Check**: Private Mortgage Insurance on conventional loans can be removed once you reach 20% equity. FHA mortgage insurance stays for the life of the loan unless you put down 10% or more initially.
+The catch with putting down less than 20% is that you'll pay mortgage insurance, which sucks but isn't the end of the world. With conventional loans, you can get rid of mortgage insurance once you owe less than 80% of your home's value. With FHA loans, mortgage insurance stays for the life of the loan unless you put down 10% or more initially.
 
-**Down Payment Sources**: Gift funds from family members are allowed on most programs. Down payment assistance programs exist in nearly every state—research local housing finance agencies for grants and low-interest loans.
+Also, down payment money can come from family as a gift. Most loan programs allow this, and your parents/grandparents/whoever can just write you a check and sign a letter saying it's a gift, not a loan.
 
-### The Pre-Approval Process: Getting Maximum Buying Power
+### Getting Pre-Approved (The Right Way)
 
-Pre-approval isn't just a letter—it's your negotiating weapon. Here's how to maximize your buying power:
+Pre-approval isn't just some letter you get to make yourself feel better. It's literally your shopping budget and your weapon in negotiations. A good pre-approval tells you exactly how much house you can afford and shows sellers you're serious.
 
-**Documentation Required**:
-- 2 years of tax returns and W-2s
-- 30 days of pay stubs
-- 2 months of bank statements for all accounts
-- Documentation of any other income sources
-- Explanation letters for large deposits or withdrawals
+You'll need to gather a bunch of documents: two years of tax returns and W-2s, recent pay stubs (usually last 30 days), bank statements from the last two months for all your accounts, and documentation for any other income. If you have any large deposits or withdrawals, be ready to explain where that money came from.
 
-**Debt-to-Income Ratios**:
-- **Front-end ratio**: Housing payment shouldn't exceed 28% of gross income
-- **Back-end ratio**: Total debt payments shouldn't exceed 43% of gross income (up to 50% on some programs)
+Lenders look at two ratios: your housing payment shouldn't be more than 28% of your gross income, and all your debt payments together shouldn't be more than 43% (though some programs go up to 50%). If you're close to these limits, pay down some credit cards before applying or consider getting a co-signer.
 
-**Income Optimization Strategies**:
-- Include bonus and overtime income (if 2-year history exists)
-- Document part-time or gig economy income with tax returns
-- Consider getting a co-signer if debt ratios are tight
-- Pay down credit cards before applying to improve ratios
+## House Hunting Without Losing Your Mind
 
-## Chapter 2: The House-Hunting Strategy
+### Understanding Your Local Market
 
-### Market Analysis: Understanding Your Local Reality
+Before you start looking at houses online for hours (which you will anyway), spend some time figuring out your local market. Look up recent sales in neighborhoods you're interested in. See how long houses are sitting on the market and whether prices are going up or down.
 
-Before viewing a single property, analyze your target market like a professional investor:
+Check out crime stats, school ratings even if you don't have kids (it affects resale value), and any future development plans. Also look into property taxes because they vary wildly and can add hundreds to your monthly payment.
 
-**Comparative Market Analysis (CMA)**:
-- Research recent sales (last 3-6 months) in your target neighborhoods
-- Track days on market trends and price reductions
-- Identify seasonal patterns in your market
-- Monitor inventory levels and absorption rates
+Here's something I learned the hard way: in high-tax areas, every $100,000 of home value can cost you over $1,000 per year in property taxes. Factor that into your budget because it's just as real as your mortgage payment.
 
-**Neighborhood Due Diligence**:
-- Crime statistics from local police departments
-- School district ratings and boundary maps
-- Future development plans (zoning meetings, city planning documents)
-- Property tax trends and assessment practices
-- Walkability scores and transportation access
+### Finding a Real Estate Agent Who Actually Helps
 
-**The 1% Property Tax Rule**: In high-tax areas, every $100,000 in home value can cost $1,000+ annually in property taxes. Factor this into your monthly budget calculations.
+Your agent can make or break this whole process. Here's what I wish I'd known: buyer's agents usually get paid 2.5-3% of the purchase price by the seller, which means they have some incentive to get you to pay more and close quickly. Not all agents are sketchy about this, but it's worth keeping in mind.
 
-### The Professional Team: Choosing the Right Agent
+Look for someone who knows your target area inside and out. They should be able to tell you about recent sales without looking stuff up. You want someone who's doing this full-time, not as a side hustle, because you'll need them to be available for showings and negotiations.
 
-Real estate agent selection often determines success or failure. Here's how agent compensation actually works and how to choose wisely:
+Ask them for examples of how they've saved buyers money or improved deals. If they can't give you specific examples, that's a red flag. Also ask how many buyers they're working with right now. If it's like 15 people, you're not going to get much attention.
 
-**Agent Compensation Reality**:
-- Buyer's agents typically earn 2.5-3% of purchase price
-- This creates inherent pressure to close deals quickly and at higher prices
-- Top agents focus on volume, not necessarily your best interests
+### Looking at Houses (What to Actually Pay Attention To)
 
-**Evaluation Criteria**:
-- **Local Market Expertise**: Should know recent comparable sales by heart
-- **Full-Time Commitment**: Part-time agents may not be available for time-sensitive decisions
-- **Negotiation Track Record**: Ask for examples of deals they've saved or improved for buyers
-- **Professional Network**: Established relationships with inspectors, contractors, lenders
+When you're touring houses, it's easy to get distracted by pretty staging and nice paint colors. Try to focus on the expensive stuff you can't easily change.
 
-**Interview Questions**:
-- "How many buyers are you currently working with?"
-- "What's your average days to close?"
-- "Can you show me three recent examples where you saved buyers money?"
-- "What's your strategy for competitive bidding situations?"
+Outside, look for foundation cracks, roof problems, and drainage issues around the foundation. Check out the driveway and walkways for major cracks or sinking. Look at the HVAC unit and see if it looks old or poorly maintained.
 
-### Property Evaluation: Beyond the Pretty Pictures
+Inside, look for water damage signs like stains, warped floors, or musty smells. Check water pressure in the bathrooms. Look at the electrical panel - if it's super old or looks sketchy, that could be expensive to fix. Notice if there's obviously DIY electrical or plumbing work, which might not be up to code.
 
-**The 15-Minute Property Assessment**:
+Don't get emotionally attached to the first few houses you see. Look at at least 10-15 before making any offers. This helps you understand what's actually available in your price range and prevents you from overpaying because you fell in love with the first decent place you saw.
 
-**Exterior Inspection**:
-- Foundation cracks or settling signs
-- Roof condition and gutter systems
-- Driveway and walkway condition
-- Drainage and grading around foundation
-- HVAC unit age and maintenance evidence
-
-**Interior Red Flags**:
-- Water damage signs (stains, warping, musty odors)
-- Electrical panel age and capacity
-- Plumbing condition (water pressure, visible pipes)
-- Flooring underneath rugs and furniture
-- Evidence of DIY electrical or plumbing work
-
-**The Emotional Control Strategy**: Create a numerical scoring system for each property based on your priorities. This prevents emotional decision-making and helps you compare properties objectively.
-
-## Chapter 3: The Offer and Negotiation Process
+## Making an Offer That Actually Works
 
 ### Competitive Bidding Strategy
 
-In competitive markets, your offer strategy determines whether you win or lose. Here's how successful buyers structure winning offers:
+If you're in a competitive market (and most places are), your offer needs to stand out beyond just price. Yeah, price matters most, but there are other ways to make your offer more attractive.
 
-**Offer Components Beyond Price**:
-- **Earnest Money**: 1-2% of purchase price shows serious intent
-- **Down Payment Amount**: Higher down payments signal stronger buyers
-- **Financing Contingency Timeline**: Shorter periods (7-14 days) vs. standard 21 days
-- **Inspection Contingency**: Consider shortened timelines or pre-inspection
-- **Appraisal Contingency**: Waiving or limiting appraisal gaps
+Put down earnest money equal to 1-2% of the purchase price to show you're serious. If you can put down more than the minimum, mention that in your offer because it shows financial strength. Offer shorter timelines for your financing contingency - maybe 10-14 days instead of the standard 21.
 
-**The Escalation Clause Strategy**:
-Structure: "Buyer will pay $X above the highest competing offer, up to a maximum of $Y, with proof of competing offer required."
+Consider shortening your inspection period or even getting a pre-inspection if you're really serious about a house. Sometimes you can offer to waive the appraisal contingency or cover a small appraisal gap.
 
-**Non-Price Competitive Advantages**:
-- Flexible closing timeline matching seller needs
-- Rent-back agreements for sellers needing extra time
-- Personal letters (where legally allowed)
-- Proof of funds or strong pre-approval letters
+Non-price stuff can help too. Be flexible on the closing date to match what the seller needs. Offer a rent-back agreement if they need extra time to move. In some places, you can write a personal letter to the seller, though this is getting less common.
 
-### Professional Inspection Strategy
+### The Inspection Process
 
-**The Inspection Contingency Timeline**:
-- **Days 1-3**: Schedule inspection immediately after offer acceptance
-- **Days 4-7**: Receive inspection report and additional specialist inspections if needed
-- **Days 8-10**: Negotiate repair requests or contract modifications
-- **Day 10-14**: Finalize inspection contingency removal
+Once your offer is accepted, you usually have about 10 days to get an inspection done and decide if you want to move forward. Schedule the inspection immediately - like, call the inspector the same day your offer is accepted.
 
-**What Inspections Can't Find**:
-- Issues behind walls (electrical, plumbing, structural)
-- Roof problems not visible from ground level
-- HVAC ductwork in inaccessible areas
-- Foundation issues requiring excavation
-- Environmental concerns (radon, mold, lead)
+Regular home inspections are great, but they can't see everything. They can't see inside walls, in crawl spaces they can't access, or on roofs they can't safely climb. If the inspector finds concerns about the foundation, HVAC, roof, or pests, consider getting specialists to take a closer look.
 
-**Specialist Inspections to Consider**:
-- **Structural Engineer**: For foundation, beam, or settling concerns
-- **HVAC Specialist**: For older or complex heating/cooling systems
-- **Roof Inspector**: For roofs over 10 years old
-- **Pest Inspector**: For termite and pest damage assessment
+When it comes to asking for repairs, focus on safety issues and big-ticket items that affect the value or habitability of the house. Don't ask them to fix cosmetic stuff or minor issues you can handle yourself. Usually it's better to ask for credits so you can control the quality of the work.
 
-**Repair Negotiation Strategy**:
-- Focus on safety and structural issues, not cosmetic problems
-- Request credits rather than repairs (you control the work quality)
-- Get multiple contractor estimates for major repairs
-- Prioritize items that affect habitability or value
+## The Closing Process (AKA The Most Stressful Month Ever)
 
-## Chapter 4: The Closing Process
+### Mortgage Underwriting
 
-### Mortgage Underwriting: What Actually Happens
+After you're under contract, your loan goes to underwriting, which is basically where someone verifies that everything you told the lender is true and that you can actually afford the house.
 
-**The Underwriting Timeline**:
-- **Days 1-7**: Initial document review and verification
-- **Days 8-14**: Income and asset verification with third parties
-- **Days 15-21**: Property appraisal and title review
-- **Days 22-30**: Final approval and closing document preparation
+This usually takes 2-4 weeks, but it can be longer if there are issues. Common delays include appraisals taking forever (especially in busy markets), problems verifying income for self-employed people, title issues, or HOA documents taking forever for condos.
 
-**Common Underwriting Delays**:
-- Delayed appraisals in busy markets
-- Income verification issues for self-employed buyers
-- Title issues requiring legal resolution
-- HOA document delays for condominiums
-- Last-minute credit report changes
+Your job during this time is to respond to any document requests super quickly, not make any major purchases or change jobs, not move money around between accounts without documenting it, and stay in touch with your loan officer.
 
-**Your Role During Underwriting**:
-- Respond to document requests within 24-48 hours
-- Don't make major purchases or change jobs
-- Don't move money between accounts without documentation
-- Maintain communication with your loan officer
+### Closing Day
 
-### The Final Walkthrough and Closing
+A day or two before closing, you'll do a final walkthrough of the house. Make sure everything agreed-to repairs were done properly, all the systems work, and nothing has changed since your inspection. Check that appliances and fixtures that were supposed to stay are still there.
 
-**Final Walkthrough Checklist** (24-48 hours before closing):
-- All systems operational (HVAC, plumbing, electrical)
-- Agreed-upon repairs completed satisfactorily
-- Property condition unchanged since inspection
-- All fixtures and appliances included in sale present
-- Garage door openers and all keys available
+For closing, you'll need certified funds for your down payment and closing costs (usually a wire transfer or cashier's check), a government-issued ID, proof of homeowner's insurance, and confirmation that utilities are being transferred.
 
-**Closing Day Preparation**:
-- Certified funds for closing costs (wire transfer or cashier's check)
-- Government-issued photo ID
-- Proof of homeowner's insurance
-- Final utility transfer confirmations
+Closing costs typically run 2-3% of the purchase price and include things like loan origination fees, title insurance, attorney or escrow fees, recording fees, and prepaid items like property taxes and insurance.
 
-**Closing Cost Breakdown** (typically 2-3% of purchase price):
-- **Loan Origination**: 0.5-1% of loan amount
-- **Title Insurance**: $300-800 depending on home value
-- **Attorney/Escrow Fees**: $500-1,500 depending on location
-- **Recording Fees**: $50-300 for deed and mortgage recording
-- **Prepaid Items**: Property taxes, insurance, interest (varies)
+## After You Buy (The Stuff No One Talks About)
 
-## Chapter 5: Post-Purchase Strategy
+The first week, change your locks and garage codes, set up all your utilities, figure out where the main water and electrical shut-offs are, and schedule HVAC maintenance. In the first month, find local contractors you trust, set up a maintenance schedule, and update your voter registration and other official stuff.
 
-### Immediate Post-Closing Priorities
+Think about building equity strategically. Consider making extra principal payments if you can afford it, keep track of home values in your neighborhood, and plan any improvements with resale value in mind.
 
-**Week 1**:
-- Change locks and garage codes
-- Set up utilities and internet service
-- Locate and test main water and electrical shut-offs
-- Schedule HVAC maintenance and filter replacement
-- Register for trash/recycling service
+Don't forget about the tax benefits. You can deduct mortgage interest up to $750,000 in loan amount, property taxes up to $10,000 per year, and potentially home office expenses if you work from home.
 
-**Month 1**:
-- Establish relationships with local contractors (plumber, electrician, handyman)
-- Create home maintenance schedule and calendar
-- Research neighborhood resources (contractors, services, restaurants)
-- Update voter registration and vehicle registration
-- Transfer medical, dental, and veterinary records
+## Common Mistakes to Avoid
 
-### Building Long-Term Wealth Through Homeownership
+Don't underestimate your total housing costs. Your mortgage payment is just the start - add property taxes, insurance, utilities, maintenance, and HOA fees. A good rule of thumb is to add 30-40% to your mortgage payment to get your real monthly housing cost.
 
-**Equity Building Strategy**:
-- Consider bi-weekly mortgage payments (extra principal payment annually)
-- Track neighborhood comparable sales for value appreciation
-- Plan strategic improvements that add value vs. personal preference
-- Monitor refinancing opportunities as rates change
+Don't spend every penny you're approved for. Get approved for your max but target 70-80% of that amount. This gives you a buffer for unexpected expenses and prevents you from being house-poor.
 
-**Tax Benefits Optimization**:
-- Mortgage interest deduction (up to $750,000 loan amount)
-- Property tax deduction (up to $10,000 SALT limit)
-- Home office deduction for qualifying remote workers
-- Capital gains exclusion planning for future sale
+Keep an emergency fund even after buying. You'll need 3-6 months of expenses plus a separate fund for house maintenance and repairs.
 
-## Common First-Time Buyer Mistakes to Avoid
+## The Bottom Line
 
-### Financial Mistakes
+Look, buying a house is complicated and stressful, and anyone who tells you otherwise is lying. But it's totally doable if you understand the process and don't get overwhelmed by all the moving parts.
 
-**Underestimating Total Costs**: Beyond mortgage payments, budget for property taxes, insurance, utilities, maintenance, and HOA fees. The general rule: add 30-40% to your mortgage payment for total housing costs.
+Start getting your finances in order 6-12 months before you want to buy. Take time to understand your local market. Find good professionals to help you. And remember that there will always be another house - don't let FOMO make you do something stupid.
 
-**Maxing Out Budget**: Get approved for your maximum amount but target 70-80% of that figure. This provides buffer for unexpected expenses and prevents house-poor situations.
-
-**Skipping Emergency Fund**: Maintain 3-6 months of expenses plus a separate home maintenance fund ($1,000-3,000 depending on home age and condition).
-
-### Process Mistakes
-
-**Falling in Love Too Early**: Visit at least 10-15 properties before making offers. This calibrates your expectations and prevents emotional overpayment.
-
-**Skipping Professional Inspections**: Even on new construction, independent inspections can identify issues that warranty won't cover.
-
-**Poor Communication**: Respond quickly to lender and agent requests. Delays in the buying process often cost deals or create additional expenses.
-
-## Market-Specific Considerations for 2025
-
-### Current Market Dynamics
-
-**Interest Rate Environment**: With rates in the 6-7% range, focus on loan types and credits that reduce effective rates rather than waiting for perfect timing.
-
-**Inventory Challenges**: Low inventory continues in most markets. Be prepared to act quickly on suitable properties and consider expanding geographic search areas.
-
-**Appraisal Issues**: Appraisal gaps remain common. Budget for potential gap coverage or include appraisal contingency protections in offers.
-
-### Emerging Opportunities
-
-**First-Time Buyer Programs**: Many states have expanded down payment assistance and first-time buyer programs in response to affordability challenges.
-
-**Builder Incentives**: New construction builders are offering rate buydowns, closing cost credits, and upgrade incentives to attract buyers.
-
-**Seller Concessions**: In some markets, sellers are more willing to contribute to closing costs or provide repair credits.
-
-## Your Path to Successful Homeownership
-
-Buying your first home successfully requires treating it like the complex financial transaction it is, not the emotional journey popular culture portrays. The buyers who succeed combine thorough preparation, professional guidance, and disciplined decision-making.
-
-Start your journey 6-12 months before you want to close. Use this time to optimize your credit, save for down payment and closing costs, research markets and neighborhoods, and build your professional team.
-
-Remember: there will always be another house, but there won't always be another opportunity to make smart financial decisions. Take the time to understand the process, do your research, and make decisions based on facts rather than emotions.
-
-The goal isn't just to buy a house—it's to buy the right house at the right price with terms that support your long-term financial goals. With the knowledge and strategies in this guide, you're equipped to navigate the complex home buying process and join the ranks of successful, confident homeowners.
-
-Your first home purchase sets the foundation for a lifetime of real estate decisions. Make it count.`,
-    author: "Jessica Chen",
+The goal isn't just to buy any house. It's to buy the right house at a price that makes sense for your financial situation. Take your time, do your homework, and trust the process. You've got this.`,
+    author: "Templata",
     publishedAt: "2025-01-15",
-    readTime: "18 min read",
+    readTime: "10 min read",
     category: "Real Estate & Home Buying",
     tags: ["first-time home buyer", "real estate", "mortgage", "home buying process", "financial planning"],
     type: "guide",
     difficulty: "beginner",
     featured: true,
     seo: {
-      metaTitle: "Complete First-Time Home Buyer's Guide 2025 - Insider Tips & Strategies",
-      metaDescription: "Master the home buying process with insider knowledge from mortgage professionals. Get the complete guide that covers what no one tells first-time buyers about buying a house in 2025.",
+      metaTitle: "First-Time Home Buyer Guide 2025 - Real Talk About Buying Your First House",
+      metaDescription: "Buying your first house is overwhelming. Here's what actually matters, what you can ignore, and the mistakes to avoid - written by someone who just went through it.",
       ogImage: "/blog/first-time-home-buyer-guide-2025.jpg"
     },
     relatedTemplates: ["home-buying"],

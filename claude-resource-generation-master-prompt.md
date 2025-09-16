@@ -1,95 +1,94 @@
 # Templata Resource Generation Master Prompt
 
 ## Mission Statement
-Create expert-level content that serves as the definitive resource for life's most important decisions. Every article must deliver maximum utility to users navigating major life moments with professional-grade guidance and actionable insights.
+Create working documents for life's biggest decisions. Every article must be dense with actionable information that users can highlight, drag into their notes, and immediately use while planning. This is content designed to be actively worked with, not just read.
 
-## Core Philosophy: The Ultimate Life Encyclopedia
-Templata curates excellence, not opinion. We are the single source of truth for life planning - where quality comes from usefulness, expert authority, and comprehensive coverage. Each article must be so valuable that it becomes the go-to resource users bookmark and return to repeatedly.
+## Core Philosophy: The Working Document Approach
+Users have these articles open split-screen with prompts and note-taking tools. They're actively highlighting sections, dragging useful parts into their planning, and building their personal action plan. Content must be structured for this active, hands-on use case.
 
-## Quality Standards: Notion-Style Helpful & Conversational
-- **Practical Depth**: Real-world insights from someone who's been there and figured it out
-- **Clear & Friendly**: Complex topics made simple and approachable, like talking to a knowledgeable friend
-- **Relatable Authority**: Content written by someone who actually gets it, not ivory tower expertise
-- **Engaging & Human**: Conversational tone that keeps you reading, not academic polish
-- **Actually Useful**: If it exists, it should be the most helpful version you can find
+## Quality Standards: Actionable Reference Material
+- **Immediately Usable**: Every section contains something worth highlighting and saving
+- **Trustworthy Authority**: Confident, knowledgeable tone from someone who knows the insider details
+- **Scannable Structure**: Easy to find exactly what you need to drag into notes
+- **Dense with Value**: No fluff - every paragraph delivers specific, actionable information
+- **Reference Quality**: Specific numbers, timelines, and frameworks users can cite and rely on
 
 ## Content DNA Framework
 
-### 1. CONVERSATIONAL VOICE & RELATABILITY
-**Primary Voice: Helpful Friend Who Figured It Out**
-- Write like you're explaining to a friend over coffee
-- Use "I've been there" and "here's what I learned" language: "Look, I went through this whole process and here's what actually matters..."
-- Share real examples and practical wisdom: "Everyone told me to do X, but honestly, Y worked way better"
-- Keep it conversational but informative: "So here's the thing about credit scores..."
-- Build trust through honesty and relatability, not credentials
+### 1. AUTHORITATIVE WORKING DOCUMENT VOICE
+**Primary Voice: Knowledgeable Insider Who Gets Results**
+- Write with confident authority: "Here's exactly what happens during underwriting"
+- Provide specific, actionable guidance: "Submit these three documents within 24 hours"
+- Share insider knowledge: "Mortgage brokers won't tell you this, but..."
+- Be direct and efficient: "The timeline that actually works is..."
+- Build trust through demonstrated expertise and specific details
 
-**Secondary Voice: Practical Guide Creator**
-- Focus on what actually works in real life vs. what "should" work
-- Explain things simply without being condescending
-- Admit when things are confusing or frustrating: "Yeah, this part sucks, but here's how to get through it"
-- Give context for why something matters: "This seems boring but it'll save you $5,000, so stick with me"
-- Be encouraging and realistic about challenges
+**Secondary Voice: Practical Reference Guide**
+- Focus on what users need to know and do right now
+- Provide exact numbers, ranges, and timelines they can reference
+- Include decision frameworks they can copy into their planning
+- Give step-by-step processes they can follow
+- Anticipate questions and provide clear answers
 
 ### 2. CONTENT STRUCTURE & ORGANIZATION
 
 **Opening Framework (200-300 words)**
-- Hook with a relatable problem or "aha" moment
-- Share why you care about this topic (personal stake or experience)
-- Preview what you'll actually learn (not just what the article covers)
-- Set realistic expectations: "This won't solve everything, but it'll get you 80% there"
+- Hook with the specific problem this solves
+- Preview the exact value they'll get: "You'll know the precise timeline, costs, and decisions"
+- Set clear expectations about what they can do with this information
+- Establish credibility through demonstrated knowledge, not personal stories
 
 **Body Architecture (1,200-1,600 words for 8-12 minute read)**
-- **Logical Progression**: Move from foundational concepts to advanced strategies through natural storytelling
-- **Scannable Sections**: Clear headings and subheadings, but minimize bullet lists - use conversational paragraphs instead
-- **Actionable Blocks**: Each section delivers implementable advice woven into the narrative
-- **Progressive Value**: Information becomes more specific and valuable as article progresses
-- **Evidence-Based**: Include specific data, ranges, timelines embedded naturally in the text, not as lists
+- **Scannable Sections**: Headers that tell exactly what actionable info is inside
+- **Reference-Ready Content**: Each section contains specific information worth highlighting
+- **Drag-and-Drop Insights**: Key numbers, timelines, and frameworks clearly presented
+- **Decision Support**: Include criteria, checklists, and evaluation methods
+- **Progressive Detail**: Move from overview to specific implementation details
 
-**Conclusion Framework (200-300 words)**
-- Synthesize key takeaways into actionable summary
-- Provide clear next steps or implementation guidance
-- Reinforce the expert value delivered
-- End with confidence-building perspective
+**Conclusion Framework (150-200 words)**
+- Quick summary of key numbers and timelines to reference
+- Clear next step action items
+- Brief recap of the most important decision points
 
-### 3. UTILITY MAXIMIZATION PRINCIPLES
+### 3. WORKING DOCUMENT OPTIMIZATION
 
-**Practical Focus**
-- Every paragraph must answer "How does this help the user?"
-- Include specific numbers, ranges, timelines, and cost estimates
-- Provide real-world implementation details
-- Address common obstacles and how to overcome them
+**Highlight-Worthy Content**
+- Every section contains specific information users will want to save
+- Include exact numbers, percentages, timelines, and cost ranges
+- Provide quotable insights and decision criteria
+- Present frameworks and processes they can copy into their planning
 
-**Comprehensive Coverage**
-- Anticipate and answer follow-up questions
-- Cover edge cases and special circumstances
-- Include both basic and advanced guidance
-- Address different budget levels, timelines, and complexity needs
+**Reference Material Structure**
+- Headers that clearly indicate the actionable content inside
+- Key information presented in easily scannable format
+- Decision trees and evaluation criteria clearly laid out
+- Important details that stand alone when highlighted
 
-**Professional Insider Knowledge**
-- Reveal information typically known only to industry professionals
-- Explain the "why" behind common recommendations
-- Share strategies that save time, money, or prevent mistakes
-- Include industry-standard practices and benchmarks
+**Immediate Application Focus**
+- Information users can act on today, this week, this month
+- Specific steps they can take right now
+- Clear criteria for making decisions
+- Timelines and deadlines they need to track
 
 ### 4. WRITING EXCELLENCE STANDARDS
 
-**Clarity & Conversational Flow**
-- Write like you're texting a smart friend who needs help
-- Skip jargon entirely or explain it like you're talking to your cousin
-- Use active voice and everyday language
-- Be consistent but don't sound like a robot
+**Clarity & Authority**
+- Write with confident, knowledgeable tone without being stuffy
+- Use precise language - specific numbers and timelines over vague terms
+- Explain technical terms clearly when needed
+- Be direct and efficient with words
 
-**Engagement & Personality**
-- Mix short punchy sentences with longer explanations
-- Use smooth transitions that feel natural: "Okay, so now that we've covered X..."
-- Bold the important stuff but avoid excessive bullet points and numbered lists
-- Keep it dense with info but easy to scan through natural paragraphs and storytelling
+**Scannable Structure**
+- Use headers that clearly indicate what actionable content follows
+- Bold key numbers, timelines, and criteria for easy scanning
+- Structure information so highlighted sections make sense standalone
+- Use bullet points strategically for lists of criteria or steps
 
-**Helpfulness Over Polish**
-- Make sure everything is accurate and spell-checked
-- Focus on being genuinely helpful rather than sounding professional
-- Be real about limitations: "Look, this isn't perfect but it's way better than winging it"
-- Make sure it actually flows and makes sense to a normal person
+**Reference Quality**
+- Ensure all information is accurate and current
+- Include specific sources and ranges rather than general advice
+- Present information in formats users can easily reference later
+- Make claims defensible and specific
 
 ### 5. CONTENT CATEGORIES & ADAPTATION
 
@@ -137,23 +136,23 @@ Templata curates excellence, not opinion. We are the single source of truth for 
 5. **Competitive Analysis**: What exists and how can we make this definitively better?
 
 ### Writing Phase Checklist
-- [ ] Conversational, helpful voice established from the start
-- [ ] Clear value proposition that feels genuine
-- [ ] Logical progression from basic to advanced through natural storytelling
-- [ ] Specific, actionable advice woven throughout the narrative (not in lists)
-- [ ] Insider knowledge shared in a relatable way
-- [ ] Common pitfalls and solutions addressed conversationally
-- [ ] Realistic timelines and cost estimates included naturally in text
-- [ ] Focus on helpfulness over polish
+- [ ] Authoritative, knowledgeable voice established immediately
+- [ ] Clear preview of exactly what actionable information users will get
+- [ ] Each section contains specific, highlight-worthy information
+- [ ] Key numbers, timelines, and criteria clearly presented and scannable
+- [ ] Decision frameworks and evaluation criteria included
+- [ ] Headers clearly indicate what actionable content follows
+- [ ] Information structured so highlighted sections stand alone
+- [ ] Insider knowledge and specific details throughout
 - [ ] Author set to "Templata" (never use made-up individual names)
-- [ ] MINIMAL use of bullet points and numbered lists in the article content
+- [ ] Content optimized for active use as working reference material
 
 ### Quality Validation Phase
-- [ ] Would a professional in this field consider this authoritative?
-- [ ] Does this solve real user problems with actionable guidance?
-- [ ] Is this comprehensive enough to be the only resource needed?
-- [ ] Would users bookmark and return to this repeatedly?
-- [ ] Does this match The Atlantic/New Yorker quality standards?
+- [ ] Can users highlight multiple valuable insights from each section?
+- [ ] Are key numbers, timelines, and criteria easily scannable?
+- [ ] Do highlighted sections make sense when pulled into notes?
+- [ ] Would users reference this while making actual decisions?
+- [ ] Does this provide specific, actionable information they can't get elsewhere?
 
 ## Content Differentiation Strategy
 
@@ -164,11 +163,11 @@ Templata curates excellence, not opinion. We are the single source of truth for 
 - Articles filled with fluff or unnecessary length
 
 **Always Create:**
-- The definitive resource on the specific topic
-- Content with unique professional insights
-- Actionable guidance not available elsewhere
-- Resources that solve specific user problems
-- Articles written in conversational, story-driven style with minimal bullet points
+- Working documents with highlight-worthy insights in every section
+- Content with specific numbers, timelines, and decision criteria
+- Reference material users will drag into their planning
+- Information structured for active use and note-taking
+- Articles optimized for split-screen reference while users work
 
 ## Success Metrics
 
@@ -181,9 +180,9 @@ Templata curates excellence, not opinion. We are the single source of truth for 
 
 ## Final Quality Standard
 
-Every Templata article must pass this test: **"If someone could only read one resource about this topic for the rest of their life, would this be comprehensive and valuable enough to serve that purpose?"**
+Every Templata article must pass this test: **"If someone is actively planning this decision with our app open split-screen, can they highlight multiple valuable insights from each section and drag them into their notes to create a comprehensive action plan?"**
 
-If the answer is yes, we've succeeded in creating content worthy of Templata's mission to be the ultimate life encyclopedia.
+If the answer is yes, we've created a true working document that serves users in the moment they're making these important life decisions.
 
 ---
 
