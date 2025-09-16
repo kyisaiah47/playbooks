@@ -7994,8 +7994,6 @@ Your research matters. Your voice adds something unique to the scholarly convers
 import { getResourcesAsBlogPosts } from './templates';
 
 export const blogRegistry: BlogPost[] = [
-  ...manualBlogPosts,
-  ...getResourcesAsBlogPosts()
 ];
 
 // Blog registry helper functions

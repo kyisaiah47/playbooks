@@ -47,7 +47,8 @@
       "Bash(done)",
       "Bash(python3:*)",
       "WebSearch",
-      "WebFetch(domain:medium.com)"
+      "WebFetch(domain:medium.com)",
+      "Bash(perl:*)"
     ],
     "deny": [],
     "ask": []

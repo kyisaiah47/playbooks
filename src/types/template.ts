@@ -5,7 +5,7 @@ export interface GuidanceTemplate {
   category: string;
   icon: string;
   sections: GuidanceSection[];
-  resources: Resource[];
+  resources?: Resource[];
   expertTips: ExpertTip[];
 }
 

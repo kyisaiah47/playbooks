@@ -8,38 +8,36 @@ export function getTemplate(baseTemplate: GuidanceTemplate): GuidanceTemplate {
   return baseTemplate;
 }
 
-// Convert template resources to blog format for /blog/abc
-export function getResourcesAsBlogPosts(): any[] {
-  const allResources: any[] = [];
-
-  // Collect resources from all templates
-  [weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate,
-   parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, fitnessJourneyTemplate,
-   personalDevelopmentCoachingTemplate, retirementLifestylePlanningTemplate,
-   travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate,
-   eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate,
-   freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate,
-   personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate,
-   careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate,
-   collegePlanningTemplate].forEach(template => {
-    template.resources.forEach(resource => {
-      allResources.push({
-        slug: resource.id,
-        title: resource.title,
-        excerpt: resource.excerpt,
-        content: resource.content,
-        tags: resource.tags,
-        readTime: resource.readTime,
-        difficulty: resource.difficulty,
-        type: resource.type,
-        category: template.title, // Use template title as category
-        templateId: template.id,
-        date: new Date().toISOString() // Default date
-      });
-    });
-  });
-
-  return allResources;
+// Convert blog registry to resources format for /blog/abc
+export function getResourcesAsBlogPosts(): Array<{
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  tags: string[];
+  readTime?: string;
+  difficulty?: string;
+  type?: string;
+  category: string;
+  templateId?: string;
+  date: string;
+  author: string;
+}> {
+  // Pull directly from the unified blog registry
+  return blogRegistry.map(blog => ({
+    slug: blog.id,
+    title: blog.title,
+    excerpt: blog.excerpt,
+    content: blog.content,
+    tags: blog.tags,
+    readTime: blog.readTime,
+    difficulty: blog.difficulty,
+    type: blog.type,
+    category: blog.category,
+    templateId: blog.relatedTemplates?.[0], // Use first related template
+    date: blog.publishedAt,
+    author: blog.author
+  }));
 }
 
 export interface TemplateRegistryEntry {
