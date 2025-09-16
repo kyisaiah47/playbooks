@@ -1,0 +1,21 @@
+[0;34m2025-09-16 15:17:56 - Starting Article Generation Cycle for template: wedding-planning[0m
+[1;33m2025-09-16 15:17:56 - Creating worktree for template: wedding-planning[0m
+[0;32m2025-09-16 15:17:56 - Created branch: article-wedding-planning[0m
+[0;32m2025-09-16 15:17:57 - Created worktree: ../templata-wedding-planning[0m
+[0;34m2025-09-16 15:17:57 - Starting generation for: 1[0m
+[1;33m2025-09-16 15:17:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-16 15:20:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:20:09 - Completed: 1[0m
+[0;34m2025-09-16 15:20:14 - Starting generation for: 2[0m
+[1;33m2025-09-16 15:20:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-16 15:22:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:22:59 - Completed: 2[0m
+[0;34m2025-09-16 15:23:04 - Starting generation for: 3[0m
+[1;33m2025-09-16 15:23:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-16 15:27:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:27:16 - Completed: 3[0m
+[0;34m2025-09-16 15:27:21 - Starting generation for: 4[0m
+[1;33m2025-09-16 15:27:21 - Running article generation...[0m

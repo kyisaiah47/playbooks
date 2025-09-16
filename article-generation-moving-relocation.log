@@ -1,0 +1,21 @@
+[0;34m2025-09-16 15:18:14 - Starting Article Generation Cycle for template: moving-relocation[0m
+[1;33m2025-09-16 15:18:14 - Creating worktree for template: moving-relocation[0m
+[0;32m2025-09-16 15:18:14 - Created branch: article-moving-relocation[0m
+[0;32m2025-09-16 15:18:14 - Created worktree: ../templata-moving-relocation[0m
+[0;34m2025-09-16 15:18:14 - Starting generation for: 1[0m
+[1;33m2025-09-16 15:18:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-16 15:21:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:21:30 - Completed: 1[0m
+[0;34m2025-09-16 15:21:35 - Starting generation for: 2[0m
+[1;33m2025-09-16 15:21:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-16 15:23:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:23:42 - Completed: 2[0m
+[0;34m2025-09-16 15:23:47 - Starting generation for: 3[0m
+[1;33m2025-09-16 15:23:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-16 15:28:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:28:30 - Completed: 3[0m
+[0;34m2025-09-16 15:28:35 - Starting generation for: 4[0m
+[1;33m2025-09-16 15:28:35 - Running article generation...[0m

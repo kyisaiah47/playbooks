@@ -1,0 +1,16 @@
+[0;34m2025-09-16 15:17:59 - Starting Article Generation Cycle for template: budget-planning[0m
+[1;33m2025-09-16 15:17:59 - Creating worktree for template: budget-planning[0m
+[0;32m2025-09-16 15:17:59 - Created branch: article-budget-planning[0m
+[0;32m2025-09-16 15:18:01 - Created worktree: ../templata-budget-planning[0m
+[0;34m2025-09-16 15:18:01 - Starting generation for: 1[0m
+[1;33m2025-09-16 15:18:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-16 15:21:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:21:39 - Completed: 1[0m
+[0;34m2025-09-16 15:21:45 - Starting generation for: 2[0m
+[1;33m2025-09-16 15:21:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-16 15:24:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:24:26 - Completed: 2[0m
+[0;34m2025-09-16 15:24:31 - Starting generation for: 3[0m
+[1;33m2025-09-16 15:24:31 - Running article generation...[0m

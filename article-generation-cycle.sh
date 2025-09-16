@@ -141,7 +141,7 @@ run_article_generation() {
     local generation_prompt=$(create_generation_prompt "$topic")
     log_colored "$YELLOW" "Running article generation..."
 
-    cd "$WORKTREE_DIR" && claude --print --dangerously-skip-permissions --add-dir "$(pwd)" -p "$generation_prompt" | tee -a "$LOGFILE"
+    cd "$WORKTREE_DIR" && claude --print --dangerously-skip-permissions --add-dir "$WORKTREE_DIR" -p "$generation_prompt" | tee -a "$LOGFILE"
 
     # Brief pause
     sleep 3

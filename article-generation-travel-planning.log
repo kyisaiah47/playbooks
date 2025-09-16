@@ -1,0 +1,16 @@
+[0;34m2025-09-16 15:18:13 - Starting Article Generation Cycle for template: travel-planning[0m
+[1;33m2025-09-16 15:18:13 - Creating worktree for template: travel-planning[0m
+[0;32m2025-09-16 15:18:13 - Created branch: article-travel-planning[0m
+[0;32m2025-09-16 15:18:13 - Created worktree: ../templata-travel-planning[0m
+[0;34m2025-09-16 15:18:13 - Starting generation for: 1[0m
+[1;33m2025-09-16 15:18:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-16 15:21:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:21:50 - Completed: 1[0m
+[0;34m2025-09-16 15:21:55 - Starting generation for: 2[0m
+[1;33m2025-09-16 15:21:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-16 15:26:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-16 15:26:23 - Completed: 2[0m
+[0;34m2025-09-16 15:26:28 - Starting generation for: 3[0m
+[1;33m2025-09-16 15:26:28 - Running article generation...[0m
