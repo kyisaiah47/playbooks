@@ -439,40 +439,40 @@ export const homeBuyingTemplate: GuidanceTemplate = {
       reflectionPrompts: [
         {
           id: 'credit-assessment',
-          prompt: "What's your current credit score and what steps can you take to improve it before applying for a mortgage?",
+          prompt: "What's your current credit score and what can you realistically do to improve it before house shopping?",
           category: 'planning',
-          helpText: 'Credit scores of 740+ get the best rates. Check all three bureaus and dispute errors. Pay down credit cards to under 30% utilization.',
+          helpText: 'Here\'s the deal: 740+ gets you the sweet rates, but don\'t panic if you\'re lower. Check all three bureaus (they\'re often different!), dispute any BS errors, and pay down those credit cards. Even getting under 30% utilization helps a ton.',
           relatedResources: ['credit-improvement-guide', 'mortgage-pre-approval-checklist']
         },
         {
           id: 'savings-evaluation',
-          prompt: 'How much do you have saved for down payment, closing costs, and emergency fund?',
+          prompt: 'Real talk: how much cash do you actually have saved up for this house thing?',
           category: 'planning',
-          helpText: 'Budget for 3-5% down payment (FHA) or 10-20% (conventional), plus 2-5% closing costs, plus 3-6 months expenses for emergencies.'
+          helpText: 'You need way more than just the down payment! Think 3-5% down (FHA) or 10-20% (conventional), PLUS another 2-5% for closing costs, PLUS 3-6 months of expenses for emergencies. Yeah, it adds up fast.'
         },
         {
           id: 'debt-to-income',
-          prompt: 'What\'s your current debt-to-income ratio and monthly budget for housing expenses?',
+          prompt: 'Add up all your monthly debt payments - what percentage of your income is that eating up?',
           category: 'planning',
-          helpText: 'Lenders prefer DTI under 43%. Housing costs should be 25-30% of gross income including taxes, insurance, HOA fees.'
+          helpText: 'Lenders get nervous if your total debt is over 43% of your income. For housing alone, try to keep it under 30% of your gross income - and remember to include taxes, insurance, and HOA fees, not just the mortgage.'
         },
         {
           id: 'income-stability',
-          prompt: 'How stable is your income and employment situation for the next 3-5 years?',
+          prompt: 'Be honest: how solid is your job situation? Could you get laid off next month?',
           category: 'consideration',
-          helpText: 'Lenders want 2 years employment history. Consider job security, industry stability, potential career changes.'
+          helpText: 'Lenders want to see 2 years of steady work history. If you job-hop a lot or work in a shaky industry, that might be a red flag. Also think about whether you might want to change careers soon - don\'t get locked into a mortgage you can\'t afford on a different salary.'
         },
         {
           id: 'additional-costs',
-          prompt: 'What ongoing homeownership costs beyond mortgage should you budget for?',
+          prompt: 'Beyond the mortgage payment, what other money will this house suck out of your bank account every month?',
           category: 'planning',
-          helpText: 'Factor in property taxes, homeowners insurance, PMI, HOA fees, maintenance (1-3% of home value annually), utilities.'
+          helpText: 'Oh boy, there\'s a lot: property taxes, homeowners insurance, PMI (if you put less than 20% down), HOA fees, utilities, and maintenance. Rule of thumb: budget 1-3% of the home\'s value annually for maintenance alone. That AC will die right after you close, guaranteed.'
         },
         {
           id: 'timeline-flexibility',
-          prompt: 'How flexible is your timeline for buying? Are you in a rush or can you wait for the right opportunity?',
+          prompt: 'Are you in a rush to buy, or can you actually wait for the right house at the right price?',
           category: 'consideration',
-          helpText: 'Rushed purchases often lead to compromises. Having flexibility allows for better negotiations and decision-making.'
+          helpText: 'If you\'re desperate and need to buy RIGHT NOW, you\'re gonna get taken advantage of. Sellers and agents can smell desperation. If you can wait, you\'ll have way more negotiating power and can actually find something you love instead of settling.'
         }
       ]
     },
@@ -484,39 +484,39 @@ export const homeBuyingTemplate: GuidanceTemplate = {
       reflectionPrompts: [
         {
           id: 'commute-priorities',
-          prompt: 'How important is proximity to work, family, and regular activities?',
+          prompt: 'How much of your life do you want to spend in traffic getting to work?',
           category: 'decision',
-          helpText: 'Calculate commute costs (time, gas, wear-and-tear). Consider remote work flexibility and future job changes.'
+          helpText: 'That cute house 45 minutes from work might seem like a bargain until you\'re spending 90 minutes a day commuting. Factor in gas, car maintenance, and your sanity. Also, what if your remote work situation changes?'
         },
         {
           id: 'neighborhood-character',
-          prompt: 'What type of neighborhood atmosphere do you want? Urban, suburban, rural?',
+          prompt: 'Do you want to walk to coffee shops, or do you need space to blast music without pissing off neighbors?',
           category: 'consideration',
-          helpText: 'Consider walkability, noise levels, population density, community amenities, and cultural fit.'
+          helpText: 'Urban = walkable but noisy and expensive. Suburban = quiet but car-dependent. Rural = space and privacy but you\'ll drive 30 minutes for groceries. Think about what actually matters to your daily happiness.'
         },
         {
           id: 'school-districts',
-          prompt: 'How important are school district ratings, even if you don\'t currently have children?',
+          prompt: 'Even if you hate kids, should you care about school ratings?',
           category: 'consideration',
-          helpText: 'Good schools maintain property values and expand your buyer pool for resale, even without children.'
+          helpText: 'Short answer: yes. Good school districts keep property values strong and make your house easier to sell later. Parents will pay more for good schools, so even if you never plan to have kids, you\'re competing with people who do.'
         },
         {
           id: 'amenities-services',
-          prompt: 'What amenities and services do you need nearby? Shopping, healthcare, recreation?',
+          prompt: 'What stuff do you actually need to be close to without losing your mind?',
           category: 'planning',
-          helpText: 'Consider grocery stores, medical facilities, gyms, restaurants, public transportation, libraries, parks.'
+          helpText: 'Be realistic about what you use. If you hit the gym every day, living 30 minutes from one sucks. If you never cook, being near restaurants matters more than grocery stores. Think about your actual lifestyle, not your aspirational one.'
         },
         {
           id: 'future-development',
-          prompt: 'What do you know about planned development or changes in potential neighborhoods?',
+          prompt: 'What\'s getting built around here that might screw up your investment?',
           category: 'research',
-          helpText: 'Research zoning changes, planned construction, infrastructure improvements that could affect property values.'
+          helpText: 'Check city planning websites for upcoming projects. That quiet neighborhood might have a highway planned through it. Or maybe they\'re building a new shopping center that\'ll boost values. Either way, you want to know before you buy.'
         },
         {
           id: 'safety-security',
-          prompt: 'What are your safety and security priorities for neighborhoods you\'re considering?',
+          prompt: 'How safe do you need to feel walking to your car at night?',
           category: 'consideration',
-          helpText: 'Check crime statistics, visit at different times, talk to neighbors, look for security systems and lighting.'
+          helpText: 'Check crime stats online, but also trust your gut. Visit at different times - that neighborhood might feel different at 10 PM on a Saturday. Talk to people who actually live there, not just the real estate agent trying to sell you something.'
         }
       ]
     },
