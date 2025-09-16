@@ -3,37 +3,43 @@ import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTem
 import { blogRegistry } from '@/registry/blogs';
 import { getTemplateExperts } from '@/lib/expert-badges';
 
-// Function to sync template resources with blog registry
-export function createTemplateWithSyncedResources(baseTemplate: GuidanceTemplate): GuidanceTemplate {
-  // Find all blog posts that should be resources for this template
-  const relatedBlogPosts = blogRegistry.filter(post => 
-    post.relatedTemplates?.includes(baseTemplate.id) || 
-    // Also include wedding-related posts that aren't explicitly linked
-    (baseTemplate.id === 'wedding-planning' && (
-      post.tags.includes('wedding') || 
-      post.category === 'Wedding Planning' ||
-      post.slug.includes('wedding')
-    ))
-  );
+// Unified content system - blog registry gets populated from template resources
+export function getTemplate(baseTemplate: GuidanceTemplate): GuidanceTemplate {
+  return baseTemplate;
+}
 
-  // Convert blog posts to resources
-  const dynamicResources = relatedBlogPosts.map(post => ({
-    id: post.slug,
-    title: post.title,
-    type: (post.type || 'article') as 'article' | 'checklist' | 'tool' | 'guide',
-    excerpt: post.excerpt,
-    content: post.content, // Full content from blog post
-    tags: post.tags,
-    readTime: post.readTime,
-    difficulty: (post.difficulty || 'beginner') as 'beginner' | 'intermediate' | 'expert',
-    relatedBlogPost: post.slug
-  }));
+// Convert template resources to blog format for /blog/abc
+export function getResourcesAsBlogPosts(): any[] {
+  const allResources: any[] = [];
 
-  // Replace all resources with ones from blog registry
-  return {
-    ...baseTemplate,
-    resources: dynamicResources
-  };
+  // Collect resources from all templates
+  [weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate,
+   parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, fitnessJourneyTemplate,
+   personalDevelopmentCoachingTemplate, retirementLifestylePlanningTemplate,
+   travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate,
+   eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate,
+   freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate,
+   personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate,
+   careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate,
+   collegePlanningTemplate].forEach(template => {
+    template.resources.forEach(resource => {
+      allResources.push({
+        slug: resource.id,
+        title: resource.title,
+        excerpt: resource.excerpt,
+        content: resource.content,
+        tags: resource.tags,
+        readTime: resource.readTime,
+        difficulty: resource.difficulty,
+        type: resource.type,
+        category: template.title, // Use template title as category
+        templateId: template.id,
+        date: new Date().toISOString() // Default date
+      });
+    });
+  });
+
+  return allResources;
 }
 
 export interface TemplateRegistryEntry {
@@ -69,7 +75,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     expertVerified: true,
     color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
     iconColor: "text-pink-600 dark:text-pink-400",
-    template: createTemplateWithSyncedResources(weddingTemplate)
+    template: getTemplate(weddingTemplate)
   },
   {
     id: "home-buying",
@@ -82,7 +88,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     expertVerified: true,
     color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
     iconColor: "text-blue-600 dark:text-blue-400",
-    template: createTemplateWithSyncedResources(homeBuyingTemplate)
+    template: getTemplate(homeBuyingTemplate)
   },
   {
     id: "baby-planning",
@@ -94,7 +100,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     expertVerified: true,
     color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
     iconColor: "text-green-600 dark:text-green-400",
-    template: createTemplateWithSyncedResources(babyPlanningTemplate)
+    template: getTemplate(babyPlanningTemplate)
   },
   {
     id: "parenting-child-development",
@@ -106,7 +112,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
     iconColor: "text-pink-600 dark:text-pink-400",
-    template: createTemplateWithSyncedResources(parentingChildDevelopmentTemplate)
+    template: getTemplate(parentingChildDevelopmentTemplate)
   },
   
   {
@@ -119,7 +125,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
     iconColor: "text-emerald-600 dark:text-emerald-400",
-    template: createTemplateWithSyncedResources(budgetPlanningTemplate)
+    template: getTemplate(budgetPlanningTemplate)
   },
   {
     id: "personal-finance-investment",
@@ -131,7 +137,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
     iconColor: "text-green-600 dark:text-green-400",
-    template: createTemplateWithSyncedResources(personalFinanceInvestmentTemplate)
+    template: getTemplate(personalFinanceInvestmentTemplate)
   },
   {
     id: "productivity-system",
@@ -143,7 +149,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
     iconColor: "text-yellow-600 dark:text-yellow-400",
-    template: createTemplateWithSyncedResources(productivitySystemTemplate)
+    template: getTemplate(productivitySystemTemplate)
   },
   {
     id: "remote-work-productivity",
@@ -155,7 +161,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
     iconColor: "text-purple-600 dark:text-purple-400",
-    template: createTemplateWithSyncedResources(remoteWorkProductivityTemplate)
+    template: getTemplate(remoteWorkProductivityTemplate)
   },
 
   // Career & Business Templates
@@ -168,7 +174,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/job-search/app",
     color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
     iconColor: "text-purple-600 dark:text-purple-400",
-    template: createTemplateWithSyncedResources(jobSearchTemplate)
+    template: getTemplate(jobSearchTemplate)
   },
   {
     id: "freelance-gig-economy",
@@ -180,7 +186,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
     iconColor: "text-purple-600 dark:text-purple-400",
-    template: createTemplateWithSyncedResources(freelanceGigEconomyTemplate)
+    template: getTemplate(freelanceGigEconomyTemplate)
   },
   {
     id: "business-launch",
@@ -191,7 +197,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/business-launch/app",
     color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
     iconColor: "text-orange-600 dark:text-orange-400",
-    template: createTemplateWithSyncedResources(businessLaunchTemplate)
+    template: getTemplate(businessLaunchTemplate)
   },
   {
     id: "digital-marketing-seo",
@@ -203,7 +209,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
     iconColor: "text-blue-600 dark:text-blue-400",
-    template: createTemplateWithSyncedResources(digitalMarketingSEOTemplate)
+    template: getTemplate(digitalMarketingSEOTemplate)
   },
   {
     id: "career-change-transition",
@@ -215,7 +221,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
     iconColor: "text-orange-600 dark:text-orange-400",
-    template: createTemplateWithSyncedResources(careerChangeTransitionTemplate)
+    template: getTemplate(careerChangeTransitionTemplate)
   },
   
   // Education Templates
@@ -229,7 +235,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
     iconColor: "text-yellow-600 dark:text-yellow-400",
-    template: createTemplateWithSyncedResources(collegePlanningTemplate)
+    template: getTemplate(collegePlanningTemplate)
   },
   {
     id: "academic-research",
@@ -240,7 +246,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     url: "/academic-research/app",
     color: "bg-indigo-50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800",
     iconColor: "text-indigo-600 dark:text-indigo-400",
-    template: createTemplateWithSyncedResources(academicResearchTemplate)
+    template: getTemplate(academicResearchTemplate)
   },
   {
     id: "language-learning-cultural-immersion",
@@ -252,7 +258,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
     iconColor: "text-blue-600 dark:text-blue-400",
-    template: createTemplateWithSyncedResources(languageLearningCulturalImmersionTemplate)
+    template: getTemplate(languageLearningCulturalImmersionTemplate)
   },
   
   // Event & Entertainment Templates
@@ -266,7 +272,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-violet-50 dark:bg-violet-950/20 border-violet-200 dark:border-violet-800",
     iconColor: "text-violet-600 dark:text-violet-400",
-    template: createTemplateWithSyncedResources(eventPlanningTemplate)
+    template: getTemplate(eventPlanningTemplate)
   },
   
   // Travel & Adventure Templates
@@ -280,7 +286,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-sky-50 dark:bg-sky-950/20 border-sky-200 dark:border-sky-800",
     iconColor: "text-sky-600 dark:text-sky-400",
-    template: createTemplateWithSyncedResources(travelPlanningTemplate)
+    template: getTemplate(travelPlanningTemplate)
   },
   {
     id: "travel-planning-adventure",
@@ -292,7 +298,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
     iconColor: "text-emerald-600 dark:text-emerald-400",
-    template: createTemplateWithSyncedResources(travelPlanningAdventureTemplate)
+    template: getTemplate(travelPlanningAdventureTemplate)
   },
   
   // Health & Nutrition Templates
@@ -306,7 +312,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
     iconColor: "text-emerald-600 dark:text-emerald-400",
-    template: createTemplateWithSyncedResources(mealPlanningTemplate)
+    template: getTemplate(mealPlanningTemplate)
   },
   
   // Health & Wellness Templates
@@ -320,7 +326,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
     iconColor: "text-red-600 dark:text-red-400",
-    template: createTemplateWithSyncedResources(fitnessJourneyTemplate)
+    template: getTemplate(fitnessJourneyTemplate)
   },
   {
     id: "fitness-athletic-training",
@@ -332,7 +338,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
     iconColor: "text-orange-600 dark:text-orange-400",
-    template: createTemplateWithSyncedResources(fitnessAthleticTrainingTemplate)
+    template: getTemplate(fitnessAthleticTrainingTemplate)
   },
   
   // Life Transitions Templates
@@ -346,7 +352,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-teal-50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-800",
     iconColor: "text-teal-600 dark:text-teal-400",
-    template: createTemplateWithSyncedResources(movingRelocationTemplate)
+    template: getTemplate(movingRelocationTemplate)
   },
   
   // Personal Development Templates
@@ -360,7 +366,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
     iconColor: "text-green-600 dark:text-green-400",
-    template: createTemplateWithSyncedResources(personalDevelopmentCoachingTemplate)
+    template: getTemplate(personalDevelopmentCoachingTemplate)
   },
   {
     id: "retirement-lifestyle-planning",
@@ -372,7 +378,7 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     color: "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800",
     iconColor: "text-amber-600 dark:text-amber-400",
-    template: createTemplateWithSyncedResources(retirementLifestylePlanningTemplate)
+    template: getTemplate(retirementLifestylePlanningTemplate)
   },
 
   // Lifestyle & Environment Templates

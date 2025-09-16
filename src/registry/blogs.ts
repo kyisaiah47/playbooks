@@ -22,8 +22,8 @@ export interface BlogPost {
   relatedPosts?: string[]; // IDs of related blog posts
 }
 
-// Blog registry with all published posts
-export const blogRegistry: BlogPost[] = [
+// Blog registry - will be populated by unified content system
+export const manualBlogPosts: BlogPost[] = [
   {
     id: "complete-moving-timeline",
     slug: "complete-moving-timeline",
@@ -7988,6 +7988,14 @@ Your research matters. Your voice adds something unique to the scholarly convers
     relatedTemplates: ["academic-research", "remote-work-productivity"],
     relatedPosts: ["research-proposal-writing", "literature-review-mastery"]
   }
+];
+
+// Create unified blog registry from template resources + manual posts
+import { getResourcesAsBlogPosts } from './templates';
+
+export const blogRegistry: BlogPost[] = [
+  ...manualBlogPosts,
+  ...getResourcesAsBlogPosts()
 ];
 
 // Blog registry helper functions
