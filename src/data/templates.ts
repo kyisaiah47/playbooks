@@ -14215,7 +14215,8 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
           id: "retirement-account-optimization",
           prompt: "How will you optimize withdrawals from different retirement accounts to minimize taxes?",
           category: "planning",
-          helpText: "Plan withdrawal sequence from taxable, tax-deferred (401k, traditional IRA), and tax-free (Roth IRA) accounts. Consider required minimum distributions, tax brackets, and Roth conversions."
+          helpText: "Plan withdrawal sequence from taxable, tax-deferred (401k, traditional IRA), and tax-free (Roth IRA) accounts. Consider required minimum distributions, tax brackets, and Roth conversions.",
+          relatedResources: ['retirement-tax-strategies', 'retirement-income-planning']
         },
         {
           id: "financial-contingency-planning",
@@ -14285,7 +14286,8 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
           id: "medication-health-management",
           prompt: "How will you manage medications, health records, and coordinate care between multiple providers?",
           category: "planning",
-          helpText: "Organize medication schedules, maintain health records, coordinate between specialists, and plan for medication management if cognitive abilities decline."
+          helpText: "Organize medication schedules, maintain health records, coordinate between specialists, and plan for medication management if cognitive abilities decline.",
+          relatedResources: ['medication-management-guide', 'medicare-supplement-guide']
         }
       ]
     },
@@ -14331,7 +14333,8 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
           id: "home-downsizing-strategy",
           prompt: "What's your strategy for potentially downsizing or rightsizing your home in retirement?",
           category: "decision",
-          helpText: "Consider timing, financial implications, emotional attachment, proximity to family, and what size/type of home will best serve your retirement lifestyle."
+          helpText: "Consider timing, financial implications, emotional attachment, proximity to family, and what size/type of home will best serve your retirement lifestyle.",
+          relatedResources: ['retirement-housing-options', 'aging-in-place-guide']
         },
         {
           id: "daily-routine-structure",
@@ -14468,7 +14471,8 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
           id: "healthcare-directives-planning",
           prompt: "What healthcare directives and end-of-life preferences do you want to document and communicate?",
           category: "planning",
-          helpText: "Create advance directives, healthcare power of attorney, HIPAA authorizations, and discuss your preferences with family. Plan for potential incapacity and end-of-life care decisions."
+          helpText: "Create advance directives, healthcare power of attorney, HIPAA authorizations, and discuss your preferences with family. Plan for potential incapacity and end-of-life care decisions.",
+          relatedResources: ['estate-planning-essentials', 'long-term-care-planning']
         },
         {
           id: "financial-power-attorney",
@@ -14537,7 +14541,8 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
           id: "grandparenting-role-planning",
           prompt: "If you have or expect grandchildren, what kind of grandparent do you want to be?",
           category: "consideration",
-          helpText: "Consider your availability, involvement level, types of activities to share, traditions to create, and how to support without overstepping boundaries with adult children."
+          helpText: "Consider your availability, involvement level, types of activities to share, traditions to create, and how to support without overstepping boundaries with adult children.",
+          relatedResources: ['grandparenting-guide', 'family-caregiving-guide']
         },
         {
           id: "family-communication-strategies",
@@ -14686,6 +14691,182 @@ export const retirementLifestylePlanningTemplate: GuidanceTemplate = {
       readTime: "15 min",
       difficulty: "intermediate",
       relatedBlogPost: 'phased-retirement-strategies'
+    },
+    {
+      id: "estate-planning-essentials",
+      title: "Retirement Estate Planning Essentials Guide",
+      type: "guide",
+      excerpt: "Navigate the essential legal documents and estate planning strategies for retirement",
+      content: "Comprehensive guide covering wills, trusts, power of attorney documents, advance directives, beneficiary designations, and tax-efficient estate strategies. Includes document templates, attorney selection guidance, and regular review schedules.",
+      tags: ["estate-planning", "wills", "trusts", "legal-documents"],
+      readTime: "20 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-estate-planning'
+    },
+    {
+      id: "medicare-supplement-guide",
+      title: "Medicare & Health Insurance in Retirement Guide",
+      type: "guide",
+      excerpt: "Navigate Medicare options, supplement plans, and health insurance strategies for retirement",
+      content: "Detailed guide to Medicare Parts A, B, C, and D, Medigap policies, Medicare Advantage plans, Health Savings Account strategies, and coordinating employer benefits. Includes enrollment timelines and cost comparison tools.",
+      tags: ["medicare", "health-insurance", "medigap", "healthcare-planning"],
+      readTime: "16 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'medicare-retirement-planning'
+    },
+    {
+      id: "retirement-tax-strategies",
+      title: "Tax-Efficient Retirement Withdrawal Strategies",
+      type: "guide",
+      excerpt: "Optimize your retirement income through strategic tax planning and withdrawal sequencing",
+      content: "Advanced tax strategies including Roth conversions, withdrawal sequencing from different account types, tax-loss harvesting, charitable giving strategies, and managing Required Minimum Distributions for optimal tax efficiency.",
+      tags: ["tax-planning", "withdrawal-strategies", "roth-conversions", "rmd-planning"],
+      readTime: "18 min",
+      difficulty: "expert",
+      relatedBlogPost: 'retirement-tax-optimization'
+    },
+    {
+      id: "aging-in-place-guide",
+      title: "Aging in Place: Home Modification & Planning Guide",
+      type: "guide",
+      excerpt: "Plan and implement home modifications to support aging in place safely and comfortably",
+      content: "Comprehensive guide to home accessibility modifications, safety improvements, technology solutions, and support services for aging in place. Includes assessment checklists, contractor selection, and funding options.",
+      tags: ["aging-in-place", "home-modifications", "accessibility", "safety"],
+      readTime: "14 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'aging-in-place-planning'
+    },
+    {
+      id: "retirement-income-planning",
+      title: "Retirement Income Sources & Optimization Guide",
+      type: "guide",
+      excerpt: "Create reliable retirement income from multiple sources including Social Security, pensions, and investments",
+      content: "Strategic guide to optimizing Social Security benefits, pension decisions, annuity strategies, investment income planning, and creating reliable cash flow streams throughout retirement. Includes income timing and sequence strategies.",
+      tags: ["retirement-income", "social-security", "pensions", "income-optimization"],
+      readTime: "19 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-income-strategies'
+    },
+    {
+      id: "long-term-care-planning",
+      title: "Long-Term Care Planning & Insurance Guide",
+      type: "guide",
+      excerpt: "Plan for potential long-term care needs and explore insurance options to protect your assets",
+      content: "Comprehensive planning guide covering long-term care insurance options, Medicaid planning strategies, care alternatives, family caregiving considerations, and cost management approaches for extended care needs.",
+      tags: ["long-term-care", "ltc-insurance", "medicaid-planning", "care-options"],
+      readTime: "17 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'long-term-care-strategies'
+    },
+    {
+      id: "retirement-housing-options",
+      title: "Retirement Housing & Living Options Comparison",
+      type: "guide",
+      excerpt: "Explore and compare different retirement housing options from aging in place to retirement communities",
+      content: "Detailed comparison of retirement housing options including aging in place, active adult communities, assisted living, continuing care retirement communities (CCRCs), and alternative arrangements. Includes cost analysis and decision frameworks.",
+      tags: ["retirement-housing", "senior-living", "ccrc", "housing-options"],
+      readTime: "15 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-housing-guide'
+    },
+    {
+      id: "family-caregiving-guide",
+      title: "Family Caregiving & Relationship Planning for Retirement",
+      type: "guide",
+      excerpt: "Navigate family dynamics, caregiving responsibilities, and relationship changes in retirement",
+      content: "Guide to managing family relationships in retirement including spousal coordination, adult children relationships, aging parent care, grandparenting roles, and communication strategies for changing family dynamics.",
+      tags: ["family-caregiving", "relationships", "spousal-planning", "family-dynamics"],
+      readTime: "13 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-family-planning'
+    },
+    {
+      id: "retirement-emergency-fund",
+      title: "Retirement Emergency Fund & Contingency Planning",
+      type: "guide",
+      excerpt: "Build and maintain emergency funds and contingency plans for unexpected retirement expenses",
+      content: "Framework for retirement emergency planning including optimal emergency fund sizing, liquid investment strategies, insurance gap analysis, and contingency planning for market downturns, health emergencies, and family crises.",
+      tags: ["emergency-fund", "contingency-planning", "risk-management", "financial-security"],
+      readTime: "12 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-emergency-planning'
+    },
+    {
+      id: "retirement-technology-guide",
+      title: "Technology for Successful Aging & Retirement",
+      type: "guide",
+      excerpt: "Leverage technology to enhance safety, health monitoring, and social connections in retirement",
+      content: "Guide to retirement-friendly technology including health monitoring devices, home automation for safety, communication tools for staying connected, financial management apps, and emergency response systems.",
+      tags: ["retirement-technology", "health-monitoring", "smart-home", "digital-tools"],
+      readTime: "11 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'technology-retirement-living'
+    },
+    {
+      id: "social-security-optimization",
+      title: "Social Security Claiming Strategies & Optimization",
+      type: "tool",
+      excerpt: "Maximize your Social Security benefits through strategic claiming decisions and timing",
+      content: "Interactive tool for analyzing different Social Security claiming strategies including delayed retirement credits, spousal benefits, survivor benefits, and tax implications. Includes scenario planning for different life expectancies and financial situations.",
+      tags: ["social-security", "claiming-strategies", "retirement-benefits", "optimization"],
+      readTime: "16 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'social-security-maximization'
+    },
+    {
+      id: "retirement-stress-management",
+      title: "Managing Retirement Transition Stress & Anxiety",
+      type: "guide",
+      excerpt: "Navigate the emotional and psychological challenges of transitioning to retirement",
+      content: "Comprehensive guide to managing retirement transition stress including identity shifts, loss of structure, financial anxiety, relationship changes, and purpose discovery. Includes coping strategies, professional resources, and support group information.",
+      tags: ["retirement-stress", "mental-health", "transition-anxiety", "emotional-wellbeing"],
+      readTime: "14 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-mental-health'
+    },
+    {
+      id: "grandparenting-guide",
+      title: "Retirement Grandparenting & Intergenerational Relationships",
+      type: "guide",
+      excerpt: "Navigate grandparenting roles and strengthen intergenerational family relationships in retirement",
+      content: "Guide to active grandparenting including establishing boundaries with adult children, age-appropriate activities, childcare coordination, educational support, and creating lasting family traditions and memories.",
+      tags: ["grandparenting", "family-relationships", "intergenerational", "family-traditions"],
+      readTime: "12 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-grandparenting'
+    },
+    {
+      id: "retirement-travel-planning",
+      title: "Senior Travel Planning & Safety Guide",
+      type: "guide",
+      excerpt: "Plan safe, enjoyable travel experiences throughout your retirement years",
+      content: "Comprehensive travel guide for seniors covering health considerations, travel insurance, accessibility planning, budget travel strategies, group travel options, and destination safety research. Includes travel health preparation and emergency planning.",
+      tags: ["senior-travel", "travel-safety", "accessible-travel", "travel-planning"],
+      readTime: "15 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-travel-guide'
+    },
+    {
+      id: "retirement-entrepreneur-guide",
+      title: "Starting a Business or Consulting in Retirement",
+      type: "guide",
+      excerpt: "Launch encore careers, consulting practices, or small businesses in retirement",
+      content: "Guide to retirement entrepreneurship including business idea validation, consulting transition strategies, licensing and legal considerations, marketing for mature entrepreneurs, and balancing work with retirement lifestyle goals.",
+      tags: ["encore-careers", "retirement-business", "consulting", "entrepreneurship"],
+      readTime: "18 min",
+      difficulty: "intermediate",
+      relatedBlogPost: 'retirement-entrepreneurship'
+    },
+    {
+      id: "medication-management-guide",
+      title: "Retirement Medication Management & Healthcare Coordination",
+      type: "guide",
+      excerpt: "Organize medications, coordinate care between providers, and maintain health records",
+      content: "Practical guide to managing complex medication regimens, coordinating care between multiple healthcare providers, organizing medical records, and planning for cognitive changes that might affect self-care management.",
+      tags: ["medication-management", "healthcare-coordination", "medical-records", "care-coordination"],
+      readTime: "10 min",
+      difficulty: "beginner",
+      relatedBlogPost: 'retirement-healthcare-management'
     }
   ],
   expertTips: [
