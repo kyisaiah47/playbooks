@@ -164,16 +164,13 @@ run_article_generation() {
     local generation_prompt=$(create_generation_prompt "$topic")
     log_colored "$YELLOW" "Running article generation..."
 
-    echo "$generation_prompt" | claude --print --dangerously-skip-permissions --add-dir "$(pwd)" | tee -a "$LOGFILE"
+    claude --print --dangerously-skip-permissions --add-dir "$(pwd)" -p "$generation_prompt" | tee -a "$LOGFILE"
 
     # Brief pause
     sleep 3
 
-    # Review article
-    local review_prompt=$(create_review_prompt "$topic")
-    log_colored "$YELLOW" "Running article review..."
-
-    echo "$review_prompt" | claude --print --dangerously-skip-permissions --add-dir "$(pwd)" | tee -a "$LOGFILE"
+    # Skip review for now - just move to next article
+    log_colored "$GREEN" "Skipping review - moving to next article"
 
     log_colored "$GREEN" "Completed: $topic_readable"
 }

@@ -52,7 +52,9 @@
       "Bash(git worktree:*)",
       "Bash(git branch:*)",
       "Bash(bash:*)",
-      "Bash(./article-generation-cycle.sh:*)"
+      "Bash(./article-generation-cycle.sh:*)",
+      "Read(//Users/ikim1/Documents/GitHub/templata-home-buying/**)",
+      "Bash(pkill:*)"
     ],
     "deny": [],
     "ask": []
