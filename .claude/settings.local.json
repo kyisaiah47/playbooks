@@ -48,7 +48,11 @@
       "Bash(python3:*)",
       "WebSearch",
       "WebFetch(domain:medium.com)",
-      "Bash(perl:*)"
+      "Bash(perl:*)",
+      "Bash(git worktree:*)",
+      "Bash(git branch:*)",
+      "Bash(bash:*)",
+      "Bash(./article-generation-cycle.sh:*)"
     ],
     "deny": [],
     "ask": []

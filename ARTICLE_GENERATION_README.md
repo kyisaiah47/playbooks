@@ -4,44 +4,64 @@ This system guides Claude through generating high-quality articles one at a time
 
 ## How It Works
 
-1. **One Article at a Time**: Generates single, comprehensive articles instead of batches
-2. **Quality Control**: Built-in review checkpoints after each article
-3. **Master Prompt Integration**: Automatically reminds Claude to follow the master prompt
-4. **Progress Tracking**: Keeps track of completed articles
-5. **Worktree Isolation**: Uses git worktrees to keep article generation separate
+1. **Template-Aware**: Generates articles specific to each template (home-buying, wedding-planning, etc.)
+2. **One Article at a Time**: Generates single, comprehensive articles instead of batches
+3. **Quality Control**: Built-in review checkpoints after each article
+4. **Master Prompt Integration**: Automatically reminds Claude to follow the master prompt
+5. **Progress Tracking**: Keeps track of completed articles per template
+6. **Auto Worktree Creation**: Automatically creates template-specific worktrees (../templata-home-buying, ../templata-wedding-planning, etc.)
 
 ## Usage
 
 ### Start Article Generation
 ```bash
-bash generate-article.sh
-```
+# Generate all articles for a template
+./article-generation-cycle.sh home-buying
+./article-generation-cycle.sh wedding-planning
 
-### Review Generated Article
-```bash
-bash generate-article.sh review
+# Generate one article at a time
+./article-generation-cycle.sh home-buying single
+./article-generation-cycle.sh baby-planning single
 ```
 
 ### Check Progress
 ```bash
-bash generate-article.sh status
+./article-generation-cycle.sh home-buying status
+./article-generation-cycle.sh wedding-planning status
 ```
 
 ### Reset Progress
 ```bash
-bash generate-article.sh reset
+./article-generation-cycle.sh home-buying reset
+```
+
+### Manual Step-by-Step (Alternative)
+```bash
+bash generate-article.sh
+bash generate-article.sh review
 ```
 
 ## Workflow
 
-1. Run `bash generate-article.sh`
-2. Claude receives focused prompt for ONE article topic
-3. Claude reads master prompt and generates comprehensive article
-4. Claude adds article to `src/registry/blogs.ts`
-5. Run `bash generate-article.sh review`
-6. Claude reviews article quality against master prompt standards
-7. Claude confirms "ARTICLE COMPLETE" when satisfied
-8. Repeat for next article
+1. Run `./article-generation-cycle.sh [template-name]`
+2. Script automatically creates worktree `../templata-[template-name]` if needed
+3. Script creates branch `article-[template-name]` if needed
+4. Claude receives focused prompt for ONE article topic
+5. Claude reads master prompt and generates comprehensive article
+6. Claude adds article to `src/registry/blogs.ts`
+7. Claude reviews article quality against master prompt standards
+8. Script automatically moves to next article topic
+9. Repeat until all template articles are complete
+
+## Worktree Structure
+
+The system automatically creates template-specific worktrees:
+- `../templata-home-buying/` - Home buying articles
+- `../templata-wedding-planning/` - Wedding planning articles
+- `../templata-baby-planning/` - Baby planning articles
+- `../templata-[template-name]/` - Any template articles
+
+Each worktree has its own branch: `article-[template-name]`
 
 ## Article Queue
 
