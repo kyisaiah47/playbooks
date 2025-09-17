@@ -93,7 +93,7 @@ REQUIREMENTS:
 - Follow the master prompt voice and character guidelines
 - Author: "Templata"
 - Category: "$category"
-- Add to src/registry/blogs.ts in manualBlogPosts array
+- Add to src/registry/blogs-${TEMPLATE_NAME}.ts in manualBlogPosts array
 - Include proper SEO metadata
 - Choose appropriate type (guide/article/checklist/tool) and difficulty (beginner/intermediate/expert)
 - Focus on $template_readable context and needs
@@ -120,7 +120,7 @@ Check against master prompt standards:
 - Flowing paragraphs with strategic bold numbers
 - Specific, actionable information
 - Proper SEO metadata
-- Added to src/registry/blogs.ts correctly
+- Added to src/registry/blogs-${TEMPLATE_NAME}.ts correctly
 
 If it meets all standards, respond exactly: "ARTICLE REVIEW COMPLETE - $topic_readable"
 If it needs improvements, fix them first before responding.
@@ -152,6 +152,48 @@ run_article_generation() {
     log_colored "$GREEN" "Completed: $topic_readable"
 }
 
+# Create template-specific blog file
+create_template_blog_file() {
+    local blog_file="$WORKTREE_DIR/src/registry/blogs-${TEMPLATE_NAME}.ts"
+
+    if [[ ! -f "$blog_file" ]]; then
+        log_colored "$YELLOW" "Creating template blog file: blogs-${TEMPLATE_NAME}.ts"
+
+        cat > "$blog_file" << 'EOF'
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  publishedAt: string;
+  updatedAt?: string;
+  readTime: string;
+  category: string;
+  featured?: boolean;
+  tags: string[];
+  slug: string;
+  type: 'guide' | 'article' | 'checklist' | 'tool';
+  difficulty: 'beginner' | 'intermediate' | 'expert';
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    ogImage?: string;
+  };
+  relatedTemplates?: string[];
+  relatedPosts?: string[];
+}
+
+// Blog registry for template-specific articles
+export const manualBlogPosts: BlogPost[] = [
+  // Articles will be added here by the generation script
+];
+EOF
+
+        log_colored "$GREEN" "Created template blog file: $blog_file"
+    fi
+}
+
 # Create worktree if it doesn't exist
 ensure_worktree() {
     if [[ ! -d "$WORKTREE_DIR" ]]; then
@@ -166,8 +208,14 @@ ensure_worktree() {
         # Create worktree
         git worktree add "$WORKTREE_DIR" "article-${TEMPLATE_NAME}"
         log_colored "$GREEN" "Created worktree: $WORKTREE_DIR"
+
+        # Create template-specific blog file
+        create_template_blog_file
     else
         log_colored "$GREEN" "Using existing worktree: $WORKTREE_DIR"
+
+        # Ensure template blog file exists even for existing worktrees
+        create_template_blog_file
     fi
 }
 
