@@ -397,5 +397,13 @@ Understanding these motivations enables podcasters to craft outreach messages th
 
 **Interview experience optimization** through **thoughtful questions**, **engaging conversation**, and **professional production** creates positive guest experiences that generate referrals and repeat appearances. **Preparation evidence** and **expertise demonstration** build guest confidence.
 
-**Post-interview follow-up** including **recording delivery**, **promotional asset sharing**, and **thank you communications** maintains relationships and encourages future collaboration. **Content usage transparency** and **credit provision** demonstrate professional respect.
+**Post-interview follow-up** including **recording delivery**, **promotional asset sharing**, and **thank you communications** maintains relationships and encourages future collaboration. **Content usage transparency** and **credit provision** demonstrate professional respect.`,
+    author: "Templata",
+    publishedAt: "2024-03-15",
+    readTime: "11 min",
+    category: "Media & Content",
+    tags: ["podcast", "content-creation", "media-production"],
+    type: "guide",
+    difficulty: "intermediate"
+  }
 ];

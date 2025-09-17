@@ -397,5 +397,13 @@ The transition from married partners to co-parenting partners demands new commun
 
 **Positive framing** emphasizes children's benefits rather than parental obligations. **"Sarah would love having both parents at her soccer game Saturday"** works better than **"You should come to Sarah's game for once."** **Child-focused language** reminds both parents of shared goals and reduces adversarial dynamics.
 
-**Solution-oriented communication** proposes specific remedies rather than dwelling on problems. **"Tommy's teacher suggests consistent homework time. Could we both implement 6:30-7:30 PM study periods?"** provides actionable steps that benefit children rather than creating additional conflict.
+**Solution-oriented communication** proposes specific remedies rather than dwelling on problems. **"Tommy's teacher suggests consistent homework time. Could we both implement 6:30-7:30 PM study periods?"** provides actionable steps that benefit children rather than creating additional conflict.`,
+    author: "Templata",
+    publishedAt: "2024-03-15",
+    readTime: "8 min",
+    category: "Family & Legal",
+    tags: ["divorce", "communication", "co-parenting"],
+    type: "guide",
+    difficulty: "intermediate"
+  }
 ];

@@ -397,5 +397,13 @@ The most powerful approach to learning transfer involves strategically building 
 
 **Constraint skills** involve learning under artificial limitations that force creative problem-solving and transfer thinking. Poets working within strict rhyme schemes develop verbal creativity that transfers to marketing copywriting. Artists creating with limited color palettes strengthen decision-making skills that apply to resource management in any field. Athletes training with equipment restrictions build adaptability that serves them in unpredictable competitive situations.
 
-The goal isn't to become mediocre at many things, but to develop deep expertise that creates unexpected connections and accelerated learning paths. Each new skill becomes both an end in itself and a platform for faster growth in related areas.
+The goal isn't to become mediocre at many things, but to develop deep expertise that creates unexpected connections and accelerated learning paths. Each new skill becomes both an end in itself and a platform for faster growth in related areas.`,
+    author: "Templata",
+    publishedAt: "2024-03-15",
+    readTime: "9 min",
+    category: "Personal Development",
+    tags: ["skill-development", "learning", "personal-growth"],
+    type: "guide",
+    difficulty: "intermediate"
+  }
 ];

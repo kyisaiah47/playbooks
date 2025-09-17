@@ -118,9 +118,8 @@ Mastering character voice development transforms good stories into unforgettable
     type: "guide",
     difficulty: "intermediate",
     seo: {
-      title: "How to Develop Authentic Character Voices in Your Novel | Templata",
-      description: "Master character voice development with proven techniques for creating distinctive dialogue that reveals personality and captivates readers. Complete guide for fiction writers.",
-      keywords: ["character voice development", "dialogue writing techniques", "authentic character dialogue", "fiction writing guide", "character development", "creative writing tips"]
+      metaTitle: "How to Develop Authentic Character Voices in Your Novel | Templata",
+      metaDescription: "Master character voice development with proven techniques for creating distinctive dialogue that reveals personality and captivates readers. Complete guide for fiction writers."
     }
   },
   {

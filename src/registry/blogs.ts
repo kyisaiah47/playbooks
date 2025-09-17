@@ -123,12 +123,38 @@ export const getBlogPostById = (id: string): BlogPost | undefined => {
   return blogRegistry.find(post => post.id === id);
 };
 
+export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
+  return blogRegistry.find(post => post.slug === slug);
+};
+
 export const getBlogPostsByCategory = (category: string): BlogPost[] => {
   return blogRegistry.filter(post => post.category === category);
+};
+
+export const getAllBlogCategories = (): string[] => {
+  const categories = blogRegistry.map(post => post.category);
+  return [...new Set(categories)].sort();
 };
 
 export const getBlogPostsByTemplate = (templateId: string): BlogPost[] => {
   return blogRegistry.filter(post =>
     post.relatedTemplates && post.relatedTemplates.includes(templateId)
   );
+};
+
+export const getRelatedBlogPosts = (postId: string, limit: number = 3): BlogPost[] => {
+  const currentPost = getBlogPostById(postId);
+  if (!currentPost) return [];
+
+  // Find related posts by category and tags
+  const relatedPosts = blogRegistry.filter(post =>
+    post.id !== postId && (
+      post.category === currentPost.category ||
+      post.tags.some(tag => currentPost.tags.includes(tag)) ||
+      (currentPost.relatedPosts && currentPost.relatedPosts.includes(post.id))
+    )
+  );
+
+  // Sort by relevance and return limited results
+  return relatedPosts.slice(0, limit);
 };

@@ -397,5 +397,13 @@ Wildlife entry points require sealing to prevent ongoing problems. **Bat exclusi
 
 ## Decision Framework for Inspection Results
 
-Categorize inspection findings into three groups: deal-breakers, negotiation items, and monitoring issues. **Deal-breakers** include major structural problems, serious electrical safety issues, extensive environmental contamination, or repair costs exceeding **10-15% of the home's value**.
+Categorize inspection findings into three groups: deal-breakers, negotiation items, and monitoring issues. **Deal-breakers** include major structural problems, serious electrical safety issues, extensive environmental contamination, or repair costs exceeding **10-15% of the home's value**.`,
+    author: "Templata",
+    publishedAt: "2024-03-15",
+    readTime: "12 min",
+    category: "Business & Creative",
+    tags: ["photography", "business", "creative-services"],
+    type: "guide",
+    difficulty: "intermediate"
+  }
 ];

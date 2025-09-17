@@ -398,4 +398,10 @@ Understanding that tax optimization is a skill that improves with practice and k
     tags: ["taxes", "business", "freelance", "optimization", "financial planning"],
     seo: {
       metaTitle: "Freelance Tax Optimization: Advanced Strategies to Keep More of What You Earn | Templata",
+      metaDescription: "Master advanced tax strategies for freelancers and maximize your take-home income with expert optimization techniques."
+    },
+    category: "Business & Finance",
+    type: "guide",
+    difficulty: "expert"
+  }
 ];

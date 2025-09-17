@@ -397,5 +397,13 @@ Exceptional vendor coordination extends beyond individual events to develop prof
 
 **Referral networks** develop naturally when vendors experience positive coordination and quality project management. Satisfied contractors often recommend coordinators to other clients while providing referrals to other reliable vendors who match established quality standards.
 
-**Repeat collaboration** benefits from accumulated understanding of vendor working styles, communication preferences, and performance strengths that enable increasingly efficient coordination and superior results. Long-term vendor relationships often produce the smoothest events and most creative solutions to challenging requirements.
+**Repeat collaboration** benefits from accumulated understanding of vendor working styles, communication preferences, and performance strengths that enable increasingly efficient coordination and superior results. Long-term vendor relationships often produce the smoothest events and most creative solutions to challenging requirements.`,
+    author: "Templata",
+    publishedAt: "2024-03-15",
+    readTime: "10 min",
+    category: "Events & Planning",
+    tags: ["event-planning", "vendor-management", "coordination"],
+    type: "guide",
+    difficulty: "intermediate"
+  }
 ];
