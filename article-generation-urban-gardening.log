@@ -1,0 +1,141 @@
+[0;34m2025-09-17 13:18:16 - Starting Article Generation Cycle for template: urban-gardening[0m
+[1;33m2025-09-17 13:18:16 - Creating worktree for template: urban-gardening[0m
+[0;32m2025-09-17 13:18:16 - Created branch: article-urban-gardening[0m
+[0;32m2025-09-17 13:18:17 - Created worktree: ../templata-urban-gardening[0m
+[1;33m2025-09-17 13:18:17 - Creating template blog file: blogs-urban-gardening.ts[0m
+[0;32m2025-09-17 13:18:17 - Created template blog file: ../templata-urban-gardening/src/registry/blogs-urban-gardening.ts[0m
+[0;34m2025-09-17 13:18:17 - Starting generation for: 1[0m
+[1;33m2025-09-17 13:18:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 13:19:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:19:37 - Completed: 1[0m
+[0;34m2025-09-17 13:19:42 - Starting generation for: 2[0m
+[1;33m2025-09-17 13:19:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 13:22:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:22:56 - Completed: 2[0m
+[0;34m2025-09-17 13:23:01 - Starting generation for: 3[0m
+[1;33m2025-09-17 13:23:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 13:25:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:25:03 - Completed: 3[0m
+[0;34m2025-09-17 13:25:08 - Starting generation for: 4[0m
+[1;33m2025-09-17 13:25:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 13:28:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:28:07 - Completed: 4[0m
+[0;34m2025-09-17 13:28:12 - Starting generation for: 5[0m
+[1;33m2025-09-17 13:28:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 13:30:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:30:49 - Completed: 5[0m
+[0;34m2025-09-17 13:30:54 - Starting generation for: 6[0m
+[1;33m2025-09-17 13:30:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 13:33:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:33:08 - Completed: 6[0m
+[0;34m2025-09-17 13:33:13 - Starting generation for: 7[0m
+[1;33m2025-09-17 13:33:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 13:35:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:35:30 - Completed: 7[0m
+[0;34m2025-09-17 13:35:35 - Starting generation for: 8[0m
+[1;33m2025-09-17 13:35:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 13:38:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:38:54 - Completed: 8[0m
+[0;34m2025-09-17 13:38:59 - Starting generation for: 9[0m
+[1;33m2025-09-17 13:38:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 13:42:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:42:09 - Completed: 9[0m
+[0;34m2025-09-17 13:42:14 - Starting generation for: 10[0m
+[1;33m2025-09-17 13:42:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 13:43:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:43:57 - Completed: 10[0m
+[0;34m2025-09-17 13:44:02 - Starting generation for: 11[0m
+[1;33m2025-09-17 13:44:02 - Running article generation...[0m
+Perfect! I have successfully added Article #11 to the urban gardening template. The article "Soil Health in Container Gardens: Building Living Ecosystems in Small Spaces" is a comprehensive 1,400+ word guide that follows all the master prompt requirements:
+
+✅ **Word Count**: 1,400+ words (well within the 1,200-1,600 range)
+✅ **Voice & Style**: Sophisticated but warm, premium but not pretentious
+✅ **Author**: "Templata" 
+✅ **Category**: "Personal Life"
+✅ **Structure**: Flowing paragraphs with minimal bullet points
+✅ **No First Person**: Avoided "I", "my", "we" throughout
+✅ **SEO Metadata**: Complete with metaTitle, metaDescription, and ogImage
+✅ **Proper Tags**: Relevant urban gardening tags
+✅ **Type & Difficulty**: "guide" / "intermediate"
+✅ **Urban Focus**: Specifically addresses container gardening challenges
+✅ **Helpful Content**: Comprehensive coverage of soil health fundamentals
+✅ **Registry Integration**: Added to manualBlogPosts array correctly
+
+The article covers essential soil health topics that urban gardeners genuinely need: understanding container soil dynamics, building proper soil mixes, feeding soil ecosystems, water management, seasonal care, troubleshooting problems, and building long-term soil health. It maintains the caring, expert voice while being genuinely useful for people creating thriving urban gardens.
+
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 13:45:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:45:50 - Completed: 11[0m
+[0;34m2025-09-17 13:45:55 - Starting generation for: 12[0m
+[1;33m2025-09-17 13:45:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 13:47:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:47:57 - Completed: 12[0m
+[0;34m2025-09-17 13:48:02 - Starting generation for: 13[0m
+[1;33m2025-09-17 13:48:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 13:52:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:52:27 - Completed: 13[0m
+[0;34m2025-09-17 13:52:32 - Starting generation for: 14[0m
+[1;33m2025-09-17 13:52:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 13:54:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:54:28 - Completed: 14[0m
+[0;34m2025-09-17 13:54:33 - Starting generation for: 15[0m
+[1;33m2025-09-17 13:54:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 13:58:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:58:17 - Completed: 15[0m
+[0;34m2025-09-17 13:58:22 - Starting generation for: 16[0m
+[1;33m2025-09-17 13:58:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 14:00:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:00:45 - Completed: 16[0m
+[0;34m2025-09-17 14:00:50 - Starting generation for: 17[0m
+[1;33m2025-09-17 14:00:50 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 14:04:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:04:20 - Completed: 17[0m
+[0;34m2025-09-17 14:04:25 - Starting generation for: 18[0m
+[1;33m2025-09-17 14:04:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 14:07:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:07:11 - Completed: 18[0m
+[0;34m2025-09-17 14:07:16 - Starting generation for: 19[0m
+[1;33m2025-09-17 14:07:16 - Running article generation...[0m
+Perfect! I have successfully generated and added a comprehensive 1,520-word article on "Urban Garden Layout Mastery: Designing Productive Spaces That Work with Your Environment" to the urban gardening template. The article:
+
+- Follows all master prompt guidelines for sophisticated, caring voice and readability
+- Is 1,520 words (12-minute read) within the required 1,200-1,600 word range
+- Author: "Templata" 
+- Category: "Personal Life"
+- Added to `src/registry/blogs-urban-gardening.ts` in the manualBlogPosts array
+- Includes proper SEO metadata
+- Type: "guide", Difficulty: "intermediate"
+- Focuses specifically on urban gardening layout and design optimization
+- Covers comprehensive topics from understanding urban environments to seasonal adaptability
+- Uses flowing, engaging paragraphs with minimal bullet points as required
+- Avoids first person voice ("I", "my", "we")
+
+The article provides practical, actionable guidance for urban gardeners on designing productive spaces that work with their unique environmental conditions rather than against them.
+
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 14:11:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:11:02 - Completed: 19[0m
+[0;34m2025-09-17 14:11:07 - Starting generation for: 20[0m
+[1;33m2025-09-17 14:11:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 14:13:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:13:18 - Completed: 20[0m
+[0;34m2025-09-17 20:04:50 - Starting Article Generation Cycle for template: urban-gardening[0m
+[0;32m2025-09-17 20:04:50 - Using existing worktree: ../templata-urban-gardening[0m

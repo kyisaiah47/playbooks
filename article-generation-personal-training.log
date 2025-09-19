@@ -1,0 +1,126 @@
+[0;34m2025-09-17 16:06:37 - Starting Article Generation Cycle for template: personal-training[0m
+[0;32m2025-09-17 16:06:37 - Using existing worktree: ../templata-personal-training[0m
+[1;33m2025-09-17 16:06:37 - Creating template blog file: blogs-personal-training.ts[0m
+[0;32m2025-09-17 16:06:38 - Created template blog file: ../templata-personal-training/src/registry/blogs-personal-training.ts[0m
+[0;34m2025-09-17 16:06:38 - Starting generation for: 1[0m
+[1;33m2025-09-17 16:06:38 - Running article generation...[0m
+API Error: Connection error.
+[0;32m2025-09-17 18:08:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 18:08:38 - Completed: 1[0m
+[0;34m2025-09-17 18:08:43 - Starting generation for: 2[0m
+[1;33m2025-09-17 18:08:43 - Running article generation...[0m
+[0;34m2025-09-17 18:51:06 - Starting Article Generation Cycle for template: personal-training[0m
+[0;32m2025-09-17 18:51:06 - Using existing worktree: ../templata-personal-training[0m
+[0;34m2025-09-17 18:51:06 - Starting generation for: 2[0m
+[1;33m2025-09-17 18:51:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 18:52:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 18:52:12 - Completed: 2[0m
+[0;34m2025-09-17 18:52:17 - Starting generation for: 3[0m
+[1;33m2025-09-17 18:52:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 18:53:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 18:53:49 - Completed: 3[0m
+[0;34m2025-09-17 18:53:54 - Starting generation for: 4[0m
+[1;33m2025-09-17 18:53:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 18:55:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 18:55:14 - Completed: 4[0m
+[0;34m2025-09-17 18:55:19 - Starting generation for: 5[0m
+[1;33m2025-09-17 18:55:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 18:56:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 18:56:57 - Completed: 5[0m
+[0;34m2025-09-17 18:57:02 - Starting generation for: 6[0m
+[1;33m2025-09-17 18:57:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 18:58:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 18:58:41 - Completed: 6[0m
+[0;34m2025-09-17 18:58:47 - Starting generation for: 7[0m
+[1;33m2025-09-17 18:58:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 19:00:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:00:36 - Completed: 7[0m
+[0;34m2025-09-17 19:00:41 - Starting generation for: 8[0m
+[1;33m2025-09-17 19:00:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 19:02:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:02:32 - Completed: 8[0m
+[0;34m2025-09-17 19:02:37 - Starting generation for: 9[0m
+[1;33m2025-09-17 19:02:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 19:04:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:04:28 - Completed: 9[0m
+[0;34m2025-09-17 19:04:33 - Starting generation for: 10[0m
+[1;33m2025-09-17 19:04:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 19:06:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:06:24 - Completed: 10[0m
+[0;34m2025-09-17 19:06:29 - Starting generation for: 11[0m
+[1;33m2025-09-17 19:06:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 19:08:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:08:59 - Completed: 11[0m
+[0;34m2025-09-17 19:09:04 - Starting generation for: 12[0m
+[1;33m2025-09-17 19:09:04 - Running article generation...[0m
+Perfect! I've successfully added a comprehensive 1,400+ word article about avoiding personal training mistakes. The article follows all the master prompt guidelines:
+
+- **1,200-1,600 words**: The article is approximately 1,400 words (11 min read)
+- **Premium but not pretentious**: Uses sophisticated language while remaining accessible
+- **Comprehensive but not overwhelming**: Covers key mistakes without being intimidating
+- **Warm and encouraging**: Takes a caring, mentor-like tone
+- **Refreshingly human**: Avoids corporate jargon and speaks to real experiences
+- **Genuinely helpful**: Provides actionable insights people can immediately apply
+- **Author: "Templata"**: Properly attributed
+- **Category: "Personal Life"**: Correctly categorized
+- **Never uses first person**: Avoids "I", "my", "we" throughout
+- **Minimizes bullet points**: Uses flowing paragraphs with bolded section headers
+- **Proper SEO metadata**: Includes optimized title, description, and tags
+- **Type: "guide"**: Appropriate classification
+- **Difficulty: "beginner"**: Perfect for people starting their fitness journey
+
+The article addresses real psychological and behavioral challenges that people face with personal training, providing practical wisdom that readers would genuinely want to share with friends going through similar experiences.
+
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 19:11:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:11:33 - Completed: 12[0m
+[0;34m2025-09-17 19:11:38 - Starting generation for: 13[0m
+[1;33m2025-09-17 19:11:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 19:13:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:13:11 - Completed: 13[0m
+[0;34m2025-09-17 19:13:16 - Starting generation for: 14[0m
+[1;33m2025-09-17 19:13:16 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 19:15:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:15:58 - Completed: 14[0m
+[0;34m2025-09-17 19:16:03 - Starting generation for: 15[0m
+[1;33m2025-09-17 19:16:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 19:17:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:17:34 - Completed: 15[0m
+[0;34m2025-09-17 19:17:40 - Starting generation for: 16[0m
+[1;33m2025-09-17 19:17:40 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 19:19:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:19:02 - Completed: 16[0m
+[0;34m2025-09-17 19:19:07 - Starting generation for: 17[0m
+[1;33m2025-09-17 19:19:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 19:20:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:20:24 - Completed: 17[0m
+[0;34m2025-09-17 19:20:29 - Starting generation for: 18[0m
+[1;33m2025-09-17 19:20:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 19:23:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:23:20 - Completed: 18[0m
+[0;34m2025-09-17 19:23:25 - Starting generation for: 19[0m
+[1;33m2025-09-17 19:23:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 19:25:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:25:06 - Completed: 19[0m
+[0;34m2025-09-17 19:25:11 - Starting generation for: 20[0m
+[1;33m2025-09-17 19:25:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 19:27:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 19:27:22 - Completed: 20[0m

@@ -1,0 +1,124 @@
+[0;34m2025-09-18 10:37:36 - Starting Article Generation Cycle for template: apartment-hunting[0m
+[1;33m2025-09-18 10:37:36 - Creating worktree for template: apartment-hunting[0m
+[0;32m2025-09-18 10:37:36 - Created branch: article-apartment-hunting[0m
+[0;32m2025-09-18 10:37:38 - Created worktree: ../templata-apartment-hunting[0m
+[1;33m2025-09-18 10:37:38 - Creating template blog file: blogs-apartment-hunting.ts[0m
+[0;32m2025-09-18 10:37:38 - Created template blog file: ../templata-apartment-hunting/src/registry/blogs-apartment-hunting.ts[0m
+[0;34m2025-09-18 10:37:38 - Starting generation for: 1[0m
+[1;33m2025-09-18 10:37:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 10:38:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:38:47 - Completed: 1[0m
+[0;34m2025-09-18 10:38:52 - Starting generation for: 2[0m
+[1;33m2025-09-18 10:38:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 10:40:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:40:12 - Completed: 2[0m
+[0;34m2025-09-18 10:40:17 - Starting generation for: 3[0m
+[1;33m2025-09-18 10:40:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 10:42:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:42:17 - Completed: 3[0m
+[0;34m2025-09-18 10:42:22 - Starting generation for: 4[0m
+[1;33m2025-09-18 10:42:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 10:43:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:43:51 - Completed: 4[0m
+[0;34m2025-09-18 10:43:56 - Starting generation for: 5[0m
+[1;33m2025-09-18 10:43:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 10:45:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:45:49 - Completed: 5[0m
+[0;34m2025-09-18 10:45:54 - Starting generation for: 6[0m
+[1;33m2025-09-18 10:45:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 10:48:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:48:19 - Completed: 6[0m
+[0;34m2025-09-18 10:48:24 - Starting generation for: 7[0m
+[1;33m2025-09-18 10:48:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 10:50:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:50:13 - Completed: 7[0m
+[0;34m2025-09-18 10:50:18 - Starting generation for: 8[0m
+[1;33m2025-09-18 10:50:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 10:53:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:53:17 - Completed: 8[0m
+[0;34m2025-09-18 10:53:22 - Starting generation for: 9[0m
+[1;33m2025-09-18 10:53:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 10:55:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:55:01 - Completed: 9[0m
+[0;34m2025-09-18 10:55:06 - Starting generation for: 10[0m
+[1;33m2025-09-18 10:55:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 10:57:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:57:44 - Completed: 10[0m
+[0;34m2025-09-18 10:57:49 - Starting generation for: 11[0m
+[1;33m2025-09-18 10:57:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 12:01:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:01:57 - Completed: 11[0m
+[0;34m2025-09-18 12:02:02 - Starting generation for: 12[0m
+[1;33m2025-09-18 12:02:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 12:04:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:04:14 - Completed: 12[0m
+[0;34m2025-09-18 12:04:19 - Starting generation for: 13[0m
+[1;33m2025-09-18 12:04:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 12:06:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:06:55 - Completed: 13[0m
+[0;34m2025-09-18 12:07:00 - Starting generation for: 14[0m
+[1;33m2025-09-18 12:07:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 12:09:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:09:57 - Completed: 14[0m
+[0;34m2025-09-18 12:10:02 - Starting generation for: 15[0m
+[1;33m2025-09-18 12:10:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 12:12:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:12:06 - Completed: 15[0m
+[0;34m2025-09-18 12:12:11 - Starting generation for: 16[0m
+[1;33m2025-09-18 12:12:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 12:14:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:14:37 - Completed: 16[0m
+[0;34m2025-09-18 12:14:42 - Starting generation for: 17[0m
+[1;33m2025-09-18 12:14:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 12:16:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:16:41 - Completed: 17[0m
+[0;34m2025-09-18 12:16:46 - Starting generation for: 18[0m
+[1;33m2025-09-18 12:16:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 12:18:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:18:19 - Completed: 18[0m
+[0;34m2025-09-18 12:18:24 - Starting generation for: 19[0m
+[1;33m2025-09-18 12:18:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 12:20:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:20:20 - Completed: 19[0m
+[0;34m2025-09-18 12:20:25 - Starting generation for: 20[0m
+[1;33m2025-09-18 12:20:25 - Running article generation...[0m
+Perfect! I have successfully created Article #20 for the apartment hunting template. The article is titled "How to Win in Competitive Apartment Markets: The Insider's Playbook for Landing Your Dream Rental" and meets all the requirements:
+
+- **Word count**: Trimmed from 2,021 to approximately 1,400 words (within the 1,200-1,600 range)
+- **Read time**: 12 minutes (8-12 minute requirement met)
+- **Author**: "Templata"
+- **Category**: "Personal Life"
+- **Type**: "guide"
+- **Difficulty**: "intermediate"
+- **Voice and tone**: Follows the master prompt guidelines with sophisticated, caring voice and engaging readability
+- **Structure**: Uses flowing paragraphs instead of excessive bullet points
+- **Topic**: Highly relevant to apartment hunting with practical, actionable strategies
+- **SEO**: Proper metadata included
+- **Content**: Comprehensive guide covering pre-market positioning, intelligence gathering, application excellence, competitive advantages, and advanced strategies
+
+The article has been successfully added to the `manualBlogPosts` array in `/Users/ikim1/Documents/GitHub/templata-apartment-hunting/src/registry/blogs-apartment-hunting.ts`.
+
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 12:25:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:25:27 - Completed: 20[0m
+[0;34m2025-09-19 13:31:24 - Starting Article Generation Cycle for template: apartment-hunting[0m
+[0;32m2025-09-19 13:31:24 - Using existing worktree: ../templata-apartment-hunting[0m

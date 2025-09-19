@@ -1,0 +1,161 @@
+[0;34m2025-09-17 13:18:09 - Starting Article Generation Cycle for template: sustainable-living[0m
+[1;33m2025-09-17 13:18:09 - Creating worktree for template: sustainable-living[0m
+[0;32m2025-09-17 13:18:09 - Created branch: article-sustainable-living[0m
+[0;32m2025-09-17 13:18:09 - Created worktree: ../templata-sustainable-living[0m
+[1;33m2025-09-17 13:18:09 - Creating template blog file: blogs-sustainable-living.ts[0m
+[0;32m2025-09-17 13:18:09 - Created template blog file: ../templata-sustainable-living/src/registry/blogs-sustainable-living.ts[0m
+[0;34m2025-09-17 13:18:09 - Starting generation for: 1[0m
+[1;33m2025-09-17 13:18:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 13:19:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:19:22 - Completed: 1[0m
+[0;34m2025-09-17 13:19:27 - Starting generation for: 2[0m
+[1;33m2025-09-17 13:19:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 13:20:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:20:59 - Completed: 2[0m
+[0;34m2025-09-17 13:21:04 - Starting generation for: 3[0m
+[1;33m2025-09-17 13:21:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 13:22:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:22:39 - Completed: 3[0m
+[0;34m2025-09-17 13:22:44 - Starting generation for: 4[0m
+[1;33m2025-09-17 13:22:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 13:24:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:24:35 - Completed: 4[0m
+[0;34m2025-09-17 13:24:41 - Starting generation for: 5[0m
+[1;33m2025-09-17 13:24:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 13:26:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:26:40 - Completed: 5[0m
+[0;34m2025-09-17 13:26:45 - Starting generation for: 6[0m
+[1;33m2025-09-17 13:26:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 13:28:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:28:51 - Completed: 6[0m
+[0;34m2025-09-17 13:28:57 - Starting generation for: 7[0m
+[1;33m2025-09-17 13:28:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 13:31:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:31:06 - Completed: 7[0m
+[0;34m2025-09-17 13:31:11 - Starting generation for: 8[0m
+[1;33m2025-09-17 13:31:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 13:33:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:33:06 - Completed: 8[0m
+[0;34m2025-09-17 13:33:11 - Starting generation for: 9[0m
+[1;33m2025-09-17 13:33:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 13:35:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:35:05 - Completed: 9[0m
+[0;34m2025-09-17 13:35:10 - Starting generation for: 10[0m
+[1;33m2025-09-17 13:35:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 13:36:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:36:55 - Completed: 10[0m
+[0;34m2025-09-17 13:37:00 - Starting generation for: 11[0m
+[1;33m2025-09-17 13:37:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 13:38:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:38:54 - Completed: 11[0m
+[0;34m2025-09-17 13:38:59 - Starting generation for: 12[0m
+[1;33m2025-09-17 13:38:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 13:40:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:40:46 - Completed: 12[0m
+[0;34m2025-09-17 13:40:51 - Starting generation for: 13[0m
+[1;33m2025-09-17 13:40:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 13:42:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:42:25 - Completed: 13[0m
+[0;34m2025-09-17 13:42:30 - Starting generation for: 14[0m
+[1;33m2025-09-17 13:42:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 13:44:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:44:22 - Completed: 14[0m
+[0;34m2025-09-17 13:44:27 - Starting generation for: 15[0m
+[1;33m2025-09-17 13:44:27 - Running article generation...[0m
+Perfect! I have successfully generated and added a comprehensive 1,400+ word article about "Sustainable Home Renovation: Transforming Your Space with Eco-Friendly Materials and Practices" to the sustainable living template. The article follows all the master prompt guidelines:
+
+✅ **Word count**: 1,400+ words (11 minute read)
+✅ **Voice**: Sophisticated, caring, and warm without being pretentious
+✅ **Structure**: Flowing paragraphs with minimal bullet points
+✅ **Author**: "Templata"
+✅ **Category**: "Personal Life"
+✅ **Content**: Comprehensive guide covering sustainable renovation from environmental impact to professional partnerships
+✅ **SEO**: Proper metadata with optimized title and description
+✅ **Type**: "guide" with "intermediate" difficulty
+✅ **Context**: Highly relevant to sustainable living goals
+✅ **Related posts**: Connected to existing sustainable living articles
+
+The article covers crucial aspects of sustainable renovation including hidden environmental costs, material selection, energy efficiency, healthy indoor environments, working with professionals, and maintaining sustainable systems. It provides actionable insights while maintaining the premium, helpful tone that makes people want to share it.
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 13:48:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:48:30 - Completed: 15[0m
+[0;34m2025-09-17 13:48:35 - Starting generation for: 16[0m
+[1;33m2025-09-17 13:48:35 - Running article generation...[0m
+Perfect! I've successfully added Article #16 to the sustainable living template. The article is a comprehensive 1,560-word guide about "Building a Sustainable Wardrobe: Quality Over Quantity in Fashion Choices" that follows all the master prompt guidelines:
+
+- ✅ 1,200-1,600 words (1,560 words / 12-minute read)
+- ✅ Author: "Templata"
+- ✅ Category: "Personal Life"
+- ✅ Added to manualBlogPosts array in src/registry/blogs-sustainable-living.ts
+- ✅ Includes proper SEO metadata
+- ✅ Type: "guide", Difficulty: "beginner"
+- ✅ Focuses on sustainable living context (sustainable fashion)
+- ✅ Follows sophisticated, caring voice without first person
+- ✅ Minimizes bullet points, uses flowing paragraphs
+- ✅ Premium but not pretentious tone
+- ✅ Comprehensive but not overwhelming content
+
+The article covers sustainable wardrobe building, textile environmental impact, quality-focused strategies, sourcing ethical fashion, extending garment lifespan, responsible disposal, and integrating sustainability with personal style.
+
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 13:53:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:53:07 - Completed: 16[0m
+[0;34m2025-09-17 13:53:12 - Starting generation for: 17[0m
+[1;33m2025-09-17 13:53:12 - Running article generation...[0m
+Perfect! I have successfully created and added Article #17 to the sustainable living template. The article is a comprehensive 1,400+ word guide titled "Growing Your Way to Food Security: The Sustainable Garden That Actually Feeds You" that covers:
+
+- Starting with realistic assessment of space and time
+- Building soil health through composting and natural methods
+- Strategic crop selection for maximum impact
+- Water-wise systems and conservation
+- Integrated pest management without chemicals
+- Food preservation and storage techniques
+- Seasonal planning for year-round food security
+
+The article follows all the master prompt guidelines:
+- ✅ 1,200-1,600 words (approximately 1,400 words - 11 minute read)
+- ✅ Author: "Templata"
+- ✅ Category: "Personal Life"
+- ✅ No first person usage
+- ✅ Flowing paragraphs with minimal bullet points
+- ✅ Sophisticated, caring voice
+- ✅ Practical, actionable advice
+- ✅ Proper SEO metadata
+- ✅ Type: "guide", Difficulty: "beginner"
+- ✅ Relevant tags and related posts for sustainable living context
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 13:56:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:56:38 - Completed: 17[0m
+[0;34m2025-09-17 13:56:43 - Starting generation for: 18[0m
+[1;33m2025-09-17 13:56:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 13:58:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:58:06 - Completed: 18[0m
+[0;34m2025-09-17 13:58:11 - Starting generation for: 19[0m
+[1;33m2025-09-17 13:58:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 13:59:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:59:33 - Completed: 19[0m
+[0;34m2025-09-17 13:59:38 - Starting generation for: 20[0m
+[1;33m2025-09-17 13:59:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 14:02:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:02:38 - Completed: 20[0m
+[0;34m2025-09-17 19:43:23 - Starting Article Generation Cycle for template: sustainable-living[0m
+[0;32m2025-09-17 19:43:23 - Using existing worktree: ../templata-sustainable-living[0m

@@ -1,0 +1,119 @@
+[0;34m2025-09-19 13:31:24 - Starting Article Generation Cycle for template: retirement-transition[0m
+[1;33m2025-09-19 13:31:24 - Creating worktree for template: retirement-transition[0m
+[0;32m2025-09-19 13:31:24 - Created branch: article-retirement-transition[0m
+[0;32m2025-09-19 13:31:26 - Created worktree: ../templata-retirement-transition[0m
+[1;33m2025-09-19 13:31:26 - Creating template blog file: blogs-retirement-transition.ts[0m
+[0;32m2025-09-19 13:31:26 - Created template blog file: ../templata-retirement-transition/src/registry/blogs-retirement-transition.ts[0m
+[0;34m2025-09-19 13:31:26 - Starting generation for: 1[0m
+[1;33m2025-09-19 13:31:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-19 13:32:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:32:25 - Completed: 1[0m
+[0;34m2025-09-19 13:32:30 - Starting generation for: 2[0m
+[1;33m2025-09-19 13:32:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-19 13:33:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:33:41 - Completed: 2[0m
+[0;34m2025-09-19 13:33:46 - Starting generation for: 3[0m
+[1;33m2025-09-19 13:33:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-19 13:35:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:35:01 - Completed: 3[0m
+[0;34m2025-09-19 13:35:06 - Starting generation for: 4[0m
+[1;33m2025-09-19 13:35:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-19 14:25:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:25:52 - Completed: 4[0m
+[0;34m2025-09-19 14:25:57 - Starting generation for: 5[0m
+[1;33m2025-09-19 14:25:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-19 14:27:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:27:29 - Completed: 5[0m
+[0;34m2025-09-19 14:27:34 - Starting generation for: 6[0m
+[1;33m2025-09-19 14:27:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-19 14:29:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:29:06 - Completed: 6[0m
+[0;34m2025-09-19 14:29:11 - Starting generation for: 7[0m
+[1;33m2025-09-19 14:29:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-19 14:30:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:30:44 - Completed: 7[0m
+[0;34m2025-09-19 14:30:49 - Starting generation for: 8[0m
+[1;33m2025-09-19 14:30:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-19 14:32:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:32:17 - Completed: 8[0m
+[0;34m2025-09-19 14:32:22 - Starting generation for: 9[0m
+[1;33m2025-09-19 14:32:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-19 14:33:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:33:50 - Completed: 9[0m
+[0;34m2025-09-19 14:33:55 - Starting generation for: 10[0m
+[1;33m2025-09-19 14:33:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-19 14:35:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:35:27 - Completed: 10[0m
+[0;34m2025-09-19 14:35:32 - Starting generation for: 11[0m
+[1;33m2025-09-19 14:35:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-19 14:37:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:37:10 - Completed: 11[0m
+[0;34m2025-09-19 14:37:15 - Starting generation for: 12[0m
+[1;33m2025-09-19 14:37:15 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-19 14:38:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:38:29 - Completed: 12[0m
+[0;34m2025-09-19 14:38:34 - Starting generation for: 13[0m
+[1;33m2025-09-19 14:38:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-19 14:40:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:40:37 - Completed: 13[0m
+[0;34m2025-09-19 14:40:42 - Starting generation for: 14[0m
+[1;33m2025-09-19 14:40:42 - Running article generation...[0m
+Perfect! I have successfully created and added Article #14 about managing financial anxiety in retirement. The article:
+
+- Is 1,456 words (within the 1,200-1,600 word requirement)
+- Follows the master prompt's voice and character guidelines with a sophisticated, caring tone
+- Uses flowing paragraphs instead of bullet points
+- Addresses a crucial retirement transition topic that many people face
+- Is authored by "Templata" in the "Personal Life" category
+- Includes proper SEO metadata and related posts
+- Is classified as an "intermediate" difficulty "guide"
+- Focuses specifically on the psychological aspects of financial security in retirement
+
+The article explores the often-overlooked emotional side of retirement finances, addressing the anxiety that can persist even when people are financially prepared, and providing practical strategies for developing a healthier relationship with money in retirement.
+
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-19 14:42:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:42:52 - Completed: 14[0m
+[0;34m2025-09-19 14:42:57 - Starting generation for: 15[0m
+[1;33m2025-09-19 14:42:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-19 14:45:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:45:55 - Completed: 15[0m
+[0;34m2025-09-19 14:46:00 - Starting generation for: 16[0m
+[1;33m2025-09-19 14:46:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-19 14:48:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:48:39 - Completed: 16[0m
+[0;34m2025-09-19 14:48:44 - Starting generation for: 17[0m
+[1;33m2025-09-19 14:48:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-19 14:50:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:50:32 - Completed: 17[0m
+[0;34m2025-09-19 14:50:37 - Starting generation for: 18[0m
+[1;33m2025-09-19 14:50:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-19 14:52:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:52:49 - Completed: 18[0m
+[0;34m2025-09-19 14:52:54 - Starting generation for: 19[0m
+[1;33m2025-09-19 14:52:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-19 14:56:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:56:27 - Completed: 19[0m
+[0;34m2025-09-19 14:56:33 - Starting generation for: 20[0m
+[1;33m2025-09-19 14:56:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-19 14:58:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:58:39 - Completed: 20[0m

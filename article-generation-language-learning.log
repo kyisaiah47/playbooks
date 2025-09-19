@@ -107,3 +107,7 @@ ARTICLE GENERATION COMPLETE - Article #19
 ARTICLE GENERATION COMPLETE - Article #20
 [0;32m2025-09-16 22:07:22 - Skipping review - moving to next article[0m
 [0;32m2025-09-16 22:07:22 - Completed: 20[0m
+[0;34m2025-09-17 09:30:26 - Starting Article Generation Cycle for template: language-learning[0m
+[0;32m2025-09-17 09:30:26 - Using existing worktree: ../templata-language-learning[0m
+[1;33m2025-09-17 09:30:26 - Creating template blog file: blogs-language-learning.ts[0m
+[0;32m2025-09-17 09:30:26 - Created template blog file: ../templata-language-learning/src/registry/blogs-language-learning.ts[0m

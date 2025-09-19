@@ -1,0 +1,111 @@
+[0;34m2025-09-17 09:30:26 - Starting Article Generation Cycle for template: retirement-planning[0m
+[0;32m2025-09-17 09:30:26 - Using existing worktree: ../templata-retirement-planning[0m
+[1;33m2025-09-17 09:30:26 - Creating template blog file: blogs-retirement-planning.ts[0m
+[0;32m2025-09-17 09:30:26 - Created template blog file: ../templata-retirement-planning/src/registry/blogs-retirement-planning.ts[0m
+[0;34m2025-09-17 09:30:26 - Starting generation for: 1[0m
+[1;33m2025-09-17 09:30:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 09:32:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:32:43 - Completed: 1[0m
+[0;34m2025-09-17 09:32:48 - Starting generation for: 2[0m
+[1;33m2025-09-17 09:32:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 09:35:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:35:12 - Completed: 2[0m
+[0;34m2025-09-17 09:35:17 - Starting generation for: 3[0m
+[1;33m2025-09-17 09:35:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 09:38:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:38:29 - Completed: 3[0m
+[0;34m2025-09-17 09:38:34 - Starting generation for: 4[0m
+[1;33m2025-09-17 09:38:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 09:40:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:40:40 - Completed: 4[0m
+[0;34m2025-09-17 09:40:45 - Starting generation for: 5[0m
+[1;33m2025-09-17 09:40:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 09:43:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:43:12 - Completed: 5[0m
+[0;34m2025-09-17 09:43:17 - Starting generation for: 6[0m
+[1;33m2025-09-17 09:43:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 10:16:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:16:40 - Completed: 6[0m
+[0;34m2025-09-17 10:16:45 - Starting generation for: 7[0m
+[1;33m2025-09-17 10:16:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 10:19:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:19:23 - Completed: 7[0m
+[0;34m2025-09-17 10:19:28 - Starting generation for: 8[0m
+[1;33m2025-09-17 10:19:28 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;34m2025-09-17 10:37:12 - Starting Article Generation Cycle for template: retirement-planning[0m
+[0;32m2025-09-17 10:37:12 - Using existing worktree: ../templata-retirement-planning[0m
+[0;34m2025-09-17 10:37:12 - Starting generation for: 8[0m
+[1;33m2025-09-17 10:37:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 10:39:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:39:28 - Completed: 8[0m
+[0;34m2025-09-17 10:39:33 - Starting generation for: 9[0m
+[1;33m2025-09-17 10:39:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 10:44:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:44:37 - Completed: 9[0m
+[0;34m2025-09-17 10:44:42 - Starting generation for: 10[0m
+[1;33m2025-09-17 10:44:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 10:46:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:46:43 - Completed: 10[0m
+[0;34m2025-09-17 10:46:48 - Starting generation for: 11[0m
+[1;33m2025-09-17 10:46:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 10:49:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:49:10 - Completed: 11[0m
+[0;34m2025-09-17 10:49:15 - Starting generation for: 12[0m
+[1;33m2025-09-17 10:49:15 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 10:53:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:53:27 - Completed: 12[0m
+[0;34m2025-09-17 10:53:32 - Starting generation for: 13[0m
+[1;33m2025-09-17 10:53:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 10:57:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:57:08 - Completed: 13[0m
+[0;34m2025-09-17 10:57:13 - Starting generation for: 14[0m
+[1;33m2025-09-17 10:57:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 11:00:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:00:04 - Completed: 14[0m
+[0;34m2025-09-17 11:00:10 - Starting generation for: 15[0m
+[1;33m2025-09-17 11:00:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 11:02:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:02:24 - Completed: 15[0m
+[0;34m2025-09-17 11:02:30 - Starting generation for: 16[0m
+[1;33m2025-09-17 11:02:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 11:05:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:05:16 - Completed: 16[0m
+[0;34m2025-09-17 11:05:21 - Starting generation for: 17[0m
+[1;33m2025-09-17 11:05:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 11:09:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:09:36 - Completed: 17[0m
+[0;34m2025-09-17 11:09:42 - Starting generation for: 18[0m
+[1;33m2025-09-17 11:09:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 11:13:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:13:56 - Completed: 18[0m
+[0;34m2025-09-17 11:14:01 - Starting generation for: 19[0m
+[1;33m2025-09-17 11:14:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 11:18:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:18:15 - Completed: 19[0m
+[0;34m2025-09-17 11:18:20 - Starting generation for: 20[0m
+[1;33m2025-09-17 11:18:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 11:22:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:22:36 - Completed: 20[0m
+[0;34m2025-09-17 20:04:50 - Starting Article Generation Cycle for template: retirement-planning[0m
+[0;32m2025-09-17 20:04:50 - Using existing worktree: ../templata-retirement-planning[0m

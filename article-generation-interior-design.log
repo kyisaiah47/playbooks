@@ -1,0 +1,164 @@
+[0;34m2025-09-18 09:17:14 - Starting Article Generation Cycle for template: interior-design[0m
+[1;33m2025-09-18 09:17:14 - Creating worktree for template: interior-design[0m
+[0;32m2025-09-18 09:17:14 - Created branch: article-interior-design[0m
+[0;32m2025-09-18 09:17:17 - Created worktree: ../templata-interior-design[0m
+[1;33m2025-09-18 09:17:17 - Creating template blog file: blogs-interior-design.ts[0m
+[0;32m2025-09-18 09:17:17 - Created template blog file: ../templata-interior-design/src/registry/blogs-interior-design.ts[0m
+[0;34m2025-09-18 09:17:17 - Starting generation for: 1[0m
+[1;33m2025-09-18 09:17:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 09:18:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:18:34 - Completed: 1[0m
+[0;34m2025-09-18 09:18:39 - Starting generation for: 2[0m
+[1;33m2025-09-18 09:18:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 09:20:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:20:05 - Completed: 2[0m
+[0;34m2025-09-18 09:20:10 - Starting generation for: 3[0m
+[1;33m2025-09-18 09:20:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 09:21:45 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:21:45 - Completed: 3[0m
+[0;34m2025-09-18 09:21:50 - Starting generation for: 4[0m
+[1;33m2025-09-18 09:21:50 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 09:23:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:23:31 - Completed: 4[0m
+[0;34m2025-09-18 09:23:36 - Starting generation for: 5[0m
+[1;33m2025-09-18 09:23:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 09:25:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:25:44 - Completed: 5[0m
+[0;34m2025-09-18 09:25:49 - Starting generation for: 6[0m
+[1;33m2025-09-18 09:25:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 09:27:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:27:56 - Completed: 6[0m
+[0;34m2025-09-18 09:28:01 - Starting generation for: 7[0m
+[1;33m2025-09-18 09:28:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 09:30:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:30:48 - Completed: 7[0m
+[0;34m2025-09-18 09:30:53 - Starting generation for: 8[0m
+[1;33m2025-09-18 09:30:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 09:32:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:32:58 - Completed: 8[0m
+[0;34m2025-09-18 09:33:03 - Starting generation for: 9[0m
+[1;33m2025-09-18 09:33:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 09:34:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:34:29 - Completed: 9[0m
+[0;34m2025-09-18 09:34:34 - Starting generation for: 10[0m
+[1;33m2025-09-18 09:34:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 09:38:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:38:00 - Completed: 10[0m
+[0;34m2025-09-18 09:38:05 - Starting generation for: 11[0m
+[1;33m2025-09-18 09:38:05 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #11 to the interior design blog registry. The article covers "The Psychology of Small Space Design: Making Every Square Foot Feel Intentional" - a comprehensive 1,400+ word guide that follows all the master prompt guidelines:
+
+✅ **1,200-1,600 words** (approximately 1,400 words)
+✅ **Sophisticated, caring voice** without being pretentious  
+✅ **Author: "Templata"**
+✅ **Category: "Personal Life"**
+✅ **No first person usage**
+✅ **Flowing paragraphs** with minimal bullet points
+✅ **Proper SEO metadata** with meta title, description, and og image
+✅ **Interior design focused** topic that genuinely helps people
+✅ **Type: "guide"** and **Difficulty: "intermediate"**
+✅ **Added to manualBlogPosts array** in the registry
+
+The article provides practical, actionable advice for small space design using psychology-based principles, covering vertical thinking, color strategy, multifunctional design, lighting, flow patterns, and personal touches. It maintains the premium but approachable tone that makes readers think "This is exactly what I needed."
+
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 09:40:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:40:32 - Completed: 11[0m
+[0;34m2025-09-18 09:40:37 - Starting generation for: 12[0m
+[1;33m2025-09-18 09:40:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 09:43:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:43:00 - Completed: 12[0m
+[0;34m2025-09-18 09:43:05 - Starting generation for: 13[0m
+[1;33m2025-09-18 09:43:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 09:46:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:46:28 - Completed: 13[0m
+[0;34m2025-09-18 09:46:33 - Starting generation for: 14[0m
+[1;33m2025-09-18 09:46:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 09:48:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:48:53 - Completed: 14[0m
+[0;34m2025-09-18 09:48:58 - Starting generation for: 15[0m
+[1;33m2025-09-18 09:48:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 09:51:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:51:41 - Completed: 15[0m
+[0;34m2025-09-18 09:51:46 - Starting generation for: 16[0m
+[1;33m2025-09-18 09:51:46 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #16 to the interior design template blog registry. The article titled "The Hidden Psychology of Furniture Layout: How Room Flow Affects Your Daily Life" follows all the master prompt guidelines:
+
+✅ **Word Count**: 1,400+ words (11-minute read)
+✅ **Voice & Tone**: Sophisticated, caring, and genuinely helpful without being pretentious  
+✅ **Structure**: Flowing paragraphs with minimal bullet points
+✅ **Author**: "Templata"
+✅ **Category**: "Personal Life"
+✅ **Content Quality**: Comprehensive guide on furniture psychology and spatial design
+✅ **SEO**: Proper metadata with compelling title and description
+✅ **Type**: "guide" with "intermediate" difficulty
+✅ **Tags**: Relevant interior design and psychology tags
+✅ **Related Content**: Connected to existing articles in the series
+
+The article explores how furniture placement affects mood, relationships, and daily life through the lens of environmental psychology, covering topics like spatial comfort, conversation geography, traffic patterns, visual weight distribution, flexibility, lighting synergy, and long-term living satisfaction.
+
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 09:55:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:55:01 - Completed: 16[0m
+[0;34m2025-09-18 09:55:06 - Starting generation for: 17[0m
+[1;33m2025-09-18 09:55:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 09:58:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:58:58 - Completed: 17[0m
+[0;34m2025-09-18 09:59:03 - Starting generation for: 18[0m
+[1;33m2025-09-18 09:59:03 - Running article generation...[0m
+Excellent! I have successfully created article #18 for the interior design template. The article:
+
+- **Title**: "The Art of Layered Lighting: Creating Ambiance That Works for Real Life"
+- **Word count**: ~1,500 words (11 min read)
+- **Follows master prompt guidelines**: Sophisticated, caring voice; flows in engaging paragraphs rather than bullet points; never uses first person
+- **Type**: Guide (intermediate difficulty)
+- **Category**: Personal Life
+- **Author**: Templata
+- **Focus**: Interior design lighting with practical, actionable advice
+- **SEO optimized**: With meta title, description, and relevant tags
+- **Related content**: Connected to other interior design articles in the registry
+
+The article covers essential lighting design principles that would genuinely help people create more comfortable, functional homes—exactly what the master prompt calls for.
+
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 10:01:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:01:12 - Completed: 18[0m
+[0;34m2025-09-18 10:01:17 - Starting generation for: 19[0m
+[1;33m2025-09-18 10:01:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 10:03:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:03:08 - Completed: 19[0m
+[0;34m2025-09-18 10:03:13 - Starting generation for: 20[0m
+[1;33m2025-09-18 10:03:13 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #20 to the interior design template. The article follows all the requirements:
+
+✅ **1,400+ words** (comprehensive 8-12 minute read)
+✅ **Master prompt guidelines** - sophisticated, caring voice with flowing paragraphs instead of bullet points
+✅ **Author: "Templata"**
+✅ **Category: "Personal Life"**
+✅ **Added to manualBlogPosts array** in src/registry/blogs-interior-design.ts
+✅ **Proper SEO metadata** included
+✅ **Type: "guide"** and **Difficulty: "intermediate"**
+✅ **Interior design focus** - sustainable and eco-friendly design
+✅ **Relevant topic** that helps people with interior design decisions
+
+The article covers sustainable interior design comprehensively, including material sourcing, non-toxic options, energy efficiency, sourcing strategies, economics, and practical implementation - all written in the warm, encouraging tone that makes complex decisions feel manageable.
+
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 10:06:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:06:34 - Completed: 20[0m

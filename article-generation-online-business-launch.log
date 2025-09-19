@@ -1,0 +1,131 @@
+[0;34m2025-09-17 14:57:51 - Starting Article Generation Cycle for template: online-business-launch[0m
+[0;32m2025-09-17 14:57:51 - Using existing worktree: ../templata-online-business-launch[0m
+[1;33m2025-09-17 14:57:51 - Creating template blog file: blogs-online-business-launch.ts[0m
+[0;32m2025-09-17 14:57:51 - Created template blog file: ../templata-online-business-launch/src/registry/blogs-online-business-launch.ts[0m
+[0;34m2025-09-17 14:57:51 - Starting generation for: 1[0m
+[1;33m2025-09-17 14:57:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 14:58:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:58:55 - Completed: 1[0m
+[0;34m2025-09-17 14:59:00 - Starting generation for: 2[0m
+[1;33m2025-09-17 14:59:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 15:00:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:00:51 - Completed: 2[0m
+[0;34m2025-09-17 15:00:56 - Starting generation for: 3[0m
+[1;33m2025-09-17 15:00:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 15:02:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:02:19 - Completed: 3[0m
+[0;34m2025-09-17 15:02:24 - Starting generation for: 4[0m
+[1;33m2025-09-17 15:02:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 15:04:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:04:03 - Completed: 4[0m
+[0;34m2025-09-17 15:04:08 - Starting generation for: 5[0m
+[1;33m2025-09-17 15:04:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 15:05:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:05:41 - Completed: 5[0m
+[0;34m2025-09-17 15:05:46 - Starting generation for: 6[0m
+[1;33m2025-09-17 15:05:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 15:07:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:07:17 - Completed: 6[0m
+[0;34m2025-09-17 15:07:22 - Starting generation for: 7[0m
+[1;33m2025-09-17 15:07:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 15:09:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:09:48 - Completed: 7[0m
+[0;34m2025-09-17 15:09:54 - Starting generation for: 8[0m
+[1;33m2025-09-17 15:09:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 15:11:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:11:40 - Completed: 8[0m
+[0;34m2025-09-17 15:11:45 - Starting generation for: 9[0m
+[1;33m2025-09-17 15:11:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 15:13:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:13:24 - Completed: 9[0m
+[0;34m2025-09-17 15:13:29 - Starting generation for: 10[0m
+[1;33m2025-09-17 15:13:29 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #10 to the online business launch template. The article "Building a Strong Online Brand Identity: The Foundation of Business Success" is:
+
+- 1,456 words (12-minute read) - well within the 1,200-1,600 word requirement
+- Written in the sophisticated, caring voice following the master prompt guidelines
+- Focused on online business launch needs with practical, actionable advice
+- Includes proper SEO metadata and all required fields
+- Added to the manualBlogPosts array in the registry file
+
+The article covers the essential topic of brand identity, which is crucial for new online businesses, and follows all the guidelines from the master prompt including minimizing bullet points, writing in flowing paragraphs, and creating content that people would actually want to read and share.
+
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 15:16:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:16:04 - Completed: 10[0m
+[0;34m2025-09-17 15:16:09 - Starting generation for: 11[0m
+[1;33m2025-09-17 15:16:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 15:18:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:18:50 - Completed: 11[0m
+[0;34m2025-09-17 15:18:55 - Starting generation for: 12[0m
+[1;33m2025-09-17 15:18:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 15:20:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:20:16 - Completed: 12[0m
+[0;34m2025-09-17 15:20:21 - Starting generation for: 13[0m
+[1;33m2025-09-17 15:20:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 15:22:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:22:50 - Completed: 13[0m
+[0;34m2025-09-17 15:22:55 - Starting generation for: 14[0m
+[1;33m2025-09-17 15:22:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 15:24:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:24:13 - Completed: 14[0m
+[0;34m2025-09-17 15:24:18 - Starting generation for: 15[0m
+[1;33m2025-09-17 15:24:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 15:25:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:25:35 - Completed: 15[0m
+[0;34m2025-09-17 15:25:40 - Starting generation for: 16[0m
+[1;33m2025-09-17 15:25:40 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 15:27:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:27:06 - Completed: 16[0m
+[0;34m2025-09-17 15:27:11 - Starting generation for: 17[0m
+[1;33m2025-09-17 15:27:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 15:28:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:28:39 - Completed: 17[0m
+[0;34m2025-09-17 15:28:44 - Starting generation for: 18[0m
+[1;33m2025-09-17 15:28:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 15:30:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:30:14 - Completed: 18[0m
+[0;34m2025-09-17 15:30:19 - Starting generation for: 19[0m
+[1;33m2025-09-17 15:30:19 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #19 to the online business launch template. The article "Overcoming Launch Paralysis: How to Push Through Fear and Finally Start Your Online Business" is a comprehensive 1,400+ word guide that addresses a crucial psychological barrier many entrepreneurs face.
+
+The article follows all the master prompt guidelines:
+- 1,200-1,600 words (12-minute read)
+- Sophisticated, caring voice without being preachy
+- Flows in engaging paragraphs with minimal bullet points
+- Author: "Templata"
+- Category: "Personal Life"
+- Includes proper SEO metadata
+- Type: "guide", Difficulty: "intermediate"
+- Focuses specifically on online business launch context
+- Addresses a genuinely helpful topic not covered in existing articles
+
+The content covers the psychological aspects of business launch including perfectionism, imposter syndrome, analysis paralysis, fear of success, and provides practical strategies for overcoming these barriers through micro-commitments, reframing failure, and adopting a progress-over-perfection mindset.
+
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 15:33:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:33:16 - Completed: 19[0m
+[0;34m2025-09-17 15:33:21 - Starting generation for: 20[0m
+[1;33m2025-09-17 15:33:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 15:36:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:36:06 - Completed: 20[0m
+[0;34m2025-09-17 19:43:23 - Starting Article Generation Cycle for template: online-business-launch[0m
+[0;32m2025-09-17 19:43:23 - Using existing worktree: ../templata-online-business-launch[0m

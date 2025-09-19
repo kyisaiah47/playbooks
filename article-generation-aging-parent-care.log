@@ -1,0 +1,123 @@
+[0;34m2025-09-18 10:37:36 - Starting Article Generation Cycle for template: aging-parent-care[0m
+[1;33m2025-09-18 10:37:36 - Creating worktree for template: aging-parent-care[0m
+[0;32m2025-09-18 10:37:36 - Created branch: article-aging-parent-care[0m
+[0;32m2025-09-18 10:37:38 - Created worktree: ../templata-aging-parent-care[0m
+[1;33m2025-09-18 10:37:38 - Creating template blog file: blogs-aging-parent-care.ts[0m
+[0;32m2025-09-18 10:37:38 - Created template blog file: ../templata-aging-parent-care/src/registry/blogs-aging-parent-care.ts[0m
+[0;34m2025-09-18 10:37:38 - Starting generation for: 1[0m
+[1;33m2025-09-18 10:37:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 10:38:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:38:52 - Completed: 1[0m
+[0;34m2025-09-18 10:38:57 - Starting generation for: 2[0m
+[1;33m2025-09-18 10:38:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 10:40:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:40:30 - Completed: 2[0m
+[0;34m2025-09-18 10:40:35 - Starting generation for: 3[0m
+[1;33m2025-09-18 10:40:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 10:42:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:42:01 - Completed: 3[0m
+[0;34m2025-09-18 10:42:06 - Starting generation for: 4[0m
+[1;33m2025-09-18 10:42:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 10:43:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:43:51 - Completed: 4[0m
+[0;34m2025-09-18 10:43:56 - Starting generation for: 5[0m
+[1;33m2025-09-18 10:43:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 10:46:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:46:31 - Completed: 5[0m
+[0;34m2025-09-18 10:46:36 - Starting generation for: 6[0m
+[1;33m2025-09-18 10:46:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 10:48:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:48:37 - Completed: 6[0m
+[0;34m2025-09-18 10:48:42 - Starting generation for: 7[0m
+[1;33m2025-09-18 10:48:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 10:51:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:51:15 - Completed: 7[0m
+[0;34m2025-09-18 10:51:20 - Starting generation for: 8[0m
+[1;33m2025-09-18 10:51:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 10:53:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:53:07 - Completed: 8[0m
+[0;34m2025-09-18 10:53:12 - Starting generation for: 9[0m
+[1;33m2025-09-18 10:53:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 10:55:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:55:31 - Completed: 9[0m
+[0;34m2025-09-18 10:55:36 - Starting generation for: 10[0m
+[1;33m2025-09-18 10:55:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 12:01:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:01:57 - Completed: 10[0m
+[0;34m2025-09-18 12:02:02 - Starting generation for: 11[0m
+[1;33m2025-09-18 12:02:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 12:05:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:05:50 - Completed: 11[0m
+[0;34m2025-09-18 12:05:55 - Starting generation for: 12[0m
+[1;33m2025-09-18 12:05:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 12:08:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:08:40 - Completed: 12[0m
+[0;34m2025-09-18 12:08:45 - Starting generation for: 13[0m
+[1;33m2025-09-18 12:08:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 12:10:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:10:35 - Completed: 13[0m
+[0;34m2025-09-18 12:10:40 - Starting generation for: 14[0m
+[1;33m2025-09-18 12:10:40 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 12:12:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:12:54 - Completed: 14[0m
+[0;34m2025-09-18 12:12:59 - Starting generation for: 15[0m
+[1;33m2025-09-18 12:12:59 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #15 to the aging parent care template blog registry. The article "When Personality Shifts: Understanding and Responding to Behavioral Changes in Aging Parents" is a comprehensive 1,400+ word guide that follows all the master prompt requirements:
+
+- ✅ 1,200-1,600 words (approximately 1,400 words - 10 minute read)
+- ✅ Sophisticated, caring voice following master prompt guidelines
+- ✅ Author: "Templata"
+- ✅ Category: "Personal Life"  
+- ✅ Added to manualBlogPosts array in src/registry/blogs-aging-parent-care.ts
+- ✅ Proper SEO metadata included
+- ✅ Type: "guide", Difficulty: "intermediate"
+- ✅ Focused on aging parent care context and needs
+- ✅ Relevant topic addressing behavioral changes in aging parents
+- ✅ Flowing, engaging paragraphs with minimal bullet points
+- ✅ No first person usage
+- ✅ Comprehensive and genuinely helpful content
+
+The article addresses a crucial but often overlooked aspect of aging parent care - understanding and responding to personality and behavioral changes. It covers the various manifestations of behavioral change, underlying causes, practical response strategies, and maintaining connection through difficult transitions.
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 12:15:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:15:53 - Completed: 15[0m
+[0;34m2025-09-18 12:15:58 - Starting generation for: 16[0m
+[1;33m2025-09-18 12:15:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 12:18:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:18:23 - Completed: 16[0m
+[0;34m2025-09-18 12:18:28 - Starting generation for: 17[0m
+[1;33m2025-09-18 12:18:28 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 12:21:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:21:15 - Completed: 17[0m
+[0;34m2025-09-18 12:21:20 - Starting generation for: 18[0m
+[1;33m2025-09-18 12:21:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 12:22:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:22:52 - Completed: 18[0m
+[0;34m2025-09-18 12:22:57 - Starting generation for: 19[0m
+[1;33m2025-09-18 12:22:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 12:25:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:25:38 - Completed: 19[0m
+[0;34m2025-09-18 12:25:43 - Starting generation for: 20[0m
+[1;33m2025-09-18 12:25:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 12:27:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:27:23 - Completed: 20[0m

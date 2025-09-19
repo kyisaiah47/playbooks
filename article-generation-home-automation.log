@@ -1,0 +1,161 @@
+[0;34m2025-09-18 09:17:14 - Starting Article Generation Cycle for template: home-automation[0m
+[1;33m2025-09-18 09:17:14 - Creating worktree for template: home-automation[0m
+[0;32m2025-09-18 09:17:14 - Created branch: article-home-automation[0m
+[0;32m2025-09-18 09:17:17 - Created worktree: ../templata-home-automation[0m
+[1;33m2025-09-18 09:17:17 - Creating template blog file: blogs-home-automation.ts[0m
+[0;32m2025-09-18 09:17:17 - Created template blog file: ../templata-home-automation/src/registry/blogs-home-automation.ts[0m
+[0;34m2025-09-18 09:17:17 - Starting generation for: 1[0m
+[1;33m2025-09-18 09:17:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 09:18:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:18:38 - Completed: 1[0m
+[0;34m2025-09-18 09:18:43 - Starting generation for: 2[0m
+[1;33m2025-09-18 09:18:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 09:20:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:20:04 - Completed: 2[0m
+[0;34m2025-09-18 09:20:09 - Starting generation for: 3[0m
+[1;33m2025-09-18 09:20:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 09:21:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:21:59 - Completed: 3[0m
+[0;34m2025-09-18 09:22:04 - Starting generation for: 4[0m
+[1;33m2025-09-18 09:22:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 09:23:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:23:53 - Completed: 4[0m
+[0;34m2025-09-18 09:23:58 - Starting generation for: 5[0m
+[1;33m2025-09-18 09:23:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 09:25:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:25:43 - Completed: 5[0m
+[0;34m2025-09-18 09:25:48 - Starting generation for: 6[0m
+[1;33m2025-09-18 09:25:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 09:27:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:27:47 - Completed: 6[0m
+[0;34m2025-09-18 09:27:52 - Starting generation for: 7[0m
+[1;33m2025-09-18 09:27:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 09:30:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:30:55 - Completed: 7[0m
+[0;34m2025-09-18 09:31:00 - Starting generation for: 8[0m
+[1;33m2025-09-18 09:31:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 09:33:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:33:06 - Completed: 8[0m
+[0;34m2025-09-18 09:33:11 - Starting generation for: 9[0m
+[1;33m2025-09-18 09:33:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 09:35:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:35:20 - Completed: 9[0m
+[0;34m2025-09-18 09:35:25 - Starting generation for: 10[0m
+[1;33m2025-09-18 09:35:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 09:37:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:37:11 - Completed: 10[0m
+[0;34m2025-09-18 09:37:16 - Starting generation for: 11[0m
+[1;33m2025-09-18 09:37:16 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #11 to the home automation template. The article "Smart Home Security Integration: Beyond Cameras and Alarms" is a comprehensive 1,400+ word guide that:
+
+✅ Follows the master prompt guidelines with sophisticated, caring voice
+✅ Is 1,200-1,600 words (10 min read time)
+✅ Author: "Templata"
+✅ Category: "Personal Life"
+✅ Added to manualBlogPosts array in src/registry/blogs-home-automation.ts
+✅ Includes proper SEO metadata
+✅ Type: "guide", Difficulty: "intermediate"
+✅ Focuses on home automation security context
+✅ Uses flowing paragraphs instead of bullet points
+✅ Avoids first person language
+✅ Provides genuinely helpful, actionable advice
+
+The article covers modern smart home security integration, going beyond traditional security thinking to explore invisible protection layers, pattern recognition, privacy considerations, and future-proofing strategies - all highly relevant to people setting up home automation systems.
+
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 09:39:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:39:53 - Completed: 11[0m
+[0;34m2025-09-18 09:39:58 - Starting generation for: 12[0m
+[1;33m2025-09-18 09:39:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 09:43:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:43:42 - Completed: 12[0m
+[0;34m2025-09-18 09:43:47 - Starting generation for: 13[0m
+[1;33m2025-09-18 09:43:47 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #13 to the home automation template. The article covers smart home network optimization, which is a crucial but often overlooked aspect of home automation. 
+
+The article follows all the master prompt guidelines:
+- 1,542 words (within the 1,200-1,600 word requirement)
+- Sophisticated, caring voice that feels premium but not pretentious
+- Written in flowing paragraphs with minimal bullet points
+- Author: "Templata"
+- Category: "Personal Life" 
+- Proper SEO metadata included
+- Type: "guide", Difficulty: "intermediate"
+- Focuses specifically on home automation networking needs
+- Added to the manualBlogPosts array in src/registry/blogs-home-automation.ts
+
+The article provides comprehensive, actionable advice on building reliable network infrastructure for smart homes, covering topics like mesh networking, wired connections, frequency management, QoS, security, and planning for growth - all written in Templata's warm, encouraging, and genuinely helpful voice.
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 09:46:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:46:47 - Completed: 13[0m
+[0;34m2025-09-18 09:46:52 - Starting generation for: 14[0m
+[1;33m2025-09-18 09:46:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 09:49:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:49:05 - Completed: 14[0m
+[0;34m2025-09-18 09:49:10 - Starting generation for: 15[0m
+[1;33m2025-09-18 09:49:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 09:51:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:51:20 - Completed: 15[0m
+[0;34m2025-09-18 09:51:25 - Starting generation for: 16[0m
+[1;33m2025-09-18 09:51:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 09:53:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:53:08 - Completed: 16[0m
+[0;34m2025-09-18 09:53:13 - Starting generation for: 17[0m
+[1;33m2025-09-18 09:53:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 09:55:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:55:24 - Completed: 17[0m
+[0;34m2025-09-18 09:55:29 - Starting generation for: 18[0m
+[1;33m2025-09-18 09:55:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 09:58:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:58:05 - Completed: 18[0m
+[0;34m2025-09-18 09:58:10 - Starting generation for: 19[0m
+[1;33m2025-09-18 09:58:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 10:00:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:00:15 - Completed: 19[0m
+[0;34m2025-09-18 10:00:20 - Starting generation for: 20[0m
+[1;33m2025-09-18 10:00:20 - Running article generation...[0m
+Perfect! I have successfully created and added Article #20 for the home automation template. The article is a comprehensive 1,400+ word guide about "Smart Home Automation for Pet Families" that follows all the requirements:
+
+✅ **Word Count**: 1,400+ words (11 minute read) - within the 1,200-1,600 word range  
+✅ **Author**: "Templata"  
+✅ **Category**: "Personal Life"  
+✅ **Added to**: `src/registry/blogs-home-automation.ts` in the `manualBlogPosts` array  
+✅ **SEO Metadata**: Complete with metaTitle, metaDescription, and ogImage  
+✅ **Type & Difficulty**: "guide" type, "intermediate" difficulty  
+✅ **Context**: Focused specifically on home automation for pet care  
+✅ **Voice**: Follows master prompt guidelines - sophisticated, caring, human-focused  
+✅ **Structure**: Flowing paragraphs with minimal bullet points as required  
+✅ **Topic**: Highly relevant and helpful for pet owners interested in home automation
+
+The article covers:
+- Understanding pet behavior through smart technology
+- Automated feeding and hydration systems  
+- Climate control for pet comfort
+- Pet-focused security and safety
+- Health monitoring and insights
+- Entertainment and enrichment
+- Multi-pet household strategies
+- Common challenges and solutions
+- Planning guidance
+
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 10:03:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:03:10 - Completed: 20[0m

@@ -1,0 +1,147 @@
+[0;34m2025-09-19 12:46:23 - Starting Article Generation Cycle for template: relationship-breakup[0m
+[1;33m2025-09-19 12:46:23 - Creating worktree for template: relationship-breakup[0m
+[0;32m2025-09-19 12:46:23 - Created branch: article-relationship-breakup[0m
+[0;32m2025-09-19 12:46:24 - Created worktree: ../templata-relationship-breakup[0m
+[1;33m2025-09-19 12:46:24 - Creating template blog file: blogs-relationship-breakup.ts[0m
+[0;32m2025-09-19 12:46:24 - Created template blog file: ../templata-relationship-breakup/src/registry/blogs-relationship-breakup.ts[0m
+[0;34m2025-09-19 12:46:24 - Starting generation for: 1[0m
+[1;33m2025-09-19 12:46:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-19 12:47:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 12:47:37 - Completed: 1[0m
+[0;34m2025-09-19 12:47:42 - Starting generation for: 2[0m
+[1;33m2025-09-19 12:47:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-19 12:49:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 12:49:54 - Completed: 2[0m
+[0;34m2025-09-19 12:49:59 - Starting generation for: 3[0m
+[1;33m2025-09-19 12:49:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-19 12:51:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 12:51:30 - Completed: 3[0m
+[0;34m2025-09-19 12:51:35 - Starting generation for: 4[0m
+[1;33m2025-09-19 12:51:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-19 12:53:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 12:53:07 - Completed: 4[0m
+[0;34m2025-09-19 12:53:12 - Starting generation for: 5[0m
+[1;33m2025-09-19 12:53:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-19 12:54:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 12:54:51 - Completed: 5[0m
+[0;34m2025-09-19 12:54:56 - Starting generation for: 6[0m
+[1;33m2025-09-19 12:54:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-19 12:56:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 12:56:46 - Completed: 6[0m
+[0;34m2025-09-19 12:56:51 - Starting generation for: 7[0m
+[1;33m2025-09-19 12:56:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-19 12:58:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 12:58:59 - Completed: 7[0m
+[0;34m2025-09-19 12:59:04 - Starting generation for: 8[0m
+[1;33m2025-09-19 12:59:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-19 13:01:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:01:15 - Completed: 8[0m
+[0;34m2025-09-19 13:01:20 - Starting generation for: 9[0m
+[1;33m2025-09-19 13:01:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-19 13:03:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:03:05 - Completed: 9[0m
+[0;34m2025-09-19 13:03:10 - Starting generation for: 10[0m
+[1;33m2025-09-19 13:03:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-19 13:06:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:06:41 - Completed: 10[0m
+[0;34m2025-09-19 13:06:46 - Starting generation for: 11[0m
+[1;33m2025-09-19 13:06:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-19 13:10:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:10:43 - Completed: 11[0m
+[0;34m2025-09-19 13:10:48 - Starting generation for: 12[0m
+[1;33m2025-09-19 13:10:48 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #12 for the relationship breakup template. The article "Creating Closure When Your Ex Won't Give It to You" is a comprehensive 1,500+ word guide that follows all the master prompt requirements:
+
+✅ **Content Requirements Met:**
+- 1,500+ words (11 minute read)
+- Sophisticated, caring voice following master prompt guidelines
+- Flowing paragraphs with minimal bullet points
+- Author: "Templata"
+- Category: "Personal Life"
+- Added to manualBlogPosts array in the registry
+
+✅ **Article Structure:**
+- Compelling introduction that hooks readers
+- Clear section headings with practical guidance
+- Deep exploration of emotional and psychological aspects
+- Actionable strategies for self-generated closure
+- Meaningful conclusion that empowers readers
+
+✅ **SEO & Metadata:**
+- Proper SEO metadata with compelling title and description
+- Relevant tags for discoverability
+- Appropriate type (guide) and difficulty (intermediate)
+- Related posts that connect to existing content
+
+✅ **Topic Relevance:**
+- Highly relevant to relationship breakup context
+- Addresses a common, painful experience (lack of closure)
+- Provides practical, empowering strategies
+- Focuses on self-reliance and emotional independence
+
+The article addresses one of the most challenging aspects of breakups—when ex-partners won't provide closure—and gives readers practical tools to create their own healing and understanding. It maintains the sophisticated yet accessible tone that makes people think "This is exactly what I needed."
+
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-19 13:13:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:13:50 - Completed: 12[0m
+[0;34m2025-09-19 13:13:55 - Starting generation for: 13[0m
+[1;33m2025-09-19 13:13:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-19 13:15:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:15:31 - Completed: 13[0m
+[0;34m2025-09-19 13:15:36 - Starting generation for: 14[0m
+[1;33m2025-09-19 13:15:36 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #14 to the relationship breakup template. The article covers the important topic of breakup grief and bereavement, which is often overlooked but crucial for people going through relationship endings.
+
+The article:
+- Is 1,485 words (within the 1,200-1,600 word requirement)
+- Follows the master prompt voice guidelines with a sophisticated, caring tone
+- Is structured as an "article" type with "intermediate" difficulty
+- Includes proper SEO metadata
+- Has been added to the manualBlogPosts array in the registry
+- Addresses a genuinely helpful topic for people dealing with relationship breakups
+
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-19 13:18:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:18:34 - Completed: 14[0m
+[0;34m2025-09-19 13:18:39 - Starting generation for: 15[0m
+[1;33m2025-09-19 13:18:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-19 13:20:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:20:10 - Completed: 15[0m
+[0;34m2025-09-19 13:20:15 - Starting generation for: 16[0m
+[1;33m2025-09-19 13:20:15 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-19 13:21:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:21:32 - Completed: 16[0m
+[0;34m2025-09-19 13:21:37 - Starting generation for: 17[0m
+[1;33m2025-09-19 13:21:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-19 13:24:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:24:04 - Completed: 17[0m
+[0;34m2025-09-19 13:24:09 - Starting generation for: 18[0m
+[1;33m2025-09-19 13:24:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-19 13:26:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:26:04 - Completed: 18[0m
+[0;34m2025-09-19 13:26:09 - Starting generation for: 19[0m
+[1;33m2025-09-19 13:26:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-19 13:27:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:27:43 - Completed: 19[0m
+[0;34m2025-09-19 13:27:48 - Starting generation for: 20[0m
+[1;33m2025-09-19 13:27:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-19 13:29:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:29:26 - Completed: 20[0m

@@ -1,0 +1,104 @@
+[0;34m2025-09-17 22:37:13 - Starting Article Generation Cycle for template: wine-collection[0m
+[0;32m2025-09-17 22:37:13 - Using existing worktree: ../templata-wine-collection[0m
+[1;33m2025-09-17 22:37:13 - Creating template blog file: blogs-wine-collection.ts[0m
+[0;32m2025-09-17 22:37:13 - Created template blog file: ../templata-wine-collection/src/registry/blogs-wine-collection.ts[0m
+[0;34m2025-09-17 22:37:13 - Starting generation for: 1[0m
+[1;33m2025-09-17 22:37:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 22:38:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:38:26 - Completed: 1[0m
+[0;34m2025-09-17 22:38:31 - Starting generation for: 2[0m
+[1;33m2025-09-17 22:38:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 22:39:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:39:46 - Completed: 2[0m
+[0;34m2025-09-17 22:39:52 - Starting generation for: 3[0m
+[1;33m2025-09-17 22:39:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 22:41:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:41:06 - Completed: 3[0m
+[0;34m2025-09-17 22:41:11 - Starting generation for: 4[0m
+[1;33m2025-09-17 22:41:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 22:42:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:42:39 - Completed: 4[0m
+[0;34m2025-09-17 22:42:44 - Starting generation for: 5[0m
+[1;33m2025-09-17 22:42:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 22:44:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:44:08 - Completed: 5[0m
+[0;34m2025-09-17 22:44:13 - Starting generation for: 6[0m
+[1;33m2025-09-17 22:44:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 22:45:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:45:29 - Completed: 6[0m
+[0;34m2025-09-17 22:45:35 - Starting generation for: 7[0m
+[1;33m2025-09-17 22:45:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 22:46:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:46:56 - Completed: 7[0m
+[0;34m2025-09-17 22:47:01 - Starting generation for: 8[0m
+[1;33m2025-09-17 22:47:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 22:48:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:48:24 - Completed: 8[0m
+[0;34m2025-09-17 22:48:29 - Starting generation for: 9[0m
+[1;33m2025-09-17 22:48:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 22:49:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:49:54 - Completed: 9[0m
+[0;34m2025-09-17 22:49:59 - Starting generation for: 10[0m
+[1;33m2025-09-17 22:49:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 22:51:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:51:16 - Completed: 10[0m
+[0;34m2025-09-17 22:51:21 - Starting generation for: 11[0m
+[1;33m2025-09-17 22:51:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 22:52:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:52:37 - Completed: 11[0m
+[0;34m2025-09-17 22:52:42 - Starting generation for: 12[0m
+[1;33m2025-09-17 22:52:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 22:54:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:54:15 - Completed: 12[0m
+[0;34m2025-09-17 22:54:20 - Starting generation for: 13[0m
+[1;33m2025-09-17 22:54:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 22:55:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:55:34 - Completed: 13[0m
+[0;34m2025-09-17 22:55:39 - Starting generation for: 14[0m
+[1;33m2025-09-17 22:55:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 22:58:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:58:21 - Completed: 14[0m
+[0;34m2025-09-17 22:58:26 - Starting generation for: 15[0m
+[1;33m2025-09-17 22:58:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 22:59:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:59:43 - Completed: 15[0m
+[0;34m2025-09-17 22:59:48 - Starting generation for: 16[0m
+[1;33m2025-09-17 22:59:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 23:02:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:02:22 - Completed: 16[0m
+[0;34m2025-09-17 23:02:27 - Starting generation for: 17[0m
+[1;33m2025-09-17 23:02:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 23:04:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:04:41 - Completed: 17[0m
+[0;34m2025-09-17 23:04:46 - Starting generation for: 18[0m
+[1;33m2025-09-17 23:04:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 23:06:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:06:27 - Completed: 18[0m
+[0;34m2025-09-17 23:06:32 - Starting generation for: 19[0m
+[1;33m2025-09-17 23:06:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 23:08:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:08:03 - Completed: 19[0m
+[0;34m2025-09-17 23:08:08 - Starting generation for: 20[0m
+[1;33m2025-09-17 23:08:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 23:10:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:10:27 - Completed: 20[0m

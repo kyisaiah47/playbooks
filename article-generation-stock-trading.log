@@ -1,0 +1,122 @@
+[0;34m2025-09-18 09:17:14 - Starting Article Generation Cycle for template: stock-trading[0m
+[1;33m2025-09-18 09:17:14 - Creating worktree for template: stock-trading[0m
+[0;32m2025-09-18 09:17:14 - Created branch: article-stock-trading[0m
+[0;32m2025-09-18 09:17:17 - Created worktree: ../templata-stock-trading[0m
+[1;33m2025-09-18 09:17:17 - Creating template blog file: blogs-stock-trading.ts[0m
+[0;32m2025-09-18 09:17:17 - Created template blog file: ../templata-stock-trading/src/registry/blogs-stock-trading.ts[0m
+[0;34m2025-09-18 09:17:17 - Starting generation for: 1[0m
+[1;33m2025-09-18 09:17:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 09:18:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:18:28 - Completed: 1[0m
+[0;34m2025-09-18 09:18:33 - Starting generation for: 2[0m
+[1;33m2025-09-18 09:18:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 09:19:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:19:53 - Completed: 2[0m
+[0;34m2025-09-18 09:19:58 - Starting generation for: 3[0m
+[1;33m2025-09-18 09:19:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 09:21:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:21:42 - Completed: 3[0m
+[0;34m2025-09-18 09:21:47 - Starting generation for: 4[0m
+[1;33m2025-09-18 09:21:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 09:24:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:24:03 - Completed: 4[0m
+[0;34m2025-09-18 09:24:08 - Starting generation for: 5[0m
+[1;33m2025-09-18 09:24:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 09:26:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:26:30 - Completed: 5[0m
+[0;34m2025-09-18 09:26:35 - Starting generation for: 6[0m
+[1;33m2025-09-18 09:26:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 09:30:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:30:46 - Completed: 6[0m
+[0;34m2025-09-18 09:30:51 - Starting generation for: 7[0m
+[1;33m2025-09-18 09:30:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 09:33:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:33:14 - Completed: 7[0m
+[0;34m2025-09-18 09:33:20 - Starting generation for: 8[0m
+[1;33m2025-09-18 09:33:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 09:35:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:35:22 - Completed: 8[0m
+[0;34m2025-09-18 09:35:27 - Starting generation for: 9[0m
+[1;33m2025-09-18 09:35:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 09:37:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:37:20 - Completed: 9[0m
+[0;34m2025-09-18 09:37:25 - Starting generation for: 10[0m
+[1;33m2025-09-18 09:37:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 09:41:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:41:14 - Completed: 10[0m
+[0;34m2025-09-18 09:41:19 - Starting generation for: 11[0m
+[1;33m2025-09-18 09:41:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 09:42:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:42:54 - Completed: 11[0m
+[0;34m2025-09-18 09:42:59 - Starting generation for: 12[0m
+[1;33m2025-09-18 09:42:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 09:45:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:45:22 - Completed: 12[0m
+[0;34m2025-09-18 09:45:27 - Starting generation for: 13[0m
+[1;33m2025-09-18 09:45:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 09:46:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:46:50 - Completed: 13[0m
+[0;34m2025-09-18 09:46:55 - Starting generation for: 14[0m
+[1;33m2025-09-18 09:46:55 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #14 to the stock trading template. The article "Building Wealth While You Sleep: The Art of Strategic Dividend Investing" is a comprehensive 1,400+ word guide that follows all the master prompt requirements:
+
+- ✅ 1,200-1,600 words (approximately 1,400 words)
+- ✅ Follows sophisticated, caring voice guidelines
+- ✅ Author: "Templata"
+- ✅ Category: "Personal Life"
+- ✅ Added to manualBlogPosts array in src/registry/blogs-stock-trading.ts
+- ✅ Includes proper SEO metadata
+- ✅ Type: "guide", Difficulty: "intermediate"
+- ✅ Focuses on stock trading context (dividend investing)
+- ✅ Minimizes bullet points in favor of flowing paragraphs
+- ✅ No first person usage
+- ✅ Engaging, shareable content that people would actually read
+
+The article covers dividend investing as a wealth-building strategy specifically relevant to stock traders, explaining concepts like dividend aristocrats, compounding growth, portfolio architecture, and advanced optimization strategies.
+
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 09:49:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:49:57 - Completed: 14[0m
+[0;34m2025-09-18 09:50:02 - Starting generation for: 15[0m
+[1;33m2025-09-18 09:50:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 09:52:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:52:31 - Completed: 15[0m
+[0;34m2025-09-18 09:52:36 - Starting generation for: 16[0m
+[1;33m2025-09-18 09:52:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 09:54:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:54:32 - Completed: 16[0m
+[0;34m2025-09-18 09:54:37 - Starting generation for: 17[0m
+[1;33m2025-09-18 09:54:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 09:57:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:57:27 - Completed: 17[0m
+[0;34m2025-09-18 09:57:32 - Starting generation for: 18[0m
+[1;33m2025-09-18 09:57:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 10:00:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:00:43 - Completed: 18[0m
+[0;34m2025-09-18 10:00:48 - Starting generation for: 19[0m
+[1;33m2025-09-18 10:00:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 10:04:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:04:01 - Completed: 19[0m
+[0;34m2025-09-18 10:04:06 - Starting generation for: 20[0m
+[1;33m2025-09-18 10:04:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 10:06:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:06:21 - Completed: 20[0m

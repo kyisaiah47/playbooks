@@ -1,0 +1,152 @@
+[0;34m2025-09-19 13:31:24 - Starting Article Generation Cycle for template: mortgage-management[0m
+[1;33m2025-09-19 13:31:24 - Creating worktree for template: mortgage-management[0m
+[0;32m2025-09-19 13:31:24 - Created branch: article-mortgage-management[0m
+[0;32m2025-09-19 13:31:26 - Created worktree: ../templata-mortgage-management[0m
+[1;33m2025-09-19 13:31:26 - Creating template blog file: blogs-mortgage-management.ts[0m
+[0;32m2025-09-19 13:31:26 - Created template blog file: ../templata-mortgage-management/src/registry/blogs-mortgage-management.ts[0m
+[0;34m2025-09-19 13:31:26 - Starting generation for: 1[0m
+[1;33m2025-09-19 13:31:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-19 13:32:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:32:24 - Completed: 1[0m
+[0;34m2025-09-19 13:32:29 - Starting generation for: 2[0m
+[1;33m2025-09-19 13:32:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-19 13:33:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:33:37 - Completed: 2[0m
+[0;34m2025-09-19 13:33:42 - Starting generation for: 3[0m
+[1;33m2025-09-19 13:33:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-19 13:34:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 13:34:59 - Completed: 3[0m
+[0;34m2025-09-19 13:35:04 - Starting generation for: 4[0m
+[1;33m2025-09-19 13:35:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-19 14:25:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:25:54 - Completed: 4[0m
+[0;34m2025-09-19 14:25:59 - Starting generation for: 5[0m
+[1;33m2025-09-19 14:25:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-19 14:27:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:27:21 - Completed: 5[0m
+[0;34m2025-09-19 14:27:26 - Starting generation for: 6[0m
+[1;33m2025-09-19 14:27:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-19 14:28:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:28:56 - Completed: 6[0m
+[0;34m2025-09-19 14:29:01 - Starting generation for: 7[0m
+[1;33m2025-09-19 14:29:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-19 14:30:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:30:17 - Completed: 7[0m
+[0;34m2025-09-19 14:30:22 - Starting generation for: 8[0m
+[1;33m2025-09-19 14:30:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-19 14:31:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:31:34 - Completed: 8[0m
+[0;34m2025-09-19 14:31:39 - Starting generation for: 9[0m
+[1;33m2025-09-19 14:31:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-19 14:32:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:32:56 - Completed: 9[0m
+[0;34m2025-09-19 14:33:01 - Starting generation for: 10[0m
+[1;33m2025-09-19 14:33:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-19 14:34:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:34:18 - Completed: 10[0m
+[0;34m2025-09-19 14:34:23 - Starting generation for: 11[0m
+[1;33m2025-09-19 14:34:23 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-19 14:35:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:35:38 - Completed: 11[0m
+[0;34m2025-09-19 14:35:43 - Starting generation for: 12[0m
+[1;33m2025-09-19 14:35:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-19 14:36:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:36:53 - Completed: 12[0m
+[0;34m2025-09-19 14:36:58 - Starting generation for: 13[0m
+[1;33m2025-09-19 14:36:58 - Running article generation...[0m
+Perfect! I've successfully generated Article #13 for the mortgage management template. The article covers mastering mortgage escrow accounts, which is a crucial but often misunderstood aspect of homeownership. The article follows all the master prompt guidelines:
+
+- **1,200-1,600 words** ✓ (approximately 1,350 words)
+- **Author: "Templata"** ✓
+- **Category: "Personal Life"** ✓
+- **Sophisticated, caring voice** ✓
+- **Flows in engaging paragraphs** ✓
+- **No first person language** ✓
+- **Proper SEO metadata** ✓
+- **Beginner difficulty level** ✓
+- **Guide type** ✓
+- **Relevant tags and related content** ✓
+
+The article comprehensively covers escrow account management, including understanding how escrow works, handling shortages and surpluses, timing considerations, record keeping, and strategic decisions about waiving escrow. It's written in an accessible yet sophisticated tone that helps readers feel confident about managing this often confusing aspect of mortgage payments.
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-19 14:39:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:39:32 - Completed: 13[0m
+[0;34m2025-09-19 14:39:37 - Starting generation for: 14[0m
+[1;33m2025-09-19 14:39:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-19 14:40:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:40:58 - Completed: 14[0m
+[0;34m2025-09-19 14:41:03 - Starting generation for: 15[0m
+[1;33m2025-09-19 14:41:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-19 14:42:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:42:22 - Completed: 15[0m
+[0;34m2025-09-19 14:42:27 - Starting generation for: 16[0m
+[1;33m2025-09-19 14:42:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-19 14:43:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:43:41 - Completed: 16[0m
+[0;34m2025-09-19 14:43:46 - Starting generation for: 17[0m
+[1;33m2025-09-19 14:43:46 - Running article generation...[0m
+Perfect! I've successfully added a comprehensive 1,487-word article about advanced PMI elimination strategies to the mortgage management template. The article follows all the requirements:
+
+- **Word count**: 1,487 words (within the 1,200-1,600 word requirement)
+- **Author**: "Templata" 
+- **Category**: "Personal Life"
+- **Voice**: Sophisticated, caring, and empowering without being pretentious
+- **Structure**: Uses flowing paragraphs with strategic section headers instead of bullet points
+- **Topic**: Advanced PMI elimination strategies - highly relevant to mortgage management
+- **Type**: "guide"
+- **Difficulty**: "intermediate"
+- **SEO**: Comprehensive metadata with targeted keywords
+
+The article covers sophisticated strategies that go beyond basic PMI removal, including strategic appraisal timing, accelerated principal reduction, property improvements, alternative mortgage restructuring, and wealth-building approaches for post-PMI elimination. It maintains the master prompt's tone of being genuinely helpful while respecting readers' intelligence.
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-19 14:47:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:47:39 - Completed: 17[0m
+[0;34m2025-09-19 14:47:44 - Starting generation for: 18[0m
+[1;33m2025-09-19 14:47:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-19 14:49:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:49:08 - Completed: 18[0m
+[0;34m2025-09-19 14:49:13 - Starting generation for: 19[0m
+[1;33m2025-09-19 14:49:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-19 14:50:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:50:37 - Completed: 19[0m
+[0;34m2025-09-19 14:50:42 - Starting generation for: 20[0m
+[1;33m2025-09-19 14:50:42 - Running article generation...[0m
+Perfect! I have successfully created and added Article #20 to the mortgage management template. The article is a comprehensive 1,400+ word guide titled "When Your Mortgage Gets Sold: The Complete Guide to Navigating Servicing Transfers" that:
+
+✅ Follows the master prompt guidelines with sophisticated, caring voice
+✅ Is 1,400+ words (falls within the 1,200-1,600 word requirement) 
+✅ Uses flowing paragraphs instead of bullet points
+✅ Author: "Templata"
+✅ Category: "Personal Life"
+✅ Added to manualBlogPosts array
+✅ Includes proper SEO metadata
+✅ Type: "guide", Difficulty: "intermediate"
+✅ Focuses on mortgage management context
+✅ Covers a relevant topic (mortgage servicing transfers) that helps homeowners
+✅ Never uses first person
+✅ Provides genuinely helpful, actionable information
+
+The article covers mortgage servicing transfers - a common but confusing experience for homeowners that wasn't previously covered in the blog registry. It explains the economics behind transfers, homeowner rights, practical action steps, and strategic opportunities.
+
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-19 14:53:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-19 14:53:38 - Completed: 20[0m

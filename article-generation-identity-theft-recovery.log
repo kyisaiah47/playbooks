@@ -1,0 +1,122 @@
+[0;34m2025-09-18 14:48:30 - Starting Article Generation Cycle for template: identity-theft-recovery[0m
+[1;33m2025-09-18 14:48:30 - Creating worktree for template: identity-theft-recovery[0m
+[0;32m2025-09-18 14:48:30 - Created branch: article-identity-theft-recovery[0m
+[0;32m2025-09-18 14:48:33 - Created worktree: ../templata-identity-theft-recovery[0m
+[1;33m2025-09-18 14:48:33 - Creating template blog file: blogs-identity-theft-recovery.ts[0m
+[0;32m2025-09-18 14:48:33 - Created template blog file: ../templata-identity-theft-recovery/src/registry/blogs-identity-theft-recovery.ts[0m
+[0;34m2025-09-18 14:48:33 - Starting generation for: 1[0m
+[1;33m2025-09-18 14:48:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 14:50:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:50:03 - Completed: 1[0m
+[0;34m2025-09-18 14:50:08 - Starting generation for: 2[0m
+[1;33m2025-09-18 14:50:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 14:53:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:53:04 - Completed: 2[0m
+[0;34m2025-09-18 14:53:09 - Starting generation for: 3[0m
+[1;33m2025-09-18 14:53:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 14:55:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:55:02 - Completed: 3[0m
+[0;34m2025-09-18 14:55:07 - Starting generation for: 4[0m
+[1;33m2025-09-18 14:55:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 14:57:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:57:16 - Completed: 4[0m
+[0;34m2025-09-18 14:57:21 - Starting generation for: 5[0m
+[1;33m2025-09-18 14:57:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 14:59:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:59:50 - Completed: 5[0m
+[0;34m2025-09-18 14:59:55 - Starting generation for: 6[0m
+[1;33m2025-09-18 14:59:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 18:11:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:11:39 - Completed: 6[0m
+[0;34m2025-09-18 18:11:44 - Starting generation for: 7[0m
+[1;33m2025-09-18 18:11:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 18:13:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:13:54 - Completed: 7[0m
+[0;34m2025-09-18 18:13:59 - Starting generation for: 8[0m
+[1;33m2025-09-18 18:13:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 18:18:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:18:34 - Completed: 8[0m
+[0;34m2025-09-18 18:18:39 - Starting generation for: 9[0m
+[1;33m2025-09-18 18:18:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 18:22:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:22:57 - Completed: 9[0m
+[0;34m2025-09-18 18:23:02 - Starting generation for: 10[0m
+[1;33m2025-09-18 18:23:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 18:27:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:27:11 - Completed: 10[0m
+[0;34m2025-09-18 18:27:16 - Starting generation for: 11[0m
+[1;33m2025-09-18 18:27:16 - Running article generation...[0m
+Perfect! I have successfully added Article #11 to the identity theft recovery template blog registry. The article "Protecting Your Family Relationships During an Identity Theft Crisis" is a comprehensive 1,400+ word guide that follows all the master prompt requirements:
+
+✅ **1,200-1,600 words** (approximately 1,400 words)
+✅ **Author: "Templata"**
+✅ **Category: "Personal Life"**
+✅ **Added to manualBlogPosts array** in the correct file
+✅ **Proper SEO metadata** included
+✅ **Type: "guide"** and **Difficulty: "intermediate"**
+✅ **Identity theft recovery context** - focuses on protecting family relationships during crisis
+✅ **Sophisticated, caring voice** following master prompt guidelines
+✅ **Flowing paragraphs** with minimal bullet points
+✅ **No first person** usage
+✅ **Practical, actionable advice** that people would want to share
+
+The article covers a crucial but often overlooked aspect of identity theft recovery - how it affects family relationships and provides comprehensive strategies for protecting these vital bonds during crisis.
+
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 18:30:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:30:48 - Completed: 11[0m
+[0;34m2025-09-18 18:30:53 - Starting generation for: 12[0m
+[1;33m2025-09-18 18:30:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 18:33:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:33:20 - Completed: 12[0m
+[0;34m2025-09-18 18:33:25 - Starting generation for: 13[0m
+[1;33m2025-09-18 18:33:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 18:37:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:37:03 - Completed: 13[0m
+[0;34m2025-09-18 18:37:08 - Starting generation for: 14[0m
+[1;33m2025-09-18 18:37:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 18:38:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:38:47 - Completed: 14[0m
+[0;34m2025-09-18 18:38:53 - Starting generation for: 15[0m
+[1;33m2025-09-18 18:38:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 18:42:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:42:33 - Completed: 15[0m
+[0;34m2025-09-18 18:42:38 - Starting generation for: 16[0m
+[1;33m2025-09-18 18:42:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 18:43:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:43:57 - Completed: 16[0m
+[0;34m2025-09-18 18:44:02 - Starting generation for: 17[0m
+[1;33m2025-09-18 18:44:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 18:46:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:46:14 - Completed: 17[0m
+[0;34m2025-09-18 18:46:19 - Starting generation for: 18[0m
+[1;33m2025-09-18 18:46:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 18:50:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:50:05 - Completed: 18[0m
+[0;34m2025-09-18 18:50:10 - Starting generation for: 19[0m
+[1;33m2025-09-18 18:50:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 18:51:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:51:34 - Completed: 19[0m
+[0;34m2025-09-18 18:51:39 - Starting generation for: 20[0m
+[1;33m2025-09-18 18:51:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 18:53:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:53:50 - Completed: 20[0m

@@ -1,0 +1,128 @@
+[0;34m2025-09-17 14:57:59 - Starting Article Generation Cycle for template: personal-finance-mastery[0m
+[0;32m2025-09-17 14:57:59 - Using existing worktree: ../templata-personal-finance-mastery[0m
+[1;33m2025-09-17 14:57:59 - Creating template blog file: blogs-personal-finance-mastery.ts[0m
+[0;32m2025-09-17 14:57:59 - Created template blog file: ../templata-personal-finance-mastery/src/registry/blogs-personal-finance-mastery.ts[0m
+[0;34m2025-09-17 14:57:59 - Starting generation for: 1[0m
+[1;33m2025-09-17 14:58:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 14:59:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:59:18 - Completed: 1[0m
+[0;34m2025-09-17 14:59:23 - Starting generation for: 2[0m
+[1;33m2025-09-17 14:59:23 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 15:01:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:01:15 - Completed: 2[0m
+[0;34m2025-09-17 15:01:20 - Starting generation for: 3[0m
+[1;33m2025-09-17 15:01:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 15:03:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:03:14 - Completed: 3[0m
+[0;34m2025-09-17 15:03:19 - Starting generation for: 4[0m
+[1;33m2025-09-17 15:03:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 15:04:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:04:37 - Completed: 4[0m
+[0;34m2025-09-17 15:04:42 - Starting generation for: 5[0m
+[1;33m2025-09-17 15:04:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 15:05:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:05:52 - Completed: 5[0m
+[0;34m2025-09-17 15:05:57 - Starting generation for: 6[0m
+[1;33m2025-09-17 15:05:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 15:07:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:07:16 - Completed: 6[0m
+[0;34m2025-09-17 15:07:21 - Starting generation for: 7[0m
+[1;33m2025-09-17 15:07:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 15:08:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:08:40 - Completed: 7[0m
+[0;34m2025-09-17 15:08:45 - Starting generation for: 8[0m
+[1;33m2025-09-17 15:08:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 15:10:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:10:04 - Completed: 8[0m
+[0;34m2025-09-17 15:10:10 - Starting generation for: 9[0m
+[1;33m2025-09-17 15:10:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 15:11:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:11:49 - Completed: 9[0m
+[0;34m2025-09-17 15:11:54 - Starting generation for: 10[0m
+[1;33m2025-09-17 15:11:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 15:13:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:13:28 - Completed: 10[0m
+[0;34m2025-09-17 15:13:33 - Starting generation for: 11[0m
+[1;33m2025-09-17 15:13:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 15:15:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:15:01 - Completed: 11[0m
+[0;34m2025-09-17 15:15:06 - Starting generation for: 12[0m
+[1;33m2025-09-17 15:15:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 15:16:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:16:24 - Completed: 12[0m
+[0;34m2025-09-17 15:16:29 - Starting generation for: 13[0m
+[1;33m2025-09-17 15:16:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 15:18:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:18:56 - Completed: 13[0m
+[0;34m2025-09-17 15:19:01 - Starting generation for: 14[0m
+[1;33m2025-09-17 15:19:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 15:20:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:20:23 - Completed: 14[0m
+[0;34m2025-09-17 15:20:28 - Starting generation for: 15[0m
+[1;33m2025-09-17 15:20:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 15:22:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:22:27 - Completed: 15[0m
+[0;34m2025-09-17 15:22:32 - Starting generation for: 16[0m
+[1;33m2025-09-17 15:22:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 15:24:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:24:32 - Completed: 16[0m
+[0;34m2025-09-17 15:24:37 - Starting generation for: 17[0m
+[1;33m2025-09-17 15:24:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 15:26:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:26:19 - Completed: 17[0m
+[0;34m2025-09-17 15:26:24 - Starting generation for: 18[0m
+[1;33m2025-09-17 15:26:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 15:27:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:27:54 - Completed: 18[0m
+[0;34m2025-09-17 15:27:59 - Starting generation for: 19[0m
+[1;33m2025-09-17 15:27:59 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #19 to the personal finance mastery template. The article is a comprehensive 1,400+ word guide on "The Debt Snowball vs. Avalanche Method: The Psychology of Which Strategy Actually Works" that follows all the master prompt guidelines:
+
+✅ **Requirements Met:**
+- 1,200-1,600 words (approximately 1,400 words)
+- Author: "Templata"
+- Category: "Personal Life" 
+- Added to manualBlogPosts array in the registry
+- Proper SEO metadata included
+- Type: "guide", Difficulty: "beginner"
+- Focus on personal finance mastery context
+- Sophisticated, caring voice following master prompt guidelines
+- No first person usage
+- Flowing paragraphs with minimal bullet points
+- Premium but accessible tone
+
+✅ **Content Quality:**
+- Addresses a genuinely helpful topic for people managing debt
+- Goes beyond surface-level advice to explore psychological factors
+- Provides actionable insights for choosing the right strategy
+- Written for real humans facing real financial challenges
+- Shareable content that provides actual value
+
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 15:30:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:30:30 - Completed: 19[0m
+[0;34m2025-09-17 15:30:36 - Starting generation for: 20[0m
+[1;33m2025-09-17 15:30:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 15:32:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:32:04 - Completed: 20[0m
+[0;34m2025-09-17 20:04:50 - Starting Article Generation Cycle for template: personal-finance-mastery[0m
+[0;32m2025-09-17 20:04:50 - Using existing worktree: ../templata-personal-finance-mastery[0m

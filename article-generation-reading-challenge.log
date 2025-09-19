@@ -1,0 +1,120 @@
+[0;34m2025-09-17 22:37:13 - Starting Article Generation Cycle for template: reading-challenge[0m
+[0;32m2025-09-17 22:37:13 - Using existing worktree: ../templata-reading-challenge[0m
+[1;33m2025-09-17 22:37:13 - Creating template blog file: blogs-reading-challenge.ts[0m
+[0;32m2025-09-17 22:37:13 - Created template blog file: ../templata-reading-challenge/src/registry/blogs-reading-challenge.ts[0m
+[0;34m2025-09-17 22:37:13 - Starting generation for: 1[0m
+[1;33m2025-09-17 22:37:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 22:38:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:38:21 - Completed: 1[0m
+[0;34m2025-09-17 22:38:26 - Starting generation for: 2[0m
+[1;33m2025-09-17 22:38:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 22:39:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:39:47 - Completed: 2[0m
+[0;34m2025-09-17 22:39:52 - Starting generation for: 3[0m
+[1;33m2025-09-17 22:39:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 22:41:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:41:16 - Completed: 3[0m
+[0;34m2025-09-17 22:41:21 - Starting generation for: 4[0m
+[1;33m2025-09-17 22:41:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 22:42:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:42:59 - Completed: 4[0m
+[0;34m2025-09-17 22:43:04 - Starting generation for: 5[0m
+[1;33m2025-09-17 22:43:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 22:44:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:44:56 - Completed: 5[0m
+[0;34m2025-09-17 22:45:01 - Starting generation for: 6[0m
+[1;33m2025-09-17 22:45:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 22:46:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:46:28 - Completed: 6[0m
+[0;34m2025-09-17 22:46:33 - Starting generation for: 7[0m
+[1;33m2025-09-17 22:46:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 22:48:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:48:17 - Completed: 7[0m
+[0;34m2025-09-17 22:48:22 - Starting generation for: 8[0m
+[1;33m2025-09-17 22:48:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 22:50:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:50:12 - Completed: 8[0m
+[0;34m2025-09-17 22:50:17 - Starting generation for: 9[0m
+[1;33m2025-09-17 22:50:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 22:52:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:52:07 - Completed: 9[0m
+[0;34m2025-09-17 22:52:12 - Starting generation for: 10[0m
+[1;33m2025-09-17 22:52:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 22:54:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:54:27 - Completed: 10[0m
+[0;34m2025-09-17 22:54:32 - Starting generation for: 11[0m
+[1;33m2025-09-17 22:54:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 22:57:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:57:58 - Completed: 11[0m
+[0;34m2025-09-17 22:58:03 - Starting generation for: 12[0m
+[1;33m2025-09-17 22:58:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 22:59:45 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:59:45 - Completed: 12[0m
+[0;34m2025-09-17 22:59:50 - Starting generation for: 13[0m
+[1;33m2025-09-17 22:59:50 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 23:01:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:01:24 - Completed: 13[0m
+[0;34m2025-09-17 23:01:29 - Starting generation for: 14[0m
+[1;33m2025-09-17 23:01:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 23:03:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:03:00 - Completed: 14[0m
+[0;34m2025-09-17 23:03:05 - Starting generation for: 15[0m
+[1;33m2025-09-17 23:03:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 23:05:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:05:31 - Completed: 15[0m
+[0;34m2025-09-17 23:05:36 - Starting generation for: 16[0m
+[1;33m2025-09-17 23:05:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 23:07:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:07:04 - Completed: 16[0m
+[0;34m2025-09-17 23:07:10 - Starting generation for: 17[0m
+[1;33m2025-09-17 23:07:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 23:10:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:10:09 - Completed: 17[0m
+[0;34m2025-09-17 23:10:14 - Starting generation for: 18[0m
+[1;33m2025-09-17 23:10:14 - Running article generation...[0m
+Perfect! I have successfully created Article #18 for the reading challenge template. The article meets all the requirements:
+
+✅ **1,200-1,600 words** (approximately 1,400 words - 12 minute read)
+✅ **Author: "Templata"**
+✅ **Category: "Personal Life"**
+✅ **Added to manualBlogPosts array in src/registry/blogs-reading-challenge.ts**
+✅ **Proper SEO metadata** with metaTitle, metaDescription, and ogImage
+✅ **Appropriate type** (article) and **difficulty** (intermediate)
+✅ **Reading challenge context** - focuses on psychological factors that affect reading motivation and book selection for challenge success
+✅ **Sophisticated, caring voice** following the master prompt guidelines
+✅ **Flowing paragraphs** with minimal bullet points
+✅ **No first person** usage
+✅ **Relevant topic** that genuinely helps people with reading challenges
+
+The article explores "The Hidden Psychology of Reading Motivation: Why Some Books Hook You and Others Don't" - a topic that directly addresses a common challenge readers face when trying to complete reading goals. It covers neuroscience, personal motivation patterns, timing factors, cognitive compatibility, and practical applications for better book selection.
+
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 23:12:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:12:28 - Completed: 18[0m
+[0;34m2025-09-17 23:12:33 - Starting generation for: 19[0m
+[1;33m2025-09-17 23:12:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 23:13:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:13:43 - Completed: 19[0m
+[0;34m2025-09-17 23:13:48 - Starting generation for: 20[0m
+[1;33m2025-09-17 23:13:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 23:16:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:16:28 - Completed: 20[0m

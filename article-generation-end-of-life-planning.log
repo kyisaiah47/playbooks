@@ -1,0 +1,131 @@
+[0;34m2025-09-18 13:27:15 - Starting Article Generation Cycle for template: end-of-life-planning[0m
+[1;33m2025-09-18 13:27:15 - Creating worktree for template: end-of-life-planning[0m
+[0;32m2025-09-18 13:27:15 - Created branch: article-end-of-life-planning[0m
+[0;32m2025-09-18 13:27:17 - Created worktree: ../templata-end-of-life-planning[0m
+[1;33m2025-09-18 13:27:17 - Creating template blog file: blogs-end-of-life-planning.ts[0m
+[0;32m2025-09-18 13:27:17 - Created template blog file: ../templata-end-of-life-planning/src/registry/blogs-end-of-life-planning.ts[0m
+[0;34m2025-09-18 13:27:17 - Starting generation for: 1[0m
+[1;33m2025-09-18 13:27:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 13:28:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:28:39 - Completed: 1[0m
+[0;34m2025-09-18 13:28:44 - Starting generation for: 2[0m
+[1;33m2025-09-18 13:28:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 13:30:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:30:01 - Completed: 2[0m
+[0;34m2025-09-18 13:30:06 - Starting generation for: 3[0m
+[1;33m2025-09-18 13:30:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 13:31:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:31:31 - Completed: 3[0m
+[0;34m2025-09-18 13:31:36 - Starting generation for: 4[0m
+[1;33m2025-09-18 13:31:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 13:33:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:33:08 - Completed: 4[0m
+[0;34m2025-09-18 13:33:13 - Starting generation for: 5[0m
+[1;33m2025-09-18 13:33:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 13:34:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:34:46 - Completed: 5[0m
+[0;34m2025-09-18 13:34:51 - Starting generation for: 6[0m
+[1;33m2025-09-18 13:34:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 13:36:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:36:15 - Completed: 6[0m
+[0;34m2025-09-18 13:36:20 - Starting generation for: 7[0m
+[1;33m2025-09-18 13:36:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 13:37:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:37:59 - Completed: 7[0m
+[0;34m2025-09-18 13:38:04 - Starting generation for: 8[0m
+[1;33m2025-09-18 13:38:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 13:39:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:39:49 - Completed: 8[0m
+[0;34m2025-09-18 13:39:54 - Starting generation for: 9[0m
+[1;33m2025-09-18 13:39:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 13:41:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:41:36 - Completed: 9[0m
+[0;34m2025-09-18 13:41:41 - Starting generation for: 10[0m
+[1;33m2025-09-18 13:41:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 13:43:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:43:42 - Completed: 10[0m
+[0;34m2025-09-18 13:43:47 - Starting generation for: 11[0m
+[1;33m2025-09-18 13:43:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 13:49:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:49:14 - Completed: 11[0m
+[0;34m2025-09-18 13:49:19 - Starting generation for: 12[0m
+[1;33m2025-09-18 13:49:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 13:50:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:50:52 - Completed: 12[0m
+[0;34m2025-09-18 13:50:57 - Starting generation for: 13[0m
+[1;33m2025-09-18 13:50:57 - Running article generation...[0m
+Perfect! I have successfully added Article #13 to the end of life planning template. The article is titled "Getting Your Affairs in Order: The Complete Guide to Organizing Essential Documents for Peace of Mind" and is a comprehensive 1,400+ word guide that covers:
+
+- Foundation documents (wills, powers of attorney, healthcare directives)
+- Financial account organization  
+- Digital asset management
+- Creating usable organizational systems
+- Involving family members appropriately
+- Maintaining the system over time
+- The peace that comes from practical preparation
+
+The article follows all the master prompt guidelines:
+- 1,200-1,600 words (approximately 1,400 words)
+- Premium but warm tone focused on practical help
+- Author: "Templata"
+- Category: "Personal Life" 
+- Beginner difficulty level
+- Guide type
+- Proper SEO metadata
+- Related to end of life planning context
+- Sophisticated, caring voice with good readability
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 13:54:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:54:09 - Completed: 13[0m
+[0;34m2025-09-18 13:54:14 - Starting generation for: 14[0m
+[1;33m2025-09-18 13:54:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 13:58:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:58:04 - Completed: 14[0m
+[0;34m2025-09-18 13:58:09 - Starting generation for: 15[0m
+[1;33m2025-09-18 13:58:09 - Running article generation...[0m
+Perfect! The article is 1,462 words, which falls perfectly within the required 1,200-1,600 word range.
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 14:01:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:01:08 - Completed: 15[0m
+[0;34m2025-09-18 14:01:13 - Starting generation for: 16[0m
+[1;33m2025-09-18 14:01:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 14:05:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:05:02 - Completed: 16[0m
+[0;34m2025-09-18 14:05:07 - Starting generation for: 17[0m
+[1;33m2025-09-18 14:05:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 14:08:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:08:09 - Completed: 17[0m
+[0;34m2025-09-18 14:08:14 - Starting generation for: 18[0m
+[1;33m2025-09-18 14:08:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 14:09:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:09:50 - Completed: 18[0m
+[0;34m2025-09-18 14:09:55 - Starting generation for: 19[0m
+[1;33m2025-09-18 14:09:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 14:11:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:11:57 - Completed: 19[0m
+[0;34m2025-09-18 14:12:02 - Starting generation for: 20[0m
+[1;33m2025-09-18 14:12:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 14:14:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:14:41 - Completed: 20[0m
+[0;34m2025-09-19 13:31:24 - Starting Article Generation Cycle for template: end-of-life-planning[0m
+[0;32m2025-09-19 13:31:24 - Using existing worktree: ../templata-end-of-life-planning[0m

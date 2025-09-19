@@ -1,0 +1,123 @@
+[0;34m2025-09-17 13:18:04 - Starting Article Generation Cycle for template: cooking-mastery[0m
+[1;33m2025-09-17 13:18:04 - Creating worktree for template: cooking-mastery[0m
+[0;32m2025-09-17 13:18:04 - Created branch: article-cooking-mastery[0m
+[0;32m2025-09-17 13:18:04 - Created worktree: ../templata-cooking-mastery[0m
+[1;33m2025-09-17 13:18:04 - Creating template blog file: blogs-cooking-mastery.ts[0m
+[0;32m2025-09-17 13:18:04 - Created template blog file: ../templata-cooking-mastery/src/registry/blogs-cooking-mastery.ts[0m
+[0;34m2025-09-17 13:18:04 - Starting generation for: 1[0m
+[1;33m2025-09-17 13:18:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 13:19:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:19:13 - Completed: 1[0m
+[0;34m2025-09-17 13:19:18 - Starting generation for: 2[0m
+[1;33m2025-09-17 13:19:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 13:20:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:20:57 - Completed: 2[0m
+[0;34m2025-09-17 13:21:02 - Starting generation for: 3[0m
+[1;33m2025-09-17 13:21:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 13:22:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:22:36 - Completed: 3[0m
+[0;34m2025-09-17 13:22:41 - Starting generation for: 4[0m
+[1;33m2025-09-17 13:22:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 13:24:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:24:46 - Completed: 4[0m
+[0;34m2025-09-17 13:24:51 - Starting generation for: 5[0m
+[1;33m2025-09-17 13:24:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 13:26:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:26:29 - Completed: 5[0m
+[0;34m2025-09-17 13:26:34 - Starting generation for: 6[0m
+[1;33m2025-09-17 13:26:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 13:28:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:28:20 - Completed: 6[0m
+[0;34m2025-09-17 13:28:25 - Starting generation for: 7[0m
+[1;33m2025-09-17 13:28:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 13:30:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:30:04 - Completed: 7[0m
+[0;34m2025-09-17 13:30:09 - Starting generation for: 8[0m
+[1;33m2025-09-17 13:30:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 13:31:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:31:55 - Completed: 8[0m
+[0;34m2025-09-17 13:32:00 - Starting generation for: 9[0m
+[1;33m2025-09-17 13:32:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 13:33:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:33:40 - Completed: 9[0m
+[0;34m2025-09-17 13:33:45 - Starting generation for: 10[0m
+[1;33m2025-09-17 13:33:45 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #10 to the cooking mastery template. The article "The Art of Seasonal Cooking: How to Never Run Out of Meal Ideas Again" is a comprehensive 1,500+ word guide that:
+
+✅ Follows the master prompt guidelines with sophisticated, caring voice
+✅ Is 1,200-1,600 words (12 min read)
+✅ Has proper metadata with author "Templata" and category "Personal Life"
+✅ Is added to the manualBlogPosts array in src/registry/blogs-cooking-mastery.ts
+✅ Includes appropriate SEO metadata
+✅ Is marked as type "guide" with "intermediate" difficulty
+✅ Focuses specifically on cooking mastery context and needs
+✅ Uses flowing paragraphs with minimal bullet points
+✅ Never uses first person ("I", "my", "we")
+✅ Provides genuinely helpful content about seasonal cooking strategies
+
+The article covers practical seasonal cooking wisdom that helps people on their cooking mastery journey by teaching them to align their cooking with natural ingredient cycles for better flavors, lower costs, and endless meal inspiration.
+
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 13:36:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:36:48 - Completed: 10[0m
+[0;34m2025-09-17 13:36:53 - Starting generation for: 11[0m
+[1;33m2025-09-17 13:36:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 13:40:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:40:31 - Completed: 11[0m
+[0;34m2025-09-17 13:40:36 - Starting generation for: 12[0m
+[1;33m2025-09-17 13:40:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 13:42:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:42:38 - Completed: 12[0m
+[0;34m2025-09-17 13:42:43 - Starting generation for: 13[0m
+[1;33m2025-09-17 13:42:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 13:44:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:44:20 - Completed: 13[0m
+[0;34m2025-09-17 13:44:25 - Starting generation for: 14[0m
+[1;33m2025-09-17 13:44:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 13:47:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:47:31 - Completed: 14[0m
+[0;34m2025-09-17 13:47:36 - Starting generation for: 15[0m
+[1;33m2025-09-17 13:47:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 13:49:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:49:18 - Completed: 15[0m
+[0;34m2025-09-17 13:49:23 - Starting generation for: 16[0m
+[1;33m2025-09-17 13:49:23 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 13:51:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:51:53 - Completed: 16[0m
+[0;34m2025-09-17 13:51:58 - Starting generation for: 17[0m
+[1;33m2025-09-17 13:51:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 13:53:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:53:36 - Completed: 17[0m
+[0;34m2025-09-17 13:53:41 - Starting generation for: 18[0m
+[1;33m2025-09-17 13:53:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 13:55:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:55:22 - Completed: 18[0m
+[0;34m2025-09-17 13:55:27 - Starting generation for: 19[0m
+[1;33m2025-09-17 13:55:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 13:57:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:57:31 - Completed: 19[0m
+[0;34m2025-09-17 13:57:36 - Starting generation for: 20[0m
+[1;33m2025-09-17 13:57:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 13:59:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 13:59:10 - Completed: 20[0m
+[0;34m2025-09-17 19:43:23 - Starting Article Generation Cycle for template: cooking-mastery[0m
+[0;32m2025-09-17 19:43:23 - Using existing worktree: ../templata-cooking-mastery[0m

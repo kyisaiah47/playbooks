@@ -1,0 +1,137 @@
+[0;34m2025-09-18 14:48:30 - Starting Article Generation Cycle for template: grief-loss[0m
+[1;33m2025-09-18 14:48:30 - Creating worktree for template: grief-loss[0m
+[0;32m2025-09-18 14:48:30 - Created branch: article-grief-loss[0m
+[0;32m2025-09-18 14:48:33 - Created worktree: ../templata-grief-loss[0m
+[1;33m2025-09-18 14:48:33 - Creating template blog file: blogs-grief-loss.ts[0m
+[0;32m2025-09-18 14:48:33 - Created template blog file: ../templata-grief-loss/src/registry/blogs-grief-loss.ts[0m
+[0;34m2025-09-18 14:48:33 - Starting generation for: 1[0m
+[1;33m2025-09-18 14:48:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 14:49:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:49:47 - Completed: 1[0m
+[0;34m2025-09-18 14:49:52 - Starting generation for: 2[0m
+[1;33m2025-09-18 14:49:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 14:51:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:51:59 - Completed: 2[0m
+[0;34m2025-09-18 14:52:04 - Starting generation for: 3[0m
+[1;33m2025-09-18 14:52:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 14:53:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:53:36 - Completed: 3[0m
+[0;34m2025-09-18 14:53:41 - Starting generation for: 4[0m
+[1;33m2025-09-18 14:53:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 14:55:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:55:19 - Completed: 4[0m
+[0;34m2025-09-18 14:55:24 - Starting generation for: 5[0m
+[1;33m2025-09-18 14:55:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 14:57:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:57:07 - Completed: 5[0m
+[0;34m2025-09-18 14:57:12 - Starting generation for: 6[0m
+[1;33m2025-09-18 14:57:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 14:58:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:58:49 - Completed: 6[0m
+[0;34m2025-09-18 14:58:55 - Starting generation for: 7[0m
+[1;33m2025-09-18 14:58:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 18:11:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:11:39 - Completed: 7[0m
+[0;34m2025-09-18 18:11:44 - Starting generation for: 8[0m
+[1;33m2025-09-18 18:11:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 18:13:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:13:26 - Completed: 8[0m
+[0;34m2025-09-18 18:13:31 - Starting generation for: 9[0m
+[1;33m2025-09-18 18:13:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 18:14:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:14:59 - Completed: 9[0m
+[0;34m2025-09-18 18:15:04 - Starting generation for: 10[0m
+[1;33m2025-09-18 18:15:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 18:16:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:16:42 - Completed: 10[0m
+[0;34m2025-09-18 18:16:47 - Starting generation for: 11[0m
+[1;33m2025-09-18 18:16:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 18:18:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:18:02 - Completed: 11[0m
+[0;34m2025-09-18 18:18:07 - Starting generation for: 12[0m
+[1;33m2025-09-18 18:18:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 18:20:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:20:11 - Completed: 12[0m
+[0;34m2025-09-18 18:20:16 - Starting generation for: 13[0m
+[1;33m2025-09-18 18:20:16 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #13 to the grief loss template blog registry. The article "The Invisible Weight: Managing Daily Life When Grief Makes Everything Harder" is a comprehensive 1,400+ word guide that follows all the master prompt guidelines:
+
+- **1,200-1,600 words** (approximately 1,400 words, 11-minute read)
+- **Voice and character**: Sophisticated, caring, and genuinely helpful tone that feels premium but not pretentious
+- **Author**: "Templata"
+- **Category**: "Personal Life"
+- **Article details**:
+  - Type: "guide" 
+  - Difficulty: "beginner"
+  - Focus: Practical strategies for managing daily responsibilities when grief makes everything harder
+  - SEO-optimized with proper metadata
+  - Relevant tags and related posts
+- **Content**: Addresses the often-overlooked challenge of handling routine life tasks during grief, written in flowing paragraphs with minimal bullet points, providing actionable guidance while respecting the reader's intelligence
+
+The article covers crucial topics like cognitive fog, energy depletion, work challenges, financial management, household tasks, social obligations, sleep issues, and the gradual integration of grief into daily life.
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 18:24:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:24:21 - Completed: 13[0m
+[0;34m2025-09-18 18:24:26 - Starting generation for: 14[0m
+[1;33m2025-09-18 18:24:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 18:27:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:27:36 - Completed: 14[0m
+[0;34m2025-09-18 18:27:41 - Starting generation for: 15[0m
+[1;33m2025-09-18 18:27:41 - Running article generation...[0m
+Perfect! I have successfully created and added a comprehensive 1,400+ word article about "Supporting Children Through Grief: Age-Appropriate Guidance for Different Developmental Stages" to the grief loss template. The article:
+
+- Follows the master prompt guidelines with a sophisticated, caring voice
+- Contains 1,400+ words (11-minute read time)
+- Is written by "Templata" 
+- Falls under "Personal Life" category
+- Is a "guide" type with "intermediate" difficulty
+- Includes proper SEO metadata
+- Features relevant tags and related posts
+- Focuses specifically on grief loss context and helping families
+- Provides practical, actionable guidance for different age groups
+- Uses flowing paragraphs with minimal bullet points as required
+
+The article has been successfully added to the `manualBlogPosts` array in `/Users/ikim1/Documents/GitHub/templata-grief-loss/src/registry/blogs-grief-loss.ts` as article #15.
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 18:32:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:32:34 - Completed: 15[0m
+[0;34m2025-09-18 18:32:39 - Starting generation for: 16[0m
+[1;33m2025-09-18 18:32:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 18:34:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:34:28 - Completed: 16[0m
+[0;34m2025-09-18 18:34:33 - Starting generation for: 17[0m
+[1;33m2025-09-18 18:34:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 18:36:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:36:38 - Completed: 17[0m
+[0;34m2025-09-18 18:36:43 - Starting generation for: 18[0m
+[1;33m2025-09-18 18:36:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 18:37:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:37:57 - Completed: 18[0m
+[0;34m2025-09-18 18:38:02 - Starting generation for: 19[0m
+[1;33m2025-09-18 18:38:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 18:39:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:39:19 - Completed: 19[0m
+[0;34m2025-09-18 18:39:24 - Starting generation for: 20[0m
+[1;33m2025-09-18 18:39:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 18:41:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:41:57 - Completed: 20[0m

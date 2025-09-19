@@ -1,0 +1,106 @@
+[0;34m2025-09-18 13:27:15 - Starting Article Generation Cycle for template: family-crisis-management[0m
+[1;33m2025-09-18 13:27:15 - Creating worktree for template: family-crisis-management[0m
+[0;32m2025-09-18 13:27:15 - Created branch: article-family-crisis-management[0m
+[0;32m2025-09-18 13:27:17 - Created worktree: ../templata-family-crisis-management[0m
+[1;33m2025-09-18 13:27:17 - Creating template blog file: blogs-family-crisis-management.ts[0m
+[0;32m2025-09-18 13:27:17 - Created template blog file: ../templata-family-crisis-management/src/registry/blogs-family-crisis-management.ts[0m
+[0;34m2025-09-18 13:27:17 - Starting generation for: 1[0m
+[1;33m2025-09-18 13:27:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 13:28:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:28:57 - Completed: 1[0m
+[0;34m2025-09-18 13:29:02 - Starting generation for: 2[0m
+[1;33m2025-09-18 13:29:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 13:31:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:31:08 - Completed: 2[0m
+[0;34m2025-09-18 13:31:13 - Starting generation for: 3[0m
+[1;33m2025-09-18 13:31:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 13:33:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:33:11 - Completed: 3[0m
+[0;34m2025-09-18 13:33:16 - Starting generation for: 4[0m
+[1;33m2025-09-18 13:33:16 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 13:35:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:35:09 - Completed: 4[0m
+[0;34m2025-09-18 13:35:14 - Starting generation for: 5[0m
+[1;33m2025-09-18 13:35:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 13:37:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:37:24 - Completed: 5[0m
+[0;34m2025-09-18 13:37:29 - Starting generation for: 6[0m
+[1;33m2025-09-18 13:37:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 13:39:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:39:39 - Completed: 6[0m
+[0;34m2025-09-18 13:39:44 - Starting generation for: 7[0m
+[1;33m2025-09-18 13:39:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 13:41:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:41:47 - Completed: 7[0m
+[0;34m2025-09-18 13:41:52 - Starting generation for: 8[0m
+[1;33m2025-09-18 13:41:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 13:44:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:44:06 - Completed: 8[0m
+[0;34m2025-09-18 13:44:11 - Starting generation for: 9[0m
+[1;33m2025-09-18 13:44:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 13:47:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:47:26 - Completed: 9[0m
+[0;34m2025-09-18 13:47:31 - Starting generation for: 10[0m
+[1;33m2025-09-18 13:47:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 13:49:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:49:16 - Completed: 10[0m
+[0;34m2025-09-18 13:49:21 - Starting generation for: 11[0m
+[1;33m2025-09-18 13:49:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 13:52:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:52:36 - Completed: 11[0m
+[0;34m2025-09-18 13:52:41 - Starting generation for: 12[0m
+[1;33m2025-09-18 13:52:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 13:54:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:54:50 - Completed: 12[0m
+[0;34m2025-09-18 13:54:55 - Starting generation for: 13[0m
+[1;33m2025-09-18 13:54:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 13:56:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:56:33 - Completed: 13[0m
+[0;34m2025-09-18 13:56:38 - Starting generation for: 14[0m
+[1;33m2025-09-18 13:56:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 13:58:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:58:31 - Completed: 14[0m
+[0;34m2025-09-18 13:58:36 - Starting generation for: 15[0m
+[1;33m2025-09-18 13:58:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 14:00:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:00:09 - Completed: 15[0m
+[0;34m2025-09-18 14:00:14 - Starting generation for: 16[0m
+[1;33m2025-09-18 14:00:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 14:02:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:02:21 - Completed: 16[0m
+[0;34m2025-09-18 14:02:26 - Starting generation for: 17[0m
+[1;33m2025-09-18 14:02:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 14:04:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:04:16 - Completed: 17[0m
+[0;34m2025-09-18 14:04:21 - Starting generation for: 18[0m
+[1;33m2025-09-18 14:04:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 14:06:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:06:29 - Completed: 18[0m
+[0;34m2025-09-18 14:06:34 - Starting generation for: 19[0m
+[1;33m2025-09-18 14:06:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 14:08:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:08:25 - Completed: 19[0m
+[0;34m2025-09-18 14:08:30 - Starting generation for: 20[0m
+[1;33m2025-09-18 14:08:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 14:09:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:09:58 - Completed: 20[0m

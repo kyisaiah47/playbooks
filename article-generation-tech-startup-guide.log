@@ -1,0 +1,121 @@
+[0;34m2025-09-17 14:57:59 - Starting Article Generation Cycle for template: tech-startup-guide[0m
+[0;32m2025-09-17 14:57:59 - Using existing worktree: ../templata-tech-startup-guide[0m
+[1;33m2025-09-17 14:57:59 - Creating template blog file: blogs-tech-startup-guide.ts[0m
+[0;32m2025-09-17 14:57:59 - Created template blog file: ../templata-tech-startup-guide/src/registry/blogs-tech-startup-guide.ts[0m
+[0;34m2025-09-17 14:57:59 - Starting generation for: 1[0m
+[1;33m2025-09-17 14:58:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 14:59:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:59:10 - Completed: 1[0m
+[0;34m2025-09-17 14:59:15 - Starting generation for: 2[0m
+[1;33m2025-09-17 14:59:15 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 15:00:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:00:48 - Completed: 2[0m
+[0;34m2025-09-17 15:00:53 - Starting generation for: 3[0m
+[1;33m2025-09-17 15:00:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 15:01:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:01:49 - Completed: 3[0m
+[0;34m2025-09-17 15:01:54 - Starting generation for: 4[0m
+[1;33m2025-09-17 15:01:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 15:03:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:03:07 - Completed: 4[0m
+[0;34m2025-09-17 15:03:12 - Starting generation for: 5[0m
+[1;33m2025-09-17 15:03:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 15:04:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:04:27 - Completed: 5[0m
+[0;34m2025-09-17 15:04:32 - Starting generation for: 6[0m
+[1;33m2025-09-17 15:04:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 15:05:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:05:46 - Completed: 6[0m
+[0;34m2025-09-17 15:05:51 - Starting generation for: 7[0m
+[1;33m2025-09-17 15:05:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 15:07:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:07:14 - Completed: 7[0m
+[0;34m2025-09-17 15:07:19 - Starting generation for: 8[0m
+[1;33m2025-09-17 15:07:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 15:08:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:08:27 - Completed: 8[0m
+[0;34m2025-09-17 15:08:32 - Starting generation for: 9[0m
+[1;33m2025-09-17 15:08:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 15:09:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:09:43 - Completed: 9[0m
+[0;34m2025-09-17 15:09:48 - Starting generation for: 10[0m
+[1;33m2025-09-17 15:09:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 15:11:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:11:10 - Completed: 10[0m
+[0;34m2025-09-17 15:11:15 - Starting generation for: 11[0m
+[1;33m2025-09-17 15:11:15 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 15:12:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:12:32 - Completed: 11[0m
+[0;34m2025-09-17 15:12:37 - Starting generation for: 12[0m
+[1;33m2025-09-17 15:12:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 15:14:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:14:04 - Completed: 12[0m
+[0;34m2025-09-17 15:14:09 - Starting generation for: 13[0m
+[1;33m2025-09-17 15:14:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 15:16:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:16:03 - Completed: 13[0m
+[0;34m2025-09-17 15:16:08 - Starting generation for: 14[0m
+[1;33m2025-09-17 15:16:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 15:17:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:17:23 - Completed: 14[0m
+[0;34m2025-09-17 15:17:28 - Starting generation for: 15[0m
+[1;33m2025-09-17 15:17:28 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 15:18:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:18:56 - Completed: 15[0m
+[0;34m2025-09-17 15:19:01 - Starting generation for: 16[0m
+[1;33m2025-09-17 15:19:01 - Running article generation...[0m
+Perfect! I have successfully created and added Article #16 to the tech startup guide template. The article covers "Navigating Co-founder Relationships and Equity Splits" which is a highly relevant and important topic for tech startup founders.
+
+The article meets all the requirements:
+- ✅ 1,200-1,600 words (approximately 1,400 words)
+- ✅ Follows master prompt voice and character guidelines (sophisticated but not pretentious, comprehensive but not overwhelming)
+- ✅ Author: "Templata"
+- ✅ Category: "Personal Life"
+- ✅ Added to src/registry/blogs-tech-startup-guide.ts in manualBlogPosts array
+- ✅ Includes proper SEO metadata
+- ✅ Type: "guide", Difficulty: "intermediate"
+- ✅ Focuses on tech startup guide context and needs
+- ✅ Relevant topic that helps people with tech startup journey
+
+The article follows the master prompt guidelines with a warm, encouraging, and genuinely helpful tone while covering a critical aspect of startup success that many founders overlook until it's too late.
+
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 15:23:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:23:08 - Completed: 16[0m
+[0;34m2025-09-17 15:23:13 - Starting generation for: 17[0m
+[1;33m2025-09-17 15:23:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 15:24:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:24:41 - Completed: 17[0m
+[0;34m2025-09-17 15:24:46 - Starting generation for: 18[0m
+[1;33m2025-09-17 15:24:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 15:28:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:28:01 - Completed: 18[0m
+[0;34m2025-09-17 15:28:06 - Starting generation for: 19[0m
+[1;33m2025-09-17 15:28:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 15:30:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:30:27 - Completed: 19[0m
+[0;34m2025-09-17 15:30:32 - Starting generation for: 20[0m
+[1;33m2025-09-17 15:30:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 15:31:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:31:46 - Completed: 20[0m
+[0;34m2025-09-17 20:04:50 - Starting Article Generation Cycle for template: tech-startup-guide[0m
+[0;32m2025-09-17 20:04:50 - Using existing worktree: ../templata-tech-startup-guide[0m

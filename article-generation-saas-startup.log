@@ -1,0 +1,121 @@
+[0;34m2025-09-18 09:17:14 - Starting Article Generation Cycle for template: saas-startup[0m
+[1;33m2025-09-18 09:17:14 - Creating worktree for template: saas-startup[0m
+[0;32m2025-09-18 09:17:14 - Created branch: article-saas-startup[0m
+[0;32m2025-09-18 09:17:17 - Created worktree: ../templata-saas-startup[0m
+[1;33m2025-09-18 09:17:17 - Creating template blog file: blogs-saas-startup.ts[0m
+[0;32m2025-09-18 09:17:17 - Created template blog file: ../templata-saas-startup/src/registry/blogs-saas-startup.ts[0m
+[0;34m2025-09-18 09:17:17 - Starting generation for: 1[0m
+[1;33m2025-09-18 09:17:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 09:18:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:18:40 - Completed: 1[0m
+[0;34m2025-09-18 09:18:45 - Starting generation for: 2[0m
+[1;33m2025-09-18 09:18:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 09:20:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:20:08 - Completed: 2[0m
+[0;34m2025-09-18 09:20:13 - Starting generation for: 3[0m
+[1;33m2025-09-18 09:20:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 09:21:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:21:51 - Completed: 3[0m
+[0;34m2025-09-18 09:21:56 - Starting generation for: 4[0m
+[1;33m2025-09-18 09:21:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 09:23:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:23:24 - Completed: 4[0m
+[0;34m2025-09-18 09:23:29 - Starting generation for: 5[0m
+[1;33m2025-09-18 09:23:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 09:25:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:25:14 - Completed: 5[0m
+[0;34m2025-09-18 09:25:19 - Starting generation for: 6[0m
+[1;33m2025-09-18 09:25:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 09:26:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:26:55 - Completed: 6[0m
+[0;34m2025-09-18 09:27:00 - Starting generation for: 7[0m
+[1;33m2025-09-18 09:27:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 09:30:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:30:54 - Completed: 7[0m
+[0;34m2025-09-18 09:30:59 - Starting generation for: 8[0m
+[1;33m2025-09-18 09:30:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 09:32:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:32:48 - Completed: 8[0m
+[0;34m2025-09-18 09:32:53 - Starting generation for: 9[0m
+[1;33m2025-09-18 09:32:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 09:35:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:35:01 - Completed: 9[0m
+[0;34m2025-09-18 09:35:06 - Starting generation for: 10[0m
+[1;33m2025-09-18 09:35:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 09:37:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:37:02 - Completed: 10[0m
+[0;34m2025-09-18 09:37:07 - Starting generation for: 11[0m
+[1;33m2025-09-18 09:37:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 09:39:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:39:43 - Completed: 11[0m
+[0;34m2025-09-18 09:39:48 - Starting generation for: 12[0m
+[1;33m2025-09-18 09:39:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 09:41:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:41:27 - Completed: 12[0m
+[0;34m2025-09-18 09:41:32 - Starting generation for: 13[0m
+[1;33m2025-09-18 09:41:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 09:45:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:45:25 - Completed: 13[0m
+[0;34m2025-09-18 09:45:30 - Starting generation for: 14[0m
+[1;33m2025-09-18 09:45:30 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #14 to the SaaS startup template blog registry. The article is a comprehensive 1,500+ word guide about strategic technical debt management for early-stage SaaS companies, following all the master prompt guidelines:
+
+✅ **Word count**: 1,500+ words (12-minute read)
+✅ **Voice & Style**: Sophisticated, caring, warm tone without being pretentious
+✅ **Author**: "Templata" 
+✅ **Category**: "Personal Life"
+✅ **Structure**: Flowing paragraphs with minimal bullet points
+✅ **Content**: Genuinely helpful, actionable insights about technical debt strategy
+✅ **SEO**: Proper metadata, title, description, and tags
+✅ **Type & Difficulty**: Guide, Intermediate level
+✅ **Context**: Focused specifically on SaaS startup needs and challenges
+✅ **Related content**: Connected to existing articles in the registry
+
+The article addresses a real pain point that SaaS founders face - the balance between moving fast and building sustainable systems - with practical frameworks and insights that would genuinely help people making these difficult decisions.
+
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 09:48:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:48:50 - Completed: 14[0m
+[0;34m2025-09-18 09:48:55 - Starting generation for: 15[0m
+[1;33m2025-09-18 09:48:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 09:50:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:50:52 - Completed: 15[0m
+[0;34m2025-09-18 09:50:57 - Starting generation for: 16[0m
+[1;33m2025-09-18 09:50:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 09:52:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:52:22 - Completed: 16[0m
+[0;34m2025-09-18 09:52:27 - Starting generation for: 17[0m
+[1;33m2025-09-18 09:52:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 09:54:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:54:46 - Completed: 17[0m
+[0;34m2025-09-18 09:54:51 - Starting generation for: 18[0m
+[1;33m2025-09-18 09:54:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 09:58:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:58:54 - Completed: 18[0m
+[0;34m2025-09-18 09:58:59 - Starting generation for: 19[0m
+[1;33m2025-09-18 09:58:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 10:00:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:00:49 - Completed: 19[0m
+[0;34m2025-09-18 10:00:54 - Starting generation for: 20[0m
+[1;33m2025-09-18 10:00:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 10:02:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:02:10 - Completed: 20[0m

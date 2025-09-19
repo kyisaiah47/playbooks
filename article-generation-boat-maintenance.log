@@ -1,0 +1,156 @@
+[0;34m2025-09-18 07:22:59 - Starting Article Generation Cycle for template: boat-maintenance[0m
+[0;32m2025-09-18 07:22:59 - Using existing worktree: ../templata-boat-maintenance[0m
+[1;33m2025-09-18 07:22:59 - Creating template blog file: blogs-boat-maintenance.ts[0m
+[0;32m2025-09-18 07:22:59 - Created template blog file: ../templata-boat-maintenance/src/registry/blogs-boat-maintenance.ts[0m
+[0;34m2025-09-18 07:22:59 - Starting generation for: 1[0m
+[1;33m2025-09-18 07:22:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 07:24:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:24:17 - Completed: 1[0m
+[0;34m2025-09-18 07:24:22 - Starting generation for: 2[0m
+[1;33m2025-09-18 07:24:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 07:25:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:25:37 - Completed: 2[0m
+[0;34m2025-09-18 07:25:42 - Starting generation for: 3[0m
+[1;33m2025-09-18 07:25:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 07:27:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:27:16 - Completed: 3[0m
+[0;34m2025-09-18 07:27:21 - Starting generation for: 4[0m
+[1;33m2025-09-18 07:27:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 07:28:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:28:59 - Completed: 4[0m
+[0;34m2025-09-18 07:29:04 - Starting generation for: 5[0m
+[1;33m2025-09-18 07:29:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 07:31:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:31:05 - Completed: 5[0m
+[0;34m2025-09-18 07:31:10 - Starting generation for: 6[0m
+[1;33m2025-09-18 07:31:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 07:32:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:32:58 - Completed: 6[0m
+[0;34m2025-09-18 07:33:03 - Starting generation for: 7[0m
+[1;33m2025-09-18 07:33:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;34m2025-09-18 08:22:44 - Starting Article Generation Cycle for template: boat-maintenance[0m
+[0;32m2025-09-18 08:22:44 - Using existing worktree: ../templata-boat-maintenance[0m
+[0;34m2025-09-18 08:22:44 - Starting generation for: 7[0m
+[1;33m2025-09-18 08:22:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 08:24:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:24:50 - Completed: 7[0m
+[0;34m2025-09-18 08:24:55 - Starting generation for: 8[0m
+[1;33m2025-09-18 08:24:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 08:28:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:28:14 - Completed: 8[0m
+[0;34m2025-09-18 08:28:19 - Starting generation for: 9[0m
+[1;33m2025-09-18 08:28:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 08:30:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:30:12 - Completed: 9[0m
+[0;34m2025-09-18 08:30:17 - Starting generation for: 10[0m
+[1;33m2025-09-18 08:30:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 08:33:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:33:13 - Completed: 10[0m
+[0;34m2025-09-18 08:33:18 - Starting generation for: 11[0m
+[1;33m2025-09-18 08:33:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 08:36:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:36:25 - Completed: 11[0m
+[0;34m2025-09-18 08:36:30 - Starting generation for: 12[0m
+[1;33m2025-09-18 08:36:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 08:41:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:41:52 - Completed: 12[0m
+[0;34m2025-09-18 08:41:57 - Starting generation for: 13[0m
+[1;33m2025-09-18 08:41:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 08:44:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:44:33 - Completed: 13[0m
+[0;34m2025-09-18 08:44:38 - Starting generation for: 14[0m
+[1;33m2025-09-18 08:44:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 08:46:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:46:51 - Completed: 14[0m
+[0;34m2025-09-18 08:46:56 - Starting generation for: 15[0m
+[1;33m2025-09-18 08:46:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 08:48:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:48:39 - Completed: 15[0m
+[0;34m2025-09-18 08:48:44 - Starting generation for: 16[0m
+[1;33m2025-09-18 08:48:44 - Running article generation...[0m
+Perfect! I've successfully added Article #16 to the boat maintenance template. The article covers hull inspection and maintenance, which is a crucial topic for boat owners. 
+
+The article:
+- Follows the master prompt guidelines with a sophisticated, caring tone
+- Is 1,400+ words (within the 1,200-1,600 word requirement)  
+- Uses flowing paragraphs instead of bullet points
+- Avoids first person language
+- Includes proper SEO metadata
+- Has appropriate tags and related content
+- Focuses on practical, actionable advice for boat hull maintenance
+
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 08:52:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:52:38 - Completed: 16[0m
+[0;34m2025-09-18 08:52:43 - Starting generation for: 17[0m
+[1;33m2025-09-18 08:52:43 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #17 for the boat maintenance template. The article is a comprehensive 1,400+ word guide about marine electrical system maintenance, covering:
+
+- Battery system health and maintenance
+- Connection integrity and corrosion prevention  
+- Circuit protection beyond basic fuses
+- Grounding and bonding systems
+- Electrical troubleshooting techniques
+- Preventive maintenance strategies
+
+The article follows all the master prompt guidelines:
+- 1,200-1,600 words (12 minute read)
+- Sophisticated, caring voice without being pretentious
+- Comprehensive but not overwhelming
+- Author: "Templata" 
+- Category: "Personal Life"
+- Proper SEO metadata included
+- Type: "guide", Difficulty: "intermediate"
+- Focuses specifically on boat maintenance context
+- No first person usage
+- Minimal bullet points, flowing paragraphs instead
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 08:55:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:55:34 - Completed: 17[0m
+[0;34m2025-09-18 08:55:39 - Starting generation for: 18[0m
+[1;33m2025-09-18 08:55:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 08:57:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:57:13 - Completed: 18[0m
+[0;34m2025-09-18 08:57:18 - Starting generation for: 19[0m
+[1;33m2025-09-18 08:57:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 09:00:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:00:18 - Completed: 19[0m
+[0;34m2025-09-18 09:00:23 - Starting generation for: 20[0m
+[1;33m2025-09-18 09:00:23 - Running article generation...[0m
+Perfect! I have successfully generated and added a comprehensive 1,400+ word boat trailer maintenance article to the boat maintenance template. The article follows all the master prompt guidelines:
+
+- **1,200-1,600 words** (approximately 1,400 words - 11 minute read)
+- **Premium but approachable tone** - sophisticated without being pretentious
+- **Comprehensive coverage** of boat trailer maintenance without being overwhelming
+- **Warm and encouraging voice** - like having a wise mentor guide you
+- **Flowing paragraphs** with minimal bullet points
+- **Author: "Templata"**
+- **No first person** usage
+- **Practical, actionable advice** that boat owners actually need
+- **Proper SEO metadata** and categorization
+- **Relevant tags and related content**
+
+The article covers a crucial but often overlooked aspect of boat maintenance - trailer care - and addresses real problems boat owners face with practical solutions. It's the kind of article someone would genuinely want to share with fellow boat owners.
+
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 09:03:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 09:03:59 - Completed: 20[0m

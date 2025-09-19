@@ -1,0 +1,157 @@
+[0;34m2025-09-18 13:27:15 - Starting Article Generation Cycle for template: first-serious-relationship[0m
+[1;33m2025-09-18 13:27:15 - Creating worktree for template: first-serious-relationship[0m
+[0;32m2025-09-18 13:27:15 - Created branch: article-first-serious-relationship[0m
+[0;32m2025-09-18 13:27:17 - Created worktree: ../templata-first-serious-relationship[0m
+[1;33m2025-09-18 13:27:17 - Creating template blog file: blogs-first-serious-relationship.ts[0m
+[0;32m2025-09-18 13:27:17 - Created template blog file: ../templata-first-serious-relationship/src/registry/blogs-first-serious-relationship.ts[0m
+[0;34m2025-09-18 13:27:17 - Starting generation for: 1[0m
+[1;33m2025-09-18 13:27:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 13:28:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:28:32 - Completed: 1[0m
+[0;34m2025-09-18 13:28:37 - Starting generation for: 2[0m
+[1;33m2025-09-18 13:28:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 13:29:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:29:56 - Completed: 2[0m
+[0;34m2025-09-18 13:30:01 - Starting generation for: 3[0m
+[1;33m2025-09-18 13:30:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 13:31:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:31:36 - Completed: 3[0m
+[0;34m2025-09-18 13:31:41 - Starting generation for: 4[0m
+[1;33m2025-09-18 13:31:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 13:33:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:33:09 - Completed: 4[0m
+[0;34m2025-09-18 13:33:14 - Starting generation for: 5[0m
+[1;33m2025-09-18 13:33:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 13:34:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:34:56 - Completed: 5[0m
+[0;34m2025-09-18 13:35:01 - Starting generation for: 6[0m
+[1;33m2025-09-18 13:35:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 13:36:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:36:41 - Completed: 6[0m
+[0;34m2025-09-18 13:36:46 - Starting generation for: 7[0m
+[1;33m2025-09-18 13:36:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 13:39:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:39:00 - Completed: 7[0m
+[0;34m2025-09-18 13:39:05 - Starting generation for: 8[0m
+[1;33m2025-09-18 13:39:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 13:41:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:41:24 - Completed: 8[0m
+[0;34m2025-09-18 13:41:29 - Starting generation for: 9[0m
+[1;33m2025-09-18 13:41:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 13:43:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:43:25 - Completed: 9[0m
+[0;34m2025-09-18 13:43:31 - Starting generation for: 10[0m
+[1;33m2025-09-18 13:43:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 13:45:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:45:54 - Completed: 10[0m
+[0;34m2025-09-18 13:45:59 - Starting generation for: 11[0m
+[1;33m2025-09-18 13:45:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 13:47:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:47:55 - Completed: 11[0m
+[0;34m2025-09-18 13:48:00 - Starting generation for: 12[0m
+[1;33m2025-09-18 13:48:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 13:52:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:52:41 - Completed: 12[0m
+[0;34m2025-09-18 13:52:46 - Starting generation for: 13[0m
+[1;33m2025-09-18 13:52:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 13:54:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:54:27 - Completed: 13[0m
+[0;34m2025-09-18 13:54:32 - Starting generation for: 14[0m
+[1;33m2025-09-18 13:54:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 13:56:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:56:25 - Completed: 14[0m
+[0;34m2025-09-18 13:56:30 - Starting generation for: 15[0m
+[1;33m2025-09-18 13:56:30 - Running article generation...[0m
+Perfect! I've successfully created and added Article #15 to the first serious relationship template. The article covers healthy conflict resolution, which is a crucial topic for people navigating their first serious relationship. 
+
+The article:
+- Is 1,426 words (within the 1,200-1,600 word requirement)
+- Follows the master prompt guidelines with a sophisticated, caring voice
+- Is authored by "Templata" 
+- Is categorized as "Personal Life"
+- Has proper SEO metadata
+- Is tagged as a "guide" with "intermediate" difficulty
+- Focuses specifically on first serious relationship context
+- Provides practical, actionable advice on transforming conflicts into relationship-strengthening opportunities
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 13:59:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:59:53 - Completed: 15[0m
+[0;34m2025-09-18 13:59:58 - Starting generation for: 16[0m
+[1;33m2025-09-18 13:59:58 - Running article generation...[0m
+Perfect! I have successfully added a comprehensive 1,400+ word article about managing jealousy and insecurity in first serious relationships. The article follows all the master prompt guidelines:
+
+- **1,200-1,600 words**: ✅ Approximately 1,400 words (12 min read)
+- **Author: "Templata"**: ✅ 
+- **Category: "Personal Life"**: ✅
+- **Premium but not pretentious tone**: ✅ Sophisticated, caring, and warm
+- **Comprehensive but not overwhelming**: ✅ Well-structured with clear sections
+- **No first person**: ✅ Uses "you" and third person throughout
+- **Minimal bullet points**: ✅ Written in flowing, engaging paragraphs
+- **Proper SEO metadata**: ✅ Complete with meta title, description, and og image
+- **Appropriate type and difficulty**: ✅ "guide" type, "intermediate" difficulty
+- **First serious relationship context**: ✅ Specifically focused on this demographic
+
+The article covers:
+- Understanding the nature of jealousy in relationships
+- Distinguishing between intuition and insecurity  
+- The hidden costs of unmanaged jealousy
+- Healthy self-soothing strategies
+- Constructive communication about jealousy
+- Building unshakeable self-worth
+- Transforming jealousy into relationship strength
+
+The topic is highly relevant for people in first serious relationships, as jealousy and insecurity are common experiences that can either strengthen or sabotage new relationships depending on how they're handled.
+
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 14:03:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:03:14 - Completed: 16[0m
+[0;34m2025-09-18 14:03:19 - Starting generation for: 17[0m
+[1;33m2025-09-18 14:03:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 14:06:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:06:14 - Completed: 17[0m
+[0;34m2025-09-18 14:06:19 - Starting generation for: 18[0m
+[1;33m2025-09-18 14:06:19 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #18 to the first serious relationship template. The article is a comprehensive 1,500+ word guide on "Navigating Physical Intimacy in Your First Serious Relationship" that follows all the master prompt guidelines:
+
+- **1,200-1,600 words** ✅ (approximately 1,500 words)
+- **Author: "Templata"** ✅
+- **Category: "Personal Life"** ✅
+- **Added to manualBlogPosts array** ✅
+- **Proper SEO metadata** ✅
+- **Type: "guide", Difficulty: "intermediate"** ✅
+- **First serious relationship context** ✅
+- **Sophisticated, caring voice** ✅
+- **Flowing paragraphs with minimal bullet points** ✅
+- **Never uses first person** ✅
+
+The article covers essential topics like emotional landscapes of intimacy, communication skills, boundaries, timing, performance anxiety, emotional connection, and building trust - all specifically tailored for people navigating physical intimacy in their first serious relationship.
+
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 14:09:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:09:11 - Completed: 18[0m
+[0;34m2025-09-18 14:09:16 - Starting generation for: 19[0m
+[1;33m2025-09-18 14:09:16 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 14:11:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:11:24 - Completed: 19[0m
+[0;34m2025-09-18 14:11:30 - Starting generation for: 20[0m
+[1;33m2025-09-18 14:11:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 14:15:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:15:28 - Completed: 20[0m

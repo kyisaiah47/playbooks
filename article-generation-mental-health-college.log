@@ -1,0 +1,33 @@
+[0;34m2025-09-18 19:28:32 - Starting Article Generation Cycle for template: mental-health-college[0m
+[1;33m2025-09-18 19:28:32 - Creating worktree for template: mental-health-college[0m
+[0;32m2025-09-18 19:28:32 - Created branch: article-mental-health-college[0m
+[0;32m2025-09-18 19:28:34 - Created worktree: ../templata-mental-health-college[0m
+[1;33m2025-09-18 19:28:34 - Creating template blog file: blogs-mental-health-college.ts[0m
+[0;32m2025-09-18 19:28:34 - Created template blog file: ../templata-mental-health-college/src/registry/blogs-mental-health-college.ts[0m
+[0;34m2025-09-18 19:28:34 - Starting generation for: 1[0m
+[1;33m2025-09-18 19:28:34 - Running article generation...[0m
+[0;34m2025-09-18 19:29:24 - Starting Article Generation Cycle for template: mental-health-college[0m
+[0;32m2025-09-18 19:29:24 - Using existing worktree: ../templata-mental-health-college[0m
+[0;34m2025-09-18 19:29:24 - Starting generation for: 1[0m
+[1;33m2025-09-18 19:29:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 19:29:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 19:29:36 - Completed: 1[0m
+[0;34m2025-09-18 19:29:41 - Starting generation for: 2[0m
+[1;33m2025-09-18 19:29:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+Perfect! I can see that Article #2 has already been generated and added to the blog registry. The article "Building Resilience: How to Bounce Back from Mental Health Setbacks in College" is a comprehensive 1,400+ word piece that:
+
+- Follows the master prompt guidelines with sophisticated, caring voice
+- Is authored by "Templata" 
+- Categorized as "Personal Life"
+- Has proper SEO metadata
+- Is marked as "article" type with "intermediate" difficulty
+- Focuses specifically on mental health resilience in the college context
+- Contains flowing, engaging paragraphs rather than bullet points
+- Provides practical, evidence-based strategies
+- Maintains the warm, encouraging tone while being genuinely helpful
+
+The article covers crucial topics like reframing setbacks, building self-care toolkits, social support, cognitive flexibility, and crisis planning - all highly relevant for college students managing mental health challenges.
+
+ARTICLE GENERATION COMPLETE - Article #2

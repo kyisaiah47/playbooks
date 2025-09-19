@@ -1,0 +1,111 @@
+[0;34m2025-09-17 09:30:26 - Starting Article Generation Cycle for template: travel-planning[0m
+[0;32m2025-09-17 09:30:26 - Using existing worktree: ../templata-travel-planning[0m
+[1;33m2025-09-17 09:30:26 - Creating template blog file: blogs-travel-planning.ts[0m
+[0;32m2025-09-17 09:30:26 - Created template blog file: ../templata-travel-planning/src/registry/blogs-travel-planning.ts[0m
+[0;34m2025-09-17 09:30:26 - Starting generation for: 1[0m
+[1;33m2025-09-17 09:30:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 09:32:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:32:35 - Completed: 1[0m
+[0;34m2025-09-17 09:32:40 - Starting generation for: 2[0m
+[1;33m2025-09-17 09:32:40 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 09:35:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:35:04 - Completed: 2[0m
+[0;34m2025-09-17 09:35:09 - Starting generation for: 3[0m
+[1;33m2025-09-17 09:35:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 09:37:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:37:41 - Completed: 3[0m
+[0;34m2025-09-17 09:37:46 - Starting generation for: 4[0m
+[1;33m2025-09-17 09:37:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 09:41:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:41:37 - Completed: 4[0m
+[0;34m2025-09-17 09:41:42 - Starting generation for: 5[0m
+[1;33m2025-09-17 09:41:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 09:44:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 09:44:28 - Completed: 5[0m
+[0;34m2025-09-17 09:44:33 - Starting generation for: 6[0m
+[1;33m2025-09-17 09:44:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 10:15:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:15:44 - Completed: 6[0m
+[0;34m2025-09-17 10:15:49 - Starting generation for: 7[0m
+[1;33m2025-09-17 10:15:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 10:18:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:18:24 - Completed: 7[0m
+[0;34m2025-09-17 10:18:29 - Starting generation for: 8[0m
+[1;33m2025-09-17 10:18:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;34m2025-09-17 10:37:00 - Starting Article Generation Cycle for template: travel-planning[0m
+[0;32m2025-09-17 10:37:00 - Using existing worktree: ../templata-travel-planning[0m
+[0;34m2025-09-17 10:37:00 - Starting generation for: 8[0m
+[1;33m2025-09-17 10:37:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 10:40:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:40:00 - Completed: 8[0m
+[0;34m2025-09-17 10:40:05 - Starting generation for: 9[0m
+[1;33m2025-09-17 10:40:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 10:43:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:43:23 - Completed: 9[0m
+[0;34m2025-09-17 10:43:28 - Starting generation for: 10[0m
+[1;33m2025-09-17 10:43:28 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 10:48:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:48:36 - Completed: 10[0m
+[0;34m2025-09-17 10:48:41 - Starting generation for: 11[0m
+[1;33m2025-09-17 10:48:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 10:51:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:51:31 - Completed: 11[0m
+[0;34m2025-09-17 10:51:36 - Starting generation for: 12[0m
+[1;33m2025-09-17 10:51:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 10:54:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:54:24 - Completed: 12[0m
+[0;34m2025-09-17 10:54:29 - Starting generation for: 13[0m
+[1;33m2025-09-17 10:54:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 10:58:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 10:58:46 - Completed: 13[0m
+[0;34m2025-09-17 10:58:51 - Starting generation for: 14[0m
+[1;33m2025-09-17 10:58:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 11:02:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:02:34 - Completed: 14[0m
+[0;34m2025-09-17 11:02:39 - Starting generation for: 15[0m
+[1;33m2025-09-17 11:02:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 11:04:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:04:47 - Completed: 15[0m
+[0;34m2025-09-17 11:04:52 - Starting generation for: 16[0m
+[1;33m2025-09-17 11:04:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 11:07:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:07:21 - Completed: 16[0m
+[0;34m2025-09-17 11:07:26 - Starting generation for: 17[0m
+[1;33m2025-09-17 11:07:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 11:10:45 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:10:45 - Completed: 17[0m
+[0;34m2025-09-17 11:10:50 - Starting generation for: 18[0m
+[1;33m2025-09-17 11:10:50 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 11:14:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:14:26 - Completed: 18[0m
+[0;34m2025-09-17 11:14:31 - Starting generation for: 19[0m
+[1;33m2025-09-17 11:14:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 11:18:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:18:43 - Completed: 19[0m
+[0;34m2025-09-17 11:18:48 - Starting generation for: 20[0m
+[1;33m2025-09-17 11:18:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 11:21:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 11:21:28 - Completed: 20[0m
+[0;34m2025-09-17 19:53:50 - Starting Article Generation Cycle for template: travel-planning[0m
+[0;32m2025-09-17 19:53:50 - Using existing worktree: ../templata-travel-planning[0m

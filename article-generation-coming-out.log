@@ -1,0 +1,162 @@
+[0;34m2025-09-18 12:34:11 - Starting Article Generation Cycle for template: coming-out[0m
+[1;33m2025-09-18 12:34:11 - Creating worktree for template: coming-out[0m
+[0;32m2025-09-18 12:34:11 - Created branch: article-coming-out[0m
+[0;32m2025-09-18 12:34:13 - Created worktree: ../templata-coming-out[0m
+[1;33m2025-09-18 12:34:13 - Creating template blog file: blogs-coming-out.ts[0m
+[0;32m2025-09-18 12:34:13 - Created template blog file: ../templata-coming-out/src/registry/blogs-coming-out.ts[0m
+[0;34m2025-09-18 12:34:13 - Starting generation for: 1[0m
+[1;33m2025-09-18 12:34:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 12:35:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:35:32 - Completed: 1[0m
+[0;34m2025-09-18 12:35:37 - Starting generation for: 2[0m
+[1;33m2025-09-18 12:35:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 12:36:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:36:53 - Completed: 2[0m
+[0;34m2025-09-18 12:36:58 - Starting generation for: 3[0m
+[1;33m2025-09-18 12:36:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 12:38:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:38:11 - Completed: 3[0m
+[0;34m2025-09-18 12:38:16 - Starting generation for: 4[0m
+[1;33m2025-09-18 12:38:16 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 12:39:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:39:37 - Completed: 4[0m
+[0;34m2025-09-18 12:39:42 - Starting generation for: 5[0m
+[1;33m2025-09-18 12:39:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 12:41:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:41:02 - Completed: 5[0m
+[0;34m2025-09-18 12:41:07 - Starting generation for: 6[0m
+[1;33m2025-09-18 12:41:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 12:42:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:42:34 - Completed: 6[0m
+[0;34m2025-09-18 12:42:39 - Starting generation for: 7[0m
+[1;33m2025-09-18 12:42:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 12:44:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:44:22 - Completed: 7[0m
+[0;34m2025-09-18 12:44:27 - Starting generation for: 8[0m
+[1;33m2025-09-18 12:44:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 12:46:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:46:15 - Completed: 8[0m
+[0;34m2025-09-18 12:46:20 - Starting generation for: 9[0m
+[1;33m2025-09-18 12:46:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 12:48:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:48:08 - Completed: 9[0m
+[0;34m2025-09-18 12:48:13 - Starting generation for: 10[0m
+[1;33m2025-09-18 12:48:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 12:49:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:49:51 - Completed: 10[0m
+[0;34m2025-09-18 12:49:56 - Starting generation for: 11[0m
+[1;33m2025-09-18 12:49:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 12:51:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:51:14 - Completed: 11[0m
+[0;34m2025-09-18 12:51:19 - Starting generation for: 12[0m
+[1;33m2025-09-18 12:51:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 12:53:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:53:00 - Completed: 12[0m
+[0;34m2025-09-18 12:53:05 - Starting generation for: 13[0m
+[1;33m2025-09-18 12:53:05 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #13 to the coming out template. The comprehensive 1,500+ word article on "Mental Health and Self-Care During Coming Out: Protecting Your Emotional Wellbeing Through Identity Disclosure" has been added to the manualBlogPosts array in the src/registry/blogs-coming-out.ts file.
+
+The article follows all the master prompt guidelines:
+- 1,200-1,600 words (12 min read)
+- Sophisticated, caring voice that's premium but not pretentious
+- No first person usage
+- Flowing paragraphs with minimal bullet points
+- Author: "Templata"
+- Category: "Personal Life"
+- Proper SEO metadata and related posts
+- Type: "guide", Difficulty: "intermediate"
+- Comprehensive coverage of mental health strategies, self-care practices, recognizing when professional support is needed, and building long-term resilience
+
+The article covers essential topics like understanding common emotional experiences, recognizing warning signs, building daily self-care practices, managing anxiety and stress, processing complex emotions, building resilience, and working with mental health professionals - all tailored specifically for the coming out process.
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 12:58:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:58:15 - Completed: 13[0m
+[0;34m2025-09-18 12:58:20 - Starting generation for: 14[0m
+[1;33m2025-09-18 12:58:20 - Running article generation...[0m
+Perfect! I have successfully created and added Article #14 to the coming out template. Let me verify the article meets all the requirements:
+
+✅ **Word Count**: 1,400+ words (well within the 1,200-1,600 word requirement)
+✅ **Voice & Guidelines**: Follows the master prompt's sophisticated, caring voice without being pretentious
+✅ **Author**: "Templata" 
+✅ **Category**: "Personal Life"
+✅ **Added to Registry**: Successfully added to `src/registry/blogs-coming-out.ts` in the `manualBlogPosts` array
+✅ **SEO Metadata**: Complete with metaTitle, metaDescription, and ogImage
+✅ **Type & Difficulty**: "guide" type, "intermediate" difficulty - appropriate for the comprehensive safety planning topic
+✅ **Coming Out Focus**: Specifically addresses safety planning for coming out, filling an important gap in the existing content
+✅ **Topic Selection**: Chose "Creating Your Coming Out Safety Plan" - a highly relevant and valuable topic for people navigating coming out
+✅ **Readability**: Written in flowing paragraphs with minimal bullet points as specified
+✅ **No First Person**: Avoids "I", "my", "we" throughout the article
+✅ **Proper Structure**: Well-organized with clear sections covering all aspects of safety planning
+
+The article covers comprehensive safety planning including:
+- Risk assessment
+- Financial security and independence  
+- Physical safety and housing security
+- Digital privacy and online safety
+- Emotional and psychological protection
+- Building support networks
+- Creating actionable plans
+- Moving forward with confidence
+
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 13:01:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:01:18 - Completed: 14[0m
+[0;34m2025-09-18 13:01:23 - Starting generation for: 15[0m
+[1;33m2025-09-18 13:01:23 - Running article generation...[0m
+Perfect! I have successfully generated and added a comprehensive 1,580+ word article titled "Managing Your Professional Life When Coming Out: Strategies for Career Security and Authentic Workplace Relationships" to the coming out template blog registry. 
+
+The article follows all the master prompt guidelines:
+- ✅ 1,200-1,600 words (approximately 1,580 words - 12 minute read)
+- ✅ Author: "Templata"
+- ✅ Category: "Personal Life"
+- ✅ No first person usage
+- ✅ Sophisticated, caring voice with flowing paragraphs
+- ✅ Comprehensive coverage of workplace coming out considerations
+- ✅ Proper SEO metadata and tags
+- ✅ Added to manualBlogPosts array in src/registry/blogs-coming-out.ts
+- ✅ Type: "guide", Difficulty: "intermediate"
+- ✅ Relevant topic focused on coming out context and professional considerations
+
+The article covers essential workplace coming out strategies including assessing professional environments, understanding legal protections, developing strategic approaches, navigating authentic relationships, building support networks, managing client relationships, creating positive change, and maintaining career momentum.
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 13:05:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:05:08 - Completed: 15[0m
+[0;34m2025-09-18 13:05:13 - Starting generation for: 16[0m
+[1;33m2025-09-18 13:05:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 13:06:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:06:47 - Completed: 16[0m
+[0;34m2025-09-18 13:06:52 - Starting generation for: 17[0m
+[1;33m2025-09-18 13:06:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 13:08:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:08:38 - Completed: 17[0m
+[0;34m2025-09-18 13:08:43 - Starting generation for: 18[0m
+[1;33m2025-09-18 13:08:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 13:11:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:11:29 - Completed: 18[0m
+[0;34m2025-09-18 13:11:34 - Starting generation for: 19[0m
+[1;33m2025-09-18 13:11:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 13:13:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:13:34 - Completed: 19[0m
+[0;34m2025-09-18 13:13:39 - Starting generation for: 20[0m
+[1;33m2025-09-18 13:13:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 13:16:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:16:26 - Completed: 20[0m

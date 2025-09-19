@@ -1,0 +1,132 @@
+[0;34m2025-09-18 14:48:30 - Starting Article Generation Cycle for template: health-crisis-management[0m
+[1;33m2025-09-18 14:48:30 - Creating worktree for template: health-crisis-management[0m
+[0;32m2025-09-18 14:48:30 - Created branch: article-health-crisis-management[0m
+[0;32m2025-09-18 14:48:33 - Created worktree: ../templata-health-crisis-management[0m
+[1;33m2025-09-18 14:48:33 - Creating template blog file: blogs-health-crisis-management.ts[0m
+[0;32m2025-09-18 14:48:33 - Created template blog file: ../templata-health-crisis-management/src/registry/blogs-health-crisis-management.ts[0m
+[0;34m2025-09-18 14:48:33 - Starting generation for: 1[0m
+[1;33m2025-09-18 14:48:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 14:49:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:49:40 - Completed: 1[0m
+[0;34m2025-09-18 14:49:45 - Starting generation for: 2[0m
+[1;33m2025-09-18 14:49:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 14:52:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:52:00 - Completed: 2[0m
+[0;34m2025-09-18 14:52:05 - Starting generation for: 3[0m
+[1;33m2025-09-18 14:52:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 14:53:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:53:21 - Completed: 3[0m
+[0;34m2025-09-18 14:53:26 - Starting generation for: 4[0m
+[1;33m2025-09-18 14:53:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 14:54:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:54:46 - Completed: 4[0m
+[0;34m2025-09-18 14:54:51 - Starting generation for: 5[0m
+[1;33m2025-09-18 14:54:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 14:56:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:56:26 - Completed: 5[0m
+[0;34m2025-09-18 14:56:31 - Starting generation for: 6[0m
+[1;33m2025-09-18 14:56:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 14:57:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:57:49 - Completed: 6[0m
+[0;34m2025-09-18 14:57:54 - Starting generation for: 7[0m
+[1;33m2025-09-18 14:57:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 14:59:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:59:15 - Completed: 7[0m
+[0;34m2025-09-18 14:59:20 - Starting generation for: 8[0m
+[1;33m2025-09-18 14:59:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 18:11:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:11:39 - Completed: 8[0m
+[0;34m2025-09-18 18:11:44 - Starting generation for: 9[0m
+[1;33m2025-09-18 18:11:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 18:13:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:13:21 - Completed: 9[0m
+[0;34m2025-09-18 18:13:26 - Starting generation for: 10[0m
+[1;33m2025-09-18 18:13:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 18:14:52 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:14:52 - Completed: 10[0m
+[0;34m2025-09-18 18:14:57 - Starting generation for: 11[0m
+[1;33m2025-09-18 18:14:57 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 18:16:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:16:22 - Completed: 11[0m
+[0;34m2025-09-18 18:16:27 - Starting generation for: 12[0m
+[1;33m2025-09-18 18:16:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 18:19:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:19:09 - Completed: 12[0m
+[0;34m2025-09-18 18:19:14 - Starting generation for: 13[0m
+[1;33m2025-09-18 18:19:14 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #13 to the health crisis management template. The article is titled "Adapting Your Home Environment When Health Changes Everything" and provides comprehensive guidance on making practical home modifications during health challenges.
+
+The article:
+- Is 1,323 words (11-minute read) - within the required 1,200-1,600 word range
+- Follows the master prompt guidelines with a sophisticated, caring voice
+- Focuses specifically on health crisis management needs
+- Includes proper SEO metadata and categorization
+- Is marked as a "guide" type with "beginner" difficulty level
+- Has been properly added to the manualBlogPosts array in the registry
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 18:22:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:22:00 - Completed: 13[0m
+[0;34m2025-09-18 18:22:05 - Starting generation for: 14[0m
+[1;33m2025-09-18 18:22:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 18:25:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:25:09 - Completed: 14[0m
+[0;34m2025-09-18 18:25:14 - Starting generation for: 15[0m
+[1;33m2025-09-18 18:25:14 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #15 to the health crisis management template blog registry. The article covers "Navigating Health Insurance and Medical Billing During Crisis: Your Financial Survival Guide" - a comprehensive 1,400+ word guide that addresses the critical but often overlooked financial challenges people face during health crises.
+
+The article follows all the master prompt guidelines:
+- 1,400+ words (11 min read)
+- Author: "Templata" 
+- Category: "Personal Life"
+- Sophisticated, caring voice without being pretentious
+- Flows in engaging paragraphs rather than bullet points
+- No first person language
+- Comprehensive but accessible content
+- Type: "guide" with "intermediate" difficulty
+- Proper SEO metadata and related post connections
+- Focuses specifically on health crisis management context
+
+The article provides practical, actionable advice on understanding insurance coverage, preventing billing errors, fighting denials, managing medical debt, building support teams, and protecting financial futures during health crises.
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 18:28:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:28:08 - Completed: 15[0m
+[0;34m2025-09-18 18:28:13 - Starting generation for: 16[0m
+[1;33m2025-09-18 18:28:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 18:29:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:29:35 - Completed: 16[0m
+[0;34m2025-09-18 18:29:40 - Starting generation for: 17[0m
+[1;33m2025-09-18 18:29:40 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 18:32:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:32:26 - Completed: 17[0m
+[0;34m2025-09-18 18:32:31 - Starting generation for: 18[0m
+[1;33m2025-09-18 18:32:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 18:33:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:33:57 - Completed: 18[0m
+[0;34m2025-09-18 18:34:02 - Starting generation for: 19[0m
+[1;33m2025-09-18 18:34:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 18:35:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:35:43 - Completed: 19[0m
+[0;34m2025-09-18 18:35:48 - Starting generation for: 20[0m
+[1;33m2025-09-18 18:35:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 18:36:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:36:55 - Completed: 20[0m

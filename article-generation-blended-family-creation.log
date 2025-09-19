@@ -1,0 +1,120 @@
+[0;34m2025-09-18 10:37:36 - Starting Article Generation Cycle for template: blended-family-creation[0m
+[1;33m2025-09-18 10:37:36 - Creating worktree for template: blended-family-creation[0m
+[0;32m2025-09-18 10:37:36 - Created branch: article-blended-family-creation[0m
+[0;32m2025-09-18 10:37:38 - Created worktree: ../templata-blended-family-creation[0m
+[1;33m2025-09-18 10:37:38 - Creating template blog file: blogs-blended-family-creation.ts[0m
+[0;32m2025-09-18 10:37:38 - Created template blog file: ../templata-blended-family-creation/src/registry/blogs-blended-family-creation.ts[0m
+[0;34m2025-09-18 10:37:38 - Starting generation for: 1[0m
+[1;33m2025-09-18 10:37:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 10:38:45 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:38:45 - Completed: 1[0m
+[0;34m2025-09-18 10:38:50 - Starting generation for: 2[0m
+[1;33m2025-09-18 10:38:50 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 10:40:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:40:11 - Completed: 2[0m
+[0;34m2025-09-18 10:40:16 - Starting generation for: 3[0m
+[1;33m2025-09-18 10:40:16 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 10:41:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:41:58 - Completed: 3[0m
+[0;34m2025-09-18 10:42:03 - Starting generation for: 4[0m
+[1;33m2025-09-18 10:42:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 10:44:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:44:08 - Completed: 4[0m
+[0;34m2025-09-18 10:44:13 - Starting generation for: 5[0m
+[1;33m2025-09-18 10:44:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 10:46:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:46:33 - Completed: 5[0m
+[0;34m2025-09-18 10:46:38 - Starting generation for: 6[0m
+[1;33m2025-09-18 10:46:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 10:48:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:48:58 - Completed: 6[0m
+[0;34m2025-09-18 10:49:04 - Starting generation for: 7[0m
+[1;33m2025-09-18 10:49:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 10:50:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:50:56 - Completed: 7[0m
+[0;34m2025-09-18 10:51:01 - Starting generation for: 8[0m
+[1;33m2025-09-18 10:51:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 10:52:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:52:48 - Completed: 8[0m
+[0;34m2025-09-18 10:52:53 - Starting generation for: 9[0m
+[1;33m2025-09-18 10:52:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 10:54:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:54:57 - Completed: 9[0m
+[0;34m2025-09-18 10:55:02 - Starting generation for: 10[0m
+[1;33m2025-09-18 10:55:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 10:57:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 10:57:46 - Completed: 10[0m
+[0;34m2025-09-18 10:57:51 - Starting generation for: 11[0m
+[1;33m2025-09-18 10:57:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 12:01:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:01:57 - Completed: 11[0m
+[0;34m2025-09-18 12:02:02 - Starting generation for: 12[0m
+[1;33m2025-09-18 12:02:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 12:03:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:03:27 - Completed: 12[0m
+[0;34m2025-09-18 12:03:32 - Starting generation for: 13[0m
+[1;33m2025-09-18 12:03:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 12:05:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:05:13 - Completed: 13[0m
+[0;34m2025-09-18 12:05:18 - Starting generation for: 14[0m
+[1;33m2025-09-18 12:05:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 12:08:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:08:44 - Completed: 14[0m
+[0;34m2025-09-18 12:08:49 - Starting generation for: 15[0m
+[1;33m2025-09-18 12:08:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 12:10:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:10:15 - Completed: 15[0m
+[0;34m2025-09-18 12:10:20 - Starting generation for: 16[0m
+[1;33m2025-09-18 12:10:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 12:11:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:11:48 - Completed: 16[0m
+[0;34m2025-09-18 12:11:53 - Starting generation for: 17[0m
+[1;33m2025-09-18 12:11:53 - Running article generation...[0m
+Perfect! I've successfully added a comprehensive 1,400+ word article titled "Establishing House Rules That Work for Everyone in Blended Families" to the registry. The article:
+
+- Follows the master prompt guidelines with sophisticated, caring voice
+- Is 1,400+ words (11 minute read, within the 8-12 minute range)
+- Uses minimal bullet points, focuses on flowing paragraphs
+- Author: "Templata" 
+- Category: "Personal Life"
+- Includes proper SEO metadata
+- Type: "guide", Difficulty: "intermediate"
+- Covers a crucial blended family topic: establishing house rules
+- Added to the manualBlogPosts array in the registry
+
+The article addresses the unique challenges of creating house rules when children come from different households, different ages, and multiple adults need to coordinate. It covers involving everyone in the process, age-appropriate expectations, consistent discipline, handling resistance, building positive family culture, coordinating with other households, and regular review processes.
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 12:14:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:14:33 - Completed: 17[0m
+[0;34m2025-09-18 12:14:38 - Starting generation for: 18[0m
+[1;33m2025-09-18 12:14:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 12:15:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:15:55 - Completed: 18[0m
+[0;34m2025-09-18 12:16:00 - Starting generation for: 19[0m
+[1;33m2025-09-18 12:16:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 12:18:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:18:54 - Completed: 19[0m
+[0;34m2025-09-18 12:18:59 - Starting generation for: 20[0m
+[1;33m2025-09-18 12:18:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 12:21:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:21:36 - Completed: 20[0m

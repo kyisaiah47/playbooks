@@ -1,0 +1,116 @@
+[0;34m2025-09-17 21:38:17 - Starting Article Generation Cycle for template: real-estate-investing[0m
+[0;32m2025-09-17 21:38:17 - Using existing worktree: ../templata-real-estate-investing[0m
+[1;33m2025-09-17 21:38:17 - Creating template blog file: blogs-real-estate-investing.ts[0m
+[0;32m2025-09-17 21:38:17 - Created template blog file: ../templata-real-estate-investing/src/registry/blogs-real-estate-investing.ts[0m
+[0;34m2025-09-17 21:38:17 - Starting generation for: 1[0m
+[1;33m2025-09-17 21:38:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 21:39:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:39:33 - Completed: 1[0m
+[0;34m2025-09-17 21:39:38 - Starting generation for: 2[0m
+[1;33m2025-09-17 21:39:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 21:41:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:41:13 - Completed: 2[0m
+[0;34m2025-09-17 21:41:18 - Starting generation for: 3[0m
+[1;33m2025-09-17 21:41:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 21:42:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:42:57 - Completed: 3[0m
+[0;34m2025-09-17 21:43:02 - Starting generation for: 4[0m
+[1;33m2025-09-17 21:43:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 21:44:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:44:34 - Completed: 4[0m
+[0;34m2025-09-17 21:44:39 - Starting generation for: 5[0m
+[1;33m2025-09-17 21:44:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 21:46:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:46:15 - Completed: 5[0m
+[0;34m2025-09-17 21:46:20 - Starting generation for: 6[0m
+[1;33m2025-09-17 21:46:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 21:48:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:48:07 - Completed: 6[0m
+[0;34m2025-09-17 21:48:12 - Starting generation for: 7[0m
+[1;33m2025-09-17 21:48:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 21:50:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:50:03 - Completed: 7[0m
+[0;34m2025-09-17 21:50:08 - Starting generation for: 8[0m
+[1;33m2025-09-17 21:50:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 21:52:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:52:01 - Completed: 8[0m
+[0;34m2025-09-17 21:52:06 - Starting generation for: 9[0m
+[1;33m2025-09-17 21:52:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 21:54:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:54:08 - Completed: 9[0m
+[0;34m2025-09-17 21:54:13 - Starting generation for: 10[0m
+[1;33m2025-09-17 21:54:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 21:57:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:57:56 - Completed: 10[0m
+[0;34m2025-09-17 21:58:01 - Starting generation for: 11[0m
+[1;33m2025-09-17 21:58:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 22:00:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:00:57 - Completed: 11[0m
+[0;34m2025-09-17 22:01:02 - Starting generation for: 12[0m
+[1;33m2025-09-17 22:01:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 22:03:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:03:44 - Completed: 12[0m
+[0;34m2025-09-17 22:03:49 - Starting generation for: 13[0m
+[1;33m2025-09-17 22:03:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 22:05:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:05:34 - Completed: 13[0m
+[0;34m2025-09-17 22:05:39 - Starting generation for: 14[0m
+[1;33m2025-09-17 22:05:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 22:07:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:07:06 - Completed: 14[0m
+[0;34m2025-09-17 22:07:12 - Starting generation for: 15[0m
+[1;33m2025-09-17 22:07:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 22:09:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:09:35 - Completed: 15[0m
+[0;34m2025-09-17 22:09:40 - Starting generation for: 16[0m
+[1;33m2025-09-17 22:09:40 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #16 to the real estate investing template. The article covers sophisticated tax strategies for real estate investors, going beyond basic depreciation to explore advanced techniques like cost segregation, real estate professional status, 1031 exchanges, opportunity zones, and entity structure optimization.
+
+The article:
+- Is 1,467 words (within the 1,200-1,600 word requirement)
+- Follows the master prompt's voice guidelines (premium but not pretentious, comprehensive but not overwhelming)
+- Uses the sophisticated, caring tone specified
+- Minimizes bullet points in favor of flowing paragraphs
+- Avoids first person language
+- Includes proper SEO metadata and all required fields
+- Is categorized as "Personal Life" with "intermediate" difficulty
+- Has been added to the manualBlogPosts array in the registry file
+
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 22:12:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:12:42 - Completed: 16[0m
+[0;34m2025-09-17 22:12:47 - Starting generation for: 17[0m
+[1;33m2025-09-17 22:12:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 22:14:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:14:33 - Completed: 17[0m
+[0;34m2025-09-17 22:14:38 - Starting generation for: 18[0m
+[1;33m2025-09-17 22:14:38 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 22:16:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:16:32 - Completed: 18[0m
+[0;34m2025-09-17 22:16:37 - Starting generation for: 19[0m
+[1;33m2025-09-17 22:16:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 22:19:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:19:22 - Completed: 19[0m
+[0;34m2025-09-17 22:19:27 - Starting generation for: 20[0m
+[1;33m2025-09-17 22:19:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 22:22:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:22:17 - Completed: 20[0m

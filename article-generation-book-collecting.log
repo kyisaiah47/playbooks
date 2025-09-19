@@ -1,0 +1,144 @@
+[0;34m2025-09-18 07:22:59 - Starting Article Generation Cycle for template: book-collecting[0m
+[0;32m2025-09-18 07:22:59 - Using existing worktree: ../templata-book-collecting[0m
+[1;33m2025-09-18 07:22:59 - Creating template blog file: blogs-book-collecting.ts[0m
+[0;32m2025-09-18 07:22:59 - Created template blog file: ../templata-book-collecting/src/registry/blogs-book-collecting.ts[0m
+[0;34m2025-09-18 07:22:59 - Starting generation for: 1[0m
+[1;33m2025-09-18 07:22:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 07:24:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:24:20 - Completed: 1[0m
+[0;34m2025-09-18 07:24:25 - Starting generation for: 2[0m
+[1;33m2025-09-18 07:24:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 07:25:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:25:55 - Completed: 2[0m
+[0;34m2025-09-18 07:26:00 - Starting generation for: 3[0m
+[1;33m2025-09-18 07:26:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 07:27:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:27:40 - Completed: 3[0m
+[0;34m2025-09-18 07:27:45 - Starting generation for: 4[0m
+[1;33m2025-09-18 07:27:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 07:29:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:29:20 - Completed: 4[0m
+[0;34m2025-09-18 07:29:25 - Starting generation for: 5[0m
+[1;33m2025-09-18 07:29:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 07:30:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:30:59 - Completed: 5[0m
+[0;34m2025-09-18 07:31:04 - Starting generation for: 6[0m
+[1;33m2025-09-18 07:31:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 07:32:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:32:42 - Completed: 6[0m
+[0;34m2025-09-18 07:32:47 - Starting generation for: 7[0m
+[1;33m2025-09-18 07:32:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;34m2025-09-18 08:22:44 - Starting Article Generation Cycle for template: book-collecting[0m
+[0;32m2025-09-18 08:22:44 - Using existing worktree: ../templata-book-collecting[0m
+[0;34m2025-09-18 08:22:44 - Starting generation for: 7[0m
+[1;33m2025-09-18 08:22:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 08:24:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:24:35 - Completed: 7[0m
+[0;34m2025-09-18 08:24:40 - Starting generation for: 8[0m
+[1;33m2025-09-18 08:24:40 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 08:26:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:26:41 - Completed: 8[0m
+[0;34m2025-09-18 08:26:46 - Starting generation for: 9[0m
+[1;33m2025-09-18 08:26:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 08:28:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:28:23 - Completed: 9[0m
+[0;34m2025-09-18 08:28:28 - Starting generation for: 10[0m
+[1;33m2025-09-18 08:28:28 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 08:31:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:31:09 - Completed: 10[0m
+[0;34m2025-09-18 08:31:14 - Starting generation for: 11[0m
+[1;33m2025-09-18 08:31:14 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #11 to the book collecting template. The article is titled "Digital Cataloging for Book Collections: Modern Systems That Actually Work" and covers:
+
+- Understanding cataloging needs based on collection size and type
+- Platform options from dedicated apps to professional library systems
+- Essential cataloging elements and data to track
+- Advanced organization strategies for sophisticated collectors
+- Integration between digital catalogs and physical organization
+- Maintenance and long-term sustainability practices
+- Guidance for choosing the right system
+
+The article is 1,463 words (within the 1,200-1,600 word requirement), follows the master prompt guidelines with a sophisticated yet caring tone, avoids bullet points in favor of flowing paragraphs, and includes proper SEO metadata. It's been added to the manualBlogPosts array in the registry file.
+
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 08:34:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:34:03 - Completed: 11[0m
+[0;34m2025-09-18 08:34:08 - Starting generation for: 12[0m
+[1;33m2025-09-18 08:34:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 08:37:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:37:01 - Completed: 12[0m
+[0;34m2025-09-18 08:37:06 - Starting generation for: 13[0m
+[1;33m2025-09-18 08:37:06 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #13 to the book collecting template. The article is a comprehensive 1,400+ word guide titled "The Strategic Collector's Guide to Selling and Downsizing: Maximizing Value When Life Changes Require Hard Choices" that covers:
+
+- Understanding when and why to sell collections
+- Emotional preparation and decision-making frameworks
+- Valuation strategies for different book types
+- Choosing appropriate sales channels 
+- Maximizing returns through strategic presentation
+- Ensuring books find good homes
+- Learning from the selling experience
+
+The article follows all the master prompt guidelines:
+- Written in a sophisticated, caring voice
+- 1,400+ words (11 min read)
+- Authored by "Templata" 
+- Category: "Personal Life"
+- Flows in engaging paragraphs rather than bullet points
+- Avoids first person
+- Includes proper SEO metadata
+- Type: "guide", Difficulty: "intermediate"
+- Relevant to book collecting context and needs
+
+The article has been properly added to the manualBlogPosts array in src/registry/blogs-book-collecting.ts with all required metadata and related posts.
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 08:40:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:40:47 - Completed: 13[0m
+[0;34m2025-09-18 08:40:52 - Starting generation for: 14[0m
+[1;33m2025-09-18 08:40:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 08:44:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:44:32 - Completed: 14[0m
+[0;34m2025-09-18 08:44:37 - Starting generation for: 15[0m
+[1;33m2025-09-18 08:44:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 08:47:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:47:01 - Completed: 15[0m
+[0;34m2025-09-18 08:47:06 - Starting generation for: 16[0m
+[1;33m2025-09-18 08:47:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 08:48:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:48:56 - Completed: 16[0m
+[0;34m2025-09-18 08:49:01 - Starting generation for: 17[0m
+[1;33m2025-09-18 08:49:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 08:51:45 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:51:45 - Completed: 17[0m
+[0;34m2025-09-18 08:51:50 - Starting generation for: 18[0m
+[1;33m2025-09-18 08:51:50 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 08:54:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:54:44 - Completed: 18[0m
+[0;34m2025-09-18 08:54:49 - Starting generation for: 19[0m
+[1;33m2025-09-18 08:54:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 08:56:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:56:44 - Completed: 19[0m
+[0;34m2025-09-18 08:56:49 - Starting generation for: 20[0m
+[1;33m2025-09-18 08:56:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 08:58:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:58:38 - Completed: 20[0m

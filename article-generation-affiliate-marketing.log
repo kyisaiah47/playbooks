@@ -1,0 +1,145 @@
+[0;34m2025-09-18 07:22:59 - Starting Article Generation Cycle for template: affiliate-marketing[0m
+[0;32m2025-09-18 07:22:59 - Using existing worktree: ../templata-affiliate-marketing[0m
+[1;33m2025-09-18 07:22:59 - Creating template blog file: blogs-affiliate-marketing.ts[0m
+[0;32m2025-09-18 07:22:59 - Created template blog file: ../templata-affiliate-marketing/src/registry/blogs-affiliate-marketing.ts[0m
+[0;34m2025-09-18 07:22:59 - Starting generation for: 1[0m
+[1;33m2025-09-18 07:22:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 07:24:07 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:24:07 - Completed: 1[0m
+[0;34m2025-09-18 07:24:12 - Starting generation for: 2[0m
+[1;33m2025-09-18 07:24:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 07:26:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:26:08 - Completed: 2[0m
+[0;34m2025-09-18 07:26:13 - Starting generation for: 3[0m
+[1;33m2025-09-18 07:26:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 07:27:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:27:50 - Completed: 3[0m
+[0;34m2025-09-18 07:27:55 - Starting generation for: 4[0m
+[1;33m2025-09-18 07:27:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 07:29:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:29:15 - Completed: 4[0m
+[0;34m2025-09-18 07:29:20 - Starting generation for: 5[0m
+[1;33m2025-09-18 07:29:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 07:30:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:30:51 - Completed: 5[0m
+[0;34m2025-09-18 07:30:56 - Starting generation for: 6[0m
+[1;33m2025-09-18 07:30:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 07:32:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:32:24 - Completed: 6[0m
+[0;34m2025-09-18 07:32:29 - Starting generation for: 7[0m
+[1;33m2025-09-18 07:32:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;34m2025-09-18 08:22:44 - Starting Article Generation Cycle for template: affiliate-marketing[0m
+[0;32m2025-09-18 08:22:44 - Using existing worktree: ../templata-affiliate-marketing[0m
+[0;34m2025-09-18 08:22:44 - Starting generation for: 7[0m
+[1;33m2025-09-18 08:22:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 08:24:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:24:16 - Completed: 7[0m
+[0;34m2025-09-18 08:24:21 - Starting generation for: 8[0m
+[1;33m2025-09-18 08:24:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 08:25:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:25:53 - Completed: 8[0m
+[0;34m2025-09-18 08:25:58 - Starting generation for: 9[0m
+[1;33m2025-09-18 08:25:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 08:27:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:27:25 - Completed: 9[0m
+[0;34m2025-09-18 08:27:30 - Starting generation for: 10[0m
+[1;33m2025-09-18 08:27:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 08:28:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:28:55 - Completed: 10[0m
+[0;34m2025-09-18 08:29:00 - Starting generation for: 11[0m
+[1;33m2025-09-18 08:29:00 - Running article generation...[0m
+Perfect! I've successfully created article #12 (not #11 as originally requested, since there were already 11 articles). The article I created is comprehensive and follows all the master prompt guidelines:
+
+**Article Details:**
+- **Title:** "Beyond the Inbox: How Email Marketing Transforms Affiliate Revenue from Random to Predictable"
+- **Word Count:** ~1,500 words (within the 1,200-1,600 range)
+- **Read Time:** 12 minutes
+- **Author:** "Templata"
+- **Category:** "Personal Life"
+- **Type:** "guide"
+- **Difficulty:** "intermediate" 
+- **Focus:** Email marketing strategies specifically for affiliate marketers
+- **Voice:** Sophisticated, caring, and engaging without being pretentious
+- **Structure:** Flows in engaging paragraphs with strategic section headers
+- **Content:** Practical, actionable insights about building email lists, creating converting content, and measuring success
+
+The article covers essential topics like email relationship psychology, list building strategies, content creation, timing optimization, segmentation, trust building, and success measurement - all specifically tailored for affiliate marketing contexts.
+
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 08:33:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:33:30 - Completed: 11[0m
+[0;34m2025-09-18 08:33:35 - Starting generation for: 12[0m
+[1;33m2025-09-18 08:33:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 08:36:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:36:11 - Completed: 12[0m
+[0;34m2025-09-18 08:36:16 - Starting generation for: 13[0m
+[1;33m2025-09-18 08:36:16 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #13 for the affiliate marketing template. The article is about "The Email Sequences That Actually Convert: Turning Subscribers into Affiliate Revenue" and follows all the master prompt guidelines:
+
+✅ **Requirements met:**
+- 1,400+ words (10 minute read)
+- Sophisticated, caring voice that feels premium but not pretentious
+- Comprehensive but not overwhelming content
+- Warm and encouraging tone like a wise mentor
+- Author: "Templata"
+- Category: "Personal Life"
+- Added to manualBlogPosts array in blogs-affiliate-marketing.ts
+- Proper SEO metadata included
+- Type: "guide", Difficulty: "intermediate"
+- Focused on affiliate marketing context and email marketing strategies
+- Minimized bullet points in favor of flowing paragraphs
+- Never used first person ("I", "my", "we")
+- Content that people would actually want to read and share
+
+The article covers email marketing for affiliate success, which is a crucial skill for affiliate marketers, and provides actionable insights about building trust-based email sequences, understanding subscriber psychology, and creating content that converts naturally without being pushy.
+
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 08:38:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:38:58 - Completed: 13[0m
+[0;34m2025-09-18 08:39:03 - Starting generation for: 14[0m
+[1;33m2025-09-18 08:39:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 08:41:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:41:02 - Completed: 14[0m
+[0;34m2025-09-18 08:41:07 - Starting generation for: 15[0m
+[1;33m2025-09-18 08:41:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 08:42:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:42:50 - Completed: 15[0m
+[0;34m2025-09-18 08:42:55 - Starting generation for: 16[0m
+[1;33m2025-09-18 08:42:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 08:45:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:45:47 - Completed: 16[0m
+[0;34m2025-09-18 08:45:52 - Starting generation for: 17[0m
+[1;33m2025-09-18 08:45:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 08:47:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:47:24 - Completed: 17[0m
+[0;34m2025-09-18 08:47:29 - Starting generation for: 18[0m
+[1;33m2025-09-18 08:47:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 08:50:34 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:50:34 - Completed: 18[0m
+[0;34m2025-09-18 08:50:39 - Starting generation for: 19[0m
+[1;33m2025-09-18 08:50:39 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 08:51:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:51:59 - Completed: 19[0m
+[0;34m2025-09-18 08:52:04 - Starting generation for: 20[0m
+[1;33m2025-09-18 08:52:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 08:54:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:54:46 - Completed: 20[0m

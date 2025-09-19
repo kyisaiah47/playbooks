@@ -1,0 +1,19 @@
+[0;34m2025-09-18 19:28:32 - Starting Article Generation Cycle for template: marriage-maintenance[0m
+[1;33m2025-09-18 19:28:32 - Creating worktree for template: marriage-maintenance[0m
+[0;32m2025-09-18 19:28:32 - Created branch: article-marriage-maintenance[0m
+[0;32m2025-09-18 19:28:34 - Created worktree: ../templata-marriage-maintenance[0m
+[1;33m2025-09-18 19:28:34 - Creating template blog file: blogs-marriage-maintenance.ts[0m
+[0;32m2025-09-18 19:28:34 - Created template blog file: ../templata-marriage-maintenance/src/registry/blogs-marriage-maintenance.ts[0m
+[0;34m2025-09-18 19:28:34 - Starting generation for: 1[0m
+[1;33m2025-09-18 19:28:34 - Running article generation...[0m
+[0;34m2025-09-18 19:29:24 - Starting Article Generation Cycle for template: marriage-maintenance[0m
+[0;32m2025-09-18 19:29:24 - Using existing worktree: ../templata-marriage-maintenance[0m
+[0;34m2025-09-18 19:29:24 - Starting generation for: 1[0m
+[1;33m2025-09-18 19:29:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 19:29:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 19:29:51 - Completed: 1[0m
+[0;34m2025-09-18 19:29:56 - Starting generation for: 2[0m
+[1;33m2025-09-18 19:29:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+ARTICLE GENERATION COMPLETE - Article #2

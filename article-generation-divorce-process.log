@@ -1,0 +1,123 @@
+[0;34m2025-09-18 12:34:11 - Starting Article Generation Cycle for template: divorce-process[0m
+[1;33m2025-09-18 12:34:11 - Creating worktree for template: divorce-process[0m
+[0;32m2025-09-18 12:34:11 - Created branch: article-divorce-process[0m
+[0;32m2025-09-18 12:34:13 - Created worktree: ../templata-divorce-process[0m
+[1;33m2025-09-18 12:34:13 - Creating template blog file: blogs-divorce-process.ts[0m
+[0;32m2025-09-18 12:34:13 - Created template blog file: ../templata-divorce-process/src/registry/blogs-divorce-process.ts[0m
+[0;34m2025-09-18 12:34:13 - Starting generation for: 1[0m
+[1;33m2025-09-18 12:34:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 12:35:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:35:31 - Completed: 1[0m
+[0;34m2025-09-18 12:35:36 - Starting generation for: 2[0m
+[1;33m2025-09-18 12:35:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 12:37:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:37:58 - Completed: 2[0m
+[0;34m2025-09-18 12:38:03 - Starting generation for: 3[0m
+[1;33m2025-09-18 12:38:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 12:39:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:39:56 - Completed: 3[0m
+[0;34m2025-09-18 12:40:01 - Starting generation for: 4[0m
+[1;33m2025-09-18 12:40:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 12:42:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:42:04 - Completed: 4[0m
+[0;34m2025-09-18 12:42:09 - Starting generation for: 5[0m
+[1;33m2025-09-18 12:42:09 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 12:44:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:44:30 - Completed: 5[0m
+[0;34m2025-09-18 12:44:35 - Starting generation for: 6[0m
+[1;33m2025-09-18 12:44:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 12:46:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:46:54 - Completed: 6[0m
+[0;34m2025-09-18 12:46:59 - Starting generation for: 7[0m
+[1;33m2025-09-18 12:46:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 12:49:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:49:23 - Completed: 7[0m
+[0;34m2025-09-18 12:49:28 - Starting generation for: 8[0m
+[1;33m2025-09-18 12:49:28 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 12:52:23 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:52:23 - Completed: 8[0m
+[0;34m2025-09-18 12:52:28 - Starting generation for: 9[0m
+[1;33m2025-09-18 12:52:28 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 12:55:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:55:53 - Completed: 9[0m
+[0;34m2025-09-18 12:55:58 - Starting generation for: 10[0m
+[1;33m2025-09-18 12:55:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 12:57:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 12:57:48 - Completed: 10[0m
+[0;34m2025-09-18 12:57:53 - Starting generation for: 11[0m
+[1;33m2025-09-18 12:57:53 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #11 to the divorce process template. The article "Rediscovering Yourself After Divorce: A Complete Guide to Rebuilding Your Identity" is a comprehensive 1,400+ word piece that follows all the master prompt guidelines:
+
+- **Word count**: 1,400+ words (within the 1,200-1,600 range)
+- **Voice**: Sophisticated, caring, and encouraging without being pretentious
+- **Structure**: Flowing paragraphs with minimal bullet points
+- **Author**: "Templata"
+- **Category**: "Personal Life"
+- **Format**: Complete BlogPost object with proper metadata
+- **Topic**: Highly relevant to divorce process - helping people rebuild their identity after divorce
+- **Type**: "guide" 
+- **Difficulty**: "intermediate"
+- **SEO**: Proper metadata with title, description, and OG image
+- **Tags**: Relevant and specific to the content
+- **Related content**: Connected to other divorce process articles
+
+The article addresses a crucial need for people going through divorce - the identity crisis that often follows the end of a long-term relationship. It provides practical, actionable guidance while maintaining the warm, supportive tone that makes people want to share it with friends going through similar experiences.
+
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 13:00:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:00:41 - Completed: 11[0m
+[0;34m2025-09-18 13:00:47 - Starting generation for: 12[0m
+[1;33m2025-09-18 13:00:47 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 13:03:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:03:38 - Completed: 12[0m
+[0;34m2025-09-18 13:03:43 - Starting generation for: 13[0m
+[1;33m2025-09-18 13:03:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 13:08:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:08:06 - Completed: 13[0m
+[0;34m2025-09-18 13:08:11 - Starting generation for: 14[0m
+[1;33m2025-09-18 13:08:12 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 13:10:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:10:31 - Completed: 14[0m
+[0;34m2025-09-18 13:10:36 - Starting generation for: 15[0m
+[1;33m2025-09-18 13:10:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 13:13:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:13:27 - Completed: 15[0m
+[0;34m2025-09-18 13:13:32 - Starting generation for: 16[0m
+[1;33m2025-09-18 13:13:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 13:15:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:15:46 - Completed: 16[0m
+[0;34m2025-09-18 13:15:51 - Starting generation for: 17[0m
+[1;33m2025-09-18 13:15:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 13:17:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:17:15 - Completed: 17[0m
+[0;34m2025-09-18 13:17:20 - Starting generation for: 18[0m
+[1;33m2025-09-18 13:17:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 13:20:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:20:06 - Completed: 18[0m
+[0;34m2025-09-18 13:20:11 - Starting generation for: 19[0m
+[1;33m2025-09-18 13:20:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 13:21:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:21:50 - Completed: 19[0m
+[0;34m2025-09-18 13:21:55 - Starting generation for: 20[0m
+[1;33m2025-09-18 13:21:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 13:23:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 13:23:29 - Completed: 20[0m

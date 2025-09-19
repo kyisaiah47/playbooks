@@ -1,0 +1,138 @@
+[0;34m2025-09-18 14:48:30 - Starting Article Generation Cycle for template: graduate-school-decisions[0m
+[1;33m2025-09-18 14:48:30 - Creating worktree for template: graduate-school-decisions[0m
+[0;32m2025-09-18 14:48:30 - Created branch: article-graduate-school-decisions[0m
+[0;32m2025-09-18 14:48:33 - Created worktree: ../templata-graduate-school-decisions[0m
+[1;33m2025-09-18 14:48:33 - Creating template blog file: blogs-graduate-school-decisions.ts[0m
+[0;32m2025-09-18 14:48:33 - Created template blog file: ../templata-graduate-school-decisions/src/registry/blogs-graduate-school-decisions.ts[0m
+[0;34m2025-09-18 14:48:33 - Starting generation for: 1[0m
+[1;33m2025-09-18 14:48:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 14:49:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:49:47 - Completed: 1[0m
+[0;34m2025-09-18 14:49:52 - Starting generation for: 2[0m
+[1;33m2025-09-18 14:49:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 14:51:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:51:21 - Completed: 2[0m
+[0;34m2025-09-18 14:51:26 - Starting generation for: 3[0m
+[1;33m2025-09-18 14:51:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 14:53:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:53:06 - Completed: 3[0m
+[0;34m2025-09-18 14:53:11 - Starting generation for: 4[0m
+[1;33m2025-09-18 14:53:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 14:55:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:55:03 - Completed: 4[0m
+[0;34m2025-09-18 14:55:08 - Starting generation for: 5[0m
+[1;33m2025-09-18 14:55:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 14:56:57 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:56:57 - Completed: 5[0m
+[0;34m2025-09-18 14:57:02 - Starting generation for: 6[0m
+[1;33m2025-09-18 14:57:02 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 14:58:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 14:58:58 - Completed: 6[0m
+[0;34m2025-09-18 14:59:03 - Starting generation for: 7[0m
+[1;33m2025-09-18 14:59:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 18:11:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:11:39 - Completed: 7[0m
+[0;34m2025-09-18 18:11:44 - Starting generation for: 8[0m
+[1;33m2025-09-18 18:11:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 18:14:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:14:05 - Completed: 8[0m
+[0;34m2025-09-18 18:14:10 - Starting generation for: 9[0m
+[1;33m2025-09-18 18:14:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 18:16:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:16:05 - Completed: 9[0m
+[0;34m2025-09-18 18:16:10 - Starting generation for: 10[0m
+[1;33m2025-09-18 18:16:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 18:17:48 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:17:48 - Completed: 10[0m
+[0;34m2025-09-18 18:17:53 - Starting generation for: 11[0m
+[1;33m2025-09-18 18:17:53 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 18:20:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:20:58 - Completed: 11[0m
+[0;34m2025-09-18 18:21:03 - Starting generation for: 12[0m
+[1;33m2025-09-18 18:21:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 18:25:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:25:18 - Completed: 12[0m
+[0;34m2025-09-18 18:25:23 - Starting generation for: 13[0m
+[1;33m2025-09-18 18:25:23 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 18:27:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:27:19 - Completed: 13[0m
+[0;34m2025-09-18 18:27:24 - Starting generation for: 14[0m
+[1;33m2025-09-18 18:27:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 18:29:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:29:18 - Completed: 14[0m
+[0;34m2025-09-18 18:29:23 - Starting generation for: 15[0m
+[1;33m2025-09-18 18:29:23 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 18:30:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:30:50 - Completed: 15[0m
+[0;34m2025-09-18 18:30:55 - Starting generation for: 16[0m
+[1;33m2025-09-18 18:30:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 18:33:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:33:39 - Completed: 16[0m
+[0;34m2025-09-18 18:33:44 - Starting generation for: 17[0m
+[1;33m2025-09-18 18:33:44 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #17 to the graduate school decisions template. The article covers a crucial topic that many people facing graduate school decisions need to navigate - handling rejection and planning next steps. 
+
+The article follows all the master prompt guidelines:
+- 1,200-1,600 words (approximately 1,500 words)
+- Sophisticated, caring voice that's premium but not pretentious
+- Comprehensive coverage without being overwhelming
+- Warm and encouraging tone like a wise mentor
+- Minimized bullet points in favor of flowing paragraphs
+- Author: "Templata"
+- Category: "Personal Life"
+- Proper SEO metadata
+- Relevant tags and related content
+- Strategic guide format at intermediate difficulty level
+
+The content provides genuine value for people dealing with graduate school rejection, offering both emotional support and practical strategies for moving forward.
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 18:37:32 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:37:32 - Completed: 17[0m
+[0;34m2025-09-18 18:37:37 - Starting generation for: 18[0m
+[1;33m2025-09-18 18:37:37 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 18:39:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:39:13 - Completed: 18[0m
+[0;34m2025-09-18 18:39:18 - Starting generation for: 19[0m
+[1;33m2025-09-18 18:39:18 - Running article generation...[0m
+Perfect! I've successfully added a comprehensive 1,400+ word article about maintaining mental health during graduate school applications to the blog registry. The article follows all the master prompt guidelines:
+
+- **Word Count**: 1,400+ words (11 minute read time)
+- **Voice**: Sophisticated, caring, and encouraging tone without being pretentious
+- **Structure**: Flowing paragraphs with minimal bullet points as requested
+- **Author**: "Templata"
+- **Category**: "Personal Life"
+- **No First Person**: Avoided using "I", "my", "we" throughout
+- **Comprehensive Coverage**: Addresses the unique stressors, coping strategies, support systems, and practical advice
+- **SEO Optimized**: Includes proper metadata, tags, and descriptions
+- **Relevant Tags**: Mental Health, Graduate School, Stress Management, Application Process, Self Care, Academic Wellness
+
+The article addresses a critical need for graduate school applicants - managing the emotional toll of the application process - with practical, actionable advice that readers would genuinely want to share with friends going through similar experiences.
+
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 18:42:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:42:10 - Completed: 19[0m
+[0;34m2025-09-18 18:42:15 - Starting generation for: 20[0m
+[1;33m2025-09-18 18:42:15 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 18:43:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 18:43:40 - Completed: 20[0m
+[0;34m2025-09-19 13:31:24 - Starting Article Generation Cycle for template: graduate-school-decisions[0m
+[0;32m2025-09-19 13:31:24 - Using existing worktree: ../templata-graduate-school-decisions[0m

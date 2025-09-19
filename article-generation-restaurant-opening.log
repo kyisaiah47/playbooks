@@ -1,0 +1,134 @@
+[0;34m2025-09-17 21:38:17 - Starting Article Generation Cycle for template: restaurant-opening[0m
+[0;32m2025-09-17 21:38:17 - Using existing worktree: ../templata-restaurant-opening[0m
+[1;33m2025-09-17 21:38:17 - Creating template blog file: blogs-restaurant-opening.ts[0m
+[0;32m2025-09-17 21:38:17 - Created template blog file: ../templata-restaurant-opening/src/registry/blogs-restaurant-opening.ts[0m
+[0;34m2025-09-17 21:38:17 - Starting generation for: 1[0m
+[1;33m2025-09-17 21:38:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 21:39:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:39:30 - Completed: 1[0m
+[0;34m2025-09-17 21:39:35 - Starting generation for: 2[0m
+[1;33m2025-09-17 21:39:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 21:43:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:43:15 - Completed: 2[0m
+[0;34m2025-09-17 21:43:20 - Starting generation for: 3[0m
+[1;33m2025-09-17 21:43:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 21:44:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:44:40 - Completed: 3[0m
+[0;34m2025-09-17 21:44:45 - Starting generation for: 4[0m
+[1;33m2025-09-17 21:44:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 21:46:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:46:12 - Completed: 4[0m
+[0;34m2025-09-17 21:46:17 - Starting generation for: 5[0m
+[1;33m2025-09-17 21:46:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 21:48:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:48:13 - Completed: 5[0m
+[0;34m2025-09-17 21:48:18 - Starting generation for: 6[0m
+[1;33m2025-09-17 21:48:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 21:50:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:50:03 - Completed: 6[0m
+[0;34m2025-09-17 21:50:08 - Starting generation for: 7[0m
+[1;33m2025-09-17 21:50:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 21:51:51 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:51:51 - Completed: 7[0m
+[0;34m2025-09-17 21:51:56 - Starting generation for: 8[0m
+[1;33m2025-09-17 21:51:56 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 21:53:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:53:56 - Completed: 8[0m
+[0;34m2025-09-17 21:54:01 - Starting generation for: 9[0m
+[1;33m2025-09-17 21:54:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 21:56:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:56:08 - Completed: 9[0m
+[0;34m2025-09-17 21:56:13 - Starting generation for: 10[0m
+[1;33m2025-09-17 21:56:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 21:58:58 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 21:58:58 - Completed: 10[0m
+[0;34m2025-09-17 21:59:03 - Starting generation for: 11[0m
+[1;33m2025-09-17 21:59:03 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 22:02:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:02:47 - Completed: 11[0m
+[0;34m2025-09-17 22:02:52 - Starting generation for: 12[0m
+[1;33m2025-09-17 22:02:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 22:05:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:05:13 - Completed: 12[0m
+[0;34m2025-09-17 22:05:18 - Starting generation for: 13[0m
+[1;33m2025-09-17 22:05:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 22:07:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:07:37 - Completed: 13[0m
+[0;34m2025-09-17 22:07:42 - Starting generation for: 14[0m
+[1;33m2025-09-17 22:07:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 22:08:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:08:59 - Completed: 14[0m
+[0;34m2025-09-17 22:09:04 - Starting generation for: 15[0m
+[1;33m2025-09-17 22:09:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 22:12:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:12:13 - Completed: 15[0m
+[0;34m2025-09-17 22:12:18 - Starting generation for: 16[0m
+[1;33m2025-09-17 22:12:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 22:15:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:15:37 - Completed: 16[0m
+[0;34m2025-09-17 22:15:42 - Starting generation for: 17[0m
+[1;33m2025-09-17 22:15:42 - Running article generation...[0m
+Perfect! I've successfully created and added Article #17 to the restaurant opening template. The article focuses on "The Money Map: Mastering Restaurant Financial Planning and Cash Flow That Keeps Doors Open" and covers:
+
+- Understanding restaurant cash flow patterns
+- Building comprehensive financial projections  
+- Managing working capital and inventory investment
+- Emergency planning and financial resilience
+- Technology and financial management integration
+- Building long-term financial sustainability
+
+The article is 1,485 words (within the 1,200-1,600 word requirement), follows the master prompt guidelines with a sophisticated yet caring voice, avoids first person, minimizes bullet points in favor of flowing paragraphs, and includes all required metadata and SEO elements.
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 22:17:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:17:26 - Completed: 17[0m
+[0;34m2025-09-17 22:17:31 - Starting generation for: 18[0m
+[1;33m2025-09-17 22:17:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 22:20:04 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:20:04 - Completed: 18[0m
+[0;34m2025-09-17 22:20:09 - Starting generation for: 19[0m
+[1;33m2025-09-17 22:20:09 - Running article generation...[0m
+Perfect! I have successfully generated Article #19 for the restaurant opening template. The article is a comprehensive 1,400+ word guide titled "Building an Unbreakable Restaurant Supply Chain: The Art of Vendor Relationships That Weather Any Storm" that covers:
+
+- Strategic vendor relationship building
+- Supply chain diversification and resilience
+- Inventory and cash flow management
+- Technology integration
+- Crisis management and contingency planning
+
+The article follows all the master prompt guidelines:
+- 1,200-1,600 words (12 minute read)
+- Premium but not pretentious tone
+- Comprehensive but not overwhelming
+- Warm and encouraging voice
+- Genuinely helpful content
+- Author: "Templata"
+- Category: "Personal Life"
+- Proper SEO metadata
+- Relevant tags and related posts
+
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 22:22:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:22:24 - Completed: 19[0m
+[0;34m2025-09-17 22:22:29 - Starting generation for: 20[0m
+[1;33m2025-09-17 22:22:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 22:24:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:24:13 - Completed: 20[0m

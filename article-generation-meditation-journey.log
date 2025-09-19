@@ -1,0 +1,119 @@
+[0;34m2025-09-17 22:37:13 - Starting Article Generation Cycle for template: meditation-journey[0m
+[0;32m2025-09-17 22:37:13 - Using existing worktree: ../templata-meditation-journey[0m
+[1;33m2025-09-17 22:37:13 - Creating template blog file: blogs-meditation-journey.ts[0m
+[0;32m2025-09-17 22:37:13 - Created template blog file: ../templata-meditation-journey/src/registry/blogs-meditation-journey.ts[0m
+[0;34m2025-09-17 22:37:13 - Starting generation for: 1[0m
+[1;33m2025-09-17 22:37:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 22:38:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:38:26 - Completed: 1[0m
+[0;34m2025-09-17 22:38:31 - Starting generation for: 2[0m
+[1;33m2025-09-17 22:38:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 22:39:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:39:50 - Completed: 2[0m
+[0;34m2025-09-17 22:39:55 - Starting generation for: 3[0m
+[1;33m2025-09-17 22:39:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 22:41:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:41:31 - Completed: 3[0m
+[0;34m2025-09-17 22:41:36 - Starting generation for: 4[0m
+[1;33m2025-09-17 22:41:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 22:43:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:43:12 - Completed: 4[0m
+[0;34m2025-09-17 22:43:18 - Starting generation for: 5[0m
+[1;33m2025-09-17 22:43:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 22:45:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:45:03 - Completed: 5[0m
+[0;34m2025-09-17 22:45:08 - Starting generation for: 6[0m
+[1;33m2025-09-17 22:45:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 22:47:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:47:06 - Completed: 6[0m
+[0;34m2025-09-17 22:47:11 - Starting generation for: 7[0m
+[1;33m2025-09-17 22:47:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 22:49:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:49:16 - Completed: 7[0m
+[0;34m2025-09-17 22:49:22 - Starting generation for: 8[0m
+[1;33m2025-09-17 22:49:22 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 22:51:27 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:51:27 - Completed: 8[0m
+[0;34m2025-09-17 22:51:32 - Starting generation for: 9[0m
+[1;33m2025-09-17 22:51:32 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 22:52:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:52:53 - Completed: 9[0m
+[0;34m2025-09-17 22:52:58 - Starting generation for: 10[0m
+[1;33m2025-09-17 22:52:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 22:54:37 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:54:37 - Completed: 10[0m
+[0;34m2025-09-17 22:54:42 - Starting generation for: 11[0m
+[1;33m2025-09-17 22:54:42 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 22:57:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:57:28 - Completed: 11[0m
+[0;34m2025-09-17 22:57:33 - Starting generation for: 12[0m
+[1;33m2025-09-17 22:57:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 22:58:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:58:55 - Completed: 12[0m
+[0;34m2025-09-17 22:59:00 - Starting generation for: 13[0m
+[1;33m2025-09-17 22:59:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 23:00:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:00:13 - Completed: 13[0m
+[0;34m2025-09-17 23:00:18 - Starting generation for: 14[0m
+[1;33m2025-09-17 23:00:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 23:01:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:01:50 - Completed: 14[0m
+[0;34m2025-09-17 23:01:55 - Starting generation for: 15[0m
+[1;33m2025-09-17 23:01:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 23:03:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:03:29 - Completed: 15[0m
+[0;34m2025-09-17 23:03:35 - Starting generation for: 16[0m
+[1;33m2025-09-17 23:03:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 23:04:55 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:04:55 - Completed: 16[0m
+[0;34m2025-09-17 23:05:00 - Starting generation for: 17[0m
+[1;33m2025-09-17 23:05:00 - Running article generation...[0m
+Perfect! I have successfully generated and added a comprehensive meditation retreat guide as Article #18 to the meditation journey template. The article follows all the master prompt guidelines:
+
+- **1,462 words** (within the 1,200-1,600 word requirement)
+- **Author: "Templata"**
+- **Category: "Personal Life"**
+- **Sophisticated, caring voice** that's premium but not pretentious
+- **Flowing paragraphs** with minimal bullet points
+- **No first person** usage
+- **Type: "guide"** and **difficulty: "intermediate"**
+- **Proper SEO metadata** included
+- **Relevant meditation journey topic** that would genuinely help people considering or preparing for retreats
+- **Focus on meditation journey context** and practical needs
+
+The article covers what really happens during meditation retreats, from the reality of silence to physical challenges, teacher relationships, and integration challenges - providing comprehensive guidance for someone considering their first retreat experience.
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 23:09:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:09:38 - Completed: 17[0m
+[0;34m2025-09-17 23:09:43 - Starting generation for: 18[0m
+[1;33m2025-09-17 23:09:43 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 23:11:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:11:20 - Completed: 18[0m
+[0;34m2025-09-17 23:11:25 - Starting generation for: 19[0m
+[1;33m2025-09-17 23:11:25 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 23:12:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:12:46 - Completed: 19[0m
+[0;34m2025-09-17 23:12:51 - Starting generation for: 20[0m
+[1;33m2025-09-17 23:12:51 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 23:15:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:15:16 - Completed: 20[0m

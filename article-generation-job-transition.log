@@ -1,0 +1,39 @@
+[0;34m2025-09-18 19:28:32 - Starting Article Generation Cycle for template: job-transition[0m
+[1;33m2025-09-18 19:28:32 - Creating worktree for template: job-transition[0m
+[0;32m2025-09-18 19:28:32 - Created branch: article-job-transition[0m
+[0;32m2025-09-18 19:28:34 - Created worktree: ../templata-job-transition[0m
+[1;33m2025-09-18 19:28:34 - Creating template blog file: blogs-job-transition.ts[0m
+[0;32m2025-09-18 19:28:34 - Created template blog file: ../templata-job-transition/src/registry/blogs-job-transition.ts[0m
+[0;34m2025-09-18 19:28:34 - Starting generation for: 1[0m
+[1;33m2025-09-18 19:28:34 - Running article generation...[0m
+[0;34m2025-09-18 19:29:24 - Starting Article Generation Cycle for template: job-transition[0m
+[0;32m2025-09-18 19:29:24 - Using existing worktree: ../templata-job-transition[0m
+[0;34m2025-09-18 19:29:24 - Starting generation for: 1[0m
+[1;33m2025-09-18 19:29:24 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 19:30:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 19:30:02 - Completed: 1[0m
+[0;34m2025-09-18 19:30:07 - Starting generation for: 2[0m
+[1;33m2025-09-18 19:30:07 - Running article generation...[0m
+Perfect! The comprehensive article has been successfully generated and added to the blog registry. The article meets all the requirements:
+
+- ✅ 1,200-1,600 words (approximately 1,400 words)
+- ✅ Follows master prompt voice guidelines (sophisticated, caring, premium but not pretentious)
+- ✅ Author: "Templata" 
+- ✅ Category: "Personal Life"
+- ✅ Added to `src/registry/blogs-job-transition.ts` in `manualBlogPosts` array
+- ✅ Includes proper SEO metadata
+- ✅ Type: "guide", Difficulty: "intermediate"
+- ✅ Focused on job transition context (salary negotiation during career changes)
+- ✅ Engaging, flowing paragraphs with minimal bullet points
+- ✅ Never uses first person
+
+The article covers salary negotiation strategies specifically for people changing careers, which is highly relevant to the job transition template audience.
+
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 19:30:36 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 19:30:36 - Completed: 1[0m
+[0;34m2025-09-18 19:30:41 - Starting generation for: 3[0m
+[1;33m2025-09-18 19:30:41 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+ARTICLE GENERATION COMPLETE - Article #3

@@ -1,0 +1,152 @@
+[0;34m2025-09-17 14:57:59 - Starting Article Generation Cycle for template: side-hustle-development[0m
+[0;32m2025-09-17 14:57:59 - Using existing worktree: ../templata-side-hustle-development[0m
+[1;33m2025-09-17 14:57:59 - Creating template blog file: blogs-side-hustle-development.ts[0m
+[0;32m2025-09-17 14:57:59 - Created template blog file: ../templata-side-hustle-development/src/registry/blogs-side-hustle-development.ts[0m
+[0;34m2025-09-17 14:57:59 - Starting generation for: 1[0m
+[1;33m2025-09-17 14:58:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 14:59:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:59:22 - Completed: 1[0m
+[0;34m2025-09-17 14:59:27 - Starting generation for: 2[0m
+[1;33m2025-09-17 14:59:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 15:00:59 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:00:59 - Completed: 2[0m
+[0;34m2025-09-17 15:01:04 - Starting generation for: 3[0m
+[1;33m2025-09-17 15:01:04 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 15:02:30 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:02:30 - Completed: 3[0m
+[0;34m2025-09-17 15:02:35 - Starting generation for: 4[0m
+[1;33m2025-09-17 15:02:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 15:04:24 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:04:24 - Completed: 4[0m
+[0;34m2025-09-17 15:04:29 - Starting generation for: 5[0m
+[1;33m2025-09-17 15:04:29 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 15:06:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:06:13 - Completed: 5[0m
+[0;34m2025-09-17 15:06:18 - Starting generation for: 6[0m
+[1;33m2025-09-17 15:06:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 15:08:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:08:08 - Completed: 6[0m
+[0;34m2025-09-17 15:08:13 - Starting generation for: 7[0m
+[1;33m2025-09-17 15:08:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 15:10:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:10:02 - Completed: 7[0m
+[0;34m2025-09-17 15:10:07 - Starting generation for: 8[0m
+[1;33m2025-09-17 15:10:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 15:12:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:12:00 - Completed: 8[0m
+[0;34m2025-09-17 15:12:05 - Starting generation for: 9[0m
+[1;33m2025-09-17 15:12:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 15:16:44 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:16:44 - Completed: 9[0m
+[0;34m2025-09-17 15:16:49 - Starting generation for: 10[0m
+[1;33m2025-09-17 15:16:49 - Running article generation...[0m
+Excellent! The file syntax is valid. Let me also verify the article content meets all the requirements:
+
+**Article Summary:**
+- ✅ **Word Count**: Approximately 1,400+ words (within the 1,200-1,600 requirement)
+- ✅ **Author**: "Templata" 
+- ✅ **Category**: "Personal Life"
+- ✅ **Added to manualBlogPosts array**: Successfully added as Article #10
+- ✅ **SEO metadata**: Complete with metaTitle, metaDescription, and ogImage
+- ✅ **Type/Difficulty**: "guide" / "intermediate"
+- ✅ **Side hustle development focus**: Specifically addresses client acquisition and retention for service-based side hustles
+- ✅ **Master prompt compliance**: Sophisticated, caring voice; flows in engaging paragraphs rather than bullet points; avoids first person; provides genuinely helpful, actionable advice
+- ✅ **Topic relevance**: Covers a crucial aspect of side hustle development not addressed in the previous 9 articles
+
+**Topic chosen**: "Client Acquisition and Retention for Service-Based Side Hustles: Building Sustainable Relationships That Drive Growth"
+
+This topic addresses a critical gap in the existing article library and provides practical, actionable strategies for side hustlers who offer services rather than products. The article maintains the sophisticated yet accessible tone required by the master prompt while delivering genuine value to readers building service-based side businesses.
+
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 15:20:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:20:15 - Completed: 10[0m
+[0;34m2025-09-17 15:20:20 - Starting generation for: 11[0m
+[1;33m2025-09-17 15:20:21 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #11 to the side hustle development template. The article "Building a Product-Based Side Hustle: From Idea to First Sale" is a comprehensive 1,400+ word guide that follows all the master prompt requirements:
+
+- ✅ 1,200-1,600 words (approximately 1,400 words, 12-minute read)
+- ✅ Follows sophisticated, caring voice guidelines
+- ✅ Author: "Templata"
+- ✅ Category: "Personal Life"
+- ✅ Added to manualBlogPosts array in the registry
+- ✅ Proper SEO metadata included
+- ✅ Type: "guide", Difficulty: "intermediate"
+- ✅ Focused on side hustle development context
+- ✅ Relevant topic helping people with product-based side hustles
+- ✅ Minimized bullet points, used flowing paragraphs
+- ✅ No first person usage
+
+The article covers the complete journey from idea validation to first sale, including practical strategies for product development, pricing, marketing, and scaling - all perfectly suited for the side hustle development template audience.
+
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 15:23:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:23:43 - Completed: 11[0m
+[0;34m2025-09-17 15:23:48 - Starting generation for: 12[0m
+[1;33m2025-09-17 15:23:49 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 15:25:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:25:11 - Completed: 12[0m
+[0;34m2025-09-17 15:25:16 - Starting generation for: 13[0m
+[1;33m2025-09-17 15:25:16 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 15:27:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:27:08 - Completed: 13[0m
+[0;34m2025-09-17 15:27:13 - Starting generation for: 14[0m
+[1;33m2025-09-17 15:27:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 15:29:45 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:29:45 - Completed: 14[0m
+[0;34m2025-09-17 15:29:50 - Starting generation for: 15[0m
+[1;33m2025-09-17 15:29:50 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 15:33:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:33:28 - Completed: 15[0m
+[0;34m2025-09-17 15:33:33 - Starting generation for: 16[0m
+[1;33m2025-09-17 15:33:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 15:36:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:36:31 - Completed: 16[0m
+[0;34m2025-09-17 15:36:36 - Starting generation for: 17[0m
+[1;33m2025-09-17 15:36:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 15:38:38 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:38:38 - Completed: 17[0m
+[0;34m2025-09-17 15:38:43 - Starting generation for: 18[0m
+[1;33m2025-09-17 15:38:43 - Running article generation...[0m
+Perfect! I've successfully generated and added Article #18 to the side hustle development template. The article "The Side Hustle Burnout Trap: How to Build Sustainable Growth Without Sacrificing Your Sanity" is a comprehensive 1,500+ word guide that follows the master prompt guidelines with:
+
+- Sophisticated, caring voice focused on practical wisdom
+- Flowing paragraphs with minimal bullet points
+- Author: "Templata"
+- Category: "Personal Life"
+- Proper SEO metadata and structure
+- Intermediate difficulty guide format
+- Relevant tags and related content
+- Focus on side hustle development context
+
+The article addresses a critical issue for side hustlers - avoiding burnout while building sustainable growth - with actionable strategies for boundaries, systems, and maintaining well-being.
+
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 15:42:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:42:01 - Completed: 18[0m
+[0;34m2025-09-17 15:42:06 - Starting generation for: 19[0m
+[1;33m2025-09-17 15:42:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 15:43:53 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:43:53 - Completed: 19[0m
+[0;34m2025-09-17 15:43:58 - Starting generation for: 20[0m
+[1;33m2025-09-17 15:43:58 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 15:48:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:48:05 - Completed: 20[0m
+[0;34m2025-09-17 20:04:50 - Starting Article Generation Cycle for template: side-hustle-development[0m
+[0;32m2025-09-17 20:04:50 - Using existing worktree: ../templata-side-hustle-development[0m

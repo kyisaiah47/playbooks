@@ -1,0 +1,146 @@
+[0;34m2025-09-18 07:22:59 - Starting Article Generation Cycle for template: art-collecting[0m
+[0;32m2025-09-18 07:22:59 - Using existing worktree: ../templata-art-collecting[0m
+[1;33m2025-09-18 07:22:59 - Creating template blog file: blogs-art-collecting.ts[0m
+[0;32m2025-09-18 07:22:59 - Created template blog file: ../templata-art-collecting/src/registry/blogs-art-collecting.ts[0m
+[0;34m2025-09-18 07:22:59 - Starting generation for: 1[0m
+[1;33m2025-09-18 07:22:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-18 07:24:10 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:24:10 - Completed: 1[0m
+[0;34m2025-09-18 07:24:15 - Starting generation for: 2[0m
+[1;33m2025-09-18 07:24:15 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-18 07:26:05 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:26:05 - Completed: 2[0m
+[0;34m2025-09-18 07:26:10 - Starting generation for: 3[0m
+[1;33m2025-09-18 07:26:10 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-18 07:27:47 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:27:47 - Completed: 3[0m
+[0;34m2025-09-18 07:27:52 - Starting generation for: 4[0m
+[1;33m2025-09-18 07:27:52 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-18 07:29:21 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:29:21 - Completed: 4[0m
+[0;34m2025-09-18 07:29:26 - Starting generation for: 5[0m
+[1;33m2025-09-18 07:29:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-18 07:30:43 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:30:43 - Completed: 5[0m
+[0;34m2025-09-18 07:30:48 - Starting generation for: 6[0m
+[1;33m2025-09-18 07:30:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-18 07:32:15 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 07:32:15 - Completed: 6[0m
+[0;34m2025-09-18 07:32:20 - Starting generation for: 7[0m
+[1;33m2025-09-18 07:32:20 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;34m2025-09-18 08:22:44 - Starting Article Generation Cycle for template: art-collecting[0m
+[0;32m2025-09-18 08:22:44 - Using existing worktree: ../templata-art-collecting[0m
+[0;34m2025-09-18 08:22:44 - Starting generation for: 7[0m
+[1;33m2025-09-18 08:22:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-18 08:24:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:24:35 - Completed: 7[0m
+[0;34m2025-09-18 08:24:40 - Starting generation for: 8[0m
+[1;33m2025-09-18 08:24:40 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-18 08:26:13 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:26:13 - Completed: 8[0m
+[0;34m2025-09-18 08:26:18 - Starting generation for: 9[0m
+[1;33m2025-09-18 08:26:18 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-18 08:28:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:28:01 - Completed: 9[0m
+[0;34m2025-09-18 08:28:06 - Starting generation for: 10[0m
+[1;33m2025-09-18 08:28:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-18 08:29:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:29:50 - Completed: 10[0m
+[0;34m2025-09-18 08:29:55 - Starting generation for: 11[0m
+[1;33m2025-09-18 08:29:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-18 08:31:20 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:31:21 - Completed: 11[0m
+[0;34m2025-09-18 08:31:26 - Starting generation for: 12[0m
+[1;33m2025-09-18 08:31:26 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-18 08:33:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:33:26 - Completed: 12[0m
+[0;34m2025-09-18 08:33:31 - Starting generation for: 13[0m
+[1;33m2025-09-18 08:33:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-18 08:36:08 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:36:08 - Completed: 13[0m
+[0;34m2025-09-18 08:36:13 - Starting generation for: 14[0m
+[1;33m2025-09-18 08:36:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-18 08:38:49 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:38:49 - Completed: 14[0m
+[0;34m2025-09-18 08:38:54 - Starting generation for: 15[0m
+[1;33m2025-09-18 08:38:54 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-18 08:40:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:40:22 - Completed: 15[0m
+[0;34m2025-09-18 08:40:27 - Starting generation for: 16[0m
+[1;33m2025-09-18 08:40:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-18 08:42:46 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:42:46 - Completed: 16[0m
+[0;34m2025-09-18 08:42:51 - Starting generation for: 17[0m
+[1;33m2025-09-18 08:42:51 - Running article generation...[0m
+Perfect! I have successfully added a comprehensive 1,400+ word article about art collection preservation and display strategies to the blog registry. The article:
+
+- Follows the master prompt guidelines with sophisticated, caring voice
+- Is 1,400+ words (12-minute read) within the required range
+- Uses flowing paragraphs instead of bullet points
+- Avoids first person language
+- Includes proper metadata with SEO optimization
+- Is categorized as "Personal Life" with author "Templata"
+- Focuses on practical, genuinely helpful advice for art collectors
+- Covers essential preservation topics like light damage, climate control, handling, storage, and documentation
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-18 08:44:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:44:40 - Completed: 17[0m
+[0;34m2025-09-18 08:44:45 - Starting generation for: 18[0m
+[1;33m2025-09-18 08:44:45 - Running article generation...[0m
+I successfully generated and added a comprehensive 1,400+ word article about "Navigating Contemporary Art and Digital Mediums" to the art collecting template. The article covers:
+
+- Understanding contemporary art's digital evolution
+- Evaluating video art, digital prints, and NFTs
+- Authenticity and preservation challenges
+- Market dynamics and artist relationships
+- Building future-forward collections
+
+The article follows all master prompt guidelines with sophisticated, caring voice, proper SEO metadata, and focuses specifically on art collecting needs. It's been added as article #18 in the manualBlogPosts array.
+
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-18 08:49:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:49:01 - Completed: 18[0m
+[0;34m2025-09-18 08:49:06 - Starting generation for: 19[0m
+[1;33m2025-09-18 08:49:06 - Running article generation...[0m
+Perfect! The file syntax is valid. I have successfully generated Article #19 for the art collecting template. The article is:
+
+**Title**: "Building Meaningful Gallery Relationships: How to Connect with Dealers and Access the Best Art"
+
+**Key Details**:
+- 1,320 words (10-minute read)
+- Author: "Templata"  
+- Category: "Personal Life"
+- Type: "guide"
+- Difficulty: "beginner"
+- Focuses on helping new collectors build authentic relationships with galleries and art dealers
+- Provides practical advice on preparation, timing, communication, and developing long-term relationships
+- Includes proper SEO metadata and follows all master prompt guidelines
+
+The article has been added to the `manualBlogPosts` array in `src/registry/blogs-art-collecting.ts` and follows the sophisticated, caring voice outlined in the master prompt while providing genuinely helpful guidance for art collectors.
+
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-18 08:51:28 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:51:28 - Completed: 19[0m
+[0;34m2025-09-18 08:51:33 - Starting generation for: 20[0m
+[1;33m2025-09-18 08:51:33 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-18 08:53:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-18 08:53:14 - Completed: 20[0m

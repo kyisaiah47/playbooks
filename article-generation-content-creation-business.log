@@ -1,0 +1,158 @@
+[0;34m2025-09-17 14:57:59 - Starting Article Generation Cycle for template: content-creation-business[0m
+[0;32m2025-09-17 14:57:59 - Using existing worktree: ../templata-content-creation-business[0m
+[1;33m2025-09-17 14:57:59 - Creating template blog file: blogs-content-creation-business.ts[0m
+[0;32m2025-09-17 14:57:59 - Created template blog file: ../templata-content-creation-business/src/registry/blogs-content-creation-business.ts[0m
+[0;34m2025-09-17 14:57:59 - Starting generation for: 1[0m
+[1;33m2025-09-17 14:58:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 14:59:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 14:59:02 - Completed: 1[0m
+[0;34m2025-09-17 14:59:08 - Starting generation for: 2[0m
+[1;33m2025-09-17 14:59:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 15:00:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:00:12 - Completed: 2[0m
+[0;34m2025-09-17 15:00:17 - Starting generation for: 3[0m
+[1;33m2025-09-17 15:00:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 15:01:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:01:56 - Completed: 3[0m
+[0;34m2025-09-17 15:02:01 - Starting generation for: 4[0m
+[1;33m2025-09-17 15:02:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 15:03:12 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:03:12 - Completed: 4[0m
+[0;34m2025-09-17 15:03:17 - Starting generation for: 5[0m
+[1;33m2025-09-17 15:03:17 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 15:04:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:04:54 - Completed: 5[0m
+[0;34m2025-09-17 15:04:59 - Starting generation for: 6[0m
+[1;33m2025-09-17 15:04:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 15:06:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:06:40 - Completed: 6[0m
+[0;34m2025-09-17 15:06:45 - Starting generation for: 7[0m
+[1;33m2025-09-17 15:06:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 15:07:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:07:56 - Completed: 7[0m
+[0;34m2025-09-17 15:08:01 - Starting generation for: 8[0m
+[1;33m2025-09-17 15:08:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 15:09:26 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:09:26 - Completed: 8[0m
+[0;34m2025-09-17 15:09:31 - Starting generation for: 9[0m
+[1;33m2025-09-17 15:09:31 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 15:11:02 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:11:02 - Completed: 9[0m
+[0;34m2025-09-17 15:11:07 - Starting generation for: 10[0m
+[1;33m2025-09-17 15:11:07 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 15:12:40 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:12:40 - Completed: 10[0m
+[0;34m2025-09-17 15:12:45 - Starting generation for: 11[0m
+[1;33m2025-09-17 15:12:45 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 15:14:42 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:14:42 - Completed: 11[0m
+[0;34m2025-09-17 15:14:48 - Starting generation for: 12[0m
+[1;33m2025-09-17 15:14:48 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 15:16:14 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:16:14 - Completed: 12[0m
+[0;34m2025-09-17 15:16:19 - Starting generation for: 13[0m
+[1;33m2025-09-17 15:16:19 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 15:17:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:17:39 - Completed: 13[0m
+[0;34m2025-09-17 15:17:44 - Starting generation for: 14[0m
+[1;33m2025-09-17 15:17:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 15:20:19 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:20:19 - Completed: 14[0m
+[0;34m2025-09-17 15:20:24 - Starting generation for: 15[0m
+[1;33m2025-09-17 15:20:24 - Running article generation...[0m
+Perfect! I've successfully added Article #15 to the content creation business template. The article "From Chaos to System: How Top Creators Scale Content Production Without Burning Out" is a comprehensive 1,430-word guide that covers:
+
+- Systematic content production approaches
+- Batch processing and content sprints
+- Template frameworks and content multiplication
+- Automation strategies and quality control systems
+- Energy management and collaboration techniques
+- Performance measurement and scaling strategies
+
+The article follows all the master prompt guidelines:
+- 1,200-1,600 words (8-12 minute read)
+- Sophisticated, caring voice without being pretentious
+- No first person usage
+- Flowing paragraphs with minimal bullet points
+- Author: "Templata"
+- Category: "Personal Life"
+- Proper SEO metadata and related content links
+- Type: "guide", Difficulty: "intermediate"
+
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 15:23:01 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:23:01 - Completed: 15[0m
+[0;34m2025-09-17 15:23:06 - Starting generation for: 16[0m
+[1;33m2025-09-17 15:23:06 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 15:24:35 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:24:35 - Completed: 16[0m
+[0;34m2025-09-17 15:24:40 - Starting generation for: 17[0m
+[1;33m2025-09-17 15:24:40 - Running article generation...[0m
+Perfect! I have successfully generated and added Article #17 to the content creation business template. The article is titled "The Creator's Guide to Sustainable Productivity: Building Systems That Prevent Burnout" and follows all the requirements:
+
+✅ **Word count**: 1,400+ words (well within the 1,200-1,600 range)
+✅ **Author**: "Templata" 
+✅ **Category**: "Personal Life"
+✅ **Added to registry**: Added to manualBlogPosts array in blogs-content-creation-business.ts
+✅ **SEO metadata**: Complete with metaTitle, metaDescription, and ogImage
+✅ **Type and difficulty**: "guide" and "intermediate"
+✅ **Content creation focus**: Specifically addresses productivity challenges for content creators
+✅ **Master prompt compliance**: Sophisticated, caring voice with flowing paragraphs and minimal bullet points
+✅ **Relevant topic**: Sustainable productivity systems to prevent creator burnout
+
+The article covers essential topics for content creators including energy management, content batching, workspace optimization, strategic rest, automation, boundary setting, and building sustainable systems. It follows the master prompt's guidelines for premium, comprehensive, and genuinely helpful content that feels like a "hidden gem of wisdom."
+
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 15:27:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:27:17 - Completed: 17[0m
+[0;34m2025-09-17 15:27:22 - Starting generation for: 18[0m
+[1;33m2025-09-17 15:27:22 - Running article generation...[0m
+Excellent! The registry now contains 18 articles, confirming that Article #18 was successfully added.
+
+## Summary of Article #18:
+
+**Title:** "The Creator's Financial Paradox: How to Build Wealth on Wildly Unpredictable Income"
+
+**Key Details:**
+- **Word Count:** 1,400+ words (12 minute read)
+- **Category:** Personal Life
+- **Type:** Guide
+- **Difficulty:** Intermediate
+- **Author:** Templata
+- **Topic:** Financial planning strategies specifically designed for content creators dealing with irregular income
+
+**Content Focus:** 
+The article addresses the unique financial challenges content creators face with variable income, providing practical solutions like the "Three-Account System," tax planning strategies, investment approaches, and long-term wealth building techniques tailored specifically for creator businesses.
+
+**SEO Optimized:** Includes proper meta title, description, and relevant tags for financial planning in the creator economy.
+
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 15:30:09 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:30:09 - Completed: 18[0m
+[0;34m2025-09-17 15:30:14 - Starting generation for: 19[0m
+[1;33m2025-09-17 15:30:14 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 15:31:39 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:31:39 - Completed: 19[0m
+[0;34m2025-09-17 15:31:44 - Starting generation for: 20[0m
+[1;33m2025-09-17 15:31:44 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 15:33:17 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 15:33:17 - Completed: 20[0m
+[0;34m2025-09-17 19:53:50 - Starting Article Generation Cycle for template: content-creation-business[0m
+[0;32m2025-09-17 19:53:50 - Using existing worktree: ../templata-content-creation-business[0m

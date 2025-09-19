@@ -1,0 +1,127 @@
+[0;34m2025-09-17 22:37:13 - Starting Article Generation Cycle for template: marathon-training[0m
+[0;32m2025-09-17 22:37:13 - Using existing worktree: ../templata-marathon-training[0m
+[1;33m2025-09-17 22:37:13 - Creating template blog file: blogs-marathon-training.ts[0m
+[0;32m2025-09-17 22:37:13 - Created template blog file: ../templata-marathon-training/src/registry/blogs-marathon-training.ts[0m
+[0;34m2025-09-17 22:37:13 - Starting generation for: 1[0m
+[1;33m2025-09-17 22:37:13 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #1
+[0;32m2025-09-17 22:38:31 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:38:31 - Completed: 1[0m
+[0;34m2025-09-17 22:38:36 - Starting generation for: 2[0m
+[1;33m2025-09-17 22:38:36 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #2
+[0;32m2025-09-17 22:40:06 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:40:06 - Completed: 2[0m
+[0;34m2025-09-17 22:40:11 - Starting generation for: 3[0m
+[1;33m2025-09-17 22:40:11 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #3
+[0;32m2025-09-17 22:41:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:41:50 - Completed: 3[0m
+[0;34m2025-09-17 22:41:55 - Starting generation for: 4[0m
+[1;33m2025-09-17 22:41:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #4
+[0;32m2025-09-17 22:43:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:43:29 - Completed: 4[0m
+[0;34m2025-09-17 22:43:34 - Starting generation for: 5[0m
+[1;33m2025-09-17 22:43:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #5
+[0;32m2025-09-17 22:45:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:45:29 - Completed: 5[0m
+[0;34m2025-09-17 22:45:34 - Starting generation for: 6[0m
+[1;33m2025-09-17 22:45:34 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #6
+[0;32m2025-09-17 22:47:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:47:22 - Completed: 6[0m
+[0;34m2025-09-17 22:47:27 - Starting generation for: 7[0m
+[1;33m2025-09-17 22:47:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #7
+[0;32m2025-09-17 22:49:18 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:49:18 - Completed: 7[0m
+[0;34m2025-09-17 22:49:23 - Starting generation for: 8[0m
+[1;33m2025-09-17 22:49:23 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #8
+[0;32m2025-09-17 22:51:16 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:51:16 - Completed: 8[0m
+[0;34m2025-09-17 22:51:21 - Starting generation for: 9[0m
+[1;33m2025-09-17 22:51:21 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #9
+[0;32m2025-09-17 22:53:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:53:54 - Completed: 9[0m
+[0;34m2025-09-17 22:54:00 - Starting generation for: 10[0m
+[1;33m2025-09-17 22:54:00 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #10
+[0;32m2025-09-17 22:55:25 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:55:25 - Completed: 10[0m
+[0;34m2025-09-17 22:55:30 - Starting generation for: 11[0m
+[1;33m2025-09-17 22:55:30 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #11
+[0;32m2025-09-17 22:56:56 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:56:56 - Completed: 11[0m
+[0;34m2025-09-17 22:57:01 - Starting generation for: 12[0m
+[1;33m2025-09-17 22:57:01 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #12
+[0;32m2025-09-17 22:58:22 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 22:58:22 - Completed: 12[0m
+[0;34m2025-09-17 22:58:27 - Starting generation for: 13[0m
+[1;33m2025-09-17 22:58:27 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #13
+[0;32m2025-09-17 23:00:03 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:00:03 - Completed: 13[0m
+[0;34m2025-09-17 23:00:08 - Starting generation for: 14[0m
+[1;33m2025-09-17 23:00:08 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #14
+[0;32m2025-09-17 23:02:00 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:02:00 - Completed: 14[0m
+[0;34m2025-09-17 23:02:05 - Starting generation for: 15[0m
+[1;33m2025-09-17 23:02:05 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #15
+[0;32m2025-09-17 23:04:54 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:04:54 - Completed: 15[0m
+[0;34m2025-09-17 23:04:59 - Starting generation for: 16[0m
+[1;33m2025-09-17 23:04:59 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #16
+[0;32m2025-09-17 23:07:41 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:07:41 - Completed: 16[0m
+[0;34m2025-09-17 23:07:46 - Starting generation for: 17[0m
+[1;33m2025-09-17 23:07:46 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #17
+[0;32m2025-09-17 23:09:29 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:09:29 - Completed: 17[0m
+[0;34m2025-09-17 23:09:34 - Starting generation for: 18[0m
+[1;33m2025-09-17 23:09:35 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #18
+[0;32m2025-09-17 23:11:11 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:11:11 - Completed: 18[0m
+[0;34m2025-09-17 23:11:16 - Starting generation for: 19[0m
+[1;33m2025-09-17 23:11:16 - Running article generation...[0m
+Perfect! The article contains 1,592 words, which falls within the required 1,200-1,600 word range. 
+
+## Summary
+
+I've successfully created Article #19 for the marathon training template:
+
+**Title:** "Marathon Tapering: The Art of Doing Less to Achieve More"
+
+**Key Details:**
+- ✅ 1,592 words (within 1,200-1,600 range)
+- ✅ Author: "Templata" 
+- ✅ Category: "Personal Life"
+- ✅ Type: "guide"
+- ✅ Difficulty: "intermediate"
+- ✅ Added to `src/registry/blogs-marathon-training.ts` in manualBlogPosts array
+- ✅ Includes proper SEO metadata
+- ✅ Follows master prompt voice guidelines (sophisticated, caring, premium but not pretentious)
+- ✅ Marathon training specific content about tapering strategies
+- ✅ Written in flowing paragraphs (minimal bullet points)
+- ✅ No first person usage
+
+The article covers the crucial but often misunderstood topic of marathon tapering, providing science-based strategies for the final weeks before race day. It addresses both the physiological and psychological aspects of tapering, making it genuinely helpful for marathon trainees.
+
+ARTICLE GENERATION COMPLETE - Article #19
+[0;32m2025-09-17 23:14:50 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:14:50 - Completed: 19[0m
+[0;34m2025-09-17 23:14:55 - Starting generation for: 20[0m
+[1;33m2025-09-17 23:14:55 - Running article generation...[0m
+ARTICLE GENERATION COMPLETE - Article #20
+[0;32m2025-09-17 23:16:33 - Skipping review - moving to next article[0m
+[0;32m2025-09-17 23:16:33 - Completed: 20[0m
