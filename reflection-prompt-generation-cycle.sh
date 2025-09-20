@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Template Prompt Generation Cycle Script
-# Generates practical action prompts individually with progress tracking (similar to article generation)
+# Generates reflection prompts individually with progress tracking (similar to article generation)
 
 set -e
 
@@ -84,7 +84,7 @@ get_section_names() {
     esac
 }
 
-# Create generation prompt for a single practical action prompt
+# Create generation prompt for a single reflection prompt
 create_prompt_generation() {
     local prompt_number="$1"
     local section_number=$(get_section_for_prompt "$prompt_number")
@@ -96,35 +96,28 @@ create_prompt_generation() {
     local section_name=$(echo "$section_names" | cut -d'|' -f"$section_number")
 
     cat << EOF
-Generate ONE practical action prompt for the $template_readable template.
+Generate ONE expert-level reflection prompt for the $template_readable template.
 
 PROMPT #$prompt_number (Section $section_number: "$section_name", Prompt $prompt_in_section of 17)
 
 REQUIREMENTS:
-- Create a concrete, actionable task prompt for someone navigating $template_readable
+- Create a sophisticated, thoughtful reflection prompt for someone navigating $template_readable
 - Focus on "$section_name" theme
-- Make it a specific task they can complete and check off (not a reflection question)
-- Include detailed helpText (2-3 sentences explaining why this action is important and how to approach it)
-- Choose appropriate category: 'planning', 'decision', 'research', or 'action'
-- Make it specific and practical for this life moment
-- Add to src/data/prompts-${TEMPLATE_NAME}.ts in actionPrompts array
-
-EXAMPLES of good practical prompts:
-- "Research and contact 3 potential wedding venues in your area"
-- "Create a detailed monthly budget including baby-related expenses"
-- "Schedule preconception health appointments with your doctor"
-- "Interview and select a pediatrician for your baby"
+- Include detailed helpText (2-3 sentences minimum explaining why this reflection matters)
+- Choose appropriate category: 'consideration', 'planning', 'decision', or 'research'
+- Make it specific and actionable for this life moment
+- Add to src/data/prompts-${TEMPLATE_NAME}.ts in reflectionPrompts array
 
 FORMAT:
-Add this object to the actionPrompts array:
+Add this object to the reflectionPrompts array:
 {
   id: 'prompt-${prompt_number}',
-  prompt: '[Your specific actionable task here]',
-  category: '[planning/decision/research/action]',
-  helpText: '[2-3 sentences explaining why this action matters and practical tips for completing it effectively]'
+  prompt: '[Your thoughtful prompt here]',
+  category: '[consideration/planning/decision/research]',
+  helpText: '[2-3 sentences explaining why this reflection is valuable for someone in this life moment]'
 }
 
-Focus on creating a prompt that gives someone a concrete task to complete as part of their $template_readable journey.
+Focus on creating a prompt that provides genuine guidance value for someone in the $template_readable journey.
 
 When complete, respond exactly: "PROMPT GENERATION COMPLETE - Prompt #$prompt_number"
 EOF
@@ -157,23 +150,19 @@ run_prompt_generation() {
 create_template_prompt_file() {
     local prompt_file="$WORKTREE_DIR/src/data/prompts-${TEMPLATE_NAME}.ts"
 
-    if [[ ! -f "$prompt_file" ]] || [[ "$OVERRIDE" == "true" ]]; then
-        if [[ "$OVERRIDE" == "true" ]] && [[ -f "$prompt_file" ]]; then
-            log_colored "$YELLOW" "Override flag detected - recreating template prompt file: prompts-${TEMPLATE_NAME}.ts"
-        else
-            log_colored "$YELLOW" "Creating template prompt file: prompts-${TEMPLATE_NAME}.ts"
-        fi
+    if [[ ! -f "$prompt_file" ]]; then
+        log_colored "$YELLOW" "Creating template prompt file: prompts-${TEMPLATE_NAME}.ts"
 
         cat > "$prompt_file" << 'EOF'
-export interface ActionPrompt {
+export interface ReflectionPrompt {
   id: string;
   prompt: string;
-  category: 'planning' | 'decision' | 'research' | 'action';
+  category: 'consideration' | 'planning' | 'decision' | 'research';
   helpText: string;
 }
 
-// Action prompts for template-specific practical tasks
-export const actionPrompts: ActionPrompt[] = [
+// Reflection prompts for template-specific guidance
+export const reflectionPrompts: ReflectionPrompt[] = [
   // Prompts will be added here by the generation script
 ];
 EOF
@@ -214,13 +203,6 @@ main() {
     # Setup log
     mkdir -p "$(dirname "$LOGFILE")"
 
-    # Handle override flag
-    if [[ "$OVERRIDE" == "true" ]]; then
-        log_colored "$YELLOW" "Override flag detected - resetting progress and recreating files"
-        rm -f "$PROGRESS_FILE"
-        log_colored "$GREEN" "Progress reset to 0 for template: $TEMPLATE_NAME"
-    fi
-
     # Ensure worktree exists
     ensure_worktree
 
@@ -242,13 +224,13 @@ main() {
         sleep 5
     done
 
-    log_colored "$GREEN" "Action prompt generation cycle complete!"
-    log_colored "$GREEN" "Generated 102 practical action prompts (6 sections × 17 prompts each)"
+    log_colored "$GREEN" "Prompt generation cycle complete!"
+    log_colored "$GREEN" "Generated 102 prompts (6 sections × 17 prompts each)"
 }
 
 # Show usage
 show_usage() {
-    echo "Usage: $0 [TEMPLATE_NAME] [COMMAND] [--override]"
+    echo "Usage: $0 [TEMPLATE_NAME] [COMMAND]"
     echo ""
     echo "TEMPLATE_NAME (optional, defaults to 'grandparent-role'):"
     echo "  Any template from template-list.txt"
@@ -260,24 +242,11 @@ show_usage() {
     echo "  reset          - Reset progress"
     echo "  help           - Show this help"
     echo ""
-    echo "FLAGS:"
-    echo "  --override     - Reset progress and recreate prompt file (overrides existing work)"
-    echo ""
     echo "Examples:"
-    echo "  $0 grandparent-role              # Generate all grandparent-role prompts (resume from progress)"
+    echo "  $0 grandparent-role              # Generate all grandparent-role prompts"
     echo "  $0 career-change single          # Generate one career-change prompt"
     echo "  $0 home-buying status            # Check home-buying progress"
-    echo "  $0 baby-planning --override      # Start baby-planning fresh, overriding existing work"
 }
-
-# Parse arguments for override flag
-OVERRIDE=false
-for arg in "$@"; do
-    if [[ "$arg" == "--override" ]]; then
-        OVERRIDE=true
-        break
-    fi
-done
 
 # Handle arguments
 COMMAND="${2:-main}"
