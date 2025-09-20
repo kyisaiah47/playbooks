@@ -527,7 +527,7 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
 
           {resource.relatedBlogPost ? (
             <Button variant="outline" size="sm" className="h-8 text-xs bg-background/50 backdrop-blur hover:bg-primary/10 border-primary/20" asChild>
-              <Link href={`/blog/${resource.relatedBlogPost}`} target="_blank" rel="noopener noreferrer">
+              <Link href={`/articles/${resource.relatedBlogPost}`} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-3 h-3 mr-2" />
                 Open Full View
               </Link>

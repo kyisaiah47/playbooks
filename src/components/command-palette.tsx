@@ -411,7 +411,7 @@ export function CommandPalette({
     addRecentItem({
       id: article.id,
       name: (article as any).title,
-      url: `/blog/${(article as any).slug}`,
+      url: `/articles/${(article as any).slug}`,
       category: (article as any).category,
       type: "article" as const
     })
@@ -447,7 +447,7 @@ export function CommandPalette({
     toggleFavorite({
       id: item.id,
       name: type === "template" ? item.name : item.title,
-      url: type === "template" ? item.url : `/blog/${item.slug}`,
+      url: type === "template" ? item.url : `/articles/${item.slug}`,
       category: item.category,
       type
     })
@@ -863,7 +863,7 @@ export function CommandPalette({
                           const Icon = getCategoryIcon((article as any).category)
                           const isStarred = isFavorited(article.id)
                           return (
-                            <Link key={article.id} href={`/blog/${(article as any).slug}`} onClick={() => handleArticleClick(article)}>
+                            <Link key={article.id} href={`/articles/${(article as any).slug}`} onClick={() => handleArticleClick(article)}>
                               <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
                                 <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
                                   <Icon className="w-4 h-4" />
@@ -1230,7 +1230,7 @@ export function CommandPalette({
                       const Icon = getCategoryIcon((article as any).category)
                       const isStarred = isFavorited(article.id)
                       return (
-                        <Link key={`${article.id}-${index}`} href={`/blog/${(article as any).slug}`} onClick={() => handleArticleClick(article)}>
+                        <Link key={`${article.id}-${index}`} href={`/articles/${(article as any).slug}`} onClick={() => handleArticleClick(article)}>
                           <div className="group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm">
                             <div className="w-8 h-8 rounded-lg bg-muted/30 flex items-center justify-center">
                               <Icon className="w-4 h-4" />
@@ -1518,7 +1518,7 @@ export function CommandPalette({
                       const isSelected = selectedIndex === resultIndex
                       const isStarred = isFavorited(article.id)
                       return (
-                        <Link key={article.id} href={`/blog/${(article as any).slug}`} onClick={() => handleArticleClick(article)}>
+                        <Link key={article.id} href={`/articles/${(article as any).slug}`} onClick={() => handleArticleClick(article)}>
                           <div className={`group flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-muted/50 hover:scale-[1.01] hover:shadow-sm ${
                             isSelected ? 'bg-primary/10 border border-primary/20' : ''
                           }`}>

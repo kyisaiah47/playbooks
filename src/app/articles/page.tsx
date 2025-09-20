@@ -127,7 +127,7 @@ export default function ArticlesPage() {
         "position": startIndex + index + 1,
         "name": article.title,
         "description": article.excerpt,
-        "url": `https://templata.com/blog/${article.slug}`,
+        "url": `https://templata.com/articles/${article.slug}`,
         "author": {
           "@type": "Organization",
           "name": article.author
@@ -163,7 +163,7 @@ export default function ArticlesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredArticles.map((article, index) => (
-              <Link key={`featured-${article.id}-${index}`} href={`/blog/${article.slug}`}>
+              <Link key={`featured-${article.id}-${index}`} href={`/articles/${article.slug}`}>
                 <div className="group bg-background rounded-lg border hover:shadow-lg transition-shadow overflow-hidden">
                   <div className="aspect-video relative overflow-hidden">
                     <TemplateImage
@@ -227,8 +227,8 @@ export default function ArticlesPage() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Categories</SelectItem>
-                  {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
+                  {categories.map((category, index) => (
+                    <SelectItem key={`category-${index}-${category}`} value={category}>
                       {category}
                     </SelectItem>
                   ))}
@@ -292,7 +292,7 @@ export default function ArticlesPage() {
             <>
               <div className="space-y-2">
                 {paginatedArticles.map((article, index) => (
-                <Link key={`${article.id}-${index}`} href={`/blog/${article.slug}`}>
+                <Link key={`${article.id}-${index}`} href={`/articles/${article.slug}`}>
                   <div className="group hover:bg-muted/50 transition-colors p-4 rounded-md border-l-2 border-transparent hover:border-primary/50">
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
