@@ -21,11 +21,54 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Templata",
-  description: "Organize your life with curated templates and guided setups",
+  title: 'Templata | Organize Life\'s Biggest Moments',
+  description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments. From wedding planning to career changes, get organized in minutes with proven frameworks from domain experts.',
+  keywords: 'life planning templates, wedding planning, career change, home buying, business planning, expert guidance, structured frameworks, life organization',
+  authors: [{ name: 'Templata Team' }],
   icons: {
     icon: "/favicon-white.svg",
   },
+  openGraph: {
+    title: 'Templata | Organize Life\'s Biggest Moments',
+    description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments. Get organized in minutes with proven frameworks from domain experts.',
+    url: 'https://templata.com',
+    siteName: 'Templata',
+    images: [
+      {
+        url: 'https://templata.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Templata - Organize Life\'s Biggest Moments',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Templata | Organize Life\'s Biggest Moments',
+    description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments.',
+    images: ['https://templata.com/og-image.png'],
+    creator: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
+  alternates: {
+    canonical: 'https://templata.com',
+  },
+  category: 'productivity',
 };
 
 export default function RootLayout({
@@ -35,6 +78,55 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Templata",
+              "description": "Expert-crafted templates for life's biggest moments",
+              "url": "https://templata.com",
+              "logo": "https://templata.com/logo.png",
+              "sameAs": [
+                "https://twitter.com/templata",
+                "https://linkedin.com/company/templata"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "support@templata.com"
+              },
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "name": "Free Plan",
+                  "price": "0",
+                  "priceCurrency": "USD",
+                  "description": "1-2 starter templates with basic features"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Plus Plan",
+                  "price": "9",
+                  "priceCurrency": "USD",
+                  "billingDuration": "P1M",
+                  "description": "Full access to 100+ templates with advanced features"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Pro Plan",
+                  "price": "15",
+                  "priceCurrency": "USD",
+                  "billingDuration": "P1M",
+                  "description": "Everything in Plus plus AI features and team collaboration"
+                }
+              ]
+            })
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

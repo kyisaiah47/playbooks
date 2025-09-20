@@ -1,0 +1,110 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'FAQ | Frequently Asked Questions About Templata',
+  description: 'Get answers to common questions about Templata\'s life planning templates, pricing, features, and how our expert-crafted frameworks can help organize your biggest moments.',
+  keywords: 'templata faq, frequently asked questions, life planning help, template pricing, how templata works, expert templates guide, life organization questions',
+  openGraph: {
+    title: 'FAQ | Frequently Asked Questions About Templata',
+    description: 'Get answers to common questions about Templata\'s life planning templates, pricing, features, and expert frameworks.',
+    url: 'https://templata.com/faq',
+    siteName: 'Templata',
+    images: [
+      {
+        url: 'https://templata.com/og-image-faq.png',
+        width: 1200,
+        height: 630,
+        alt: 'Templata FAQ - Get Your Questions Answered',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FAQ | Frequently Asked Questions About Templata',
+    description: 'Get answers to common questions about Templata\'s life planning templates and expert frameworks.',
+    images: ['https://templata.com/og-image-faq.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://templata.com/faq',
+  },
+};
+
+export default function FAQLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      {/* Structured Data for FAQ Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "name": "Templata Frequently Asked Questions",
+            "description": "Common questions and answers about Templata's life planning templates and services",
+            "url": "https://templata.com/faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What exactly is Templata?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Templata is a platform that provides expertly crafted templates for life's biggest moments. Instead of starting with blank pages when planning a wedding, buying a home, or changing careers, you get structured templates with guided setup wizards that ask the right questions and build your personalized workspace."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much does Templata cost?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Templata offers three tiers: Free (1-2 starter templates, basic features), Plus ($9/mo for full access to 100+ templates, advanced workflows, unlimited active templates), and Pro ($15/mo adding AI Autofill, integrations, team collaboration, and white-label exports). All plans include 14-day free trials with no commitment."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who creates these templates?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our templates are crafted by domain experts - wedding planners, real estate agents, career coaches, business advisors, and other professionals who understand what you need to succeed. Each template includes their best practices and proven frameworks."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How many templates are available?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We currently offer 100+ templates across categories like Personal Life (25+ templates), Career & Work (30+ templates), Property & Moving (20+ templates), and Business & Finance (25+ templates). We're constantly adding new templates based on user requests."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my data secure?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, we take data security seriously. Your personal information is encrypted, stored securely, and never shared with third parties. You maintain full control over your data and can export or delete it at any time."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      {children}
+    </>
+  );
+}
