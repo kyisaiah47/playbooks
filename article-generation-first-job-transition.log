@@ -117,3 +117,5 @@ Perfect! I have successfully generated and added Article #20 to the first job tr
 ARTICLE GENERATION COMPLETE - Article #20
 [0;32m2025-09-18 14:10:25 - Skipping review - moving to next article[0m
 [0;32m2025-09-18 14:10:25 - Completed: 20[0m
+[0;34m2025-09-19 16:42:01 - Starting Article Generation Cycle for template: first-job-transition[0m
+[0;32m2025-09-19 16:42:01 - Using existing worktree: ../templata-first-job-transition[0m

@@ -52,10 +52,21 @@ export default function ArticlesPage() {
     return uniqueCategories.sort();
   }, []);
 
-  // Get featured articles (static selection)
+  // Get featured articles (curated selection)
   const featuredArticles = useMemo(() => {
-    // Always use the same 3 featured articles
-    return manualBlogPosts.slice(0, FEATURED_COUNT);
+    // Curated selection of high-quality, iconic articles
+    const featuredSlugs = [
+      'wedding-timeline-planning-master-schedule-guide', // Wedding planning - very popular
+      'complete-first-time-home-buyer-guide-2025', // Home buying - major life decision
+      'building-your-baby-budget-financial-planning-guide' // Baby planning - life-changing moment
+    ];
+
+    const featured = featuredSlugs.map(slug =>
+      manualBlogPosts.find(post => post.slug === slug)
+    ).filter(Boolean);
+
+    // Fallback to first 3 if curated articles not found
+    return featured.length === FEATURED_COUNT ? featured : manualBlogPosts.slice(0, FEATURED_COUNT);
   }, []);
 
   // Filter articles based on search and filters

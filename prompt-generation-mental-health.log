@@ -1,0 +1,255 @@
+[0;34m2025-09-19 19:03:08 - Starting Prompt Generation Cycle for template: mental-health[0m
+[0;32m2025-09-19 19:03:08 - Using existing worktree: ../templata-mental-health[0m
+[1;33m2025-09-19 19:03:08 - Creating template prompt file: prompts-mental-health.ts[0m
+[0;32m2025-09-19 19:03:08 - Created template prompt file: ../templata-mental-health/src/data/prompts-mental-health.ts[0m
+[0;34m2025-09-19 19:03:08 - Generating prompt #1 (Section 1, Prompt 1/17)[0m
+[1;33m2025-09-19 19:03:08 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #1
+[0;32m2025-09-19 19:03:25 - Completed prompt #1[0m
+[0;34m2025-09-19 19:03:30 - Generating prompt #2 (Section 1, Prompt 2/17)[0m
+[1;33m2025-09-19 19:03:30 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #2
+[0;32m2025-09-19 19:03:51 - Completed prompt #2[0m
+[0;34m2025-09-19 19:03:56 - Generating prompt #3 (Section 1, Prompt 3/17)[0m
+[1;33m2025-09-19 19:03:56 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #3
+[0;32m2025-09-19 19:04:16 - Completed prompt #3[0m
+[0;34m2025-09-19 19:04:21 - Generating prompt #4 (Section 1, Prompt 4/17)[0m
+[1;33m2025-09-19 19:04:21 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #4
+[0;32m2025-09-19 19:04:40 - Completed prompt #4[0m
+[0;34m2025-09-19 19:04:45 - Generating prompt #5 (Section 1, Prompt 5/17)[0m
+[1;33m2025-09-19 19:04:45 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #5
+[0;32m2025-09-19 19:05:05 - Completed prompt #5[0m
+[0;34m2025-09-19 19:05:10 - Generating prompt #6 (Section 1, Prompt 6/17)[0m
+[1;33m2025-09-19 19:05:10 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #6
+[0;32m2025-09-19 19:05:29 - Completed prompt #6[0m
+[0;34m2025-09-19 19:05:34 - Generating prompt #7 (Section 1, Prompt 7/17)[0m
+[1;33m2025-09-19 19:05:34 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #7
+[0;32m2025-09-19 19:05:55 - Completed prompt #7[0m
+[0;34m2025-09-19 19:06:00 - Generating prompt #8 (Section 1, Prompt 8/17)[0m
+[1;33m2025-09-19 19:06:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #8
+[0;32m2025-09-19 19:06:20 - Completed prompt #8[0m
+[0;34m2025-09-19 19:06:25 - Generating prompt #9 (Section 1, Prompt 9/17)[0m
+[1;33m2025-09-19 19:06:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #9
+[0;32m2025-09-19 19:06:45 - Completed prompt #9[0m
+[0;34m2025-09-19 19:06:50 - Generating prompt #10 (Section 1, Prompt 10/17)[0m
+[1;33m2025-09-19 19:06:50 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #10
+[0;32m2025-09-19 19:07:11 - Completed prompt #10[0m
+[0;34m2025-09-19 19:07:16 - Generating prompt #11 (Section 1, Prompt 11/17)[0m
+[1;33m2025-09-19 19:07:16 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #11
+[0;32m2025-09-19 19:07:36 - Completed prompt #11[0m
+[0;34m2025-09-19 19:07:41 - Generating prompt #12 (Section 1, Prompt 12/17)[0m
+[1;33m2025-09-19 19:07:41 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #12
+[0;32m2025-09-19 19:08:02 - Completed prompt #12[0m
+[0;34m2025-09-19 19:08:07 - Generating prompt #13 (Section 1, Prompt 13/17)[0m
+[1;33m2025-09-19 19:08:07 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #13
+[0;32m2025-09-19 19:08:30 - Completed prompt #13[0m
+[0;34m2025-09-19 19:08:35 - Generating prompt #14 (Section 1, Prompt 14/17)[0m
+[1;33m2025-09-19 19:08:35 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #14
+[0;32m2025-09-19 19:08:55 - Completed prompt #14[0m
+[0;34m2025-09-19 19:09:00 - Generating prompt #15 (Section 1, Prompt 15/17)[0m
+[1;33m2025-09-19 19:09:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #15
+[0;32m2025-09-19 19:09:22 - Completed prompt #15[0m
+[0;34m2025-09-19 19:09:27 - Generating prompt #16 (Section 1, Prompt 16/17)[0m
+[1;33m2025-09-19 19:09:27 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #16
+[0;32m2025-09-19 19:09:47 - Completed prompt #16[0m
+[0;34m2025-09-19 19:09:52 - Generating prompt #17 (Section 1, Prompt 17/17)[0m
+[1;33m2025-09-19 19:09:52 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #17
+[0;32m2025-09-19 19:10:13 - Completed prompt #17[0m
+[0;34m2025-09-19 19:10:18 - Generating prompt #18 (Section 2, Prompt 1/17)[0m
+[1;33m2025-09-19 19:10:18 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #18
+[0;32m2025-09-19 19:10:41 - Completed prompt #18[0m
+[0;34m2025-09-19 19:10:46 - Generating prompt #19 (Section 2, Prompt 2/17)[0m
+[1;33m2025-09-19 19:10:46 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #19
+[0;32m2025-09-19 19:11:14 - Completed prompt #19[0m
+[0;34m2025-09-19 19:11:19 - Generating prompt #20 (Section 2, Prompt 3/17)[0m
+[1;33m2025-09-19 19:11:19 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #20
+[0;32m2025-09-19 19:11:41 - Completed prompt #20[0m
+[0;34m2025-09-19 19:11:46 - Generating prompt #21 (Section 2, Prompt 4/17)[0m
+[1;33m2025-09-19 19:11:46 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #21
+[0;32m2025-09-19 19:12:06 - Completed prompt #21[0m
+[0;34m2025-09-19 19:12:11 - Generating prompt #22 (Section 2, Prompt 5/17)[0m
+[1;33m2025-09-19 19:12:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #22
+[0;32m2025-09-19 19:12:33 - Completed prompt #22[0m
+[0;34m2025-09-19 19:12:38 - Generating prompt #23 (Section 2, Prompt 6/17)[0m
+[1;33m2025-09-19 19:12:38 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #23
+[0;32m2025-09-19 19:13:02 - Completed prompt #23[0m
+[0;34m2025-09-19 19:13:07 - Generating prompt #24 (Section 2, Prompt 7/17)[0m
+[1;33m2025-09-19 19:13:07 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #24
+[0;32m2025-09-19 19:13:31 - Completed prompt #24[0m
+[0;34m2025-09-19 19:13:36 - Generating prompt #25 (Section 2, Prompt 8/17)[0m
+[1;33m2025-09-19 19:13:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #25
+[0;32m2025-09-19 19:14:01 - Completed prompt #25[0m
+[0;34m2025-09-19 19:14:06 - Generating prompt #26 (Section 2, Prompt 9/17)[0m
+[1;33m2025-09-19 19:14:06 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #26
+[0;32m2025-09-19 19:14:29 - Completed prompt #26[0m
+[0;34m2025-09-19 19:14:34 - Generating prompt #27 (Section 2, Prompt 10/17)[0m
+[1;33m2025-09-19 19:14:34 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #27
+[0;32m2025-09-19 19:15:04 - Completed prompt #27[0m
+[0;34m2025-09-19 19:15:09 - Generating prompt #28 (Section 2, Prompt 11/17)[0m
+[1;33m2025-09-19 19:15:09 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #28
+[0;32m2025-09-19 19:15:32 - Completed prompt #28[0m
+[0;34m2025-09-19 19:15:37 - Generating prompt #29 (Section 2, Prompt 12/17)[0m
+[1;33m2025-09-19 19:15:37 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #29
+[0;32m2025-09-19 19:16:03 - Completed prompt #29[0m
+[0;34m2025-09-19 19:16:08 - Generating prompt #30 (Section 2, Prompt 13/17)[0m
+[1;33m2025-09-19 19:16:08 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-mental-health/src/data/prompts-mental-health.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-29',
+    prompt: 'What specific transition plan do you need to develop for navigating major life changes while protecting your mental health stability, including how you will prepare emotionally for anticipated stressors, maintain essential routines during periods of upheaval, and create support structures that bridge you from where you are now to where you\'re headed without compromising your psychological foundation?',
+    category: 'planning',
+    helpText: 'Creating intentional transition plans is essential for mental health stability because major life changes—even positive ones—can destabilize your psychological equilibrium if not approached strategically. This preparation involves identifying which current supports and routines serve as non-negotiable anchors during change, developing specific strategies for managing the emotional intensity of transitions, and creating bridge plans that help you adapt gradually rather than experiencing jarring disruptions. Proper transition planning prevents you from sacrificing mental health progress for external changes and ensures that your psychological foundation remains strong even as other aspects of your life transform.'
+  }</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-29',
+    prompt: 'What specific transition plan do you need to develop for navigating major life changes while protecting your mental health stability, including how you will prepare emotionally for anticipated stressors, maintain essential routines during periods of upheaval, and create support structures that bridge you from where you are now to where you\'re headed without compromising your psychological foundation?',
+    category: 'planning',
+    helpText: 'Creating intentional transition plans is essential for mental health stability because major life changes—even positive ones—can destabilize your psychological equilibrium if not approached strategically. This preparation involves identifying which current supports and routines serve as non-negotiable anchors during change, developing specific strategies for managing the emotional intensity of transitions, and creating bridge plans that help you adapt gradually rather than experiencing jarring disruptions. Proper transition planning prevents you from sacrificing mental health progress for external changes and ensures that your psychological foundation remains strong even as other aspects of your life transform.'
+  },
+  {
+    id: 'prompt-30',
+    prompt: 'What comprehensive self-advocacy skills and communication strategies do you need to develop to effectively navigate mental health care systems, including how you will articulate your needs clearly to providers, prepare for appointments to maximize their effectiveness, and maintain your boundaries and treatment goals even when professionals suggest approaches that don\'t align with your values or lived experience?',
+    category: 'planning',
+    helpText: 'Developing strong self-advocacy skills is crucial for effective mental health care because the therapeutic relationship and treatment outcomes largely depend on your ability to communicate your needs, preferences, and concerns clearly while maintaining agency in your healing process. This preparation involves learning how to research providers, prepare for appointments with specific goals and questions, and confidently express when treatments aren\'t working or don\'t feel right for you. Strong self-advocacy ensures that your mental health care truly serves your unique needs rather than following a one-size-fits-all approach that may not address your specific circumstances or cultural background.'
+  }</parameter>
+</invoke>
+[0;32m2025-09-19 19:16:29 - Completed prompt #30[0m
+[0;34m2025-09-19 19:16:34 - Generating prompt #31 (Section 2, Prompt 14/17)[0m
+[1;33m2025-09-19 19:16:34 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #31
+[0;32m2025-09-19 19:17:02 - Completed prompt #31[0m
+[0;34m2025-09-19 19:17:07 - Generating prompt #32 (Section 2, Prompt 15/17)[0m
+[1;33m2025-09-19 19:17:08 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #32
+[0;32m2025-09-19 19:17:38 - Completed prompt #32[0m
+[0;34m2025-09-19 19:17:43 - Generating prompt #33 (Section 2, Prompt 16/17)[0m
+[1;33m2025-09-19 19:17:43 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #33
+[0;32m2025-09-19 19:18:08 - Completed prompt #33[0m
+[0;34m2025-09-19 19:18:14 - Generating prompt #34 (Section 2, Prompt 17/17)[0m
+[1;33m2025-09-19 19:18:14 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #34
+[0;32m2025-09-19 19:18:42 - Completed prompt #34[0m
+[0;34m2025-09-19 19:18:47 - Generating prompt #35 (Section 3, Prompt 1/17)[0m
+[1;33m2025-09-19 19:18:47 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #35
+[0;32m2025-09-19 19:19:11 - Completed prompt #35[0m
+[0;34m2025-09-19 19:19:16 - Generating prompt #36 (Section 3, Prompt 2/17)[0m
+[1;33m2025-09-19 19:19:16 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #36
+[0;32m2025-09-19 19:19:56 - Completed prompt #36[0m
+[0;34m2025-09-19 19:20:01 - Generating prompt #37 (Section 3, Prompt 3/17)[0m
+[1;33m2025-09-19 19:20:01 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #37
+[0;32m2025-09-19 19:20:30 - Completed prompt #37[0m
+[0;34m2025-09-19 19:20:35 - Generating prompt #38 (Section 3, Prompt 4/17)[0m
+[1;33m2025-09-19 19:20:35 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #38
+[0;32m2025-09-19 19:21:06 - Completed prompt #38[0m
+[0;34m2025-09-19 19:21:11 - Generating prompt #39 (Section 3, Prompt 5/17)[0m
+[1;33m2025-09-19 19:21:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #39
+[0;32m2025-09-19 19:21:39 - Completed prompt #39[0m
+[0;34m2025-09-19 19:21:44 - Generating prompt #40 (Section 3, Prompt 6/17)[0m
+[1;33m2025-09-19 19:21:44 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #40
+[0;32m2025-09-19 19:22:08 - Completed prompt #40[0m
+[0;34m2025-09-19 19:22:13 - Generating prompt #41 (Section 3, Prompt 7/17)[0m
+[1;33m2025-09-19 19:22:13 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #41
+[0;32m2025-09-19 19:22:38 - Completed prompt #41[0m
+[0;34m2025-09-19 19:22:43 - Generating prompt #42 (Section 3, Prompt 8/17)[0m
+[1;33m2025-09-19 19:22:43 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #42
+[0;32m2025-09-19 19:23:09 - Completed prompt #42[0m
+[0;34m2025-09-19 19:23:14 - Generating prompt #43 (Section 3, Prompt 9/17)[0m
+[1;33m2025-09-19 19:23:14 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #43
+[0;32m2025-09-19 19:23:38 - Completed prompt #43[0m
+[0;34m2025-09-19 19:23:43 - Generating prompt #44 (Section 3, Prompt 10/17)[0m
+[1;33m2025-09-19 19:23:44 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #44
+[0;32m2025-09-19 19:24:13 - Completed prompt #44[0m
+[0;34m2025-09-19 19:24:18 - Generating prompt #45 (Section 3, Prompt 11/17)[0m
+[1;33m2025-09-19 19:24:18 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #45
+[0;32m2025-09-19 19:24:49 - Completed prompt #45[0m
+[0;34m2025-09-19 19:24:54 - Generating prompt #46 (Section 3, Prompt 12/17)[0m
+[1;33m2025-09-19 19:24:54 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #46
+[0;34m2025-09-20 00:04:29 - Starting Prompt Generation Cycle for template: mental-health[0m
+[0;32m2025-09-20 00:04:29 - Using existing worktree: ../templata-mental-health[0m
+[0;34m2025-09-20 00:04:29 - Generating prompt #47 (Section 3, Prompt 13/17)[0m
+[1;33m2025-09-20 00:04:29 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #47
+[0;32m2025-09-20 00:05:11 - Completed prompt #47[0m
+[0;34m2025-09-20 00:05:16 - Generating prompt #48 (Section 3, Prompt 14/17)[0m
+[1;33m2025-09-20 00:05:16 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #48
+[0;32m2025-09-20 00:05:51 - Completed prompt #48[0m
+[0;34m2025-09-20 00:05:56 - Generating prompt #49 (Section 3, Prompt 15/17)[0m
+[1;33m2025-09-20 00:05:57 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #49
+[0;32m2025-09-20 00:06:40 - Completed prompt #49[0m
+[0;34m2025-09-20 00:06:46 - Generating prompt #50 (Section 3, Prompt 16/17)[0m
+[1;33m2025-09-20 00:06:46 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #50
+[0;32m2025-09-20 00:07:35 - Completed prompt #50[0m
+[0;34m2025-09-20 00:07:41 - Generating prompt #51 (Section 3, Prompt 17/17)[0m
+[1;33m2025-09-20 00:07:41 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #51
+[0;32m2025-09-20 00:08:21 - Completed prompt #51[0m
+[0;34m2025-09-20 00:08:26 - Generating prompt #52 (Section 4, Prompt 1/17)[0m
+[1;33m2025-09-20 00:08:27 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #52
+[0;32m2025-09-20 00:09:00 - Completed prompt #52[0m
+[0;34m2025-09-20 00:09:05 - Generating prompt #53 (Section 4, Prompt 2/17)[0m
+[1;33m2025-09-20 00:09:05 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #53
+[0;32m2025-09-20 00:09:41 - Completed prompt #53[0m
+[0;34m2025-09-20 00:09:46 - Generating prompt #54 (Section 4, Prompt 3/17)[0m
+[1;33m2025-09-20 00:09:46 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #54
+[0;32m2025-09-20 00:10:26 - Completed prompt #54[0m
+[0;34m2025-09-20 00:10:31 - Generating prompt #55 (Section 4, Prompt 4/17)[0m
+[1;33m2025-09-20 00:10:32 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #55
+[0;32m2025-09-20 00:11:04 - Completed prompt #55[0m
+[0;34m2025-09-20 00:11:09 - Generating prompt #56 (Section 4, Prompt 5/17)[0m
+[1;33m2025-09-20 00:11:09 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #56
+[0;32m2025-09-20 00:11:44 - Completed prompt #56[0m
+[0;34m2025-09-20 00:11:50 - Generating prompt #57 (Section 4, Prompt 6/17)[0m
+[1;33m2025-09-20 00:11:51 - Running prompt generation...[0m
+[0;34m2025-09-20 00:11:56 - Starting Prompt Generation Cycle for template: mental-health[0m
+[0;32m2025-09-20 00:11:57 - Using existing worktree: ../templata-mental-health[0m
+[0;34m2025-09-20 00:11:58 - Generating prompt #57 (Section 4, Prompt 6/17)[0m
+[1;33m2025-09-20 00:12:00 - Running prompt generation...[0m

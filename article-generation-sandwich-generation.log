@@ -1,0 +1,8 @@
+[0;34m2025-09-19 16:52:56 - Starting Article Generation Cycle for template: sandwich-generation[0m
+[1;33m2025-09-19 16:52:56 - Creating worktree for template: sandwich-generation[0m
+[0;32m2025-09-19 16:52:56 - Created branch: article-sandwich-generation[0m
+[0;32m2025-09-19 16:52:57 - Created worktree: ../templata-sandwich-generation[0m
+[1;33m2025-09-19 16:52:57 - Creating template blog file: blogs-sandwich-generation.ts[0m
+[0;32m2025-09-19 16:52:57 - Created template blog file: ../templata-sandwich-generation/src/registry/blogs-sandwich-generation.ts[0m
+[0;34m2025-09-19 16:52:57 - Starting generation for: 1[0m
+[1;33m2025-09-19 16:52:57 - Running article generation...[0m

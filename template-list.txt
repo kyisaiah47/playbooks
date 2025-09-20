@@ -160,11 +160,9 @@ professional-networking
 early-career-advancement
 mortgage-management
 
-# Adult/Middle-Aged (35-55) - 4 templates
+# Adult/Middle-Aged (35-55) - 2 templates
 teenage-parenting
-sandwich-generation
 executive-leadership-transition
-peak-earning-optimization
 
 # Elderly/Retirement (55+) - 5 templates
 retirement-lifestyle

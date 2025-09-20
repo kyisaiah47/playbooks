@@ -92,7 +92,22 @@
       "Bash(else echo \"❌ $template worktree missing\")",
       "Bash(kill:*)",
       "Bash(comm:*)",
-      "Read(//private/tmp/**)"
+      "Read(//private/tmp/**)",
+      "Read(//Users/ikim1/Documents/GitHub/templata-career-change/src/registry/**)",
+      "Read(//Users/ikim1/Documents/GitHub/templata-3d-printing/src/registry/**)",
+      "Read(//Users/ikim1/Documents/GitHub/**)",
+      "Bash(./prompt-generation-cycle.sh:*)",
+      "Bash(do mkdir -p \"../templata-$template/src/data\")",
+      "Bash(sort:*)",
+      "Bash(cp:*)",
+      "Bash(do echo \"=== Starting override for $template ===\")",
+      "Bash(git rm:*)",
+      "Bash(while read script)",
+      "Bash(do echo \"=== $script ===\")",
+      "Bash(if [ -f \".script-progress-$script\" ])",
+      "Bash(then echo \"✅ Status file exists\")",
+      "Bash(else echo \"❌ No status file\")",
+      "Bash(./template-generation-cycle.sh status:*)"
     ],
     "deny": [],
     "ask": []

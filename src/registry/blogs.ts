@@ -18,6 +18,14 @@ export interface BlogPost {
     metaDescription?: string;
     ogImage?: string;
   };
+  heroImage?: {
+    url: string;
+    alt: string;
+    photographer: string;
+    photographerUrl: string;
+    unsplashId: string;
+    cached: boolean;
+  };
   relatedTemplates?: string[];
   relatedPosts?: string[];
 }
@@ -185,31 +193,8 @@ import { manualBlogPosts as weightLossPosts } from './blogs-weight-loss';
 import { manualBlogPosts as yogaPracticePosts } from './blogs-yoga-practice';
 import { manualBlogPosts as youtubeChannelPosts } from './blogs-youtube-channel';
 
-// Original blog posts (keep these)
-const originalBlogPosts: BlogPost[] = [
-  {
-    id: "electric-vehicle-transition-guide-traditional-buyers",
-    slug: "electric-vehicle-transition-guide-traditional-buyers",
-    title: "Making the Electric Vehicle Transition: A Practical Guide for Traditional Car Buyers",
-    excerpt: "Electric vehicles represent more than just a technology shift – they're fundamentally changing how people think about car ownership, maintenance, and daily driving routines. For traditional car buyers considering the switch, understanding the real-world implications goes far beyond range anxiety and charging logistics.",
-    content: `Electric vehicles have reached a tipping point where they're no longer experimental technology for early adopters. Major automakers are committing hundreds of billions to electrification, governments are implementing purchase incentives and gas car phase-out timelines, and charging infrastructure is expanding rapidly across the country. Yet for traditional car buyers, the transition still feels like stepping into unknown territory.
-
-The shift to electric isn't just about swapping gas tanks for batteries. It fundamentally changes the relationship between driver and vehicle, affecting everything from daily routines to long-term financial planning. Understanding these changes before making the switch helps traditional buyers evaluate whether electric vehicles align with their actual needs rather than just their environmental aspirations.
-
-This guide cuts through marketing hype and internet debates to focus on practical considerations that matter for real-world car ownership. Whether electric vehicles make sense for your situation depends on specific factors unique to your driving patterns, home situation, and financial priorities.`,
-    author: "Templata",
-    publishedAt: "2024-01-15",
-    readTime: "12 min",
-    category: "Personal Life",
-    tags: ["car-buying", "electric-vehicles", "guide"],
-    type: "guide",
-    difficulty: "intermediate"
-  }
-];
-
-// Combine original posts with all template-specific blog posts
+// Combine all template-specific blog posts
 export const manualBlogPosts: BlogPost[] = [
-  ...originalBlogPosts,
   ...threeDPrintingPosts,
   ...academicStrugglesPosts,
   ...addictionFamilySupportPosts,

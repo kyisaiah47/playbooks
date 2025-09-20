@@ -1,0 +1,177 @@
+[0;34m2025-09-19 18:56:58 - Starting Prompt Generation Cycle for template: college-planning[0m
+[0;32m2025-09-19 18:56:58 - Using existing worktree: ../templata-college-planning[0m
+[1;33m2025-09-19 18:56:58 - Creating template prompt file: prompts-college-planning.ts[0m
+[0;34m2025-09-20 17:36:08 - Starting Prompt Generation Cycle for template: college-planning[0m
+[0;32m2025-09-20 17:36:08 - Using existing worktree: ../templata-college-planning[0m
+[1;33m2025-09-20 17:36:08 - Creating template prompt file: prompts-college-planning.ts[0m
+[0;32m2025-09-20 17:36:08 - Created template prompt file: ../templata-college-planning/src/data/prompts-college-planning.ts[0m
+[0;34m2025-09-20 17:36:08 - Generating prompt #1 (Section 1, Prompt 1/17)[0m
+[1;33m2025-09-20 17:36:08 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #1
+[0;32m2025-09-20 17:36:27 - Completed prompt #1[0m
+[0;34m2025-09-20 17:36:32 - Generating prompt #2 (Section 1, Prompt 2/17)[0m
+[1;33m2025-09-20 17:36:32 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #2
+[0;32m2025-09-20 17:36:50 - Completed prompt #2[0m
+[0;34m2025-09-20 17:36:55 - Generating prompt #3 (Section 1, Prompt 3/17)[0m
+[1;33m2025-09-20 17:36:55 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #3
+[0;32m2025-09-20 17:37:13 - Completed prompt #3[0m
+[0;34m2025-09-20 17:37:18 - Generating prompt #4 (Section 1, Prompt 4/17)[0m
+[1;33m2025-09-20 17:37:18 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #4
+[0;32m2025-09-20 17:37:36 - Completed prompt #4[0m
+[0;34m2025-09-20 17:37:41 - Generating prompt #5 (Section 1, Prompt 5/17)[0m
+[1;33m2025-09-20 17:37:41 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #5
+[0;32m2025-09-20 17:38:01 - Completed prompt #5[0m
+[0;34m2025-09-20 17:38:06 - Generating prompt #6 (Section 1, Prompt 6/17)[0m
+[1;33m2025-09-20 17:38:06 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #6
+[0;32m2025-09-20 17:38:26 - Completed prompt #6[0m
+[0;34m2025-09-20 17:38:31 - Generating prompt #7 (Section 1, Prompt 7/17)[0m
+[1;33m2025-09-20 17:38:31 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #7
+[0;32m2025-09-20 17:38:51 - Completed prompt #7[0m
+[0;34m2025-09-20 17:38:56 - Generating prompt #8 (Section 1, Prompt 8/17)[0m
+[1;33m2025-09-20 17:38:56 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #8
+[0;32m2025-09-20 17:39:17 - Completed prompt #8[0m
+[0;34m2025-09-20 17:39:22 - Generating prompt #9 (Section 1, Prompt 9/17)[0m
+[1;33m2025-09-20 17:39:22 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #9
+[0;32m2025-09-20 17:39:42 - Completed prompt #9[0m
+[0;34m2025-09-20 17:39:47 - Generating prompt #10 (Section 1, Prompt 10/17)[0m
+[1;33m2025-09-20 17:39:47 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #10
+[0;32m2025-09-20 17:40:06 - Completed prompt #10[0m
+[0;34m2025-09-20 17:40:11 - Generating prompt #11 (Section 1, Prompt 11/17)[0m
+[1;33m2025-09-20 17:40:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #11
+[0;32m2025-09-20 17:40:31 - Completed prompt #11[0m
+[0;34m2025-09-20 17:40:36 - Generating prompt #12 (Section 1, Prompt 12/17)[0m
+[1;33m2025-09-20 17:40:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #12
+[0;32m2025-09-20 17:40:55 - Completed prompt #12[0m
+[0;34m2025-09-20 17:41:00 - Generating prompt #13 (Section 1, Prompt 13/17)[0m
+[1;33m2025-09-20 17:41:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #13
+[0;32m2025-09-20 17:41:19 - Completed prompt #13[0m
+[0;34m2025-09-20 17:41:24 - Generating prompt #14 (Section 1, Prompt 14/17)[0m
+[1;33m2025-09-20 17:41:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #14
+[0;32m2025-09-20 17:41:44 - Completed prompt #14[0m
+[0;34m2025-09-20 17:41:49 - Generating prompt #15 (Section 1, Prompt 15/17)[0m
+[1;33m2025-09-20 17:41:49 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #15
+[0;32m2025-09-20 17:42:09 - Completed prompt #15[0m
+[0;34m2025-09-20 17:42:14 - Generating prompt #16 (Section 1, Prompt 16/17)[0m
+[1;33m2025-09-20 17:42:14 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #16
+[0;32m2025-09-20 17:42:35 - Completed prompt #16[0m
+[0;34m2025-09-20 17:42:40 - Generating prompt #17 (Section 1, Prompt 17/17)[0m
+[1;33m2025-09-20 17:42:40 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #17
+[0;32m2025-09-20 17:43:02 - Completed prompt #17[0m
+[0;34m2025-09-20 17:43:07 - Generating prompt #18 (Section 2, Prompt 1/17)[0m
+[1;33m2025-09-20 17:43:07 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #18
+[0;32m2025-09-20 17:43:26 - Completed prompt #18[0m
+[0;34m2025-09-20 17:43:31 - Generating prompt #19 (Section 2, Prompt 2/17)[0m
+[1;33m2025-09-20 17:43:31 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #19
+[0;32m2025-09-20 17:43:52 - Completed prompt #19[0m
+[0;34m2025-09-20 17:43:57 - Generating prompt #20 (Section 2, Prompt 3/17)[0m
+[1;33m2025-09-20 17:43:57 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #20
+[0;32m2025-09-20 17:44:18 - Completed prompt #20[0m
+[0;34m2025-09-20 17:44:23 - Generating prompt #21 (Section 2, Prompt 4/17)[0m
+[1;33m2025-09-20 17:44:23 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #21
+[0;32m2025-09-20 17:44:43 - Completed prompt #21[0m
+[0;34m2025-09-20 17:44:49 - Generating prompt #22 (Section 2, Prompt 5/17)[0m
+[1;33m2025-09-20 17:44:49 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #22
+[0;32m2025-09-20 17:45:09 - Completed prompt #22[0m
+[0;34m2025-09-20 17:45:14 - Generating prompt #23 (Section 2, Prompt 6/17)[0m
+[1;33m2025-09-20 17:45:14 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #23
+[0;32m2025-09-20 17:45:34 - Completed prompt #23[0m
+[0;34m2025-09-20 17:45:39 - Generating prompt #24 (Section 2, Prompt 7/17)[0m
+[1;33m2025-09-20 17:45:39 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #24
+[0;32m2025-09-20 17:46:00 - Completed prompt #24[0m
+[0;34m2025-09-20 17:46:05 - Generating prompt #25 (Section 2, Prompt 8/17)[0m
+[1;33m2025-09-20 17:46:05 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #25
+[0;32m2025-09-20 17:46:24 - Completed prompt #25[0m
+[0;34m2025-09-20 17:46:29 - Generating prompt #26 (Section 2, Prompt 9/17)[0m
+[1;33m2025-09-20 17:46:29 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #26
+[0;32m2025-09-20 17:46:50 - Completed prompt #26[0m
+[0;34m2025-09-20 17:46:55 - Generating prompt #27 (Section 2, Prompt 10/17)[0m
+[1;33m2025-09-20 17:46:55 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #27
+[0;32m2025-09-20 17:47:15 - Completed prompt #27[0m
+[0;34m2025-09-20 17:47:20 - Generating prompt #28 (Section 2, Prompt 11/17)[0m
+[1;33m2025-09-20 17:47:20 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #28
+[0;32m2025-09-20 17:47:39 - Completed prompt #28[0m
+[0;34m2025-09-20 17:47:44 - Generating prompt #29 (Section 2, Prompt 12/17)[0m
+[1;33m2025-09-20 17:47:44 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #29
+[0;32m2025-09-20 17:48:06 - Completed prompt #29[0m
+[0;34m2025-09-20 17:48:11 - Generating prompt #30 (Section 2, Prompt 13/17)[0m
+[1;33m2025-09-20 17:48:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #30
+[0;32m2025-09-20 17:48:30 - Completed prompt #30[0m
+[0;34m2025-09-20 17:48:35 - Generating prompt #31 (Section 2, Prompt 14/17)[0m
+[1;33m2025-09-20 17:48:35 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #31
+[0;32m2025-09-20 17:48:55 - Completed prompt #31[0m
+[0;34m2025-09-20 17:49:00 - Generating prompt #32 (Section 2, Prompt 15/17)[0m
+[1;33m2025-09-20 17:49:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #32
+[0;32m2025-09-20 17:49:20 - Completed prompt #32[0m
+[0;34m2025-09-20 17:49:25 - Generating prompt #33 (Section 2, Prompt 16/17)[0m
+[1;33m2025-09-20 17:49:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #33
+[0;32m2025-09-20 17:49:42 - Completed prompt #33[0m
+[0;34m2025-09-20 17:49:47 - Generating prompt #34 (Section 2, Prompt 17/17)[0m
+[1;33m2025-09-20 17:49:47 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #34
+[0;32m2025-09-20 17:50:09 - Completed prompt #34[0m
+[0;34m2025-09-20 17:50:14 - Generating prompt #35 (Section 3, Prompt 1/17)[0m
+[1;33m2025-09-20 17:50:14 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #35
+[0;32m2025-09-20 17:50:35 - Completed prompt #35[0m
+[0;34m2025-09-20 17:50:40 - Generating prompt #36 (Section 3, Prompt 2/17)[0m
+[1;33m2025-09-20 17:50:40 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #36
+[0;32m2025-09-20 17:51:00 - Completed prompt #36[0m
+[0;34m2025-09-20 17:51:05 - Generating prompt #37 (Section 3, Prompt 3/17)[0m
+[1;33m2025-09-20 17:51:05 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #37
+[0;32m2025-09-20 17:51:26 - Completed prompt #37[0m
+[0;34m2025-09-20 17:51:31 - Generating prompt #38 (Section 3, Prompt 4/17)[0m
+[1;33m2025-09-20 17:51:31 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #38
+[0;32m2025-09-20 17:51:51 - Completed prompt #38[0m
+[0;34m2025-09-20 17:51:56 - Generating prompt #39 (Section 3, Prompt 5/17)[0m
+[1;33m2025-09-20 17:51:56 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #39
+[0;32m2025-09-20 17:52:17 - Completed prompt #39[0m
+[0;34m2025-09-20 17:52:22 - Generating prompt #40 (Section 3, Prompt 6/17)[0m
+[1;33m2025-09-20 17:52:22 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #40
+[0;32m2025-09-20 17:52:42 - Completed prompt #40[0m
+[0;34m2025-09-20 17:52:47 - Generating prompt #41 (Section 3, Prompt 7/17)[0m
+[1;33m2025-09-20 17:52:47 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #41
+[0;32m2025-09-20 17:53:06 - Completed prompt #41[0m
+[0;34m2025-09-20 17:53:11 - Generating prompt #42 (Section 3, Prompt 8/17)[0m
+[1;33m2025-09-20 17:53:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #42
+[0;32m2025-09-20 17:53:31 - Completed prompt #42[0m
+[0;34m2025-09-20 17:53:36 - Generating prompt #43 (Section 3, Prompt 9/17)[0m
+[1;33m2025-09-20 17:53:36 - Running prompt generation...[0m
