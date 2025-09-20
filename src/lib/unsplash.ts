@@ -6,6 +6,9 @@ const unsplash = createApi({
   accessKey: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY || '',
 });
 
+// In-memory cache for template images (indefinite cache)
+const imageCache = new Map<string, UnsplashImage | null>();
+
 // Template to search query mapping for better image results
 const templateSearchQueries: Record<string, string> = {
   'wedding-planning': 'wedding ceremony elegant',
@@ -113,11 +116,22 @@ export async function searchTemplateImages(
 }
 
 /**
- * Get a single hero image for a template
+ * Get a single hero image for a template (with indefinite caching)
  */
 export async function getTemplateHeroImage(templateName: string): Promise<UnsplashImage | null> {
+  // Check cache first - once cached, never fetch again
+  if (imageCache.has(templateName)) {
+    return imageCache.get(templateName) || null;
+  }
+
+  // Fetch new image only if not cached
   const images = await searchTemplateImages(templateName, 1);
-  return images[0] || null;
+  const image = images[0] || null;
+
+  // Cache the result indefinitely
+  imageCache.set(templateName, image);
+
+  return image;
 }
 
 /**

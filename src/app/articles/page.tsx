@@ -27,16 +27,35 @@ export default function ArticlesPage() {
   // Get current page from URL
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
+  // Generate page metadata
+  const generateMetadata = () => {
+    const hasFilters = searchQuery || selectedCategory !== 'all' || selectedType !== 'all' || selectedDifficulty !== 'all';
+    const pageTitle = currentPage > 1 ? `Articles - Page ${currentPage}` : 'Articles';
+    const title = hasFilters ? `${pageTitle} - Filtered Results` : pageTitle;
+    const description = hasFilters
+      ? `Browse filtered articles from our collection of ${manualBlogPosts.length}+ expert guides on life decisions and planning.`
+      : `Discover ${manualBlogPosts.length}+ expert articles and guides for life's biggest decisions. From career changes to family planning, find practical insights from industry professionals.`;
+
+    return {
+      title: `${title} | Templata`,
+      description,
+      canonical: `/articles${currentPage > 1 ? `?page=${currentPage}` : ''}`,
+      robots: currentPage > 1 ? 'noindex,follow' : 'index,follow'
+    };
+  };
+
+  const metadata = generateMetadata();
+
   // Get unique categories for filtering
   const categories = useMemo(() => {
     const uniqueCategories = [...new Set(manualBlogPosts.map(post => post.category))];
     return uniqueCategories.sort();
   }, []);
 
-  // Get featured articles (rotating based on current time)
+  // Get featured articles (static selection)
   const featuredArticles = useMemo(() => {
-    const shuffledPosts = [...manualBlogPosts].sort(() => 0.5 - Math.random());
-    return shuffledPosts.slice(0, FEATURED_COUNT);
+    // Always use the same 3 featured articles
+    return manualBlogPosts.slice(0, FEATURED_COUNT);
   }, []);
 
   // Filter articles based on search and filters
@@ -93,17 +112,46 @@ export default function ArticlesPage() {
     return 'home-buying'; // fallback
   };
 
+  // Generate structured data
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": metadata.title,
+    "description": metadata.description,
+    "url": `https://templata.com${metadata.canonical}`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": filteredArticles.length,
+      "itemListElement": paginatedArticles.map((article, index) => ({
+        "@type": "Article",
+        "position": startIndex + index + 1,
+        "name": article.title,
+        "description": article.excerpt,
+        "url": `https://templata.com/blog/${article.slug}`,
+        "author": {
+          "@type": "Organization",
+          "name": article.author
+        },
+        "datePublished": article.publishedAt,
+        "articleSection": article.category
+      }))
+    }
+  };
+
   return (
     <PageLayout>
-      {/* Header */}
-      <div className="border-b">
-        <div className="container mx-auto px-4 py-8">
-          <h1 className="text-4xl font-bold mb-4">All Articles</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl">
-            Expert insights and practical guides for life's biggest decisions. Over {manualBlogPosts.length} articles to help you navigate complex situations with confidence.
-          </p>
-        </div>
-      </div>
+
+        {/* Header */}
+        <header className="border-b">
+          <div className="container mx-auto px-4 py-8">
+            <h1 className="text-4xl font-bold mb-4">
+              {currentPage > 1 ? `All Articles - Page ${currentPage}` : 'All Articles'}
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              Expert insights and practical guides for life's biggest decisions. Over {manualBlogPosts.length} articles to help you navigate complex situations with confidence.
+            </p>
+          </div>
+        </header>
 
       {/* Featured Articles */}
       <section className="py-12 bg-muted/30">
@@ -120,9 +168,9 @@ export default function ArticlesPage() {
                   <div className="aspect-video relative overflow-hidden">
                     <TemplateImage
                       templateName={getTemplateFromSlug(article.slug)}
-                      width={400}
-                      height={225}
-                      className="w-full h-full group-hover:scale-105 transition-transform duration-300"
+                      width={800}
+                      height={450}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-6">
@@ -344,6 +392,12 @@ export default function ArticlesPage() {
           )}
         </div>
       </section>
+
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
     </PageLayout>
   );
 }
