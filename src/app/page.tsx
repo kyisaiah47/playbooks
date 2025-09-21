@@ -414,34 +414,60 @@ export default function LandingPage() {
 							Learn structure, then graduate to complete autonomy. Our three progressive workspace modes take you from guided learning to mastering your own life operating system.
 						</p>
 
-						<div className="grid md:grid-cols-3 gap-8 pt-8">
-							<div className="text-center space-y-4">
-								<div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mx-auto">
-									<Layout className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+						<div className="relative pt-8">
+							{/* Workspace Cards */}
+							<div className="grid md:grid-cols-3 gap-8">
+								<div className="relative text-center space-y-4">
+									<div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold text-sm">
+										1
+									</div>
+									<div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6">
+										<Layout className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+									</div>
+									<h3 className="text-xl font-semibold">Template Workspace</h3>
+									<p className="text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wide">Start Here</p>
+									<p className="text-muted-foreground">
+										Split-screen guided experience with 15,000+ action prompts and contextual articles. Learn structure first.
+									</p>
 								</div>
-								<h3 className="text-xl font-semibold">Template Workspace</h3>
-								<p className="text-muted-foreground">
-									Split-screen guided experience with 15,000+ action prompts and contextual articles. Perfect for learning structure.
-								</p>
+
+								<div className="relative text-center space-y-4">
+									<div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-purple-600 dark:bg-purple-500 flex items-center justify-center text-white font-bold text-sm">
+										2
+									</div>
+									<div className="w-16 h-16 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6">
+										<Timer className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+									</div>
+									<h3 className="text-xl font-semibold">Reflection Workspace</h3>
+									<p className="text-sm font-medium text-purple-600 dark:text-purple-400 uppercase tracking-wide">Then Process</p>
+									<p className="text-muted-foreground">
+										Daily fullscreen immersion for processing your journey. Pause and think deeply about progress.
+									</p>
+								</div>
+
+								<div className="relative text-center space-y-4">
+									<div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold text-sm">
+										3
+									</div>
+									<div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6">
+										<Crown className="h-8 w-8 text-green-600 dark:text-green-400" />
+									</div>
+									<h3 className="text-xl font-semibold">Master Workspace</h3>
+									<p className="text-sm font-medium text-green-600 dark:text-green-400 uppercase tracking-wide">Finally Master</p>
+									<p className="text-muted-foreground">
+										Unified life OS combining all your template work. Like Notion, but built from your foundation.
+									</p>
+								</div>
 							</div>
 
-							<div className="text-center space-y-4">
-								<div className="w-16 h-16 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mx-auto">
-									<Timer className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-								</div>
-								<h3 className="text-xl font-semibold">Reflection Workspace</h3>
-								<p className="text-muted-foreground">
-									Daily fullscreen immersion for processing your journey. Distraction-free environment for deeper thinking.
-								</p>
-							</div>
+							{/* Progression Message */}
+							<div className="text-center mt-12 p-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border border-primary/20">
+								<p className="text-lg font-medium text-foreground">
+									This isn't just software—it's a complete evolution system
 
-							<div className="text-center space-y-4">
-								<div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto">
-									<Crown className="h-8 w-8 text-green-600 dark:text-green-400" />
-								</div>
-								<h3 className="text-xl font-semibold">Master Workspace</h3>
-								<p className="text-muted-foreground">
-									Unified life OS combining all your template work. Like Notion, but built from your structured foundation.
+								</p>
+								<p className="text-muted-foreground mt-2">
+									Graduate from guided templates to autonomous life mastery
 								</p>
 							</div>
 						</div>
