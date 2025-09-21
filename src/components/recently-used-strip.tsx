@@ -1,101 +1,138 @@
 "use client"
 
 import React, { useState } from "react"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Clock, X, ChevronUp, ChevronDown, ArrowRight } from "lucide-react"
-import { useRecentTemplates } from "@/hooks/use-recent-templates"
-import { cn } from "@/lib/utils"
+import { Textarea } from "@/components/ui/textarea"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { MessageSquare, Send, X } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 export function RecentlyUsedFooter() {
-  const { recentItems, clearRecentItems, hasRecentItems } = useRecentTemplates()
-  const [isMinimized, setIsMinimized] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
+  const [feedback, setFeedback] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const pathname = usePathname()
 
-  // Just show the most recent template
-  const recentTemplate = recentItems[0]
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!feedback.trim()) return
 
-  // For demo purposes, show a mock recent template if none exists
-  const mockTemplate = {
-    id: "wedding-planning",
-    name: "Wedding Planning",
-    url: "/wedding-planning/app",
-    category: "Personal Life",
-    type: "template" as const,
-    lastAccessed: Date.now()
-  }
+    setIsSubmitting(true)
 
-  const displayTemplate = recentTemplate || mockTemplate
-  const shouldShow = hasRecentItems || !hasRecentItems // Always show for now to test
+    // Capture context
+    const context = {
+      page: pathname,
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      timestamp: new Date().toISOString(),
+      viewport: {
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
+    }
 
-  if (!shouldShow) {
-    return null
-  }
+    // In a real app, you'd send this to your feedback API
+    console.log("Feedback submitted:", {
+      feedback: feedback.trim(),
+      context
+    })
 
-  if (isMinimized) {
-    return (
-      <div className="fixed bottom-4 right-4 z-40">
-        <button
-          onClick={() => setIsMinimized(false)}
-          className="bg-background/95 backdrop-blur-sm border rounded-lg px-3 py-2 text-xs text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all shadow-lg"
-        >
-          <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4" />
-            <span>Continue where you left off</span>
-            <ChevronUp className="w-3 h-3" />
-          </div>
-        </button>
-      </div>
-    )
+    // For now, just simulate submission
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    setIsSubmitting(false)
+    setIsSubmitted(true)
+    setFeedback("")
+
+    // Close dialog after showing success
+    setTimeout(() => {
+      setIsOpen(false)
+      setIsSubmitted(false)
+    }, 1500)
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40">
-      <div className="relative bg-background/95 backdrop-blur-sm border-t">
-        <div className="container mx-auto max-w-7xl px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 min-w-0 flex-1">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground flex-shrink-0">
-              <Clock className="w-4 h-4" />
-              <span className="font-medium hidden sm:inline">Continue where you left off</span>
-              <span className="font-medium sm:hidden">Recent</span>
-            </div>
+    <div className="fixed bottom-4 right-4 z-40">
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
+          <Button
+            size="sm"
+            className="bg-background/95 backdrop-blur-sm border hover:bg-primary/10 transition-all shadow-lg"
+            variant="outline"
+          >
+            <MessageSquare className="w-4 h-4 mr-2" />
+            <span className="hidden sm:inline">Feedback</span>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <MessageSquare className="w-5 h-5" />
+              Share Your Feedback
+            </DialogTitle>
+          </DialogHeader>
 
-            <Link
-              href={displayTemplate.url}
-              className="flex items-center gap-3 min-w-0 flex-1 group hover:bg-muted/50 rounded-lg p-2 transition-colors"
-            >
-              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-lg flex-shrink-0">
-                {displayTemplate.type === "template" ? "📋" : "📰"}
+          {isSubmitted ? (
+            <div className="py-8 text-center">
+              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Send className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-1">
-                  {displayTemplate.name}
-                </h3>
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-xs">
-                    {displayTemplate.category}
-                  </Badge>
-                  <span className="text-xs text-muted-foreground hidden sm:inline">
-                    {displayTemplate.type === "template" ? "Template" : "Article"}
-                  </span>
-                </div>
-              </div>
-              <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
-            </Link>
+              <h3 className="text-lg font-semibold mb-2">Thank you!</h3>
+              <p className="text-muted-foreground">Your feedback helps us improve Templata.</p>
             </div>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMinimized(true)}
-              className="text-muted-foreground hover:text-foreground flex-shrink-0 ml-2"
-            >
-              <X className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Textarea
+                  placeholder="Tell us what you think! Bug reports, feature requests, or general feedback - we'd love to hear from you."
+                  value={feedback}
+                  onChange={(e) => setFeedback(e.target.value.slice(0, 1000))}
+                  className="min-h-[120px] resize-none"
+                  disabled={isSubmitting}
+                  maxLength={1000}
+                />
+              </div>
+              <div className="flex justify-end">
+                <span className="text-xs text-muted-foreground">{feedback.length}/1000</span>
+              </div>
+              <div className="flex gap-2 justify-end">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setIsOpen(false)}
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={!feedback.trim() || isSubmitting}
+                  className="min-w-[80px]"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 border border-current border-t-transparent rounded-full animate-spin" />
+                      <span>Sending...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send
+                    </>
+                  )}
+                </Button>
+              </div>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
