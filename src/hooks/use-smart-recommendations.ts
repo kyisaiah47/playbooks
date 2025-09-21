@@ -165,7 +165,7 @@ export function useSmartRecommendations() {
       if ((item as any).popular || (item as any).featured) score += 10
 
       // Category affinity based on viewing history
-      const categoryViews = context.viewedCategories[item.category] || 0
+      const categoryViews = item.category ? (context.viewedCategories[item.category] || 0) : 0
       if (categoryViews > 0) {
         score += Math.min(categoryViews * 5, 25)
         if (categoryViews > 2) {
@@ -202,9 +202,9 @@ export function useSmartRecommendations() {
       // Search history patterns
       for (const searchQuery of context.searchHistory.slice(0, 10)) {
         if (
-          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.category.toLowerCase().includes(searchQuery.toLowerCase())
+          (item.name && item.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.category && item.category.toLowerCase().includes(searchQuery.toLowerCase()))
         ) {
           score += 15
           reason = reason || `Matches your recent search for "${searchQuery}"`
@@ -214,7 +214,7 @@ export function useSmartRecommendations() {
 
       // Related to favorited items
       const relatedToFavorites = favorites.some(fav =>
-        fav.category === item.category && fav.id !== item.id
+        fav.category && item.category && fav.category === item.category && fav.id !== item.id
       )
       if (relatedToFavorites) {
         score += 12
@@ -222,8 +222,8 @@ export function useSmartRecommendations() {
       }
 
       // Complementary to recent items
-      const recentCategories = recentItems.map(r => r.category)
-      if (recentCategories.includes(item.category) && !viewedItemIds.has(item.id)) {
+      const recentCategories = recentItems.map(r => r.category).filter(Boolean)
+      if (item.category && recentCategories.includes(item.category) && !viewedItemIds.has(item.id)) {
         score += 10
         reason = reason || "Builds on what you've been exploring"
       }
@@ -252,11 +252,11 @@ export function useSmartRecommendations() {
       }
 
       // Diversity penalty for over-represented categories
-      const categoryCount = recs.filter(r => r.category === item.category).length
+      const categoryCount = item.category ? recs.filter(r => r.category === item.category).length : 0
       if (categoryCount >= 2) score -= categoryCount * 3
 
       // Novelty bonus for unexplored categories
-      if (!context.viewedCategories[item.category] && !viewedItemIds.has(item.id)) {
+      if (item.category && !context.viewedCategories[item.category] && !viewedItemIds.has(item.id)) {
         score += 5
         reason = reason || "Discover something new"
       }

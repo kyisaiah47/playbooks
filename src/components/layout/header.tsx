@@ -227,6 +227,8 @@ export function Header() {
 								</DropdownMenu>
 							) : (
 								<Button
+									variant="outline"
+									size="sm"
 									className="text-base font-medium"
 									asChild
 								>

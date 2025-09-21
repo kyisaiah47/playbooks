@@ -22,154 +22,74 @@ export interface ChangelogItem {
 // Changelog data - in production this would come from a CMS or API
 export const changelogEntries: ChangelogEntry[] = [
   {
-    id: "2025-01-14-premium-upgrade",
-    version: "2.1.0",
-    date: "2025-01-14",
-    title: "Premium Platform Upgrade",
-    description: "Major platform enhancement with expert verification, smart recommendations, and premium exports.",
-    type: "feature",
-    important: true,
+    id: "upcoming-features",
+    version: "Coming Soon",
+    date: "2025-02-01",
+    title: "Upcoming Features",
+    description: "What's coming next to Templata based on user feedback and our roadmap.",
+    type: "announcement",
+    important: false,
     items: [
       {
-        id: "expert-badges",
-        text: "Expert verification badges with detailed professional profiles",
-        category: "Credibility"
+        id: "user-accounts",
+        text: "User accounts with template progress saving and sync across devices",
+        category: "Accounts"
       },
       {
-        id: "smart-recommendations",
-        text: "AI-powered smart recommendations in dedicated Smart tab",
-        category: "Discovery"
-      },
-      {
-        id: "pdf-exports",
-        text: "Professional PDF dossier exports with Templata branding",
+        id: "export-system",
+        text: "Export completed templates to PDF, Word, and other formats",
         category: "Export"
       },
       {
-        id: "template-of-week",
-        text: "Template of the Week showcase with curator insights",
-        category: "Featured"
+        id: "collaboration",
+        text: "Share templates with family, friends, or team members for collaborative planning",
+        category: "Sharing"
       },
       {
-        id: "related-templates",
-        text: "Cross-template relationships for better discovery",
-        category: "Navigation"
-      },
-      {
-        id: "favorites-system",
-        text: "Save and organize favorite templates with star functionality",
-        category: "Organization"
-      },
-      {
-        id: "recent-tracking",
-        text: "Continue where you left off with recently used templates",
-        category: "Productivity"
-      },
-      {
-        id: "micro-interactions",
-        text: "Delightful animations and hover effects throughout the platform",
-        category: "Experience"
-      }
-    ]
-  },
-  {
-    id: "2025-01-07-wedding-enhancements",
-    version: "2.0.3",
-    date: "2025-01-07",
-    title: "Wedding Planning Enhancements",
-    description: "Major improvements to wedding planning template based on user feedback.",
-    type: "template",
-    items: [
-      {
-        id: "vendor-management",
-        text: "Enhanced vendor comparison and contact management",
-        templateId: "wedding-planning"
-      },
-      {
-        id: "budget-tracking",
-        text: "Real-time budget tracking with category breakdowns",
-        templateId: "wedding-planning"
-      },
-      {
-        id: "timeline-optimization",
-        text: "Optimized wedding timeline based on 500+ successful weddings",
-        templateId: "wedding-planning"
-      }
-    ]
-  },
-  {
-    id: "2025-01-02-search-improvements",
-    version: "2.0.2",
-    date: "2025-01-02",
-    title: "Search & Navigation Improvements",
-    description: "Enhanced search functionality and faster navigation.",
-    type: "improvement",
-    items: [
-      {
-        id: "cmd-k-search",
-        text: "Improved Cmd+K search with better relevance scoring",
-        category: "Search"
-      },
-      {
-        id: "filter-performance",
-        text: "Faster template and article filtering",
-        category: "Performance"
-      },
-      {
-        id: "mobile-navigation",
-        text: "Better mobile navigation experience",
+        id: "mobile-app",
+        text: "Native mobile apps for iOS and Android with offline template access",
         category: "Mobile"
+      },
+      {
+        id: "premium-features",
+        text: "Premium tier with advanced AI assistance and priority support",
+        category: "Premium"
       }
     ]
   },
   {
-    id: "2024-12-28-home-buying-launch",
-    version: "2.0.1",
-    date: "2024-12-28",
-    title: "Home Buying Template Launch",
-    description: "Comprehensive home buying guidance now available.",
-    type: "template",
-    items: [
-      {
-        id: "mortgage-calculator",
-        text: "Built-in mortgage affordability calculator",
-        templateId: "home-buying"
-      },
-      {
-        id: "inspection-checklist",
-        text: "Professional home inspection checklist",
-        templateId: "home-buying"
-      },
-      {
-        id: "closing-timeline",
-        text: "Step-by-step closing process timeline",
-        templateId: "home-buying"
-      }
-    ]
-  },
-  {
-    id: "2024-12-20-platform-launch",
-    version: "2.0.0",
-    date: "2024-12-20",
-    title: "Templata 2.0 Launch",
-    description: "Complete platform redesign with new templates and features.",
+    id: "2025-01-21-beta-launch",
+    version: "0.1.0",
+    date: "2025-01-21",
+    title: "Templata Public Beta Launch",
+    description: "Welcome to Templata! Our public beta includes 150+ templates powered by the Axiom Engine.",
     type: "announcement",
     important: true,
     items: [
       {
-        id: "new-design",
-        text: "Modern, clean design with improved usability",
-        category: "Design"
+        id: "axiom-engine",
+        text: "Axiom Engine generates 15,000+ categorized prompts across all templates",
+        category: "AI"
       },
       {
-        id: "template-system",
-        text: "New interactive template system with guided prompts",
+        id: "template-library",
+        text: "150+ templates covering Personal Life, Career & Work, Property & Finance, and Business & Entrepreneurship",
         category: "Templates"
       },
       {
-        id: "resource-library",
-        text: "Comprehensive resource library with expert articles",
+        id: "article-system",
+        text: "3,000+ articles providing in-depth guidance for every situation",
         category: "Content"
+      },
+      {
+        id: "split-screen",
+        text: "Split-screen workspace with categorized prompts and relevant articles",
+        category: "Interface"
+      },
+      {
+        id: "search-navigation",
+        text: "Cmd+K search to quickly find templates and browse by category",
+        category: "Discovery"
       }
     ]
   }
@@ -223,22 +143,24 @@ export interface ProgressStats {
   totalFeatures: number
   completedFeatures: number
   templatesCount: number
-  expertsCount: number
-  weeksSincelaunch: number
+  promptsCount: number
+  articlesCount: number
+  weeksSinceLaunch: number
 }
 
 export function getProgressStats(): ProgressStats {
-  const launchDate = new Date("2024-12-20")
+  const launchDate = new Date("2025-01-21")
   const now = new Date()
   const msInWeek = 7 * 24 * 60 * 60 * 1000
-  const weeksSincelaunch = Math.floor((now.getTime() - launchDate.getTime()) / msInWeek)
+  const weeksSinceLaunch = Math.floor((now.getTime() - launchDate.getTime()) / msInWeek)
 
   return {
-    totalFeatures: 13, // Total premium features planned
-    completedFeatures: 11, // Features we've completed
-    templatesCount: 25, // Rough count of templates
-    expertsCount: 5, // Number of expert contributors
-    weeksSincelaunch: Math.max(1, weeksSincelaunch)
+    totalFeatures: 10, // Core features planned for v1.0
+    completedFeatures: 5, // Features completed in beta
+    templatesCount: 150, // Current template count
+    promptsCount: 15000, // Axiom Engine generated prompts
+    articlesCount: 3000, // Axiom Engine generated articles
+    weeksSinceLaunch: Math.max(0, weeksSinceLaunch)
   }
 }
 
