@@ -11,6 +11,7 @@ import {
 	NavigationMenuLink,
 	NavigationMenuList,
 	NavigationMenuTrigger,
+	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { ThemeSelector } from "@/components/theme-selector"
 import { ChangelogWidget } from "@/components/changelog/changelog-widget"
@@ -96,90 +97,120 @@ export function Header() {
 
 						{/* Center - Navigation */}
 						<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-							<NavigationMenu className="pointer-events-auto">
+							<NavigationMenu className="pointer-events-auto" viewport={false}>
 								<NavigationMenuList className="space-x-2">
+									{/* Preview - standalone */}
 									<NavigationMenuItem>
-										<NavigationMenuLink asChild>
-											<Link
-												href="/preview"
-												className={cn(
-											"text-base font-medium px-4 py-2 rounded-md",
-											isHomePage && "hover:bg-transparent focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
-										)}
-											>
+										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
+											<Link href="/preview">
 												Preview
 											</Link>
 										</NavigationMenuLink>
 									</NavigationMenuItem>
 
+									{/* Browse dropdown */}
 									<NavigationMenuItem>
-										<NavigationMenuLink asChild>
-											<Link
-												href="/partners"
-												className={cn(
-											"text-base font-medium px-4 py-2 rounded-md",
-											isHomePage && "hover:bg-transparent focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
-										)}
-											>
-												Partners
-											</Link>
-										</NavigationMenuLink>
+										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Browse</NavigationMenuTrigger>
+										<NavigationMenuContent>
+											<ul className="grid w-[200px] gap-4">
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/articles">
+															<div className="text-sm leading-none font-medium">Articles</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																In-depth guidance and insights
+															</p>
+														</Link>
+													</NavigationMenuLink>
+													<NavigationMenuLink asChild>
+														<Link href="/templates">
+															<div className="text-sm leading-none font-medium">Templates</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																150+ templates for life's moments
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+											</ul>
+										</NavigationMenuContent>
 									</NavigationMenuItem>
 
+									{/* Platform dropdown */}
 									<NavigationMenuItem>
-										<NavigationMenuLink asChild>
-											<Link
-												href="/about"
-												className={cn(
-											"text-base font-medium px-4 py-2 rounded-md",
-											isHomePage && "hover:bg-transparent focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
-										)}
-											>
-												About
-											</Link>
-										</NavigationMenuLink>
+										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Platform</NavigationMenuTrigger>
+										<NavigationMenuContent>
+											<ul className="grid w-[200px] gap-4">
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/prompts">
+															<div className="text-sm leading-none font-medium">Prompts</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																15,000+ reflection prompts
+															</p>
+														</Link>
+													</NavigationMenuLink>
+													<NavigationMenuLink asChild>
+														<Link href="/reflections">
+															<div className="text-sm leading-none font-medium">Reflections</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																Guided reflection system
+															</p>
+														</Link>
+													</NavigationMenuLink>
+													<NavigationMenuLink asChild>
+														<Link href="/workspaces">
+															<div className="text-sm leading-none font-medium">Workspaces</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																Split-screen planning interface
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+											</ul>
+										</NavigationMenuContent>
 									</NavigationMenuItem>
 
+									{/* Company dropdown */}
 									<NavigationMenuItem>
-										<NavigationMenuLink asChild>
-											<Link
-												href="/axiom-engine"
-												className={cn(
-											"text-base font-medium px-4 py-2 rounded-md",
-											isHomePage && "hover:bg-transparent focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
-										)}
-											>
-												Axiom Engine
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild>
-											<Link
-												href="/articles"
-												className={cn(
-											"text-base font-medium px-4 py-2 rounded-md",
-											isHomePage && "hover:bg-transparent focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
-										)}
-											>
-												Articles
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild>
-											<Link
-												href="/faq"
-												className={cn(
-											"text-base font-medium px-4 py-2 rounded-md",
-											isHomePage && "hover:bg-transparent focus:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
-										)}
-											>
-												FAQ
-											</Link>
-										</NavigationMenuLink>
+										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Company</NavigationMenuTrigger>
+										<NavigationMenuContent>
+											<ul className="grid w-[200px] gap-4">
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/about">
+															<div className="text-sm leading-none font-medium">About</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																Our mission and team
+															</p>
+														</Link>
+													</NavigationMenuLink>
+													<NavigationMenuLink asChild>
+														<Link href="/faq">
+															<div className="text-sm leading-none font-medium">FAQ</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																Common questions and answers
+															</p>
+														</Link>
+													</NavigationMenuLink>
+													<NavigationMenuLink asChild>
+														<Link href="/partners">
+															<div className="text-sm leading-none font-medium">Partners</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																Collaboration and partnerships
+															</p>
+														</Link>
+													</NavigationMenuLink>
+													<NavigationMenuLink asChild>
+														<Link href="/axiom-engine">
+															<div className="text-sm leading-none font-medium">Axiom Engine</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																Our AI system for life guidance
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+											</ul>
+										</NavigationMenuContent>
 									</NavigationMenuItem>
 								</NavigationMenuList>
 							</NavigationMenu>
