@@ -16,7 +16,7 @@ export default function ManifestoPage() {
 						Our Manifesto
 					</h1>
 					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-						Why we believe life shouldn't start with a blank page and how we're ending the empty template era.
+						The blank page is dead. Here's our blueprint for the first encyclopedia of living — and why you'll never stare at an empty screen again.
 					</p>
 				</div>
 
