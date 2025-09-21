@@ -12,6 +12,9 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Announcement, AnnouncementTag, AnnouncementTitle } from "@/components/ui/announcement";
+import { InputButtonProvider, InputButton, InputButtonAction, InputButtonSubmit, InputButtonInput } from "@/components/ui/input-button";
+import { StatsButton } from "@/components/ui/stats-button";
 import {
 	Heart,
 	Home,
@@ -52,13 +55,10 @@ export default function LandingPage() {
 
 				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-8">
-						<Badge
-							variant="outline"
-							className="px-4 py-2 border-white/30 text-white bg-white/10 backdrop-blur-sm"
-						>
-							<Sparkles className="mr-2 h-4 w-4" />
-							Welcome to your organized life
-						</Badge>
+						<Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
+							<AnnouncementTag>Beta</AnnouncementTag>
+							<AnnouncementTitle>Now in public beta - explore 150+ templates</AnnouncementTitle>
+						</Announcement>
 
 						<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
 							Organize life&apos;s
@@ -98,37 +98,11 @@ export default function LandingPage() {
 						</h1>
 
 						<p className="mx-auto max-w-2xl text-xl text-white">
-							Life shouldn&apos;t start with a blank page. Get intelligently designed
-							templates that guide you through every step of your biggest moments.
+							Life shouldn&apos;t start with a blank page. Get workspaces powered by our Axiom Engine
+							with 15,000+ prompts and 3,000+ articles to guide you through every step of your biggest moments.
 						</p>
 
-						<div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-							<Button
-								size="lg"
-								className="h-12 px-8 text-base bg-white/80 backdrop-blur-sm text-black hover:bg-white/90"
-								onClick={() => {
-									const event = new KeyboardEvent('keydown', {
-										key: 'k',
-										metaKey: true,
-										bubbles: true
-									});
-									document.dispatchEvent(event);
-								}}
-							>
-								{isLoggedIn ? "Browse Templates" : "Start Free"}
-								<ArrowRight className="ml-2 h-5 w-5" />
-							</Button>
-							<Button
-								size="lg"
-								className="h-12 px-8 text-base bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border border-white/30"
-								asChild
-							>
-								<Link href="/templates/wedding-planning">
-									<Play className="mr-2 h-4 w-4" />
-									See Templates in Action
-								</Link>
-							</Button>
-						</div>
+
 					</div>
 				</div>
 			</section>
@@ -147,13 +121,13 @@ export default function LandingPage() {
 									Everything you need
 								</Badge>
 								<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-									100+ templates for
+									150+ templates for
 									<br />
 									every life moment
 								</h2>
 								<p className="text-xl text-muted-foreground">
 									From life planning to career changes, goal setting to starting a
-									business - we have systematically generated templates for it all.
+									business - we have systematically generated workspaces with Axiom Engine guidance for it all.
 								</p>
 							</div>
 
@@ -163,7 +137,7 @@ export default function LandingPage() {
 										<Layout className="h-5 w-5 text-blue-600 dark:text-blue-400" />
 									</div>
 									<span className="text-lg">
-										Structured frameworks and reflection prompts
+										15,000+ structured prompts and reflection frameworks
 									</span>
 								</div>
 								<div className="flex items-center gap-3">
@@ -171,7 +145,7 @@ export default function LandingPage() {
 										<Users className="h-5 w-5 text-green-600 dark:text-green-400" />
 									</div>
 									<span className="text-lg">
-										Expert insights and best practices included
+										3,000+ articles with Axiom Engine insights and best practices
 									</span>
 								</div>
 								<div className="flex items-center gap-3">
@@ -179,7 +153,7 @@ export default function LandingPage() {
 										<Crown className="h-5 w-5 text-amber-600 dark:text-amber-400" />
 									</div>
 									<span className="text-lg">
-										{isLoggedIn ? "Full access to all premium templates" : "Start free, upgrade for full access to all templates"}
+										{isLoggedIn ? "Full access to all 150+ premium templates" : "Start free, upgrade for full access to all 150+ templates"}
 									</span>
 								</div>
 							</div>
@@ -207,7 +181,7 @@ export default function LandingPage() {
 														Personal Life
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														25+ templates for weddings, relationships, personal growth, and life transitions.
+														40+ templates for weddings, relationships, personal growth, and life transitions.
 													</h2>
 												</div>
 											</div>
@@ -235,7 +209,7 @@ export default function LandingPage() {
 														Career & Work
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														30+ templates for job searches, career changes, interviews, and professional development.
+														45+ templates for job searches, career changes, interviews, and professional development.
 													</h2>
 												</div>
 											</div>
@@ -263,7 +237,7 @@ export default function LandingPage() {
 														Property & Moving
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														20+ templates for home buying, selling, moving, and real estate decisions.
+														35+ templates for home buying, selling, moving, and financial planning.
 													</h2>
 												</div>
 											</div>
@@ -288,10 +262,10 @@ export default function LandingPage() {
 												</div>
 												<div className="space-y-3">
 													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Business & Finance
+														Business & Entrepreneurship
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														25+ templates for startups, business planning, budgeting, and financial decisions.
+														30+ templates for startups, business planning, marketing, and entrepreneurship.
 													</h2>
 												</div>
 											</div>
@@ -343,8 +317,8 @@ export default function LandingPage() {
 						</h2>
 
 						<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-							No more staring at blank pages. Our templates provide clear 
-							frameworks and reflection prompts to organize your thoughts
+							No more staring at blank pages. Our Axiom Engine provides 15,000+
+							structured prompts and 3,000+ articles to organize your thoughts
 							and plans systematically.
 						</p>
 
@@ -355,7 +329,7 @@ export default function LandingPage() {
 								</div>
 								<h3 className="text-xl font-semibold">Choose Template</h3>
 								<p className="text-muted-foreground">
-									Select from purpose-built templates systematically designed for
+									Select from 150+ purpose-built templates powered by our Axiom Engine for
 									your specific life moment or goal.
 								</p>
 							</div>
@@ -364,10 +338,10 @@ export default function LandingPage() {
 								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
 									<MessageSquare className="h-8 w-8 text-primary" />
 								</div>
-								<h3 className="text-xl font-semibold">Follow Prompts</h3>
+								<h3 className="text-xl font-semibold">Explore & Reflect</h3>
 								<p className="text-muted-foreground">
-									Work through reflection prompts and structured sections
-									that guide your thinking process.
+									Browse categorized prompts and articles in a split-screen workspace
+									that guides your thinking process.
 								</p>
 							</div>
 
@@ -486,7 +460,7 @@ export default function LandingPage() {
 									</div>
 									<div className="flex items-center gap-3">
 										<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-										<span>Full access to 100+ templates</span>
+										<span>Full access to 150+ templates</span>
 									</div>
 									<div className="flex items-center gap-3">
 										<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />

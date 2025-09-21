@@ -2,208 +2,195 @@
 
 > Skip the blank page. Start with abundant guidance for life's biggest moments.
 
-Templata is a guidance-first platform that provides tons of expert insights, reflection prompts, and resources for life's most important decisions. Rather than gamified task lists, we focus on helping you think through complex decisions with professional guidance and abundant ideas.
+Templata is a guidance-first platform that provides tons of Axiom Engine insights, reflection prompts, and resources for life's most important decisions. Rather than gamified task lists, we focus on helping you think through complex decisions with AI-powered guidance and abundant ideas.
 
 ## 🌟 Philosophy: The Abundance Mindset
 
-Life's biggest moments deserve more than task lists and empty templates. When planning a wedding, buying a home, or making major decisions, you need **abundant guidance, expert insights, and thoughtful reflection prompts** - not just checkboxes to complete.
+Life's biggest moments deserve more than task lists and empty templates. When planning a wedding, buying a home, or making major decisions, you need **abundant guidance, Axiom Engine insights, and thoughtful reflection prompts** - not just checkboxes to complete.
 
 Templata provides:
-- **Tons of reflection prompts** to guide your thinking
-- **Codex Engine insights** generated through specialized AI designed for life guidance  
-- **Comprehensive resources** covering every angle of your decision
+- **15,000+ reflection prompts** to guide your thinking
+- **Axiom Engine insights** generated through specialized AI designed for life guidance
+- **3,000+ articles** covering every angle of your decision
 - **Guidance over gamification** - we help you think, not just do
 
-## ✨ New Architecture Features
+## ✨ Core Features
 
-- **Guidance-Focused Templates** - Built around reflection and expert insights, not task completion
-- **Email-Style Sidebar Navigation** - Dual sidebar with insertable prompts and resources
-- **Abundant Content** - 48+ reflection prompts per template with detailed guidance
-- **Expert Resources** - Professional guides, checklists, and insider knowledge
-- **Insertable Prompts** - Browse and add relevant prompts to any section
+- **150+ Templates** - Comprehensive workspaces for life's biggest moments
+- **Split Screen Interface** - Categorized prompts on one side, articles on the other
+- **15,000+ Prompts** - Categorized reflection prompts powered by the Axiom Engine
+- **3,000+ Articles** - In-depth guidance and insights for every situation
+- **Simple Workspaces** - Clean, focused interface for organizing your thoughts
 - **Theme-Aware Design** - Beautiful scrollbars and consistent theming across all pages
 
-## 🎯 Live Templates
+## 📂 Template Categories
 
-### ✅ Wedding Planning (Complete)
-**48+ Reflection Prompts | 8 Expert Resources | Professional Guidance**
+### 💝 Personal Life (40+ Templates)
+- **Wedding Planning** - Complete wedding organization workspace
+- **Baby Planning** - Pregnancy and newborn preparation
+- **Moving & Relocation** - Comprehensive moving coordination
+- **Personal Health & Wellness** - Health goal tracking and planning
+- **Relationship & Dating** - Relationship guidance and planning
+- **And many more...**
 
-Our flagship template covers every aspect of wedding planning with abundant guidance:
+### 💼 Career & Work (45+ Templates)
+- **Job Search** - Application tracking and career strategy
+- **Career Change Transition** - Skills assessment and transition planning
+- **Remote Work Setup** - Home office and productivity optimization
+- **Personal Development** - Goal setting and skill building
+- **And many more...**
 
-- **Budget & Financial Planning** - 6 prompts covering max budget, family contributions, emergency planning
-- **Venue Selection & Logistics** - 6 prompts for venue style, guest count, season flexibility  
-- **Guest List & Invitations** - 6 prompts for guest tiers, family politics, plus-one policies
-- **Vendor Research & Hiring** - 6 prompts for vendor priorities, contract review, backup planning
-- **Ceremony Design & Flow** - 6 prompts for ceremony length, vows, cultural traditions
-- **Reception Flow & Entertainment** - 6 prompts for atmosphere, timeline, special moments
-- **Styling, Decor & Flowers** - 6 prompts for color palettes, floral priorities, personal touches
-- **Attire, Beauty & Getting Ready** - 6 prompts for dress style, beauty prep, weather backup
+### 🏠 Property & Finance (35+ Templates)
+- **Home Buying** - House hunting and purchase coordination
+- **Home Renovation** - Project planning and contractor management
+- **Budget Planning** - Financial planning and expense tracking
+- **Investment Strategy** - Portfolio planning and wealth building
+- **And many more...**
 
-**Expert Resources Include:**
-- Ultimate Wedding Budget Breakdown by Category
-- 25 Hidden Wedding Costs That Surprise Every Couple  
-- 50 Ways to Cut Wedding Costs Without Sacrificing Style
-- Wedding Vendor Contract Review Checklist
-- Complete Wedding Day Timeline Template
-- Wedding Day Emergency Kit: 40 Must-Have Items
-- Wedding Guest Accommodation Guide
-- Wedding Photography: What to Expect and How to Prepare
-
-### 🚧 Coming Soon
-- **Home Buying Guidance** - Navigate the complex home buying process with expert insights
-- **Career Transition Planning** - Professional guidance for career changes
-- **Business Launch Strategy** - Comprehensive startup guidance and planning
+### 🚀 Business & Entrepreneurship (30+ Templates)
+- **Business Launch** - Startup planning and strategy development
+- **Marketing Strategy** - Campaign planning and execution
+- **Freelance Business** - Client management and growth planning
+- **Digital Products** - Product development and launch planning
+- **And many more...**
 
 ## 🚀 Getting Started
 
-### Try the Wedding Template
-1. **Visit the Template** - Go to `/wedding-planning/app`  
-2. **Explore Sections** - Browse 8 comprehensive planning areas
-3. **Add Prompts** - Use the sidebar to insert additional prompts 
-4. **Write & Reflect** - Use the guidance to work through each decision
-5. **Access Resources** - Reference expert guides and professional tips
+### Using Templates
+1. **Choose Your Template** - Browse 150+ templates across 4 major categories
+2. **Open Workspace** - Simple, clean interface with split-screen design
+3. **Explore Prompts** - Browse categorized reflection prompts powered by Axiom Engine
+4. **Read Articles** - Access relevant articles for deeper insights and guidance
+5. **Organize & Plan** - Use the workspace to structure your thoughts and decisions
 
-### For Developers
-Run the development server and explore:
-- **Main Landing:** `http://localhost:3001` 
-- **Wedding Template:** `http://localhost:3001/wedding-planning/app`
-- **Marketing Page:** `http://localhost:3001/wedding-planning`
+### Template Structure
+Each template provides:
+- **Split Screen Interface** - Prompts on the left, articles on the right
+- **Categorized Prompts** - Organized by planning phases and decision types
+- **Axiom Engine Articles** - AI-generated insights and guidance
+- **Clean Workspace** - Distraction-free environment for focused planning
 
 ### Development Setup
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Example Templates to Try
+- **Wedding Planning:** `/wedding-planning/app`
+- **Baby Planning:** `/baby-planning/app`
+- **Job Search:** `/job-search/app`
+- **Home Buying:** `/home-buying/app`
+- **Business Launch:** `/business-launch/app`
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 15 with TypeScript  
+- **Framework**: Next.js 15 with TypeScript
 - **Styling**: Tailwind CSS v4 + shadcn/ui components
-- **UI Components**: Email-style dual sidebar navigation with insertable prompts
+- **UI Components**: Split-screen interface with categorized prompts and articles
 - **Icons**: Lucide React
 - **Theme System**: CSS custom properties with OKLCH color space + custom scrollbars
 - **State Management**: React Context API for template data
-- **Content**: Abundant reflection prompts and Codex Engine resources
+- **Content**: 15,000+ prompts and 3,000+ articles powered by Axiom Engine
 
-## 🧠 The Codex Engine
+## 🧠 The Axiom Engine
 
-Templata's content is powered by the **Codex Engine** - a specialized AI system designed exclusively for life guidance. Unlike generic AI, the Codex Engine uses:
+Templata's content is powered by the **Axiom Engine** - a specialized AI system designed exclusively for life guidance. Unlike generic AI, the Axiom Engine uses:
 
 - **Purpose-built intelligence** specifically trained for life decision-making scenarios
 - **Specialized prompt engineering** refined through multiple iterations for quality and depth
 - **Human oversight and curation** to ensure relevance and helpfulness
-- **Comprehensive coverage** generating 48+ unique prompts per life situation
+- **Comprehensive coverage** generating 15,000+ unique prompts across 150+ life situations
 - **Thoughtful frameworks** designed for reflection rather than task completion
+- **Article generation** creating 3,000+ in-depth guidance articles
 
-Every template, prompt, and resource you see has been generated through carefully crafted AI intelligence, refined specifically for helping you navigate life's biggest decisions. [Learn more about the Codex Engine](/codex-engine).
+Every template, prompt, and article you see has been generated through carefully crafted AI intelligence, refined specifically for helping you navigate life's biggest decisions. [Learn more about the Axiom Engine](/axiom-engine).
 
-## 🏗 New Guidance-Focused Architecture
+## 🏗 Architecture
 
 ```
 src/
-├── app/                    # Next.js app router
-│   ├── page.tsx           # Landing page  
-│   ├── wedding-planning/  # Template routes
-│   │   ├── page.tsx       # Marketing landing page
-│   │   └── app/          # Template application
-│   │       └── page.tsx   # Guidance interface
+├── app/                     # Next.js 15 app router
+│   ├── page.tsx            # Main landing page
+│   ├── faq/                # FAQ page
+│   ├── [template-name]/    # Template routes
+│   │   ├── page.tsx        # Marketing landing page
+│   │   └── app/            # Template workspace
+│   │       └── page.tsx    # Split-screen interface
 ├── components/
-│   ├── ui/                # shadcn/ui components
-│   ├── prompts/           # NEW: Prompt components
-│   │   └── EmbeddedPrompts.tsx # Main prompt interface
-│   ├── template/          # NEW: Template system  
-│   │   └── TemplateView.tsx    # Email-style layout
-│   └── templata-sidebar.tsx    # NEW: Dual sidebar navigation
-├── types/                 # NEW: Guidance data models
-│   └── template.ts        # GuidanceTemplate, ReflectionPrompt types
-├── data/                  # NEW: Template content
-│   └── templates.ts       # Wedding template with 48+ prompts
-└── contexts/              # Context providers for each template
+│   ├── ui/                 # shadcn/ui components
+│   ├── layout/             # Page layout components
+│   ├── landing/            # Landing page components
+│   └── template/           # Template system
+│       └── TemplateView.tsx # Split-screen workspace
+├── registry/               # Template and content data
+│   ├── templates.ts        # 150+ template definitions
+│   ├── prompts.ts          # 15,000+ Axiom Engine prompts
+│   └── articles.ts         # 3,000+ guidance articles
+├── contexts/               # React Context providers
+├── hooks/                  # Custom React hooks
+├── lib/                    # Utility functions and configs
+└── types/                  # TypeScript type definitions
 ```
 
-## 🎨 Design System
+## ✨ Key Features
 
-Templata uses the Vercel theme from [tweakcn.com](https://tweakcn.com) featuring:
-- **Colors**: Clean black/white OKLCH color space
-- **Typography**: Clean, readable font hierarchy
-- **Components**: Exclusively shadcn/ui components
-- **Theme**: Programmatic theme switching per template
+### Split-Screen Interface
+- **Categorized Prompts** - Left panel with organized reflection prompts
+- **Article Browser** - Right panel with relevant Axiom Engine articles
+- **Clean Workspace** - Distraction-free environment for planning
+- **Responsive Design** - Works seamlessly across all devices
 
-## 🧩 Key Components
+### Axiom Engine Content
+- **15,000+ Prompts** - Categorized by planning phases and decision types
+- **3,000+ Articles** - In-depth guidance for every situation
+- **150+ Templates** - Comprehensive workspaces for life's biggest moments
+- **AI-Powered Insights** - Specialized intelligence for life guidance
 
-### Email-Style Sidebar Navigation
-Dual sidebar system inspired by modern email clients:
-- **Left Navigation** - Template sections with visual indicators
-- **Right Content Browser** - Insertable prompts and resources with search
-- **Collapsible Design** - Clean, space-efficient interface
-- **Search Functionality** - Find relevant prompts and resources quickly
+### User Experience
+- **Simple Navigation** - Easy browsing between prompts and articles
+- **Progressive Planning** - Structured approach to complex decisions
+- **Export Options** - Save and share your completed plans
+- **Consistent Theming** - Beautiful design across all templates
 
-### Guidance-Focused Templates  
-Built around reflection and expert insights:
-- **48+ Reflection Prompts** per template with detailed help text
-- **Codex Engine guidance** powered by specialized AI for thoughtful decision-making
-- **Comprehensive Resources** covering every angle
-- **Insertable Prompt System** - Add relevant prompts to any section
-- **No Task Gamification** - Focus on thinking, not checking boxes
+## 📊 Platform Stats
 
-### Embedded Prompts Interface
-Rich prompt experience with guidance:
-- **Category-Based Organization** - consideration, planning, decision, research
-- **Helpful Context** - Every prompt includes professional guidance
-- **Dynamic Insertion** - Browse and add prompts without losing context
-- **Rich Text Areas** - Space for detailed reflection and planning
-- **Visual Prompt Categories** - Icons and colors for quick identification
-
-### Custom Scrollbars & Theming
-Polished visual experience:
-- **Theme-Aware Scrollbars** - Custom styling that adapts to light/dark modes
-- **OKLCH Color Space** - Modern color system for better theming
-- **Consistent Visual Language** - Unified design across all interfaces
+- **150+ Templates** - Comprehensive workspaces for life's major moments
+- **15,000+ Prompts** - Categorized reflection prompts powered by Axiom Engine
+- **3,000+ Articles** - In-depth guidance and insights for every situation
+- **4 Categories** - Personal Life, Career & Work, Property & Finance, Business & Entrepreneurship
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
+We welcome contributions to make Templata even better:
 
-1. **Template Ideas** - Suggest new templates for life moments we haven't covered
-2. **User Experience** - Report bugs or suggest UI/UX improvements
-3. **Expert Knowledge** - Share domain expertise for template creation
+1. **Template Suggestions** - Propose new life situations that need workspaces
+2. **Bug Reports** - Help us identify and fix issues
+3. **Feature Requests** - Suggest improvements to existing functionality
 4. **Code Contributions** - Submit PRs for features or fixes
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🙏 Inspiration
-
-Templata draws inspiration from:
-- **Notion** - For democratizing knowledge organization
-- **Canva** - For making design accessible to everyone
-- **Linear** - For clean, functional design patterns
-
-We're doing for life organization what these tools did for their respective domains - making the complex simple and the overwhelming manageable.
 
 ## 📞 Support
 
-- **FAQ**: [templata.com/faq](https://templata.com/faq)
-- **Community**: Join our forum for user discussions
+- **FAQ**: `/faq` - Common questions and answers
 - **Email**: support@templata.com
 - **Response Time**: Within 24 hours
+- **Community**: Join discussions with other users
+
+## 📝 License
+
+This project is available under the [MIT License](LICENSE).
 
 ## 🚀 Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deploy your own instance using the [Vercel Platform](https://vercel.com/new):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/yourusername/templata)
 
 ---
 
