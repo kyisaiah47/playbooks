@@ -296,63 +296,152 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			{/* Template Structure Focus */}
+			{/* Powerful Features */}
 			<section className="py-24">
+				<div className="container mx-auto max-w-7xl px-4">
+					<div className="text-center space-y-8 max-w-4xl mx-auto mb-16">
+						<Badge
+							variant="outline"
+							className="px-4 py-2"
+						>
+							<Zap className="mr-2 h-4 w-4" />
+							Powered by Axiom Engine
+						</Badge>
+
+						<h2 className="text-4xl md:text-5xl font-bold leading-tight">
+							15,000+ prompts meet
+							<br />
+							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+								intelligent design
+							</span>
+						</h2>
+
+						<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+							Every workspace is powered by our specialized AI system with tactical prompts, contextual articles, and seamless drag-and-drop functionality.
+						</p>
+					</div>
+
+					<div className="grid md:grid-cols-2 gap-12 items-center">
+						<div className="space-y-8">
+							<div className="space-y-6">
+								<div className="flex items-start gap-4">
+									<div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+										<MessageSquare className="h-6 w-6 text-primary" />
+									</div>
+									<div>
+										<h3 className="text-xl font-semibold mb-2">15,000+ Action Prompts</h3>
+										<p className="text-muted-foreground">Tactical, practical prompts that drive decision-making. Categorized by planning phases and organized for maximum impact.</p>
+									</div>
+								</div>
+
+								<div className="flex items-start gap-4">
+									<div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
+										<BookOpen className="h-6 w-6 text-green-600 dark:text-green-400" />
+									</div>
+									<div>
+										<h3 className="text-xl font-semibold mb-2">3,000+ Expert Articles</h3>
+										<p className="text-muted-foreground">In-depth guidance and insights for every situation. Contextually relevant to your current prompts and decisions.</p>
+									</div>
+								</div>
+
+								<div className="flex items-start gap-4">
+									<div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center flex-shrink-0">
+										<Layout className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+									</div>
+									<div>
+										<h3 className="text-xl font-semibold mb-2">Split-Screen Interface</h3>
+										<p className="text-muted-foreground">Prompts on the left, articles on the right. Drag insights directly into your answers without losing momentum.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div className="relative">
+							<Card className="p-6 space-y-4 bg-gradient-to-br from-background to-muted/50">
+								<div className="flex items-center gap-2 text-sm font-medium text-primary">
+									<Layout className="h-4 w-4" />
+									<span>Live Workspace Preview</span>
+								</div>
+								<div className="grid grid-cols-2 gap-4 text-sm">
+									<div className="space-y-2">
+										<div className="font-medium text-foreground">Action Prompts</div>
+										<div className="space-y-1">
+											<div className="p-3 bg-muted rounded text-muted-foreground">What's your venue budget range?</div>
+											<div className="p-3 bg-muted rounded text-muted-foreground">Who are your must-have vendors?</div>
+											<div className="p-3 bg-primary/10 rounded text-primary border border-primary/20">→ Current: Guest count priorities</div>
+										</div>
+									</div>
+									<div className="space-y-2">
+										<div className="font-medium text-foreground">Related Articles</div>
+										<div className="space-y-1">
+											<div className="p-3 bg-primary/5 rounded text-muted-foreground cursor-pointer hover:bg-primary/10 transition-colors">Venue Cost Breakdown</div>
+											<div className="p-3 bg-primary/5 rounded text-muted-foreground cursor-pointer hover:bg-primary/10 transition-colors">Guest List Strategy</div>
+											<div className="p-3 bg-primary/5 rounded text-muted-foreground cursor-pointer hover:bg-primary/10 transition-colors">Seasonal Pricing Guide</div>
+										</div>
+									</div>
+								</div>
+								<div className="flex items-center gap-2 text-xs text-muted-foreground pt-2 border-t">
+									<ArrowRight className="h-3 w-3" />
+									<span>Drag articles into prompt answers</span>
+								</div>
+							</Card>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Workspace Evolution */}
+			<section className="py-24 bg-muted/20">
 				<div className="container mx-auto max-w-7xl px-4">
 					<div className="text-center space-y-8 max-w-4xl mx-auto">
 						<Badge
 							variant="outline"
 							className="px-4 py-2"
 						>
-							<BookOpen className="mr-2 h-4 w-4" />
-							Structured Approach
+							<TrendingUp className="mr-2 h-4 w-4" />
+							Complete Evolution
 						</Badge>
 
 						<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-							Every template comes with
+							From guided templates to
 							<br />
 							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-								intelligent frameworks
+								life mastery
 							</span>
 						</h2>
 
 						<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-							No more staring at blank pages. Our Axiom Engine provides 15,000+
-							structured prompts and 3,000+ articles to organize your thoughts
-							and plans systematically.
+							Learn structure, then graduate to complete autonomy. Our three progressive workspace modes take you from guided learning to mastering your own life operating system.
 						</p>
 
 						<div className="grid md:grid-cols-3 gap-8 pt-8">
 							<div className="text-center space-y-4">
-								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-									<BookOpen className="h-8 w-8 text-primary" />
+								<div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mx-auto">
+									<Layout className="h-8 w-8 text-blue-600 dark:text-blue-400" />
 								</div>
-								<h3 className="text-xl font-semibold">Choose Template</h3>
+								<h3 className="text-xl font-semibold">Template Workspace</h3>
 								<p className="text-muted-foreground">
-									Select from 150+ purpose-built templates powered by our Axiom Engine for
-									your specific life moment or goal.
+									Split-screen guided experience with 15,000+ action prompts and contextual articles. Perfect for learning structure.
 								</p>
 							</div>
 
 							<div className="text-center space-y-4">
-								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-									<MessageSquare className="h-8 w-8 text-primary" />
+								<div className="w-16 h-16 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mx-auto">
+									<Timer className="h-8 w-8 text-purple-600 dark:text-purple-400" />
 								</div>
-								<h3 className="text-xl font-semibold">Explore & Reflect</h3>
+								<h3 className="text-xl font-semibold">Reflection Workspace</h3>
 								<p className="text-muted-foreground">
-									Browse categorized prompts and articles in a split-screen workspace
-									that guides your thinking process.
+									Daily fullscreen immersion for processing your journey. Distraction-free environment for deeper thinking.
 								</p>
 							</div>
 
 							<div className="text-center space-y-4">
-								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-									<Rocket className="h-8 w-8 text-primary" />
+								<div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto">
+									<Crown className="h-8 w-8 text-green-600 dark:text-green-400" />
 								</div>
-								<h3 className="text-xl font-semibold">Take Action</h3>
+								<h3 className="text-xl font-semibold">Master Workspace</h3>
 								<p className="text-muted-foreground">
-									Use your organized thoughts and plans to confidently
-									move forward with your goals.
+									Unified life OS combining all your template work. Like Notion, but built from your structured foundation.
 								</p>
 							</div>
 						</div>
@@ -361,7 +450,7 @@ export default function LandingPage() {
 			</section>
 
 			{/* Pricing Section */}
-			<section className="py-24 bg-muted/20">
+			<section className="py-24">
 				<div className="container mx-auto max-w-7xl px-4">
 					<div className="text-center space-y-4 mb-16">
 						<Badge
