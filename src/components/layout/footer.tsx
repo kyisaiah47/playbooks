@@ -138,7 +138,7 @@ export function Footer() {
 				<div className="flex flex-col lg:flex-row items-center justify-between gap-4">
 					<div className="flex flex-col lg:flex-row items-center gap-4">
 						<p className="text-sm text-muted-foreground">
-							© 2024 Templata. Organize your life with templates.
+							© 2025 Templata. Organize your life with templates.
 						</p>
 						<div className="flex items-center gap-1 text-sm text-muted-foreground bg-muted/30 px-3 py-1 rounded-full">
 							<span className="w-2 h-2 bg-green-500 rounded-full"></span>

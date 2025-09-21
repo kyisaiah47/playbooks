@@ -174,36 +174,57 @@ export function Header() {
 									<NavigationMenuItem>
 										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Company</NavigationMenuTrigger>
 										<NavigationMenuContent>
-											<ul className="grid w-[200px] gap-4">
+											<ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+												<li className="row-span-4">
+													<NavigationMenuLink asChild>
+														<Link
+															href="/manifesto"
+															className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+														>
+															<div className="mb-2 mt-4 text-lg font-medium">
+																Our Manifesto
+															</div>
+															<p className="text-sm leading-tight text-muted-foreground">
+																Why we believe life shouldn't start with a blank page and how we're ending the empty template era.
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
 												<li>
 													<NavigationMenuLink asChild>
 														<Link href="/about">
-															<div className="text-sm leading-none font-medium">About</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+															<div className="text-sm font-medium leading-none">About</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
 																Our mission and team
 															</p>
 														</Link>
 													</NavigationMenuLink>
+												</li>
+												<li>
 													<NavigationMenuLink asChild>
 														<Link href="/faq">
-															<div className="text-sm leading-none font-medium">FAQ</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+															<div className="text-sm font-medium leading-none">FAQ</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
 																Common questions and answers
 															</p>
 														</Link>
 													</NavigationMenuLink>
+												</li>
+												<li>
 													<NavigationMenuLink asChild>
 														<Link href="/partners">
-															<div className="text-sm leading-none font-medium">Partners</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+															<div className="text-sm font-medium leading-none">Partners</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
 																Collaboration and partnerships
 															</p>
 														</Link>
 													</NavigationMenuLink>
+												</li>
+												<li>
 													<NavigationMenuLink asChild>
 														<Link href="/axiom-engine">
-															<div className="text-sm leading-none font-medium">Axiom Engine</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+															<div className="text-sm font-medium leading-none">Axiom Engine</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
 																Our AI system for life guidance
 															</p>
 														</Link>

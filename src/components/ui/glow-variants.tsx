@@ -39,12 +39,12 @@ export function GlowVariant({
             inactiveZone={0.01}
             borderWidth={3}
           />
-          <div className="relative rounded-xl border-[0.75px] bg-background dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
+          <div className="relative rounded-xl border-[0.75px] bg-background dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] h-full">
             {children}
           </div>
         </div>
       ) : (
-        <div className={cn("relative rounded-xl border bg-background hover:border-primary/30 hover:shadow-lg transition-all duration-200", className)}>
+        <div className={cn("relative rounded-xl border bg-background hover:border-primary/30 hover:shadow-lg transition-all duration-200 h-full", className)}>
           {children}
         </div>
       );
@@ -61,12 +61,12 @@ export function GlowVariant({
             inactiveZone={0.05}
             borderWidth={2}
           />
-          <div className="relative rounded-lg border-[0.75px] bg-background">
+          <div className="relative rounded-lg border-[0.75px] bg-background h-full">
             {children}
           </div>
         </div>
       ) : (
-        <div className={cn("relative rounded-lg border bg-background hover:border-primary/25 hover:shadow-md transition-all duration-200", className)}>
+        <div className={cn("relative rounded-lg border bg-background hover:border-primary/25 hover:shadow-md transition-all duration-200 h-full", className)}>
           {children}
         </div>
       );
@@ -83,12 +83,12 @@ export function GlowVariant({
             inactiveZone={0.1}
             borderWidth={1}
           />
-          <div className="relative rounded-lg bg-background">
+          <div className="relative rounded-lg bg-background h-full">
             {children}
           </div>
         </div>
       ) : (
-        <div className={cn("relative rounded-lg border bg-background hover:border-primary/20 hover:shadow-sm transition-all duration-200", className)}>
+        <div className={cn("relative rounded-lg border bg-background hover:border-primary/20 hover:shadow-sm transition-all duration-200 h-full", className)}>
           {children}
         </div>
       );
@@ -97,7 +97,7 @@ export function GlowVariant({
       // Pure CSS glow - performance friendly
       return (
         <div className={cn(
-          "relative rounded-lg border bg-background transition-all duration-200",
+          "relative rounded-lg border bg-background transition-all duration-200 h-full",
           "hover:border-primary/30 hover:shadow-[0_0_20px_rgba(var(--primary),0.15)]",
           "hover:scale-[1.01]",
           className
@@ -109,7 +109,7 @@ export function GlowVariant({
     case "none":
     default:
       return (
-        <div className={cn("relative rounded-lg border bg-background", className)}>
+        <div className={cn("relative rounded-lg border bg-background h-full", className)}>
           {children}
         </div>
       );

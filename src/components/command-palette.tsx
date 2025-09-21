@@ -472,31 +472,35 @@ export function CommandPalette({
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent
-        className="!max-w-5xl w-[92vw] h-[85vh] p-0 gap-0 bg-background/95 backdrop-blur-xl border-2 flex flex-col"
+        className="!max-w-5xl w-[92vw] h-[85vh] p-0 gap-0 bg-transparent border-0 flex flex-col"
         showCloseButton={false}
         onKeyDown={handleKeyDown}
       >
-        <DialogTitle className="sr-only">
-          Search Templates and Resources
-        </DialogTitle>
+        <SubtleGlow className="w-full h-full flex flex-col">
+          <div className="w-full h-full bg-background/95 backdrop-blur-xl rounded-lg flex flex-col overflow-hidden">
+          <DialogTitle className="sr-only">
+            Search Templates and Resources
+          </DialogTitle>
         {/* Header */}
         <div className="border-b bg-background/50 p-6 flex-shrink-0">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder={query ? "Search templates, guides, and articles..." : `Try searching "${trendingQueries[currentTrendingIndex]}"`}
-              className="pl-12 pr-24 h-14 text-lg bg-transparent border-2 border-primary/20 focus:border-primary rounded-xl"
-              autoFocus={autoFocus}
-            />
+          <PremiumGlow>
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
+              <Input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={query ? "Search templates, guides, and articles..." : `Try searching "${trendingQueries[currentTrendingIndex]}"`}
+                className="pl-12 pr-24 h-14 text-lg bg-background border-0 focus:outline-none rounded-xl"
+                autoFocus={autoFocus}
+              />
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 border border-muted rounded-lg px-2 py-1">
                 <kbd className="px-1.5 py-0.5 bg-background border border-border rounded text-xs font-mono">Esc</kbd>
                 <span>to close</span>
               </div>
             </div>
-          </div>
+            </div>
+          </PremiumGlow>
 
 
           {/* Mode Tabs - Include template tab when in template mode */}
@@ -1626,6 +1630,8 @@ export function CommandPalette({
             </div>
           </div>
         </div>
+          </div>
+        </SubtleGlow>
       </DialogContent>
     </Dialog>
   )

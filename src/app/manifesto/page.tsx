@@ -16,7 +16,7 @@ export default function ManifestoPage() {
 						Our Manifesto
 					</h1>
 					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-						Our philosophy on life guidance, decision-making, and empowering people through their biggest moments.
+						Why we believe life shouldn't start with a blank page and how we're ending the empty template era.
 					</p>
 				</div>
 

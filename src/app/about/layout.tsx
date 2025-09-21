@@ -63,7 +63,7 @@ export default function AboutLayout({
               "@type": "Organization",
               "name": "Templata",
               "description": "Expert-crafted templates for life's biggest moments",
-              "foundingDate": "2024",
+              "foundingDate": "2025",
               "mission": "To make life's complex moments simple and overwhelming decisions manageable through structured, expert-guided templates",
               "serviceType": "Life Planning and Organization Platform",
               "areaServed": "Global",
