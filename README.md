@@ -11,7 +11,7 @@ The blank page era is dead. Instead of starting with emptiness, you get abundanc
 Our three-mode progression system:
 - **Template Workspace** - Split-screen guided experience with 15,000+ action prompts
 - **Reflection Mode** - Daily immersive environment for processing your journey
-- **Master Workspace** - Unified life management system like Notion, built from your structured foundation
+- **Life OS** - Unified life management system like Notion, built from your structured foundation
 - **Complete Evolution** - From guided learning to autonomous life mastery
 
 ## ✨ Core Features

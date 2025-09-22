@@ -310,7 +310,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
                     </DropdownMenuItem>
                     <DropdownMenuItem disabled className="flex items-center gap-2 opacity-50">
                       <CheckSquare className="h-4 w-4" />
-                      <span>Master Workspace</span>
+                      <span>Life OS</span>
                       <span className="text-xs text-muted-foreground ml-auto">Coming Soon</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>

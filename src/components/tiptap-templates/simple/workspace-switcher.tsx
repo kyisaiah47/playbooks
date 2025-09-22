@@ -36,7 +36,7 @@ export function WorkspaceSwitcher({ currentMode = 'reflection', onSwitchMode }: 
       case 'reflection':
         return 'Reflection Mode'
       case 'master':
-        return 'Master Workspace'
+        return 'Life OS'
       default:
         return 'Reflection Mode'
     }
@@ -66,7 +66,7 @@ export function WorkspaceSwitcher({ currentMode = 'reflection', onSwitchMode }: 
         <SelectItem value="master" disabled>
           <div className="flex items-center gap-2 opacity-50">
             <CheckSquare className="w-4 h-4" />
-            <span>Master Workspace</span>
+            <span>Life OS</span>
             <span className="text-xs text-muted-foreground ml-auto">Coming Soon</span>
           </div>
         </SelectItem>

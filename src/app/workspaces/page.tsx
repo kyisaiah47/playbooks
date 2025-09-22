@@ -152,14 +152,14 @@ export default function WorkspacesPage() {
 							</CardContent>
 						</Card>
 
-						{/* Master Workspace */}
+						{/* Life OS */}
 						<Card className="border-2 border-green-500/20 shadow-lg">
 							<CardHeader className="text-center">
 								<div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center mx-auto mb-4">
 									<Grid3x3 className="h-8 w-8 text-green-600 dark:text-green-400" />
 								</div>
 								<Badge variant="outline" className="w-fit mx-auto mb-2 border-green-500/50 text-green-600">Graduate To</Badge>
-								<CardTitle>Master Workspace</CardTitle>
+								<CardTitle>Life OS</CardTitle>
 								<CardDescription>
 									Unified view of all your template work. Like Notion, but built from your structured journey through life's moments.
 								</CardDescription>
@@ -323,13 +323,13 @@ export default function WorkspacesPage() {
 				</div>
 			</section>
 
-			{/* Master Workspace */}
+			{/* Life OS */}
 			<section className="py-16 md:py-24">
 				<div className="container mx-auto max-w-7xl px-4">
 					<div className="grid lg:grid-cols-2 gap-12 items-center">
 						<div className="lg:order-2 space-y-6">
 							<h2 className="text-3xl md:text-4xl font-bold">
-								Master Workspace: Your Life OS
+								Life OS: Your Life Management System
 							</h2>
 							<p className="text-lg text-muted-foreground">
 								Once you've learned the structure, all your template work becomes the foundation for a unified life management system. Like graduating from training wheels to advanced cycling.

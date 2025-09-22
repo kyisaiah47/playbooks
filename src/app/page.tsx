@@ -452,7 +452,7 @@ export default function LandingPage() {
 									<div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6">
 										<Crown className="h-8 w-8 text-green-600 dark:text-green-400" />
 									</div>
-									<h3 className="text-xl font-semibold">Master Workspace</h3>
+									<h3 className="text-xl font-semibold">Life OS</h3>
 									<p className="text-sm font-medium text-green-600 dark:text-green-400 uppercase tracking-wide">Finally Master</p>
 									<p className="text-muted-foreground">
 										Unified life OS combining all your template work. Like Notion, but built from your foundation.
