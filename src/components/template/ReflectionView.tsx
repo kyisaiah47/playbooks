@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { GuidanceTemplate, DailyReflectionPrompt } from '@/types/template';
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 import { WorkspaceSwitcher } from '@/components/tiptap-templates/simple/workspace-switcher';
+import { ThemeSelector } from '@/components/theme-selector';
 import { Info } from 'lucide-react';
 import {
   Tooltip,
@@ -83,21 +84,24 @@ export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) 
   }
 
   return (
-    <div className="h-screen w-full overflow-hidden flex flex-col font-sans" style={{ backgroundColor: '#0e0e11', color: 'white' }}>
+    <div className="h-screen w-full overflow-hidden flex flex-col font-sans bg-background text-foreground">
       {/* Header with workspace switcher and reflection prompt */}
-      <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: '#333' }}>
+      <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="absolute left-4">
+          <ThemeSelector />
+        </div>
         <div className="flex-1 text-center">
           <div className="flex items-center justify-center gap-2 mb-1">
-            <h2 className="text-sm font-medium" style={{ color: '#888' }}>
+            <h2 className="text-sm font-medium text-muted-foreground">
               {currentPrompt.category}
             </h2>
             {currentPrompt.expertAdvice && (
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
-                    <Info className="w-4 h-4" style={{ color: '#888' }} />
+                    <Info className="w-4 h-4 text-muted-foreground" />
                   </TooltipTrigger>
-                  <TooltipContent className="max-w-md p-3">
+                  <TooltipContent className="max-w-xs p-3 text-center">
                     <p className="text-sm">
                       <span className="font-medium">Expert insight:</span> {currentPrompt.expertAdvice}
                     </p>
@@ -106,7 +110,7 @@ export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) 
               </TooltipProvider>
             )}
           </div>
-          <p className="text-base" style={{ color: 'white' }}>
+          <p className="text-base text-foreground">
             {currentPrompt.text}
           </p>
         </div>

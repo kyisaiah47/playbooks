@@ -1,0 +1,547 @@
+[0;34m2025-09-22 00:07:51 - Starting Prompt Generation Cycle for template: financial-independence-college[0m
+[1;33m2025-09-22 00:07:51 - Override flag detected - resetting progress and recreating files[0m
+[0;32m2025-09-22 00:07:51 - Progress reset to 0 for template: financial-independence-college[0m
+[0;32m2025-09-22 00:07:51 - Using existing worktree: ../templata-financial-independence-college[0m
+[1;33m2025-09-22 00:07:51 - Creating template prompt file: prompts-financial-independence-college.ts[0m
+[0;32m2025-09-22 00:07:51 - Created template prompt file: ../templata-financial-independence-college/src/data/prompts-financial-independence-college.ts[0m
+[0;34m2025-09-22 00:07:51 - Generating prompt #1 (Section 1, Prompt 1/17)[0m
+[1;33m2025-09-22 00:07:51 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #1
+[0;32m2025-09-22 00:08:17 - Completed prompt #1[0m
+[0;34m2025-09-22 00:08:22 - Generating prompt #2 (Section 1, Prompt 2/17)[0m
+[1;33m2025-09-22 00:08:22 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #2
+[0;32m2025-09-22 00:08:52 - Completed prompt #2[0m
+[0;34m2025-09-22 00:08:57 - Generating prompt #3 (Section 1, Prompt 3/17)[0m
+[1;33m2025-09-22 00:08:57 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #3
+[0;32m2025-09-22 00:09:25 - Completed prompt #3[0m
+[0;34m2025-09-22 00:09:30 - Generating prompt #4 (Section 1, Prompt 4/17)[0m
+[1;33m2025-09-22 00:09:30 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #4
+[0;32m2025-09-22 00:09:55 - Completed prompt #4[0m
+[0;34m2025-09-22 00:10:00 - Generating prompt #5 (Section 1, Prompt 5/17)[0m
+[1;33m2025-09-22 00:10:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #5
+[0;32m2025-09-22 00:10:25 - Completed prompt #5[0m
+[0;34m2025-09-22 00:10:30 - Generating prompt #6 (Section 1, Prompt 6/17)[0m
+[1;33m2025-09-22 00:10:30 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #6
+[0;32m2025-09-22 00:10:52 - Completed prompt #6[0m
+[0;34m2025-09-22 00:10:57 - Generating prompt #7 (Section 1, Prompt 7/17)[0m
+[1;33m2025-09-22 00:10:57 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #7
+[0;32m2025-09-22 00:11:22 - Completed prompt #7[0m
+[0;34m2025-09-22 00:11:27 - Generating prompt #8 (Section 1, Prompt 8/17)[0m
+[1;33m2025-09-22 00:11:27 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #8
+[0;32m2025-09-22 00:11:52 - Completed prompt #8[0m
+[0;34m2025-09-22 00:11:57 - Generating prompt #9 (Section 1, Prompt 9/17)[0m
+[1;33m2025-09-22 00:11:57 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #9
+[0;32m2025-09-22 00:12:21 - Completed prompt #9[0m
+[0;34m2025-09-22 00:12:26 - Generating prompt #10 (Section 1, Prompt 10/17)[0m
+[1;33m2025-09-22 00:12:26 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #10
+[0;32m2025-09-22 00:12:48 - Completed prompt #10[0m
+[0;34m2025-09-22 00:12:53 - Generating prompt #11 (Section 1, Prompt 11/17)[0m
+[1;33m2025-09-22 00:12:53 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #11
+[0;32m2025-09-22 00:13:16 - Completed prompt #11[0m
+[0;34m2025-09-22 00:13:21 - Generating prompt #12 (Section 1, Prompt 12/17)[0m
+[0;34m2025-09-22 00:57:07 - Starting Prompt Generation Cycle for template: financial-independence-college[0m
+[0;32m2025-09-22 00:57:07 - Using existing worktree: ../templata-financial-independence-college[0m
+[0;34m2025-09-22 00:57:07 - Generating prompt #12 (Section 1, Prompt 12/17)[0m
+[1;33m2025-09-22 00:57:07 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #12
+[0;32m2025-09-22 00:57:35 - Completed prompt #12[0m
+[0;34m2025-09-22 00:57:40 - Generating prompt #13 (Section 1, Prompt 13/17)[0m
+[1;33m2025-09-22 00:57:40 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #13
+[0;32m2025-09-22 00:58:05 - Completed prompt #13[0m
+[0;34m2025-09-22 00:58:10 - Generating prompt #14 (Section 1, Prompt 14/17)[0m
+[1;33m2025-09-22 00:58:10 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #14
+[0;32m2025-09-22 00:58:35 - Completed prompt #14[0m
+[0;34m2025-09-22 00:58:40 - Generating prompt #15 (Section 1, Prompt 15/17)[0m
+[1;33m2025-09-22 00:58:40 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #15
+[0;32m2025-09-22 00:59:03 - Completed prompt #15[0m
+[0;34m2025-09-22 00:59:08 - Generating prompt #16 (Section 1, Prompt 16/17)[0m
+[1;33m2025-09-22 00:59:08 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #16
+[0;32m2025-09-22 00:59:31 - Completed prompt #16[0m
+[0;34m2025-09-22 00:59:36 - Generating prompt #17 (Section 1, Prompt 17/17)[0m
+[1;33m2025-09-22 00:59:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #17
+[0;32m2025-09-22 00:59:58 - Completed prompt #17[0m
+[0;34m2025-09-22 01:00:03 - Generating prompt #18 (Section 2, Prompt 1/17)[0m
+[1;33m2025-09-22 01:00:03 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-financial-independence-college/src/data/prompts-financial-independence-college.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-17',
+    prompt: 'Meet with your college\'s financial aid advisor to understand all available options for reducing education costs and maximizing aid eligibility',
+    category: 'action',
+    helpText: 'Proactively scheduling a comprehensive meeting with financial aid staff can uncover opportunities to reduce college costs that many students miss. Come prepared with questions about scholarship deadlines, work-study programs, and cost-saving strategies like summer courses or dual enrollment credits. Financial aid advisors often know about institutional grants, emergency funds, or payment plan options that aren\'t widely advertised, and they can help you optimize your aid package annually to minimize debt accumulation.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-17',
+    prompt: 'Meet with your college\'s financial aid advisor to understand all available options for reducing education costs and maximizing aid eligibility',
+    category: 'action',
+    helpText: 'Proactively scheduling a comprehensive meeting with financial aid staff can uncover opportunities to reduce college costs that many students miss. Come prepared with questions about scholarship deadlines, work-study programs, and cost-saving strategies like summer courses or dual enrollment credits. Financial aid advisors often know about institutional grants, emergency funds, or payment plan options that aren\'t widely advertised, and they can help you optimize your aid package annually to minimize debt accumulation.'
+  },
+  {
+    id: 'prompt-18',
+    prompt: 'Create a comprehensive list of all potential college income sources and research eligibility requirements for each',
+    category: 'research',
+    helpText: 'Maximizing income during college reduces your need for student loans and gives you more money to invest toward future financial independence. Research work-study programs, tutoring opportunities, freelance options in your field, paid internships, and on-campus jobs that align with your schedule and skills. Document application deadlines, hourly rates, and time commitments for each opportunity to create a strategic plan for generating income throughout your college years while maintaining academic performance.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-22 01:00:23 - Completed prompt #18[0m
+[0;34m2025-09-22 01:00:28 - Generating prompt #19 (Section 2, Prompt 2/17)[0m
+[1;33m2025-09-22 01:00:28 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #19
+[0;32m2025-09-22 01:01:03 - Completed prompt #19[0m
+[0;34m2025-09-22 01:01:08 - Generating prompt #20 (Section 2, Prompt 3/17)[0m
+[1;33m2025-09-22 01:01:09 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #20
+[0;32m2025-09-22 01:01:33 - Completed prompt #20[0m
+[0;34m2025-09-22 01:01:38 - Generating prompt #21 (Section 2, Prompt 4/17)[0m
+[1;33m2025-09-22 01:01:38 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #21
+[0;32m2025-09-22 01:02:02 - Completed prompt #21[0m
+[0;34m2025-09-22 01:02:07 - Generating prompt #22 (Section 2, Prompt 5/17)[0m
+[1;33m2025-09-22 01:02:07 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #22
+[0;32m2025-09-22 01:02:30 - Completed prompt #22[0m
+[0;34m2025-09-22 01:02:36 - Generating prompt #23 (Section 2, Prompt 6/17)[0m
+[1;33m2025-09-22 01:02:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #23
+[0;32m2025-09-22 01:02:59 - Completed prompt #23[0m
+[0;34m2025-09-22 01:03:04 - Generating prompt #24 (Section 2, Prompt 7/17)[0m
+[1;33m2025-09-22 01:03:04 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #24
+[0;32m2025-09-22 01:03:29 - Completed prompt #24[0m
+[0;34m2025-09-22 01:03:34 - Generating prompt #25 (Section 2, Prompt 8/17)[0m
+[1;33m2025-09-22 01:03:34 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #25
+[0;32m2025-09-22 01:03:58 - Completed prompt #25[0m
+[0;34m2025-09-22 01:04:03 - Generating prompt #26 (Section 2, Prompt 9/17)[0m
+[1;33m2025-09-22 01:04:03 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #26
+[0;32m2025-09-22 01:04:28 - Completed prompt #26[0m
+[0;34m2025-09-22 01:04:33 - Generating prompt #27 (Section 2, Prompt 10/17)[0m
+[1;33m2025-09-22 01:04:33 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #27
+[0;32m2025-09-22 01:04:58 - Completed prompt #27[0m
+[0;34m2025-09-22 01:05:03 - Generating prompt #28 (Section 2, Prompt 11/17)[0m
+[1;33m2025-09-22 01:05:03 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #28
+[0;32m2025-09-22 01:05:29 - Completed prompt #28[0m
+[0;34m2025-09-22 01:05:34 - Generating prompt #29 (Section 2, Prompt 12/17)[0m
+[1;33m2025-09-22 01:05:34 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #29
+[0;32m2025-09-22 01:05:59 - Completed prompt #29[0m
+[0;34m2025-09-22 01:06:04 - Generating prompt #30 (Section 2, Prompt 13/17)[0m
+[1;33m2025-09-22 01:06:04 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #30
+[0;32m2025-09-22 01:06:29 - Completed prompt #30[0m
+[0;34m2025-09-22 01:06:34 - Generating prompt #31 (Section 2, Prompt 14/17)[0m
+[1;33m2025-09-22 01:06:34 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-financial-independence-college/src/data/prompts-financial-independence-college.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-30',
+    prompt: 'Schedule and attend at least 3 career networking events or informational interviews in your field before junior year',
+    category: 'action',
+    helpText: 'Building professional relationships early in college can lead to higher-paying job opportunities and faster career advancement, both crucial for accelerating your FIRE timeline. Target industry conferences, alumni events, career fairs, and LinkedIn networking to connect with professionals who can provide insights about salary expectations and career paths. Early networking often results in internship opportunities and job offers that come with 10-20% higher starting salaries, which compounds significantly over your career and can shave years off your path to financial independence.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-30',
+    prompt: 'Schedule and attend at least 3 career networking events or informational interviews in your field before junior year',
+    category: 'action',
+    helpText: 'Building professional relationships early in college can lead to higher-paying job opportunities and faster career advancement, both crucial for accelerating your FIRE timeline. Target industry conferences, alumni events, career fairs, and LinkedIn networking to connect with professionals who can provide insights about salary expectations and career paths. Early networking often results in internship opportunities and job offers that come with 10-20% higher starting salaries, which compounds significantly over your career and can shave years off your path to financial independence.'
+  },
+  {
+    id: 'prompt-31',
+    prompt: 'Research and create a detailed comparison of 3 college meal plan options versus cooking your own meals to optimize your food budget',
+    category: 'planning',
+    helpText: 'Food costs represent one of the largest controllable expenses during college, and strategic meal planning can save thousands of dollars that accelerate your FIRE timeline. Compare the total cost per meal of different meal plan options against grocery shopping and cooking, factoring in time costs and convenience. Many students can reduce food expenses by 30-50% through smart meal planning and cooking, freeing up hundreds of dollars each semester for emergency funds or early investments while developing crucial life skills for post-graduation budgeting.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-22 01:06:56 - Completed prompt #31[0m
+[0;34m2025-09-22 01:07:01 - Generating prompt #32 (Section 2, Prompt 15/17)[0m
+[1;33m2025-09-22 01:07:01 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #32
+[0;32m2025-09-22 01:07:27 - Completed prompt #32[0m
+[0;34m2025-09-22 01:07:32 - Generating prompt #33 (Section 2, Prompt 16/17)[0m
+[1;33m2025-09-22 01:07:32 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-financial-independence-college/src/data/prompts-financial-independence-college.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-32',
+    prompt: 'Research and develop a comprehensive plan for utilizing campus resources to minimize out-of-pocket college living expenses',
+    category: 'planning',
+    helpText: 'Maximizing free campus resources can dramatically reduce your college living costs and minimize debt accumulation that delays financial independence. Create a detailed plan utilizing campus meal plans, recreation facilities, health services, career counseling, tutoring, and social activities instead of paying for external alternatives. Strategic use of these included services can save hundreds monthly on gym memberships, healthcare, entertainment, and professional development, allowing you to redirect those savings toward your emergency fund or early investments.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-32',
+    prompt: 'Research and develop a comprehensive plan for utilizing campus resources to minimize out-of-pocket college living expenses',
+    category: 'planning',
+    helpText: 'Maximizing free campus resources can dramatically reduce your college living costs and minimize debt accumulation that delays financial independence. Create a detailed plan utilizing campus meal plans, recreation facilities, health services, career counseling, tutoring, and social activities instead of paying for external alternatives. Strategic use of these included services can save hundreds monthly on gym memberships, healthcare, entertainment, and professional development, allowing you to redirect those savings toward your emergency fund or early investments.'
+  },
+  {
+    id: 'prompt-33',
+    prompt: 'Create a detailed comparison matrix of 3 potential post-graduation living situations (parents\' home, shared apartment, solo living) including all costs and FIRE timeline impacts',
+    category: 'planning',
+    helpText: 'Your living situation immediately after college is one of the most significant factors affecting your ability to achieve financial independence quickly. Compare the total monthly costs of each option including rent, utilities, food, transportation, and opportunity costs, then calculate how each choice impacts your student loan repayment timeline and savings rate. Living with parents for 1-2 years could potentially save $15,000-30,000 annually, dramatically accelerating your debt payoff and early investment contributions, while maintaining independence might be worth the slower FIRE progress depending on your personal values and career needs.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-22 01:07:53 - Completed prompt #33[0m
+[0;34m2025-09-22 01:07:58 - Generating prompt #34 (Section 2, Prompt 17/17)[0m
+[1;33m2025-09-22 01:07:58 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-financial-independence-college/src/data/prompts-financial-independence-college.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-32',
+    prompt: 'Research and develop a comprehensive plan for utilizing campus resources to minimize out-of-pocket college living expenses',
+    category: 'planning',
+    helpText: 'Maximizing free campus resources can dramatically reduce your college living costs and minimize debt accumulation that delays financial independence. Create a detailed plan utilizing campus meal plans, recreation facilities, health services, career counseling, tutoring, and social activities instead of paying for external alternatives. Strategic use of these included services can save hundreds monthly on gym memberships, healthcare, entertainment, and professional development, allowing you to redirect those savings toward your emergency fund or early investments.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-32',
+    prompt: 'Research and develop a comprehensive plan for utilizing campus resources to minimize out-of-pocket college living expenses',
+    category: 'planning',
+    helpText: 'Maximizing free campus resources can dramatically reduce your college living costs and minimize debt accumulation that delays financial independence. Create a detailed plan utilizing campus meal plans, recreation facilities, health services, career counseling, tutoring, and social activities instead of paying for external alternatives. Strategic use of these included services can save hundreds monthly on gym memberships, healthcare, entertainment, and professional development, allowing you to redirect those savings toward your emergency fund or early investments.'
+  },
+  {
+    id: 'prompt-33',
+    prompt: 'Create a detailed course load and work schedule optimization plan to maximize earning potential while maintaining academic performance',
+    category: 'planning',
+    helpText: 'Balancing coursework with income-generating activities requires strategic planning to avoid sacrificing academic success while building financial resources for your FIRE journey. Analyze your class schedule to identify optimal times for part-time work, internships, or side hustles that align with your energy levels and study needs. This planning ensures you can earn money to reduce borrowing needs without compromising grades that affect future career opportunities and earning potential.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-22 01:08:18 - Completed prompt #34[0m
+[0;34m2025-09-22 01:08:23 - Generating prompt #35 (Section 3, Prompt 1/17)[0m
+[1;33m2025-09-22 01:08:23 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #35
+[0;32m2025-09-22 01:08:54 - Completed prompt #35[0m
+[0;34m2025-09-22 01:08:59 - Generating prompt #36 (Section 3, Prompt 2/17)[0m
+[1;33m2025-09-22 01:08:59 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-financial-independence-college/src/data/prompts-financial-independence-college.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-35',
+    prompt: 'Open and fund your first investment account with $50-100 while still in college to start building wealth immediately',
+    category: 'action',
+    helpText: 'Starting to invest even small amounts during college harnesses the power of compound interest over the longest possible time horizon, dramatically accelerating your FIRE timeline. Open a low-cost brokerage account with providers like Fidelity, Schwab, or Vanguard and invest in a broad market index fund with any money you can spare from part-time work or summer jobs. Even $50 invested monthly during college can grow to substantial amounts by retirement age, and the habit of consistent investing becomes the foundation of your FIRE strategy from the very beginning of your financial journey.'
+  }</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-35',
+    prompt: 'Open and fund your first investment account with $50-100 while still in college to start building wealth immediately',
+    category: 'action',
+    helpText: 'Starting to invest even small amounts during college harnesses the power of compound interest over the longest possible time horizon, dramatically accelerating your FIRE timeline. Open a low-cost brokerage account with providers like Fidelity, Schwab, or Vanguard and invest in a broad market index fund with any money you can spare from part-time work or summer jobs. Even $50 invested monthly during college can grow to substantial amounts by retirement age, and the habit of consistent investing becomes the foundation of your FIRE strategy from the very beginning of your financial journey.'
+  },
+  {
+    id: 'prompt-36',
+    prompt: 'Calculate the lifetime earning difference between your current major and 3 alternative career paths to optimize your education ROI',
+    category: 'research',
+    helpText: 'Understanding the long-term earning potential of different career paths helps you make informed decisions about your major, minor, or double-major options that directly impact your FIRE timeline. Research median starting salaries, 10-year salary progression, and lifetime earning potential for your current field versus alternatives you\'re considering. This analysis helps you balance passion with financial reality and may reveal opportunities to slightly adjust your academic focus for significantly higher earning potential, which can accelerate your path to financial independence by years or even decades.'
+  }</parameter>
+</invoke>
+[0;32m2025-09-22 01:09:20 - Completed prompt #36[0m
+[0;34m2025-09-22 01:09:25 - Generating prompt #37 (Section 3, Prompt 3/17)[0m
+[1;33m2025-09-22 01:09:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #37
+[0;32m2025-09-22 01:09:51 - Completed prompt #37[0m
+[0;34m2025-09-22 01:09:56 - Generating prompt #38 (Section 3, Prompt 4/17)[0m
+[1;33m2025-09-22 01:09:56 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #38
+[0;32m2025-09-22 01:10:21 - Completed prompt #38[0m
+[0;34m2025-09-22 01:10:26 - Generating prompt #39 (Section 3, Prompt 5/17)[0m
+[1;33m2025-09-22 01:10:26 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #39
+[0;32m2025-09-22 01:10:50 - Completed prompt #39[0m
+[0;34m2025-09-22 01:10:55 - Generating prompt #40 (Section 3, Prompt 6/17)[0m
+[1;33m2025-09-22 01:10:55 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #40
+[0;32m2025-09-22 01:11:21 - Completed prompt #40[0m
+[0;34m2025-09-22 01:11:26 - Generating prompt #41 (Section 3, Prompt 7/17)[0m
+[1;33m2025-09-22 01:11:26 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #41
+[0;32m2025-09-22 01:11:49 - Completed prompt #41[0m
+[0;34m2025-09-22 01:11:54 - Generating prompt #42 (Section 3, Prompt 8/17)[0m
+[1;33m2025-09-22 01:11:54 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #42
+[0;32m2025-09-22 01:12:16 - Completed prompt #42[0m
+[0;34m2025-09-22 01:12:21 - Generating prompt #43 (Section 3, Prompt 9/17)[0m
+[1;33m2025-09-22 01:12:21 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #43
+[0;32m2025-09-22 01:12:45 - Completed prompt #43[0m
+[0;34m2025-09-22 01:12:50 - Generating prompt #44 (Section 3, Prompt 10/17)[0m
+[1;33m2025-09-22 01:12:50 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #44
+[0;32m2025-09-22 01:13:13 - Completed prompt #44[0m
+[0;34m2025-09-22 01:13:18 - Generating prompt #45 (Section 3, Prompt 11/17)[0m
+[1;33m2025-09-22 01:13:19 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #45
+[0;32m2025-09-22 01:13:42 - Completed prompt #45[0m
+[0;34m2025-09-22 01:13:47 - Generating prompt #46 (Section 3, Prompt 12/17)[0m
+[1;33m2025-09-22 01:13:47 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #46
+[0;32m2025-09-22 01:14:11 - Completed prompt #46[0m
+[0;34m2025-09-22 01:14:16 - Generating prompt #47 (Section 3, Prompt 13/17)[0m
+[1;33m2025-09-22 01:14:16 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #47
+[0;32m2025-09-22 01:14:38 - Completed prompt #47[0m
+[0;34m2025-09-22 01:14:43 - Generating prompt #48 (Section 3, Prompt 14/17)[0m
+[1;33m2025-09-22 01:14:43 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #48
+[0;32m2025-09-22 01:15:07 - Completed prompt #48[0m
+[0;34m2025-09-22 01:15:12 - Generating prompt #49 (Section 3, Prompt 15/17)[0m
+[1;33m2025-09-22 01:15:12 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #49
+[0;32m2025-09-22 01:15:34 - Completed prompt #49[0m
+[0;34m2025-09-22 01:15:39 - Generating prompt #50 (Section 3, Prompt 16/17)[0m
+[1;33m2025-09-22 01:15:39 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #50
+[0;32m2025-09-22 01:16:04 - Completed prompt #50[0m
+[0;34m2025-09-22 01:16:09 - Generating prompt #51 (Section 3, Prompt 17/17)[0m
+[1;33m2025-09-22 01:16:09 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-financial-independence-college/src/data/prompts-financial-independence-college.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-50',
+    prompt: 'Create and fund a separate "post-graduation transition fund" with $2,000-3,000 for job search expenses, professional wardrobe, and first apartment setup',
+    category: 'action',
+    helpText: 'Building a transition fund prevents you from accumulating high-interest debt during the critical period between college and your first steady paycheck. Include costs for interview travel, professional clothing, security deposits, moving expenses, and 1-2 months of living expenses in case your job start date is delayed. Having this fund ready allows you to focus on landing the best possible job offer rather than accepting the first opportunity due to financial pressure, potentially increasing your starting salary and accelerating your FIRE timeline from day one of your career.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-50',
+    prompt: 'Create and fund a separate "post-graduation transition fund" with $2,000-3,000 for job search expenses, professional wardrobe, and first apartment setup',
+    category: 'action',
+    helpText: 'Building a transition fund prevents you from accumulating high-interest debt during the critical period between college and your first steady paycheck. Include costs for interview travel, professional clothing, security deposits, moving expenses, and 1-2 months of living expenses in case your job start date is delayed. Having this fund ready allows you to focus on landing the best possible job offer rather than accepting the first opportunity due to financial pressure, potentially increasing your starting salary and accelerating your FIRE timeline from day one of your career.'
+  },
+  {
+    id: 'prompt-51',
+    prompt: 'Schedule and complete your first post-graduation performance review preparation meeting with a mentor or career counselor',
+    category: 'action',
+    helpText: 'Proactively preparing for your first annual performance review can result in earlier promotions and salary increases that significantly accelerate your FIRE timeline. Meet with a mentor, career counselor, or trusted professional to practice articulating your accomplishments, setting ambitious but realistic goals, and negotiating compensation increases. Early career salary growth is often the steepest and most impactful for long-term wealth building, making performance review preparation one of the highest-return activities for new graduates focused on financial independence.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-22 01:16:29 - Completed prompt #51[0m
+[0;34m2025-09-22 01:16:34 - Generating prompt #52 (Section 4, Prompt 1/17)[0m
+[1;33m2025-09-22 01:16:34 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #52
+[0;32m2025-09-22 01:16:57 - Completed prompt #52[0m
+[0;34m2025-09-22 01:17:02 - Generating prompt #53 (Section 4, Prompt 2/17)[0m
+[1;33m2025-09-22 01:17:02 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #53
+[0;32m2025-09-22 01:17:27 - Completed prompt #53[0m
+[0;34m2025-09-22 01:17:32 - Generating prompt #54 (Section 4, Prompt 3/17)[0m
+[1;33m2025-09-22 01:17:32 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #54
+[0;32m2025-09-22 01:17:55 - Completed prompt #54[0m
+[0;34m2025-09-22 01:18:00 - Generating prompt #55 (Section 4, Prompt 4/17)[0m
+[1;33m2025-09-22 01:18:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #55
+[0;32m2025-09-22 01:18:23 - Completed prompt #55[0m
+[0;34m2025-09-22 01:18:28 - Generating prompt #56 (Section 4, Prompt 5/17)[0m
+[1;33m2025-09-22 01:18:28 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #56
+[0;32m2025-09-22 01:18:51 - Completed prompt #56[0m
+[0;34m2025-09-22 01:18:56 - Generating prompt #57 (Section 4, Prompt 6/17)[0m
+[1;33m2025-09-22 01:18:56 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #57
+[0;32m2025-09-22 01:19:20 - Completed prompt #57[0m
+[0;34m2025-09-22 01:19:25 - Generating prompt #58 (Section 4, Prompt 7/17)[0m
+[1;33m2025-09-22 01:19:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #58
+[0;32m2025-09-22 01:19:53 - Completed prompt #58[0m
+[0;34m2025-09-22 01:19:58 - Generating prompt #59 (Section 4, Prompt 8/17)[0m
+[1;33m2025-09-22 01:19:58 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #59
+[0;32m2025-09-22 01:20:22 - Completed prompt #59[0m
+[0;34m2025-09-22 01:20:27 - Generating prompt #60 (Section 4, Prompt 9/17)[0m
+[1;33m2025-09-22 01:20:27 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #60
+[0;32m2025-09-22 01:20:50 - Completed prompt #60[0m
+[0;34m2025-09-22 01:20:55 - Generating prompt #61 (Section 4, Prompt 10/17)[0m
+[1;33m2025-09-22 01:20:55 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #61
+[0;32m2025-09-22 01:21:16 - Completed prompt #61[0m
+[0;34m2025-09-22 01:21:21 - Generating prompt #62 (Section 4, Prompt 11/17)[0m
+[1;33m2025-09-22 01:21:21 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #62
+[0;32m2025-09-22 01:21:45 - Completed prompt #62[0m
+[0;34m2025-09-22 01:21:50 - Generating prompt #63 (Section 4, Prompt 12/17)[0m
+[1;33m2025-09-22 01:21:50 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #63
+[0;32m2025-09-22 01:22:14 - Completed prompt #63[0m
+[0;34m2025-09-22 01:22:19 - Generating prompt #64 (Section 4, Prompt 13/17)[0m
+[1;33m2025-09-22 01:22:19 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #64
+[0;32m2025-09-22 01:22:44 - Completed prompt #64[0m
+[0;34m2025-09-22 01:22:49 - Generating prompt #65 (Section 4, Prompt 14/17)[0m
+[1;33m2025-09-22 01:22:49 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #65
+[0;32m2025-09-22 01:23:13 - Completed prompt #65[0m
+[0;34m2025-09-22 01:23:18 - Generating prompt #66 (Section 4, Prompt 15/17)[0m
+[1;33m2025-09-22 01:23:18 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #66
+[0;32m2025-09-22 01:23:40 - Completed prompt #66[0m
+[0;34m2025-09-22 01:23:45 - Generating prompt #67 (Section 4, Prompt 16/17)[0m
+[1;33m2025-09-22 01:23:45 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #67
+[0;32m2025-09-22 01:24:07 - Completed prompt #67[0m
+[0;34m2025-09-22 01:24:12 - Generating prompt #68 (Section 4, Prompt 17/17)[0m
+[1;33m2025-09-22 01:24:12 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #68
+[0;32m2025-09-22 01:24:36 - Completed prompt #68[0m
+[0;34m2025-09-22 01:24:41 - Generating prompt #69 (Section 5, Prompt 1/17)[0m
+[1;33m2025-09-22 01:24:41 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #69
+[0;32m2025-09-22 01:25:06 - Completed prompt #69[0m
+[0;34m2025-09-22 01:25:11 - Generating prompt #70 (Section 5, Prompt 2/17)[0m
+[1;33m2025-09-22 01:25:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #70
+[0;32m2025-09-22 01:25:34 - Completed prompt #70[0m
+[0;34m2025-09-22 01:25:39 - Generating prompt #71 (Section 5, Prompt 3/17)[0m
+[1;33m2025-09-22 01:25:39 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #71
+[0;32m2025-09-22 01:26:03 - Completed prompt #71[0m
+[0;34m2025-09-22 01:26:08 - Generating prompt #72 (Section 5, Prompt 4/17)[0m
+[1;33m2025-09-22 01:26:08 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #72
+[0;32m2025-09-22 01:26:31 - Completed prompt #72[0m
+[0;34m2025-09-22 01:26:36 - Generating prompt #73 (Section 5, Prompt 5/17)[0m
+[1;33m2025-09-22 01:26:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #73
+[0;32m2025-09-22 01:26:58 - Completed prompt #73[0m
+[0;34m2025-09-22 01:27:03 - Generating prompt #74 (Section 5, Prompt 6/17)[0m
+[1;33m2025-09-22 01:27:03 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #74
+[0;32m2025-09-22 01:27:27 - Completed prompt #74[0m
+[0;34m2025-09-22 01:27:32 - Generating prompt #75 (Section 5, Prompt 7/17)[0m
+[1;33m2025-09-22 01:27:32 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #75
+[0;32m2025-09-22 01:27:55 - Completed prompt #75[0m
+[0;34m2025-09-22 01:28:00 - Generating prompt #76 (Section 5, Prompt 8/17)[0m
+[1;33m2025-09-22 01:28:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #76
+[0;32m2025-09-22 01:28:24 - Completed prompt #76[0m
+[0;34m2025-09-22 01:28:29 - Generating prompt #77 (Section 5, Prompt 9/17)[0m
+[1;33m2025-09-22 01:28:29 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #77
+[0;32m2025-09-22 01:28:52 - Completed prompt #77[0m
+[0;34m2025-09-22 01:28:57 - Generating prompt #78 (Section 5, Prompt 10/17)[0m
+[1;33m2025-09-22 01:28:57 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #78
+[0;32m2025-09-22 01:29:19 - Completed prompt #78[0m
+[0;34m2025-09-22 01:29:24 - Generating prompt #79 (Section 5, Prompt 11/17)[0m
+[1;33m2025-09-22 01:29:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #79
+[0;32m2025-09-22 01:29:47 - Completed prompt #79[0m
+[0;34m2025-09-22 01:29:52 - Generating prompt #80 (Section 5, Prompt 12/17)[0m
+[1;33m2025-09-22 01:29:52 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #80
+[0;32m2025-09-22 01:30:17 - Completed prompt #80[0m
+[0;34m2025-09-22 01:30:22 - Generating prompt #81 (Section 5, Prompt 13/17)[0m
+[1;33m2025-09-22 01:30:22 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #81
+[0;32m2025-09-22 01:30:44 - Completed prompt #81[0m
+[0;34m2025-09-22 01:30:49 - Generating prompt #82 (Section 5, Prompt 14/17)[0m
+[1;33m2025-09-22 01:30:49 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #82
+[0;32m2025-09-22 01:31:14 - Completed prompt #82[0m
+[0;34m2025-09-22 01:31:19 - Generating prompt #83 (Section 5, Prompt 15/17)[0m
+[1;33m2025-09-22 01:31:19 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #83
+[0;32m2025-09-22 01:31:42 - Completed prompt #83[0m
+[0;34m2025-09-22 01:31:47 - Generating prompt #84 (Section 5, Prompt 16/17)[0m
+[1;33m2025-09-22 01:31:47 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #84
+[0;32m2025-09-22 01:32:10 - Completed prompt #84[0m
+[0;34m2025-09-22 01:32:15 - Generating prompt #85 (Section 5, Prompt 17/17)[0m
+[1;33m2025-09-22 01:32:15 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #85
+[0;32m2025-09-22 01:32:39 - Completed prompt #85[0m
+[0;34m2025-09-22 01:32:44 - Generating prompt #86 (Section 6, Prompt 1/17)[0m
+[1;33m2025-09-22 01:32:44 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #86
+[0;32m2025-09-22 01:33:07 - Completed prompt #86[0m
+[0;34m2025-09-22 01:33:12 - Generating prompt #87 (Section 6, Prompt 2/17)[0m
+[1;33m2025-09-22 01:33:13 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #87
+[0;32m2025-09-22 01:33:36 - Completed prompt #87[0m
+[0;34m2025-09-22 01:33:41 - Generating prompt #88 (Section 6, Prompt 3/17)[0m
+[1;33m2025-09-22 01:33:41 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #88
+[0;32m2025-09-22 01:34:04 - Completed prompt #88[0m
+[0;34m2025-09-22 01:34:10 - Generating prompt #89 (Section 6, Prompt 4/17)[0m
+[1;33m2025-09-22 01:34:10 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #89
+[0;32m2025-09-22 01:34:33 - Completed prompt #89[0m
+[0;34m2025-09-22 01:34:38 - Generating prompt #90 (Section 6, Prompt 5/17)[0m
+[1;33m2025-09-22 01:34:38 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #90
+[0;32m2025-09-22 01:35:05 - Completed prompt #90[0m
+[0;34m2025-09-22 01:35:10 - Generating prompt #91 (Section 6, Prompt 6/17)[0m
+[1;33m2025-09-22 01:35:10 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #91
+[0;32m2025-09-22 01:35:32 - Completed prompt #91[0m
+[0;34m2025-09-22 01:35:37 - Generating prompt #92 (Section 6, Prompt 7/17)[0m
+[1;33m2025-09-22 01:35:37 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #92
+[0;32m2025-09-22 01:36:01 - Completed prompt #92[0m
+[0;34m2025-09-22 01:36:07 - Generating prompt #93 (Section 6, Prompt 8/17)[0m
+[1;33m2025-09-22 01:36:07 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #93
+[0;32m2025-09-22 01:36:27 - Completed prompt #93[0m
+[0;34m2025-09-22 01:36:32 - Generating prompt #94 (Section 6, Prompt 9/17)[0m
+[1;33m2025-09-22 01:36:32 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #94
+[0;32m2025-09-22 01:36:56 - Completed prompt #94[0m
+[0;34m2025-09-22 01:37:01 - Generating prompt #95 (Section 6, Prompt 10/17)[0m
+[1;33m2025-09-22 01:37:01 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #95
+[0;32m2025-09-22 01:37:24 - Completed prompt #95[0m
+[0;34m2025-09-22 01:37:29 - Generating prompt #96 (Section 6, Prompt 11/17)[0m
+[1;33m2025-09-22 01:37:29 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #96
+[0;32m2025-09-22 01:37:53 - Completed prompt #96[0m
+[0;34m2025-09-22 01:37:58 - Generating prompt #97 (Section 6, Prompt 12/17)[0m
+[1;33m2025-09-22 01:37:58 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #97
+[0;32m2025-09-22 01:38:20 - Completed prompt #97[0m
+[0;34m2025-09-22 01:38:25 - Generating prompt #98 (Section 6, Prompt 13/17)[0m
+[1;33m2025-09-22 01:38:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #98
+[0;32m2025-09-22 01:38:50 - Completed prompt #98[0m
+[0;34m2025-09-22 01:38:55 - Generating prompt #99 (Section 6, Prompt 14/17)[0m
+[1;33m2025-09-22 01:38:55 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #99
+[0;32m2025-09-22 01:39:17 - Completed prompt #99[0m
+[0;34m2025-09-22 01:39:22 - Generating prompt #100 (Section 6, Prompt 15/17)[0m
+[1;33m2025-09-22 01:39:22 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #100
+[0;32m2025-09-22 01:39:47 - Completed prompt #100[0m
+[0;34m2025-09-22 01:39:52 - Generating prompt #101 (Section 6, Prompt 16/17)[0m
+[1;33m2025-09-22 01:39:52 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #101
+[0;32m2025-09-22 01:40:14 - Completed prompt #101[0m
+[0;34m2025-09-22 01:40:19 - Generating prompt #102 (Section 6, Prompt 17/17)[0m
+[1;33m2025-09-22 01:40:19 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #102
+[0;32m2025-09-22 01:40:43 - Completed prompt #102[0m

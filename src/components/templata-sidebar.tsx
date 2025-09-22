@@ -3,14 +3,14 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon, ExternalLink, Ban, HelpCircle, CheckCircle, Compass, Clipboard, Sunset } from "lucide-react"
+import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon, ExternalLink, Ban, HelpCircle, CheckCircle, Compass, Clipboard, Sunset, Share, Copy } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { getBlogPostsByTemplate } from "@/registry/blogs"
 import { Badge } from "@/components/ui/badge"
-import { ThemeSelector } from "@/components/theme-selector"
 import { RelatedTemplates } from "@/components/template/related-templates"
 import { SharePanel } from "@/components/collaboration/share-panel"
 import { PDFExportButton } from "@/components/pdf/export-button"
+import { ThemeSelector } from "@/components/theme-selector"
 import {
   Sidebar,
   SidebarContent,
@@ -23,7 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
   SidebarFooter,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/template-sidebar"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 
 export const getCategoryIcon = (category: string) => {
@@ -258,17 +258,25 @@ export function TemplataContentSidebar({
           </SidebarGroup>
         </SidebarContent>
 
-        <SidebarFooter className="flex flex-col gap-2 p-4 items-center">
-          <SharePanel
-            templateId={template.id}
-            templateTitle={template.title}
-            responses={responses || {}}
-          />
-          <PDFExportButton
-            template={template}
-            responses={responses || {}}
-          />
-          <ThemeSelector iconOnly />
+        <SidebarFooter className="p-4">
+          <div className="flex flex-col gap-4 items-center">
+            <div className="[&>*]:!bg-transparent [&>*]:!border-0 [&>*]:!p-0 [&>*]:!h-4 [&>*]:!w-4 [&>*]:!min-w-4">
+              <SharePanel
+                templateId={template.id}
+                templateTitle={template.title}
+                responses={responses || {}}
+              />
+            </div>
+            <div className="[&>*]:!bg-transparent [&>*]:!border-0 [&>*]:!p-0 [&>*]:!h-4 [&>*]:!w-4 [&>*]:!min-w-4">
+              <PDFExportButton
+                template={template}
+                responses={responses || {}}
+              />
+            </div>
+            <div className="[&>*]:!bg-transparent [&>*]:!border-0 [&>*]:!p-0 [&>*]:!h-4 [&>*]:!w-4 [&>*]:!min-w-4">
+              <ThemeSelector iconOnly />
+            </div>
+          </div>
         </SidebarFooter>
       </Sidebar>
 

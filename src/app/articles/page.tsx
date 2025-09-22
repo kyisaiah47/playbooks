@@ -174,11 +174,11 @@ export default function ArticlesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredArticles.map((article, index) => (
-              <Link key={`featured-${article.id}-${index}`} href={`/articles/${article.slug}`}>
+              <Link key={`featured-${article?.id || index}`} href={`/articles/${article?.slug || ''}`}>
                 <div className="group bg-background rounded-lg border hover:shadow-lg transition-shadow overflow-hidden">
                   <div className="aspect-video relative overflow-hidden">
                     <TemplateImage
-                      templateName={getTemplateFromSlug(article.slug)}
+                      templateName={getTemplateFromSlug(article?.slug || '')}
                       width={800}
                       height={450}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

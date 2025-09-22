@@ -18,8 +18,7 @@ export default function TemplatePage({ params }: { params: Promise<{ slug: strin
     if (mode === 'reflection') {
       router.push(`/${slug}/reflection`);
     } else if (mode === 'master') {
-      // TODO: Navigate to master when available
-      console.log('Master workspace coming soon');
+      router.push('/life-os');
     }
     // Stay on template if mode === 'template'
   };
