@@ -73,30 +73,21 @@ async function cacheImagesForTemplate(templateFile, templateName) {
         // Get template search query or use template name
         const searchQuery = getSearchQuery(templateName);
 
-        console.log(`${templateName}: Fetching image for query: ${searchQuery}`);
+        console.log(`${templateName}: Fetching images for all articles`);
 
-        // Fetch one image for this template
-        const images = await searchTemplateImages(templateName, 1);
+        // Fetch multiple images for this template (enough for all articles)
+        const images = await searchTemplateImages(templateName, 20);
 
         if (images.length === 0) {
             console.log(`${templateName}: No images found`);
             return;
         }
 
-        const image = images[0];
-        const heroImageData = {
-            url: image.urls.regular,
-            alt: image.alt_description || `${templateName} guide image`,
-            photographer: image.user.name,
-            photographerUrl: image.user.links.html,
-            unsplashId: image.id,
-            cached: true
-        };
-
-        console.log(`${templateName}: Found image by ${image.user.name}`);
+        console.log(`${templateName}: Found ${images.length} images`);
 
         // Update the blog file with cached image data
         let updatedContent = content;
+        let imageIndex = 0;
 
         // Find blog posts in the file and add heroImage to each
         const blogPostRegex = /({[\s\S]*?id:\s*"[^"]*"[\s\S]*?}),?\s*(?=\s*{[\s\S]*?id:|$)/g;
@@ -106,6 +97,21 @@ async function cacheImagesForTemplate(templateFile, templateName) {
             if (match.includes('heroImage:')) {
                 return match;
             }
+
+            // Get next image (cycle through available images)
+            const image = images[imageIndex % images.length];
+            imageIndex++;
+
+            const heroImageData = {
+                url: image.urls.regular,
+                alt: image.alt_description || `${templateName} guide image`,
+                photographer: image.user.name,
+                photographerUrl: image.user.links.html,
+                unsplashId: image.id,
+                cached: true
+            };
+
+            console.log(`  Article ${imageIndex}: Using image by ${image.user.name}`);
 
             // Add heroImage before relatedTemplates or at the end
             if (match.includes('relatedTemplates:')) {
@@ -154,9 +160,9 @@ const templateName = process.argv[3];
 cacheImagesForTemplate(templateFile, templateName);
 EOF
 
-    # Run the Node.js script
+    # Run the Node.js script from the project directory
     cd "$SCRIPT_DIR"
-    node /tmp/cache_images_${template_name}.js "$template_file" "$template_name" 2>&1 | tee -a "$LOGFILE"
+    SCRIPT_DIR="$SCRIPT_DIR" node /tmp/cache_images_${template_name}.js "$template_file" "$template_name" 2>&1 | tee -a "$LOGFILE"
 
     # Clean up temporary script
     rm -f /tmp/cache_images_${template_name}.js

@@ -8,7 +8,7 @@ export async function getCachedImageForTemplate(templateName: string): Promise<U
   // Find blog posts for this template
   const templatePosts = blogRegistry.filter(post =>
     post.relatedTemplates?.includes(templateName) ||
-    post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-'))
+    (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
   );
 
   // Find the first post with a cached hero image
@@ -48,7 +48,7 @@ export async function getCachedImageForTemplate(templateName: string): Promise<U
 export function templateHasCachedImages(templateName: string): boolean {
   const templatePosts = blogRegistry.filter(post =>
     post.relatedTemplates?.includes(templateName) ||
-    post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-'))
+    (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
   );
 
   return templatePosts.some(post => post.heroImage?.cached);

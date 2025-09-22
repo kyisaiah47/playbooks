@@ -7,6 +7,7 @@ export interface GuidanceTemplate {
   sections: GuidanceSection[];
   resources?: Resource[];
   expertTips: ExpertTip[];
+  reflectionPrompts?: DailyReflectionPrompt[];
 }
 
 export interface GuidanceSection {
@@ -61,6 +62,15 @@ export interface ExpertTip {
   author: string;
   category: string;
   importance: 'high' | 'medium' | 'low';
+}
+
+export interface DailyReflectionPrompt {
+  id: string;
+  text: string;
+  category: string;
+  order: number;
+  expertAdvice?: string;
+  helpText?: string;
 }
 
 export interface UserGuidanceDocument {

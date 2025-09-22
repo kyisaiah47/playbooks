@@ -13,7 +13,7 @@ import { PDFExportButton } from '@/components/pdf/export-button';
 import { ExpertBadgeList } from '@/components/expert/expert-badge';
 import { getTemplateExperts } from '@/lib/expert-badges';
 import { SharePanel } from '@/components/collaboration/share-panel';
-import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3, AlertCircle, Sunset } from 'lucide-react';
+import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3, AlertCircle, Sunset, Moon, Layout } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -31,11 +31,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+
 interface TemplateViewProps {
   template: GuidanceTemplate;
+  onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void;
 }
 
-export function TemplateView({ template }: TemplateViewProps) {
+export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
   const [activeSection, setActiveSection] = useState(0);
   const [allItems, setAllItems] = useState<(ReflectionPrompt | FreeformNote)[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
@@ -240,6 +242,7 @@ export function TemplateView({ template }: TemplateViewProps) {
   // Get experts for this template
   const templateExperts = getTemplateExperts(template.id);
 
+
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground overflow-hidden [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -287,6 +290,32 @@ export function TemplateView({ template }: TemplateViewProps) {
                 </BreadcrumbList>
               </Breadcrumb>
               <div className="ml-auto flex items-center gap-3">
+                {/* Workspace Mode Switcher */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="sm" className="flex items-center gap-2">
+                      <Layout className="h-4 w-4" />
+                      <span className="hidden sm:inline">Template Workspace</span>
+                      <ChevronDown className="h-3 w-3" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => onSwitchMode?.('template')} className="flex items-center gap-2">
+                      <Layout className="h-4 w-4" />
+                      <span>Template Workspace</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => onSwitchMode?.('reflection')} className="flex items-center gap-2">
+                      <Moon className="h-4 w-4" />
+                      <span>Reflection Mode</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem disabled className="flex items-center gap-2 opacity-50">
+                      <CheckSquare className="h-4 w-4" />
+                      <span>Master Workspace</span>
+                      <span className="text-xs text-muted-foreground ml-auto">Coming Soon</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
                 <div className="flex flex-col items-end gap-1">
                   {totalPrompts > 0 && (
                     <>

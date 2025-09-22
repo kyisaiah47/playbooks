@@ -1,7 +1,3 @@
-# Complete Template List for Templata (Practical Focus)
-# Format: template-id (matches directory name in src/app/)
-
-# Already completed with articles (161 templates)
 wedding-planning
 baby-planning
 home-buying
@@ -101,8 +97,6 @@ education-learning
 technology-digital
 investing-finance
 job-search
-
-# Currently generating articles (13 templates)
 coaching-business
 crypto-portfolio
 debt-payoff
@@ -116,8 +110,6 @@ personal-finance
 saas-startup
 smart-garden
 stock-trading
-
-# Major Life Events & Transitions (18 unique templates)
 first-time-parent
 caring-for-aging-parents
 relationship-therapy
@@ -136,10 +128,6 @@ business-succession
 natural-disaster-recovery
 relationship-breakup
 family-crisis-management
-
-# Life Phase Specific Templates (25 unique templates)
-
-# College/Late Teens (18-22) - 8 templates
 college-selection
 first-serious-relationship
 study-abroad-planning
@@ -149,8 +137,6 @@ academic-struggles
 mental-health-college
 fraternity-sorority-decisions
 internship-competition
-
-# Young Adult (22-35) - 8 templates
 student-loan-strategy
 apartment-hunting
 long-distance-relationship
@@ -159,12 +145,8 @@ graduate-school-decisions
 professional-networking
 early-career-advancement
 mortgage-management
-
-# Adult/Middle-Aged (35-55) - 2 templates
 teenage-parenting
 executive-leadership-transition
-
-# Elderly/Retirement (55+) - 5 templates
 retirement-lifestyle
 retirement-transition
 grandparent-role

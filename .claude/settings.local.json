@@ -107,7 +107,10 @@
       "Bash(if [ -f \".script-progress-$script\" ])",
       "Bash(then echo \"✅ Status file exists\")",
       "Bash(else echo \"❌ No status file\")",
-      "Bash(./template-generation-cycle.sh status:*)"
+      "Bash(./template-generation-cycle.sh status:*)",
+      "Bash(./image-cache-cycle.sh:*)",
+      "Bash(export NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=\"TD-7zGBEAWkzh4B-Hlp53r7baMNOFID1xKC0xQ7G3qk\")",
+      "Bash(do echo -n \"$template: \")"
     ],
     "deny": [],
     "ask": []

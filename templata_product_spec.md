@@ -17,7 +17,7 @@ When planning a wedding, buying a home, starting a business, or making major dec
 
 ### Our Approach
 - **Abundant Content:** 48+ reflection prompts per template with detailed professional guidance
-- **Codex Engine Insights:** AI-generated guidance specialized for life decision-making  
+- **Axiom Engine Insights:** AI-generated guidance specialized for life decision-making  
 - **Comprehensive Resources:** Professional guides, checklists, and insider knowledge
 - **Reflection Over Tasks:** Focus on helping users think through complex decisions
 - **Insertable Prompts:** Browse and add relevant prompts to any section dynamically
@@ -53,7 +53,7 @@ Templata provides **expertly crafted templates** with **guided setup wizards** t
 
 ### Key Differentiators
 
-1. **Codex Engine Content**: Templates generated through specialized AI for life guidance, not generic productivity templates
+1. **Axiom Engine Content**: Templates generated through specialized AI for life guidance, not generic productivity templates
 2. **Guided Setup Process**: Intelligent wizards that ask the right questions and build personalized workspaces  
 3. **Always Free**: No subscriptions, freemium models, or hidden costs
 4. **Beautiful & Functional**: Design quality comparable to Canva/Linear with shadcn/ui components

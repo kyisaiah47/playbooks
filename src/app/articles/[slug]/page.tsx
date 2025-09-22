@@ -9,6 +9,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
 import { getBlogPostBySlug, getRelatedBlogPosts, getBlogPostsByCategory, blogRegistry } from "@/registry/blogs";
+import { TemplateImage } from "@/components/ui/template-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 
@@ -25,6 +26,41 @@ const getCategoryIcon = (category: string) => {
       return Target;
   }
 };
+
+// Extract template name from slug
+function getTemplateFromSlug(slug?: string): string {
+  if (!slug) return 'home buying';
+
+  // Map specific article slugs to proper template names
+  const slugTemplateMap: Record<string, string> = {
+    'complete-first-time-home-buyer-guide-2025': 'home buying',
+    'first-time-home-buyer-timeline-checklist-complete-planning-guide': 'home buying',
+    'alternative-home-financing-options-guide-2025': 'home buying',
+    'wedding-timeline-planning-master-schedule-guide': 'wedding planning',
+    'building-your-baby-budget-financial-planning-guide': 'baby planning',
+    'choosing-first-3d-printer-complete-guide': '3d printing',
+    'advanced-3d-printing-materials-guide': '3d printing',
+    '3d-print-troubleshooting-failures-guide': '3d printing'
+  };
+
+  // Check if we have a specific mapping
+  if (slugTemplateMap[slug]) {
+    return slugTemplateMap[slug];
+  }
+
+  // Try to extract template name from slug structure
+  if (slug.includes('home-buyer') || slug.includes('home-buying')) return 'home buying';
+  if (slug.includes('wedding')) return 'wedding planning';
+  if (slug.includes('baby') || slug.includes('pregnancy')) return 'baby planning';
+  if (slug.includes('3d-print')) return '3d printing';
+  if (slug.includes('travel')) return 'travel planning';
+  if (slug.includes('fitness') || slug.includes('workout')) return 'fitness journey';
+  if (slug.includes('business')) return 'small business';
+  if (slug.includes('investment') || slug.includes('financial')) return 'investment portfolio';
+
+  // Default fallback
+  return 'planning';
+}
 
 export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -100,13 +136,24 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
   }
 
   return (
-    <PageLayout>
+    <PageLayout includeHeaderPadding={false}>
       {/* Scroll Progress Bar */}
       <ScrollProgress className="fixed top-0 z-50" />
 
+      {/* Hero Image - At the top inside PageLayout */}
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-12">
+        <TemplateImage
+          templateName={blogPost?.category || 'planning'}
+          className="w-full h-96 md:h-[500px] lg:h-[600px] object-cover"
+          alt={`${blogPost?.title || 'Article'} - Hero Image`}
+          showAttribution={true}
+          quality={95}
+        />
+      </div>
+
       <div className="min-h-screen bg-background">
-        {/* Header Section - Above Everything */}
-        <div className="container mx-auto max-w-7xl px-4 py-8">
+        {/* Header Section */}
+        <div className="container mx-auto max-w-7xl px-4 pt-0 pb-8">
 
           {/* Article Header */}
           <header className="mb-12">

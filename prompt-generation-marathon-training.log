@@ -458,3 +458,525 @@ PROMPT GENERATION COMPLETE - Prompt #57
 [0;32m2025-09-20 00:11:52 - Using existing worktree: ../templata-marathon-training[0m
 [0;34m2025-09-20 00:11:53 - Generating prompt #58 (Section 4, Prompt 7/17)[0m
 [1;33m2025-09-20 00:11:53 - Running prompt generation...[0m
+[0;34m2025-09-21 00:16:54 - Starting Prompt Generation Cycle for template: marathon-training[0m
+[1;33m2025-09-21 00:16:54 - Override flag detected - resetting progress and recreating files[0m
+[0;32m2025-09-21 00:16:54 - Progress reset to 0 for template: marathon-training[0m
+[0;32m2025-09-21 00:16:54 - Using existing worktree: ../templata-marathon-training[0m
+[1;33m2025-09-21 00:16:54 - Override flag detected - recreating template prompt file: prompts-marathon-training.ts[0m
+[0;32m2025-09-21 00:16:54 - Created template prompt file: ../templata-marathon-training/src/data/prompts-marathon-training.ts[0m
+[0;34m2025-09-21 00:16:54 - Generating prompt #1 (Section 1, Prompt 1/17)[0m
+[1;33m2025-09-21 00:16:55 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #1
+[0;32m2025-09-21 00:17:12 - Completed prompt #1[0m
+[0;34m2025-09-21 00:17:17 - Generating prompt #2 (Section 1, Prompt 2/17)[0m
+[1;33m2025-09-21 00:17:17 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #2
+[0;32m2025-09-21 00:17:36 - Completed prompt #2[0m
+[0;34m2025-09-21 00:17:41 - Generating prompt #3 (Section 1, Prompt 3/17)[0m
+[1;33m2025-09-21 00:17:41 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #3
+[0;32m2025-09-21 00:18:14 - Completed prompt #3[0m
+[0;34m2025-09-21 00:18:20 - Generating prompt #4 (Section 1, Prompt 4/17)[0m
+[1;33m2025-09-21 00:18:20 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #4
+[0;32m2025-09-21 00:18:54 - Completed prompt #4[0m
+[0;34m2025-09-21 00:19:00 - Generating prompt #5 (Section 1, Prompt 5/17)[0m
+[1;33m2025-09-21 00:19:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #5
+[0;32m2025-09-21 00:19:28 - Completed prompt #5[0m
+[0;34m2025-09-21 00:19:33 - Generating prompt #6 (Section 1, Prompt 6/17)[0m
+[1;33m2025-09-21 00:19:33 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #6
+[0;32m2025-09-21 00:19:58 - Completed prompt #6[0m
+[0;34m2025-09-21 00:20:03 - Generating prompt #7 (Section 1, Prompt 7/17)[0m
+[1;33m2025-09-21 00:20:03 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #7
+[0;32m2025-09-21 00:20:30 - Completed prompt #7[0m
+[0;34m2025-09-21 00:20:36 - Generating prompt #8 (Section 1, Prompt 8/17)[0m
+[1;33m2025-09-21 00:20:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #8
+[0;32m2025-09-21 00:21:00 - Completed prompt #8[0m
+[0;34m2025-09-21 00:21:05 - Generating prompt #9 (Section 1, Prompt 9/17)[0m
+[1;33m2025-09-21 00:21:06 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #9
+[0;32m2025-09-21 00:21:32 - Completed prompt #9[0m
+[0;34m2025-09-21 00:21:38 - Generating prompt #10 (Section 1, Prompt 10/17)[0m
+[1;33m2025-09-21 00:21:38 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #10
+[0;32m2025-09-21 00:22:01 - Completed prompt #10[0m
+[0;34m2025-09-21 00:22:06 - Generating prompt #11 (Section 1, Prompt 11/17)[0m
+[1;33m2025-09-21 00:22:06 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #11
+[0;32m2025-09-21 00:22:28 - Completed prompt #11[0m
+[0;34m2025-09-21 00:22:33 - Generating prompt #12 (Section 1, Prompt 12/17)[0m
+[1;33m2025-09-21 00:22:33 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #12
+[0;32m2025-09-21 00:22:56 - Completed prompt #12[0m
+[0;34m2025-09-21 00:23:01 - Generating prompt #13 (Section 1, Prompt 13/17)[0m
+[1;33m2025-09-21 00:23:01 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #13
+[0;32m2025-09-21 00:23:22 - Completed prompt #13[0m
+[0;34m2025-09-21 00:23:27 - Generating prompt #14 (Section 1, Prompt 14/17)[0m
+[1;33m2025-09-21 00:23:27 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #14
+[0;32m2025-09-21 00:23:48 - Completed prompt #14[0m
+[0;34m2025-09-21 00:23:53 - Generating prompt #15 (Section 1, Prompt 15/17)[0m
+[1;33m2025-09-21 00:23:53 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #15
+[0;32m2025-09-21 00:24:14 - Completed prompt #15[0m
+[0;34m2025-09-21 00:24:19 - Generating prompt #16 (Section 1, Prompt 16/17)[0m
+[1;33m2025-09-21 00:24:19 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #16
+[0;32m2025-09-21 00:24:40 - Completed prompt #16[0m
+[0;34m2025-09-21 00:24:45 - Generating prompt #17 (Section 1, Prompt 17/17)[0m
+[1;33m2025-09-21 00:24:45 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #17
+[0;32m2025-09-21 00:25:08 - Completed prompt #17[0m
+[0;34m2025-09-21 00:25:13 - Generating prompt #18 (Section 2, Prompt 1/17)[0m
+[1;33m2025-09-21 00:25:13 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #18
+[0;32m2025-09-21 00:25:34 - Completed prompt #18[0m
+[0;34m2025-09-21 00:25:39 - Generating prompt #19 (Section 2, Prompt 2/17)[0m
+[1;33m2025-09-21 00:25:39 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #19
+[0;32m2025-09-21 00:26:02 - Completed prompt #19[0m
+[0;34m2025-09-21 00:26:07 - Generating prompt #20 (Section 2, Prompt 3/17)[0m
+[1;33m2025-09-21 00:26:08 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #20
+[0;32m2025-09-21 00:26:31 - Completed prompt #20[0m
+[0;34m2025-09-21 00:26:36 - Generating prompt #21 (Section 2, Prompt 4/17)[0m
+[1;33m2025-09-21 00:26:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #21
+[0;32m2025-09-21 00:26:58 - Completed prompt #21[0m
+[0;34m2025-09-21 00:27:03 - Generating prompt #22 (Section 2, Prompt 5/17)[0m
+[1;33m2025-09-21 00:27:03 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #22
+[0;32m2025-09-21 00:27:26 - Completed prompt #22[0m
+[0;34m2025-09-21 00:27:31 - Generating prompt #23 (Section 2, Prompt 6/17)[0m
+[1;33m2025-09-21 00:27:31 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #23
+[0;32m2025-09-21 00:27:53 - Completed prompt #23[0m
+[0;34m2025-09-21 00:27:58 - Generating prompt #24 (Section 2, Prompt 7/17)[0m
+[1;33m2025-09-21 00:27:58 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #24
+[0;32m2025-09-21 00:28:20 - Completed prompt #24[0m
+[0;34m2025-09-21 00:28:25 - Generating prompt #25 (Section 2, Prompt 8/17)[0m
+[1;33m2025-09-21 00:28:25 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #25
+[0;32m2025-09-21 00:28:46 - Completed prompt #25[0m
+[0;34m2025-09-21 00:28:52 - Generating prompt #26 (Section 2, Prompt 9/17)[0m
+[1;33m2025-09-21 00:28:52 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #26
+[0;32m2025-09-21 00:29:12 - Completed prompt #26[0m
+[0;34m2025-09-21 00:29:17 - Generating prompt #27 (Section 2, Prompt 10/17)[0m
+[1;33m2025-09-21 00:29:17 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #27
+[0;32m2025-09-21 00:29:39 - Completed prompt #27[0m
+[0;34m2025-09-21 00:29:44 - Generating prompt #28 (Section 2, Prompt 11/17)[0m
+[1;33m2025-09-21 00:29:44 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #28
+[0;32m2025-09-21 00:30:09 - Completed prompt #28[0m
+[0;34m2025-09-21 00:30:14 - Generating prompt #29 (Section 2, Prompt 12/17)[0m
+[1;33m2025-09-21 00:30:14 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #29
+[0;32m2025-09-21 00:30:38 - Completed prompt #29[0m
+[0;34m2025-09-21 00:30:43 - Generating prompt #30 (Section 2, Prompt 13/17)[0m
+[1;33m2025-09-21 00:30:43 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #30
+[0;32m2025-09-21 00:31:06 - Completed prompt #30[0m
+[0;34m2025-09-21 00:31:11 - Generating prompt #31 (Section 2, Prompt 14/17)[0m
+[1;33m2025-09-21 00:31:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #31
+[0;32m2025-09-21 00:31:37 - Completed prompt #31[0m
+[0;34m2025-09-21 00:31:42 - Generating prompt #32 (Section 2, Prompt 15/17)[0m
+[1;33m2025-09-21 00:31:42 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #32
+[0;32m2025-09-21 00:32:06 - Completed prompt #32[0m
+[0;34m2025-09-21 00:32:11 - Generating prompt #33 (Section 2, Prompt 16/17)[0m
+[1;33m2025-09-21 00:32:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #33
+[0;32m2025-09-21 00:32:34 - Completed prompt #33[0m
+[0;34m2025-09-21 00:32:39 - Generating prompt #34 (Section 2, Prompt 17/17)[0m
+[1;33m2025-09-21 00:32:39 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #34
+[0;32m2025-09-21 00:33:01 - Completed prompt #34[0m
+[0;34m2025-09-21 00:33:06 - Generating prompt #35 (Section 3, Prompt 1/17)[0m
+[1;33m2025-09-21 00:33:06 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #35
+[0;32m2025-09-21 00:33:27 - Completed prompt #35[0m
+[0;34m2025-09-21 00:33:32 - Generating prompt #36 (Section 3, Prompt 2/17)[0m
+[1;33m2025-09-21 00:33:32 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #36
+[0;32m2025-09-21 00:33:53 - Completed prompt #36[0m
+[0;34m2025-09-21 00:33:58 - Generating prompt #37 (Section 3, Prompt 3/17)[0m
+[1;33m2025-09-21 00:33:58 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #37
+[0;32m2025-09-21 00:34:21 - Completed prompt #37[0m
+[0;34m2025-09-21 00:34:26 - Generating prompt #38 (Section 3, Prompt 4/17)[0m
+[1;33m2025-09-21 00:34:26 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #38
+[0;32m2025-09-21 00:34:49 - Completed prompt #38[0m
+[0;34m2025-09-21 00:34:54 - Generating prompt #39 (Section 3, Prompt 5/17)[0m
+[1;33m2025-09-21 00:34:54 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #39
+[0;32m2025-09-21 00:35:15 - Completed prompt #39[0m
+[0;34m2025-09-21 00:35:20 - Generating prompt #40 (Section 3, Prompt 6/17)[0m
+[1;33m2025-09-21 00:35:20 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #40
+[0;32m2025-09-21 00:35:41 - Completed prompt #40[0m
+[0;34m2025-09-21 00:35:47 - Generating prompt #41 (Section 3, Prompt 7/17)[0m
+[1;33m2025-09-21 00:35:47 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-marathon-training/src/data/prompts-marathon-training.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-40',
+    prompt: 'Research and book accommodations within 1-2 miles of your marathon start line or finish area',
+    category: 'planning',
+    helpText: 'Staying close to the marathon start eliminates transportation stress and allows for proper race morning preparation without rushing or dealing with traffic delays. Research hotels or accommodations that offer early breakfast service, have good reviews from previous marathon participants, and provide easy access to the start line via walking or short shuttle rides. Booking early ensures availability and often better rates, while proximity to the race area allows you to rest properly the night before and arrive at the start line relaxed and prepared.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-40',
+    prompt: 'Research and book accommodations within 1-2 miles of your marathon start line or finish area',
+    category: 'planning',
+    helpText: 'Staying close to the marathon start eliminates transportation stress and allows for proper race morning preparation without rushing or dealing with traffic delays. Research hotels or accommodations that offer early breakfast service, have good reviews from previous marathon participants, and provide easy access to the start line via walking or short shuttle rides. Booking early ensures availability and often better rates, while proximity to the race area allows you to rest properly the night before and arrive at the start line relaxed and prepared.'
+  },
+  {
+    id: 'prompt-41',
+    prompt: 'Complete a detailed marathon equipment checklist and purchase backup gear for race day essentials',
+    category: 'action',
+    helpText: 'Having backup equipment prevents race day disasters when primary gear fails or gets lost, ensuring nothing can derail your marathon performance. Create a comprehensive checklist including extra running socks, backup shoes, additional energy gels, spare safety pins for your race bib, and backup timing device. Purchase and pack these backup items in your race bag at least one week before the marathon, as equipment failures are common and having alternatives readily available allows you to quickly solve problems and stay focused on your performance goals.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-21 00:36:05 - Completed prompt #41[0m
+[0;34m2025-09-21 00:36:10 - Generating prompt #42 (Section 3, Prompt 8/17)[0m
+[1;33m2025-09-21 00:36:10 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-marathon-training/src/data/prompts-marathon-training.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-40',
+    prompt: 'Research and book accommodations within 1-2 miles of your marathon start line or finish area',
+    category: 'planning',
+    helpText: 'Staying close to the marathon start eliminates transportation stress and allows for proper race morning preparation without rushing or dealing with traffic delays. Research hotels or accommodations that offer early breakfast service, have good reviews from previous marathon participants, and provide easy access to the start line via walking or short shuttle rides. Booking early ensures availability and often better rates, while proximity to the race area allows you to rest properly the night before and arrive at the start line relaxed and prepared.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-40',
+    prompt: 'Research and book accommodations within 1-2 miles of your marathon start line or finish area',
+    category: 'planning',
+    helpText: 'Staying close to the marathon start eliminates transportation stress and allows for proper race morning preparation without rushing or dealing with traffic delays. Research hotels or accommodations that offer early breakfast service, have good reviews from previous marathon participants, and provide easy access to the start line via walking or short shuttle rides. Booking early ensures availability and often better rates, while proximity to the race area allows you to rest properly the night before and arrive at the start line relaxed and prepared.'
+  },
+  {
+    id: 'prompt-42',
+    prompt: 'Purchase and test a GPS running watch or smartphone running app to track pace, distance, and splits during training runs',
+    category: 'action',
+    helpText: 'Accurate pace and distance tracking is essential for marathon training success as it allows you to execute specific workout paces and monitor progress throughout your training cycle. Research GPS watches or smartphone apps that provide real-time pace feedback, auto-lap functionality for mile splits, and training log capabilities to track your weekly mileage progression. Testing this technology early in your training ensures you\'re comfortable with the interface and can rely on accurate data for pacing during tempo runs, intervals, and your marathon race day.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-21 00:36:28 - Completed prompt #42[0m
+[0;34m2025-09-21 00:36:34 - Generating prompt #43 (Section 3, Prompt 9/17)[0m
+[1;33m2025-09-21 00:36:34 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-marathon-training/src/data/prompts-marathon-training.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-40',
+    prompt: 'Research and book accommodations within 1-2 miles of your marathon start line or finish area',
+    category: 'planning',
+    helpText: 'Staying close to the marathon start eliminates transportation stress and allows for proper race morning preparation without rushing or dealing with traffic delays. Research hotels or accommodations that offer early breakfast service, have good reviews from previous marathon participants, and provide easy access to the start line via walking or short shuttle rides. Booking early ensures availability and often better rates, while proximity to the race area allows you to rest properly the night before and arrive at the start line relaxed and prepared.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-40',
+    prompt: 'Research and book accommodations within 1-2 miles of your marathon start line or finish area',
+    category: 'planning',
+    helpText: 'Staying close to the marathon start eliminates transportation stress and allows for proper race morning preparation without rushing or dealing with traffic delays. Research hotels or accommodations that offer early breakfast service, have good reviews from previous marathon participants, and provide easy access to the start line via walking or short shuttle rides. Booking early ensures availability and often better rates, while proximity to the race area allows you to rest properly the night before and arrive at the start line relaxed and prepared.'
+  },
+  {
+    id: 'prompt-43',
+    prompt: 'Complete a 16-mile progression long run incorporating race pace segments to simulate marathon day fatigue and pacing discipline',
+    category: 'action',
+    helpText: 'A progression long run teaches your body to run at goal marathon pace when fatigued, simulating the critical final miles of your race when maintaining pace becomes mentally and physically challenging. Structure this run with easy miles for the first 10 miles, then gradually increase to marathon pace for miles 11-14, and finish with a strong final 2 miles at slightly faster than goal pace. This workout builds both physical endurance and mental confidence in your ability to execute proper pacing when tired, preparing you for the demands of maintaining goal pace during the challenging final third of your marathon.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-21 00:36:53 - Completed prompt #43[0m
+[0;34m2025-09-21 00:36:58 - Generating prompt #44 (Section 3, Prompt 10/17)[0m
+[1;33m2025-09-21 00:36:58 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #44
+[0;32m2025-09-21 00:37:20 - Completed prompt #44[0m
+[0;34m2025-09-21 00:37:25 - Generating prompt #45 (Section 3, Prompt 11/17)[0m
+[1;33m2025-09-21 00:37:25 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-marathon-training/src/data/prompts-marathon-training.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-44',
+    prompt: 'Complete a mid-training fitness reassessment and adjust your marathon goal time based on recent workout performance',
+    category: 'action',
+    helpText: 'After 8-12 weeks of training, your fitness will have significantly improved, potentially making your original marathon goal too conservative or unrealistic. Conduct a 5K time trial or analyze recent tempo run paces to recalculate your marathon potential using current fitness data. This reassessment allows you to adjust your goal time, training paces, and race strategy to match your actual fitness level, ensuring you set an appropriately challenging yet achievable target for marathon day.'
+  }</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-44',
+    prompt: 'Complete a mid-training fitness reassessment and adjust your marathon goal time based on recent workout performance',
+    category: 'action',
+    helpText: 'After 8-12 weeks of training, your fitness will have significantly improved, potentially making your original marathon goal too conservative or unrealistic. Conduct a 5K time trial or analyze recent tempo run paces to recalculate your marathon potential using current fitness data. This reassessment allows you to adjust your goal time, training paces, and race strategy to match your actual fitness level, ensuring you set an appropriately challenging yet achievable target for marathon day.'
+  },
+  {
+    id: 'prompt-45',
+    prompt: 'Schedule and complete a final 12-mile shakeout run 10-14 days before your marathon at an easy pace to test your race day logistics',
+    category: 'action',
+    helpText: 'This final moderate-distance run serves as your last dress rehearsal before marathon day, allowing you to test your complete race preparation routine while maintaining fitness during the taper period. Practice your exact race morning breakfast timing, hydration routine, warm-up protocol, and gear selection to identify any final adjustments needed. This shakeout run builds confidence while ensuring all race day logistics are perfected and automatic, allowing you to focus entirely on execution during the marathon.'
+  }</parameter>
+</invoke>
+[0;32m2025-09-21 00:37:43 - Completed prompt #45[0m
+[0;34m2025-09-21 00:37:49 - Generating prompt #46 (Section 3, Prompt 12/17)[0m
+[1;33m2025-09-21 00:37:49 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #46
+[0;32m2025-09-21 00:38:11 - Completed prompt #46[0m
+[0;34m2025-09-21 00:38:16 - Generating prompt #47 (Section 3, Prompt 13/17)[0m
+[1;33m2025-09-21 00:38:16 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #47
+[0;32m2025-09-21 00:38:38 - Completed prompt #47[0m
+[0;34m2025-09-21 00:38:43 - Generating prompt #48 (Section 3, Prompt 14/17)[0m
+[1;33m2025-09-21 00:38:43 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #48
+[0;32m2025-09-21 00:39:06 - Completed prompt #48[0m
+[0;34m2025-09-21 00:39:11 - Generating prompt #49 (Section 3, Prompt 15/17)[0m
+[1;33m2025-09-21 00:39:11 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #49
+[0;32m2025-09-21 00:39:34 - Completed prompt #49[0m
+[0;34m2025-09-21 00:39:39 - Generating prompt #50 (Section 3, Prompt 16/17)[0m
+[1;33m2025-09-21 00:39:39 - Running prompt generation...[0m
+<invoke name="Edit">
+<parameter name="file_path">/Users/ikim1/Documents/GitHub/templata-marathon-training/src/data/prompts-marathon-training.ts</parameter>
+<parameter name="old_string">  {
+    id: 'prompt-49',
+    prompt: 'Create a detailed carb-loading plan for the 3 days before your marathon including specific meals and portion sizes',
+    category: 'planning',
+    helpText: 'Proper carbohydrate loading maximizes your muscle glycogen stores for optimal marathon performance, as inadequate fuel stores lead to hitting "the wall" around mile 20. Plan specific high-carb meals for the 72 hours before race day, targeting 8-10 grams of carbs per kilogram of body weight while reducing fiber and fat to minimize digestive issues. Practice this eating plan during a long training run weekend to ensure the foods agree with your system and you feel energized rather than sluggish on race morning.'
+  }
+];</parameter>
+<parameter name="new_string">  {
+    id: 'prompt-49',
+    prompt: 'Create a detailed carb-loading plan for the 3 days before your marathon including specific meals and portion sizes',
+    category: 'planning',
+    helpText: 'Proper carbohydrate loading maximizes your muscle glycogen stores for optimal marathon performance, as inadequate fuel stores lead to hitting "the wall" around mile 20. Plan specific high-carb meals for the 72 hours before race day, targeting 8-10 grams of carbs per kilogram of body weight while reducing fiber and fat to minimize digestive issues. Practice this eating plan during a long training run weekend to ensure the foods agree with your system and you feel energized rather than sluggish on race morning.'
+  },
+  {
+    id: 'prompt-50',
+    prompt: 'Complete a 3-week taper period with reduced mileage while maintaining intensity to arrive fresh and peaked for marathon race day',
+    category: 'action',
+    helpText: 'The taper period is crucial for marathon success as it allows your body to recover from training stress while maintaining fitness, ensuring you arrive at the start line rested and ready to perform. Reduce your weekly mileage by 25-30% each week during the final 3 weeks while keeping some speed work and tempo runs to maintain leg turnover and race pace feel. This systematic reduction in training load allows muscle glycogen stores to replenish, minor aches to heal, and your immune system to strengthen for optimal race day performance.'
+  }
+];</parameter>
+</invoke>
+[0;32m2025-09-21 00:39:59 - Completed prompt #50[0m
+[0;34m2025-09-21 00:40:04 - Generating prompt #51 (Section 3, Prompt 17/17)[0m
+[1;33m2025-09-21 00:40:04 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #51
+[0;32m2025-09-21 00:40:26 - Completed prompt #51[0m
+[0;34m2025-09-21 00:40:31 - Generating prompt #52 (Section 4, Prompt 1/17)[0m
+[1;33m2025-09-21 00:40:31 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #52
+[0;32m2025-09-21 00:40:55 - Completed prompt #52[0m
+[0;34m2025-09-21 00:41:00 - Generating prompt #53 (Section 4, Prompt 2/17)[0m
+[1;33m2025-09-21 00:41:00 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #53
+[0;32m2025-09-21 00:41:22 - Completed prompt #53[0m
+[0;34m2025-09-21 00:41:27 - Generating prompt #54 (Section 4, Prompt 3/17)[0m
+[1;33m2025-09-21 00:41:27 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #54
+[0;32m2025-09-21 00:41:49 - Completed prompt #54[0m
+[0;34m2025-09-21 00:41:54 - Generating prompt #55 (Section 4, Prompt 4/17)[0m
+[1;33m2025-09-21 00:41:54 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #55
+[0;32m2025-09-21 00:42:18 - Completed prompt #55[0m
+[0;34m2025-09-21 00:42:23 - Generating prompt #56 (Section 4, Prompt 5/17)[0m
+[1;33m2025-09-21 00:42:23 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #56
+[0;32m2025-09-21 00:42:43 - Completed prompt #56[0m
+[0;34m2025-09-21 00:42:48 - Generating prompt #57 (Section 4, Prompt 6/17)[0m
+[1;33m2025-09-21 00:42:48 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #57
+[0;32m2025-09-21 00:43:13 - Completed prompt #57[0m
+[0;34m2025-09-21 00:43:18 - Generating prompt #58 (Section 4, Prompt 7/17)[0m
+[1;33m2025-09-21 00:43:18 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #58
+[0;32m2025-09-21 00:43:41 - Completed prompt #58[0m
+[0;34m2025-09-21 00:43:46 - Generating prompt #59 (Section 4, Prompt 8/17)[0m
+[1;33m2025-09-21 00:43:46 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #59
+[0;32m2025-09-21 00:44:08 - Completed prompt #59[0m
+[0;34m2025-09-21 00:44:13 - Generating prompt #60 (Section 4, Prompt 9/17)[0m
+[1;33m2025-09-21 00:44:13 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #60
+[0;32m2025-09-21 00:44:37 - Completed prompt #60[0m
+[0;34m2025-09-21 00:44:42 - Generating prompt #61 (Section 4, Prompt 10/17)[0m
+[1;33m2025-09-21 00:44:42 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #61
+[0;32m2025-09-21 00:45:04 - Completed prompt #61[0m
+[0;34m2025-09-21 00:45:09 - Generating prompt #62 (Section 4, Prompt 11/17)[0m
+[1;33m2025-09-21 00:45:09 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #62
+[0;32m2025-09-21 00:45:31 - Completed prompt #62[0m
+[0;34m2025-09-21 00:45:36 - Generating prompt #63 (Section 4, Prompt 12/17)[0m
+[1;33m2025-09-21 00:45:36 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #63
+[0;32m2025-09-21 00:45:56 - Completed prompt #63[0m
+[0;34m2025-09-21 00:46:01 - Generating prompt #64 (Section 4, Prompt 13/17)[0m
+[1;33m2025-09-21 00:46:01 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #64
+[0;32m2025-09-21 00:46:23 - Completed prompt #64[0m
+[0;34m2025-09-21 00:46:28 - Generating prompt #65 (Section 4, Prompt 14/17)[0m
+[1;33m2025-09-21 00:46:28 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #65
+[0;32m2025-09-21 00:46:50 - Completed prompt #65[0m
+[0;34m2025-09-21 00:46:55 - Generating prompt #66 (Section 4, Prompt 15/17)[0m
+[1;33m2025-09-21 00:46:55 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #66
+[0;32m2025-09-21 00:47:15 - Completed prompt #66[0m
+[0;34m2025-09-21 00:47:20 - Generating prompt #67 (Section 4, Prompt 16/17)[0m
+[1;33m2025-09-21 00:47:20 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #67
+[0;32m2025-09-21 00:47:42 - Completed prompt #67[0m
+[0;34m2025-09-21 00:47:47 - Generating prompt #68 (Section 4, Prompt 17/17)[0m
+[1;33m2025-09-21 00:47:47 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #68
+[0;32m2025-09-21 00:48:11 - Completed prompt #68[0m
+[0;34m2025-09-21 00:48:16 - Generating prompt #69 (Section 5, Prompt 1/17)[0m
+[1;33m2025-09-21 00:48:16 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #69
+[0;32m2025-09-21 00:48:39 - Completed prompt #69[0m
+[0;34m2025-09-21 00:48:44 - Generating prompt #70 (Section 5, Prompt 2/17)[0m
+[1;33m2025-09-21 00:48:44 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #70
+[0;32m2025-09-21 00:49:08 - Completed prompt #70[0m
+[0;34m2025-09-21 00:49:13 - Generating prompt #71 (Section 5, Prompt 3/17)[0m
+[1;33m2025-09-21 00:49:13 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #71
+[0;32m2025-09-21 00:49:36 - Completed prompt #71[0m
+[0;34m2025-09-21 00:49:41 - Generating prompt #72 (Section 5, Prompt 4/17)[0m
+[1;33m2025-09-21 00:49:41 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #72
+[0;32m2025-09-21 00:50:03 - Completed prompt #72[0m
+[0;34m2025-09-21 00:50:08 - Generating prompt #73 (Section 5, Prompt 5/17)[0m
+[1;33m2025-09-21 00:50:08 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #73
+[0;32m2025-09-21 00:50:30 - Completed prompt #73[0m
+[0;34m2025-09-21 00:50:35 - Generating prompt #74 (Section 5, Prompt 6/17)[0m
+[1;33m2025-09-21 00:50:35 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #74
+[0;32m2025-09-21 00:50:59 - Completed prompt #74[0m
+[0;34m2025-09-21 00:51:04 - Generating prompt #75 (Section 5, Prompt 7/17)[0m
+[1;33m2025-09-21 00:51:04 - Running prompt generation...[0m
+PROMPT GENERATION COMPLETE - Prompt #75
+[0;32m2025-09-21 00:51:27 - Completed prompt #75[0m
+[0;34m2025-09-21 00:51:32 - Generating prompt #76 (Section 5, Prompt 8/17)[0m
+[1;33m2025-09-21 00:51:32 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:51:54 - Completed prompt #76[0m
+[0;34m2025-09-21 00:51:59 - Generating prompt #77 (Section 5, Prompt 9/17)[0m
+[1;33m2025-09-21 00:51:59 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:52:12 - Completed prompt #77[0m
+[0;34m2025-09-21 00:52:17 - Generating prompt #78 (Section 5, Prompt 10/17)[0m
+[1;33m2025-09-21 00:52:17 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:52:30 - Completed prompt #78[0m
+[0;34m2025-09-21 00:52:35 - Generating prompt #79 (Section 5, Prompt 11/17)[0m
+[1;33m2025-09-21 00:52:36 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:52:45 - Completed prompt #79[0m
+[0;34m2025-09-21 00:52:50 - Generating prompt #80 (Section 5, Prompt 12/17)[0m
+[1;33m2025-09-21 00:52:50 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:53:02 - Completed prompt #80[0m
+[0;34m2025-09-21 00:53:07 - Generating prompt #81 (Section 5, Prompt 13/17)[0m
+[1;33m2025-09-21 00:53:07 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:53:20 - Completed prompt #81[0m
+[0;34m2025-09-21 00:53:25 - Generating prompt #82 (Section 5, Prompt 14/17)[0m
+[1;33m2025-09-21 00:53:25 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:53:34 - Completed prompt #82[0m
+[0;34m2025-09-21 00:53:40 - Generating prompt #83 (Section 5, Prompt 15/17)[0m
+[1;33m2025-09-21 00:53:40 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:53:52 - Completed prompt #83[0m
+[0;34m2025-09-21 00:53:57 - Generating prompt #84 (Section 5, Prompt 16/17)[0m
+[1;33m2025-09-21 00:53:57 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:54:10 - Completed prompt #84[0m
+[0;34m2025-09-21 00:54:15 - Generating prompt #85 (Section 5, Prompt 17/17)[0m
+[1;33m2025-09-21 00:54:15 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:54:26 - Completed prompt #85[0m
+[0;34m2025-09-21 00:54:31 - Generating prompt #86 (Section 6, Prompt 1/17)[0m
+[1;33m2025-09-21 00:54:31 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:54:42 - Completed prompt #86[0m
+[0;34m2025-09-21 00:54:47 - Generating prompt #87 (Section 6, Prompt 2/17)[0m
+[1;33m2025-09-21 00:54:48 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:54:59 - Completed prompt #87[0m
+[0;34m2025-09-21 00:55:04 - Generating prompt #88 (Section 6, Prompt 3/17)[0m
+[1;33m2025-09-21 00:55:05 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:55:15 - Completed prompt #88[0m
+[0;34m2025-09-21 00:55:20 - Generating prompt #89 (Section 6, Prompt 4/17)[0m
+[1;33m2025-09-21 00:55:20 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:55:31 - Completed prompt #89[0m
+[0;34m2025-09-21 00:55:36 - Generating prompt #90 (Section 6, Prompt 5/17)[0m
+[1;33m2025-09-21 00:55:36 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:55:49 - Completed prompt #90[0m
+[0;34m2025-09-21 00:55:54 - Generating prompt #91 (Section 6, Prompt 6/17)[0m
+[1;33m2025-09-21 00:55:54 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:56:07 - Completed prompt #91[0m
+[0;34m2025-09-21 00:56:12 - Generating prompt #92 (Section 6, Prompt 7/17)[0m
+[1;33m2025-09-21 00:56:12 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:56:23 - Completed prompt #92[0m
+[0;34m2025-09-21 00:56:29 - Generating prompt #93 (Section 6, Prompt 8/17)[0m
+[1;33m2025-09-21 00:56:29 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:56:40 - Completed prompt #93[0m
+[0;34m2025-09-21 00:56:45 - Generating prompt #94 (Section 6, Prompt 9/17)[0m
+[1;33m2025-09-21 00:56:45 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:56:55 - Completed prompt #94[0m
+[0;34m2025-09-21 00:57:00 - Generating prompt #95 (Section 6, Prompt 10/17)[0m
+[1;33m2025-09-21 00:57:01 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:57:14 - Completed prompt #95[0m
+[0;34m2025-09-21 00:57:19 - Generating prompt #96 (Section 6, Prompt 11/17)[0m
+[1;33m2025-09-21 00:57:19 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:57:28 - Completed prompt #96[0m
+[0;34m2025-09-21 00:57:33 - Generating prompt #97 (Section 6, Prompt 12/17)[0m
+[1;33m2025-09-21 00:57:33 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:57:44 - Completed prompt #97[0m
+[0;34m2025-09-21 00:57:49 - Generating prompt #98 (Section 6, Prompt 13/17)[0m
+[1;33m2025-09-21 00:57:50 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:58:04 - Completed prompt #98[0m
+[0;34m2025-09-21 00:58:09 - Generating prompt #99 (Section 6, Prompt 14/17)[0m
+[1;33m2025-09-21 00:58:09 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:58:19 - Completed prompt #99[0m
+[0;34m2025-09-21 00:58:24 - Generating prompt #100 (Section 6, Prompt 15/17)[0m
+[1;33m2025-09-21 00:58:24 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:58:32 - Completed prompt #100[0m
+[0;34m2025-09-21 00:58:37 - Generating prompt #101 (Section 6, Prompt 16/17)[0m
+[1;33m2025-09-21 00:58:37 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:58:44 - Completed prompt #101[0m
+[0;34m2025-09-21 00:58:49 - Generating prompt #102 (Section 6, Prompt 17/17)[0m
+[1;33m2025-09-21 00:58:49 - Running prompt generation...[0m
+5-hour limit reached ∙ resets 5am
+[0;32m2025-09-21 00:58:56 - Completed prompt #102[0m
