@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { TemplateLanding } from '@/components/landing/TemplateLanding';
 import { getLandingPageData } from '@/registry/landing-pages';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Home Buying Template | Complete First-Time Buyer Guide | Save 80+ Hours | Templata',
   description: 'Complete home buying template with mortgage calculator, house hunting checklist, inspection guide, and closing process tracker. Used by 7,000+ homebuyers. Simplify your home purchase.',
@@ -19,10 +21,10 @@ export const metadata: Metadata = {
 
 export default function HomeBuyingPage() {
   const landingData = getLandingPageData('home-buying');
-  
+
   if (!landingData) {
     return <div>Landing page data not found</div>;
   }
-  
+
   return <TemplateLanding {...landingData} />;
 }

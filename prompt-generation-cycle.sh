@@ -12,18 +12,18 @@ WORKTREE_DIR="../templata-${TEMPLATE_NAME}"
 LOGFILE="$SCRIPT_DIR/prompt-generation-${TEMPLATE_NAME}.log"
 PROGRESS_FILE="$SCRIPT_DIR/.prompt-progress-${TEMPLATE_NAME}"
 
-# Generate 102 prompts (6 sections × 17 prompts each)
-PROMPTS=(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102)
+# Generate 50 prompts (5 sections × 10 prompts each)
+PROMPTS=(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50)
 
-# Section mapping (1-17 = section 1, 18-34 = section 2, etc.)
+# Section mapping (1-10 = section 1, 11-20 = section 2, etc.)
 get_section_for_prompt() {
     local prompt_num=$1
-    echo $(((prompt_num - 1) / 17 + 1))
+    echo $(((prompt_num - 1) / 10 + 1))
 }
 
 get_prompt_in_section() {
     local prompt_num=$1
-    echo $(((prompt_num - 1) % 17 + 1))
+    echo $(((prompt_num - 1) % 10 + 1))
 }
 
 # Colors
@@ -76,10 +76,10 @@ get_section_names() {
     local template="$1"
     case "$template" in
         "grandparent-role")
-            echo "Embracing the Grandparent Identity|Building Meaningful Relationships|Creating Lasting Memories|Supporting Family Dynamics|Health and Lifestyle Adjustments|Legacy and Wisdom Sharing"
+            echo "Embracing the Grandparent Identity|Building Meaningful Relationships|Creating Lasting Memories|Supporting Family Dynamics|Legacy and Wisdom Sharing"
             ;;
         *)
-            echo "Foundation and Understanding|Planning and Preparation|Implementation and Action|Relationships and Communication|Challenges and Solutions|Growth and Future Vision"
+            echo "Foundation and Understanding|Planning and Preparation|Implementation and Action|Relationships and Communication|Growth and Future Vision"
             ;;
     esac
 }
@@ -98,13 +98,12 @@ create_prompt_generation() {
     cat << EOF
 Generate ONE practical action prompt for the $template_readable template.
 
-PROMPT #$prompt_number (Section $section_number: "$section_name", Prompt $prompt_in_section of 17)
+PROMPT #$prompt_number (Section $section_number: "$section_name", Prompt $prompt_in_section of 10)
 
 REQUIREMENTS:
 - Create a concrete, actionable task prompt for someone navigating $template_readable
 - Focus on "$section_name" theme
 - Make it a specific task they can complete and check off (not a reflection question)
-- Include detailed helpText (2-3 sentences explaining why this action is important and how to approach it)
 - Choose appropriate category: 'planning', 'decision', 'research', or 'action'
 - Make it specific and practical for this life moment
 - Add to src/data/prompts-${TEMPLATE_NAME}.ts in actionPrompts array
@@ -120,8 +119,7 @@ Add this object to the actionPrompts array:
 {
   id: 'prompt-${prompt_number}',
   prompt: '[Your specific actionable task here]',
-  category: '[planning/decision/research/action]',
-  helpText: '[2-3 sentences explaining why this action matters and practical tips for completing it effectively]'
+  category: '[planning/decision/research/action]'
 }
 
 Focus on creating a prompt that gives someone a concrete task to complete as part of their $template_readable journey.
@@ -136,7 +134,7 @@ run_prompt_generation() {
     local section_num=$(get_section_for_prompt "$prompt_num")
     local prompt_in_section=$(get_prompt_in_section "$prompt_num")
 
-    log_colored "$BLUE" "Generating prompt #$prompt_num (Section $section_num, Prompt $prompt_in_section/17)"
+    log_colored "$BLUE" "Generating prompt #$prompt_num (Section $section_num, Prompt $prompt_in_section/10)"
 
     # Switch to worktree
     cd "$WORKTREE_DIR"
@@ -169,7 +167,6 @@ export interface ActionPrompt {
   id: string;
   prompt: string;
   category: 'planning' | 'decision' | 'research' | 'action';
-  helpText: string;
 }
 
 // Action prompts for template-specific practical tasks
@@ -243,7 +240,7 @@ main() {
     done
 
     log_colored "$GREEN" "Action prompt generation cycle complete!"
-    log_colored "$GREEN" "Generated 102 practical action prompts (6 sections × 17 prompts each)"
+    log_colored "$GREEN" "Generated 50 practical action prompts (5 sections × 10 prompts each)"
 }
 
 # Show usage
@@ -303,7 +300,7 @@ case "$COMMAND" in
             next_prompt=$(get_next_prompt)
             section_num=$(get_section_for_prompt "$next_prompt")
             prompt_in_section=$(get_prompt_in_section "$next_prompt")
-            echo "Next prompt: #$next_prompt (Section $section_num, Prompt $prompt_in_section/17)"
+            echo "Next prompt: #$next_prompt (Section $section_num, Prompt $prompt_in_section/10)"
         fi
         ;;
     "reset")

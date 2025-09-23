@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import type { Metadata } from 'next';
 import { TemplateLanding } from '@/components/landing/TemplateLanding';
 import { getLandingPageData } from '@/registry/landing-pages';

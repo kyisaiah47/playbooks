@@ -186,25 +186,25 @@ export default function ArticlesPage() {
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="secondary">{article.category}</Badge>
+                      <Badge variant="secondary">{article?.category}</Badge>
                       <Badge variant="outline" className="text-xs">
-                        {article.type}
+                        {article?.type}
                       </Badge>
                     </div>
                     <h3 className="font-semibold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                      {article.title}
+                      {article?.title}
                     </h3>
                     <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
-                      {article.excerpt}
+                      {article?.excerpt}
                     </p>
                     <div className="flex items-center gap-4 text-xs text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <User className="h-3 w-3" />
-                        {article.author}
+                        {article?.author}
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
-                        {article.readTime}
+                        {article?.readTime}
                       </div>
                     </div>
                   </div>

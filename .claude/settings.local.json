@@ -112,7 +112,9 @@
       "Bash(export NEXT_PUBLIC_UNSPLASH_ACCESS_KEY=\"TD-7zGBEAWkzh4B-Hlp53r7baMNOFID1xKC0xQ7G3qk\")",
       "Bash(do echo -n \"$template: \")",
       "Bash(cd:*)",
-      "Bash(top:*)"
+      "Bash(top:*)",
+      "Bash(if grep -q \"TemplateLanding\" \"$file\")",
+      "Bash(! grep -q \"export const dynamic\" \"$file\")"
     ],
     "deny": [],
     "ask": []

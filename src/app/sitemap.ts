@@ -61,12 +61,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   // Individual articles
-  const articleDetailPages: MetadataRoute.Sitemap = manualBlogPosts.map((post) => ({
-    url: `${baseUrl}/articles/${post.slug}`,
-    lastModified: new Date(post.updatedAt || post.publishedAt),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+  const articleDetailPages: MetadataRoute.Sitemap = manualBlogPosts.map((post) => {
+    const dateString = post.updatedAt || post.publishedAt;
+    const lastModified = new Date(dateString);
+
+    return {
+      url: `${baseUrl}/articles/${post.slug}`,
+      lastModified: isNaN(lastModified.getTime()) ? new Date() : lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    };
+  });
 
   return [...staticPages, ...articlePages, ...articleDetailPages];
 }
