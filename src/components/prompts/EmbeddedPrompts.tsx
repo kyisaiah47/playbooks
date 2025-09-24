@@ -158,7 +158,9 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
   const activeItems = allItems.filter(item => !completedItems.has(item.id));
   const completedItemsList = allItems.filter(item => completedItems.has(item.id));
 
-  const progressPercentage = Math.round((additionalPrompts.length / section.reflectionPrompts.length) * 100);
+  // TODO: Fix reflection prompts integration
+  // const progressPercentage = Math.round((additionalPrompts.length / (section.reflectionPrompts?.length || 1)) * 100);
+  const progressPercentage = 0;
 
   return (
     <TooltipProvider>
