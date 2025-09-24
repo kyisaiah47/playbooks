@@ -169,7 +169,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     // Hero Section Properties
     badgeText: 'Budget Planning',
     ctaText: 'Start Budgeting Free',
-    appPath: '/budget-planning/app',
+    appPath: '/budget-planning/template',
 
     // Process Section
     processTitle: 'Your Budget Planning Journey',
@@ -398,7 +398,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     // Hero Section Properties
     badgeText: 'Productivity System',
     ctaText: 'Start Organizing Free',
-    appPath: '/productivity-system/app',
+    appPath: '/productivity-system/template',
 
     // Process Section
     processTitle: 'Your Productivity Transformation',
@@ -600,7 +600,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Wedding Day',
     heroDescription: 'Everything you need to organize your dream wedding in one beautiful template. From budget tracking to guest management, we\'ve got every detail covered.',
     ctaText: 'Start Planning Free',
-    appPath: '/wedding-planning/app',
+    appPath: '/wedding-planning/template',
     heroBenefits: [
       { text: 'Save 50+ hours of planning time' },
       { text: 'Track budgets up to $100K+' },
@@ -772,7 +772,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Dream Business',
     heroDescription: 'Complete step-by-step guidance from idea validation to successful launch. Build a sustainable business with expert frameworks and proven strategies.',
     ctaText: 'Start Building',
-    appPath: '/business-launch/app',
+    appPath: '/business-launch/template',
     heroCards: [
       {
         badge: 'Market Research',
@@ -876,7 +876,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Strategically',
     heroDescription: 'Master the job search process with expert guidance, proven strategies, and actionable frameworks that get results.',
     ctaText: 'Start Your Job Search',
-    appPath: '/job-search/app',
+    appPath: '/job-search/template',
     heroCards: [
       {
         badge: 'Resume',
@@ -980,7 +980,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Little One',
     heroDescription: 'Complete guidance for expecting parents from pregnancy through baby\'s first year. Feel confident and prepared for parenthood.',
     ctaText: 'Start Planning',
-    appPath: '/baby-planning/app',
+    appPath: '/baby-planning/template',
     heroCards: [
       {
         badge: 'Prenatal Care',
@@ -1084,7 +1084,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Full Potential',
     heroDescription: 'Evidence-based guidance for nurturing healthy child development from infancy through adolescence. Build stronger relationships and support your child\'s growth.',
     ctaText: 'Start Parenting Journey',
-    appPath: '/parenting-child-development/app',
+    appPath: '/parenting-child-development/template',
     heroCards: [
       {
         badge: 'Communication',
@@ -1190,7 +1190,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Dream Home',
     heroDescription: 'Navigate the home buying process with confidence. Complete guidance from financial readiness to closing day.',
     ctaText: 'Start House Hunting',
-    appPath: '/home-buying/app',
+    appPath: '/home-buying/template',
     heroCards: [
       {
         badge: 'Pre-Approval',
@@ -1304,7 +1304,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Events',
     heroDescription: 'Plan memorable events from conception to execution with comprehensive coordination tools and expert guidance.',
     ctaText: 'Start Planning',
-    appPath: '/event-planning/app',
+    appPath: '/event-planning/template',
     heroCards: [
       {
         badge: 'Concept Planning',
@@ -1489,7 +1489,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Adventure',
     heroDescription: 'Create amazing travel experiences with comprehensive trip planning, budget management, and itinerary coordination.',
     ctaText: 'Start Planning',
-    appPath: '/travel-planning/app',
+    appPath: '/travel-planning/template',
     heroCards: [
       {
         badge: 'Itinerary Planning',
@@ -1674,7 +1674,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Time & Money',
     heroDescription: 'Plan healthy, delicious meals with smart grocery lists, budget tracking, and nutrition optimization.',
     ctaText: 'Start Planning',
-    appPath: '/meal-planning/app',
+    appPath: '/meal-planning/template',
     heroCards: [
       {
         badge: 'Meal Planning',
@@ -1859,7 +1859,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Mind & Life',
     heroDescription: 'Achieve your fitness goals with structured workout plans, nutrition tracking, and progress monitoring.',
     ctaText: 'Start Your Journey',
-    appPath: '/fitness-journey/app',
+    appPath: '/fitness-journey/template',
     heroCards: [
       {
         badge: 'Workout Planning',
@@ -2044,7 +2044,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Dream College',
     heroDescription: 'Navigate college admissions with comprehensive planning tools for applications, deadlines, and financial aid.',
     ctaText: 'Start Planning',
-    appPath: '/college-planning/app',
+    appPath: '/college-planning/template',
     heroCards: [
       {
         badge: 'Application Tracking',
@@ -2229,7 +2229,7 @@ export const landingPageRegistry: Record<string, LandingPageData> = {
     heroHighlight: 'Stress-Free',
     heroDescription: 'Organize every aspect of your relocation with comprehensive checklists, timelines, and coordination tools.',
     ctaText: 'Start Planning',
-    appPath: '/moving-relocation/app',
+    appPath: '/moving-relocation/template',
     heroCards: [
       {
         badge: 'Moving Timeline',

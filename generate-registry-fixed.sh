@@ -265,7 +265,7 @@ for i in "${!TEMPLATE_FILES[@]}"; do
     description: "Comprehensive guidance and tools for $(echo "$title_case" | tr '[:upper:]' '[:lower:]').",
     category: "${category}",
     icon: "${icon}",
-    url: "/${template}/app",
+    url: "/${template}/template",
     popular: ${popular},
     featured: ${featured},
     expertVerified: ${expert_verified},
