@@ -188,8 +188,6 @@ export interface TemplateRegistryEntry {
   popular?: boolean;
   featured?: boolean;
   expertVerified?: boolean;
-  color: string;
-  iconColor: string;
   template: GuidanceTemplate;
 }
 
@@ -208,8 +206,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "cyan-50",
-    iconColor: "cyan-600",
     template: getTemplate(threeDPrintingTemplate)
   },
   {
@@ -222,8 +218,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(academicStrugglesTemplate)
   },
   {
@@ -236,8 +230,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(addictionFamilySupportTemplate)
   },
   {
@@ -250,8 +242,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(addictionRecoveryTemplate)
   },
   {
@@ -264,8 +254,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(affiliateMarketingTemplate)
   },
   {
@@ -278,8 +266,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(agingParentCareTemplate)
   },
   {
@@ -292,8 +278,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(antiqueCollectingTemplate)
   },
   {
@@ -306,8 +290,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(apartmentHuntingTemplate)
   },
   {
@@ -320,8 +302,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "cyan-50",
-    iconColor: "cyan-600",
     template: getTemplate(appDevelopmentTemplate)
   },
   {
@@ -334,8 +314,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: true,
     featured: false,
     expertVerified: false,
-    color: "cyan-50",
-    iconColor: "cyan-600",
     template: getTemplate(arduinoProgrammingTemplate)
   },
   {
@@ -348,8 +326,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(artCollectingTemplate)
   },
   {
@@ -362,8 +338,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(artPortfolioTemplate)
   },
   {
@@ -376,8 +350,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(astronomyHobbyTemplate)
   },
   {
@@ -390,8 +362,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: true,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(babyPlanningTemplate)
   },
   {
@@ -404,8 +374,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(bankruptcyRecoveryTemplate)
   },
   {
@@ -418,8 +386,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(birdwatchingTemplate)
   },
   {
@@ -432,8 +398,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(blendedFamilyCreationTemplate)
   },
   {
@@ -446,8 +410,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(blendedFamilyTemplate)
   },
   {
@@ -460,8 +422,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "teal-50",
-    iconColor: "teal-600",
     template: getTemplate(boatMaintenanceTemplate)
   },
   {
@@ -474,8 +434,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(bookClubTemplate)
   },
   {
@@ -488,8 +446,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(bookCollectingTemplate)
   },
   {
@@ -502,8 +458,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(bookWritingTemplate)
   },
   {
@@ -516,8 +470,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(businessLaunchTemplate)
   },
   {
@@ -530,8 +482,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(businessSuccessionTemplate)
   },
   {
@@ -544,8 +494,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(campingTripsTemplate)
   },
   {
@@ -558,8 +506,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "teal-50",
-    iconColor: "teal-600",
     template: getTemplate(carBuyingTemplate)
   },
   {
@@ -572,8 +518,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "teal-50",
-    iconColor: "teal-600",
     template: getTemplate(carMaintenanceTemplate)
   },
   {
@@ -586,8 +530,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(careerPlateauTemplate)
   },
   {
@@ -600,8 +542,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(caringForAgingParentsTemplate)
   },
   {
@@ -614,8 +554,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(chronicIllnessTemplate)
   },
   {
@@ -628,8 +566,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(climateActionTemplate)
   },
   {
@@ -642,8 +578,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(coachingBusinessTemplate)
   },
   {
@@ -656,8 +590,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(collegeSelectionTemplate)
   },
   {
@@ -670,8 +602,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(collegeToCareerTransitionTemplate)
   },
   {
@@ -684,8 +614,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "green-50",
-    iconColor: "green-600",
     template: getTemplate(comingOutTemplate)
   },
   {
@@ -698,8 +626,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(consultingBusinessTemplate)
   },
   {
@@ -712,8 +638,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(contentCreationBusinessTemplate)
   },
   {
@@ -726,8 +650,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(contentCreationTemplate)
   },
   {
@@ -740,8 +662,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(cookingMasteryTemplate)
   },
   {
@@ -754,8 +674,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(creativeFreelancingTemplate)
   },
   {
@@ -768,8 +686,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(creativeWritingTemplate)
   },
   {
@@ -782,8 +698,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(cryptoPortfolioTemplate)
   },
   {
@@ -796,8 +710,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(danceTrainingTemplate)
   },
   {
@@ -810,8 +722,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(deathOfSpouseTemplate)
   },
   {
@@ -824,8 +734,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(debtPayoffTemplate)
   },
   {
@@ -838,8 +746,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(digitalDetoxTemplate)
   },
   {
@@ -852,8 +758,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "teal-50",
-    iconColor: "teal-600",
     template: getTemplate(digitalNomadPlanningTemplate)
   },
   {
@@ -866,8 +770,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(disabilityAccommodationTemplate)
   },
   {
@@ -880,8 +782,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(divorceCoordinationTemplate)
   },
   {
@@ -894,8 +794,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(divorceProcessTemplate)
   },
   {
@@ -908,8 +806,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(downsizingDecisionsTemplate)
   },
   {
@@ -922,8 +818,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(dropshippingTemplate)
   },
   {
@@ -936,8 +830,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(eCommerceStoreTemplate)
   },
   {
@@ -950,8 +842,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(earlyCareerAdvancementTemplate)
   },
   {
@@ -964,8 +854,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(elderCareTemplate)
   },
   {
@@ -978,8 +866,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(emptyNestSyndromeTemplate)
   },
   {
@@ -992,8 +878,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(emptyNestTemplate)
   },
   {
@@ -1006,8 +890,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(endOfLifePlanningTemplate)
   },
   {
@@ -1020,8 +902,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(estatePlanningTemplate)
   },
   {
@@ -1034,8 +914,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(eventPlanningTemplate)
   },
   {
@@ -1048,8 +926,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(executiveLeadershipTransitionTemplate)
   },
   {
@@ -1062,8 +938,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(familyCrisisManagementTemplate)
   },
   {
@@ -1076,8 +950,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(familyEstrangementTemplate)
   },
   {
@@ -1090,8 +962,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(familyTherapyTemplate)
   },
   {
@@ -1104,8 +974,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(fashionDesignTemplate)
   },
   {
@@ -1118,8 +986,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(financialIndependenceCollegeTemplate)
   },
   {
@@ -1132,8 +998,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: true,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(financialIndependenceTemplate)
   },
   {
@@ -1146,8 +1010,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(financialRecoveryTemplate)
   },
   {
@@ -1160,8 +1022,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(firstJobTransitionTemplate)
   },
   {
@@ -1174,8 +1034,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(firstManagementRoleTemplate)
   },
   {
@@ -1188,8 +1046,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(firstSeriousRelationshipTemplate)
   },
   {
@@ -1202,8 +1058,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(firstTimeParentTemplate)
   },
   {
@@ -1216,8 +1070,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: true,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(fitnessJourneyTemplate)
   },
   {
@@ -1230,8 +1082,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(fixedIncomeManagementTemplate)
   },
   {
@@ -1244,8 +1094,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(fraternitySororityDecisionsTemplate)
   },
   {
@@ -1258,8 +1106,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(freelanceBusinessTemplate)
   },
   {
@@ -1272,8 +1118,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(gardenPlanningTemplate)
   },
   {
@@ -1286,8 +1130,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(geographicRelocationTemplate)
   },
   {
@@ -1300,8 +1142,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(graduateSchoolDecisionsTemplate)
   },
   {
@@ -1314,8 +1154,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(grandparentRoleTemplate)
   },
   {
@@ -1328,8 +1166,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(griefLossTemplate)
   },
   {
@@ -1342,8 +1178,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(habitTrackingTemplate)
   },
   {
@@ -1356,8 +1190,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(healthCrisisManagementTemplate)
   },
   {
@@ -1370,8 +1202,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(healthDeclineNavigationTemplate)
   },
   {
@@ -1384,8 +1214,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(hobbyPhotographyTemplate)
   },
   {
@@ -1398,8 +1226,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(hobbyProjectTemplate)
   },
   {
@@ -1412,8 +1238,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(homeAutomationTemplate)
   },
   {
@@ -1426,8 +1250,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: true,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(homeBuyingTemplate)
   },
   {
@@ -1440,8 +1262,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(homeRenovationTemplate)
   },
   {
@@ -1454,8 +1274,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(identityTheftRecoveryTemplate)
   },
   {
@@ -1468,8 +1286,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(identityTheftTemplate)
   },
   {
@@ -1482,8 +1298,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(immigrationJourneyTemplate)
   },
   {
@@ -1496,8 +1310,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(insuranceOptimizationTemplate)
   },
   {
@@ -1510,8 +1322,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(interiorDesignTemplate)
   },
   {
@@ -1524,8 +1334,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(internshipCompetitionTemplate)
   },
   {
@@ -1538,8 +1346,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(investingFinanceTemplate)
   },
   {
@@ -1552,8 +1358,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(investmentPortfolioTemplate)
   },
   {
@@ -1566,8 +1370,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(investmentPropertyTemplate)
   },
   {
@@ -1580,8 +1382,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(jobLossNavigationTemplate)
   },
   {
@@ -1594,8 +1394,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(jobLossRecoveryTemplate)
   },
   {
@@ -1608,8 +1406,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: true,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(jobSearchTemplate)
   },
   {
@@ -1622,8 +1418,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(jobTransitionTemplate)
   },
   {
@@ -1636,8 +1430,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(languageLearningTemplate)
   },
   {
@@ -1650,8 +1442,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(legalIssueManagementTemplate)
   },
   {
@@ -1664,8 +1454,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(longDistanceRelationshipTemplate)
   },
   {
@@ -1678,8 +1466,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(marathonTrainingTemplate)
   },
   {
@@ -1692,8 +1478,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(marriageMaintenanceTemplate)
   },
   {
@@ -1706,8 +1490,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(mealPlanningTemplate)
   },
   {
@@ -1720,8 +1502,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(medicalTreatmentTemplate)
   },
   {
@@ -1734,8 +1514,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(meditationJourneyTemplate)
   },
   {
@@ -1748,8 +1526,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(mentalHealthCollegeTemplate)
   },
   {
@@ -1762,8 +1538,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(mentalHealthSupportTemplate)
   },
   {
@@ -1776,8 +1550,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(mentalHealthTemplate)
   },
   {
@@ -1790,8 +1562,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(midlifeCrisisTemplate)
   },
   {
@@ -1804,8 +1574,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(midlifeHealthChangesTemplate)
   },
   {
@@ -1818,8 +1586,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(militaryVeteranTransitionTemplate)
   },
   {
@@ -1832,8 +1598,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(mindfulnessMeditationTemplate)
   },
   {
@@ -1846,8 +1610,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(mobileAppStartupTemplate)
   },
   {
@@ -1860,8 +1622,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(mortgageManagementTemplate)
   },
   {
@@ -1874,8 +1634,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(movingRelocationTemplate)
   },
   {
@@ -1888,8 +1646,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(musicLearningTemplate)
   },
   {
@@ -1902,8 +1658,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(musicProductionTemplate)
   },
   {
@@ -1916,8 +1670,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(naturalDisasterRecoveryTemplate)
   },
   {
@@ -1930,8 +1682,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(nonprofitManagementTemplate)
   },
   {
@@ -1944,8 +1694,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(nonprofitStartupTemplate)
   },
   {
@@ -1958,8 +1706,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(onlineBusinessLaunchTemplate)
   },
   {
@@ -1972,8 +1718,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(onlineCourseTemplate)
   },
   {
@@ -1986,8 +1730,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(parentingGuidanceTemplate)
   },
   {
@@ -2000,8 +1742,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(peakEarningOptimizationTemplate)
   },
   {
@@ -2014,8 +1754,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(personalBrandingTemplate)
   },
   {
@@ -2028,8 +1766,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(personalFinanceMasteryTemplate)
   },
   {
@@ -2042,8 +1778,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(personalFinanceTemplate)
   },
   {
@@ -2056,8 +1790,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(personalTrainingTemplate)
   },
   {
@@ -2070,8 +1802,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "teal-50",
-    iconColor: "teal-600",
     template: getTemplate(petCareTemplate)
   },
   {
@@ -2084,8 +1814,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(photographyBusinessTemplate)
   },
   {
@@ -2098,8 +1826,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(podcastCreationTemplate)
   },
   {
@@ -2112,8 +1838,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(professionalNetworkingTemplate)
   },
   {
@@ -2126,8 +1850,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(publicSpeakingTemplate)
   },
   {
@@ -2140,8 +1862,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(quarterLifeCrisisTemplate)
   },
   {
@@ -2154,8 +1874,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(readingChallengeTemplate)
   },
   {
@@ -2168,8 +1886,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(realEstateInvestingTemplate)
   },
   {
@@ -2182,8 +1898,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(relationshipBreakupTemplate)
   },
   {
@@ -2196,8 +1910,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(relationshipCoachingTemplate)
   },
   {
@@ -2210,8 +1922,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(relationshipTherapyTemplate)
   },
   {
@@ -2224,8 +1934,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(rentalManagementTemplate)
   },
   {
@@ -2238,8 +1946,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(restaurantOpeningTemplate)
   },
   {
@@ -2252,8 +1958,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(retirementLifestyleTemplate)
   },
   {
@@ -2266,8 +1970,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "gray-50",
-    iconColor: "gray-600",
     template: getTemplate(retirementTransitionTemplate)
   },
   {
@@ -2280,8 +1982,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(roommateNavigationTemplate)
   },
   {
@@ -2294,8 +1994,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(saasStartupTemplate)
   },
   {
@@ -2308,8 +2006,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(sandwichGenerationTemplate)
   },
   {
@@ -2322,8 +2018,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(sideHustleDevelopmentTemplate)
   },
   {
@@ -2336,8 +2030,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(skillDevelopmentTemplate)
   },
   {
@@ -2350,8 +2042,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(smallBusinessLaunchTemplate)
   },
   {
@@ -2364,8 +2054,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(smallBusinessTemplate)
   },
   {
@@ -2378,8 +2066,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(smartGardenTemplate)
   },
   {
@@ -2392,8 +2078,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(socialEntrepreneurshipTemplate)
   },
   {
@@ -2406,8 +2090,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(socialMediaManagementTemplate)
   },
   {
@@ -2420,8 +2102,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "green-50",
-    iconColor: "green-600",
     template: getTemplate(spiritualAwakeningTemplate)
   },
   {
@@ -2434,8 +2114,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "green-50",
-    iconColor: "green-600",
     template: getTemplate(spiritualGrowthTemplate)
   },
   {
@@ -2448,8 +2126,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(sportsTeamTemplate)
   },
   {
@@ -2462,8 +2138,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "emerald-50",
-    iconColor: "emerald-600",
     template: getTemplate(stockTradingTemplate)
   },
   {
@@ -2476,8 +2150,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(stressManagementTemplate)
   },
   {
@@ -2490,8 +2162,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(studentLoanStrategyTemplate)
   },
   {
@@ -2504,8 +2174,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "purple-50",
-    iconColor: "purple-600",
     template: getTemplate(studyAbroadPlanningTemplate)
   },
   {
@@ -2518,8 +2186,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(sustainableLivingTemplate)
   },
   {
@@ -2532,8 +2198,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "blue-50",
-    iconColor: "blue-600",
     template: getTemplate(techStartupGuideTemplate)
   },
   {
@@ -2546,8 +2210,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "cyan-50",
-    iconColor: "cyan-600",
     template: getTemplate(technologyDigitalTemplate)
   },
   {
@@ -2560,8 +2222,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "pink-50",
-    iconColor: "pink-600",
     template: getTemplate(teenageParentingTemplate)
   },
   {
@@ -2574,8 +2234,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "slate-50",
-    iconColor: "slate-600",
     template: getTemplate(testTemplate)
   },
   {
@@ -2588,8 +2246,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "teal-50",
-    iconColor: "teal-600",
     template: getTemplate(transportationPlanningTemplate)
   },
   {
@@ -2602,8 +2258,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "orange-50",
-    iconColor: "orange-600",
     template: getTemplate(urbanGardeningTemplate)
   },
   {
@@ -2616,8 +2270,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(weightLossTemplate)
   },
   {
@@ -2630,8 +2282,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "yellow-50",
-    iconColor: "yellow-600",
     template: getTemplate(wineCollectionTemplate)
   },
   {
@@ -2644,8 +2294,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "indigo-50",
-    iconColor: "indigo-600",
     template: getTemplate(workforceReentryTemplate)
   },
   {
@@ -2658,8 +2306,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "red-50",
-    iconColor: "red-600",
     template: getTemplate(yogaPracticeTemplate)
   },
   {
@@ -2672,8 +2318,6 @@ export const templateRegistry: TemplateRegistryEntry[] = [
     popular: false,
     featured: false,
     expertVerified: false,
-    color: "violet-50",
-    iconColor: "violet-600",
     template: getTemplate(youtubeChannelTemplate)
   }
 ];
