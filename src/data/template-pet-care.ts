@@ -1,0 +1,43 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const petCareTemplate: GuidanceTemplate = {
+  id: "pet-care",
+  title: "Pet Care",
+  description: "Comprehensive guidance for responsible pet ownership, covering health, nutrition, training, and daily care routines to ensure your furry, feathered, or scaled companions live happy, healthy lives.",
+  category: "Personal Life",
+  icon: "Heart",
+  difficulty: "beginner",
+  estimatedTime: "Ongoing daily commitment",
+  tags: [
+    "pet-health",
+    "veterinary-care",
+    "pet-nutrition",
+    "feeding-schedule",
+    "pet-training",
+    "behavioral-issues",
+    "grooming",
+    "exercise-routine",
+    "vaccination-schedule",
+    "parasite-prevention",
+    "dental-care",
+    "emergency-care",
+    "pet-insurance",
+    "pet-supplies",
+    "animal-behavior",
+    "socialization",
+    "house-training",
+    "obedience-training",
+    "pet-safety",
+    "travel-with-pets",
+    "pet-boarding",
+    "senior-pet-care",
+    "puppy-care",
+    "kitten-care"
+  ],
+  sections: [],
+  expertTips: [],
+  reflectionPrompts: [],
+  resources: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};

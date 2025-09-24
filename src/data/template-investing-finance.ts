@@ -1,0 +1,42 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const investingFinanceTemplate: GuidanceTemplate = {
+  id: "investing-finance",
+  title: "Investing & Finance",
+  description: "Master personal investing, portfolio management, and financial planning to build long-term wealth and achieve your financial goals",
+  category: "Finance & Money",
+  icon: "TrendingUp",
+  difficulty: "intermediate",
+  estimatedTime: "3-6 months",
+  tags: [
+    "investing",
+    "portfolio management",
+    "stocks",
+    "bonds",
+    "ETFs",
+    "mutual funds",
+    "401k",
+    "IRA",
+    "retirement planning",
+    "asset allocation",
+    "diversification",
+    "risk management",
+    "compound interest",
+    "dollar cost averaging",
+    "value investing",
+    "index funds",
+    "dividend investing",
+    "real estate investment",
+    "REITs",
+    "cryptocurrency",
+    "financial planning",
+    "budgeting",
+    "emergency fund",
+    "debt management",
+    "tax strategies"
+  ],
+  sections: [],
+  expertTips: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};

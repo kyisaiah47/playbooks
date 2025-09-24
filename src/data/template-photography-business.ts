@@ -1,0 +1,43 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const photographyBusinessTemplate: GuidanceTemplate = {
+  id: "photography-business",
+  title: "Photography Business",
+  description: "Build and grow a successful photography business from startup to scaling. Master client acquisition, pricing strategies, portfolio development, and business operations while creating stunning visual content that drives revenue.",
+  category: "Business & Career",
+  icon: "Camera",
+  difficulty: "intermediate",
+  estimatedTime: "6-12 months",
+  tags: [
+    "photography",
+    "business",
+    "entrepreneur",
+    "portfolio",
+    "client-acquisition",
+    "pricing-strategy",
+    "wedding-photography",
+    "portrait-photography",
+    "commercial-photography",
+    "marketing",
+    "social-media",
+    "equipment",
+    "lighting",
+    "editing",
+    "contracts",
+    "invoicing",
+    "branding",
+    "website",
+    "networking",
+    "revenue",
+    "scaling",
+    "studio",
+    "freelance",
+    "creative-business"
+  ],
+  sections: [],
+  expertTips: [],
+  reflectionPrompts: [],
+  resources: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};

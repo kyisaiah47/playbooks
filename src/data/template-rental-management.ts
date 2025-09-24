@@ -1,0 +1,42 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const rentalManagementTemplate: GuidanceTemplate = {
+  id: "rental-management",
+  title: "Rental Management",
+  description: "Comprehensive guidance for managing rental properties efficiently, from tenant screening and lease agreements to maintenance coordination and financial tracking.",
+  category: "Business & Career",
+  icon: "Building2",
+  difficulty: "intermediate",
+  estimatedTime: "3-6 months for full implementation",
+  tags: [
+    "property management",
+    "rental properties",
+    "tenant screening",
+    "lease agreements",
+    "rent collection",
+    "maintenance requests",
+    "property inspections",
+    "vacancy management",
+    "tenant relations",
+    "eviction process",
+    "property marketing",
+    "rental income",
+    "expense tracking",
+    "property taxes",
+    "insurance claims",
+    "security deposits",
+    "move-in procedures",
+    "move-out procedures",
+    "background checks",
+    "rental applications",
+    "property showings",
+    "vendor management",
+    "emergency repairs",
+    "cash flow analysis",
+    "rental yield"
+  ],
+  sections: [],
+  expertTips: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};

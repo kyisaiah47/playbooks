@@ -1,0 +1,43 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const healthCrisisManagementTemplate: GuidanceTemplate = {
+  id: "health-crisis-management",
+  title: "Health Crisis Management",
+  description: "Navigate health emergencies and medical crises with confidence through structured planning, resource management, and support coordination.",
+  category: "Health & Wellness",
+  icon: "Heart",
+  difficulty: "intermediate",
+  estimatedTime: "2-4 weeks",
+  tags: [
+    "health crisis",
+    "medical emergency",
+    "healthcare navigation",
+    "insurance claims",
+    "medical records",
+    "treatment planning",
+    "caregiver support",
+    "emergency preparedness",
+    "hospital discharge",
+    "medication management",
+    "doctor coordination",
+    "second opinions",
+    "family communication",
+    "financial planning",
+    "disability support",
+    "recovery planning",
+    "mental health",
+    "support networks",
+    "medical advocacy",
+    "crisis communication",
+    "healthcare proxy",
+    "advance directives",
+    "emergency contacts",
+    "medical bills"
+  ],
+  sections: [],
+  expertTips: [],
+  resources: [],
+  reflectionPrompts: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};

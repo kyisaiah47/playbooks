@@ -1,0 +1,42 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const businessLaunchTemplate: GuidanceTemplate = {
+  id: "business-launch",
+  title: "Business Launch",
+  description: "A comprehensive guide to launching your business successfully, from initial planning and legal setup to marketing strategies and financial management for sustainable growth.",
+  category: "Business & Career",
+  icon: "Rocket",
+  difficulty: "intermediate",
+  estimatedTime: "3-6 months",
+  tags: [
+    "business-plan",
+    "startup",
+    "entrepreneurship",
+    "legal-structure",
+    "business-registration",
+    "funding",
+    "investors",
+    "market-research",
+    "target-audience",
+    "competitor-analysis",
+    "branding",
+    "logo-design",
+    "website-development",
+    "social-media-marketing",
+    "digital-marketing",
+    "content-marketing",
+    "financial-planning",
+    "accounting",
+    "bookkeeping",
+    "tax-planning",
+    "business-insurance",
+    "permits-licenses",
+    "product-development",
+    "minimum-viable-product",
+    "customer-validation"
+  ],
+  sections: [],
+  expertTips: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};

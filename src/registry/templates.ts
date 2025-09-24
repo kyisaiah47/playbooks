@@ -1,378 +1,2684 @@
 import { GuidanceTemplate } from '@/types/template';
-import { weddingTemplate, homeBuyingTemplate, jobSearchTemplate, babyPlanningTemplate, parentingChildDevelopmentTemplate, fitnessAthleticTrainingTemplate, fitnessJourneyTemplate, personalDevelopmentCoachingTemplate, retirementLifestylePlanningTemplate, travelPlanningAdventureTemplate, productivitySystemTemplate, movingRelocationTemplate, eventPlanningTemplate, travelPlanningTemplate, mealPlanningTemplate, academicResearchTemplate, freelanceGigEconomyTemplate, languageLearningCulturalImmersionTemplate, personalFinanceInvestmentTemplate, digitalMarketingSEOTemplate, remoteWorkProductivityTemplate, careerChangeTransitionTemplate, budgetPlanningTemplate, businessLaunchTemplate, collegePlanningTemplate } from '@/data/templates';
-import { getTemplateExperts } from '@/lib/expert-badges';
 
-// Unified content system - blog registry gets populated from template resources
-export function getTemplate(baseTemplate: GuidanceTemplate): GuidanceTemplate {
-  return baseTemplate;
-}
-
-// Convert blog registry to resources format for /blog/abc
-// Note: This function now returns empty array to avoid circular imports
-// Blog content is now managed directly in the blogs registry
-export function getResourcesAsBlogPosts(): Array<{
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  tags: string[];
-  readTime?: string;
-  difficulty?: string;
-  type?: string;
-  category: string;
-  templateId?: string;
-  date: string;
-  author: string;
-}> {
-  // Return empty array to avoid circular imports
-  // Blog content is now managed directly in manualBlogPosts
-  return [];
-}
+import { threeDPrintingTemplate } from '@/data/template-3d-printing';
+import { academicStrugglesTemplate } from '@/data/template-academic-struggles';
+import { addictionFamilySupportTemplate } from '@/data/template-addiction-family-support';
+import { addictionRecoveryTemplate } from '@/data/template-addiction-recovery';
+import { affiliateMarketingTemplate } from '@/data/template-affiliate-marketing';
+import { agingParentCareTemplate } from '@/data/template-aging-parent-care';
+import { antiqueCollectingTemplate } from '@/data/template-antique-collecting';
+import { apartmentHuntingTemplate } from '@/data/template-apartment-hunting';
+import { appDevelopmentTemplate } from '@/data/template-app-development';
+import { arduinoProgrammingTemplate } from '@/data/template-arduino-programming';
+import { artCollectingTemplate } from '@/data/template-art-collecting';
+import { artPortfolioTemplate } from '@/data/template-art-portfolio';
+import { astronomyHobbyTemplate } from '@/data/template-astronomy-hobby';
+import { babyPlanningTemplate } from '@/data/template-baby-planning';
+import { bankruptcyRecoveryTemplate } from '@/data/template-bankruptcy-recovery';
+import { birdwatchingTemplate } from '@/data/template-birdwatching';
+import { blendedFamilyCreationTemplate } from '@/data/template-blended-family-creation';
+import { blendedFamilyTemplate } from '@/data/template-blended-family';
+import { boatMaintenanceTemplate } from '@/data/template-boat-maintenance';
+import { bookClubTemplate } from '@/data/template-book-club';
+import { bookCollectingTemplate } from '@/data/template-book-collecting';
+import { bookWritingTemplate } from '@/data/template-book-writing';
+import { businessLaunchTemplate } from '@/data/template-business-launch';
+import { businessSuccessionTemplate } from '@/data/template-business-succession';
+import { campingTripsTemplate } from '@/data/template-camping-trips';
+import { carBuyingTemplate } from '@/data/template-car-buying';
+import { carMaintenanceTemplate } from '@/data/template-car-maintenance';
+import { careerPlateauTemplate } from '@/data/template-career-plateau';
+import { caringForAgingParentsTemplate } from '@/data/template-caring-for-aging-parents';
+import { chronicIllnessTemplate } from '@/data/template-chronic-illness';
+import { climateActionTemplate } from '@/data/template-climate-action';
+import { coachingBusinessTemplate } from '@/data/template-coaching-business';
+import { collegeSelectionTemplate } from '@/data/template-college-selection';
+import { collegeToCareerTransitionTemplate } from '@/data/template-college-to-career-transition';
+import { comingOutTemplate } from '@/data/template-coming-out';
+import { consultingBusinessTemplate } from '@/data/template-consulting-business';
+import { contentCreationBusinessTemplate } from '@/data/template-content-creation-business';
+import { contentCreationTemplate } from '@/data/template-content-creation';
+import { cookingMasteryTemplate } from '@/data/template-cooking-mastery';
+import { creativeFreelancingTemplate } from '@/data/template-creative-freelancing';
+import { creativeWritingTemplate } from '@/data/template-creative-writing';
+import { cryptoPortfolioTemplate } from '@/data/template-crypto-portfolio';
+import { danceTrainingTemplate } from '@/data/template-dance-training';
+import { deathOfSpouseTemplate } from '@/data/template-death-of-spouse';
+import { debtPayoffTemplate } from '@/data/template-debt-payoff';
+import { digitalDetoxTemplate } from '@/data/template-digital-detox';
+import { digitalNomadPlanningTemplate } from '@/data/template-digital-nomad-planning';
+import { disabilityAccommodationTemplate } from '@/data/template-disability-accommodation';
+import { divorceCoordinationTemplate } from '@/data/template-divorce-coordination';
+import { divorceProcessTemplate } from '@/data/template-divorce-process';
+import { downsizingDecisionsTemplate } from '@/data/template-downsizing-decisions';
+import { dropshippingTemplate } from '@/data/template-dropshipping';
+import { eCommerceStoreTemplate } from '@/data/template-e-commerce-store';
+import { earlyCareerAdvancementTemplate } from '@/data/template-early-career-advancement';
+import { elderCareTemplate } from '@/data/template-elder-care';
+import { emptyNestSyndromeTemplate } from '@/data/template-empty-nest-syndrome';
+import { emptyNestTemplate } from '@/data/template-empty-nest';
+import { endOfLifePlanningTemplate } from '@/data/template-end-of-life-planning';
+import { estatePlanningTemplate } from '@/data/template-estate-planning';
+import { eventPlanningTemplate } from '@/data/template-event-planning';
+import { executiveLeadershipTransitionTemplate } from '@/data/template-executive-leadership-transition';
+import { familyCrisisManagementTemplate } from '@/data/template-family-crisis-management';
+import { familyEstrangementTemplate } from '@/data/template-family-estrangement';
+import { familyTherapyTemplate } from '@/data/template-family-therapy';
+import { fashionDesignTemplate } from '@/data/template-fashion-design';
+import { financialIndependenceCollegeTemplate } from '@/data/template-financial-independence-college';
+import { financialIndependenceTemplate } from '@/data/template-financial-independence';
+import { financialRecoveryTemplate } from '@/data/template-financial-recovery';
+import { firstJobTransitionTemplate } from '@/data/template-first-job-transition';
+import { firstManagementRoleTemplate } from '@/data/template-first-management-role';
+import { firstSeriousRelationshipTemplate } from '@/data/template-first-serious-relationship';
+import { firstTimeParentTemplate } from '@/data/template-first-time-parent';
+import { fitnessJourneyTemplate } from '@/data/template-fitness-journey';
+import { fixedIncomeManagementTemplate } from '@/data/template-fixed-income-management';
+import { fraternitySororityDecisionsTemplate } from '@/data/template-fraternity-sorority-decisions';
+import { freelanceBusinessTemplate } from '@/data/template-freelance-business';
+import { gardenPlanningTemplate } from '@/data/template-garden-planning';
+import { geographicRelocationTemplate } from '@/data/template-geographic-relocation';
+import { graduateSchoolDecisionsTemplate } from '@/data/template-graduate-school-decisions';
+import { grandparentRoleTemplate } from '@/data/template-grandparent-role';
+import { griefLossTemplate } from '@/data/template-grief-loss';
+import { habitTrackingTemplate } from '@/data/template-habit-tracking';
+import { healthCrisisManagementTemplate } from '@/data/template-health-crisis-management';
+import { healthDeclineNavigationTemplate } from '@/data/template-health-decline-navigation';
+import { hobbyPhotographyTemplate } from '@/data/template-hobby-photography';
+import { hobbyProjectTemplate } from '@/data/template-hobby-project';
+import { homeAutomationTemplate } from '@/data/template-home-automation';
+import { homeBuyingTemplate } from '@/data/template-home-buying';
+import { homeRenovationTemplate } from '@/data/template-home-renovation';
+import { identityTheftRecoveryTemplate } from '@/data/template-identity-theft-recovery';
+import { identityTheftTemplate } from '@/data/template-identity-theft';
+import { immigrationJourneyTemplate } from '@/data/template-immigration-journey';
+import { insuranceOptimizationTemplate } from '@/data/template-insurance-optimization';
+import { interiorDesignTemplate } from '@/data/template-interior-design';
+import { internshipCompetitionTemplate } from '@/data/template-internship-competition';
+import { investingFinanceTemplate } from '@/data/template-investing-finance';
+import { investmentPortfolioTemplate } from '@/data/template-investment-portfolio';
+import { investmentPropertyTemplate } from '@/data/template-investment-property';
+import { jobLossNavigationTemplate } from '@/data/template-job-loss-navigation';
+import { jobLossRecoveryTemplate } from '@/data/template-job-loss-recovery';
+import { jobSearchTemplate } from '@/data/template-job-search';
+import { jobTransitionTemplate } from '@/data/template-job-transition';
+import { languageLearningTemplate } from '@/data/template-language-learning';
+import { legalIssueManagementTemplate } from '@/data/template-legal-issue-management';
+import { longDistanceRelationshipTemplate } from '@/data/template-long-distance-relationship';
+import { marathonTrainingTemplate } from '@/data/template-marathon-training';
+import { marriageMaintenanceTemplate } from '@/data/template-marriage-maintenance';
+import { mealPlanningTemplate } from '@/data/template-meal-planning';
+import { medicalTreatmentTemplate } from '@/data/template-medical-treatment';
+import { meditationJourneyTemplate } from '@/data/template-meditation-journey';
+import { mentalHealthCollegeTemplate } from '@/data/template-mental-health-college';
+import { mentalHealthSupportTemplate } from '@/data/template-mental-health-support';
+import { mentalHealthTemplate } from '@/data/template-mental-health';
+import { midlifeCrisisTemplate } from '@/data/template-midlife-crisis';
+import { midlifeHealthChangesTemplate } from '@/data/template-midlife-health-changes';
+import { militaryVeteranTransitionTemplate } from '@/data/template-military-veteran-transition';
+import { mindfulnessMeditationTemplate } from '@/data/template-mindfulness-meditation';
+import { mobileAppStartupTemplate } from '@/data/template-mobile-app-startup';
+import { mortgageManagementTemplate } from '@/data/template-mortgage-management';
+import { movingRelocationTemplate } from '@/data/template-moving-relocation';
+import { musicLearningTemplate } from '@/data/template-music-learning';
+import { musicProductionTemplate } from '@/data/template-music-production';
+import { naturalDisasterRecoveryTemplate } from '@/data/template-natural-disaster-recovery';
+import { nonprofitManagementTemplate } from '@/data/template-nonprofit-management';
+import { nonprofitStartupTemplate } from '@/data/template-nonprofit-startup';
+import { onlineBusinessLaunchTemplate } from '@/data/template-online-business-launch';
+import { onlineCourseTemplate } from '@/data/template-online-course';
+import { parentingGuidanceTemplate } from '@/data/template-parenting-guidance';
+import { peakEarningOptimizationTemplate } from '@/data/template-peak-earning-optimization';
+import { personalBrandingTemplate } from '@/data/template-personal-branding';
+import { personalFinanceMasteryTemplate } from '@/data/template-personal-finance-mastery';
+import { personalFinanceTemplate } from '@/data/template-personal-finance';
+import { personalTrainingTemplate } from '@/data/template-personal-training';
+import { petCareTemplate } from '@/data/template-pet-care';
+import { photographyBusinessTemplate } from '@/data/template-photography-business';
+import { podcastCreationTemplate } from '@/data/template-podcast-creation';
+import { professionalNetworkingTemplate } from '@/data/template-professional-networking';
+import { publicSpeakingTemplate } from '@/data/template-public-speaking';
+import { quarterLifeCrisisTemplate } from '@/data/template-quarter-life-crisis';
+import { readingChallengeTemplate } from '@/data/template-reading-challenge';
+import { realEstateInvestingTemplate } from '@/data/template-real-estate-investing';
+import { relationshipBreakupTemplate } from '@/data/template-relationship-breakup';
+import { relationshipCoachingTemplate } from '@/data/template-relationship-coaching';
+import { relationshipTherapyTemplate } from '@/data/template-relationship-therapy';
+import { rentalManagementTemplate } from '@/data/template-rental-management';
+import { restaurantOpeningTemplate } from '@/data/template-restaurant-opening';
+import { retirementLifestyleTemplate } from '@/data/template-retirement-lifestyle';
+import { retirementTransitionTemplate } from '@/data/template-retirement-transition';
+import { roommateNavigationTemplate } from '@/data/template-roommate-navigation';
+import { saasStartupTemplate } from '@/data/template-saas-startup';
+import { sandwichGenerationTemplate } from '@/data/template-sandwich-generation';
+import { sideHustleDevelopmentTemplate } from '@/data/template-side-hustle-development';
+import { skillDevelopmentTemplate } from '@/data/template-skill-development';
+import { smallBusinessLaunchTemplate } from '@/data/template-small-business-launch';
+import { smallBusinessTemplate } from '@/data/template-small-business';
+import { smartGardenTemplate } from '@/data/template-smart-garden';
+import { socialEntrepreneurshipTemplate } from '@/data/template-social-entrepreneurship';
+import { socialMediaManagementTemplate } from '@/data/template-social-media-management';
+import { spiritualAwakeningTemplate } from '@/data/template-spiritual-awakening';
+import { spiritualGrowthTemplate } from '@/data/template-spiritual-growth';
+import { sportsTeamTemplate } from '@/data/template-sports-team';
+import { stockTradingTemplate } from '@/data/template-stock-trading';
+import { stressManagementTemplate } from '@/data/template-stress-management';
+import { studentLoanStrategyTemplate } from '@/data/template-student-loan-strategy';
+import { studyAbroadPlanningTemplate } from '@/data/template-study-abroad-planning';
+import { sustainableLivingTemplate } from '@/data/template-sustainable-living';
+import { techStartupGuideTemplate } from '@/data/template-tech-startup-guide';
+import { technologyDigitalTemplate } from '@/data/template-technology-digital';
+import { teenageParentingTemplate } from '@/data/template-teenage-parenting';
+import { testTemplate } from '@/data/template-test-template';
+import { transportationPlanningTemplate } from '@/data/template-transportation-planning';
+import { urbanGardeningTemplate } from '@/data/template-urban-gardening';
+import { weightLossTemplate } from '@/data/template-weight-loss';
+import { wineCollectionTemplate } from '@/data/template-wine-collection';
+import { workforceReentryTemplate } from '@/data/template-workforce-reentry';
+import { yogaPracticeTemplate } from '@/data/template-yoga-practice';
+import { youtubeChannelTemplate } from '@/data/template-youtube-channel';
 
 export interface TemplateRegistryEntry {
   id: string;
   name: string;
   description: string;
   category: string;
-  icon: string; // Using emoji strings for consistency
+  icon: string;
   url: string;
   popular?: boolean;
   featured?: boolean;
-  comingSoon?: boolean;
-  color?: string;
-  iconColor?: string;
-  // Reference to full template data
-  template?: GuidanceTemplate;
-  // Expert verification
   expertVerified?: boolean;
+  color: string;
+  iconColor: string;
+  template: GuidanceTemplate;
 }
 
-// Template registry with all available templates
+export function getTemplate(baseTemplate: GuidanceTemplate): GuidanceTemplate {
+  return baseTemplate;
+}
+
 export const templateRegistry: TemplateRegistryEntry[] = [
-  // Personal Life Templates
   {
-    id: "wedding-planning",
-    name: "Wedding Planning",
-    description: "Plan your perfect wedding with budget tracking, vendor management, and timeline organization.",
-    category: "Personal Life",
-    icon: "💒",
-    url: "/wedding-planning/app",
+    id: "3d-printing",
+    name: "3d printing",
+    description: "Comprehensive guidance and tools for 3d printing.",
+    category: "Technology & Development",
+    icon: "Box",
+    url: "/3d-printing/app",
     popular: true,
-    featured: true,
-    expertVerified: true,
-    color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
-    iconColor: "text-pink-600 dark:text-pink-400",
-    template: getTemplate(weddingTemplate)
+    featured: false,
+    expertVerified: false,
+    color: "cyan-50",
+    iconColor: "cyan-600",
+    template: getTemplate(threeDPrintingTemplate)
   },
   {
-    id: "home-buying",
-    name: "Home Buying",
-    description: "Navigate the home buying process with mortgage tracking, property comparisons, and checklists.",
-    category: "Personal Life",
-    icon: "🏠",
-    url: "/home-buying/app",
+    id: "academic-struggles",
+    name: "academic struggles",
+    description: "Comprehensive guidance and tools for academic struggles.",
+    category: "Education & Learning",
+    icon: "BookOpen",
+    url: "/academic-struggles/app",
     popular: true,
-    expertVerified: true,
-    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
-    iconColor: "text-blue-600 dark:text-blue-400",
-    template: getTemplate(homeBuyingTemplate)
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(academicStrugglesTemplate)
+  },
+  {
+    id: "addiction-family-support",
+    name: "addiction family support",
+    description: "Comprehensive guidance and tools for addiction family support.",
+    category: "Health & Wellness",
+    icon: "Users",
+    url: "/addiction-family-support/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(addictionFamilySupportTemplate)
+  },
+  {
+    id: "addiction-recovery",
+    name: "addiction recovery",
+    description: "Comprehensive guidance and tools for addiction recovery.",
+    category: "Health & Wellness",
+    icon: "Shield",
+    url: "/addiction-recovery/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(addictionRecoveryTemplate)
+  },
+  {
+    id: "affiliate-marketing",
+    name: "affiliate marketing",
+    description: "Comprehensive guidance and tools for affiliate marketing.",
+    category: "Business & Career",
+    icon: "Link",
+    url: "/affiliate-marketing/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(affiliateMarketingTemplate)
+  },
+  {
+    id: "aging-parent-care",
+    name: "aging parent care",
+    description: "Comprehensive guidance and tools for aging parent care.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/aging-parent-care/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(agingParentCareTemplate)
+  },
+  {
+    id: "antique-collecting",
+    name: "antique collecting",
+    description: "Comprehensive guidance and tools for antique collecting.",
+    category: "Hobbies & Interests",
+    icon: "Clock",
+    url: "/antique-collecting/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(antiqueCollectingTemplate)
+  },
+  {
+    id: "apartment-hunting",
+    name: "apartment hunting",
+    description: "Comprehensive guidance and tools for apartment hunting.",
+    category: "Creative & Arts",
+    icon: "Palette",
+    url: "/apartment-hunting/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(apartmentHuntingTemplate)
+  },
+  {
+    id: "app-development",
+    name: "app development",
+    description: "Comprehensive guidance and tools for app development.",
+    category: "Technology & Development",
+    icon: "Code",
+    url: "/app-development/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "cyan-50",
+    iconColor: "cyan-600",
+    template: getTemplate(appDevelopmentTemplate)
+  },
+  {
+    id: "arduino-programming",
+    name: "arduino programming",
+    description: "Comprehensive guidance and tools for arduino programming.",
+    category: "Technology & Development",
+    icon: "Circle",
+    url: "/arduino-programming/app",
+    popular: true,
+    featured: false,
+    expertVerified: false,
+    color: "cyan-50",
+    iconColor: "cyan-600",
+    template: getTemplate(arduinoProgrammingTemplate)
+  },
+  {
+    id: "art-collecting",
+    name: "art collecting",
+    description: "Comprehensive guidance and tools for art collecting.",
+    category: "Creative & Arts",
+    icon: "Palette",
+    url: "/art-collecting/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(artCollectingTemplate)
+  },
+  {
+    id: "art-portfolio",
+    name: "art portfolio",
+    description: "Comprehensive guidance and tools for art portfolio.",
+    category: "Creative & Arts",
+    icon: "Palette",
+    url: "/art-portfolio/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(artPortfolioTemplate)
+  },
+  {
+    id: "astronomy-hobby",
+    name: "astronomy hobby",
+    description: "Comprehensive guidance and tools for astronomy hobby.",
+    category: "Hobbies & Interests",
+    icon: "Star",
+    url: "/astronomy-hobby/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(astronomyHobbyTemplate)
   },
   {
     id: "baby-planning",
-    name: "Baby Planning Guide",
-    description: "Complete guidance for expecting parents from pregnancy through baby's first year.",
-    category: "Personal Life",
-    icon: "👶",
+    name: "baby planning",
+    description: "Comprehensive guidance and tools for baby planning.",
+    category: "Family & Relationships",
+    icon: "Users",
     url: "/baby-planning/app",
-    expertVerified: true,
-    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
-    iconColor: "text-green-600 dark:text-green-400",
+    popular: false,
+    featured: true,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
     template: getTemplate(babyPlanningTemplate)
   },
   {
-    id: "parenting-child-development",
-    name: "Parenting & Child Development",
-    description: "Evidence-based guidance for nurturing healthy child development from infancy through adolescence.",
+    id: "bankruptcy-recovery",
+    name: "bankruptcy recovery",
+    description: "Comprehensive guidance and tools for bankruptcy recovery.",
     category: "Personal Life",
-    icon: "👨‍👩‍👧‍👦",
-    url: "/parenting-child-development/app",
-    popular: true,
-    color: "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800",
-    iconColor: "text-pink-600 dark:text-pink-400",
-    template: getTemplate(parentingChildDevelopmentTemplate)
-  },
-  
-  {
-    id: "budget-planning",
-    name: "Budget Planning & Financial Management",
-    description: "Master your finances with comprehensive budgeting, debt management, and savings strategies.",
-    category: "Personal Life",
-    icon: "💰",
-    url: "/budget-planning/app",
-    popular: true,
-    color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    template: getTemplate(budgetPlanningTemplate)
+    icon: "AlertTriangle",
+    url: "/bankruptcy-recovery/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(bankruptcyRecoveryTemplate)
   },
   {
-    id: "personal-finance-investment",
-    name: "Personal Finance & Investment",
-    description: "Build wealth through strategic financial planning, budgeting, and smart investment strategies.",
-    category: "Personal Finance",
-    icon: "📊",
-    url: "/personal-finance-investment/app",
-    popular: true,
-    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
-    iconColor: "text-green-600 dark:text-green-400",
-    template: getTemplate(personalFinanceInvestmentTemplate)
+    id: "birdwatching",
+    name: "birdwatching",
+    description: "Comprehensive guidance and tools for birdwatching.",
+    category: "Hobbies & Interests",
+    icon: "Eye",
+    url: "/birdwatching/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(birdwatchingTemplate)
   },
   {
-    id: "productivity-system",
-    name: "Productivity System & Time Management",
-    description: "Maximize your efficiency with proven productivity methods, task management, and time blocking strategies.",
-    category: "Productivity",
-    icon: "⚡",
-    url: "/productivity-system/app",
-    popular: true,
-    color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
-    iconColor: "text-yellow-600 dark:text-yellow-400",
-    template: getTemplate(productivitySystemTemplate)
+    id: "blended-family-creation",
+    name: "blended family creation",
+    description: "Comprehensive guidance and tools for blended family creation.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/blended-family-creation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(blendedFamilyCreationTemplate)
   },
   {
-    id: "remote-work-productivity",
-    name: "Remote Work & Productivity",
-    description: "Optimize your remote work setup and maximize productivity in distributed work environments.",
-    category: "Productivity",
-    icon: "💻",
-    url: "/remote-work-productivity/app",
-    popular: true,
-    color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
-    iconColor: "text-purple-600 dark:text-purple-400",
-    template: getTemplate(remoteWorkProductivityTemplate)
-  },
-
-  // Career & Business Templates
-  {
-    id: "job-search",
-    name: "Job Search Strategy",
-    description: "Strategic approach to landing your dream position with expert guidance and actionable steps.",
-    category: "Career & Business",
-    icon: "💼",
-    url: "/job-search/app",
-    color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
-    iconColor: "text-purple-600 dark:text-purple-400",
-    template: getTemplate(jobSearchTemplate)
+    id: "blended-family",
+    name: "blended family",
+    description: "Comprehensive guidance and tools for blended family.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/blended-family/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(blendedFamilyTemplate)
   },
   {
-    id: "freelance-gig-economy",
-    name: "Freelance & Gig Economy Success",
-    description: "Build a thriving freelance business with client acquisition, pricing strategies, and sustainable growth.",
-    category: "Career & Business",
-    icon: "🎯",
-    url: "/freelance-gig-economy/app",
-    popular: true,
-    color: "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800",
-    iconColor: "text-purple-600 dark:text-purple-400",
-    template: getTemplate(freelanceGigEconomyTemplate)
+    id: "boat-maintenance",
+    name: "boat maintenance",
+    description: "Comprehensive guidance and tools for boat maintenance.",
+    category: "Travel & Transportation",
+    icon: "Anchor",
+    url: "/boat-maintenance/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "teal-50",
+    iconColor: "teal-600",
+    template: getTemplate(boatMaintenanceTemplate)
+  },
+  {
+    id: "book-club",
+    name: "book club",
+    description: "Comprehensive guidance and tools for book club.",
+    category: "Creative & Arts",
+    icon: "BookOpen",
+    url: "/book-club/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(bookClubTemplate)
+  },
+  {
+    id: "book-collecting",
+    name: "book collecting",
+    description: "Comprehensive guidance and tools for book collecting.",
+    category: "Creative & Arts",
+    icon: "BookOpen",
+    url: "/book-collecting/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(bookCollectingTemplate)
+  },
+  {
+    id: "book-writing",
+    name: "book writing",
+    description: "Comprehensive guidance and tools for book writing.",
+    category: "Creative & Arts",
+    icon: "BookOpen",
+    url: "/book-writing/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(bookWritingTemplate)
   },
   {
     id: "business-launch",
-    name: "Business Launch",
-    description: "Launch your business with market research, business planning, and launch checklists.",
-    category: "Career & Business",
-    icon: "🚀",
+    name: "business launch",
+    description: "Comprehensive guidance and tools for business launch.",
+    category: "Business & Career",
+    icon: "Briefcase",
     url: "/business-launch/app",
-    color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
-    iconColor: "text-orange-600 dark:text-orange-400",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
     template: getTemplate(businessLaunchTemplate)
   },
   {
-    id: "digital-marketing-seo",
-    name: "Digital Marketing & SEO",
-    description: "Master digital marketing strategies and search engine optimization to grow your online presence.",
-    category: "Career & Business",
-    icon: "📈",
-    url: "/digital-marketing-seo/app",
-    popular: true,
-    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
-    iconColor: "text-blue-600 dark:text-blue-400",
-    template: getTemplate(digitalMarketingSEOTemplate)
+    id: "business-succession",
+    name: "business succession",
+    description: "Comprehensive guidance and tools for business succession.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/business-succession/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(businessSuccessionTemplate)
   },
   {
-    id: "career-change-transition",
-    name: "Career Change & Transition",
-    description: "Navigate career transitions successfully with strategic planning and skill development.",
-    category: "Career & Business",
-    icon: "🔄",
-    url: "/career-change-transition/app",
-    popular: true,
-    color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
-    iconColor: "text-orange-600 dark:text-orange-400",
-    template: getTemplate(careerChangeTransitionTemplate)
-  },
-  
-  // Education Templates
-  {
-    id: "college-planning",
-    name: "College Planning",
-    description: "Navigate college applications, track deadlines, and plan your academic future.",
-    category: "Education",
-    icon: "🎓",
-    url: "/college-planning/app",
-    popular: true,
-    color: "bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800",
-    iconColor: "text-yellow-600 dark:text-yellow-400",
-    template: getTemplate(collegePlanningTemplate)
+    id: "camping-trips",
+    name: "camping trips",
+    description: "Comprehensive guidance and tools for camping trips.",
+    category: "Hobbies & Interests",
+    icon: "Tent",
+    url: "/camping-trips/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(campingTripsTemplate)
   },
   {
-    id: "academic-research",
-    name: "Academic Research",
-    description: "Organize research projects, track sources, and manage academic workflows.",
-    category: "Education",
-    icon: "📚",
-    url: "/academic-research/app",
-    color: "bg-indigo-50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800",
-    iconColor: "text-indigo-600 dark:text-indigo-400",
-    template: getTemplate(academicResearchTemplate)
+    id: "car-buying",
+    name: "car buying",
+    description: "Comprehensive guidance and tools for car buying.",
+    category: "Travel & Transportation",
+    icon: "Car",
+    url: "/car-buying/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "teal-50",
+    iconColor: "teal-600",
+    template: getTemplate(carBuyingTemplate)
   },
   {
-    id: "language-learning-cultural-immersion",
-    name: "Language Learning & Cultural Immersion",
-    description: "Master new languages through immersive cultural experiences and comprehensive learning strategies.",
-    category: "Education",
-    icon: "🌍",
-    url: "/language-learning-cultural-immersion/app",
-    popular: true,
-    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800",
-    iconColor: "text-blue-600 dark:text-blue-400",
-    template: getTemplate(languageLearningCulturalImmersionTemplate)
+    id: "car-maintenance",
+    name: "car maintenance",
+    description: "Comprehensive guidance and tools for car maintenance.",
+    category: "Travel & Transportation",
+    icon: "Car",
+    url: "/car-maintenance/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "teal-50",
+    iconColor: "teal-600",
+    template: getTemplate(carMaintenanceTemplate)
   },
-  
-  // Event & Entertainment Templates
+  {
+    id: "career-plateau",
+    name: "career plateau",
+    description: "Comprehensive guidance and tools for career plateau.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/career-plateau/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(careerPlateauTemplate)
+  },
+  {
+    id: "caring-for-aging-parents",
+    name: "caring for aging parents",
+    description: "Comprehensive guidance and tools for caring for aging parents.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/caring-for-aging-parents/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(caringForAgingParentsTemplate)
+  },
+  {
+    id: "chronic-illness",
+    name: "chronic illness",
+    description: "Comprehensive guidance and tools for chronic illness.",
+    category: "Health & Wellness",
+    icon: "Circle",
+    url: "/chronic-illness/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(chronicIllnessTemplate)
+  },
+  {
+    id: "climate-action",
+    name: "climate action",
+    description: "Comprehensive guidance and tools for climate action.",
+    category: "Personal Life",
+    icon: "Leaf",
+    url: "/climate-action/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(climateActionTemplate)
+  },
+  {
+    id: "coaching-business",
+    name: "coaching business",
+    description: "Comprehensive guidance and tools for coaching business.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/coaching-business/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(coachingBusinessTemplate)
+  },
+  {
+    id: "college-selection",
+    name: "college selection",
+    description: "Comprehensive guidance and tools for college selection.",
+    category: "Education & Learning",
+    icon: "GraduationCap",
+    url: "/college-selection/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(collegeSelectionTemplate)
+  },
+  {
+    id: "college-to-career-transition",
+    name: "college to career transition",
+    description: "Comprehensive guidance and tools for college to career transition.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/college-to-career-transition/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(collegeToCareerTransitionTemplate)
+  },
+  {
+    id: "coming-out",
+    name: "coming out",
+    description: "Comprehensive guidance and tools for coming out.",
+    category: "Personal Growth",
+    icon: "Circle",
+    url: "/coming-out/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "green-50",
+    iconColor: "green-600",
+    template: getTemplate(comingOutTemplate)
+  },
+  {
+    id: "consulting-business",
+    name: "consulting business",
+    description: "Comprehensive guidance and tools for consulting business.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/consulting-business/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(consultingBusinessTemplate)
+  },
+  {
+    id: "content-creation-business",
+    name: "content creation business",
+    description: "Comprehensive guidance and tools for content creation business.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/content-creation-business/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(contentCreationBusinessTemplate)
+  },
+  {
+    id: "content-creation",
+    name: "content creation",
+    description: "Comprehensive guidance and tools for content creation.",
+    category: "Creative & Arts",
+    icon: "Circle",
+    url: "/content-creation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(contentCreationTemplate)
+  },
+  {
+    id: "cooking-mastery",
+    name: "cooking mastery",
+    description: "Comprehensive guidance and tools for cooking mastery.",
+    category: "Personal Life",
+    icon: "ChefHat",
+    url: "/cooking-mastery/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(cookingMasteryTemplate)
+  },
+  {
+    id: "creative-freelancing",
+    name: "creative freelancing",
+    description: "Comprehensive guidance and tools for creative freelancing.",
+    category: "Creative & Arts",
+    icon: "Palette",
+    url: "/creative-freelancing/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(creativeFreelancingTemplate)
+  },
+  {
+    id: "creative-writing",
+    name: "creative writing",
+    description: "Comprehensive guidance and tools for creative writing.",
+    category: "Creative & Arts",
+    icon: "Palette",
+    url: "/creative-writing/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(creativeWritingTemplate)
+  },
+  {
+    id: "crypto-portfolio",
+    name: "crypto portfolio",
+    description: "Comprehensive guidance and tools for crypto portfolio.",
+    category: "Finance & Money",
+    icon: "Coins",
+    url: "/crypto-portfolio/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(cryptoPortfolioTemplate)
+  },
+  {
+    id: "dance-training",
+    name: "dance training",
+    description: "Comprehensive guidance and tools for dance training.",
+    category: "Hobbies & Interests",
+    icon: "Circle",
+    url: "/dance-training/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(danceTrainingTemplate)
+  },
+  {
+    id: "death-of-spouse",
+    name: "death of spouse",
+    description: "Comprehensive guidance and tools for death of spouse.",
+    category: "Life Transitions",
+    icon: "Circle",
+    url: "/death-of-spouse/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(deathOfSpouseTemplate)
+  },
+  {
+    id: "debt-payoff",
+    name: "debt payoff",
+    description: "Comprehensive guidance and tools for debt payoff.",
+    category: "Finance & Money",
+    icon: "DollarSign",
+    url: "/debt-payoff/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(debtPayoffTemplate)
+  },
+  {
+    id: "digital-detox",
+    name: "digital detox",
+    description: "Comprehensive guidance and tools for digital detox.",
+    category: "Personal Life",
+    icon: "Smartphone",
+    url: "/digital-detox/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(digitalDetoxTemplate)
+  },
+  {
+    id: "digital-nomad-planning",
+    name: "digital nomad planning",
+    description: "Comprehensive guidance and tools for digital nomad planning.",
+    category: "Travel & Transportation",
+    icon: "Circle",
+    url: "/digital-nomad-planning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "teal-50",
+    iconColor: "teal-600",
+    template: getTemplate(digitalNomadPlanningTemplate)
+  },
+  {
+    id: "disability-accommodation",
+    name: "disability accommodation",
+    description: "Comprehensive guidance and tools for disability accommodation.",
+    category: "Crisis & Support",
+    icon: "Accessibility",
+    url: "/disability-accommodation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(disabilityAccommodationTemplate)
+  },
+  {
+    id: "divorce-coordination",
+    name: "divorce coordination",
+    description: "Comprehensive guidance and tools for divorce coordination.",
+    category: "Family & Relationships",
+    icon: "UserX",
+    url: "/divorce-coordination/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(divorceCoordinationTemplate)
+  },
+  {
+    id: "divorce-process",
+    name: "divorce process",
+    description: "Comprehensive guidance and tools for divorce process.",
+    category: "Family & Relationships",
+    icon: "UserX",
+    url: "/divorce-process/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(divorceProcessTemplate)
+  },
+  {
+    id: "downsizing-decisions",
+    name: "downsizing decisions",
+    description: "Comprehensive guidance and tools for downsizing decisions.",
+    category: "Personal Life",
+    icon: "Circle",
+    url: "/downsizing-decisions/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(downsizingDecisionsTemplate)
+  },
+  {
+    id: "dropshipping",
+    name: "dropshipping",
+    description: "Comprehensive guidance and tools for dropshipping.",
+    category: "Business & Career",
+    icon: "Package",
+    url: "/dropshipping/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(dropshippingTemplate)
+  },
+  {
+    id: "e-commerce-store",
+    name: "e commerce store",
+    description: "Comprehensive guidance and tools for e commerce store.",
+    category: "Business & Career",
+    icon: "ShoppingCart",
+    url: "/e-commerce-store/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(eCommerceStoreTemplate)
+  },
+  {
+    id: "early-career-advancement",
+    name: "early career advancement",
+    description: "Comprehensive guidance and tools for early career advancement.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/early-career-advancement/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(earlyCareerAdvancementTemplate)
+  },
+  {
+    id: "elder-care",
+    name: "elder care",
+    description: "Comprehensive guidance and tools for elder care.",
+    category: "Family & Relationships",
+    icon: "Car",
+    url: "/elder-care/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(elderCareTemplate)
+  },
+  {
+    id: "empty-nest-syndrome",
+    name: "empty nest syndrome",
+    description: "Comprehensive guidance and tools for empty nest syndrome.",
+    category: "Life Transitions",
+    icon: "Home",
+    url: "/empty-nest-syndrome/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(emptyNestSyndromeTemplate)
+  },
+  {
+    id: "empty-nest",
+    name: "empty nest",
+    description: "Comprehensive guidance and tools for empty nest.",
+    category: "Life Transitions",
+    icon: "Home",
+    url: "/empty-nest/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(emptyNestTemplate)
+  },
+  {
+    id: "end-of-life-planning",
+    name: "end of life planning",
+    description: "Comprehensive guidance and tools for end of life planning.",
+    category: "Life Transitions",
+    icon: "Circle",
+    url: "/end-of-life-planning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(endOfLifePlanningTemplate)
+  },
+  {
+    id: "estate-planning",
+    name: "estate planning",
+    description: "Comprehensive guidance and tools for estate planning.",
+    category: "Life Transitions",
+    icon: "Circle",
+    url: "/estate-planning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(estatePlanningTemplate)
+  },
   {
     id: "event-planning",
-    name: "Event Planning",
-    description: "Plan memorable events from conception to execution with comprehensive coordination tools.",
+    name: "event planning",
+    description: "Comprehensive guidance and tools for event planning.",
     category: "Personal Life",
-    icon: "🎉",
+    icon: "Circle",
     url: "/event-planning/app",
-    popular: true,
-    color: "bg-violet-50 dark:bg-violet-950/20 border-violet-200 dark:border-violet-800",
-    iconColor: "text-violet-600 dark:text-violet-400",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
     template: getTemplate(eventPlanningTemplate)
   },
-  
-  // Travel & Adventure Templates
   {
-    id: "travel-planning",
-    name: "Travel Planning",
-    description: "Plan amazing trips with itinerary building, budget tracking, and travel coordination tools.",
+    id: "executive-leadership-transition",
+    name: "executive leadership transition",
+    description: "Comprehensive guidance and tools for executive leadership transition.",
     category: "Personal Life",
-    icon: "✈️",
-    url: "/travel-planning/app",
-    popular: true,
-    color: "bg-sky-50 dark:bg-sky-950/20 border-sky-200 dark:border-sky-800",
-    iconColor: "text-sky-600 dark:text-sky-400",
-    template: getTemplate(travelPlanningTemplate)
+    icon: "Crown",
+    url: "/executive-leadership-transition/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(executiveLeadershipTransitionTemplate)
   },
   {
-    id: "travel-planning-adventure",
-    name: "Travel Planning & Adventure Design",
-    description: "Design extraordinary travel experiences with adventure planning, cultural immersion, and memorable journey creation.",
-    category: "Travel & Adventure",
-    icon: "🗺️",
-    url: "/travel-planning-adventure/app",
-    popular: true,
-    color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    template: getTemplate(travelPlanningAdventureTemplate)
+    id: "family-crisis-management",
+    name: "family crisis management",
+    description: "Comprehensive guidance and tools for family crisis management.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/family-crisis-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(familyCrisisManagementTemplate)
   },
-  
-  // Health & Nutrition Templates
   {
-    id: "meal-planning",
-    name: "Meal Planning",
-    description: "Plan healthy, budget-friendly meals with grocery lists, recipe organization, and nutrition tracking.",
-    category: "Health & Wellness",
-    icon: "🍽️",
-    url: "/meal-planning/app",
-    popular: true,
-    color: "bg-emerald-50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-    template: getTemplate(mealPlanningTemplate)
+    id: "family-estrangement",
+    name: "family estrangement",
+    description: "Comprehensive guidance and tools for family estrangement.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/family-estrangement/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(familyEstrangementTemplate)
   },
-  
-  // Health & Wellness Templates
+  {
+    id: "family-therapy",
+    name: "family therapy",
+    description: "Comprehensive guidance and tools for family therapy.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/family-therapy/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(familyTherapyTemplate)
+  },
+  {
+    id: "fashion-design",
+    name: "fashion design",
+    description: "Comprehensive guidance and tools for fashion design.",
+    category: "Creative & Arts",
+    icon: "Shirt",
+    url: "/fashion-design/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(fashionDesignTemplate)
+  },
+  {
+    id: "financial-independence-college",
+    name: "financial independence college",
+    description: "Comprehensive guidance and tools for financial independence college.",
+    category: "Finance & Money",
+    icon: "GraduationCap",
+    url: "/financial-independence-college/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(financialIndependenceCollegeTemplate)
+  },
+  {
+    id: "financial-independence",
+    name: "financial independence",
+    description: "Comprehensive guidance and tools for financial independence.",
+    category: "Finance & Money",
+    icon: "Circle",
+    url: "/financial-independence/app",
+    popular: false,
+    featured: true,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(financialIndependenceTemplate)
+  },
+  {
+    id: "financial-recovery",
+    name: "financial recovery",
+    description: "Comprehensive guidance and tools for financial recovery.",
+    category: "Finance & Money",
+    icon: "Circle",
+    url: "/financial-recovery/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(financialRecoveryTemplate)
+  },
+  {
+    id: "first-job-transition",
+    name: "first job transition",
+    description: "Comprehensive guidance and tools for first job transition.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/first-job-transition/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(firstJobTransitionTemplate)
+  },
+  {
+    id: "first-management-role",
+    name: "first management role",
+    description: "Comprehensive guidance and tools for first management role.",
+    category: "Career Development",
+    icon: "Circle",
+    url: "/first-management-role/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(firstManagementRoleTemplate)
+  },
+  {
+    id: "first-serious-relationship",
+    name: "first serious relationship",
+    description: "Comprehensive guidance and tools for first serious relationship.",
+    category: "Family & Relationships",
+    icon: "Circle",
+    url: "/first-serious-relationship/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(firstSeriousRelationshipTemplate)
+  },
+  {
+    id: "first-time-parent",
+    name: "first time parent",
+    description: "Comprehensive guidance and tools for first time parent.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/first-time-parent/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(firstTimeParentTemplate)
+  },
   {
     id: "fitness-journey",
-    name: "Fitness Journey",
-    description: "Track workouts, nutrition, and progress toward your health and fitness goals.",
+    name: "fitness journey",
+    description: "Comprehensive guidance and tools for fitness journey.",
     category: "Health & Wellness",
-    icon: "💪",
+    icon: "Activity",
     url: "/fitness-journey/app",
-    popular: true,
-    color: "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800",
-    iconColor: "text-red-600 dark:text-red-400",
+    popular: false,
+    featured: true,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
     template: getTemplate(fitnessJourneyTemplate)
   },
   {
-    id: "fitness-athletic-training",
-    name: "Fitness & Athletic Training",
-    description: "Comprehensive fitness planning with workout design, nutrition optimization, and performance tracking.",
-    category: "Health & Wellness",
-    icon: "🏋️",
-    url: "/fitness-athletic-training/app",
-    popular: true,
-    color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800",
-    iconColor: "text-orange-600 dark:text-orange-400",
-    template: getTemplate(fitnessAthleticTrainingTemplate)
+    id: "fixed-income-management",
+    name: "fixed income management",
+    description: "Comprehensive guidance and tools for fixed income management.",
+    category: "Personal Life",
+    icon: "DollarSign",
+    url: "/fixed-income-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(fixedIncomeManagementTemplate)
   },
-  
-  // Life Transitions Templates
+  {
+    id: "fraternity-sorority-decisions",
+    name: "fraternity sorority decisions",
+    description: "Comprehensive guidance and tools for fraternity sorority decisions.",
+    category: "Education & Learning",
+    icon: "Users",
+    url: "/fraternity-sorority-decisions/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(fraternitySororityDecisionsTemplate)
+  },
+  {
+    id: "freelance-business",
+    name: "freelance business",
+    description: "Comprehensive guidance and tools for freelance business.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/freelance-business/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(freelanceBusinessTemplate)
+  },
+  {
+    id: "garden-planning",
+    name: "garden planning",
+    description: "Comprehensive guidance and tools for garden planning.",
+    category: "Home & Living",
+    icon: "Leaf",
+    url: "/garden-planning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
+    template: getTemplate(gardenPlanningTemplate)
+  },
+  {
+    id: "geographic-relocation",
+    name: "geographic relocation",
+    description: "Comprehensive guidance and tools for geographic relocation.",
+    category: "Home & Living",
+    icon: "Circle",
+    url: "/geographic-relocation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
+    template: getTemplate(geographicRelocationTemplate)
+  },
+  {
+    id: "graduate-school-decisions",
+    name: "graduate school decisions",
+    description: "Comprehensive guidance and tools for graduate school decisions.",
+    category: "Education & Learning",
+    icon: "GraduationCap",
+    url: "/graduate-school-decisions/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(graduateSchoolDecisionsTemplate)
+  },
+  {
+    id: "grandparent-role",
+    name: "grandparent role",
+    description: "Comprehensive guidance and tools for grandparent role.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/grandparent-role/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(grandparentRoleTemplate)
+  },
+  {
+    id: "grief-loss",
+    name: "grief loss",
+    description: "Comprehensive guidance and tools for grief loss.",
+    category: "Life Transitions",
+    icon: "Heart",
+    url: "/grief-loss/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(griefLossTemplate)
+  },
+  {
+    id: "habit-tracking",
+    name: "habit tracking",
+    description: "Comprehensive guidance and tools for habit tracking.",
+    category: "Personal Life",
+    icon: "CheckCircle",
+    url: "/habit-tracking/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(habitTrackingTemplate)
+  },
+  {
+    id: "health-crisis-management",
+    name: "health crisis management",
+    description: "Comprehensive guidance and tools for health crisis management.",
+    category: "Health & Wellness",
+    icon: "Heart",
+    url: "/health-crisis-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(healthCrisisManagementTemplate)
+  },
+  {
+    id: "health-decline-navigation",
+    name: "health decline navigation",
+    description: "Comprehensive guidance and tools for health decline navigation.",
+    category: "Health & Wellness",
+    icon: "Heart",
+    url: "/health-decline-navigation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(healthDeclineNavigationTemplate)
+  },
+  {
+    id: "hobby-photography",
+    name: "hobby photography",
+    description: "Comprehensive guidance and tools for hobby photography.",
+    category: "Creative & Arts",
+    icon: "Camera",
+    url: "/hobby-photography/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(hobbyPhotographyTemplate)
+  },
+  {
+    id: "hobby-project",
+    name: "hobby project",
+    description: "Comprehensive guidance and tools for hobby project.",
+    category: "Hobbies & Interests",
+    icon: "Circle",
+    url: "/hobby-project/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(hobbyProjectTemplate)
+  },
+  {
+    id: "home-automation",
+    name: "home automation",
+    description: "Comprehensive guidance and tools for home automation.",
+    category: "Home & Living",
+    icon: "Home",
+    url: "/home-automation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
+    template: getTemplate(homeAutomationTemplate)
+  },
+  {
+    id: "home-buying",
+    name: "home buying",
+    description: "Comprehensive guidance and tools for home buying.",
+    category: "Home & Living",
+    icon: "Home",
+    url: "/home-buying/app",
+    popular: false,
+    featured: true,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
+    template: getTemplate(homeBuyingTemplate)
+  },
+  {
+    id: "home-renovation",
+    name: "home renovation",
+    description: "Comprehensive guidance and tools for home renovation.",
+    category: "Home & Living",
+    icon: "Home",
+    url: "/home-renovation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
+    template: getTemplate(homeRenovationTemplate)
+  },
+  {
+    id: "identity-theft-recovery",
+    name: "identity theft recovery",
+    description: "Comprehensive guidance and tools for identity theft recovery.",
+    category: "Crisis & Support",
+    icon: "Shield",
+    url: "/identity-theft-recovery/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(identityTheftRecoveryTemplate)
+  },
+  {
+    id: "identity-theft",
+    name: "identity theft",
+    description: "Comprehensive guidance and tools for identity theft.",
+    category: "Crisis & Support",
+    icon: "Shield",
+    url: "/identity-theft/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(identityTheftTemplate)
+  },
+  {
+    id: "immigration-journey",
+    name: "immigration journey",
+    description: "Comprehensive guidance and tools for immigration journey.",
+    category: "Crisis & Support",
+    icon: "Globe",
+    url: "/immigration-journey/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(immigrationJourneyTemplate)
+  },
+  {
+    id: "insurance-optimization",
+    name: "insurance optimization",
+    description: "Comprehensive guidance and tools for insurance optimization.",
+    category: "Finance & Money",
+    icon: "Shield",
+    url: "/insurance-optimization/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(insuranceOptimizationTemplate)
+  },
+  {
+    id: "interior-design",
+    name: "interior design",
+    description: "Comprehensive guidance and tools for interior design.",
+    category: "Personal Life",
+    icon: "PaintBucket",
+    url: "/interior-design/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(interiorDesignTemplate)
+  },
+  {
+    id: "internship-competition",
+    name: "internship competition",
+    description: "Comprehensive guidance and tools for internship competition.",
+    category: "Career Development",
+    icon: "PawPrint",
+    url: "/internship-competition/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(internshipCompetitionTemplate)
+  },
+  {
+    id: "investing-finance",
+    name: "investing finance",
+    description: "Comprehensive guidance and tools for investing finance.",
+    category: "Finance & Money",
+    icon: "DollarSign",
+    url: "/investing-finance/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(investingFinanceTemplate)
+  },
+  {
+    id: "investment-portfolio",
+    name: "investment portfolio",
+    description: "Comprehensive guidance and tools for investment portfolio.",
+    category: "Finance & Money",
+    icon: "DollarSign",
+    url: "/investment-portfolio/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(investmentPortfolioTemplate)
+  },
+  {
+    id: "investment-property",
+    name: "investment property",
+    description: "Comprehensive guidance and tools for investment property.",
+    category: "Finance & Money",
+    icon: "DollarSign",
+    url: "/investment-property/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(investmentPropertyTemplate)
+  },
+  {
+    id: "job-loss-navigation",
+    name: "job loss navigation",
+    description: "Comprehensive guidance and tools for job loss navigation.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/job-loss-navigation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(jobLossNavigationTemplate)
+  },
+  {
+    id: "job-loss-recovery",
+    name: "job loss recovery",
+    description: "Comprehensive guidance and tools for job loss recovery.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/job-loss-recovery/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(jobLossRecoveryTemplate)
+  },
+  {
+    id: "job-search",
+    name: "job search",
+    description: "Comprehensive guidance and tools for job search.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/job-search/app",
+    popular: false,
+    featured: true,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(jobSearchTemplate)
+  },
+  {
+    id: "job-transition",
+    name: "job transition",
+    description: "Comprehensive guidance and tools for job transition.",
+    category: "Career Development",
+    icon: "Target",
+    url: "/job-transition/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(jobTransitionTemplate)
+  },
+  {
+    id: "language-learning",
+    name: "language learning",
+    description: "Comprehensive guidance and tools for language learning.",
+    category: "Education & Learning",
+    icon: "GraduationCap",
+    url: "/language-learning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(languageLearningTemplate)
+  },
+  {
+    id: "legal-issue-management",
+    name: "legal issue management",
+    description: "Comprehensive guidance and tools for legal issue management.",
+    category: "Crisis & Support",
+    icon: "Scale",
+    url: "/legal-issue-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(legalIssueManagementTemplate)
+  },
+  {
+    id: "long-distance-relationship",
+    name: "long distance relationship",
+    description: "Comprehensive guidance and tools for long distance relationship.",
+    category: "Family & Relationships",
+    icon: "Circle",
+    url: "/long-distance-relationship/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(longDistanceRelationshipTemplate)
+  },
+  {
+    id: "marathon-training",
+    name: "marathon training",
+    description: "Comprehensive guidance and tools for marathon training.",
+    category: "Health & Wellness",
+    icon: "Activity",
+    url: "/marathon-training/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(marathonTrainingTemplate)
+  },
+  {
+    id: "marriage-maintenance",
+    name: "marriage maintenance",
+    description: "Comprehensive guidance and tools for marriage maintenance.",
+    category: "Family & Relationships",
+    icon: "Circle",
+    url: "/marriage-maintenance/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(marriageMaintenanceTemplate)
+  },
+  {
+    id: "meal-planning",
+    name: "meal planning",
+    description: "Comprehensive guidance and tools for meal planning.",
+    category: "Personal Life",
+    icon: "ChefHat",
+    url: "/meal-planning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(mealPlanningTemplate)
+  },
+  {
+    id: "medical-treatment",
+    name: "medical treatment",
+    description: "Comprehensive guidance and tools for medical treatment.",
+    category: "Health & Wellness",
+    icon: "Heart",
+    url: "/medical-treatment/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(medicalTreatmentTemplate)
+  },
+  {
+    id: "meditation-journey",
+    name: "meditation journey",
+    description: "Comprehensive guidance and tools for meditation journey.",
+    category: "Health & Wellness",
+    icon: "Sun",
+    url: "/meditation-journey/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(meditationJourneyTemplate)
+  },
+  {
+    id: "mental-health-college",
+    name: "mental health college",
+    description: "Comprehensive guidance and tools for mental health college.",
+    category: "Health & Wellness",
+    icon: "Heart",
+    url: "/mental-health-college/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(mentalHealthCollegeTemplate)
+  },
+  {
+    id: "mental-health-support",
+    name: "mental health support",
+    description: "Comprehensive guidance and tools for mental health support.",
+    category: "Health & Wellness",
+    icon: "Heart",
+    url: "/mental-health-support/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(mentalHealthSupportTemplate)
+  },
+  {
+    id: "mental-health",
+    name: "mental health",
+    description: "Comprehensive guidance and tools for mental health.",
+    category: "Health & Wellness",
+    icon: "Heart",
+    url: "/mental-health/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(mentalHealthTemplate)
+  },
+  {
+    id: "midlife-crisis",
+    name: "midlife crisis",
+    description: "Comprehensive guidance and tools for midlife crisis.",
+    category: "Life Transitions",
+    icon: "Shield",
+    url: "/midlife-crisis/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(midlifeCrisisTemplate)
+  },
+  {
+    id: "midlife-health-changes",
+    name: "midlife health changes",
+    description: "Comprehensive guidance and tools for midlife health changes.",
+    category: "Health & Wellness",
+    icon: "Heart",
+    url: "/midlife-health-changes/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(midlifeHealthChangesTemplate)
+  },
+  {
+    id: "military-veteran-transition",
+    name: "military veteran transition",
+    description: "Comprehensive guidance and tools for military veteran transition.",
+    category: "Career Development",
+    icon: "Shield",
+    url: "/military-veteran-transition/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(militaryVeteranTransitionTemplate)
+  },
+  {
+    id: "mindfulness-meditation",
+    name: "mindfulness meditation",
+    description: "Comprehensive guidance and tools for mindfulness meditation.",
+    category: "Health & Wellness",
+    icon: "Sun",
+    url: "/mindfulness-meditation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(mindfulnessMeditationTemplate)
+  },
+  {
+    id: "mobile-app-startup",
+    name: "mobile app startup",
+    description: "Comprehensive guidance and tools for mobile app startup.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/mobile-app-startup/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(mobileAppStartupTemplate)
+  },
+  {
+    id: "mortgage-management",
+    name: "mortgage management",
+    description: "Comprehensive guidance and tools for mortgage management.",
+    category: "Finance & Money",
+    icon: "Key",
+    url: "/mortgage-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(mortgageManagementTemplate)
+  },
   {
     id: "moving-relocation",
-    name: "Moving & Relocation",
-    description: "Organize your move with checklists, timeline planning, and coordination tools for a stress-free relocation.",
-    category: "Personal Life",
-    icon: "📦",
+    name: "moving relocation",
+    description: "Comprehensive guidance and tools for moving relocation.",
+    category: "Home & Living",
+    icon: "Truck",
     url: "/moving-relocation/app",
-    popular: true,
-    color: "bg-teal-50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-800",
-    iconColor: "text-teal-600 dark:text-teal-400",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
     template: getTemplate(movingRelocationTemplate)
   },
-  
-  // Personal Development Templates
   {
-    id: "personal-development-coaching",
-    name: "Personal Development & Life Coaching",
-    description: "Transform your life through structured personal development and coaching strategies.",
-    category: "Personal Development",
-    icon: "🌱",
-    url: "/personal-development-coaching/app",
-    popular: true,
-    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800",
-    iconColor: "text-green-600 dark:text-green-400",
-    template: getTemplate(personalDevelopmentCoachingTemplate)
+    id: "music-learning",
+    name: "music learning",
+    description: "Comprehensive guidance and tools for music learning.",
+    category: "Education & Learning",
+    icon: "GraduationCap",
+    url: "/music-learning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(musicLearningTemplate)
   },
   {
-    id: "retirement-lifestyle-planning",
-    name: "Retirement & Lifestyle Planning",
-    description: "Plan for a fulfilling retirement that aligns with your values and desired lifestyle.",
-    category: "Life Transitions", 
-    icon: "🌅",
-    url: "/retirement-lifestyle-planning/app",
-    popular: true,
-    color: "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800",
-    iconColor: "text-amber-600 dark:text-amber-400",
-    template: getTemplate(retirementLifestylePlanningTemplate)
+    id: "music-production",
+    name: "music production",
+    description: "Comprehensive guidance and tools for music production.",
+    category: "Creative & Arts",
+    icon: "Music",
+    url: "/music-production/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(musicProductionTemplate)
   },
-
-  // Lifestyle & Environment Templates
-  // (Sustainable living template will be added when implemented)
+  {
+    id: "natural-disaster-recovery",
+    name: "natural disaster recovery",
+    description: "Comprehensive guidance and tools for natural disaster recovery.",
+    category: "Crisis & Support",
+    icon: "Shield",
+    url: "/natural-disaster-recovery/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(naturalDisasterRecoveryTemplate)
+  },
+  {
+    id: "nonprofit-management",
+    name: "nonprofit management",
+    description: "Comprehensive guidance and tools for nonprofit management.",
+    category: "Business & Career",
+    icon: "Heart",
+    url: "/nonprofit-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(nonprofitManagementTemplate)
+  },
+  {
+    id: "nonprofit-startup",
+    name: "nonprofit startup",
+    description: "Comprehensive guidance and tools for nonprofit startup.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/nonprofit-startup/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(nonprofitStartupTemplate)
+  },
+  {
+    id: "online-business-launch",
+    name: "online business launch",
+    description: "Comprehensive guidance and tools for online business launch.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/online-business-launch/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(onlineBusinessLaunchTemplate)
+  },
+  {
+    id: "online-course",
+    name: "online course",
+    description: "Comprehensive guidance and tools for online course.",
+    category: "Personal Life",
+    icon: "Circle",
+    url: "/online-course/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(onlineCourseTemplate)
+  },
+  {
+    id: "parenting-guidance",
+    name: "parenting guidance",
+    description: "Comprehensive guidance and tools for parenting guidance.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/parenting-guidance/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(parentingGuidanceTemplate)
+  },
+  {
+    id: "peak-earning-optimization",
+    name: "peak earning optimization",
+    description: "Comprehensive guidance and tools for peak earning optimization.",
+    category: "Personal Life",
+    icon: "TrendingUp",
+    url: "/peak-earning-optimization/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(peakEarningOptimizationTemplate)
+  },
+  {
+    id: "personal-branding",
+    name: "personal branding",
+    description: "Comprehensive guidance and tools for personal branding.",
+    category: "Personal Life",
+    icon: "Circle",
+    url: "/personal-branding/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(personalBrandingTemplate)
+  },
+  {
+    id: "personal-finance-mastery",
+    name: "personal finance mastery",
+    description: "Comprehensive guidance and tools for personal finance mastery.",
+    category: "Finance & Money",
+    icon: "DollarSign",
+    url: "/personal-finance-mastery/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(personalFinanceMasteryTemplate)
+  },
+  {
+    id: "personal-finance",
+    name: "personal finance",
+    description: "Comprehensive guidance and tools for personal finance.",
+    category: "Finance & Money",
+    icon: "DollarSign",
+    url: "/personal-finance/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(personalFinanceTemplate)
+  },
+  {
+    id: "personal-training",
+    name: "personal training",
+    description: "Comprehensive guidance and tools for personal training.",
+    category: "Personal Life",
+    icon: "Circle",
+    url: "/personal-training/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(personalTrainingTemplate)
+  },
+  {
+    id: "pet-care",
+    name: "pet care",
+    description: "Comprehensive guidance and tools for pet care.",
+    category: "Travel & Transportation",
+    icon: "Car",
+    url: "/pet-care/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "teal-50",
+    iconColor: "teal-600",
+    template: getTemplate(petCareTemplate)
+  },
+  {
+    id: "photography-business",
+    name: "photography business",
+    description: "Comprehensive guidance and tools for photography business.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/photography-business/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(photographyBusinessTemplate)
+  },
+  {
+    id: "podcast-creation",
+    name: "podcast creation",
+    description: "Comprehensive guidance and tools for podcast creation.",
+    category: "Creative & Arts",
+    icon: "Mic",
+    url: "/podcast-creation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(podcastCreationTemplate)
+  },
+  {
+    id: "professional-networking",
+    name: "professional networking",
+    description: "Comprehensive guidance and tools for professional networking.",
+    category: "Career Development",
+    icon: "Users",
+    url: "/professional-networking/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(professionalNetworkingTemplate)
+  },
+  {
+    id: "public-speaking",
+    name: "public speaking",
+    description: "Comprehensive guidance and tools for public speaking.",
+    category: "Career Development",
+    icon: "Mic",
+    url: "/public-speaking/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(publicSpeakingTemplate)
+  },
+  {
+    id: "quarter-life-crisis",
+    name: "quarter life crisis",
+    description: "Comprehensive guidance and tools for quarter life crisis.",
+    category: "Creative & Arts",
+    icon: "Palette",
+    url: "/quarter-life-crisis/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(quarterLifeCrisisTemplate)
+  },
+  {
+    id: "reading-challenge",
+    name: "reading challenge",
+    description: "Comprehensive guidance and tools for reading challenge.",
+    category: "Hobbies & Interests",
+    icon: "BookOpen",
+    url: "/reading-challenge/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(readingChallengeTemplate)
+  },
+  {
+    id: "real-estate-investing",
+    name: "real estate investing",
+    description: "Comprehensive guidance and tools for real estate investing.",
+    category: "Finance & Money",
+    icon: "Building",
+    url: "/real-estate-investing/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(realEstateInvestingTemplate)
+  },
+  {
+    id: "relationship-breakup",
+    name: "relationship breakup",
+    description: "Comprehensive guidance and tools for relationship breakup.",
+    category: "Family & Relationships",
+    icon: "Circle",
+    url: "/relationship-breakup/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(relationshipBreakupTemplate)
+  },
+  {
+    id: "relationship-coaching",
+    name: "relationship coaching",
+    description: "Comprehensive guidance and tools for relationship coaching.",
+    category: "Business & Career",
+    icon: "Users",
+    url: "/relationship-coaching/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(relationshipCoachingTemplate)
+  },
+  {
+    id: "relationship-therapy",
+    name: "relationship therapy",
+    description: "Comprehensive guidance and tools for relationship therapy.",
+    category: "Family & Relationships",
+    icon: "Circle",
+    url: "/relationship-therapy/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(relationshipTherapyTemplate)
+  },
+  {
+    id: "rental-management",
+    name: "rental management",
+    description: "Comprehensive guidance and tools for rental management.",
+    category: "Finance & Money",
+    icon: "KeyRound",
+    url: "/rental-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(rentalManagementTemplate)
+  },
+  {
+    id: "restaurant-opening",
+    name: "restaurant opening",
+    description: "Comprehensive guidance and tools for restaurant opening.",
+    category: "Business & Career",
+    icon: "UtensilsCrossed",
+    url: "/restaurant-opening/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(restaurantOpeningTemplate)
+  },
+  {
+    id: "retirement-lifestyle",
+    name: "retirement lifestyle",
+    description: "Comprehensive guidance and tools for retirement lifestyle.",
+    category: "Life Transitions",
+    icon: "Clock",
+    url: "/retirement-lifestyle/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(retirementLifestyleTemplate)
+  },
+  {
+    id: "retirement-transition",
+    name: "retirement transition",
+    description: "Comprehensive guidance and tools for retirement transition.",
+    category: "Life Transitions",
+    icon: "Clock",
+    url: "/retirement-transition/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "gray-50",
+    iconColor: "gray-600",
+    template: getTemplate(retirementTransitionTemplate)
+  },
+  {
+    id: "roommate-navigation",
+    name: "roommate navigation",
+    description: "Comprehensive guidance and tools for roommate navigation.",
+    category: "Personal Life",
+    icon: "Circle",
+    url: "/roommate-navigation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(roommateNavigationTemplate)
+  },
+  {
+    id: "saas-startup",
+    name: "saas startup",
+    description: "Comprehensive guidance and tools for saas startup.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/saas-startup/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(saasStartupTemplate)
+  },
+  {
+    id: "sandwich-generation",
+    name: "sandwich generation",
+    description: "Comprehensive guidance and tools for sandwich generation.",
+    category: "Personal Life",
+    icon: "Users",
+    url: "/sandwich-generation/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(sandwichGenerationTemplate)
+  },
+  {
+    id: "side-hustle-development",
+    name: "side hustle development",
+    description: "Comprehensive guidance and tools for side hustle development.",
+    category: "Personal Life",
+    icon: "Zap",
+    url: "/side-hustle-development/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(sideHustleDevelopmentTemplate)
+  },
+  {
+    id: "skill-development",
+    name: "skill development",
+    description: "Comprehensive guidance and tools for skill development.",
+    category: "Career Development",
+    icon: "Award",
+    url: "/skill-development/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(skillDevelopmentTemplate)
+  },
+  {
+    id: "small-business-launch",
+    name: "small business launch",
+    description: "Comprehensive guidance and tools for small business launch.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/small-business-launch/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(smallBusinessLaunchTemplate)
+  },
+  {
+    id: "small-business",
+    name: "small business",
+    description: "Comprehensive guidance and tools for small business.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/small-business/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(smallBusinessTemplate)
+  },
+  {
+    id: "smart-garden",
+    name: "smart garden",
+    description: "Comprehensive guidance and tools for smart garden.",
+    category: "Home & Living",
+    icon: "Palette",
+    url: "/smart-garden/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
+    template: getTemplate(smartGardenTemplate)
+  },
+  {
+    id: "social-entrepreneurship",
+    name: "social entrepreneurship",
+    description: "Comprehensive guidance and tools for social entrepreneurship.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/social-entrepreneurship/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(socialEntrepreneurshipTemplate)
+  },
+  {
+    id: "social-media-management",
+    name: "social media management",
+    description: "Comprehensive guidance and tools for social media management.",
+    category: "Personal Life",
+    icon: "Share2",
+    url: "/social-media-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(socialMediaManagementTemplate)
+  },
+  {
+    id: "spiritual-awakening",
+    name: "spiritual awakening",
+    description: "Comprehensive guidance and tools for spiritual awakening.",
+    category: "Personal Growth",
+    icon: "Sun",
+    url: "/spiritual-awakening/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "green-50",
+    iconColor: "green-600",
+    template: getTemplate(spiritualAwakeningTemplate)
+  },
+  {
+    id: "spiritual-growth",
+    name: "spiritual growth",
+    description: "Comprehensive guidance and tools for spiritual growth.",
+    category: "Personal Growth",
+    icon: "Sun",
+    url: "/spiritual-growth/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "green-50",
+    iconColor: "green-600",
+    template: getTemplate(spiritualGrowthTemplate)
+  },
+  {
+    id: "sports-team",
+    name: "sports team",
+    description: "Comprehensive guidance and tools for sports team.",
+    category: "Hobbies & Interests",
+    icon: "Trophy",
+    url: "/sports-team/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(sportsTeamTemplate)
+  },
+  {
+    id: "stock-trading",
+    name: "stock trading",
+    description: "Comprehensive guidance and tools for stock trading.",
+    category: "Finance & Money",
+    icon: "TrendingUp",
+    url: "/stock-trading/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "emerald-50",
+    iconColor: "emerald-600",
+    template: getTemplate(stockTradingTemplate)
+  },
+  {
+    id: "stress-management",
+    name: "stress management",
+    description: "Comprehensive guidance and tools for stress management.",
+    category: "Health & Wellness",
+    icon: "Brain",
+    url: "/stress-management/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(stressManagementTemplate)
+  },
+  {
+    id: "student-loan-strategy",
+    name: "student loan strategy",
+    description: "Comprehensive guidance and tools for student loan strategy.",
+    category: "Education & Learning",
+    icon: "GraduationCap",
+    url: "/student-loan-strategy/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(studentLoanStrategyTemplate)
+  },
+  {
+    id: "study-abroad-planning",
+    name: "study abroad planning",
+    description: "Comprehensive guidance and tools for study abroad planning.",
+    category: "Education & Learning",
+    icon: "Globe",
+    url: "/study-abroad-planning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "purple-50",
+    iconColor: "purple-600",
+    template: getTemplate(studyAbroadPlanningTemplate)
+  },
+  {
+    id: "sustainable-living",
+    name: "sustainable living",
+    description: "Comprehensive guidance and tools for sustainable living.",
+    category: "Personal Life",
+    icon: "Recycle",
+    url: "/sustainable-living/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(sustainableLivingTemplate)
+  },
+  {
+    id: "tech-startup-guide",
+    name: "tech startup guide",
+    description: "Comprehensive guidance and tools for tech startup guide.",
+    category: "Business & Career",
+    icon: "Briefcase",
+    url: "/tech-startup-guide/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "blue-50",
+    iconColor: "blue-600",
+    template: getTemplate(techStartupGuideTemplate)
+  },
+  {
+    id: "technology-digital",
+    name: "technology digital",
+    description: "Comprehensive guidance and tools for technology digital.",
+    category: "Technology & Development",
+    icon: "Code",
+    url: "/technology-digital/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "cyan-50",
+    iconColor: "cyan-600",
+    template: getTemplate(technologyDigitalTemplate)
+  },
+  {
+    id: "teenage-parenting",
+    name: "teenage parenting",
+    description: "Comprehensive guidance and tools for teenage parenting.",
+    category: "Family & Relationships",
+    icon: "Users",
+    url: "/teenage-parenting/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "pink-50",
+    iconColor: "pink-600",
+    template: getTemplate(teenageParentingTemplate)
+  },
+  {
+    id: "test-template",
+    name: "test template",
+    description: "Comprehensive guidance and tools for test template.",
+    category: "Personal Life",
+    icon: "TestTube",
+    url: "/test-template/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "slate-50",
+    iconColor: "slate-600",
+    template: getTemplate(testTemplate)
+  },
+  {
+    id: "transportation-planning",
+    name: "transportation planning",
+    description: "Comprehensive guidance and tools for transportation planning.",
+    category: "Travel & Transportation",
+    icon: "Car",
+    url: "/transportation-planning/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "teal-50",
+    iconColor: "teal-600",
+    template: getTemplate(transportationPlanningTemplate)
+  },
+  {
+    id: "urban-gardening",
+    name: "urban gardening",
+    description: "Comprehensive guidance and tools for urban gardening.",
+    category: "Home & Living",
+    icon: "Leaf",
+    url: "/urban-gardening/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "orange-50",
+    iconColor: "orange-600",
+    template: getTemplate(urbanGardeningTemplate)
+  },
+  {
+    id: "weight-loss",
+    name: "weight loss",
+    description: "Comprehensive guidance and tools for weight loss.",
+    category: "Health & Wellness",
+    icon: "Circle",
+    url: "/weight-loss/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(weightLossTemplate)
+  },
+  {
+    id: "wine-collection",
+    name: "wine collection",
+    description: "Comprehensive guidance and tools for wine collection.",
+    category: "Hobbies & Interests",
+    icon: "Wine",
+    url: "/wine-collection/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "yellow-50",
+    iconColor: "yellow-600",
+    template: getTemplate(wineCollectionTemplate)
+  },
+  {
+    id: "workforce-reentry",
+    name: "workforce reentry",
+    description: "Comprehensive guidance and tools for workforce reentry.",
+    category: "Career Development",
+    icon: "Circle",
+    url: "/workforce-reentry/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "indigo-50",
+    iconColor: "indigo-600",
+    template: getTemplate(workforceReentryTemplate)
+  },
+  {
+    id: "yoga-practice",
+    name: "yoga practice",
+    description: "Comprehensive guidance and tools for yoga practice.",
+    category: "Health & Wellness",
+    icon: "Activity",
+    url: "/yoga-practice/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "red-50",
+    iconColor: "red-600",
+    template: getTemplate(yogaPracticeTemplate)
+  },
+  {
+    id: "youtube-channel",
+    name: "youtube channel",
+    description: "Comprehensive guidance and tools for youtube channel.",
+    category: "Creative & Arts",
+    icon: "Play",
+    url: "/youtube-channel/app",
+    popular: false,
+    featured: false,
+    expertVerified: false,
+    color: "violet-50",
+    iconColor: "violet-600",
+    template: getTemplate(youtubeChannelTemplate)
+  }
 ];
 
-// Registry helper functions
+// Helper functions
 export const getTemplateById = (id: string): TemplateRegistryEntry | undefined => {
   return templateRegistry.find(template => template.id === id);
 };
@@ -381,32 +2687,29 @@ export const getTemplatesByCategory = (category: string): TemplateRegistryEntry[
   return templateRegistry.filter(template => template.category === category);
 };
 
-export const getPopularTemplates = (): TemplateRegistryEntry[] => {
-  return templateRegistry.filter(template => template.popular);
-};
-
 export const getFeaturedTemplates = (): TemplateRegistryEntry[] => {
   return templateRegistry.filter(template => template.featured);
 };
 
-export const getAvailableTemplates = (): TemplateRegistryEntry[] => {
-  return templateRegistry.filter(template => !template.comingSoon);
-};
-
-export const getComingSoonTemplates = (): TemplateRegistryEntry[] => {
-  return templateRegistry.filter(template => template.comingSoon);
+export const getPopularTemplates = (): TemplateRegistryEntry[] => {
+  return templateRegistry.filter(template => template.popular);
 };
 
 export const getAllCategories = (): string[] => {
-  return Array.from(new Set(templateRegistry.map(template => template.category)));
+  const categories = Array.from(new Set(templateRegistry.map(template => template.category)));
+  return categories.sort();
 };
 
-// Search functionality
+export const getTemplateCount = (): number => {
+  return templateRegistry.length;
+};
+
 export const searchTemplates = (query: string): TemplateRegistryEntry[] => {
-  const lowercaseQuery = query.toLowerCase();
+  const lowerQuery = query.toLowerCase();
   return templateRegistry.filter(template =>
-    template.name.toLowerCase().includes(lowercaseQuery) ||
-    template.description.toLowerCase().includes(lowercaseQuery) ||
-    template.category.toLowerCase().includes(lowercaseQuery)
+    template.name.toLowerCase().includes(lowerQuery) ||
+    template.description.toLowerCase().includes(lowerQuery) ||
+    template.category.toLowerCase().includes(lowerQuery) ||
+    template.template.tags?.some(tag => tag.toLowerCase().includes(lowerQuery))
   );
 };

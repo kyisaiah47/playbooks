@@ -1,0 +1,43 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const smartGardenTemplate: GuidanceTemplate = {
+  id: "smart-garden",
+  title: "Smart Garden",
+  description: "Create an automated, IoT-enabled garden system with sensors, irrigation, monitoring, and data analytics to optimize plant growth and maximize yields while minimizing manual maintenance.",
+  category: "Technology & Innovation",
+  icon: "Sprout",
+  difficulty: "intermediate",
+  estimatedTime: "2-4 months",
+  tags: [
+    "smart-gardening",
+    "iot-sensors",
+    "automated-irrigation",
+    "soil-monitoring",
+    "humidity-control",
+    "temperature-sensors",
+    "ph-monitoring",
+    "nutrient-management",
+    "arduino",
+    "raspberry-pi",
+    "plant-health",
+    "water-conservation",
+    "precision-agriculture",
+    "vertical-gardening",
+    "greenhouse-automation",
+    "mobile-app-integration",
+    "data-analytics",
+    "weather-integration",
+    "led-grow-lights",
+    "hydroponics",
+    "sustainable-farming",
+    "crop-optimization",
+    "remote-monitoring",
+    "smart-home-integration",
+    "environmental-control"
+  ],
+  sections: [],
+  expertTips: [],
+  reflectionPrompts: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};

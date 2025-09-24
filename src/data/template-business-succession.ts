@@ -1,0 +1,43 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const businessSuccessionTemplate: GuidanceTemplate = {
+  id: "business-succession",
+  title: "Business Succession",
+  description: "Navigate the complex process of transferring business ownership and leadership to ensure continuity, preserve value, and secure your legacy through strategic succession planning.",
+  category: "Business & Career",
+  icon: "Building2",
+  difficulty: "advanced",
+  estimatedTime: "6-18 months",
+  tags: [
+    "succession planning",
+    "business transition",
+    "ownership transfer",
+    "leadership development",
+    "estate planning",
+    "family business",
+    "exit strategy",
+    "valuation",
+    "tax planning",
+    "legal structure",
+    "management buyout",
+    "employee stock ownership",
+    "due diligence",
+    "governance",
+    "legacy planning",
+    "retirement planning",
+    "business continuity",
+    "stakeholder management",
+    "financial planning",
+    "risk management",
+    "mentorship",
+    "knowledge transfer",
+    "culture preservation",
+    "strategic planning"
+  ],
+  sections: [],
+  resources: [],
+  expertTips: [],
+  reflectionPrompts: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};
