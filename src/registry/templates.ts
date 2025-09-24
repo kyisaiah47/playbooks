@@ -2357,3 +2357,23 @@ export const searchTemplates = (query: string): TemplateRegistryEntry[] => {
     template.template.tags?.some(tag => tag.toLowerCase().includes(lowerQuery))
   );
 };
+
+export const getResourcesAsBlogPosts = () => {
+  return templateRegistry.flatMap(template =>
+    template.template.resources?.map(resource => ({
+      id: `${template.id}-${resource.title.toLowerCase().replace(/\s+/g, '-')}`,
+      title: resource.title,
+      excerpt: resource.description || template.description,
+      content: resource.description || template.description,
+      author: 'Templata Team',
+      publishedAt: template.template.lastUpdated,
+      readTime: '5 min read',
+      category: template.category,
+      featured: template.featured || false,
+      tags: template.template.tags || [],
+      slug: `${template.id}-${resource.title.toLowerCase().replace(/\s+/g, '-')}`,
+      type: resource.type === 'article' ? 'article' : 'guide',
+      difficulty: template.template.difficulty || 'beginner',
+    })) || []
+  );
+};
