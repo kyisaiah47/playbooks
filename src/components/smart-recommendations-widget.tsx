@@ -20,7 +20,7 @@ import {
   Star,
   Lightbulb
 } from "lucide-react"
-import { useSmartRecommendations } from "@/hooks/use-smart-recommendations"
+import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph"
 import { useFavorites } from "@/hooks/use-favorites"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 
@@ -61,40 +61,110 @@ export function SmartRecommendationsWidget({
   type = "mixed",
   currentTemplateId
 }: SmartRecommendationsWidgetProps) {
-  const {
-    getContextualRecommendations,
-    getDiscoveryRecommendations,
-    getRecommendationsByType,
-    trackView
-  } = useSmartRecommendations()
-
+  const { getPersonalizedRecommendations, getAgeAppropriateTemplates } = useKnowledgeGraph()
   const { isFavorited, toggleFavorite } = useFavorites()
 
-  // Get recommendations based on type
+  // Mock user profile - in real app, get from user context/props
+  const userProfile = {
+    age: 28, // Could come from user profile
+    goals: ['career_focused', 'financial_independence'],
+    completedTemplates: [],
+    currentTemplates: currentTemplateId ? [currentTemplateId] : []
+  }
+
+  // Get template registry for mapping
+  const templateRegistry = React.useMemo(() => {
+    // This would normally come from your template registry
+    // For now, creating mock entries based on knowledge graph results
+    return []
+  }, [])
+
+  // Get recommendations based on type using knowledge graph
   const recommendations = React.useMemo(() => {
-    let recs = []
+    let recs: Array<{
+      id: string
+      name: string
+      url: string
+      category: string
+      type: string
+      reason: string
+    }> = []
 
-    switch (type) {
-      case "contextual":
-        recs = getContextualRecommendations(limit)
-        break
-      case "discovery":
-        recs = getDiscoveryRecommendations(limit)
-        break
-      default:
-        // Mixed: combine contextual and discovery
-        const contextual = getContextualRecommendations(Math.ceil(limit / 2))
-        const discovery = getDiscoveryRecommendations(Math.floor(limit / 2))
-        recs = [...contextual, ...discovery].slice(0, limit)
+    try {
+      switch (type) {
+        case "contextual":
+          // Get personalized recommendations
+          const personalizedRecs = getPersonalizedRecommendations(userProfile)
+          recs = personalizedRecs.map(rec => ({
+            id: rec.templateId,
+            name: rec.templateId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+            url: `/template/${rec.templateId}`,
+            category: getCategoryFromTemplate(rec.templateId),
+            type: 'template',
+            reason: rec.reason
+          }))
+          break
+        case "discovery":
+          // Get age-appropriate templates
+          const ageRecs = getAgeAppropriateTemplates(userProfile.age || 25, limit)
+          recs = ageRecs.map(rec => ({
+            id: rec.templateId,
+            name: rec.templateId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+            url: `/template/${rec.templateId}`,
+            category: getCategoryFromTemplate(rec.templateId),
+            type: 'template',
+            reason: rec.reason
+          }))
+          break
+        default:
+          // Mixed: combine both approaches
+          const personalizedMix = getPersonalizedRecommendations(userProfile)
+          const ageMix = getAgeAppropriateTemplates(userProfile.age || 25, Math.ceil(limit / 2))
+          const combined = [...personalizedMix, ...ageMix].slice(0, limit)
+
+          recs = combined.map(rec => ({
+            id: rec.templateId,
+            name: rec.templateId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+            url: `/template/${rec.templateId}`,
+            category: getCategoryFromTemplate(rec.templateId),
+            type: 'template',
+            reason: rec.reason
+          }))
+      }
+
+      // Filter out current template if provided
+      if (currentTemplateId) {
+        recs = recs.filter(rec => rec.id !== currentTemplateId)
+      }
+
+      // Remove duplicates
+      const uniqueRecs = recs.filter((rec, index, self) =>
+        index === self.findIndex(r => r.id === rec.id)
+      )
+
+      return uniqueRecs.slice(0, limit)
+    } catch (error) {
+      console.warn('Knowledge graph recommendations failed, falling back to empty:', error)
+      return []
     }
+  }, [type, limit, currentTemplateId, getPersonalizedRecommendations, getAgeAppropriateTemplates, userProfile])
 
-    // Filter out current template if provided
-    if (currentTemplateId) {
-      recs = recs.filter(rec => rec.id !== currentTemplateId)
+  // Helper function to determine category from template ID
+  function getCategoryFromTemplate(templateId: string): string {
+    const categoryMap: Record<string, string> = {
+      'wedding-planning': 'Family Life',
+      'home-buying': 'Real Estate',
+      'baby-planning': 'Family Life',
+      'job-search': 'Career',
+      'business-launch': 'Entrepreneurship',
+      'personal-finance': 'Finance',
+      'divorce-coordination': 'Life Crisis',
+      'retirement-planning': 'Finance',
+      'fitness-journey': 'Health & Wellness',
+      'apartment-hunting': 'Housing'
     }
-
-    return recs.slice(0, limit)
-  }, [type, limit, currentTemplateId, getContextualRecommendations, getDiscoveryRecommendations])
+    return categoryMap[templateId] || 'Personal Development'
+  }
 
   if (recommendations.length === 0) {
     return null
