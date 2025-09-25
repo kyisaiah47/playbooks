@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon, ExternalLink, Ban, HelpCircle, CheckCircle, Compass, Clipboard, Sunset, Share, Copy } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { getBlogPostsByTemplate } from "@/registry/blogs"
+import { getPromptsByTemplate } from "@/registry/prompts"
 import { Badge } from "@/components/ui/badge"
 import { RelatedTemplates } from "@/components/template/related-templates"
 import { SharePanel } from "@/components/collaboration/share-panel"
@@ -82,10 +83,35 @@ export function TemplataContentSidebar({
   const { setOpen } = useSidebar()
 
   const currentSection = template.sections[activeSection]
-  const filteredPrompts = currentSection?.reflectionPrompts.filter(prompt =>
+  const sectionPrompts = currentSection?.reflectionPrompts || []
+
+  // Get prompts from registry
+  const templateRegistryPrompts = getPromptsByTemplate(template.id)
+
+  // Group registry prompts by their category names
+  const promptCategories = templateRegistryPrompts.reduce((acc, prompt) => {
+    if (!acc[prompt.category]) {
+      acc[prompt.category] = []
+    }
+    acc[prompt.category].push({
+      id: prompt.id,
+      prompt: prompt.prompt,
+      category: prompt.type,
+      helpText: `${prompt.category} - ${prompt.type} prompt`
+    } as ReflectionPrompt)
+    return acc
+  }, {} as Record<string, ReflectionPrompt[]>)
+
+  // If we're showing template section prompts, show those, otherwise show registry category prompts
+  const shouldShowRegistryPrompts = currentSection?.title && promptCategories[currentSection.title]
+  const displayPrompts = shouldShowRegistryPrompts
+    ? promptCategories[currentSection.title] || []
+    : [...sectionPrompts, ...Object.values(promptCategories).flat()]
+
+  const filteredPrompts = displayPrompts.filter(prompt =>
     prompt.prompt.toLowerCase().includes(searchQuery.toLowerCase()) ||
     prompt.helpText?.toLowerCase().includes(searchQuery.toLowerCase())
-  ) || []
+  )
 
   const templateResources = getBlogPostsByTemplate(template.id)
   const filteredResources = templateResources.filter(resource =>

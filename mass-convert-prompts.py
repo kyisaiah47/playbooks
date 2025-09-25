@@ -42,13 +42,15 @@ def convert_text_to_json(text_file):
         prompts = re.findall(r'\d+\. (.+)', prompts_text)
 
         for prompt_text in prompts:
-            # Escape single quotes in prompt text
+            # Escape single quotes in prompt text and category name
             escaped_prompt = prompt_text.replace("'", "\\'")
-            category = categorize_prompt(prompt_text)
+            escaped_category = category_name.replace("'", "\\'")
+            prompt_type = categorize_prompt(prompt_text)
             json_obj = f"""  {{
     id: 'prompt-{prompt_id}',
     prompt: '{escaped_prompt}',
-    category: '{category}'
+    category: '{escaped_category}',
+    type: '{prompt_type}'
   }}"""
             json_objects.append(json_obj)
             prompt_id += 1

@@ -1,7 +1,8 @@
 export interface PromptEntry {
   id: string;
   prompt: string;
-  category: 'research' | 'action' | 'decision' | 'planning';
+  category: string; // The actual category name like "Getting Started & Equipment Setup"
+  type: 'research' | 'action' | 'decision' | 'planning';
 }
 
 // Import all prompt files
