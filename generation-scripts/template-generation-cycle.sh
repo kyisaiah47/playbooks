@@ -11,16 +11,53 @@ CURRENT_DIR="$(pwd)"
 DATA_DIR="$CURRENT_DIR/src/data"
 REGISTRY_DIR="$CURRENT_DIR/src/registry"
 
-# Auto-detect template name from current directory
-TEMPLATE_NAME=""
-if [[ "$CURRENT_DIR" =~ templata-(.+)$ ]]; then
-    TEMPLATE_NAME="${BASH_REMATCH[1]}"
-elif [[ "$1" ]]; then
-    TEMPLATE_NAME="$1"
-else
-    echo "Error: Could not detect template name from current directory."
-    echo "Make sure you're in a templata-{template-name} worktree or pass template name as argument."
-    exit 1
+# Handle batch mode or single template
+BATCH_MODE=false
+BATCH_SIZE=5
+START_INDEX=0
+FORCE_REGENERATE=false
+TEMPLATE_LIST_FILE=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --batch)
+            BATCH_MODE=true
+            shift
+            ;;
+        --batch-size)
+            BATCH_SIZE="$2"
+            shift 2
+            ;;
+        --start)
+            START_INDEX="$2"
+            shift 2
+            ;;
+        --force)
+            FORCE_REGENERATE=true
+            shift
+            ;;
+        --file)
+            TEMPLATE_LIST_FILE="$2"
+            shift 2
+            ;;
+        *)
+            TEMPLATE_NAME="$1"
+            shift
+            ;;
+    esac
+done
+
+# Auto-detect template name from current directory if not provided (only for non-batch mode)
+if [[ -z "$TEMPLATE_NAME" && "$BATCH_MODE" == false ]]; then
+    if [[ "$CURRENT_DIR" =~ templata-(.+)$ ]]; then
+        TEMPLATE_NAME="${BASH_REMATCH[1]}"
+    else
+        echo "Error: Could not detect template name from current directory."
+        echo "Make sure you're in a templata-{template-name} worktree or pass template name as argument."
+        echo "Or use --batch mode to process multiple templates."
+        exit 1
+    fi
 fi
 
 LOGFILE="$CURRENT_DIR/template-generation-${TEMPLATE_NAME}.log"
@@ -229,26 +266,123 @@ EOF
 }
 
 # Main function
+# Batch processing function
+process_batch() {
+    local template_list
+
+    if [[ -n "$TEMPLATE_LIST_FILE" ]]; then
+        template_list="$TEMPLATE_LIST_FILE"
+    else
+        template_list="$SCRIPT_DIR/todo/new-templates-list.txt"
+    fi
+
+    if [[ ! -f "$template_list" ]]; then
+        log_colored "$RED" "Template list not found: $template_list"
+        exit 1
+    fi
+
+    # Read templates into array
+    TEMPLATES=()
+    while IFS= read -r template; do
+        [[ -n "$template" ]] && TEMPLATES+=("$template")
+    done < "$template_list"
+    local total_templates=${#TEMPLATES[@]}
+
+    log_colored "$BLUE" "🚀 Batch Template Generation"
+    log_colored "$BLUE" "=========================="
+    log_colored "$YELLOW" "Total templates: $total_templates"
+    log_colored "$YELLOW" "Batch size: $BATCH_SIZE"
+    log_colored "$YELLOW" "Starting from index: $START_INDEX"
+    echo ""
+
+    # Calculate batch range
+    local end_index=$((START_INDEX + BATCH_SIZE - 1))
+    if [[ $end_index -ge $total_templates ]]; then
+        end_index=$((total_templates - 1))
+    fi
+
+    if [[ $START_INDEX -ge $total_templates ]]; then
+        log_colored "$GREEN" "✅ All templates processed!"
+        exit 0
+    fi
+
+    # Process each template in batch
+    for ((i=START_INDEX; i<=end_index; i++)); do
+        local template="${TEMPLATES[i]}"
+        local worktree_dir="../templata-$template"
+
+        log_colored "$BLUE" "[$((i + 1))/$total_templates] Processing: $template"
+
+        # Check if worktree exists
+        if [[ ! -d "$worktree_dir" ]]; then
+            log_colored "$RED" "  ❌ Worktree not found: $worktree_dir"
+            continue
+        fi
+
+        # Go to worktree and run template generation
+        cd "$worktree_dir"
+        mkdir -p "src/data"
+
+        # Check if template file already exists (unless forced)
+        local template_file="src/data/template-$template.ts"
+        if [[ -f "$template_file" && "$FORCE_REGENERATE" != "true" ]]; then
+            log_colored "$YELLOW" "  ⏭️  Template file already exists, skipping: $template_file"
+            cd "$SCRIPT_DIR"
+            continue
+        fi
+
+        log_colored "$YELLOW" "  🔨 Generating template data..."
+        create_template_file "$template"
+
+        # Brief pause between templates
+        sleep 5
+
+        # Return to scripts dir
+        cd "$SCRIPT_DIR"
+        echo ""
+    done
+
+    # Show next batch info
+    local next_start=$((end_index + 1))
+    if [[ $next_start -lt $total_templates ]]; then
+        local remaining=$((total_templates - next_start))
+        log_colored "$YELLOW" "Next batch: $remaining templates remaining"
+        log_colored "$YELLOW" "Run: ./template-generation-cycle.sh --batch --start $next_start"
+    else
+        log_colored "$GREEN" "🎉 ALL TEMPLATES COMPLETE!"
+    fi
+}
+
 main() {
-    log_colored "$BLUE" "Starting Template Generation for: $TEMPLATE_NAME"
+    if [[ "$BATCH_MODE" == true ]]; then
+        process_batch
+    else
+        log_colored "$BLUE" "Starting Template Generation for: $TEMPLATE_NAME"
 
-    # Setup directories
-    mkdir -p "$DATA_DIR"
-    mkdir -p "$(dirname "$LOGFILE")"
+        # Setup directories
+        mkdir -p "$DATA_DIR"
+        mkdir -p "$(dirname "$LOGFILE")"
 
-    # Generate template file for current template
-    create_template_file "$TEMPLATE_NAME"
+        # Generate template file for current template
+        create_template_file "$TEMPLATE_NAME"
 
-    log_colored "$GREEN" "Template generation complete!"
-    log_colored "$GREEN" "Generated template file: template-$TEMPLATE_NAME.ts"
+        log_colored "$GREEN" "Template generation complete!"
+        log_colored "$GREEN" "Generated template file: template-$TEMPLATE_NAME.ts"
+    fi
 }
 
 # Show usage
 show_usage() {
-    echo "Usage: $0 [TEMPLATE_NAME] [COMMAND]"
+    echo "Usage: $0 [TEMPLATE_NAME] [OPTIONS] [COMMAND]"
     echo ""
     echo "TEMPLATE_NAME (optional):"
     echo "  If not provided, auto-detects from current templata-{name} worktree"
+    echo ""
+    echo "OPTIONS:"
+    echo "  --batch                 - Enable batch processing mode"
+    echo "  --batch-size N          - Process N templates per batch (default: 5)"
+    echo "  --start N               - Start from template index N (default: 0)"
+    echo "  --force                 - Regenerate even if template file exists"
     echo ""
     echo "COMMANDS:"
     echo "  (no command)    - Generate template file for current template"
@@ -256,9 +390,12 @@ show_usage() {
     echo "  help           - Show this help"
     echo ""
     echo "Examples:"
-    echo "  $0              # Generate template file for current worktree"
-    echo "  $0 home-buying  # Generate template file for home-buying"
-    echo "  $0 status       # Check current status"
+    echo "  $0                                    # Generate template file for current worktree"
+    echo "  $0 home-buying                       # Generate template file for home-buying"
+    echo "  $0 --batch                           # Process new templates in batch (skips existing)"
+    echo "  $0 --batch --force                   # Process all templates (regenerates existing)"
+    echo "  $0 --batch --batch-size 10 --start 5 # Process 10 templates starting from index 5"
+    echo "  $0 status                            # Check current status"
 }
 
 # Handle arguments

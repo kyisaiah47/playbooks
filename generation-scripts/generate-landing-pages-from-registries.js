@@ -25,11 +25,11 @@ function readRegistryFile(filePath) {
 function extractPrompts(promptFileContent) {
   if (!promptFileContent) return [];
 
-  const promptMatches = promptFileContent.match(/prompt:\s*["'`]([^"'`]+)["'`]/g);
+  const promptMatches = promptFileContent.match(/prompt:\s*['"]([^'"]*)['"]/g);
   if (!promptMatches) return [];
 
   return promptMatches
-    .map(match => match.replace(/prompt:\s*["'`]([^"'`]+)["'`]/, '$1'))
+    .map(match => match.replace(/prompt:\s*['"]([^'"]*)['"]/g, '$1'))
     .slice(0, 6); // Take first 6 prompts
 }
 
