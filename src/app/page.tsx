@@ -42,60 +42,7 @@ import BackgroundPaperShaders from "@/components/ui/background-paper-shaders";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Typewriter } from "@/components/ui/typewriter";
 
-export const metadata: Metadata = {
-  title: 'Templata - Life Planning Templates & AI-Powered Workspaces | 150+ Templates',
-  description: 'Organize life\'s biggest moments with 150+ AI-powered templates for weddings, home buying, career changes, business launches & more. 15,000+ prompts, 3,000+ articles. Start free.',
-  keywords: 'life planning templates, wedding planning template, home buying guide, career change template, business planning, life organization, productivity templates, life management system, AI planning tools, structured templates',
-  authors: [{ name: 'Templata Team' }],
-  creator: 'Templata',
-  publisher: 'Templata',
-  formatDetection: {
-    telephone: false,
-  },
-  metadataBase: new URL('https://templata.com'),
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    title: 'Templata - AI-Powered Life Planning Templates | 150+ Templates for Every Life Moment',
-    description: 'Transform how you approach life\'s biggest moments. 150+ structured templates with 15,000+ prompts and 3,000+ expert articles. Wedding planning, home buying, career changes, and more.',
-    url: 'https://templata.com',
-    siteName: 'Templata',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Templata - Life Planning Templates & AI Workspaces',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Templata - AI-Powered Life Planning Templates | 150+ Templates',
-    description: 'Organize life\'s biggest moments with structured templates. Wedding planning, home buying, career changes & more. 15,000+ prompts, 3,000+ articles.',
-    images: ['/twitter-image.jpg'],
-    creator: '@templata',
-    site: '@templata',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: process.env.GOOGLE_VERIFICATION_CODE,
-  },
-  category: 'productivity',
-};
+// Metadata is handled in layout.tsx for client components
 
 export default function LandingPage() {
 	const { isLoggedIn } = useAuth();

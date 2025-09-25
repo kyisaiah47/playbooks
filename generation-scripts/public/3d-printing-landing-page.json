@@ -1,0 +1,135 @@
+{
+  "templateLanding": {
+    "seo": {
+      "title": "3d Printing Template - Organize Your 3d Printing | Templata",
+      "description": "Transform your 3d printing planning with our comprehensive template. Get expert guidance, actionable prompts, and step-by-step organization.",
+      "keywords": [
+        "3d printing",
+        "3d printing planning",
+        "3d printing template",
+        "3d printing guide",
+        "life planning",
+        "organization template"
+      ],
+      "ogTitle": "3d Printing Template - Expert Guidance & Organization",
+      "ogDescription": "Comprehensive 3d printing template with expert insights, actionable prompts, and structured guidance."
+    },
+    "hero": {
+      "announcement": {
+        "tag": "Template",
+        "title": "Now available in Templata"
+      },
+      "headline": "Organize your 3d printing",
+      "subheadline": "Transform overwhelming planning into an organized, step-by-step journey",
+      "description": "Get expert guidance, actionable prompts, and comprehensive resources to navigate your 3d printing with confidence.",
+      "primaryCta": {
+        "text": "Get Started Free",
+        "subtext": "No credit card required"
+      },
+      "secondaryCta": {
+        "text": "See Preview",
+        "subtext": ""
+      }
+    },
+    "whatYouGet": {
+      "sectionTitle": "Everything you need for 3d printing",
+      "sectionSubtitle": "Comprehensive guidance in one organized template",
+      "features": [
+        {
+          "icon": "CheckCircle2",
+          "title": "Step-by-step guidance",
+          "description": "Structured sections that break down 3d printing planning into manageable steps"
+        },
+        {
+          "icon": "Lightbulb",
+          "title": "Expert insights & tips",
+          "description": "Professional advice and insider knowledge to avoid common 3d printing mistakes"
+        },
+        {
+          "icon": "Target",
+          "title": "Actionable prompts",
+          "description": "6+ practical tasks and reflection questions to keep you moving forward"
+        },
+        {
+          "icon": "FileText",
+          "title": "Comprehensive resources",
+          "description": "Curated articles, tools, and references for 3d printing success"
+        }
+      ]
+    },
+    "howItWorks": {
+      "sectionTitle": "Your 3d printing journey, organized",
+      "sectionSubtitle": "From overwhelming to organized in minutes",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Start with structure",
+          "description": "Access your personalized 3d printing template with pre-organized sections and expert guidance"
+        },
+        {
+          "number": "02",
+          "title": "Follow the prompts",
+          "description": "Complete actionable tasks and reflection questions designed by 3d printing experts"
+        },
+        {
+          "number": "03",
+          "title": "Track your progress",
+          "description": "See your 3d printing journey unfold as you complete each section and milestone"
+        }
+      ]
+    },
+    "exampleContent": {
+      "sectionTitle": "See what's inside",
+      "sectionSubtitle": "Real prompts and articles from this 3d printing template",
+      "prompts": {
+        "title": "Example Action Prompts",
+        "subtitle": "Practical tasks to move your 3d printing forward",
+        "items": [
+          "Research different types of 3D printers to understand FDM, SLA, and SLS technologies.",
+          "Set up your workspace with proper ventilation and a stable surface for your printer.",
+          "Download and install slicing software like Cura or PrusaSlicer on your computer.",
+          "Level your printer bed using the manual or auto-leveling process.",
+          "Load filament into your 3D printer following the manufacturer",
+          "Print your first test cube to check printer calibration and settings."
+        ]
+      },
+      "articles": {
+        "title": "Expert Articles & Guides",
+        "subtitle": "Curated insights from industry professionals",
+        "items": [
+          {
+            "title": "Your First 3D Printer: From Overwhelmed to Confident in 8 Simple Steps",
+            "description": "Navigate the maze of 3D printer options with clarity. This comprehensive guide cuts through the m...",
+            "readTime": "10 min read",
+            "difficulty": "beginner"
+          },
+          {
+            "title": "When 3D Prints Go Wrong: The Complete Troubleshooting Guide That Actually Works",
+            "description": "Transform printing frustration into confidence with this comprehensive guide to diagnosing and fi...",
+            "readTime": "12 min read",
+            "difficulty": "beginner"
+          },
+          {
+            "title": "From Screen to Success: Designing Your First 3D Prints That Actually Work",
+            "description": "Bridge the gap between downloading models and creating functional prints. Learn the essential des...",
+            "readTime": "11 min read",
+            "difficulty": "intermediate"
+          }
+        ]
+      }
+    },
+    "finalCta": {
+      "sectionTitle": "Ready to organize your 3d printing?",
+      "sectionSubtitle": "Join thousands who have transformed their 3d printing planning with Templata",
+      "primaryCta": {
+        "text": "Start Your Template",
+        "subtext": "Free to start • No credit card required"
+      },
+      "secondaryCta": {
+        "text": "Browse All Templates",
+        "subtext": ""
+      },
+      "guarantee": "✓ Free to start ✓ Expert-designed ✓ Comprehensive guidance"
+    }
+  }
+}

@@ -133,7 +133,8 @@
       "Bash(rm:*)",
       "Bash(lsof:*)",
       "WebFetch(domain:tiptap.dev)",
-      "Bash(npx @tiptap/cli@latest:*)"
+      "Bash(npx @tiptap/cli@latest:*)",
+      "WebFetch(domain:localhost)"
     ],
     "deny": [],
     "ask": []
