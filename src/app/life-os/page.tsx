@@ -21,6 +21,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
+import { ContextualPrompts } from "@/components/knowledge-graph/ContextualPrompts"
 import {
   Brain,
   AlertTriangle,
@@ -197,53 +198,33 @@ function RecommendationsWidget() {
   )
 }
 
-function CrossTemplatePromptsWidget() {
+function ContextualPromptsWidget({ activeTemplates, userProfile }: {
+  activeTemplates: string[];
+  userProfile: any;
+}) {
+  const handlePromptAction = (action: string, promptId: string, data?: any) => {
+    console.log('Prompt action:', action, promptId, data);
+    // Here you would handle the specific action
+    // e.g., navigate to template, open modal, etc.
+  };
+
+  const handlePromptDismiss = (promptId: string) => {
+    console.log('Dismissed prompt:', promptId);
+    // Handle dismissing prompts (e.g., save to user preferences)
+  };
+
   return (
-    <Card className="md:col-span-2">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Brain className="w-5 h-5 text-indigo-500" />
-          Cross-Template Intelligence
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="p-4 rounded-lg bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200">
-            <h4 className="font-medium text-purple-800 mb-2">💍 Wedding + Home Buying Synergy</h4>
-            <p className="text-sm text-purple-700 mb-3">
-              How will your wedding budget affect your home down payment timeline?
-            </p>
-            <div className="flex gap-2">
-              <Button size="sm" variant="outline">Answer This</Button>
-              <Button size="sm" variant="ghost">Skip</Button>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-lg bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200">
-            <h4 className="font-medium text-orange-800 mb-2">🚨 Business + Baby Conflict</h4>
-            <p className="text-sm text-orange-700 mb-3">
-              Launching a business and having a baby both require significant time and energy. Consider timing strategy.
-            </p>
-            <div className="flex gap-2">
-              <Button size="sm" variant="outline">Resolve Conflict</Button>
-              <Button size="sm" variant="ghost">Ignore</Button>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-lg bg-gradient-to-r from-green-50 to-teal-50 border border-green-200">
-            <h4 className="font-medium text-green-800 mb-2">🏠 Housing Space Planning</h4>
-            <p className="text-sm text-green-700 mb-3">
-              With a baby on the way, what minimum space requirements should guide your home search?
-            </p>
-            <div className="flex gap-2">
-              <Button size="sm" variant="outline">Plan Space</Button>
-              <Button size="sm" variant="ghost">Later</Button>
-            </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  )
+    <div className="md:col-span-2">
+      <ContextualPrompts
+        activeTemplates={activeTemplates}
+        userProfile={userProfile}
+        variant="full"
+        maxPrompts={4}
+        onPromptAction={handlePromptAction}
+        onPromptDismiss={handlePromptDismiss}
+      />
+    </div>
+  );
 }
 
 export default function LifeOSPage() {
@@ -290,7 +271,10 @@ export default function LifeOSPage() {
 
           {/* Bottom Row - Cross-Template Intelligence */}
           <div className="grid gap-6 md:grid-cols-3">
-            <CrossTemplatePromptsWidget />
+            <ContextualPromptsWidget
+              activeTemplates={MOCK_ACTIVE_TEMPLATES}
+              userProfile={MOCK_USER_PROFILE}
+            />
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">Next Actions</CardTitle>

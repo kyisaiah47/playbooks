@@ -2,7 +2,7 @@
 
 import React from "react"
 import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph"
-import { getTemplateRegistry } from "@/registry/templates"
+import { templateRegistry } from "@/registry/templates"
 import type { TemplateRegistryEntry } from "@/registry/templates"
 import { cn } from "@/lib/utils"
 import { SubtleGlow } from "@/components/ui/glow-variants"
@@ -77,9 +77,6 @@ export function RelatedTemplates({
 
   // Get knowledge graph relationships
   const knowledgeRelations = getRelatedTemplates(templateId, limit)
-
-  // Get template registry entries
-  const templateRegistry = getTemplateRegistry()
 
   // Map knowledge graph results to template registry entries
   const relatedTemplates = knowledgeRelations
