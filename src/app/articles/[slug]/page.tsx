@@ -12,6 +12,8 @@ import { getBlogPostBySlug, getRelatedBlogPosts, getBlogPostsByCategory, blogReg
 import { TemplateImage } from "@/components/ui/template-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph";
+import { templateRegistry } from "@/registry/templates";
 
 // Category icon mapping
 const getCategoryIcon = (category: string) => {
@@ -529,6 +531,92 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
                   </div>
                 </section>
               )}
+
+              {/* Related templates from knowledge graph */}
+              {(() => {
+                const kg = useKnowledgeGraph();
+                const relatedTemplates = kg.getCrossRecommendations('article', slug)
+                  .filter(conn => conn.type === 'template')
+                  .slice(0, 6);
+
+                return relatedTemplates.length > 0 ? (
+                  <section className="mt-16 mb-16">
+                    <h3 className="text-2xl font-bold mb-8">Related Templates</h3>
+                    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+                      <Marquee pauseOnHover className="[--duration:20s]">
+                        {relatedTemplates.slice(0, Math.ceil(relatedTemplates.length / 2)).map((conn) => {
+                          const template = templateRegistry.find(t => t.id === conn.id);
+                          if (!template) return null;
+
+                          return (
+                            <article
+                              key={conn.id}
+                              className="relative h-full w-72 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+                            >
+                              <div className="flex flex-row items-center gap-2">
+                                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                                  {React.createElement(template.icon, { className: "w-4 h-4 text-primary" })}
+                                </div>
+                                <div className="flex flex-col">
+                                  <figcaption className="text-sm font-medium dark:text-white">
+                                    Template
+                                  </figcaption>
+                                  <p className="text-xs font-medium text-muted-foreground">{Math.round(conn.strength)}% match</p>
+                                </div>
+                              </div>
+                              <Link href={`/template/${conn.id}`} className="block">
+                                <h4 className="mt-2 text-sm font-semibold hover:text-primary line-clamp-2">
+                                  {template.name}
+                                </h4>
+                                <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
+                                  {conn.reason}
+                                </p>
+                              </Link>
+                            </article>
+                          );
+                        })}
+                      </Marquee>
+                      {relatedTemplates.length > 3 && (
+                        <Marquee reverse pauseOnHover className="[--duration:20s]">
+                          {relatedTemplates.slice(Math.ceil(relatedTemplates.length / 2)).map((conn) => {
+                            const template = templateRegistry.find(t => t.id === conn.id);
+                            if (!template) return null;
+
+                            return (
+                              <article
+                                key={conn.id}
+                                className="relative h-full w-72 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+                              >
+                                <div className="flex flex-row items-center gap-2">
+                                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                                    {React.createElement(template.icon, { className: "w-4 h-4 text-primary" })}
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <figcaption className="text-sm font-medium dark:text-white">
+                                      Template
+                                    </figcaption>
+                                    <p className="text-xs font-medium text-muted-foreground">{Math.round(conn.strength)}% match</p>
+                                  </div>
+                                </div>
+                                <Link href={`/template/${conn.id}`} className="block">
+                                  <h4 className="mt-2 text-sm font-semibold hover:text-primary line-clamp-2">
+                                    {template.name}
+                                  </h4>
+                                  <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
+                                    {conn.reason}
+                                  </p>
+                                </Link>
+                              </article>
+                            );
+                          })}
+                        </Marquee>
+                      )}
+                      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+                    </div>
+                  </section>
+                ) : null;
+              })()}
             </main>
 
             {/* Right Sidebar - Table of Contents - Sticky */}
