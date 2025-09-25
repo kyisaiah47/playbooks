@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useMemo } from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { templateRegistry, getAllCategories, getFeaturedTemplates, searchTemplates } from '@/registry/templates';
@@ -13,6 +14,54 @@ import { Search, Filter, Star, ChevronLeft, ChevronRight, FileText, Users, Clock
 import { PageLayout } from '@/components/layout';
 
 const TEMPLATES_PER_PAGE = 25;
+
+export const metadata: Metadata = {
+  title: 'Browse All Templates - 150+ Life Planning Templates | Templata',
+  description: 'Explore 150+ AI-powered life planning templates for weddings, home buying, career changes, business launches & more. Search by category, difficulty, or life stage. Start free.',
+  keywords: 'life planning templates, template library, wedding planning template, home buying template, career change template, business planning template, productivity templates, structured planning',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/templates',
+  },
+  openGraph: {
+    title: 'Browse All Templates - 150+ Life Planning Templates | Templata',
+    description: 'Explore our complete library of AI-powered templates for life\'s biggest moments. Wedding planning, home buying, career changes, business launches & more.',
+    url: 'https://templata.com/templates',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-templates.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Template Library - 150+ Life Planning Templates',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Browse All Templates - 150+ Life Planning Templates',
+    description: 'Explore our complete library of AI-powered templates for life\'s biggest moments. Wedding planning, home buying, career changes & more.',
+    images: ['/twitter-templates.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function TemplatesPage() {
   const router = useRouter();

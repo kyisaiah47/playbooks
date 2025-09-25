@@ -7,6 +7,55 @@ import {
   TrendingUp,
   Calendar,
 } from "lucide-react";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Template Previews - See Templata Templates in Action | Life Planning',
+  description: 'Experience how Templata transforms overwhelming planning into organized, actionable dashboards. Preview our wedding, home buying, career change, business launch & event planning templates.',
+  keywords: 'template preview, life planning templates, wedding planning template, home buying template, career change template, business launch template, event planning template, templata preview, planning dashboard',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/preview',
+  },
+  openGraph: {
+    title: 'Template Previews - See Templata Templates in Action',
+    description: 'Experience how Templata transforms overwhelming planning into organized, actionable dashboards. Preview our wedding, home buying, career change, business launch & event planning templates.',
+    url: 'https://templata.com/preview',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-preview.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Template Previews - See Templates in Action',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Template Previews - See Templata Templates in Action',
+    description: 'Experience how Templata transforms overwhelming planning into organized, actionable dashboards. Preview our templates.',
+    images: ['/twitter-preview.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 import { useState } from "react";
 import Link from "next/link";
 

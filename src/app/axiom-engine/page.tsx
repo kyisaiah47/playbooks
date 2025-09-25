@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -26,6 +27,54 @@ import {
 	RefreshCw,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
+
+export const metadata: Metadata = {
+  title: 'Axiom Engine - AI-Powered Prompt System | Templata',
+  description: 'Learn about Templata\'s Axiom Engine - our specialized AI system that powers 15,000+ tactical prompts and intelligent guidance for life\'s biggest moments.',
+  keywords: 'axiom engine, AI prompts, intelligent prompts, specialized AI, prompt system, life planning AI, tactical prompts, templata AI',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/axiom-engine',
+  },
+  openGraph: {
+    title: 'Axiom Engine - AI-Powered Prompt System | Templata',
+    description: 'Learn about Templata\'s Axiom Engine - our specialized AI system that powers 15,000+ tactical prompts for life planning.',
+    url: 'https://templata.com/axiom-engine',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-axiom-engine.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Axiom Engine - AI-Powered Prompt System',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Axiom Engine - AI-Powered Prompt System',
+    description: 'Learn about Templata\'s Axiom Engine - our specialized AI system that powers 15,000+ tactical prompts for life planning.',
+    images: ['/twitter-axiom-engine.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function AxiomEnginePage() {
 	return (

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -28,6 +29,54 @@ import {
 	RotateCcw,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
+
+export const metadata: Metadata = {
+  title: 'Workspaces - Three Modes of Life Organization | Templata',
+  description: 'Discover Templata\'s three workspace modes: Template (structured guidance), Reflection (deep processing), and Life OS (unified management). Perfect for organizing life\'s biggest moments.',
+  keywords: 'templata workspaces, template workspace, reflection workspace, life os, split screen interface, life organization, structured planning, workspace modes',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/workspaces',
+  },
+  openGraph: {
+    title: 'Workspaces - Three Modes of Life Organization | Templata',
+    description: 'Discover Templata\'s three workspace modes for organizing life\'s biggest moments. From structured templates to unified life management.',
+    url: 'https://templata.com/workspaces',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-workspaces.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Workspaces - Three Modes of Life Organization',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Workspaces - Three Modes of Life Organization',
+    description: 'Discover Templata\'s three workspace modes for organizing life\'s biggest moments. Template, Reflection, and Life OS modes.',
+    images: ['/twitter-workspaces.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function WorkspacesPage() {
 	return (

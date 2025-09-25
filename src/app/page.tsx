@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { Metadata } from 'next';
 import Link from "next/link";
 import { useAuth } from "@/contexts/auth-context";
 import { Button } from "@/components/ui/button";
@@ -41,12 +42,131 @@ import BackgroundPaperShaders from "@/components/ui/background-paper-shaders";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Typewriter } from "@/components/ui/typewriter";
 
+export const metadata: Metadata = {
+  title: 'Templata - Life Planning Templates & AI-Powered Workspaces | 150+ Templates',
+  description: 'Organize life\'s biggest moments with 150+ AI-powered templates for weddings, home buying, career changes, business launches & more. 15,000+ prompts, 3,000+ articles. Start free.',
+  keywords: 'life planning templates, wedding planning template, home buying guide, career change template, business planning, life organization, productivity templates, life management system, AI planning tools, structured templates',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  formatDetection: {
+    telephone: false,
+  },
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Templata - AI-Powered Life Planning Templates | 150+ Templates for Every Life Moment',
+    description: 'Transform how you approach life\'s biggest moments. 150+ structured templates with 15,000+ prompts and 3,000+ expert articles. Wedding planning, home buying, career changes, and more.',
+    url: 'https://templata.com',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata - Life Planning Templates & AI Workspaces',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Templata - AI-Powered Life Planning Templates | 150+ Templates',
+    description: 'Organize life\'s biggest moments with structured templates. Wedding planning, home buying, career changes & more. 15,000+ prompts, 3,000+ articles.',
+    images: ['/twitter-image.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: process.env.GOOGLE_VERIFICATION_CODE,
+  },
+  category: 'productivity',
+};
 
 export default function LandingPage() {
 	const { isLoggedIn } = useAuth();
 
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: 'Templata',
+		description: 'AI-powered life planning templates and workspaces for organizing life\'s biggest moments. 150+ templates with 15,000+ prompts and 3,000+ articles.',
+		url: 'https://templata.com',
+		applicationCategory: 'ProductivityApplication',
+		operatingSystem: 'Web',
+		offers: [
+			{
+				'@type': 'Offer',
+				price: '0',
+				priceCurrency: 'USD',
+				name: 'Free Plan',
+				description: '1-2 starter templates with basic features'
+			},
+			{
+				'@type': 'Offer',
+				price: '9',
+				priceCurrency: 'USD',
+				name: 'Plus Plan',
+				description: 'Full access to 150+ templates with advanced features',
+				priceSpecification: {
+					'@type': 'UnitPriceSpecification',
+					price: '9',
+					priceCurrency: 'USD',
+					unitCode: 'MON'
+				}
+			},
+			{
+				'@type': 'Offer',
+				price: '15',
+				priceCurrency: 'USD',
+				name: 'Pro Plan',
+				description: 'Everything in Plus with AI features and team collaboration',
+				priceSpecification: {
+					'@type': 'UnitPriceSpecification',
+					price: '15',
+					priceCurrency: 'USD',
+					unitCode: 'MON'
+				}
+			}
+		],
+		creator: {
+			'@type': 'Organization',
+			name: 'Templata',
+			url: 'https://templata.com'
+		},
+		featureList: [
+			'150+ Life Planning Templates',
+			'15,000+ Action Prompts',
+			'3,000+ Expert Articles',
+			'AI-Powered Axiom Engine',
+			'Split-Screen Interface',
+			'Template Workspaces',
+			'Reflection Workspaces',
+			'Life OS Management'
+		],
+		screenshot: 'https://templata.com/og-image.jpg'
+	};
+
 	return (
 		<PageLayout includeHeaderPadding={false}>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
 
 			{/* Hero Section */}
 			<section className="h-screen flex items-center justify-center relative overflow-hidden">

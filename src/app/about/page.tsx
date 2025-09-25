@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Metadata } from 'next';
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,6 +26,54 @@ import {
 	Palette,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
+
+export const metadata: Metadata = {
+  title: 'About Templata - Our Philosophy & Mission | AI Life Planning Templates',
+  description: 'Learn why life shouldn\'t start with a blank page. Discover how Templata transforms life\'s biggest moments with intelligent templates, just like Notion did for notes and Canva for design.',
+  keywords: 'about templata, life organization philosophy, template design, AI life planning, productivity tools, structured planning, life management mission',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Templata - Our Philosophy & Mission | AI Life Planning Templates',
+    description: 'Life shouldn\'t start with a blank page. Learn how Templata transforms life\'s biggest moments with intelligent templates inspired by Notion and Canva.',
+    url: 'https://templata.com/about',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-about.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'About Templata - Our Philosophy and Mission',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Templata - Our Philosophy & Mission',
+    description: 'Life shouldn\'t start with a blank page. Learn how we transform life\'s biggest moments with intelligent templates.',
+    images: ['/twitter-about.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function AboutPage() {
 	return (

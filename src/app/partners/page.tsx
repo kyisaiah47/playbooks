@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import type { Metadata } from 'next'
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
@@ -12,6 +13,54 @@ import {
   CheckCircle
 } from "lucide-react"
 import { PageLayout } from "@/components/layout"
+
+export const metadata: Metadata = {
+  title: 'Partners Program - Coming Soon | Templata',
+  description: 'Join the Templata Partners Program. Collaborate with us to bring structured life planning templates to more people. Early access for partners and affiliates.',
+  keywords: 'templata partners, affiliate program, partnership opportunities, collaboration, business partnerships, templata affiliates',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/partners',
+  },
+  openGraph: {
+    title: 'Partners Program - Coming Soon | Templata',
+    description: 'Join the Templata Partners Program. Collaborate with us to bring structured life planning templates to more people.',
+    url: 'https://templata.com/partners',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-partners.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Partners Program - Coming Soon',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Partners Program - Coming Soon | Templata',
+    description: 'Join the Templata Partners Program. Collaborate with us to bring structured life planning templates to more people.',
+    images: ['/twitter-partners.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function PartnersPage() {
   const [email, setEmail] = useState("")

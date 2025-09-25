@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -23,6 +24,54 @@ import {
 	Clock,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
+
+export const metadata: Metadata = {
+  title: 'Prompts & Axiom Engine - 15,000+ Action Prompts | Templata',
+  description: 'Discover 15,000+ AI-powered action prompts that drive decision-making. Tactical, practical prompts categorized by planning phases and organized for maximum impact.',
+  keywords: 'action prompts, planning prompts, decision making prompts, AI prompts, axiom engine, tactical prompts, life planning prompts, structured prompts, reflection prompts',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/prompts',
+  },
+  openGraph: {
+    title: 'Prompts & Axiom Engine - 15,000+ Action Prompts | Templata',
+    description: 'Discover 15,000+ AI-powered action prompts that drive decision-making. Tactical, practical prompts categorized by planning phases for maximum impact.',
+    url: 'https://templata.com/prompts',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-prompts.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Prompts & Axiom Engine - 15,000+ Action Prompts',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prompts & Axiom Engine - 15,000+ Action Prompts',
+    description: 'Discover 15,000+ AI-powered action prompts that drive decision-making. Tactical, practical prompts for life\'s biggest moments.',
+    images: ['/twitter-prompts.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function PromptsPage() {
 	return (

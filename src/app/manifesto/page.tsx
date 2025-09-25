@@ -2,6 +2,55 @@ import { PageLayout } from "@/components/layout"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ManifestoAudio } from "@/components/manifesto-audio"
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Our Manifesto - The Blank Page is Dead | Templata',
+  description: 'Read our manifesto on why life shouldn\'t start with a blank page. Discover our vision for the first encyclopedia of living and structured approach to life\'s biggest moments.',
+  keywords: 'templata manifesto, life organization philosophy, structured planning, blank page problem, encyclopedia of living, life planning vision',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.com'),
+  alternates: {
+    canonical: '/manifesto',
+  },
+  openGraph: {
+    title: 'Our Manifesto - The Blank Page is Dead | Templata',
+    description: 'Read our manifesto on why life shouldn\'t start with a blank page. Our vision for the first encyclopedia of living and structured approach to life planning.',
+    url: 'https://templata.com/manifesto',
+    siteName: 'Templata',
+    images: [
+      {
+        url: '/og-manifesto.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Manifesto - The Blank Page is Dead',
+      },
+    ],
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Manifesto - The Blank Page is Dead',
+    description: 'Read our manifesto on why life shouldn\'t start with a blank page. Our vision for structured life planning.',
+    images: ['/twitter-manifesto.jpg'],
+    creator: '@templata',
+    site: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export default function ManifestoPage() {
 	return (
