@@ -1,0 +1,59 @@
+CATEGORY 1: Getting Started & Equipment Setup
+1. Research and compare different types of 3D printers (FDM, SLA, SLS) to determine which fits your needs and budget.
+2. Choose your first 3D printer based on print volume, material compatibility, and ease of use.
+3. Set up your 3D printer in a well-ventilated area with stable temperature and minimal vibrations.
+4. Install and configure the printer's slicing software on your computer.
+5. Calibrate your printer's bed leveling to ensure proper first layer adhesion.
+6. Purchase essential accessories like spare nozzles, build surface sheets, and basic tools.
+7. Learn how to load and unload filament properly without causing jams.
+8. Test your printer setup with a simple calibration cube or benchy boat print.
+9. Create a dedicated workspace with proper lighting and storage for materials and tools.
+10. Join online 3D printing communities and forums to connect with other beginners and experts.
+
+CATEGORY 2: Materials & Filament Management
+1. Start with PLA filament as it's beginner-friendly and prints at lower temperatures.
+2. Learn the differences between PLA, ABS, PETG, and specialty filaments like wood-fill or metal-fill.
+3. Store your filament in airtight containers with desiccant packs to prevent moisture absorption.
+4. Experiment with different filament brands to find your preferred quality and price balance.
+5. Learn how to dry wet filament using an oven or dedicated filament dryer.
+6. Practice changing filament colors mid-print for multi-color objects.
+7. Test temperature settings for each new filament type to optimize print quality.
+8. Keep a log of successful print settings for different filament brands and colors.
+9. Explore eco-friendly filament options like recycled PLA or biodegradable materials.
+10. Calculate filament usage costs to budget for your printing projects effectively.
+
+CATEGORY 3: Design & File Preparation
+1. Download and install free 3D design software like Tinkercad, Fusion 360, or Blender.
+2. Start by downloading and printing existing models from Thingiverse or MyMiniFactory.
+3. Learn basic 3D modeling by creating simple geometric shapes and combining them.
+4. Practice using slicing software to convert 3D models into printer-readable G-code.
+5. Understand key slicing settings like layer height, infill percentage, and print speed.
+6. Learn when and how to add support structures for overhanging features.
+7. Optimize your models for 3D printing by avoiding thin walls and unsupported overhangs.
+8. Experiment with different infill patterns to balance strength, weight, and material usage.
+9. Use online STL repair tools to fix broken or non-manifold 3D model files.
+10. Create your first original design by modifying an existing model to meet your specific needs.
+
+CATEGORY 4: Printing Process & Quality Control
+1. Always check your first layer adhesion and adjust bed leveling if the plastic isn't sticking properly.
+2. Monitor your first few prints closely to catch issues like warping, stringing, or layer separation early.
+3. Learn to recognize common print failures and their causes, such as clogged nozzles or inconsistent extrusion.
+4. Practice pausing and resuming prints when you need to make adjustments or change filament.
+5. Experiment with different bed adhesion methods like painter's tape, glass beds, or PEI sheets.
+6. Adjust print speeds based on model complexity, with slower speeds for detailed sections.
+7. Fine-tune retraction settings to minimize stringing between separate parts of your model.
+8. Learn when to use rafts, skirts, or brims to improve print success rates.
+9. Document successful print settings for future reference when printing similar objects.
+10. Develop a pre-print checklist to ensure consistent results every time you start a new job.
+
+CATEGORY 5: Maintenance & Troubleshooting
+1. Establish a regular maintenance schedule for cleaning your print bed and lubricating moving parts.
+2. Learn how to safely clean or replace a clogged nozzle without damaging your hotend.
+3. Check and tighten loose belts, screws, and connections that can affect print quality over time.
+4. Keep spare parts on hand like nozzles, thermistors, and heating elements for quick repairs.
+5. Learn to diagnose and fix common issues like layer shifting, under-extrusion, or inconsistent temperatures.
+6. Calibrate your extruder steps to ensure accurate filament feeding and consistent extrusion.
+7. Clean your printer's build surface regularly to maintain good first layer adhesion.
+8. Update your printer's firmware and slicing software to access new features and bug fixes.
+9. Learn basic electronics troubleshooting for issues with heating elements, thermistors, and wiring.
+10. Create a troubleshooting log to track recurring issues and the solutions that worked for you.

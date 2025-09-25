@@ -1,0 +1,59 @@
+CATEGORY 1: Learning & Education
+1. Research the difference between stocks, bonds, ETFs, and mutual funds.
+2. Read one beginner-friendly book about stock market investing fundamentals.
+3. Learn what market cap, P/E ratio, and dividend yield mean for stock evaluation.
+4. Watch educational videos about technical analysis and chart reading basics.
+5. Study the difference between value investing and growth investing strategies.
+6. Understand how stock splits, dividends, and stock buybacks affect your investments.
+7. Learn about different order types like market orders, limit orders, and stop-loss orders.
+8. Research how taxes work on stock gains, dividends, and trading frequency.
+9. Study major stock market indices like S&P 500, Dow Jones, and NASDAQ.
+10. Learn about market volatility, bull markets, bear markets, and economic cycles.
+
+CATEGORY 2: Account Setup & Platform Selection
+1. Research and compare different online brokers for fees, features, and user reviews.
+2. Open a brokerage account with your chosen platform and complete identity verification.
+3. Link your bank account to your brokerage account for funding transfers.
+4. Set up two-factor authentication and strong passwords for account security.
+5. Download and familiarize yourself with your broker's mobile trading app.
+6. Explore the platform's research tools, charts, and stock screening features.
+7. Set up account alerts for price movements, news, and portfolio changes.
+8. Configure your account settings for dividend reinvestment preferences.
+9. Review and understand your broker's fee structure for trades and account maintenance.
+10. Test the platform with a small practice trade to understand the interface.
+
+CATEGORY 3: Financial Planning & Goal Setting
+1. Determine how much money you can afford to invest without affecting essential expenses.
+2. Set specific financial goals like retirement savings, house down payment, or emergency fund.
+3. Decide on your investment timeline and whether you're investing for short or long-term goals.
+4. Assess your risk tolerance and comfort level with potential investment losses.
+5. Create a monthly budget that includes a dedicated amount for stock investments.
+6. Build an emergency fund of 3-6 months expenses before investing significant amounts.
+7. Pay off high-interest debt like credit cards before focusing on stock investments.
+8. Determine what percentage of your portfolio should be in stocks versus bonds.
+9. Set realistic return expectations based on historical market performance.
+10. Plan how you'll handle market downturns without panic selling your investments.
+
+CATEGORY 4: Research & Stock Selection
+1. Use stock screeners to find companies that match your investment criteria.
+2. Read a company's annual report (10-K) and quarterly earnings reports (10-Q).
+3. Analyze a company's financial health using key metrics like debt-to-equity ratio.
+4. Research the company's competitive position within its industry sector.
+5. Check recent news and analyst ratings for stocks you're considering buying.
+6. Compare a stock's current price to its 52-week high and low ranges.
+7. Study the company's revenue growth, profit margins, and cash flow trends.
+8. Research the management team's track record and company leadership quality.
+9. Evaluate whether the stock price reflects the company's true value.
+10. Create a watchlist of 10-15 stocks you want to monitor before making purchases.
+
+CATEGORY 5: Trading Execution & Portfolio Management
+1. Start with a small investment in 1-3 stocks to gain real trading experience.
+2. Place your first stock purchase using a limit order to control the price you pay.
+3. Set up stop-loss orders to automatically sell if stocks drop below acceptable levels.
+4. Diversify your portfolio across different industries and company sizes.
+5. Monitor your investments weekly but avoid checking prices multiple times daily.
+6. Rebalance your portfolio quarterly to maintain your target asset allocation.
+7. Record all trades in a spreadsheet to track performance and tax implications.
+8. Reinvest dividends automatically to benefit from compound growth over time.
+9. Review and adjust your investment strategy annually based on life changes.
+10. Stay disciplined with your investment plan and avoid emotional buying or selling decisions.

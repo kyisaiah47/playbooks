@@ -1,0 +1,59 @@
+CATEGORY 1: Getting Started & Education
+1. Research the basics of blockchain technology and how cryptocurrencies work.
+2. Learn about different types of cryptocurrencies like Bitcoin, Ethereum, and altcoins.
+3. Understand the difference between hot wallets, cold wallets, and exchange wallets.
+4. Study common crypto terminology like DeFi, staking, yield farming, and market cap.
+5. Read about major crypto exchanges and their security features.
+6. Learn how to read crypto charts and basic technical analysis.
+7. Understand the tax implications of cryptocurrency trading in your jurisdiction.
+8. Research dollar-cost averaging and other investment strategies for crypto.
+9. Learn about crypto security best practices and common scams to avoid.
+10. Set up your first crypto wallet and practice sending small test transactions.
+
+CATEGORY 2: Portfolio Planning & Strategy
+1. Define your investment goals and risk tolerance for cryptocurrency investing.
+2. Determine what percentage of your total investment portfolio should be crypto.
+3. Research and select 3-5 cryptocurrencies for your initial portfolio allocation.
+4. Create a diversification strategy across different crypto sectors and market caps.
+5. Set up a dollar-cost averaging schedule for regular crypto purchases.
+6. Establish clear entry and exit price targets for each cryptocurrency position.
+7. Plan your portfolio rebalancing schedule and criteria for adjustments.
+8. Research staking opportunities for passive income on your crypto holdings.
+9. Set up a system to track your portfolio performance and compare to benchmarks.
+10. Create a written investment policy statement for your crypto portfolio decisions.
+
+CATEGORY 3: Security & Storage
+1. Set up a hardware wallet for long-term storage of your cryptocurrency holdings.
+2. Create secure backup phrases for all your wallets and store them safely offline.
+3. Enable two-factor authentication on all cryptocurrency exchange accounts.
+4. Research and implement a multi-signature wallet setup for large holdings.
+5. Create a secure system for storing and organizing your private keys.
+6. Set up withdrawal whitelists and spending limits on your exchange accounts.
+7. Research crypto insurance options to protect your digital asset holdings.
+8. Create an emergency access plan for your crypto in case of incapacitation.
+9. Regularly audit your wallet security settings and update passwords.
+10. Test your backup and recovery procedures with small amounts of crypto.
+
+CATEGORY 4: Trading & Execution
+1. Choose a reputable cryptocurrency exchange that meets your trading needs.
+2. Complete the KYC verification process and set up bank account linking.
+3. Start with small purchases to get comfortable with the trading interface.
+4. Set up recurring buy orders for your dollar-cost averaging strategy.
+5. Learn to use limit orders, stop-losses, and other advanced order types.
+6. Research and execute your first cryptocurrency swap or DeFi transaction.
+7. Set up price alerts for your target cryptocurrencies and market conditions.
+8. Practice using different order types during various market conditions.
+9. Research and try out decentralized exchanges for certain trading pairs.
+10. Document all your trades for tax reporting and performance analysis.
+
+CATEGORY 5: Monitoring & Management
+1. Set up a portfolio tracking app to monitor your crypto holdings in real-time.
+2. Create a monthly review schedule to assess portfolio performance and rebalance.
+3. Track important crypto news and regulatory developments affecting your holdings.
+4. Monitor staking rewards and DeFi yields to optimize passive income opportunities.
+5. Set up automated tax reporting tools to track capital gains and losses.
+6. Create alerts for significant price movements or portfolio value changes.
+7. Research and evaluate new cryptocurrency opportunities for potential addition.
+8. Review and adjust your risk management strategy based on market conditions.
+9. Track your portfolio's performance against relevant crypto market benchmarks.
+10. Document lessons learned and refine your crypto investment strategy over time.

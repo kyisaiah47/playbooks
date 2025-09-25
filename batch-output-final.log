@@ -1,0 +1,1483 @@
+[0;34m2025-09-23 19:37:32 - Starting batch template generation[0m
+=== Batch Template Generation Status ===
+Total templates:      177
+Processed: 0
+Remaining: 177
+Progress: 0%
+
+Configuration:
+  Batch size: 20
+  Batch delay: 60s
+  Template delay: 2s
+
+Progress file: .batch-generation-progress
+Log file: batch-generation.log
+[0;34m2025-09-23 19:37:33 - Found 177 templates to process[0m
+[0;34m2025-09-23 19:37:33 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 19:37:33 - Processing template: 3d-printing[0m
+[0;34m2025-09-23 19:37:33 - Worktree: /Users/ikim1/Documents/GitHub/templata-3d-printing[0m
+[1;33m2025-09-23 19:37:33 - Template file already exists: src/data/template-3d-printing.ts[0m
+2025-09-23 19:37:33 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:35 - Processing template: academic-struggles[0m
+[0;34m2025-09-23 19:37:35 - Worktree: /Users/ikim1/Documents/GitHub/templata-academic-struggles[0m
+[1;33m2025-09-23 19:37:35 - Template file already exists: src/data/template-academic-struggles.ts[0m
+2025-09-23 19:37:35 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:37 - Processing template: addiction-family-support[0m
+[0;34m2025-09-23 19:37:37 - Worktree: /Users/ikim1/Documents/GitHub/templata-addiction-family-support[0m
+[1;33m2025-09-23 19:37:37 - Template file already exists: src/data/template-addiction-family-support.ts[0m
+2025-09-23 19:37:37 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:39 - Processing template: addiction-recovery[0m
+[0;34m2025-09-23 19:37:39 - Worktree: /Users/ikim1/Documents/GitHub/templata-addiction-recovery[0m
+[1;33m2025-09-23 19:37:39 - Template file already exists: src/data/template-addiction-recovery.ts[0m
+2025-09-23 19:37:39 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:42 - Processing template: affiliate-marketing[0m
+[0;34m2025-09-23 19:37:42 - Worktree: /Users/ikim1/Documents/GitHub/templata-affiliate-marketing[0m
+[1;33m2025-09-23 19:37:42 - Template file already exists: src/data/template-affiliate-marketing.ts[0m
+2025-09-23 19:37:42 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:44 - Processing template: aging-parent-care[0m
+[0;34m2025-09-23 19:37:44 - Worktree: /Users/ikim1/Documents/GitHub/templata-aging-parent-care[0m
+[1;33m2025-09-23 19:37:44 - Template file already exists: src/data/template-aging-parent-care.ts[0m
+2025-09-23 19:37:44 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:46 - Processing template: antique-collecting[0m
+[0;34m2025-09-23 19:37:46 - Worktree: /Users/ikim1/Documents/GitHub/templata-antique-collecting[0m
+[1;33m2025-09-23 19:37:46 - Template file already exists: src/data/template-antique-collecting.ts[0m
+2025-09-23 19:37:46 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:48 - Processing template: apartment-hunting[0m
+[0;34m2025-09-23 19:37:48 - Worktree: /Users/ikim1/Documents/GitHub/templata-apartment-hunting[0m
+[1;33m2025-09-23 19:37:48 - Template file already exists: src/data/template-apartment-hunting.ts[0m
+2025-09-23 19:37:48 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:50 - Processing template: app-development[0m
+[0;34m2025-09-23 19:37:50 - Worktree: /Users/ikim1/Documents/GitHub/templata-app-development[0m
+[1;33m2025-09-23 19:37:50 - Template file already exists: src/data/template-app-development.ts[0m
+2025-09-23 19:37:50 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:52 - Processing template: arduino-programming[0m
+[0;34m2025-09-23 19:37:52 - Worktree: /Users/ikim1/Documents/GitHub/templata-arduino-programming[0m
+[1;33m2025-09-23 19:37:52 - Template file already exists: src/data/template-arduino-programming.ts[0m
+2025-09-23 19:37:52 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:54 - Processing template: art-collecting[0m
+[0;34m2025-09-23 19:37:54 - Worktree: /Users/ikim1/Documents/GitHub/templata-art-collecting[0m
+[1;33m2025-09-23 19:37:54 - Template file already exists: src/data/template-art-collecting.ts[0m
+2025-09-23 19:37:54 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:56 - Processing template: art-portfolio[0m
+[0;34m2025-09-23 19:37:56 - Worktree: /Users/ikim1/Documents/GitHub/templata-art-portfolio[0m
+[1;33m2025-09-23 19:37:56 - Template file already exists: src/data/template-art-portfolio.ts[0m
+2025-09-23 19:37:56 - Waiting 2s before next template...
+[0;34m2025-09-23 19:37:58 - Processing template: astronomy-hobby[0m
+[0;34m2025-09-23 19:37:58 - Worktree: /Users/ikim1/Documents/GitHub/templata-astronomy-hobby[0m
+[1;33m2025-09-23 19:37:58 - Template file already exists: src/data/template-astronomy-hobby.ts[0m
+2025-09-23 19:37:58 - Waiting 2s before next template...
+[0;34m2025-09-23 19:38:00 - Processing template: baby-planning[0m
+[0;34m2025-09-23 19:38:00 - Worktree: /Users/ikim1/Documents/GitHub/templata-baby-planning[0m
+[0;34m2025-09-23 19:38:00 - Starting Template Generation for: baby-planning[0m
+[1;33m2025-09-23 19:38:00 - Generating template file with Claude: template-baby-planning.ts[0m
+TEMPLATE GENERATION COMPLETE - baby-planning
+[0;32m2025-09-23 19:38:15 - Completed template generation for: baby-planning[0m
+[0;32m2025-09-23 19:38:15 - Template generation complete![0m
+[0;32m2025-09-23 19:38:15 - Generated template file: template-baby-planning.ts[0m
+[0;32m2025-09-23 19:38:15 - Successfully processed: baby-planning[0m
+2025-09-23 19:38:15 - Waiting 2s before next template...
+[0;34m2025-09-23 19:38:17 - Processing template: bankruptcy-recovery[0m
+[0;34m2025-09-23 19:38:17 - Worktree: /Users/ikim1/Documents/GitHub/templata-bankruptcy-recovery[0m
+[1;33m2025-09-23 19:38:17 - Template file already exists: src/data/template-bankruptcy-recovery.ts[0m
+2025-09-23 19:38:17 - Waiting 2s before next template...
+[0;34m2025-09-23 19:38:19 - Processing template: birdwatching[0m
+[0;34m2025-09-23 19:38:19 - Worktree: /Users/ikim1/Documents/GitHub/templata-birdwatching[0m
+[1;33m2025-09-23 19:38:19 - Template file already exists: src/data/template-birdwatching.ts[0m
+2025-09-23 19:38:19 - Waiting 2s before next template...
+[0;34m2025-09-23 19:38:22 - Processing template: blended-family[0m
+[0;34m2025-09-23 19:38:22 - Worktree: /Users/ikim1/Documents/GitHub/templata-blended-family[0m
+[1;33m2025-09-23 19:38:22 - Template file already exists: src/data/template-blended-family.ts[0m
+2025-09-23 19:38:22 - Waiting 2s before next template...
+[0;34m2025-09-23 19:38:24 - Processing template: blended-family-creation[0m
+[0;34m2025-09-23 19:38:24 - Worktree: /Users/ikim1/Documents/GitHub/templata-blended-family-creation[0m
+[1;33m2025-09-23 19:38:24 - Template file already exists: src/data/template-blended-family-creation.ts[0m
+2025-09-23 19:38:24 - Waiting 2s before next template...
+[0;34m2025-09-23 19:38:26 - Processing template: boat-maintenance[0m
+[0;34m2025-09-23 19:38:26 - Worktree: /Users/ikim1/Documents/GitHub/templata-boat-maintenance[0m
+[1;33m2025-09-23 19:38:26 - Template file already exists: src/data/template-boat-maintenance.ts[0m
+2025-09-23 19:38:26 - Waiting 2s before next template...
+[0;34m2025-09-23 19:38:28 - Processing template: book-club[0m
+[0;34m2025-09-23 19:38:28 - Worktree: /Users/ikim1/Documents/GitHub/templata-book-club[0m
+[1;33m2025-09-23 19:38:28 - Template file already exists: src/data/template-book-club.ts[0m
+[0;32m2025-09-23 19:38:28 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 19:38:28 - Batch completed successfully[0m
+[0;34m2025-09-23 19:38:28 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 19:39:28 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 19:39:28 - Processing template: book-collecting[0m
+[0;34m2025-09-23 19:39:28 - Worktree: /Users/ikim1/Documents/GitHub/templata-book-collecting[0m
+[1;33m2025-09-23 19:39:28 - Template file already exists: src/data/template-book-collecting.ts[0m
+2025-09-23 19:39:28 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:30 - Processing template: book-writing[0m
+[0;34m2025-09-23 19:39:30 - Worktree: /Users/ikim1/Documents/GitHub/templata-book-writing[0m
+[1;33m2025-09-23 19:39:30 - Template file already exists: src/data/template-book-writing.ts[0m
+2025-09-23 19:39:30 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:32 - Processing template: business-launch[0m
+[0;34m2025-09-23 19:39:32 - Worktree: /Users/ikim1/Documents/GitHub/templata-business-launch[0m
+[1;33m2025-09-23 19:39:32 - Template file already exists: src/data/template-business-launch.ts[0m
+2025-09-23 19:39:32 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:34 - Processing template: business-succession[0m
+[0;34m2025-09-23 19:39:34 - Worktree: /Users/ikim1/Documents/GitHub/templata-business-succession[0m
+[1;33m2025-09-23 19:39:34 - Template file already exists: src/data/template-business-succession.ts[0m
+2025-09-23 19:39:34 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:36 - Processing template: camping-trips[0m
+[0;34m2025-09-23 19:39:36 - Worktree: /Users/ikim1/Documents/GitHub/templata-camping-trips[0m
+[1;33m2025-09-23 19:39:36 - Template file already exists: src/data/template-camping-trips.ts[0m
+2025-09-23 19:39:36 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:38 - Processing template: car-buying[0m
+[0;34m2025-09-23 19:39:38 - Worktree: /Users/ikim1/Documents/GitHub/templata-car-buying[0m
+[1;33m2025-09-23 19:39:38 - Template file already exists: src/data/template-car-buying.ts[0m
+2025-09-23 19:39:38 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:40 - Processing template: car-maintenance[0m
+[0;34m2025-09-23 19:39:41 - Worktree: /Users/ikim1/Documents/GitHub/templata-car-maintenance[0m
+[1;33m2025-09-23 19:39:41 - Template file already exists: src/data/template-car-maintenance.ts[0m
+2025-09-23 19:39:41 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:43 - Processing template: career-plateau[0m
+[0;34m2025-09-23 19:39:43 - Worktree: /Users/ikim1/Documents/GitHub/templata-career-plateau[0m
+[1;33m2025-09-23 19:39:43 - Template file already exists: src/data/template-career-plateau.ts[0m
+2025-09-23 19:39:43 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:45 - Processing template: caring-for-aging-parents[0m
+[0;34m2025-09-23 19:39:45 - Worktree: /Users/ikim1/Documents/GitHub/templata-caring-for-aging-parents[0m
+[1;33m2025-09-23 19:39:45 - Template file already exists: src/data/template-caring-for-aging-parents.ts[0m
+2025-09-23 19:39:45 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:47 - Processing template: chronic-illness[0m
+[0;34m2025-09-23 19:39:47 - Worktree: /Users/ikim1/Documents/GitHub/templata-chronic-illness[0m
+[1;33m2025-09-23 19:39:47 - Template file already exists: src/data/template-chronic-illness.ts[0m
+2025-09-23 19:39:47 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:49 - Processing template: climate-action[0m
+[0;34m2025-09-23 19:39:49 - Worktree: /Users/ikim1/Documents/GitHub/templata-climate-action[0m
+[1;33m2025-09-23 19:39:49 - Template file already exists: src/data/template-climate-action.ts[0m
+2025-09-23 19:39:49 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:51 - Processing template: coaching-business[0m
+[0;34m2025-09-23 19:39:51 - Worktree: /Users/ikim1/Documents/GitHub/templata-coaching-business[0m
+[1;33m2025-09-23 19:39:51 - Template file already exists: src/data/template-coaching-business.ts[0m
+2025-09-23 19:39:51 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:53 - Processing template: college-selection[0m
+[0;34m2025-09-23 19:39:53 - Worktree: /Users/ikim1/Documents/GitHub/templata-college-selection[0m
+[1;33m2025-09-23 19:39:53 - Template file already exists: src/data/template-college-selection.ts[0m
+2025-09-23 19:39:53 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:55 - Processing template: college-to-career-transition[0m
+[0;34m2025-09-23 19:39:55 - Worktree: /Users/ikim1/Documents/GitHub/templata-college-to-career-transition[0m
+[1;33m2025-09-23 19:39:55 - Template file already exists: src/data/template-college-to-career-transition.ts[0m
+2025-09-23 19:39:55 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:57 - Processing template: coming-out[0m
+[0;34m2025-09-23 19:39:57 - Worktree: /Users/ikim1/Documents/GitHub/templata-coming-out[0m
+[1;33m2025-09-23 19:39:57 - Template file already exists: src/data/template-coming-out.ts[0m
+2025-09-23 19:39:57 - Waiting 2s before next template...
+[0;34m2025-09-23 19:39:59 - Processing template: consulting-business[0m
+[0;34m2025-09-23 19:39:59 - Worktree: /Users/ikim1/Documents/GitHub/templata-consulting-business[0m
+[1;33m2025-09-23 19:39:59 - Template file already exists: src/data/template-consulting-business.ts[0m
+2025-09-23 19:39:59 - Waiting 2s before next template...
+[0;34m2025-09-23 19:40:01 - Processing template: content-creation[0m
+[0;34m2025-09-23 19:40:01 - Worktree: /Users/ikim1/Documents/GitHub/templata-content-creation[0m
+[1;33m2025-09-23 19:40:01 - Template file already exists: src/data/template-content-creation.ts[0m
+2025-09-23 19:40:01 - Waiting 2s before next template...
+[0;34m2025-09-23 19:40:04 - Processing template: content-creation-business[0m
+[0;34m2025-09-23 19:40:04 - Worktree: /Users/ikim1/Documents/GitHub/templata-content-creation-business[0m
+[1;33m2025-09-23 19:40:04 - Template file already exists: src/data/template-content-creation-business.ts[0m
+2025-09-23 19:40:04 - Waiting 2s before next template...
+[0;34m2025-09-23 19:40:06 - Processing template: cooking-mastery[0m
+[0;34m2025-09-23 19:40:06 - Worktree: /Users/ikim1/Documents/GitHub/templata-cooking-mastery[0m
+[1;33m2025-09-23 19:40:06 - Template file already exists: src/data/template-cooking-mastery.ts[0m
+2025-09-23 19:40:06 - Waiting 2s before next template...
+[0;34m2025-09-23 19:40:08 - Processing template: creative-freelancing[0m
+[0;34m2025-09-23 19:40:08 - Worktree: /Users/ikim1/Documents/GitHub/templata-creative-freelancing[0m
+[1;33m2025-09-23 19:40:08 - Template file already exists: src/data/template-creative-freelancing.ts[0m
+[0;32m2025-09-23 19:40:08 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 19:40:08 - Batch completed successfully[0m
+[0;34m2025-09-23 19:40:08 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 19:41:08 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 19:41:08 - Processing template: creative-writing[0m
+[0;34m2025-09-23 19:41:08 - Worktree: /Users/ikim1/Documents/GitHub/templata-creative-writing[0m
+[1;33m2025-09-23 19:41:08 - Template file already exists: src/data/template-creative-writing.ts[0m
+2025-09-23 19:41:08 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:10 - Processing template: crypto-portfolio[0m
+[0;34m2025-09-23 19:41:10 - Worktree: /Users/ikim1/Documents/GitHub/templata-crypto-portfolio[0m
+[1;33m2025-09-23 19:41:10 - Template file already exists: src/data/template-crypto-portfolio.ts[0m
+2025-09-23 19:41:10 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:12 - Processing template: dance-training[0m
+[0;34m2025-09-23 19:41:12 - Worktree: /Users/ikim1/Documents/GitHub/templata-dance-training[0m
+[1;33m2025-09-23 19:41:12 - Template file already exists: src/data/template-dance-training.ts[0m
+2025-09-23 19:41:12 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:14 - Processing template: death-of-spouse[0m
+[0;34m2025-09-23 19:41:14 - Worktree: /Users/ikim1/Documents/GitHub/templata-death-of-spouse[0m
+[1;33m2025-09-23 19:41:14 - Template file already exists: src/data/template-death-of-spouse.ts[0m
+2025-09-23 19:41:14 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:16 - Processing template: debt-payoff[0m
+[0;34m2025-09-23 19:41:16 - Worktree: /Users/ikim1/Documents/GitHub/templata-debt-payoff[0m
+[1;33m2025-09-23 19:41:16 - Template file already exists: src/data/template-debt-payoff.ts[0m
+2025-09-23 19:41:16 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:18 - Processing template: digital-detox[0m
+[0;34m2025-09-23 19:41:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-digital-detox[0m
+[1;33m2025-09-23 19:41:18 - Template file already exists: src/data/template-digital-detox.ts[0m
+2025-09-23 19:41:18 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:21 - Processing template: digital-nomad-planning[0m
+[0;34m2025-09-23 19:41:21 - Worktree: /Users/ikim1/Documents/GitHub/templata-digital-nomad-planning[0m
+[1;33m2025-09-23 19:41:21 - Template file already exists: src/data/template-digital-nomad-planning.ts[0m
+2025-09-23 19:41:21 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:23 - Processing template: disability-accommodation[0m
+[0;34m2025-09-23 19:41:23 - Worktree: /Users/ikim1/Documents/GitHub/templata-disability-accommodation[0m
+[1;33m2025-09-23 19:41:23 - Template file already exists: src/data/template-disability-accommodation.ts[0m
+2025-09-23 19:41:23 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:25 - Processing template: divorce-coordination[0m
+[0;34m2025-09-23 19:41:25 - Worktree: /Users/ikim1/Documents/GitHub/templata-divorce-coordination[0m
+[1;33m2025-09-23 19:41:25 - Template file already exists: src/data/template-divorce-coordination.ts[0m
+2025-09-23 19:41:25 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:27 - Processing template: divorce-process[0m
+[0;34m2025-09-23 19:41:27 - Worktree: /Users/ikim1/Documents/GitHub/templata-divorce-process[0m
+[1;33m2025-09-23 19:41:27 - Template file already exists: src/data/template-divorce-process.ts[0m
+2025-09-23 19:41:27 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:29 - Processing template: downsizing-decisions[0m
+[0;34m2025-09-23 19:41:29 - Worktree: /Users/ikim1/Documents/GitHub/templata-downsizing-decisions[0m
+[1;33m2025-09-23 19:41:29 - Template file already exists: src/data/template-downsizing-decisions.ts[0m
+2025-09-23 19:41:29 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:31 - Processing template: dropshipping[0m
+[0;34m2025-09-23 19:41:31 - Worktree: /Users/ikim1/Documents/GitHub/templata-dropshipping[0m
+[1;33m2025-09-23 19:41:31 - Template file already exists: src/data/template-dropshipping.ts[0m
+2025-09-23 19:41:31 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:33 - Processing template: e-commerce-store[0m
+[0;34m2025-09-23 19:41:33 - Worktree: /Users/ikim1/Documents/GitHub/templata-e-commerce-store[0m
+[1;33m2025-09-23 19:41:33 - Template file already exists: src/data/template-e-commerce-store.ts[0m
+2025-09-23 19:41:33 - Waiting 2s before next template...
+[0;34m2025-09-23 19:41:35 - Processing template: early-career-advancement[0m
+[0;34m2025-09-23 19:41:35 - Worktree: /Users/ikim1/Documents/GitHub/templata-early-career-advancement[0m
+[0;34m2025-09-23 19:41:35 - Starting Template Generation for: early-career-advancement[0m
+[1;33m2025-09-23 19:41:35 - Generating template file with Claude: template-early-career-advancement.ts[0m
+TEMPLATE GENERATION COMPLETE - early-career-advancement
+[0;32m2025-09-23 19:41:58 - Completed template generation for: early-career-advancement[0m
+[0;32m2025-09-23 19:41:58 - Template generation complete![0m
+[0;32m2025-09-23 19:41:58 - Generated template file: template-early-career-advancement.ts[0m
+[0;32m2025-09-23 19:41:58 - Successfully processed: early-career-advancement[0m
+2025-09-23 19:41:58 - Waiting 2s before next template...
+[0;34m2025-09-23 19:42:00 - Processing template: elder-care[0m
+[0;34m2025-09-23 19:42:00 - Worktree: /Users/ikim1/Documents/GitHub/templata-elder-care[0m
+[0;34m2025-09-23 19:42:00 - Starting Template Generation for: elder-care[0m
+[1;33m2025-09-23 19:42:00 - Generating template file with Claude: template-elder-care.ts[0m
+TEMPLATE GENERATION COMPLETE - elder-care
+[0;32m2025-09-23 19:42:15 - Completed template generation for: elder-care[0m
+[0;32m2025-09-23 19:42:15 - Template generation complete![0m
+[0;32m2025-09-23 19:42:15 - Generated template file: template-elder-care.ts[0m
+[0;32m2025-09-23 19:42:15 - Successfully processed: elder-care[0m
+2025-09-23 19:42:15 - Waiting 2s before next template...
+[0;34m2025-09-23 19:42:18 - Processing template: empty-nest[0m
+[0;34m2025-09-23 19:42:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-empty-nest[0m
+[1;33m2025-09-23 19:42:18 - Template file already exists: src/data/template-empty-nest.ts[0m
+2025-09-23 19:42:18 - Waiting 2s before next template...
+[0;34m2025-09-23 19:42:20 - Processing template: empty-nest-syndrome[0m
+[0;34m2025-09-23 19:42:20 - Worktree: /Users/ikim1/Documents/GitHub/templata-empty-nest-syndrome[0m
+[1;33m2025-09-23 19:42:20 - Template file already exists: src/data/template-empty-nest-syndrome.ts[0m
+2025-09-23 19:42:20 - Waiting 2s before next template...
+[0;34m2025-09-23 19:42:22 - Processing template: end-of-life-planning[0m
+[0;34m2025-09-23 19:42:22 - Worktree: /Users/ikim1/Documents/GitHub/templata-end-of-life-planning[0m
+[1;33m2025-09-23 19:42:22 - Template file already exists: src/data/template-end-of-life-planning.ts[0m
+2025-09-23 19:42:22 - Waiting 2s before next template...
+[0;34m2025-09-23 19:42:24 - Processing template: estate-planning[0m
+[0;34m2025-09-23 19:42:24 - Worktree: /Users/ikim1/Documents/GitHub/templata-estate-planning[0m
+[0;34m2025-09-23 19:42:24 - Starting Template Generation for: estate-planning[0m
+[1;33m2025-09-23 19:42:24 - Generating template file with Claude: template-estate-planning.ts[0m
+TEMPLATE GENERATION COMPLETE - estate-planning
+[0;32m2025-09-23 19:42:43 - Completed template generation for: estate-planning[0m
+[0;32m2025-09-23 19:42:43 - Template generation complete![0m
+[0;32m2025-09-23 19:42:43 - Generated template file: template-estate-planning.ts[0m
+[0;32m2025-09-23 19:42:43 - Successfully processed: estate-planning[0m
+2025-09-23 19:42:43 - Waiting 2s before next template...
+[0;34m2025-09-23 19:42:45 - Processing template: event-planning[0m
+[0;34m2025-09-23 19:42:45 - Worktree: /Users/ikim1/Documents/GitHub/templata-event-planning[0m
+[1;33m2025-09-23 19:42:45 - Template file already exists: src/data/template-event-planning.ts[0m
+[0;32m2025-09-23 19:42:45 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 19:42:45 - Batch completed successfully[0m
+[0;34m2025-09-23 19:42:45 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 19:43:45 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 19:43:45 - Processing template: executive-leadership-transition[0m
+[0;34m2025-09-23 19:43:45 - Worktree: /Users/ikim1/Documents/GitHub/templata-executive-leadership-transition[0m
+[1;33m2025-09-23 19:43:45 - Template file already exists: src/data/template-executive-leadership-transition.ts[0m
+2025-09-23 19:43:45 - Waiting 2s before next template...
+[0;34m2025-09-23 19:43:47 - Processing template: family-crisis-management[0m
+[0;34m2025-09-23 19:43:47 - Worktree: /Users/ikim1/Documents/GitHub/templata-family-crisis-management[0m
+[0;34m2025-09-23 19:43:47 - Starting Template Generation for: family-crisis-management[0m
+[1;33m2025-09-23 19:43:47 - Generating template file with Claude: template-family-crisis-management.ts[0m
+TEMPLATE GENERATION COMPLETE - family-crisis-management
+[0;32m2025-09-23 19:44:04 - Completed template generation for: family-crisis-management[0m
+[0;32m2025-09-23 19:44:04 - Template generation complete![0m
+[0;32m2025-09-23 19:44:04 - Generated template file: template-family-crisis-management.ts[0m
+[0;32m2025-09-23 19:44:04 - Successfully processed: family-crisis-management[0m
+2025-09-23 19:44:04 - Waiting 2s before next template...
+[0;34m2025-09-23 19:44:06 - Processing template: family-estrangement[0m
+[0;34m2025-09-23 19:44:06 - Worktree: /Users/ikim1/Documents/GitHub/templata-family-estrangement[0m
+[0;34m2025-09-23 19:44:06 - Starting Template Generation for: family-estrangement[0m
+[1;33m2025-09-23 19:44:06 - Generating template file with Claude: template-family-estrangement.ts[0m
+TEMPLATE GENERATION COMPLETE - family-estrangement
+[0;32m2025-09-23 19:44:25 - Completed template generation for: family-estrangement[0m
+[0;32m2025-09-23 19:44:25 - Template generation complete![0m
+[0;32m2025-09-23 19:44:25 - Generated template file: template-family-estrangement.ts[0m
+[0;32m2025-09-23 19:44:25 - Successfully processed: family-estrangement[0m
+2025-09-23 19:44:25 - Waiting 2s before next template...
+[0;34m2025-09-23 19:44:27 - Processing template: family-therapy[0m
+[0;34m2025-09-23 19:44:27 - Worktree: /Users/ikim1/Documents/GitHub/templata-family-therapy[0m
+[0;34m2025-09-23 19:44:27 - Starting Template Generation for: family-therapy[0m
+[1;33m2025-09-23 19:44:27 - Generating template file with Claude: template-family-therapy.ts[0m
+TEMPLATE GENERATION COMPLETE - family-therapy
+[0;32m2025-09-23 19:44:48 - Completed template generation for: family-therapy[0m
+[0;32m2025-09-23 19:44:48 - Template generation complete![0m
+[0;32m2025-09-23 19:44:48 - Generated template file: template-family-therapy.ts[0m
+[0;32m2025-09-23 19:44:48 - Successfully processed: family-therapy[0m
+2025-09-23 19:44:48 - Waiting 2s before next template...
+[0;34m2025-09-23 19:44:50 - Processing template: fashion-design[0m
+[0;34m2025-09-23 19:44:50 - Worktree: /Users/ikim1/Documents/GitHub/templata-fashion-design[0m
+[0;34m2025-09-23 19:44:50 - Starting Template Generation for: fashion-design[0m
+[1;33m2025-09-23 19:44:50 - Generating template file with Claude: template-fashion-design.ts[0m
+TEMPLATE GENERATION COMPLETE - fashion-design
+[0;32m2025-09-23 19:45:05 - Completed template generation for: fashion-design[0m
+[0;32m2025-09-23 19:45:05 - Template generation complete![0m
+[0;32m2025-09-23 19:45:05 - Generated template file: template-fashion-design.ts[0m
+[0;32m2025-09-23 19:45:05 - Successfully processed: fashion-design[0m
+2025-09-23 19:45:05 - Waiting 2s before next template...
+[0;34m2025-09-23 19:45:07 - Processing template: financial-independence[0m
+[0;34m2025-09-23 19:45:07 - Worktree: /Users/ikim1/Documents/GitHub/templata-financial-independence[0m
+[0;34m2025-09-23 19:45:07 - Starting Template Generation for: financial-independence[0m
+[1;33m2025-09-23 19:45:07 - Generating template file with Claude: template-financial-independence.ts[0m
+TEMPLATE GENERATION COMPLETE - financial-independence
+[0;32m2025-09-23 19:45:24 - Completed template generation for: financial-independence[0m
+[0;32m2025-09-23 19:45:24 - Template generation complete![0m
+[0;32m2025-09-23 19:45:24 - Generated template file: template-financial-independence.ts[0m
+[0;32m2025-09-23 19:45:24 - Successfully processed: financial-independence[0m
+2025-09-23 19:45:24 - Waiting 2s before next template...
+[0;34m2025-09-23 19:45:26 - Processing template: financial-independence-college[0m
+[0;34m2025-09-23 19:45:26 - Worktree: /Users/ikim1/Documents/GitHub/templata-financial-independence-college[0m
+[0;34m2025-09-23 19:45:26 - Starting Template Generation for: financial-independence-college[0m
+[1;33m2025-09-23 19:45:26 - Generating template file with Claude: template-financial-independence-college.ts[0m
+TEMPLATE GENERATION COMPLETE - financial-independence-college
+[0;32m2025-09-23 19:45:41 - Completed template generation for: financial-independence-college[0m
+[0;32m2025-09-23 19:45:41 - Template generation complete![0m
+[0;32m2025-09-23 19:45:41 - Generated template file: template-financial-independence-college.ts[0m
+[0;32m2025-09-23 19:45:41 - Successfully processed: financial-independence-college[0m
+2025-09-23 19:45:41 - Waiting 2s before next template...
+[0;34m2025-09-23 19:45:43 - Processing template: financial-recovery[0m
+[0;34m2025-09-23 19:45:43 - Worktree: /Users/ikim1/Documents/GitHub/templata-financial-recovery[0m
+[0;34m2025-09-23 19:45:43 - Starting Template Generation for: financial-recovery[0m
+[1;33m2025-09-23 19:45:43 - Generating template file with Claude: template-financial-recovery.ts[0m
+TEMPLATE GENERATION COMPLETE - financial-recovery
+[0;32m2025-09-23 19:46:27 - Completed template generation for: financial-recovery[0m
+[0;32m2025-09-23 19:46:27 - Template generation complete![0m
+[0;32m2025-09-23 19:46:27 - Generated template file: template-financial-recovery.ts[0m
+[0;32m2025-09-23 19:46:27 - Successfully processed: financial-recovery[0m
+2025-09-23 19:46:27 - Waiting 2s before next template...
+[0;34m2025-09-23 19:46:29 - Processing template: first-job-transition[0m
+[0;34m2025-09-23 19:46:29 - Worktree: /Users/ikim1/Documents/GitHub/templata-first-job-transition[0m
+[0;34m2025-09-23 19:46:29 - Starting Template Generation for: first-job-transition[0m
+[1;33m2025-09-23 19:46:29 - Generating template file with Claude: template-first-job-transition.ts[0m
+TEMPLATE GENERATION COMPLETE - first-job-transition
+[0;32m2025-09-23 19:46:45 - Completed template generation for: first-job-transition[0m
+[0;32m2025-09-23 19:46:45 - Template generation complete![0m
+[0;32m2025-09-23 19:46:45 - Generated template file: template-first-job-transition.ts[0m
+[0;32m2025-09-23 19:46:45 - Successfully processed: first-job-transition[0m
+2025-09-23 19:46:45 - Waiting 2s before next template...
+[0;34m2025-09-23 19:46:47 - Processing template: first-management-role[0m
+[0;34m2025-09-23 19:46:47 - Worktree: /Users/ikim1/Documents/GitHub/templata-first-management-role[0m
+[0;34m2025-09-23 19:46:47 - Starting Template Generation for: first-management-role[0m
+[1;33m2025-09-23 19:46:47 - Generating template file with Claude: template-first-management-role.ts[0m
+TEMPLATE GENERATION COMPLETE - first-management-role
+[0;32m2025-09-23 19:47:02 - Completed template generation for: first-management-role[0m
+[0;32m2025-09-23 19:47:02 - Template generation complete![0m
+[0;32m2025-09-23 19:47:02 - Generated template file: template-first-management-role.ts[0m
+[0;32m2025-09-23 19:47:02 - Successfully processed: first-management-role[0m
+2025-09-23 19:47:02 - Waiting 2s before next template...
+[0;34m2025-09-23 19:47:04 - Processing template: first-serious-relationship[0m
+[0;34m2025-09-23 19:47:04 - Worktree: /Users/ikim1/Documents/GitHub/templata-first-serious-relationship[0m
+[0;34m2025-09-23 19:47:04 - Starting Template Generation for: first-serious-relationship[0m
+[1;33m2025-09-23 19:47:04 - Generating template file with Claude: template-first-serious-relationship.ts[0m
+TEMPLATE GENERATION COMPLETE - first-serious-relationship
+[0;32m2025-09-23 19:47:25 - Completed template generation for: first-serious-relationship[0m
+[0;32m2025-09-23 19:47:25 - Template generation complete![0m
+[0;32m2025-09-23 19:47:25 - Generated template file: template-first-serious-relationship.ts[0m
+[0;32m2025-09-23 19:47:25 - Successfully processed: first-serious-relationship[0m
+2025-09-23 19:47:25 - Waiting 2s before next template...
+[0;34m2025-09-23 19:47:27 - Processing template: first-time-parent[0m
+[0;34m2025-09-23 19:47:27 - Worktree: /Users/ikim1/Documents/GitHub/templata-first-time-parent[0m
+[0;34m2025-09-23 19:47:27 - Starting Template Generation for: first-time-parent[0m
+[1;33m2025-09-23 19:47:27 - Generating template file with Claude: template-first-time-parent.ts[0m
+TEMPLATE GENERATION COMPLETE - first-time-parent
+[0;32m2025-09-23 19:47:42 - Completed template generation for: first-time-parent[0m
+[0;32m2025-09-23 19:47:42 - Template generation complete![0m
+[0;32m2025-09-23 19:47:42 - Generated template file: template-first-time-parent.ts[0m
+[0;32m2025-09-23 19:47:42 - Successfully processed: first-time-parent[0m
+2025-09-23 19:47:42 - Waiting 2s before next template...
+[0;34m2025-09-23 19:47:44 - Processing template: fitness-journey[0m
+[0;34m2025-09-23 19:47:44 - Worktree: /Users/ikim1/Documents/GitHub/templata-fitness-journey[0m
+[0;34m2025-09-23 19:47:44 - Starting Template Generation for: fitness-journey[0m
+[1;33m2025-09-23 19:47:44 - Generating template file with Claude: template-fitness-journey.ts[0m
+TEMPLATE GENERATION COMPLETE - fitness-journey
+[0;32m2025-09-23 19:47:59 - Completed template generation for: fitness-journey[0m
+[0;32m2025-09-23 19:47:59 - Template generation complete![0m
+[0;32m2025-09-23 19:47:59 - Generated template file: template-fitness-journey.ts[0m
+[0;32m2025-09-23 19:47:59 - Successfully processed: fitness-journey[0m
+2025-09-23 19:47:59 - Waiting 2s before next template...
+[0;34m2025-09-23 19:48:01 - Processing template: fixed-income-management[0m
+[0;34m2025-09-23 19:48:01 - Worktree: /Users/ikim1/Documents/GitHub/templata-fixed-income-management[0m
+[0;34m2025-09-23 19:48:01 - Starting Template Generation for: fixed-income-management[0m
+[1;33m2025-09-23 19:48:01 - Generating template file with Claude: template-fixed-income-management.ts[0m
+TEMPLATE GENERATION COMPLETE - fixed-income-management
+[0;32m2025-09-23 19:48:16 - Completed template generation for: fixed-income-management[0m
+[0;32m2025-09-23 19:48:16 - Template generation complete![0m
+[0;32m2025-09-23 19:48:16 - Generated template file: template-fixed-income-management.ts[0m
+[0;32m2025-09-23 19:48:16 - Successfully processed: fixed-income-management[0m
+2025-09-23 19:48:16 - Waiting 2s before next template...
+[0;34m2025-09-23 19:48:18 - Processing template: fraternity-sorority-decisions[0m
+[0;34m2025-09-23 19:48:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-fraternity-sorority-decisions[0m
+[0;34m2025-09-23 19:48:18 - Starting Template Generation for: fraternity-sorority-decisions[0m
+[1;33m2025-09-23 19:48:18 - Generating template file with Claude: template-fraternity-sorority-decisions.ts[0m
+TEMPLATE GENERATION COMPLETE - fraternity-sorority-decisions
+[0;32m2025-09-23 19:48:38 - Completed template generation for: fraternity-sorority-decisions[0m
+[0;32m2025-09-23 19:48:38 - Template generation complete![0m
+[0;32m2025-09-23 19:48:38 - Generated template file: template-fraternity-sorority-decisions.ts[0m
+[0;32m2025-09-23 19:48:38 - Successfully processed: fraternity-sorority-decisions[0m
+2025-09-23 19:48:38 - Waiting 2s before next template...
+[0;34m2025-09-23 19:48:40 - Processing template: freelance-business[0m
+[0;34m2025-09-23 19:48:40 - Worktree: /Users/ikim1/Documents/GitHub/templata-freelance-business[0m
+[0;34m2025-09-23 19:48:40 - Starting Template Generation for: freelance-business[0m
+[1;33m2025-09-23 19:48:40 - Generating template file with Claude: template-freelance-business.ts[0m
+TEMPLATE GENERATION COMPLETE - freelance-business
+[0;32m2025-09-23 19:48:55 - Completed template generation for: freelance-business[0m
+[0;32m2025-09-23 19:48:55 - Template generation complete![0m
+[0;32m2025-09-23 19:48:55 - Generated template file: template-freelance-business.ts[0m
+[0;32m2025-09-23 19:48:55 - Successfully processed: freelance-business[0m
+2025-09-23 19:48:55 - Waiting 2s before next template...
+[0;34m2025-09-23 19:48:57 - Processing template: garden-planning[0m
+[0;34m2025-09-23 19:48:57 - Worktree: /Users/ikim1/Documents/GitHub/templata-garden-planning[0m
+[0;34m2025-09-23 19:48:57 - Starting Template Generation for: garden-planning[0m
+[1;33m2025-09-23 19:48:57 - Generating template file with Claude: template-garden-planning.ts[0m
+TEMPLATE GENERATION COMPLETE - garden-planning
+[0;32m2025-09-23 19:49:12 - Completed template generation for: garden-planning[0m
+[0;32m2025-09-23 19:49:12 - Template generation complete![0m
+[0;32m2025-09-23 19:49:12 - Generated template file: template-garden-planning.ts[0m
+[0;32m2025-09-23 19:49:12 - Successfully processed: garden-planning[0m
+2025-09-23 19:49:12 - Waiting 2s before next template...
+[0;34m2025-09-23 19:49:14 - Processing template: geographic-relocation[0m
+[0;34m2025-09-23 19:49:14 - Worktree: /Users/ikim1/Documents/GitHub/templata-geographic-relocation[0m
+[0;34m2025-09-23 19:49:14 - Starting Template Generation for: geographic-relocation[0m
+[1;33m2025-09-23 19:49:14 - Generating template file with Claude: template-geographic-relocation.ts[0m
+TEMPLATE GENERATION COMPLETE - geographic-relocation
+[0;32m2025-09-23 19:49:29 - Completed template generation for: geographic-relocation[0m
+[0;32m2025-09-23 19:49:29 - Template generation complete![0m
+[0;32m2025-09-23 19:49:29 - Generated template file: template-geographic-relocation.ts[0m
+[0;32m2025-09-23 19:49:29 - Successfully processed: geographic-relocation[0m
+2025-09-23 19:49:29 - Waiting 2s before next template...
+[0;34m2025-09-23 19:49:31 - Processing template: graduate-school-decisions[0m
+[0;34m2025-09-23 19:49:31 - Worktree: /Users/ikim1/Documents/GitHub/templata-graduate-school-decisions[0m
+[0;34m2025-09-23 19:49:31 - Starting Template Generation for: graduate-school-decisions[0m
+[1;33m2025-09-23 19:49:31 - Generating template file with Claude: template-graduate-school-decisions.ts[0m
+TEMPLATE GENERATION COMPLETE - graduate-school-decisions
+[0;32m2025-09-23 19:49:56 - Completed template generation for: graduate-school-decisions[0m
+[0;32m2025-09-23 19:49:56 - Template generation complete![0m
+[0;32m2025-09-23 19:49:56 - Generated template file: template-graduate-school-decisions.ts[0m
+[0;32m2025-09-23 19:49:56 - Successfully processed: graduate-school-decisions[0m
+2025-09-23 19:49:56 - Waiting 2s before next template...
+[0;34m2025-09-23 19:49:58 - Processing template: grandparent-role[0m
+[0;34m2025-09-23 19:49:58 - Worktree: /Users/ikim1/Documents/GitHub/templata-grandparent-role[0m
+[0;34m2025-09-23 19:49:58 - Starting Template Generation for: grandparent-role[0m
+[1;33m2025-09-23 19:49:58 - Generating template file with Claude: template-grandparent-role.ts[0m
+TEMPLATE GENERATION COMPLETE - grandparent-role
+[0;32m2025-09-23 19:50:18 - Completed template generation for: grandparent-role[0m
+[0;32m2025-09-23 19:50:18 - Template generation complete![0m
+[0;32m2025-09-23 19:50:18 - Generated template file: template-grandparent-role.ts[0m
+[0;32m2025-09-23 19:50:18 - Successfully processed: grandparent-role[0m
+[0;32m2025-09-23 19:50:18 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 19:50:18 - Batch completed successfully[0m
+[0;34m2025-09-23 19:50:18 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 19:51:18 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 19:51:18 - Processing template: grief-loss[0m
+[0;34m2025-09-23 19:51:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-grief-loss[0m
+[0;34m2025-09-23 19:51:18 - Starting Template Generation for: grief-loss[0m
+[1;33m2025-09-23 19:51:18 - Generating template file with Claude: template-grief-loss.ts[0m
+TEMPLATE GENERATION COMPLETE - grief-loss
+[0;32m2025-09-23 19:51:34 - Completed template generation for: grief-loss[0m
+[0;32m2025-09-23 19:51:34 - Template generation complete![0m
+[0;32m2025-09-23 19:51:34 - Generated template file: template-grief-loss.ts[0m
+[0;32m2025-09-23 19:51:34 - Successfully processed: grief-loss[0m
+2025-09-23 19:51:34 - Waiting 2s before next template...
+[0;34m2025-09-23 19:51:36 - Processing template: habit-tracking[0m
+[0;34m2025-09-23 19:51:36 - Worktree: /Users/ikim1/Documents/GitHub/templata-habit-tracking[0m
+[0;34m2025-09-23 19:51:36 - Starting Template Generation for: habit-tracking[0m
+[1;33m2025-09-23 19:51:36 - Generating template file with Claude: template-habit-tracking.ts[0m
+TEMPLATE GENERATION COMPLETE - habit-tracking
+[0;32m2025-09-23 19:51:51 - Completed template generation for: habit-tracking[0m
+[0;32m2025-09-23 19:51:51 - Template generation complete![0m
+[0;32m2025-09-23 19:51:51 - Generated template file: template-habit-tracking.ts[0m
+[0;32m2025-09-23 19:51:51 - Successfully processed: habit-tracking[0m
+2025-09-23 19:51:51 - Waiting 2s before next template...
+[0;34m2025-09-23 19:51:53 - Processing template: health-crisis-management[0m
+[0;34m2025-09-23 19:51:53 - Worktree: /Users/ikim1/Documents/GitHub/templata-health-crisis-management[0m
+[0;34m2025-09-23 19:51:53 - Starting Template Generation for: health-crisis-management[0m
+[1;33m2025-09-23 19:51:53 - Generating template file with Claude: template-health-crisis-management.ts[0m
+TEMPLATE GENERATION COMPLETE - health-crisis-management
+[0;32m2025-09-23 19:52:08 - Completed template generation for: health-crisis-management[0m
+[0;32m2025-09-23 19:52:08 - Template generation complete![0m
+[0;32m2025-09-23 19:52:08 - Generated template file: template-health-crisis-management.ts[0m
+[0;32m2025-09-23 19:52:08 - Successfully processed: health-crisis-management[0m
+2025-09-23 19:52:08 - Waiting 2s before next template...
+[0;34m2025-09-23 19:52:10 - Processing template: health-decline-navigation[0m
+[0;34m2025-09-23 19:52:10 - Worktree: /Users/ikim1/Documents/GitHub/templata-health-decline-navigation[0m
+[0;34m2025-09-23 19:52:10 - Starting Template Generation for: health-decline-navigation[0m
+[1;33m2025-09-23 19:52:10 - Generating template file with Claude: template-health-decline-navigation.ts[0m
+TEMPLATE GENERATION COMPLETE - health-decline-navigation
+[0;32m2025-09-23 19:52:25 - Completed template generation for: health-decline-navigation[0m
+[0;32m2025-09-23 19:52:25 - Template generation complete![0m
+[0;32m2025-09-23 19:52:25 - Generated template file: template-health-decline-navigation.ts[0m
+[0;32m2025-09-23 19:52:25 - Successfully processed: health-decline-navigation[0m
+2025-09-23 19:52:25 - Waiting 2s before next template...
+[0;34m2025-09-23 19:52:28 - Processing template: hobby-photography[0m
+[0;34m2025-09-23 19:52:28 - Worktree: /Users/ikim1/Documents/GitHub/templata-hobby-photography[0m
+[0;34m2025-09-23 19:52:28 - Starting Template Generation for: hobby-photography[0m
+[1;33m2025-09-23 19:52:28 - Generating template file with Claude: template-hobby-photography.ts[0m
+TEMPLATE GENERATION COMPLETE - hobby-photography
+[0;32m2025-09-23 19:52:43 - Completed template generation for: hobby-photography[0m
+[0;32m2025-09-23 19:52:43 - Template generation complete![0m
+[0;32m2025-09-23 19:52:43 - Generated template file: template-hobby-photography.ts[0m
+[0;32m2025-09-23 19:52:43 - Successfully processed: hobby-photography[0m
+2025-09-23 19:52:43 - Waiting 2s before next template...
+[0;34m2025-09-23 19:52:45 - Processing template: hobby-project[0m
+[0;34m2025-09-23 19:52:45 - Worktree: /Users/ikim1/Documents/GitHub/templata-hobby-project[0m
+[0;34m2025-09-23 19:52:45 - Starting Template Generation for: hobby-project[0m
+[1;33m2025-09-23 19:52:45 - Generating template file with Claude: template-hobby-project.ts[0m
+TEMPLATE GENERATION COMPLETE - hobby-project
+[0;32m2025-09-23 19:53:01 - Completed template generation for: hobby-project[0m
+[0;32m2025-09-23 19:53:01 - Template generation complete![0m
+[0;32m2025-09-23 19:53:01 - Generated template file: template-hobby-project.ts[0m
+[0;32m2025-09-23 19:53:01 - Successfully processed: hobby-project[0m
+2025-09-23 19:53:01 - Waiting 2s before next template...
+[0;34m2025-09-23 19:53:03 - Processing template: home-automation[0m
+[0;34m2025-09-23 19:53:03 - Worktree: /Users/ikim1/Documents/GitHub/templata-home-automation[0m
+[0;34m2025-09-23 19:53:03 - Starting Template Generation for: home-automation[0m
+[1;33m2025-09-23 19:53:03 - Generating template file with Claude: template-home-automation.ts[0m
+TEMPLATE GENERATION COMPLETE - home-automation
+[0;32m2025-09-23 19:53:19 - Completed template generation for: home-automation[0m
+[0;32m2025-09-23 19:53:19 - Template generation complete![0m
+[0;32m2025-09-23 19:53:19 - Generated template file: template-home-automation.ts[0m
+[0;32m2025-09-23 19:53:19 - Successfully processed: home-automation[0m
+2025-09-23 19:53:19 - Waiting 2s before next template...
+[0;34m2025-09-23 19:53:21 - Processing template: home-buying[0m
+[0;34m2025-09-23 19:53:21 - Worktree: /Users/ikim1/Documents/GitHub/templata-home-buying[0m
+[0;34m2025-09-23 19:53:21 - Starting Template Generation for: home-buying[0m
+[1;33m2025-09-23 19:53:21 - Generating template file with Claude: template-home-buying.ts[0m
+TEMPLATE GENERATION COMPLETE - home-buying
+[0;32m2025-09-23 19:53:37 - Completed template generation for: home-buying[0m
+[0;32m2025-09-23 19:53:37 - Template generation complete![0m
+[0;32m2025-09-23 19:53:37 - Generated template file: template-home-buying.ts[0m
+[0;32m2025-09-23 19:53:37 - Successfully processed: home-buying[0m
+2025-09-23 19:53:37 - Waiting 2s before next template...
+[0;34m2025-09-23 19:53:39 - Processing template: home-renovation[0m
+[0;34m2025-09-23 19:53:40 - Worktree: /Users/ikim1/Documents/GitHub/templata-home-renovation[0m
+[0;34m2025-09-23 19:53:40 - Starting Template Generation for: home-renovation[0m
+[1;33m2025-09-23 19:53:40 - Generating template file with Claude: template-home-renovation.ts[0m
+TEMPLATE GENERATION COMPLETE - home-renovation
+[0;32m2025-09-23 19:53:54 - Completed template generation for: home-renovation[0m
+[0;32m2025-09-23 19:53:54 - Template generation complete![0m
+[0;32m2025-09-23 19:53:54 - Generated template file: template-home-renovation.ts[0m
+[0;32m2025-09-23 19:53:54 - Successfully processed: home-renovation[0m
+2025-09-23 19:53:54 - Waiting 2s before next template...
+[0;34m2025-09-23 19:53:56 - Processing template: identity-theft[0m
+[0;34m2025-09-23 19:53:56 - Worktree: /Users/ikim1/Documents/GitHub/templata-identity-theft[0m
+[0;34m2025-09-23 19:53:56 - Starting Template Generation for: identity-theft[0m
+[1;33m2025-09-23 19:53:56 - Generating template file with Claude: template-identity-theft.ts[0m
+TEMPLATE GENERATION COMPLETE - identity-theft
+[0;32m2025-09-23 19:54:13 - Completed template generation for: identity-theft[0m
+[0;32m2025-09-23 19:54:13 - Template generation complete![0m
+[0;32m2025-09-23 19:54:13 - Generated template file: template-identity-theft.ts[0m
+[0;32m2025-09-23 19:54:13 - Successfully processed: identity-theft[0m
+2025-09-23 19:54:13 - Waiting 2s before next template...
+[0;34m2025-09-23 19:54:15 - Processing template: identity-theft-recovery[0m
+[0;34m2025-09-23 19:54:15 - Worktree: /Users/ikim1/Documents/GitHub/templata-identity-theft-recovery[0m
+[0;34m2025-09-23 19:54:15 - Starting Template Generation for: identity-theft-recovery[0m
+[1;33m2025-09-23 19:54:15 - Generating template file with Claude: template-identity-theft-recovery.ts[0m
+TEMPLATE GENERATION COMPLETE - identity-theft-recovery
+[0;32m2025-09-23 19:54:36 - Completed template generation for: identity-theft-recovery[0m
+[0;32m2025-09-23 19:54:36 - Template generation complete![0m
+[0;32m2025-09-23 19:54:36 - Generated template file: template-identity-theft-recovery.ts[0m
+[0;32m2025-09-23 19:54:36 - Successfully processed: identity-theft-recovery[0m
+2025-09-23 19:54:36 - Waiting 2s before next template...
+[0;34m2025-09-23 19:54:38 - Processing template: immigration-journey[0m
+[0;34m2025-09-23 19:54:38 - Worktree: /Users/ikim1/Documents/GitHub/templata-immigration-journey[0m
+[0;34m2025-09-23 19:54:38 - Starting Template Generation for: immigration-journey[0m
+[1;33m2025-09-23 19:54:38 - Generating template file with Claude: template-immigration-journey.ts[0m
+TEMPLATE GENERATION COMPLETE - immigration-journey
+[0;32m2025-09-23 19:54:53 - Completed template generation for: immigration-journey[0m
+[0;32m2025-09-23 19:54:53 - Template generation complete![0m
+[0;32m2025-09-23 19:54:53 - Generated template file: template-immigration-journey.ts[0m
+[0;32m2025-09-23 19:54:53 - Successfully processed: immigration-journey[0m
+2025-09-23 19:54:53 - Waiting 2s before next template...
+[0;34m2025-09-23 19:54:55 - Processing template: insurance-optimization[0m
+[0;34m2025-09-23 19:54:55 - Worktree: /Users/ikim1/Documents/GitHub/templata-insurance-optimization[0m
+[0;34m2025-09-23 19:54:55 - Starting Template Generation for: insurance-optimization[0m
+[1;33m2025-09-23 19:54:55 - Generating template file with Claude: template-insurance-optimization.ts[0m
+TEMPLATE GENERATION COMPLETE - insurance-optimization
+[0;32m2025-09-23 19:55:10 - Completed template generation for: insurance-optimization[0m
+[0;32m2025-09-23 19:55:10 - Template generation complete![0m
+[0;32m2025-09-23 19:55:10 - Generated template file: template-insurance-optimization.ts[0m
+[0;32m2025-09-23 19:55:10 - Successfully processed: insurance-optimization[0m
+2025-09-23 19:55:10 - Waiting 2s before next template...
+[0;34m2025-09-23 19:55:12 - Processing template: interior-design[0m
+[0;34m2025-09-23 19:55:12 - Worktree: /Users/ikim1/Documents/GitHub/templata-interior-design[0m
+[0;34m2025-09-23 19:55:12 - Starting Template Generation for: interior-design[0m
+[1;33m2025-09-23 19:55:12 - Generating template file with Claude: template-interior-design.ts[0m
+TEMPLATE GENERATION COMPLETE - interior-design
+[0;32m2025-09-23 19:55:28 - Completed template generation for: interior-design[0m
+[0;32m2025-09-23 19:55:28 - Template generation complete![0m
+[0;32m2025-09-23 19:55:28 - Generated template file: template-interior-design.ts[0m
+[0;32m2025-09-23 19:55:28 - Successfully processed: interior-design[0m
+2025-09-23 19:55:28 - Waiting 2s before next template...
+[0;34m2025-09-23 19:55:30 - Processing template: internship-competition[0m
+[0;34m2025-09-23 19:55:30 - Worktree: /Users/ikim1/Documents/GitHub/templata-internship-competition[0m
+[0;34m2025-09-23 19:55:30 - Starting Template Generation for: internship-competition[0m
+[1;33m2025-09-23 19:55:30 - Generating template file with Claude: template-internship-competition.ts[0m
+TEMPLATE GENERATION COMPLETE - internship-competition
+[0;32m2025-09-23 19:55:47 - Completed template generation for: internship-competition[0m
+[0;32m2025-09-23 19:55:47 - Template generation complete![0m
+[0;32m2025-09-23 19:55:47 - Generated template file: template-internship-competition.ts[0m
+[0;32m2025-09-23 19:55:47 - Successfully processed: internship-competition[0m
+2025-09-23 19:55:47 - Waiting 2s before next template...
+[0;34m2025-09-23 19:55:49 - Processing template: investing-finance[0m
+[0;34m2025-09-23 19:55:49 - Worktree: /Users/ikim1/Documents/GitHub/templata-investing-finance[0m
+[0;34m2025-09-23 19:55:49 - Starting Template Generation for: investing-finance[0m
+[1;33m2025-09-23 19:55:49 - Generating template file with Claude: template-investing-finance.ts[0m
+TEMPLATE GENERATION COMPLETE - investing-finance
+[0;32m2025-09-23 19:56:03 - Completed template generation for: investing-finance[0m
+[0;32m2025-09-23 19:56:03 - Template generation complete![0m
+[0;32m2025-09-23 19:56:03 - Generated template file: template-investing-finance.ts[0m
+[0;32m2025-09-23 19:56:03 - Successfully processed: investing-finance[0m
+2025-09-23 19:56:03 - Waiting 2s before next template...
+[0;34m2025-09-23 19:56:05 - Processing template: investment-portfolio[0m
+[0;34m2025-09-23 19:56:05 - Worktree: /Users/ikim1/Documents/GitHub/templata-investment-portfolio[0m
+[0;34m2025-09-23 19:56:05 - Starting Template Generation for: investment-portfolio[0m
+[1;33m2025-09-23 19:56:05 - Generating template file with Claude: template-investment-portfolio.ts[0m
+TEMPLATE GENERATION COMPLETE - investment-portfolio
+[0;32m2025-09-23 19:56:23 - Completed template generation for: investment-portfolio[0m
+[0;32m2025-09-23 19:56:23 - Template generation complete![0m
+[0;32m2025-09-23 19:56:24 - Generated template file: template-investment-portfolio.ts[0m
+[0;32m2025-09-23 19:56:24 - Successfully processed: investment-portfolio[0m
+2025-09-23 19:56:24 - Waiting 2s before next template...
+[0;34m2025-09-23 19:56:26 - Processing template: investment-property[0m
+[0;34m2025-09-23 19:56:26 - Worktree: /Users/ikim1/Documents/GitHub/templata-investment-property[0m
+[0;34m2025-09-23 19:56:26 - Starting Template Generation for: investment-property[0m
+[1;33m2025-09-23 19:56:26 - Generating template file with Claude: template-investment-property.ts[0m
+TEMPLATE GENERATION COMPLETE - investment-property
+[0;32m2025-09-23 19:56:42 - Completed template generation for: investment-property[0m
+[0;32m2025-09-23 19:56:42 - Template generation complete![0m
+[0;32m2025-09-23 19:56:42 - Generated template file: template-investment-property.ts[0m
+[0;32m2025-09-23 19:56:42 - Successfully processed: investment-property[0m
+2025-09-23 19:56:42 - Waiting 2s before next template...
+[0;34m2025-09-23 19:56:44 - Processing template: job-loss-navigation[0m
+[0;34m2025-09-23 19:56:44 - Worktree: /Users/ikim1/Documents/GitHub/templata-job-loss-navigation[0m
+[0;34m2025-09-23 19:56:44 - Starting Template Generation for: job-loss-navigation[0m
+[1;33m2025-09-23 19:56:44 - Generating template file with Claude: template-job-loss-navigation.ts[0m
+TEMPLATE GENERATION COMPLETE - job-loss-navigation
+[0;32m2025-09-23 19:57:00 - Completed template generation for: job-loss-navigation[0m
+[0;32m2025-09-23 19:57:00 - Template generation complete![0m
+[0;32m2025-09-23 19:57:00 - Generated template file: template-job-loss-navigation.ts[0m
+[0;32m2025-09-23 19:57:00 - Successfully processed: job-loss-navigation[0m
+2025-09-23 19:57:00 - Waiting 2s before next template...
+[0;34m2025-09-23 19:57:02 - Processing template: job-loss-recovery[0m
+[0;34m2025-09-23 19:57:02 - Worktree: /Users/ikim1/Documents/GitHub/templata-job-loss-recovery[0m
+[0;34m2025-09-23 19:57:02 - Starting Template Generation for: job-loss-recovery[0m
+[1;33m2025-09-23 19:57:02 - Generating template file with Claude: template-job-loss-recovery.ts[0m
+TEMPLATE GENERATION COMPLETE - job-loss-recovery
+[0;32m2025-09-23 19:57:18 - Completed template generation for: job-loss-recovery[0m
+[0;32m2025-09-23 19:57:18 - Template generation complete![0m
+[0;32m2025-09-23 19:57:18 - Generated template file: template-job-loss-recovery.ts[0m
+[0;32m2025-09-23 19:57:18 - Successfully processed: job-loss-recovery[0m
+[0;32m2025-09-23 19:57:18 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 19:57:18 - Batch completed successfully[0m
+[0;34m2025-09-23 19:57:18 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 19:58:18 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 19:58:18 - Processing template: job-search[0m
+[0;34m2025-09-23 19:58:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-job-search[0m
+[0;34m2025-09-23 19:58:18 - Starting Template Generation for: job-search[0m
+[1;33m2025-09-23 19:58:18 - Generating template file with Claude: template-job-search.ts[0m
+TEMPLATE GENERATION COMPLETE - job-search
+[0;32m2025-09-23 19:58:34 - Completed template generation for: job-search[0m
+[0;32m2025-09-23 19:58:34 - Template generation complete![0m
+[0;32m2025-09-23 19:58:34 - Generated template file: template-job-search.ts[0m
+[0;32m2025-09-23 19:58:34 - Successfully processed: job-search[0m
+2025-09-23 19:58:34 - Waiting 2s before next template...
+[0;34m2025-09-23 19:58:36 - Processing template: job-transition[0m
+[0;34m2025-09-23 19:58:36 - Worktree: /Users/ikim1/Documents/GitHub/templata-job-transition[0m
+[0;34m2025-09-23 19:58:36 - Starting Template Generation for: job-transition[0m
+[1;33m2025-09-23 19:58:36 - Generating template file with Claude: template-job-transition.ts[0m
+TEMPLATE GENERATION COMPLETE - job-transition
+[0;32m2025-09-23 19:58:51 - Completed template generation for: job-transition[0m
+[0;32m2025-09-23 19:58:51 - Template generation complete![0m
+[0;32m2025-09-23 19:58:51 - Generated template file: template-job-transition.ts[0m
+[0;32m2025-09-23 19:58:51 - Successfully processed: job-transition[0m
+2025-09-23 19:58:51 - Waiting 2s before next template...
+[0;34m2025-09-23 19:58:53 - Processing template: language-learning[0m
+[0;34m2025-09-23 19:58:53 - Worktree: /Users/ikim1/Documents/GitHub/templata-language-learning[0m
+[0;34m2025-09-23 19:58:53 - Starting Template Generation for: language-learning[0m
+[1;33m2025-09-23 19:58:53 - Generating template file with Claude: template-language-learning.ts[0m
+TEMPLATE GENERATION COMPLETE - language-learning
+[0;32m2025-09-23 19:59:08 - Completed template generation for: language-learning[0m
+[0;32m2025-09-23 19:59:08 - Template generation complete![0m
+[0;32m2025-09-23 19:59:08 - Generated template file: template-language-learning.ts[0m
+[0;32m2025-09-23 19:59:08 - Successfully processed: language-learning[0m
+2025-09-23 19:59:08 - Waiting 2s before next template...
+[0;34m2025-09-23 19:59:10 - Processing template: legal-issue-management[0m
+[0;34m2025-09-23 19:59:10 - Worktree: /Users/ikim1/Documents/GitHub/templata-legal-issue-management[0m
+[0;34m2025-09-23 19:59:10 - Starting Template Generation for: legal-issue-management[0m
+[1;33m2025-09-23 19:59:10 - Generating template file with Claude: template-legal-issue-management.ts[0m
+TEMPLATE GENERATION COMPLETE - legal-issue-management
+[0;32m2025-09-23 19:59:26 - Completed template generation for: legal-issue-management[0m
+[0;32m2025-09-23 19:59:26 - Template generation complete![0m
+[0;32m2025-09-23 19:59:26 - Generated template file: template-legal-issue-management.ts[0m
+[0;32m2025-09-23 19:59:26 - Successfully processed: legal-issue-management[0m
+2025-09-23 19:59:26 - Waiting 2s before next template...
+[0;34m2025-09-23 19:59:28 - Processing template: long-distance-relationship[0m
+[0;34m2025-09-23 19:59:28 - Worktree: /Users/ikim1/Documents/GitHub/templata-long-distance-relationship[0m
+[0;34m2025-09-23 19:59:28 - Starting Template Generation for: long-distance-relationship[0m
+[1;33m2025-09-23 19:59:28 - Generating template file with Claude: template-long-distance-relationship.ts[0m
+TEMPLATE GENERATION COMPLETE - long-distance-relationship
+[0;32m2025-09-23 19:59:43 - Completed template generation for: long-distance-relationship[0m
+[0;32m2025-09-23 19:59:43 - Template generation complete![0m
+[0;32m2025-09-23 19:59:43 - Generated template file: template-long-distance-relationship.ts[0m
+[0;32m2025-09-23 19:59:43 - Successfully processed: long-distance-relationship[0m
+2025-09-23 19:59:43 - Waiting 2s before next template...
+[0;34m2025-09-23 19:59:45 - Processing template: marathon-training[0m
+[0;34m2025-09-23 19:59:45 - Worktree: /Users/ikim1/Documents/GitHub/templata-marathon-training[0m
+[0;34m2025-09-23 19:59:45 - Starting Template Generation for: marathon-training[0m
+[1;33m2025-09-23 19:59:45 - Generating template file with Claude: template-marathon-training.ts[0m
+TEMPLATE GENERATION COMPLETE - marathon-training
+[0;32m2025-09-23 20:00:00 - Completed template generation for: marathon-training[0m
+[0;32m2025-09-23 20:00:00 - Template generation complete![0m
+[0;32m2025-09-23 20:00:00 - Generated template file: template-marathon-training.ts[0m
+[0;32m2025-09-23 20:00:00 - Successfully processed: marathon-training[0m
+2025-09-23 20:00:00 - Waiting 2s before next template...
+[0;34m2025-09-23 20:00:02 - Processing template: marriage-maintenance[0m
+[0;34m2025-09-23 20:00:02 - Worktree: /Users/ikim1/Documents/GitHub/templata-marriage-maintenance[0m
+[0;34m2025-09-23 20:00:02 - Starting Template Generation for: marriage-maintenance[0m
+[1;33m2025-09-23 20:00:02 - Generating template file with Claude: template-marriage-maintenance.ts[0m
+TEMPLATE GENERATION COMPLETE - marriage-maintenance
+[0;32m2025-09-23 20:00:17 - Completed template generation for: marriage-maintenance[0m
+[0;32m2025-09-23 20:00:17 - Template generation complete![0m
+[0;32m2025-09-23 20:00:17 - Generated template file: template-marriage-maintenance.ts[0m
+[0;32m2025-09-23 20:00:17 - Successfully processed: marriage-maintenance[0m
+2025-09-23 20:00:17 - Waiting 2s before next template...
+[0;34m2025-09-23 20:00:19 - Processing template: meal-planning[0m
+[0;34m2025-09-23 20:00:19 - Worktree: /Users/ikim1/Documents/GitHub/templata-meal-planning[0m
+[0;34m2025-09-23 20:00:19 - Starting Template Generation for: meal-planning[0m
+[1;33m2025-09-23 20:00:19 - Generating template file with Claude: template-meal-planning.ts[0m
+TEMPLATE GENERATION COMPLETE - meal-planning
+[0;32m2025-09-23 20:00:36 - Completed template generation for: meal-planning[0m
+[0;32m2025-09-23 20:00:36 - Template generation complete![0m
+[0;32m2025-09-23 20:00:36 - Generated template file: template-meal-planning.ts[0m
+[0;32m2025-09-23 20:00:36 - Successfully processed: meal-planning[0m
+2025-09-23 20:00:36 - Waiting 2s before next template...
+[0;34m2025-09-23 20:00:38 - Processing template: medical-treatment[0m
+[0;34m2025-09-23 20:00:38 - Worktree: /Users/ikim1/Documents/GitHub/templata-medical-treatment[0m
+[0;34m2025-09-23 20:00:38 - Starting Template Generation for: medical-treatment[0m
+[1;33m2025-09-23 20:00:38 - Generating template file with Claude: template-medical-treatment.ts[0m
+TEMPLATE GENERATION COMPLETE - medical-treatment
+[0;32m2025-09-23 20:00:53 - Completed template generation for: medical-treatment[0m
+[0;32m2025-09-23 20:00:53 - Template generation complete![0m
+[0;32m2025-09-23 20:00:53 - Generated template file: template-medical-treatment.ts[0m
+[0;32m2025-09-23 20:00:53 - Successfully processed: medical-treatment[0m
+2025-09-23 20:00:53 - Waiting 2s before next template...
+[0;34m2025-09-23 20:00:55 - Processing template: meditation-journey[0m
+[0;34m2025-09-23 20:00:55 - Worktree: /Users/ikim1/Documents/GitHub/templata-meditation-journey[0m
+[0;34m2025-09-23 20:00:55 - Starting Template Generation for: meditation-journey[0m
+[1;33m2025-09-23 20:00:55 - Generating template file with Claude: template-meditation-journey.ts[0m
+TEMPLATE GENERATION COMPLETE - meditation-journey
+[0;32m2025-09-23 20:01:10 - Completed template generation for: meditation-journey[0m
+[0;32m2025-09-23 20:01:10 - Template generation complete![0m
+[0;32m2025-09-23 20:01:10 - Generated template file: template-meditation-journey.ts[0m
+[0;32m2025-09-23 20:01:10 - Successfully processed: meditation-journey[0m
+2025-09-23 20:01:10 - Waiting 2s before next template...
+[0;34m2025-09-23 20:01:12 - Processing template: mental-health[0m
+[0;34m2025-09-23 20:01:12 - Worktree: /Users/ikim1/Documents/GitHub/templata-mental-health[0m
+[0;34m2025-09-23 20:01:12 - Starting Template Generation for: mental-health[0m
+[1;33m2025-09-23 20:01:12 - Generating template file with Claude: template-mental-health.ts[0m
+TEMPLATE GENERATION COMPLETE - mental-health
+[0;32m2025-09-23 20:01:27 - Completed template generation for: mental-health[0m
+[0;32m2025-09-23 20:01:27 - Template generation complete![0m
+[0;32m2025-09-23 20:01:27 - Generated template file: template-mental-health.ts[0m
+[0;32m2025-09-23 20:01:27 - Successfully processed: mental-health[0m
+2025-09-23 20:01:27 - Waiting 2s before next template...
+[0;34m2025-09-23 20:01:29 - Processing template: mental-health-college[0m
+[0;34m2025-09-23 20:01:29 - Worktree: /Users/ikim1/Documents/GitHub/templata-mental-health-college[0m
+[0;34m2025-09-23 20:01:29 - Starting Template Generation for: mental-health-college[0m
+[1;33m2025-09-23 20:01:29 - Generating template file with Claude: template-mental-health-college.ts[0m
+TEMPLATE GENERATION COMPLETE - mental-health-college
+[0;32m2025-09-23 20:01:46 - Completed template generation for: mental-health-college[0m
+[0;32m2025-09-23 20:01:46 - Template generation complete![0m
+[0;32m2025-09-23 20:01:46 - Generated template file: template-mental-health-college.ts[0m
+[0;32m2025-09-23 20:01:46 - Successfully processed: mental-health-college[0m
+2025-09-23 20:01:46 - Waiting 2s before next template...
+[0;34m2025-09-23 20:01:48 - Processing template: mental-health-support[0m
+[0;34m2025-09-23 20:01:48 - Worktree: /Users/ikim1/Documents/GitHub/templata-mental-health-support[0m
+[0;34m2025-09-23 20:01:48 - Starting Template Generation for: mental-health-support[0m
+[1;33m2025-09-23 20:01:48 - Generating template file with Claude: template-mental-health-support.ts[0m
+TEMPLATE GENERATION COMPLETE - mental-health-support
+[0;32m2025-09-23 20:02:02 - Completed template generation for: mental-health-support[0m
+[0;32m2025-09-23 20:02:02 - Template generation complete![0m
+[0;32m2025-09-23 20:02:02 - Generated template file: template-mental-health-support.ts[0m
+[0;32m2025-09-23 20:02:02 - Successfully processed: mental-health-support[0m
+2025-09-23 20:02:02 - Waiting 2s before next template...
+[0;34m2025-09-23 20:02:04 - Processing template: midlife-crisis[0m
+[0;34m2025-09-23 20:02:04 - Worktree: /Users/ikim1/Documents/GitHub/templata-midlife-crisis[0m
+[0;34m2025-09-23 20:02:04 - Starting Template Generation for: midlife-crisis[0m
+[1;33m2025-09-23 20:02:04 - Generating template file with Claude: template-midlife-crisis.ts[0m
+TEMPLATE GENERATION COMPLETE - midlife-crisis
+[0;32m2025-09-23 20:02:41 - Completed template generation for: midlife-crisis[0m
+[0;32m2025-09-23 20:02:41 - Template generation complete![0m
+[0;32m2025-09-23 20:02:41 - Generated template file: template-midlife-crisis.ts[0m
+[0;32m2025-09-23 20:02:41 - Successfully processed: midlife-crisis[0m
+2025-09-23 20:02:41 - Waiting 2s before next template...
+[0;34m2025-09-23 20:02:43 - Processing template: midlife-health-changes[0m
+[0;34m2025-09-23 20:02:43 - Worktree: /Users/ikim1/Documents/GitHub/templata-midlife-health-changes[0m
+[0;34m2025-09-23 20:02:43 - Starting Template Generation for: midlife-health-changes[0m
+[1;33m2025-09-23 20:02:43 - Generating template file with Claude: template-midlife-health-changes.ts[0m
+TEMPLATE GENERATION COMPLETE - midlife-health-changes
+[0;32m2025-09-23 20:02:58 - Completed template generation for: midlife-health-changes[0m
+[0;32m2025-09-23 20:02:58 - Template generation complete![0m
+[0;32m2025-09-23 20:02:58 - Generated template file: template-midlife-health-changes.ts[0m
+[0;32m2025-09-23 20:02:58 - Successfully processed: midlife-health-changes[0m
+2025-09-23 20:02:58 - Waiting 2s before next template...
+[0;34m2025-09-23 20:03:00 - Processing template: military-veteran-transition[0m
+[0;34m2025-09-23 20:03:00 - Worktree: /Users/ikim1/Documents/GitHub/templata-military-veteran-transition[0m
+[0;34m2025-09-23 20:03:00 - Starting Template Generation for: military-veteran-transition[0m
+[1;33m2025-09-23 20:03:00 - Generating template file with Claude: template-military-veteran-transition.ts[0m
+TEMPLATE GENERATION COMPLETE - military-veteran-transition
+[0;32m2025-09-23 20:03:16 - Completed template generation for: military-veteran-transition[0m
+[0;32m2025-09-23 20:03:16 - Template generation complete![0m
+[0;32m2025-09-23 20:03:16 - Generated template file: template-military-veteran-transition.ts[0m
+[0;32m2025-09-23 20:03:16 - Successfully processed: military-veteran-transition[0m
+2025-09-23 20:03:16 - Waiting 2s before next template...
+[0;34m2025-09-23 20:03:18 - Processing template: mindfulness-meditation[0m
+[0;34m2025-09-23 20:03:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-mindfulness-meditation[0m
+[0;34m2025-09-23 20:03:18 - Starting Template Generation for: mindfulness-meditation[0m
+[1;33m2025-09-23 20:03:18 - Generating template file with Claude: template-mindfulness-meditation.ts[0m
+TEMPLATE GENERATION COMPLETE - mindfulness-meditation
+[0;32m2025-09-23 20:03:33 - Completed template generation for: mindfulness-meditation[0m
+[0;32m2025-09-23 20:03:33 - Template generation complete![0m
+[0;32m2025-09-23 20:03:33 - Generated template file: template-mindfulness-meditation.ts[0m
+[0;32m2025-09-23 20:03:33 - Successfully processed: mindfulness-meditation[0m
+2025-09-23 20:03:33 - Waiting 2s before next template...
+[0;34m2025-09-23 20:03:35 - Processing template: mobile-app-startup[0m
+[0;34m2025-09-23 20:03:35 - Worktree: /Users/ikim1/Documents/GitHub/templata-mobile-app-startup[0m
+[0;34m2025-09-23 20:03:35 - Starting Template Generation for: mobile-app-startup[0m
+[1;33m2025-09-23 20:03:35 - Generating template file with Claude: template-mobile-app-startup.ts[0m
+TEMPLATE GENERATION COMPLETE - mobile-app-startup
+[0;32m2025-09-23 20:03:49 - Completed template generation for: mobile-app-startup[0m
+[0;32m2025-09-23 20:03:49 - Template generation complete![0m
+[0;32m2025-09-23 20:03:50 - Generated template file: template-mobile-app-startup.ts[0m
+[0;32m2025-09-23 20:03:50 - Successfully processed: mobile-app-startup[0m
+2025-09-23 20:03:50 - Waiting 2s before next template...
+[0;34m2025-09-23 20:03:52 - Processing template: mortgage-management[0m
+[0;34m2025-09-23 20:03:52 - Worktree: /Users/ikim1/Documents/GitHub/templata-mortgage-management[0m
+[0;34m2025-09-23 20:03:52 - Starting Template Generation for: mortgage-management[0m
+[1;33m2025-09-23 20:03:52 - Generating template file with Claude: template-mortgage-management.ts[0m
+TEMPLATE GENERATION COMPLETE - mortgage-management
+[0;32m2025-09-23 20:04:08 - Completed template generation for: mortgage-management[0m
+[0;32m2025-09-23 20:04:08 - Template generation complete![0m
+[0;32m2025-09-23 20:04:08 - Generated template file: template-mortgage-management.ts[0m
+[0;32m2025-09-23 20:04:08 - Successfully processed: mortgage-management[0m
+2025-09-23 20:04:08 - Waiting 2s before next template...
+[0;34m2025-09-23 20:04:10 - Processing template: moving-relocation[0m
+[0;34m2025-09-23 20:04:10 - Worktree: /Users/ikim1/Documents/GitHub/templata-moving-relocation[0m
+[0;34m2025-09-23 20:04:10 - Starting Template Generation for: moving-relocation[0m
+[1;33m2025-09-23 20:04:10 - Generating template file with Claude: template-moving-relocation.ts[0m
+TEMPLATE GENERATION COMPLETE - moving-relocation
+[0;32m2025-09-23 20:04:25 - Completed template generation for: moving-relocation[0m
+[0;32m2025-09-23 20:04:25 - Template generation complete![0m
+[0;32m2025-09-23 20:04:25 - Generated template file: template-moving-relocation.ts[0m
+[0;32m2025-09-23 20:04:25 - Successfully processed: moving-relocation[0m
+[0;32m2025-09-23 20:04:25 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 20:04:25 - Batch completed successfully[0m
+[0;34m2025-09-23 20:04:25 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 20:05:26 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 20:05:26 - Processing template: music-learning[0m
+[0;34m2025-09-23 20:05:26 - Worktree: /Users/ikim1/Documents/GitHub/templata-music-learning[0m
+[0;34m2025-09-23 20:05:26 - Starting Template Generation for: music-learning[0m
+[1;33m2025-09-23 20:05:26 - Generating template file with Claude: template-music-learning.ts[0m
+TEMPLATE GENERATION COMPLETE - music-learning
+[0;32m2025-09-23 20:05:40 - Completed template generation for: music-learning[0m
+[0;32m2025-09-23 20:05:40 - Template generation complete![0m
+[0;32m2025-09-23 20:05:40 - Generated template file: template-music-learning.ts[0m
+[0;32m2025-09-23 20:05:40 - Successfully processed: music-learning[0m
+2025-09-23 20:05:40 - Waiting 2s before next template...
+[0;34m2025-09-23 20:05:42 - Processing template: music-production[0m
+[0;34m2025-09-23 20:05:42 - Worktree: /Users/ikim1/Documents/GitHub/templata-music-production[0m
+[0;34m2025-09-23 20:05:42 - Starting Template Generation for: music-production[0m
+[1;33m2025-09-23 20:05:42 - Generating template file with Claude: template-music-production.ts[0m
+TEMPLATE GENERATION COMPLETE - music-production
+[0;32m2025-09-23 20:05:56 - Completed template generation for: music-production[0m
+[0;32m2025-09-23 20:05:56 - Template generation complete![0m
+[0;32m2025-09-23 20:05:56 - Generated template file: template-music-production.ts[0m
+[0;32m2025-09-23 20:05:56 - Successfully processed: music-production[0m
+2025-09-23 20:05:56 - Waiting 2s before next template...
+[0;34m2025-09-23 20:05:58 - Processing template: natural-disaster-recovery[0m
+[0;34m2025-09-23 20:05:58 - Worktree: /Users/ikim1/Documents/GitHub/templata-natural-disaster-recovery[0m
+[0;34m2025-09-23 20:05:58 - Starting Template Generation for: natural-disaster-recovery[0m
+[1;33m2025-09-23 20:05:58 - Generating template file with Claude: template-natural-disaster-recovery.ts[0m
+TEMPLATE GENERATION COMPLETE - natural-disaster-recovery
+[0;32m2025-09-23 20:06:13 - Completed template generation for: natural-disaster-recovery[0m
+[0;32m2025-09-23 20:06:13 - Template generation complete![0m
+[0;32m2025-09-23 20:06:13 - Generated template file: template-natural-disaster-recovery.ts[0m
+[0;32m2025-09-23 20:06:13 - Successfully processed: natural-disaster-recovery[0m
+2025-09-23 20:06:13 - Waiting 2s before next template...
+[0;34m2025-09-23 20:06:15 - Processing template: nonprofit-management[0m
+[0;34m2025-09-23 20:06:15 - Worktree: /Users/ikim1/Documents/GitHub/templata-nonprofit-management[0m
+[0;34m2025-09-23 20:06:15 - Starting Template Generation for: nonprofit-management[0m
+[1;33m2025-09-23 20:06:15 - Generating template file with Claude: template-nonprofit-management.ts[0m
+TEMPLATE GENERATION COMPLETE - nonprofit-management
+[0;32m2025-09-23 20:06:29 - Completed template generation for: nonprofit-management[0m
+[0;32m2025-09-23 20:06:29 - Template generation complete![0m
+[0;32m2025-09-23 20:06:29 - Generated template file: template-nonprofit-management.ts[0m
+[0;32m2025-09-23 20:06:29 - Successfully processed: nonprofit-management[0m
+2025-09-23 20:06:29 - Waiting 2s before next template...
+[0;34m2025-09-23 20:06:31 - Processing template: nonprofit-startup[0m
+[0;34m2025-09-23 20:06:31 - Worktree: /Users/ikim1/Documents/GitHub/templata-nonprofit-startup[0m
+[0;34m2025-09-23 20:06:31 - Starting Template Generation for: nonprofit-startup[0m
+[1;33m2025-09-23 20:06:31 - Generating template file with Claude: template-nonprofit-startup.ts[0m
+TEMPLATE GENERATION COMPLETE - nonprofit-startup
+[0;32m2025-09-23 20:06:47 - Completed template generation for: nonprofit-startup[0m
+[0;32m2025-09-23 20:06:47 - Template generation complete![0m
+[0;32m2025-09-23 20:06:47 - Generated template file: template-nonprofit-startup.ts[0m
+[0;32m2025-09-23 20:06:47 - Successfully processed: nonprofit-startup[0m
+2025-09-23 20:06:47 - Waiting 2s before next template...
+[0;34m2025-09-23 20:06:49 - Processing template: online-business-launch[0m
+[0;34m2025-09-23 20:06:49 - Worktree: /Users/ikim1/Documents/GitHub/templata-online-business-launch[0m
+[0;34m2025-09-23 20:06:49 - Starting Template Generation for: online-business-launch[0m
+[1;33m2025-09-23 20:06:49 - Generating template file with Claude: template-online-business-launch.ts[0m
+TEMPLATE GENERATION COMPLETE - online-business-launch
+[0;32m2025-09-23 20:07:05 - Completed template generation for: online-business-launch[0m
+[0;32m2025-09-23 20:07:05 - Template generation complete![0m
+[0;32m2025-09-23 20:07:05 - Generated template file: template-online-business-launch.ts[0m
+[0;32m2025-09-23 20:07:05 - Successfully processed: online-business-launch[0m
+2025-09-23 20:07:05 - Waiting 2s before next template...
+[0;34m2025-09-23 20:07:07 - Processing template: online-course[0m
+[0;34m2025-09-23 20:07:07 - Worktree: /Users/ikim1/Documents/GitHub/templata-online-course[0m
+[0;34m2025-09-23 20:07:07 - Starting Template Generation for: online-course[0m
+[1;33m2025-09-23 20:07:07 - Generating template file with Claude: template-online-course.ts[0m
+TEMPLATE GENERATION COMPLETE - online-course
+[0;32m2025-09-23 20:07:21 - Completed template generation for: online-course[0m
+[0;32m2025-09-23 20:07:21 - Template generation complete![0m
+[0;32m2025-09-23 20:07:21 - Generated template file: template-online-course.ts[0m
+[0;32m2025-09-23 20:07:21 - Successfully processed: online-course[0m
+2025-09-23 20:07:21 - Waiting 2s before next template...
+[0;34m2025-09-23 20:07:23 - Processing template: parenting-guidance[0m
+[0;34m2025-09-23 20:07:23 - Worktree: /Users/ikim1/Documents/GitHub/templata-parenting-guidance[0m
+[0;34m2025-09-23 20:07:23 - Starting Template Generation for: parenting-guidance[0m
+[1;33m2025-09-23 20:07:23 - Generating template file with Claude: template-parenting-guidance.ts[0m
+TEMPLATE GENERATION COMPLETE - parenting-guidance
+[0;32m2025-09-23 20:07:39 - Completed template generation for: parenting-guidance[0m
+[0;32m2025-09-23 20:07:39 - Template generation complete![0m
+[0;32m2025-09-23 20:07:39 - Generated template file: template-parenting-guidance.ts[0m
+[0;32m2025-09-23 20:07:39 - Successfully processed: parenting-guidance[0m
+2025-09-23 20:07:39 - Waiting 2s before next template...
+[0;34m2025-09-23 20:07:41 - Processing template: peak-earning-optimization[0m
+[0;34m2025-09-23 20:07:41 - Worktree: /Users/ikim1/Documents/GitHub/templata-peak-earning-optimization[0m
+[0;34m2025-09-23 20:07:41 - Starting Template Generation for: peak-earning-optimization[0m
+[1;33m2025-09-23 20:07:41 - Generating template file with Claude: template-peak-earning-optimization.ts[0m
+TEMPLATE GENERATION COMPLETE - peak-earning-optimization
+[0;32m2025-09-23 20:07:57 - Completed template generation for: peak-earning-optimization[0m
+[0;32m2025-09-23 20:07:57 - Template generation complete![0m
+[0;32m2025-09-23 20:07:57 - Generated template file: template-peak-earning-optimization.ts[0m
+[0;32m2025-09-23 20:07:57 - Successfully processed: peak-earning-optimization[0m
+2025-09-23 20:07:57 - Waiting 2s before next template...
+[0;34m2025-09-23 20:07:59 - Processing template: personal-branding[0m
+[0;34m2025-09-23 20:07:59 - Worktree: /Users/ikim1/Documents/GitHub/templata-personal-branding[0m
+[0;34m2025-09-23 20:07:59 - Starting Template Generation for: personal-branding[0m
+[1;33m2025-09-23 20:07:59 - Generating template file with Claude: template-personal-branding.ts[0m
+TEMPLATE GENERATION COMPLETE - personal-branding
+[0;32m2025-09-23 20:08:20 - Completed template generation for: personal-branding[0m
+[0;32m2025-09-23 20:08:20 - Template generation complete![0m
+[0;32m2025-09-23 20:08:20 - Generated template file: template-personal-branding.ts[0m
+[0;32m2025-09-23 20:08:20 - Successfully processed: personal-branding[0m
+2025-09-23 20:08:20 - Waiting 2s before next template...
+[0;34m2025-09-23 20:08:22 - Processing template: personal-finance[0m
+[0;34m2025-09-23 20:08:22 - Worktree: /Users/ikim1/Documents/GitHub/templata-personal-finance[0m
+[0;34m2025-09-23 20:08:22 - Starting Template Generation for: personal-finance[0m
+[1;33m2025-09-23 20:08:22 - Generating template file with Claude: template-personal-finance.ts[0m
+TEMPLATE GENERATION COMPLETE - personal-finance
+[0;32m2025-09-23 20:08:38 - Completed template generation for: personal-finance[0m
+[0;32m2025-09-23 20:08:38 - Template generation complete![0m
+[0;32m2025-09-23 20:08:38 - Generated template file: template-personal-finance.ts[0m
+[0;32m2025-09-23 20:08:38 - Successfully processed: personal-finance[0m
+2025-09-23 20:08:38 - Waiting 2s before next template...
+[0;34m2025-09-23 20:08:40 - Processing template: personal-finance-mastery[0m
+[0;34m2025-09-23 20:08:40 - Worktree: /Users/ikim1/Documents/GitHub/templata-personal-finance-mastery[0m
+[0;34m2025-09-23 20:08:40 - Starting Template Generation for: personal-finance-mastery[0m
+[1;33m2025-09-23 20:08:40 - Generating template file with Claude: template-personal-finance-mastery.ts[0m
+TEMPLATE GENERATION COMPLETE - personal-finance-mastery
+[0;32m2025-09-23 20:09:03 - Completed template generation for: personal-finance-mastery[0m
+[0;32m2025-09-23 20:09:03 - Template generation complete![0m
+[0;32m2025-09-23 20:09:03 - Generated template file: template-personal-finance-mastery.ts[0m
+[0;32m2025-09-23 20:09:03 - Successfully processed: personal-finance-mastery[0m
+2025-09-23 20:09:03 - Waiting 2s before next template...
+[0;34m2025-09-23 20:09:05 - Processing template: personal-training[0m
+[0;34m2025-09-23 20:09:05 - Worktree: /Users/ikim1/Documents/GitHub/templata-personal-training[0m
+[0;34m2025-09-23 20:09:05 - Starting Template Generation for: personal-training[0m
+[1;33m2025-09-23 20:09:05 - Generating template file with Claude: template-personal-training.ts[0m
+TEMPLATE GENERATION COMPLETE - personal-training
+[0;32m2025-09-23 20:09:19 - Completed template generation for: personal-training[0m
+[0;32m2025-09-23 20:09:19 - Template generation complete![0m
+[0;32m2025-09-23 20:09:19 - Generated template file: template-personal-training.ts[0m
+[0;32m2025-09-23 20:09:19 - Successfully processed: personal-training[0m
+2025-09-23 20:09:19 - Waiting 2s before next template...
+[0;34m2025-09-23 20:09:21 - Processing template: pet-care[0m
+[0;34m2025-09-23 20:09:21 - Worktree: /Users/ikim1/Documents/GitHub/templata-pet-care[0m
+[0;34m2025-09-23 20:09:21 - Starting Template Generation for: pet-care[0m
+[1;33m2025-09-23 20:09:21 - Generating template file with Claude: template-pet-care.ts[0m
+TEMPLATE GENERATION COMPLETE - pet-care
+[0;32m2025-09-23 20:09:37 - Completed template generation for: pet-care[0m
+[0;32m2025-09-23 20:09:37 - Template generation complete![0m
+[0;32m2025-09-23 20:09:37 - Generated template file: template-pet-care.ts[0m
+[0;32m2025-09-23 20:09:37 - Successfully processed: pet-care[0m
+2025-09-23 20:09:37 - Waiting 2s before next template...
+[0;34m2025-09-23 20:09:39 - Processing template: photography-business[0m
+[0;34m2025-09-23 20:09:39 - Worktree: /Users/ikim1/Documents/GitHub/templata-photography-business[0m
+[0;34m2025-09-23 20:09:39 - Starting Template Generation for: photography-business[0m
+[1;33m2025-09-23 20:09:39 - Generating template file with Claude: template-photography-business.ts[0m
+TEMPLATE GENERATION COMPLETE - photography-business
+[0;32m2025-09-23 20:09:54 - Completed template generation for: photography-business[0m
+[0;32m2025-09-23 20:09:54 - Template generation complete![0m
+[0;32m2025-09-23 20:09:54 - Generated template file: template-photography-business.ts[0m
+[0;32m2025-09-23 20:09:54 - Successfully processed: photography-business[0m
+2025-09-23 20:09:54 - Waiting 2s before next template...
+[0;34m2025-09-23 20:09:56 - Processing template: podcast-creation[0m
+[0;34m2025-09-23 20:09:56 - Worktree: /Users/ikim1/Documents/GitHub/templata-podcast-creation[0m
+[0;34m2025-09-23 20:09:56 - Starting Template Generation for: podcast-creation[0m
+[1;33m2025-09-23 20:09:56 - Generating template file with Claude: template-podcast-creation.ts[0m
+TEMPLATE GENERATION COMPLETE - podcast-creation
+[0;32m2025-09-23 20:10:16 - Completed template generation for: podcast-creation[0m
+[0;32m2025-09-23 20:10:16 - Template generation complete![0m
+[0;32m2025-09-23 20:10:16 - Generated template file: template-podcast-creation.ts[0m
+[0;32m2025-09-23 20:10:16 - Successfully processed: podcast-creation[0m
+2025-09-23 20:10:16 - Waiting 2s before next template...
+[0;34m2025-09-23 20:10:18 - Processing template: professional-networking[0m
+[0;34m2025-09-23 20:10:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-professional-networking[0m
+[0;34m2025-09-23 20:10:18 - Starting Template Generation for: professional-networking[0m
+[1;33m2025-09-23 20:10:18 - Generating template file with Claude: template-professional-networking.ts[0m
+TEMPLATE GENERATION COMPLETE - professional-networking
+[0;32m2025-09-23 20:10:33 - Completed template generation for: professional-networking[0m
+[0;32m2025-09-23 20:10:33 - Template generation complete![0m
+[0;32m2025-09-23 20:10:33 - Generated template file: template-professional-networking.ts[0m
+[0;32m2025-09-23 20:10:33 - Successfully processed: professional-networking[0m
+2025-09-23 20:10:33 - Waiting 2s before next template...
+[0;34m2025-09-23 20:10:35 - Processing template: public-speaking[0m
+[0;34m2025-09-23 20:10:35 - Worktree: /Users/ikim1/Documents/GitHub/templata-public-speaking[0m
+[0;34m2025-09-23 20:10:35 - Starting Template Generation for: public-speaking[0m
+[1;33m2025-09-23 20:10:35 - Generating template file with Claude: template-public-speaking.ts[0m
+TEMPLATE GENERATION COMPLETE - public-speaking
+[0;32m2025-09-23 20:10:51 - Completed template generation for: public-speaking[0m
+[0;32m2025-09-23 20:10:51 - Template generation complete![0m
+[0;32m2025-09-23 20:10:51 - Generated template file: template-public-speaking.ts[0m
+[0;32m2025-09-23 20:10:51 - Successfully processed: public-speaking[0m
+2025-09-23 20:10:51 - Waiting 2s before next template...
+[0;34m2025-09-23 20:10:53 - Processing template: quarter-life-crisis[0m
+[0;34m2025-09-23 20:10:53 - Worktree: /Users/ikim1/Documents/GitHub/templata-quarter-life-crisis[0m
+[0;34m2025-09-23 20:10:53 - Starting Template Generation for: quarter-life-crisis[0m
+[1;33m2025-09-23 20:10:53 - Generating template file with Claude: template-quarter-life-crisis.ts[0m
+TEMPLATE GENERATION COMPLETE - quarter-life-crisis
+[0;32m2025-09-23 20:11:08 - Completed template generation for: quarter-life-crisis[0m
+[0;32m2025-09-23 20:11:08 - Template generation complete![0m
+[0;32m2025-09-23 20:11:08 - Generated template file: template-quarter-life-crisis.ts[0m
+[0;32m2025-09-23 20:11:08 - Successfully processed: quarter-life-crisis[0m
+2025-09-23 20:11:08 - Waiting 2s before next template...
+[0;34m2025-09-23 20:11:10 - Processing template: reading-challenge[0m
+[0;34m2025-09-23 20:11:10 - Worktree: /Users/ikim1/Documents/GitHub/templata-reading-challenge[0m
+[0;34m2025-09-23 20:11:10 - Starting Template Generation for: reading-challenge[0m
+[1;33m2025-09-23 20:11:10 - Generating template file with Claude: template-reading-challenge.ts[0m
+TEMPLATE GENERATION COMPLETE - reading-challenge
+[0;32m2025-09-23 20:11:25 - Completed template generation for: reading-challenge[0m
+[0;32m2025-09-23 20:11:25 - Template generation complete![0m
+[0;32m2025-09-23 20:11:25 - Generated template file: template-reading-challenge.ts[0m
+[0;32m2025-09-23 20:11:25 - Successfully processed: reading-challenge[0m
+[0;32m2025-09-23 20:11:25 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 20:11:25 - Batch completed successfully[0m
+[0;34m2025-09-23 20:11:25 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 20:12:25 - Starting batch 1 (20 templates)[0m
+[0;34m2025-09-23 20:12:25 - Processing template: real-estate-investing[0m
+[0;34m2025-09-23 20:12:25 - Worktree: /Users/ikim1/Documents/GitHub/templata-real-estate-investing[0m
+[0;34m2025-09-23 20:12:25 - Starting Template Generation for: real-estate-investing[0m
+[1;33m2025-09-23 20:12:25 - Generating template file with Claude: template-real-estate-investing.ts[0m
+TEMPLATE GENERATION COMPLETE - real-estate-investing
+[0;32m2025-09-23 20:12:55 - Completed template generation for: real-estate-investing[0m
+[0;32m2025-09-23 20:12:55 - Template generation complete![0m
+[0;32m2025-09-23 20:12:55 - Generated template file: template-real-estate-investing.ts[0m
+[0;32m2025-09-23 20:12:55 - Successfully processed: real-estate-investing[0m
+2025-09-23 20:12:55 - Waiting 2s before next template...
+[0;34m2025-09-23 20:12:57 - Processing template: relationship-breakup[0m
+[0;34m2025-09-23 20:12:57 - Worktree: /Users/ikim1/Documents/GitHub/templata-relationship-breakup[0m
+[0;34m2025-09-23 20:12:57 - Starting Template Generation for: relationship-breakup[0m
+[1;33m2025-09-23 20:12:57 - Generating template file with Claude: template-relationship-breakup.ts[0m
+TEMPLATE GENERATION COMPLETE - relationship-breakup
+[0;32m2025-09-23 20:13:12 - Completed template generation for: relationship-breakup[0m
+[0;32m2025-09-23 20:13:12 - Template generation complete![0m
+[0;32m2025-09-23 20:13:12 - Generated template file: template-relationship-breakup.ts[0m
+[0;32m2025-09-23 20:13:12 - Successfully processed: relationship-breakup[0m
+2025-09-23 20:13:12 - Waiting 2s before next template...
+[0;34m2025-09-23 20:13:14 - Processing template: relationship-coaching[0m
+[0;34m2025-09-23 20:13:14 - Worktree: /Users/ikim1/Documents/GitHub/templata-relationship-coaching[0m
+[0;34m2025-09-23 20:13:14 - Starting Template Generation for: relationship-coaching[0m
+[1;33m2025-09-23 20:13:14 - Generating template file with Claude: template-relationship-coaching.ts[0m
+TEMPLATE GENERATION COMPLETE - relationship-coaching
+[0;32m2025-09-23 20:13:29 - Completed template generation for: relationship-coaching[0m
+[0;32m2025-09-23 20:13:29 - Template generation complete![0m
+[0;32m2025-09-23 20:13:29 - Generated template file: template-relationship-coaching.ts[0m
+[0;32m2025-09-23 20:13:29 - Successfully processed: relationship-coaching[0m
+2025-09-23 20:13:29 - Waiting 2s before next template...
+[0;34m2025-09-23 20:13:31 - Processing template: relationship-therapy[0m
+[0;34m2025-09-23 20:13:31 - Worktree: /Users/ikim1/Documents/GitHub/templata-relationship-therapy[0m
+[0;34m2025-09-23 20:13:31 - Starting Template Generation for: relationship-therapy[0m
+[1;33m2025-09-23 20:13:31 - Generating template file with Claude: template-relationship-therapy.ts[0m
+TEMPLATE GENERATION COMPLETE - relationship-therapy
+[0;32m2025-09-23 20:13:47 - Completed template generation for: relationship-therapy[0m
+[0;32m2025-09-23 20:13:47 - Template generation complete![0m
+[0;32m2025-09-23 20:13:47 - Generated template file: template-relationship-therapy.ts[0m
+[0;32m2025-09-23 20:13:47 - Successfully processed: relationship-therapy[0m
+2025-09-23 20:13:47 - Waiting 2s before next template...
+[0;34m2025-09-23 20:13:49 - Processing template: rental-management[0m
+[0;34m2025-09-23 20:13:49 - Worktree: /Users/ikim1/Documents/GitHub/templata-rental-management[0m
+[0;34m2025-09-23 20:13:49 - Starting Template Generation for: rental-management[0m
+[1;33m2025-09-23 20:13:49 - Generating template file with Claude: template-rental-management.ts[0m
+TEMPLATE GENERATION COMPLETE - rental-management
+[0;32m2025-09-23 20:14:04 - Completed template generation for: rental-management[0m
+[0;32m2025-09-23 20:14:04 - Template generation complete![0m
+[0;32m2025-09-23 20:14:04 - Generated template file: template-rental-management.ts[0m
+[0;32m2025-09-23 20:14:04 - Successfully processed: rental-management[0m
+2025-09-23 20:14:04 - Waiting 2s before next template...
+[0;34m2025-09-23 20:14:06 - Processing template: restaurant-opening[0m
+[0;34m2025-09-23 20:14:06 - Worktree: /Users/ikim1/Documents/GitHub/templata-restaurant-opening[0m
+[0;34m2025-09-23 20:14:07 - Starting Template Generation for: restaurant-opening[0m
+[1;33m2025-09-23 20:14:07 - Generating template file with Claude: template-restaurant-opening.ts[0m
+TEMPLATE GENERATION COMPLETE - restaurant-opening
+[0;32m2025-09-23 20:14:21 - Completed template generation for: restaurant-opening[0m
+[0;32m2025-09-23 20:14:21 - Template generation complete![0m
+[0;32m2025-09-23 20:14:21 - Generated template file: template-restaurant-opening.ts[0m
+[0;32m2025-09-23 20:14:21 - Successfully processed: restaurant-opening[0m
+2025-09-23 20:14:21 - Waiting 2s before next template...
+[0;34m2025-09-23 20:14:23 - Processing template: retirement-lifestyle[0m
+[0;34m2025-09-23 20:14:23 - Worktree: /Users/ikim1/Documents/GitHub/templata-retirement-lifestyle[0m
+[0;34m2025-09-23 20:14:23 - Starting Template Generation for: retirement-lifestyle[0m
+[1;33m2025-09-23 20:14:23 - Generating template file with Claude: template-retirement-lifestyle.ts[0m
+TEMPLATE GENERATION COMPLETE - retirement-lifestyle
+[0;32m2025-09-23 20:14:43 - Completed template generation for: retirement-lifestyle[0m
+[0;32m2025-09-23 20:14:43 - Template generation complete![0m
+[0;32m2025-09-23 20:14:43 - Generated template file: template-retirement-lifestyle.ts[0m
+[0;32m2025-09-23 20:14:43 - Successfully processed: retirement-lifestyle[0m
+2025-09-23 20:14:43 - Waiting 2s before next template...
+[0;34m2025-09-23 20:14:45 - Processing template: retirement-transition[0m
+[0;34m2025-09-23 20:14:45 - Worktree: /Users/ikim1/Documents/GitHub/templata-retirement-transition[0m
+[0;34m2025-09-23 20:14:45 - Starting Template Generation for: retirement-transition[0m
+[1;33m2025-09-23 20:14:45 - Generating template file with Claude: template-retirement-transition.ts[0m
+TEMPLATE GENERATION COMPLETE - retirement-transition
+[0;32m2025-09-23 20:15:01 - Completed template generation for: retirement-transition[0m
+[0;32m2025-09-23 20:15:01 - Template generation complete![0m
+[0;32m2025-09-23 20:15:01 - Generated template file: template-retirement-transition.ts[0m
+[0;32m2025-09-23 20:15:01 - Successfully processed: retirement-transition[0m
+2025-09-23 20:15:01 - Waiting 2s before next template...
+[0;34m2025-09-23 20:15:03 - Processing template: roommate-navigation[0m
+[0;34m2025-09-23 20:15:03 - Worktree: /Users/ikim1/Documents/GitHub/templata-roommate-navigation[0m
+[0;34m2025-09-23 20:15:03 - Starting Template Generation for: roommate-navigation[0m
+[1;33m2025-09-23 20:15:03 - Generating template file with Claude: template-roommate-navigation.ts[0m
+TEMPLATE GENERATION COMPLETE - roommate-navigation
+[0;32m2025-09-23 20:15:20 - Completed template generation for: roommate-navigation[0m
+[0;32m2025-09-23 20:15:20 - Template generation complete![0m
+[0;32m2025-09-23 20:15:20 - Generated template file: template-roommate-navigation.ts[0m
+[0;32m2025-09-23 20:15:20 - Successfully processed: roommate-navigation[0m
+2025-09-23 20:15:20 - Waiting 2s before next template...
+[0;34m2025-09-23 20:15:22 - Processing template: saas-startup[0m
+[0;34m2025-09-23 20:15:22 - Worktree: /Users/ikim1/Documents/GitHub/templata-saas-startup[0m
+[0;34m2025-09-23 20:15:22 - Starting Template Generation for: saas-startup[0m
+[1;33m2025-09-23 20:15:22 - Generating template file with Claude: template-saas-startup.ts[0m
+TEMPLATE GENERATION COMPLETE - saas-startup
+[0;32m2025-09-23 20:15:38 - Completed template generation for: saas-startup[0m
+[0;32m2025-09-23 20:15:38 - Template generation complete![0m
+[0;32m2025-09-23 20:15:38 - Generated template file: template-saas-startup.ts[0m
+[0;32m2025-09-23 20:15:38 - Successfully processed: saas-startup[0m
+2025-09-23 20:15:38 - Waiting 2s before next template...
+[0;34m2025-09-23 20:15:40 - Processing template: sandwich-generation[0m
+[0;34m2025-09-23 20:15:40 - Worktree: /Users/ikim1/Documents/GitHub/templata-sandwich-generation[0m
+[0;34m2025-09-23 20:15:40 - Starting Template Generation for: sandwich-generation[0m
+[1;33m2025-09-23 20:15:40 - Generating template file with Claude: template-sandwich-generation.ts[0m
+TEMPLATE GENERATION COMPLETE - sandwich-generation
+[0;32m2025-09-23 20:16:01 - Completed template generation for: sandwich-generation[0m
+[0;32m2025-09-23 20:16:01 - Template generation complete![0m
+[0;32m2025-09-23 20:16:01 - Generated template file: template-sandwich-generation.ts[0m
+[0;32m2025-09-23 20:16:01 - Successfully processed: sandwich-generation[0m
+2025-09-23 20:16:01 - Waiting 2s before next template...
+[0;34m2025-09-23 20:16:03 - Processing template: side-hustle-development[0m
+[0;34m2025-09-23 20:16:03 - Worktree: /Users/ikim1/Documents/GitHub/templata-side-hustle-development[0m
+[0;34m2025-09-23 20:16:03 - Starting Template Generation for: side-hustle-development[0m
+[1;33m2025-09-23 20:16:03 - Generating template file with Claude: template-side-hustle-development.ts[0m
+TEMPLATE GENERATION COMPLETE - side-hustle-development
+[0;32m2025-09-23 20:16:19 - Completed template generation for: side-hustle-development[0m
+[0;32m2025-09-23 20:16:19 - Template generation complete![0m
+[0;32m2025-09-23 20:16:19 - Generated template file: template-side-hustle-development.ts[0m
+[0;32m2025-09-23 20:16:19 - Successfully processed: side-hustle-development[0m
+2025-09-23 20:16:19 - Waiting 2s before next template...
+[0;34m2025-09-23 20:16:21 - Processing template: skill-development[0m
+[0;34m2025-09-23 20:16:21 - Worktree: /Users/ikim1/Documents/GitHub/templata-skill-development[0m
+[0;34m2025-09-23 20:16:22 - Starting Template Generation for: skill-development[0m
+[1;33m2025-09-23 20:16:22 - Generating template file with Claude: template-skill-development.ts[0m
+TEMPLATE GENERATION COMPLETE - skill-development
+[0;32m2025-09-23 20:16:40 - Completed template generation for: skill-development[0m
+[0;32m2025-09-23 20:16:40 - Template generation complete![0m
+[0;32m2025-09-23 20:16:40 - Generated template file: template-skill-development.ts[0m
+[0;32m2025-09-23 20:16:40 - Successfully processed: skill-development[0m
+2025-09-23 20:16:40 - Waiting 2s before next template...
+[0;34m2025-09-23 20:16:42 - Processing template: small-business[0m
+[0;34m2025-09-23 20:16:42 - Worktree: /Users/ikim1/Documents/GitHub/templata-small-business[0m
+[0;34m2025-09-23 20:16:42 - Starting Template Generation for: small-business[0m
+[1;33m2025-09-23 20:16:42 - Generating template file with Claude: template-small-business.ts[0m
+TEMPLATE GENERATION COMPLETE - small-business
+[0;32m2025-09-23 20:16:57 - Completed template generation for: small-business[0m
+[0;32m2025-09-23 20:16:57 - Template generation complete![0m
+[0;32m2025-09-23 20:16:57 - Generated template file: template-small-business.ts[0m
+[0;32m2025-09-23 20:16:57 - Successfully processed: small-business[0m
+2025-09-23 20:16:57 - Waiting 2s before next template...
+[0;34m2025-09-23 20:16:59 - Processing template: small-business-launch[0m
+[0;34m2025-09-23 20:16:59 - Worktree: /Users/ikim1/Documents/GitHub/templata-small-business-launch[0m
+[0;34m2025-09-23 20:16:59 - Starting Template Generation for: small-business-launch[0m
+[1;33m2025-09-23 20:16:59 - Generating template file with Claude: template-small-business-launch.ts[0m
+TEMPLATE GENERATION COMPLETE - small-business-launch
+[0;32m2025-09-23 20:17:14 - Completed template generation for: small-business-launch[0m
+[0;32m2025-09-23 20:17:14 - Template generation complete![0m
+[0;32m2025-09-23 20:17:14 - Generated template file: template-small-business-launch.ts[0m
+[0;32m2025-09-23 20:17:14 - Successfully processed: small-business-launch[0m
+2025-09-23 20:17:14 - Waiting 2s before next template...
+[0;34m2025-09-23 20:17:16 - Processing template: smart-garden[0m
+[0;34m2025-09-23 20:17:16 - Worktree: /Users/ikim1/Documents/GitHub/templata-smart-garden[0m
+[0;34m2025-09-23 20:17:16 - Starting Template Generation for: smart-garden[0m
+[1;33m2025-09-23 20:17:16 - Generating template file with Claude: template-smart-garden.ts[0m
+TEMPLATE GENERATION COMPLETE - smart-garden
+[0;32m2025-09-23 20:17:42 - Completed template generation for: smart-garden[0m
+[0;32m2025-09-23 20:17:42 - Template generation complete![0m
+[0;32m2025-09-23 20:17:42 - Generated template file: template-smart-garden.ts[0m
+[0;32m2025-09-23 20:17:42 - Successfully processed: smart-garden[0m
+2025-09-23 20:17:42 - Waiting 2s before next template...
+[0;34m2025-09-23 20:17:44 - Processing template: social-entrepreneurship[0m
+[0;34m2025-09-23 20:17:44 - Worktree: /Users/ikim1/Documents/GitHub/templata-social-entrepreneurship[0m
+[0;34m2025-09-23 20:17:44 - Starting Template Generation for: social-entrepreneurship[0m
+[1;33m2025-09-23 20:17:44 - Generating template file with Claude: template-social-entrepreneurship.ts[0m
+TEMPLATE GENERATION COMPLETE - social-entrepreneurship
+[0;32m2025-09-23 20:17:59 - Completed template generation for: social-entrepreneurship[0m
+[0;32m2025-09-23 20:17:59 - Template generation complete![0m
+[0;32m2025-09-23 20:17:59 - Generated template file: template-social-entrepreneurship.ts[0m
+[0;32m2025-09-23 20:17:59 - Successfully processed: social-entrepreneurship[0m
+2025-09-23 20:17:59 - Waiting 2s before next template...
+[0;34m2025-09-23 20:18:01 - Processing template: social-media-management[0m
+[0;34m2025-09-23 20:18:01 - Worktree: /Users/ikim1/Documents/GitHub/templata-social-media-management[0m
+[0;34m2025-09-23 20:18:02 - Starting Template Generation for: social-media-management[0m
+[1;33m2025-09-23 20:18:02 - Generating template file with Claude: template-social-media-management.ts[0m
+TEMPLATE GENERATION COMPLETE - social-media-management
+[0;32m2025-09-23 20:18:17 - Completed template generation for: social-media-management[0m
+[0;32m2025-09-23 20:18:17 - Template generation complete![0m
+[0;32m2025-09-23 20:18:17 - Generated template file: template-social-media-management.ts[0m
+[0;32m2025-09-23 20:18:17 - Successfully processed: social-media-management[0m
+2025-09-23 20:18:17 - Waiting 2s before next template...
+[0;34m2025-09-23 20:18:19 - Processing template: spiritual-awakening[0m
+[0;34m2025-09-23 20:18:19 - Worktree: /Users/ikim1/Documents/GitHub/templata-spiritual-awakening[0m
+[0;34m2025-09-23 20:18:19 - Starting Template Generation for: spiritual-awakening[0m
+[1;33m2025-09-23 20:18:19 - Generating template file with Claude: template-spiritual-awakening.ts[0m
+TEMPLATE GENERATION COMPLETE - spiritual-awakening
+[0;32m2025-09-23 20:18:48 - Completed template generation for: spiritual-awakening[0m
+[0;32m2025-09-23 20:18:48 - Template generation complete![0m
+[0;32m2025-09-23 20:18:48 - Generated template file: template-spiritual-awakening.ts[0m
+[0;32m2025-09-23 20:18:48 - Successfully processed: spiritual-awakening[0m
+2025-09-23 20:18:48 - Waiting 2s before next template...
+[0;34m2025-09-23 20:18:50 - Processing template: spiritual-growth[0m
+[0;34m2025-09-23 20:18:50 - Worktree: /Users/ikim1/Documents/GitHub/templata-spiritual-growth[0m
+[0;34m2025-09-23 20:18:50 - Starting Template Generation for: spiritual-growth[0m
+[1;33m2025-09-23 20:18:50 - Generating template file with Claude: template-spiritual-growth.ts[0m
+TEMPLATE GENERATION COMPLETE - spiritual-growth
+[0;32m2025-09-23 20:19:07 - Completed template generation for: spiritual-growth[0m
+[0;32m2025-09-23 20:19:07 - Template generation complete![0m
+[0;32m2025-09-23 20:19:07 - Generated template file: template-spiritual-growth.ts[0m
+[0;32m2025-09-23 20:19:07 - Successfully processed: spiritual-growth[0m
+[0;32m2025-09-23 20:19:07 - Batch 1 complete: 20 processed, 0 failed[0m
+[0;32m2025-09-23 20:19:07 - Batch completed successfully[0m
+[0;34m2025-09-23 20:19:07 - Waiting 60s before next batch...[0m
+[0;34m2025-09-23 20:20:07 - Starting batch 1 (17 templates)[0m
+[0;34m2025-09-23 20:20:07 - Processing template: sports-team[0m
+[0;34m2025-09-23 20:20:07 - Worktree: /Users/ikim1/Documents/GitHub/templata-sports-team[0m
+[0;34m2025-09-23 20:20:07 - Starting Template Generation for: sports-team[0m
+[1;33m2025-09-23 20:20:07 - Generating template file with Claude: template-sports-team.ts[0m
+TEMPLATE GENERATION COMPLETE - sports-team
+[0;32m2025-09-23 20:20:26 - Completed template generation for: sports-team[0m
+[0;32m2025-09-23 20:20:26 - Template generation complete![0m
+[0;32m2025-09-23 20:20:26 - Generated template file: template-sports-team.ts[0m
+[0;32m2025-09-23 20:20:26 - Successfully processed: sports-team[0m
+2025-09-23 20:20:26 - Waiting 2s before next template...
+[0;34m2025-09-23 20:20:28 - Processing template: stock-trading[0m
+[0;34m2025-09-23 20:20:28 - Worktree: /Users/ikim1/Documents/GitHub/templata-stock-trading[0m
+[0;34m2025-09-23 20:20:28 - Starting Template Generation for: stock-trading[0m
+[1;33m2025-09-23 20:20:28 - Generating template file with Claude: template-stock-trading.ts[0m
+TEMPLATE GENERATION COMPLETE - stock-trading
+[0;32m2025-09-23 20:20:53 - Completed template generation for: stock-trading[0m
+[0;32m2025-09-23 20:20:53 - Template generation complete![0m
+[0;32m2025-09-23 20:20:53 - Generated template file: template-stock-trading.ts[0m
+[0;32m2025-09-23 20:20:53 - Successfully processed: stock-trading[0m
+2025-09-23 20:20:53 - Waiting 2s before next template...
+[0;34m2025-09-23 20:20:55 - Processing template: stress-management[0m
+[0;34m2025-09-23 20:20:55 - Worktree: /Users/ikim1/Documents/GitHub/templata-stress-management[0m
+[0;34m2025-09-23 20:20:55 - Starting Template Generation for: stress-management[0m
+[1;33m2025-09-23 20:20:55 - Generating template file with Claude: template-stress-management.ts[0m
+TEMPLATE GENERATION COMPLETE - stress-management
+[0;32m2025-09-23 20:21:10 - Completed template generation for: stress-management[0m
+[0;32m2025-09-23 20:21:10 - Template generation complete![0m
+[0;32m2025-09-23 20:21:10 - Generated template file: template-stress-management.ts[0m
+[0;32m2025-09-23 20:21:10 - Successfully processed: stress-management[0m
+2025-09-23 20:21:10 - Waiting 2s before next template...
+[0;34m2025-09-23 20:21:12 - Processing template: student-loan-strategy[0m
+[0;34m2025-09-23 20:21:12 - Worktree: /Users/ikim1/Documents/GitHub/templata-student-loan-strategy[0m
+[0;34m2025-09-23 20:21:12 - Starting Template Generation for: student-loan-strategy[0m
+[1;33m2025-09-23 20:21:13 - Generating template file with Claude: template-student-loan-strategy.ts[0m
+TEMPLATE GENERATION COMPLETE - student-loan-strategy
+[0;32m2025-09-23 20:21:28 - Completed template generation for: student-loan-strategy[0m
+[0;32m2025-09-23 20:21:28 - Template generation complete![0m
+[0;32m2025-09-23 20:21:28 - Generated template file: template-student-loan-strategy.ts[0m
+[0;32m2025-09-23 20:21:28 - Successfully processed: student-loan-strategy[0m
+2025-09-23 20:21:28 - Waiting 2s before next template...
+[0;34m2025-09-23 20:21:30 - Processing template: study-abroad-planning[0m
+[0;34m2025-09-23 20:21:30 - Worktree: /Users/ikim1/Documents/GitHub/templata-study-abroad-planning[0m
+[0;34m2025-09-23 20:21:30 - Starting Template Generation for: study-abroad-planning[0m
+[1;33m2025-09-23 20:21:30 - Generating template file with Claude: template-study-abroad-planning.ts[0m
+TEMPLATE GENERATION COMPLETE - study-abroad-planning
+[0;32m2025-09-23 20:21:46 - Completed template generation for: study-abroad-planning[0m
+[0;32m2025-09-23 20:21:46 - Template generation complete![0m
+[0;32m2025-09-23 20:21:46 - Generated template file: template-study-abroad-planning.ts[0m
+[0;32m2025-09-23 20:21:46 - Successfully processed: study-abroad-planning[0m
+2025-09-23 20:21:46 - Waiting 2s before next template...
+[0;34m2025-09-23 20:21:48 - Processing template: sustainable-living[0m
+[0;34m2025-09-23 20:21:48 - Worktree: /Users/ikim1/Documents/GitHub/templata-sustainable-living[0m
+[0;34m2025-09-23 20:21:48 - Starting Template Generation for: sustainable-living[0m
+[1;33m2025-09-23 20:21:48 - Generating template file with Claude: template-sustainable-living.ts[0m
+TEMPLATE GENERATION COMPLETE - sustainable-living
+[0;32m2025-09-23 20:22:03 - Completed template generation for: sustainable-living[0m
+[0;32m2025-09-23 20:22:03 - Template generation complete![0m
+[0;32m2025-09-23 20:22:03 - Generated template file: template-sustainable-living.ts[0m
+[0;32m2025-09-23 20:22:03 - Successfully processed: sustainable-living[0m
+2025-09-23 20:22:03 - Waiting 2s before next template...
+[0;34m2025-09-23 20:22:05 - Processing template: tech-startup-guide[0m
+[0;34m2025-09-23 20:22:05 - Worktree: /Users/ikim1/Documents/GitHub/templata-tech-startup-guide[0m
+[0;34m2025-09-23 20:22:05 - Starting Template Generation for: tech-startup-guide[0m
+[1;33m2025-09-23 20:22:05 - Generating template file with Claude: template-tech-startup-guide.ts[0m
+TEMPLATE GENERATION COMPLETE - tech-startup-guide
+[0;32m2025-09-23 20:22:23 - Completed template generation for: tech-startup-guide[0m
+[0;32m2025-09-23 20:22:23 - Template generation complete![0m
+[0;32m2025-09-23 20:22:23 - Generated template file: template-tech-startup-guide.ts[0m
+[0;32m2025-09-23 20:22:23 - Successfully processed: tech-startup-guide[0m
+2025-09-23 20:22:23 - Waiting 2s before next template...
+[0;34m2025-09-23 20:22:26 - Processing template: technology-digital[0m
+[0;34m2025-09-23 20:22:26 - Worktree: /Users/ikim1/Documents/GitHub/templata-technology-digital[0m
+[0;34m2025-09-23 20:22:26 - Starting Template Generation for: technology-digital[0m
+[1;33m2025-09-23 20:22:26 - Generating template file with Claude: template-technology-digital.ts[0m
+TEMPLATE GENERATION COMPLETE - technology-digital
+[0;32m2025-09-23 20:22:44 - Completed template generation for: technology-digital[0m
+[0;32m2025-09-23 20:22:44 - Template generation complete![0m
+[0;32m2025-09-23 20:22:44 - Generated template file: template-technology-digital.ts[0m
+[0;32m2025-09-23 20:22:44 - Successfully processed: technology-digital[0m
+2025-09-23 20:22:44 - Waiting 2s before next template...
+[0;34m2025-09-23 20:22:46 - Processing template: teenage-parenting[0m
+[0;34m2025-09-23 20:22:46 - Worktree: /Users/ikim1/Documents/GitHub/templata-teenage-parenting[0m
+[0;34m2025-09-23 20:22:46 - Starting Template Generation for: teenage-parenting[0m
+[1;33m2025-09-23 20:22:46 - Generating template file with Claude: template-teenage-parenting.ts[0m
+TEMPLATE GENERATION COMPLETE - teenage-parenting
+[0;32m2025-09-23 20:23:03 - Completed template generation for: teenage-parenting[0m
+[0;32m2025-09-23 20:23:03 - Template generation complete![0m
+[0;32m2025-09-23 20:23:03 - Generated template file: template-teenage-parenting.ts[0m
+[0;32m2025-09-23 20:23:03 - Successfully processed: teenage-parenting[0m
+2025-09-23 20:23:03 - Waiting 2s before next template...
+[0;34m2025-09-23 20:23:05 - Processing template: test-template[0m
+[0;34m2025-09-23 20:23:05 - Worktree: /Users/ikim1/Documents/GitHub/templata-test-template[0m
+[0;34m2025-09-23 20:23:06 - Starting Template Generation for: test-template[0m
+[1;33m2025-09-23 20:23:06 - Generating template file with Claude: template-test-template.ts[0m
+TEMPLATE GENERATION COMPLETE - test-template
+[0;32m2025-09-23 20:23:21 - Completed template generation for: test-template[0m
+[0;32m2025-09-23 20:23:21 - Template generation complete![0m
+[0;32m2025-09-23 20:23:21 - Generated template file: template-test-template.ts[0m
+[0;32m2025-09-23 20:23:21 - Successfully processed: test-template[0m
+2025-09-23 20:23:21 - Waiting 2s before next template...
+[0;34m2025-09-23 20:23:23 - Processing template: transportation-planning[0m
+[0;34m2025-09-23 20:23:23 - Worktree: /Users/ikim1/Documents/GitHub/templata-transportation-planning[0m
+[0;34m2025-09-23 20:23:23 - Starting Template Generation for: transportation-planning[0m
+[1;33m2025-09-23 20:23:23 - Generating template file with Claude: template-transportation-planning.ts[0m
+TEMPLATE GENERATION COMPLETE - transportation-planning
+[0;32m2025-09-23 20:23:39 - Completed template generation for: transportation-planning[0m
+[0;32m2025-09-23 20:23:39 - Template generation complete![0m
+[0;32m2025-09-23 20:23:39 - Generated template file: template-transportation-planning.ts[0m
+[0;32m2025-09-23 20:23:39 - Successfully processed: transportation-planning[0m
+2025-09-23 20:23:39 - Waiting 2s before next template...
+[0;34m2025-09-23 20:23:41 - Processing template: urban-gardening[0m
+[0;34m2025-09-23 20:23:41 - Worktree: /Users/ikim1/Documents/GitHub/templata-urban-gardening[0m
+[0;34m2025-09-23 20:23:41 - Starting Template Generation for: urban-gardening[0m
+[1;33m2025-09-23 20:23:41 - Generating template file with Claude: template-urban-gardening.ts[0m
+TEMPLATE GENERATION COMPLETE - urban-gardening
+[0;32m2025-09-23 20:23:58 - Completed template generation for: urban-gardening[0m
+[0;32m2025-09-23 20:23:58 - Template generation complete![0m
+[0;32m2025-09-23 20:23:58 - Generated template file: template-urban-gardening.ts[0m
+[0;32m2025-09-23 20:23:58 - Successfully processed: urban-gardening[0m
+2025-09-23 20:23:58 - Waiting 2s before next template...
+[0;34m2025-09-23 20:24:00 - Processing template: weight-loss[0m
+[0;34m2025-09-23 20:24:00 - Worktree: /Users/ikim1/Documents/GitHub/templata-weight-loss[0m
+[0;34m2025-09-23 20:24:00 - Starting Template Generation for: weight-loss[0m
+[1;33m2025-09-23 20:24:00 - Generating template file with Claude: template-weight-loss.ts[0m
+TEMPLATE GENERATION COMPLETE - weight-loss
+[0;32m2025-09-23 20:24:16 - Completed template generation for: weight-loss[0m
+[0;32m2025-09-23 20:24:16 - Template generation complete![0m
+[0;32m2025-09-23 20:24:16 - Generated template file: template-weight-loss.ts[0m
+[0;32m2025-09-23 20:24:16 - Successfully processed: weight-loss[0m
+2025-09-23 20:24:16 - Waiting 2s before next template...
+[0;34m2025-09-23 20:24:18 - Processing template: wine-collection[0m
+[0;34m2025-09-23 20:24:18 - Worktree: /Users/ikim1/Documents/GitHub/templata-wine-collection[0m
+[0;34m2025-09-23 20:24:18 - Starting Template Generation for: wine-collection[0m
+[1;33m2025-09-23 20:24:18 - Generating template file with Claude: template-wine-collection.ts[0m
+TEMPLATE GENERATION COMPLETE - wine-collection
+[0;32m2025-09-23 20:24:35 - Completed template generation for: wine-collection[0m
+[0;32m2025-09-23 20:24:35 - Template generation complete![0m
+[0;32m2025-09-23 20:24:35 - Generated template file: template-wine-collection.ts[0m
+[0;32m2025-09-23 20:24:35 - Successfully processed: wine-collection[0m
+2025-09-23 20:24:35 - Waiting 2s before next template...
+[0;34m2025-09-23 20:24:37 - Processing template: workforce-reentry[0m
+[0;34m2025-09-23 20:24:37 - Worktree: /Users/ikim1/Documents/GitHub/templata-workforce-reentry[0m
+[0;34m2025-09-23 20:24:37 - Starting Template Generation for: workforce-reentry[0m
+[1;33m2025-09-23 20:24:37 - Generating template file with Claude: template-workforce-reentry.ts[0m
+TEMPLATE GENERATION COMPLETE - workforce-reentry
+[0;32m2025-09-23 20:24:56 - Completed template generation for: workforce-reentry[0m
+[0;32m2025-09-23 20:24:56 - Template generation complete![0m
+[0;32m2025-09-23 20:24:56 - Generated template file: template-workforce-reentry.ts[0m
+[0;32m2025-09-23 20:24:56 - Successfully processed: workforce-reentry[0m
+2025-09-23 20:24:56 - Waiting 2s before next template...
+[0;34m2025-09-23 20:24:58 - Processing template: yoga-practice[0m
+[0;34m2025-09-23 20:24:58 - Worktree: /Users/ikim1/Documents/GitHub/templata-yoga-practice[0m
+[0;34m2025-09-23 20:24:58 - Starting Template Generation for: yoga-practice[0m
+[1;33m2025-09-23 20:24:58 - Generating template file with Claude: template-yoga-practice.ts[0m
+TEMPLATE GENERATION COMPLETE - yoga-practice
+[0;32m2025-09-23 20:25:15 - Completed template generation for: yoga-practice[0m
+[0;32m2025-09-23 20:25:15 - Template generation complete![0m
+[0;32m2025-09-23 20:25:15 - Generated template file: template-yoga-practice.ts[0m
+[0;32m2025-09-23 20:25:15 - Successfully processed: yoga-practice[0m
+2025-09-23 20:25:15 - Waiting 2s before next template...
+[0;34m2025-09-23 20:25:17 - Processing template: youtube-channel[0m
+[0;34m2025-09-23 20:25:17 - Worktree: /Users/ikim1/Documents/GitHub/templata-youtube-channel[0m
+[0;34m2025-09-23 20:25:17 - Starting Template Generation for: youtube-channel[0m
+[1;33m2025-09-23 20:25:17 - Generating template file with Claude: template-youtube-channel.ts[0m
+TEMPLATE GENERATION COMPLETE - youtube-channel
+[0;32m2025-09-23 20:25:34 - Completed template generation for: youtube-channel[0m
+[0;32m2025-09-23 20:25:34 - Template generation complete![0m
+[0;32m2025-09-23 20:25:35 - Generated template file: template-youtube-channel.ts[0m
+[0;32m2025-09-23 20:25:35 - Successfully processed: youtube-channel[0m
+[0;32m2025-09-23 20:25:35 - Batch 1 complete: 17 processed, 0 failed[0m
+[0;32m2025-09-23 20:25:35 - Batch completed successfully[0m
+[0;32m2025-09-23 20:25:35 - Batch processing complete![0m
+=== Batch Template Generation Status ===
+Total templates:      177
+Processed:        1
+Remaining: 176
+Progress: 0%
+
+Configuration:
+  Batch size: 20
+  Batch delay: 60s
+  Template delay: 2s
+
+Progress file: .batch-generation-progress
+Log file: batch-generation.log

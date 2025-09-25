@@ -7,10 +7,23 @@ set -e
 
 # Configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE_LIST_FILE="$SCRIPT_DIR/template-list.txt"
-DATA_DIR="$SCRIPT_DIR/src/data"
-REGISTRY_DIR="$SCRIPT_DIR/src/registry"
-LOGFILE="$SCRIPT_DIR/template-generation-cycle.log"
+CURRENT_DIR="$(pwd)"
+DATA_DIR="$CURRENT_DIR/src/data"
+REGISTRY_DIR="$CURRENT_DIR/src/registry"
+
+# Auto-detect template name from current directory
+TEMPLATE_NAME=""
+if [[ "$CURRENT_DIR" =~ templata-(.+)$ ]]; then
+    TEMPLATE_NAME="${BASH_REMATCH[1]}"
+elif [[ "$1" ]]; then
+    TEMPLATE_NAME="$1"
+else
+    echo "Error: Could not detect template name from current directory."
+    echo "Make sure you're in a templata-{template-name} worktree or pass template name as argument."
+    exit 1
+fi
+
+LOGFILE="$CURRENT_DIR/template-generation-${TEMPLATE_NAME}.log"
 
 # Colors
 RED='\033[0;31m'
@@ -29,258 +42,82 @@ log_colored() {
     echo -e "${color}$(date '+%Y-%m-%d %H:%M:%S') - $message${NC}" | tee -a "$LOGFILE"
 }
 
-# Get category for template
-get_template_category() {
-    local template="$1"
-    case "$template" in
-        *"wedding"*|*"baby"*|*"home"*|*"retirement"*|*"elder-care"*|*"grandparent"*)
-            echo "Personal Life"
-            ;;
-        *"business"*|*"freelance"*|*"career"*|*"job"*|*"affiliate"*|*"startup"*)
-            echo "Business & Career"
-            ;;
-        *"fitness"*|*"health"*|*"medical"*|*"weight"*|*"yoga"*|*"marathon"*)
-            echo "Health & Wellness"
-            ;;
-        *"learning"*|*"education"*|*"college"*|*"skill"*|*"book"*|*"course"*)
-            echo "Education & Learning"
-            ;;
-        *"finance"*|*"budget"*|*"investment"*|*"money"*|*"crypto"*)
-            echo "Finance & Investment"
-            ;;
-        *"creative"*|*"art"*|*"music"*|*"photography"*|*"writing"*|*"design"*)
-            echo "Creative & Arts"
-            ;;
-        *"tech"*|*"app"*|*"coding"*|*"development"*|*"digital"*)
-            echo "Technology & Development"
-            ;;
-        *)
-            echo "Lifestyle & Planning"
-            ;;
-    esac
-}
 
-# Get icon for template
-get_template_icon() {
-    local template="$1"
-    case "$template" in
-        *"wedding"*) echo "💒" ;;
-        *"baby"*|*"parenting"*) echo "👶" ;;
-        *"home"*|*"house"*) echo "🏠" ;;
-        *"fitness"*|*"gym"*) echo "💪" ;;
-        *"business"*|*"startup"*) echo "🚀" ;;
-        *"career"*|*"job"*) echo "💼" ;;
-        *"education"*|*"learning"*) echo "📚" ;;
-        *"finance"*|*"money"*|*"budget"*) echo "💰" ;;
-        *"travel"*) echo "✈️" ;;
-        *"health"*|*"medical"*) echo "🏥" ;;
-        *"food"*|*"meal"*) echo "🍽️" ;;
-        *"garden"*) echo "🌱" ;;
-        *"art"*|*"creative"*) echo "🎨" ;;
-        *"music"*) echo "🎵" ;;
-        *"photography"*) echo "📸" ;;
-        *"writing"*|*"book"*) echo "✍️" ;;
-        *"tech"*|*"app"*|*"development"*) echo "💻" ;;
-        *"retirement"*) echo "🏖️" ;;
-        *"car"*|*"vehicle"*) echo "🚗" ;;
-        *) echo "📋" ;;
-    esac
-}
 
-# Get template color scheme
-get_template_color() {
+
+
+# Create generation prompt for template
+create_template_generation_prompt() {
     local template="$1"
-    case "$template" in
-        *"wedding"*) echo "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800|text-pink-600 dark:text-pink-400" ;;
-        *"baby"*|*"parenting"*) echo "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800|text-blue-600 dark:text-blue-400" ;;
-        *"business"*|*"startup"*) echo "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800|text-purple-600 dark:text-purple-400" ;;
-        *"finance"*|*"money"*) echo "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800|text-green-600 dark:text-green-400" ;;
-        *"health"*|*"fitness"*) echo "bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800|text-red-600 dark:text-red-400" ;;
-        *"education"*|*"learning"*) echo "bg-indigo-50 dark:bg-indigo-950/20 border-indigo-200 dark:border-indigo-800|text-indigo-600 dark:text-indigo-400" ;;
-        *"creative"*|*"art"*) echo "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800|text-orange-600 dark:text-orange-400" ;;
-        *) echo "bg-gray-50 dark:bg-gray-950/20 border-gray-200 dark:border-gray-800|text-gray-600 dark:text-gray-400" ;;
-    esac
+    local template_name="$2"
+
+    cat << EOF
+Generate a comprehensive template file for ${template_name}.
+
+TEMPLATE: ${template}
+NAME: ${template_name}
+
+REQUIREMENTS:
+- Create a TypeScript template file at src/data/template-${template}.ts
+- Choose appropriate camelCase export name (e.g., homeBuyingTemplate, threeDPrintingTemplate)
+- Use proper title case for title field (e.g., "3D Printing", "Home Buying")
+- Determine best category for this template
+- Choose most appropriate Lucide icon name
+- Generate 15-25 comprehensive, relevant tags
+- Tags should cover all aspects: tools, techniques, concepts, related topics, common terms
+- Make tags specific and useful for search/filtering
+- Keep sections, resources, expertTips, reflectionPrompts arrays empty (they'll be populated later)
+
+You decide:
+- Category (e.g., "Personal Life", "Business & Career", "Health & Wellness", etc.)
+- Icon (Lucide icon name like "Home", "Rocket", "Heart", "Code", etc.)
+- Description (compelling and helpful)
+- Difficulty level (beginner/intermediate/advanced)
+- Estimated time
+- Comprehensive tags
+
+TEMPLATE STRUCTURE:
+\`\`\`typescript
+import { GuidanceTemplate } from '@/types/template';
+
+export const [camelCaseName]Template: GuidanceTemplate = {
+  id: "${template}",
+  title: "${template_name}",
+  description: "[Write compelling description]",
+  category: "[Choose appropriate category]",
+  icon: "[Choose Lucide icon name]",
+  difficulty: "[beginner/intermediate/advanced]",
+  estimatedTime: "[realistic timeframe]",
+  tags: [/* Generate 15-25 comprehensive tags here */],
+  sections: [],
+  expertTips: [],
+  lastUpdated: new Date().toISOString(),
+  version: "1.0.0"
+};
+\`\`\`
+
+Generate the complete file with all fields populated appropriately for ${template_name}.
+
+When complete, respond exactly: "TEMPLATE GENERATION COMPLETE - ${template}"
+EOF
 }
 
 # Create individual template-*.ts file
 create_template_file() {
     local template="$1"
-    local template_file="$DATA_DIR/template-${template}.ts"
     local template_name=$(echo "$template" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
-    local category=$(get_template_category "$template")
 
-    log_colored "$YELLOW" "Creating template file: template-${template}.ts"
+    log_colored "$YELLOW" "Generating template file with Claude: template-${template}.ts"
 
-    cat > "$template_file" << EOF
-import { GuidanceTemplate } from '@/types/template';
+    # Generate template with Claude
+    local generation_prompt=$(create_template_generation_prompt "$template" "$template_name")
 
-export const ${template//-/}Template: GuidanceTemplate = {
-  id: "${template}",
-  name: "${template_name}",
-  description: "Comprehensive guidance and tools for ${template_name,,}.",
-  category: "${category}",
-  difficulty: "intermediate",
-  estimatedTime: "2-4 weeks",
+    cd "$CURRENT_DIR" && claude --print --dangerously-skip-permissions --add-dir "$CURRENT_DIR" -p "$generation_prompt" | tee -a "$LOGFILE"
 
-  sections: [
-    {
-      id: "foundation-understanding",
-      title: "Foundation and Understanding",
-      description: "Build your knowledge base and understand the fundamentals",
-      estimatedTime: "3-5 days",
-      difficulty: "beginner",
-      order: 1,
-      isRequired: true,
+    # Brief pause
+    sleep 3
 
-      subsections: [
-        {
-          id: "basics",
-          title: "Getting Started",
-          description: "Essential concepts and initial steps",
-          estimatedTime: "1-2 days",
-          order: 1,
-          resources: []
-        },
-        {
-          id: "planning",
-          title: "Initial Planning",
-          description: "Set your goals and create your roadmap",
-          estimatedTime: "1-2 days",
-          order: 2,
-          resources: []
-        }
-      ]
-    },
-    {
-      id: "planning-preparation",
-      title: "Planning and Preparation",
-      description: "Detailed planning and preparation phase",
-      estimatedTime: "5-7 days",
-      difficulty: "beginner",
-      order: 2,
-      isRequired: true,
-
-      subsections: [
-        {
-          id: "research",
-          title: "Research and Analysis",
-          description: "Gather information and analyze your options",
-          estimatedTime: "2-3 days",
-          order: 1,
-          resources: []
-        },
-        {
-          id: "strategy",
-          title: "Strategy Development",
-          description: "Create your detailed action plan",
-          estimatedTime: "2-3 days",
-          order: 2,
-          resources: []
-        }
-      ]
-    },
-    {
-      id: "implementation-action",
-      title: "Implementation and Action",
-      description: "Execute your plan and take concrete steps",
-      estimatedTime: "1-2 weeks",
-      difficulty: "intermediate",
-      order: 3,
-      isRequired: true,
-
-      subsections: [
-        {
-          id: "execution",
-          title: "Taking Action",
-          description: "Implement your strategy step by step",
-          estimatedTime: "1 week",
-          order: 1,
-          resources: []
-        },
-        {
-          id: "monitoring",
-          title: "Progress Monitoring",
-          description: "Track progress and make adjustments",
-          estimatedTime: "3-4 days",
-          order: 2,
-          resources: []
-        }
-      ]
-    },
-    {
-      id: "relationships-communication",
-      title: "Relationships and Communication",
-      description: "Navigate relationships and communication challenges",
-      estimatedTime: "3-5 days",
-      difficulty: "intermediate",
-      order: 4,
-      isRequired: false,
-
-      subsections: [
-        {
-          id: "stakeholders",
-          title: "Key Relationships",
-          description: "Manage important relationships throughout the process",
-          estimatedTime: "2-3 days",
-          order: 1,
-          resources: []
-        }
-      ]
-    },
-    {
-      id: "challenges-solutions",
-      title: "Challenges and Solutions",
-      description: "Address common challenges and obstacles",
-      estimatedTime: "3-5 days",
-      difficulty: "intermediate",
-      order: 5,
-      isRequired: false,
-
-      subsections: [
-        {
-          id: "problem-solving",
-          title: "Problem Resolution",
-          description: "Handle setbacks and find solutions",
-          estimatedTime: "2-3 days",
-          order: 1,
-          resources: []
-        }
-      ]
-    },
-    {
-      id: "growth-future-vision",
-      title: "Growth and Future Vision",
-      description: "Plan for long-term success and continuous improvement",
-      estimatedTime: "2-3 days",
-      difficulty: "advanced",
-      order: 6,
-      isRequired: false,
-
-      subsections: [
-        {
-          id: "optimization",
-          title: "Optimization and Growth",
-          description: "Optimize your approach and plan for the future",
-          estimatedTime: "2-3 days",
-          order: 1,
-          resources: []
-        }
-      ]
-    }
-  ],
-
-  tools: [],
-  experts: [],
-  faqs: [],
-  resources: [],
-
-  tags: ["${category,,}", "${template}"],
-  lastUpdated: new Date().toISOString(),
-  version: "1.0.0"
-};
-EOF
-
-    log_colored "$GREEN" "Created template file: $template_file"
+    log_colored "$GREEN" "Completed template generation for: $template"
 }
 
 # Generate template registry
@@ -393,47 +230,34 @@ EOF
 
 # Main function
 main() {
-    log_colored "$BLUE" "Starting Template Generation Cycle"
+    log_colored "$BLUE" "Starting Template Generation for: $TEMPLATE_NAME"
 
     # Setup directories
     mkdir -p "$DATA_DIR"
-    mkdir -p "$REGISTRY_DIR"
     mkdir -p "$(dirname "$LOGFILE")"
 
-    # Count templates
-    local template_count=$(grep -v "^#" "$TEMPLATE_LIST_FILE" | grep -v "^$" | wc -l)
-    log_colored "$BLUE" "Found $template_count templates to process"
+    # Generate template file for current template
+    create_template_file "$TEMPLATE_NAME"
 
-    # Generate individual template files
-    log_colored "$YELLOW" "Generating individual template-*.ts files..."
-    while IFS= read -r template; do
-        [[ "$template" =~ ^#.*$ ]] && continue
-        [[ -z "$template" ]] && continue
-
-        create_template_file "$template"
-        sleep 1  # Brief pause
-    done < "$TEMPLATE_LIST_FILE"
-
-    # Generate template registry
-    generate_template_registry
-
-    log_colored "$GREEN" "Template generation cycle complete!"
-    log_colored "$GREEN" "Generated $template_count template files and updated registry"
+    log_colored "$GREEN" "Template generation complete!"
+    log_colored "$GREEN" "Generated template file: template-$TEMPLATE_NAME.ts"
 }
 
 # Show usage
 show_usage() {
-    echo "Usage: $0 [COMMAND]"
+    echo "Usage: $0 [TEMPLATE_NAME] [COMMAND]"
+    echo ""
+    echo "TEMPLATE_NAME (optional):"
+    echo "  If not provided, auto-detects from current templata-{name} worktree"
     echo ""
     echo "COMMANDS:"
-    echo "  (no command)    - Generate all template files and registry"
-    echo "  registry-only   - Generate only the template registry"
+    echo "  (no command)    - Generate template file for current template"
     echo "  status         - Show current status"
     echo "  help           - Show this help"
     echo ""
     echo "Examples:"
-    echo "  $0              # Generate everything"
-    echo "  $0 registry-only # Only update registry"
+    echo "  $0              # Generate template file for current worktree"
+    echo "  $0 home-buying  # Generate template file for home-buying"
     echo "  $0 status       # Check current status"
 }
 
@@ -442,15 +266,9 @@ COMMAND="${1:-main}"
 
 case "$COMMAND" in
     "status")
-        template_count=$(grep -v "^#" "$TEMPLATE_LIST_FILE" | grep -v "^$" | wc -l)
-        existing_files=$(find "$DATA_DIR" -name "template-*.ts" 2>/dev/null | wc -l)
-        echo "Total templates: $template_count"
-        echo "Existing template files: $existing_files"
-        echo "Registry file: $([ -f "$REGISTRY_DIR/templates.ts" ] && echo "exists" || echo "missing")"
-        ;;
-    "registry-only")
-        mkdir -p "$REGISTRY_DIR"
-        generate_template_registry
+        echo "Template: $TEMPLATE_NAME"
+        echo "Template file: $([ -f "$DATA_DIR/template-$TEMPLATE_NAME.ts" ] && echo "exists" || echo "missing")"
+        echo "Current directory: $CURRENT_DIR"
         ;;
     "help")
         show_usage

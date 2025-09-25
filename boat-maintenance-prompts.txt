@@ -1,0 +1,59 @@
+CATEGORY 1: ENGINE & MECHANICAL SYSTEMS
+1. Check engine oil level and color before each boating trip.
+2. Replace engine oil filter according to manufacturer's schedule.
+3. Inspect belts and hoses for cracks, fraying, or loose connections.
+4. Test battery terminals for corrosion and clean if necessary.
+5. Check coolant level and top off with proper marine antifreeze.
+6. Inspect propeller for dings, cracks, or fishing line wrapped around shaft.
+7. Grease all fittings on steering system and engine mounts.
+8. Test engine alarm systems and gauges before departing dock.
+9. Check fuel lines and connections for leaks or deterioration.
+10. Replace spark plugs according to engine manufacturer's recommendations.
+
+CATEGORY 2: HULL & STRUCTURAL MAINTENANCE  
+1. Inspect hull for cracks, blisters, or soft spots during haul-out.
+2. Clean and wax the hull at least twice per boating season.
+3. Check through-hull fittings and seacocks for proper operation.
+4. Inspect and re-bed deck hardware if caulking shows signs of failure.
+5. Test bilge pump operation and clean intake screen monthly.
+6. Check all cleats and hardware for loose bolts or corrosion.
+7. Inspect keel bolts and rudder attachments for tightness and wear.
+8. Apply fresh bottom paint before launching each season.
+9. Check and repair any gel coat chips or scratches immediately.
+10. Inspect and maintain dock lines and fenders for wear and proper size.
+
+CATEGORY 3: ELECTRICAL & ELECTRONICS
+1. Test all navigation lights and replace burned-out bulbs immediately.
+2. Check battery voltage and charging system with multimeter monthly.
+3. Inspect all electrical connections for corrosion and tight connections.
+4. Test VHF radio and GPS systems before each extended trip.
+5. Check shore power connections and GFCI outlets for proper operation.
+6. Inspect and clean battery terminals and apply protective spray.
+7. Test automatic bilge pump float switch and manual override.
+8. Check all fuses and spare fuse inventory in electrical panel.
+9. Inspect wiring runs for chafing, cracking, or rodent damage.
+10. Update chartplotter software and backup electronic charts annually.
+
+CATEGORY 4: PLUMBING & WATER SYSTEMS
+1. Check freshwater tank level and sanitize system seasonally.
+2. Test all pumps including freshwater, raw water, and waste pumps.
+3. Inspect all hoses and clamps for leaks or deterioration.
+4. Check seacocks and through-hulls for proper operation and corrosion.
+5. Drain and winterize plumbing system in freezing climates.
+6. Test toilet operation and check holding tank level indicator.
+7. Inspect sink drains and shower sump pumps for clogs.
+8. Check hot water heater operation and inspect sacrificial anode.
+9. Test all faucets and valves for proper operation and leaks.
+10. Inspect and service water pressure accumulator tank annually.
+
+CATEGORY 5: SAFETY & EMERGENCY EQUIPMENT
+1. Check all life jackets for tears, broken zippers, and proper fit.
+2. Test fire extinguishers monthly and recharge or replace as needed.
+3. Inspect flares for expiration dates and replace before they expire.
+4. Check first aid kit contents and replenish used or expired items.
+5. Test emergency bilge pump and ensure backup power source works.
+6. Inspect safety harnesses and tethers for wear or damage.
+7. Check throwable flotation devices for Coast Guard approval markings.
+8. Test emergency VHF radio and EPIRB beacon batteries annually.
+9. Inspect and restock emergency tool kit and spare parts inventory.
+10. Review and update emergency contact list and float plan procedures.

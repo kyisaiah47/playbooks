@@ -1,0 +1,59 @@
+CATEGORY 1: Getting Started & Foundation
+1. Research and understand your current financial situation including income, expenses, and existing savings.
+2. Set clear investment goals with specific timelines, such as retirement, home purchase, or education funding.
+3. Determine your risk tolerance by considering your age, financial stability, and comfort with market volatility.
+4. Open a brokerage account with a reputable firm that offers low fees and good research tools.
+5. Learn the basics of different investment types including stocks, bonds, mutual funds, and ETFs.
+6. Calculate how much money you can realistically invest each month without compromising your emergency fund.
+7. Understand the tax implications of different investment accounts like 401(k), IRA, and taxable accounts.
+8. Create an investment policy statement that outlines your goals, timeline, and strategy.
+9. Research and compare expense ratios and fees across different investment options.
+10. Start with a simple three-fund portfolio approach using broad market index funds.
+
+CATEGORY 2: Asset Allocation & Diversification
+1. Determine your target asset allocation based on your age and risk tolerance using the 100-minus-age rule as a starting point.
+2. Diversify across different asset classes including domestic stocks, international stocks, and bonds.
+3. Consider adding real estate investment trusts (REITs) to your portfolio for additional diversification.
+4. Rebalance your portfolio quarterly or semi-annually to maintain your target allocation percentages.
+5. Research and invest in low-cost index funds that track broad market indices.
+6. Add international exposure through developed and emerging market funds to reduce geographic concentration.
+7. Include both growth and value stocks in your equity allocation for style diversification.
+8. Consider your bond allocation across different durations and credit qualities.
+9. Evaluate sector-specific ETFs if you want targeted exposure to particular industries.
+10. Review correlation between your holdings to ensure true diversification benefits.
+
+CATEGORY 3: Investment Research & Selection
+1. Use financial websites and tools to research individual stocks, funds, and ETFs before investing.
+2. Read annual reports and financial statements of companies you're considering for investment.
+3. Compare expense ratios, tracking error, and performance history when selecting index funds.
+4. Analyze a company's price-to-earnings ratio, debt levels, and growth prospects before buying individual stocks.
+5. Use screening tools to find investments that match your specific criteria and values.
+6. Research the fund manager's track record and investment philosophy for actively managed funds.
+7. Check the liquidity and trading volume of investments to ensure easy buying and selling.
+8. Read independent research reports from sources like Morningstar or Value Line.
+9. Evaluate environmental, social, and governance (ESG) factors if sustainable investing is important to you.
+10. Compare similar investments side-by-side using fact sheets and prospectuses before making decisions.
+
+CATEGORY 4: Portfolio Management & Monitoring
+1. Set up automatic monthly contributions to your investment accounts to dollar-cost average.
+2. Review your portfolio performance monthly but avoid making emotional decisions based on short-term fluctuations.
+3. Track your progress toward financial goals using portfolio tracking software or spreadsheets.
+4. Harvest tax losses at year-end to offset capital gains and reduce your tax burden.
+5. Increase your contribution amount whenever you receive a raise or bonus at work.
+6. Monitor and minimize investment fees by regularly reviewing expense ratios and trading costs.
+7. Rebalance your portfolio when any asset class deviates more than 5% from your target allocation.
+8. Keep detailed records of all investment transactions for tax reporting purposes.
+9. Review and update your investment strategy annually or after major life changes.
+10. Use dividend reinvestment plans (DRIPs) to automatically compound your returns over time.
+
+CATEGORY 5: Advanced Strategies & Optimization
+1. Consider tax-loss harvesting strategies to optimize your after-tax returns in taxable accounts.
+2. Implement asset location strategies by placing tax-inefficient investments in tax-advantaged accounts.
+3. Explore target-date funds as a hands-off approach that automatically adjusts allocation over time.
+4. Research and consider adding alternative investments like commodities or cryptocurrency for further diversification.
+5. Evaluate the benefits of dollar-cost averaging versus lump-sum investing based on your situation.
+6. Consider Roth IRA conversions during market downturns or low-income years.
+7. Implement a bond ladder strategy to manage interest rate risk in your fixed-income allocation.
+8. Use covered calls or other conservative options strategies to generate additional income from stock holdings.
+9. Research factor-based investing strategies that target specific risk premiums like value or momentum.
+10. Plan your withdrawal strategy for retirement by understanding the 4% rule and sequence of returns risk.

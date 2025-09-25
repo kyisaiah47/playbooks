@@ -4,10 +4,15 @@ export interface GuidanceTemplate {
   description: string;
   category: string;
   icon: string;
+  difficulty: string;
+  estimatedTime: string;
+  tags: string[];
   sections: GuidanceSection[];
   resources?: Resource[];
   expertTips: ExpertTip[];
   reflectionPrompts?: DailyReflectionPrompt[];
+  lastUpdated: string;
+  version: string;
 }
 
 export interface GuidanceSection {

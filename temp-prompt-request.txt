@@ -1,0 +1,11 @@
+Generate exactly 50 practical action prompts for: bankruptcy-recovery
+
+Each prompt should be 1-10 words, actionable, and specific to bankruptcy-recovery.
+
+Output format:
+1. [prompt text]
+2. [prompt text]
+...
+50. [prompt text]
+
+Template: bankruptcy-recovery

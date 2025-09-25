@@ -1,0 +1,59 @@
+CATEGORY 1: Product Discovery & Research
+1. Browse the homepage to see featured products and current promotions.
+2. Use the search bar to find specific products you're looking for.
+3. Filter products by price range to stay within your budget.
+4. Sort products by customer ratings to find the highest-rated items.
+5. Read product descriptions carefully to understand features and specifications.
+6. Check product availability and estimated delivery times.
+7. View multiple product images and zoom in to see details.
+8. Compare similar products side-by-side to make informed decisions.
+9. Read customer reviews to learn about real user experiences.
+10. Add items to your wishlist to save them for later consideration.
+
+CATEGORY 2: Product Evaluation & Selection
+1. Check the product's return policy before making a purchase decision.
+2. Verify the seller's reputation and customer service ratings.
+3. Look for product warranties or guarantees offered by the store.
+4. Calculate total costs including shipping, taxes, and any additional fees.
+5. Check if there are any current discount codes or coupons available.
+6. Verify product compatibility with your existing items or requirements.
+7. Review the product's size chart or dimensions to ensure proper fit.
+8. Check if the product is eligible for free shipping or expedited delivery.
+9. Look for bundle deals or related products that might save you money.
+10. Screenshot or bookmark the product page to reference later.
+
+CATEGORY 3: Account Management & Security
+1. Create a new account with a strong, unique password.
+2. Verify your email address to activate your account fully.
+3. Add your shipping address to your account profile.
+4. Save your preferred payment methods securely in your account.
+5. Set up two-factor authentication for enhanced account security.
+6. Update your personal information and contact details as needed.
+7. Review and adjust your email notification preferences.
+8. Check your order history to track past purchases.
+9. Update your password regularly to maintain account security.
+10. Log out of your account when using shared or public devices.
+
+CATEGORY 4: Checkout & Payment
+1. Review all items in your shopping cart before proceeding to checkout.
+2. Apply any available discount codes or promotional offers.
+3. Select your preferred shipping method and delivery speed.
+4. Choose your payment method from saved options or add a new one.
+5. Double-check your shipping address for accuracy and completeness.
+6. Review the final total including all taxes and fees.
+7. Read and accept the terms and conditions before completing your order.
+8. Take a screenshot of your order confirmation for your records.
+9. Check your email for order confirmation and tracking information.
+10. Save your receipt and order number for future reference.
+
+CATEGORY 5: Post-Purchase & Customer Service
+1. Track your order using the provided tracking number and updates.
+2. Inspect your package immediately upon delivery for any damage.
+3. Test or try your purchased items to ensure they meet expectations.
+4. Contact customer service if you have any issues with your order.
+5. Leave honest product reviews to help other customers make decisions.
+6. Process returns or exchanges within the specified return window.
+7. Sign up for restock notifications for out-of-stock items you want.
+8. Rate your overall shopping experience on the store's feedback system.
+9. Subscribe to the store's newsletter for exclusive deals and updates.
+10. Recommend products or the store to friends and family if satisfied.

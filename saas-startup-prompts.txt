@@ -1,0 +1,59 @@
+CATEGORY 1: Idea Validation & Market Research
+1. Identify a specific problem that frustrates you or people you know on a daily basis.
+2. Survey 50 potential customers to understand their biggest pain points in your target area.
+3. Research your top 5 competitors to understand their pricing, features, and customer complaints.
+4. Create a simple landing page describing your solution and collect email signups for validation.
+5. Conduct 10 one-on-one interviews with people in your target market about their current solutions.
+6. Calculate the total addressable market size for your proposed solution.
+7. Define your ideal customer persona including demographics, behaviors, and motivations.
+8. Test your problem-solution fit by presenting your idea to 20 potential customers.
+9. Research industry trends and growth projections for your target market.
+10. Validate that people are willing to pay for your solution by running a pre-order campaign.
+
+CATEGORY 2: Product Development & MVP
+1. Write a detailed product requirements document outlining your core features.
+2. Create wireframes or mockups for your minimum viable product's key user flows.
+3. Choose your technology stack based on your team's skills and product requirements.
+4. Build a basic prototype that demonstrates your core value proposition.
+5. Set up your development environment with version control and deployment pipelines.
+6. Implement user authentication and basic account management functionality.
+7. Develop your most critical feature that solves the primary customer problem.
+8. Create a simple onboarding flow to help new users understand your product.
+9. Build basic analytics to track user behavior and product usage.
+10. Launch a beta version to a small group of early adopters for feedback.
+
+CATEGORY 3: Business Model & Operations
+1. Choose your revenue model (subscription, freemium, one-time payment, or usage-based).
+2. Set up your business entity (LLC, corporation) and obtain necessary licenses.
+3. Open a business bank account and implement basic accounting systems.
+4. Determine your pricing strategy based on competitor analysis and value provided.
+5. Create standard operating procedures for customer support and issue resolution.
+6. Set up payment processing with Stripe, PayPal, or similar payment gateway.
+7. Implement basic customer relationship management (CRM) system.
+8. Establish key performance indicators (KPIs) to measure business success.
+9. Create a basic financial model projecting revenue, costs, and profitability.
+10. Set up legal protections including terms of service, privacy policy, and user agreements.
+
+CATEGORY 4: Marketing & Customer Acquisition
+1. Create valuable content (blog posts, tutorials, guides) that attracts your target audience.
+2. Build an email list by offering a free resource relevant to your target market.
+3. Launch a social media presence on platforms where your customers spend time.
+4. Implement search engine optimization (SEO) to improve organic discovery.
+5. Set up Google Ads or Facebook Ads campaigns targeting your ideal customers.
+6. Partner with complementary businesses or influencers for cross-promotion opportunities.
+7. Create customer case studies and testimonials to build social proof.
+8. Attend industry events, conferences, or networking meetups to build relationships.
+9. Launch a referral program to incentivize existing customers to bring in new users.
+10. Track and optimize your customer acquisition cost (CAC) and lifetime value (LTV).
+
+CATEGORY 5: Growth & Scaling
+1. Hire your first employee or contractor to handle tasks outside your core expertise.
+2. Implement customer success processes to reduce churn and increase retention.
+3. Add new features based on customer feedback and usage data analysis.
+4. Expand into adjacent market segments or use cases for your product.
+5. Raise funding from investors if needed to accelerate growth and expansion.
+6. Build integrations with popular tools your customers already use.
+7. Create an affiliate or partner program to expand your distribution channels.
+8. Implement advanced analytics to better understand user behavior and optimize conversion.
+9. Scale your customer support team and implement help desk software.
+10. Plan international expansion or new product lines based on market opportunities.

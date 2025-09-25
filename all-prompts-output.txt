@@ -1,0 +1,7 @@
+This file contains a prompt request to generate 50 practical action prompts for each of 177 life templates. The request asks for short, actionable prompts (1-10 words each) that help people take concrete steps for various life situations ranging from 3D printing to YouTube channel creation.
+
+The format requested is:
+- TEMPLATE: [template-name]
+- 1-50 numbered prompts for each template
+
+This appears to be part of a batch processing system for generating content for life planning templates in your templata project.
