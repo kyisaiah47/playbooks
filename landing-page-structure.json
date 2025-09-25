@@ -13,16 +13,7 @@
         "title": "Now available in Templata"
       },
       "headline": "Organize your [TEMPLATE_NAME]",
-      "subheadline": "Transform overwhelming planning into an organized, step-by-step journey",
-      "description": "Get expert guidance, actionable prompts, and comprehensive resources to navigate your [TEMPLATE_NAME] with confidence.",
-      "primaryCta": {
-        "text": "Get Started Free",
-        "subtext": "No credit card required"
-      },
-      "secondaryCta": {
-        "text": "See Preview",
-        "subtext": ""
-      }
+      "subheadline": "Transform overwhelming planning into an organized, step-by-step journey with expert guidance, actionable prompts, and comprehensive resources to navigate your [TEMPLATE_NAME] with confidence."
     },
     "whatYouGet": {
       "sectionTitle": "Everything you need for [TEMPLATE_NAME]",
