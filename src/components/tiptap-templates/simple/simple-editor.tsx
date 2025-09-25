@@ -329,14 +329,14 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
           />
         )}
 
-        {/* Drag Handle */}
-        {editor && (
+        {/* Drag Handle - Disabled for now */}
+        {/* {editor && (
           <DragHandle editor={editor}>
             <div className="drag-handle-icon">
               ⋮⋮
             </div>
           </DragHandle>
-        )}
+        )} */}
 
         {/* Floating Toolbar */}
         {editor && (

@@ -7,9 +7,9 @@
     p, h1, h2, h3, h4, h5, h6, blockquote, pre, li {
       position: relative;
       border-radius: 6px;
-      margin: 0;
-      padding: 8px 12px;
-      min-height: 1.5em;
+      margin: -2px 0;
+      padding: 2px 12px;
+      min-height: 1.2em;
 
       /* Prevent text selection during drag */
       -webkit-user-select: none;

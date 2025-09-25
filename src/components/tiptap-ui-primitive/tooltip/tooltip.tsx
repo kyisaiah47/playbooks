@@ -203,27 +203,28 @@ export const TooltipContent = React.forwardRef<
   const context = useTooltipContext()
   const ref = useMergeRefs([context.refs.setFloating, propRef])
 
-  if (!context.open) return null
+  // Disable tooltips completely since we have toolbar buttons
+  return null
 
-  const content = (
-    <div
-      ref={ref}
-      style={{
-        ...context.floatingStyles,
-        ...style,
-      }}
-      {...context.getFloatingProps(props)}
-      className="tiptap-tooltip"
-    >
-      {children}
-    </div>
-  )
-
-  if (portal) {
-    return <FloatingPortal {...portalProps}>{content}</FloatingPortal>
-  }
-
-  return content
+  // Original code (commented out):
+  // if (!context.open) return null
+  // const content = (
+  //   <div
+  //     ref={ref}
+  //     style={{
+  //       ...context.floatingStyles,
+  //       ...style,
+  //     }}
+  //     {...context.getFloatingProps(props)}
+  //     className="tiptap-tooltip"
+  //   >
+  //     {children}
+  //   </div>
+  // )
+  // if (portal) {
+  //   return <FloatingPortal {...portalProps}>{content}</FloatingPortal>
+  // }
+  // return content
 })
 
 Tooltip.displayName = "Tooltip"

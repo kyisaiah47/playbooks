@@ -125,6 +125,7 @@ export function TemplataContentSidebar({
       case 'planning': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
       case 'decision': return 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
       case 'research': return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300'
+      case 'action': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
       default: return 'bg-muted text-muted-foreground'
     }
   }
