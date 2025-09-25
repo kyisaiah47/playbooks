@@ -9,8 +9,6 @@ import { getBlogPostsByTemplate } from "@/registry/blogs"
 import { getPromptsByTemplate } from "@/registry/prompts"
 import { Badge } from "@/components/ui/badge"
 import { RelatedTemplates } from "@/components/template/related-templates"
-import { SharePanel } from "@/components/collaboration/share-panel"
-import { PDFExportButton } from "@/components/pdf/export-button"
 import { ThemeSelector } from "@/components/theme-selector"
 import {
   Sidebar,
@@ -173,13 +171,16 @@ export function TemplataContentSidebar({
           <SidebarGroup>
             <SidebarGroupContent className="px-1.5 md:px-0">
               <SidebarMenu>
+                {/* Theme Selector */}
+                <SidebarMenuItem>
+                  <div className="flex justify-center hover:[&>*]:scale-110 hover:[&>*]:animate-bounce [&>*]:!bg-transparent [&>*]:!border-0 [&>*]:!p-0 [&>*]:!h-4 [&>*]:!w-4 [&>*]:!min-w-4 [&>*]:transition-transform [&>*]:duration-200">
+                    <ThemeSelector iconOnly />
+                  </div>
+                </SidebarMenuItem>
+
                 {template.sections.map((section, index) => (
                   <SidebarMenuItem key={section.id}>
                     <SidebarMenuButton
-                      tooltip={{
-                        children: section.title,
-                        hidden: false,
-                      }}
                       onClick={() => {
                         onSectionChange(index)
                         setActiveTab('prompts')
@@ -203,10 +204,6 @@ export function TemplataContentSidebar({
 
                 <SidebarMenuItem>
                   <SidebarMenuButton
-                    tooltip={{
-                      children: "Action Prompts",
-                      hidden: false,
-                    }}
                     onClick={() => {
                       setActiveTab('prompts')
                       setOpen(true)
@@ -223,10 +220,6 @@ export function TemplataContentSidebar({
 
                 <SidebarMenuItem>
                   <SidebarMenuButton
-                    tooltip={{
-                      children: "Resources",
-                      hidden: false,
-                    }}
                     onClick={() => {
                       setActiveTab('resources')
                       setOpen(true)
@@ -243,10 +236,6 @@ export function TemplataContentSidebar({
 
                 <SidebarMenuItem>
                   <SidebarMenuButton
-                    tooltip={{
-                      children: "Related Templates",
-                      hidden: false,
-                    }}
                     onClick={() => {
                       setActiveTab('related')
                       setOpen(true)
@@ -268,10 +257,6 @@ export function TemplataContentSidebar({
                 {workspaces.map((workspace) => (
                   <SidebarMenuItem key={workspace.id}>
                     <SidebarMenuButton
-                      tooltip={{
-                        children: workspace.name,
-                        hidden: false,
-                      }}
                       onClick={() => onWorkspaceChange?.(workspace.id)}
                       isActive={activeWorkspaceId === workspace.id}
                       className="px-2.5 md:px-2 hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
@@ -287,10 +272,6 @@ export function TemplataContentSidebar({
                 {/* Add workspace button */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
-                    tooltip={{
-                      children: "Create Workspace",
-                      hidden: false,
-                    }}
                     onClick={() => onCreateWorkspace?.()}
                     className="px-2.5 md:px-2 text-muted-foreground hover:text-foreground hover:[&>div]:scale-110 hover:[&>div]:animate-bounce"
                   >
@@ -305,26 +286,6 @@ export function TemplataContentSidebar({
           </SidebarGroup>
         </SidebarContent>
 
-        <SidebarFooter className="p-4">
-          <div className="flex flex-col gap-4 items-center">
-            <div className="[&>*]:!bg-transparent [&>*]:!border-0 [&>*]:!p-0 [&>*]:!h-4 [&>*]:!w-4 [&>*]:!min-w-4">
-              <SharePanel
-                templateId={template.id}
-                templateTitle={template.title}
-                responses={responses || {}}
-              />
-            </div>
-            <div className="[&>*]:!bg-transparent [&>*]:!border-0 [&>*]:!p-0 [&>*]:!h-4 [&>*]:!w-4 [&>*]:!min-w-4">
-              <PDFExportButton
-                template={template}
-                responses={responses || {}}
-              />
-            </div>
-            <div className="[&>*]:!bg-transparent [&>*]:!border-0 [&>*]:!p-0 [&>*]:!h-4 [&>*]:!w-4 [&>*]:!min-w-4">
-              <ThemeSelector iconOnly />
-            </div>
-          </div>
-        </SidebarFooter>
       </Sidebar>
 
       {/* Content Browser Sidebar */}

@@ -318,33 +318,6 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <div className="flex flex-col items-end gap-1">
-                  {totalPrompts > 0 && (
-                    <>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="font-medium">{completedPrompts}/{totalPrompts}</span>
-                        <span>completed</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Progress
-                          value={(completedPrompts / totalPrompts) * 100}
-                          className="w-20 h-2 [&>div]:bg-green-500"
-                        />
-                        <span className="text-xs font-medium text-muted-foreground">{Math.round((completedPrompts / totalPrompts) * 100)}%</span>
-                      </div>
-                    </>
-                  )}
-                </div>
-                {allItems.length > 0 && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setEditMode(!editMode)}
-                    className={`h-8 w-8 p-0 ${editMode ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:text-foreground'}`}
-                  >
-                    <Edit3 className="w-4 h-4" />
-                  </Button>
-                )}
               </div>
             </header>
 
