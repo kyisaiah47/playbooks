@@ -175,12 +175,10 @@ export function CommandPalette({
     if (!templateMode?.template) return null
 
     const template = templateMode.template
-    console.log('Template structure:', template)
 
     // Extract prompts from all sections - check both reflectionPrompts and prompts
     const allPrompts = template.sections?.flatMap((section: any, sectionIndex: number) => {
       const prompts = section.reflectionPrompts || section.prompts || []
-      console.log(`Section ${section.title} has ${prompts.length} prompts:`, prompts)
       return prompts.map((prompt: any) => ({
         ...prompt,
         sectionTitle: section.title,

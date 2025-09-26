@@ -1,5 +1,3 @@
-"use client";
-
 export default function BrandAdPage() {
 	return (
 		<div className="min-h-screen bg-black text-white flex items-center justify-center p-16 relative overflow-hidden">
@@ -10,8 +8,6 @@ export default function BrandAdPage() {
 					backgroundImage: "url('/geometric-monuments.png')"
 				}}
 			></div>
-
-
 			{/* Logo in corner */}
 			<div className="absolute top-8 left-8 flex items-center space-x-2 z-10">
 				<img

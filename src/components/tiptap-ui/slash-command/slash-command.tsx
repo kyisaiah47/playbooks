@@ -111,7 +111,6 @@ const SLASH_COMMANDS = [
     icon: Image,
     command: (editor: Editor) => {
       // This would trigger image upload
-      console.log('Image upload would be triggered')
     }
   },
   {

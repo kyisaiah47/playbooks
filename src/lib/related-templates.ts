@@ -1,5 +1,3 @@
-"use client"
-
 import { templateRegistry, TemplateRegistryEntry } from "@/registry/templates"
 import { GuidanceTemplate } from "@/types/template"
 

@@ -1,5 +1,3 @@
-"use client"
-
 import { templateRegistry, TemplateRegistryEntry } from "@/registry/templates"
 
 // Template of the Week system

@@ -76,7 +76,6 @@ export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) 
 
   const handleSaveReflection = () => {
     // TODO: Save reflection response
-    console.log('Saving reflection:', reflectionResponse);
   };
 
   if (!currentPrompt) {

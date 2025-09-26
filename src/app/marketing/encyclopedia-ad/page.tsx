@@ -1,5 +1,3 @@
-"use client";
-
 export default function EncyclopediaAdPage() {
 	return (
 		<div className="min-h-screen bg-black text-white flex items-center justify-center p-16 relative overflow-hidden">

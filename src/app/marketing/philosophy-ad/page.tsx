@@ -1,5 +1,3 @@
-"use client";
-
 import { Announcement, AnnouncementTag, AnnouncementTitle } from "@/components/ui/announcement";
 
 export default function PhilosophyAdPage() {

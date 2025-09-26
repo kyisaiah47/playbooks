@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fast batch article generation for all templates
+# Fast batch article generation - audit first, then process only incomplete ones
 set -e
 
 # Starting index (0-based)
@@ -41,11 +41,48 @@ get_category_for_template() {
 # Get all worktrees
 WORKTREES=($(ls -d ../../templata-* | sort))
 
-log_colored "$BLUE" "Found ${#WORKTREES[@]} worktrees, starting at index $START_INDEX, processing $NUM_BATCHES batches"
+log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#WORKTREES[@]} worktrees for completion status..."
 
-# Process in batches of 20
+# Phase 1: Fast audit - identify incomplete worktrees
+INCOMPLETE_WORKTREES=()
+COMPLETE_COUNT=0
+INCOMPLETE_COUNT=0
+
+for worktree in "${WORKTREES[@]}"; do
+    if [ ! -d "$worktree" ]; then
+        continue
+    fi
+
+    template=$(basename "$worktree" | sed 's/templata-//')
+
+    # Check if TypeScript blog file exists with substantial content
+    if [ -f "$worktree/src/registry/blogs-${template}.ts" ]; then
+        word_count=$(wc -w < "$worktree/src/registry/blogs-${template}.ts" 2>/dev/null || echo "0")
+        if [ "$word_count" -gt 1000 ]; then
+            ((COMPLETE_COUNT++))
+            continue
+        fi
+    fi
+
+    # This worktree needs work
+    INCOMPLETE_WORKTREES+=("$worktree")
+    ((INCOMPLETE_COUNT++))
+done
+
+log_colored "$GREEN" "📊 AUDIT RESULTS:"
+log_colored "$GREEN" "  ✅ Complete: $COMPLETE_COUNT templates"
+log_colored "$YELLOW" "  ❌ Incomplete: $INCOMPLETE_COUNT templates"
+
+if [ ${#INCOMPLETE_WORKTREES[@]} -eq 0 ]; then
+    log_colored "$GREEN" "🎉 All article files already complete!"
+    exit 0
+fi
+
+log_colored "$BLUE" "🚀 GENERATION PHASE: Processing ${#INCOMPLETE_WORKTREES[@]} incomplete templates..."
+
+# Phase 2: Process only incomplete worktrees in batches
 BATCH_SIZE=20
-TOTAL=${#WORKTREES[@]}
+TOTAL=${#INCOMPLETE_WORKTREES[@]}
 
 BATCH_COUNT=0
 for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
@@ -55,27 +92,12 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
         BATCH_END=$((TOTAL - 1))
     fi
 
-    log_colored "$BLUE" "Starting batch $((i/BATCH_SIZE + 1)): templates $((i+1))-$((BATCH_END+1)) of $TOTAL"
+    log_colored "$BLUE" "Starting batch $BATCH_COUNT: templates $((i+1))-$((BATCH_END+1)) of $TOTAL incomplete"
 
     # Start batch of parallel jobs
     for ((j=i; j<=BATCH_END; j++)); do
-        worktree="${WORKTREES[j]}"
-
-        if [ ! -d "$worktree" ]; then
-            continue
-        fi
-
+        worktree="${INCOMPLETE_WORKTREES[j]}"
         template=$(basename "$worktree" | sed 's/templata-//')
-
-        # Skip if TypeScript blog file already exists with substantial content
-        if [ -f "$worktree/src/registry/blogs-${template}.ts" ]; then
-            word_count=$(wc -w < "$worktree/src/registry/blogs-${template}.ts")
-            if [ "$word_count" -gt 1000 ]; then
-                echo "✅ Skipping $template (already has TS blog file with $word_count words)"
-                continue
-            fi
-        fi
-
         template_readable=$(echo "$template" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
         category=$(get_category_for_template "$template")
 
@@ -127,12 +149,14 @@ When complete, respond exactly: 'ARTICLE GENERATION COMPLETE - Article #$article
     # Wait for this batch to complete
     wait
 
-    log_colored "$GREEN" "Batch $((i/BATCH_SIZE + 1)) complete!"
+    log_colored "$GREEN" "Batch $BATCH_COUNT complete!"
 done
 
-log_colored "$GREEN" "Batch cycle complete!"
+log_colored "$GREEN" "Generation cycle complete!"
 
-# Check for incomplete files and retry if needed
+# Final verification
+log_colored "$BLUE" "🔍 FINAL VERIFICATION: Checking completion status..."
+
 incomplete_count=0
 for worktree in "${WORKTREES[@]}"; do
     if [ ! -d "$worktree" ]; then
@@ -142,9 +166,9 @@ for worktree in "${WORKTREES[@]}"; do
     template=$(basename "$worktree" | sed 's/templata-//')
 
     if [ -f "$worktree/src/registry/blogs-${template}.ts" ]; then
-        word_count=$(wc -w < "$worktree/src/registry/blogs-${template}.ts")
+        word_count=$(wc -w < "$worktree/src/registry/blogs-${template}.ts" 2>/dev/null || echo "0")
         if [ "$word_count" -gt 1000 ]; then
-            echo "✅ $template ($word_count words in TS file)"
+            continue
         else
             echo "❌ $template (TS file too small: $word_count words)"
             ((incomplete_count++))
@@ -156,9 +180,9 @@ for worktree in "${WORKTREES[@]}"; do
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "Found $incomplete_count incomplete files. Restarting..."
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Restarting..."
     sleep 5
     exec "$0" "$@"
 else
-    log_colored "$GREEN" "All article files complete! 🎉"
+    log_colored "$GREEN" "🎉 All article files complete!"
 fi

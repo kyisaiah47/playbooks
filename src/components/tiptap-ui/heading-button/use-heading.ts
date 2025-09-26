@@ -244,7 +244,6 @@ export function shouldShowButton(props: {
  *     level: 2,
  *     editor: myEditor,
  *     hideWhenUnavailable: true,
- *     onToggled: (isActive) => console.log('Heading toggled:', isActive)
  *   })
  *
  *   if (!isVisible) return null

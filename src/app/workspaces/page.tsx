@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,8 +26,6 @@ import {
 	RotateCcw,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-
-
 export default function WorkspacesPage() {
 	return (
 		<PageLayout>

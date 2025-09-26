@@ -1,5 +1,3 @@
-"use client";
-
 import { FullTemplatePreview } from "@/components/preview/FullTemplatePreview";
 
 export default function HeroAdPage() {

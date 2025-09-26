@@ -342,7 +342,6 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
                 content=""
                 templateId={template.id}
                 onUpdate={(content) => {
-                  console.log('Content updated:', content)
                 }}
               />
             </div>

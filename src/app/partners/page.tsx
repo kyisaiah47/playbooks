@@ -22,7 +22,6 @@ export default function PartnersPage() {
     e.preventDefault()
     if (email) {
       // Here you would typically submit to your backend/service
-      console.log("Email submitted:", email)
       setIsSubmitted(true)
     }
   }

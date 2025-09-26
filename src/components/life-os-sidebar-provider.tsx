@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { SidebarProvider } from "@/components/ui/life-os-sidebar"
 

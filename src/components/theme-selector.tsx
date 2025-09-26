@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { Check, Palette } from "lucide-react"
-import { useTheme } from "next-themes"
 import { useCustomTheme } from "@/components/theme-provider-custom"
 import { themes } from "@/lib/themes"
 import { Button } from "@/components/ui/button"
@@ -20,7 +19,6 @@ interface ThemeSelectorProps {
 }
 
 export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
-  const { setTheme } = useTheme()
   const { currentTheme, setTheme: setCustomTheme } = useCustomTheme()
   const [mounted, setMounted] = React.useState(false)
 
@@ -28,8 +26,7 @@ export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
     setMounted(true)
     // Only set default theme on initial mount
     if (!localStorage.getItem('templata-theme')) {
-      // Force dark mode and set default theme to black (Default theme)
-      setTheme('dark')
+      // Set default theme to black (Default theme) - already in dark mode
       const defaultTheme = themes[0] // Default/Black theme
       setCustomTheme(defaultTheme.colors.dark)
     }

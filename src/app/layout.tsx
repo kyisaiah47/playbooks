@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
 import { CustomThemeProvider } from "@/components/theme-provider-custom"
 import { AuthProvider } from "@/contexts/auth-context"
-import { WeddingProvider } from "@/contexts/wedding-context"
-import { HomeBuyingProvider } from "@/contexts/home-buying-context"
-import { BabyPlanningProvider } from "@/contexts/baby-planning-context"
-import { MealPlanningProvider } from "@/contexts/meal-planning-context"
 import { UIProvider } from "@/components/providers/ui-provider"
+import { ErrorBoundary } from "@/components/error-boundary"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -130,28 +126,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ErrorBoundary>
           <CustomThemeProvider>
             <AuthProvider>
               <UIProvider>
-                <MealPlanningProvider>
-                  <BabyPlanningProvider>
-                    <HomeBuyingProvider>
-                      <WeddingProvider>
-                        {children}
-                      </WeddingProvider>
-                    </HomeBuyingProvider>
-                  </BabyPlanningProvider>
-                </MealPlanningProvider>
+                {children}
               </UIProvider>
             </AuthProvider>
           </CustomThemeProvider>
-        </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

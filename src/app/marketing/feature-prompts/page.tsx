@@ -1,5 +1,3 @@
-"use client";
-
 import { MessageSquare, ArrowRight } from "lucide-react";
 
 export default function FeaturePromptsAdPage() {

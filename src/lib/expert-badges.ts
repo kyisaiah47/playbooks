@@ -1,5 +1,3 @@
-"use client"
-
 // Axiom Engine attribution system for templates
 export interface ExpertBadge {
   id: string

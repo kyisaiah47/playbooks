@@ -1,5 +1,3 @@
-"use client";
-
 import { BookOpen, MessageSquare, Layout } from "lucide-react";
 
 export default function SplitScreenAdPage() {

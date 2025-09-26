@@ -240,7 +240,6 @@ export function shouldShowButton(props: {
  *     type: "orderedList",
  *     editor: myEditor,
  *     hideWhenUnavailable: true,
- *     onToggled: () => console.log('List toggled!')
  *   })
  *
  *   if (!isVisible) return null
