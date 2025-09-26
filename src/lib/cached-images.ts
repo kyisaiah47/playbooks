@@ -1,4 +1,4 @@
-import { blogRegistry } from '@/registry/blogs';
+import { articleRegistry } from '@/registry/articles';
 import { UnsplashImage } from './unsplash';
 
 /**
@@ -6,7 +6,7 @@ import { UnsplashImage } from './unsplash';
  */
 export async function getCachedImageForTemplate(templateName: string): Promise<UnsplashImage | null> {
   // Find blog posts for this template
-  const templatePosts = blogRegistry.filter(post =>
+  const templatePosts = articleRegistry.filter(post =>
     post.relatedTemplates?.includes(templateName) ||
     (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
   );
@@ -46,7 +46,7 @@ export async function getCachedImageForTemplate(templateName: string): Promise<U
  * Check if a template has cached images
  */
 export function templateHasCachedImages(templateName: string): boolean {
-  const templatePosts = blogRegistry.filter(post =>
+  const templatePosts = articleRegistry.filter(post =>
     post.relatedTemplates?.includes(templateName) ||
     (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
   );
@@ -60,7 +60,7 @@ export function templateHasCachedImages(templateName: string): boolean {
 export function getTemplatesWithCachedImages(): string[] {
   const templatesWithImages = new Set<string>();
 
-  blogRegistry.forEach(post => {
+  articleRegistry.forEach(post => {
     if (post.heroImage?.cached) {
       // Extract template name from slug or relatedTemplates
       if (post.relatedTemplates) {
@@ -83,8 +83,8 @@ export function getTemplatesWithCachedImages(): string[] {
  * Get cached image statistics
  */
 export function getCachedImageStats() {
-  const totalPosts = blogRegistry.length;
-  const postsWithImages = blogRegistry.filter(post => post.heroImage?.cached).length;
+  const totalPosts = articleRegistry.length;
+  const postsWithImages = articleRegistry.filter(post => post.heroImage?.cached).length;
   const templatesWithImages = getTemplatesWithCachedImages().length;
 
   return {

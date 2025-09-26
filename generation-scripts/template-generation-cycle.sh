@@ -42,7 +42,7 @@ for worktree in "${WORKTREES[@]}"; do
     has_template=false
     if [ -f "$worktree/${template}-template.txt" ]; then
         word_count=$(wc -w < "$worktree/${template}-template.txt" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 100 ]; then
+        if [ "$word_count" -gt 150 ]; then
             has_template=true
         fi
     fi
@@ -97,7 +97,7 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
         cd "$worktree"
 
         (
-            result=$(claude --print --dangerously-skip-permissions --add-dir . -p "Generate ONE comprehensive template structure for ${template_readable}.
+            claude --print --dangerously-skip-permissions --add-dir . -p "Generate ONE comprehensive template structure for ${template_readable}.
 
 TEMPLATE for $template_readable
 
@@ -136,13 +136,12 @@ export const [camelCaseName]Template: GuidanceTemplate = {
 };
 \`\`\`
 
-When complete, respond exactly: 'TEMPLATE GENERATION COMPLETE - ${template}'" 2>&1)
+When complete, respond exactly: 'TEMPLATE GENERATION COMPLETE - ${template}'" > ${template}-template.txt 2>&1
 
-            if [ $? -eq 0 ] && [ -n "$result" ]; then
-                echo "$result" > ${template}-template.txt
+            if [ $? -eq 0 ] && [ -f "${template}-template.txt" ]; then
                 echo "✅ $template: Template success"
             else
-                echo "❌ $template: Template failed - $result"
+                echo "❌ $template: Template failed"
             fi
 
             echo "✅ $template: Template completed"
@@ -173,7 +172,7 @@ for worktree in "${WORKTREES[@]}"; do
     has_template=false
     if [ -f "$worktree/${template}-template.txt" ]; then
         word_count=$(wc -w < "$worktree/${template}-template.txt" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 100 ]; then
+        if [ "$word_count" -gt 150 ]; then
             has_template=true
         else
             echo "❌ $template (template file too small: $word_count words)"

@@ -8,7 +8,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
-import { getBlogPostBySlug, getRelatedBlogPosts, getBlogPostsByCategory, blogRegistry } from "@/registry/blogs";
+import { getArticleBySlug, getRelatedArticles, getArticlesByCategory, articleRegistry } from "@/registry/articles";
 import { TemplateImage } from "@/components/ui/template-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
@@ -35,7 +35,7 @@ interface ArticleClientProps {
 
 export default function ArticleClient({ params }: ArticleClientProps) {
   const { slug } = use(params);
-  const post = getBlogPostBySlug(slug);
+  const post = getArticleBySlug(slug);
   const [activeSection, setActiveSection] = useState('');
 
   // Knowledge graph integration
@@ -130,8 +130,8 @@ export default function ArticleClient({ params }: ArticleClientProps) {
     );
   }
 
-  const relatedPosts = getRelatedBlogPosts(slug, 3);
-  const categoryPosts = getBlogPostsByCategory(post.category, 4);
+  const relatedPosts = getRelatedArticles(slug, 3);
+  const categoryPosts = getArticlesByCategory(post.category, 4);
   const CategoryIcon = getCategoryIcon(post.category);
 
   // Extract headings for table of contents

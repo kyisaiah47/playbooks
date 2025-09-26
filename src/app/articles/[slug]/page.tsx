@@ -9,7 +9,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
-import { getBlogPostBySlug, getRelatedBlogPosts, getBlogPostsByCategory, blogRegistry } from "@/registry/blogs";
+import { getArticleBySlug, getRelatedArticles, getArticlesByCategory, articleRegistry } from "@/registry/articles";
 import { TemplateImage } from "@/components/ui/template-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
@@ -69,21 +69,21 @@ function getTemplateFromSlug(slug?: string): string {
 
 export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
-  const blogPost = getBlogPostBySlug(slug);
+  const blogPost = getArticleBySlug(slug);
   // Get related posts with multiple fallback strategies
   const relatedPosts = useMemo(() => {
     if (!blogPost) return [];
 
     // First try: official related posts
-    const officialRelated = getRelatedBlogPosts(blogPost.id, 6);
+    const officialRelated = getRelatedArticles(blogPost.id, 6);
     if (officialRelated.length > 0) return officialRelated;
 
     // Second try: same category posts
-    const categoryPosts = getBlogPostsByCategory(blogPost.category).filter(post => post.id !== blogPost.id);
+    const categoryPosts = getArticlesByCategory(blogPost.category).filter(post => post.id !== blogPost.id);
     if (categoryPosts.length > 0) return categoryPosts.slice(0, 6);
 
     // Third try: any other posts
-    return blogRegistry.filter(post => post.id !== blogPost.id).slice(0, 6);
+    return articleRegistry.filter(post => post.id !== blogPost.id).slice(0, 6);
   }, [blogPost]);
   const [activeSection, setActiveSection] = useState('');
 

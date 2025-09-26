@@ -1,4 +1,4 @@
-export interface BlogPost {
+export interface Article {
   id: string;
   title: string;
   excerpt: string;
@@ -235,54 +235,3 @@ Learning plan design represents an ongoing process rather than a one-time activi
     relatedPosts: ["building-effective-study-habits-adult-learners-success-guide", "choosing-right-learning-environment-adult-education-guide"]
   }
 ];
-
-// Create unified blog registry from template resources + manual posts
-import { getResourcesAsBlogPosts } from '../../registry/templates';
-
-export const blogRegistry: BlogPost[] = [
-  ...articles,
-  ...getResourcesAsBlogPosts()
-];
-
-// Helper functions
-export const getBlogPostById = (id: string): BlogPost | undefined => {
-  return blogRegistry.find(post => post.id === id);
-};
-
-export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogRegistry.find(post => post.slug === slug);
-};
-
-export const getFeaturedBlogPosts = (limit?: number): BlogPost[] => {
-  const featured = blogRegistry.filter(post => post.featured);
-  return limit ? featured.slice(0, limit) : featured;
-};
-
-export const getBlogPostsByCategory = (category: string): BlogPost[] => {
-  return blogRegistry.filter(post => post.category === category);
-};
-
-export const getBlogPostsByTag = (tag: string): BlogPost[] => {
-  return blogRegistry.filter(post => post.tags.includes(tag));
-};
-
-export const getBlogPostsByType = (type: BlogPost['type']): BlogPost[] => {
-  return blogRegistry.filter(post => post.type === type);
-};
-
-export const getBlogPostsByDifficulty = (difficulty: BlogPost['difficulty']): BlogPost[] => {
-  return blogRegistry.filter(post => post.difficulty === difficulty);
-};
-
-export const getRelatedBlogPosts = (postId: string, limit: number = 3): BlogPost[] => {
-  const currentPost = getBlogPostById(postId);
-  if (!currentPost) return [];
-
-  const related = blogRegistry.filter(post =>
-    post.id !== postId &&
-    (post.tags.some(tag => currentPost.tags.includes(tag)) ||
-     post.category === currentPost.category)
-  );
-
-  return related.slice(0, limit);
-};

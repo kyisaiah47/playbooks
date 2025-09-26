@@ -359,38 +359,38 @@ export const articles: Article[] = [
 ];
 
 // Export blog registry
-export const blogRegistry = articles;
+export const articleRegistry = articles;
 
 // Helper functions
-export const getBlogPostById = (id: string): BlogPost | undefined => {
-  return blogRegistry.find(post => post.id === id);
+export const getArticleById = (id: string): Article | undefined => {
+  return articleRegistry.find(post => post.id === id);
 };
 
-export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogRegistry.find(post => post.slug === slug);
+export const getArticleBySlug = (slug: string): Article | undefined => {
+  return articleRegistry.find(post => post.slug === slug);
 };
 
-export const getBlogPostsByCategory = (category: string): BlogPost[] => {
-  return blogRegistry.filter(post => post.category === category);
+export const getArticlesByCategory = (category: string): Article[] => {
+  return articleRegistry.filter(post => post.category === category);
 };
 
 export const getAllBlogCategories = (): string[] => {
-  const categories = blogRegistry.map(post => post.category);
+  const categories = articleRegistry.map(post => post.category);
   return [...new Set(categories)].sort();
 };
 
-export const getBlogPostsByTemplate = (templateId: string): BlogPost[] => {
-  return blogRegistry.filter(post =>
+export const getArticlesByTemplate = (templateId: string): Article[] => {
+  return articleRegistry.filter(post =>
     post.relatedTemplates && post.relatedTemplates.includes(templateId)
   );
 };
 
-export const getRelatedBlogPosts = (postId: string, limit: number = 3): BlogPost[] => {
-  const currentPost = getBlogPostById(postId);
+export const getRelatedArticles = (postId: string, limit: number = 3): Article[] => {
+  const currentPost = getArticleById(postId);
   if (!currentPost) return [];
 
   // Find related posts by category and tags
-  const relatedPosts = blogRegistry.filter(post =>
+  const relatedPosts = articleRegistry.filter(post =>
     post.id !== postId && (
       post.category === currentPost.category ||
       (post.tags && currentPost.tags && post.tags.some(tag => currentPost.tags.includes(tag))) ||

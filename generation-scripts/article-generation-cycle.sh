@@ -58,7 +58,7 @@ for worktree in "${WORKTREES[@]}"; do
     # Check if TypeScript blog file exists with substantial content
     if [ -f "$worktree/src/registry/blogs-${template}.ts" ]; then
         word_count=$(wc -w < "$worktree/src/registry/blogs-${template}.ts" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 1000 ]; then
+        if [ "$word_count" -gt 25000 ]; then
             ((COMPLETE_COUNT++))
             continue
         fi
@@ -108,7 +108,7 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
         (
             # Generate 20 articles per template
             for article_num in {1..20}; do
-                result=$(claude --print --dangerously-skip-permissions --add-dir . -p "Generate ONE comprehensive article for the $template_readable template in simple text format.
+                claude --print --dangerously-skip-permissions --add-dir . -p "Generate ONE comprehensive article for the $template_readable template in simple text format.
 
 ARTICLE #$article_num for $template_readable
 
@@ -127,13 +127,12 @@ DIFFICULTY: [beginner/intermediate/expert]
 CONTENT: [Your 1,200-1,600 word article content here...]
 ---
 
-When complete, respond exactly: 'ARTICLE GENERATION COMPLETE - Article #$article_num'" 2>&1)
+When complete, respond exactly: 'ARTICLE GENERATION COMPLETE - Article #$article_num'" >> ${template}-articles.txt 2>&1
 
-                if [ $? -eq 0 ] && [ -n "$result" ]; then
-                    echo "$result" >> ${template}-articles.txt
+                if [ $? -eq 0 ]; then
                     echo "✅ $template: Article $article_num success"
                 else
-                    echo "❌ $template: Article $article_num failed - $result"
+                    echo "❌ $template: Article $article_num failed"
                 fi
 
                 # Brief pause between articles
@@ -167,7 +166,7 @@ for worktree in "${WORKTREES[@]}"; do
 
     if [ -f "$worktree/src/registry/blogs-${template}.ts" ]; then
         word_count=$(wc -w < "$worktree/src/registry/blogs-${template}.ts" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 1000 ]; then
+        if [ "$word_count" -gt 25000 ]; then
             continue
         else
             echo "❌ $template (TS file too small: $word_count words)"

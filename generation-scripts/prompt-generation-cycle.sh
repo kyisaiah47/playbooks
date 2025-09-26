@@ -41,7 +41,7 @@ for worktree in "${WORKTREES[@]}"; do
     # Check if prompt file exists with substantial content
     if [ -f "$worktree/${template}-prompts.txt" ]; then
         word_count=$(wc -w < "$worktree/${template}-prompts.txt" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 300 ]; then
+        if [ "$word_count" -gt 400 ]; then
             ((COMPLETE_COUNT++))
             continue
         fi
@@ -88,7 +88,7 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
         cd "$worktree"
 
         (
-            result=$(claude --print --dangerously-skip-permissions --add-dir . -p "Create 5 logical categories for a ${template_readable} journey and write 10 simple one-sentence action prompts for each category (50 total).
+            claude --print --dangerously-skip-permissions --add-dir . -p "Create 5 logical categories for a ${template_readable} journey and write 10 simple one-sentence action prompts for each category (50 total).
 
 Format as plain text:
 CATEGORY 1: [name]
@@ -101,12 +101,12 @@ CATEGORY 2: [name]
 1. [one sentence prompt]
 ...
 
-Make each prompt a concrete actionable task for someone navigating ${template_readable}." 2>&1)
-            if [ $? -eq 0 ] && [ -n "$result" ]; then
-                echo "$result" > ${template}-prompts.txt
+Make each prompt a concrete actionable task for someone navigating ${template_readable}." > ${template}-prompts.txt 2>&1
+
+            if [ $? -eq 0 ]; then
                 echo "✅ $template: Success"
             else
-                echo "❌ $template: Failed - $result"
+                echo "❌ $template: Failed"
             fi
         ) &
 
@@ -134,7 +134,7 @@ for worktree in "${WORKTREES[@]}"; do
 
     if [ -f "$worktree/${template}-prompts.txt" ]; then
         word_count=$(wc -w < "$worktree/${template}-prompts.txt" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 300 ]; then
+        if [ "$word_count" -gt 400 ]; then
             continue
         else
             echo "❌ $template (prompt file too small: $word_count words)"

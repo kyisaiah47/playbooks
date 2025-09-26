@@ -57,7 +57,7 @@ import { ChangelogWidget } from "@/components/changelog/changelog-widget"
 
 // Import data
 import { templateRegistry } from "@/registry/templates"
-import { blogRegistry } from "@/registry/blogs"
+import { articleRegistry } from "@/registry/articles"
 
 interface CommandPaletteProps {
   isOpen: boolean
@@ -162,7 +162,7 @@ export function CommandPalette({
   const [isLoadingMore, setIsLoadingMore] = useState(false)
 
   const searchableArticles = useMemo(() => {
-    const limitedArticles = blogRegistry.slice(0, articlesLimit)
+    const limitedArticles = articleRegistry.slice(0, articlesLimit)
     return limitedArticles.map(article => ({
       ...article,
       searchableText: `${(article as any).title} ${(article as any).excerpt} ${(article as any).category}`.toLowerCase(),
@@ -452,12 +452,12 @@ export function CommandPalette({
   }
 
   const loadMoreArticles = async () => {
-    if (isLoadingMore || articlesLimit >= blogRegistry.length) return
+    if (isLoadingMore || articlesLimit >= articleRegistry.length) return
 
     setIsLoadingMore(true)
     // Simulate loading delay for better UX
     await new Promise(resolve => setTimeout(resolve, 300))
-    setArticlesLimit(prev => Math.min(prev + 50, blogRegistry.length))
+    setArticlesLimit(prev => Math.min(prev + 50, articleRegistry.length))
     setIsLoadingMore(false)
   }
 
@@ -1267,7 +1267,7 @@ export function CommandPalette({
                   </div>
 
                   {/* Load More Button */}
-                  {articlesLimit < blogRegistry.length && (
+                  {articlesLimit < articleRegistry.length && (
                     <div className="text-center pt-4">
                       <Button
                         variant="outline"
@@ -1282,9 +1282,9 @@ export function CommandPalette({
                           </>
                         ) : (
                           <>
-                            Load {Math.min(50, blogRegistry.length - articlesLimit)} more articles
+                            Load {Math.min(50, articleRegistry.length - articlesLimit)} more articles
                             <span className="ml-2 text-muted-foreground">
-                              ({articlesLimit} of {blogRegistry.length})
+                              ({articlesLimit} of {articleRegistry.length})
                             </span>
                           </>
                         )}

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { getBlogPostBySlug } from '@/registry/blogs';
+import { getArticleBySlug } from '@/registry/articles';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const article = getBlogPostBySlug(slug);
+  const article = getArticleBySlug(slug);
 
   if (!article) {
     return {

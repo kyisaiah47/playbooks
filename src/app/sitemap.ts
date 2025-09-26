@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { articles } from '@/registry/blogs';
+import { articles } from '@/registry/articles';
 
 const ARTICLES_PER_PAGE = 25;
 

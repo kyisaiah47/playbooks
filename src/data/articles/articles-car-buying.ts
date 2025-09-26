@@ -1,4 +1,4 @@
-export interface BlogPost {
+export interface Article {
   id: string;
   title: string;
   excerpt: string;
@@ -600,54 +600,3 @@ The difference between a smart first car purchase and an expensive mistake usual
     }
   }
 ];
-
-// Create unified blog registry from template resources + manual posts
-import { getResourcesAsBlogPosts } from '../../registry/templates';
-export const blogRegistry: BlogPost[] = [
-  ...articles,
-  ...getResourcesAsBlogPosts()
-];
-
-// Helper functions
-export const getBlogPostById = (id: string): BlogPost | undefined => {
-  return blogRegistry.find(post => post.id === id);
-};
-
-export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogRegistry.find(post => post.slug === slug);
-};
-
-export const getFeaturedPosts = (): BlogPost[] => {
-  return blogRegistry.filter(post => post.featured);
-};
-
-export const getBlogPostsByCategory = (category: string): BlogPost[] => {
-  return blogRegistry.filter(post => post.category === category);
-};
-
-export const getBlogPostsByTag = (tag: string): BlogPost[] => {
-  return blogRegistry.filter(post => post.tags.includes(tag));
-};
-
-export const getBlogPostsByTypeAndDifficulty = (
-  type: 'guide' | 'article' | 'checklist' | 'tool',
-  difficulty: 'beginner' | 'intermediate' | 'expert'
-): BlogPost[] => {
-  return blogRegistry.filter(post => post.type === type && post.difficulty === difficulty);
-};
-
-// Get resource-style posts (guides, checklists, tools) vs articles
-export const getResourcePosts = (): BlogPost[] => {
-  return blogRegistry.filter(post => ['guide', 'checklist', 'tool'].includes(post.type || ''));
-};
-
-export const getArticlePosts = (): BlogPost[] => {
-  return blogRegistry.filter(post => post.type === 'article' || !post.type);
-};
-
-// Get posts by template ID
-export const getBlogPostsByTemplate = (templateId: string): BlogPost[] => {
-  return blogRegistry.filter(post =>
-    post.relatedTemplates && post.relatedTemplates.includes(templateId)
-  );
-};

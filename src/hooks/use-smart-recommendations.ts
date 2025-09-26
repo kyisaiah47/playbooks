@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react"
 import { useFavorites } from "./use-favorites"
 import { useRecentTemplates } from "./use-recent-templates"
 import { templateRegistry } from "@/registry/templates"
-import { blogRegistry } from "@/registry/blogs"
+import { articleRegistry } from "@/registry/articles"
 
 export interface SmartRecommendation {
   id: string
@@ -141,7 +141,7 @@ export function useSmartRecommendations() {
 
     // Get all available items
     const allTemplates = templateRegistry.map(t => ({ ...t, type: "template" as const }))
-    const allArticles = blogRegistry.map(a => ({
+    const allArticles = articleRegistry.map(a => ({
       ...a,
       type: "article" as const,
       name: a.title,

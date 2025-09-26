@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import ArticlesClient from './articles-client';
-import { articles } from '@/registry/blogs';
+import { articles } from '@/registry/articles';
 import { TemplateImage } from '@/components/ui/template-image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
