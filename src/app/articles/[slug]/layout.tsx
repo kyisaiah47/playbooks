@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { getBlogPostBySlug } from "@/registry/blogs";
+import { getBlogPostBySlug } from '@/registry/blogs';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const article = getBlogPostBySlug(slug);
 
-  if (!post) {
+  if (!article) {
     return {
       title: 'Article Not Found | Templata',
       description: 'The requested article could not be found.',
@@ -16,14 +16,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const title = `${post.title} | Templata`;
-  const description = post.excerpt || post.description || `Expert insights on ${post.category.toLowerCase()}. ${post.title} - practical guidance for life's important decisions.`;
+  const title = `${article.title} | Templata`;
+  const description = article.description || `${article.excerpt} Expert guidance and insights for ${article.category.toLowerCase()}.`;
 
   return {
     title,
     description,
-    keywords: `${post.category.toLowerCase()}, ${post.title.toLowerCase()}, life planning, expert advice, templata articles`,
-    authors: [{ name: post.author || 'Templata Editorial Team' }],
+    keywords: `${article.title.toLowerCase()}, ${article.category.toLowerCase()}, life planning, ${article.tags?.join(', ')}, templata articles, expert guidance`,
+    authors: [{ name: 'Templata Team' }],
     creator: 'Templata',
     publisher: 'Templata',
     metadataBase: new URL('https://templata.com'),
@@ -37,25 +37,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'Templata',
       images: [
         {
-          url: post.image || '/og-article-default.jpg',
+          url: `/articles/${slug}-preview.jpg`,
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: `${article.title} - Expert Guidance Article`,
         },
       ],
       locale: 'en_US',
       type: 'article',
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt || post.publishedAt,
-      authors: [post.author || 'Templata Editorial Team'],
-      section: post.category,
-      tags: post.tags || [post.category],
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt || article.publishedAt,
+      section: article.category,
+      tags: article.tags,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [post.image || '/twitter-article-default.jpg'],
+      images: [`/articles/${slug}-twitter.jpg`],
       creator: '@templata',
       site: '@templata',
     },
@@ -70,7 +69,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         'max-snippet': -1,
       },
     },
-    category: post.category,
   };
 }
 
@@ -79,5 +77,10 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {/* Article structured data is handled dynamically in the page component */}
+      {children}
+    </>
+  );
 }

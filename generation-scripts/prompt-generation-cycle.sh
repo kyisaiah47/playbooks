@@ -21,7 +21,7 @@ log_colored() {
 }
 
 # Get all worktrees
-WORKTREES=($(ls -d ../templata-* | sort))
+WORKTREES=($(ls -d ../../templata-* | sort))
 
 log_colored "$BLUE" "Found ${#WORKTREES[@]} worktrees, starting at index $START_INDEX, processing $NUM_BATCHES batches"
 

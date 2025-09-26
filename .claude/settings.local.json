@@ -137,7 +137,8 @@
       "WebFetch(domain:localhost)",
       "Bash(./audit-template-prompts.sh:*)",
       "Bash(./create-new-template-worktrees.sh:*)",
-      "Bash(./template-generation-cycle.sh:*)"
+      "Bash(./template-generation-cycle.sh:*)",
+      "Bash(./seo-audit.sh:*)"
     ],
     "deny": [],
     "ask": []
