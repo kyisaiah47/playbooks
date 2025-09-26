@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const powerOfAttorneySetupPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the different types of power of attorney (general, limited, durable, medical) to understand which applies to your situation.',

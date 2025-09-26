@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const hobbyPhotographyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research different camera types to determine if you need a DSLR, mirrorless, or can start with your smartphone.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const academicStrugglesPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a dedicated study schedule with specific time blocks for each subject.',

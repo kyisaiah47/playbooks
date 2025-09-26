@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const stressManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Take three deep breaths and notice how your body feels right now.',

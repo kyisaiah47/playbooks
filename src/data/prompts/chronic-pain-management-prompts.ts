@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const chronicPainManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule an appointment with your primary care doctor to discuss your chronic pain symptoms.',

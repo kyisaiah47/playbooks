@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const socialMediaDetoxPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Delete social media apps from your phone\'s home screen.',

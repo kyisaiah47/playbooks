@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const jobTransitionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down your top 5 skills and how they apply to your desired career path.',

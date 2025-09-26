@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const insuranceOptimizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all current insurance policies including auto, home, health, and life insurance documents.',

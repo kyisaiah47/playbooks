@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const campingTripsPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research and select a campground that matches your group size and activity preferences.',

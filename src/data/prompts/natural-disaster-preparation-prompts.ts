@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const naturalDisasterPreparationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a comprehensive 72-hour emergency water supply (1 gallon per person per day).',

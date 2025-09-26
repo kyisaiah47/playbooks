@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const businessLaunchPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write a one-page business idea summary describing what you\'ll sell and to whom.',

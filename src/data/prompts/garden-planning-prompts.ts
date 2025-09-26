@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const gardenPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Measure your available garden space and note dimensions.',

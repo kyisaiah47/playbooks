@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const sportsTeamPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research local sports leagues and their registration requirements for your age group.',

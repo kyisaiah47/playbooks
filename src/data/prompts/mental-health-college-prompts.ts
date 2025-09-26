@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const mentalHealthCollegePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a meeting with your disability services office to discuss available mental health accommodations.',

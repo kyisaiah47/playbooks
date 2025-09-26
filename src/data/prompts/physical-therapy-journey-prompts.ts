@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const physicalTherapyJourneyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule an initial evaluation with a licensed physical therapist.',

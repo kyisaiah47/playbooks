@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const blendedFamilyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a family meeting schedule to discuss household rules and expectations.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const appDevelopmentPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your app\'s core purpose and target audience in one clear sentence.',

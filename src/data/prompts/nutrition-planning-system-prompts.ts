@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const nutritionPlanningSystemPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your primary nutrition goal (weight loss, muscle gain, general health, etc.).',

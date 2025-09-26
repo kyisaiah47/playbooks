@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const griefLossPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Call a trusted friend or family member to let them know how you\'re feeling today.',

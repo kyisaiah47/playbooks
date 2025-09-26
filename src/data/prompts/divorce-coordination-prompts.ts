@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const divorceCoordinationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all marriage certificates, prenuptial agreements, and existing legal documents.',

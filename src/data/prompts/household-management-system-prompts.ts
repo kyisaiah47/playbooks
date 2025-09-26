@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const householdManagementSystemPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a designated spot for keys, wallet, and daily essentials near your front door.',

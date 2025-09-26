@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const bankruptcyRecoveryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all financial documents including bank statements, tax returns, and debt records from the past two years.',

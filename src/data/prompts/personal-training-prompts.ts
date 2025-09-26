@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const personalTrainingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a fitness assessment with a certified personal trainer to establish baseline measurements.',

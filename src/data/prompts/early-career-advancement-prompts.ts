@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const earlyCareerAdvancementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify three key technical skills most valuable in your industry and create a learning plan for each.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const bookCollectingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define what genres or types of books you want to focus your collection on.',

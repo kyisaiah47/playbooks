@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const meditationJourneyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set up a quiet, dedicated space in your home for daily meditation practice.',

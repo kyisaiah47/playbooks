@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const cookingMasteryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Organize your spice rack alphabetically and check expiration dates on all seasonings.',

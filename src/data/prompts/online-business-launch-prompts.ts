@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const onlineBusinessLaunchPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your core business idea and write a one-sentence value proposition.',

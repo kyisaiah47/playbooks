@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const onlineCoursePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research your learning goals and identify specific skills you want to develop.',

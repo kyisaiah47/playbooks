@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const educationLearningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify your current knowledge level in the subject you want to learn.',

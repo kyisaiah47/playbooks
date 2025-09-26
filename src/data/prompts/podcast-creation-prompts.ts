@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const podcastCreationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your podcast\'s core topic and unique angle in one clear sentence.',

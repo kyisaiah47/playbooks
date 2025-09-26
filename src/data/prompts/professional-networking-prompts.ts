@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const professionalNetworkingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify 5 key decision-makers or influencers in your target companies and connect with them.',

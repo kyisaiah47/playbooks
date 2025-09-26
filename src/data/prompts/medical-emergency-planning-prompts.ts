@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const medicalEmergencyPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a comprehensive medical information folder with all family members\' health records and insurance details.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const careerPlateauPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down your top 5 professional strengths and how you currently use them at work.',

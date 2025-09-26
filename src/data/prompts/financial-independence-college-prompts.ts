@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const financialIndependenceCollegePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Track every expense for one month using a spreadsheet or budgeting app.',

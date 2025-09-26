@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const blendedFamilyCreationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a family mission statement that reflects your shared values and goals.',

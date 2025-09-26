@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const sandwichGenerationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a comprehensive budget that accounts for supporting both aging parents and children.',

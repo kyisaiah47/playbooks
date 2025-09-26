@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const preventiveHealthPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule your annual physical exam with your primary care physician.',

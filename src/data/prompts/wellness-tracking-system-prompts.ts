@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const wellnessTrackingSystemPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Choose which vital signs you want to track daily (weight, blood pressure, heart rate).',

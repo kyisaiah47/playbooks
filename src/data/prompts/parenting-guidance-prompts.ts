@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const parentingGuidancePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research age-appropriate developmental milestones for your child\'s current stage.',

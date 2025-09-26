@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const carBuyingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Determine your budget including down payment, monthly payments, and insurance costs.',

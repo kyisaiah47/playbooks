@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const legalIssueManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Document all relevant facts, dates, and circumstances surrounding your legal issue in chronological order.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const consultingBusinessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your core consulting expertise and the specific problems you solve for clients.',

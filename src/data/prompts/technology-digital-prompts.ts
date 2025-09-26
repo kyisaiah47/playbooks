@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const technologyDigitalPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set up a secure password manager to store all your login credentials safely.',

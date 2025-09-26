@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const financialIndependencePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Calculate your current net worth by listing all assets and subtracting all debts.',

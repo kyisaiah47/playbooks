@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const freelanceBusinessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Register your business name and obtain necessary licenses for your state or country.',

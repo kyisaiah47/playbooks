@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const relationshipCoachingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three personal patterns that repeatedly show up in your relationships.',

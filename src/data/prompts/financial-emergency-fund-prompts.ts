@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const financialEmergencyFundPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Calculate your total monthly essential expenses including rent, utilities, food, and minimum debt payments.',

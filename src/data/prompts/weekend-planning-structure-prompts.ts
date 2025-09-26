@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const weekendPlanningStructurePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Review your calendar and identify available time blocks for the upcoming weekend.',

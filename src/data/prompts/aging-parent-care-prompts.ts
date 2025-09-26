@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const agingParentCarePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a comprehensive medical evaluation with your parent\'s primary care physician.',

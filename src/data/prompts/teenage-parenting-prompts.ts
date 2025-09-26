@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const teenageParentingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a weekly one-on-one conversation with your teenager without distractions.',

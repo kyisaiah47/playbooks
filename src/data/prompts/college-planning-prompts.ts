@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const collegePlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research graduation requirements for your current high school to ensure you\'re on track.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const identityTheftPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Contact your bank and credit card companies immediately to report potential fraudulent activity.',

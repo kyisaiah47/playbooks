@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const healthWellnessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Take a 10-minute walk around your neighborhood or office building.',

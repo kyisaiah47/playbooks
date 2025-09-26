@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const boatMaintenancePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Check engine oil level and color before each boating trip.',

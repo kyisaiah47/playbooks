@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const nonprofitManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research your state\'s requirements for nonprofit incorporation and tax-exempt status.',

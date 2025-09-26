@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const firstManagementRolePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule weekly one-on-one meetings with each team member to build rapport and understanding.',

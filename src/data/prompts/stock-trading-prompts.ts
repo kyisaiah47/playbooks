@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const stockTradingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the difference between stocks, bonds, ETFs, and mutual funds.',

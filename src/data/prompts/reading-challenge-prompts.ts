@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const readingChallengePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Choose a specific reading goal for your challenge (number of books, genres, or pages).',

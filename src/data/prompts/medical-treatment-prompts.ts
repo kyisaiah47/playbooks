@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const medicalTreatmentPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research your specific medical condition using reputable sources like Mayo Clinic or WebMD.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const emptyNestPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three things you loved doing before you became a parent.',

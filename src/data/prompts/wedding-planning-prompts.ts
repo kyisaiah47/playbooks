@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const weddingPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set your overall wedding budget based on what you can realistically afford.',

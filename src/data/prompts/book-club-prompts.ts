@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const bookClubPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research popular book club genres and identify three that interest your group.',

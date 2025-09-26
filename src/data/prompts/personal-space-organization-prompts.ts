@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const personalSpaceOrganizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Take everything out of one drawer and decide what truly belongs there.',

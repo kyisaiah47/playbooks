@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const familyEstrangementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down the specific events or patterns that led to the estrangement.',

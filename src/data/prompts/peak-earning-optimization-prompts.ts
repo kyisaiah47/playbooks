@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const peakEarningOptimizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify the top 3 skills most valued in your industry and create a learning plan for each.',

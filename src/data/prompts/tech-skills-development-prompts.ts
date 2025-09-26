@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const techSkillsDevelopmentPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Choose your first programming language based on your career goals and interests.',

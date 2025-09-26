@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const arduinoProgrammingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Purchase an Arduino Uno starter kit with essential components like LEDs, resistors, and breadboard.',

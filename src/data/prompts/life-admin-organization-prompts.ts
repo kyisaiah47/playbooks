@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const lifeAdminOrganizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all important documents from around your home and workspace into one central location.',

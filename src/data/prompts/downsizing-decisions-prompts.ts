@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const downsizingDecisionsPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set a realistic timeline for your downsizing process with specific milestones.',

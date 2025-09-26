@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const personalGrowthPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three emotions you felt today and what triggered them.',

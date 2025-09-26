@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const homeImprovementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Measure the dimensions of the room or area you want to renovate.',

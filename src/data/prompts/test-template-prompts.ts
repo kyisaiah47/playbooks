@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const testTemplatePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define the specific goals and objectives you want to achieve with this test template.',

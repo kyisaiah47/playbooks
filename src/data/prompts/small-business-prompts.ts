@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const smallBusinessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write a one-page business plan outlining your core product or service offering.',

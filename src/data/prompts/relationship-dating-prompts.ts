@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const relationshipDatingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down your core values and what you\'re looking for in a partner.',

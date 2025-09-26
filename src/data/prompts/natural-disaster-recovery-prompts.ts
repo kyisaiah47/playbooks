@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const naturalDisasterRecoveryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Ensure all family members and pets are accounted for and safe.',

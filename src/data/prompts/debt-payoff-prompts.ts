@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const debtPayoffPrompts = [
   {
     id: 'prompt-1',
     prompt: 'List all your debts including balances, interest rates, and minimum payments.',

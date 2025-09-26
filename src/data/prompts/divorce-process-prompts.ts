@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const divorceProcessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all financial documents including bank statements, tax returns, and investment accounts from the past three years.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const graduateSchoolDecisionsPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research graduate programs in your field of interest at different universities.',

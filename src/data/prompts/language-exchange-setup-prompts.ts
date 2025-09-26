@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const languageExchangeSetupPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a compelling profile with clear photos and detailed language learning goals.',

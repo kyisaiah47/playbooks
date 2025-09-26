@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const travelPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Browse travel blogs and social media for destination ideas that match your interests.',

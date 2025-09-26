@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const collegeSelectionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a list of your academic interests and potential majors you want to explore.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const eventPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define the main purpose and goals for your event.',

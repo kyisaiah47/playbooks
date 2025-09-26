@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const astronomyHobbyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research basic telescope types and choose one that fits your budget and experience level.',

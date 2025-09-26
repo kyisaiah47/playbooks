@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const budgetPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'List all your sources of income including salary, freelance work, investments, and side hustles.',

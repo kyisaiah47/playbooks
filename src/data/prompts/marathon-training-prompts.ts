@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const marathonTrainingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a 16-20 week training schedule with gradually increasing weekly mileage.',

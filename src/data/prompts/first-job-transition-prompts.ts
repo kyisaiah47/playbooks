@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const firstJobTransitionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Take a career assessment test to identify your strengths, interests, and values.',

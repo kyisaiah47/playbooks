@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const morningRoutineOptimizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set your alarm for the same time every day, including weekends.',

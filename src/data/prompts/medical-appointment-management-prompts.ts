@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const medicalAppointmentManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research and identify healthcare providers in your insurance network for your specific medical needs.',

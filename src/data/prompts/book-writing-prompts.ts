@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const bookWritingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your book\'s primary message or theme in one clear sentence.',

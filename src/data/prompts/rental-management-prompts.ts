@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const rentalManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research local rental market rates to set competitive pricing for your property.',

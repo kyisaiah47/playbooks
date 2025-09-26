@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const homeAutomationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create complex automation scenes that coordinate multiple devices for specific activities.',

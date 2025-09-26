@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const spiritualAwakeningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Spend 10 minutes each morning writing in a journal about your thoughts and feelings from the previous day.',

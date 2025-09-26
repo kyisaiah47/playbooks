@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const transportationPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify your primary transportation needs (daily commute, family trips, errands).',

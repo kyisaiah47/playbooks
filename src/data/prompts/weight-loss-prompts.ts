@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const weightLossPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Calculate your daily calorie needs using an online TDEE calculator.',

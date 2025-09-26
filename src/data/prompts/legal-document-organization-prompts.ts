@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const legalDocumentOrganizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all legal documents from filing cabinets, desk drawers, and storage boxes throughout your home and office.',

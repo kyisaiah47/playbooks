@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const personalBrandingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down your top 5 core values and how they guide your decisions.',

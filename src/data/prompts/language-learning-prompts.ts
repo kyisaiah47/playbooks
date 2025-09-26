@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const languageLearningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Choose your target language and set a specific proficiency goal.',

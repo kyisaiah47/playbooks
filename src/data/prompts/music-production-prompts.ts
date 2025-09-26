@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const musicProductionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research and compare different Digital Audio Workstations (DAWs) to find one that fits your workflow and budget.',

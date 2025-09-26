@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const healthCrisisManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Call 911 or emergency services if experiencing life-threatening symptoms.',

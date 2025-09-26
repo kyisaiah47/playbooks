@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const comingOutPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write in a journal about your feelings and experiences to better understand your identity.',

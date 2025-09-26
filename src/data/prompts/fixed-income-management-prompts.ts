@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const fixedIncomeManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Calculate your total monthly income from all sources including Social Security, pensions, and investments.',

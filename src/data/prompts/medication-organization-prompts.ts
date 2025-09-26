@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const medicationOrganizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all medications from every room in your home into one location.',

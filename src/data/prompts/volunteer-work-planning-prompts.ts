@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const volunteerWorkPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify three causes or issues you feel passionate about addressing in your community.',

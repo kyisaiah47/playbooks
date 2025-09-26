@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const skillDevelopmentPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify your current skill level through honest self-assessment.',

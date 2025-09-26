@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const digitalDeclutterProcessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Count how many digital devices you actively use each day.',

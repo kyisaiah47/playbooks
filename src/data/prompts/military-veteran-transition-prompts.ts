@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const militaryVeteranTransitionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research civilian job titles that match your military occupation specialty and transferable skills.',

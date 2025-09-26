@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const socialEntrepreneurshipPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write a clear mission statement that defines the specific social problem you want to solve.',

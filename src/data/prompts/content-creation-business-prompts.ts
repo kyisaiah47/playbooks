@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const contentCreationBusinessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your target audience and create detailed buyer personas for your content business.',

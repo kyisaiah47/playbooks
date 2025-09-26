@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const geographicRelocationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the cost of living differences between your current location and potential new cities.',

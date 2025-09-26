@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const photographyBusinessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research your local photography market to understand pricing and competition.',

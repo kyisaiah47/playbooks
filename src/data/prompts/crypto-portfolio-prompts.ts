@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const cryptoPortfolioPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the basics of blockchain technology and how cryptocurrencies work.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const movingRelocationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a comprehensive moving timeline with key dates and deadlines.',

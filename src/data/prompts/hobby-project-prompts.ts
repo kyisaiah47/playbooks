@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const hobbyProjectPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research different hobby options that match your interests and available time.',

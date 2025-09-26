@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const grandparentRolePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research age-appropriate activities for different developmental stages.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const petCarePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research different pet breeds to find one that matches your lifestyle and living situation.',

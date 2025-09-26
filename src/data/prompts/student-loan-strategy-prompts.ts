@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const studentLoanStrategyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'List all your federal and private student loans with current balances and interest rates.',

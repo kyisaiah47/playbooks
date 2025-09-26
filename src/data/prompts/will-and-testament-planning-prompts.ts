@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const willAndTestamentPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a comprehensive list of all your bank accounts, investment accounts, and retirement funds.',

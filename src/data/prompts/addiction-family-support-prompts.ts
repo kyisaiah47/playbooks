@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const addictionFamilySupportPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the specific type of addiction your family member is facing to better understand their behavior.',

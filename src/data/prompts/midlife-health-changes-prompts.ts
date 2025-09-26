@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const midlifeHealthChangesPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a comprehensive physical exam with your primary care doctor.',

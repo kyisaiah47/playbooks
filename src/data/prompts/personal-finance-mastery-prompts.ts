@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const personalFinanceMasteryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Calculate your exact monthly take-home income after all deductions and taxes.',

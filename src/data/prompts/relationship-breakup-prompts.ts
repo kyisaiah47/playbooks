@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const relationshipBreakupPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three emotions you\'re feeling right now without judging them.',

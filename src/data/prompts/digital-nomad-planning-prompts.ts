@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const digitalNomadPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research visa requirements and length of stay allowed for your nationality in potential destinations.',

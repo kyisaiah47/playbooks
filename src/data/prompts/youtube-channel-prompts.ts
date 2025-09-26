@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const youtubeChannelPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Choose a memorable channel name that reflects your niche and is easy to search.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const techStartupGuidePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down 10 problems you\'ve personally experienced that could be solved with technology.',

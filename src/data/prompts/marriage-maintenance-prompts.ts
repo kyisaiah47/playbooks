@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const marriageMaintenancePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a weekly 30-minute conversation with your spouse about your relationship goals.',

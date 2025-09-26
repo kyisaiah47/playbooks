@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const retirementLifestylePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Calculate your monthly retirement income needs based on current expenses.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const eveningRoutinePlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set a consistent time to begin your evening routine each night.',

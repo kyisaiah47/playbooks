@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const wineCollectionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research different wine regions and their signature grape varieties to understand what appeals to your taste.',

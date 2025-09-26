@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const interiorDesignPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Take photos of each room from multiple angles to document current state.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const mortgageManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research different types of mortgages available in your area.',

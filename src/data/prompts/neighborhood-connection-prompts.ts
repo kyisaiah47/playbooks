@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const neighborhoodConnectionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Introduce yourself to your immediate neighbors on both sides of your home.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const babyPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a preconception appointment with your healthcare provider to discuss your plans.',

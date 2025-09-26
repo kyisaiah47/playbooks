@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const estatePlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'List all your assets including bank accounts, investments, real estate, and personal property.',

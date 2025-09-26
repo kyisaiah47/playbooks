@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const creativeHobbiesPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research three art forms you\'ve never tried before and watch beginner tutorials for each.',

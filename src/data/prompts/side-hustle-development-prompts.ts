@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const sideHustleDevelopmentPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Brainstorm three potential side hustles based on your existing skills and interests.',

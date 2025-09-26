@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const careerChangePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three values that are most important to you in your work life.',

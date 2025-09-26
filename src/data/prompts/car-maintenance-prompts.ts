@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const carMaintenancePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Check your oil level using the dipstick and add oil if needed.',

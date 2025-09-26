@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const dropshippingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research profitable dropshipping niches with low competition and high demand.',

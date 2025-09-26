@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const familyEmergencyPlanPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a master list of all family members\' phone numbers, email addresses, and current locations.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const mindfulnessMeditationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Find a quiet space where you can sit comfortably for 5-10 minutes without interruption.',

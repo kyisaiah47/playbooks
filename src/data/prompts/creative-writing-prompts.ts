@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const creativeWritingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a detailed character profile including backstory, motivations, and flaws for your protagonist.',

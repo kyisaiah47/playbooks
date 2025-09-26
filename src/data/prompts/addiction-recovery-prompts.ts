@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const addictionRecoveryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Complete an honest self-assessment of your substance use patterns and triggers.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const techAddictionRecoveryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Track your daily screen time using your phone\'s built-in monitoring tools.',

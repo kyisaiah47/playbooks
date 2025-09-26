@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const digitalMinimalismJourneyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Delete all unused apps from your phone and computer.',

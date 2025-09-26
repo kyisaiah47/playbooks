@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const yogaPracticePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set aside 15 minutes daily for yoga practice at the same time each day.',

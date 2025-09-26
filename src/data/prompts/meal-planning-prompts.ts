@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const mealPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set aside 30 minutes each week to plan your meals for the upcoming week.',

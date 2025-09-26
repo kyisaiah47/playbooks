@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const deathOfSpousePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Contact your spouse\'s employer to notify them of the death and inquire about final paychecks and benefits.',

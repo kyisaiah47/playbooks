@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const networkingOutsideWorkPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a compelling personal elevator pitch that explains who you are and what you\'re passionate about in 30 seconds.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const evacuationPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the most common natural disasters and emergency scenarios in your specific geographic area.',

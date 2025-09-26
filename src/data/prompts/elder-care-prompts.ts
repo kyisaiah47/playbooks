@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const elderCarePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule an annual comprehensive physical exam with your loved one\'s primary care physician.',

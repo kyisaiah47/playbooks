@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const mobileAppStartupPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Conduct interviews with 20 potential users to validate your app concept.',

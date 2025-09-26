@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const familyCrisisManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Call 911 or emergency services if there is immediate danger to anyone\'s safety.',

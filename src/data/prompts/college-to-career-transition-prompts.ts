@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const collegeToCareerTransitionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research industry-specific certifications that complement your major and boost employability.',

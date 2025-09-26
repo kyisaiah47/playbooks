@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const investmentPropertyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research median home prices in your target investment area over the past 3 years.',

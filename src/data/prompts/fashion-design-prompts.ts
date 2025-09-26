@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const fashionDesignPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research current fashion trends and identify three that resonate with your aesthetic vision.',

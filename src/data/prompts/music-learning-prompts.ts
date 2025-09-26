@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const musicLearningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Choose your first instrument based on your musical interests and physical comfort.',

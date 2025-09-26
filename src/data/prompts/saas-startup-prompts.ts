@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const saasStartupPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Identify a specific problem that frustrates you or people you know on a daily basis.',

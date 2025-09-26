@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const smartGardenPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research which vegetables grow best in your local climate zone and soil conditions.',

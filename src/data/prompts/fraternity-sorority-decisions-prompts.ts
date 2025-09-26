@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const fraternitySororityDecisionsPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the history and values of each fraternity or sorority on your campus.',

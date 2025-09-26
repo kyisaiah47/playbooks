@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const danceTrainingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Find a local dance studio that offers beginner classes in your preferred style.',

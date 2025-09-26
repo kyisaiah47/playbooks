@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const internshipCompetitionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the company\'s mission, values, and recent news to understand their culture and priorities.',

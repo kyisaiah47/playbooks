@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const endOfLifePlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create or update your will with the help of an attorney or online service.',

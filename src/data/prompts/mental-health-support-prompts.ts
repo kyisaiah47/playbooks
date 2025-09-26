@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const mentalHealthSupportPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Take a few minutes to identify your current emotional state and write it down.',

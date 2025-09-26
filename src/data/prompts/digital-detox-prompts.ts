@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const digitalDetoxPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Track your daily screen time for one week without making any changes.',

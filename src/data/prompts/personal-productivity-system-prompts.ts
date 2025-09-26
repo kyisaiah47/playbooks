@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const personalProductivitySystemPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Choose one primary task management system to centralize all your responsibilities.',

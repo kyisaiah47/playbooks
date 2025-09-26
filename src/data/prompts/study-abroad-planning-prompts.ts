@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const studyAbroadPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research universities and programs in your target countries that offer your field of study.',

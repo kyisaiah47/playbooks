@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const urbanGardeningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research which vegetables and herbs grow best in your local climate and growing season.',

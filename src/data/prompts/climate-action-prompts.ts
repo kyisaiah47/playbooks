@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const climateActionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Switch all incandescent bulbs to LED lights to reduce energy consumption by up to 80%.',

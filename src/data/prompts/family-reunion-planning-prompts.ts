@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const familyReunionPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set a tentative date for the family reunion that works for most family members.',

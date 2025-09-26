@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const roommateNavigationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a detailed roommate compatibility questionnaire covering lifestyle, cleanliness, and social preferences.',

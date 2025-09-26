@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const remoteWorkOptimizationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set up a dedicated workspace area that is solely for work activities.',

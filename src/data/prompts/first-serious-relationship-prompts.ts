@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const firstSeriousRelationshipPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Have an honest conversation about your relationship expectations and goals.',

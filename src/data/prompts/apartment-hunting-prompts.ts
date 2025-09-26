@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const apartmentHuntingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set your monthly rent budget based on 30% of your gross income.',

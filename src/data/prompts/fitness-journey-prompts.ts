@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const fitnessJourneyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three specific fitness goals you want to achieve in the next 6 months.',

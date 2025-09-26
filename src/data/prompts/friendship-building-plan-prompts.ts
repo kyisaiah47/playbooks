@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const friendshipBuildingPlanPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Join a local hobby group or club that matches one of your interests.',

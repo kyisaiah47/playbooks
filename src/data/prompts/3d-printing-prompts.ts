@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const num3dPrintingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research and compare different types of 3D printers (FDM, SLA, SLS) to determine which fits your needs and budget.',

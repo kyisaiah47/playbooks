@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const homeBuyingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Check your credit score and obtain a free credit report from all three bureaus.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const onlinePrivacyManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Review your current privacy settings on all social media platforms.',

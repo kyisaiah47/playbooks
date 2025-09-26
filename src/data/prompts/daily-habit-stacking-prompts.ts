@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const dailyHabitStackingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Drink a full glass of water immediately upon waking before checking your phone.',

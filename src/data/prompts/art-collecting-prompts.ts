@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const artCollectingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research different art movements and styles to identify what resonates with your personal taste.',

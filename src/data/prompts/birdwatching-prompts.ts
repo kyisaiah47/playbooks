@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const birdwatchingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the most common bird species in your local area.',

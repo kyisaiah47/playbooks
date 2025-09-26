@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const emptyNestSyndromePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three hobbies or interests you had before becoming a parent that you\'d like to explore again.',

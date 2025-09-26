@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const jobLossNavigationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Calculate your current monthly expenses and identify which are essential versus optional.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const cybersecurityPersonalPlanPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Enable two-factor authentication on all your email accounts and social media profiles.',

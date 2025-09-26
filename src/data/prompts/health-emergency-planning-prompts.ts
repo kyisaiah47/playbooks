@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const healthEmergencyPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a comprehensive medical history document for each family member including current medications, allergies, and chronic conditions.',

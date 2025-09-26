@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const smallBusinessLaunchPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research your target market and identify your ideal customer demographics.',

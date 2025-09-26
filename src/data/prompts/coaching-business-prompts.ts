@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const coachingBusinessPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your coaching niche and target audience in one clear sentence.',

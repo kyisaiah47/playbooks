@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const restaurantOpeningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your restaurant\'s cuisine type, target demographic, and unique selling proposition.',

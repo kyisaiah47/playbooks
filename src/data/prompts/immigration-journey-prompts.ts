@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const immigrationJourneyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Gather all required personal documents including passport, birth certificate, and marriage certificate.',

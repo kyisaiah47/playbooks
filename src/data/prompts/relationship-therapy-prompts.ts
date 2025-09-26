@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const relationshipTherapyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Practice active listening by repeating back what your partner said before responding.',

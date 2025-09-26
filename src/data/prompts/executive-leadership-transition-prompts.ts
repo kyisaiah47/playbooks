@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const executiveLeadershipTransitionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your leadership vision and core values for the new role.',

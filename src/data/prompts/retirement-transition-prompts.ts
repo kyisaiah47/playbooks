@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const retirementTransitionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Review your current retirement savings balance across all accounts (401k, IRA, savings).',

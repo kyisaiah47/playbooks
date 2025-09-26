@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const realEstateInvestingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research median home prices and rental rates in your target neighborhood over the past 3 years.',

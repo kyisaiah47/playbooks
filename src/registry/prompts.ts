@@ -8,7 +8,7 @@ export interface PromptEntry {
 // Import all prompts from index
 import * as promptModules from '../data/prompts/index';
 
-// Combine all prompts using simple flat operation
+// Combine all prompts using Object.values().flat() pattern like the others
 export const allPrompts: PromptEntry[] = Object.values(promptModules).flat();
 
 // Generate template prompts mapping dynamically

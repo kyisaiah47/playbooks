@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const communityIntegrationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Introduce yourself to three neighbors on your street or in your building.',

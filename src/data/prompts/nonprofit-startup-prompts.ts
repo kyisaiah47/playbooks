@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const nonprofitStartupPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research your state\'s requirements for nonprofit incorporation and filing deadlines.',

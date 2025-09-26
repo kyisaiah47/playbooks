@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const culturalExplorationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Attend a community meeting or neighborhood association gathering in your area.',

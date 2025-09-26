@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const homeRenovationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a detailed list of all rooms and areas you want to renovate.',

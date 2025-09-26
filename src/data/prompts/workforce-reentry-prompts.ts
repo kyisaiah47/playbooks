@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const workforceReentryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'List all your previous work experience, including volunteer work and unpaid roles.',

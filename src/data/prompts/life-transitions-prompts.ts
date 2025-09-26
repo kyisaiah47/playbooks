@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const lifeTransitionsPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three core values that have guided your major life decisions.',

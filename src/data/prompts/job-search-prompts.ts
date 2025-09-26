@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const jobSearchPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Update your resume with your most recent work experience and achievements.',

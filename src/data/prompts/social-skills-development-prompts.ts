@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const socialSkillsDevelopmentPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Practice making eye contact with yourself in the mirror for 30 seconds each morning.',

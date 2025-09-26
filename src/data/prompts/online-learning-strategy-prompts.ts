@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const onlineLearningStrategyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your specific learning objectives and what you want to achieve.',

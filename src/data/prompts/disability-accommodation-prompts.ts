@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const disabilityAccommodationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research the Americans with Disabilities Act (ADA) requirements that apply to your situation.',

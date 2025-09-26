@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const personalFinancePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Open a high-yield savings account specifically for your emergency fund.',

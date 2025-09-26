@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const socialEventHostingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your event\'s purpose, theme, and target audience before making any other decisions.',

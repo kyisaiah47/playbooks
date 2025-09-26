@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const habitTrackingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three specific habits you want to build or break this month.',

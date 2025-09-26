@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const healthDeclineNavigationPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule an appointment with your primary care physician to discuss your health concerns and symptoms.',

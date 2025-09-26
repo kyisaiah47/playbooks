@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const quarterLifeCrisisPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Write down three core values that truly matter to you, not what others expect.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const energyManagementSystemPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Conduct a comprehensive energy audit of your facility to identify current consumption patterns.',

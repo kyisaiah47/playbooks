@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const businessSuccessionPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Conduct a comprehensive business valuation with a certified appraiser.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const publicSpeakingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Practice positive self-talk by writing down three strengths you bring as a speaker.',

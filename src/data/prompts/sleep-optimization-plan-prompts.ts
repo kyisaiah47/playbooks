@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const sleepOptimizationPlanPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set your bedroom temperature between 65-68°F (18-20°C) for optimal sleep conditions.',

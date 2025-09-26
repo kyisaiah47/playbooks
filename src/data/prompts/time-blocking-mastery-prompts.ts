@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const timeBlockingMasteryPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Download a time blocking app or set up a digital calendar system for scheduling.',

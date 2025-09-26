@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const investmentPortfolioPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research and understand your current financial situation including income, expenses, and existing savings.',

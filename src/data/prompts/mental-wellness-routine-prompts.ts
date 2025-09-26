@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const mentalWellnessRoutinePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Set a daily 5-minute meditation timer and sit quietly focusing on your breath.',

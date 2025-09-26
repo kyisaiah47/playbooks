@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const socialMediaManagementPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your brand voice and tone guidelines in a single document.',

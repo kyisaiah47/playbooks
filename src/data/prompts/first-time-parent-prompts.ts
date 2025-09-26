@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const firstTimeParentPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule your first prenatal appointment with an obstetrician or midwife.',

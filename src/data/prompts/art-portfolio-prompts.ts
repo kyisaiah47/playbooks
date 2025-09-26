@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const artPortfolioPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Define your artistic style and unique visual voice through self-reflection exercises.',

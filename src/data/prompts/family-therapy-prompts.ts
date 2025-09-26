@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const familyTherapyPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research and identify 3-5 family therapists in your area who specialize in your family\'s specific needs.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const longDistanceRelationshipPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Schedule a daily video call at the same time each day to create routine.',

@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const digitalLegacyPlanningPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Create a spreadsheet listing all your online accounts including email, social media, banking, and subscription services.',

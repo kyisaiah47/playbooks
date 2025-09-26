@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const affiliateMarketingPrompts = [
   {
     id: 'prompt-1',
     prompt: 'Research and choose a profitable niche that aligns with your interests and expertise.',

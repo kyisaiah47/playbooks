@@ -1,4 +1,4 @@
-export const actionPrompts = [
+export const eCommerceStorePrompts = [
   {
     id: 'prompt-1',
     prompt: 'Browse the homepage to see featured products and current promotions.',
