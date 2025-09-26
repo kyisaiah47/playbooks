@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph"
 import { templateRegistry } from "@/registry/templates"
 import type { TemplateRegistryEntry } from "@/registry/templates"

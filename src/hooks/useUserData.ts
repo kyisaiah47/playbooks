@@ -110,7 +110,7 @@ export function useUserResponses() {
     sectionId: string;
     promptId: string;
     response: string;
-    metadata?: any;
+    metadata?: Record<string, unknown>;
   }) => {
     if (!session?.user?.id) return null;
     

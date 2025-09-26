@@ -73,14 +73,14 @@ export interface UserRecommendation {
   priority: 'high' | 'sequence' | 'medium';
   reason: string;
   life_stage?: string;
-  sequence_context?: any;
+  sequence_context?: Record<string, unknown>;
 }
 
 export interface AnalysisReport {
   template_id: string;
   cluster_membership: {
-    semantic: any;
-    micro: any;
+    semantic: Record<string, unknown>;
+    micro: Record<string, unknown>;
   };
   connection_strength: {
     total_weighted_connections: number;
@@ -103,14 +103,14 @@ export interface AnalysisReport {
 
 // Browser-compatible Knowledge Graph class
 class BrowserKnowledgeGraph {
-  private semanticClusters: any;
-  private microClusters: any;
-  private weightedConnections: any;
-  private negativeConnections: any;
-  private lifeSequences: any;
-  private lifecyclePatterns: any;
-  private contextualPrompts: any;
-  private promptTriggers: any;
+  private semanticClusters: Record<string, unknown>;
+  private microClusters: Record<string, unknown>;
+  private weightedConnections: Record<string, unknown>;
+  private negativeConnections: Record<string, unknown>;
+  private lifeSequences: Record<string, unknown>;
+  private lifecyclePatterns: Record<string, unknown>;
+  private contextualPrompts: Record<string, unknown>;
+  private promptTriggers: Record<string, unknown>;
   private loaded = false;
 
   constructor() {

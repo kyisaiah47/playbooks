@@ -1,4 +1,3 @@
-import React from "react"
 import { Button } from "@/components/ui/button"
 import { FeedbackModal } from "@/components/feedback-modal"
 import { MessageSquare } from "lucide-react"

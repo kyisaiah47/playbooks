@@ -139,7 +139,12 @@
       "Bash(./create-new-template-worktrees.sh:*)",
       "Bash(./template-generation-cycle.sh:*)",
       "Bash(./seo-audit.sh:*)",
-      "Bash(./cleanup-console-logs.sh:*)"
+      "Bash(./cleanup-console-logs.sh:*)",
+      "Bash(./generation-scripts/todo-cleanup.sh:*)",
+      "Bash(./generation-scripts/type-cleanup.sh:*)",
+      "Bash(./generation-scripts/react-import-cleanup.sh:*)",
+      "Bash(./generation-scripts/lint-disable-cleanup.sh:*)",
+      "Bash(./generation-scripts/star-import-cleanup.sh:*)"
     ],
     "deny": [],
     "ask": []

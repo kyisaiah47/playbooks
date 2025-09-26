@@ -1,6 +1,5 @@
 'use client';
 
-import React from "react"
 import { AppSidebar } from "@/components/life-os-sidebar"
 import {
   Breadcrumb,

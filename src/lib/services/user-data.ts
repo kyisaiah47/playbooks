@@ -13,7 +13,7 @@ export interface UpdateTemplateSessionData {
   progress?: number;
   currentSection?: string;
   isCompleted?: boolean;
-  metadata?: any;
+  metadata?: Record<string, unknown>;
 }
 
 export interface CreateUserResponseData {
@@ -23,7 +23,7 @@ export interface CreateUserResponseData {
   sectionId: string;
   promptId: string;
   response: string;
-  metadata?: any;
+  metadata?: Record<string, unknown>;
 }
 
 export interface SaveResourceData {
