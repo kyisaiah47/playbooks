@@ -1,6 +1,9 @@
 // Knowledge Graph Service Wrapper for Browser Environment
 // Provides clean TypeScript interface to the knowledge graph system
 
+// Import template registry as single source of truth
+import { templateRegistry } from '@/registry/templates';
+
 // Import JSON data directly (works in browser)
 import semanticClustersData from '../../knowledge-graph/template-connections-comprehensive.json';
 import microClustersData from '../../knowledge-graph/micro-clusters.json';
@@ -101,6 +104,19 @@ export interface AnalysisReport {
   };
 }
 
+// Helper functions to use template registry as single source of truth
+export const getAllTemplateIds = (): string[] => {
+  return templateRegistry.map(template => template.id);
+};
+
+export const getTemplateById = (id: string) => {
+  return templateRegistry.find(template => template.id === id);
+};
+
+export const templateExists = (id: string): boolean => {
+  return templateRegistry.some(template => template.id === id);
+};
+
 // Browser-compatible Knowledge Graph class
 class BrowserKnowledgeGraph {
   private semanticClusters: Record<string, unknown>;
@@ -138,6 +154,12 @@ class BrowserKnowledgeGraph {
   findSemanticCluster(templateId: string) {
     if (!this.loaded) return null;
 
+    // Only process if template exists in registry
+    if (!templateExists(templateId)) {
+      console.warn(`Template ${templateId} not found in registry, skipping semantic cluster lookup`);
+      return null;
+    }
+
     for (const [clusterName, cluster] of Object.entries(this.semanticClusters)) {
       const clusterData = cluster as any;
       if (clusterData.templates?.includes(templateId)) {
@@ -155,6 +177,12 @@ class BrowserKnowledgeGraph {
   // Find which micro-cluster a template belongs to
   findMicroCluster(templateId: string) {
     if (!this.loaded) return null;
+
+    // Only process if template exists in registry
+    if (!templateExists(templateId)) {
+      console.warn(`Template ${templateId} not found in registry, skipping micro cluster lookup`);
+      return null;
+    }
 
     for (const [mainCluster, microClusters] of Object.entries(this.microClusters)) {
       for (const [microName, microCluster] of Object.entries(microClusters as any)) {
@@ -176,6 +204,12 @@ class BrowserKnowledgeGraph {
   // Get weighted connections for a template
   getWeightedConnections(templateId: string): TemplateConnection[] {
     if (!this.loaded) return [];
+
+    // Only process if template exists in registry
+    if (!templateExists(templateId)) {
+      console.warn(`Template ${templateId} not found in registry, skipping connections lookup`);
+      return [];
+    }
 
     const connections = this.weightedConnections[templateId];
     if (!connections) return [];
@@ -367,8 +401,15 @@ export const knowledgeGraph = new BrowserKnowledgeGraph();
 
 // Utility functions for common use cases
 export const getRelatedTemplates = (templateId: string, limit = 5) => {
+  // Only process if template exists in registry
+  if (!templateExists(templateId)) {
+    console.warn(`Template ${templateId} not found in registry`);
+    return [];
+  }
+
   const relationships = knowledgeGraph.getTemplateRelationships(templateId);
   return relationships.weighted_connections
+    .filter(conn => templateExists(conn.templateId)) // Only include existing templates
     .slice(0, limit)
     .map(conn => ({
       templateId: conn.templateId,
@@ -413,8 +454,11 @@ export const getPersonalizedRecommendations = (userProfile: {
 
   const ageRecs = knowledgeGraph.getOptimalLifeSequence(age, goals, completedTemplates);
 
-  // Filter out current templates
-  return ageRecs.filter(rec => !currentTemplates.includes(rec.templateId));
+  // Filter out current templates and only include templates that exist in registry
+  return ageRecs.filter(rec =>
+    !currentTemplates.includes(rec.templateId) &&
+    templateExists(rec.templateId)
+  );
 };
 
 // Article recommendation functions
