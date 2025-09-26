@@ -197,6 +197,57 @@ import { actionPrompts as workforceReentryPrompts } from '../data/prompts/workfo
 import { actionPrompts as yogaPracticePrompts } from '../data/prompts/yoga-practice-prompts';
 import { actionPrompts as youtubeChannelPrompts } from '../data/prompts/youtube-channel-prompts';
 
+// New template imports - temporarily commented out to test compilation
+// import { actionPrompts as chronicPainManagementPrompts } from '../data/prompts/chronic-pain-management-prompts';
+import { actionPrompts as communityIntegrationPrompts } from '../data/prompts/community-integration-prompts';
+import { actionPrompts as culturalExplorationPrompts } from '../data/prompts/cultural-exploration-prompts';
+import { actionPrompts as cybersecurityPersonalPlanPrompts } from '../data/prompts/cybersecurity-personal-plan-prompts';
+import { actionPrompts as dailyHabitStackingPrompts } from '../data/prompts/daily-habit-stacking-prompts';
+import { actionPrompts as digitalDeclutterProcessPrompts } from '../data/prompts/digital-declutter-process-prompts';
+import { actionPrompts as digitalLegacyPlanningPrompts } from '../data/prompts/digital-legacy-planning-prompts';
+import { actionPrompts as digitalMinimalismJourneyPrompts } from '../data/prompts/digital-minimalism-journey-prompts';
+import { actionPrompts as energyManagementSystemPrompts } from '../data/prompts/energy-management-system-prompts';
+import { actionPrompts as evacuationPlanningPrompts } from '../data/prompts/evacuation-planning-prompts';
+import { actionPrompts as eveningRoutinePlanningPrompts } from '../data/prompts/evening-routine-planning-prompts';
+import { actionPrompts as familyEmergencyPlanPrompts } from '../data/prompts/family-emergency-plan-prompts';
+import { actionPrompts as familyReunionPlanningPrompts } from '../data/prompts/family-reunion-planning-prompts';
+import { actionPrompts as financialEmergencyFundPrompts } from '../data/prompts/financial-emergency-fund-prompts';
+import { actionPrompts as friendshipBuildingPlanPrompts } from '../data/prompts/friendship-building-plan-prompts';
+import { actionPrompts as healthEmergencyPlanningPrompts } from '../data/prompts/health-emergency-planning-prompts';
+import { actionPrompts as householdManagementSystemPrompts } from '../data/prompts/household-management-system-prompts';
+import { actionPrompts as insuranceOptimizationPlanPrompts } from '../data/prompts/insurance-optimization-plan-prompts';
+import { actionPrompts as languageExchangeSetupPrompts } from '../data/prompts/language-exchange-setup-prompts';
+import { actionPrompts as legalDocumentOrganizationPrompts } from '../data/prompts/legal-document-organization-prompts';
+import { actionPrompts as lifeAdminOrganizationPrompts } from '../data/prompts/life-admin-organization-prompts';
+import { actionPrompts as medicalAppointmentManagementPrompts } from '../data/prompts/medical-appointment-management-prompts';
+import { actionPrompts as medicalEmergencyPlanningPrompts } from '../data/prompts/medical-emergency-planning-prompts';
+import { actionPrompts as medicationOrganizationPrompts } from '../data/prompts/medication-organization-prompts';
+import { actionPrompts as mentalWellnessRoutinePrompts } from '../data/prompts/mental-wellness-routine-prompts';
+import { actionPrompts as morningRoutineOptimizationPrompts } from '../data/prompts/morning-routine-optimization-prompts';
+import { actionPrompts as naturalDisasterPreparationPrompts } from '../data/prompts/natural-disaster-preparation-prompts';
+import { actionPrompts as neighborhoodConnectionPrompts } from '../data/prompts/neighborhood-connection-prompts';
+import { actionPrompts as networkingOutsideWorkPrompts } from '../data/prompts/networking-outside-work-prompts';
+import { actionPrompts as nutritionPlanningSystemPrompts } from '../data/prompts/nutrition-planning-system-prompts';
+import { actionPrompts as onlineLearningStrategyPrompts } from '../data/prompts/online-learning-strategy-prompts';
+import { actionPrompts as onlinePrivacyManagementPrompts } from '../data/prompts/online-privacy-management-prompts';
+import { actionPrompts as personalProductivitySystemPrompts } from '../data/prompts/personal-productivity-system-prompts';
+import { actionPrompts as personalSpaceOrganizationPrompts } from '../data/prompts/personal-space-organization-prompts';
+import { actionPrompts as physicalTherapyJourneyPrompts } from '../data/prompts/physical-therapy-journey-prompts';
+import { actionPrompts as powerOfAttorneySetupPrompts } from '../data/prompts/power-of-attorney-setup-prompts';
+import { actionPrompts as preventiveHealthPlanningPrompts } from '../data/prompts/preventive-health-planning-prompts';
+import { actionPrompts as remoteWorkOptimizationPrompts } from '../data/prompts/remote-work-optimization-prompts';
+import { actionPrompts as sleepOptimizationPlanPrompts } from '../data/prompts/sleep-optimization-plan-prompts';
+import { actionPrompts as socialEventHostingPrompts } from '../data/prompts/social-event-hosting-prompts';
+import { actionPrompts as socialMediaDetoxPrompts } from '../data/prompts/social-media-detox-prompts';
+import { actionPrompts as socialSkillsDevelopmentPrompts } from '../data/prompts/social-skills-development-prompts';
+import { actionPrompts as techAddictionRecoveryPrompts } from '../data/prompts/tech-addiction-recovery-prompts';
+import { actionPrompts as techSkillsDevelopmentPrompts } from '../data/prompts/tech-skills-development-prompts';
+import { actionPrompts as timeBlockingMasteryPrompts } from '../data/prompts/time-blocking-mastery-prompts';
+import { actionPrompts as volunteerWorkPlanningPrompts } from '../data/prompts/volunteer-work-planning-prompts';
+import { actionPrompts as weekendPlanningStructurePrompts } from '../data/prompts/weekend-planning-structure-prompts';
+import { actionPrompts as wellnessTrackingSystemPrompts } from '../data/prompts/wellness-tracking-system-prompts';
+import { actionPrompts as willAndTestamentPlanningPrompts } from '../data/prompts/will-and-testament-planning-prompts';
+
 // Template to prompts mapping
 export const templatePrompts = {
   '3d-printing': threeDPrintingPrompts,
@@ -389,6 +440,57 @@ export const templatePrompts = {
   'workforce-reentry': workforceReentryPrompts,
   'yoga-practice': yogaPracticePrompts,
   'youtube-channel': youtubeChannelPrompts,
+
+  // New template mappings
+  'chronic-pain-management': chronicPainManagementPrompts,
+  'community-integration': communityIntegrationPrompts,
+  'cultural-exploration': culturalExplorationPrompts,
+  'cybersecurity-personal-plan': cybersecurityPersonalPlanPrompts,
+  'daily-habit-stacking': dailyHabitStackingPrompts,
+  'digital-declutter-process': digitalDeclutterProcessPrompts,
+  'digital-legacy-planning': digitalLegacyPlanningPrompts,
+  'digital-minimalism-journey': digitalMinimalismJourneyPrompts,
+  'energy-management-system': energyManagementSystemPrompts,
+  'evacuation-planning': evacuationPlanningPrompts,
+  'evening-routine-planning': eveningRoutinePlanningPrompts,
+  'family-emergency-plan': familyEmergencyPlanPrompts,
+  'family-reunion-planning': familyReunionPlanningPrompts,
+  'financial-emergency-fund': financialEmergencyFundPrompts,
+  'friendship-building-plan': friendshipBuildingPlanPrompts,
+  'health-emergency-planning': healthEmergencyPlanningPrompts,
+  'household-management-system': householdManagementSystemPrompts,
+  'insurance-optimization-plan': insuranceOptimizationPlanPrompts,
+  'language-exchange-setup': languageExchangeSetupPrompts,
+  'legal-document-organization': legalDocumentOrganizationPrompts,
+  'life-admin-organization': lifeAdminOrganizationPrompts,
+  'medical-appointment-management': medicalAppointmentManagementPrompts,
+  'medical-emergency-planning': medicalEmergencyPlanningPrompts,
+  'medication-organization': medicationOrganizationPrompts,
+  'mental-wellness-routine': mentalWellnessRoutinePrompts,
+  'morning-routine-optimization': morningRoutineOptimizationPrompts,
+  'natural-disaster-preparation': naturalDisasterPreparationPrompts,
+  'neighborhood-connection': neighborhoodConnectionPrompts,
+  'networking-outside-work': networkingOutsideWorkPrompts,
+  'nutrition-planning-system': nutritionPlanningSystemPrompts,
+  'online-learning-strategy': onlineLearningStrategyPrompts,
+  'online-privacy-management': onlinePrivacyManagementPrompts,
+  'personal-productivity-system': personalProductivitySystemPrompts,
+  'personal-space-organization': personalSpaceOrganizationPrompts,
+  'physical-therapy-journey': physicalTherapyJourneyPrompts,
+  'power-of-attorney-setup': powerOfAttorneySetupPrompts,
+  'preventive-health-planning': preventiveHealthPlanningPrompts,
+  'remote-work-optimization': remoteWorkOptimizationPrompts,
+  'sleep-optimization-plan': sleepOptimizationPlanPrompts,
+  'social-event-hosting': socialEventHostingPrompts,
+  'social-media-detox': socialMediaDetoxPrompts,
+  'social-skills-development': socialSkillsDevelopmentPrompts,
+  'tech-addiction-recovery': techAddictionRecoveryPrompts,
+  'tech-skills-development': techSkillsDevelopmentPrompts,
+  'time-blocking-mastery': timeBlockingMasteryPrompts,
+  'volunteer-work-planning': volunteerWorkPlanningPrompts,
+  'weekend-planning-structure': weekendPlanningStructurePrompts,
+  'wellness-tracking-system': wellnessTrackingSystemPrompts,
+  'will-and-testament-planning': willAndTestamentPlanningPrompts,
 } as const;
 
 // Helper function to get prompts by template slug

@@ -89,14 +89,27 @@ create_template_generation_prompt() {
     local template_name="$2"
 
     cat << EOF
-Generate a comprehensive template file for ${template_name}.
+Generate a comprehensive template structure for ${template_name}.
 
 TEMPLATE: ${template}
 NAME: ${template_name}
 
 REQUIREMENTS:
-- Create a TypeScript template file at src/data/template-${template}.ts
-- Choose appropriate camelCase export name (e.g., homeBuyingTemplate, threeDPrintingTemplate)
+- Create structured template data as plain text in the exact format below
+- Include 5-8 logical sections for this template
+- Use proper title case for the title
+- Choose appropriate category and Lucide icon
+
+FORMAT:
+TITLE: [Template Title in Title Case]
+DESCRIPTION: [Brief description of what this template helps with]
+CATEGORY: [Category like "Life Planning", "Career & Finance", "Health & Wellness", etc.]
+ICON: [Lucide icon name like "home", "calendar", "heart", "briefcase", etc.]
+DIFFICULTY: [beginner, intermediate, or advanced]
+ESTIMATEDTIME: [Time estimate like "30-60 minutes", "1-2 hours", "2-4 weeks", etc.]
+TAGS: [comma-separated list of 15-20 relevant tags]
+
+Generate a practical template structure for ${template_name}.
 - Use proper title case for title field (e.g., "3D Printing", "Home Buying")
 - Determine best category for this template
 - Choose most appropriate Lucide icon name
@@ -139,22 +152,33 @@ When complete, respond exactly: "TEMPLATE GENERATION COMPLETE - ${template}"
 EOF
 }
 
-# Create individual template-*.ts file
+# Create individual template-*.txt file
 create_template_file() {
     local template="$1"
     local template_name=$(echo "$template" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+    local worktree_dir="../../templata-$template"
 
-    log_colored "$YELLOW" "Generating template file with Claude: template-${template}.ts"
+    log_colored "$YELLOW" "Generating template text file: ${template}-template.txt"
 
     # Generate template with Claude
     local generation_prompt=$(create_template_generation_prompt "$template" "$template_name")
 
-    cd "$CURRENT_DIR" && claude --print --dangerously-skip-permissions --add-dir "$CURRENT_DIR" -p "$generation_prompt" | tee -a "$LOGFILE"
+    if [ -d "$worktree_dir" ]; then
+        cd "$worktree_dir" && result=$(claude --print --dangerously-skip-permissions --add-dir . -p "$generation_prompt" 2>&1)
+    else
+        log_colored "$RED" "❌ $template: Worktree directory not found: $worktree_dir"
+        return 1
+    fi
+
+    if [ $? -eq 0 ] && [ -n "$result" ]; then
+        echo "$result" > "${template}-template.txt"
+        log_colored "$GREEN" "✅ $template: Success"
+    else
+        log_colored "$RED" "❌ $template: Failed - $result"
+    fi
 
     # Brief pause
     sleep 3
-
-    log_colored "$GREEN" "Completed template generation for: $template"
 }
 
 # Generate template registry
@@ -309,7 +333,7 @@ process_batch() {
     # Process each template in batch
     for ((i=START_INDEX; i<=end_index; i++)); do
         local template="${TEMPLATES[i]}"
-        local worktree_dir="../templata-$template"
+        local worktree_dir="../../templata-$template"
 
         log_colored "$BLUE" "[$((i + 1))/$total_templates] Processing: $template"
 
@@ -332,7 +356,19 @@ process_batch() {
         fi
 
         log_colored "$YELLOW" "  🔨 Generating template data..."
-        create_template_file "$template"
+
+        # Generate template with Claude (we're already in the worktree directory)
+        local template_name=$(echo "$template" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+        local generation_prompt=$(create_template_generation_prompt "$template" "$template_name")
+
+        result=$(claude --print --dangerously-skip-permissions --add-dir . -p "$generation_prompt" 2>&1)
+
+        if [ $? -eq 0 ] && [ -n "$result" ]; then
+            echo "$result" > "${template}-template.txt"
+            log_colored "$GREEN" "  ✅ $template: Success"
+        else
+            log_colored "$RED" "  ❌ $template: Failed - $result"
+        fi
 
         # Brief pause between templates
         sleep 5

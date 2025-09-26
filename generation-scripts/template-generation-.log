@@ -1,0 +1,281 @@
+[0;34m2025-09-25 19:30:23 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:30:23 - ==========================[0m
+[1;33m2025-09-25 19:30:23 - Total templates: 49[0m
+[1;33m2025-09-25 19:30:23 - Batch size: 5[0m
+[1;33m2025-09-25 19:30:23 - Starting from index: 0[0m
+[0;34m2025-09-25 19:30:23 - [1/49] Processing: morning-routine-optimization[0m
+[0;31m2025-09-25 19:30:23 -   ❌ Worktree not found: ../templata-morning-routine-optimization[0m
+[0;34m2025-09-25 19:30:23 - [2/49] Processing: evening-routine-planning[0m
+[0;31m2025-09-25 19:30:23 -   ❌ Worktree not found: ../templata-evening-routine-planning[0m
+[0;34m2025-09-25 19:30:23 - [3/49] Processing: weekend-planning-structure[0m
+[0;31m2025-09-25 19:30:23 -   ❌ Worktree not found: ../templata-weekend-planning-structure[0m
+[0;34m2025-09-25 19:30:23 - [4/49] Processing: household-management-system[0m
+[0;31m2025-09-25 19:30:23 -   ❌ Worktree not found: ../templata-household-management-system[0m
+[0;34m2025-09-25 19:30:23 - [5/49] Processing: personal-space-organization[0m
+[0;31m2025-09-25 19:30:23 -   ❌ Worktree not found: ../templata-personal-space-organization[0m
+[1;33m2025-09-25 19:30:23 - Next batch: 44 templates remaining[0m
+[1;33m2025-09-25 19:30:23 - Run: ./template-generation-cycle.sh --batch --start 5[0m
+[0;34m2025-09-25 19:31:32 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:31:32 - ==========================[0m
+[1;33m2025-09-25 19:31:32 - Total templates: 49[0m
+[1;33m2025-09-25 19:31:32 - Batch size: 5[0m
+[1;33m2025-09-25 19:31:32 - Starting from index: 0[0m
+[0;34m2025-09-25 19:31:32 - [1/49] Processing: morning-routine-optimization[0m
+[1;33m2025-09-25 19:31:32 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:31:32 - Generating template file with Claude: template-morning-routine-optimization.ts[0m
+[0;34m2025-09-25 19:40:55 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:40:55 - ==========================[0m
+[1;33m2025-09-25 19:40:55 - Total templates: 49[0m
+[1;33m2025-09-25 19:40:55 - Batch size: 5[0m
+[1;33m2025-09-25 19:40:55 - Starting from index: 0[0m
+[0;34m2025-09-25 19:40:55 - [1/49] Processing: morning-routine-optimization[0m
+[1;33m2025-09-25 19:40:55 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:40:55 - Generating template text file: morning-routine-optimization-template.txt[0m
+[0;31m2025-09-25 19:40:55 - ❌ morning-routine-optimization: Failed - [0m
+[0;34m2025-09-25 19:41:04 - [2/49] Processing: evening-routine-planning[0m
+[1;33m2025-09-25 19:41:04 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:41:04 - Generating template text file: evening-routine-planning-template.txt[0m
+[0;31m2025-09-25 19:41:04 - ❌ evening-routine-planning: Failed - [0m
+[0;34m2025-09-25 19:41:12 - [3/49] Processing: weekend-planning-structure[0m
+[1;33m2025-09-25 19:41:12 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:41:12 - Generating template text file: weekend-planning-structure-template.txt[0m
+[0;31m2025-09-25 19:41:12 - ❌ weekend-planning-structure: Failed - [0m
+[0;34m2025-09-25 19:41:20 - [4/49] Processing: household-management-system[0m
+[1;33m2025-09-25 19:41:20 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:41:20 - Generating template text file: household-management-system-template.txt[0m
+[0;31m2025-09-25 19:41:20 - ❌ household-management-system: Failed - [0m
+[0;34m2025-09-25 19:41:28 - [5/49] Processing: personal-space-organization[0m
+[1;33m2025-09-25 19:41:28 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:41:28 - Generating template text file: personal-space-organization-template.txt[0m
+[0;31m2025-09-25 19:41:28 - ❌ personal-space-organization: Failed - [0m
+[1;33m2025-09-25 19:41:36 - Next batch: 44 templates remaining[0m
+[1;33m2025-09-25 19:41:36 - Run: ./template-generation-cycle.sh --batch --start 5[0m
+[0;34m2025-09-25 19:50:06 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:50:06 - ==========================[0m
+[1;33m2025-09-25 19:50:06 - Total templates: 49[0m
+[1;33m2025-09-25 19:50:06 - Batch size: 3[0m
+[1;33m2025-09-25 19:50:06 - Starting from index: 0[0m
+[0;34m2025-09-25 19:50:06 - [1/49] Processing: morning-routine-optimization[0m
+[1;33m2025-09-25 19:50:06 -   ⏭️  Template file already exists, skipping: src/data/template-morning-routine-optimization.ts[0m
+[0;34m2025-09-25 19:50:06 - [2/49] Processing: evening-routine-planning[0m
+[1;33m2025-09-25 19:50:06 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:50:06 - Generating template text file: evening-routine-planning-template.txt[0m
+[0;31m2025-09-25 19:50:06 - ❌ evening-routine-planning: Failed - [0m
+[0;34m2025-09-25 19:50:14 - [3/49] Processing: weekend-planning-structure[0m
+[1;33m2025-09-25 19:50:14 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:50:15 - Generating template text file: weekend-planning-structure-template.txt[0m
+[0;31m2025-09-25 19:50:15 - ❌ weekend-planning-structure: Failed - [0m
+[1;33m2025-09-25 19:50:23 - Next batch: 46 templates remaining[0m
+[1;33m2025-09-25 19:50:23 - Run: ./template-generation-cycle.sh --batch --start 3[0m
+[0;34m2025-09-25 19:52:09 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:52:09 - ==========================[0m
+[1;33m2025-09-25 19:52:09 - Total templates: 49[0m
+[1;33m2025-09-25 19:52:09 - Batch size: 10[0m
+[1;33m2025-09-25 19:52:09 - Starting from index: 0[0m
+[0;34m2025-09-25 19:52:09 - [1/49] Processing: morning-routine-optimization[0m
+[1;33m2025-09-25 19:52:09 -   ⏭️  Template file already exists, skipping: src/data/template-morning-routine-optimization.ts[0m
+[0;34m2025-09-25 19:52:09 - [2/49] Processing: evening-routine-planning[0m
+[1;33m2025-09-25 19:52:09 -   ⏭️  Template file already exists, skipping: src/data/template-evening-routine-planning.ts[0m
+[0;34m2025-09-25 19:52:09 - [3/49] Processing: weekend-planning-structure[0m
+[1;33m2025-09-25 19:52:09 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:52:09 - Generating template text file: weekend-planning-structure-template.txt[0m
+[0;31m2025-09-25 19:52:09 - ❌ weekend-planning-structure: Worktree directory not found: ../../templata-weekend-planning-structure[0m
+[0;34m2025-09-25 19:53:02 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:53:02 - ==========================[0m
+[1;33m2025-09-25 19:53:02 - Total templates: 49[0m
+[1;33m2025-09-25 19:53:02 - Batch size: 10[0m
+[1;33m2025-09-25 19:53:02 - Starting from index: 0[0m
+[0;34m2025-09-25 19:53:02 - [1/49] Processing: morning-routine-optimization[0m
+[1;33m2025-09-25 19:53:02 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:53:02 - Generating template text file: morning-routine-optimization-template.txt[0m
+[0;31m2025-09-25 19:53:02 - ❌ morning-routine-optimization: Worktree directory not found: ../../templata-morning-routine-optimization[0m
+[0;34m2025-09-25 19:53:19 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:53:19 - ==========================[0m
+[1;33m2025-09-25 19:53:19 - Total templates: 49[0m
+[1;33m2025-09-25 19:53:19 - Batch size: 1[0m
+[1;33m2025-09-25 19:53:19 - Starting from index: 0[0m
+[0;34m2025-09-25 19:53:19 - [1/49] Processing: morning-routine-optimization[0m
+[0;34m2025-09-25 19:53:19 -   🔍 Checking worktree path: ../../templata-morning-routine-optimization[0m
+[0;34m2025-09-25 19:53:19 -   🔍 Current directory: /Users/ikim1/Documents/GitHub/templata/generation-scripts[0m
+[1;33m2025-09-25 19:53:19 -   ⏭️  Template file already exists, skipping: src/data/template-morning-routine-optimization.ts[0m
+[1;33m2025-09-25 19:53:19 - Next batch: 48 templates remaining[0m
+[1;33m2025-09-25 19:53:19 - Run: ./template-generation-cycle.sh --batch --start 1[0m
+[0;34m2025-09-25 19:53:27 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:53:27 - ==========================[0m
+[1;33m2025-09-25 19:53:27 - Total templates: 49[0m
+[1;33m2025-09-25 19:53:27 - Batch size: 25[0m
+[1;33m2025-09-25 19:53:27 - Starting from index: 0[0m
+[0;34m2025-09-25 19:53:27 - [1/49] Processing: morning-routine-optimization[0m
+[0;34m2025-09-25 19:53:27 -   🔍 Checking worktree path: ../../templata-morning-routine-optimization[0m
+[0;34m2025-09-25 19:53:27 -   🔍 Current directory: /Users/ikim1/Documents/GitHub/templata/generation-scripts[0m
+[1;33m2025-09-25 19:53:27 -   🔨 Generating template data...[0m
+[1;33m2025-09-25 19:53:27 - Generating template text file: morning-routine-optimization-template.txt[0m
+[0;31m2025-09-25 19:53:27 - ❌ morning-routine-optimization: Worktree directory not found: ../../templata-morning-routine-optimization[0m
+[0;34m2025-09-25 19:53:58 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:53:58 - ==========================[0m
+[1;33m2025-09-25 19:53:58 - Total templates: 49[0m
+[1;33m2025-09-25 19:53:58 - Batch size: 25[0m
+[1;33m2025-09-25 19:53:58 - Starting from index: 2[0m
+[0;34m2025-09-25 19:53:58 - [3/49] Processing: weekend-planning-structure[0m
+[1;33m2025-09-25 19:53:58 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:54:38 -   ✅ weekend-planning-structure: Success[0m
+[0;34m2025-09-25 19:54:43 - [4/49] Processing: household-management-system[0m
+[1;33m2025-09-25 19:54:43 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:55:06 -   ✅ household-management-system: Success[0m
+[0;34m2025-09-25 19:55:11 - [5/49] Processing: personal-space-organization[0m
+[1;33m2025-09-25 19:55:11 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:55:25 -   ✅ personal-space-organization: Success[0m
+[0;34m2025-09-25 19:55:30 - [6/49] Processing: time-blocking-mastery[0m
+[1;33m2025-09-25 19:55:30 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:55:53 -   ✅ time-blocking-mastery: Success[0m
+[0;34m2025-09-25 19:55:58 - [7/49] Processing: daily-habit-stacking[0m
+[1;33m2025-09-25 19:55:58 -   🔨 Generating template data...[0m
+[0;34m2025-09-25 19:56:04 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 19:56:04 - ==========================[0m
+[1;33m2025-09-25 19:56:04 - Total templates: 49[0m
+[1;33m2025-09-25 19:56:04 - Batch size: 25[0m
+[1;33m2025-09-25 19:56:04 - Starting from index: 6[0m
+[0;34m2025-09-25 19:56:04 - [7/49] Processing: daily-habit-stacking[0m
+[1;33m2025-09-25 19:56:04 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:56:26 -   ✅ daily-habit-stacking: Success[0m
+[0;34m2025-09-25 19:56:31 - [8/49] Processing: energy-management-system[0m
+[1;33m2025-09-25 19:56:31 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:56:46 -   ✅ energy-management-system: Success[0m
+[0;34m2025-09-25 19:56:51 - [9/49] Processing: personal-productivity-system[0m
+[1;33m2025-09-25 19:56:51 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:57:05 -   ✅ personal-productivity-system: Success[0m
+[0;34m2025-09-25 19:57:10 - [10/49] Processing: life-admin-organization[0m
+[1;33m2025-09-25 19:57:10 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:57:26 -   ✅ life-admin-organization: Success[0m
+[0;34m2025-09-25 19:57:31 - [11/49] Processing: sleep-optimization-plan[0m
+[1;33m2025-09-25 19:57:31 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:57:54 -   ✅ sleep-optimization-plan: Success[0m
+[0;34m2025-09-25 19:57:59 - [12/49] Processing: nutrition-planning-system[0m
+[1;33m2025-09-25 19:57:59 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:58:13 -   ✅ nutrition-planning-system: Success[0m
+[0;34m2025-09-25 19:58:18 - [13/49] Processing: chronic-pain-management[0m
+[1;33m2025-09-25 19:58:18 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:58:42 -   ✅ chronic-pain-management: Success[0m
+[0;34m2025-09-25 19:58:47 - [14/49] Processing: preventive-health-planning[0m
+[1;33m2025-09-25 19:58:47 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:59:08 -   ✅ preventive-health-planning: Success[0m
+[0;34m2025-09-25 19:59:13 - [15/49] Processing: mental-wellness-routine[0m
+[1;33m2025-09-25 19:59:13 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 19:59:35 -   ✅ mental-wellness-routine: Success[0m
+[0;34m2025-09-25 19:59:40 - [16/49] Processing: medical-appointment-management[0m
+[1;33m2025-09-25 19:59:40 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:00:03 -   ✅ medical-appointment-management: Success[0m
+[0;34m2025-09-25 20:00:08 - [17/49] Processing: medication-organization[0m
+[1;33m2025-09-25 20:00:08 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:00:24 -   ✅ medication-organization: Success[0m
+[0;34m2025-09-25 20:00:29 - [18/49] Processing: health-emergency-planning[0m
+[1;33m2025-09-25 20:00:29 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:00:43 -   ✅ health-emergency-planning: Success[0m
+[0;34m2025-09-25 20:00:48 - [19/49] Processing: physical-therapy-journey[0m
+[1;33m2025-09-25 20:00:48 -   🔨 Generating template data...[0m
+[0;34m2025-09-25 20:01:10 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 20:01:10 - ==========================[0m
+[1;33m2025-09-25 20:01:10 - Total templates: 49[0m
+[1;33m2025-09-25 20:01:10 - Batch size: 20[0m
+[1;33m2025-09-25 20:01:10 - Starting from index: 18[0m
+[0;34m2025-09-25 20:01:10 - [19/49] Processing: physical-therapy-journey[0m
+[1;33m2025-09-25 20:01:10 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:01:44 -   ✅ physical-therapy-journey: Success[0m
+[0;34m2025-09-25 20:01:49 - [20/49] Processing: wellness-tracking-system[0m
+[1;33m2025-09-25 20:01:49 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:02:10 -   ✅ wellness-tracking-system: Success[0m
+[0;34m2025-09-25 20:02:15 - [21/49] Processing: digital-minimalism-journey[0m
+[1;33m2025-09-25 20:02:15 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:03:25 -   ✅ digital-minimalism-journey: Success[0m
+[0;34m2025-09-25 20:03:30 - [22/49] Processing: cybersecurity-personal-plan[0m
+[1;33m2025-09-25 20:03:30 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:03:45 -   ✅ cybersecurity-personal-plan: Success[0m
+[0;34m2025-09-25 20:03:50 - [23/49] Processing: online-privacy-management[0m
+[1;33m2025-09-25 20:03:50 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:04:12 -   ✅ online-privacy-management: Success[0m
+[0;34m2025-09-25 20:04:17 - [24/49] Processing: digital-legacy-planning[0m
+[1;33m2025-09-25 20:04:17 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:04:40 -   ✅ digital-legacy-planning: Success[0m
+[0;34m2025-09-25 20:04:45 - [25/49] Processing: remote-work-optimization[0m
+[1;33m2025-09-25 20:04:45 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:04:59 -   ✅ remote-work-optimization: Success[0m
+[0;34m2025-09-25 20:05:04 - [26/49] Processing: tech-skills-development[0m
+[1;33m2025-09-25 20:05:04 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:05:19 -   ✅ tech-skills-development: Success[0m
+[0;34m2025-09-25 20:05:24 - [27/49] Processing: social-media-detox[0m
+[1;33m2025-09-25 20:05:24 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:05:40 -   ✅ social-media-detox: Success[0m
+[0;34m2025-09-25 20:05:45 - [28/49] Processing: digital-declutter-process[0m
+[1;33m2025-09-25 20:05:45 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:06:08 -   ✅ digital-declutter-process: Success[0m
+[0;34m2025-09-25 20:06:13 - [29/49] Processing: online-learning-strategy[0m
+[1;33m2025-09-25 20:06:13 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:06:36 -   ✅ online-learning-strategy: Success[0m
+[0;34m2025-09-25 20:06:41 - [30/49] Processing: tech-addiction-recovery[0m
+[1;33m2025-09-25 20:06:41 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:07:02 -   ✅ tech-addiction-recovery: Success[0m
+[0;34m2025-09-25 20:07:07 - [31/49] Processing: friendship-building-plan[0m
+[1;33m2025-09-25 20:07:07 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:07:21 -   ✅ friendship-building-plan: Success[0m
+[0;34m2025-09-25 20:07:26 - [32/49] Processing: community-integration[0m
+[1;33m2025-09-25 20:07:26 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:07:45 -   ✅ community-integration: Success[0m
+[0;34m2025-09-25 20:07:50 - [33/49] Processing: social-skills-development[0m
+[1;33m2025-09-25 20:07:50 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:08:14 -   ✅ social-skills-development: Success[0m
+[0;34m2025-09-25 20:08:19 - [34/49] Processing: networking-outside-work[0m
+[1;33m2025-09-25 20:08:19 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:08:40 -   ✅ networking-outside-work: Success[0m
+[0;34m2025-09-25 20:08:45 - [35/49] Processing: family-reunion-planning[0m
+[1;33m2025-09-25 20:08:46 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:09:10 -   ✅ family-reunion-planning: Success[0m
+[0;34m2025-09-25 20:09:15 - [36/49] Processing: social-event-hosting[0m
+[1;33m2025-09-25 20:09:15 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:09:31 -   ✅ social-event-hosting: Success[0m
+[0;34m2025-09-25 20:09:36 - [37/49] Processing: volunteer-work-planning[0m
+[1;33m2025-09-25 20:09:36 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:09:51 -   ✅ volunteer-work-planning: Success[0m
+[0;34m2025-09-25 20:09:56 - [38/49] Processing: neighborhood-connection[0m
+[1;33m2025-09-25 20:09:56 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:10:10 -   ✅ neighborhood-connection: Success[0m
+[1;33m2025-09-25 20:10:15 - Next batch: 11 templates remaining[0m
+[1;33m2025-09-25 20:10:15 - Run: ./template-generation-cycle.sh --batch --start 38[0m
+[0;34m2025-09-25 20:10:21 - 🚀 Batch Template Generation[0m
+[0;34m2025-09-25 20:10:21 - ==========================[0m
+[1;33m2025-09-25 20:10:21 - Total templates: 49[0m
+[1;33m2025-09-25 20:10:21 - Batch size: 15[0m
+[1;33m2025-09-25 20:10:21 - Starting from index: 38[0m
+[0;34m2025-09-25 20:10:21 - [39/49] Processing: cultural-exploration[0m
+[1;33m2025-09-25 20:10:21 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:10:38 -   ✅ cultural-exploration: Success[0m
+[0;34m2025-09-25 20:10:43 - [40/49] Processing: language-exchange-setup[0m
+[1;33m2025-09-25 20:10:43 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:11:04 -   ✅ language-exchange-setup: Success[0m
+[0;34m2025-09-25 20:11:09 - [41/49] Processing: natural-disaster-preparation[0m
+[1;33m2025-09-25 20:11:09 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:11:24 -   ✅ natural-disaster-preparation: Success[0m
+[0;34m2025-09-25 20:11:29 - [42/49] Processing: medical-emergency-planning[0m
+[1;33m2025-09-25 20:11:29 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:12:00 -   ✅ medical-emergency-planning: Success[0m
+[0;34m2025-09-25 20:12:05 - [43/49] Processing: financial-emergency-fund[0m
+[1;33m2025-09-25 20:12:05 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:12:19 -   ✅ financial-emergency-fund: Success[0m
+[0;34m2025-09-25 20:12:24 - [44/49] Processing: family-emergency-plan[0m
+[1;33m2025-09-25 20:12:24 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:12:40 -   ✅ family-emergency-plan: Success[0m
+[0;34m2025-09-25 20:12:45 - [45/49] Processing: evacuation-planning[0m
+[1;33m2025-09-25 20:12:45 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:13:08 -   ✅ evacuation-planning: Success[0m
+[0;34m2025-09-25 20:13:13 - [46/49] Processing: will-and-testament-planning[0m
+[1;33m2025-09-25 20:13:13 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:13:35 -   ✅ will-and-testament-planning: Success[0m
+[0;34m2025-09-25 20:13:40 - [47/49] Processing: power-of-attorney-setup[0m
+[1;33m2025-09-25 20:13:40 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:14:42 -   ✅ power-of-attorney-setup: Success[0m
+[0;34m2025-09-25 20:14:47 - [48/49] Processing: legal-document-organization[0m
+[1;33m2025-09-25 20:14:47 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:15:02 -   ✅ legal-document-organization: Success[0m
+[0;34m2025-09-25 20:15:07 - [49/49] Processing: insurance-optimization-plan[0m
+[1;33m2025-09-25 20:15:07 -   🔨 Generating template data...[0m
+[0;32m2025-09-25 20:15:30 -   ✅ insurance-optimization-plan: Success[0m
+[0;32m2025-09-25 20:15:35 - 🎉 ALL TEMPLATES COMPLETE![0m
