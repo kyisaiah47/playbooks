@@ -52,40 +52,26 @@ function getCategoryColors(category: string): { bg: string; icon: string } {
   return colorMap[category] || { bg: 'bg-gray-50 dark:bg-gray-950/30', icon: 'text-gray-600 dark:text-gray-400' };
 }
 
-// Convert template name to URL-friendly format
-function templateNameToId(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-}
-
-// Generate registry entries dynamically from all imported templates
-const generateTemplateRegistry = (): TemplateRegistryEntry[] => {
-  const entries: TemplateRegistryEntry[] = [];
-
-  // Iterate through all templates in the templates object
-  Object.entries(templates).forEach(([templateName, templateData]) => {
-    if (templateData && typeof templateData === 'object' && 'id' in templateData) {
-      const template = templateData as GuidanceTemplate;
-      const entry: TemplateRegistryEntry = {
-        id: template.id,
-        name: capitalizeTemplateName(template.title || template.id.replace(/-/g, ' ')),
-        description: template.description,
-        category: template.category,
-        icon: template.icon,
-        url: `/${template.id}/app`,
-        popular: false,
-        featured: false,
-        expertVerified: false,
-        ...getCategoryColors(template.category),
-        template: getTemplate(template)
-      };
-      entries.push(entry);
-    }
-  });
-
-  return entries.sort((a, b) => a.name.localeCompare(b.name));
-};
-
-export const templateRegistry: TemplateRegistryEntry[] = generateTemplateRegistry();
+// Simple registry generation using Object.values().flat() pattern like the others
+export const templateRegistry: TemplateRegistryEntry[] = Object.values(templates).map((template: any) => {
+  if (template && typeof template === 'object' && 'id' in template) {
+    const t = template as GuidanceTemplate;
+    return {
+      id: t.id,
+      name: capitalizeTemplateName(t.title || t.id.replace(/-/g, ' ')),
+      description: t.description,
+      category: t.category,
+      icon: t.icon,
+      url: `/${t.id}/app`,
+      popular: false,
+      featured: false,
+      expertVerified: false,
+      ...getCategoryColors(t.category),
+      template: getTemplate(t)
+    };
+  }
+  return null;
+}).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
 
 // Helper functions
 export const getTemplateById = (id: string): TemplateRegistryEntry | undefined => {
