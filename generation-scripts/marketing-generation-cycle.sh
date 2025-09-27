@@ -22,16 +22,16 @@ log_colored() {
 }
 
 # Get all template directories
-TEMPLATE_DIRS=($(ls -d ../templata-* | sort))
+TEMPLATE_DIRS=($(ls -d ../../templata-* | sort))
 
-log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#WORKTREES[@]} worktrees for completion status..."
+log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#TEMPLATE_DIRS[@]} templates for completion status..."
 
-# Phase 1: Fast audit - identify incomplete worktrees
+# Phase 1: Fast audit - identify incomplete templates
 INCOMPLETE_WORKTREES=()
 COMPLETE_COUNT=0
 INCOMPLETE_COUNT=0
 
-for worktree in "${WORKTREES[@]}"; do
+for worktree in "${TEMPLATE_DIRS[@]}"; do
     if [ ! -d "$worktree" ]; then
         continue
     fi
@@ -144,7 +144,7 @@ log_colored "$GREEN" "Generation cycle complete!"
 log_colored "$BLUE" "🔍 FINAL VERIFICATION: Checking completion status..."
 
 incomplete_count=0
-for worktree in "${WORKTREES[@]}"; do
+for worktree in "${TEMPLATE_DIRS[@]}"; do
     if [ ! -d "$worktree" ]; then
         continue
     fi
@@ -160,9 +160,7 @@ for worktree in "${WORKTREES[@]}"; do
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Restarting..."
-    sleep 5
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Waiting 60 seconds before retrying..."; sleep 60; log_colored "$BLUE" "🔄 Retrying generation for remaining incomplete files..."; exec "$0" "$@"
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Retrying generation for remaining incomplete files..."; exec "$0" "$@"
 else
     log_colored "$GREEN" "🎉 All landing page files complete!"
 fi

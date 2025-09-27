@@ -59,7 +59,7 @@ get_category_for_template() {
 }
 
 # Get all template directories
-TEMPLATE_DIRS=($(ls -d ../templata-* | sort))
+TEMPLATE_DIRS=($(ls -d ../../templata-* | sort))
 
 log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#TEMPLATE_DIRS[@]} template directories for completion status..."
 
@@ -123,7 +123,7 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
 
     # Start batch of parallel jobs
     for ((j=i; j<=BATCH_END; j++)); do
-        worktree="${INCOMPLETE_WORKTREES[j]}"
+        worktree="${INCOMPLETE_DIRS[j]}"
         template=$(basename "$worktree" | sed 's/templata-//')
         template_readable=$(echo "$template" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
         category=$(get_category_for_template "$template")
@@ -211,7 +211,7 @@ log_colored "$GREEN" "Generation cycle complete!"
 log_colored "$BLUE" "🔍 FINAL VERIFICATION: Checking completion status..."
 
 incomplete_count=0
-for worktree in "${WORKTREES[@]}"; do
+for worktree in "${TEMPLATE_DIRS[@]}"; do
     if [ ! -d "$worktree" ]; then
         continue
     fi
@@ -238,9 +238,7 @@ for worktree in "${WORKTREES[@]}"; do
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Waiting 60 seconds before retrying..."
-    sleep 60
-    log_colored "$BLUE" "🔄 Retrying generation for remaining incomplete files..."
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Retrying generation for remaining incomplete files..."
     exec "$0" "$@"
 else
     log_colored "$GREEN" "🎉 All article files complete!"

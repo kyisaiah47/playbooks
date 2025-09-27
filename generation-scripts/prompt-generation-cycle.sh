@@ -22,16 +22,16 @@ log_colored() {
 }
 
 # Get all template directories
-TEMPLATE_DIRS=($(ls -d ../templata-* | sort))
+TEMPLATE_DIRS=($(ls -d ../../templata-* | sort))
 
-log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#WORKTREES[@]} worktrees for prompt completion status..."
+log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#TEMPLATE_DIRS[@]} templates for prompt completion status..."
 
-# Phase 1: Fast audit - identify incomplete worktrees
+# Phase 1: Fast audit - identify incomplete templates
 INCOMPLETE_WORKTREES=()
 COMPLETE_COUNT=0
 INCOMPLETE_COUNT=0
 
-for worktree in "${WORKTREES[@]}"; do
+for worktree in "${TEMPLATE_DIRS[@]}"; do
     if [ ! -d "$worktree" ]; then
         continue
     fi
@@ -181,31 +181,34 @@ log_colored "$GREEN" "Generation cycle complete!"
 log_colored "$BLUE" "🔍 FINAL VERIFICATION: Checking completion status..."
 
 incomplete_count=0
-for worktree in "${WORKTREES[@]}"; do
+for worktree in "${TEMPLATE_DIRS[@]}"; do
     if [ ! -d "$worktree" ]; then
         continue
     fi
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    if [ -f "$worktree/${template}-prompts.txt" ]; then
-        word_count=$(wc -w < "$worktree/${template}-prompts.txt" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 400 ]; then
-            continue
-        else
-            echo "❌ $template (prompt file too small: $word_count words)"
-            ((incomplete_count++))
+    # Check if all 5 prompt category files exist with enough content (100 words each)
+    complete_categories=0
+    for i in {1..5}; do
+        if [ -f "$worktree/${template}-prompt-category-${i}.txt" ]; then
+            word_count=$(wc -w < "$worktree/${template}-prompt-category-${i}.txt" 2>/dev/null || echo "0")
+            if [ "$word_count" -gt 100 ]; then
+                ((complete_categories++))
+            fi
         fi
+    done
+
+    if [ "$complete_categories" -eq 5 ]; then
+        continue
     else
-        echo "❌ $template (missing prompt file)"
+        echo "❌ $template (missing prompt categories: $complete_categories/5 complete)"
         ((incomplete_count++))
     fi
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Restarting..."
-    sleep 5
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Waiting 60 seconds before retrying..."; sleep 60; log_colored "$BLUE" "🔄 Retrying generation for remaining incomplete files..."; exec "$0" "$@"
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Retrying generation for remaining incomplete files..."; exec "$0" "$@"
 else
     log_colored "$GREEN" "🎉 All prompt files complete!"
 fi

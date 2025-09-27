@@ -42,7 +42,7 @@ log_colored() {
 }
 
 # Get all template directories
-TEMPLATE_DIRS=($(ls -d ../templata-* | sort))
+TEMPLATE_DIRS=($(ls -d ../../templata-* | sort))
 
 log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#TEMPLATE_DIRS[@]} template directories for completion status..."
 
@@ -185,16 +185,16 @@ log_colored "$GREEN" "Generation cycle complete!"
 log_colored "$BLUE" "🔍 FINAL VERIFICATION: Checking completion status..."
 
 incomplete_count=0
-for worktree in "${WORKTREES[@]}"; do
-    if [ ! -d "$worktree" ]; then
+for template_dir in "${INCOMPLETE_DIRS[@]}"; do
+    if [ ! -d "$template_dir" ]; then
         continue
     fi
 
-    template=$(basename "$worktree" | sed 's/templata-//')
+    template=$(basename "$template_dir" | sed 's/templata-//')
 
     has_template=false
-    if [ -f "$worktree/${template}-template.txt" ]; then
-        word_count=$(wc -w < "$worktree/${template}-template.txt" 2>/dev/null || echo "0")
+    if [ -f "$template_dir/${template}-template.txt" ]; then
+        word_count=$(wc -w < "$template_dir/${template}-template.txt" 2>/dev/null || echo "0")
         if [ "$word_count" -gt 150 ]; then
             has_template=true
         else
