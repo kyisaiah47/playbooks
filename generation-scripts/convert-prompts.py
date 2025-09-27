@@ -54,7 +54,7 @@ if __name__ == "__main__":
         print("🚀 Batch converting all template prompt files...")
 
         # Find all templata-* directories with their prompt files
-        worktree_dirs = glob.glob('../templata-*')
+        worktree_dirs = glob.glob('../../templata-*')
         converted = 0
 
         for worktree_dir in sorted(worktree_dirs):
