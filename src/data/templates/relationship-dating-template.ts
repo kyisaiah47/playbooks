@@ -1,0 +1,40 @@
+import { GuidanceTemplate } from '@/types/template';
+
+export const relationshipDatingTemplate: GuidanceTemplate = {
+  id: "relationship-dating",
+  title: "Relationship Dating Journey Guide",
+  description: "A comprehensive framework for navigating the dating process, building meaningful connections, and developing healthy romantic relationships",
+  category: "Life Planning",
+  icon: "heart",
+  difficulty: "intermediate",
+  estimatedTime: "2-4 weeks",
+  tags: [
+    "dating",
+    "relationships",
+    "romance",
+    "love",
+    "communication",
+    "compatibility",
+    "dating apps",
+    "first dates",
+    "relationship goals",
+    "emotional intelligence",
+    "boundaries",
+    "self-reflection",
+    "dating tips",
+    "dating safety",
+    "online dating",
+    "meeting people",
+    "conversation skills",
+    "attraction",
+    "chemistry",
+    "red flags",
+    "green flags",
+    "dating anxiety",
+    "confidence",
+    "dating profile",
+    "social skills",
+    "commitment"
+  ],
+  lastUpdated: new Date().toISOString().split('T')[0]
+};
