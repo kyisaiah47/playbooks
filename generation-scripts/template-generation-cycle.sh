@@ -58,10 +58,13 @@ for worktree in "${WORKTREES[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    # Check if template file exists in worktree with new naming convention
-    if [ -f "$worktree/src/data/templates/${template}-template.ts" ]; then
-        ((COMPLETE_COUNT++))
-        continue
+    # Check if template txt file exists in worktree
+    if [ -f "$worktree/${template}-template.txt" ]; then
+        word_count=$(wc -w < "$worktree/${template}-template.txt" 2>/dev/null || echo "0")
+        if [ "$word_count" -gt 150 ]; then
+            ((COMPLETE_COUNT++))
+            continue
+        fi
     fi
 
     # This worktree needs work
@@ -198,8 +201,7 @@ for worktree in "${WORKTREES[@]}"; do
             echo "❌ $template (template file too small: $word_count words)"
             ((incomplete_count++))
         fi
-    elif [ -f "$worktree/src/data/template-${template}.ts" ]; then
-        has_template=true
+    # No other file types to check for templates
     else
         echo "❌ $template (missing template file)"
         ((incomplete_count++))
@@ -207,9 +209,10 @@ for worktree in "${WORKTREES[@]}"; do
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. These may need manual completion or retry."
-    log_colored "$BLUE" "To resume, run: $0 $START_INDEX $NUM_BATCHES"
-    exit 1
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Waiting 60 seconds before retrying..."
+    sleep 60
+    log_colored "$BLUE" "🔄 Retrying generation for remaining incomplete files..."
+    exec "$0" "$@"
 else
     log_colored "$GREEN" "🎉 All template files complete!"
 fi

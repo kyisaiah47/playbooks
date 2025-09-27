@@ -75,8 +75,18 @@ for worktree in "${WORKTREES[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    # Check if articles file exists in worktree with new naming convention
-    if [ -f "$worktree/src/data/articles/${template}-article.ts" ]; then
+    # Check if all 20 article files exist with enough content (1,250 words each)
+    complete_articles=0
+    for i in {1..20}; do
+        if [ -f "$worktree/${template}-article-${i}.txt" ]; then
+            word_count=$(wc -w < "$worktree/${template}-article-${i}.txt" 2>/dev/null || echo "0")
+            if [ "$word_count" -gt 1250 ]; then
+                ((complete_articles++))
+            fi
+        fi
+    done
+
+    if [ "$complete_articles" -eq 20 ]; then
         ((COMPLETE_COUNT++))
         continue
     fi
@@ -123,31 +133,58 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
         cd "$worktree"
 
         (
-            # Generate 20 articles per template
+            # Generate articles 1-20, only create missing ones
             for article_num in {1..20}; do
+                article_file="${template}-article-${article_num}.txt"
+
+                # Skip if this article already exists with enough content
+                if [ -f "$article_file" ]; then
+                    word_count=$(wc -w < "$article_file" 2>/dev/null || echo "0")
+                    if [ "$word_count" -gt 1250 ]; then
+                        echo "✅ $template: Article $article_num already complete ($word_count words)"
+                        continue
+                    fi
+                fi
+
+                # Collect existing article titles to avoid duplicates
+                existing_titles=""
+                for i in {1..20}; do
+                    if [ -f "${template}-article-${i}.txt" ] && [ "$i" -ne "$article_num" ]; then
+                        title=$(grep "^TITLE:" "${template}-article-${i}.txt" 2>/dev/null | head -1)
+                        if [ -n "$title" ]; then
+                            existing_titles="$existing_titles\n$title"
+                        fi
+                    fi
+                done
+
+                log_colored "$YELLOW" "Generating article $article_num for: $template"
+
                 claude --print --dangerously-skip-permissions --add-dir . -p "Generate ONE comprehensive article for the $template_readable template in simple text format.
 
 ARTICLE #$article_num for $template_readable
+
+EXISTING ARTICLE TITLES TO AVOID DUPLICATING:
+$existing_titles
 
 REQUIREMENTS:
 - 1,200-1,600 words (8-12 minute read)
 - Follow sophisticated, caring voice and readability guidelines
 - Focus on $template_readable context and needs
-- Pick your own relevant topic that would help people with $template_readable
+- Pick a unique topic that would help people with $template_readable
 - Choose appropriate type (guide/article/checklist/tool) and difficulty (beginner/intermediate/expert)
 
-OUTPUT FORMAT (append to ${template}-articles.txt):
-TITLE: [Your compelling article title]
+OUTPUT FORMAT:
+TITLE: [Your compelling article title - make sure it's different from existing titles above]
 CATEGORY: $category
 TYPE: [guide/article/checklist/tool]
 DIFFICULTY: [beginner/intermediate/expert]
 CONTENT: [Your 1,200-1,600 word article content here...]
----
 
-When complete, respond exactly: 'ARTICLE GENERATION COMPLETE - Article #$article_num'" >> ${template}-articles.txt 2>&1
+When complete, respond exactly: 'ARTICLE GENERATION COMPLETE - Article #$article_num'" > "$article_file" 2>&1
 
                 if [ $? -eq 0 ]; then
-                    echo "✅ $template: Article $article_num success"
+                    word_count=$(wc -w < "$article_file" 2>/dev/null || echo "0")
+                    echo "✅ $template: Article $article_num success ($word_count words)"
                 else
                     echo "❌ $template: Article $article_num failed"
                 fi
@@ -181,18 +218,30 @@ for worktree in "${WORKTREES[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    if [ -f "../src/data/articles/articles-${template}.ts" ] || ([ -f "$worktree/${template}-articles.txt" ] && [ $(wc -w < "$worktree/${template}-articles.txt" 2>/dev/null || echo "0") -gt 25000 ]); then
+    # Check if all 20 article files are complete
+    complete_articles=0
+    for i in {1..20}; do
+        if [ -f "$worktree/${template}-article-${i}.txt" ]; then
+            word_count=$(wc -w < "$worktree/${template}-article-${i}.txt" 2>/dev/null || echo "0")
+            if [ "$word_count" -gt 1250 ]; then
+                ((complete_articles++))
+            fi
+        fi
+    done
+
+    if [ "$complete_articles" -eq 20 ]; then
         continue
     else
-        echo "❌ $template (missing articles file or insufficient content)"
+        echo "❌ $template (missing article files: $complete_articles/20 complete)"
         ((incomplete_count++))
     fi
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. These may need manual completion or retry."
-    log_colored "$BLUE" "To resume, run: $0 $START_INDEX $NUM_BATCHES"
-    exit 1
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Waiting 60 seconds before retrying..."
+    sleep 60
+    log_colored "$BLUE" "🔄 Retrying generation for remaining incomplete files..."
+    exec "$0" "$@"
 else
     log_colored "$GREEN" "🎉 All article files complete!"
 fi

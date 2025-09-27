@@ -38,8 +38,18 @@ for worktree in "${WORKTREES[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    # Check if prompts file exists in worktree with new naming convention
-    if [ -f "$worktree/src/data/prompts/${template}-prompts.ts" ]; then
+    # Check if all 5 prompt category files exist with enough content (100 words each)
+    complete_categories=0
+    for i in {1..5}; do
+        if [ -f "$worktree/${template}-prompt-category-${i}.txt" ]; then
+            word_count=$(wc -w < "$worktree/${template}-prompt-category-${i}.txt" 2>/dev/null || echo "0")
+            if [ "$word_count" -gt 100 ]; then
+                ((complete_categories++))
+            fi
+        fi
+    done
+
+    if [ "$complete_categories" -eq 5 ]; then
         ((COMPLETE_COUNT++))
         continue
     fi
@@ -85,7 +95,15 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
         cd "$worktree"
 
         (
-            claude --print --dangerously-skip-permissions --add-dir . -p "Create 5 logical categories for a ${template_readable} journey and write 10 simple one-sentence action prompts for each category (50 total).
+            # Check existing prompts and resume from where we left off
+            existing_categories=0
+            if [ -f "${template}-prompts.txt" ]; then
+                existing_categories=$(grep -c "^CATEGORY [0-9]*:" "${template}-prompts.txt" 2>/dev/null || echo "0")
+            fi
+
+            if [ "$existing_categories" -eq 0 ]; then
+                # Start fresh
+                claude --print --dangerously-skip-permissions --add-dir . -p "Create 5 logical categories for a ${template_readable} journey and write 10 simple one-sentence action prompts for each category (50 total).
 
 Format as plain text:
 CATEGORY 1: [name]
@@ -99,6 +117,33 @@ CATEGORY 2: [name]
 ...
 
 Make each prompt a concrete actionable task for someone navigating ${template_readable}." > ${template}-prompts.txt 2>&1
+            else
+                # Resume from where we left off - read existing content to avoid duplicates
+                existing_content=""
+                if [ -f "${template}-prompts.txt" ]; then
+                    existing_content=$(cat "${template}-prompts.txt")
+                fi
+
+                # Rewrite from the last category (in case it was incomplete)
+                start_category=$existing_categories
+                if [ "$start_category" -eq 0 ]; then
+                    start_category=1
+                fi
+                log_colored "$BLUE" "Found $existing_categories existing categories, rewriting from category $start_category"
+                claude --print --dangerously-skip-permissions --add-dir . -p "Continue creating categories for a ${template_readable} journey. You need to create categories $start_category through 5, with 10 simple one-sentence action prompts for each remaining category.
+
+EXISTING CATEGORIES TO AVOID DUPLICATING:
+$existing_content
+
+Format as plain text (continue from existing file):
+CATEGORY $start_category: [name - make sure it's different from existing categories above]
+1. [one sentence prompt]
+2. [one sentence prompt]
+...
+10. [one sentence prompt]
+
+Continue until you have completed all 5 categories total. Make each prompt a concrete actionable task for someone navigating ${template_readable}. Ensure all new categories and prompts are DIFFERENT from the existing ones shown above." >> ${template}-prompts.txt 2>&1
+            fi
 
             if [ $? -eq 0 ]; then
                 echo "✅ $template: Success"
@@ -146,7 +191,7 @@ done
 if [ "$incomplete_count" -gt 0 ]; then
     log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Restarting..."
     sleep 5
-    log_colored "$BLUE" "To resume, run: $0 $START_INDEX $NUM_BATCHES"; exit 1
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Waiting 60 seconds before retrying..."; sleep 60; log_colored "$BLUE" "🔄 Retrying generation for remaining incomplete files..."; exec "$0" "$@"
 else
     log_colored "$GREEN" "🎉 All prompt files complete!"
 fi
