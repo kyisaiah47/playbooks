@@ -3,6 +3,26 @@
 # Fast batch article generation - audit first, then process only incomplete ones
 set -e
 
+# Check for status command
+if [ "$1" = "status" ]; then
+    PROGRESS_FILE=".article-generation-progress"
+    if [ -f "$PROGRESS_FILE" ]; then
+        echo "📊 Article Generation Progress Status:"
+        cat "$PROGRESS_FILE"
+        echo ""
+        echo "📋 To resume from where you left off:"
+        if grep -q "NEXT_START_INDEX" "$PROGRESS_FILE"; then
+            NEXT_START=$(grep "NEXT_START_INDEX" "$PROGRESS_FILE" | cut -d'=' -f2)
+            echo "   $0 $NEXT_START"
+        else
+            echo "   $0 0"
+        fi
+    else
+        echo "❌ No progress file found. Start with: $0 0"
+    fi
+    exit 0
+fi
+
 # Starting index (0-based)
 START_INDEX=${1:-0}
 # Number of batches to process (optional)
@@ -170,9 +190,9 @@ for worktree in "${WORKTREES[@]}"; do
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Restarting..."
-    sleep 5
-    exec "$0" "$@"
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. These may need manual completion or retry."
+    log_colored "$BLUE" "To resume, run: $0 $START_INDEX $NUM_BATCHES"
+    exit 1
 else
     log_colored "$GREEN" "🎉 All article files complete!"
 fi

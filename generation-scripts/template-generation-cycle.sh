@@ -3,6 +3,26 @@
 # Fast batch template generation - audit first, then process only incomplete ones
 set -e
 
+# Check for status command
+if [ "$1" = "status" ]; then
+    PROGRESS_FILE=".template-generation-progress"
+    if [ -f "$PROGRESS_FILE" ]; then
+        echo "📊 Generation Progress Status:"
+        cat "$PROGRESS_FILE"
+        echo ""
+        echo "📋 To resume from where you left off:"
+        if grep -q "NEXT_START_INDEX" "$PROGRESS_FILE"; then
+            NEXT_START=$(grep "NEXT_START_INDEX" "$PROGRESS_FILE" | cut -d'=' -f2)
+            echo "   $0 $NEXT_START"
+        else
+            echo "   $0 0"
+        fi
+    else
+        echo "❌ No progress file found. Start with: $0 0"
+    fi
+    exit 0
+fi
+
 # Starting index (0-based)
 START_INDEX=${1:-0}
 # Number of batches to process (optional)
@@ -63,6 +83,12 @@ log_colored "$BLUE" "🚀 GENERATION PHASE: Processing ${#INCOMPLETE_WORKTREES[@
 # Phase 2: Process only incomplete worktrees in batches
 BATCH_SIZE=20
 TOTAL=${#INCOMPLETE_WORKTREES[@]}
+
+# Create progress tracking file
+PROGRESS_FILE=".template-generation-progress"
+echo "START_INDEX=$START_INDEX" > "$PROGRESS_FILE"
+echo "TOTAL_INCOMPLETE=$TOTAL" >> "$PROGRESS_FILE"
+echo "TIMESTAMP=$(date)" >> "$PROGRESS_FILE"
 
 BATCH_COUNT=0
 for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
@@ -141,7 +167,13 @@ When complete, respond exactly: 'TEMPLATE GENERATION COMPLETE - ${template}'" > 
     # Wait for this batch to complete
     wait
 
-    log_colored "$GREEN" "Batch $BATCH_COUNT complete!"
+    # Update progress
+    NEXT_START=$((BATCH_END + 1))
+    echo "LAST_COMPLETED_BATCH=$BATCH_COUNT" >> "$PROGRESS_FILE"
+    echo "NEXT_START_INDEX=$NEXT_START" >> "$PROGRESS_FILE"
+    echo "LAST_BATCH_TIMESTAMP=$(date)" >> "$PROGRESS_FILE"
+
+    log_colored "$GREEN" "Batch $BATCH_COUNT complete! (Next start index: $NEXT_START)"
 done
 
 log_colored "$GREEN" "Generation cycle complete!"
@@ -175,9 +207,9 @@ for worktree in "${WORKTREES[@]}"; do
 done
 
 if [ "$incomplete_count" -gt 0 ]; then
-    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Restarting..."
-    sleep 5
-    exec "$0" "$@"
+    log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. These may need manual completion or retry."
+    log_colored "$BLUE" "To resume, run: $0 $START_INDEX $NUM_BATCHES"
+    exit 1
 else
     log_colored "$GREEN" "🎉 All template files complete!"
 fi

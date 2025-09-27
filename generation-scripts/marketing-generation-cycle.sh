@@ -159,7 +159,7 @@ done
 if [ "$incomplete_count" -gt 0 ]; then
     log_colored "$YELLOW" "⚠️  Found $incomplete_count incomplete files. Restarting..."
     sleep 5
-    exec "$0" "$@"
+    log_colored "$BLUE" "To resume, run: $0 $START_INDEX $NUM_BATCHES"; exit 1
 else
     log_colored "$GREEN" "🎉 All landing page files complete!"
 fi
