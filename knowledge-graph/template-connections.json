@@ -1,341 +1,282 @@
 {
   "semantic_clusters": {
-    "young_adult_foundation": {
-      "templates": [
-        "college-selection",
-        "job-search",
-        "apartment-hunting",
-        "first-serious-relationship",
-        "first-job-transition",
-        "roommate-navigation",
-        "student-loan-strategy",
-        "quarter-life-crisis"
-      ],
-      "reasoning": "Core decisions young adults make when establishing independence and identity"
+    "financial_foundation": {
+      "templates": ["budget-planning", "financial-emergency-fund", "debt-payoff", "personal-finance-template"],
+      "reasoning": "These templates form the foundation of financial health, starting with basic budgeting and emergency fund creation, then addressing debt elimination and general financial planning. They share common tags like budgeting, financial planning, and debt management."
     },
-    "financial_security_building": {
-      "templates": [
-        "personal-finance",
-        "debt-payoff",
-        "investment-portfolio",
-        "personal-finance-mastery",
-        "investing-finance",
-        "crypto-portfolio",
-        "stock-trading",
-        "insurance-optimization"
-      ],
-      "reasoning": "Progressive financial planning and wealth building across life stages"
+    "wealth_building": {
+      "templates": ["investing-finance", "financial-independence", "retirement-planning", "investment-portfolio", "crypto-portfolio", "stock-trading"],
+      "reasoning": "Advanced financial templates focused on building wealth through investing, portfolio management, and long-term financial independence. All share investment strategy, retirement planning, and wealth building themes."
     },
-    "family_life_transitions": {
-      "templates": [
-        "first-serious-relationship",
-        "wedding-planning",
-        "home-buying",
-        "baby-planning",
-        "first-time-parent",
-        "marriage-maintenance",
-        "parenting-guidance",
-        "caring-for-aging-parents",
-        "sandwich-generation"
-      ],
-      "reasoning": "Major family formation and relationship decisions that shape life structure"
+    "career_fundamentals": {
+      "templates": ["job-search", "first-job-transition", "professional-networking", "career-change", "early-career-advancement"],
+      "reasoning": "Core career development templates covering job searching, professional networking, and career transitions. They share networking, professional development, and career advancement themes."
     },
-    "career_development_path": {
-      "templates": [
-        "job-search",
-        "early-career-advancement",
-        "skill-development",
-        "career-plateau",
-        "first-management-role",
-        "executive-leadership-transition",
-        "professional-networking",
-        "public-speaking"
-      ],
-      "reasoning": "Professional growth and career advancement decisions"
+    "leadership_management": {
+      "templates": ["first-management-role", "business-launch", "tech-startup-guide", "executive-leadership-transition", "small-business-launch"],
+      "reasoning": "Templates focused on leadership roles and business creation, from individual contributor to management to entrepreneurship. They share leadership, team building, and business development themes."
     },
-    "entrepreneurship_business": {
-      "templates": [
-        "business-launch",
-        "freelance-business",
-        "side-hustle-development",
-        "online-business-launch",
-        "content-creation-business",
-        "coaching-business",
-        "consulting-business",
-        "tech-startup-guide",
-        "saas-startup",
-        "small-business-launch"
-      ],
-      "reasoning": "Building and running businesses across different models and stages"
+    "physical_health": {
+      "templates": ["fitness-journey", "weight-loss", "meal-planning", "yoga-practice", "marathon-training", "personal-training"],
+      "reasoning": "Physical wellness templates covering exercise, nutrition, and healthy lifestyle habits. They share fitness, nutrition, exercise, and health goal themes."
     },
-    "health_wellness_journey": {
-      "templates": [
-        "mental-health",
-        "fitness-journey",
-        "weight-loss",
-        "meditation-journey",
-        "mindfulness-meditation",
-        "yoga-practice",
-        "marathon-training",
-        "habit-tracking",
-        "stress-management"
-      ],
-      "reasoning": "Physical and mental health optimization and wellness maintenance"
+    "mental_wellness": {
+      "templates": ["mental-health", "stress-management", "meditation-journey", "digital-detox", "mindfulness-meditation", "mental-health-support"],
+      "reasoning": "Mental health and mindfulness templates focused on psychological well-being, stress reduction, and mindful living. They share mindfulness, mental health, stress relief, and meditation themes."
     },
-    "major_life_crises": {
-      "templates": [
-        "divorce-coordination",
-        "job-loss-recovery",
-        "grief-loss",
-        "health-crisis-management",
-        "bankruptcy-recovery",
-        "addiction-recovery",
-        "midlife-crisis",
-        "natural-disaster-recovery"
-      ],
-      "reasoning": "Navigating significant life disruptions and recovery processes"
+    "relationship_milestones": {
+      "templates": ["first-serious-relationship", "wedding-planning", "first-time-parent", "divorce-process", "marriage-maintenance"],
+      "reasoning": "Templates covering major relationship lifecycle events from first relationships through marriage, parenting, and potential divorce. They represent natural progression or alternative paths in romantic relationships."
+    },
+    "life_stage_transitions": {
+      "templates": ["college-planning", "college-selection", "empty-nest", "retirement-transition", "death-of-spouse", "quarter-life-crisis", "midlife-crisis"],
+      "reasoning": "Templates addressing major life stage transitions across the lifespan from college years through retirement and later life challenges. They share life transition, planning, and adjustment themes."
     },
     "creative_expression": {
-      "templates": [
-        "creative-writing",
-        "art-portfolio",
-        "music-production",
-        "photography-business",
-        "fashion-design",
-        "content-creation",
-        "youtube-channel",
-        "podcast-creation"
-      ],
-      "reasoning": "Artistic and creative pursuits for expression and potential income"
+      "templates": ["creative-writing", "book-writing", "content-creation", "hobby-photography", "art-portfolio", "music-production", "fashion-design"],
+      "reasoning": "Templates focused on creative pursuits and artistic expression, from writing and photography to content creation. They share creativity, artistic development, and skill building themes."
     },
-    "retirement_aging": {
-      "templates": [
-        "retirement-planning",
-        "retirement-transition",
-        "retirement-lifestyle",
-        "elder-care",
-        "end-of-life-planning",
-        "estate-planning",
-        "fixed-income-management",
-        "downsizing-decisions"
-      ],
-      "reasoning": "Later-life planning and aging-related decisions"
+    "entrepreneurial_ventures": {
+      "templates": ["side-hustle-development", "freelance-business", "e-commerce-store", "online-business-launch", "content-creation-business", "coaching-business", "consulting-business"],
+      "reasoning": "Templates for starting and managing various types of businesses and income streams. They share entrepreneurship, business planning, and revenue generation themes."
     },
-    "housing_location": {
-      "templates": [
-        "apartment-hunting",
-        "home-buying",
-        "moving-relocation",
-        "geographic-relocation",
-        "mortgage-management",
-        "home-renovation",
-        "rental-management",
-        "real-estate-investing"
-      ],
-      "reasoning": "Housing and location decisions that affect life stability"
+    "home_and_property": {
+      "templates": ["home-buying", "home-renovation", "moving-relocation", "downsizing-decisions", "real-estate-investing", "investment-property", "apartment-hunting"],
+      "reasoning": "Templates related to housing decisions, property management, and living situation changes. They share real estate, housing decisions, and living situation planning themes."
+    },
+    "personal_optimization": {
+      "templates": ["habit-tracking", "personal-productivity-system", "time-blocking-mastery", "daily-habit-stacking", "morning-routine-optimization"],
+      "reasoning": "Templates focused on personal efficiency, habit formation, and optimizing daily routines. They share productivity, habit formation, and personal development themes."
+    },
+    "young_adult_foundation": {
+      "templates": ["college-planning", "college-selection", "first-job-transition", "apartment-hunting", "first-serious-relationship", "student-loan-strategy", "fraternity-sorority-decisions"],
+      "reasoning": "Critical decisions young adults make when establishing independence and identity, forming the foundation for adult life."
+    },
+    "major_life_crises": {
+      "templates": ["divorce-process", "job-loss-recovery", "grief-loss", "death-of-spouse", "health-crisis-management", "bankruptcy-recovery", "natural-disaster-recovery"],
+      "reasoning": "Templates for navigating significant life disruptions and recovery processes that require specialized guidance and support."
+    },
+    "technology_digital": {
+      "templates": ["tech-startup-guide", "app-development", "digital-detox", "social-media-management", "cybersecurity-personal-plan", "online-privacy-management"],
+      "reasoning": "Technology adoption, digital business creation, and managing technology's impact on life and wellbeing."
+    },
+    "health_and_aging": {
+      "templates": ["retirement-planning", "retirement-transition", "elder-care", "caring-for-aging-parents", "end-of-life-planning", "estate-planning", "health-decline-navigation"],
+      "reasoning": "Later-life planning, aging-related decisions, and health management for older adults and their families."
     }
   },
-  "cross_connections": {
-    "home-buying": {
-      "strongly_connected": [
-        "mortgage-management",
-        "personal-finance",
-        "wedding-planning",
-        "baby-planning",
-        "job-search"
+  "weighted_connections": {
+    "budget-planning": {
+      "critical_connections": [
+        {"templateId": "financial-emergency-fund", "strength": 95, "reasoning": "Emergency fund is typically the first goal after establishing a budget and fundamental to financial security"}
       ],
-      "reasoning": "Home buying requires financial stability, often coincides with relationship milestones, and affects job location flexibility"
+      "strong_connections": [
+        {"templateId": "debt-payoff", "strength": 85, "reasoning": "Budget planning is essential for effective debt payoff strategy implementation"},
+        {"templateId": "investing-finance", "strength": 80, "reasoning": "Budgeting creates the foundation for having money available to invest"}
+      ]
+    },
+    "financial-emergency-fund": {
+      "critical_connections": [
+        {"templateId": "debt-payoff", "strength": 90, "reasoning": "Emergency fund prevents taking on new debt while paying off existing debt"}
+      ],
+      "strong_connections": [
+        {"templateId": "investing-finance", "strength": 85, "reasoning": "Emergency fund must be established before serious investing to avoid early withdrawal penalties"}
+      ]
+    },
+    "debt-payoff": {
+      "critical_connections": [
+        {"templateId": "investing-finance", "strength": 95, "reasoning": "High-interest debt should typically be eliminated before investing for better mathematical returns"}
+      ],
+      "strong_connections": [
+        {"templateId": "financial-independence", "strength": 80, "reasoning": "Debt elimination is crucial step toward financial independence"}
+      ]
+    },
+    "investing-finance": {
+      "critical_connections": [
+        {"templateId": "retirement-planning", "strength": 95, "reasoning": "Investment strategy is the primary mechanism for retirement funding in modern financial planning"}
+      ],
+      "strong_connections": [
+        {"templateId": "financial-independence", "strength": 90, "reasoning": "Investment portfolio growth is the core mechanism for achieving financial independence"}
+      ]
+    },
+    "first-job-transition": {
+      "critical_connections": [
+        {"templateId": "professional-networking", "strength": 90, "reasoning": "Building professional network is crucial for new graduates entering the workforce"}
+      ],
+      "strong_connections": [
+        {"templateId": "budget-planning", "strength": 85, "reasoning": "First job income requires immediate budgeting and financial planning skills"},
+        {"templateId": "career-change", "strength": 75, "reasoning": "Understanding career fundamentals helps with future career transitions"}
+      ]
+    },
+    "professional-networking": {
+      "strong_connections": [
+        {"templateId": "career-change", "strength": 85, "reasoning": "Professional network is essential for successful career transitions"},
+        {"templateId": "first-management-role", "strength": 80, "reasoning": "Networking helps identify and secure management opportunities"}
+      ]
+    },
+    "fitness-journey": {
+      "critical_connections": [
+        {"templateId": "meal-planning", "strength": 95, "reasoning": "Nutrition planning is fundamental to any successful fitness journey and weight management"}
+      ],
+      "strong_connections": [
+        {"templateId": "weight-loss", "strength": 90, "reasoning": "Weight loss is often a primary goal within fitness journeys"},
+        {"templateId": "habit-tracking", "strength": 85, "reasoning": "Tracking habits is crucial for maintaining consistent fitness routines"}
+      ]
+    },
+    "weight-loss": {
+      "critical_connections": [
+        {"templateId": "meal-planning", "strength": 95, "reasoning": "Meal planning is essential for creating the caloric deficit needed for weight loss"}
+      ],
+      "strong_connections": [
+        {"templateId": "stress-management", "strength": 80, "reasoning": "Stress management prevents emotional eating and supports sustainable weight loss"}
+      ]
+    },
+    "stress-management": {
+      "critical_connections": [
+        {"templateId": "meditation-journey", "strength": 90, "reasoning": "Meditation is one of the most effective evidence-based stress management techniques"}
+      ],
+      "strong_connections": [
+        {"templateId": "digital-detox", "strength": 85, "reasoning": "Digital overwhelm is a major modern stressor, detox helps stress management"},
+        {"templateId": "mental-health", "strength": 85, "reasoning": "Stress management is a key component of overall mental health maintenance"}
+      ]
+    },
+    "meditation-journey": {
+      "strong_connections": [
+        {"templateId": "yoga-practice", "strength": 85, "reasoning": "Yoga and meditation are complementary mindfulness practices often practiced together"},
+        {"templateId": "habit-tracking", "strength": 80, "reasoning": "Meditation requires consistent practice that benefits from habit tracking"}
+      ]
+    },
+    "first-serious-relationship": {
+      "critical_connections": [
+        {"templateId": "wedding-planning", "strength": 85, "reasoning": "Serious relationships naturally progress toward marriage planning for many couples"}
+      ],
+      "strong_connections": [
+        {"templateId": "relationship-therapy", "strength": 80, "reasoning": "Relationship skills learned early prevent need for therapy but therapy helps serious relationships"}
+      ]
     },
     "wedding-planning": {
-      "strongly_connected": [
-        "personal-finance",
-        "home-buying",
-        "baby-planning",
-        "relationship-therapy",
-        "event-planning"
+      "critical_connections": [
+        {"templateId": "budget-planning", "strength": 90, "reasoning": "Wedding costs require careful budgeting and financial planning to avoid debt"}
       ],
-      "reasoning": "Wedding planning involves major financial decisions and often leads to other life changes like housing and children"
+      "strong_connections": [
+        {"templateId": "first-time-parent", "strength": 80, "reasoning": "Marriage often leads to family planning and parenting"},
+        {"templateId": "home-buying", "strength": 85, "reasoning": "Married couples often purchase homes together"}
+      ]
     },
-    "job-search": {
-      "strongly_connected": [
-        "apartment-hunting",
-        "skill-development",
-        "career-plateau",
-        "personal-finance",
-        "geographic-relocation"
+    "first-time-parent": {
+      "critical_connections": [
+        {"templateId": "budget-planning", "strength": 95, "reasoning": "Children dramatically increase expenses requiring careful financial planning"}
       ],
-      "reasoning": "Job changes affect location, income, and require skill development"
+      "strong_connections": [
+        {"templateId": "home-buying", "strength": 85, "reasoning": "Parents often need larger homes for growing families"},
+        {"templateId": "college-planning", "strength": 80, "reasoning": "Parents need to plan for children's future education costs"}
+      ]
     },
-    "baby-planning": {
-      "strongly_connected": [
-        "personal-finance",
-        "home-buying",
-        "wedding-planning",
-        "first-time-parent",
-        "parenting-guidance"
+    "college-planning": {
+      "critical_connections": [
+        {"templateId": "first-job-transition", "strength": 95, "reasoning": "College planning directly leads to job market entry and career beginning"}
       ],
-      "reasoning": "Having children requires financial planning, housing considerations, and relationship stability"
+      "strong_connections": [
+        {"templateId": "student-loan-strategy", "strength": 90, "reasoning": "College planning must include financial strategy for education funding"}
+      ]
     },
-    "divorce-coordination": {
-      "strongly_connected": [
-        "personal-finance",
-        "apartment-hunting",
-        "legal-issue-management",
-        "mental-health",
-        "parenting-guidance"
+    "home-buying": {
+      "critical_connections": [
+        {"templateId": "budget-planning", "strength": 95, "reasoning": "Home purchase requires careful budgeting for down payment, mortgage, and maintenance costs"}
       ],
-      "reasoning": "Divorce affects finances, housing, legal matters, mental health, and children"
+      "strong_connections": [
+        {"templateId": "investment-property", "strength": 75, "reasoning": "Home ownership experience helps with real estate investment decisions"}
+      ]
     },
-    "retirement-planning": {
-      "strongly_connected": [
-        "investment-portfolio",
-        "estate-planning",
-        "health-crisis-management",
-        "downsizing-decisions",
-        "elder-care"
-      ],
-      "reasoning": "Retirement involves financial planning, health considerations, and lifestyle changes"
+    "side-hustle-development": {
+      "strong_connections": [
+        {"templateId": "business-launch", "strength": 85, "reasoning": "Successful side hustles often evolve into full-time businesses"},
+        {"templateId": "financial-independence", "strength": 80, "reasoning": "Side income accelerates path to financial independence"}
+      ]
     },
     "business-launch": {
-      "strongly_connected": [
-        "personal-finance",
-        "freelance-business",
-        "skill-development",
-        "legal-issue-management",
-        "stress-management"
+      "critical_connections": [
+        {"templateId": "budget-planning", "strength": 90, "reasoning": "Business launch requires careful financial planning and cash flow management"}
       ],
-      "reasoning": "Starting a business requires financial planning, skills, legal setup, and stress management"
+      "strong_connections": [
+        {"templateId": "tech-startup-guide", "strength": 85, "reasoning": "Tech startups are a specialized form of business launch with unique considerations"},
+        {"templateId": "first-management-role", "strength": 80, "reasoning": "Business owners must develop management and leadership skills"}
+      ]
     },
-    "mental-health": {
-      "strongly_connected": [
-        "relationship-therapy",
-        "stress-management",
-        "addiction-recovery",
-        "job-search",
-        "divorce-coordination"
-      ],
-      "reasoning": "Mental health affects and is affected by relationships, work, and major life changes"
-    }
-  },
-  "life_sequences": [
-    {
-      "name": "Young Adult Independence",
-      "sequence": [
-        "college-selection",
-        "student-loan-strategy",
-        "first-job-transition",
-        "apartment-hunting",
-        "personal-finance"
-      ],
-      "reasoning": "Natural progression from education to financial independence"
+    "habit-tracking": {
+      "strong_connections": [
+        {"templateId": "personal-productivity-system", "strength": 85, "reasoning": "Habit tracking is fundamental component of personal productivity systems"},
+        {"templateId": "digital-detox", "strength": 75, "reasoning": "Digital detox often requires habit tracking to monitor and reduce screen time"}
+      ]
     },
-    {
-      "name": "Family Formation Journey",
-      "sequence": [
-        "first-serious-relationship",
-        "wedding-planning",
-        "home-buying",
-        "baby-planning",
-        "first-time-parent"
+    "retirement-planning": {
+      "critical_connections": [
+        {"templateId": "retirement-transition", "strength": 95, "reasoning": "Financial retirement planning naturally leads to lifestyle transition planning"}
       ],
-      "reasoning": "Common sequence of relationship and family development"
+      "strong_connections": [
+        {"templateId": "estate-planning", "strength": 85, "reasoning": "Retirement planning includes legacy and estate planning considerations"}
+      ]
     },
-    {
-      "name": "Career Advancement Path",
-      "sequence": [
-        "job-search",
-        "skill-development",
-        "early-career-advancement",
-        "first-management-role",
-        "executive-leadership-transition"
-      ],
-      "reasoning": "Progressive career development and leadership growth"
+    "empty-nest": {
+      "strong_connections": [
+        {"templateId": "retirement-planning", "strength": 80, "reasoning": "Empty nest phase often coincides with increased focus on retirement planning"},
+        {"templateId": "career-change", "strength": 75, "reasoning": "Empty nesters often pursue delayed career goals or changes"}
+      ]
     },
-    {
-      "name": "Entrepreneurship Evolution",
-      "sequence": [
-        "side-hustle-development",
-        "freelance-business",
-        "business-launch",
-        "small-business-launch",
-        "tech-startup-guide"
+    "creative-writing": {
+      "critical_connections": [
+        {"templateId": "book-writing", "strength": 95, "reasoning": "Creative writing skills are fundamental prerequisite for book writing projects"}
       ],
-      "reasoning": "Evolution from side projects to full business ownership"
+      "strong_connections": [
+        {"templateId": "content-creation", "strength": 85, "reasoning": "Creative writing skills enhance content creation across all mediums"}
+      ]
     },
-    {
-      "name": "Financial Independence Path",
-      "sequence": [
-        "personal-finance",
-        "debt-payoff",
-        "investment-portfolio",
-        "real-estate-investing",
-        "retirement-planning"
-      ],
-      "reasoning": "Building wealth and achieving financial independence"
+    "content-creation": {
+      "strong_connections": [
+        {"templateId": "side-hustle-development", "strength": 80, "reasoning": "Content creation is a popular and accessible side hustle opportunity"},
+        {"templateId": "personal-branding", "strength": 85, "reasoning": "Content creation is primary method for building personal brand"}
+      ]
     },
-    {
-      "name": "Retirement Transition",
-      "sequence": [
-        "retirement-planning",
-        "retirement-transition",
-        "downsizing-decisions",
-        "retirement-lifestyle",
-        "estate-planning"
-      ],
-      "reasoning": "Transition from working life to retirement and legacy planning"
-    }
-  ],
-  "influence_relationships": {
-    "divorce-coordination": {
-      "triggers": [
-        "home-buying",
-        "retirement-planning",
-        "personal-finance",
-        "baby-planning",
-        "job-search",
-        "apartment-hunting"
-      ],
-      "reasoning": "Divorce significantly impacts all major financial and life decisions"
+    "digital-detox": {
+      "strong_connections": [
+        {"templateId": "mental-health", "strength": 85, "reasoning": "Digital detox supports overall mental health by reducing digital overwhelm"},
+        {"templateId": "meditation-journey", "strength": 80, "reasoning": "Digital detox creates space for mindfulness and meditation practices"}
+      ]
     },
-    "job-loss-recovery": {
-      "triggers": [
-        "personal-finance",
-        "apartment-hunting",
-        "debt-payoff",
-        "career-plateau",
-        "relationship-therapy"
+    "divorce-process": {
+      "critical_connections": [
+        {"templateId": "budget-planning", "strength": 90, "reasoning": "Divorce requires immediate financial reorganization and budget restructuring"}
       ],
-      "reasoning": "Job loss forces reconsideration of finances, housing, and relationships"
+      "strong_connections": [
+        {"templateId": "legal-issue-management", "strength": 85, "reasoning": "Divorce involves complex legal processes requiring legal guidance"},
+        {"templateId": "mental-health-support", "strength": 80, "reasoning": "Divorce is emotionally challenging requiring mental health support"}
+      ]
     },
-    "chronic-illness": {
-      "triggers": [
-        "personal-finance",
-        "career-plateau",
-        "relationship-therapy",
-        "retirement-planning",
-        "estate-planning"
-      ],
-      "reasoning": "Chronic illness affects work capacity, finances, and long-term planning"
+    "retirement-transition": {
+      "strong_connections": [
+        {"templateId": "health-decline-navigation", "strength": 75, "reasoning": "Retirement often coincides with increased health concerns requiring navigation"},
+        {"templateId": "estate-planning", "strength": 80, "reasoning": "Retirement transition includes legacy and end-of-life planning"}
+      ]
     },
-    "natural-disaster-recovery": {
-      "triggers": [
-        "home-buying",
-        "apartment-hunting",
-        "personal-finance",
-        "insurance-optimization",
-        "geographic-relocation"
+    "tech-startup-guide": {
+      "critical_connections": [
+        {"templateId": "business-launch", "strength": 90, "reasoning": "Tech startups require all fundamental business launch principles plus technical specifics"}
       ],
-      "reasoning": "Natural disasters force housing, financial, and location reconsiderations"
+      "strong_connections": [
+        {"templateId": "app-development", "strength": 85, "reasoning": "Many tech startups involve app development as core product offering"}
+      ]
     },
-    "addiction-recovery": {
-      "triggers": [
-        "relationship-therapy",
-        "job-search",
-        "personal-finance",
-        "mental-health",
-        "parenting-guidance"
-      ],
-      "reasoning": "Recovery affects relationships, work capacity, and financial stability"
+    "meal-planning": {
+      "strong_connections": [
+        {"templateId": "budget-planning", "strength": 80, "reasoning": "Meal planning significantly impacts food budget and overall financial planning"},
+        {"templateId": "stress-management", "strength": 75, "reasoning": "Meal planning reduces daily decision fatigue and food-related stress"}
+      ]
+    },
+    "personal-productivity-system": {
+      "strong_connections": [
+        {"templateId": "time-blocking-mastery", "strength": 85, "reasoning": "Time blocking is a core component of personal productivity systems"},
+        {"templateId": "morning-routine-optimization", "strength": 80, "reasoning": "Morning routines are fundamental to productive daily systems"}
+      ]
     }
   }
 }

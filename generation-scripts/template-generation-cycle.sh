@@ -38,8 +38,8 @@ for worktree in "${WORKTREES[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    # Check if template file exists (either in main repo or as text file with >150 words in worktree)
-    if [ -f "../src/data/templates/${template}-template.ts" ] || ([ -f "$worktree/${template}-template.txt" ] && [ $(wc -w < "$worktree/${template}-template.txt" 2>/dev/null || echo "0") -gt 150 ]); then
+    # Check if template file exists in worktree with new naming convention
+    if [ -f "$worktree/src/data/templates/${template}-template.ts" ]; then
         ((COMPLETE_COUNT++))
         continue
     fi

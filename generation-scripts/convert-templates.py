@@ -47,7 +47,7 @@ def generate_template_ts(template_data, template_name):
 
     template_content = f"""import {{ GuidanceTemplate }} from '@/types/template';
 
-export const {camel_case}Template: GuidanceTemplate = {{
+export const template: GuidanceTemplate = {{
   id: "{template_name}",
   title: "{template_data['title']}",
   description: "{template_data['description']}",

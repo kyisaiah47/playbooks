@@ -146,7 +146,11 @@
       "Bash(./generation-scripts/lint-disable-cleanup.sh:*)",
       "Bash(./generation-scripts/star-import-cleanup.sh:*)",
       "Read(//usr/**)",
-      "Read(//Users/ikim1/.nvm/versions/node/v22.18.0/lib/node_modules/@anthropic-ai/**)"
+      "Read(//Users/ikim1/.nvm/versions/node/v22.18.0/lib/node_modules/@anthropic-ai/**)",
+      "Bash(git pull:*)",
+      "Bash(git reset:*)",
+      "Bash(git clean:*)",
+      "Bash(__NEW_LINE__ echo \"Let me continue creating the remaining worktrees...\")"
     ],
     "deny": [],
     "ask": []

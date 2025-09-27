@@ -14,7 +14,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import type { Metadata } from 'next';
-import { HeroBenefit, Testimonial } from '@/registry/landing-pages';
+import { HeroBenefit, Testimonial } from '@/registry/marketing';
 
 interface ProcessStep {
   icon: LucideIcon;

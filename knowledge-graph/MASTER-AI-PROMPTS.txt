@@ -1,0 +1,203 @@
+MASTER KNOWLEDGE GRAPH GENERATION PROMPTS
+==========================================
+
+Run these prompts sequentially to generate the complete knowledge graph system.
+Each prompt will create specific JSON files needed for the master knowledge graph.
+
+PROMPT 1: GENERATE TEMPLATE CONNECTIONS
+======================================
+Read ALL files in /Users/ikim1/Documents/GitHub/templata/src/data/templates/
+
+"Analyze every template file in the templates directory. Read the actual content, sections, prompts, and metadata. Create semantic clusters and weighted connections based on REAL content analysis.
+
+For each template, identify:
+1. Core themes from actual sections/content
+2. Natural prerequisites (what should come first)
+3. Natural follow-ups (what comes next)
+4. Complementary templates (work well together)
+5. Conflicting templates (compete for time/resources)
+
+Output format - save as template-connections.json:
+{
+  "semantic_clusters": {
+    "cluster_name": {
+      "templates": ["template-id-1", "template-id-2"],
+      "reasoning": "Why these templates belong together"
+    }
+  },
+  "weighted_connections": {
+    "template-id": {
+      "critical_connections": [
+        {"templateId": "other-template", "strength": 95, "reasoning": "Why critical"}
+      ],
+      "strong_connections": [
+        {"templateId": "other-template", "strength": 85, "reasoning": "Why strong"}
+      ]
+    }
+  }
+}"
+
+PROMPT 2: GENERATE ARTICLE CONNECTIONS
+=====================================
+Read ALL files in /Users/ikim1/Documents/GitHub/templata/src/data/articles/
+
+"Analyze every article file in the articles directory. Read the actual content and identify real relationships.
+
+For each article, identify:
+1. Which templates it directly supports
+2. Which other articles are topically related
+3. Content themes and categories
+4. Target audience overlap
+
+Output format - save as article-connections.json:
+{
+  "article_template_connections": {
+    "article-id": {
+      "supported_templates": [
+        {"templateId": "template-id", "strength": 90, "reason": "Direct content match"}
+      ],
+      "related_articles": [
+        {"articleId": "other-article", "strength": 80, "reason": "Topical overlap"}
+      ]
+    }
+  }
+}"
+
+PROMPT 3: GENERATE PROMPT CONNECTIONS
+====================================
+Read ALL files in /Users/ikim1/Documents/GitHub/templata/src/data/prompts/
+
+"Analyze every prompt file in the prompts directory. Read the actual prompts and identify relationships.
+
+For each prompt set, identify:
+1. Which template it belongs to (from filename)
+2. Prompt categories (reflection, planning, action)
+3. Cross-template prompt opportunities
+4. Prompt sequences and progressions
+
+Output format - save as prompt-connections.json:
+{
+  "prompt_template_connections": {
+    "template-id": {
+      "prompt_categories": ["reflection", "planning", "action"],
+      "cross_template_opportunities": [
+        {"templateId": "other-template", "reason": "Shared prompt themes"}
+      ]
+    }
+  }
+}"
+
+PROMPT 4: GENERATE MARKETING CONNECTIONS
+=======================================
+Read ALL files in /Users/ikim1/Documents/GitHub/templata/src/data/marketing/
+
+"Analyze every marketing file in the marketing directory. Read the actual marketing content.
+
+For each marketing page, identify:
+1. Which template it promotes (from filename)
+2. Marketing themes and value propositions
+3. Target audience characteristics
+4. Cross-selling opportunities
+
+Output format - save as marketing-connections.json:
+{
+  "marketing_template_connections": {
+    "template-id": {
+      "value_propositions": ["benefit1", "benefit2"],
+      "target_audience": "audience description",
+      "cross_sell_opportunities": [
+        {"templateId": "other-template", "reason": "Audience overlap"}
+      ]
+    }
+  }
+}"
+
+PROMPT 5: GENERATE LIFE SEQUENCES
+================================
+Based on the template connections from Prompt 1:
+
+"Using the template clusters and connections, create logical life progression sequences.
+
+Identify:
+1. Natural life stage progressions (college → job → apartment → relationship)
+2. Skill building sequences (basic → intermediate → advanced)
+3. Crisis recovery sequences (problem → stabilization → growth)
+4. Optimal timing patterns by age group
+
+Output format - save as life-sequences.json:
+{
+  "life_sequences": {
+    "young_adult_foundation": {
+      "sequence": [
+        {"templateId": "college-selection", "typical_age": "18-20"},
+        {"templateId": "job-search", "typical_age": "20-23"},
+        {"templateId": "apartment-hunting", "typical_age": "21-25"}
+      ],
+      "reasoning": "Natural progression for young adults"
+    }
+  }
+}"
+
+PROMPT 6: GENERATE MASTER INTEGRATION
+====================================
+After generating all the above files:
+
+"Integrate all the knowledge graph components into a master system. Read:
+- template-connections.json
+- article-connections.json
+- prompt-connections.json
+- marketing-connections.json
+- life-sequences.json
+
+Create comprehensive analysis showing:
+1. Content coverage gaps (templates lacking articles/prompts/marketing)
+2. Over-supported templates (too much content)
+3. User journey recommendations
+4. Content strategy recommendations
+
+Output format - save as master-analysis.json:
+{
+  "content_coverage": {
+    "template-id": {
+      "has_articles": true,
+      "has_prompts": true,
+      "has_marketing": true,
+      "coverage_score": 85
+    }
+  },
+  "recommended_content": [
+    {"type": "article", "for_template": "template-id", "reason": "Gap identified"}
+  ],
+  "user_journeys": [
+    {"sequence": ["template1", "template2"], "reasoning": "Natural progression"}
+  ]
+}"
+
+FILE CLEANUP INSTRUCTIONS
+=========================
+After running all prompts, delete these outdated files:
+- advanced-connections.json (replace with new template-connections.json)
+- ai-generated-connections.json (outdated mock data)
+- comprehensive-connections.js (outdated manual curation)
+- context-specific-prompts.json (replace with new system)
+- cross-template-prompts.json (integrate into new prompt-connections.json)
+- micro-clusters.json (integrate into new template-connections.json)
+- template-connections-comprehensive.json (already cleaned up)
+
+Keep these files:
+- master-knowledge-graph.js (update to use new JSON files)
+- README.md
+- MASTER-AI-PROMPTS.txt (this file)
+
+USAGE WORKFLOW
+=============
+1. Run Prompt 1 → generates template-connections.json
+2. Run Prompt 2 → generates article-connections.json
+3. Run Prompt 3 → generates prompt-connections.json
+4. Run Prompt 4 → generates marketing-connections.json
+5. Run Prompt 5 → generates life-sequences.json
+6. Run Prompt 6 → generates master-analysis.json
+7. Update master-knowledge-graph.js to load these 6 files
+8. Delete outdated mock files
+
+This creates a REAL knowledge graph system that updates automatically when you add new templates/content!

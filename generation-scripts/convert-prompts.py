@@ -70,7 +70,7 @@ if __name__ == "__main__":
                     json_output = convert_text_to_json(prompt_file)
 
                     with open(output_file, 'w') as f:
-                        f.write("export const actionPrompts = [\n")
+                        f.write("export const prompts = [\n")
                         f.write(json_output)
                         f.write("\n];\n")
 
@@ -89,7 +89,7 @@ if __name__ == "__main__":
         text_file = sys.argv[1]
         json_output = convert_text_to_json(text_file)
 
-        print("export const actionPrompts = [")
+        print("export const prompts = [")
         print(json_output)
         print("];")
 

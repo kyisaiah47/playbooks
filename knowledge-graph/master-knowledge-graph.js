@@ -23,7 +23,7 @@ class MasterKnowledgeGraph {
       const scriptDir = __dirname;
 
       // Load semantic clusters
-      const comprehensiveConnections = JSON.parse(fs.readFileSync(path.join(scriptDir, 'template-connections-comprehensive.json'), 'utf8'));
+      const comprehensiveConnections = JSON.parse(fs.readFileSync(path.join(scriptDir, 'template-connections.json'), 'utf8'));
       this.semanticClusters = comprehensiveConnections.semantic_clusters;
 
       // Load micro-clusters

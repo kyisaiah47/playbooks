@@ -1,0 +1,114 @@
+KNOWLEDGE GRAPH AI ANALYSIS PROMPTS
+=====================================
+
+Use these prompts with Claude to generate real knowledge graph connections for all 4 registries.
+
+STEP 1: TEMPLATE ANALYSIS
+========================
+Read all template files in src/data/templates/ and analyze:
+
+"Analyze all templates in the templates directory. For each template, identify:
+1. Core themes and topics
+2. Target life stage/demographics
+3. Prerequisites (what should come before)
+4. Natural follow-ups (what typically comes after)
+5. Complementary templates (work well together)
+6. Conflicting templates (compete for time/resources)
+
+Create semantic clusters of 5-8 related templates with reasoning for each cluster.
+Output as JSON with connection strengths (0-100) and reasoning."
+
+STEP 2: ARTICLE ANALYSIS
+=======================
+Read all article files in src/data/articles/ and analyze:
+
+"Analyze all articles in the articles directory. For each article, identify:
+1. Which templates it supports/explains
+2. Which other articles are related
+3. Target audience overlap
+4. Content themes and topics
+5. Educational prerequisites
+
+Create connections between articles and templates with strength scores.
+Output as JSON showing article-to-template and article-to-article relationships."
+
+STEP 3: PROMPT ANALYSIS
+======================
+Read all prompt files in src/data/prompts/ and analyze:
+
+"Analyze all prompt files in the prompts directory. For each prompt set, identify:
+1. Which templates they enhance
+2. Common themes across prompt sets
+3. Prompt categories (reflection, planning, action, etc.)
+4. Cross-template prompt opportunities
+5. Prompt sequences and progressions
+
+Create connections showing which prompts work together and which templates they support.
+Output as JSON with prompt-to-template and prompt-to-prompt relationships."
+
+STEP 4: MARKETING ANALYSIS
+=========================
+Read all marketing files in src/data/marketing/ and analyze:
+
+"Analyze all marketing files in the marketing directory. For each marketing page, identify:
+1. Which template it promotes
+2. Target audience and messaging
+3. Marketing funnel position (awareness, consideration, decision)
+4. Cross-selling opportunities with other templates
+5. Content themes and value propositions
+
+Create connections showing marketing relationships and cross-promotion opportunities.
+Output as JSON with marketing-to-template relationships."
+
+STEP 5: CROSS-REGISTRY ANALYSIS
+==============================
+After analyzing all 4 registries separately:
+
+"Now analyze the complete content ecosystem across all 4 registries (templates, articles, prompts, marketing). Identify:
+
+1. CONTENT GAPS: Templates that need more articles/prompts/marketing
+2. JOURNEY MAPPING: Natural user progressions across templates
+3. LIFECYCLE CLUSTERS: Content for different life stages (20s, 30s, 40s, etc.)
+4. THEME OVERLAPS: Where different registries reinforce each other
+5. CONVERSION FUNNELS: How marketing → templates → articles → prompts flow
+
+Create a master knowledge graph showing:
+- Template clusters and relationships
+- Content support scores (how well each template is supported by other registries)
+- User journey recommendations
+- Content strategy recommendations
+
+Output as comprehensive JSON with all cross-registry connections."
+
+STEP 6: REAL USER INSIGHTS
+==========================
+If you have access to user data, also analyze:
+
+"Based on actual user behavior data (if available), identify:
+1. Most common template combinations users work on
+2. Typical user progression patterns
+3. Drop-off points in user journeys
+4. High-value content combinations
+5. Templates that lead to user retention
+
+Validate the AI-generated connections against real user behavior patterns."
+
+OUTPUT FORMAT
+============
+Each analysis should output clean JSON files:
+- template-connections-real.json
+- article-connections-real.json
+- prompt-connections-real.json
+- marketing-connections-real.json
+- master-knowledge-graph-real.json
+
+These will replace the current mock/manual knowledge graph with real AI-generated insights from actual content analysis.
+
+USAGE INSTRUCTIONS
+=================
+1. Run each prompt sequentially with Claude
+2. Save outputs as JSON files in knowledge-graph/ directory
+3. Update master-knowledge-graph.js to use the new real files
+4. Use the insights for content strategy and user recommendations
+
+This creates a REAL knowledge graph based on actual content analysis, not manual curation!

@@ -1,0 +1,99 @@
+{
+  "home-buying": {
+    "related_marketing": [
+      { "id": "mortgage-management", "strength": 95, "reason": "Direct financial follow-up" },
+      { "id": "personal-finance", "strength": 90, "reason": "Foundation for home buying" },
+      { "id": "moving-relocation", "strength": 85, "reason": "Natural next step after purchase" },
+      { "id": "home-renovation", "strength": 80, "reason": "Common post-purchase activity" }
+    ],
+    "related_templates": [
+      { "id": "home-buying", "strength": 100, "reason": "Direct template connection" },
+      { "id": "personal-finance", "strength": 90, "reason": "Financial planning required" },
+      { "id": "moving-relocation", "strength": 75, "reason": "Follows home purchase" }
+    ],
+    "related_articles": [
+      { "id": "home-buying-article", "strength": 100, "reason": "Educational content match" },
+      { "id": "personal-finance-article", "strength": 85, "reason": "Financial preparation" }
+    ]
+  },
+
+  "wedding-planning": {
+    "related_marketing": [
+      { "id": "personal-finance", "strength": 90, "reason": "Budget management essential" },
+      { "id": "home-buying", "strength": 85, "reason": "Common next major life step" },
+      { "id": "baby-planning", "strength": 80, "reason": "Natural family progression" },
+      { "id": "marriage-maintenance", "strength": 75, "reason": "Long-term relationship focus" }
+    ],
+    "related_templates": [
+      { "id": "wedding-planning", "strength": 100, "reason": "Direct template connection" },
+      { "id": "personal-finance", "strength": 80, "reason": "Budget management" }
+    ],
+    "related_articles": [
+      { "id": "wedding-planning-article", "strength": 100, "reason": "Educational content match" }
+    ]
+  },
+
+  "career-change": {
+    "related_marketing": [
+      { "id": "skill-development", "strength": 95, "reason": "Essential for career transition" },
+      { "id": "professional-networking", "strength": 90, "reason": "Network building crucial" },
+      { "id": "personal-finance", "strength": 85, "reason": "Financial planning during transition" },
+      { "id": "job-search", "strength": 80, "reason": "Active job seeking component" }
+    ],
+    "related_templates": [
+      { "id": "career-change", "strength": 100, "reason": "Direct template connection" },
+      { "id": "skill-development", "strength": 90, "reason": "Capability building" }
+    ],
+    "related_articles": [
+      { "id": "career-change-article", "strength": 100, "reason": "Educational content match" }
+    ]
+  },
+
+  "business-launch": {
+    "related_marketing": [
+      { "id": "personal-finance", "strength": 95, "reason": "Financial foundation critical" },
+      { "id": "freelance-business", "strength": 90, "reason": "Related business model" },
+      { "id": "side-hustle-development", "strength": 85, "reason": "Often starts as side project" },
+      { "id": "consulting-business", "strength": 80, "reason": "Common business type" }
+    ],
+    "related_templates": [
+      { "id": "business-launch", "strength": 100, "reason": "Direct template connection" },
+      { "id": "personal-finance", "strength": 85, "reason": "Financial planning" }
+    ],
+    "related_articles": [
+      { "id": "business-launch-article", "strength": 100, "reason": "Educational content match" }
+    ]
+  },
+
+  "mental-health": {
+    "related_marketing": [
+      { "id": "stress-management", "strength": 95, "reason": "Overlapping mental wellness" },
+      { "id": "meditation-journey", "strength": 90, "reason": "Complementary practice" },
+      { "id": "fitness-journey", "strength": 85, "reason": "Physical-mental health connection" },
+      { "id": "habit-tracking", "strength": 80, "reason": "Behavioral improvement tools" }
+    ],
+    "related_templates": [
+      { "id": "mental-health", "strength": 100, "reason": "Direct template connection" },
+      { "id": "stress-management", "strength": 90, "reason": "Stress reduction focus" }
+    ],
+    "related_articles": [
+      { "id": "mental-health-article", "strength": 100, "reason": "Educational content match" }
+    ]
+  },
+
+  "retirement-planning": {
+    "related_marketing": [
+      { "id": "personal-finance", "strength": 95, "reason": "Core financial planning" },
+      { "id": "investment-portfolio", "strength": 90, "reason": "Wealth building essential" },
+      { "id": "estate-planning", "strength": 85, "reason": "Legacy preparation" },
+      { "id": "health-wellness", "strength": 80, "reason": "Aging health considerations" }
+    ],
+    "related_templates": [
+      { "id": "retirement-planning", "strength": 100, "reason": "Direct template connection" },
+      { "id": "personal-finance", "strength": 95, "reason": "Financial foundation" }
+    ],
+    "related_articles": [
+      { "id": "retirement-planning-article", "strength": 100, "reason": "Educational content match" }
+    ]
+  }
+}

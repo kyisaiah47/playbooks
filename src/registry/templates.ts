@@ -53,13 +53,14 @@ function getCategoryColors(category: string): { bg: string; icon: string } {
 }
 
 // Simple registry generation using Object.values().flat() pattern like the others
-export const templateRegistry: TemplateRegistryEntry[] = Object.values(templates).map((template: any) => {
-  if (template && typeof template === 'object' && 'id' in template) {
-    const t = template as GuidanceTemplate;
+export const templateRegistry: TemplateRegistryEntry[] = Object.values(templates)
+  .filter((module: any) => module && module.template)
+  .map((module: any) => {
+    const t = module.template as GuidanceTemplate;
     return {
       id: t.id,
-      name: capitalizeTemplateName(t.title || t.id.replace(/-/g, ' ')),
-      description: t.description,
+      name: capitalizeTemplateName(t.title && t.title !== "Template" ? t.title : t.id.replace(/-/g, ' ')),
+      description: t.description && t.description !== "Template description" ? t.description : `A comprehensive guide for ${t.id.replace(/-/g, ' ')}`,
       category: t.category,
       icon: t.icon,
       url: `/${t.id}/app`,
@@ -69,9 +70,7 @@ export const templateRegistry: TemplateRegistryEntry[] = Object.values(templates
       ...getCategoryColors(t.category),
       template: getTemplate(t)
     };
-  }
-  return null;
-}).filter(Boolean).sort((a, b) => a.name.localeCompare(b.name));
+  }).sort((a, b) => a.name.localeCompare(b.name));
 
 // Helper functions
 export const getTemplateById = (id: string): TemplateRegistryEntry | undefined => {

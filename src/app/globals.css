@@ -282,6 +282,20 @@
   *::-webkit-scrollbar-corner {
     background: transparent;
   }
+
+  /* Force dark mode scrollbars for dialogs */
+  .dark *::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.4) !important;
+  }
+
+  .dark *::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.6) !important;
+  }
+
+  /* Override Tailwind v4 scrollbar utilities in dark mode */
+  .dark * {
+    --tt-scrollbar-color: hsl(var(--muted-foreground) / 0.4) !important;
+  }
 }
 
 @keyframes slideRight {

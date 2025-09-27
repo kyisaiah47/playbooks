@@ -38,13 +38,10 @@ for worktree in "${WORKTREES[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    # Check if prompt file exists with substantial content
-    if [ -f "$worktree/${template}-prompts.txt" ]; then
-        word_count=$(wc -w < "$worktree/${template}-prompts.txt" 2>/dev/null || echo "0")
-        if [ "$word_count" -gt 400 ]; then
-            ((COMPLETE_COUNT++))
-            continue
-        fi
+    # Check if prompts file exists in worktree with new naming convention
+    if [ -f "$worktree/src/data/prompts/${template}-prompts.ts" ]; then
+        ((COMPLETE_COUNT++))
+        continue
     fi
 
     # This worktree needs work

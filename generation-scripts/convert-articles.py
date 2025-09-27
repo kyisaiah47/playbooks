@@ -249,7 +249,7 @@ if __name__ == "__main__":
 
             template_name = os.path.basename(worktree_dir).replace('templata-', '')
             article_file = f"{worktree_dir}/{template_name}-articles.txt"
-            output_file = f"../src/data/articles/articles-{template_name}.ts"
+            output_file = f"../src/data/articles/{template_name}-article.ts"
 
             if os.path.isfile(article_file):
                 try:
