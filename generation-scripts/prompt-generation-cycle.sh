@@ -3,6 +3,13 @@
 # Fast batch prompt generation - audit first, then process only incomplete ones
 set -e
 
+# Check for --force flag
+FORCE_MODE=false
+if [[ "$1" == "--force" ]]; then
+    FORCE_MODE=true
+    shift
+fi
+
 # Starting index (0-based)
 START_INDEX=${1:-0}
 # Number of batches to process (optional)
@@ -24,6 +31,10 @@ log_colored() {
 # Get all template directories
 TEMPLATE_DIRS=($(ls -d ../../templata-* | sort))
 
+if [ "$FORCE_MODE" = true ]; then
+    log_colored "$YELLOW" "🔄 FORCE MODE: Will regenerate all prompt files regardless of existing content"
+fi
+
 log_colored "$BLUE" "🔍 AUDIT PHASE: Checking ${#TEMPLATE_DIRS[@]} templates for prompt completion status..."
 
 # Phase 1: Fast audit - identify incomplete templates
@@ -38,23 +49,25 @@ for worktree in "${TEMPLATE_DIRS[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    # Check if all 5 prompt category files exist with enough content (100 words each)
+    # Check if all 8 prompt category files exist with enough content (100 words each)
     complete_categories=0
-    for i in {1..5}; do
-        if [ -f "$worktree/${template}-prompt-category-${i}.txt" ]; then
-            word_count=$(wc -w < "$worktree/${template}-prompt-category-${i}.txt" 2>/dev/null || echo "0")
-            if [ "$word_count" -gt 100 ]; then
-                ((complete_categories++))
+    if [ "$FORCE_MODE" = false ]; then
+        for i in {1..8}; do
+            if [ -f "$worktree/${template}-prompt-category-${i}.txt" ]; then
+                word_count=$(wc -w < "$worktree/${template}-prompt-category-${i}.txt" 2>/dev/null || echo "0")
+                if [ "$word_count" -gt 100 ]; then
+                    ((complete_categories++))
+                fi
             fi
-        fi
-    done
+        done
 
-    if [ "$complete_categories" -eq 5 ]; then
-        ((COMPLETE_COUNT++))
-        continue
+        if [ "$complete_categories" -eq 8 ]; then
+            ((COMPLETE_COUNT++))
+            continue
+        fi
     fi
 
-    # This worktree needs work
+    # This worktree needs work (or force mode is on)
     INCOMPLETE_WORKTREES+=("$worktree")
     ((INCOMPLETE_COUNT++))
 done
@@ -95,12 +108,12 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
         cd "$worktree"
 
         (
-            # Generate categories 1-5, only create missing ones
-            for category_num in {1..5}; do
+            # Generate categories 1-8, only create missing ones
+            for category_num in {1..8}; do
                 category_file="${template}-prompt-category-${category_num}.txt"
 
-                # Skip if this category already exists with enough content
-                if [ -f "$category_file" ]; then
+                # Skip if this category already exists with enough content (unless force mode)
+                if [ "$FORCE_MODE" = false ] && [ -f "$category_file" ]; then
                     word_count=$(wc -w < "$category_file" 2>/dev/null || echo "0")
                     if [ "$word_count" -gt 100 ]; then
                         echo "✅ $template: Category $category_num already complete ($word_count words)"
@@ -110,7 +123,7 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
 
                 # Collect existing category names to avoid duplicates
                 existing_categories=""
-                for i in {1..5}; do
+                for i in {1..8}; do
                     if [ -f "${template}-prompt-category-${i}.txt" ] && [ "$i" -ne "$category_num" ]; then
                         category_name=$(grep "^CATEGORY:" "${template}-prompt-category-${i}.txt" 2>/dev/null | head -1)
                         if [ -n "$category_name" ]; then
@@ -121,7 +134,7 @@ for ((i=$START_INDEX; i<$TOTAL && BATCH_COUNT<$NUM_BATCHES; i+=BATCH_SIZE)); do
 
                 log_colored "$YELLOW" "Generating category $category_num for: $template"
 
-                claude --print --dangerously-skip-permissions --add-dir . -p "Create ONE logical category for a ${template_readable} journey with 10 simple one-sentence action prompts.
+                claude --print --dangerously-skip-permissions --add-dir . -p "Create ONE logical category for a ${template_readable} knowledge base with 10 simple one-sentence prompts that mix note-taking, research, and reflection.
 
 CATEGORY #$category_num for $template_readable
 
@@ -130,21 +143,23 @@ $existing_categories
 
 REQUIREMENTS:
 - Create a unique category name different from existing ones above
-- Write exactly 10 actionable one-sentence prompts for this category
-- Each prompt should be a concrete task someone can do
+- Write exactly 10 prompts for this category (mix of note-taking, research, and reflection)
+- Each prompt should help someone organize information, research topics, or reflect on their experiences
+- Include both knowledge collection prompts and personal reflection prompts
+- Prompts should be for collecting knowledge and insights, not taking action
 
 OUTPUT FORMAT:
 CATEGORY: [Your unique category name - make sure it's different from existing categories above]
-1. [one sentence actionable prompt]
-2. [one sentence actionable prompt]
-3. [one sentence actionable prompt]
-4. [one sentence actionable prompt]
-5. [one sentence actionable prompt]
-6. [one sentence actionable prompt]
-7. [one sentence actionable prompt]
-8. [one sentence actionable prompt]
-9. [one sentence actionable prompt]
-10. [one sentence actionable prompt]
+1. [one sentence note-taking/research/reflection prompt]
+2. [one sentence note-taking/research/reflection prompt]
+3. [one sentence note-taking/research/reflection prompt]
+4. [one sentence note-taking/research/reflection prompt]
+5. [one sentence note-taking/research/reflection prompt]
+6. [one sentence note-taking/research/reflection prompt]
+7. [one sentence note-taking/research/reflection prompt]
+8. [one sentence note-taking/research/reflection prompt]
+9. [one sentence note-taking/research/reflection prompt]
+10. [one sentence note-taking/research/reflection prompt]
 
 When complete, respond exactly: 'PROMPT GENERATION COMPLETE - Category #$category_num'" > "$category_file" 2>&1
 
@@ -188,9 +203,9 @@ for worktree in "${TEMPLATE_DIRS[@]}"; do
 
     template=$(basename "$worktree" | sed 's/templata-//')
 
-    # Check if all 5 prompt category files exist with enough content (100 words each)
+    # Check if all 8 prompt category files exist with enough content (100 words each)
     complete_categories=0
-    for i in {1..5}; do
+    for i in {1..8}; do
         if [ -f "$worktree/${template}-prompt-category-${i}.txt" ]; then
             word_count=$(wc -w < "$worktree/${template}-prompt-category-${i}.txt" 2>/dev/null || echo "0")
             if [ "$word_count" -gt 100 ]; then
@@ -199,10 +214,10 @@ for worktree in "${TEMPLATE_DIRS[@]}"; do
         fi
     done
 
-    if [ "$complete_categories" -eq 5 ]; then
+    if [ "$complete_categories" -eq 8 ]; then
         continue
     else
-        echo "❌ $template (missing prompt categories: $complete_categories/5 complete)"
+        echo "❌ $template (missing prompt categories: $complete_categories/8 complete)"
         ((incomplete_count++))
     fi
 done

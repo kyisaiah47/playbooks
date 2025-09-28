@@ -9,7 +9,9 @@ def categorize_prompt(prompt_text):
     """Determine category based on prompt content"""
     prompt_lower = prompt_text.lower()
 
-    if any(word in prompt_lower for word in ['research', 'learn', 'understand', 'study', 'download', 'install']):
+    if any(word in prompt_lower for word in ['reflect', 'think about', 'consider', 'analyze your', 'examine your', 'what did you', 'how did you', 'personal experience', 'lessons learned']):
+        return 'reflection'
+    elif any(word in prompt_lower for word in ['research', 'learn', 'understand', 'study', 'download', 'install']):
         return 'research'
     elif any(word in prompt_lower for word in ['create', 'design', 'build', 'make', 'develop', 'model']):
         return 'action'
@@ -18,34 +20,59 @@ def categorize_prompt(prompt_text):
     else:
         return 'planning'
 
-def convert_text_to_json(text_file):
+def convert_text_to_json(text_file, start_id=1):
     """Convert text format to JSON objects"""
     with open(text_file, 'r') as f:
         content = f.read()
 
-    # Parse categories and prompts
-    categories = re.findall(r'CATEGORY \d+: (.+?)\n((?:\d+\. .+?\n)+)', content)
-
-    prompt_id = 1
     json_objects = []
+    current_id = start_id
 
-    for category_name, prompts_text in categories:
-        # Extract individual prompts
-        prompts = re.findall(r'\d+\. (.+)', prompts_text)
+    # Check if it's new format (single category per file) or old format (multiple categories)
+    if content.startswith('CATEGORY:'):
+        # New format: single category file
+        lines = content.strip().split('\n')
+        category_name = ""
+        prompts = []
 
+        for line in lines:
+            if line.startswith('CATEGORY: '):
+                category_name = line[10:].strip()
+            elif re.match(r'^\d+\. ', line):
+                prompt_text = re.sub(r'^\d+\. ', '', line).strip()
+                prompts.append(prompt_text)
+
+        # Convert prompts to JSON objects
         for prompt_text in prompts:
             category = categorize_prompt(prompt_text)
-            # Escape single quotes in the prompt text
-            escaped_prompt = prompt_text.replace("'", "\\'")
+            escaped_prompt = prompt_text.replace("'", "\\'").replace('"', '\\"')
             json_obj = f"""  {{
-    id: 'prompt-{prompt_id}',
+    id: 'prompt-{current_id}',
     prompt: '{escaped_prompt}',
     category: '{category}'
   }}"""
             json_objects.append(json_obj)
-            prompt_id += 1
+            current_id += 1
 
-    return ',\n'.join(json_objects)
+    else:
+        # Old format: multiple categories in one file
+        categories = re.findall(r'CATEGORY \d+: (.+?)\n((?:\d+\. .+?\n)+)', content)
+
+        for category_name, prompts_text in categories:
+            prompts = re.findall(r'\d+\. (.+)', prompts_text)
+
+            for prompt_text in prompts:
+                category = categorize_prompt(prompt_text)
+                escaped_prompt = prompt_text.replace("'", "\\'").replace('"', '\\"')
+                json_obj = f"""  {{
+    id: 'prompt-{current_id}',
+    prompt: '{escaped_prompt}',
+    category: '{category}'
+  }}"""
+                json_objects.append(json_obj)
+                current_id += 1
+
+    return ',\n'.join(json_objects), current_id
 
 if __name__ == "__main__":
     # Check if we're doing batch processing (no arguments) or single file
@@ -62,12 +89,35 @@ if __name__ == "__main__":
                 continue
 
             template_name = os.path.basename(worktree_dir).replace('templata-', '')
-            prompt_file = f"{worktree_dir}/{template_name}-prompts.txt"
+
+            # Check for separate prompt category files (new format)
+            prompt_files = []
+            for i in range(1, 6):  # Categories 1-5
+                prompt_file = f"{worktree_dir}/{template_name}-prompt-category-{i}.txt"
+                if os.path.isfile(prompt_file):
+                    prompt_files.append(prompt_file)
+
+            # Fallback to old single file format
+            if not prompt_files:
+                old_prompt_file = f"{worktree_dir}/{template_name}-prompts.txt"
+                if os.path.isfile(old_prompt_file):
+                    prompt_files = [old_prompt_file]
+
             output_file = f"../src/data/prompts/{template_name}-prompts.ts"
 
-            if os.path.isfile(prompt_file):
+            if prompt_files:
                 try:
-                    json_output = convert_text_to_json(prompt_file)
+                    # Combine all prompt files with sequential IDs
+                    all_prompts = []
+                    current_id = 1
+
+                    for prompt_file in prompt_files:
+                        prompts_text, next_id = convert_text_to_json(prompt_file, current_id)
+                        if prompts_text:
+                            all_prompts.append(prompts_text)
+                            current_id = next_id
+
+                    json_output = ',\n'.join(all_prompts)
 
                     with open(output_file, 'w') as f:
                         f.write("export const prompts = [\n")
@@ -87,7 +137,7 @@ if __name__ == "__main__":
     elif len(sys.argv) == 2:
         # Single file mode (original behavior)
         text_file = sys.argv[1]
-        json_output = convert_text_to_json(text_file)
+        json_output, _ = convert_text_to_json(text_file)
 
         print("export const prompts = [")
         print(json_output)
