@@ -51,7 +51,7 @@ export default function LandingPage() {
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareApplication',
 		name: 'Templata',
-		description: 'AI-powered life planning templates and workspaces for organizing life\'s biggest moments. 150+ templates with 15,000+ prompts and 3,000+ articles.',
+		description: 'AI-powered life planning templates and workspaces for organizing life\'s biggest moments. 1,298 templates with 15,000+ prompts and 26,000+ articles.',
 		url: 'https://templata.com',
 		applicationCategory: 'ProductivityApplication',
 		operatingSystem: 'Web',
@@ -68,7 +68,7 @@ export default function LandingPage() {
 				price: '9',
 				priceCurrency: 'USD',
 				name: 'Plus Plan',
-				description: 'Full access to 150+ templates with advanced features',
+				description: 'Full access to 1,298 templates with advanced features',
 				priceSpecification: {
 					'@type': 'UnitPriceSpecification',
 					price: '9',
@@ -96,9 +96,9 @@ export default function LandingPage() {
 			url: 'https://templata.com'
 		},
 		featureList: [
-			'150+ Life Planning Templates',
+			'1,298 Life Planning Templates',
 			'15,000+ Action Prompts',
-			'3,000+ Expert Articles',
+			'26,000+ Expert Articles',
 			'AI-Powered Axiom Engine',
 			'Split-Screen Interface',
 			'Template Workspaces',
@@ -124,7 +124,7 @@ export default function LandingPage() {
 					<div className="text-center space-y-8">
 						<Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
 							<AnnouncementTag>Beta</AnnouncementTag>
-							<AnnouncementTitle>Now in public beta - explore 150+ templates</AnnouncementTitle>
+							<AnnouncementTitle>Now in public beta - explore 1,298 templates</AnnouncementTitle>
 						</Announcement>
 
 						<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
@@ -166,7 +166,7 @@ export default function LandingPage() {
 
 						<p className="mx-auto max-w-2xl text-xl text-white">
 							Life shouldn&apos;t start with a blank page. Get workspaces powered by our Axiom Engine
-							with 15,000+ prompts and 3,000+ articles to guide you through every step of your biggest moments.
+							with 15,000+ prompts and 26,000+ articles to guide you through every step of your biggest moments.
 						</p>
 
 
@@ -188,7 +188,7 @@ export default function LandingPage() {
 									Everything you need
 								</Badge>
 								<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-									150+ templates for
+									1,298 templates for
 									<br />
 									every life moment
 								</h2>
@@ -212,7 +212,7 @@ export default function LandingPage() {
 										<Users className="h-5 w-5 text-green-600 dark:text-green-400" />
 									</div>
 									<span className="text-lg">
-										3,000+ articles with Axiom Engine insights and best practices
+										26,000+ articles with Axiom Engine insights and best practices
 									</span>
 								</div>
 								<div className="flex items-center gap-3">
@@ -220,7 +220,7 @@ export default function LandingPage() {
 										<Crown className="h-5 w-5 text-amber-600 dark:text-amber-400" />
 									</div>
 									<span className="text-lg">
-										{isLoggedIn ? "Full access to all 150+ premium templates" : "Start free, upgrade for full access to all 150+ templates"}
+										{isLoggedIn ? "Full access to all 1,298 premium templates" : "Start free, upgrade for full access to all 1,298 templates"}
 									</span>
 								</div>
 							</div>
@@ -406,7 +406,7 @@ export default function LandingPage() {
 										<BookOpen className="h-6 w-6 text-green-600 dark:text-green-400" />
 									</div>
 									<div>
-										<h3 className="text-xl font-semibold mb-2">3,000+ Expert Articles</h3>
+										<h3 className="text-xl font-semibold mb-2">26,000+ Expert Articles</h3>
 										<p className="text-muted-foreground">In-depth guidance and insights for every situation. Contextually relevant to your current prompts and decisions.</p>
 									</div>
 								</div>
@@ -642,7 +642,7 @@ export default function LandingPage() {
 									</div>
 									<div className="flex items-center gap-3">
 										<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
-										<span>Full access to 150+ templates</span>
+										<span>Full access to 1,298 templates</span>
 									</div>
 									<div className="flex items-center gap-3">
 										<CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />

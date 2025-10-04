@@ -92,7 +92,7 @@ export default function ManifestoPage() {
 
 							<p>The first encyclopedia for living.</p>
 
-							<p>150+ templates. 15,000+ reflection prompts. 3,000+ articles.<br />
+							<p>1,298 templates. 15,000+ reflection prompts. 26,000+ articles.<br />
 							Not emptiness — abundance.<br />
 							Not silence — guidance.<br />
 							Not guessing — clarity.</p>

@@ -62,7 +62,7 @@ export const changelogEntries: ChangelogEntry[] = [
     version: "0.1.0",
     date: "2025-01-21",
     title: "Templata Public Beta Launch",
-    description: "Welcome to Templata! Our public beta includes 150+ templates powered by the Axiom Engine.",
+    description: "Welcome to Templata! Our public beta includes 1,298 templates powered by the Axiom Engine.",
     type: "announcement",
     important: true,
     items: [
@@ -73,12 +73,12 @@ export const changelogEntries: ChangelogEntry[] = [
       },
       {
         id: "template-library",
-        text: "150+ templates covering Personal Life, Career & Work, Property & Finance, and Business & Entrepreneurship",
+        text: "1,298 templates covering Personal Life, Career & Work, Property & Finance, and Business & Entrepreneurship",
         category: "Templates"
       },
       {
         id: "article-system",
-        text: "3,000+ articles providing in-depth guidance for every situation",
+        text: "26,000+ articles providing in-depth guidance for every situation",
         category: "Content"
       },
       {

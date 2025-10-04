@@ -1,18 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/template';
-import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/template-sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
 import { Progress } from '@/components/ui/progress';
 import { CommandPalette } from '@/components/command-palette';
-import { PDFExportButton } from '@/components/pdf/export-button';
-import { ExpertBadgeList } from '@/components/expert/expert-badge';
-import { getTemplateExperts } from '@/lib/expert-badges';
-import { SharePanel } from '@/components/collaboration/share-panel';
 import Prism from '@/components/ui/prism';
 import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3, AlertCircle, Sunset, Moon, Layout } from 'lucide-react';
 import {
@@ -32,6 +27,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+// Lazy load SimpleEditor to reduce initial bundle size
+const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
 
 interface TemplateViewProps {
   template: GuidanceTemplate;
@@ -61,6 +58,40 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
   }, []);
+
+  // Auto-save to localStorage every 30 seconds
+  useEffect(() => {
+    const saveInterval = setInterval(() => {
+      const saveData = {
+        workspaces,
+        activeWorkspaceId,
+        responses,
+        completedItems: Array.from(completedItems),
+        lastSaved: new Date().toISOString()
+      };
+      localStorage.setItem(`template-${template.id}`, JSON.stringify(saveData));
+      console.log('[Auto-save] Workspace saved to localStorage');
+    }, 30000); // Save every 30 seconds
+
+    return () => clearInterval(saveInterval);
+  }, [workspaces, activeWorkspaceId, responses, completedItems, template.id]);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const savedData = localStorage.getItem(`template-${template.id}`);
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData);
+        if (parsed.workspaces) setWorkspaces(parsed.workspaces);
+        if (parsed.activeWorkspaceId) setActiveWorkspaceId(parsed.activeWorkspaceId);
+        if (parsed.responses) setResponses(parsed.responses);
+        if (parsed.completedItems) setCompletedItems(new Set(parsed.completedItems));
+        console.log('[Auto-save] Workspace loaded from localStorage');
+      } catch (error) {
+        console.error('[Auto-save] Failed to load workspace:', error);
+      }
+    }
+  }, [template.id]);
 
   // Workspace management
   const [workspaces, setWorkspaces] = useState<Workspace[]>([
@@ -241,10 +272,6 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
   const completedPrompts = completedItems.size;
   const totalPrompts = allItems.length;
 
-  // Get experts for this template
-  const templateExperts = getTemplateExperts(template.id);
-
-
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground overflow-hidden [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [-ms-overflow-style:none] [scrollbar-width:none]">
@@ -338,12 +365,18 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
                   suspendWhenOffscreen={true}
                 />
               </div>
-              <SimpleEditor
-                content=""
-                templateId={template.id}
-                onUpdate={(content) => {
-                }}
-              />
+              <Suspense fallback={
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-muted-foreground">Loading editor...</div>
+                </div>
+              }>
+                <SimpleEditor
+                  content=""
+                  templateId={template.id}
+                  onUpdate={(content) => {
+                  }}
+                />
+              </Suspense>
             </div>
 
             <style jsx>{`

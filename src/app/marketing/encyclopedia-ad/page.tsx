@@ -11,7 +11,7 @@ export default function EncyclopediaAdPage() {
 			{/* Logo in corner */}
 			<div className="absolute top-8 left-8 flex items-center space-x-2 z-10">
 				<img
-					src="/shift.svg"
+					src="/brand/templata-logo.svg"
 					alt="Templata"
 					width={32}
 					height={32}

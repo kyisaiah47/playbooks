@@ -4,7 +4,7 @@ export default function ArticlesAdPage() {
 			{/* Logo in corner */}
 			<div className="absolute top-8 left-8 flex items-center space-x-2 z-10">
 				<img
-					src="/shift.svg"
+					src="/brand/templata-logo.svg"
 					alt="Templata"
 					width={32}
 					height={32}
@@ -17,7 +17,7 @@ export default function ArticlesAdPage() {
 			<div className="flex-1 flex items-center justify-center">
 				<div className="max-w-4xl mx-auto text-center space-y-8">
 					<h1 className="text-7xl lg:text-8xl font-black leading-none tracking-tight">
-						3,000+ articles
+						26,000+ articles
 						<br />
 						for every
 						<br />

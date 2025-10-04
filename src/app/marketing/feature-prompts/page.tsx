@@ -50,7 +50,7 @@ export default function FeaturePromptsAdPage() {
 
 					<div className="flex items-center gap-3 text-gray-400 pt-4">
 						<ArrowRight className="h-5 w-5" />
-						<span className="text-lg">15,000+ prompts across 150+ templates</span>
+						<span className="text-lg">15,000+ prompts across 1,298 templates</span>
 					</div>
 				</div>
 			</div>

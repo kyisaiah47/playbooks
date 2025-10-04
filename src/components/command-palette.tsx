@@ -449,9 +449,47 @@ export function CommandPalette({
   }
 
 
+  // Calculate total items for keyboard navigation
+  const totalItems = useMemo(() => {
+    if (mode === "template-mode" && templateSpecificData) {
+      return (templateSpecificData.prompts?.length || 0) +
+             (templateSpecificData.resources?.length || 0) +
+             (templateSpecificData.sections?.length || 0)
+    }
+
+    const groups = resultGroups
+    return (groups.templates?.length || 0) +
+           (groups.articles?.length || 0) +
+           (groups.prompts?.length || 0) +
+           (groups.resources?.length || 0) +
+           (groups.sections?.length || 0)
+  }, [mode, templateSpecificData, resultGroups])
+
+  // Reset selected index when results change
+  useEffect(() => {
+    setSelectedIndex(0)
+  }, [query, mode])
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       handleClose()
+      return
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault()
+      setSelectedIndex(prev => (prev + 1) % Math.max(totalItems, 1))
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault()
+      setSelectedIndex(prev => (prev - 1 + totalItems) % Math.max(totalItems, 1))
+    } else if (e.key === "Enter") {
+      e.preventDefault()
+      // Trigger click on selected item
+      const allItems = document.querySelectorAll('[data-command-item]')
+      const selectedItem = allItems[selectedIndex] as HTMLElement
+      if (selectedItem) {
+        selectedItem.click()
+      }
     }
   }
 
@@ -622,11 +660,14 @@ export function CommandPalette({
                         </div>
                       </div>
                       <div className="space-y-3">
-                        {templateSpecificData.prompts.slice(0, 8).map((prompt: any) => (
+                        {templateSpecificData.prompts.slice(0, 8).map((prompt: any, idx: number) => (
                           <button
                             key={prompt.id}
                             onClick={() => handlePromptClick(prompt)}
-                            className="w-full group flex items-start gap-3 p-4 transition-all duration-200 text-left rounded-lg border bg-background hover:bg-muted/50"
+                            data-command-item
+                            className={`w-full group flex items-start gap-3 p-4 transition-all duration-200 text-left rounded-lg border ${
+                              selectedIndex === idx ? 'bg-primary/10 border-primary' : 'bg-background hover:bg-muted/50'
+                            }`}
                           >
                             <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                               <MessageCircle className="w-4 h-4 text-primary" />

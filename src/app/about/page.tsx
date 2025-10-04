@@ -288,7 +288,7 @@ export default function AboutPage() {
 						<div className="space-y-4">
 							<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
 								<Image
-									src="/shift.svg"
+									src="/brand/templata-logo.svg"
 									alt="Templata"
 									width={32}
 									height={32}

@@ -163,7 +163,8 @@
       "Bash(PGPASSWORD=040796yh psql -h db.uvcstcajctqbxddosdbf.supabase.co -U postgres -d postgres -c \"SELECT COUNT(*) as total_articles FROM templata_articles;\")",
       "Bash(PGPASSWORD=040796yh psql -h db.uvcstcajctqbxddosdbf.supabase.co -U postgres -d postgres -c \"SELECT \n  (SELECT COUNT(*) FROM templata_articles) as articles,\n  (SELECT COUNT(*) FROM templata_prompts) as prompts,\n  (SELECT COUNT(*) FROM templata_marketing_pages) as marketing,\n  (SELECT COUNT(*) FROM templata_templates) as templates;\")",
       "Bash(PGPASSWORD=040796yh psql -h db.uvcstcajctqbxddosdbf.supabase.co -U postgres -d postgres -c \"SELECT slug, title FROM templata_articles WHERE title LIKE ''%First%Home%'' LIMIT 5;\")",
-      "WebFetch(domain:supabase.com)"
+      "WebFetch(domain:supabase.com)",
+      "Bash(PGPASSWORD=040796yh psql -h db.uvcstcajctqbxddosdbf.supabase.co -U postgres -d postgres -c \"\nCREATE TABLE IF NOT EXISTS workspaces (\n  id TEXT PRIMARY KEY,\n  user_id TEXT,\n  template_id TEXT NOT NULL,\n  name TEXT NOT NULL DEFAULT ''Main Workspace'',\n  all_items JSONB NOT NULL DEFAULT ''[]''::jsonb,\n  responses JSONB NOT NULL DEFAULT ''{}''::jsonb,\n  completed JSONB NOT NULL DEFAULT ''[]''::jsonb,\n  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),\n  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()\n);\n\nCREATE INDEX IF NOT EXISTS idx_workspaces_template_id ON workspaces(template_id);\nCREATE INDEX IF NOT EXISTS idx_workspaces_user_id ON workspaces(user_id);\n\")"
     ],
     "deny": [],
     "ask": []

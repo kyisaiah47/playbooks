@@ -78,7 +78,7 @@ export function Header() {
 						<div className="flex items-center space-x-4">
 							<Link href="/" className="flex items-center space-x-2">
 								<Image
-									src="/shift.svg"
+									src="/brand/templata-logo.svg"
 									alt="Templata"
 									width={28}
 									height={28}
@@ -190,7 +190,7 @@ export function Header() {
 														<Link href="/templates">
 															<div className="text-sm leading-none font-medium">Templates</div>
 															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-																150+ templates for life's moments
+																1,298 templates for life's moments
 															</p>
 														</Link>
 													</NavigationMenuLink>

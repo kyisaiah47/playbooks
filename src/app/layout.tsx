@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   keywords: 'life planning templates, wedding planning, career change, home buying, business planning, expert guidance, structured frameworks, life organization',
   authors: [{ name: 'Templata Team' }],
   icons: {
-    icon: "/favicon-white.svg",
+    icon: "/brand/favicon-white.svg",
   },
   openGraph: {
     title: 'Templata | Organize Life\'s Biggest Moments',

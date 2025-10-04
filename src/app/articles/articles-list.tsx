@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { TemplateImage } from '@/components/ui/template-image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, Filter, Clock, User, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Filter, Clock, User, Star, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
 const FEATURED_COUNT = 3;
-const ARTICLES_PER_PAGE = 25;
+const ARTICLES_PER_PAGE = 50;
 
 interface Article {
   id: string;
@@ -38,6 +38,7 @@ interface ArticlesListProps {
 export function ArticlesList({ articles, total, currentPage }: ArticlesListProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -94,18 +95,29 @@ export function ArticlesList({ articles, total, currentPage }: ArticlesListProps
 
   // Update URL when page changes
   const updatePage = (page: number) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (page === 1) {
-      params.delete('page');
-    } else {
-      params.set('page', page.toString());
-    }
-    const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
-    router.push(newUrl);
+    startTransition(() => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (page === 1) {
+        params.delete('page');
+      } else {
+        params.set('page', page.toString());
+      }
+      const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+      router.push(newUrl);
+    });
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 relative">
+      {/* Loading overlay */}
+      {isPending && (
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="flex items-center gap-3 bg-background border border-border rounded-lg px-6 py-4 shadow-lg">
+            <Loader2 className="h-5 w-5 animate-spin text-primary" />
+            <span className="text-sm font-medium">Loading articles...</span>
+          </div>
+        </div>
+      )}
       {/* Featured Articles Section */}
       {currentPage === 1 && !searchQuery && selectedCategory === 'all' && selectedType === 'all' && selectedDifficulty === 'all' && (
         <section className="mb-16">
@@ -254,16 +266,60 @@ export function ArticlesList({ articles, total, currentPage }: ArticlesListProps
           </Button>
 
           <div className="flex gap-1">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <Button
-                key={page}
-                variant={page === currentPage ? 'default' : 'outline'}
-                onClick={() => updatePage(page)}
-                className="w-10"
-              >
-                {page}
-              </Button>
-            ))}
+            {(() => {
+              const delta = 2;
+              const range = [];
+              const rangeWithDots = [];
+              let l;
+
+              // Always show first page
+              range.push(1);
+
+              // Calculate range around current page
+              for (let i = currentPage - delta; i <= currentPage + delta; i++) {
+                if (i > 1 && i < totalPages) {
+                  range.push(i);
+                }
+              }
+
+              // Always show last page
+              if (totalPages > 1) {
+                range.push(totalPages);
+              }
+
+              // Add ellipsis where needed
+              range.forEach((i) => {
+                if (l) {
+                  if (i - l === 2) {
+                    rangeWithDots.push(l + 1);
+                  } else if (i - l !== 1) {
+                    rangeWithDots.push('...');
+                  }
+                }
+                rangeWithDots.push(i);
+                l = i;
+              });
+
+              return rangeWithDots.map((page, index) => {
+                if (page === '...') {
+                  return (
+                    <span key={`ellipsis-${index}`} className="w-10 flex items-center justify-center text-muted-foreground">
+                      ...
+                    </span>
+                  );
+                }
+                return (
+                  <Button
+                    key={page}
+                    variant={page === currentPage ? 'default' : 'outline'}
+                    onClick={() => updatePage(page as number)}
+                    className="w-10"
+                  >
+                    {page}
+                  </Button>
+                );
+              });
+            })()}
           </div>
 
           <Button

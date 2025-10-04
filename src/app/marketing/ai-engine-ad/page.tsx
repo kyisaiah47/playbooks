@@ -14,7 +14,7 @@ export default function AIEngineAdPage() {
 			{/* Logo in corner */}
 			<div className="absolute top-8 left-8 flex items-center space-x-2 z-10">
 				<img
-					src="/shift.svg"
+					src="/brand/templata-logo.svg"
 					alt="Templata"
 					width={32}
 					height={32}
@@ -40,7 +40,7 @@ export default function AIEngineAdPage() {
 					</h1>
 
 					<p className="text-3xl text-gray-400 max-w-3xl mx-auto font-light">
-						3,000+ articles powered by intelligent guidance.
+						26,000+ articles powered by intelligent guidance.
 					</p>
 				</div>
 			</div>

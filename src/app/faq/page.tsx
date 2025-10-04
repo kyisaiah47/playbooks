@@ -34,12 +34,12 @@ export default function FAQPage() {
 		{
 			question: "What exactly is Templata?",
 			answer:
-				"Templata is a platform with 150+ systematically designed templates for life's biggest moments. Instead of starting with blank pages when planning a wedding, buying a home, or changing careers, you get structured workspaces with split-screen interfaces. Each template includes categorized prompts powered by our Axiom Engine and relevant articles for deeper guidance.",
+				"Templata is a platform with 1,298 systematically designed templates for life's biggest moments. Instead of starting with blank pages when planning a wedding, buying a home, or changing careers, you get structured workspaces with split-screen interfaces. Each template includes categorized prompts powered by our Axiom Engine and relevant articles for deeper guidance.",
 		},
 		{
 			question: "How much does Templata cost?",
 			answer:
-				"Templata offers three tiers: Free (1-2 starter templates, basic features), Plus ($9/mo for full access to 150+ templates, advanced workflows, unlimited active templates), and Pro ($15/mo adding AI Autofill, integrations, team collaboration, and white-label exports). All plans include 14-day free trials with no commitment.",
+				"Templata offers three tiers: Free (1-2 starter templates, basic features), Plus ($9/mo for full access to 1,298 templates, advanced workflows, unlimited active templates), and Pro ($15/mo adding AI Autofill, integrations, team collaboration, and white-label exports). All plans include 14-day free trials with no commitment.",
 		},
 		{
 			question: "How do the templates work?",
@@ -49,7 +49,7 @@ export default function FAQPage() {
 		{
 			question: "What is the Axiom Engine?",
 			answer:
-				"The Axiom Engine is our specialized AI system designed exclusively for life guidance. It generates 15,000+ categorized prompts and 3,000+ in-depth articles across 150+ templates. Unlike generic AI, the Axiom Engine uses purpose-built intelligence specifically trained for life decision-making scenarios, creating thoughtful frameworks designed for reflection rather than task completion.",
+				"The Axiom Engine is our specialized AI system designed exclusively for life guidance. It generates 15,000+ categorized prompts and 26,000+ in-depth articles across 1,298 templates. Unlike generic AI, the Axiom Engine uses purpose-built intelligence specifically trained for life decision-making scenarios, creating thoughtful frameworks designed for reflection rather than task completion.",
 		},
 		{
 			question: "Do I need to create an account to use templates?",
@@ -64,7 +64,7 @@ export default function FAQPage() {
 		{
 			question: "How many templates are available?",
 			answer:
-				"We currently offer 150+ templates across categories like Personal Life (40+ templates), Career & Work (45+ templates), Property & Finance (35+ templates), and Business & Entrepreneurship (30+ templates). Each template includes categorized prompts and relevant articles powered by our Axiom Engine.",
+				"We currently offer 1,298 templates across categories like Personal Life (40+ templates), Career & Work (45+ templates), Property & Finance (35+ templates), and Business & Entrepreneurship (30+ templates). Each template includes categorized prompts and relevant articles powered by our Axiom Engine.",
 		},
 		{
 			question: "Is my data secure?",
@@ -165,14 +165,14 @@ export default function FAQPage() {
 							<CardHeader>
 								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
 									<Image
-										src="/shift.svg"
+										src="/brand/templata-logo.svg"
 										alt="Templata"
 										width={32}
 										height={32}
 										className="dark:invert"
 									/>
 								</div>
-								<CardTitle className="text-3xl font-bold">150+</CardTitle>
+								<CardTitle className="text-3xl font-bold">1,298</CardTitle>
 								<CardDescription className="text-base">
 									Templates powered by Axiom Engine
 								</CardDescription>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Articles & Guides - Expert Insights for Life Planning | Templata',
-  description: 'Discover 3,000+ expert articles and guides for life\'s biggest decisions. Career changes, family planning, business launches, home buying & more. Written by industry professionals.',
+  description: 'Discover 26,000+ expert articles and guides for life\'s biggest decisions. Career changes, family planning, business launches, home buying & more. Written by industry professionals.',
   keywords: 'life planning articles, career change guides, home buying articles, wedding planning tips, business launch guides, expert advice, life decision guides, planning resources',
   authors: [{ name: 'Templata Editorial Team' }],
   creator: 'Templata',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Articles & Guides - Expert Insights for Life Planning | Templata',
-    description: 'Discover 3,000+ expert articles and guides for life\'s biggest decisions. Career changes, family planning, business launches & more from industry professionals.',
+    description: 'Discover 26,000+ expert articles and guides for life\'s biggest decisions. Career changes, family planning, business launches & more from industry professionals.',
     url: 'https://templata.com/articles',
     siteName: 'Templata',
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Articles & Guides - Expert Insights for Life Planning',
-    description: 'Discover 3,000+ expert articles and guides for life\'s biggest decisions. Career changes, family planning, business launches & more.',
+    description: 'Discover 26,000+ expert articles and guides for life\'s biggest decisions. Career changes, family planning, business launches & more.',
     images: ['/twitter-articles.jpg'],
     creator: '@templata',
     site: '@templata',
