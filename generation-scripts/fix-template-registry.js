@@ -1,4 +1,16 @@
-import { GuidanceTemplate } from '@/types/template';
+#!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
+
+const templatesDir = path.join(__dirname, '../src/data/templates');
+const files = fs.readdirSync(templatesDir)
+  .filter(f => f.endsWith('-template.ts') && f !== 'index.ts')
+  .sort();
+
+console.log(`Found ${files.length} template files`);
+
+// Generate registry file using index.ts with unique exports
+const registryCode = `import { GuidanceTemplate } from '@/types/template';
 import { getTemplateExperts } from '@/lib/expert-badges';
 import * as templates from '@/data/templates';
 
@@ -52,18 +64,16 @@ function getCategoryColors(category: string): { bg: string; icon: string } {
   return colorMap[category] || { bg: 'bg-gray-50 dark:bg-gray-950/30', icon: 'text-gray-600 dark:text-gray-400' };
 }
 
-const allTemplates: GuidanceTemplate[] = Object.values(templates).filter((t): t is GuidanceTemplate =>
-  t !== null && typeof t === 'object' && 'id' in t
-);
+const allTemplates: GuidanceTemplate[] = Object.values(templates);
 
 export const templateRegistry: TemplateRegistryEntry[] = allTemplates
   .map((t) => ({
     id: t.id,
     name: capitalizeTemplateName(t.title && t.title !== "Template" ? t.title : t.id.replace(/-/g, ' ')),
-    description: t.description && t.description !== "Template description" ? t.description : `A comprehensive guide for ${t.id.replace(/-/g, ' ')}`,
+    description: t.description && t.description !== "Template description" ? t.description : \`A comprehensive guide for \${t.id.replace(/-/g, ' ')}\`,
     category: t.category,
     icon: t.icon,
-    url: `/${t.id}/app`,
+    url: \`/\${t.id}/app\`,
     popular: false,
     featured: false,
     expertVerified: false,
@@ -107,3 +117,7 @@ export const searchTemplates = (query: string): TemplateRegistryEntry[] => {
 export const getArticles = () => {
   return [];
 };
+`;
+
+fs.writeFileSync(path.join(__dirname, '../src/registry/templates.ts'), registryCode);
+console.log('✓ Generated new templates registry');
