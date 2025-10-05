@@ -1,5 +1,4 @@
 import { GuidanceTemplate } from '@/types/template';
-import { getTemplateExperts } from '@/lib/expert-badges';
 import * as templates from '@/data/templates';
 
 // Helper function to capitalize all words in a template name
@@ -26,12 +25,7 @@ export interface TemplateRegistryEntry {
 }
 
 export function getTemplate(baseTemplate: GuidanceTemplate): GuidanceTemplate {
-  const experts = getTemplateExperts(baseTemplate.id);
-  return {
-    ...baseTemplate,
-    expertTips: experts.length > 0 ? experts.flatMap(expert => expert.tips || []) : undefined,
-    reflectionPrompts: experts.length > 0 ? experts.flatMap(expert => expert.reflectionPrompts || []) : undefined
-  };
+  return baseTemplate;
 }
 
 // Helper function to get colors based on category
