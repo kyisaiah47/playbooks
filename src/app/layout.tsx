@@ -5,6 +5,7 @@ import { CustomThemeProvider } from "@/components/theme-provider-custom"
 import { SessionProvider } from "@/components/providers/session-provider"
 import { UIProvider } from "@/components/providers/ui-provider"
 import { ErrorBoundary } from "@/components/error-boundary"
+import { AuthProvider } from "@/contexts/auth-context"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -129,9 +130,11 @@ export default function RootLayout({
         <ErrorBoundary>
           <CustomThemeProvider>
             <SessionProvider>
-              <UIProvider>
-                {children}
-              </UIProvider>
+              <AuthProvider>
+                <UIProvider>
+                  {children}
+                </UIProvider>
+              </AuthProvider>
             </SessionProvider>
           </CustomThemeProvider>
         </ErrorBoundary>
