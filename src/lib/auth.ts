@@ -1,11 +1,9 @@
 import { NextAuthOptions } from 'next-auth';
-import { PrismaAdapter } from '@auth/prisma-adapter';
 import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
-import { prisma } from './prisma';
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as any,
+  // Using JWT sessions with Supabase (no adapter needed)
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
