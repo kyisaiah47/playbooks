@@ -2,13 +2,33 @@ import { NextAuthOptions } from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
 
-export const authOptions: NextAuthOptions = {
-  // Using JWT sessions with Supabase (no adapter needed)
-  providers: [
+// Only add providers if credentials are properly configured
+const providers = [];
+
+// Google OAuth - only if credentials are set
+if (
+  process.env.GOOGLE_CLIENT_ID &&
+  process.env.GOOGLE_CLIENT_SECRET &&
+  !process.env.GOOGLE_CLIENT_ID.includes('your-google-client-id') &&
+  !process.env.GOOGLE_CLIENT_SECRET.includes('your-google-client-secret')
+) {
+  providers.push(
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    })
+  );
+}
+
+// Email Provider - only if server is properly configured (not localhost dev setup)
+if (
+  process.env.EMAIL_SERVER_HOST &&
+  process.env.EMAIL_FROM &&
+  process.env.EMAIL_SERVER_HOST !== 'localhost' &&
+  process.env.EMAIL_SERVER_USER &&
+  process.env.EMAIL_SERVER_PASSWORD
+) {
+  providers.push(
     EmailProvider({
       server: {
         host: process.env.EMAIL_SERVER_HOST,
@@ -18,9 +38,14 @@ export const authOptions: NextAuthOptions = {
           pass: process.env.EMAIL_SERVER_PASSWORD,
         },
       },
-      from: process.env.EMAIL_FROM || 'noreply@templata.com',
-    }),
-  ],
+      from: process.env.EMAIL_FROM,
+    })
+  );
+}
+
+export const authOptions: NextAuthOptions = {
+  // Using JWT sessions with Supabase (no adapter needed)
+  providers,
   session: {
     strategy: 'jwt',
   },
