@@ -91,7 +91,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
       params.delete('page'); // Reset to page 1
 
       const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
-      router.push(newUrl);
+      router.push(newUrl, { scroll: false });
     }, 300);
 
     return () => clearTimeout(timer);
@@ -112,7 +112,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     params.delete('page'); // Reset to page 1
 
     const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
-    router.push(newUrl);
+    router.push(newUrl, { scroll: false });
   };
 
   const handlePageChange = (page: number) => {
@@ -121,7 +121,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     else params.set('page', page.toString());
 
     const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
-    router.push(newUrl);
+    router.push(newUrl, { scroll: false });
   };
 
   return (
