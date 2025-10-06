@@ -9,11 +9,7 @@ import templateConnectionsData from '../../knowledge-graph/template-connections.
 import articleConnectionsData from '../../knowledge-graph/article-connections.json';
 import promptConnectionsData from '../../knowledge-graph/prompt-connections.json';
 import marketingConnectionsData from '../../knowledge-graph/marketing-connections.json';
-import semanticClustersData from '../../knowledge-graph/semantic-clusters.json';
-import microClustersData from '../../knowledge-graph/micro-clusters.json';
-import advancedConnectionsData from '../../knowledge-graph/advanced-connections.json';
 import lifeSequencesData from '../../knowledge-graph/life-sequences.json';
-import contextualPromptsData from '../../knowledge-graph/contextual-prompts.json';
 
 // TypeScript interfaces
 export interface TemplateConnection {
@@ -137,15 +133,15 @@ class BrowserKnowledgeGraph {
 
   private load() {
     try {
-      // Load all data from imported JSON
-      this.semanticClusters = semanticClustersData.semantic_clusters;
-      this.microClusters = microClustersData.micro_clusters;
-      this.weightedConnections = advancedConnectionsData.weighted_cross_connections;
-      this.negativeConnections = advancedConnectionsData.negative_connections;
-      this.lifeSequences = lifeSequencesData.comprehensive_life_sequences;
-      this.lifecyclePatterns = lifeSequencesData.lifecycle_timing_patterns;
-      this.contextualPrompts = contextualPromptsData.scenario_based_prompts;
-      this.promptTriggers = contextualPromptsData.contextual_prompt_triggers;
+      // Load available data from imported JSON
+      this.semanticClusters = {};
+      this.microClusters = {};
+      this.weightedConnections = {};
+      this.negativeConnections = {};
+      this.lifeSequences = (lifeSequencesData as any).comprehensive_life_sequences || {};
+      this.lifecyclePatterns = (lifeSequencesData as any).lifecycle_timing_patterns || {};
+      this.contextualPrompts = {};
+      this.promptTriggers = {};
       this.loaded = true;
     } catch (error) {
       console.error('Failed to load Knowledge Graph data:', error);
