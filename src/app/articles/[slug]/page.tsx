@@ -8,7 +8,6 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
 import { getArticleBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/articles";
-import { TemplateImage } from "@/components/ui/template-image";
 import React from "react";
 import { templateRegistry } from "@/registry/templates";
 import { ArticleContent } from "./article-content";
@@ -115,24 +114,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <PageLayout includeHeaderPadding={false}>
+    <PageLayout>
       {/* Scroll Progress Bar */}
       <ScrollProgress className="fixed top-0 z-50" />
 
-      {/* Hero Image - At the top inside PageLayout */}
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-12">
-        <TemplateImage
-          templateName={blogPost?.category || 'planning'}
-          className="w-full h-96 md:h-[500px] lg:h-[600px] object-cover"
-          alt={`${blogPost?.title || 'Article'} - Hero Image`}
-          showAttribution={true}
-          quality={95}
-        />
-      </div>
-
       <div className="min-h-screen bg-background">
         {/* Header Section */}
-        <div className="container mx-auto max-w-7xl px-4 pt-0 pb-8">
+        <div className="container mx-auto max-w-7xl px-4 pt-8 pb-8">
 
           {/* Article Header */}
           <header className="mb-12">

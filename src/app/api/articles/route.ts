@@ -60,6 +60,7 @@ export async function GET(request: Request) {
       difficulty: article.difficulty,
       tags: article.tags,
       featured: article.featured,
+      relatedTemplates: article.related_templates,
     }));
 
     console.log('[API /articles] Query:', query, 'Type:', type, 'Difficulty:', difficulty, 'Page:', page, '- Returned', articles.length, 'of', count, 'total matches');

@@ -186,26 +186,31 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
       {/* Articles List */}
       <section className="mb-12">
         <div className="space-y-0 divide-y divide-border">
-          {articles.map((article: any) => (
-            <Link
-              key={article.id}
-              href={`/articles/${article.slug}`}
-              className="group block py-3 hover:text-primary transition-colors"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <h3 className="text-base font-medium group-hover:text-primary transition-colors">
-                  {article.title}
-                </h3>
-                <div className="flex items-center gap-3 text-xs text-muted-foreground whitespace-nowrap">
-                  {article.category && (
-                    <span>{article.category}</span>
-                  )}
-                  <span>·</span>
-                  <span>{article.readTime}</span>
+          {articles.map((article: any) => {
+            // Get template name from relatedTemplates or fallback to category
+            const templateName = article.relatedTemplates?.[0] || article.category;
+
+            return (
+              <Link
+                key={article.id}
+                href={`/articles/${article.slug}`}
+                className="group block py-3 hover:text-primary transition-colors"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="text-base font-medium group-hover:text-primary transition-colors">
+                    {article.title}
+                  </h3>
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground whitespace-nowrap">
+                    {templateName && (
+                      <span>{templateName}</span>
+                    )}
+                    <span>·</span>
+                    <span>{article.readTime}</span>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </section>
 
