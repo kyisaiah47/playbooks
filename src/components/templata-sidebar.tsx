@@ -111,11 +111,14 @@ export function TemplataContentSidebar({
     prompt.helpText?.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  const templateResources = getArticlesByTemplate(template.id)
-  const filteredResources = templateResources.filter(resource =>
-    resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    resource.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  // Articles are async - disabled for now
+  const templateResources: any[] = []
+  const filteredResources: any[] = []
+  // const templateResources = getArticlesByTemplate(template.id)
+  // const filteredResources = templateResources.filter(resource =>
+  //   resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //   resource.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+  // )
 
   const getCategoryColor = (category: string) => {
     switch (category) {
