@@ -119,15 +119,13 @@ export function TemplataContentSidebar({
   const [templateResources, setTemplateResources] = React.useState<any[]>([])
 
   React.useEffect(() => {
-    // Fetch articles that have this template in their relatedTemplates array
+    // Fetch articles that have this template ID
     fetch(`/api/articles?limit=100`)
       .then(res => res.json())
       .then(data => {
         const articles = data.articles || []
-        // Filter to only articles that have this template ID in relatedTemplates
-        const filtered = articles.filter((a: any) =>
-          a.relatedTemplates && a.relatedTemplates.includes(template.id)
-        )
+        // Filter to only articles that match this template ID
+        const filtered = articles.filter((a: any) => a.template === template.id)
         setTemplateResources(filtered)
       })
       .catch(err => console.error('Failed to load articles:', err))

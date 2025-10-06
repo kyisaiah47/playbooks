@@ -76,7 +76,7 @@ function parseArticleFile(filePath) {
       metaDescription: excerpt,
       ogImage: `/images/blog/${slug}-og.jpg`
     },
-    relatedTemplates: [templateId],
+    template: templateId,
     filePath,
     templateId,
     articleNumber

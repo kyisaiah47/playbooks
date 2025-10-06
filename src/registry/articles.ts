@@ -25,19 +25,15 @@ export async function getArticleById(id: string) {
     publishedAt: data.published_at,
     updatedAt: data.updated_at,
     readTime: data.read_time,
-    category: data.category,
-    featured: data.featured,
     tags: data.tags,
     slug: data.slug,
     type: data.type,
     difficulty: data.difficulty,
     seo: {
       metaTitle: data.meta_title,
-      metaDescription: data.meta_description,
-      ogImage: data.og_image
+      metaDescription: data.meta_description
     },
-    relatedTemplates: data.related_templates,
-    relatedPosts: data.related_posts
+    template: data.template
   };
 }
 
@@ -60,19 +56,15 @@ export async function getArticleBySlug(slug: string) {
     publishedAt: data.published_at,
     updatedAt: data.updated_at,
     readTime: data.read_time,
-    category: data.category,
-    featured: data.featured,
     tags: data.tags,
     slug: data.slug,
     type: data.type,
     difficulty: data.difficulty,
     seo: {
       metaTitle: data.meta_title,
-      metaDescription: data.meta_description,
-      ogImage: data.og_image
+      metaDescription: data.meta_description
     },
-    relatedTemplates: data.related_templates,
-    relatedPosts: data.related_posts
+    template: data.template
   };
 }
 
@@ -104,7 +96,7 @@ export async function getArticlesByTemplate(templateId: string) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('*')
-    .contains('related_templates', [templateId]);
+    .eq('template', templateId);
 
   if (error || !data) return [];
   return data;
@@ -156,7 +148,7 @@ export async function getArticles(page = 1, pageSize = 50) {
       metaDescription: article.meta_description,
       ogImage: article.og_image
     },
-    relatedTemplates: article.related_templates,
+    template: article.template,
     relatedPosts: article.related_posts
   }));
 

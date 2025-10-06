@@ -46,17 +46,13 @@ async function upsertArticle(articleData) {
         published_at: articleData.publishedAt || new Date().toISOString().split('T')[0],
         updated_at: new Date().toISOString(),
         read_time: articleData.readTime || '5 min read',
-        category: articleData.category,
-        featured: articleData.featured || false,
         tags: articleData.tags || [],
         slug: articleData.slug,
         type: articleData.type || 'guide',
         difficulty: articleData.difficulty || 'intermediate',
         meta_title: articleData.seo?.metaTitle || articleData.title.substring(0, 60),
         meta_description: articleData.seo?.metaDescription || articleData.excerpt.substring(0, 160),
-        og_image: articleData.seo?.ogImage || `/images/blog/${articleData.slug}-og.jpg`,
-        related_templates: articleData.relatedTemplates || [],
-        related_posts: articleData.relatedPosts || []
+        template: articleData.template || articleData.templateId
       });
 
     if (error) {
@@ -179,7 +175,7 @@ async function getArticleCount(templateId) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('id', { count: 'exact' })
-    .contains('related_templates', [templateId]);
+    .eq('template', templateId);
 
   if (error) return 0;
   return data?.length || 0;

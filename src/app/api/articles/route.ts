@@ -54,13 +54,11 @@ export async function GET(request: Request) {
       author: article.author,
       publishedAt: article.published_at,
       readTime: article.read_time,
-      category: article.category,
       slug: article.slug,
       type: article.type,
       difficulty: article.difficulty,
       tags: article.tags,
-      featured: article.featured,
-      relatedTemplates: article.related_templates,
+      template: article.template,
     }));
 
     return NextResponse.json({ articles, total: count || 0 });

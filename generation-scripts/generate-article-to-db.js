@@ -46,7 +46,7 @@ async function generateArticle(templateId, articleNumber, category, title, conte
       metaDescription: excerpt,
       ogImage: `/images/blog/${slug}-og.jpg`
     },
-    relatedTemplates: [templateId]
+    template: templateId
   };
 
   const success = await upsertArticle(articleData);

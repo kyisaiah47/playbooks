@@ -11,17 +11,13 @@ CREATE TABLE IF NOT EXISTS templata_articles (
   published_at TEXT NOT NULL,
   updated_at TEXT,
   read_time TEXT NOT NULL,
-  category TEXT NOT NULL,
-  featured BOOLEAN DEFAULT false,
   tags TEXT[] NOT NULL,
   slug TEXT NOT NULL UNIQUE,
   type TEXT NOT NULL CHECK (type IN ('guide', 'article', 'checklist', 'tool')),
   difficulty TEXT NOT NULL CHECK (difficulty IN ('beginner', 'intermediate', 'expert')),
   meta_title TEXT,
   meta_description TEXT,
-  og_image TEXT,
-  related_templates TEXT[],
-  related_posts TEXT[],
+  template TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
@@ -63,8 +59,7 @@ CREATE TABLE IF NOT EXISTS templata_templates (
 
 -- Create indexes for faster queries
 CREATE INDEX IF NOT EXISTS idx_templata_articles_slug ON templata_articles(slug);
-CREATE INDEX IF NOT EXISTS idx_templata_articles_category ON templata_articles(category);
-CREATE INDEX IF NOT EXISTS idx_templata_articles_template ON templata_articles USING GIN(related_templates);
+CREATE INDEX IF NOT EXISTS idx_articles_template ON templata_articles(template);
 CREATE INDEX IF NOT EXISTS idx_templata_prompts_template ON templata_prompts(template_id);
 CREATE INDEX IF NOT EXISTS idx_templata_marketing_template ON templata_marketing_pages(template_id);
 
