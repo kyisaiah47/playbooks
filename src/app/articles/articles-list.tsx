@@ -190,6 +190,10 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
             // Get template name from relatedTemplates or fallback to category
             const templateName = article.relatedTemplates?.[0] || article.category;
 
+            if (article.relatedTemplates) {
+              console.log('[Article]', article.title, '-> relatedTemplates:', article.relatedTemplates, '-> showing:', templateName);
+            }
+
             return (
               <Link
                 key={article.id}

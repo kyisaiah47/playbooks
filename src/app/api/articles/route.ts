@@ -64,6 +64,9 @@ export async function GET(request: Request) {
     }));
 
     console.log('[API /articles] Query:', query, 'Type:', type, 'Difficulty:', difficulty, 'Page:', page, '- Returned', articles.length, 'of', count, 'total matches');
+    if (articles.length > 0) {
+      console.log('[API /articles] Sample article relatedTemplates:', articles[0].relatedTemplates, 'category:', articles[0].category);
+    }
 
     return NextResponse.json({ articles, total: count || 0 });
   } catch (error) {
