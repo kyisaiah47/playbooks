@@ -72,6 +72,10 @@ export function RelatedTemplates({
   showReasoning = true,
   limit = 4
 }: RelatedTemplatesProps) {
+  // Knowledge graph disabled - return null for now
+  return null
+
+  /*
   const { getRelatedTemplates } = useKnowledgeGraph()
 
   // Get knowledge graph relationships
@@ -100,6 +104,7 @@ export function RelatedTemplates({
   if (relatedTemplates.length === 0) {
     return null
   }
+  */
 
   return (
     <div className={cn("space-y-4", className)}>
