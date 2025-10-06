@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useTransition } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 const ARTICLES_PER_PAGE = 100;
@@ -36,7 +36,6 @@ interface ArticlesListProps {
 export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
 
   // State
   const [articles, setArticles] = useState<Article[]>(initialArticles);
@@ -44,7 +43,6 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
-  const [isLoading, setIsLoading] = useState(false);
 
   const currentPage = parseInt(searchParams.get('page') || '1');
   const totalPages = Math.ceil(total / ARTICLES_PER_PAGE);
@@ -56,15 +54,17 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     setSelectedDifficulty(searchParams.get('difficulty') || 'all');
   }, []);
 
-  // Fetch articles from API when filters change
+  // Fetch articles from API when URL params change
   useEffect(() => {
     const fetchArticles = async () => {
-      setIsLoading(true);
       const params = new URLSearchParams();
+      const urlQuery = searchParams.get('q') || '';
+      const urlType = searchParams.get('type') || 'all';
+      const urlDifficulty = searchParams.get('difficulty') || 'all';
 
-      if (searchQuery) params.set('q', searchQuery);
-      if (selectedType !== 'all') params.set('type', selectedType);
-      if (selectedDifficulty !== 'all') params.set('difficulty', selectedDifficulty);
+      if (urlQuery) params.set('q', urlQuery);
+      if (urlType !== 'all') params.set('type', urlType);
+      if (urlDifficulty !== 'all') params.set('difficulty', urlDifficulty);
       params.set('page', currentPage.toString());
       params.set('pageSize', ARTICLES_PER_PAGE.toString());
 
@@ -75,62 +75,57 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
         setTotal(data.total || 0);
       } catch (error) {
         console.error('Failed to fetch articles:', error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
     fetchArticles();
-  }, [searchQuery, selectedType, selectedDifficulty, currentPage]);
+  }, [searchParams, currentPage]);
 
-  // Update URL when filters change
-  const updateFilters = (updates: { q?: string; type?: string; difficulty?: string; page?: number }) => {
+  // Debounced search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (searchQuery) params.set('q', searchQuery);
+      else params.delete('q');
+      params.delete('page'); // Reset to page 1
+
+      const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+      router.push(newUrl);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  // Update URL and reset to page 1 when filters change
+  const handleFilterChange = (type?: string, difficulty?: string) => {
     const params = new URLSearchParams(searchParams.toString());
 
-    if (updates.q !== undefined) {
-      if (updates.q) params.set('q', updates.q);
-      else params.delete('q');
-    }
-    if (updates.type !== undefined) {
-      if (updates.type !== 'all') params.set('type', updates.type);
+    if (type !== undefined) {
+      if (type !== 'all') params.set('type', type);
       else params.delete('type');
     }
-    if (updates.difficulty !== undefined) {
-      if (updates.difficulty !== 'all') params.set('difficulty', updates.difficulty);
+    if (difficulty !== undefined) {
+      if (difficulty !== 'all') params.set('difficulty', difficulty);
       else params.delete('difficulty');
     }
-    if (updates.page !== undefined) {
-      if (updates.page === 1) params.delete('page');
-      else params.set('page', updates.page.toString());
-    }
+    params.delete('page'); // Reset to page 1
 
     const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
     router.push(newUrl);
   };
 
-  // Debounced search - only update URL if search query is different from URL param
-  useEffect(() => {
-    const urlQuery = searchParams.get('q') || '';
-    if (searchQuery === urlQuery) return;
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (page === 1) params.delete('page');
+    else params.set('page', page.toString());
 
-    const timer = setTimeout(() => {
-      updateFilters({ q: searchQuery, page: 1 });
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
+    const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+    router.push(newUrl);
+  };
 
   return (
     <div className="container mx-auto px-4 max-w-6xl relative">
-      {/* Loading overlay */}
-      {isLoading && (
-        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="flex items-center gap-3 bg-background border border-border rounded-lg px-6 py-4 shadow-lg">
-            <Loader2 className="h-5 w-5 animate-spin text-primary" />
-            <span className="text-sm font-medium">Searching articles...</span>
-          </div>
-        </div>
-      )}
-
       {/* Browse Section */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-6">Browse All Articles</h2>
@@ -151,7 +146,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
           <div className="flex gap-2">
             <Select value={selectedType} onValueChange={(value) => {
               setSelectedType(value);
-              updateFilters({ type: value, page: 1 });
+              handleFilterChange(value, undefined);
             }}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Type" />
@@ -167,7 +162,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
 
             <Select value={selectedDifficulty} onValueChange={(value) => {
               setSelectedDifficulty(value);
-              updateFilters({ difficulty: value, page: 1 });
+              handleFilterChange(undefined, value);
             }}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Difficulty" />
@@ -220,7 +215,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
         <section className="flex justify-center items-center gap-2">
           <Button
             variant="outline"
-            onClick={() => updateFilters({ page: currentPage - 1 })}
+            onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
             <ChevronLeft className="w-4 h-4 mr-2" />
@@ -274,7 +269,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
                   <Button
                     key={page}
                     variant={page === currentPage ? 'default' : 'outline'}
-                    onClick={() => updateFilters({ page: page as number })}
+                    onClick={() => handlePageChange(page as number)}
                     className="w-10"
                   >
                     {page}
@@ -286,7 +281,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
 
           <Button
             variant="outline"
-            onClick={() => updateFilters({ page: currentPage + 1 })}
+            onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
           >
             Next
