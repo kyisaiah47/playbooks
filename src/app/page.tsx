@@ -36,9 +36,9 @@ import {
 	Layout,
 	Users,
 	Crown,
+	Dumbbell,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import BackgroundPaperShaders from "@/components/ui/background-paper-shaders";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Typewriter } from "@/components/ui/typewriter";
 
@@ -117,8 +117,20 @@ export default function LandingPage() {
 
 			{/* Hero Section */}
 			<section className="h-screen flex items-center justify-center relative overflow-hidden">
-				{/* Shader Background */}
-				<BackgroundPaperShaders />
+				{/* Geometric Background Image */}
+				<div
+					className="absolute inset-0 w-full h-full bg-background"
+					style={{
+						backgroundImage: 'url(/geometric-monuments.png)',
+						backgroundSize: 'cover',
+						backgroundPosition: 'center',
+						backgroundRepeat: 'no-repeat',
+					}}
+				/>
+				{/* Theme-aware color overlay */}
+				<div className="absolute inset-0 bg-primary/80 mix-blend-multiply dark:mix-blend-screen dark:bg-primary/20" />
+				{/* Dark overlay for text readability */}
+				<div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
 
 				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-8">
@@ -245,10 +257,10 @@ export default function LandingPage() {
 												</div>
 												<div className="space-y-3">
 													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Personal Life
+														Life Planning
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														40+ templates for weddings, relationships, personal growth, and life transitions.
+														250+ templates for weddings, relationships, personal growth, and life transitions.
 													</h2>
 												</div>
 											</div>
@@ -273,10 +285,10 @@ export default function LandingPage() {
 												</div>
 												<div className="space-y-3">
 													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Career & Work
+														Career & Finance
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														45+ templates for job searches, career changes, interviews, and professional development.
+														475+ templates for job searches, career changes, interviews, and professional development.
 													</h2>
 												</div>
 											</div>
@@ -297,14 +309,14 @@ export default function LandingPage() {
 										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
 											<div className="relative flex flex-1 flex-col justify-between gap-3">
 												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
-													<Home className="h-4 w-4" />
+													<Dumbbell className="h-4 w-4" />
 												</div>
 												<div className="space-y-3">
 													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Property & Moving
+														Health & Wellness
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														35+ templates for home buying, selling, moving, and financial planning.
+														270+ templates for fitness, nutrition, mental health, and wellness planning.
 													</h2>
 												</div>
 											</div>
@@ -329,10 +341,10 @@ export default function LandingPage() {
 												</div>
 												<div className="space-y-3">
 													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Business & Entrepreneurship
+														Personal & Professional Growth
 													</h3>
 													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														30+ templates for startups, business planning, marketing, and entrepreneurship.
+														50+ templates for education, skills development, and business entrepreneurship.
 													</h2>
 												</div>
 											</div>

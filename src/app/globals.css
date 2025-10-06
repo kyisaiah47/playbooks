@@ -338,3 +338,20 @@
 .animate-marquee-reverse {
   animation: marquee-reverse var(--duration, 20s) infinite linear;
 }
+
+/* Gradient shift animation for hero overlay */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 5s ease infinite;
+}
