@@ -5,26 +5,42 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q') || '';
-    const limit = parseInt(searchParams.get('limit') || '50');
+    const type = searchParams.get('type') || '';
+    const difficulty = searchParams.get('difficulty') || '';
+    const page = parseInt(searchParams.get('page') || '1');
+    const pageSize = parseInt(searchParams.get('pageSize') || '100');
+    const limit = parseInt(searchParams.get('limit') || pageSize.toString());
 
-    if (!query) {
-      // If no query, return total count only
-      const { count, error: countError } = await supabase
-        .from('templata_articles')
-        .select('*', { count: 'exact', head: true });
+    // Calculate pagination
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize - 1;
 
-      if (countError) throw countError;
+    // Build query
+    let supabaseQuery = supabase
+      .from('templata_articles')
+      .select('*', { count: 'exact' });
 
-      return NextResponse.json({ articles: [], total: count || 0 });
+    // Apply search filter
+    if (query) {
+      supabaseQuery = supabaseQuery.or(`title.ilike.%${query}%,excerpt.ilike.%${query}%,tags.cs.{${query}}`);
     }
 
-    // Search using Supabase full-text search with count
-    const { data, error, count } = await supabase
-      .from('templata_articles')
-      .select('*', { count: 'exact' })
-      .or(`title.ilike.%${query}%,excerpt.ilike.%${query}%,category.ilike.%${query}%`)
+    // Apply type filter
+    if (type) {
+      supabaseQuery = supabaseQuery.eq('type', type);
+    }
+
+    // Apply difficulty filter
+    if (difficulty) {
+      supabaseQuery = supabaseQuery.eq('difficulty', difficulty);
+    }
+
+    // Apply ordering and pagination
+    supabaseQuery = supabaseQuery
       .order('published_at', { ascending: false })
-      .limit(limit);
+      .range(from, to);
+
+    const { data, error, count } = await supabaseQuery;
 
     if (error) {
       console.error('[API /articles] Error:', error);
@@ -40,9 +56,13 @@ export async function GET(request: Request) {
       readTime: article.read_time,
       category: article.category,
       slug: article.slug,
+      type: article.type,
+      difficulty: article.difficulty,
+      tags: article.tags,
+      featured: article.featured,
     }));
 
-    console.log('[API /articles] Query:', query, '- Returned', articles.length, 'of', count, 'total matches');
+    console.log('[API /articles] Query:', query, 'Type:', type, 'Difficulty:', difficulty, 'Page:', page, '- Returned', articles.length, 'of', count, 'total matches');
 
     return NextResponse.json({ articles, total: count || 0 });
   } catch (error) {

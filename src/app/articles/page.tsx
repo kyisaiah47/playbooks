@@ -90,7 +90,7 @@ export default async function ArticlesPage({
 
       {/* Article List */}
       <div className="py-16">
-        <ArticlesList articles={articles} total={total} currentPage={page} />
+        <ArticlesList initialArticles={articles} initialTotal={total} />
       </div>
     </PageLayout>
   );
