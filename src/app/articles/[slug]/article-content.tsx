@@ -10,9 +10,21 @@ interface ArticleContentProps {
 }
 
 export function ArticleContent({ content }: ArticleContentProps) {
+  // Filter out generation metadata and debug text
+  const cleanedContent = content
+    .split('\n\n')
+    .filter(paragraph => {
+      const trimmed = paragraph.trim();
+      // Remove generation metadata
+      if (trimmed.includes('ARTICLE GENERATION COMPLETE')) return false;
+      if (trimmed.includes('Article #')) return false;
+      if (trimmed.match(/^---+$/)) return false; // Remove separator lines
+      return true;
+    });
+
   return (
     <div className="prose prose-lg max-w-none">
-      {content.split('\n\n').map((paragraph, index) => {
+      {cleanedContent.map((paragraph, index) => {
 
         // Main headings with IDs for navigation
         if (paragraph.startsWith('## ')) {
