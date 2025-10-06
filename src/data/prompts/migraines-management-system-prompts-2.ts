@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Effectiveness & Pain Management Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

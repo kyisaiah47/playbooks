@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Communication Technology and Information Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

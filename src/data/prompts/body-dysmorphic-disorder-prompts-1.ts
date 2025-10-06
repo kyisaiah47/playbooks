@@ -1,3 +1,5 @@
+export const categoryName = "Understanding BDD Symptoms and Manifestations";
+
 export const prompts = [
   {
     id: 'prompt-1',

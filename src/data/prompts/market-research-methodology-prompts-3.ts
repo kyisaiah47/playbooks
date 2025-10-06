@@ -1,3 +1,5 @@
+export const categoryName = "Data Collection Methods & Research Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

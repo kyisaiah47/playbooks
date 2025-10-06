@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Outcomes & Follow-up Care Effectiveness";
+
 export const prompts = [
   {
     id: 'prompt-1',

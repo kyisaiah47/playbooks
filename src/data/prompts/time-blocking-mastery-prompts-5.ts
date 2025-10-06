@@ -1,3 +1,5 @@
+export const categoryName = "Interruption Management & Boundary Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

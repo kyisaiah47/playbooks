@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Values, Traditions & Heritage Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

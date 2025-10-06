@@ -1,3 +1,5 @@
+export const categoryName = "Digital Boundaries and Mindful Usage";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Sleep and Circadian Health Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

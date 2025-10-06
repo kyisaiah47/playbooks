@@ -1,3 +1,5 @@
+export const categoryName = "Tax Penalty Assessment and Interest Calculations";
+
 export const prompts = [
   {
     id: 'prompt-1',

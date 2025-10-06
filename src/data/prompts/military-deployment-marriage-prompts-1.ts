@@ -1,3 +1,5 @@
+export const categoryName = "Communication & Connection During Deployment";
+
 export const prompts = [
   {
     id: 'prompt-1',

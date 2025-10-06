@@ -1,3 +1,5 @@
+export const categoryName = "Focus Recovery and Resilience Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

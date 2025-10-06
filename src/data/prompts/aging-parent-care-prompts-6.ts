@@ -1,3 +1,5 @@
+export const categoryName = "Daily Care and Quality of Life Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Perspective & Bias Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

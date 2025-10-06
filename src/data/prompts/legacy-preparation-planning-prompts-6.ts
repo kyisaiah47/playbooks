@@ -1,3 +1,5 @@
+export const categoryName = "Skills, Knowledge, and Wisdom Sharing";
+
 export const prompts = [
   {
     id: 'prompt-1',

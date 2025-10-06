@@ -1,3 +1,5 @@
+export const categoryName = "Recreation, Sports, and Leisure Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

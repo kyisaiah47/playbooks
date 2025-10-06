@@ -1,3 +1,5 @@
+export const categoryName = "Mental Training & Psychological Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

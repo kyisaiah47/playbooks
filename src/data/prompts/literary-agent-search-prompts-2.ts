@@ -1,3 +1,5 @@
+export const categoryName = "Manuscript Preparation & Submission Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

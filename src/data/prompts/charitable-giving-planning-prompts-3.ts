@@ -1,3 +1,5 @@
+export const categoryName = "Charitable Organization Research and Due Diligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

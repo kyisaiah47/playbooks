@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Triggers & Lifestyle Impact Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

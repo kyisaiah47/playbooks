@@ -1,3 +1,5 @@
+export const categoryName = "Content Strategy and Information Architecture";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Campus Resources & Support Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

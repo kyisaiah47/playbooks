@@ -1,3 +1,5 @@
+export const categoryName = "Financial Independence and Economic Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

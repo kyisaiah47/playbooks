@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Costs & Financial Transparency";
+
 export const prompts = [
   {
     id: 'prompt-1',

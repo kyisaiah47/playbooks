@@ -1,3 +1,5 @@
+export const categoryName = "Sustainable Food & Nutrition Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

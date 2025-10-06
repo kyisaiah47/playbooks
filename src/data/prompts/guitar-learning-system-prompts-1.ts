@@ -1,3 +1,5 @@
+export const categoryName = "Chord Progressions and Music Theory";
+
 export const prompts = [
   {
     id: 'prompt-1',

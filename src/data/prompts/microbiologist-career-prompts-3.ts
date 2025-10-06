@@ -1,3 +1,5 @@
+export const categoryName = "Microbial Research & Scientific Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

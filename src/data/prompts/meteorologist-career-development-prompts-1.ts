@@ -1,3 +1,5 @@
+export const categoryName = "Weather Forecasting Skills & Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

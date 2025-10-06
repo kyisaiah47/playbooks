@@ -1,3 +1,5 @@
+export const categoryName = "Educational and Workplace Impact Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

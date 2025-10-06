@@ -1,3 +1,5 @@
+export const categoryName = "Values, Beliefs, and Spiritual Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

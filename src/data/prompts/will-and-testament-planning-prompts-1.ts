@@ -1,3 +1,5 @@
+export const categoryName = "Estate Distribution and Beneficiary Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

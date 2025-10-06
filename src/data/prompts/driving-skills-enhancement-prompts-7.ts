@@ -1,3 +1,5 @@
+export const categoryName = "Advanced Driving Techniques and Performance Enhancement";
+
 export const prompts = [
   {
     id: 'prompt-1',

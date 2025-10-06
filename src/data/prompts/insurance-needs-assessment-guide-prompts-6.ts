@@ -1,3 +1,5 @@
+export const categoryName = "Insurance Education & Industry Knowledge Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

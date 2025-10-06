@@ -1,3 +1,5 @@
+export const categoryName = "Wildlife & Nature Observation";
+
 export const prompts = [
   {
     id: 'prompt-1',

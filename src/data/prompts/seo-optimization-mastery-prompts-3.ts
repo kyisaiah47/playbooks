@@ -1,3 +1,5 @@
+export const categoryName = "Link Building & Authority Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

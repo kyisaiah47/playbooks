@@ -1,3 +1,5 @@
+export const categoryName = "Calendar Data Analysis & Performance Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

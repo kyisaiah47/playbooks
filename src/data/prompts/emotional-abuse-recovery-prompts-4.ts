@@ -1,3 +1,5 @@
+export const categoryName = "Establishing Healthy Boundaries and Communication Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

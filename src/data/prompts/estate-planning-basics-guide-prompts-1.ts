@@ -1,3 +1,5 @@
+export const categoryName = "Essential Legal Documents and Their Purposes";
+
 export const prompts = [
   {
     id: 'prompt-1',

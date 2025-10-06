@@ -1,3 +1,5 @@
+export const categoryName = "Flavor Development & Seasoning Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

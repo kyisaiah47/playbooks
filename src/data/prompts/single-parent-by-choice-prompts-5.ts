@@ -1,3 +1,5 @@
+export const categoryName = "Daily Life & Practical Parenting Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

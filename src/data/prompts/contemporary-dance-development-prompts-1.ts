@@ -1,3 +1,5 @@
+export const categoryName = "Movement Vocabulary and Physical Expression";
+
 export const prompts = [
   {
     id: 'prompt-1',

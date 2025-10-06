@@ -1,3 +1,5 @@
+export const categoryName = "Technique and Articulation Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

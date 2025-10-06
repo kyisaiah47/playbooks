@@ -1,3 +1,5 @@
+export const categoryName = "Energy Usage Analysis & Baseline Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

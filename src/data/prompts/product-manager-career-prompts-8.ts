@@ -1,3 +1,5 @@
+export const categoryName = "Product Roadmap Planning & Prioritization";
+
 export const prompts = [
   {
     id: 'prompt-1',

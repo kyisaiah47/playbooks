@@ -1,3 +1,5 @@
+export const categoryName = "Lender Research and Application Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Time Management and Priority Systems Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

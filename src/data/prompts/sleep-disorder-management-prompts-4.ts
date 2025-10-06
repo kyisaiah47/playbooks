@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Behaviors & Lifestyle Habits";
+
 export const prompts = [
   {
     id: 'prompt-1',

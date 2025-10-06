@@ -1,3 +1,5 @@
+export const categoryName = "Professional Support Systems and Healthcare Navigation in BDD";
+
 export const prompts = [
   {
     id: 'prompt-1',

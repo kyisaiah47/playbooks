@@ -1,3 +1,5 @@
+export const categoryName = "Traditions & Lifestyle Evolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

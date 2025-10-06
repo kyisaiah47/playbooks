@@ -1,3 +1,5 @@
+export const categoryName = "Organizational Culture & Human Capital Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

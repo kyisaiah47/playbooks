@@ -1,3 +1,5 @@
+export const categoryName = "Educational Foundation and Certification Requirements";
+
 export const prompts = [
   {
     id: 'prompt-1',

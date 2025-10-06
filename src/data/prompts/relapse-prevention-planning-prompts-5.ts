@@ -1,3 +1,5 @@
+export const categoryName = "Past Experiences and Learning from Setbacks";
+
 export const prompts = [
   {
     id: 'prompt-1',

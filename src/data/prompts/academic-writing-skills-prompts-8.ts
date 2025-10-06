@@ -1,3 +1,5 @@
+export const categoryName = "Academic Reading and Comprehension Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

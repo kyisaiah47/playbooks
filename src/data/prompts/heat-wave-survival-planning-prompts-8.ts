@@ -1,3 +1,5 @@
+export const categoryName = "Heat Wave Impact Assessment & Monitoring Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

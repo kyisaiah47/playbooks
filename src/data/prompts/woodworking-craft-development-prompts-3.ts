@@ -1,3 +1,5 @@
+export const categoryName = "Material Selection & Wood Properties";
+
 export const prompts = [
   {
     id: 'prompt-1',

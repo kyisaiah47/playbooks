@@ -1,3 +1,5 @@
+export const categoryName = "Communication Records and Co-Parenting Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Ethics, Morality, and Value Systems in an Uncertain World";
+
 export const prompts = [
   {
     id: 'prompt-1',

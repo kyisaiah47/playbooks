@@ -1,3 +1,5 @@
+export const categoryName = "Software Development Methodologies & Best Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

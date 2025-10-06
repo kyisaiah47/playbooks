@@ -1,3 +1,5 @@
+export const categoryName = "Product Knowledge & Therapeutic Areas";
+
 export const prompts = [
   {
     id: 'prompt-1',

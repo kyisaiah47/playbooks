@@ -1,3 +1,5 @@
+export const categoryName = "Data Migration & Legacy System Transition";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition, Recovery Foods & Physical Rehabilitation";
+
 export const prompts = [
   {
     id: 'prompt-1',

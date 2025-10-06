@@ -1,3 +1,5 @@
+export const categoryName = "Mindset, Emotions & Mental Health Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

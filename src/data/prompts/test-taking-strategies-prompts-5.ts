@@ -1,3 +1,5 @@
+export const categoryName = "Post-Test Review and Learning Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

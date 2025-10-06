@@ -1,3 +1,5 @@
+export const categoryName = "Insurance, Legal, and Financial Documentation for Medical Testing";
+
 export const prompts = [
   {
     id: 'prompt-1',

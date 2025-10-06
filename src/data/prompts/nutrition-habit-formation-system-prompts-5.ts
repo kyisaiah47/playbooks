@@ -1,3 +1,5 @@
+export const categoryName = "Meal Planning & Preparation Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

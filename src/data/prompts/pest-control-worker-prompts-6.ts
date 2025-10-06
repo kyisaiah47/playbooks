@@ -1,3 +1,5 @@
+export const categoryName = "Property Assessment and Environmental Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

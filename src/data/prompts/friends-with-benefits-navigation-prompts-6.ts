@@ -1,3 +1,5 @@
+export const categoryName = "Social Context & External Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

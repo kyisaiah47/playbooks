@@ -1,3 +1,5 @@
+export const categoryName = "Goal Setting and Development Planning in Mentoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

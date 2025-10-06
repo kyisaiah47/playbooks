@@ -1,3 +1,5 @@
+export const categoryName = "Ballet Performance and Artistic Expression";
+
 export const prompts = [
   {
     id: 'prompt-1',

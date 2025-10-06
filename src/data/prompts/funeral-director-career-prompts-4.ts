@@ -1,3 +1,5 @@
+export const categoryName = "Technical Procedures & Service Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

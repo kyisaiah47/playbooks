@@ -1,3 +1,5 @@
+export const categoryName = "Habitat & Environmental Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

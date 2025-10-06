@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Policies and Procedures Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

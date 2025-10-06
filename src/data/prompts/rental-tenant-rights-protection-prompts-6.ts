@@ -1,3 +1,5 @@
+export const categoryName = "Eviction Prevention and Housing Stability Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

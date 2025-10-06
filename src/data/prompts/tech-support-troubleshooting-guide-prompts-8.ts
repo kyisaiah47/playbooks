@@ -1,3 +1,5 @@
+export const categoryName = "Remote Support Tools and Technology Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

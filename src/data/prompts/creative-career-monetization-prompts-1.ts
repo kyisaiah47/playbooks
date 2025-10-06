@@ -1,3 +1,5 @@
+export const categoryName = "Revenue Stream Discovery & Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle & Spending Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

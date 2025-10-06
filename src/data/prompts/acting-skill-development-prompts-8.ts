@@ -1,3 +1,5 @@
+export const categoryName = "Improvisation and Spontaneous Performance";
+
 export const prompts = [
   {
     id: 'prompt-1',

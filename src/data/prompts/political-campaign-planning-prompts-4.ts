@@ -1,3 +1,5 @@
+export const categoryName = "Opposition Research and Competitive Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

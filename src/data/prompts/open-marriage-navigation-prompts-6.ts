@@ -1,3 +1,5 @@
+export const categoryName = "Legal, Social & Cultural Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

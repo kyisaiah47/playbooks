@@ -1,3 +1,5 @@
+export const categoryName = "Volunteer Opportunity Research & Selection";
+
 export const prompts = [
   {
     id: 'prompt-1',

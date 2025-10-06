@@ -1,3 +1,5 @@
+export const categoryName = "Children & Family Life During Military Deployment";
+
 export const prompts = [
   {
     id: 'prompt-1',

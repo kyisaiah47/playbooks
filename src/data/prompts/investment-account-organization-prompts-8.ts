@@ -1,3 +1,5 @@
+export const categoryName = "Investment Goals & Life Planning Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

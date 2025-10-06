@@ -1,3 +1,5 @@
+export const categoryName = "Economic Mobility and Opportunity Barriers";
+
 export const prompts = [
   {
     id: 'prompt-1',

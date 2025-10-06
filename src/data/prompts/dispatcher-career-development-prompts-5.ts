@@ -1,3 +1,5 @@
+export const categoryName = "Stress Management & Mental Health Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Vendor Financial Analysis and Cost Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

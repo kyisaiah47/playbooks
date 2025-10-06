@@ -1,3 +1,5 @@
+export const categoryName = "Component Knowledge and Upgrade Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

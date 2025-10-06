@@ -1,3 +1,5 @@
+export const categoryName = "Building Connection and Trust Through Discipline";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Painting Subject Matter and Reference Study";
+
 export const prompts = [
   {
     id: 'prompt-1',

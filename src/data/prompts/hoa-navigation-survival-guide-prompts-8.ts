@@ -1,3 +1,5 @@
+export const categoryName = "HOA Rules, Regulations & Compliance Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

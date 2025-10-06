@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Stalking Behaviors and Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

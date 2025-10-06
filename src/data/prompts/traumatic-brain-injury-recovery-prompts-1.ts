@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Recovery and Brain Function";
+
 export const prompts = [
   {
     id: 'prompt-1',

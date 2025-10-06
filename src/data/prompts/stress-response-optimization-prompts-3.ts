@@ -1,3 +1,5 @@
+export const categoryName = "Environmental and Lifestyle Stress Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

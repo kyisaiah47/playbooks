@@ -1,3 +1,5 @@
+export const categoryName = "Micronutrient Essentials and Deficiency Prevention";
+
 export const prompts = [
   {
     id: 'prompt-1',

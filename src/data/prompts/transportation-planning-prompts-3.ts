@@ -1,3 +1,5 @@
+export const categoryName = "Traffic Engineering and Safety Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

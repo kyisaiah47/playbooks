@@ -1,3 +1,5 @@
+export const categoryName = "Local Government Requirements and Procedures";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Business Valuation and Sale Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

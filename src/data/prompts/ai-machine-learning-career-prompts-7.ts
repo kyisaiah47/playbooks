@@ -1,3 +1,5 @@
+export const categoryName = "Continuous Learning & Knowledge Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

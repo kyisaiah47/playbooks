@@ -1,3 +1,5 @@
+export const categoryName = "Technology Integration and Modern Speaking Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

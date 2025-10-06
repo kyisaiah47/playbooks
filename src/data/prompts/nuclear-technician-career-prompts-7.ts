@@ -1,3 +1,5 @@
+export const categoryName = "Nuclear Instrumentation and Control Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

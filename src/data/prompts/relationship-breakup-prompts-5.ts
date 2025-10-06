@@ -1,3 +1,5 @@
+export const categoryName = "Personal Growth and Learning from Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

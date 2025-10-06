@@ -1,3 +1,5 @@
+export const categoryName = "Messaging & Value Proposition Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

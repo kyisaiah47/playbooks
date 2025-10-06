@@ -1,3 +1,5 @@
+export const categoryName = "Legal Rights and Jury Selection Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

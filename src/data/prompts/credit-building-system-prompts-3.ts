@@ -1,3 +1,5 @@
+export const categoryName = "Credit History Building & Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

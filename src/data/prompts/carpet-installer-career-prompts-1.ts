@@ -1,3 +1,5 @@
+export const categoryName = "Technical Skills and Installation Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

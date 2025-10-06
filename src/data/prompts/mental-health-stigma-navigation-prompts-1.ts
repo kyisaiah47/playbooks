@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Personal Stigma Experiences";
+
 export const prompts = [
   {
     id: 'prompt-1',

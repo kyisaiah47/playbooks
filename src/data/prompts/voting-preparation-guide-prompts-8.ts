@@ -1,3 +1,5 @@
+export const categoryName = "Election Systems & Voting Rights";
+
 export const prompts = [
   {
     id: 'prompt-1',

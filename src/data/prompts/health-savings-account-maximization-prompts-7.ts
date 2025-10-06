@@ -1,3 +1,5 @@
+export const categoryName = "HSA Education & Knowledge Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

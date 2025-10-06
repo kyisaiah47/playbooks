@@ -1,3 +1,5 @@
+export const categoryName = "Equipment, Tools, and Technology for Personal Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

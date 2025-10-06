@@ -1,3 +1,5 @@
+export const categoryName = "Learning Style and Information Processing Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

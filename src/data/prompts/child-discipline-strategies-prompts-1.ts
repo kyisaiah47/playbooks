@@ -1,3 +1,5 @@
+export const categoryName = "Positive Reinforcement and Reward Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

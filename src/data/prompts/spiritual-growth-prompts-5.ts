@@ -1,3 +1,5 @@
+export const categoryName = "Ritual, Ceremony & Sacred Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Semantic Relationships & Word Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

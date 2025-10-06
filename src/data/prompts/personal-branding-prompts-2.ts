@@ -1,3 +1,5 @@
+export const categoryName = "Professional Expertise & Knowledge Positioning";
+
 export const prompts = [
   {
     id: 'prompt-1',

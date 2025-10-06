@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Data-Driven Pricing Innovation";
+
 export const prompts = [
   {
     id: 'prompt-1',

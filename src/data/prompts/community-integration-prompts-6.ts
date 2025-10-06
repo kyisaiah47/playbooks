@@ -1,3 +1,5 @@
+export const categoryName = "Local Services & Institutional Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

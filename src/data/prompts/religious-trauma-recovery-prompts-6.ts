@@ -1,3 +1,5 @@
+export const categoryName = "Reclaiming Identity and Autonomy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Resilience Building and Post-Traumatic Growth";
+
 export const prompts = [
   {
     id: 'prompt-1',

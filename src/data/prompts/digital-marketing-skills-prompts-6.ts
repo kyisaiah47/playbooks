@@ -1,3 +1,5 @@
+export const categoryName = "SEO & Search Marketing Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

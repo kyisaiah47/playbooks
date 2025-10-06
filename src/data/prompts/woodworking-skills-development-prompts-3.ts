@@ -1,3 +1,5 @@
+export const categoryName = "Joinery Techniques and Construction Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

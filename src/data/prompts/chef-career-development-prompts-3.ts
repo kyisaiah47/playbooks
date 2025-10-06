@@ -1,3 +1,5 @@
+export const categoryName = "Kitchen Leadership & Team Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

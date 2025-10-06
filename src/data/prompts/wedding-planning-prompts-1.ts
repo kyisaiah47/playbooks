@@ -1,3 +1,5 @@
+export const categoryName = "Venue Selection & Location Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

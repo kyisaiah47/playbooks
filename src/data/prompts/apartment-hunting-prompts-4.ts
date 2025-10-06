@@ -1,3 +1,5 @@
+export const categoryName = "Moving Logistics and Timeline Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

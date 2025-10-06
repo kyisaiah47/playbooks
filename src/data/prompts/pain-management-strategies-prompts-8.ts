@@ -1,3 +1,5 @@
+export const categoryName = "Alternative and Complementary Healing Modalities";
+
 export const prompts = [
   {
     id: 'prompt-1',

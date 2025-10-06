@@ -1,3 +1,5 @@
+export const categoryName = "Estate Administration and Post-Death Processes";
+
 export const prompts = [
   {
     id: 'prompt-1',

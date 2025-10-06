@@ -1,3 +1,5 @@
+export const categoryName = "Business & Economic Recovery Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

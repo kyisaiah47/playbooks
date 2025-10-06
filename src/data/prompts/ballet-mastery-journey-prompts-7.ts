@@ -1,3 +1,5 @@
+export const categoryName = "Ballet Equipment and Environment Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

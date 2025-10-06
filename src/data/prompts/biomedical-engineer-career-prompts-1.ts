@@ -1,3 +1,5 @@
+export const categoryName = "Medical Device Development & Innovation";
+
 export const prompts = [
   {
     id: 'prompt-1',

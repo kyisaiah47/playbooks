@@ -1,3 +1,5 @@
+export const categoryName = "Meeting Dynamics and Communication Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

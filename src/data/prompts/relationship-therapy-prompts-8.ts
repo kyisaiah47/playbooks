@@ -1,3 +1,5 @@
+export const categoryName = "Intimacy and Physical Connection";
+
 export const prompts = [
   {
     id: 'prompt-1',

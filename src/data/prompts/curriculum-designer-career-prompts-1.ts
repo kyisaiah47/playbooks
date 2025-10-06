@@ -1,3 +1,5 @@
+export const categoryName = "Learning Objectives and Assessment Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

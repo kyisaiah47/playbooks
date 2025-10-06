@@ -1,3 +1,5 @@
+export const categoryName = "Memory Enhancement Through Emotional and Social Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

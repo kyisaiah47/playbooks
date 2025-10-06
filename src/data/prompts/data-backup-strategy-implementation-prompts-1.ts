@@ -1,3 +1,5 @@
+export const categoryName = "Backup Architecture and Technology Selection";
+
 export const prompts = [
   {
     id: 'prompt-1',

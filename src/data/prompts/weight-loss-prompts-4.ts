@@ -1,3 +1,5 @@
+export const categoryName = "Sleep & Lifestyle Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

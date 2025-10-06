@@ -1,3 +1,5 @@
+export const categoryName = "Educational and Career Reintegration Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

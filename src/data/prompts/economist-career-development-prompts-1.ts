@@ -1,3 +1,5 @@
+export const categoryName = "Economic Research & Analysis Skills Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

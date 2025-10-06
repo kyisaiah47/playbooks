@@ -1,3 +1,5 @@
+export const categoryName = "Personal Legacy and Life Reflection";
+
 export const prompts = [
   {
     id: 'prompt-1',

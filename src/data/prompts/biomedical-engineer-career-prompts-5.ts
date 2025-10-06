@@ -1,3 +1,5 @@
+export const categoryName = "Research Methodologies & Data Analysis in Biomedical Engineering";
+
 export const prompts = [
   {
     id: 'prompt-1',

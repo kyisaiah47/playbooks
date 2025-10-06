@@ -1,3 +1,5 @@
+export const categoryName = "Skills Translation and Civilian Career Mapping";
+
 export const prompts = [
   {
     id: 'prompt-1',

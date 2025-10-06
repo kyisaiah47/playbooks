@@ -1,3 +1,5 @@
+export const categoryName = "Financial Stress Management and Economic Well-being";
+
 export const prompts = [
   {
     id: 'prompt-1',

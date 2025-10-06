@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual and Philosophical Reflection";
+
 export const prompts = [
   {
     id: 'prompt-1',

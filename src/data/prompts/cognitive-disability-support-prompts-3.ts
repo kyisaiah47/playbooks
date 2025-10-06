@@ -1,3 +1,5 @@
+export const categoryName = "Learning and Memory Support";
+
 export const prompts = [
   {
     id: 'prompt-1',

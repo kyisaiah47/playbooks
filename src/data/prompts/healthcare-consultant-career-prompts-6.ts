@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Analysis & Business Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

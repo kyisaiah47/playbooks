@@ -1,3 +1,5 @@
+export const categoryName = "Live Sound and Performance Audio";
+
 export const prompts = [
   {
     id: 'prompt-1',

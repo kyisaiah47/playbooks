@@ -1,3 +1,5 @@
+export const categoryName = "Project Management and Work Environment Safety";
+
 export const prompts = [
   {
     id: 'prompt-1',

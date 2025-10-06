@@ -1,3 +1,5 @@
+export const categoryName = "Personal Growth and Transformation Through Emotional Work";
+
 export const prompts = [
   {
     id: 'prompt-1',

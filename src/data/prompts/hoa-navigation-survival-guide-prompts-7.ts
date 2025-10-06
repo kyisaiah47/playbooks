@@ -1,3 +1,5 @@
+export const categoryName = "HOA Board Operations & Decision-Making Processes";
+
 export const prompts = [
   {
     id: 'prompt-1',

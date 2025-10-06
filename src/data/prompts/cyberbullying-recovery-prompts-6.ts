@@ -1,3 +1,5 @@
+export const categoryName = "Communication and Relationship Rebuilding After Cyberbullying";
+
 export const prompts = [
   {
     id: 'prompt-1',

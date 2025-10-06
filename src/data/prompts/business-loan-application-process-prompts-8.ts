@@ -1,3 +1,5 @@
+export const categoryName = "Loan Terms Negotiation and Post-Approval Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

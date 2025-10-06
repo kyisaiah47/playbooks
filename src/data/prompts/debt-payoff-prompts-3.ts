@@ -1,3 +1,5 @@
+export const categoryName = "Debt Payoff Strategies & Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

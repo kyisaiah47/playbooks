@@ -1,3 +1,5 @@
+export const categoryName = "Sacred Texts & Wisdom Literature";
+
 export const prompts = [
   {
     id: 'prompt-1',

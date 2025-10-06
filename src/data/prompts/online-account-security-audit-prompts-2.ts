@@ -1,3 +1,5 @@
+export const categoryName = "Authentication Methods and Access Controls";
+
 export const prompts = [
   {
     id: 'prompt-1',

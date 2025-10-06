@@ -1,3 +1,5 @@
+export const categoryName = "Food Safety & Kitchen Management Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

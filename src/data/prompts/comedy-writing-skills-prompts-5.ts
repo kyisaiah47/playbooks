@@ -1,3 +1,5 @@
+export const categoryName = "Observational Comedy and Material Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

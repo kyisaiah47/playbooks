@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Innovation in Veterinary Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

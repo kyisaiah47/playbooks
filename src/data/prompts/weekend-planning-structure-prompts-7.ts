@@ -1,3 +1,5 @@
+export const categoryName = "Weekend Environment & Space Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

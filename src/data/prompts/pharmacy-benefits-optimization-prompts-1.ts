@@ -1,3 +1,5 @@
+export const categoryName = "Cost Analysis and Financial Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

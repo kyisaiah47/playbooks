@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Virtual Parenting Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

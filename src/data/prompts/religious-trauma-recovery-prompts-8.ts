@@ -1,3 +1,5 @@
+export const categoryName = "Exploring Spirituality and Meaning-Making After Religious Trauma";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Archival Theory and Historical Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

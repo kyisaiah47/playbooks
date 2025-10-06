@@ -1,3 +1,5 @@
+export const categoryName = "Error Analysis & Writing Improvement";
+
 export const prompts = [
   {
     id: 'prompt-1',

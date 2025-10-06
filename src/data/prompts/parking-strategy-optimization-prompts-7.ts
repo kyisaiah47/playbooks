@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Impact & Sustainability Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

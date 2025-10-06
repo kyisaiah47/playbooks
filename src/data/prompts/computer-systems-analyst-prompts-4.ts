@@ -1,3 +1,5 @@
+export const categoryName = "Business Requirements & Stakeholder Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

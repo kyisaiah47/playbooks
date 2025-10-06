@@ -1,3 +1,5 @@
+export const categoryName = "Decision-Making and Outcome Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

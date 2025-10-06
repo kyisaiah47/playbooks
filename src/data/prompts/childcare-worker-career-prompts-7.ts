@@ -1,3 +1,5 @@
+export const categoryName = "Inclusive Practices and Special Needs Support";
+
 export const prompts = [
   {
     id: 'prompt-1',

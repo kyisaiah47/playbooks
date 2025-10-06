@@ -1,3 +1,5 @@
+export const categoryName = "Rejection Analysis & Query Refinement Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

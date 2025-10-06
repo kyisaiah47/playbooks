@@ -1,3 +1,5 @@
+export const categoryName = "Integration Strategy and System Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

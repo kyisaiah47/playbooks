@@ -1,3 +1,5 @@
+export const categoryName = "Post-Decision Integration & Transition Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Network Assessment & Vulnerability Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

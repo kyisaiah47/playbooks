@@ -1,3 +1,5 @@
+export const categoryName = "Media Influence and Body Image in the Digital Age";
+
 export const prompts = [
   {
     id: 'prompt-1',

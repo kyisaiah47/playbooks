@@ -1,3 +1,5 @@
+export const categoryName = "Print Quality and Optimization Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

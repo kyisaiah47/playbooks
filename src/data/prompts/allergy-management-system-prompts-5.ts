@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Allergen Identification and Exposure Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

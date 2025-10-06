@@ -1,3 +1,5 @@
+export const categoryName = "Retirement & Long-Term Tax-Deferred Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

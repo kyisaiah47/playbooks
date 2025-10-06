@@ -1,3 +1,5 @@
+export const categoryName = "Style Evolution and Cultural Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

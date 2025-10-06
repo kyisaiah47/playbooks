@@ -1,3 +1,5 @@
+export const categoryName = "Brand Identity & Marketing Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

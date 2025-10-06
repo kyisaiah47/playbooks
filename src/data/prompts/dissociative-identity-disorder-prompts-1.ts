@@ -1,3 +1,5 @@
+export const categoryName = "Understanding System Dynamics and Internal Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

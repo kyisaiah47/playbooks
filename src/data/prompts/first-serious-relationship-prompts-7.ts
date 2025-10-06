@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Management and Mental Health in Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Historical Knowledge and Cultural Storytelling";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Security Foundation & Best Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

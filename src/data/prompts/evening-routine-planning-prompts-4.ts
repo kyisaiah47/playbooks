@@ -1,3 +1,5 @@
+export const categoryName = "Evening Knowledge Synthesis & Personal Growth";
+
 export const prompts = [
   {
     id: 'prompt-1',

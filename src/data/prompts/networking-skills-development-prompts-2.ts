@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Networking Opportunities & Industry Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

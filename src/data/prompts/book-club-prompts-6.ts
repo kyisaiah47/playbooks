@@ -1,3 +1,5 @@
+export const categoryName = "Themes & Symbolism Exploration";
+
 export const prompts = [
   {
     id: 'prompt-1',

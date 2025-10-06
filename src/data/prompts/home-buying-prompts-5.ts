@@ -1,3 +1,5 @@
+export const categoryName = "Mortgage & Financing Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

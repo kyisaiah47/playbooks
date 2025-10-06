@@ -1,3 +1,5 @@
+export const categoryName = "Physical Rehabilitation and Mobility Progress";
+
 export const prompts = [
   {
     id: 'prompt-1',

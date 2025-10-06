@@ -1,3 +1,5 @@
+export const categoryName = "Performance Development & Stage Craft";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Academic Mental Health & Performance";
+
 export const prompts = [
   {
     id: 'prompt-1',

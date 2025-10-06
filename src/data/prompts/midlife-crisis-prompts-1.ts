@@ -1,3 +1,5 @@
+export const categoryName = "Core Identity & Purpose Exploration";
+
 export const prompts = [
   {
     id: 'prompt-1',

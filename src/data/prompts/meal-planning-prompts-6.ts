@@ -1,3 +1,5 @@
+export const categoryName = "Food Preservation & Storage Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

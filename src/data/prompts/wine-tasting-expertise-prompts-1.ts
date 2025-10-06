@@ -1,3 +1,5 @@
+export const categoryName = "Aroma and Flavor Profile Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition, Supplements, and Pain-Fighting Foods";
+
 export const prompts = [
   {
     id: 'prompt-1',

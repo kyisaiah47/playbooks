@@ -1,3 +1,5 @@
+export const categoryName = "User Experience & Community Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

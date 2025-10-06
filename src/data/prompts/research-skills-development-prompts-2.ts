@@ -1,3 +1,5 @@
+export const categoryName = "Source Evaluation and Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

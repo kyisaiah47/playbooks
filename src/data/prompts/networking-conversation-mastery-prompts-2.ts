@@ -1,3 +1,5 @@
+export const categoryName = "Active Listening and Communication Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

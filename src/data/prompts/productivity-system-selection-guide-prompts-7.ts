@@ -1,3 +1,5 @@
+export const categoryName = "Decision-Making and Selection Criteria Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

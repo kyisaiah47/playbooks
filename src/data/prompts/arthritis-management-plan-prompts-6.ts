@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition and Environmental Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

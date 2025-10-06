@@ -1,3 +1,5 @@
+export const categoryName = "Mental Health and Stress Management for Debt";
+
 export const prompts = [
   {
     id: 'prompt-1',

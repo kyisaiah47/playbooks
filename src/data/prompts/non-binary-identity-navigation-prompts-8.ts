@@ -1,3 +1,5 @@
+export const categoryName = "Advocacy and Allyship Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

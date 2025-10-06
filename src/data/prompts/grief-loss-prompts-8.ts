@@ -1,3 +1,5 @@
+export const categoryName = "Practical Life Adjustments and Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

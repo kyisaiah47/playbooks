@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Integration & Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

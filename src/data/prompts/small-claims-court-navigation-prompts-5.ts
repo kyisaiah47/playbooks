@@ -1,3 +1,5 @@
+export const categoryName = "Evidence Collection and Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

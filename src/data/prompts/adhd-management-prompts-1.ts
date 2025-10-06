@@ -1,3 +1,5 @@
+export const categoryName = "Time Awareness & Routine Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

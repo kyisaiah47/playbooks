@@ -1,3 +1,5 @@
+export const categoryName = "Energy, Healing, and Transformation";
+
 export const prompts = [
   {
     id: 'prompt-1',

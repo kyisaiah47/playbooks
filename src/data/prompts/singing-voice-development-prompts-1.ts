@@ -1,3 +1,5 @@
+export const categoryName = "Vocal Health and Care Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

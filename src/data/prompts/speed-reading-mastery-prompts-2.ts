@@ -1,3 +1,5 @@
+export const categoryName = "Reading Speed & Technique Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

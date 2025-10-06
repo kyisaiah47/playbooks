@@ -1,3 +1,5 @@
+export const categoryName = "Medical History and Symptom Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

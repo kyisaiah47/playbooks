@@ -1,3 +1,5 @@
+export const categoryName = "Identity Reconstruction and Self-Concept Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

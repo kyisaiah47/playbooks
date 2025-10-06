@@ -1,3 +1,5 @@
+export const categoryName = "Business & Financial Management for Actors";
+
 export const prompts = [
   {
     id: 'prompt-1',

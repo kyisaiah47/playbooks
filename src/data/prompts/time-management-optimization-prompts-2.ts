@@ -1,3 +1,5 @@
+export const categoryName = "Goal Setting and Priority Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

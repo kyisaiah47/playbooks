@@ -1,3 +1,5 @@
+export const categoryName = "Participant Engagement and Group Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

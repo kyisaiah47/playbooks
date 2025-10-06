@@ -1,3 +1,5 @@
+export const categoryName = "Monitoring, Observability & Incident Response";
+
 export const prompts = [
   {
     id: 'prompt-1',

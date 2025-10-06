@@ -1,3 +1,5 @@
+export const categoryName = "Installation Techniques and Pattern Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

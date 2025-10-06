@@ -1,3 +1,5 @@
+export const categoryName = "Urban Design and Built Environment Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Medication Transitions and Life Changes";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Legal Structure and Succession Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Radiation Safety and Technical Equipment Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

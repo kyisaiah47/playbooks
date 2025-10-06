@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Acupuncture Techniques and Traditional Medicine Principles";
+
 export const prompts = [
   {
     id: 'prompt-1',

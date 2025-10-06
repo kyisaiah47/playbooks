@@ -1,3 +1,5 @@
+export const categoryName = "Design Fundamentals & Visual Principles";
+
 export const prompts = [
   {
     id: 'prompt-1',

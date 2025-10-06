@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Timeline & Decision Points";
+
 export const prompts = [
   {
     id: 'prompt-1',

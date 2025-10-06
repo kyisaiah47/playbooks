@@ -1,3 +1,5 @@
+export const categoryName = "Shared Goals & Future Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

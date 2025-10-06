@@ -1,3 +1,5 @@
+export const categoryName = "Past Therapy Experiences & Professional Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

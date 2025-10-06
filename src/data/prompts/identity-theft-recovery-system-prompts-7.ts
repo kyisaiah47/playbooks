@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Progress Tracking and Emotional Well-being";
+
 export const prompts = [
   {
     id: 'prompt-1',

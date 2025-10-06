@@ -1,3 +1,5 @@
+export const categoryName = "Setting Boundaries and Protecting Your Well-being";
+
 export const prompts = [
   {
     id: 'prompt-1',

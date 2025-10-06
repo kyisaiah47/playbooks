@@ -1,3 +1,5 @@
+export const categoryName = "Environmental and Contextual Focus Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

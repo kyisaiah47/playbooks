@@ -1,3 +1,5 @@
+export const categoryName = "Academic Learning & Evidence-Based Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

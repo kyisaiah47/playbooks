@@ -1,3 +1,5 @@
+export const categoryName = "Product Knowledge & Market Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

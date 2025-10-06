@@ -1,3 +1,5 @@
+export const categoryName = "Legal, Financial, and Safety Planning Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

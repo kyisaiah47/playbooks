@@ -1,3 +1,5 @@
+export const categoryName = "Wireless Infrastructure & Performance Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

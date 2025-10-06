@@ -1,3 +1,5 @@
+export const categoryName = "Social Support, Communication, and Advocacy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Medical Specialty Exploration and Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

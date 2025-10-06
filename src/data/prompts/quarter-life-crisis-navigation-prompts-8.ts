@@ -1,3 +1,5 @@
+export const categoryName = "Values & Life Philosophy";
+
 export const prompts = [
   {
     id: 'prompt-1',

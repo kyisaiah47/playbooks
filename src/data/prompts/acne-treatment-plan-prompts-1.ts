@@ -1,3 +1,5 @@
+export const categoryName = "Product Knowledge and Skincare Routine Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

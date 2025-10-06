@@ -1,3 +1,5 @@
+export const categoryName = "Dating Mindset & Mental Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

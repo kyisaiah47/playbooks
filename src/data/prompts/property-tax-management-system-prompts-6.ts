@@ -1,3 +1,5 @@
+export const categoryName = "Property Tax Exemptions and Relief Programs";
+
 export const prompts = [
   {
     id: 'prompt-1',

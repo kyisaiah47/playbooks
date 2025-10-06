@@ -1,3 +1,5 @@
+export const categoryName = "Educational Systems and Academic Pathways";
+
 export const prompts = [
   {
     id: 'prompt-1',

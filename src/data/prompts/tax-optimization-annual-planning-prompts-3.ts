@@ -1,3 +1,5 @@
+export const categoryName = "Investment Portfolio Tax Efficiency & Loss Harvesting";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Climate Grief & Mental Health Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Interview Preparation and Performance Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

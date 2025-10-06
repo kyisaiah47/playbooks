@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Thinking & Problem-Solving Frameworks";
+
 export const prompts = [
   {
     id: 'prompt-1',

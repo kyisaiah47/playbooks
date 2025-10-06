@@ -1,3 +1,5 @@
+export const categoryName = "Digital Art and Technology Integration in Contemporary Collecting";
+
 export const prompts = [
   {
     id: 'prompt-1',

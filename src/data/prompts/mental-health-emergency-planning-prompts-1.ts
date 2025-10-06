@@ -1,3 +1,5 @@
+export const categoryName = "Crisis Warning Signs and Triggers";
+
 export const prompts = [
   {
     id: 'prompt-1',

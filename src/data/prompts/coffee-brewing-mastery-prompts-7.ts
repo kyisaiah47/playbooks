@@ -1,3 +1,5 @@
+export const categoryName = "Recipe Development & Experimentation Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

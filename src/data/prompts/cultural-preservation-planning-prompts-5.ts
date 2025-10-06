@@ -1,3 +1,5 @@
+export const categoryName = "Language Revitalization and Intergenerational Transmission";
+
 export const prompts = [
   {
     id: 'prompt-1',

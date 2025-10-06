@@ -1,3 +1,5 @@
+export const categoryName = "User Experience & Accessibility Features";
+
 export const prompts = [
   {
     id: 'prompt-1',

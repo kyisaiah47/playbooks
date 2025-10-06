@@ -1,3 +1,5 @@
+export const categoryName = "Meeting Structure & Format Design Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

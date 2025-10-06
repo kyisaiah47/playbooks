@@ -1,3 +1,5 @@
+export const categoryName = "Performance Optimization & Technical Architecture";
+
 export const prompts = [
   {
     id: 'prompt-1',

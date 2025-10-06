@@ -1,3 +1,5 @@
+export const categoryName = "Discipline & Behavior Management Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

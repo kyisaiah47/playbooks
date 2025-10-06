@@ -1,3 +1,5 @@
+export const categoryName = "Literary Analysis & Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

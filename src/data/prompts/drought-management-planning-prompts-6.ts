@@ -1,3 +1,5 @@
+export const categoryName = "Infrastructure and Technology Solutions for Drought Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

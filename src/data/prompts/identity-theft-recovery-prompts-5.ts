@@ -1,3 +1,5 @@
+export const categoryName = "Identity Monitoring and Prevention Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

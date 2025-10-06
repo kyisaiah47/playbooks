@@ -1,3 +1,5 @@
+export const categoryName = "Personal Boundaries and Empowerment Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

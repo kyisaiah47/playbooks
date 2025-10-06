@@ -1,3 +1,5 @@
+export const categoryName = "Travel Rewards & Redemption Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

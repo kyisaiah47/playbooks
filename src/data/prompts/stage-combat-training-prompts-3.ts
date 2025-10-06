@@ -1,3 +1,5 @@
+export const categoryName = "Character Development and Performance Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

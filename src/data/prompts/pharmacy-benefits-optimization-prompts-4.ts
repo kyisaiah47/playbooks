@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Outcomes and Patient Health Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

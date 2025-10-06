@@ -1,3 +1,5 @@
+export const categoryName = "Content Quality & Editorial Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

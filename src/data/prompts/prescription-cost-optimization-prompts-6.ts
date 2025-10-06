@@ -1,3 +1,5 @@
+export const categoryName = "Prescription Cost Tracking and Budget Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

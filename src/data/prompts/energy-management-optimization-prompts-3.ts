@@ -1,3 +1,5 @@
+export const categoryName = "Energy Management Strategy & Policy Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Assessment and Intervention Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

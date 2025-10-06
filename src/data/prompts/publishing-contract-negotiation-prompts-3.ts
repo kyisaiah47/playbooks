@@ -1,3 +1,5 @@
+export const categoryName = "Rights Management and Revenue Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

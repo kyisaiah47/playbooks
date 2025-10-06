@@ -1,3 +1,5 @@
+export const categoryName = "Post-Service Knowledge Transfer and Future Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

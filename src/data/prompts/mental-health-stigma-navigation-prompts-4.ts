@@ -1,3 +1,5 @@
+export const categoryName = "Workplace and Educational Mental Health Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

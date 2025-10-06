@@ -1,3 +1,5 @@
+export const categoryName = "Legal and Administrative Recovery Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Network and Relationship Mapping";
+
 export const prompts = [
   {
     id: 'prompt-1',

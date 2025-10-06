@@ -1,3 +1,5 @@
+export const categoryName = "Environmental & Geographical Influences";
+
 export const prompts = [
   {
     id: 'prompt-1',

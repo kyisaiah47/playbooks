@@ -1,3 +1,5 @@
+export const categoryName = "Relationship Dynamics and Boundary Maintenance";
+
 export const prompts = [
   {
     id: 'prompt-1',

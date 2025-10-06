@@ -1,3 +1,5 @@
+export const categoryName = "Trading Psychology & Decision-Making Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

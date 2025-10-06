@@ -1,3 +1,5 @@
+export const categoryName = "Daily Operations and Passenger Service Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

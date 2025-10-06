@@ -1,3 +1,5 @@
+export const categoryName = "Ethics, Communication, and Patient Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

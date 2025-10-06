@@ -1,3 +1,5 @@
+export const categoryName = "Recording and Acoustic Environment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Boundary Setting and Emotional Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

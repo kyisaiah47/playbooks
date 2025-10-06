@@ -1,3 +1,5 @@
+export const categoryName = "Personal Environment & Habit Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

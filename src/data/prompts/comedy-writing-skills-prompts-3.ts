@@ -1,3 +1,5 @@
+export const categoryName = "Joke Structure and Mechanics";
+
 export const prompts = [
   {
     id: 'prompt-1',

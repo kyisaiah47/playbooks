@@ -1,3 +1,5 @@
+export const categoryName = "Board Effectiveness & Performance Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

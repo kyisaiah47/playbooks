@@ -1,3 +1,5 @@
+export const categoryName = "Installation Methods and Field Problem-Solving";
+
 export const prompts = [
   {
     id: 'prompt-1',

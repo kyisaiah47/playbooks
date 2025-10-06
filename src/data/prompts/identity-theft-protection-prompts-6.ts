@@ -1,3 +1,5 @@
+export const categoryName = "Legal Rights & Regulatory Protection Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

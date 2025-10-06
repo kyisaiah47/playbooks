@@ -1,3 +1,5 @@
+export const categoryName = "Coalition Building and Stakeholder Engagement";
+
 export const prompts = [
   {
     id: 'prompt-1',

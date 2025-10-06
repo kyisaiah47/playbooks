@@ -1,3 +1,5 @@
+export const categoryName = "Tenant Relations & Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

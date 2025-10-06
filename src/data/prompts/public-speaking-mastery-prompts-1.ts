@@ -1,3 +1,5 @@
+export const categoryName = "Speech Structure and Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Service Provider Research & Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Learning from Speaking Models and Feedback Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Sales Process and Pipeline Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

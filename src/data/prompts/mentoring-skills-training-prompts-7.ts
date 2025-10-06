@@ -1,3 +1,5 @@
+export const categoryName = "Boundaries and Professional Ethics in Mentoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

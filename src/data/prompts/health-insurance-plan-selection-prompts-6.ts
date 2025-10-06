@@ -1,3 +1,5 @@
+export const categoryName = "Life Transitions and Coverage Adaptability";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Nonprofit Organizations & Partnership Exploration";
+
 export const prompts = [
   {
     id: 'prompt-1',

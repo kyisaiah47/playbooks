@@ -1,3 +1,5 @@
+export const categoryName = "Personal Recovery Insights & Knowledge Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

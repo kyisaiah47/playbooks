@@ -1,3 +1,5 @@
+export const categoryName = "Relationships and Boundary Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

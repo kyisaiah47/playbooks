@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Contact Relationship Dynamics and Support Networks";
+
 export const prompts = [
   {
     id: 'prompt-1',

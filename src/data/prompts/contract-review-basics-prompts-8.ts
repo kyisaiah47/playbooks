@@ -1,3 +1,5 @@
+export const categoryName = "Industry-Specific Contract Considerations and Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

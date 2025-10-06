@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition & Food Impact Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

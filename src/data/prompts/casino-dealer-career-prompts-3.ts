@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Environment & Customer Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

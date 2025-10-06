@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Process Learning & Knowledge Capture";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Networking Event Strategy & Execution";
+
 export const prompts = [
   {
     id: 'prompt-1',

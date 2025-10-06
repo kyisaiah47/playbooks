@@ -1,3 +1,5 @@
+export const categoryName = "Insurance Claims and Property Recovery Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

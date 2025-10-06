@@ -1,3 +1,5 @@
+export const categoryName = "Health Communication and Public Engagement";
+
 export const prompts = [
   {
     id: 'prompt-1',

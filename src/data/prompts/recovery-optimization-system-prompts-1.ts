@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Environment Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Risk Assessment & Uncertainty Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

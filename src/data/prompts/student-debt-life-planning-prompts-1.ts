@@ -1,3 +1,5 @@
+export const categoryName = "Financial Literacy and Money Management Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

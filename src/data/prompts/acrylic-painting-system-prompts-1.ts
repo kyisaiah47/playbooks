@@ -1,3 +1,5 @@
+export const categoryName = "Paint Properties and Medium Manipulation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Cast & Crew Development & Collaboration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Symptom Understanding and Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

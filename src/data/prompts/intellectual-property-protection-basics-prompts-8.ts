@@ -1,3 +1,5 @@
+export const categoryName = "IP Education and Awareness Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

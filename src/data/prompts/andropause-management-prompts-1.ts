@@ -1,3 +1,5 @@
+export const categoryName = "Physical Fitness and Body Composition Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

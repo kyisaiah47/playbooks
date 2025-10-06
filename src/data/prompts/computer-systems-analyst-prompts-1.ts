@@ -1,3 +1,5 @@
+export const categoryName = "System Architecture & Design Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

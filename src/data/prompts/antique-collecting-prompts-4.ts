@@ -1,3 +1,5 @@
+export const categoryName = "Maintaining and Preserving Your Antique Collection";
+
 export const prompts = [
   {
     id: 'prompt-1',

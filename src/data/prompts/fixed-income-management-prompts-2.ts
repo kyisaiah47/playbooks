@@ -1,3 +1,5 @@
+export const categoryName = "Interest Rate Environment & Duration Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

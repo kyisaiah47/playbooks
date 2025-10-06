@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Activities & Healthy Substitutions";
+
 export const prompts = [
   {
     id: 'prompt-1',

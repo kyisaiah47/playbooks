@@ -1,3 +1,5 @@
+export const categoryName = "Technology Relationship & Personal Values Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

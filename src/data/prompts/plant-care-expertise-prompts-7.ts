@@ -1,3 +1,5 @@
+export const categoryName = "Plant Seasonal Care & Adaptation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

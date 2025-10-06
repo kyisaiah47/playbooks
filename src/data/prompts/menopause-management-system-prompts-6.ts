@@ -1,3 +1,5 @@
+export const categoryName = "Physical Health & Body Changes Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

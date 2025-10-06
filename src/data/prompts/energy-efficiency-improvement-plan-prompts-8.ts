@@ -1,3 +1,5 @@
+export const categoryName = "Sustainability Integration and Long-term Strategic Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

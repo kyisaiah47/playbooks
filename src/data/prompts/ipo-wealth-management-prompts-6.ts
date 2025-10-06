@@ -1,3 +1,5 @@
+export const categoryName = "IPO Regulatory Compliance & Legal Framework Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

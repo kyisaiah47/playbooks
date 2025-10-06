@@ -1,3 +1,5 @@
+export const categoryName = "Literature Review & Evidence Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

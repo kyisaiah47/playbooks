@@ -1,3 +1,5 @@
+export const categoryName = "Understanding the Friendship Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

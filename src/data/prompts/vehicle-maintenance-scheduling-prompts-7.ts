@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Technology & Diagnostic Systems Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

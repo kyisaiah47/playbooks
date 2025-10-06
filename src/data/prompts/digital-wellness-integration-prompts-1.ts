@@ -1,3 +1,5 @@
+export const categoryName = "Screen Time Awareness & Digital Boundaries";
+
 export const prompts = [
   {
     id: 'prompt-1',

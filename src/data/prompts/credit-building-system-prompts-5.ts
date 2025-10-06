@@ -1,3 +1,5 @@
+export const categoryName = "Financial Behavior Analysis & Personal Credit Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

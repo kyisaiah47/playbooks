@@ -1,3 +1,5 @@
+export const categoryName = "Credit Building Tools and Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

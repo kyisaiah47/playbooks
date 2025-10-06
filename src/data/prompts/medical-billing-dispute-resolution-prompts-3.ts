@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Provider Communication and Dispute Process Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

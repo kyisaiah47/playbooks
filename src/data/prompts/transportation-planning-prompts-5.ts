@@ -1,3 +1,5 @@
+export const categoryName = "Transportation Finance and Economic Impact Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

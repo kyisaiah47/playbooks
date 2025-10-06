@@ -1,3 +1,5 @@
+export const categoryName = "Third-Party Integrations and External Service Security";
+
 export const prompts = [
   {
     id: 'prompt-1',

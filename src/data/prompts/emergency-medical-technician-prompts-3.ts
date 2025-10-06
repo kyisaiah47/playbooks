@@ -1,3 +1,5 @@
+export const categoryName = "Medical Equipment and Medication Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

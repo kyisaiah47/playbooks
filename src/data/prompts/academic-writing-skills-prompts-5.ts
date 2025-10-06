@@ -1,3 +1,5 @@
+export const categoryName = "Source Evaluation and Critical Analysis Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

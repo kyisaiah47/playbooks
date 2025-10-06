@@ -1,3 +1,5 @@
+export const categoryName = "Database Design and Data Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

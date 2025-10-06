@@ -1,3 +1,5 @@
+export const categoryName = "Technical Decision Making & Trade-offs";
+
 export const prompts = [
   {
     id: 'prompt-1',

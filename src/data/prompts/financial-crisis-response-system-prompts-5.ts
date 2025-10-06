@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Strategy and Economic Stabilization Measures";
+
 export const prompts = [
   {
     id: 'prompt-1',

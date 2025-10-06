@@ -1,3 +1,5 @@
+export const categoryName = "Professional and Educational Navigation Through Racial Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

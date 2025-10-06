@@ -1,3 +1,5 @@
+export const categoryName = "Survey Design & Questionnaire Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

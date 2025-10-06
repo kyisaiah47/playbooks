@@ -1,3 +1,5 @@
+export const categoryName = "Trust Building and Emotional Intimacy";
+
 export const prompts = [
   {
     id: 'prompt-1',

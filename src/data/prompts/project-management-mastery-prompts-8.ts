@@ -1,3 +1,5 @@
+export const categoryName = "Project Methodology & Process Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

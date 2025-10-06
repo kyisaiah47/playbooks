@@ -1,3 +1,5 @@
+export const categoryName = "Property Tax Communication and Stakeholder Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

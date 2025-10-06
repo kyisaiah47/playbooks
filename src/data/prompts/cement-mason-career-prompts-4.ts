@@ -1,3 +1,5 @@
+export const categoryName = "Material Properties and Mix Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Sensory Needs and Environmental Adaptations";
+
 export const prompts = [
   {
     id: 'prompt-1',

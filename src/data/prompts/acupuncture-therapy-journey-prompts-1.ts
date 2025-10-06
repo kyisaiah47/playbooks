@@ -1,3 +1,5 @@
+export const categoryName = "Pre-Treatment Preparation and Health Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

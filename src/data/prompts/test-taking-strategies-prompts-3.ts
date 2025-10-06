@@ -1,3 +1,5 @@
+export const categoryName = "Test Anxiety Management and Mindset Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

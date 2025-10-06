@@ -1,3 +1,5 @@
+export const categoryName = "Ethics and Legal Considerations in Clinical Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

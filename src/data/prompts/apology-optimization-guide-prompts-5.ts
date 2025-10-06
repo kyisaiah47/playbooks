@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Sensitivity and Apology Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

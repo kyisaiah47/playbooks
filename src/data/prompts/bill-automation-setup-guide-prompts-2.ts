@@ -1,3 +1,5 @@
+export const categoryName = "Bill Management System Design & Configuration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Goal Achievement Systems & Environmental Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

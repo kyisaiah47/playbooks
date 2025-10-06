@@ -1,3 +1,5 @@
+export const categoryName = "Technology Integration and Digital Health Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

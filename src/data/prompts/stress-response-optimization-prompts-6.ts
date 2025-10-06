@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Stress Dynamics and Professional Coping Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

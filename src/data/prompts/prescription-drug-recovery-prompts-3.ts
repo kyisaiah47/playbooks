@@ -1,3 +1,5 @@
+export const categoryName = "Identifying Triggers and Developing Coping Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

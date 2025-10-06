@@ -1,3 +1,5 @@
+export const categoryName = "Post-Production Analysis & Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

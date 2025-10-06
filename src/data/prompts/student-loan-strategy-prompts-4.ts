@@ -1,3 +1,5 @@
+export const categoryName = "Personal Finance Impact & Long-term Life Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning and Business Operations in Athletic Training";
+
 export const prompts = [
   {
     id: 'prompt-1',

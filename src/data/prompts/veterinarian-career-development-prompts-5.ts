@@ -1,3 +1,5 @@
+export const categoryName = "Specialty Areas and Advanced Veterinary Medicine";
+
 export const prompts = [
   {
     id: 'prompt-1',

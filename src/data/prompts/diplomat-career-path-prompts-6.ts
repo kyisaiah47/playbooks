@@ -1,3 +1,5 @@
+export const categoryName = "Economic Diplomacy and Trade Relations Expertise";
+
 export const prompts = [
   {
     id: 'prompt-1',

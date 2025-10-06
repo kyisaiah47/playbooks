@@ -1,3 +1,5 @@
+export const categoryName = "Quality Standards and Craftsmanship Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

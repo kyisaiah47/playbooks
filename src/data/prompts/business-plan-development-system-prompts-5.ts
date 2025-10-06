@@ -1,3 +1,5 @@
+export const categoryName = "Business Model Innovation & Value Creation";
+
 export const prompts = [
   {
     id: 'prompt-1',

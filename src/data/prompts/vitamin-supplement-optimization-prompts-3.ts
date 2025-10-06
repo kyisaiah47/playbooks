@@ -1,3 +1,5 @@
+export const categoryName = "Individual Health Needs and Supplement Selection";
+
 export const prompts = [
   {
     id: 'prompt-1',

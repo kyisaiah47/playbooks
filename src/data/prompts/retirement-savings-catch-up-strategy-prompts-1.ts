@@ -1,3 +1,5 @@
+export const categoryName = "Current Financial Assessment & Gap Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

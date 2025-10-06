@@ -1,3 +1,5 @@
+export const categoryName = "Playing Technique & Physical Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

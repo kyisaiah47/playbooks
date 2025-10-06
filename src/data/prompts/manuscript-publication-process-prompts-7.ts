@@ -1,3 +1,5 @@
+export const categoryName = "Revision and Resubmission Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

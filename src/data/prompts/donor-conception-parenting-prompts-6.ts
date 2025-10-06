@@ -1,3 +1,5 @@
+export const categoryName = "Identity Formation and Family Narrative";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Performance Assessment and Organizational Health";
+
 export const prompts = [
   {
     id: 'prompt-1',

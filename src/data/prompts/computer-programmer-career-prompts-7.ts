@@ -1,3 +1,5 @@
+export const categoryName = "Project Management & Development Lifecycle";
+
 export const prompts = [
   {
     id: 'prompt-1',

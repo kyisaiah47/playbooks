@@ -1,3 +1,5 @@
+export const categoryName = "Meditation Practice and Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

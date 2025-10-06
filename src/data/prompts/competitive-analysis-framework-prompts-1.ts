@@ -1,3 +1,5 @@
+export const categoryName = "Market Positioning & Value Proposition Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

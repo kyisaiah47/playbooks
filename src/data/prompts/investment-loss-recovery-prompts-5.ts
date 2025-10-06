@@ -1,3 +1,5 @@
+export const categoryName = "Investment Decision Analysis & Risk Assessment Review";
+
 export const prompts = [
   {
     id: 'prompt-1',

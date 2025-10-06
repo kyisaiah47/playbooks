@@ -1,3 +1,5 @@
+export const categoryName = "Presentation Delivery & Performance Enhancement";
+
 export const prompts = [
   {
     id: 'prompt-1',

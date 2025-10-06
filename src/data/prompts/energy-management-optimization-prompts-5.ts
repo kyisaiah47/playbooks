@@ -1,3 +1,5 @@
+export const categoryName = "Renewable Energy Integration & Grid Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

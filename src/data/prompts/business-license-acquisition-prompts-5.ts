@@ -1,3 +1,5 @@
+export const categoryName = "Business Structure and Legal Foundation Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

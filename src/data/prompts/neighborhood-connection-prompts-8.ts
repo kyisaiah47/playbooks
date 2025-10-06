@@ -1,3 +1,5 @@
+export const categoryName = "Local Economy & Business Landscape";
+
 export const prompts = [
   {
     id: 'prompt-1',

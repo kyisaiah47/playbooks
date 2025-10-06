@@ -1,3 +1,5 @@
+export const categoryName = "Customer Journey Mapping & Experience Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

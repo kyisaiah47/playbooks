@@ -1,3 +1,5 @@
+export const categoryName = "Specialization and Advanced Practice Opportunities";
+
 export const prompts = [
   {
     id: 'prompt-1',

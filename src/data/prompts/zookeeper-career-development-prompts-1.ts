@@ -1,3 +1,5 @@
+export const categoryName = "Animal Behavior and Enrichment Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

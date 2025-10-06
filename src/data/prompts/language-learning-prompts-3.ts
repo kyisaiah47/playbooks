@@ -1,3 +1,5 @@
+export const categoryName = "Grammar Patterns & Language Structure";
+
 export const prompts = [
   {
     id: 'prompt-1',

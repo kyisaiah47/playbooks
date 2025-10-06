@@ -1,3 +1,5 @@
+export const categoryName = "Building Healthy Boundaries and Self-Worth";
+
 export const prompts = [
   {
     id: 'prompt-1',

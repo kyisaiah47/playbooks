@@ -1,3 +1,5 @@
+export const categoryName = "Love Languages and Appreciation Expression";
+
 export const prompts = [
   {
     id: 'prompt-1',

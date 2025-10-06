@@ -1,3 +1,5 @@
+export const categoryName = "Creative Inspiration & Visual Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

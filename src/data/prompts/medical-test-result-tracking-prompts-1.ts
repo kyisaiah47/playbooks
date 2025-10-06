@@ -1,3 +1,5 @@
+export const categoryName = "Test Results Documentation and Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

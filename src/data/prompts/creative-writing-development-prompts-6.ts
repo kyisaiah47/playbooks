@@ -1,3 +1,5 @@
+export const categoryName = "Genre Conventions & Market Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

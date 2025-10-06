@@ -1,3 +1,5 @@
+export const categoryName = "Security Practices & Risk Management in Blockchain Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

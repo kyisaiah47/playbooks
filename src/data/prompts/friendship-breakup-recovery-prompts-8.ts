@@ -1,3 +1,5 @@
+export const categoryName = "Creating Your New Chapter and Future Vision";
+
 export const prompts = [
   {
     id: 'prompt-1',

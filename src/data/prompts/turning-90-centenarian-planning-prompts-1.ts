@@ -1,3 +1,5 @@
+export const categoryName = "Life Wisdom and Legacy Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

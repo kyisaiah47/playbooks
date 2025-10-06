@@ -1,3 +1,5 @@
+export const categoryName = "Genre & Tone Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Grammar Rules & Usage Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Stakeholder Impact Assessment & Recovery Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

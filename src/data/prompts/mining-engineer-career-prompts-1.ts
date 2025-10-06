@@ -1,3 +1,5 @@
+export const categoryName = "Mining Operations & Site Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

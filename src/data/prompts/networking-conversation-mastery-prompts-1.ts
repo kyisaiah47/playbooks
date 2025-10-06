@@ -1,3 +1,5 @@
+export const categoryName = "Building Rapport and Connection";
+
 export const prompts = [
   {
     id: 'prompt-1',

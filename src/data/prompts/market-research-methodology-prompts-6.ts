@@ -1,3 +1,5 @@
+export const categoryName = "Research Planning & Methodology Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

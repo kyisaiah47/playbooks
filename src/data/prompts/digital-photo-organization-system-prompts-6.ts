@@ -1,3 +1,5 @@
+export const categoryName = "Photo Memory Preservation & Storytelling Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

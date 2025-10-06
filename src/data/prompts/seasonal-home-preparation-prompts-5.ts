@@ -1,3 +1,5 @@
+export const categoryName = "Indoor Air Quality & Climate Control";
+
 export const prompts = [
   {
     id: 'prompt-1',

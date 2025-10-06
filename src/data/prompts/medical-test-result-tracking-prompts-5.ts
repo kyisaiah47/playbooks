@@ -1,3 +1,5 @@
+export const categoryName = "Medical Test Preparation and Follow-up Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Alternative and Complementary Therapies";
+
 export const prompts = [
   {
     id: 'prompt-1',

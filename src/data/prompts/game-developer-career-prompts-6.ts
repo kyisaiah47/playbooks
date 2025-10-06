@@ -1,3 +1,5 @@
+export const categoryName = "Creative Process and Design Philosophy";
+
 export const prompts = [
   {
     id: 'prompt-1',

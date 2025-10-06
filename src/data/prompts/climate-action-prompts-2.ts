@@ -1,3 +1,5 @@
+export const categoryName = "Climate Policy and Governance";
+
 export const prompts = [
   {
     id: 'prompt-1',

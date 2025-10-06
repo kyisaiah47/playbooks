@@ -1,3 +1,5 @@
+export const categoryName = "Scientific Principles & Technology Applications";
+
 export const prompts = [
   {
     id: 'prompt-1',

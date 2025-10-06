@@ -1,3 +1,5 @@
+export const categoryName = "Social Context & Lifestyle Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Land Use Planning and Zoning Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

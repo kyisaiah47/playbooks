@@ -1,3 +1,5 @@
+export const categoryName = "Constituent Services and Case Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

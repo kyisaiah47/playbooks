@@ -1,3 +1,5 @@
+export const categoryName = "Exterior Improvements & Curb Appeal";
+
 export const prompts = [
   {
     id: 'prompt-1',

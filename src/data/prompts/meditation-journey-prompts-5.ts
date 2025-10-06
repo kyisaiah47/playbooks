@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual and Philosophical Dimensions of Meditation";
+
 export const prompts = [
   {
     id: 'prompt-1',

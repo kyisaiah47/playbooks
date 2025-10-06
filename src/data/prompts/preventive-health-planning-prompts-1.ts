@@ -1,3 +1,5 @@
+export const categoryName = "Health Risk Assessment & Family History";
+
 export const prompts = [
   {
     id: 'prompt-1',

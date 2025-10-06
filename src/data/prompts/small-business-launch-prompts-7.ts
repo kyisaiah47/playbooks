@@ -1,3 +1,5 @@
+export const categoryName = "Team Building & Human Resources Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

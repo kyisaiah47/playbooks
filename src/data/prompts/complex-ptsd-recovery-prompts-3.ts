@@ -1,3 +1,5 @@
+export const categoryName = "Trauma-Informed Relationships and Boundary Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

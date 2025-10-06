@@ -1,3 +1,5 @@
+export const categoryName = "Dating Environment Navigation & Social Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

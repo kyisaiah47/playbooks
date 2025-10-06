@@ -1,3 +1,5 @@
+export const categoryName = "Dance Styles & Cultural Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

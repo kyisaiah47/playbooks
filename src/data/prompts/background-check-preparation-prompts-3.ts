@@ -1,3 +1,5 @@
+export const categoryName = "Employment History and Professional References Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

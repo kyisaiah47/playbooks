@@ -1,3 +1,5 @@
+export const categoryName = "Energy Efficiency and Environmental Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

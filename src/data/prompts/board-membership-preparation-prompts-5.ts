@@ -1,3 +1,5 @@
+export const categoryName = "Legal Compliance & Ethical Leadership";
+
 export const prompts = [
   {
     id: 'prompt-1',

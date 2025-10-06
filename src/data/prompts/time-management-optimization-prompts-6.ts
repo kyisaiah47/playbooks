@@ -1,3 +1,5 @@
+export const categoryName = "Distraction Management and Environment Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

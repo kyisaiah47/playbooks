@@ -1,3 +1,5 @@
+export const categoryName = "Container Orchestration & Microservices Architecture";
+
 export const prompts = [
   {
     id: 'prompt-1',

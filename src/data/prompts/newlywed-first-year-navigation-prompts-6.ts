@@ -1,3 +1,5 @@
+export const categoryName = "Career & Professional Growth as a Couple";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Climate Justice and Social Equity";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Daily Life Adaptation and Practical Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

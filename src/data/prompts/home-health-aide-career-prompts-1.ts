@@ -1,3 +1,5 @@
+export const categoryName = "Essential Care Skills and Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

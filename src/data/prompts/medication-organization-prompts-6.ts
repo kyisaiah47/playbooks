@@ -1,3 +1,5 @@
+export const categoryName = "Medication Routine and Lifestyle Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

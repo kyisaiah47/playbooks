@@ -1,3 +1,5 @@
+export const categoryName = "Social Context and Situation Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

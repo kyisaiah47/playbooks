@@ -1,3 +1,5 @@
+export const categoryName = "Pain Management & Relief Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

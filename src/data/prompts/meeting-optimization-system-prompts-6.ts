@@ -1,3 +1,5 @@
+export const categoryName = "Meeting Culture & Organizational Behavior Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

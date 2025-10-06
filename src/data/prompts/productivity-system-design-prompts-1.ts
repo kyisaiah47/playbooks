@@ -1,3 +1,5 @@
+export const categoryName = "Systems & Process Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual Disciplines & Personal Growth Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

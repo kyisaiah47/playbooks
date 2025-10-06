@@ -1,3 +1,5 @@
+export const categoryName = "Customer Development & Value Proposition Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

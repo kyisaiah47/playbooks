@@ -1,3 +1,5 @@
+export const categoryName = "Career Development & Professional Growth in Biomedical Engineering";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Wood Movement and Environmental Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

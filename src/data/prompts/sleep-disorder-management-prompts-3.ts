@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Health Symptoms & Medical Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

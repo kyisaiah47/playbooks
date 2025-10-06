@@ -1,3 +1,5 @@
+export const categoryName = "Agent Response Analysis & Communication Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

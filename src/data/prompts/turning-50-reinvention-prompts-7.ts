@@ -1,3 +1,5 @@
+export const categoryName = "Legacy Building and Purpose Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

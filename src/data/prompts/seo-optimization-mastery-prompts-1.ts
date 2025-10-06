@@ -1,3 +1,5 @@
+export const categoryName = "Technical SEO Foundation & Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

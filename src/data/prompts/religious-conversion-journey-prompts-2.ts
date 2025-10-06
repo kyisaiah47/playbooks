@@ -1,3 +1,5 @@
+export const categoryName = "Exploring Different Faith Traditions & Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

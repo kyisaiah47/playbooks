@@ -1,3 +1,5 @@
+export const categoryName = "Mental Health and Psychological Care in Emergency Medicine";
+
 export const prompts = [
   {
     id: 'prompt-1',

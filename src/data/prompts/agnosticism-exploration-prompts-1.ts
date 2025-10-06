@@ -1,3 +1,5 @@
+export const categoryName = "Questioning Certainty and Belief Formation";
+
 export const prompts = [
   {
     id: 'prompt-1',

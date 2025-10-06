@@ -1,3 +1,5 @@
+export const categoryName = "Organizational Response and Workplace Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Breaking Free from Control and Perfectionism";
+
 export const prompts = [
   {
     id: 'prompt-1',

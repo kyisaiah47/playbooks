@@ -1,3 +1,5 @@
+export const categoryName = "Reading Progress & Performance Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

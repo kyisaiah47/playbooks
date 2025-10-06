@@ -1,3 +1,5 @@
+export const categoryName = "Brand Evaluation and Cultural Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

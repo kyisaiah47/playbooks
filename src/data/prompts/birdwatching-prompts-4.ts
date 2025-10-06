@@ -1,3 +1,5 @@
+export const categoryName = "Migration & Seasonal Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

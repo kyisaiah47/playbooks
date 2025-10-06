@@ -1,3 +1,5 @@
+export const categoryName = "Campaign Planning & Cross-Channel Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

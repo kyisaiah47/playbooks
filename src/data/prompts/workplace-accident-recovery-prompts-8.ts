@@ -1,3 +1,5 @@
+export const categoryName = "Technology, Resources, and Knowledge Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

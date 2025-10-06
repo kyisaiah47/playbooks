@@ -1,3 +1,5 @@
+export const categoryName = "Intergenerational Communication & Modern Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

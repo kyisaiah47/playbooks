@@ -1,3 +1,5 @@
+export const categoryName = "Portfolio Construction & Asset Allocation";
+
 export const prompts = [
   {
     id: 'prompt-1',

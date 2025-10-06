@@ -1,3 +1,5 @@
+export const categoryName = "Navigation and Flight Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

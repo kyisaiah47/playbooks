@@ -1,3 +1,5 @@
+export const categoryName = "Equipment, Technology, and Therapeutic Modalities";
+
 export const prompts = [
   {
     id: 'prompt-1',

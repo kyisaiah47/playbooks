@@ -1,3 +1,5 @@
+export const categoryName = "Boundary Setting and Personal Space Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

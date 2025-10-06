@@ -1,3 +1,5 @@
+export const categoryName = "Income Tracking & Expense Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

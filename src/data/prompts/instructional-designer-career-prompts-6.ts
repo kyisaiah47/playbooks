@@ -1,3 +1,5 @@
+export const categoryName = "Assessment & Evaluation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

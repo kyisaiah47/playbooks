@@ -1,3 +1,5 @@
+export const categoryName = "Inventory Management and Demand Forecasting";
+
 export const prompts = [
   {
     id: 'prompt-1',

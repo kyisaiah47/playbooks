@@ -1,3 +1,5 @@
+export const categoryName = "Ethics, Legal Frameworks & Cultural Heritage Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

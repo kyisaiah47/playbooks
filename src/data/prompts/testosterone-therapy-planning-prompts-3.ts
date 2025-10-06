@@ -1,3 +1,5 @@
+export const categoryName = "Monitoring & Response Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

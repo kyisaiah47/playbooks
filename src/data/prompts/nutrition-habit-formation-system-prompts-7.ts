@@ -1,3 +1,5 @@
+export const categoryName = "Mindful Eating & Emotional Food Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

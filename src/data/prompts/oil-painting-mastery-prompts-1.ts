@@ -1,3 +1,5 @@
+export const categoryName = "Fundamental Techniques and Materials";
+
 export const prompts = [
   {
     id: 'prompt-1',

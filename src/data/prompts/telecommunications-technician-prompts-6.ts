@@ -1,3 +1,5 @@
+export const categoryName = "Field Operations & Installation Procedures";
+
 export const prompts = [
   {
     id: 'prompt-1',

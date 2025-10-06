@@ -1,3 +1,5 @@
+export const categoryName = "Network Operations and Maintenance Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

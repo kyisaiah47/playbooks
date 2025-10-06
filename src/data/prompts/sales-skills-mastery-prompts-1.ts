@@ -1,3 +1,5 @@
+export const categoryName = "Prospecting and Lead Generation";
+
 export const prompts = [
   {
     id: 'prompt-1',

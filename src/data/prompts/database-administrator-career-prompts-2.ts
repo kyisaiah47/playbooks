@@ -1,3 +1,5 @@
+export const categoryName = "Database Security and Compliance Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

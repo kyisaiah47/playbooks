@@ -1,3 +1,5 @@
+export const categoryName = "Stress Management and Mindfulness Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

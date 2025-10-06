@@ -1,3 +1,5 @@
+export const categoryName = "Physical Environment and Shopping Triggers";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Income Sources and Social Security Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

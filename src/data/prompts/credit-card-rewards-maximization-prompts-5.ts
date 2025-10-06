@@ -1,3 +1,5 @@
+export const categoryName = "Credit Health & Application Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

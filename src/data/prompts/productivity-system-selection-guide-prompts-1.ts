@@ -1,3 +1,5 @@
+export const categoryName = "Personal Workflow and System Design Preferences";
+
 export const prompts = [
   {
     id: 'prompt-1',

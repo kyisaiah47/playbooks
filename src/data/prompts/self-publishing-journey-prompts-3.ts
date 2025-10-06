@@ -1,3 +1,5 @@
+export const categoryName = "Publishing Platforms & Distribution";
+
 export const prompts = [
   {
     id: 'prompt-1',

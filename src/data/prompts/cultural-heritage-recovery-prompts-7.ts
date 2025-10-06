@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Assessment and Heritage Significance";
+
 export const prompts = [
   {
     id: 'prompt-1',

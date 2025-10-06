@@ -1,3 +1,5 @@
+export const categoryName = "Social Dynamics & Dating Psychology";
+
 export const prompts = [
   {
     id: 'prompt-1',

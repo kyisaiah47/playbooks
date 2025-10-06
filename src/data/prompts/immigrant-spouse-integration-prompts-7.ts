@@ -1,3 +1,5 @@
+export const categoryName = "Housing and Community Establishment";
+
 export const prompts = [
   {
     id: 'prompt-1',

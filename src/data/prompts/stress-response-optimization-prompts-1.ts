@@ -1,3 +1,5 @@
+export const categoryName = "Physiological Stress Indicators and Body Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

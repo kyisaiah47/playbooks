@@ -1,3 +1,5 @@
+export const categoryName = "Bean Origin & Terroir Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

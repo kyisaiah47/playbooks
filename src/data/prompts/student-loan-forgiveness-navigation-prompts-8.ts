@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Relief Options and Backup Strategy Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

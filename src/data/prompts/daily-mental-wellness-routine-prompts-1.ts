@@ -1,3 +1,5 @@
+export const categoryName = "Daily Mindfulness & Emotional Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

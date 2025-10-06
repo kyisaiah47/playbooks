@@ -1,3 +1,5 @@
+export const categoryName = "Threat Intelligence and Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

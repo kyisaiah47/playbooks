@@ -1,3 +1,5 @@
+export const categoryName = "Wine Production Methods and Winemaking Styles";
+
 export const prompts = [
   {
     id: 'prompt-1',

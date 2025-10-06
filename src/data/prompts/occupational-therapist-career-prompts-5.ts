@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Adaptation and Environmental Modifications";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Time Management and Work-Life Balance for Remote Teams";
+
 export const prompts = [
   {
     id: 'prompt-1',

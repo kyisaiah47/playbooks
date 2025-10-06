@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Context & Stakeholder Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Personal Emotional Responses and Coping Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

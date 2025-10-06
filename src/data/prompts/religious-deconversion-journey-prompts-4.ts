@@ -1,3 +1,5 @@
+export const categoryName = "Psychological and Emotional Processing of Faith Transition";
+
 export const prompts = [
   {
     id: 'prompt-1',

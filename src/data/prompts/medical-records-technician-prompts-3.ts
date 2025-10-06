@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Data Quality and Compliance Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

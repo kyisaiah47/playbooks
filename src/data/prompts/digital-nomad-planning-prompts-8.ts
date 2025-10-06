@@ -1,3 +1,5 @@
+export const categoryName = "Digital Tools & Technology Setup";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Reading Experience & Literary Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

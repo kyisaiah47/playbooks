@@ -1,3 +1,5 @@
+export const categoryName = "Consolidation Options and Strategy Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

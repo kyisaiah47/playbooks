@@ -1,3 +1,5 @@
+export const categoryName = "Post-Publication Impact and Career Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

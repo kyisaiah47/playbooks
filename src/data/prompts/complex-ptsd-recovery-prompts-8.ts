@@ -1,3 +1,5 @@
+export const categoryName = "Safety, Trust, and Environmental Stabilization";
+
 export const prompts = [
   {
     id: 'prompt-1',

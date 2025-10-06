@@ -1,3 +1,5 @@
+export const categoryName = "Problem-Solving Methodologies & Analytical Thinking";
+
 export const prompts = [
   {
     id: 'prompt-1',

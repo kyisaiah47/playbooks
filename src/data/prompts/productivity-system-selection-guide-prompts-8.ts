@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Load and Mental Model Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

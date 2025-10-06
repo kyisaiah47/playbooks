@@ -1,3 +1,5 @@
+export const categoryName = "Communication & Negotiation Tactics";
+
 export const prompts = [
   {
     id: 'prompt-1',

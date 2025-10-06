@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Disruptions & Problem-Solving Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

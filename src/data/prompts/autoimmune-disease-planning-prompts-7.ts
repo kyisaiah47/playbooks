@@ -1,3 +1,5 @@
+export const categoryName = "Long-term Health Monitoring and Disease Progression";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Technology Integration and Digital Tools for Commute Enhancement";
+
 export const prompts = [
   {
     id: 'prompt-1',

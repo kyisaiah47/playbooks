@@ -1,3 +1,5 @@
+export const categoryName = "Language Confidence & Psychological Barriers";
+
 export const prompts = [
   {
     id: 'prompt-1',

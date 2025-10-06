@@ -1,3 +1,5 @@
+export const categoryName = "Exercise Variety and Program Adaptation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

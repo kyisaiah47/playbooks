@@ -1,3 +1,5 @@
+export const categoryName = "Asset Allocation & Diversification Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

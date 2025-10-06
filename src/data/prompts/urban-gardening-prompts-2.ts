@@ -1,3 +1,5 @@
+export const categoryName = "Space Optimization and Container Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

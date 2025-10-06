@@ -1,3 +1,5 @@
+export const categoryName = "Piano History and Cultural Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

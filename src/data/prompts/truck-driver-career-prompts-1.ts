@@ -1,3 +1,5 @@
+export const categoryName = "Getting Started in Trucking";
+
 export const prompts = [
   {
     id: 'prompt-1',

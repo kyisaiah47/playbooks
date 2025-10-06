@@ -1,3 +1,5 @@
+export const categoryName = "Family History & Genetic Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

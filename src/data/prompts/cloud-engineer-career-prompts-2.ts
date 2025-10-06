@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Security and Compliance Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Immediate Loss and Initial Response";
+
 export const prompts = [
   {
     id: 'prompt-1',

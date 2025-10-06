@@ -1,3 +1,5 @@
+export const categoryName = "Public Service Leadership and Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

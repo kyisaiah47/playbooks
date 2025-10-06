@@ -1,3 +1,5 @@
+export const categoryName = "Brand Management & Crisis Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

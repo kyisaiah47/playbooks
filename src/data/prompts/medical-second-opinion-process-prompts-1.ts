@@ -1,3 +1,5 @@
+export const categoryName = "Medical Record Documentation and Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

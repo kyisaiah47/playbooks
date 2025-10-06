@@ -1,3 +1,5 @@
+export const categoryName = "Social & Environmental Nutrition Influences";
+
 export const prompts = [
   {
     id: 'prompt-1',

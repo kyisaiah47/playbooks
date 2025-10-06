@@ -1,3 +1,5 @@
+export const categoryName = "Trauma Processing and Healing Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Photography Ethics and Social Responsibility";
+
 export const prompts = [
   {
     id: 'prompt-1',

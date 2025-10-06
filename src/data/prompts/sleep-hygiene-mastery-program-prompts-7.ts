@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Recovery & Restoration Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

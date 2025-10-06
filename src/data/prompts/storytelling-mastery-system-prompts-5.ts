@@ -1,3 +1,5 @@
+export const categoryName = "Conflict & Tension Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

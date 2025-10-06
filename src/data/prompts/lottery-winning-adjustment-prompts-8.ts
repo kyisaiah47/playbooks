@@ -1,3 +1,5 @@
+export const categoryName = "Charitable Giving and Community Impact Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

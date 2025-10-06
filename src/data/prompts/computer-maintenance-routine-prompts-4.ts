@@ -1,3 +1,5 @@
+export const categoryName = "Data Management & Backup Strategy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

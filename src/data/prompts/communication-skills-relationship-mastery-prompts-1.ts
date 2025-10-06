@@ -1,3 +1,5 @@
+export const categoryName = "Active Listening and Empathy Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

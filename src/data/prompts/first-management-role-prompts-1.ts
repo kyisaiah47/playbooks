@@ -1,3 +1,5 @@
+export const categoryName = "Team Dynamics and Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

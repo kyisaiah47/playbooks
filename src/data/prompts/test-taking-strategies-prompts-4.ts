@@ -1,3 +1,5 @@
+export const categoryName = "During-Test Execution and Time Management Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

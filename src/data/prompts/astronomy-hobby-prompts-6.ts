@@ -1,3 +1,5 @@
+export const categoryName = "Astronomy History and Cultural Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

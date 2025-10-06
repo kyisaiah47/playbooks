@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Assistive Solutions Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

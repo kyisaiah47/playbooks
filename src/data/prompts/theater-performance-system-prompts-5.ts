@@ -1,3 +1,5 @@
+export const categoryName = "Venue Operations & Technical Systems Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

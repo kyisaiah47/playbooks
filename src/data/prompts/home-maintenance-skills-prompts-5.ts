@@ -1,3 +1,5 @@
+export const categoryName = "Exterior and Landscaping Maintenance";
+
 export const prompts = [
   {
     id: 'prompt-1',

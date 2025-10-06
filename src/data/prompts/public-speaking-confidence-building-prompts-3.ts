@@ -1,3 +1,5 @@
+export const categoryName = "Overcoming Speaking Anxiety and Building Inner Confidence";
+
 export const prompts = [
   {
     id: 'prompt-1',

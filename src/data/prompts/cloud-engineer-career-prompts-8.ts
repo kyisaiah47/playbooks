@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Infrastructure and Networking Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

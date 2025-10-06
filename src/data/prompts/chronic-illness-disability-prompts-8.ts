@@ -1,3 +1,5 @@
+export const categoryName = "Adaptive Technology & Accessibility Solutions";
+
 export const prompts = [
   {
     id: 'prompt-1',

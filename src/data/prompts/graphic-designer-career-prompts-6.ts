@@ -1,3 +1,5 @@
+export const categoryName = "Design Trends & Cultural Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

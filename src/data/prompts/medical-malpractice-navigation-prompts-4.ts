@@ -1,3 +1,5 @@
+export const categoryName = "Medical Evidence and Treatment Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

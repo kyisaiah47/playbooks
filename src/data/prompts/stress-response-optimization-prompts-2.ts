@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Stress Management and Mental Frameworks";
+
 export const prompts = [
   {
     id: 'prompt-1',

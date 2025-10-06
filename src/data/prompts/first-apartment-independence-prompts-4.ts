@@ -1,3 +1,5 @@
+export const categoryName = "Daily Living Skills & Household Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

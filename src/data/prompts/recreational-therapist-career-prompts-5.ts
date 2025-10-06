@@ -1,3 +1,5 @@
+export const categoryName = "Documentation, Communication, and Interdisciplinary Collaboration";
+
 export const prompts = [
   {
     id: 'prompt-1',

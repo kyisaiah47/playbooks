@@ -1,3 +1,5 @@
+export const categoryName = "Technology Integration and Match Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

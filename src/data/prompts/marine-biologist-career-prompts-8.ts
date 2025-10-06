@@ -1,3 +1,5 @@
+export const categoryName = "Marine Policy & Regulatory Framework Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

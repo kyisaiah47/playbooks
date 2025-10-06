@@ -1,3 +1,5 @@
+export const categoryName = "Legal & Administrative Transition";
+
 export const prompts = [
   {
     id: 'prompt-1',

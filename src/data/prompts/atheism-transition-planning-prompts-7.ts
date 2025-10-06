@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Heritage and Family Dynamics Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

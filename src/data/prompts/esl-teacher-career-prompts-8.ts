@@ -1,3 +1,5 @@
+export const categoryName = "Language Learning Theory & Educational Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

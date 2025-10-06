@@ -1,3 +1,5 @@
+export const categoryName = "Will Updates and Life Event Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Transition Management and Routine Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

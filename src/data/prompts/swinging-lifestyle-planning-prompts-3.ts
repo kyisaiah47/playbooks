@@ -1,3 +1,5 @@
+export const categoryName = "Event Planning & Logistics";
+
 export const prompts = [
   {
     id: 'prompt-1',

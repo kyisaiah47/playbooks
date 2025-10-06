@@ -1,3 +1,5 @@
+export const categoryName = "Success Attribution and Achievement Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

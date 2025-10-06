@@ -1,3 +1,5 @@
+export const categoryName = "Tax Benefits & Educational Investment Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

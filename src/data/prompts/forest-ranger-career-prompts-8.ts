@@ -1,3 +1,5 @@
+export const categoryName = "Recreation Management and Visitor Services";
+
 export const prompts = [
   {
     id: 'prompt-1',

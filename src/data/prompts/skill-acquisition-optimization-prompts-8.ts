@@ -1,3 +1,5 @@
+export const categoryName = "Learning Transfer and Application Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

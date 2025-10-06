@@ -1,3 +1,5 @@
+export const categoryName = "Digital Systems and Microcontroller Repair";
+
 export const prompts = [
   {
     id: 'prompt-1',

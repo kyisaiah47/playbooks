@@ -1,3 +1,5 @@
+export const categoryName = "Local Infrastructure & Services";
+
 export const prompts = [
   {
     id: 'prompt-1',

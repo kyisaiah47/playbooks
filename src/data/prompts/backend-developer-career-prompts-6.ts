@@ -1,3 +1,5 @@
+export const categoryName = "Code Quality and Software Engineering Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

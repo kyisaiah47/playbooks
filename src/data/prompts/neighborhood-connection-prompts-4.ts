@@ -1,3 +1,5 @@
+export const categoryName = "Local Events & Seasonal Activities";
+
 export const prompts = [
   {
     id: 'prompt-1',

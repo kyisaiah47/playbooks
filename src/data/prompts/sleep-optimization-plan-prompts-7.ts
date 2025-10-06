@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition & Dietary Impact on Sleep";
+
 export const prompts = [
   {
     id: 'prompt-1',

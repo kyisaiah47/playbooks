@@ -1,3 +1,5 @@
+export const categoryName = "Daily Operations and Route Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

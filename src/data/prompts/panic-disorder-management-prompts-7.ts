@@ -1,3 +1,5 @@
+export const categoryName = "Social and Relationship Impact Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

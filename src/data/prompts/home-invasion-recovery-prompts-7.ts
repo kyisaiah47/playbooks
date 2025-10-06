@@ -1,3 +1,5 @@
+export const categoryName = "Personal Safety and Behavioral Adaptation Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

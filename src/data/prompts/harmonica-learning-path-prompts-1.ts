@@ -1,3 +1,5 @@
+export const categoryName = "Harmonica Fundamentals & Theory";
+
 export const prompts = [
   {
     id: 'prompt-1',

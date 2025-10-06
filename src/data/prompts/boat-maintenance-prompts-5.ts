@@ -1,3 +1,5 @@
+export const categoryName = "Rigging and Sail Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

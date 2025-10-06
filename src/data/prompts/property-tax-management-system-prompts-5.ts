@@ -1,3 +1,5 @@
+export const categoryName = "Property Records Management and Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

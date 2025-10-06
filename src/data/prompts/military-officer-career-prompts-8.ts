@@ -1,3 +1,5 @@
+export const categoryName = "Operations & Combat Experience Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

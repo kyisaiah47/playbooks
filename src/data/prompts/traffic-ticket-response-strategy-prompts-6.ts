@@ -1,3 +1,5 @@
+export const categoryName = "Personal Case Assessment & Learning Outcomes";
+
 export const prompts = [
   {
     id: 'prompt-1',

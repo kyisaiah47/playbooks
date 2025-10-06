@@ -1,3 +1,5 @@
+export const categoryName = "Content Marketing & Brand Awareness Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Analytics, Monetization & Business Growth";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Managing Guilt, Shame, and Fear of Disappointing Others";
+
 export const prompts = [
   {
     id: 'prompt-1',

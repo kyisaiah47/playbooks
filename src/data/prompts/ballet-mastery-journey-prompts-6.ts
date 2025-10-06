@@ -1,3 +1,5 @@
+export const categoryName = "Ballet Music and Rhythm Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

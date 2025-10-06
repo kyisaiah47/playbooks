@@ -1,3 +1,5 @@
+export const categoryName = "Home Environment & Recovery Space Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

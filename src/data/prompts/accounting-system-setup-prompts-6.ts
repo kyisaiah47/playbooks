@@ -1,3 +1,5 @@
+export const categoryName = "Vendor Selection and Implementation Partnership";
+
 export const prompts = [
   {
     id: 'prompt-1',

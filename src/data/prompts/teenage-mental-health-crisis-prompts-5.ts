@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Mental Health Conditions & Treatment Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

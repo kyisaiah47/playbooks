@@ -1,3 +1,5 @@
+export const categoryName = "Wedding Planning & Timeline Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

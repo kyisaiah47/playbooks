@@ -1,3 +1,5 @@
+export const categoryName = "Evening Digital & Media Consumption Review";
+
 export const prompts = [
   {
     id: 'prompt-1',

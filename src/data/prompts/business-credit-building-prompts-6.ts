@@ -1,3 +1,5 @@
+export const categoryName = "Business Credit Legal Framework & Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

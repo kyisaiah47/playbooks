@@ -1,3 +1,5 @@
+export const categoryName = "Business Impact & Strategic Design Thinking";
+
 export const prompts = [
   {
     id: 'prompt-1',

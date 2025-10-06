@@ -1,3 +1,5 @@
+export const categoryName = "Communication Styles and Adaptation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

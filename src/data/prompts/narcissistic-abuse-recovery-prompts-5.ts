@@ -1,3 +1,5 @@
+export const categoryName = "Breaking Free from Trauma Bonds and Codependent Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Emotional & Caregiver Well-being";
+
 export const prompts = [
   {
     id: 'prompt-1',

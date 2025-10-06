@@ -1,3 +1,5 @@
+export const categoryName = "Character Development & Story Elements";
+
 export const prompts = [
   {
     id: 'prompt-1',

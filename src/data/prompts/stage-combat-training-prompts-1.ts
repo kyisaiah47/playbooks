@@ -1,3 +1,5 @@
+export const categoryName = "Basic Combat Techniques and Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

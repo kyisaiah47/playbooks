@@ -1,3 +1,5 @@
+export const categoryName = "Fashion History & Cultural Influence";
+
 export const prompts = [
   {
     id: 'prompt-1',

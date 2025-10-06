@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Health & Community Safety Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

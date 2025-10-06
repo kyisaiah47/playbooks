@@ -1,3 +1,5 @@
+export const categoryName = "Critical Analysis & Retention Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

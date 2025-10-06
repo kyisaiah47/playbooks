@@ -1,3 +1,5 @@
+export const categoryName = "Digital Tools & Platform Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

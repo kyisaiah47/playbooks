@@ -1,3 +1,5 @@
+export const categoryName = "Provider Selection & Comparison Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

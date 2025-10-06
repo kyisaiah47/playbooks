@@ -1,3 +1,5 @@
+export const categoryName = "Tax Strategy & Legal Framework Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

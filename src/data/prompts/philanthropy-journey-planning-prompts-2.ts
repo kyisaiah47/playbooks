@@ -1,3 +1,5 @@
+export const categoryName = "Cause Areas & Social Impact Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

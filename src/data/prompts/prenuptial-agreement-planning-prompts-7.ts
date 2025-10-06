@@ -1,3 +1,5 @@
+export const categoryName = "Business Interests and Professional Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

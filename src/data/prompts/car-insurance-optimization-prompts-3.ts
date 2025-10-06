@@ -1,3 +1,5 @@
+export const categoryName = "Driver Profile & Behavioral Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

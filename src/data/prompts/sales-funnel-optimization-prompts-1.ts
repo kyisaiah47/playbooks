@@ -1,3 +1,5 @@
+export const categoryName = "Conversion Rate Analysis & Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

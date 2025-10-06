@@ -1,3 +1,5 @@
+export const categoryName = "Pain Management & Symptom Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

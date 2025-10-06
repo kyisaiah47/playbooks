@@ -1,3 +1,5 @@
+export const categoryName = "Housing and Living Situation Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

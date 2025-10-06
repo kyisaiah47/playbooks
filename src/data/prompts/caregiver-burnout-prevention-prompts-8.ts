@@ -1,3 +1,5 @@
+export const categoryName = "Knowledge and Skills Development for Caregiving";
+
 export const prompts = [
   {
     id: 'prompt-1',

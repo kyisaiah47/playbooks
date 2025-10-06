@@ -1,3 +1,5 @@
+export const categoryName = "Solution Research and Knowledge Gathering";
+
 export const prompts = [
   {
     id: 'prompt-1',

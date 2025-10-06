@@ -1,3 +1,5 @@
+export const categoryName = "User Experience & Lifestyle Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Post-Crisis Learning & Organizational Resilience";
+
 export const prompts = [
   {
     id: 'prompt-1',

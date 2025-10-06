@@ -1,3 +1,5 @@
+export const categoryName = "Design Principles and Aesthetic Vision";
+
 export const prompts = [
   {
     id: 'prompt-1',

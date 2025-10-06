@@ -1,3 +1,5 @@
+export const categoryName = "Creative Pursuits & Lifelong Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

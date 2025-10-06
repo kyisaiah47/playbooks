@@ -1,3 +1,5 @@
+export const categoryName = "Digital Footprint and Social Media Audit Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Professional Networking and Mentorship Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

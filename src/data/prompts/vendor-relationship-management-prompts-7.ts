@@ -1,3 +1,5 @@
+export const categoryName = "Vendor Lifecycle Management and Strategic Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

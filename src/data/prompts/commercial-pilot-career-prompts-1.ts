@@ -1,3 +1,5 @@
+export const categoryName = "Flight Training and Certification Pathway";
+
 export const prompts = [
   {
     id: 'prompt-1',

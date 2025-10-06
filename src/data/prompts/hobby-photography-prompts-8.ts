@@ -1,3 +1,5 @@
+export const categoryName = "Photography Community & Social Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

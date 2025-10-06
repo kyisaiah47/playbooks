@@ -1,3 +1,5 @@
+export const categoryName = "Wine Service and Pairing Expertise";
+
 export const prompts = [
   {
     id: 'prompt-1',

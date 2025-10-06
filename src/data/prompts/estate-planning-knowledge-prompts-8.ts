@@ -1,3 +1,5 @@
+export const categoryName = "Estate Planning Communication & Legacy Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

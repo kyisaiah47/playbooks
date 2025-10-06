@@ -1,3 +1,5 @@
+export const categoryName = "Communication Methods & Platform Selection";
+
 export const prompts = [
   {
     id: 'prompt-1',

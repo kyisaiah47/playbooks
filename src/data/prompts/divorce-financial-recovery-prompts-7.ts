@@ -1,3 +1,5 @@
+export const categoryName = "Property Division and Settlement Negotiations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Consonant Precision and Sound Substitution";
+
 export const prompts = [
   {
     id: 'prompt-1',

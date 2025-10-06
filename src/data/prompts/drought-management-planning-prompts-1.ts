@@ -1,3 +1,5 @@
+export const categoryName = "Water Resource Assessment and Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

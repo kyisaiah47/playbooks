@@ -1,3 +1,5 @@
+export const categoryName = "Customer Psychology & Buying Behavior Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

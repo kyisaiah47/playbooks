@@ -1,3 +1,5 @@
+export const categoryName = "Life Skills & Practical Independence";
+
 export const prompts = [
   {
     id: 'prompt-1',

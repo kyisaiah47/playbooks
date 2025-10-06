@@ -1,3 +1,5 @@
+export const categoryName = "Witness & Testimony Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

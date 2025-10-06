@@ -1,3 +1,5 @@
+export const categoryName = "Career & Professional Development Balance";
+
 export const prompts = [
   {
     id: 'prompt-1',

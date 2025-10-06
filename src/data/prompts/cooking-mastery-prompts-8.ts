@@ -1,3 +1,5 @@
+export const categoryName = "Food Science & Cooking Theory";
+
 export const prompts = [
   {
     id: 'prompt-1',

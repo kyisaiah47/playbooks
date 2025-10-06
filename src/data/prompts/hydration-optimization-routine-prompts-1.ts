@@ -1,3 +1,5 @@
+export const categoryName = "Hydration Habits & Personal Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

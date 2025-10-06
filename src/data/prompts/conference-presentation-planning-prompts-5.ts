@@ -1,3 +1,5 @@
+export const categoryName = "Visual Design & Multimedia Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

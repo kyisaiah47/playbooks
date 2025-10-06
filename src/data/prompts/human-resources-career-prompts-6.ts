@@ -1,3 +1,5 @@
+export const categoryName = "Compensation, Benefits & Employee Rewards";
+
 export const prompts = [
   {
     id: 'prompt-1',

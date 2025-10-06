@@ -1,3 +1,5 @@
+export const categoryName = "Service Offerings and Specialization Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

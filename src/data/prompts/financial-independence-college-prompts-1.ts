@@ -1,3 +1,5 @@
+export const categoryName = "Foundation Building & Goal Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

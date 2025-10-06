@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Systems & Regulatory Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

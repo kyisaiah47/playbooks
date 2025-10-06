@@ -1,3 +1,5 @@
+export const categoryName = "Allergen Tracking & Symptom Pattern Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Recovery & Long-Term Mental Wellness";
+
 export const prompts = [
   {
     id: 'prompt-1',

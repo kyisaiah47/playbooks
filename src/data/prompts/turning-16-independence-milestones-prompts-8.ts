@@ -1,3 +1,5 @@
+export const categoryName = "Digital Literacy and Technology Independence";
+
 export const prompts = [
   {
     id: 'prompt-1',

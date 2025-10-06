@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Withdrawal and Physical Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Postural Awareness and Body Mechanics";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Peer Review and Editorial Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

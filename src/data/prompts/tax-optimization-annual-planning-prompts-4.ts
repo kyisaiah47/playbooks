@@ -1,3 +1,5 @@
+export const categoryName = "Income Timing & Tax Rate Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

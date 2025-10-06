@@ -1,3 +1,5 @@
+export const categoryName = "Social Security & Pension Benefits Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

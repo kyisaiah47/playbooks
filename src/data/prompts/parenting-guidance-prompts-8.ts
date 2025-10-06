@@ -1,3 +1,5 @@
+export const categoryName = "Social Skills & Peer Relationships Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

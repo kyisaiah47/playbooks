@@ -1,3 +1,5 @@
+export const categoryName = "Insulation and Climate Control";
+
 export const prompts = [
   {
     id: 'prompt-1',

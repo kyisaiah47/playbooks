@@ -1,3 +1,5 @@
+export const categoryName = "Payment Plans, Hardship Programs, and Relief Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

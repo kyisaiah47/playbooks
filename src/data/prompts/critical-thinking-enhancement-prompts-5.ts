@@ -1,3 +1,5 @@
+export const categoryName = "Reasoning Patterns & Logical Structure Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

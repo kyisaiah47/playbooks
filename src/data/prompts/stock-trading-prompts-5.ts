@@ -1,3 +1,5 @@
+export const categoryName = "Trading Tools & Technology Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

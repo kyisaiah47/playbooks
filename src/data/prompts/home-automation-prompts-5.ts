@@ -1,3 +1,5 @@
+export const categoryName = "Home Automation Planning & Implementation Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

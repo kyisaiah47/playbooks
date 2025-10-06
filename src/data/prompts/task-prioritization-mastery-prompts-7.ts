@@ -1,3 +1,5 @@
+export const categoryName = "Task Completion and Progress Tracking Methodologies";
+
 export const prompts = [
   {
     id: 'prompt-1',

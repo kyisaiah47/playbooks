@@ -1,3 +1,5 @@
+export const categoryName = "Memory Association and Pattern Recognition Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

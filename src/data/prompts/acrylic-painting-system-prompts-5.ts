@@ -1,3 +1,5 @@
+export const categoryName = "Color Theory and Mixing Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

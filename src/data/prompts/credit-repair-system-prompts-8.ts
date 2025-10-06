@@ -1,3 +1,5 @@
+export const categoryName = "Credit Score Factors & Optimization Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

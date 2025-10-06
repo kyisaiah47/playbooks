@@ -1,3 +1,5 @@
+export const categoryName = "Manufacturing & Production Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

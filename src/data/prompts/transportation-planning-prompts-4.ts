@@ -1,3 +1,5 @@
+export const categoryName = "Transportation Equity and Community Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

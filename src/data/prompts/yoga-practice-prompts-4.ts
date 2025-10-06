@@ -1,3 +1,5 @@
+export const categoryName = "Yoga Philosophy & Spiritual Growth";
+
 export const prompts = [
   {
     id: 'prompt-1',

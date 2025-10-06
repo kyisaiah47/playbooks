@@ -1,3 +1,5 @@
+export const categoryName = "Digestive Health and Gut Microbiome";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Task Prioritization & Decision Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

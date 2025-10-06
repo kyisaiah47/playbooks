@@ -1,3 +1,5 @@
+export const categoryName = "Regulatory Compliance & Legal Standards in Midwifery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Health, Wellness & Sustainable Practice Habits";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Food & Catering Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Symptom Tracking & Quality of Life Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

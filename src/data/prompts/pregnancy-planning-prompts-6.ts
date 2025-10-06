@@ -1,3 +1,5 @@
+export const categoryName = "Fertility Awareness & Conception Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

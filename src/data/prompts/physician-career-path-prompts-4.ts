@@ -1,3 +1,5 @@
+export const categoryName = "Medical Education Pathway and Academic Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

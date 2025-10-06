@@ -1,3 +1,5 @@
+export const categoryName = "Test Automation & Tool Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

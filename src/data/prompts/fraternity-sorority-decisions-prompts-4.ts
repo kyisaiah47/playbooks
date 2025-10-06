@@ -1,3 +1,5 @@
+export const categoryName = "Time Management and Academic Balance";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning & Economic Considerations for AI Career Transition";
+
 export const prompts = [
   {
     id: 'prompt-1',

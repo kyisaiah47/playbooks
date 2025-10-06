@@ -1,3 +1,5 @@
+export const categoryName = "Property Damage Assessment and Restoration Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

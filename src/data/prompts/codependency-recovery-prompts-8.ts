@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Regulation and Inner Child Work";
+
 export const prompts = [
   {
     id: 'prompt-1',

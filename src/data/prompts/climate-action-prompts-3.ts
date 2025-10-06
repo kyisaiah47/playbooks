@@ -1,3 +1,5 @@
+export const categoryName = "Sustainable Living and Lifestyle Transitions";
+
 export const prompts = [
   {
     id: 'prompt-1',

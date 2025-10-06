@@ -1,3 +1,5 @@
+export const categoryName = "Parenting Approaches and Child Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

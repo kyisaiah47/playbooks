@@ -1,3 +1,5 @@
+export const categoryName = "Rental Process and Landlord Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

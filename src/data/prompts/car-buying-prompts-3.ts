@@ -1,3 +1,5 @@
+export const categoryName = "Dealership Experience & Transaction Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

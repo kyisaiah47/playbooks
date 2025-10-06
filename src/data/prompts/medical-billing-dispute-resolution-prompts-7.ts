@@ -1,3 +1,5 @@
+export const categoryName = "Appeals Process Management and Timeline Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

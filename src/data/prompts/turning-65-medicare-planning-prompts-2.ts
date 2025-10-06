@@ -1,3 +1,5 @@
+export const categoryName = "Medicare Enrollment Timeline and Decision Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

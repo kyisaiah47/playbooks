@@ -1,3 +1,5 @@
+export const categoryName = "Self-Advocacy and Assertiveness Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

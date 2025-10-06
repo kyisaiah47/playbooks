@@ -1,3 +1,5 @@
+export const categoryName = "Alternative & Complementary Healthcare Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Relationship History & Milestones";
+
 export const prompts = [
   {
     id: 'prompt-1',

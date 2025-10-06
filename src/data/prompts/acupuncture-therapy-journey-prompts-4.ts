@@ -1,3 +1,5 @@
+export const categoryName = "Post-Treatment Recovery and Long-Term Wellness Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

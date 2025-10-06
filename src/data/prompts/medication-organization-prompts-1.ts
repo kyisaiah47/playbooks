@@ -1,3 +1,5 @@
+export const categoryName = "Medication Storage and Safety";
+
 export const prompts = [
   {
     id: 'prompt-1',

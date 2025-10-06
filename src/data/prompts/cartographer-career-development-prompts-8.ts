@@ -1,3 +1,5 @@
+export const categoryName = "Innovation & Technology Adaptation in Cartography";
+
 export const prompts = [
   {
     id: 'prompt-1',

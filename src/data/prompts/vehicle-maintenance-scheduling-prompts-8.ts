@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Lifecycle Management & Replacement Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

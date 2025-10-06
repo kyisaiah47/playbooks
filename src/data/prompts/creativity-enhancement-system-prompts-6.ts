@@ -1,3 +1,5 @@
+export const categoryName = "Innovation Triggers & Creative Breakthrough Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Electrical Code Knowledge & Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

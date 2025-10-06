@@ -1,3 +1,5 @@
+export const categoryName = "Research Methods & Information Validation";
+
 export const prompts = [
   {
     id: 'prompt-1',

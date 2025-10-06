@@ -1,3 +1,5 @@
+export const categoryName = "Nutritional Assessment and Goal Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Energy Conservation & Renewable Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

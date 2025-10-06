@@ -1,3 +1,5 @@
+export const categoryName = "Implementation Experience & Continuous Improvement Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

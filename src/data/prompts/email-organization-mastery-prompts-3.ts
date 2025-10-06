@@ -1,3 +1,5 @@
+export const categoryName = "Email Security & Privacy Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

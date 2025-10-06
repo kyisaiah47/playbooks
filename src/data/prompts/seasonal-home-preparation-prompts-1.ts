@@ -1,3 +1,5 @@
+export const categoryName = "Energy Efficiency & Weatherproofing";
+
 export const prompts = [
   {
     id: 'prompt-1',

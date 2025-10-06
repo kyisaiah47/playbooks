@@ -1,3 +1,5 @@
+export const categoryName = "Heat Wave Health & Safety Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

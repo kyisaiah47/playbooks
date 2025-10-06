@@ -1,3 +1,5 @@
+export const categoryName = "Risk Management & Contingency Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

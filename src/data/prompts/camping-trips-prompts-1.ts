@@ -1,3 +1,5 @@
+export const categoryName = "Campsite Selection & Environment";
+
 export const prompts = [
   {
     id: 'prompt-1',

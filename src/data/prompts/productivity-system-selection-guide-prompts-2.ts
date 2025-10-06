@@ -1,3 +1,5 @@
+export const categoryName = "Current Tools and Technology Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

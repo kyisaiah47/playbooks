@@ -1,3 +1,5 @@
+export const categoryName = "IPO Tax Planning & Wealth Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

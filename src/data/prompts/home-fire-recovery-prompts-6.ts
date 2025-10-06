@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Recovery and Community Support";
+
 export const prompts = [
   {
     id: 'prompt-1',

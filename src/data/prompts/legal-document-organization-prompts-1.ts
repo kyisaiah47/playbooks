@@ -1,3 +1,5 @@
+export const categoryName = "Document Classification and Filing Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

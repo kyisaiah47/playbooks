@@ -1,3 +1,5 @@
+export const categoryName = "Acne Triggers and Pattern Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

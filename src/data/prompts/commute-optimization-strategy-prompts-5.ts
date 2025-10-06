@@ -1,3 +1,5 @@
+export const categoryName = "Personal Comfort and Well-being During Commute";
+
 export const prompts = [
   {
     id: 'prompt-1',

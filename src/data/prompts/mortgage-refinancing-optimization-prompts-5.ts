@@ -1,3 +1,5 @@
+export const categoryName = "Application Process & Decision Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

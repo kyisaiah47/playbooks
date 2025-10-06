@@ -1,3 +1,5 @@
+export const categoryName = "Remote Team Leadership and Management Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

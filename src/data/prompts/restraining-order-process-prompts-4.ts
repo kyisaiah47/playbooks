@@ -1,3 +1,5 @@
+export const categoryName = "Post-Order Compliance and Ongoing Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

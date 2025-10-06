@@ -1,3 +1,5 @@
+export const categoryName = "Scam Awareness & Social Engineering Defense";
+
 export const prompts = [
   {
     id: 'prompt-1',

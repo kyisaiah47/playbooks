@@ -1,3 +1,5 @@
+export const categoryName = "Anatomy, Pathology, and Diagnostic Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

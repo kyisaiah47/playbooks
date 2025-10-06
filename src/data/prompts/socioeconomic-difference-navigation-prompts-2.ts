@@ -1,3 +1,5 @@
+export const categoryName = "Social Capital and Network Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

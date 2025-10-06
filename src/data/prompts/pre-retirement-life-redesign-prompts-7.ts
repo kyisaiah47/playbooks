@@ -1,3 +1,5 @@
+export const categoryName = "Time Management & Lifestyle Rhythm";
+
 export const prompts = [
   {
     id: 'prompt-1',

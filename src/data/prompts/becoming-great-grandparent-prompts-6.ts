@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning and Estate Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Policies and Compliance Investigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

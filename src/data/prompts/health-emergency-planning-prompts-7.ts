@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Response Team Organization and Leadership Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

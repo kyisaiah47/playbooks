@@ -1,3 +1,5 @@
+export const categoryName = "Digital Well-being Assessment & Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

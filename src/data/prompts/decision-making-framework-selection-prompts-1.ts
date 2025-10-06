@@ -1,3 +1,5 @@
+export const categoryName = "Framework Comparison and Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Management & Business Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

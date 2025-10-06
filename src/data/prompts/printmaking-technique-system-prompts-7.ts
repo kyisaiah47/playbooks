@@ -1,3 +1,5 @@
+export const categoryName = "Historical Context and Cultural Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

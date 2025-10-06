@@ -1,3 +1,5 @@
+export const categoryName = "Understanding and Education About Asthma Condition";
+
 export const prompts = [
   {
     id: 'prompt-1',

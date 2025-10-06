@@ -1,3 +1,5 @@
+export const categoryName = "Medication Interactions and Contraindications";
+
 export const prompts = [
   {
     id: 'prompt-1',

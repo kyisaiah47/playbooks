@@ -1,3 +1,5 @@
+export const categoryName = "Bias Recognition and Impartiality";
+
 export const prompts = [
   {
     id: 'prompt-1',

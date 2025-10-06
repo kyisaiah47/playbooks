@@ -1,3 +1,5 @@
+export const categoryName = "Loan Portfolio Analysis & Financial Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle Habits & Daily Routines";
+
 export const prompts = [
   {
     id: 'prompt-1',

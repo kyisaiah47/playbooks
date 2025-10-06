@@ -1,3 +1,5 @@
+export const categoryName = "Photo Metadata & Tagging Strategy Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

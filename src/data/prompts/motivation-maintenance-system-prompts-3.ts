@@ -1,3 +1,5 @@
+export const categoryName = "Values and Identity Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

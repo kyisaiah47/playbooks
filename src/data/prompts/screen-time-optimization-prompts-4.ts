@@ -1,3 +1,5 @@
+export const categoryName = "Productivity & Focus Enhancement Through Digital Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

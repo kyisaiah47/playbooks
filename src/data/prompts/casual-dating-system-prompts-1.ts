@@ -1,3 +1,5 @@
+export const categoryName = "Communication & Connection Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

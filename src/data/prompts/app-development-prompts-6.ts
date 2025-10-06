@@ -1,3 +1,5 @@
+export const categoryName = "Development Workflow & Team Collaboration";
+
 export const prompts = [
   {
     id: 'prompt-1',

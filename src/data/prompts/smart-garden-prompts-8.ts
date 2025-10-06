@@ -1,3 +1,5 @@
+export const categoryName = "Resource Management & Sustainability Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Timing and Follow-Through Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

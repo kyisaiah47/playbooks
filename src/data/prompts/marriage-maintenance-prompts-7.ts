@@ -1,3 +1,5 @@
+export const categoryName = "External Influences & Support Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

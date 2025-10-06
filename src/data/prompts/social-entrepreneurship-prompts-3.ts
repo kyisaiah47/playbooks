@@ -1,3 +1,5 @@
+export const categoryName = "Business Models & Financial Sustainability";
+
 export const prompts = [
   {
     id: 'prompt-1',

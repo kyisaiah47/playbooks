@@ -1,3 +1,5 @@
+export const categoryName = "Climate Adaptation & Long-term Resilience Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

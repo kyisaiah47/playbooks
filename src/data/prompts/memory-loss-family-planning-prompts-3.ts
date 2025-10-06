@@ -1,3 +1,5 @@
+export const categoryName = "Legal & Financial Planning for Memory Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Medication Adherence and Routine Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

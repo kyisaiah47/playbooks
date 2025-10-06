@@ -1,3 +1,5 @@
+export const categoryName = "Mental Health & Resilience in Comedy";
+
 export const prompts = [
   {
     id: 'prompt-1',

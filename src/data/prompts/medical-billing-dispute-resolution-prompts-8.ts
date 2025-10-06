@@ -1,3 +1,5 @@
+export const categoryName = "Medical Coding Accuracy and Billing Error Prevention";
+
 export const prompts = [
   {
     id: 'prompt-1',

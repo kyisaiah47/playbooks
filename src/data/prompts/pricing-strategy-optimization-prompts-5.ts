@@ -1,3 +1,5 @@
+export const categoryName = "Implementation Challenges & Change Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

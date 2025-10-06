@@ -1,3 +1,5 @@
+export const categoryName = "Emerging Technologies and Industry Trends";
+
 export const prompts = [
   {
     id: 'prompt-1',

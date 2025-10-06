@@ -1,3 +1,5 @@
+export const categoryName = "Sensory Processing & Environment Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

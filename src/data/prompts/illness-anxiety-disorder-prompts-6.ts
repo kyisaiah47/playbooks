@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Patterns and Thought Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

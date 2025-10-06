@@ -1,3 +1,5 @@
+export const categoryName = "Motivation and Practice Environment Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

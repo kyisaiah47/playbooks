@@ -1,3 +1,5 @@
+export const categoryName = "Client Assessment and Program Design Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

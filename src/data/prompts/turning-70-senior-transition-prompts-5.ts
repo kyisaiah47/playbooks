@@ -1,3 +1,5 @@
+export const categoryName = "Learning and Purpose in Later Life";
+
 export const prompts = [
   {
     id: 'prompt-1',

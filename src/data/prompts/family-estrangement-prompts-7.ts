@@ -1,3 +1,5 @@
+export const categoryName = "Cultural and Generational Influences on Family Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

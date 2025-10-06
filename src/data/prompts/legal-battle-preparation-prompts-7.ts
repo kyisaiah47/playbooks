@@ -1,3 +1,5 @@
+export const categoryName = "Timeline & Procedural Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

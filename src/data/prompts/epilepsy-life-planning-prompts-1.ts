@@ -1,3 +1,5 @@
+export const categoryName = "Medical History & Healthcare Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

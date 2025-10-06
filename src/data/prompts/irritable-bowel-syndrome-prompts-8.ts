@@ -1,3 +1,5 @@
+export const categoryName = "Work and Daily Life Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Software Configuration and Environment Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

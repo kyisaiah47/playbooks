@@ -1,3 +1,5 @@
+export const categoryName = "Journal Selection and Submission Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

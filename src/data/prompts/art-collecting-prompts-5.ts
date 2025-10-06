@@ -1,3 +1,5 @@
+export const categoryName = "Artwork Authentication and Preservation Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

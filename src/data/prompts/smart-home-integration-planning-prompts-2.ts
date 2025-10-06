@@ -1,3 +1,5 @@
+export const categoryName = "Integration Planning & Architecture Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

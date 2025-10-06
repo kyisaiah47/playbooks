@@ -1,3 +1,5 @@
+export const categoryName = "Life Systems & Environment Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

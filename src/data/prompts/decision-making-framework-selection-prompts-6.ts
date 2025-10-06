@@ -1,3 +1,5 @@
+export const categoryName = "Decision Outcomes and Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

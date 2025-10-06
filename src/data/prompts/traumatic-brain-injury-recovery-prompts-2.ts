@@ -1,3 +1,5 @@
+export const categoryName = "Physical Symptoms and Sensory Changes";
+
 export const prompts = [
   {
     id: 'prompt-1',

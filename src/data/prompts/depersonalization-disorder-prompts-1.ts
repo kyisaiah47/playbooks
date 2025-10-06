@@ -1,3 +1,5 @@
+export const categoryName = "Core Symptoms and Experiences";
+
 export const prompts = [
   {
     id: 'prompt-1',

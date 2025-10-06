@@ -1,3 +1,5 @@
+export const categoryName = "Learning Process Analysis and Meta-Cognitive Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

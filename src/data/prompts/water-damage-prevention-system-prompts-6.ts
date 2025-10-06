@@ -1,3 +1,5 @@
+export const categoryName = "Water System Infrastructure & Plumbing Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

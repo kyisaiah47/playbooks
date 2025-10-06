@@ -1,3 +1,5 @@
+export const categoryName = "Family Communication and Collaboration";
+
 export const prompts = [
   {
     id: 'prompt-1',

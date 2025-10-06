@@ -1,3 +1,5 @@
+export const categoryName = "Productivity & Goal Achievement Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

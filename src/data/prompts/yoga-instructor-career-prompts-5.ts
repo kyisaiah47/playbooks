@@ -1,3 +1,5 @@
+export const categoryName = "Mindfulness, Meditation & Spiritual Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

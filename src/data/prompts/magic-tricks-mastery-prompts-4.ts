@@ -1,3 +1,5 @@
+export const categoryName = "Equipment Mastery & Props Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

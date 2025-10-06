@@ -1,3 +1,5 @@
+export const categoryName = "Financial Performance & Strategic Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Dialogue Facilitation and Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

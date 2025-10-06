@@ -1,3 +1,5 @@
+export const categoryName = "Equipment Knowledge & Sound Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

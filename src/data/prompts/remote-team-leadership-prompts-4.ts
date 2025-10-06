@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Remote Work Infrastructure";
+
 export const prompts = [
   {
     id: 'prompt-1',

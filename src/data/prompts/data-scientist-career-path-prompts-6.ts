@@ -1,3 +1,5 @@
+export const categoryName = "Data Science Project Lifecycle & Methodology";
+
 export const prompts = [
   {
     id: 'prompt-1',

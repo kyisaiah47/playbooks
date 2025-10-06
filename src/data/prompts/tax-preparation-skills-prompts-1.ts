@@ -1,3 +1,5 @@
+export const categoryName = "Tax Code Changes and Updates";
+
 export const prompts = [
   {
     id: 'prompt-1',

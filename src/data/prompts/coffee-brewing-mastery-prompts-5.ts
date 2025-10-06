@@ -1,3 +1,5 @@
+export const categoryName = "Water Quality & Chemistry Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

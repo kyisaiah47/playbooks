@@ -1,3 +1,5 @@
+export const categoryName = "Salary Negotiation & Compensation Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

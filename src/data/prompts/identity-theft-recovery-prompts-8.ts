@@ -1,3 +1,5 @@
+export const categoryName = "Digital Security and Account Recovery Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

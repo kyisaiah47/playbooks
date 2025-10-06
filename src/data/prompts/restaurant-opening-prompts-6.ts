@@ -1,3 +1,5 @@
+export const categoryName = "Location & Physical Space Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

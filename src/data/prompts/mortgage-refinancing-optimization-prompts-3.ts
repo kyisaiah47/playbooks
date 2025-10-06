@@ -1,3 +1,5 @@
+export const categoryName = "Lender Evaluation & Rate Comparison";
+
 export const prompts = [
   {
     id: 'prompt-1',

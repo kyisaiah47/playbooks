@@ -1,3 +1,5 @@
+export const categoryName = "Physical Transition and Body Changes";
+
 export const prompts = [
   {
     id: 'prompt-1',

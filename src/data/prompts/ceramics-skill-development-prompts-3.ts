@@ -1,3 +1,5 @@
+export const categoryName = "Kiln Operation and Firing Processes";
+
 export const prompts = [
   {
     id: 'prompt-1',

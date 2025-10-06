@@ -1,3 +1,5 @@
+export const categoryName = "Specialist Referral Quality Assessment & Experience Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

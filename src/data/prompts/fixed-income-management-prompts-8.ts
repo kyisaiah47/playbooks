@@ -1,3 +1,5 @@
+export const categoryName = "Economic Indicators & Macroeconomic Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

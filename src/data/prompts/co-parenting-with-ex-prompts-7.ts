@@ -1,3 +1,5 @@
+export const categoryName = "Special Circumstances & Life Transitions";
+
 export const prompts = [
   {
     id: 'prompt-1',

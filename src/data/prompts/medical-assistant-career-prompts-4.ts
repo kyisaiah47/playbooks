@@ -1,3 +1,5 @@
+export const categoryName = "Medical Knowledge and Clinical Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

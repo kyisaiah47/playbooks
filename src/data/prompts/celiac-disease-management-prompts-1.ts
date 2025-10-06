@@ -1,3 +1,5 @@
+export const categoryName = "Gluten-Free Food Discovery & Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

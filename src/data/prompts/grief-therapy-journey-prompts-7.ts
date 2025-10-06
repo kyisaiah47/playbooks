@@ -1,3 +1,5 @@
+export const categoryName = "Grief Triggers and Environmental Responses";
+
 export const prompts = [
   {
     id: 'prompt-1',

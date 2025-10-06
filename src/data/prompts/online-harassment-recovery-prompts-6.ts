@@ -1,3 +1,5 @@
+export const categoryName = "Rebuilding Digital Identity and Online Presence Safely";
+
 export const prompts = [
   {
     id: 'prompt-1',

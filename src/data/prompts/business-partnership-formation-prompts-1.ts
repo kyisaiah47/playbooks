@@ -1,3 +1,5 @@
+export const categoryName = "Partnership Structure & Legal Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

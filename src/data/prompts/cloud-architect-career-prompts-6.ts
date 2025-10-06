@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Infrastructure Design & Scalability Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

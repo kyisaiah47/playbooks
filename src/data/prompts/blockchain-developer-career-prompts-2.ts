@@ -1,3 +1,5 @@
+export const categoryName = "Blockchain Industry Analysis & Market Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

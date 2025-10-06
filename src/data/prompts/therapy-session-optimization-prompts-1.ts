@@ -1,3 +1,5 @@
+export const categoryName = "Session Progress and Pattern Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Knowledge Synthesis & Reflection Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

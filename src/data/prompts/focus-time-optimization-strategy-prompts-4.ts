@@ -1,3 +1,5 @@
+export const categoryName = "Time Blocking and Scheduling Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Classroom Management and Behavior Support";
+
 export const prompts = [
   {
     id: 'prompt-1',

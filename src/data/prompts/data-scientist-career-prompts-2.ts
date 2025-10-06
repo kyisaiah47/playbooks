@@ -1,3 +1,5 @@
+export const categoryName = "Industry Knowledge & Career Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

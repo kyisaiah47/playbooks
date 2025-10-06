@@ -1,3 +1,5 @@
+export const categoryName = "Evening Curiosity & Learning Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

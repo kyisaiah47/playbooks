@@ -1,3 +1,5 @@
+export const categoryName = "Genre, Style & Literary Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

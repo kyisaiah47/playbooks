@@ -1,3 +1,5 @@
+export const categoryName = "Collaborative Learning and Peer Interaction";
+
 export const prompts = [
   {
     id: 'prompt-1',

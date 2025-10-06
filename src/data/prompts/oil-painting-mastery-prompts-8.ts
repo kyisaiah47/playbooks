@@ -1,3 +1,5 @@
+export const categoryName = "Historical Masters and Artistic Influence";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Leadership & Vision Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

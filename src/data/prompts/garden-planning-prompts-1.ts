@@ -1,3 +1,5 @@
+export const categoryName = "Seasonal Planning and Climate Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

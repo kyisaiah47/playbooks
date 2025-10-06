@@ -1,3 +1,5 @@
+export const categoryName = "Target Audience Analysis and Learner Needs Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

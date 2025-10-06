@@ -1,3 +1,5 @@
+export const categoryName = "Investment Knowledge & Wealth Building Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Learning & Knowledge Exchange";
+
 export const prompts = [
   {
     id: 'prompt-1',

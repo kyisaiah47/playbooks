@@ -1,3 +1,5 @@
+export const categoryName = "Laboratory Documentation and Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Belongings Assessment & Decision Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

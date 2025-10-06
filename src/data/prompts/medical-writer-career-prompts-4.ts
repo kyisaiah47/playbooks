@@ -1,3 +1,5 @@
+export const categoryName = "Writing Quality and Documentation Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

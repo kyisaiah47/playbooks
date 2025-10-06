@@ -1,3 +1,5 @@
+export const categoryName = "Recruitment Process and Selection Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

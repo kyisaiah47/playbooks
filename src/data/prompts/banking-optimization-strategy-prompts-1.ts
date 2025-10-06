@@ -1,3 +1,5 @@
+export const categoryName = "Digital Banking Technology & Innovation";
+
 export const prompts = [
   {
     id: 'prompt-1',

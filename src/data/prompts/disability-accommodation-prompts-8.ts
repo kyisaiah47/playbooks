@@ -1,3 +1,5 @@
+export const categoryName = "Academic and Educational Accommodations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Skills Assessment and Career Positioning";
+
 export const prompts = [
   {
     id: 'prompt-1',

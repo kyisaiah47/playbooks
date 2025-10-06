@@ -1,3 +1,5 @@
+export const categoryName = "Contract Terms and Clause Analysis Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

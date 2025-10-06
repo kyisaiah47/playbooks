@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Physical Symptoms and Mind-Body Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

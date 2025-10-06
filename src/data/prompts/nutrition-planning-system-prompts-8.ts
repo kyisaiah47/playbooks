@@ -1,3 +1,5 @@
+export const categoryName = "Budget Management and Economic Nutrition Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

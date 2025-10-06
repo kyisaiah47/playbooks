@@ -1,3 +1,5 @@
+export const categoryName = "Legal, Financial, and Practical Life Management in Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Acumen & Business Performance";
+
 export const prompts = [
   {
     id: 'prompt-1',

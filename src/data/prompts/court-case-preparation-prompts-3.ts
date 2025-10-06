@@ -1,3 +1,5 @@
+export const categoryName = "Procedural Requirements & Court Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

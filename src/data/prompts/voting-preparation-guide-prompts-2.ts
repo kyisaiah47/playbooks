@@ -1,3 +1,5 @@
+export const categoryName = "Voting Process & Logistics";
+
 export const prompts = [
   {
     id: 'prompt-1',

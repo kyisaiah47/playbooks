@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Heritage and Historical Jewelry Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Post-Surgery Recovery & Healing Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

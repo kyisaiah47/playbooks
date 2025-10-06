@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Tracking and Performance Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

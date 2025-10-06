@@ -1,3 +1,5 @@
+export const categoryName = "Advanced Editing Techniques & Visual Effects";
+
 export const prompts = [
   {
     id: 'prompt-1',

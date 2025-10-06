@@ -1,3 +1,5 @@
+export const categoryName = "Banking and Financial Services Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

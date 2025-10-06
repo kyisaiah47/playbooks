@@ -1,3 +1,5 @@
+export const categoryName = "Supplement Absorption and Bioavailability Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Digital Life & Technology Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

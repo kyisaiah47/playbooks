@@ -1,3 +1,5 @@
+export const categoryName = "Hormone Health & Medical Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

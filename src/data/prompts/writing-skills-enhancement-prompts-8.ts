@@ -1,3 +1,5 @@
+export const categoryName = "Revision Techniques and Editorial Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Reading Comprehension & Retention Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

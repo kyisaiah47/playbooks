@@ -1,3 +1,5 @@
+export const categoryName = "Regulatory Framework Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

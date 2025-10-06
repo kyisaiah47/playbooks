@@ -1,3 +1,5 @@
+export const categoryName = "Source Development & Verification";
+
 export const prompts = [
   {
     id: 'prompt-1',

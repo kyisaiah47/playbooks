@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Sensory Triggers and Responses";
+
 export const prompts = [
   {
     id: 'prompt-1',

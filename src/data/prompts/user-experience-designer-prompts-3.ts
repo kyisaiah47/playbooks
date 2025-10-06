@@ -1,3 +1,5 @@
+export const categoryName = "Design Systems & Pattern Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

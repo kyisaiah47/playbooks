@@ -1,3 +1,5 @@
+export const categoryName = "Disease Progression & Long-term Outlook";
+
 export const prompts = [
   {
     id: 'prompt-1',

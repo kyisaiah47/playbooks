@@ -1,3 +1,5 @@
+export const categoryName = "Quality Control and Finishing Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Property Maintenance & Home Ownership Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

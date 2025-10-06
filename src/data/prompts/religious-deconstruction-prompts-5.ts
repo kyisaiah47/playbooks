@@ -1,3 +1,5 @@
+export const categoryName = "Scripture and Authority Questioning";
+
 export const prompts = [
   {
     id: 'prompt-1',

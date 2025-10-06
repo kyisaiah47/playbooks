@@ -1,3 +1,5 @@
+export const categoryName = "Marine Environmental Monitoring & Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

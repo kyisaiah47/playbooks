@@ -1,3 +1,5 @@
+export const categoryName = "Memory Techniques & Information Processing";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Tax Records Organization and Document Management Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

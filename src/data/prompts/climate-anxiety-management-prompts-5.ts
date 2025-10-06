@@ -1,3 +1,5 @@
+export const categoryName = "Personal Climate Journey & Lifestyle Reflection";
+
 export const prompts = [
   {
     id: 'prompt-1',

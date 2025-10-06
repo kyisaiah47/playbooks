@@ -1,3 +1,5 @@
+export const categoryName = "Wisdom Traditions & Universal Teachings";
+
 export const prompts = [
   {
     id: 'prompt-1',

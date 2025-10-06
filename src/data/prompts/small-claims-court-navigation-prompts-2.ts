@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Court Procedures and Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

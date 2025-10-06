@@ -1,3 +1,5 @@
+export const categoryName = "Relationship Dynamics and Trust Rebuilding";
+
 export const prompts = [
   {
     id: 'prompt-1',

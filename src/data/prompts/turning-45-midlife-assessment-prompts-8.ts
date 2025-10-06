@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle Design and Personal Environment Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

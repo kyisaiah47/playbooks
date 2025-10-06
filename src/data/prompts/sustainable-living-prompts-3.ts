@@ -1,3 +1,5 @@
+export const categoryName = "Waste Reduction & Circular Living";
+
 export const prompts = [
   {
     id: 'prompt-1',

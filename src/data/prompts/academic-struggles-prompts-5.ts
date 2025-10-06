@@ -1,3 +1,5 @@
+export const categoryName = "Academic Challenges & Problem-Solving";
+
 export const prompts = [
   {
     id: 'prompt-1',

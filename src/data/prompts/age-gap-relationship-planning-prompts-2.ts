@@ -1,3 +1,5 @@
+export const categoryName = "Personal Growth and Life Stage Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

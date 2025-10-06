@@ -1,3 +1,5 @@
+export const categoryName = "Provider Communication & Interaction Quality";
+
 export const prompts = [
   {
     id: 'prompt-1',

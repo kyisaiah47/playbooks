@@ -1,3 +1,5 @@
+export const categoryName = "Hardware Components and Circuit Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

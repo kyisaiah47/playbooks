@@ -1,3 +1,5 @@
+export const categoryName = "Personal Values and Autonomy";
+
 export const prompts = [
   {
     id: 'prompt-1',

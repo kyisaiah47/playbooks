@@ -1,3 +1,5 @@
+export const categoryName = "Documentation Systems and Record Management for Dispute Resolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Technical Engineering & Equipment Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

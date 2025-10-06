@@ -1,3 +1,5 @@
+export const categoryName = "Commitment and Long-term Expectations";
+
 export const prompts = [
   {
     id: 'prompt-1',

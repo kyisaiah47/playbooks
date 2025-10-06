@@ -1,3 +1,5 @@
+export const categoryName = "Personal History and Behavioral Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

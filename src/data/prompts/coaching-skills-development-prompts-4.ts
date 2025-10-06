@@ -1,3 +1,5 @@
+export const categoryName = "Coaching Methodology and Framework Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

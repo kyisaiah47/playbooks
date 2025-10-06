@@ -1,3 +1,5 @@
+export const categoryName = "Teaching & Community Connection in Yoga Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

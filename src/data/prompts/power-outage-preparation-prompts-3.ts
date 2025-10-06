@@ -1,3 +1,5 @@
+export const categoryName = "Home Safety and Infrastructure Preparedness";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Form, Structure, and Composition";
+
 export const prompts = [
   {
     id: 'prompt-1',

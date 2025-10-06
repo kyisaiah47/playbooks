@@ -1,3 +1,5 @@
+export const categoryName = "Public Speaking & Presentation Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Timeline and Process Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

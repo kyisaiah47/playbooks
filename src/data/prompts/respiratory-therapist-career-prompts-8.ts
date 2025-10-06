@@ -1,3 +1,5 @@
+export const categoryName = "Regulatory Compliance & Legal Standards in Respiratory Therapy";
+
 export const prompts = [
   {
     id: 'prompt-1',

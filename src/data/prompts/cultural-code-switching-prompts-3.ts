@@ -1,3 +1,5 @@
+export const categoryName = "Social Dynamics and Relationship Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

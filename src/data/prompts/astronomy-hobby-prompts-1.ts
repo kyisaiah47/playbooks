@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Astrophysics and Space Science Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

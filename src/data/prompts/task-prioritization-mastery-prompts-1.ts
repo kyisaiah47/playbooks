@@ -1,3 +1,5 @@
+export const categoryName = "Priority Assessment Frameworks";
+
 export const prompts = [
   {
     id: 'prompt-1',

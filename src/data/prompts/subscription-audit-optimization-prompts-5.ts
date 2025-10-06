@@ -1,3 +1,5 @@
+export const categoryName = "Vendor Relationship & Negotiation Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare & Medical Transition";
+
 export const prompts = [
   {
     id: 'prompt-1',

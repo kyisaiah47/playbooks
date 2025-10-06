@@ -1,3 +1,5 @@
+export const categoryName = "Exit Strategy & Liquidity Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

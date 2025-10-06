@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition and Metabolism Changes";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Breathwork & Mindfulness Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Dating Experience Analysis & Learning Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

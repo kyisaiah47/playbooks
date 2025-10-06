@@ -1,3 +1,5 @@
+export const categoryName = "Industry-Specific Licensing and Regulatory Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Social Dynamics & Peer Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

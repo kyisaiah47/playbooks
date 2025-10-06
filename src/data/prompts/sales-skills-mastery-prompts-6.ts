@@ -1,3 +1,5 @@
+export const categoryName = "Sales Performance Analysis and Improvement";
+
 export const prompts = [
   {
     id: 'prompt-1',

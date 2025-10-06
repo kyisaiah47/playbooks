@@ -1,3 +1,5 @@
+export const categoryName = "Calendar Integration & Workflow Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

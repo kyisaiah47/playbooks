@@ -1,3 +1,5 @@
+export const categoryName = "Automation and DevOps Engineering";
+
 export const prompts = [
   {
     id: 'prompt-1',

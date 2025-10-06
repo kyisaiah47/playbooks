@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Your Smoking Patterns and Triggers";
+
 export const prompts = [
   {
     id: 'prompt-1',

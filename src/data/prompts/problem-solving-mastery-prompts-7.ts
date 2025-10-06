@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Patterns and Mental Models in Problem-Solving";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Preventive Maintenance and Service Intervals";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Transaction Processing and Cash Management Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

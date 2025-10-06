@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Strategy and Legal Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

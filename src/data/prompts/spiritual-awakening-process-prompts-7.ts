@@ -1,3 +1,5 @@
+export const categoryName = "Shadow Work & Emotional Healing";
+
 export const prompts = [
   {
     id: 'prompt-1',

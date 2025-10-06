@@ -1,3 +1,5 @@
+export const categoryName = "Managing OCD Symptoms and Triggers";
+
 export const prompts = [
   {
     id: 'prompt-1',

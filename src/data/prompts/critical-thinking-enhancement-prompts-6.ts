@@ -1,3 +1,5 @@
+export const categoryName = "Metacognitive Awareness & Thinking Process Reflection";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Digital Procurement Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

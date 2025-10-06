@@ -1,3 +1,5 @@
+export const categoryName = "Professional Identity & Career Reflection";
+
 export const prompts = [
   {
     id: 'prompt-1',

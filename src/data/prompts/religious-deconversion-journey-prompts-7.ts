@@ -1,3 +1,5 @@
+export const categoryName = "Critical Analysis of Religious Texts and Doctrine";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Plan Comparison and Decision Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

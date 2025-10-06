@@ -1,3 +1,5 @@
+export const categoryName = "Permits, Codes, and Legal Requirements";
+
 export const prompts = [
   {
     id: 'prompt-1',

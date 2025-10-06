@@ -1,3 +1,5 @@
+export const categoryName = "Claims Management and Financial Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Attention Management and Distraction Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

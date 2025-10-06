@@ -1,3 +1,5 @@
+export const categoryName = "Memory Consolidation and Retention Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

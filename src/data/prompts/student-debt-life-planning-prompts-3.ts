@@ -1,3 +1,5 @@
+export const categoryName = "Loan Types, Terms, and Repayment Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

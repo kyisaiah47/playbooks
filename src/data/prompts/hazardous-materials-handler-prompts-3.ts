@@ -1,3 +1,5 @@
+export const categoryName = "Personal Protective Equipment and Workplace Safety Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

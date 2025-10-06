@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Communication Context and Accent Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

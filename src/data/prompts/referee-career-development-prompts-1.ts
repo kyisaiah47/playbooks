@@ -1,3 +1,5 @@
+export const categoryName = "Game Management and Decision-Making Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

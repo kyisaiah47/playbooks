@@ -5,9 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Home, CreditCard, Search, HandCoins, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, Wallet, Bed, Lightbulb, BarChart, Handshake, Rocket, Zap, Brain, Clock, Dumbbell, Apple, Scale, Camera, Timer, Calculator, BookOpen, GraduationCap, School, Award, Banknote, PiggyBank, Receipt, Focus, Layout, Settings, Package, ClipboardList, ArrowRight, Globe, Plane, Utensils, ChefHat, Microscope, Database, PenSquare, Bookmark, FlaskConical, ShoppingCart, Moon, ExternalLink, Ban, HelpCircle, CheckCircle, Compass, Clipboard, Sunset, Share, Copy } from "lucide-react"
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
-import { getArticlesByTemplate } from "@/registry/articles"
-import { getPromptsByTemplate } from "@/registry/prompts"
 import { Badge } from "@/components/ui/badge"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { RelatedTemplates } from "@/components/template/related-templates"
 import { ThemeSelector } from "@/components/theme-selector"
 import {
@@ -78,47 +77,66 @@ export function TemplataContentSidebar({
 }: TemplataContentSidebarProps & React.ComponentProps<typeof Sidebar>) {
   const [activeTab, setActiveTab] = React.useState<'prompts' | 'resources' | 'related'>('prompts')
   const [searchQuery, setSearchQuery] = React.useState('')
+  const [categoryNameFilter, setCategoryNameFilter] = React.useState<string>('all')
+  const [categoryTypeFilter, setCategoryTypeFilter] = React.useState<string>('all')
   const { setOpen } = useSidebar()
 
   const currentSection = template.sections?.[activeSection]
   const sectionPrompts = currentSection?.reflectionPrompts || []
 
-  // Get prompts from registry
-  const templateRegistryPrompts = getPromptsByTemplate(template.id)
+  // Fetch prompts from API client-side
+  const [templateRegistryPrompts, setTemplateRegistryPrompts] = React.useState<any[]>([])
 
-  // Group registry prompts by their category names
-  const promptCategories = templateRegistryPrompts.reduce((acc, prompt) => {
-    if (!acc[prompt.category]) {
-      acc[prompt.category] = []
-    }
-    acc[prompt.category].push({
-      id: prompt.id,
-      prompt: prompt.prompt,
-      category: prompt.type,
-      helpText: `${prompt.category} - ${prompt.type} prompt`
-    } as ReflectionPrompt)
-    return acc
-  }, {} as Record<string, ReflectionPrompt[]>)
+  React.useEffect(() => {
+    fetch(`/api/prompts?templateId=${template.id}`)
+      .then(res => res.json())
+      .then(data => setTemplateRegistryPrompts(data.prompts || []))
+      .catch(err => console.error('Failed to load prompts:', err))
+  }, [template.id])
 
-  // If we're showing template section prompts, show those, otherwise show registry category prompts
-  const shouldShowRegistryPrompts = currentSection?.title && promptCategories[currentSection.title]
-  const displayPrompts = shouldShowRegistryPrompts
-    ? promptCategories[currentSection.title] || []
-    : [...sectionPrompts, ...Object.values(promptCategories).flat()]
+  // Convert registry prompts to display format with categoryNumber and categoryName
+  const displayPrompts = [...sectionPrompts, ...templateRegistryPrompts.map(p => ({
+    id: p.id,
+    prompt: p.prompt,
+    category: p.category,
+    categoryNumber: p.categoryNumber,
+    categoryName: p.categoryName
+  }))]
 
-  const filteredPrompts = displayPrompts.filter(prompt =>
-    prompt.prompt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    prompt.helpText?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPrompts = displayPrompts.filter((prompt: any) => {
+    const matchesSearch = prompt.prompt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      prompt.category?.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesCategoryName = categoryNameFilter === 'all' || prompt.categoryName === categoryNameFilter
+    const matchesCategoryType = categoryTypeFilter === 'all' || prompt.category === categoryTypeFilter
+    return matchesSearch && matchesCategoryName && matchesCategoryType
+  })
+
+  // Get unique category names and types for filter dropdowns
+  const uniqueCategoryNames = Array.from(new Set(displayPrompts.map((p: any) => p.categoryName).filter(Boolean)))
+  const uniqueCategoryTypes = Array.from(new Set(displayPrompts.map((p: any) => p.category).filter(Boolean)))
+
+  // Articles loading - fetch from API client-side filtered by template
+  const [templateResources, setTemplateResources] = React.useState<any[]>([])
+
+  React.useEffect(() => {
+    // Fetch articles that have this template in their relatedTemplates array
+    fetch(`/api/articles?limit=100`)
+      .then(res => res.json())
+      .then(data => {
+        const articles = data.articles || []
+        // Filter to only articles that have this template ID in relatedTemplates
+        const filtered = articles.filter((a: any) =>
+          a.relatedTemplates && a.relatedTemplates.includes(template.id)
+        )
+        setTemplateResources(filtered)
+      })
+      .catch(err => console.error('Failed to load articles:', err))
+  }, [template.id])
+
+  const filteredResources = templateResources.filter(resource =>
+    resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    resource.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
   )
-
-  // Articles are async - disabled for now
-  const templateResources: any[] = []
-  const filteredResources: any[] = []
-  // const templateResources = getArticlesByTemplate(template.id)
-  // const filteredResources = templateResources.filter(resource =>
-  //   resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //   resource.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-  // )
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -126,6 +144,7 @@ export function TemplataContentSidebar({
       case 'planning': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
       case 'decision': return 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
       case 'research': return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300'
+      case 'reflection': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
       case 'action': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
       default: return 'bg-muted text-muted-foreground'
     }
@@ -301,11 +320,39 @@ export function TemplataContentSidebar({
             </div>
           </div>
           {activeTab !== 'related' && (
-            <SidebarInput
-              placeholder={activeTab === 'prompts' ? 'Search prompts...' : 'Search resources...'}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+            <div className="flex flex-col gap-2">
+              <SidebarInput
+                placeholder={activeTab === 'prompts' ? 'Search prompts...' : 'Search resources...'}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {activeTab === 'prompts' && (
+                <div className="flex gap-2">
+                  <Select value={categoryNameFilter} onValueChange={setCategoryNameFilter}>
+                    <SelectTrigger className="h-9">
+                      <SelectValue placeholder="All Categories" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Categories</SelectItem>
+                      {uniqueCategoryNames.map(cat => (
+                        <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <Select value={categoryTypeFilter} onValueChange={setCategoryTypeFilter}>
+                    <SelectTrigger className="h-9">
+                      <SelectValue placeholder="All Types" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Types</SelectItem>
+                      {uniqueCategoryTypes.map(cat => (
+                        <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
+            </div>
           )}
         </SidebarHeader>
         
@@ -372,12 +419,7 @@ export function TemplataContentSidebar({
                         <ArrowRight className="ml-auto w-3 h-3 opacity-30 group-hover/prompt:opacity-100 group-hover/prompt:translate-x-1 transition-all duration-200" />
                       )}
                     </div>
-                    <span className="font-medium line-clamp-2">{prompt.prompt}</span>
-                    {prompt.helpText && (
-                      <span className="line-clamp-2 text-xs whitespace-break-spaces text-muted-foreground overflow-hidden">
-                        {prompt.helpText}
-                      </span>
-                    )}
+                    <span className="font-medium line-clamp-3">{prompt.prompt}</span>
                     </button>
                   </SubtleGlow>
                 </div>

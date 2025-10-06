@@ -1,3 +1,5 @@
+export const categoryName = "Communication and Boundary Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

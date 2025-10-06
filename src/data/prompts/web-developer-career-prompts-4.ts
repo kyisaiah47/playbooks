@@ -1,3 +1,5 @@
+export const categoryName = "Project Portfolio & Code Quality";
+
 export const prompts = [
   {
     id: 'prompt-1',

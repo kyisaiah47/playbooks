@@ -1,3 +1,5 @@
+export const categoryName = "Financial Impact Assessment and Credit Restoration";
+
 export const prompts = [
   {
     id: 'prompt-1',

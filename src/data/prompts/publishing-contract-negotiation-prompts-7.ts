@@ -1,3 +1,5 @@
+export const categoryName = "Timeline Management and Communication Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

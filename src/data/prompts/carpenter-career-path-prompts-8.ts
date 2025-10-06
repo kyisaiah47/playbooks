@@ -1,3 +1,5 @@
+export const categoryName = "Specialization Areas & Advanced Craftsmanship";
+
 export const prompts = [
   {
     id: 'prompt-1',

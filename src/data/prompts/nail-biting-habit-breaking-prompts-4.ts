@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Coping Mechanisms & Replacement Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

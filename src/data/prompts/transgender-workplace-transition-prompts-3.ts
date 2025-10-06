@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Culture and Support Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

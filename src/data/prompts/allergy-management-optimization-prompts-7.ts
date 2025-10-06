@@ -1,3 +1,5 @@
+export const categoryName = "Social & Community Support Systems for Allergy Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

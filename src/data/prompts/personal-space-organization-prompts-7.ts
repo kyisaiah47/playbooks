@@ -1,3 +1,5 @@
+export const categoryName = "Financial & Resource Management Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

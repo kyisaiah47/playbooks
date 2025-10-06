@@ -1,3 +1,5 @@
+export const categoryName = "Cross-Cultural Interactions & Real-World Application";
+
 export const prompts = [
   {
     id: 'prompt-1',

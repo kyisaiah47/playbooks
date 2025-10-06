@@ -1,3 +1,5 @@
+export const categoryName = "Technology Assessment & Project Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

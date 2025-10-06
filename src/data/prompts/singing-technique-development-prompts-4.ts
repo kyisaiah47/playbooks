@@ -1,3 +1,5 @@
+export const categoryName = "Vocal Range and Flexibility";
+
 export const prompts = [
   {
     id: 'prompt-1',

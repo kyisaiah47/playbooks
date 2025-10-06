@@ -1,3 +1,5 @@
+export const categoryName = "Post-Appointment Follow-up and Continuous Care Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Testing Methodologies and Quality Frameworks";
+
 export const prompts = [
   {
     id: 'prompt-1',

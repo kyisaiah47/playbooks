@@ -1,3 +1,5 @@
+export const categoryName = "Ministry Resources and Administrative Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

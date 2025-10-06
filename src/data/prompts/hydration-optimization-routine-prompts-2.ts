@@ -1,3 +1,5 @@
+export const categoryName = "Hydration Science & Health Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

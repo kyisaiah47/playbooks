@@ -1,3 +1,5 @@
+export const categoryName = "Building Trust and Psychological Safety in Delegation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Stress and Burnout Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

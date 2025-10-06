@@ -1,3 +1,5 @@
+export const categoryName = "Observation and Visual Analysis Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Instrument Mastery & Registration Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

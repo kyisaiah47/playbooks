@@ -1,3 +1,5 @@
+export const categoryName = "User Education & Access Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Addiction and Recovery Processes";
+
 export const prompts = [
   {
     id: 'prompt-1',

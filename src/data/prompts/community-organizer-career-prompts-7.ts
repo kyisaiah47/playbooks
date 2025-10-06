@@ -1,3 +1,5 @@
+export const categoryName = "Data Analysis and Community Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

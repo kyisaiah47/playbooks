@@ -1,3 +1,5 @@
+export const categoryName = "Immune System Science and Personal Health Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Project Planning & Scope Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

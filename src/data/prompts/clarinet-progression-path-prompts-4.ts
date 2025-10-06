@@ -1,3 +1,5 @@
+export const categoryName = "Repertoire & Musical Style Exploration";
+
 export const prompts = [
   {
     id: 'prompt-1',

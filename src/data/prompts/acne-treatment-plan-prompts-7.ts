@@ -1,3 +1,5 @@
+export const categoryName = "Acne Science and Educational Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

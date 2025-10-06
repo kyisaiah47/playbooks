@@ -1,3 +1,5 @@
+export const categoryName = "Territory Management and Market Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

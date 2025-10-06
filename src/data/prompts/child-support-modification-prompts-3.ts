@@ -1,3 +1,5 @@
+export const categoryName = "Child Welfare and Support Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

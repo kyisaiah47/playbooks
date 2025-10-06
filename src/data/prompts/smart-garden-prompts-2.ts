@@ -1,3 +1,5 @@
+export const categoryName = "Garden Planning & Design Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

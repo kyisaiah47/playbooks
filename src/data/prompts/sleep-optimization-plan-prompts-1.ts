@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Environment & Physical Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

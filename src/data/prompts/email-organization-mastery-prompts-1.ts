@@ -1,3 +1,5 @@
+export const categoryName = "Email Workflow Systems & Time Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Traditional Knowledge Systems and Wisdom Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

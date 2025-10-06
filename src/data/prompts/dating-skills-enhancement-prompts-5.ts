@@ -1,3 +1,5 @@
+export const categoryName = "Dating Confidence & Self-Presentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

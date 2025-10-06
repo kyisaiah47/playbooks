@@ -1,3 +1,5 @@
+export const categoryName = "Health Equity and Social Determinants";
+
 export const prompts = [
   {
     id: 'prompt-1',

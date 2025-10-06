@@ -1,3 +1,5 @@
+export const categoryName = "Safety Practices & Equipment Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

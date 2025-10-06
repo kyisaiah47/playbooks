@@ -1,3 +1,5 @@
+export const categoryName = "Professional Ethics & Quality Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

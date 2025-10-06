@@ -1,3 +1,5 @@
+export const categoryName = "Post-Specialist Visit Follow-up & Long-term Care Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Project Communication & Stakeholder Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Relationship Assessment & Strategic Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

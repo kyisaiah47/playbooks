@@ -1,3 +1,5 @@
+export const categoryName = "Financial Goals and Timeline Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

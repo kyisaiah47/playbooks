@@ -1,3 +1,5 @@
+export const categoryName = "Navigating Uncertainty and the Unknown";
+
 export const prompts = [
   {
     id: 'prompt-1',

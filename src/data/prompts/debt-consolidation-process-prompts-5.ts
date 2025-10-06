@@ -1,3 +1,5 @@
+export const categoryName = "Risk Assessment and Decision-Making Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

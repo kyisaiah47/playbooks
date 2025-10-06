@@ -1,3 +1,5 @@
+export const categoryName = "Personal Impact and Recovery Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

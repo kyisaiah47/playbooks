@@ -1,3 +1,5 @@
+export const categoryName = "Water Conservation & Natural Resource Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

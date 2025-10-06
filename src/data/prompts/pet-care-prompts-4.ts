@@ -1,3 +1,5 @@
+export const categoryName = "Pet Nutrition & Feeding Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

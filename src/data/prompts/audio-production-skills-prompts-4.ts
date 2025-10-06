@@ -1,3 +1,5 @@
+export const categoryName = "Mastering and Audio Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

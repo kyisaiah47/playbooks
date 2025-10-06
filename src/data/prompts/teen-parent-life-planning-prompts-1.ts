@@ -1,3 +1,5 @@
+export const categoryName = "Educational Planning and Academic Success";
+
 export const prompts = [
   {
     id: 'prompt-1',

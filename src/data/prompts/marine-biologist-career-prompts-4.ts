@@ -1,3 +1,5 @@
+export const categoryName = "Laboratory Techniques & Data Analysis Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

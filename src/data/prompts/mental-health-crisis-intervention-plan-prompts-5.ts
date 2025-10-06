@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Planning and Follow-up Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

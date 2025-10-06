@@ -1,3 +1,5 @@
+export const categoryName = "Legal Rights and Workplace Compliance Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

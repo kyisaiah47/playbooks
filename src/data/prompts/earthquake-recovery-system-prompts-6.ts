@@ -1,3 +1,5 @@
+export const categoryName = "Financial Recovery & Economic Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

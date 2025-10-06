@@ -1,3 +1,5 @@
+export const categoryName = "Accommodation Types and Effectiveness";
+
 export const prompts = [
   {
     id: 'prompt-1',

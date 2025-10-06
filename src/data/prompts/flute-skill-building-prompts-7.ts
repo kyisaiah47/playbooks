@@ -1,3 +1,5 @@
+export const categoryName = "Physical Health and Instrument Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Contract Review and Legal Document Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

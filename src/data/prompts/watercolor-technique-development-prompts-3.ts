@@ -1,3 +1,5 @@
+export const categoryName = "Water Control and Paper Surface Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

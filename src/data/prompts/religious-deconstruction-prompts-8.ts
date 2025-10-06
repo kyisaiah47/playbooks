@@ -1,3 +1,5 @@
+export const categoryName = "Future Life Vision and Reconstruction";
+
 export const prompts = [
   {
     id: 'prompt-1',

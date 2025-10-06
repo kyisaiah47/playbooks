@@ -1,3 +1,5 @@
+export const categoryName = "Tax Software and Technology Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

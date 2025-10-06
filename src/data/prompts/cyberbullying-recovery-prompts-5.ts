@@ -1,3 +1,5 @@
+export const categoryName = "Technology Safety and Digital Wellness Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

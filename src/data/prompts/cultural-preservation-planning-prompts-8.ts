@@ -1,3 +1,5 @@
+export const categoryName = "Economic and Social Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Power Restoration and Recovery Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

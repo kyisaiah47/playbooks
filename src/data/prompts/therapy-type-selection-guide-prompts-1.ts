@@ -1,3 +1,5 @@
+export const categoryName = "Personal Mental Health History & Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

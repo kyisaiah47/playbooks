@@ -1,3 +1,5 @@
+export const categoryName = "Media Representation and Cultural Narratives";
+
 export const prompts = [
   {
     id: 'prompt-1',

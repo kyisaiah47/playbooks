@@ -1,3 +1,5 @@
+export const categoryName = "Deal Sourcing and Pipeline Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

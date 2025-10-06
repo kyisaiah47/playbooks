@@ -1,3 +1,5 @@
+export const categoryName = "Tools, Equipment & Workspace Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

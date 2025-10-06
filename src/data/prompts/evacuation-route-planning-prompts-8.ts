@@ -1,3 +1,5 @@
+export const categoryName = "Evacuation Timeline Management and Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

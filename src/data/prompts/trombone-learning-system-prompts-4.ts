@@ -1,3 +1,5 @@
+export const categoryName = "Practice Strategy and Learning Progress";
+
 export const prompts = [
   {
     id: 'prompt-1',

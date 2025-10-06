@@ -1,3 +1,5 @@
+export const categoryName = "Decision Timeline & Priority Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

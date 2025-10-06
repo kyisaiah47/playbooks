@@ -1,3 +1,5 @@
+export const categoryName = "Media Consumption & Language Exposure";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Digital Footprint and Information Sharing";
+
 export const prompts = [
   {
     id: 'prompt-1',

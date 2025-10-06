@@ -1,3 +1,5 @@
+export const categoryName = "Treatment History and Progress Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

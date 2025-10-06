@@ -1,3 +1,5 @@
+export const categoryName = "Maintenance Scheduling and Performance Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

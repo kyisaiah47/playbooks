@@ -1,3 +1,5 @@
+export const categoryName = "Beneficiary Management and Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

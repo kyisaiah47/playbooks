@@ -1,3 +1,5 @@
+export const categoryName = "Boundary Awareness and Self-Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Collection Strategy and Personal Acquisition Philosophy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "IP Strategy and Business Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

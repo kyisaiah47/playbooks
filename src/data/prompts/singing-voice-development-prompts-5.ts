@@ -1,3 +1,5 @@
+export const categoryName = "Voice Training Resources and Learning Pathways";
+
 export const prompts = [
   {
     id: 'prompt-1',

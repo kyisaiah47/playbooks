@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Provider Communication & Medical History Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Performance Measurement & Risk Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

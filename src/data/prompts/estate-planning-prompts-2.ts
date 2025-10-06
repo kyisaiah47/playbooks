@@ -1,3 +1,5 @@
+export const categoryName = "Beneficiary Planning & Asset Distribution";
+
 export const prompts = [
   {
     id: 'prompt-1',

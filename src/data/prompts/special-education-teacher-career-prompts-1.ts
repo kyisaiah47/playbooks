@@ -1,3 +1,5 @@
+export const categoryName = "Student Assessment and Progress Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

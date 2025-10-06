@@ -1,3 +1,5 @@
+export const categoryName = "Contract Lifecycle Documentation and Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

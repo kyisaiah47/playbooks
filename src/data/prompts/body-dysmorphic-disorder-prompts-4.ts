@@ -1,3 +1,5 @@
+export const categoryName = "Triggers, Environmental Factors, and Coping Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

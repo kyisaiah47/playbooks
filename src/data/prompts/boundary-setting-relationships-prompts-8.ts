@@ -1,3 +1,5 @@
+export const categoryName = "Boundary Setting in Digital and Modern Contexts";
+
 export const prompts = [
   {
     id: 'prompt-1',

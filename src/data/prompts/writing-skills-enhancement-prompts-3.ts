@@ -1,3 +1,5 @@
+export const categoryName = "Language Mechanics and Style Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

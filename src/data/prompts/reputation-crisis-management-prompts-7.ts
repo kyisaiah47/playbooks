@@ -1,3 +1,5 @@
+export const categoryName = "Digital Reputation Monitoring & Online Crisis Response";
+
 export const prompts = [
   {
     id: 'prompt-1',

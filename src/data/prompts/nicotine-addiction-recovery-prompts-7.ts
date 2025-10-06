@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Therapies and Coping Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

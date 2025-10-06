@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Options & Medication Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

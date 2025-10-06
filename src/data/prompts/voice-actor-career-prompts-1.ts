@@ -1,3 +1,5 @@
+export const categoryName = "Voice Acting Fundamentals & Technique Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

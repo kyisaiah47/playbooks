@@ -1,3 +1,5 @@
+export const categoryName = "Medical Coding and Classification Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

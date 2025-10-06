@@ -1,3 +1,5 @@
+export const categoryName = "Resources, Tools, and Adaptive Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

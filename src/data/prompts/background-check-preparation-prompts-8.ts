@@ -1,3 +1,5 @@
+export const categoryName = "Identity Documentation and Personal Records Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

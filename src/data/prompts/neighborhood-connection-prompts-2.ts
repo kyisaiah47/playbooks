@@ -1,3 +1,5 @@
+export const categoryName = "Neighborhood History & Stories";
+
 export const prompts = [
   {
     id: 'prompt-1',

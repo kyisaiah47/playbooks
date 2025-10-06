@@ -1,3 +1,5 @@
+export const categoryName = "HR Leadership & Strategic Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

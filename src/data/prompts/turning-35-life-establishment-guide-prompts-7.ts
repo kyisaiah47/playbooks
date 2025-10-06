@@ -1,3 +1,5 @@
+export const categoryName = "Life Skills & Practical Knowledge Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

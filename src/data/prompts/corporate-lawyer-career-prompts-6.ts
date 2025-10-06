@@ -1,3 +1,5 @@
+export const categoryName = "Legal Risk Assessment and Strategic Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

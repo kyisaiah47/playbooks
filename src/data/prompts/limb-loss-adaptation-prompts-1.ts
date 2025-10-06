@@ -1,3 +1,5 @@
+export const categoryName = "Prosthetic Technology and Equipment Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

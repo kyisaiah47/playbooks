@@ -1,3 +1,5 @@
+export const categoryName = "Work, Education, and Life Goals";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Productivity Mindset and Mental Framework Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

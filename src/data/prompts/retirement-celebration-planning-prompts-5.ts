@@ -1,3 +1,5 @@
+export const categoryName = "Communication and Coordination Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

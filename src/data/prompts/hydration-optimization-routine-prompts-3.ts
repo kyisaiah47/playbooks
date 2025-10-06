@@ -1,3 +1,5 @@
+export const categoryName = "Hydration Timing & Environmental Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

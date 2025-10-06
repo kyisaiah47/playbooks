@@ -1,3 +1,5 @@
+export const categoryName = "Weekend Creative & Personal Growth Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

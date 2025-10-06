@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Ethics and Legal Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

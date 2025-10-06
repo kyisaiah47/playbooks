@@ -1,3 +1,5 @@
+export const categoryName = "Sustainable Home & Living Spaces";
+
 export const prompts = [
   {
     id: 'prompt-1',

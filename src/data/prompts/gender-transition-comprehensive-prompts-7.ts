@@ -1,3 +1,5 @@
+export const categoryName = "Workplace and Professional Environment Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

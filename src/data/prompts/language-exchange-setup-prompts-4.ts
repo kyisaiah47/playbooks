@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Exchange & Conversation Topics";
+
 export const prompts = [
   {
     id: 'prompt-1',

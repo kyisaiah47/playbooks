@@ -1,3 +1,5 @@
+export const categoryName = "Time Management & Study Planning Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

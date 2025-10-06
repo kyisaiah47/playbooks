@@ -1,3 +1,5 @@
+export const categoryName = "Safety Fundamentals and Workshop Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

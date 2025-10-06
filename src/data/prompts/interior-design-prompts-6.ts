@@ -1,3 +1,5 @@
+export const categoryName = "Style and Aesthetic Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

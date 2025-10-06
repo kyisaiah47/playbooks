@@ -1,3 +1,5 @@
+export const categoryName = "Infrastructure Monitoring and Performance Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

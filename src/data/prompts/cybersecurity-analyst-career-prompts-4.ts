@@ -1,3 +1,5 @@
+export const categoryName = "Security Tools and Technology Stack Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

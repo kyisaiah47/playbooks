@@ -1,3 +1,5 @@
+export const categoryName = "Financial Education & Money Mindset Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

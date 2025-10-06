@@ -1,3 +1,5 @@
+export const categoryName = "DevOps and Deployment Infrastructure";
+
 export const prompts = [
   {
     id: 'prompt-1',

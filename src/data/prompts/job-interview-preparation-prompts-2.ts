@@ -1,3 +1,5 @@
+export const categoryName = "Company Research & Cultural Fit Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

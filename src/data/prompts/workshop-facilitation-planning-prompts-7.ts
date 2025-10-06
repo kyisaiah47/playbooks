@@ -1,3 +1,5 @@
+export const categoryName = "Workshop Assessment and Continuous Improvement";
+
 export const prompts = [
   {
     id: 'prompt-1',

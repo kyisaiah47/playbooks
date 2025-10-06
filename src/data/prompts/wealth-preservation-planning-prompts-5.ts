@@ -1,3 +1,5 @@
+export const categoryName = "Family Wealth Education and Governance";
+
 export const prompts = [
   {
     id: 'prompt-1',

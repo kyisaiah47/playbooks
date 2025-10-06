@@ -1,3 +1,5 @@
+export const categoryName = "Team Collaboration & Communication in Automation";
+
 export const prompts = [
   {
     id: 'prompt-1',

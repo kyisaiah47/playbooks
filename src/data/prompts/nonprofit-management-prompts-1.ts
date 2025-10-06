@@ -1,3 +1,5 @@
+export const categoryName = "Donor Relations & Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

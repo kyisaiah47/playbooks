@@ -1,3 +1,5 @@
+export const categoryName = "Professional and Social Posture Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

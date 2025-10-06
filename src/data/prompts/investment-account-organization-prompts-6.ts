@@ -1,3 +1,5 @@
+export const categoryName = "Account Management & Administrative Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

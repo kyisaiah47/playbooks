@@ -1,3 +1,5 @@
+export const categoryName = "Partnership Compliance & Regulatory Requirements";
+
 export const prompts = [
   {
     id: 'prompt-1',

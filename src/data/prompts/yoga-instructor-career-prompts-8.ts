@@ -1,3 +1,5 @@
+export const categoryName = "Specialization & Advanced Training Pathways";
+
 export const prompts = [
   {
     id: 'prompt-1',

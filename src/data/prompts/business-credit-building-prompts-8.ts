@@ -1,3 +1,5 @@
+export const categoryName = "Business Credit Recovery & Improvement Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

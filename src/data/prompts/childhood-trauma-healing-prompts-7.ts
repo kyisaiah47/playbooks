@@ -1,3 +1,5 @@
+export const categoryName = "Growth Mindset and Personal Transformation";
+
 export const prompts = [
   {
     id: 'prompt-1',

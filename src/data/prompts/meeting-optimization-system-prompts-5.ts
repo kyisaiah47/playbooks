@@ -1,3 +1,5 @@
+export const categoryName = "Meeting Quality Assessment & Performance Metrics";
+
 export const prompts = [
   {
     id: 'prompt-1',

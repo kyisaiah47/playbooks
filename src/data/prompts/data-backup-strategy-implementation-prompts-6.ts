@@ -1,3 +1,5 @@
+export const categoryName = "Testing and Validation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

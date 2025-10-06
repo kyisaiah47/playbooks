@@ -1,3 +1,5 @@
+export const categoryName = "Professional Development and Career Growth in Remote Work";
+
 export const prompts = [
   {
     id: 'prompt-1',

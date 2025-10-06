@@ -1,3 +1,5 @@
+export const categoryName = "Seasonal Planning and Garden Cycles";
+
 export const prompts = [
   {
     id: 'prompt-1',

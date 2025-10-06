@@ -1,3 +1,5 @@
+export const categoryName = "Nutritional Foundation & Dietary Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

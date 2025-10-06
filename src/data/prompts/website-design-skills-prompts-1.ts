@@ -1,3 +1,5 @@
+export const categoryName = "Visual Design Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

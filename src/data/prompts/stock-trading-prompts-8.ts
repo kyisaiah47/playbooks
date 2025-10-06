@@ -1,3 +1,5 @@
+export const categoryName = "News Events & Market Catalysts";
+
 export const prompts = [
   {
     id: 'prompt-1',

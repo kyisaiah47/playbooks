@@ -1,3 +1,5 @@
+export const categoryName = "Scene Analysis and Script Work";
+
 export const prompts = [
   {
     id: 'prompt-1',

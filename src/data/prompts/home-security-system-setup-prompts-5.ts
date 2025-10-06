@@ -1,3 +1,5 @@
+export const categoryName = "Security Integration and User Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Social & Cultural Food Experiences";
+
 export const prompts = [
   {
     id: 'prompt-1',

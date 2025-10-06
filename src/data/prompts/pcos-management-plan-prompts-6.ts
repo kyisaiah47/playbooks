@@ -1,3 +1,5 @@
+export const categoryName = "Hormonal Balance and Reproductive Health";
+
 export const prompts = [
   {
     id: 'prompt-1',

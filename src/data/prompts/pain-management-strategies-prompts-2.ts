@@ -1,3 +1,5 @@
+export const categoryName = "Physical Therapies and Movement Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

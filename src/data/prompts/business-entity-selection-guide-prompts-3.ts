@@ -1,3 +1,5 @@
+export const categoryName = "Operational Management and Compliance Requirements";
+
 export const prompts = [
   {
     id: 'prompt-1',

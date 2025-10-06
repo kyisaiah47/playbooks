@@ -1,3 +1,5 @@
+export const categoryName = "Post-Trial Outcomes and Next Steps Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

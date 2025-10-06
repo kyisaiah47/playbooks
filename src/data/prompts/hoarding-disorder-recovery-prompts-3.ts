@@ -1,3 +1,5 @@
+export const categoryName = "Decision-Making and Letting Go Processes";
+
 export const prompts = [
   {
     id: 'prompt-1',

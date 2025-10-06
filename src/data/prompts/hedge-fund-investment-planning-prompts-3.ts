@@ -1,3 +1,5 @@
+export const categoryName = "Investment Strategy & Decision Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

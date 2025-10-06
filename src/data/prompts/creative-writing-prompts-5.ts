@@ -1,3 +1,5 @@
+export const categoryName = "Genre Conventions & Literary Traditions";
+
 export const prompts = [
   {
     id: 'prompt-1',

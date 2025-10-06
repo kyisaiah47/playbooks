@@ -1,3 +1,5 @@
+export const categoryName = "OCD Myths, Misconceptions, and Public Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

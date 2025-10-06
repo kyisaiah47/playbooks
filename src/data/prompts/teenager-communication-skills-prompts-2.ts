@@ -1,3 +1,5 @@
+export const categoryName = "Active Listening & Understanding Others";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Practices and Traditions";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Travel and Social Situation Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

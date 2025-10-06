@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Debt Types and Interest Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

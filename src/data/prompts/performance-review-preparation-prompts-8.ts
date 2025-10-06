@@ -1,3 +1,5 @@
+export const categoryName = "Performance Metrics & Goal Achievement";
+
 export const prompts = [
   {
     id: 'prompt-1',

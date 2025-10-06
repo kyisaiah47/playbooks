@@ -1,3 +1,5 @@
+export const categoryName = "Legal and Ethical Responsibilities in Athletic Training";
+
 export const prompts = [
   {
     id: 'prompt-1',

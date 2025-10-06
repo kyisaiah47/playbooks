@@ -1,3 +1,5 @@
+export const categoryName = "Ethics and Power Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

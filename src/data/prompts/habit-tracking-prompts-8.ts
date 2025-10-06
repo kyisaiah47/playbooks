@@ -1,3 +1,5 @@
+export const categoryName = "Habit Maintenance & Long-term Sustainability";
+
 export const prompts = [
   {
     id: 'prompt-1',

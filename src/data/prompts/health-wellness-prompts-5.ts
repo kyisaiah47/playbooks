@@ -1,3 +1,5 @@
+export const categoryName = "Preventive Health & Lifestyle Medicine";
+
 export const prompts = [
   {
     id: 'prompt-1',

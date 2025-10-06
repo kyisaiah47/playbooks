@@ -1,3 +1,5 @@
+export const categoryName = "Specialized Populations and Treatment Settings";
+
 export const prompts = [
   {
     id: 'prompt-1',

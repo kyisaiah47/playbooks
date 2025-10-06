@@ -1,3 +1,5 @@
+export const categoryName = "Musical Technology & Modern Learning Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Insurance Literacy and Regulatory Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

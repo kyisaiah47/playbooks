@@ -1,3 +1,5 @@
+export const categoryName = "Light, Shadow, and Atmospheric Effects";
+
 export const prompts = [
   {
     id: 'prompt-1',

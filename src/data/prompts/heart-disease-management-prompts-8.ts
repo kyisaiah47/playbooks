@@ -1,3 +1,5 @@
+export const categoryName = "Recovery and Rehabilitation Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

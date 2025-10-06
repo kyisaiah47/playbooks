@@ -1,3 +1,5 @@
+export const categoryName = "IBS Research and Knowledge Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

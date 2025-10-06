@@ -1,3 +1,5 @@
+export const categoryName = "Vocal Anatomy and Breath Support Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

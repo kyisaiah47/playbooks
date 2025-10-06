@@ -1,3 +1,5 @@
+export const categoryName = "Goal Learning & Knowledge Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

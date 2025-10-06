@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Personal Boundaries and Saying No";
+
 export const prompts = [
   {
     id: 'prompt-1',

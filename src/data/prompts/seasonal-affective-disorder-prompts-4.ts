@@ -1,3 +1,5 @@
+export const categoryName = "Social Support and Lifestyle Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

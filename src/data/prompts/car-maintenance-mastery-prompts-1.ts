@@ -1,3 +1,5 @@
+export const categoryName = "Diagnostic Skills and Problem-Solving";
+
 export const prompts = [
   {
     id: 'prompt-1',

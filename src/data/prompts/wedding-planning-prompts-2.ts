@@ -1,3 +1,5 @@
+export const categoryName = "Guest Management & Wedding Party Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

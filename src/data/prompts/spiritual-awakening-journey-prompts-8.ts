@@ -1,3 +1,5 @@
+export const categoryName = "Universal Connection & Cosmic Consciousness";
+
 export const prompts = [
   {
     id: 'prompt-1',

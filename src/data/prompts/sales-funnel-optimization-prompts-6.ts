@@ -1,3 +1,5 @@
+export const categoryName = "Customer Retention & Lifecycle Value Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

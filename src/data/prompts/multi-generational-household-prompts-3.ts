@@ -1,3 +1,5 @@
+export const categoryName = "Health & Wellness Across Generations";
+
 export const prompts = [
   {
     id: 'prompt-1',

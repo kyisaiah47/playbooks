@@ -1,3 +1,5 @@
+export const categoryName = "Banjo Fundamentals and Setup";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Communication Foundations & Emotional Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

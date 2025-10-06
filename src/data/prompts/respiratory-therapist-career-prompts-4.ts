@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Environment & Team Collaboration Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Occupational Disease Surveillance and Health Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

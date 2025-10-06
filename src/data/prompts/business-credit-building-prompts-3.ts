@@ -1,3 +1,5 @@
+export const categoryName = "Business Credit Application & Approval Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Land & Territory Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

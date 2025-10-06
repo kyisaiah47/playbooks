@@ -1,3 +1,5 @@
+export const categoryName = "Core Clinical Competencies & Evidence-Based Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

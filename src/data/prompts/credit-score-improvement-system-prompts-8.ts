@@ -1,3 +1,5 @@
+export const categoryName = "Credit Utilization and Account Management Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

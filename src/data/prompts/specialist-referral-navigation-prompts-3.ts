@@ -1,3 +1,5 @@
+export const categoryName = "Specialist Selection & Decision-Making Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

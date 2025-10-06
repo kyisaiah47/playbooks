@@ -1,3 +1,5 @@
+export const categoryName = "Interdisciplinary Collaboration & Communication in Biomedical Engineering";
+
 export const prompts = [
   {
     id: 'prompt-1',

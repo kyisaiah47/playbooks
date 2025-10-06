@@ -1,3 +1,5 @@
+export const categoryName = "Child Matching and Profile Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

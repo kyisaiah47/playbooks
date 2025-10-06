@@ -1,3 +1,5 @@
+export const categoryName = "Trust, Vulnerability, and Relationship Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

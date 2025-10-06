@@ -1,3 +1,5 @@
+export const categoryName = "Executive Calendar & Time Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

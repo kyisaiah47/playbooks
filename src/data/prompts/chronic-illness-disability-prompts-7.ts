@@ -1,3 +1,5 @@
+export const categoryName = "Medication & Supplement Knowledge Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

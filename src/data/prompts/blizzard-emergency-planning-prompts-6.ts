@@ -1,3 +1,5 @@
+export const categoryName = "Community Safety and Neighborhood Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Value Creation & Deal Structure Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Personal Ministry Formation and Calling";
+
 export const prompts = [
   {
     id: 'prompt-1',

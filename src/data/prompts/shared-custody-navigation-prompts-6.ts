@@ -1,3 +1,5 @@
+export const categoryName = "Holiday and Special Occasion Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

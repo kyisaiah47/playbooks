@@ -1,3 +1,5 @@
+export const categoryName = "Framework Adaptation and Customization";
+
 export const prompts = [
   {
     id: 'prompt-1',

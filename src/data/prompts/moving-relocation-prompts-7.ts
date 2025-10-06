@@ -1,3 +1,5 @@
+export const categoryName = "Post-Move Settlement & Community Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

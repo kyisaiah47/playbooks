@@ -1,3 +1,5 @@
+export const categoryName = "Park Resources and Visitor Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

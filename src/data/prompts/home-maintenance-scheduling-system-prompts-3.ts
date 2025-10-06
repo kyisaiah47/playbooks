@@ -1,3 +1,5 @@
+export const categoryName = "Home Maintenance Costs & Budget Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Tax Implications and Estate Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

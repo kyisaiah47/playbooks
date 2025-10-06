@@ -1,3 +1,5 @@
+export const categoryName = "Influence & Persuasion Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

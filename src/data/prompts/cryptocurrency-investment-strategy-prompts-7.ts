@@ -1,3 +1,5 @@
+export const categoryName = "Network Dynamics & Ecosystem Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

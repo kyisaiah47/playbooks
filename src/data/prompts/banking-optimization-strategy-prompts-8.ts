@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Partnerships & Ecosystem Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

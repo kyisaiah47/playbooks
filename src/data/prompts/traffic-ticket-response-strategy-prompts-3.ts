@@ -1,3 +1,5 @@
+export const categoryName = "Defense Preparation & Strategy Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

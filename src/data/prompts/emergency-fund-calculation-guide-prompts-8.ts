@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Fund Tax Implications & Legal Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

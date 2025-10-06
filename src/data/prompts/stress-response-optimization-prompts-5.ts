@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Techniques and Stress Resilience Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

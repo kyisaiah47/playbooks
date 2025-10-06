@@ -1,3 +1,5 @@
+export const categoryName = "Workplace and Academic Performance Impacts";
+
 export const prompts = [
   {
     id: 'prompt-1',

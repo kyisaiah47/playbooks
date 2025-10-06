@@ -1,3 +1,5 @@
+export const categoryName = "Maritime Law and Port Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

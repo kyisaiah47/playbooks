@@ -1,3 +1,5 @@
+export const categoryName = "Technique Mastery & Skill Development Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

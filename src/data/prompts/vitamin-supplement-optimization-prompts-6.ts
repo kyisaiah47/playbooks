@@ -1,3 +1,5 @@
+export const categoryName = "Supplement Cost-Effectiveness and Budget Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

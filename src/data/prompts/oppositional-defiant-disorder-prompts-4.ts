@@ -1,3 +1,5 @@
+export const categoryName = "Educational Impact and Academic Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Performance Optimization & Capacity Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

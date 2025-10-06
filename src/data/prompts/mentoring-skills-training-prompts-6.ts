@@ -1,3 +1,5 @@
+export const categoryName = "Mentoring Challenges and Problem-Solving Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

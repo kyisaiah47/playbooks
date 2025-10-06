@@ -1,3 +1,5 @@
+export const categoryName = "DeFi & Blockchain Technology Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

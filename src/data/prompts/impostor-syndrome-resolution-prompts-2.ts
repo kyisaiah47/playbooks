@@ -1,3 +1,5 @@
+export const categoryName = "Skills and Competence Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

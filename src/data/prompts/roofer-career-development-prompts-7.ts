@@ -1,3 +1,5 @@
+export const categoryName = "Quality Control & Problem-Solving Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

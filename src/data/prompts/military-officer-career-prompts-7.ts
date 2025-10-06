@@ -1,3 +1,5 @@
+export const categoryName = "Military Culture & Organizational Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

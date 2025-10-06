@@ -1,3 +1,5 @@
+export const categoryName = "Professional Development and Career Growth in Health Information Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

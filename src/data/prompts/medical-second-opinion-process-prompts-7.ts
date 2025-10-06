@@ -1,3 +1,5 @@
+export const categoryName = "Specialist Evaluation and Second Opinion Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

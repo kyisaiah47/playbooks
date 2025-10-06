@@ -1,3 +1,5 @@
+export const categoryName = "Screen Time Impact Assessment & Recovery Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

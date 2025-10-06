@@ -1,3 +1,5 @@
+export const categoryName = "Living Space Management & Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

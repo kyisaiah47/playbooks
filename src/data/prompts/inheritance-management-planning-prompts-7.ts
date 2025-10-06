@@ -1,3 +1,5 @@
+export const categoryName = "Business Succession and Professional Legacy";
+
 export const prompts = [
   {
     id: 'prompt-1',

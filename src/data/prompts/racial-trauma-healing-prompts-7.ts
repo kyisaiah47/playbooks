@@ -1,3 +1,5 @@
+export const categoryName = "Self-Advocacy and Boundary Setting for Healing";
+
 export const prompts = [
   {
     id: 'prompt-1',

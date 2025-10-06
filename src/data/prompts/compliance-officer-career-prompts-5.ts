@@ -1,3 +1,5 @@
+export const categoryName = "Ethics and Compliance Culture Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Community and Social Support Networks";
+
 export const prompts = [
   {
     id: 'prompt-1',

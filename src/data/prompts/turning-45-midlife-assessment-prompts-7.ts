@@ -1,3 +1,5 @@
+export const categoryName = "Creative Expression and Intellectual Fulfillment Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

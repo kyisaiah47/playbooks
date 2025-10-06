@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Digital Music Platform Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

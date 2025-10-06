@@ -1,3 +1,5 @@
+export const categoryName = "Collection Management & Research Methodology";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Regulation and Stress Response Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

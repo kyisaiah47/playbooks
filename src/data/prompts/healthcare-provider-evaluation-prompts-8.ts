@@ -1,3 +1,5 @@
+export const categoryName = "Provider Specialization & Expertise Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

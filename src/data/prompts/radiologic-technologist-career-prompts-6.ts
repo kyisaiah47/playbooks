@@ -1,3 +1,5 @@
+export const categoryName = "Quality Assurance and Regulatory Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

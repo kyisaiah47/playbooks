@@ -1,3 +1,5 @@
+export const categoryName = "Digital Asset Inventory and Access Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Prayer & Contemplative Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

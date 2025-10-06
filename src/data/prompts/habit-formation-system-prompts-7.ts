@@ -1,3 +1,5 @@
+export const categoryName = "Habit Integration & Life Systems Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

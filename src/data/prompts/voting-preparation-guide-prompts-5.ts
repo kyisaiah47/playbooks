@@ -1,3 +1,5 @@
+export const categoryName = "Media Literacy & Information Sources";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Community Building & Cultural Belonging";
+
 export const prompts = [
   {
     id: 'prompt-1',

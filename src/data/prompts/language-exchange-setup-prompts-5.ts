@@ -1,3 +1,5 @@
+export const categoryName = "Session Structure & Time Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

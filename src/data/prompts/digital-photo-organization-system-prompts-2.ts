@@ -1,3 +1,5 @@
+export const categoryName = "Digital Asset Management & Workflow Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

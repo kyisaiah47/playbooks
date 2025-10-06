@@ -1,3 +1,5 @@
+export const categoryName = "Final Arrangements and Memorial Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

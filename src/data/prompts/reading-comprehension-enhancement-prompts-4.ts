@@ -1,3 +1,5 @@
+export const categoryName = "Comprehension Monitoring and Learning Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

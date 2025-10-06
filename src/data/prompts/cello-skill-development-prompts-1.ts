@@ -1,3 +1,5 @@
+export const categoryName = "Bow Technique and Sound Production";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Personal Allergy Journey & Lifestyle Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

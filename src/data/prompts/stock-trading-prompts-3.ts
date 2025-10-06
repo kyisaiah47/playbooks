@@ -1,3 +1,5 @@
+export const categoryName = "Trading Psychology & Performance Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

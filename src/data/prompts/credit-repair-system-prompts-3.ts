@@ -1,3 +1,5 @@
+export const categoryName = "Credit Building & Improvement Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

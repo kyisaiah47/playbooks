@@ -1,3 +1,5 @@
+export const categoryName = "Healing Timeline and Recovery Milestones";
+
 export const prompts = [
   {
     id: 'prompt-1',

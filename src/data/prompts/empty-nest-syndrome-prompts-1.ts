@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Transition and Identity Shifts";
+
 export const prompts = [
   {
     id: 'prompt-1',

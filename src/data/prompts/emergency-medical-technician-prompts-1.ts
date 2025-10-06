@@ -1,3 +1,5 @@
+export const categoryName = "Patient Assessment and Vital Signs Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

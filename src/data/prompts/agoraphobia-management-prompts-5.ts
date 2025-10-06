@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Safety and Comfort Zones";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Digital Tools in Geology";
+
 export const prompts = [
   {
     id: 'prompt-1',

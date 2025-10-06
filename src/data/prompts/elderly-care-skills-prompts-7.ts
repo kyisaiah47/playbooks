@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Health & Mental Stimulation Activities";
+
 export const prompts = [
   {
     id: 'prompt-1',

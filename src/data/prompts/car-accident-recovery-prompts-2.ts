@@ -1,3 +1,5 @@
+export const categoryName = "Medical Care and Health Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

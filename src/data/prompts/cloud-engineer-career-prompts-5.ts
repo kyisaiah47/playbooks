@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Cost Optimization and Financial Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

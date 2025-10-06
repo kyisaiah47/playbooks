@@ -1,3 +1,5 @@
+export const categoryName = "Divine Connection and Higher Consciousness";
+
 export const prompts = [
   {
     id: 'prompt-1',

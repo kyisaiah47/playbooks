@@ -1,3 +1,5 @@
+export const categoryName = "Sensors and Data Acquisition Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

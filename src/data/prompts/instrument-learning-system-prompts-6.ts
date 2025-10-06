@@ -1,3 +1,5 @@
+export const categoryName = "Musical Community & Social Learning Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

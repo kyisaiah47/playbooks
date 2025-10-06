@@ -1,3 +1,5 @@
+export const categoryName = "Coffee Processing & Post-Harvest Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

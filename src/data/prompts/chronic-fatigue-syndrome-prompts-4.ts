@@ -1,3 +1,5 @@
+export const categoryName = "Sleep & Recovery Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

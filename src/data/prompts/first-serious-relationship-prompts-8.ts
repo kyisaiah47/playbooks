@@ -1,3 +1,5 @@
+export const categoryName = "Financial Partnership and Shared Responsibilities";
+
 export const prompts = [
   {
     id: 'prompt-1',

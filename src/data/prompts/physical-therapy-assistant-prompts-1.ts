@@ -1,3 +1,5 @@
+export const categoryName = "Patient Assessment and Clinical Observations";
+
 export const prompts = [
   {
     id: 'prompt-1',

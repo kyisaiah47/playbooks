@@ -1,3 +1,5 @@
+export const categoryName = "Long-term Success Strategies and Relapse Prevention";
+
 export const prompts = [
   {
     id: 'prompt-1',

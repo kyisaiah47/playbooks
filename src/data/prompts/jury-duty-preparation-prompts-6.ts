@@ -1,3 +1,5 @@
+export const categoryName = "Case Analysis and Jury Deliberation";
+
 export const prompts = [
   {
     id: 'prompt-1',

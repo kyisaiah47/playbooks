@@ -1,3 +1,5 @@
+export const categoryName = "Debt Management and Crisis Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

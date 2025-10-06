@@ -1,3 +1,5 @@
+export const categoryName = "Financial Leadership and Strategic Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

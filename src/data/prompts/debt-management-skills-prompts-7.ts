@@ -1,3 +1,5 @@
+export const categoryName = "Income Optimization and Expense Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

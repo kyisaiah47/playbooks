@@ -1,3 +1,5 @@
+export const categoryName = "Work, Education & Cognitive Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

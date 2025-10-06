@@ -1,3 +1,5 @@
+export const categoryName = "Plant Growth Patterns & Environmental Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

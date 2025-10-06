@@ -1,3 +1,5 @@
+export const categoryName = "Energy Team Development & Stakeholder Engagement";
+
 export const prompts = [
   {
     id: 'prompt-1',

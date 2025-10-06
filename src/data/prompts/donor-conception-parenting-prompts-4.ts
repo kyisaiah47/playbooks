@@ -1,3 +1,5 @@
+export const categoryName = "Child Development and Age-Appropriate Disclosure";
+
 export const prompts = [
   {
     id: 'prompt-1',

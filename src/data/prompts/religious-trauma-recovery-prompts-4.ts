@@ -1,3 +1,5 @@
+export const categoryName = "Rebuilding Personal Values and Worldview";
+
 export const prompts = [
   {
     id: 'prompt-1',

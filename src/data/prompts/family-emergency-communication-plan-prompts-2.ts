@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Preparedness Resources and Supply Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

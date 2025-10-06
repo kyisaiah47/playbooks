@@ -1,3 +1,5 @@
+export const categoryName = "Social Confidence & Personal Presence";
+
 export const prompts = [
   {
     id: 'prompt-1',

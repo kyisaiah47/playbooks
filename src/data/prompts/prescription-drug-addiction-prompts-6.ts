@@ -1,3 +1,5 @@
+export const categoryName = "Social Impact and Relationship Dynamics in Prescription Drug Addiction";
+
 export const prompts = [
   {
     id: 'prompt-1',

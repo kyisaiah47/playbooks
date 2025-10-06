@@ -1,3 +1,5 @@
+export const categoryName = "Problem-Solving & Debugging Approaches";
+
 export const prompts = [
   {
     id: 'prompt-1',

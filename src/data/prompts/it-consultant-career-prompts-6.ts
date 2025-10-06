@@ -1,3 +1,5 @@
+export const categoryName = "Risk Management & Problem-Solving Frameworks";
+
 export const prompts = [
   {
     id: 'prompt-1',

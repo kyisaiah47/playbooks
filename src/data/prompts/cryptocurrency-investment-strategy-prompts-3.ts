@@ -1,3 +1,5 @@
+export const categoryName = "Investment Psychology & Learning Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

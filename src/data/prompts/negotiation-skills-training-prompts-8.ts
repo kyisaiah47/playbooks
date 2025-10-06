@@ -1,3 +1,5 @@
+export const categoryName = "Deal Structure and Value Creation";
+
 export const prompts = [
   {
     id: 'prompt-1',

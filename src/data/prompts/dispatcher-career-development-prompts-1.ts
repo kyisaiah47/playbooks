@@ -1,3 +1,5 @@
+export const categoryName = "Core Dispatch Operations & Protocols";
+
 export const prompts = [
   {
     id: 'prompt-1',

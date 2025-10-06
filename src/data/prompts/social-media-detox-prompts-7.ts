@@ -1,3 +1,5 @@
+export const categoryName = "Building Sustainable Digital Boundaries";
+
 export const prompts = [
   {
     id: 'prompt-1',

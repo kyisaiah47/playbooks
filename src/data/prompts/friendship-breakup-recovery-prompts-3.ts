@@ -1,3 +1,5 @@
+export const categoryName = "Learning and Growth Through Loss";
+
 export const prompts = [
   {
     id: 'prompt-1',

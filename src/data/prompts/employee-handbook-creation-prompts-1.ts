@@ -1,3 +1,5 @@
+export const categoryName = "Company Culture and Values Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

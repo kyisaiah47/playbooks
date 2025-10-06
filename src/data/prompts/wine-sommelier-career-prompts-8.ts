@@ -1,3 +1,5 @@
+export const categoryName = "Wine Quality Assessment and Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

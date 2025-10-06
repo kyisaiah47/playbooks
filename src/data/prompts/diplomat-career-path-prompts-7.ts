@@ -1,3 +1,5 @@
+export const categoryName = "Legal Frameworks and International Law Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Performance Tracking & Investment Review";
+
 export const prompts = [
   {
     id: 'prompt-1',

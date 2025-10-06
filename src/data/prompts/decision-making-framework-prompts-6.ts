@@ -1,3 +1,5 @@
+export const categoryName = "Implementation & Execution Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

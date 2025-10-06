@@ -1,3 +1,5 @@
+export const categoryName = "Nicotine Addiction Science and Withdrawal Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

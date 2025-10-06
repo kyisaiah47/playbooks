@@ -1,3 +1,5 @@
+export const categoryName = "Soldering Techniques and Connection Repair";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Risk Mitigation Strategies and Implementation";
+
 export const prompts = [
   {
     id: 'prompt-1',

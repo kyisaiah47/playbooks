@@ -1,3 +1,5 @@
+export const categoryName = "Food Quality and Source Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

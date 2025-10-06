@@ -1,3 +1,5 @@
+export const categoryName = "Content Research & Knowledge Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

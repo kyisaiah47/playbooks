@@ -1,3 +1,5 @@
+export const categoryName = "Business Process Optimization & Requirements Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

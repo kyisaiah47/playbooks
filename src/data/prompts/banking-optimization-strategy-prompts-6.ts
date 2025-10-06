@@ -1,3 +1,5 @@
+export const categoryName = "Data Management & Business Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

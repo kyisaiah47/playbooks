@@ -1,3 +1,5 @@
+export const categoryName = "Policy Coverage Analysis & Gaps Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

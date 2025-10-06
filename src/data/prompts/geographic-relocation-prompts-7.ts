@@ -1,3 +1,5 @@
+export const categoryName = "Transportation and Mobility Infrastructure Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

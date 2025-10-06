@@ -1,3 +1,5 @@
+export const categoryName = "Email Content & Message Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

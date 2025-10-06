@@ -1,3 +1,5 @@
+export const categoryName = "Creative Problem-Solving and Experimental Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

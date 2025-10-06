@@ -1,3 +1,5 @@
+export const categoryName = "Platform Algorithm Insights & Performance Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

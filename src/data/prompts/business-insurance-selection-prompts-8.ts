@@ -1,3 +1,5 @@
+export const categoryName = "Insurance Market Trends and Future Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

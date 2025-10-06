@@ -1,3 +1,5 @@
+export const categoryName = "Social Situations and Communication Comfort Levels";
+
 export const prompts = [
   {
     id: 'prompt-1',

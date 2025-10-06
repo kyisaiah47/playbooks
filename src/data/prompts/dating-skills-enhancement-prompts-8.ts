@@ -1,3 +1,5 @@
+export const categoryName = "Dating Culture & Social Trends";
+
 export const prompts = [
   {
     id: 'prompt-1',

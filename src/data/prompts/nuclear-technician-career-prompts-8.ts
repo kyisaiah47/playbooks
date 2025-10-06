@@ -1,3 +1,5 @@
+export const categoryName = "Nuclear Physics and Chemistry Applications";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Safety & Risk Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

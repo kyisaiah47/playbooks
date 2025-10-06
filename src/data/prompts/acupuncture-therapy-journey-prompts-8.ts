@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Context and Educational Foundation of Acupuncture";
+
 export const prompts = [
   {
     id: 'prompt-1',

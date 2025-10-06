@@ -1,3 +1,5 @@
+export const categoryName = "Automation and Scripting for Systems Administration";
+
 export const prompts = [
   {
     id: 'prompt-1',

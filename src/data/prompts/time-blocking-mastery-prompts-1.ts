@@ -1,3 +1,5 @@
+export const categoryName = "Time Block Design & Structure";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Health Education & Medical Knowledge Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

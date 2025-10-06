@@ -1,3 +1,5 @@
+export const categoryName = "Sound Pattern Recognition and Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

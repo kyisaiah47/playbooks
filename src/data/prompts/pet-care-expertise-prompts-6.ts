@@ -1,3 +1,5 @@
+export const categoryName = "Pet Grooming & Hygiene Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Contract Analysis and Interpretation Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

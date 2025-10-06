@@ -1,3 +1,5 @@
+export const categoryName = "Sustainability & Environmental Design Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

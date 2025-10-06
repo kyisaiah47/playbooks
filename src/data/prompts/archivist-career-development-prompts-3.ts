@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Digital Archives Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

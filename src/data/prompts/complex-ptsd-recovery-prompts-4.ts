@@ -1,3 +1,5 @@
+export const categoryName = "Somatic Awareness and Body-Based Healing";
+
 export const prompts = [
   {
     id: 'prompt-1',

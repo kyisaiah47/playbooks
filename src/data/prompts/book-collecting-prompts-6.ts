@@ -1,3 +1,5 @@
+export const categoryName = "Publishing History & Edition Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Physical Awareness and Body Relationship";
+
 export const prompts = [
   {
     id: 'prompt-1',

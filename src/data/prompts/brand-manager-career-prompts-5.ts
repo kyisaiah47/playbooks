@@ -1,3 +1,5 @@
+export const categoryName = "Brand Partnership & Stakeholder Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Phonetic Foundations and Speech Mechanics";
+
 export const prompts = [
   {
     id: 'prompt-1',

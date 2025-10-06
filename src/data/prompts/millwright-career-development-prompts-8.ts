@@ -1,3 +1,5 @@
+export const categoryName = "Quality Control and Standards Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

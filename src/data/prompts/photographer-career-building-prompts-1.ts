@@ -1,3 +1,5 @@
+export const categoryName = "Client Relationship Management & Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

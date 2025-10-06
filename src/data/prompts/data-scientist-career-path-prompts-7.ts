@@ -1,3 +1,5 @@
+export const categoryName = "Data Science Community & Networking";
+
 export const prompts = [
   {
     id: 'prompt-1',

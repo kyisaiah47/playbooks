@@ -1,3 +1,5 @@
+export const categoryName = "Meditation Environment and Lifestyle Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Contract Review Workflow and Process Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Historical Techniques and Cultural Pottery Traditions";
+
 export const prompts = [
   {
     id: 'prompt-1',

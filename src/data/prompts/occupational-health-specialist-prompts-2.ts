@@ -1,3 +1,5 @@
+export const categoryName = "Employee Health and Wellness Programs";
+
 export const prompts = [
   {
     id: 'prompt-1',

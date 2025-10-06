@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Team Coordination and Provider Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

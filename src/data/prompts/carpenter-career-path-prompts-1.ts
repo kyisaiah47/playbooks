@@ -1,3 +1,5 @@
+export const categoryName = "Foundation Skills & Essential Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

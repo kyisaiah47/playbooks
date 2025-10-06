@@ -1,3 +1,5 @@
+export const categoryName = "Puppetry History and Cultural Traditions";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Client Engagement and Therapeutic Relationship Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

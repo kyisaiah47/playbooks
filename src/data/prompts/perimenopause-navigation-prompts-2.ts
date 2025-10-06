@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Options & Decision Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

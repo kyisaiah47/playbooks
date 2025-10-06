@@ -1,3 +1,5 @@
+export const categoryName = "Mindset & Cognitive Resilience Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

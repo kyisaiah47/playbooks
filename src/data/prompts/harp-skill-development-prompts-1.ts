@@ -1,3 +1,5 @@
+export const categoryName = "Technique Foundation & Physical Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

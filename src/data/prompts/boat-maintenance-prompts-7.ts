@@ -1,3 +1,5 @@
+export const categoryName = "Seasonal Maintenance and Storage";
+
 export const prompts = [
   {
     id: 'prompt-1',

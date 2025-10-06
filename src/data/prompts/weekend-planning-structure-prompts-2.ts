@@ -1,3 +1,5 @@
+export const categoryName = "Weekend Learning & Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

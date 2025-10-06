@@ -1,3 +1,5 @@
+export const categoryName = "Time Management and Energy Patterns Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

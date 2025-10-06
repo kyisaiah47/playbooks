@@ -1,3 +1,5 @@
+export const categoryName = "Information Evaluation and Critical Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

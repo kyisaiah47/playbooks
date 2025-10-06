@@ -1,3 +1,5 @@
+export const categoryName = "Mixing and Signal Processing";
+
 export const prompts = [
   {
     id: 'prompt-1',

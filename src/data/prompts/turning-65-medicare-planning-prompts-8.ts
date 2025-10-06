@@ -1,3 +1,5 @@
+export const categoryName = "Long-term Care Planning and Medicare Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

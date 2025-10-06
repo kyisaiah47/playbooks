@@ -1,3 +1,5 @@
+export const categoryName = "Goal Setting & Long-term Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

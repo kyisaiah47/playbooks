@@ -1,3 +1,5 @@
+export const categoryName = "Habit Progress & Performance Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Legal Knowledge & Newsroom Safety";
+
 export const prompts = [
   {
     id: 'prompt-1',

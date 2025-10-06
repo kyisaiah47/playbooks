@@ -1,3 +1,5 @@
+export const categoryName = "Property Rights and Inheritance Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

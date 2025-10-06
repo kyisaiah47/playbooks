@@ -1,3 +1,5 @@
+export const categoryName = "Provider Network and Mental Health Professional Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

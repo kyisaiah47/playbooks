@@ -1,3 +1,5 @@
+export const categoryName = "Audio Engineering & Mixing Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

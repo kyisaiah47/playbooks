@@ -1,3 +1,5 @@
+export const categoryName = "Chemical Classification and Properties Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

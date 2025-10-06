@@ -1,3 +1,5 @@
+export const categoryName = "Database Performance Optimization and Tuning";
+
 export const prompts = [
   {
     id: 'prompt-1',

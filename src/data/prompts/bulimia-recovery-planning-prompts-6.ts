@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Mindset and Identity Transformation";
+
 export const prompts = [
   {
     id: 'prompt-1',

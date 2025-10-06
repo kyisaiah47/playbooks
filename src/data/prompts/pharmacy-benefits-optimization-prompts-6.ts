@@ -1,3 +1,5 @@
+export const categoryName = "Formulary Management and Drug Coverage Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

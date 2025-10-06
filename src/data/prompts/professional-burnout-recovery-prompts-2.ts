@@ -1,3 +1,5 @@
+export const categoryName = "Root Causes and Contributing Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

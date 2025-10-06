@@ -1,3 +1,5 @@
+export const categoryName = "Community Relations & Public Education";
+
 export const prompts = [
   {
     id: 'prompt-1',

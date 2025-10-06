@@ -1,3 +1,5 @@
+export const categoryName = "Pest Management and Plant Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

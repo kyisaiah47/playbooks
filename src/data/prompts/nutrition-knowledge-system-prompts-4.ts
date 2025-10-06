@@ -1,3 +1,5 @@
+export const categoryName = "Body Systems and Nutritional Health";
+
 export const prompts = [
   {
     id: 'prompt-1',

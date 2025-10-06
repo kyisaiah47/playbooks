@@ -1,3 +1,5 @@
+export const categoryName = "Specialization Areas and Imaging Modalities";
+
 export const prompts = [
   {
     id: 'prompt-1',

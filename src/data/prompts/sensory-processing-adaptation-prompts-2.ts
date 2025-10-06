@@ -1,3 +1,5 @@
+export const categoryName = "Sensory Processing Patterns and Personal Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

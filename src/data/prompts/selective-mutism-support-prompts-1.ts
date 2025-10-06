@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Communication Patterns and Triggers";
+
 export const prompts = [
   {
     id: 'prompt-1',

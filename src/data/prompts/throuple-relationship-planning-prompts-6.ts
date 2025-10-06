@@ -1,3 +1,5 @@
+export const categoryName = "Social & External Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

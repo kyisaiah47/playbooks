@@ -1,3 +1,5 @@
+export const categoryName = "Legal Rights and Protections Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

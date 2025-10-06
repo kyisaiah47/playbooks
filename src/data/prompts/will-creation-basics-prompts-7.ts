@@ -1,3 +1,5 @@
+export const categoryName = "Digital Assets and Modern Estate Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

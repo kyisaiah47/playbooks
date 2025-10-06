@@ -1,3 +1,5 @@
+export const categoryName = "Memories, Nostalgia and Meaning-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

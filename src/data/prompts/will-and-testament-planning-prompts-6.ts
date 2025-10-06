@@ -1,3 +1,5 @@
+export const categoryName = "Digital Assets and Technology Legacy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

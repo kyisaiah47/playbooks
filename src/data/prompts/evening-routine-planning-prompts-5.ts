@@ -1,3 +1,5 @@
+export const categoryName = "Evening Memory Capture & Experience Processing";
+
 export const prompts = [
   {
     id: 'prompt-1',

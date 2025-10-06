@@ -1,3 +1,5 @@
+export const categoryName = "Operational Excellence & Performance Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Operations & Process Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Hardware Diagnosis and Component Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

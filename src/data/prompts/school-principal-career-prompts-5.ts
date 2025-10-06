@@ -1,3 +1,5 @@
+export const categoryName = "School Operations & Administrative Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

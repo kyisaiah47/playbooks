@@ -1,3 +1,5 @@
+export const categoryName = "Financial Impact and Lifestyle Benefits of Quitting";
+
 export const prompts = [
   {
     id: 'prompt-1',

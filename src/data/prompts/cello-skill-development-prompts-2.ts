@@ -1,3 +1,5 @@
+export const categoryName = "Left Hand Technique and Intonation";
+
 export const prompts = [
   {
     id: 'prompt-1',

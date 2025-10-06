@@ -1,3 +1,5 @@
+export const categoryName = "Age-Appropriate Discipline Methods and Developmental Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

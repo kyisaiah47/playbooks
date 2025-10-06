@@ -1,3 +1,5 @@
+export const categoryName = "Digital Activism and Communication Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

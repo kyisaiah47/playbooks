@@ -1,3 +1,5 @@
+export const categoryName = "Budget Management & Cost Optimization Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

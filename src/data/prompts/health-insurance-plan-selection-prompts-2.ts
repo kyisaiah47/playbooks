@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Needs Assessment and Personal Health Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

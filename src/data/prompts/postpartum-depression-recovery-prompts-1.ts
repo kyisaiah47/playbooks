@@ -1,3 +1,5 @@
+export const categoryName = "Early Warning Signs & Symptom Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

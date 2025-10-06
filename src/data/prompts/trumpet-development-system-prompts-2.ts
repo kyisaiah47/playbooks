@@ -1,3 +1,5 @@
+export const categoryName = "Musical Expression & Performance Psychology";
+
 export const prompts = [
   {
     id: 'prompt-1',

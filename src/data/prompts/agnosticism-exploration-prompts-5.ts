@@ -1,3 +1,5 @@
+export const categoryName = "Science, Religion, and the Limits of Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

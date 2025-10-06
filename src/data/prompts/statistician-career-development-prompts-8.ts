@@ -1,3 +1,5 @@
+export const categoryName = "Research Design and Analytical Problem-Solving";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Location Strategy and Territory Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Economic Impact and Market Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

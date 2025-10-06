@@ -1,3 +1,5 @@
+export const categoryName = "Student Engagement & Learning Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

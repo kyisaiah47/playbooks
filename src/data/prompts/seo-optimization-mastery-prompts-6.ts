@@ -1,3 +1,5 @@
+export const categoryName = "Local SEO & Geographic Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

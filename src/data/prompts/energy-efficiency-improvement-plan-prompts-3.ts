@@ -1,3 +1,5 @@
+export const categoryName = "Behavioral Change and Organizational Culture";
+
 export const prompts = [
   {
     id: 'prompt-1',

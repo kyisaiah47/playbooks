@@ -1,3 +1,5 @@
+export const categoryName = "Medical Team Communication & Support Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

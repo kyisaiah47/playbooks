@@ -1,3 +1,5 @@
+export const categoryName = "Work, Life Balance, and Identity Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

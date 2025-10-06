@@ -1,3 +1,5 @@
+export const categoryName = "User Environment & Workflow Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Energy Efficiency Technologies & Solutions";
+
 export const prompts = [
   {
     id: 'prompt-1',

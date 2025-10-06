@@ -1,3 +1,5 @@
+export const categoryName = "Cultural and Diversity Influences on Conflict";
+
 export const prompts = [
   {
     id: 'prompt-1',

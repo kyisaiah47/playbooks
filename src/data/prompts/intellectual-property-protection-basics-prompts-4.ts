@@ -1,3 +1,5 @@
+export const categoryName = "IP Documentation and Record-Keeping Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

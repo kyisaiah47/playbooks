@@ -1,3 +1,5 @@
+export const categoryName = "Practical Management and Planning Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

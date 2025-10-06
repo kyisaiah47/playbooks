@@ -1,3 +1,5 @@
+export const categoryName = "Legal and Ethical Standards in Rehabilitation";
+
 export const prompts = [
   {
     id: 'prompt-1',

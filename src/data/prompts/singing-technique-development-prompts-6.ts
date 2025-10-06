@@ -1,3 +1,5 @@
+export const categoryName = "Vocal Technique and Articulation";
+
 export const prompts = [
   {
     id: 'prompt-1',

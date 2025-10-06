@@ -1,3 +1,5 @@
+export const categoryName = "Product Development Lifecycle & Release Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

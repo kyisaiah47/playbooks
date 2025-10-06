@@ -1,3 +1,5 @@
+export const categoryName = "Email Marketing & Automation";
+
 export const prompts = [
   {
     id: 'prompt-1',

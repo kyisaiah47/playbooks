@@ -1,3 +1,5 @@
+export const categoryName = "Weekend Energy & Time Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

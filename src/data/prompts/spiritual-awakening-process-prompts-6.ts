@@ -1,3 +1,5 @@
+export const categoryName = "Energy Work & Vibrational Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

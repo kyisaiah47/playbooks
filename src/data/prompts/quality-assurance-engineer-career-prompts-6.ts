@@ -1,3 +1,5 @@
+export const categoryName = "Test Data Management and Environment Configuration";
+
 export const prompts = [
   {
     id: 'prompt-1',

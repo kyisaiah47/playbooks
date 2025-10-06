@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Migration and Modernization Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

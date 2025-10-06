@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Protocol Planning and Implementation";
+
 export const prompts = [
   {
     id: 'prompt-1',

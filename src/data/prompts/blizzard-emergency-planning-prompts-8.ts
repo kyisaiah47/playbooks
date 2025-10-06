@@ -1,3 +1,5 @@
+export const categoryName = "Financial Preparedness and Economic Resilience";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Coaching Skills Assessment and Continuous Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

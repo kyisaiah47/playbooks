@@ -1,3 +1,5 @@
+export const categoryName = "Family Support Systems and Caregiver Wellbeing";
+
 export const prompts = [
   {
     id: 'prompt-1',

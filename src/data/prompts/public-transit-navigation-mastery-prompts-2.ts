@@ -1,3 +1,5 @@
+export const categoryName = "Transit System Knowledge and Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

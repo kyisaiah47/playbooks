@@ -1,3 +1,5 @@
+export const categoryName = "Behavioral Foundations & Training Principles";
+
 export const prompts = [
   {
     id: 'prompt-1',

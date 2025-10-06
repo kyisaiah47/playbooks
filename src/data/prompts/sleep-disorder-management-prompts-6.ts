@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Technology & Digital Wellness";
+
 export const prompts = [
   {
     id: 'prompt-1',

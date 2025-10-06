@@ -1,3 +1,5 @@
+export const categoryName = "Dietary Management and Nutrition Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

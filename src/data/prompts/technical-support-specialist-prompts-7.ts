@@ -1,3 +1,5 @@
+export const categoryName = "Knowledge Transfer & Training Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Social Connections and Community Support for Immune Wellness";
+
 export const prompts = [
   {
     id: 'prompt-1',

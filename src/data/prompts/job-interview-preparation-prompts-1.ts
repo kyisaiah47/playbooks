@@ -1,3 +1,5 @@
+export const categoryName = "Technical Skills Assessment & Gap Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

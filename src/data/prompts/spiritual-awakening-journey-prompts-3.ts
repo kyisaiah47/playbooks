@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual Guidance & Wisdom Sources";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Lighting Mastery and Environmental Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

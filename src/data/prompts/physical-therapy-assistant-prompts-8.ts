@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Outcomes and Evidence-Based Practice Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

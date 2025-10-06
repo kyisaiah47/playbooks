@@ -1,3 +1,5 @@
+export const categoryName = "Market Analysis & Price Movement Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

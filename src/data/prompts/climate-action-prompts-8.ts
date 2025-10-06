@@ -1,3 +1,5 @@
+export const categoryName = "Climate Finance and Economic Transformation";
+
 export const prompts = [
   {
     id: 'prompt-1',

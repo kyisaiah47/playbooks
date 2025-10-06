@@ -1,3 +1,5 @@
+export const categoryName = "Special Circumstances and Coverage Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

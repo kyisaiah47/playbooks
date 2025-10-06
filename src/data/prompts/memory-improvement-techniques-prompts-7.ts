@@ -1,3 +1,5 @@
+export const categoryName = "Memory Triggers and Contextual Learning Environments";
+
 export const prompts = [
   {
     id: 'prompt-1',

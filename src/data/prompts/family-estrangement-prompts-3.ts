@@ -1,3 +1,5 @@
+export const categoryName = "Legal and Financial Considerations in Estrangement";
+
 export const prompts = [
   {
     id: 'prompt-1',

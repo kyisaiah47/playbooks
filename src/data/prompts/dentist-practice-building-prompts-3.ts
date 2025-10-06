@@ -1,3 +1,5 @@
+export const categoryName = "Marketing & Patient Acquisition Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

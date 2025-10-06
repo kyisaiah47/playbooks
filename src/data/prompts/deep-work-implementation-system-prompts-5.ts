@@ -1,3 +1,5 @@
+export const categoryName = "Energy & Motivation Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

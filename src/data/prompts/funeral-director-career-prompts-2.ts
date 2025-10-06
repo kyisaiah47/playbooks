@@ -1,3 +1,5 @@
+export const categoryName = "Ethics & Community Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

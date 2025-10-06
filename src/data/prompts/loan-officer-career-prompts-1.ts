@@ -1,3 +1,5 @@
+export const categoryName = "Loan Product Knowledge & Market Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

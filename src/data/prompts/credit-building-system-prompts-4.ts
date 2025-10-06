@@ -1,3 +1,5 @@
+export const categoryName = "Credit Products & Financial Services Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

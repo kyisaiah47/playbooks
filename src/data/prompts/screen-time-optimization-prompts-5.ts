@@ -1,3 +1,5 @@
+export const categoryName = "Screen Time Environment & Context Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

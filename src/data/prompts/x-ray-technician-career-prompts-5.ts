@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Dynamics and Healthcare Environment";
+
 export const prompts = [
   {
     id: 'prompt-1',

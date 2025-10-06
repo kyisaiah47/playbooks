@@ -8,7 +8,6 @@ import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
 import { Progress } from '@/components/ui/progress';
 import { CommandPalette } from '@/components/command-palette';
-import Prism from '@/components/ui/prism';
 import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3, AlertCircle, Sunset, Moon, Layout } from 'lucide-react';
 import {
   Breadcrumb,
@@ -347,23 +346,8 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
               </div>
             </header>
 
-            {/* Simple Editor with Prism Background */}
+            {/* Simple Editor */}
             <div className="relative z-10 transparent-editor h-full">
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <Prism
-                  height={3.5}
-                  baseWidth={5.5}
-                  animationType="rotate"
-                  glow={0.8}
-                  noise={0.3}
-                  transparent={true}
-                  scale={2.8}
-                  hueShift={0.5}
-                  colorFrequency={1.2}
-                  timeScale={0.3}
-                  suspendWhenOffscreen={true}
-                />
-              </div>
               <Suspense fallback={
                 <div className="flex items-center justify-center h-full">
                   <div className="text-muted-foreground">Loading editor...</div>

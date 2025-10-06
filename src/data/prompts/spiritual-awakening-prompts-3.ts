@@ -1,3 +1,5 @@
+export const categoryName = "Sacred Symbols and Universal Wisdom";
+
 export const prompts = [
   {
     id: 'prompt-1',

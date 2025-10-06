@@ -1,3 +1,5 @@
+export const categoryName = "Email Folder Structure & Filing Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Support Systems and Recovery Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

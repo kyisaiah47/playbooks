@@ -1,3 +1,5 @@
+export const categoryName = "Sustainable Fashion & Ethical Consumption";
+
 export const prompts = [
   {
     id: 'prompt-1',

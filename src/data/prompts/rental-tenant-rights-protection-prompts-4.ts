@@ -1,3 +1,5 @@
+export const categoryName = "Property Maintenance and Habitability Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

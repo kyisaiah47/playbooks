@@ -1,3 +1,5 @@
+export const categoryName = "Income Maximization & Career Transition Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

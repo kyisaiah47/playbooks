@@ -1,3 +1,5 @@
+export const categoryName = "Legal and Credit Impact Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

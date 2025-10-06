@@ -1,3 +1,5 @@
+export const categoryName = "Solar System Exploration and Planetary Science";
+
 export const prompts = [
   {
     id: 'prompt-1',

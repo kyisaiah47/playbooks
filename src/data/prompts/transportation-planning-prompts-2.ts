@@ -1,3 +1,5 @@
+export const categoryName = "Urban Planning and Land Use Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning & Management During Deployment";
+
 export const prompts = [
   {
     id: 'prompt-1',

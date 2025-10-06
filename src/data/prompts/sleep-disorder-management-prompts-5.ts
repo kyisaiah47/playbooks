@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Treatments & Management Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

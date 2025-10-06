@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning and Economic Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Building Relationships and Networks in the Art World";
+
 export const prompts = [
   {
     id: 'prompt-1',

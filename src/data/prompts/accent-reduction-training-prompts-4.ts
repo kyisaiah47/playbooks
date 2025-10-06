@@ -1,3 +1,5 @@
+export const categoryName = "Intonation and Melody Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

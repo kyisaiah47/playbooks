@@ -1,3 +1,5 @@
+export const categoryName = "Professional and Treatment Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

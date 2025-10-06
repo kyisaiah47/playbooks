@@ -1,3 +1,5 @@
+export const categoryName = "Critical Thinking and Clinical Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

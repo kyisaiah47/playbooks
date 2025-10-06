@@ -1,3 +1,5 @@
+export const categoryName = "Fundamental Camera Settings and Controls";
+
 export const prompts = [
   {
     id: 'prompt-1',

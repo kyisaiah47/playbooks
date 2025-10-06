@@ -1,3 +1,5 @@
+export const categoryName = "Industry-Specific Coverage and Business Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

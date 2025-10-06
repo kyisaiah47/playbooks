@@ -1,3 +1,5 @@
+export const categoryName = "Surface Preparation and Canvas Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

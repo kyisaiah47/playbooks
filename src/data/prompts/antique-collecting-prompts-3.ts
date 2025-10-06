@@ -1,3 +1,5 @@
+export const categoryName = "Discovering and Acquiring Antiques Through Markets and Sources";
+
 export const prompts = [
   {
     id: 'prompt-1',

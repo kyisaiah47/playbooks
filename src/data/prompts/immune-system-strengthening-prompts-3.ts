@@ -1,3 +1,5 @@
+export const categoryName = "Stress Management and Mental Wellness for Immune Function";
+
 export const prompts = [
   {
     id: 'prompt-1',

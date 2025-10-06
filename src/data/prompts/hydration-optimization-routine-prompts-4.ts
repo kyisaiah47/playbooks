@@ -1,3 +1,5 @@
+export const categoryName = "Hydration Tools & Optimization Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

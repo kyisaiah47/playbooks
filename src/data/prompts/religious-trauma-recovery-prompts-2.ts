@@ -1,3 +1,5 @@
+export const categoryName = "Identifying Personal Patterns and Triggers";
+
 export const prompts = [
   {
     id: 'prompt-1',

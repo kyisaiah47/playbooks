@@ -1,3 +1,5 @@
+export const categoryName = "Password Manager Selection & Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

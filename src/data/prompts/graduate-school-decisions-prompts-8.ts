@@ -1,3 +1,5 @@
+export const categoryName = "Faculty Relations & Academic Mentorship";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Photo Quality Assessment & Enhancement Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Home Design and Aesthetic Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

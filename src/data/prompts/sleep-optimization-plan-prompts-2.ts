@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Schedule & Circadian Rhythm";
+
 export const prompts = [
   {
     id: 'prompt-1',

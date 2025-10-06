@@ -1,3 +1,5 @@
+export const categoryName = "Sleep, Recovery, and Physical Activity for Immune Support";
+
 export const prompts = [
   {
     id: 'prompt-1',

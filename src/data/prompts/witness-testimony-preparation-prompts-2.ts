@@ -1,3 +1,5 @@
+export const categoryName = "Key Facts and Evidence Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

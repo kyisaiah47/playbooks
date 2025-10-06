@@ -1,3 +1,5 @@
+export const categoryName = "Health Monitoring and Physical Well-being Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

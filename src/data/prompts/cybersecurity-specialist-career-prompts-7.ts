@@ -1,3 +1,5 @@
+export const categoryName = "Vulnerability Management and Security Testing";
+
 export const prompts = [
   {
     id: 'prompt-1',

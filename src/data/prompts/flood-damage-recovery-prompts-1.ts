@@ -1,3 +1,5 @@
+export const categoryName = "Initial Assessment and Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

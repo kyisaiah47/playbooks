@@ -1,3 +1,5 @@
+export const categoryName = "Meditation Techniques and Traditions Exploration";
+
 export const prompts = [
   {
     id: 'prompt-1',

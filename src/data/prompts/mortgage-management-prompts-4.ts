@@ -1,3 +1,5 @@
+export const categoryName = "Mortgage Terms, Rates & Regulatory Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

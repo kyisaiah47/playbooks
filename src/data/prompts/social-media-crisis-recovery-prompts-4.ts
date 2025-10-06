@@ -1,3 +1,5 @@
+export const categoryName = "Brand Reputation Recovery and Trust Rebuilding";
+
 export const prompts = [
   {
     id: 'prompt-1',

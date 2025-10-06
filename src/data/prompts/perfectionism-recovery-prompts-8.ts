@@ -1,3 +1,5 @@
+export const categoryName = "Fear, Vulnerability & Emotional Processing in Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

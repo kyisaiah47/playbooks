@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Culture & Professional Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

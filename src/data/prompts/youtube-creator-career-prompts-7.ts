@@ -1,3 +1,5 @@
+export const categoryName = "Platform Strategy & Multi-Channel Growth";
+
 export const prompts = [
   {
     id: 'prompt-1',

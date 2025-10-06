@@ -1,3 +1,5 @@
+export const categoryName = "Ethics and Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

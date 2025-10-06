@@ -1,3 +1,5 @@
+export const categoryName = "Time Tracking and Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

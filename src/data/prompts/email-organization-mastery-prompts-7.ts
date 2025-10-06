@@ -1,3 +1,5 @@
+export const categoryName = "Email Metrics & Performance Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

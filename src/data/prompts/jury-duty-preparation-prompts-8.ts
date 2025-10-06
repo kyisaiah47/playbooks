@@ -1,3 +1,5 @@
+export const categoryName = "Post-Trial Reflection and Civic Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

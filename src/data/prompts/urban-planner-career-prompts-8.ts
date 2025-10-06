@@ -1,3 +1,5 @@
+export const categoryName = "Data Analysis and Evidence-Based Planning Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

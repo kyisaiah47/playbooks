@@ -1,3 +1,5 @@
+export const categoryName = "Food Safety and Regulatory Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

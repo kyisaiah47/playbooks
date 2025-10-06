@@ -1,3 +1,5 @@
+export const categoryName = "Public Health and Social Welfare During Drought";
+
 export const prompts = [
   {
     id: 'prompt-1',

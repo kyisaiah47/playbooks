@@ -1,3 +1,5 @@
+export const categoryName = "Shelter, Safety, and Environmental Hazard Preparedness";
+
 export const prompts = [
   {
     id: 'prompt-1',

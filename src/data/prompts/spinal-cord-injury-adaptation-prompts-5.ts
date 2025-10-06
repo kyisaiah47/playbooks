@@ -1,3 +1,5 @@
+export const categoryName = "Mobility and Assistive Technology";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Energy Policy & Regulatory Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

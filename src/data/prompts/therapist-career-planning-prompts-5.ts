@@ -1,3 +1,5 @@
+export const categoryName = "Personal Values & Career Alignment Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

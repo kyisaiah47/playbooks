@@ -1,3 +1,5 @@
+export const categoryName = "Exercise & Physical Activity Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

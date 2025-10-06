@@ -1,3 +1,5 @@
+export const categoryName = "Sales Process Optimization & Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

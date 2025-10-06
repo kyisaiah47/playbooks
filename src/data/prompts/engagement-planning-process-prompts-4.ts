@@ -1,3 +1,5 @@
+export const categoryName = "Engagement Methods & Activity Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

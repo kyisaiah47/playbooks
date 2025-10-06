@@ -1,3 +1,5 @@
+export const categoryName = "Symptom Patterns and Body Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

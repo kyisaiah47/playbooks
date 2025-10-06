@@ -1,3 +1,5 @@
+export const categoryName = "Income Source Analysis & Diversification";
+
 export const prompts = [
   {
     id: 'prompt-1',

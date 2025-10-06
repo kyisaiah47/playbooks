@@ -1,3 +1,5 @@
+export const categoryName = "Immigration Law and Policy Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

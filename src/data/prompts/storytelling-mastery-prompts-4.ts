@@ -1,3 +1,5 @@
+export const categoryName = "World-Building & Setting Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

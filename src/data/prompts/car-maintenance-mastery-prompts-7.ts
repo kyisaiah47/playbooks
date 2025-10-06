@@ -1,3 +1,5 @@
+export const categoryName = "Safety Protocols and Best Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

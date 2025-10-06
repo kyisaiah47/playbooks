@@ -1,3 +1,5 @@
+export const categoryName = "Legal Rights and Civic Responsibility Independence";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Mental Preparedness and Psychological Resilience";
+
 export const prompts = [
   {
     id: 'prompt-1',

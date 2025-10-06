@@ -1,3 +1,5 @@
+export const categoryName = "Practical Skills & Environmental Knowledge Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

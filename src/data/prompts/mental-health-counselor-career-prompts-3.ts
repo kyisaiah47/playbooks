@@ -1,3 +1,5 @@
+export const categoryName = "Education, Training, and Career Pathways";
+
 export const prompts = [
   {
     id: 'prompt-1',

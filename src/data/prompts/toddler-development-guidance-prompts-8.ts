@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition, Feeding & Eating Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

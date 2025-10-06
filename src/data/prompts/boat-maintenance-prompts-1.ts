@@ -1,3 +1,5 @@
+export const categoryName = "Hull Care and Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

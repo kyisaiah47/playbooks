@@ -1,3 +1,5 @@
+export const categoryName = "Community Health Assessment and Program Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

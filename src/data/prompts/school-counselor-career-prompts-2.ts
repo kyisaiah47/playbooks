@@ -1,3 +1,5 @@
+export const categoryName = "Student Support and Intervention Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

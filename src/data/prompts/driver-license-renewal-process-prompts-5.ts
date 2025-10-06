@@ -1,3 +1,5 @@
+export const categoryName = "Location and Service Options Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

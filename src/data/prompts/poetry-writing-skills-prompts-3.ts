@@ -1,3 +1,5 @@
+export const categoryName = "Poetry Communities and Creative Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

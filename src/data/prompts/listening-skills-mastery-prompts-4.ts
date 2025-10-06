@@ -1,3 +1,5 @@
+export const categoryName = "Listening Barriers and Challenges";
+
 export const prompts = [
   {
     id: 'prompt-1',

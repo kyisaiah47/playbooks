@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Medical Conditions and Health Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

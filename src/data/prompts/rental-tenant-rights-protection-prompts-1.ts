@@ -1,3 +1,5 @@
+export const categoryName = "Lease Agreement Analysis and Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

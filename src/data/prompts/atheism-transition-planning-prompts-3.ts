@@ -1,3 +1,5 @@
+export const categoryName = "Worldview Reconstruction and Meaning-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

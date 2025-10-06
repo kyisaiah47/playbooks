@@ -1,3 +1,5 @@
+export const categoryName = "Board Governance Fundamentals & Best Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

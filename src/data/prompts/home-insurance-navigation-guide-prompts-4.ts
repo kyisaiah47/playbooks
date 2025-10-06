@@ -1,3 +1,5 @@
+export const categoryName = "Risk Assessment & Property Protection Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

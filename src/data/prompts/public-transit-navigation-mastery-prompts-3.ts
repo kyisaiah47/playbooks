@@ -1,3 +1,5 @@
+export const categoryName = "Transit Apps and Technology Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

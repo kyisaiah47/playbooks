@@ -1,3 +1,5 @@
+export const categoryName = "Professional Advisory Team and Relationship Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

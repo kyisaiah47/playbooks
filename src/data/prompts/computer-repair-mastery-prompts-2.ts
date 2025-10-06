@@ -1,3 +1,5 @@
+export const categoryName = "Software Troubleshooting and System Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

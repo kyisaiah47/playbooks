@@ -1,3 +1,5 @@
+export const categoryName = "Navigating Social Relationships and Communication During Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Cuisine & Global Food Traditions";
+
 export const prompts = [
   {
     id: 'prompt-1',

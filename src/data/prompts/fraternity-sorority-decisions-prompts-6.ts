@@ -1,3 +1,5 @@
+export const categoryName = "Alumni Networks and Career Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

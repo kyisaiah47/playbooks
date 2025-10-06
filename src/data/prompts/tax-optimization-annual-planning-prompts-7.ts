@@ -1,3 +1,5 @@
+export const categoryName = "Multi-State Tax Planning & Geographic Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Battery Performance & Power Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

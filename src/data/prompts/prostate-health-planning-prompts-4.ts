@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle and Risk Factor Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

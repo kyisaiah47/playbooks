@@ -1,3 +1,5 @@
+export const categoryName = "Book Condition & Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

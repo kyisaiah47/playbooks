@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Performance Monitoring & Operations Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

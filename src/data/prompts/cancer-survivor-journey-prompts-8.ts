@@ -1,3 +1,5 @@
+export const categoryName = "Work & Career Transition Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

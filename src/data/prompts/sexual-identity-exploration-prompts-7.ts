@@ -1,3 +1,5 @@
+export const categoryName = "Cultural, Family, and Religious Influences on Sexual Identity";
+
 export const prompts = [
   {
     id: 'prompt-1',

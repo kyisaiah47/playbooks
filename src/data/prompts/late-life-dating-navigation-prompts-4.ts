@@ -1,3 +1,5 @@
+export const categoryName = "Health, Lifestyle, and Future Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

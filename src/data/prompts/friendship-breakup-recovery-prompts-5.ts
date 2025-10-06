@@ -1,3 +1,5 @@
+export const categoryName = "Healing Patterns and Self-Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

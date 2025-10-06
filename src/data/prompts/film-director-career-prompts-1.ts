@@ -1,3 +1,5 @@
+export const categoryName = "Creative Vision and Storytelling Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

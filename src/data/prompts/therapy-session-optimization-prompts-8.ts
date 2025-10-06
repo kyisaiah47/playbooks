@@ -1,3 +1,5 @@
+export const categoryName = "Assessment and Diagnostic Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

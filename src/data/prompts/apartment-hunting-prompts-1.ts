@@ -1,3 +1,5 @@
+export const categoryName = "Neighborhood Research and Lifestyle Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

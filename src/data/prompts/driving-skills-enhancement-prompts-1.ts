@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Control and Handling Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

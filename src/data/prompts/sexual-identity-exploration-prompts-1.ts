@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Sexual Attraction and Orientation";
+
 export const prompts = [
   {
     id: 'prompt-1',

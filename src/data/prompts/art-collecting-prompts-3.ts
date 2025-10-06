@@ -1,3 +1,5 @@
+export const categoryName = "Developing Artistic Knowledge and Cultural Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

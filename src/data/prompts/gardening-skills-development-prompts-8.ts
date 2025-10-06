@@ -1,3 +1,5 @@
+export const categoryName = "Harvesting, Preservation, and Garden Productivity";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Voice Acting Projects & Performance Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

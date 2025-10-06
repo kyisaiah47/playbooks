@@ -1,3 +1,5 @@
+export const categoryName = "Industrial Equipment and Machinery Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

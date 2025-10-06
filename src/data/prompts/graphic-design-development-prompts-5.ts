@@ -1,3 +1,5 @@
+export const categoryName = "Typography & Visual Communication Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

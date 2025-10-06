@@ -1,3 +1,5 @@
+export const categoryName = "International Operations and Cultural Competency";
+
 export const prompts = [
   {
     id: 'prompt-1',

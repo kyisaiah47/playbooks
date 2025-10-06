@@ -1,3 +1,5 @@
+export const categoryName = "Wine Tasting and Sensory Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

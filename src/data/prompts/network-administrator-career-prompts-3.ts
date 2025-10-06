@@ -1,3 +1,5 @@
+export const categoryName = "Network Performance Monitoring and Troubleshooting";
+
 export const prompts = [
   {
     id: 'prompt-1',

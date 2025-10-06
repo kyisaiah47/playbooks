@@ -1,3 +1,5 @@
+export const categoryName = "Book Community & Cultural Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

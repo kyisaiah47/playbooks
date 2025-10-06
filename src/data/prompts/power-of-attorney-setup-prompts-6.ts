@@ -1,3 +1,5 @@
+export const categoryName = "Legal Compliance, Revocation, and Long-Term Maintenance";
+
 export const prompts = [
   {
     id: 'prompt-1',

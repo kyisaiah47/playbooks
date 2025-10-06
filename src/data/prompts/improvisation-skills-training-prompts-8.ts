@@ -1,3 +1,5 @@
+export const categoryName = "Risk-Taking and Experimentation in Improvisation";
+
 export const prompts = [
   {
     id: 'prompt-1',

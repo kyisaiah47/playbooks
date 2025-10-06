@@ -1,3 +1,5 @@
+export const categoryName = "Photo Organization Software & Tool Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

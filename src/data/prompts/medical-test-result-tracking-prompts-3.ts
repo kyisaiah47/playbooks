@@ -1,3 +1,5 @@
+export const categoryName = "Personal Health Monitoring and Trend Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

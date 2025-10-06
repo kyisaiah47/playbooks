@@ -1,3 +1,5 @@
+export const categoryName = "Marine Ecosystem Research & Field Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

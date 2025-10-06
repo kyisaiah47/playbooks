@@ -1,3 +1,5 @@
+export const categoryName = "Program Evaluation & Impact Measurement";
+
 export const prompts = [
   {
     id: 'prompt-1',

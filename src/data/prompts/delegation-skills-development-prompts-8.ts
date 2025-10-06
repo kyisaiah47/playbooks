@@ -1,3 +1,5 @@
+export const categoryName = "Cultural and Team Dynamics in Delegation";
+
 export const prompts = [
   {
     id: 'prompt-1',

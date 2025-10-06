@@ -1,3 +1,5 @@
+export const categoryName = "System Architecture and Scalability";
+
 export const prompts = [
   {
     id: 'prompt-1',

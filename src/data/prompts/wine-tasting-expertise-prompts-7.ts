@@ -1,3 +1,5 @@
+export const categoryName = "Wine History and Cultural Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

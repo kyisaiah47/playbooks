@@ -1,3 +1,5 @@
+export const categoryName = "Values and Belief Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

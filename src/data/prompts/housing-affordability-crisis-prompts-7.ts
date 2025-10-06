@@ -1,3 +1,5 @@
+export const categoryName = "Regional Variations and Geographic Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

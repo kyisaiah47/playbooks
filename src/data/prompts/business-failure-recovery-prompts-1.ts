@@ -1,3 +1,5 @@
+export const categoryName = "Root Cause Analysis & Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

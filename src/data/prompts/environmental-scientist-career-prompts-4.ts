@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Impact Assessment & Mitigation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

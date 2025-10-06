@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Health & Lifestyle Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

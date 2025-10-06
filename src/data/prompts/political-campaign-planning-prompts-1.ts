@@ -1,3 +1,5 @@
+export const categoryName = "Voter Outreach and Communication Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

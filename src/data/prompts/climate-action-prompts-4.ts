@@ -1,3 +1,5 @@
+export const categoryName = "Climate Science and Environmental Education";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Professional and Reputational Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

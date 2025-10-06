@@ -1,3 +1,5 @@
+export const categoryName = "Ballet Pedagogy and Learning Methodology";
+
 export const prompts = [
   {
     id: 'prompt-1',

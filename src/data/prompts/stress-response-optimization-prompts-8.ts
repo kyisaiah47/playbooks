@@ -1,3 +1,5 @@
+export const categoryName = "Technology, Media, and Digital Stress Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

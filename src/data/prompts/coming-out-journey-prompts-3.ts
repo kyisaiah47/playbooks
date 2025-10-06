@@ -1,3 +1,5 @@
+export const categoryName = "Preparation and Timing Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

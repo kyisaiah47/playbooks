@@ -1,3 +1,5 @@
+export const categoryName = "Marine Species & Conservation Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

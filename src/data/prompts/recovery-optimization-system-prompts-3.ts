@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition and Hydration for Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Audience Insights & Channel Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

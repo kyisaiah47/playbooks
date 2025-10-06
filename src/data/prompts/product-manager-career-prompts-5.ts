@@ -1,3 +1,5 @@
+export const categoryName = "Cross-Functional Collaboration & Team Leadership";
+
 export const prompts = [
   {
     id: 'prompt-1',

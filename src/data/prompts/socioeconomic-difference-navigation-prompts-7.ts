@@ -1,3 +1,5 @@
+export const categoryName = "Housing Stability and Residential Mobility";
+
 export const prompts = [
   {
     id: 'prompt-1',

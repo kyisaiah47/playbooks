@@ -1,3 +1,5 @@
+export const categoryName = "Leadership and Influence Through Emotional Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

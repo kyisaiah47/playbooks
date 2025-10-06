@@ -1,3 +1,5 @@
+export const categoryName = "Goal Setting and Achievement Strategies in Coaching";
+
 export const prompts = [
   {
     id: 'prompt-1',

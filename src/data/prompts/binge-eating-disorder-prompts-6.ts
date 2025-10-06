@@ -1,3 +1,5 @@
+export const categoryName = "Body Image and Emotional Connection";
+
 export const prompts = [
   {
     id: 'prompt-1',

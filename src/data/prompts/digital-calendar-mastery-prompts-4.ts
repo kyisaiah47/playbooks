@@ -1,3 +1,5 @@
+export const categoryName = "Digital Calendar Tools & Technology Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

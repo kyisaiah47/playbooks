@@ -1,3 +1,5 @@
+export const categoryName = "Economic Development and Municipal Finance Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Daily Life & Social Customs";
+
 export const prompts = [
   {
     id: 'prompt-1',

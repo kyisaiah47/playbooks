@@ -1,3 +1,5 @@
+export const categoryName = "Audio Software and Digital Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

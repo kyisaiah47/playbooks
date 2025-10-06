@@ -1,3 +1,5 @@
+export const categoryName = "Leadership & Mentorship Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

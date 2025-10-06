@@ -1,3 +1,5 @@
+export const categoryName = "Intellectual Growth and Learning Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

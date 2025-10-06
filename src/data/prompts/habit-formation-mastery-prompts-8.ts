@@ -1,3 +1,5 @@
+export const categoryName = "Habit Design & Customization Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

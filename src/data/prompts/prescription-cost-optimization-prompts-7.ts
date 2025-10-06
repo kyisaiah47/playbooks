@@ -1,3 +1,5 @@
+export const categoryName = "Regulatory Environment and Policy Impact on Prescription Costs";
+
 export const prompts = [
   {
     id: 'prompt-1',

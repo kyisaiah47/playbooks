@@ -1,3 +1,5 @@
+export const categoryName = "Networking ROI & Performance Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

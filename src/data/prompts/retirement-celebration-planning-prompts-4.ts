@@ -1,3 +1,5 @@
+export const categoryName = "Legacy and Recognition Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

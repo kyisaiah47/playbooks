@@ -1,3 +1,5 @@
+export const categoryName = "Dietary Patterns and Lifestyle Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

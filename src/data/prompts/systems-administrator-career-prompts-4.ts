@@ -1,3 +1,5 @@
+export const categoryName = "Server Administration and System Maintenance";
+
 export const prompts = [
   {
     id: 'prompt-1',

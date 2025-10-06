@@ -1,3 +1,5 @@
+export const categoryName = "Risk Management and Supply Chain Resilience";
+
 export const prompts = [
   {
     id: 'prompt-1',

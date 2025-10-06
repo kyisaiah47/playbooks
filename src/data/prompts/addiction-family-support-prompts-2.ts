@@ -1,3 +1,5 @@
+export const categoryName = "Self-Care and Emotional Well-being for Family Members";
+
 export const prompts = [
   {
     id: 'prompt-1',

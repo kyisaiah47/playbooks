@@ -1,3 +1,5 @@
+export const categoryName = "Account Inventory and Risk Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

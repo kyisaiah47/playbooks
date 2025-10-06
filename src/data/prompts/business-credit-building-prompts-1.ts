@@ -1,3 +1,5 @@
+export const categoryName = "Business Credit Foundation & Structure";
+
 export const prompts = [
   {
     id: 'prompt-1',

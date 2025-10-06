@@ -1,3 +1,5 @@
+export const categoryName = "Career and Professional Development After Children Leave";
+
 export const prompts = [
   {
     id: 'prompt-1',

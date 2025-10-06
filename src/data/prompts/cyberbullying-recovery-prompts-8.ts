@@ -1,3 +1,5 @@
+export const categoryName = "Future Planning and Personal Growth After Cyberbullying";
+
 export const prompts = [
   {
     id: 'prompt-1',

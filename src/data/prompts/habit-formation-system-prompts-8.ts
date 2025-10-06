@@ -1,3 +1,5 @@
+export const categoryName = "Social Influence & Habit Community Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

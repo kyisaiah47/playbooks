@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Digital Tools for Allergy Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

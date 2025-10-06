@@ -1,3 +1,5 @@
+export const categoryName = "Anatomy, Pathology, and Medical Knowledge Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

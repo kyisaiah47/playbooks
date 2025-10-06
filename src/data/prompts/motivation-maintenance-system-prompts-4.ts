@@ -1,3 +1,5 @@
+export const categoryName = "Obstacles and Learning Experiences";
+
 export const prompts = [
   {
     id: 'prompt-1',

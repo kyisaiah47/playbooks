@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Digital Innovation in Library Services";
+
 export const prompts = [
   {
     id: 'prompt-1',

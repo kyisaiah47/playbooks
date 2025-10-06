@@ -1,3 +1,5 @@
+export const categoryName = "Expense Tracking and Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

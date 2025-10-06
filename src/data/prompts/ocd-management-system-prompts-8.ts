@@ -1,3 +1,5 @@
+export const categoryName = "Medication and Medical Management in OCD Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

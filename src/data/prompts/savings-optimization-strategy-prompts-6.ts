@@ -1,3 +1,5 @@
+export const categoryName = "Tax Optimization and Financial Efficiency";
+
 export const prompts = [
   {
     id: 'prompt-1',

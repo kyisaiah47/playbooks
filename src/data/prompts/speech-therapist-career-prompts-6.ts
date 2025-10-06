@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Innovation in Speech-Language Pathology";
+
 export const prompts = [
   {
     id: 'prompt-1',

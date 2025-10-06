@@ -1,3 +1,5 @@
+export const categoryName = "Ingredient Knowledge & Substitution Science";
+
 export const prompts = [
   {
     id: 'prompt-1',

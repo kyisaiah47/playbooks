@@ -1,3 +1,5 @@
+export const categoryName = "Portfolio Performance & Risk Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

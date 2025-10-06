@@ -1,3 +1,5 @@
+export const categoryName = "Creativity & Self-Expression Exploration";
+
 export const prompts = [
   {
     id: 'prompt-1',

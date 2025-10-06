@@ -1,3 +1,5 @@
+export const categoryName = "Professional Support & Advisory Team Assembly";
+
 export const prompts = [
   {
     id: 'prompt-1',

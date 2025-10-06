@@ -1,3 +1,5 @@
+export const categoryName = "Service Architecture and Reliability Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

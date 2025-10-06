@@ -1,3 +1,5 @@
+export const categoryName = "Contractor & Professional Services";
+
 export const prompts = [
   {
     id: 'prompt-1',

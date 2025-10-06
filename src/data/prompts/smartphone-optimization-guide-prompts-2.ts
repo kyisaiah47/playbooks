@@ -1,3 +1,5 @@
+export const categoryName = "Storage Management & Data Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

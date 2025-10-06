@@ -1,3 +1,5 @@
+export const categoryName = "Pattern Recognition & Learning Synthesis";
+
 export const prompts = [
   {
     id: 'prompt-1',

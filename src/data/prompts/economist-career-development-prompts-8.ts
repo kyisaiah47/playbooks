@@ -1,3 +1,5 @@
+export const categoryName = "Economic Policy Analysis & Government Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

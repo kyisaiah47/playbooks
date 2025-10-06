@@ -1,3 +1,5 @@
+export const categoryName = "Business Model & Revenue Strategy Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

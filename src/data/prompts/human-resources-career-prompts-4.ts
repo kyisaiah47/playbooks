@@ -1,3 +1,5 @@
+export const categoryName = "Talent Acquisition & Workforce Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

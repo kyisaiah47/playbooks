@@ -1,3 +1,5 @@
+export const categoryName = "Selling and Trading Strategies for Antique Collectors";
+
 export const prompts = [
   {
     id: 'prompt-1',

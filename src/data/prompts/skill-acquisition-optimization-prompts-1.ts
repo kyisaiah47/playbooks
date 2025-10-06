@@ -1,3 +1,5 @@
+export const categoryName = "Learning Environment and Context Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

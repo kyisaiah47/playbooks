@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Impact and Long-term Recovery Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

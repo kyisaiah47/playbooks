@@ -1,3 +1,5 @@
+export const categoryName = "Training Philosophy and Mental Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

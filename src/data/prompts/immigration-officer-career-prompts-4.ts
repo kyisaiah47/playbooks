@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Competency and Interviewing Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Long-term Recovery Planning and Life Reconstruction";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Food Allergy Management & Dietary Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

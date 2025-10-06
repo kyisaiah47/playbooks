@@ -1,3 +1,5 @@
+export const categoryName = "Self-Awareness and Personal Growth in BDD Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

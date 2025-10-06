@@ -1,3 +1,5 @@
+export const categoryName = "Stress Management and External Pressures";
+
 export const prompts = [
   {
     id: 'prompt-1',

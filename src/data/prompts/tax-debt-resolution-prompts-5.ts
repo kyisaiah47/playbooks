@@ -1,3 +1,5 @@
+export const categoryName = "Tax Compliance History and Future Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

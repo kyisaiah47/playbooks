@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Awareness and Global Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

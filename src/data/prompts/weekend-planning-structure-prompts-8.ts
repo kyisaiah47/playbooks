@@ -1,3 +1,5 @@
+export const categoryName = "Weekend Adventure & Experience Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

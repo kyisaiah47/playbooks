@@ -1,3 +1,5 @@
+export const categoryName = "Cash Flow Management and Financial Performance Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Hydration Myths & Evidence-Based Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

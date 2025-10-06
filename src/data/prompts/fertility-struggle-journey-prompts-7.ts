@@ -1,3 +1,5 @@
+export const categoryName = "Timeline Tracking & Milestone Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Remote Team Trust and Relationship Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

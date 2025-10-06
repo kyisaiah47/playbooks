@@ -1,3 +1,5 @@
+export const categoryName = "Weather Conditions & Timing Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

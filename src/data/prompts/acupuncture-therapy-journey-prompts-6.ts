@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle Integration and Holistic Health Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

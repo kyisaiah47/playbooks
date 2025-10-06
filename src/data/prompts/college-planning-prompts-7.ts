@@ -1,3 +1,5 @@
+export const categoryName = "College Transition & Adjustment Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Triggers & Environmental Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Loan Application Process & Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

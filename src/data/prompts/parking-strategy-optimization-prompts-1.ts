@@ -1,3 +1,5 @@
+export const categoryName = "Urban Parking Demand Analysis & Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

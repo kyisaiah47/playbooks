@@ -1,3 +1,5 @@
+export const categoryName = "Communication, Interpersonal Skills, and Client Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

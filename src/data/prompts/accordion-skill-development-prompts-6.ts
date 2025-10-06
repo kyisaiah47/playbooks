@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Heritage & Musical Community Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

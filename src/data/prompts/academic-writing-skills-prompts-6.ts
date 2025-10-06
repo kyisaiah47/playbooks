@@ -1,3 +1,5 @@
+export const categoryName = "Citation Management and Academic Integrity";
+
 export const prompts = [
   {
     id: 'prompt-1',

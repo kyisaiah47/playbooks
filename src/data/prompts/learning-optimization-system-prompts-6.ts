@@ -1,3 +1,5 @@
+export const categoryName = "Learning Strategy and Method Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

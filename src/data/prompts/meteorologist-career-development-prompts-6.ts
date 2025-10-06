@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Tools in Meteorology";
+
 export const prompts = [
   {
     id: 'prompt-1',

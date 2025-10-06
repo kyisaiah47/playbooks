@@ -1,3 +1,5 @@
+export const categoryName = "Advanced Practice Evolution & Skill Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

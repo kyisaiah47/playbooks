@@ -1,3 +1,5 @@
+export const categoryName = "Self-Care and Professional Resilience for Caregivers";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Legal Document Requirements and State-Specific Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

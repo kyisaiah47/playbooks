@@ -1,3 +1,5 @@
+export const categoryName = "Marketing Awareness and Consumer Psychology";
+
 export const prompts = [
   {
     id: 'prompt-1',

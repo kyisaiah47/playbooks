@@ -1,3 +1,5 @@
+export const categoryName = "API Development and Integration Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

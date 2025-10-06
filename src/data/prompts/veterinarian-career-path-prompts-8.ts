@@ -1,3 +1,5 @@
+export const categoryName = "Continuing Education & Professional Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

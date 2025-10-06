@@ -1,3 +1,5 @@
+export const categoryName = "Perspective Exploration & Mental Model Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

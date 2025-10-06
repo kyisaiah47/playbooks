@@ -1,3 +1,5 @@
+export const categoryName = "Virtual Team Building and Remote Collaboration";
+
 export const prompts = [
   {
     id: 'prompt-1',

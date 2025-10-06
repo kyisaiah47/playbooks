@@ -1,3 +1,5 @@
+export const categoryName = "Policy Management and Optimization Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

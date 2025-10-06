@@ -1,3 +1,5 @@
+export const categoryName = "Coping Strategies and Personal Well-being Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

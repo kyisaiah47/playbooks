@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Investments & Advanced Asset Classes";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Oversight & Risk Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

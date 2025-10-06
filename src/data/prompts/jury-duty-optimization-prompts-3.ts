@@ -1,3 +1,5 @@
+export const categoryName = "Financial and Employment Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

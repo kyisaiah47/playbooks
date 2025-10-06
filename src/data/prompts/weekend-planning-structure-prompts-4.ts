@@ -1,3 +1,5 @@
+export const categoryName = "Weekend Connections & Social Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

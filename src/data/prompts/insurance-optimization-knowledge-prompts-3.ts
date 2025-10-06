@@ -1,3 +1,5 @@
+export const categoryName = "Claims Management and Cost Control";
+
 export const prompts = [
   {
     id: 'prompt-1',

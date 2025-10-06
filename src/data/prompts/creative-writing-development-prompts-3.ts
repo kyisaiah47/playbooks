@@ -1,3 +1,5 @@
+export const categoryName = "Plot Structure & Narrative Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

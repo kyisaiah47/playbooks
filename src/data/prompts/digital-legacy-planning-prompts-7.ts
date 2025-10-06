@@ -1,3 +1,5 @@
+export const categoryName = "Digital Continuity and Business Legacy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

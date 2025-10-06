@@ -1,3 +1,5 @@
+export const categoryName = "Language Learning Resources & Material Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

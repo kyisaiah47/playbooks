@@ -1,3 +1,5 @@
+export const categoryName = "Understanding and Navigating Practical Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Coping Strategies and Resilience Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

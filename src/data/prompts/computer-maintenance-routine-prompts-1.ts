@@ -1,3 +1,5 @@
+export const categoryName = "System Performance Monitoring & Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

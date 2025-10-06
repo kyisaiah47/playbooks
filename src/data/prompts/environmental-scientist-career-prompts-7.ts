@@ -1,3 +1,5 @@
+export const categoryName = "Sustainable Technology & Environmental Innovation";
+
 export const prompts = [
   {
     id: 'prompt-1',

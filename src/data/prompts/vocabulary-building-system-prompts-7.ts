@@ -1,3 +1,5 @@
+export const categoryName = "Practical Application & Real-World Usage";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Skills and Patient Care Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

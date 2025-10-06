@@ -1,3 +1,5 @@
+export const categoryName = "Training Adaptation & Physiological Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

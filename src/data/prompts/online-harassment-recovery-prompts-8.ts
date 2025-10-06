@@ -1,3 +1,5 @@
+export const categoryName = "Professional and Workplace Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

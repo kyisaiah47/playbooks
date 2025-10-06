@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Response and Safety Protocols";
+
 export const prompts = [
   {
     id: 'prompt-1',

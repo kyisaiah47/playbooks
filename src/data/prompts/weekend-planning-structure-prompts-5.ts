@@ -1,3 +1,5 @@
+export const categoryName = "Weekend Wellness & Self-Care Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

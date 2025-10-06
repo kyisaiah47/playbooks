@@ -1,3 +1,5 @@
+export const categoryName = "Spatial Awareness & Environmental Interaction";
+
 export const prompts = [
   {
     id: 'prompt-1',

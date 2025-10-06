@@ -1,3 +1,5 @@
+export const categoryName = "Diplomatic Protocol and Etiquette Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

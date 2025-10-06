@@ -1,3 +1,5 @@
+export const categoryName = "Pre-Test Preparation and Study Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Rental Security and Financial Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

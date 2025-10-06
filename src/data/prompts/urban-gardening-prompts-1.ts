@@ -1,3 +1,5 @@
+export const categoryName = "Plant Selection and Variety Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

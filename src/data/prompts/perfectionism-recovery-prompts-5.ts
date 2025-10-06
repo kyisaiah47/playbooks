@@ -1,3 +1,5 @@
+export const categoryName = "Self-Compassion & Internal Dialogue Transformation";
+
 export const prompts = [
   {
     id: 'prompt-1',

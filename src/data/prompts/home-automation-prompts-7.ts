@@ -1,3 +1,5 @@
+export const categoryName = "Automation Rules & Logic Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

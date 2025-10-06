@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Your Grief Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

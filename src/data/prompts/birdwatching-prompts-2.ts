@@ -1,3 +1,5 @@
+export const categoryName = "Species Identification & Behavioral Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

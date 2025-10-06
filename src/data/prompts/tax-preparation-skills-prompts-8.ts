@@ -1,3 +1,5 @@
+export const categoryName = "Audit Defense and Tax Controversy Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

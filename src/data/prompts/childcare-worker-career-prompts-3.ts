@@ -1,3 +1,5 @@
+export const categoryName = "Communication and Family Partnership Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

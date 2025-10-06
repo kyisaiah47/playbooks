@@ -1,3 +1,5 @@
+export const categoryName = "Essential Will Components and Legal Requirements";
+
 export const prompts = [
   {
     id: 'prompt-1',

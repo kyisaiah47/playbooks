@@ -1,3 +1,5 @@
+export const categoryName = "Support Networks and Relationship Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

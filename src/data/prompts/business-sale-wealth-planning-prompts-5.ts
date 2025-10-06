@@ -1,3 +1,5 @@
+export const categoryName = "Personal and Family Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

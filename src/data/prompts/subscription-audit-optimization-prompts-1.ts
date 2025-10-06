@@ -1,3 +1,5 @@
+export const categoryName = "Subscription Portfolio Analysis & Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Sample Preparation and Analysis Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

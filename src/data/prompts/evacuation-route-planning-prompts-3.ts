@@ -1,3 +1,5 @@
+export const categoryName = "Transportation Networks and Route Infrastructure";
+
 export const prompts = [
   {
     id: 'prompt-1',

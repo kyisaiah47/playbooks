@@ -1,3 +1,5 @@
+export const categoryName = "Seasonal Growth Cycles & Plant Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

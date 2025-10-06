@@ -1,3 +1,5 @@
+export const categoryName = "Daily Practice and Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

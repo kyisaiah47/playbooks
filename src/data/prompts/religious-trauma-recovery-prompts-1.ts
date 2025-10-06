@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Religious Trauma Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

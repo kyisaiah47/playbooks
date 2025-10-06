@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Digital Harassment Patterns and Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

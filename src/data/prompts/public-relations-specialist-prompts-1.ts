@@ -1,3 +1,5 @@
+export const categoryName = "Media Relations & Press Coverage Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

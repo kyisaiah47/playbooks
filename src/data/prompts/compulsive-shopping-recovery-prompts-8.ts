@@ -1,3 +1,5 @@
+export const categoryName = "Values Alignment and Identity-Based Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

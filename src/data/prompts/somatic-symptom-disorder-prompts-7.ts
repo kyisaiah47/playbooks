@@ -1,3 +1,5 @@
+export const categoryName = "Knowledge Building and Educational Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

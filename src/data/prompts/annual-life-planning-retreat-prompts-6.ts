@@ -1,3 +1,5 @@
+export const categoryName = "Values, Purpose & Life Direction Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

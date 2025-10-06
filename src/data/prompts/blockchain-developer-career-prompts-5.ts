@@ -1,3 +1,5 @@
+export const categoryName = "Blockchain Development Tools & Technology Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Economic Indicators & Market Environment Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

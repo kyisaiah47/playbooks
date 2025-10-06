@@ -1,3 +1,5 @@
+export const categoryName = "Floral Design Fundamentals & Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Wine Health & Lifestyle Benefits";
+
 export const prompts = [
   {
     id: 'prompt-1',

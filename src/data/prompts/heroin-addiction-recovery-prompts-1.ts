@@ -1,3 +1,5 @@
+export const categoryName = "Early Recovery Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

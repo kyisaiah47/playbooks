@@ -1,3 +1,5 @@
+export const categoryName = "Essential Safety Equipment and Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

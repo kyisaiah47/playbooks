@@ -1,3 +1,5 @@
+export const categoryName = "Data Analytics and Health Informatics";
+
 export const prompts = [
   {
     id: 'prompt-1',

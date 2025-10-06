@@ -1,3 +1,5 @@
+export const categoryName = "Surface Treatment and Finishing Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

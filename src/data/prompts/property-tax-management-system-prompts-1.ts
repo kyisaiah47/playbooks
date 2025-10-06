@@ -1,3 +1,5 @@
+export const categoryName = "Tax Assessment Appeals and Disputes";
+
 export const prompts = [
   {
     id: 'prompt-1',

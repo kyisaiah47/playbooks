@@ -1,3 +1,5 @@
+export const categoryName = "Health, Wellness & Life Balance Reflections";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Mindfulness and Present-Moment Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Space Planning and Layout Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

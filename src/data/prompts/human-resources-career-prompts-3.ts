@@ -1,3 +1,5 @@
+export const categoryName = "HR Compliance & Legal Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

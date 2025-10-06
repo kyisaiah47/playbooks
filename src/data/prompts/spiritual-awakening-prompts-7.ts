@@ -1,3 +1,5 @@
+export const categoryName = "Mystical Experiences and Spiritual Phenomena";
+
 export const prompts = [
   {
     id: 'prompt-1',

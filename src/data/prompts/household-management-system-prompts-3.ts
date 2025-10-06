@@ -1,3 +1,5 @@
+export const categoryName = "Family Organization & Life Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

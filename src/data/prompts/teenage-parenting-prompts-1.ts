@@ -1,3 +1,5 @@
+export const categoryName = "Health and Development Milestones";
+
 export const prompts = [
   {
     id: 'prompt-1',

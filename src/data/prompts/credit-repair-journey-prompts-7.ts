@@ -1,3 +1,5 @@
+export const categoryName = "Identity Protection & Credit Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

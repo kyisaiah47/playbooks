@@ -1,3 +1,5 @@
+export const categoryName = "Communication and Co-consciousness Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

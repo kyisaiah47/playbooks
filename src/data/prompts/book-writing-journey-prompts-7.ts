@@ -1,3 +1,5 @@
+export const categoryName = "Research Methods & Information Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

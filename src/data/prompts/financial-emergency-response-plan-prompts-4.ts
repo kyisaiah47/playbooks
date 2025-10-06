@@ -1,3 +1,5 @@
+export const categoryName = "Essential Services and Utilities Crisis Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

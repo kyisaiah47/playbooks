@@ -1,3 +1,5 @@
+export const categoryName = "Income Sources and Withdrawal Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

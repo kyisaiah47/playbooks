@@ -1,3 +1,5 @@
+export const categoryName = "Mental Health & Psychological Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Case Foundation & Legal Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

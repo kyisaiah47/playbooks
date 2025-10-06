@@ -1,3 +1,5 @@
+export const categoryName = "Goals & Reflection Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

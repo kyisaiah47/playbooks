@@ -1,3 +1,5 @@
+export const categoryName = "Parking Economics & Financial Sustainability Models";
+
 export const prompts = [
   {
     id: 'prompt-1',

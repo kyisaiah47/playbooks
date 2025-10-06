@@ -1,3 +1,5 @@
+export const categoryName = "Cross-Cultural Networking & Global Business Etiquette";
+
 export const prompts = [
   {
     id: 'prompt-1',

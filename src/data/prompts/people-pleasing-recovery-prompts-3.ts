@@ -1,3 +1,5 @@
+export const categoryName = "Building Self-Worth and Identity Beyond Others' Approval";
+
 export const prompts = [
   {
     id: 'prompt-1',

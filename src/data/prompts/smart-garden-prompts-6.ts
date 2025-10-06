@@ -1,3 +1,5 @@
+export const categoryName = "Harvest Management & Food Production";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Security Systems Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "IRS Communication and Correspondence Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

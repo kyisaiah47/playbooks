@@ -1,3 +1,5 @@
+export const categoryName = "Economic Systems and Material Culture";
+
 export const prompts = [
   {
     id: 'prompt-1',

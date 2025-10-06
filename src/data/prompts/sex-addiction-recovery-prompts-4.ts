@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Addiction Patterns and Root Causes";
+
 export const prompts = [
   {
     id: 'prompt-1',

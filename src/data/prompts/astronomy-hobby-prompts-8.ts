@@ -1,3 +1,5 @@
+export const categoryName = "Astronomy Data Collection and Observation Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

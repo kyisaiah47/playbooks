@@ -1,3 +1,5 @@
+export const categoryName = "Plant Nutrition & Fertilization Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

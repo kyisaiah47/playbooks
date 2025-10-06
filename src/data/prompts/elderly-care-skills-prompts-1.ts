@@ -1,3 +1,5 @@
+export const categoryName = "Daily Care Planning & Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

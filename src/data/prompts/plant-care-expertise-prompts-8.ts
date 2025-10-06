@@ -1,3 +1,5 @@
+export const categoryName = "Plant Disease Prevention & Treatment Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Leadership Skills and Management Competencies";
+
 export const prompts = [
   {
     id: 'prompt-1',

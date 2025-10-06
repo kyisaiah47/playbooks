@@ -1,3 +1,5 @@
+export const categoryName = "Feeding and Nutrition Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

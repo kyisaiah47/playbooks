@@ -1,3 +1,5 @@
+export const categoryName = "Spending Patterns & Rewards Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

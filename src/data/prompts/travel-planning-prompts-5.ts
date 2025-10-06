@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Insights & Local Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

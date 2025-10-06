@@ -1,3 +1,5 @@
+export const categoryName = "Wheel Techniques and Form Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Medication Access and Cost-Reduction Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

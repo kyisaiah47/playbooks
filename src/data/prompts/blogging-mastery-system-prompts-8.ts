@@ -1,3 +1,5 @@
+export const categoryName = "Creative Process & Content Development Workflow";
+
 export const prompts = [
   {
     id: 'prompt-1',

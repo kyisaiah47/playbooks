@@ -1,3 +1,5 @@
+export const categoryName = "Trauma and Critical Care Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

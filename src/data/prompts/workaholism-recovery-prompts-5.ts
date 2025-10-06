@@ -1,3 +1,5 @@
+export const categoryName = "Mindful Productivity and Sustainable Work Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

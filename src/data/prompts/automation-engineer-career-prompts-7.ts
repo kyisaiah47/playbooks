@@ -1,3 +1,5 @@
+export const categoryName = "Testing Strategy & Quality Metrics Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

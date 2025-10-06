@@ -1,3 +1,5 @@
+export const categoryName = "Credit Profile and Borrowing Capacity Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

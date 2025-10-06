@@ -1,3 +1,5 @@
+export const categoryName = "Circuit Analysis and Troubleshooting Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

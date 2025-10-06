@@ -1,3 +1,5 @@
+export const categoryName = "Financial Analysis & Reporting Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

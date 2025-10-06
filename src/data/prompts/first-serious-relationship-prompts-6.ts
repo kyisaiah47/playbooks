@@ -1,3 +1,5 @@
+export const categoryName = "Social Integration and External Relationship Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

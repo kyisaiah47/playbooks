@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition and Physiological Factors Affecting Posture";
+
 export const prompts = [
   {
     id: 'prompt-1',

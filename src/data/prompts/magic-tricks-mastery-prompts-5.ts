@@ -1,3 +1,5 @@
+export const categoryName = "Magic History & Cultural Impact Studies";
+
 export const prompts = [
   {
     id: 'prompt-1',

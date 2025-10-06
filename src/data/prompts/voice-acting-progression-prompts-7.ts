@@ -1,3 +1,5 @@
+export const categoryName = "Equipment & Studio Setup";
+
 export const prompts = [
   {
     id: 'prompt-1',

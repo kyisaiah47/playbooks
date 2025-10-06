@@ -1,3 +1,5 @@
+export const categoryName = "Initial Doubts and Questioning Phase";
+
 export const prompts = [
   {
     id: 'prompt-1',

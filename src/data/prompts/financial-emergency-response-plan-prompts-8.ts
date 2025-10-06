@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Income Sources and Gig Economy Opportunities";
+
 export const prompts = [
   {
     id: 'prompt-1',

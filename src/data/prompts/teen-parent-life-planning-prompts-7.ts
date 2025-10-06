@@ -1,3 +1,5 @@
+export const categoryName = "Legal Rights and Responsibilities Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

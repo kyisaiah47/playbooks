@@ -1,3 +1,5 @@
+export const categoryName = "Property Marketing & Tenant Acquisition";
+
 export const prompts = [
   {
     id: 'prompt-1',

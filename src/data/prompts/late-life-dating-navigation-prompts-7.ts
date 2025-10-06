@@ -1,3 +1,5 @@
+export const categoryName = "Social Circles, Family Dynamics, and Community Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

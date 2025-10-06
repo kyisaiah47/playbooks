@@ -1,3 +1,5 @@
+export const categoryName = "Smart Parking Technology & Implementation Solutions";
+
 export const prompts = [
   {
     id: 'prompt-1',

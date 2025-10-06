@@ -1,3 +1,5 @@
+export const categoryName = "Plant Propagation & Reproduction Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

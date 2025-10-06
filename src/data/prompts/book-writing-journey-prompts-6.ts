@@ -1,3 +1,5 @@
+export const categoryName = "Revision & Editing Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Platform Strategy & Distribution Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

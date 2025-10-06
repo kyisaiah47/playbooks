@@ -1,3 +1,5 @@
+export const categoryName = "Data Analysis & Investigative Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

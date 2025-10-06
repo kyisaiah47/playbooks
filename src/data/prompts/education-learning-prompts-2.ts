@@ -1,3 +1,5 @@
+export const categoryName = "Academic Progress and Self-Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

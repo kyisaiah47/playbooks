@@ -1,3 +1,5 @@
+export const categoryName = "Natural Remedies and Immune-Supporting Therapies";
+
 export const prompts = [
   {
     id: 'prompt-1',

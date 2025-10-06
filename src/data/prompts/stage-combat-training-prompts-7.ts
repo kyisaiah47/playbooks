@@ -1,3 +1,5 @@
+export const categoryName = "Choreography and Movement Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Social and Relational Impact of Deconversion";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Intergenerational Relationships & Family Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

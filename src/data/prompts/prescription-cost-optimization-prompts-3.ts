@@ -1,3 +1,5 @@
+export const categoryName = "Patient Assistance Programs and Financial Support Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

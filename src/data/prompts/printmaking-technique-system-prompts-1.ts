@@ -1,3 +1,5 @@
+export const categoryName = "Paper and Substrate Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

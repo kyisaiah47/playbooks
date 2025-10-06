@@ -1,3 +1,5 @@
+export const categoryName = "Long-term Development and Future Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

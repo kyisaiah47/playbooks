@@ -1,3 +1,5 @@
+export const categoryName = "Brand Voice & Creative Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

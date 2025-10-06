@@ -1,3 +1,5 @@
+export const categoryName = "Credit Report Analysis and Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

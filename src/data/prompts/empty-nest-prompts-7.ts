@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning & Legacy Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

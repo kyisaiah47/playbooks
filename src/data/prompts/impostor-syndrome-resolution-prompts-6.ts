@@ -1,3 +1,5 @@
+export const categoryName = "Self-Talk and Internal Narrative Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

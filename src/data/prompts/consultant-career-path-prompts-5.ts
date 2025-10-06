@@ -1,3 +1,5 @@
+export const categoryName = "Project Delivery & Methodology Expertise";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "International Relations and Global Affairs Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

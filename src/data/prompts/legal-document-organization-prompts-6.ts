@@ -1,3 +1,5 @@
+export const categoryName = "Legal Workflow Optimization and Process Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

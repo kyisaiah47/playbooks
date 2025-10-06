@@ -1,3 +1,5 @@
+export const categoryName = "Measuring Impact and Success in Mentoring Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

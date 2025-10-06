@@ -1,3 +1,5 @@
+export const categoryName = "Home Environment & Assistive Technology";
+
 export const prompts = [
   {
     id: 'prompt-1',

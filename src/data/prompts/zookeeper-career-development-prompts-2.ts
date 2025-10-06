@@ -1,3 +1,5 @@
+export const categoryName = "Conservation and Species Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

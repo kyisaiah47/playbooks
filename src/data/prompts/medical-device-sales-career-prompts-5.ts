@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Environment and Clinical Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

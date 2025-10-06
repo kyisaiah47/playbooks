@@ -1,3 +1,5 @@
+export const categoryName = "Digital Asset Recovery and Online Presence Restoration";
+
 export const prompts = [
   {
     id: 'prompt-1',

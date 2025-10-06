@@ -1,3 +1,5 @@
+export const categoryName = "Fertility Preservation & Reproductive Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

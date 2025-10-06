@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Technology and Biometric Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Comedy Technique & Skill Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

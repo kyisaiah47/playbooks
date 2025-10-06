@@ -1,3 +1,5 @@
+export const categoryName = "Knowledge Transfer & Community Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

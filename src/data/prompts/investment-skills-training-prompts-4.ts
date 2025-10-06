@@ -1,3 +1,5 @@
+export const categoryName = "Financial Statement Analysis & Company Valuation";
+
 export const prompts = [
   {
     id: 'prompt-1',

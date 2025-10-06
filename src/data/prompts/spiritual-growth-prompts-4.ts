@@ -1,3 +1,5 @@
+export const categoryName = "Mystical Experiences & Inner Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

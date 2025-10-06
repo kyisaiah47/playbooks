@@ -1,3 +1,5 @@
+export const categoryName = "Marriage Preparation & Relationship Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

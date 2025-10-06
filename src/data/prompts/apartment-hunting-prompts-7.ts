@@ -1,3 +1,5 @@
+export const categoryName = "Post-Move Evaluation and Future Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

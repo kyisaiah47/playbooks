@@ -1,3 +1,5 @@
+export const categoryName = "Know Your Rights - Legal Foundations and Protections";
+
 export const prompts = [
   {
     id: 'prompt-1',

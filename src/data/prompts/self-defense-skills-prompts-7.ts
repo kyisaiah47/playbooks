@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Awareness and Tactical Positioning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Culture Analysis and Future Prevention Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

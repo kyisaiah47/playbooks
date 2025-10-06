@@ -1,3 +1,5 @@
+export const categoryName = "Bug Tracking and Defect Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

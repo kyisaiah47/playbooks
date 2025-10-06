@@ -1,3 +1,5 @@
+export const categoryName = "Pressure and Registration Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

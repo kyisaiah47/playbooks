@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Methods and Chemical Applications";
+
 export const prompts = [
   {
     id: 'prompt-1',

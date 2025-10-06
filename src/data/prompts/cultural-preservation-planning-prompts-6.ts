@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Landscape and Sacred Space Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

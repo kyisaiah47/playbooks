@@ -1,3 +1,5 @@
+export const categoryName = "Travel Logistics & Transportation Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

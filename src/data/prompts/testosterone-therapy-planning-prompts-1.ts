@@ -1,3 +1,5 @@
+export const categoryName = "Pre-Treatment Assessment & Baseline Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

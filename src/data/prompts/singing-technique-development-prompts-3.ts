@@ -1,3 +1,5 @@
+export const categoryName = "Tone Quality and Resonance";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Historical Context & Electoral Trends";
+
 export const prompts = [
   {
     id: 'prompt-1',

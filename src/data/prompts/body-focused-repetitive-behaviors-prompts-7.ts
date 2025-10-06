@@ -1,3 +1,5 @@
+export const categoryName = "Coping Mechanisms and Adaptive Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Economic Indicators & Market Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

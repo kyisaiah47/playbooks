@@ -1,3 +1,5 @@
+export const categoryName = "Mathematical Identity and Personal Development Reflection";
+
 export const prompts = [
   {
     id: 'prompt-1',

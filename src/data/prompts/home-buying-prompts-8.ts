@@ -1,3 +1,5 @@
+export const categoryName = "Home Features & Lifestyle Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

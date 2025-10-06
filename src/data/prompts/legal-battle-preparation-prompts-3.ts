@@ -1,3 +1,5 @@
+export const categoryName = "Strategy & Opposition Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

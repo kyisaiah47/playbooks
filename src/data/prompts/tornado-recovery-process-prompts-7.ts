@@ -1,3 +1,5 @@
+export const categoryName = "Infrastructure Systems and Utility Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Smart Device Integration & Compatibility";
+
 export const prompts = [
   {
     id: 'prompt-1',

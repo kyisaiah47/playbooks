@@ -1,3 +1,5 @@
+export const categoryName = "Platform Strategy & Opportunity Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Digital Time Management & Productivity Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

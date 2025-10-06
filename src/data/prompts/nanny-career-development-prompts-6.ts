@@ -1,3 +1,5 @@
+export const categoryName = "Work Environment & Family Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

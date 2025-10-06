@@ -1,3 +1,5 @@
+export const categoryName = "Property Tax Payment and Financial Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

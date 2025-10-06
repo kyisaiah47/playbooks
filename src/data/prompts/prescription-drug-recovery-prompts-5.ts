@@ -1,3 +1,5 @@
+export const categoryName = "Medication Management and Alternative Pain Solutions";
+
 export const prompts = [
   {
     id: 'prompt-1',

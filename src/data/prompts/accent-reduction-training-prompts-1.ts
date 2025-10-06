@@ -1,3 +1,5 @@
+export const categoryName = "Vowel Sound Mastery and Articulation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Historical Trauma & Healing Pathways";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Delegation Skills Self-Assessment and Growth Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Learning and Development from Conflict Experiences";
+
 export const prompts = [
   {
     id: 'prompt-1',

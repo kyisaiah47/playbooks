@@ -1,3 +1,5 @@
+export const categoryName = "Safety, Accessibility, and Inclusive Transit Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Appointment Preparation and Follow-up Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Mindful Technology Habits";
+
 export const prompts = [
   {
     id: 'prompt-1',

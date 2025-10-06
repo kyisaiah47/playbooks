@@ -1,3 +1,5 @@
+export const categoryName = "Academic Language and Communication Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

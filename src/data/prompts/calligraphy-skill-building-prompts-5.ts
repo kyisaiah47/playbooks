@@ -1,3 +1,5 @@
+export const categoryName = "Letter Formation and Stroke Mechanics";
+
 export const prompts = [
   {
     id: 'prompt-1',

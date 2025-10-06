@@ -1,3 +1,5 @@
+export const categoryName = "Exam Environment and Test-Taking Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

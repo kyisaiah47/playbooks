@@ -1,3 +1,5 @@
+export const categoryName = "Creative Business Models & Revenue Diversification";
+
 export const prompts = [
   {
     id: 'prompt-1',

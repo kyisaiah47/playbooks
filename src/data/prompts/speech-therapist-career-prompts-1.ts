@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Assessment and Evaluation Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Side Effects & Recovery Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

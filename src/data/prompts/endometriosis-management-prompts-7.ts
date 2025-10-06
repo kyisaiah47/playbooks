@@ -1,3 +1,5 @@
+export const categoryName = "Reproductive Health & Family Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

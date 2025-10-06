@@ -1,3 +1,5 @@
+export const categoryName = "Biomedical Engineering Ethics & Patient Safety Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

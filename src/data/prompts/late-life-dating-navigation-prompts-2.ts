@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Modern Dating Landscape";
+
 export const prompts = [
   {
     id: 'prompt-1',

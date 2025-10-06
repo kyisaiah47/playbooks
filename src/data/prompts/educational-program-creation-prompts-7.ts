@@ -1,3 +1,5 @@
+export const categoryName = "Program Implementation and Change Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

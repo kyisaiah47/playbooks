@@ -1,3 +1,5 @@
+export const categoryName = "Specialized Tax Situations and Industry Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

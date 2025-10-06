@@ -1,3 +1,5 @@
+export const categoryName = "Biomaterials & Tissue Engineering Applications";
+
 export const prompts = [
   {
     id: 'prompt-1',

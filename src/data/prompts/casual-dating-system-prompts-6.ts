@@ -1,3 +1,5 @@
+export const categoryName = "Boundary Setting & Personal Safety Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

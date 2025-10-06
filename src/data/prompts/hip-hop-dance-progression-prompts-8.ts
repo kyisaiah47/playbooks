@@ -1,3 +1,5 @@
+export const categoryName = "Mental and Physical Conditioning";
+
 export const prompts = [
   {
     id: 'prompt-1',

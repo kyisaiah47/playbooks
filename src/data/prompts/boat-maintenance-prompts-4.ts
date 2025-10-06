@@ -1,3 +1,5 @@
+export const categoryName = "Electrical and Navigation Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

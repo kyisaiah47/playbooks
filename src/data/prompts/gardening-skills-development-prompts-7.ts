@@ -1,3 +1,5 @@
+export const categoryName = "Water Management and Irrigation Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Performance Tracking & Maintenance Records";
+
 export const prompts = [
   {
     id: 'prompt-1',

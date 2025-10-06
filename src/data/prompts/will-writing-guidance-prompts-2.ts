@@ -1,3 +1,5 @@
+export const categoryName = "Beneficiary and Inheritance Decision Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

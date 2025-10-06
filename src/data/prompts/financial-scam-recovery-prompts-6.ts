@@ -1,3 +1,5 @@
+export const categoryName = "Communication and Digital Evidence Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

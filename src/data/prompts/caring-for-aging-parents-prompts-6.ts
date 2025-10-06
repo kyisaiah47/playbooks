@@ -1,3 +1,5 @@
+export const categoryName = "Quality of Life and Social Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

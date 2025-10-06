@@ -1,3 +1,5 @@
+export const categoryName = "Program Research & Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

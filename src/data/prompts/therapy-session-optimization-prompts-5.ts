@@ -1,3 +1,5 @@
+export const categoryName = "Self-Care and Professional Development for Therapists";
+
 export const prompts = [
   {
     id: 'prompt-1',

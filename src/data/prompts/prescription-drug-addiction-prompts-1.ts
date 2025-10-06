@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Prescription Drug Dependencies and Recovery Pathways";
+
 export const prompts = [
   {
     id: 'prompt-1',

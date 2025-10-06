@@ -1,3 +1,5 @@
+export const categoryName = "Investment Analysis & Valuation Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

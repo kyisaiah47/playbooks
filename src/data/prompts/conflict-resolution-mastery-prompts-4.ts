@@ -1,3 +1,5 @@
+export const categoryName = "Resolution Techniques and Process Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

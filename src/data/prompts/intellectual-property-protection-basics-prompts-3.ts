@@ -1,3 +1,5 @@
+export const categoryName = "IP Protection and Enforcement Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

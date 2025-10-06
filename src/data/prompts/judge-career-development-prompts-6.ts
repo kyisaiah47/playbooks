@@ -1,3 +1,5 @@
+export const categoryName = "Community Relations and Public Trust";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Foundation and Structural Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

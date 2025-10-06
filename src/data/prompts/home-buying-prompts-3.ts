@@ -1,3 +1,5 @@
+export const categoryName = "Home Inspection & Property Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

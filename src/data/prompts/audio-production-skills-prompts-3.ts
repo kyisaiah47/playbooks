@@ -1,3 +1,5 @@
+export const categoryName = "Music Production and Creative Workflow";
+
 export const prompts = [
   {
     id: 'prompt-1',

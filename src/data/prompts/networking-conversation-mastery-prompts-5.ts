@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Networking and Goal Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

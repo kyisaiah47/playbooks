@@ -1,3 +1,5 @@
+export const categoryName = "Pet Health Monitoring & Medical Records";
+
 export const prompts = [
   {
     id: 'prompt-1',

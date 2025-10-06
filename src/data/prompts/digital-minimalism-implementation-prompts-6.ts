@@ -1,3 +1,5 @@
+export const categoryName = "Digital Impact and Relationship Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

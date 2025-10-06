@@ -1,3 +1,5 @@
+export const categoryName = "Safety Features & Technology Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Historical Movements and Social Change Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

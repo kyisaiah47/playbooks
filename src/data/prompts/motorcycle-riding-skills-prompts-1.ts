@@ -1,3 +1,5 @@
+export const categoryName = "Basic Riding Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

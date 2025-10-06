@@ -1,3 +1,5 @@
+export const categoryName = "Industry Landscape & Market Analysis for AI Career Positioning";
+
 export const prompts = [
   {
     id: 'prompt-1',

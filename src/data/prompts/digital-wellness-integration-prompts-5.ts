@@ -1,3 +1,5 @@
+export const categoryName = "Digital Communication & Social Connection Balance";
+
 export const prompts = [
   {
     id: 'prompt-1',

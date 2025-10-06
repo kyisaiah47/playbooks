@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Response & Recovery Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Subject-Specific Knowledge Organization and Learning Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

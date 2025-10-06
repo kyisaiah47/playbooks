@@ -1,3 +1,5 @@
+export const categoryName = "Partnership Dynamics & Social Dance Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

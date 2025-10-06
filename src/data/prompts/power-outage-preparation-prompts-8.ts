@@ -1,3 +1,5 @@
+export const categoryName = "Food Security and Nutrition During Extended Outages";
+
 export const prompts = [
   {
     id: 'prompt-1',

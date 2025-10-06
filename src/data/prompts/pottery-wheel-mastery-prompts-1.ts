@@ -1,3 +1,5 @@
+export const categoryName = "Clay Body and Material Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

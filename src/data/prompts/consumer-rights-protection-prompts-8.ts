@@ -1,3 +1,5 @@
+export const categoryName = "Digital Consumer Rights and Online Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

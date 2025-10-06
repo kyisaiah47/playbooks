@@ -1,3 +1,5 @@
+export const categoryName = "Transit Economics and Policy Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

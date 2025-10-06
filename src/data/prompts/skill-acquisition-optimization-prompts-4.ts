@@ -1,3 +1,5 @@
+export const categoryName = "Mental Models and Cognitive Framework Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

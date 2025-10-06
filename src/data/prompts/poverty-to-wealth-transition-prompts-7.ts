@@ -1,3 +1,5 @@
+export const categoryName = "Financial Systems and Infrastructure Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

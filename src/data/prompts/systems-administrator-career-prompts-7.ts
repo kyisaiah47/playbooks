@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Infrastructure and Virtualization Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

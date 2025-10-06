@@ -1,3 +1,5 @@
+export const categoryName = "Digital Life & Technology Balance";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Historical and Cultural Context Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

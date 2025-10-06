@@ -1,3 +1,5 @@
+export const categoryName = "Practitioner Relationships and Treatment Environment Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

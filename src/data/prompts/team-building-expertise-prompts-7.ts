@@ -1,3 +1,5 @@
+export const categoryName = "Organizational Culture and Team Building Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

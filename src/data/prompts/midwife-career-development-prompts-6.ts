@@ -1,3 +1,5 @@
+export const categoryName = "Personal Well-being & Work-Life Integration in Midwifery";
+
 export const prompts = [
   {
     id: 'prompt-1',

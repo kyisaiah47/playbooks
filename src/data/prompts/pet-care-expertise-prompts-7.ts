@@ -1,3 +1,5 @@
+export const categoryName = "Pet Lifecycle & Life Stage Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

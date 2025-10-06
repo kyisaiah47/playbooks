@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning and Risk Assessment for Art Collectors";
+
 export const prompts = [
   {
     id: 'prompt-1',

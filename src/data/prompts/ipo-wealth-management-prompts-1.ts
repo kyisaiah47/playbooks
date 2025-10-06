@@ -1,3 +1,5 @@
+export const categoryName = "IPO Investment Strategy & Market Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

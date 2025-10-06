@@ -1,3 +1,5 @@
+export const categoryName = "Consumer Communication and Complaint Resolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

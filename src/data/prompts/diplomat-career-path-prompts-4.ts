@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Intelligence and Cross-Border Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

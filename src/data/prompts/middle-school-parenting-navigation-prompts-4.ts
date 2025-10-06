@@ -1,3 +1,5 @@
+export const categoryName = "Physical & Emotional Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

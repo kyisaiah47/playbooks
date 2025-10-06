@@ -1,3 +1,5 @@
+export const categoryName = "Art Industry & Professional Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

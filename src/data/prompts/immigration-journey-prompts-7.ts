@@ -1,3 +1,5 @@
+export const categoryName = "Education and Academic Credential Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

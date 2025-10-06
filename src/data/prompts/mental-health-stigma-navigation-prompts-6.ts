@@ -1,3 +1,5 @@
+export const categoryName = "Self-Care and Stigma Recovery Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

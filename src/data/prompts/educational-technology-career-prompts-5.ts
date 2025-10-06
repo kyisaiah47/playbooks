@@ -1,3 +1,5 @@
+export const categoryName = "Educational Technology Leadership & Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

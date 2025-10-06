@@ -1,3 +1,5 @@
+export const categoryName = "Organizational Culture and Environment Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Family Dynamics and Inheritance Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

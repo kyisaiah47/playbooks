@@ -1,3 +1,5 @@
+export const categoryName = "Disease Progression Monitoring and Health Data Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

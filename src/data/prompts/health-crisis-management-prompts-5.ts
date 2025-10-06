@@ -1,3 +1,5 @@
+export const categoryName = "Public Health Policy & Regulatory Framework Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

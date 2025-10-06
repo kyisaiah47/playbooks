@@ -1,3 +1,5 @@
+export const categoryName = "Fund Management and Investor Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

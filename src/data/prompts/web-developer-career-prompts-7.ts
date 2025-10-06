@@ -1,3 +1,5 @@
+export const categoryName = "Work-Life Balance & Personal Sustainability";
+
 export const prompts = [
   {
     id: 'prompt-1',

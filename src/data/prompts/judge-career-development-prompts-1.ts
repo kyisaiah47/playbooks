@@ -1,3 +1,5 @@
+export const categoryName = "Judicial Decision-Making and Case Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Estate Planning Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

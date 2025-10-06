@@ -1,3 +1,5 @@
+export const categoryName = "Building Recovery Support Systems and Professional Care Networks";
+
 export const prompts = [
   {
     id: 'prompt-1',

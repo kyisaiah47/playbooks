@@ -1,3 +1,5 @@
+export const categoryName = "Supplement Tracking and Progress Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

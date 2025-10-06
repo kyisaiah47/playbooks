@@ -1,3 +1,5 @@
+export const categoryName = "Decision Framework & Process Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

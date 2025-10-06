@@ -1,3 +1,5 @@
+export const categoryName = "Medical Test Results & Laboratory Data Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

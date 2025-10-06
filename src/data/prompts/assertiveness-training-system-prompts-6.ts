@@ -1,3 +1,5 @@
+export const categoryName = "Cultural and Social Context Awareness in Assertiveness";
+
 export const prompts = [
   {
     id: 'prompt-1',

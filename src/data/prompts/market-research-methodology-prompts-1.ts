@@ -1,3 +1,5 @@
+export const categoryName = "Target Audience Analysis & Segmentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

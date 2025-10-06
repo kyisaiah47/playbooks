@@ -1,3 +1,5 @@
+export const categoryName = "Supplement Storage and Shelf Life Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

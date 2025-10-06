@@ -1,3 +1,5 @@
+export const categoryName = "Legal and Compliance History Review";
+
 export const prompts = [
   {
     id: 'prompt-1',

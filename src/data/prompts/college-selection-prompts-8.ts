@@ -1,3 +1,5 @@
+export const categoryName = "Academic Standards & Learning Environment";
+
 export const prompts = [
   {
     id: 'prompt-1',

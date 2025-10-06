@@ -1,3 +1,5 @@
+export const categoryName = "Geology & Resource Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

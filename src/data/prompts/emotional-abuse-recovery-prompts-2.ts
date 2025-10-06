@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Emotional Impact and Trauma Responses";
+
 export const prompts = [
   {
     id: 'prompt-1',

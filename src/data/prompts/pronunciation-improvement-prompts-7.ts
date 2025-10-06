@@ -1,3 +1,5 @@
+export const categoryName = "Listening Skills and Auditory Discrimination";
+
 export const prompts = [
   {
     id: 'prompt-1',

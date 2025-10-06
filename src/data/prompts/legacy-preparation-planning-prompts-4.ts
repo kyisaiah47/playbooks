@@ -1,3 +1,5 @@
+export const categoryName = "Life Experiences and Meaningful Moments";
+
 export const prompts = [
   {
     id: 'prompt-1',

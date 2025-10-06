@@ -1,3 +1,5 @@
+export const categoryName = "Contractor Selection and Rebuild Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

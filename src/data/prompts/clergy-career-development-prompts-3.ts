@@ -1,3 +1,5 @@
+export const categoryName = "Theological Education and Continuing Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

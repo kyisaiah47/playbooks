@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Maintenance and Mechanical Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

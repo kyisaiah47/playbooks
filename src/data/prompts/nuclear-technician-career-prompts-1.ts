@@ -1,3 +1,5 @@
+export const categoryName = "Nuclear Safety and Radiation Protection Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

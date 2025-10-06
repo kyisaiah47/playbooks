@@ -1,3 +1,5 @@
+export const categoryName = "Relationship Dynamics & Intimacy During Separation";
+
 export const prompts = [
   {
     id: 'prompt-1',

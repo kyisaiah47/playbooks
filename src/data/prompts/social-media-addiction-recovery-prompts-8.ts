@@ -1,3 +1,5 @@
+export const categoryName = "Screen Time Awareness & Digital Consumption Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

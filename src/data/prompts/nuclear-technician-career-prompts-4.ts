@@ -1,3 +1,5 @@
+export const categoryName = "Nuclear Industry Career Development and Professional Growth";
+
 export const prompts = [
   {
     id: 'prompt-1',

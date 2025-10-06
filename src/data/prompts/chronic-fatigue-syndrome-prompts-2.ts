@@ -1,3 +1,5 @@
+export const categoryName = "Symptoms & Triggers Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

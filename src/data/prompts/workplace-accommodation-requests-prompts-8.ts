@@ -1,3 +1,5 @@
+export const categoryName = "Employee Experience and Outcomes Measurement";
+
 export const prompts = [
   {
     id: 'prompt-1',

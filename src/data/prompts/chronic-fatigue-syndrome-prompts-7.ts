@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Function & Mental Clarity";
+
 export const prompts = [
   {
     id: 'prompt-1',

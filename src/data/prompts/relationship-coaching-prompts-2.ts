@@ -1,3 +1,5 @@
+export const categoryName = "Relationship History and Personal Growth Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

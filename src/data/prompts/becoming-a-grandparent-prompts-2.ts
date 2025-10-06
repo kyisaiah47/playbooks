@@ -1,3 +1,5 @@
+export const categoryName = "Practical Preparation and Lifestyle Adjustments";
+
 export const prompts = [
   {
     id: 'prompt-1',

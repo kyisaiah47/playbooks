@@ -1,3 +1,5 @@
+export const categoryName = "Sexual Expression, Desire, and Physical Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

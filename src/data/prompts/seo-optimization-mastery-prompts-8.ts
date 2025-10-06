@@ -1,3 +1,5 @@
+export const categoryName = "Algorithm Updates & Search Engine Evolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

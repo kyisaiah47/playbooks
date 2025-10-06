@@ -1,3 +1,5 @@
+export const categoryName = "Contract Negotiation & Risk Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

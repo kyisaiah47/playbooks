@@ -1,3 +1,5 @@
+export const categoryName = "Digital Wellness Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

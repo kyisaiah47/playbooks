@@ -1,3 +1,5 @@
+export const categoryName = "Return-to-Work Programs and Disability Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

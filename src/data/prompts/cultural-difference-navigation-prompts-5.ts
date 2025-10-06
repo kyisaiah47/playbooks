@@ -1,3 +1,5 @@
+export const categoryName = "Power Dynamics and Hierarchy Structures";
+
 export const prompts = [
   {
     id: 'prompt-1',

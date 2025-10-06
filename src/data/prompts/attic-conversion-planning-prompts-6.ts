@@ -1,3 +1,5 @@
+export const categoryName = "Safety, Building Codes & Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

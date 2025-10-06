@@ -1,3 +1,5 @@
+export const categoryName = "Home Integration & Compatibility Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

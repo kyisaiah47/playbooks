@@ -1,3 +1,5 @@
+export const categoryName = "Environment & Context Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

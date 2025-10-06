@@ -1,3 +1,5 @@
+export const categoryName = "Music Business & Professional Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

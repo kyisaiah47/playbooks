@@ -1,3 +1,5 @@
+export const categoryName = "Growth and Learning Through Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

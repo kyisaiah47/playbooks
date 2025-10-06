@@ -1,3 +1,5 @@
+export const categoryName = "Risk Management & Due Diligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

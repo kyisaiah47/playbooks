@@ -1,3 +1,5 @@
+export const categoryName = "Water Systems & Plumbing Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

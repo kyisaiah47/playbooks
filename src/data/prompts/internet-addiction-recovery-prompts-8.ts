@@ -1,3 +1,5 @@
+export const categoryName = "Relapse Prevention & Setback Recovery Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

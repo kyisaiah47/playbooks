@@ -1,3 +1,5 @@
+export const categoryName = "Appliance Care and Energy Efficiency";
+
 export const prompts = [
   {
     id: 'prompt-1',

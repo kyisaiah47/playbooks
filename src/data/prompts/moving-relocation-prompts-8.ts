@@ -1,3 +1,5 @@
+export const categoryName = "Utility Transfers & Infrastructure Setup";
+
 export const prompts = [
   {
     id: 'prompt-1',

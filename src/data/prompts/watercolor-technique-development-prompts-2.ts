@@ -1,3 +1,5 @@
+export const categoryName = "Brush Techniques and Tool Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

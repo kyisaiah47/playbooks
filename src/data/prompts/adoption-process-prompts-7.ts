@@ -1,3 +1,5 @@
+export const categoryName = "Timeline Management and Process Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

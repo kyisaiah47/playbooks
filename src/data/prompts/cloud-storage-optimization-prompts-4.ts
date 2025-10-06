@@ -1,3 +1,5 @@
+export const categoryName = "Data Lifecycle and Migration Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

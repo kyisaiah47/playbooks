@@ -1,3 +1,5 @@
+export const categoryName = "Industry Trends & Future of Respiratory Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Identity and Personal Values";
+
 export const prompts = [
   {
     id: 'prompt-1',

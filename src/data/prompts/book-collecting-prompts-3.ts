@@ -1,3 +1,5 @@
+export const categoryName = "Author Research & Literary Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

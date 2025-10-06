@@ -1,3 +1,5 @@
+export const categoryName = "Teaching Philosophy & Personal Practice Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

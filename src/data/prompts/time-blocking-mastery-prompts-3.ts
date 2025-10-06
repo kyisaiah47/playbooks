@@ -1,3 +1,5 @@
+export const categoryName = "Productivity Patterns & Personal Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

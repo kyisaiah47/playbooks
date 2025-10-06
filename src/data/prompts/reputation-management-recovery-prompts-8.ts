@@ -1,3 +1,5 @@
+export const categoryName = "Learning Integration and Future Preparedness";
+
 export const prompts = [
   {
     id: 'prompt-1',

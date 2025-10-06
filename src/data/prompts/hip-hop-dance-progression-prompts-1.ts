@@ -1,3 +1,5 @@
+export const categoryName = "Foundational Movement Vocabulary";
+
 export const prompts = [
   {
     id: 'prompt-1',

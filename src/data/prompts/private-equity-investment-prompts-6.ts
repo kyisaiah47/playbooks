@@ -1,3 +1,5 @@
+export const categoryName = "Market Dynamics and Industry Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

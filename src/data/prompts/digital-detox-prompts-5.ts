@@ -1,3 +1,5 @@
+export const categoryName = "Offline Activities & Real-World Engagement";
+
 export const prompts = [
   {
     id: 'prompt-1',

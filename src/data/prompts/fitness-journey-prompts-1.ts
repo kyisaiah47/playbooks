@@ -1,3 +1,5 @@
+export const categoryName = "Workout Performance & Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

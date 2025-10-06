@@ -1,3 +1,5 @@
+export const categoryName = "Structural Assessment & Technical Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

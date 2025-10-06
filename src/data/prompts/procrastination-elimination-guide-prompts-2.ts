@@ -1,3 +1,5 @@
+export const categoryName = "Environmental and Context Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

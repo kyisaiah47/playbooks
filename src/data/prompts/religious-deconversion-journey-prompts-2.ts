@@ -1,3 +1,5 @@
+export const categoryName = "Exploring Alternative Worldviews and Belief Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

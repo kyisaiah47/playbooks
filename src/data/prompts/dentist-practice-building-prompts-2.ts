@@ -1,3 +1,5 @@
+export const categoryName = "Financial Management & Practice Profitability";
+
 export const prompts = [
   {
     id: 'prompt-1',

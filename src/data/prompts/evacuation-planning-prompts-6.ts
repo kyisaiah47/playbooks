@@ -1,3 +1,5 @@
+export const categoryName = "Post-Evacuation Recovery & Lessons Learned";
+
 export const prompts = [
   {
     id: 'prompt-1',

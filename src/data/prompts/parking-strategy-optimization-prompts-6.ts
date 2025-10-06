@@ -1,3 +1,5 @@
+export const categoryName = "Parking User Experience & Behavioral Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Personal Character and Behavioral Assessment Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

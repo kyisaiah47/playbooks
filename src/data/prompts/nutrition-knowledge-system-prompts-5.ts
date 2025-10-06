@@ -1,3 +1,5 @@
+export const categoryName = "Metabolic Health and Energy Regulation";
+
 export const prompts = [
   {
     id: 'prompt-1',

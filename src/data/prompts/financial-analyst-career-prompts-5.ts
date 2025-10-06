@@ -1,3 +1,5 @@
+export const categoryName = "Corporate Finance & Industry Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

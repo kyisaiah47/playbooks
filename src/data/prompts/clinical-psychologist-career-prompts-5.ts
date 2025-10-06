@@ -1,3 +1,5 @@
+export const categoryName = "Research Methods and Evidence-Based Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

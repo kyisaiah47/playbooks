@@ -1,3 +1,5 @@
+export const categoryName = "Transportation, Storage, and Containment Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

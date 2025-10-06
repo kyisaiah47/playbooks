@@ -1,3 +1,5 @@
+export const categoryName = "Legal Precedents and Jurisdiction-Specific Requirements";
+
 export const prompts = [
   {
     id: 'prompt-1',

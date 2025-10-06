@@ -1,3 +1,5 @@
+export const categoryName = "Technology Integration and Innovation in Optometry";
+
 export const prompts = [
   {
     id: 'prompt-1',

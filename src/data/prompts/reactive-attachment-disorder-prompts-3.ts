@@ -1,3 +1,5 @@
+export const categoryName = "Developmental Impact and Life Transitions";
+
 export const prompts = [
   {
     id: 'prompt-1',

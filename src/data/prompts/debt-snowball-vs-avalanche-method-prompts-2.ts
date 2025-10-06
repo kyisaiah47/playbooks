@@ -1,3 +1,5 @@
+export const categoryName = "Personal Financial Psychology & Behavioral Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

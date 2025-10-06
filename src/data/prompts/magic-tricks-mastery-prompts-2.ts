@@ -1,3 +1,5 @@
+export const categoryName = "Trick Mechanics & Technical Skills Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Supplement Quality and Safety Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

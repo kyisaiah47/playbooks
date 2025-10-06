@@ -1,3 +1,5 @@
+export const categoryName = "Social Media Tools & Technology Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

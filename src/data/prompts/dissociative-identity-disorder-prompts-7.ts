@@ -1,3 +1,5 @@
+export const categoryName = "Triggers, Symptoms, and Personal Patterns Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

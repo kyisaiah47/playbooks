@@ -1,3 +1,5 @@
+export const categoryName = "Light Therapy and Environmental Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

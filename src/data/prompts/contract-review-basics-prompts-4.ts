@@ -1,3 +1,5 @@
+export const categoryName = "Contract Negotiation and Amendment Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

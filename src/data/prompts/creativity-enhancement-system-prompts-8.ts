@@ -1,3 +1,5 @@
+export const categoryName = "Creative Environment & Flow State Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

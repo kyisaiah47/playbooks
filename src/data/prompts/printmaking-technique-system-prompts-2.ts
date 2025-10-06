@@ -1,3 +1,5 @@
+export const categoryName = "Ink and Pigment Chemistry";
+
 export const prompts = [
   {
     id: 'prompt-1',

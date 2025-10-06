@@ -1,3 +1,5 @@
+export const categoryName = "Project Impact & Achievements";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Social Connections and Relationship Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

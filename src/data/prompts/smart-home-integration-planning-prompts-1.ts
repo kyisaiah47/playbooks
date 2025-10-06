@@ -1,3 +1,5 @@
+export const categoryName = "Device Discovery & Ecosystem Mapping";
+
 export const prompts = [
   {
     id: 'prompt-1',

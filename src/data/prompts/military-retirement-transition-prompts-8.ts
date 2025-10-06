@@ -1,3 +1,5 @@
+export const categoryName = "Housing, Relocation, and Geographic Transition";
+
 export const prompts = [
   {
     id: 'prompt-1',

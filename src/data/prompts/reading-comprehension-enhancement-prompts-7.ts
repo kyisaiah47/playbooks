@@ -1,3 +1,5 @@
+export const categoryName = "Reading Skills Development and Metacognitive Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

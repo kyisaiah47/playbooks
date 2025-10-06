@@ -1,3 +1,5 @@
+export const categoryName = "Points & Miles Management Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

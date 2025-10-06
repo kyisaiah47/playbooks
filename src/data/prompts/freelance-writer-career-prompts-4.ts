@@ -1,3 +1,5 @@
+export const categoryName = "Portfolio Development & Market Positioning";
+
 export const prompts = [
   {
     id: 'prompt-1',

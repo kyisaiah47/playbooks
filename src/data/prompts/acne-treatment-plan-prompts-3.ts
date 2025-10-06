@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Factors and Lifestyle Influences on Acne";
+
 export const prompts = [
   {
     id: 'prompt-1',

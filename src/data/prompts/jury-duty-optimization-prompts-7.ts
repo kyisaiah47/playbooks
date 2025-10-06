@@ -1,3 +1,5 @@
+export const categoryName = "Civic Duty and Personal Growth Through Service";
+
 export const prompts = [
   {
     id: 'prompt-1',

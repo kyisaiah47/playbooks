@@ -1,3 +1,5 @@
+export const categoryName = "Monetization & Business Growth";
+
 export const prompts = [
   {
     id: 'prompt-1',

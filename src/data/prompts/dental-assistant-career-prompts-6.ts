@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Digital Systems in Dental Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

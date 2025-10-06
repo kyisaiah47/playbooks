@@ -1,3 +1,5 @@
+export const categoryName = "Information Architecture & Digital Workflows";
+
 export const prompts = [
   {
     id: 'prompt-1',

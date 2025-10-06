@@ -1,3 +1,5 @@
+export const categoryName = "Performance Preparation and Stage Presence";
+
 export const prompts = [
   {
     id: 'prompt-1',

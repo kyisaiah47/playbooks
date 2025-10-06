@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Smart Home Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

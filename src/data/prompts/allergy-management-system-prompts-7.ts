@@ -1,3 +1,5 @@
+export const categoryName = "Product Safety and Ingredient Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

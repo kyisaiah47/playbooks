@@ -1,3 +1,5 @@
+export const categoryName = "Sustainability & Food Ethics";
+
 export const prompts = [
   {
     id: 'prompt-1',

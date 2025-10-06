@@ -1,3 +1,5 @@
+export const categoryName = "Staff Leadership and Team Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Management and Benefits Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

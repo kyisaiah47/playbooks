@@ -1,3 +1,5 @@
+export const categoryName = "Maritime Leadership and Crew Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

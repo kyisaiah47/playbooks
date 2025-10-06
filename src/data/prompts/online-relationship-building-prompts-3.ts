@@ -1,3 +1,5 @@
+export const categoryName = "Trust and Vulnerability Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Rate Plans & Billing Structure Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

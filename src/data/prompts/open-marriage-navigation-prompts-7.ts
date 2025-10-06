@@ -1,3 +1,5 @@
+export const categoryName = "Time Management & Scheduling Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

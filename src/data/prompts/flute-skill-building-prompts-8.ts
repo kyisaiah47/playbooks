@@ -1,3 +1,5 @@
+export const categoryName = "Music Theory and Harmonic Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

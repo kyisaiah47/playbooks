@@ -1,3 +1,5 @@
+export const categoryName = "Coping Mechanisms and Habit Interruption Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Daily Symptom Tracking & Pattern Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

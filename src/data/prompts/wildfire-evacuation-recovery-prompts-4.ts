@@ -1,3 +1,5 @@
+export const categoryName = "Health & Safety Recovery Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

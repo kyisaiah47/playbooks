@@ -1,3 +1,5 @@
+export const categoryName = "Building Trust and Rapport in Mentoring Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

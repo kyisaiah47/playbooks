@@ -1,3 +1,5 @@
+export const categoryName = "Wine Region & Terroir Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

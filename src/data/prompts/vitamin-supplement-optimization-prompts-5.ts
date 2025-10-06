@@ -1,3 +1,5 @@
+export const categoryName = "Supplement Interactions and Synergies";
+
 export const prompts = [
   {
     id: 'prompt-1',

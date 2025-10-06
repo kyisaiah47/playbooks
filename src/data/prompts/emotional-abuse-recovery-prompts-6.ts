@@ -1,3 +1,5 @@
+export const categoryName = "Healing Mindset and Cognitive Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

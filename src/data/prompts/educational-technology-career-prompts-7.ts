@@ -1,3 +1,5 @@
+export const categoryName = "Educational Technology Assessment & Data Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

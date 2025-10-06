@@ -1,3 +1,5 @@
+export const categoryName = "Grammar Mastery Progress & Self-Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

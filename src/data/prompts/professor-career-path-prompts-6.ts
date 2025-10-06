@@ -1,3 +1,5 @@
+export const categoryName = "Academic Publishing & Scholarly Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

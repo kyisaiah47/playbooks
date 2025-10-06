@@ -1,3 +1,5 @@
+export const categoryName = "Spaced Repetition and Active Recall Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

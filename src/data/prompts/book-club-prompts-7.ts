@@ -1,3 +1,5 @@
+export const categoryName = "Book Connections & Cross-References";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Power Supply Systems and Energy Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

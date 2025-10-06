@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Responses and Boundary Violations";
+
 export const prompts = [
   {
     id: 'prompt-1',

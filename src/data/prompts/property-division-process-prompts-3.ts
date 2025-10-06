@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning and Tax Implications";
+
 export const prompts = [
   {
     id: 'prompt-1',

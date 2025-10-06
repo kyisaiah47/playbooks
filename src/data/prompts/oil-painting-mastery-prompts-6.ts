@@ -1,3 +1,5 @@
+export const categoryName = "Brushwork and Painting Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

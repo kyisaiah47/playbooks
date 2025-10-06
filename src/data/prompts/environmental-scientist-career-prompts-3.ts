@@ -1,3 +1,5 @@
+export const categoryName = "Field Research & Laboratory Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

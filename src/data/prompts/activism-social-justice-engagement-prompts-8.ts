@@ -1,3 +1,5 @@
+export const categoryName = "Intersectionality and Social Justice Frameworks";
+
 export const prompts = [
   {
     id: 'prompt-1',

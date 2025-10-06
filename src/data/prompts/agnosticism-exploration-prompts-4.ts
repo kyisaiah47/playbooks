@@ -1,3 +1,5 @@
+export const categoryName = "Historical and Cultural Perspectives on Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

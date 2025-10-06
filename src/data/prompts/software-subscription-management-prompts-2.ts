@@ -1,3 +1,5 @@
+export const categoryName = "Subscription Service Discovery & Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

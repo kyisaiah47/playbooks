@@ -1,3 +1,5 @@
+export const categoryName = "Friendship Styles and Personal Preferences";
+
 export const prompts = [
   {
     id: 'prompt-1',

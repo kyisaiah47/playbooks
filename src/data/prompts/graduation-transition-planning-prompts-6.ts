@@ -1,3 +1,5 @@
+export const categoryName = "Academic Transition and Learning Continuity Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

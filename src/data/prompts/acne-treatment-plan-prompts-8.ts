@@ -1,3 +1,5 @@
+export const categoryName = "Diet, Nutrition, and Supplement Impact on Acne";
+
 export const prompts = [
   {
     id: 'prompt-1',

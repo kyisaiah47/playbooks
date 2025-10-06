@@ -1,3 +1,5 @@
+export const categoryName = "Spontaneity & Creative Flow";
+
 export const prompts = [
   {
     id: 'prompt-1',

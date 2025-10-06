@@ -1,3 +1,5 @@
+export const categoryName = "Personal Growth and Self-Discovery Through OCD";
+
 export const prompts = [
   {
     id: 'prompt-1',

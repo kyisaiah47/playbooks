@@ -1,3 +1,5 @@
+export const categoryName = "Email Habits & Behavioral Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

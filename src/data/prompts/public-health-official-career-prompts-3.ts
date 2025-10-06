@@ -1,3 +1,5 @@
+export const categoryName = "Health Policy Development and Implementation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Philosophy and Logic in Everyday Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

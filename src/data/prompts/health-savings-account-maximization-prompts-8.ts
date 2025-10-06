@@ -1,3 +1,5 @@
+export const categoryName = "HSA Impact Assessment & Decision Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

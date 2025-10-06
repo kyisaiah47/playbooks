@@ -1,3 +1,5 @@
+export const categoryName = "Mixology Skills & Technique Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

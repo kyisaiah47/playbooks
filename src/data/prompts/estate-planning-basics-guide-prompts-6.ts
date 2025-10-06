@@ -1,3 +1,5 @@
+export const categoryName = "Professional Advisors and Estate Planning Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "IPO Market Timing & Exit Strategy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

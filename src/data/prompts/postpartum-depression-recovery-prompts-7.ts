@@ -1,3 +1,5 @@
+export const categoryName = "Communication & Relationship Dynamics During Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

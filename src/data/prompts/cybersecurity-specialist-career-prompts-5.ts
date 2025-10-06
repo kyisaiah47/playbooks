@@ -1,3 +1,5 @@
+export const categoryName = "Security Architecture and Network Defense";
+
 export const prompts = [
   {
     id: 'prompt-1',

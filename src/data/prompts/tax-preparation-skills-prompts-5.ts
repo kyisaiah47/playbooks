@@ -1,3 +1,5 @@
+export const categoryName = "Business Tax Planning and Entity Structures";
+
 export const prompts = [
   {
     id: 'prompt-1',

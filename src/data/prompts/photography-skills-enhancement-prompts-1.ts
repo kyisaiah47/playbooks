@@ -1,3 +1,5 @@
+export const categoryName = "Camera Settings and Technical Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

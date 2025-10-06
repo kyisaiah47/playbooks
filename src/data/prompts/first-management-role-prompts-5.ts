@@ -1,3 +1,5 @@
+export const categoryName = "Organizational Culture and Change Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

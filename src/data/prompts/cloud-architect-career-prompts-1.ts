@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Architecture Foundations & Core Concepts";
+
 export const prompts = [
   {
     id: 'prompt-1',

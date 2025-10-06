@@ -1,3 +1,5 @@
+export const categoryName = "Plant Care Techniques & Maintenance Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

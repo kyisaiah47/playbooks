@@ -1,3 +1,5 @@
+export const categoryName = "Soil Health and Garden Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

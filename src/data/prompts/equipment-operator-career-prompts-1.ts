@@ -1,3 +1,5 @@
+export const categoryName = "Equipment Operation Fundamentals & Daily Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

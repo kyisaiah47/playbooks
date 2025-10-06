@@ -1,3 +1,5 @@
+export const categoryName = "Purpose & Identity Transition";
+
 export const prompts = [
   {
     id: 'prompt-1',

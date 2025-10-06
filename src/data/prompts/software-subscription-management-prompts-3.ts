@@ -1,3 +1,5 @@
+export const categoryName = "Subscription Lifecycle Management & Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

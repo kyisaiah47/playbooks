@@ -1,3 +1,5 @@
+export const categoryName = "Grief Support & Emotional Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

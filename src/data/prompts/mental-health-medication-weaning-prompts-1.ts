@@ -1,3 +1,5 @@
+export const categoryName = "Withdrawal Symptoms and Timeline Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Personal Astronomy Journey and Learning Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

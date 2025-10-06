@@ -1,3 +1,5 @@
+export const categoryName = "Property Value and Investment Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

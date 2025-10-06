@@ -1,3 +1,5 @@
+export const categoryName = "Fundamental Techniques & Safety";
+
 export const prompts = [
   {
     id: 'prompt-1',

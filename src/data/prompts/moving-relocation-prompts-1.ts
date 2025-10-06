@@ -1,3 +1,5 @@
+export const categoryName = "Pre-Move Planning & Timeline Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

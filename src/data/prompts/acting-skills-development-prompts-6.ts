@@ -1,3 +1,5 @@
+export const categoryName = "Script Analysis and Text Interpretation";
+
 export const prompts = [
   {
     id: 'prompt-1',

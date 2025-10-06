@@ -1,3 +1,5 @@
+export const categoryName = "Warranty, Return, and Refund Rights";
+
 export const prompts = [
   {
     id: 'prompt-1',

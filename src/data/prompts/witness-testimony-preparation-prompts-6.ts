@@ -1,3 +1,5 @@
+export const categoryName = "Credibility and Character Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

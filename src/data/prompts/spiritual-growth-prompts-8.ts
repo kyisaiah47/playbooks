@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual Symbolism & Sacred Meaning";
+
 export const prompts = [
   {
     id: 'prompt-1',

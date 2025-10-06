@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Conditions and Climate Control";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Workplace and Professional Identity Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

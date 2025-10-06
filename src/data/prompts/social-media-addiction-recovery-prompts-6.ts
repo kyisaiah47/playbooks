@@ -1,3 +1,5 @@
+export const categoryName = "Mindful Technology Use & Boundary Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Psychology & Mental Health Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

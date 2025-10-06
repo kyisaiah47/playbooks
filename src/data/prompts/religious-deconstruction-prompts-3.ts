@@ -1,3 +1,5 @@
+export const categoryName = "Personal Identity and Values Transformation";
+
 export const prompts = [
   {
     id: 'prompt-1',

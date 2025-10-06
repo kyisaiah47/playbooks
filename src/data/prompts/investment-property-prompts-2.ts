@@ -1,3 +1,5 @@
+export const categoryName = "Property Management & Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

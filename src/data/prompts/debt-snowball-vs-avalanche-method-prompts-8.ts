@@ -1,3 +1,5 @@
+export const categoryName = "Professional Financial Guidance & Expert Perspectives";
+
 export const prompts = [
   {
     id: 'prompt-1',

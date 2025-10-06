@@ -1,3 +1,5 @@
+export const categoryName = "Skill Development and Learning Progression";
+
 export const prompts = [
   {
     id: 'prompt-1',

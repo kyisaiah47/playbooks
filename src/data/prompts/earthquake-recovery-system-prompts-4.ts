@@ -1,3 +1,5 @@
+export const categoryName = "Post-Disaster Health & Safety Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

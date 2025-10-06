@@ -1,3 +1,5 @@
+export const categoryName = "Career and Professional Development Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

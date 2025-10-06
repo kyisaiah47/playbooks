@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle Factors & Daily Wellness";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Art Markets and Investment Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

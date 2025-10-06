@@ -1,3 +1,5 @@
+export const categoryName = "Mindfulness and Emotional Regulation in OCD Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

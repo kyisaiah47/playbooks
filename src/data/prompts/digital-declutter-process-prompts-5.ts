@@ -1,3 +1,5 @@
+export const categoryName = "Digital Content Management & Information Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

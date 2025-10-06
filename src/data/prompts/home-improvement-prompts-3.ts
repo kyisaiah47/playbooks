@@ -1,3 +1,5 @@
+export const categoryName = "DIY Skills and Tool Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

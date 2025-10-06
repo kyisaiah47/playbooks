@@ -1,3 +1,5 @@
+export const categoryName = "Cost Analysis & Insurance Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

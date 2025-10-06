@@ -1,3 +1,5 @@
+export const categoryName = "Timeline and Event Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "HOA Meeting Participation & Governance Engagement";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Contract Formation and Documentation Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

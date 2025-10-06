@@ -1,3 +1,5 @@
+export const categoryName = "Guitar Maintenance and Technical Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

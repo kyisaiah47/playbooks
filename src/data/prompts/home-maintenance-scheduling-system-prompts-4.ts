@@ -1,3 +1,5 @@
+export const categoryName = "Maintenance Task Management & Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

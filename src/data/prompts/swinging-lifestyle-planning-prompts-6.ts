@@ -1,3 +1,5 @@
+export const categoryName = "Etiquette & Cultural Norms";
+
 export const prompts = [
   {
     id: 'prompt-1',

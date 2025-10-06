@@ -1,3 +1,5 @@
+export const categoryName = "Budget Integration & Financial Impact Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

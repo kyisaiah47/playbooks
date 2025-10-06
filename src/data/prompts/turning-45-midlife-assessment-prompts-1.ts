@@ -1,3 +1,5 @@
+export const categoryName = "Life Values and Purpose Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

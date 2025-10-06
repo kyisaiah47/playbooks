@@ -1,3 +1,5 @@
+export const categoryName = "Flavor Development & Sensory Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

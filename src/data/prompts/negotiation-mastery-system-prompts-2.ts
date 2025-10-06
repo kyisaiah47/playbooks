@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Planning & Preparation Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Risk Management and Regulatory Compliance Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

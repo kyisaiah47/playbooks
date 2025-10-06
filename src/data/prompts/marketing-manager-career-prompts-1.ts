@@ -1,3 +1,5 @@
+export const categoryName = "Digital Marketing Strategy & Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

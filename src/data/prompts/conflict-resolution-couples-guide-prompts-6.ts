@@ -1,3 +1,5 @@
+export const categoryName = "Trust Building and Forgiveness Processes";
+
 export const prompts = [
   {
     id: 'prompt-1',

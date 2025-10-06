@@ -1,3 +1,5 @@
+export const categoryName = "Media Landscape & Technology Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Passenger Relations and Communication Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Post-Wedding Transition & Memory Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

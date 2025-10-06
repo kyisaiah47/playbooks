@@ -1,3 +1,5 @@
+export const categoryName = "Practice Methods and Learning Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

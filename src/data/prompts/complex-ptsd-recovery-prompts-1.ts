@@ -1,3 +1,5 @@
+export const categoryName = "Inner Child Healing and Developmental Trauma";
+
 export const prompts = [
   {
     id: 'prompt-1',

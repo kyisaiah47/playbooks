@@ -1,3 +1,5 @@
+export const categoryName = "Calendar Crisis Management & Recovery Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

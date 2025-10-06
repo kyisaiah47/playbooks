@@ -1,3 +1,5 @@
+export const categoryName = "Job Search Strategy & Application Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

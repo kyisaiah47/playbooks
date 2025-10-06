@@ -1,3 +1,5 @@
+export const categoryName = "Repayment Strategy Planning & Options Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

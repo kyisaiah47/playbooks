@@ -1,3 +1,5 @@
+export const categoryName = "Audio Design & Sound Engineering";
+
 export const prompts = [
   {
     id: 'prompt-1',

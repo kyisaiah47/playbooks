@@ -1,3 +1,5 @@
+export const categoryName = "Medication Cost Comparison and Generic Alternatives";
+
 export const prompts = [
   {
     id: 'prompt-1',

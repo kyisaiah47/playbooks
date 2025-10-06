@@ -1,3 +1,5 @@
+export const categoryName = "Tax Preparation Process and Quality Control";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Core Concepts and Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Timeline Planning and Transition Milestones";
+
 export const prompts = [
   {
     id: 'prompt-1',

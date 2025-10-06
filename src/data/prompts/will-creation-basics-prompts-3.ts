@@ -1,3 +1,5 @@
+export const categoryName = "Executor Selection and Estate Administration Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

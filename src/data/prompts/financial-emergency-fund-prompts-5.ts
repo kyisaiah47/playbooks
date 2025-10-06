@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Fund External Factors and Environmental Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

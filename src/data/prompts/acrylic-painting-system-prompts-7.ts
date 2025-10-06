@@ -1,3 +1,5 @@
+export const categoryName = "Texture Creation and Surface Effects";
+
 export const prompts = [
   {
     id: 'prompt-1',

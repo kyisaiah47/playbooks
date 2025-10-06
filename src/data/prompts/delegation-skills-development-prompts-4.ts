@@ -1,3 +1,5 @@
+export const categoryName = "Delegation Monitoring and Performance Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

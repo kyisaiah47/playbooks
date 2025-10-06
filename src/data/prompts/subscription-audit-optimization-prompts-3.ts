@@ -1,3 +1,5 @@
+export const categoryName = "Subscription Management Process & Workflow Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

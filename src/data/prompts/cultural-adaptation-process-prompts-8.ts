@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Norms and Social Expectations Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

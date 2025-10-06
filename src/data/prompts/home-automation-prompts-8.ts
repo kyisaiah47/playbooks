@@ -1,3 +1,5 @@
+export const categoryName = "Smart Home Ecosystem Integration & Interoperability";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Resources and Tools Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

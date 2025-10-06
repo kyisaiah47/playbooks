@@ -1,3 +1,5 @@
+export const categoryName = "Digital Ethics and Values Legacy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

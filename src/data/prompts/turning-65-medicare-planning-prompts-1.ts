@@ -1,3 +1,5 @@
+export const categoryName = "Medicare Plan Selection and Coverage Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

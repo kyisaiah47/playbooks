@@ -1,3 +1,5 @@
+export const categoryName = "Technology Integration and Digital Tools in Music Therapy";
+
 export const prompts = [
   {
     id: 'prompt-1',

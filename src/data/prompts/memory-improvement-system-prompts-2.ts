@@ -1,3 +1,5 @@
+export const categoryName = "Memory Techniques and Personal Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

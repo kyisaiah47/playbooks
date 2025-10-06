@@ -1,3 +1,5 @@
+export const categoryName = "Energy Consumption Analysis & Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

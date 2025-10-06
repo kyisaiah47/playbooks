@@ -1,3 +1,5 @@
+export const categoryName = "Legal Affairs and Estate Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

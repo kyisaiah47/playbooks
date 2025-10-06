@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Fund Psychology & Behavioral Finance";
+
 export const prompts = [
   {
     id: 'prompt-1',

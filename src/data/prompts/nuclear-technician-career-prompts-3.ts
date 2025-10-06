@@ -1,3 +1,5 @@
+export const categoryName = "Nuclear Facility Maintenance and Quality Assurance";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Collaboration and Leadership Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

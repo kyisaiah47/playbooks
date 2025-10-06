@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Innovation in Real Estate";
+
 export const prompts = [
   {
     id: 'prompt-1',

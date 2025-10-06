@@ -1,3 +1,5 @@
+export const categoryName = "Portfolio Development & Personal Brand Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Business Credit Risk Assessment & Protection Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

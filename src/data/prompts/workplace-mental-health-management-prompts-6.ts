@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Culture and Environmental Impact on Mental Health";
+
 export const prompts = [
   {
     id: 'prompt-1',

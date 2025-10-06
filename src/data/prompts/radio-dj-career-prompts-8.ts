@@ -1,3 +1,5 @@
+export const categoryName = "Networking & Relationship Building in Radio";
+
 export const prompts = [
   {
     id: 'prompt-1',

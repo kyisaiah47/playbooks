@@ -1,3 +1,5 @@
+export const categoryName = "Music & Rhythm Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

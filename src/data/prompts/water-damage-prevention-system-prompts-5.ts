@@ -1,3 +1,5 @@
+export const categoryName = "Home Vulnerability Assessment & Risk Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

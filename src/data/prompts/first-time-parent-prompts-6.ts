@@ -1,3 +1,5 @@
+export const categoryName = "Baby Gear & Product Essentials";
+
 export const prompts = [
   {
     id: 'prompt-1',

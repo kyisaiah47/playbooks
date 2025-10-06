@@ -1,3 +1,5 @@
+export const categoryName = "UX Skills & Competencies";
+
 export const prompts = [
   {
     id: 'prompt-1',

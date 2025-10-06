@@ -1,3 +1,5 @@
+export const categoryName = "Investment Strategy and Financial Planning for Antique Collecting";
+
 export const prompts = [
   {
     id: 'prompt-1',

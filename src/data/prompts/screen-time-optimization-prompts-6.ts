@@ -1,3 +1,5 @@
+export const categoryName = "Social Media & App Usage Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

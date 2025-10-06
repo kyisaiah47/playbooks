@@ -1,3 +1,5 @@
+export const categoryName = "Customer Value Perception & Willingness to Pay";
+
 export const prompts = [
   {
     id: 'prompt-1',

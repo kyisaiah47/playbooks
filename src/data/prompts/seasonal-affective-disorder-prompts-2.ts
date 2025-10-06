@@ -1,3 +1,5 @@
+export const categoryName = "Symptoms and Personal Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

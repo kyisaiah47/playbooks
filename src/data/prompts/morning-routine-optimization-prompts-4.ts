@@ -1,3 +1,5 @@
+export const categoryName = "Routine Structure and Time Management Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

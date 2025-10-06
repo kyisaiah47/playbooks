@@ -1,3 +1,5 @@
+export const categoryName = "Pet Care Routine & Environmental Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

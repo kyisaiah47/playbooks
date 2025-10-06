@@ -1,3 +1,5 @@
+export const categoryName = "Power and Heating Systems Preparedness";
+
 export const prompts = [
   {
     id: 'prompt-1',

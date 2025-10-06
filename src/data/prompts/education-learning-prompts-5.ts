@@ -1,3 +1,5 @@
+export const categoryName = "Knowledge Integration and Critical Thinking";
+
 export const prompts = [
   {
     id: 'prompt-1',

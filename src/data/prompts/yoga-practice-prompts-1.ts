@@ -1,3 +1,5 @@
+export const categoryName = "Foundational Yoga Knowledge & Personal Practice Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

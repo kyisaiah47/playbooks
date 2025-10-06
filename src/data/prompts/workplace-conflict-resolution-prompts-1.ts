@@ -1,3 +1,5 @@
+export const categoryName = "Conflict Triggers and Warning Signs";
+
 export const prompts = [
   {
     id: 'prompt-1',

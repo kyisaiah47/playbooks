@@ -1,3 +1,5 @@
+export const categoryName = "Security Configuration & Hardening Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

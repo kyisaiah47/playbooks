@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual Life & Shared Values";
+
 export const prompts = [
   {
     id: 'prompt-1',

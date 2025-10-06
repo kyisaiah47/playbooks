@@ -1,3 +1,5 @@
+export const categoryName = "Identity Expression and Presentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

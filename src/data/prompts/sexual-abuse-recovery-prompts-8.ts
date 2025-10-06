@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Processing and Therapeutic Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

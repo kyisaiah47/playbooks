@@ -1,3 +1,5 @@
+export const categoryName = "Error Handling & System Troubleshooting for Bill Automation";
+
 export const prompts = [
   {
     id: 'prompt-1',

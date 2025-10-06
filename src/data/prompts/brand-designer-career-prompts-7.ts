@@ -1,3 +1,5 @@
+export const categoryName = "Business Fundamentals & Entrepreneurial Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

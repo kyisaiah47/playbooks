@@ -1,3 +1,5 @@
+export const categoryName = "Author Context & Cultural Connections";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Shelter & Housing Security Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

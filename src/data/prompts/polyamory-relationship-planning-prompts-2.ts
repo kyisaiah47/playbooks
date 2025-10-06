@@ -1,3 +1,5 @@
+export const categoryName = "Relationship Structure & Boundaries Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

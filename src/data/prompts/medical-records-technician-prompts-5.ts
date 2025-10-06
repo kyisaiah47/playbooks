@@ -1,3 +1,5 @@
+export const categoryName = "Privacy Protection and Information Security Protocols";
+
 export const prompts = [
   {
     id: 'prompt-1',

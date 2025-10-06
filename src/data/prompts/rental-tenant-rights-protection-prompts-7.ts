@@ -1,3 +1,5 @@
+export const categoryName = "Housing Search and Rental Market Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

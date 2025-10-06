@@ -1,3 +1,5 @@
+export const categoryName = "Property Restoration and Repair Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

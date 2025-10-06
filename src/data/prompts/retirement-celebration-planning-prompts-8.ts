@@ -1,3 +1,5 @@
+export const categoryName = "Gift and Recognition Ideas Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

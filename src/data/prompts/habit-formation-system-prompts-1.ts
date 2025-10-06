@@ -1,3 +1,5 @@
+export const categoryName = "Habit Psychology & Behavioral Science";
+
 export const prompts = [
   {
     id: 'prompt-1',

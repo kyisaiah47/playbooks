@@ -1,3 +1,5 @@
+export const categoryName = "Technology & Digital Retail Innovation";
+
 export const prompts = [
   {
     id: 'prompt-1',

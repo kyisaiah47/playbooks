@@ -1,3 +1,5 @@
+export const categoryName = "Technical Foundation & Body Mechanics";
+
 export const prompts = [
   {
     id: 'prompt-1',

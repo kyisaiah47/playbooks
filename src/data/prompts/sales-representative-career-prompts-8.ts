@@ -1,3 +1,5 @@
+export const categoryName = "Negotiation & Deal Closing Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

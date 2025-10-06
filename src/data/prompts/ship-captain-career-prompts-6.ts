@@ -1,3 +1,5 @@
+export const categoryName = "Maritime Communications and Technology Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Essential Supplies and Storage Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

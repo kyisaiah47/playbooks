@@ -1,3 +1,5 @@
+export const categoryName = "Educational Technology Ethics & Digital Citizenship";
+
 export const prompts = [
   {
     id: 'prompt-1',

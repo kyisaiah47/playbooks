@@ -1,3 +1,5 @@
+export const categoryName = "Impact Measurement & Social Theory";
+
 export const prompts = [
   {
     id: 'prompt-1',

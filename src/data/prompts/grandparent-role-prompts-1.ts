@@ -1,3 +1,5 @@
+export const categoryName = "Family Heritage & Legacy Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

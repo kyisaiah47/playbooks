@@ -1,3 +1,5 @@
+export const categoryName = "Growth Strategy & Scaling Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

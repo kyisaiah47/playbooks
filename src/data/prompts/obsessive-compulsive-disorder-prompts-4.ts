@@ -1,3 +1,5 @@
+export const categoryName = "Daily Life and Relationship Impact of OCD";
+
 export const prompts = [
   {
     id: 'prompt-1',

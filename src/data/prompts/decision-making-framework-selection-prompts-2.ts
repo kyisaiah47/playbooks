@@ -1,3 +1,5 @@
+export const categoryName = "Decision Context and Stakeholder Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

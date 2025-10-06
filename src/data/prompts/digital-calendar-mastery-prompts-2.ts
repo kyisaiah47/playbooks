@@ -1,3 +1,5 @@
+export const categoryName = "Time Management Psychology & Personal Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

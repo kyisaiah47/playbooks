@@ -1,3 +1,5 @@
+export const categoryName = "Display & Interface Customization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Learning Technology Tools & Platforms";
+
 export const prompts = [
   {
     id: 'prompt-1',

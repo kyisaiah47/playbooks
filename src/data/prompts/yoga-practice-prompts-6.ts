@@ -1,3 +1,5 @@
+export const categoryName = "Therapeutic Applications & Healing Through Yoga";
+
 export const prompts = [
   {
     id: 'prompt-1',

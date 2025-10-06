@@ -1,3 +1,5 @@
+export const categoryName = "Component Identification and Testing Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Manipulation Tactics and Control Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

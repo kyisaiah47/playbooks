@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Procedures and Diagnostic Testing";
+
 export const prompts = [
   {
     id: 'prompt-1',

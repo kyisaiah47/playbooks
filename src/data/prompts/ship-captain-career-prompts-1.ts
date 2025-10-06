@@ -1,3 +1,5 @@
+export const categoryName = "Navigation and Seamanship Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

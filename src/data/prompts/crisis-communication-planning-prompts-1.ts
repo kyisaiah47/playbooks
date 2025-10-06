@@ -1,3 +1,5 @@
+export const categoryName = "Crisis Response Team Structure and Roles";
+
 export const prompts = [
   {
     id: 'prompt-1',

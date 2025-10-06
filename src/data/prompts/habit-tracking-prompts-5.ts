@@ -1,3 +1,5 @@
+export const categoryName = "Habit Motivation & Goal Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

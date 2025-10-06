@@ -1,3 +1,5 @@
+export const categoryName = "Campus Life & Social Environment Research";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Estate Planning Integration and Asset Protection Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

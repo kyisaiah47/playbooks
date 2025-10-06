@@ -1,3 +1,5 @@
+export const categoryName = "Resolution Strategies and Outcomes";
+
 export const prompts = [
   {
     id: 'prompt-1',

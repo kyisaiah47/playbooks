@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Planning & Healthcare Innovation";
+
 export const prompts = [
   {
     id: 'prompt-1',

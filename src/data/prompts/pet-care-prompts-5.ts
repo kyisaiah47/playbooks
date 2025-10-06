@@ -1,3 +1,5 @@
+export const categoryName = "Pet Emergency Preparedness & Safety";
+
 export const prompts = [
   {
     id: 'prompt-1',

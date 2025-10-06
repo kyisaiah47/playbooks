@@ -1,3 +1,5 @@
+export const categoryName = "Health and Personal Care Independence";
+
 export const prompts = [
   {
     id: 'prompt-1',

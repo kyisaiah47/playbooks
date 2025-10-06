@@ -1,3 +1,5 @@
+export const categoryName = "DevOps Toolchain Evolution & Technology Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

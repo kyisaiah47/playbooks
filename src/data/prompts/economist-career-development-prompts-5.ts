@@ -1,3 +1,5 @@
+export const categoryName = "Market Insights & Economic Trend Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

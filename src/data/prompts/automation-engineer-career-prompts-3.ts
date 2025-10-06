@@ -1,3 +1,5 @@
+export const categoryName = "Test Strategy & Automation Framework Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

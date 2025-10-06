@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Context & Interpretive Framework Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Boundary Origins and Personal History";
+
 export const prompts = [
   {
     id: 'prompt-1',

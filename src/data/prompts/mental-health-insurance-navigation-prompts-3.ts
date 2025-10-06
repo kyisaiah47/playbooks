@@ -1,3 +1,5 @@
+export const categoryName = "Coverage Details and Benefits Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

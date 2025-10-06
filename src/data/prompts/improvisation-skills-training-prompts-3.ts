@@ -1,3 +1,5 @@
+export const categoryName = "Performance Mindset and Mental Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

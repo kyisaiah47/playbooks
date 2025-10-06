@@ -1,3 +1,5 @@
+export const categoryName = "Local Area Assessment and Vulnerability Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

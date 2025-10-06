@@ -1,3 +1,5 @@
+export const categoryName = "Question Handling and Interactive Engagement";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Provider Network and Access Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Sales Team Training & Performance Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

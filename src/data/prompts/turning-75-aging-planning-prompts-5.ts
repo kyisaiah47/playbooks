@@ -1,3 +1,5 @@
+export const categoryName = "Legacy & Life Meaning Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

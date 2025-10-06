@@ -1,3 +1,5 @@
+export const categoryName = "Reservoir Engineering & Formation Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

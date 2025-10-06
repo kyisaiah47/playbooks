@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Timeline & Evidence Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

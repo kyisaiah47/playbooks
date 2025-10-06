@@ -1,3 +1,5 @@
+export const categoryName = "Digital Wellness and Protective Technology Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Learning Methodology & Skill Acquisition";
+
 export const prompts = [
   {
     id: 'prompt-1',

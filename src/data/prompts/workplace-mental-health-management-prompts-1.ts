@@ -1,3 +1,5 @@
+export const categoryName = "Stress Recognition and Response Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

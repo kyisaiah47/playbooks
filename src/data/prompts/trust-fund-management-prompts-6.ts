@@ -1,3 +1,5 @@
+export const categoryName = "Trust Administration & Operational Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

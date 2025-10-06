@@ -1,3 +1,5 @@
+export const categoryName = "Energy Risk Management & Resilience Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

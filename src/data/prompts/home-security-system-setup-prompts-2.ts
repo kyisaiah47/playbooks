@@ -1,3 +1,5 @@
+export const categoryName = "Device Selection and Technology Evaluation";
+
 export const prompts = [
   {
     id: 'prompt-1',

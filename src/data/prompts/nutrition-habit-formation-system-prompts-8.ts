@@ -1,3 +1,5 @@
+export const categoryName = "Health Outcomes & Wellness Goal Achievement";
+
 export const prompts = [
   {
     id: 'prompt-1',

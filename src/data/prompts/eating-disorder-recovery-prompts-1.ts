@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Your Relationship with Food and Body";
+
 export const prompts = [
   {
     id: 'prompt-1',

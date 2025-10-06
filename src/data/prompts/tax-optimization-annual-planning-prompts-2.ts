@@ -1,3 +1,5 @@
+export const categoryName = "Tax Deduction & Credit Research & Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

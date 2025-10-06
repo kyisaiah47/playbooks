@@ -1,3 +1,5 @@
+export const categoryName = "Prevention Strategies & Long-term Management Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Wine and Food Pairing Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

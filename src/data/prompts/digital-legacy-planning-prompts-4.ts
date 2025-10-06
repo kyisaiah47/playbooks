@@ -1,3 +1,5 @@
+export const categoryName = "Digital Content and Creative Works Legacy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

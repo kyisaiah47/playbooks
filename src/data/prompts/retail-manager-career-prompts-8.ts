@@ -1,3 +1,5 @@
+export const categoryName = "Store Operations & Visual Merchandising";
+
 export const prompts = [
   {
     id: 'prompt-1',

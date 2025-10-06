@@ -1,3 +1,5 @@
+export const categoryName = "Safety Protocols and Radiation Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

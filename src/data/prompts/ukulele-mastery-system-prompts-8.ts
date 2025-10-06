@@ -1,3 +1,5 @@
+export const categoryName = "Musical Learning Psychology & Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

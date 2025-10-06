@@ -1,3 +1,5 @@
+export const categoryName = "Social Media & Digital Communication Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

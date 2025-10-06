@@ -1,3 +1,5 @@
+export const categoryName = "Safety, Environment, and Workspace Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

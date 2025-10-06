@@ -1,3 +1,5 @@
+export const categoryName = "Health Benefits and Physical Recovery Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

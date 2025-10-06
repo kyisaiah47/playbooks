@@ -1,3 +1,5 @@
+export const categoryName = "Material Properties and Selection";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial and Administrative Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

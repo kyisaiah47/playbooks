@@ -1,3 +1,5 @@
+export const categoryName = "Communication and Interpersonal Dynamics at Work";
+
 export const prompts = [
   {
     id: 'prompt-1',

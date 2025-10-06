@@ -1,3 +1,5 @@
+export const categoryName = "Communication Boundaries and Social Support Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

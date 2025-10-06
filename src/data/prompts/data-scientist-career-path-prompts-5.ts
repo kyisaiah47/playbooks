@@ -1,3 +1,5 @@
+export const categoryName = "Ethics, Impact & Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

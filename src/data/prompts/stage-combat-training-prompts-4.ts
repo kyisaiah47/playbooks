@@ -1,3 +1,5 @@
+export const categoryName = "Historical Context and Combat Styles";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Legal Framework and Policy Implementation";
+
 export const prompts = [
   {
     id: 'prompt-1',

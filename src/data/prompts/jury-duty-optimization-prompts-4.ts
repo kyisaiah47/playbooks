@@ -1,3 +1,5 @@
+export const categoryName = "Courtroom Environment and Experience Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

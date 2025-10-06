@@ -1,3 +1,5 @@
+export const categoryName = "Medicare Rights, Advocacy, and Problem Resolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Trust Structure & Legal Framework Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

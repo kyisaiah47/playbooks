@@ -1,3 +1,5 @@
+export const categoryName = "Business and Community Aspects of Leatherworking";
+
 export const prompts = [
   {
     id: 'prompt-1',

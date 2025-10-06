@@ -1,3 +1,5 @@
+export const categoryName = "Legal, Financial, and Employment Implications of Prescription Drug Addiction";
+
 export const prompts = [
   {
     id: 'prompt-1',

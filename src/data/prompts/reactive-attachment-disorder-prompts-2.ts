@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Approaches and Therapeutic Interventions";
+
 export const prompts = [
   {
     id: 'prompt-1',

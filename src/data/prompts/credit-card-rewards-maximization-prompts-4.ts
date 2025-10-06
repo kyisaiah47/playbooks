@@ -1,3 +1,5 @@
+export const categoryName = "Credit Card Benefits & Perks Maximization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Soil Science & Environmental Conditions";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Historical Research Methods & Source Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

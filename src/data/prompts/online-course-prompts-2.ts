@@ -1,3 +1,5 @@
+export const categoryName = "Content Mastery & Knowledge Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

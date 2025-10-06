@@ -1,3 +1,5 @@
+export const categoryName = "Feedback Loops & Iterative Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

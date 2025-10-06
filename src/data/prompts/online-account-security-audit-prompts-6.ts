@@ -1,3 +1,5 @@
+export const categoryName = "Account Behavior Analysis and Digital Footprint Mapping";
+
 export const prompts = [
   {
     id: 'prompt-1',

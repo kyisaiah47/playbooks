@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Awareness and Mental Health Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

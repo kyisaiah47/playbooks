@@ -1,3 +1,5 @@
+export const categoryName = "Legal Technology & Innovation Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

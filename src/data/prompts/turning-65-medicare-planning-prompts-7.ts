@@ -1,3 +1,5 @@
+export const categoryName = "Medicare Fraud Protection and Account Security Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

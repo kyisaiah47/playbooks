@@ -1,3 +1,5 @@
+export const categoryName = "Preventive Health Practices and Immune System Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

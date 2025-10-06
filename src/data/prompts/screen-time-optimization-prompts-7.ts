@@ -1,3 +1,5 @@
+export const categoryName = "Technology Relationship & Behavioral Change Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

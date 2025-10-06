@@ -1,3 +1,5 @@
+export const categoryName = "Managing Daily Challenges and Environmental Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

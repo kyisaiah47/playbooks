@@ -1,3 +1,5 @@
+export const categoryName = "Counterparty Analysis & Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

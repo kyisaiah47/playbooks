@@ -1,3 +1,5 @@
+export const categoryName = "Interview Preparation & Job Application Strategy for AI Roles";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Platform Services and Technology Stack";
+
 export const prompts = [
   {
     id: 'prompt-1',

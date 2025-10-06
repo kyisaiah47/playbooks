@@ -1,3 +1,5 @@
+export const categoryName = "Ship Operations and Technical Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

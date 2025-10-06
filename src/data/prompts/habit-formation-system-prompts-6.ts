@@ -1,3 +1,5 @@
+export const categoryName = "Habit Disruption & Recovery Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

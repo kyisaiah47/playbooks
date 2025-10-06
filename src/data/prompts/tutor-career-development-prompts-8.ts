@@ -1,3 +1,5 @@
+export const categoryName = "Tutoring Ethics & Professional Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

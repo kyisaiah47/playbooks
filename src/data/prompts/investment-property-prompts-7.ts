@@ -1,3 +1,5 @@
+export const categoryName = "Property Improvement & Value Enhancement";
+
 export const prompts = [
   {
     id: 'prompt-1',

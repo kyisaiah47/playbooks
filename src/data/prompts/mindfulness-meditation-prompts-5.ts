@@ -1,3 +1,5 @@
+export const categoryName = "Mindfulness Integration and Daily Life Applications";
+
 export const prompts = [
   {
     id: 'prompt-1',

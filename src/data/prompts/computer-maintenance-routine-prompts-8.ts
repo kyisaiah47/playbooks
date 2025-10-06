@@ -1,3 +1,5 @@
+export const categoryName = "System Recovery & Disaster Preparedness Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

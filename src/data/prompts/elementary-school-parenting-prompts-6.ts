@@ -1,3 +1,5 @@
+export const categoryName = "Extracurricular Activities & Enrichment Opportunities";
+
 export const prompts = [
   {
     id: 'prompt-1',

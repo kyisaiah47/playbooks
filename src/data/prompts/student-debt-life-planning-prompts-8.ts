@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Digital Tools for Debt Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

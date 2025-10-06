@@ -1,3 +1,5 @@
+export const categoryName = "Credit Risk Assessment & Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

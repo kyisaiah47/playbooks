@@ -1,3 +1,5 @@
+export const categoryName = "Nutritional Knowledge & Food Science Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

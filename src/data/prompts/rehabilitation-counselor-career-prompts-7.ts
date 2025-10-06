@@ -1,3 +1,5 @@
+export const categoryName = "Disability Knowledge and Accommodation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

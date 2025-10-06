@@ -1,3 +1,5 @@
+export const categoryName = "OCD Subtypes and Specialized Manifestations";
+
 export const prompts = [
   {
     id: 'prompt-1',

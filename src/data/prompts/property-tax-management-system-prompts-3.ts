@@ -1,3 +1,5 @@
+export const categoryName = "Property Valuation and Assessment Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

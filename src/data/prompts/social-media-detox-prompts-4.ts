@@ -1,3 +1,5 @@
+export const categoryName = "Breaking Free from Digital Dependency";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Mental Preparation & Race Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Personal Growth and Future Vision Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

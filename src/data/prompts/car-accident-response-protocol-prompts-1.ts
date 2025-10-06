@@ -1,3 +1,5 @@
+export const categoryName = "Initial Response & Scene Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

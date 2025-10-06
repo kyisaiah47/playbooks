@@ -1,3 +1,5 @@
+export const categoryName = "Housing Development and Infrastructure Challenges";
+
 export const prompts = [
   {
     id: 'prompt-1',

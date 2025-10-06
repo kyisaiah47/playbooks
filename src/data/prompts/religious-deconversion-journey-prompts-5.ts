@@ -1,3 +1,5 @@
+export const categoryName = "Identity Reconstruction and Meaning-Making After Faith";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Inner Awareness & Consciousness Shifts";
+
 export const prompts = [
   {
     id: 'prompt-1',

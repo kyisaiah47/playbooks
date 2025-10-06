@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle Adaptation & Long-term Management Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

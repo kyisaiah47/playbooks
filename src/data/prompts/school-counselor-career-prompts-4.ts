@@ -1,3 +1,5 @@
+export const categoryName = "Ethics and Legal Compliance in School Counseling";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Executive Travel & Event Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Shelter Security and Home Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

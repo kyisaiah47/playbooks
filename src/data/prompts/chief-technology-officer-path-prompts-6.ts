@@ -1,3 +1,5 @@
+export const categoryName = "Data-Driven Decision Making & Analytics Leadership";
+
 export const prompts = [
   {
     id: 'prompt-1',

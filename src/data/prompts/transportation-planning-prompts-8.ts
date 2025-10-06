@@ -1,3 +1,5 @@
+export const categoryName = "Transportation Policy and Regulatory Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Photo Storage & Backup Strategy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Voice, Body Language, and Delivery Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

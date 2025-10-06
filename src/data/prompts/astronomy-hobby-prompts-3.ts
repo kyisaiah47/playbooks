@@ -1,3 +1,5 @@
+export const categoryName = "Celestial Events and Seasonal Sky Changes";
+
 export const prompts = [
   {
     id: 'prompt-1',

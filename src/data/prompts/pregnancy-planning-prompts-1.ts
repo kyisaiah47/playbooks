@@ -1,3 +1,5 @@
+export const categoryName = "Preconception Health & Wellness Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

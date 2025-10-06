@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning & Resource Management Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

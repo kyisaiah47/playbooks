@@ -1,3 +1,5 @@
+export const categoryName = "Medical Information Research and Verification";
+
 export const prompts = [
   {
     id: 'prompt-1',

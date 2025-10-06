@@ -1,3 +1,5 @@
+export const categoryName = "Food & Water Storage Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

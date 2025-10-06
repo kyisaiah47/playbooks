@@ -1,3 +1,5 @@
+export const categoryName = "Data Collection and Tracking Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

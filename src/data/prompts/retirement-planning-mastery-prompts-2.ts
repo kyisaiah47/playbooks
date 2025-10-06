@@ -1,3 +1,5 @@
+export const categoryName = "Retirement Timeline and Goal Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

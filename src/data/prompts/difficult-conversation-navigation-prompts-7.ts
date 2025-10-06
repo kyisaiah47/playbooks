@@ -1,3 +1,5 @@
+export const categoryName = "Trust Building and Repair Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

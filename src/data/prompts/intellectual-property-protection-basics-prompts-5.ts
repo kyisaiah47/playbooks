@@ -1,3 +1,5 @@
+export const categoryName = "IP Valuation and Commercial Applications";
+
 export const prompts = [
   {
     id: 'prompt-1',

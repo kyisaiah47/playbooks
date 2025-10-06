@@ -1,3 +1,5 @@
+export const categoryName = "Materials and Gemstone Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

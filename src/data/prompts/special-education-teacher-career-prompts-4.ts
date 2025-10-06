@@ -1,3 +1,5 @@
+export const categoryName = "IEP Development and Legal Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

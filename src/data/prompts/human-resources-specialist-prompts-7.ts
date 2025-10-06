@@ -1,3 +1,5 @@
+export const categoryName = "Organizational Change & Strategic Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Legal and Tax Implications of Financial Crisis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Philanthropic Planning and Social Impact Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

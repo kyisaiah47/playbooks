@@ -1,3 +1,5 @@
+export const categoryName = "Client Progress & Outcome Measurement";
+
 export const prompts = [
   {
     id: 'prompt-1',

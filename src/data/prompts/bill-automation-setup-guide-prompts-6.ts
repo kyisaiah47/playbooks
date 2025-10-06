@@ -1,3 +1,5 @@
+export const categoryName = "Vendor Integration & Third-Party Service Compatibility";
+
 export const prompts = [
   {
     id: 'prompt-1',

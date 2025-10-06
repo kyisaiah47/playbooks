@@ -1,3 +1,5 @@
+export const categoryName = "Wisdom Sharing & Life Lessons";
+
 export const prompts = [
   {
     id: 'prompt-1',

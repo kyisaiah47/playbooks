@@ -1,3 +1,5 @@
+export const categoryName = "Post-Resolution Analysis & Future Prevention";
+
 export const prompts = [
   {
     id: 'prompt-1',

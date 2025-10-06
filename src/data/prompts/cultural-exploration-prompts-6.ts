@@ -1,3 +1,5 @@
+export const categoryName = "Economics, Work Culture & Social Structure";
+
 export const prompts = [
   {
     id: 'prompt-1',

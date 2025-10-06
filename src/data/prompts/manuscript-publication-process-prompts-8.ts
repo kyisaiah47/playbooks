@@ -1,3 +1,5 @@
+export const categoryName = "Research Ethics and Compliance Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

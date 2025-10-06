@@ -1,3 +1,5 @@
+export const categoryName = "Legal Technology and Digital Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

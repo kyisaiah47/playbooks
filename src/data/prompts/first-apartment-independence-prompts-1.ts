@@ -1,3 +1,5 @@
+export const categoryName = "Essential Apartment Setup & Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

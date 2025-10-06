@@ -1,3 +1,5 @@
+export const categoryName = "Communication Patterns and Boundary Expression";
+
 export const prompts = [
   {
     id: 'prompt-1',

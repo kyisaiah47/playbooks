@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Practice & Patient Interactions";
+
 export const prompts = [
   {
     id: 'prompt-1',

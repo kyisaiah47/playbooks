@@ -1,3 +1,5 @@
+export const categoryName = "Pregnancy Timeline & Milestone Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

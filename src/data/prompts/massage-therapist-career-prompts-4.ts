@@ -1,3 +1,5 @@
+export const categoryName = "Health, Safety & Legal Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

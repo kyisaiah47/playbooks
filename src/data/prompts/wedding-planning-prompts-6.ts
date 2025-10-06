@@ -1,3 +1,5 @@
+export const categoryName = "Timeline & Day-of Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Succession Planning Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

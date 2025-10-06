@@ -1,3 +1,5 @@
+export const categoryName = "Financial Management & Assessment Responsibilities";
+
 export const prompts = [
   {
     id: 'prompt-1',

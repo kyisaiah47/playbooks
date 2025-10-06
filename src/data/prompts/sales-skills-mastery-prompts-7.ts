@@ -1,3 +1,5 @@
+export const categoryName = "Sales Psychology and Buyer Behavior Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

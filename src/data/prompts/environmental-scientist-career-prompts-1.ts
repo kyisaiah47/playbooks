@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Data Collection & Analysis Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

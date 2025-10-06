@@ -1,3 +1,5 @@
+export const categoryName = "Plant Health and Disease Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

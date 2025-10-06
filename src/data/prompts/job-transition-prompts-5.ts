@@ -1,3 +1,5 @@
+export const categoryName = "Interview Preparation & Communication Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

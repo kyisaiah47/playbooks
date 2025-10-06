@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Triggers and Response Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

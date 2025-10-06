@@ -1,3 +1,5 @@
+export const categoryName = "Income Recovery and Stabilization";
+
 export const prompts = [
   {
     id: 'prompt-1',

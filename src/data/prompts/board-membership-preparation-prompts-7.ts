@@ -1,3 +1,5 @@
+export const categoryName = "Board Recruitment & Member Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

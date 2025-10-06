@@ -1,3 +1,5 @@
+export const categoryName = "Foundational Understanding and Personal Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

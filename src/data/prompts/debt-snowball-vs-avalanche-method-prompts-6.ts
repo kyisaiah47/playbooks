@@ -1,3 +1,5 @@
+export const categoryName = "Debt Management Success Stories & Failure Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

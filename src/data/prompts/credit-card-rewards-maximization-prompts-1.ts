@@ -1,3 +1,5 @@
+export const categoryName = "Card Selection & Portfolio Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

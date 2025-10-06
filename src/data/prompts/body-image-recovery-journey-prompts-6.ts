@@ -1,3 +1,5 @@
+export const categoryName = "Media Literacy and Cultural Influences";
+
 export const prompts = [
   {
     id: 'prompt-1',

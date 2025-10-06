@@ -1,3 +1,5 @@
+export const categoryName = "Refinancing & Loan Modification Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

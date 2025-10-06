@@ -1,3 +1,5 @@
+export const categoryName = "Color Theory & Visual Storytelling";
+
 export const prompts = [
   {
     id: 'prompt-1',

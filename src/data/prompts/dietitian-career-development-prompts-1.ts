@@ -1,3 +1,5 @@
+export const categoryName = "Professional Competency Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

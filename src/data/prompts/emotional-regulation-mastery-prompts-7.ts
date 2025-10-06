@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Intelligence and Self-Regulation Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

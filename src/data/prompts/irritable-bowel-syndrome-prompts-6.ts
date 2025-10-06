@@ -1,3 +1,5 @@
+export const categoryName = "Medical History and Professional Care Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

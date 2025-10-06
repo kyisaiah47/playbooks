@@ -1,3 +1,5 @@
+export const categoryName = "Compliance, Auditing & Risk Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Treatment and Professional Support Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

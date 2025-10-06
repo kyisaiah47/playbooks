@@ -1,3 +1,5 @@
+export const categoryName = "Power Dynamics and Influence Tactics";
+
 export const prompts = [
   {
     id: 'prompt-1',

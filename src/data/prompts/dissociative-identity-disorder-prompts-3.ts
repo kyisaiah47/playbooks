@@ -1,3 +1,5 @@
+export const categoryName = "Trauma Processing and Memory Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

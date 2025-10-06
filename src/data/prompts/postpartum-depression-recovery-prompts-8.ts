@@ -1,3 +1,5 @@
+export const categoryName = "Physical Health & Body Recovery During Postpartum Depression";
+
 export const prompts = [
   {
     id: 'prompt-1',

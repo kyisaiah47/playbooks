@@ -1,3 +1,5 @@
+export const categoryName = "Donor Relationships and Philanthropic Community Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

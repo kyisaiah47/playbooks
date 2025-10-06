@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Culture and Systemic Patterns Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Philanthropy and Legacy Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

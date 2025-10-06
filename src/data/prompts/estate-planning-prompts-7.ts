@@ -1,3 +1,5 @@
+export const categoryName = "Estate Planning Process & Professional Coordination";
+
 export const prompts = [
   {
     id: 'prompt-1',

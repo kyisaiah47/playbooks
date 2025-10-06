@@ -1,3 +1,5 @@
+export const categoryName = "Post-Retirement Planning and Transition Support";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Software Quality & Architecture Governance";
+
 export const prompts = [
   {
     id: 'prompt-1',

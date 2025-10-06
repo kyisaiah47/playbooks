@@ -1,3 +1,5 @@
+export const categoryName = "Timing Strategies & Market Conditions Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

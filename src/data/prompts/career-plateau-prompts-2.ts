@@ -1,3 +1,5 @@
+export const categoryName = "Career Vision and Goal Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

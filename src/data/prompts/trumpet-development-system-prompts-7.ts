@@ -1,3 +1,5 @@
+export const categoryName = "Health & Wellness for Musicians";
+
 export const prompts = [
   {
     id: 'prompt-1',

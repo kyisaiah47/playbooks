@@ -1,3 +1,5 @@
+export const categoryName = "Building Support Systems and Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

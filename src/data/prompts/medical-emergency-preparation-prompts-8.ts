@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Medication and Treatment Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

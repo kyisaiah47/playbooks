@@ -1,3 +1,5 @@
+export const categoryName = "Life Transition and Identity Evolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

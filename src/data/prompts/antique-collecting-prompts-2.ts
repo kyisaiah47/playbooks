@@ -1,3 +1,5 @@
+export const categoryName = "Learning and Historical Context of Antiques";
+
 export const prompts = [
   {
     id: 'prompt-1',

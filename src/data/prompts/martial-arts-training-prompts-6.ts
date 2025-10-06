@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Heritage and Martial Arts History";
+
 export const prompts = [
   {
     id: 'prompt-1',

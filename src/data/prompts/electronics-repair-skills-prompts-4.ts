@@ -1,3 +1,5 @@
+export const categoryName = "Repair Tools and Equipment Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

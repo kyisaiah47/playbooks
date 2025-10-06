@@ -1,3 +1,5 @@
+export const categoryName = "Fundamentals & Foundation Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

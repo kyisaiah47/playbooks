@@ -1,3 +1,5 @@
+export const categoryName = "Language, Communication, and the Expression of Doubt";
+
 export const prompts = [
   {
     id: 'prompt-1',

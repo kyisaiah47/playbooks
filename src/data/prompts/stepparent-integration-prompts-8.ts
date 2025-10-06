@@ -1,3 +1,5 @@
+export const categoryName = "Navigating Boundaries and Expectations";
+
 export const prompts = [
   {
     id: 'prompt-1',

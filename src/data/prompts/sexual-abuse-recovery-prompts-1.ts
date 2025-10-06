@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Trauma Responses and Healing Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

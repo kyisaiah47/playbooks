@@ -1,3 +1,5 @@
+export const categoryName = "Initial Specialist Referral Assessment & Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

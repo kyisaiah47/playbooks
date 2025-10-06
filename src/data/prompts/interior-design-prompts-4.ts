@@ -1,3 +1,5 @@
+export const categoryName = "Lighting Design and Ambiance";
+
 export const prompts = [
   {
     id: 'prompt-1',

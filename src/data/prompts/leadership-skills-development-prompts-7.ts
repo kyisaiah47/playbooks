@@ -1,3 +1,5 @@
+export const categoryName = "Mentoring and Talent Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

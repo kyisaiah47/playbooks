@@ -1,3 +1,5 @@
+export const categoryName = "Forest Conservation and Land Stewardship";
+
 export const prompts = [
   {
     id: 'prompt-1',

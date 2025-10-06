@@ -1,3 +1,5 @@
+export const categoryName = "Etymology & Word Origins";
+
 export const prompts = [
   {
     id: 'prompt-1',

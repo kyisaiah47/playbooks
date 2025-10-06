@@ -1,3 +1,5 @@
+export const categoryName = "Digital Transformation & Business Technology Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

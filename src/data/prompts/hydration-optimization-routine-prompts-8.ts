@@ -1,3 +1,5 @@
+export const categoryName = "Hydration Psychology & Behavioral Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Goal Resilience & Mindset Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

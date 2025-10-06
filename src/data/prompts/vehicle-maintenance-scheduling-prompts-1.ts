@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Health Assessment & Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

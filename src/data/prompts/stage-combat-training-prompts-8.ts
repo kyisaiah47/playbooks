@@ -1,3 +1,5 @@
+export const categoryName = "Rehearsal Dynamics and Performance Environment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "IP Licensing, Partnerships, and Technology Transfer";
+
 export const prompts = [
   {
     id: 'prompt-1',

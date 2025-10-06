@@ -1,3 +1,5 @@
+export const categoryName = "Feedback Collection & Process Improvement";
+
 export const prompts = [
   {
     id: 'prompt-1',

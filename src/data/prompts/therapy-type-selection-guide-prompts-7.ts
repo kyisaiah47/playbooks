@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Background & Identity Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

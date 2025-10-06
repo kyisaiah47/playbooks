@@ -1,3 +1,5 @@
+export const categoryName = "Delivery Techniques & Presentation Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

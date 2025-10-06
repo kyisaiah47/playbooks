@@ -1,3 +1,5 @@
+export const categoryName = "Premium Management and Cost Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

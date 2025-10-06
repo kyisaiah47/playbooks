@@ -1,3 +1,5 @@
+export const categoryName = "Comorbid Conditions and Mental Health Connections in BDD";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition and Supplement Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

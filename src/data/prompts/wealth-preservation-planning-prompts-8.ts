@@ -1,3 +1,5 @@
+export const categoryName = "Liquidity Management and Cash Flow Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

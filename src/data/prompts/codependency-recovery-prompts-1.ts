@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Codependent Patterns and Triggers";
+
 export const prompts = [
   {
     id: 'prompt-1',

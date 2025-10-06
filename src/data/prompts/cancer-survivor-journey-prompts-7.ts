@@ -1,3 +1,5 @@
+export const categoryName = "Long-term Survivorship & Life Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

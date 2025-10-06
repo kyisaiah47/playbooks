@@ -1,3 +1,5 @@
+export const categoryName = "Equipment & Tool Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

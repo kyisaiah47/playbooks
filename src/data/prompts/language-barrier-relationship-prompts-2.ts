@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Understanding and Relationship Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

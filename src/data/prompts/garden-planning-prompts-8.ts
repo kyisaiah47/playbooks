@@ -1,3 +1,5 @@
+export const categoryName = "Garden Economics and Resource Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

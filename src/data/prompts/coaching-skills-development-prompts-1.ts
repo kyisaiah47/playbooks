@@ -1,3 +1,5 @@
+export const categoryName = "Coaching Conversation Dynamics and Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

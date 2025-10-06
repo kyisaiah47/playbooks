@@ -1,3 +1,5 @@
+export const categoryName = "Housing Quality and Maintenance Issues";
+
 export const prompts = [
   {
     id: 'prompt-1',

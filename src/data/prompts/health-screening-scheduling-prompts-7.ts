@@ -1,3 +1,5 @@
+export const categoryName = "Risk Assessment and Population Health Analytics";
+
 export const prompts = [
   {
     id: 'prompt-1',

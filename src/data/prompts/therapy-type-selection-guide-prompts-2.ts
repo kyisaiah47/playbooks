@@ -1,3 +1,5 @@
+export const categoryName = "Therapy Goals & Treatment Preferences";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Patient Communication and Practice Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

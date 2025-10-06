@@ -1,3 +1,5 @@
+export const categoryName = "Project Management and Work Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

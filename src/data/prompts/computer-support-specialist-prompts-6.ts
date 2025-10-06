@@ -1,3 +1,5 @@
+export const categoryName = "Data Recovery and Backup Strategy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

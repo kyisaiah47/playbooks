@@ -1,3 +1,5 @@
+export const categoryName = "System Planning and Implementation Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

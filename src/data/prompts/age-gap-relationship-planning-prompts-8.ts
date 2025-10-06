@@ -1,3 +1,5 @@
+export const categoryName = "Social Perception and Public Relations Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

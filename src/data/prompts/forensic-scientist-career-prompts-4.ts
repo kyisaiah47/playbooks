@@ -1,3 +1,5 @@
+export const categoryName = "Crime Scene Investigation & Field Work";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Foundational Listening and Response Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

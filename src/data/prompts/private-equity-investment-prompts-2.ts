@@ -1,3 +1,5 @@
+export const categoryName = "Due Diligence and Investment Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

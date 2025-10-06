@@ -1,3 +1,5 @@
+export const categoryName = "Challenging and Responding to Mental Health Stigma";
+
 export const prompts = [
   {
     id: 'prompt-1',

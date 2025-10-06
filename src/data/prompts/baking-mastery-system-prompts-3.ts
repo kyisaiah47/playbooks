@@ -1,3 +1,5 @@
+export const categoryName = "Equipment Mastery & Kitchen Workflow Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

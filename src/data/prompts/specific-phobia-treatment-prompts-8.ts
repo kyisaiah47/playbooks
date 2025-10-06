@@ -1,3 +1,5 @@
+export const categoryName = "Cultural and Social Factors in Phobia Treatment";
+
 export const prompts = [
   {
     id: 'prompt-1',

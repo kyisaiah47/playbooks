@@ -1,3 +1,5 @@
+export const categoryName = "Customer Journey Mapping & Touchpoint Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

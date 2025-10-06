@@ -1,3 +1,5 @@
+export const categoryName = "Succession Planning & Estate Transition Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Statistical Methods and Techniques Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

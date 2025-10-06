@@ -1,3 +1,5 @@
+export const categoryName = "Furniture Selection and Arrangement";
+
 export const prompts = [
   {
     id: 'prompt-1',

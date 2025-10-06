@@ -1,3 +1,5 @@
+export const categoryName = "Landscape Design and Property Maintenance";
+
 export const prompts = [
   {
     id: 'prompt-1',

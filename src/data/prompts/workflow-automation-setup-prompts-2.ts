@@ -1,3 +1,5 @@
+export const categoryName = "Process Documentation and Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

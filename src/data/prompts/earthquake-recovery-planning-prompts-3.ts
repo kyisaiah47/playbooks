@@ -1,3 +1,5 @@
+export const categoryName = "Infrastructure Assessment & Recovery Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

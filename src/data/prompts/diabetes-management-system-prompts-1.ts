@@ -1,3 +1,5 @@
+export const categoryName = "Blood Sugar Monitoring & Pattern Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

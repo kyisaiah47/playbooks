@@ -1,3 +1,5 @@
+export const categoryName = "News & Information Sources Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

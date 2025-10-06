@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Progress and Setback Learning";
+
 export const prompts = [
   {
     id: 'prompt-1',

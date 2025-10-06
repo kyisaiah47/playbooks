@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Context & Language Environment";
+
 export const prompts = [
   {
     id: 'prompt-1',

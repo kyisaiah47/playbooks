@@ -1,3 +1,5 @@
+export const categoryName = "Flow State Triggers and Interruption Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

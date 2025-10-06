@@ -1,3 +1,5 @@
+export const categoryName = "Project Execution & Performance Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

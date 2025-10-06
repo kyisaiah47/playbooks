@@ -1,3 +1,5 @@
+export const categoryName = "Sustainability & Innovation in Architecture";
+
 export const prompts = [
   {
     id: 'prompt-1',

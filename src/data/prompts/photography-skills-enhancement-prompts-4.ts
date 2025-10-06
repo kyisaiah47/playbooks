@@ -1,3 +1,5 @@
+export const categoryName = "Post-Processing and Digital Workflow";
+
 export const prompts = [
   {
     id: 'prompt-1',

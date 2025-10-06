@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Quality and Recovery Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

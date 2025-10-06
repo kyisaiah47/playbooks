@@ -1,3 +1,5 @@
+export const categoryName = "Ergonomics and Physical Health";
+
 export const prompts = [
   {
     id: 'prompt-1',

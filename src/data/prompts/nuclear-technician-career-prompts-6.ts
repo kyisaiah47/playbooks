@@ -1,3 +1,5 @@
+export const categoryName = "Nuclear Materials and Waste Management Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Living Environment and Stability Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

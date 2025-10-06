@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition & Dietary Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

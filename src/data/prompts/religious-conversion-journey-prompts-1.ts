@@ -1,3 +1,5 @@
+export const categoryName = "Initial Spiritual Awakening & Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

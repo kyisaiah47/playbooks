@@ -1,3 +1,5 @@
+export const categoryName = "Transition & Adaptation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

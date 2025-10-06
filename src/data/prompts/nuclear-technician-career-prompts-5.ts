@@ -1,3 +1,5 @@
+export const categoryName = "Nuclear Regulations, Compliance, and Emergency Preparedness";
+
 export const prompts = [
   {
     id: 'prompt-1',

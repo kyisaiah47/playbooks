@@ -1,3 +1,5 @@
+export const categoryName = "Media Relations and Public Messaging";
+
 export const prompts = [
   {
     id: 'prompt-1',

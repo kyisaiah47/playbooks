@@ -1,3 +1,5 @@
+export const categoryName = "Railroad Operations and Industry Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

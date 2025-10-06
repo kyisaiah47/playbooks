@@ -1,3 +1,5 @@
+export const categoryName = "Goals and Progress Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

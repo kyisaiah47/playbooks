@@ -1,3 +1,5 @@
+export const categoryName = "Occupational Health Regulations and Compliance Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

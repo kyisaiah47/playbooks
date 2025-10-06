@@ -1,3 +1,5 @@
+export const categoryName = "Subscription Vendor Relationships & Support Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Core Beliefs and Doctrine Examination";
+
 export const prompts = [
   {
     id: 'prompt-1',

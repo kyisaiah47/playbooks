@@ -1,3 +1,5 @@
+export const categoryName = "Tax Planning & Financial Record Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

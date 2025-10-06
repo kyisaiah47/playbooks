@@ -1,3 +1,5 @@
+export const categoryName = "Respiratory Therapy Clinical Knowledge & Experience Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

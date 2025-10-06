@@ -1,3 +1,5 @@
+export const categoryName = "Active Learning & Knowledge Synthesis";
+
 export const prompts = [
   {
     id: 'prompt-1',

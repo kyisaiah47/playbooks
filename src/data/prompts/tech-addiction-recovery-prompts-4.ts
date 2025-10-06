@@ -1,3 +1,5 @@
+export const categoryName = "Mindful Technology Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

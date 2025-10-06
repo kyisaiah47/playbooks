@@ -1,3 +1,5 @@
+export const categoryName = "Infrastructure Damage Assessment and Rebuilding Priorities";
+
 export const prompts = [
   {
     id: 'prompt-1',

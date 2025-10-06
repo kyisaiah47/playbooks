@@ -1,3 +1,5 @@
+export const categoryName = "Collaboration & Communication in Music Production";
+
 export const prompts = [
   {
     id: 'prompt-1',

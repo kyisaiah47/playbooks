@@ -1,3 +1,5 @@
+export const categoryName = "IP Risk Management and Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

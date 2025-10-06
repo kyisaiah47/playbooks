@@ -1,3 +1,5 @@
+export const categoryName = "Prognosis and Long-term Outlook Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

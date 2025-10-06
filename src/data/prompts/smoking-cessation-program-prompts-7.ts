@@ -1,3 +1,5 @@
+export const categoryName = "Environmental and Social Smoking Influences";
+
 export const prompts = [
   {
     id: 'prompt-1',

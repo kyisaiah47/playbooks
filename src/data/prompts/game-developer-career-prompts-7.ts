@@ -1,3 +1,5 @@
+export const categoryName = "Business and Entrepreneurship in Gaming";
+
 export const prompts = [
   {
     id: 'prompt-1',

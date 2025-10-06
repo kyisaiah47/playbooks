@@ -1,3 +1,5 @@
+export const categoryName = "Fundamental Bass Theory & Musical Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

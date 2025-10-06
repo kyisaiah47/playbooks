@@ -1,3 +1,5 @@
+export const categoryName = "Post-Divorce Life Planning and Support Adjustment";
+
 export const prompts = [
   {
     id: 'prompt-1',

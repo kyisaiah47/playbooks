@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Science & Health Impact Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

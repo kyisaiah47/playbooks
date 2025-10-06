@@ -1,3 +1,5 @@
+export const categoryName = "Ethics and Values-Based Leadership";
+
 export const prompts = [
   {
     id: 'prompt-1',

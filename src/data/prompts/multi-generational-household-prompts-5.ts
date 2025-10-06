@@ -1,3 +1,5 @@
+export const categoryName = "Education & Learning Across Generations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Academic Writing & Publication Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Deal Sourcing & Acquisition Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

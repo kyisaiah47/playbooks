@@ -1,3 +1,5 @@
+export const categoryName = "Guardianship and Family Protection Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

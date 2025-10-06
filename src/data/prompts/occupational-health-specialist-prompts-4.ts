@@ -1,3 +1,5 @@
+export const categoryName = "Occupational Injury Prevention and Safety Training";
+
 export const prompts = [
   {
     id: 'prompt-1',

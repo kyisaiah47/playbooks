@@ -1,3 +1,5 @@
+export const categoryName = "Survey Records and Property History Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Seasonal Trends & Market Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

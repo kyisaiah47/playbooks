@@ -1,3 +1,5 @@
+export const categoryName = "Puppet Construction and Materials";
+
 export const prompts = [
   {
     id: 'prompt-1',

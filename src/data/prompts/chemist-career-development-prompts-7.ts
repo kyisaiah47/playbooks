@@ -1,3 +1,5 @@
+export const categoryName = "Technical Knowledge and Scientific Communication Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

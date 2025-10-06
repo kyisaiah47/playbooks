@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Policy & Regulatory Frameworks";
+
 export const prompts = [
   {
     id: 'prompt-1',

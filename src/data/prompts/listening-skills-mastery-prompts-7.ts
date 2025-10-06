@@ -1,3 +1,5 @@
+export const categoryName = "Feedback and Constructive Response Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

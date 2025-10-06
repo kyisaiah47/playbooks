@@ -1,3 +1,5 @@
+export const categoryName = "Workplace Boundaries and Professional Assertiveness";
+
 export const prompts = [
   {
     id: 'prompt-1',

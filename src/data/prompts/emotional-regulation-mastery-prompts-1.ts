@@ -1,3 +1,5 @@
+export const categoryName = "Stress Response and Coping Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Business Alignment & Stakeholder Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

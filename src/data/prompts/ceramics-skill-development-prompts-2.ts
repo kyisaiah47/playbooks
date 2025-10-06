@@ -1,3 +1,5 @@
+export const categoryName = "Glazing Techniques and Surface Treatments";
+
 export const prompts = [
   {
     id: 'prompt-1',

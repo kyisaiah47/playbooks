@@ -1,3 +1,5 @@
+export const categoryName = "Landlord Relations and Conflict Resolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

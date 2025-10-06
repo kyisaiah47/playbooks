@@ -1,3 +1,5 @@
+export const categoryName = "Follow-up Strategies & Relationship Nurturing";
+
 export const prompts = [
   {
     id: 'prompt-1',

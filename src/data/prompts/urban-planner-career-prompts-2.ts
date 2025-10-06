@@ -1,3 +1,5 @@
+export const categoryName = "Transportation Planning and Mobility Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

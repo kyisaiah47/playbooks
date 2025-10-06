@@ -1,3 +1,5 @@
+export const categoryName = "Productivity and Life Balance Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

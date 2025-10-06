@@ -1,3 +1,5 @@
+export const categoryName = "Historical Scripts and Writing Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

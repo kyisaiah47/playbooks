@@ -1,3 +1,5 @@
+export const categoryName = "Employee Benefits and Compensation Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

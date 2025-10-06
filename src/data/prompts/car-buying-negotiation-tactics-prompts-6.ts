@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Inspection & Quality Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Nutritional Balance & Dietary Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Independence and Life Planning Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

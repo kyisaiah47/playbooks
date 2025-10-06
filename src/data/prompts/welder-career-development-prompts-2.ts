@@ -1,3 +1,5 @@
+export const categoryName = "Industry Knowledge & Career Pathways";
+
 export const prompts = [
   {
     id: 'prompt-1',

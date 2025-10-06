@@ -1,3 +1,5 @@
+export const categoryName = "Inclusive Teaching Strategies and Differentiated Instruction";
+
 export const prompts = [
   {
     id: 'prompt-1',

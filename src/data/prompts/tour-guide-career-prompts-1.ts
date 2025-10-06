@@ -1,3 +1,5 @@
+export const categoryName = "Tour Planning and Route Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

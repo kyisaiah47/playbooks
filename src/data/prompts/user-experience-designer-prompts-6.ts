@@ -1,3 +1,5 @@
+export const categoryName = "Accessibility & Inclusive Design Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Relationship Engagement Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

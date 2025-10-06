@@ -1,3 +1,5 @@
+export const categoryName = "Ethics, Legal Considerations, and Patient Care Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual Growth & Purpose-Driven Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

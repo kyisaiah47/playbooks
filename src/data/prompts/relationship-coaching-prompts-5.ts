@@ -1,3 +1,5 @@
+export const categoryName = "Values Alignment and Life Direction";
+
 export const prompts = [
   {
     id: 'prompt-1',

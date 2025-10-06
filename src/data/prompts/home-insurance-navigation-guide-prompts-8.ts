@@ -1,3 +1,5 @@
+export const categoryName = "Communication & Relationship Management with Insurance Stakeholders";
+
 export const prompts = [
   {
     id: 'prompt-1',

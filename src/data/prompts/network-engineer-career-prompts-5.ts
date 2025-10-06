@@ -1,3 +1,5 @@
+export const categoryName = "Network Design & Architecture Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

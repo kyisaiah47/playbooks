@@ -1,3 +1,5 @@
+export const categoryName = "Decision Making & Problem Solving Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

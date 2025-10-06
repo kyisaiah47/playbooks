@@ -1,3 +1,5 @@
+export const categoryName = "Denominational Context and Ecclesiastical Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

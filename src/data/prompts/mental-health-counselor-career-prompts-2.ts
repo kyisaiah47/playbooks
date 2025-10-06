@@ -1,3 +1,5 @@
+export const categoryName = "Professional Ethics and Legal Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

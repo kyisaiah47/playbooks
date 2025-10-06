@@ -1,3 +1,5 @@
+export const categoryName = "Poetic Language and Literary Devices";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Essential Supply Inventory & Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

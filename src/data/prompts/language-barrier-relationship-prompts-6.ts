@@ -1,3 +1,5 @@
+export const categoryName = "Milestone Tracking and Relationship Progress Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

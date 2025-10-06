@@ -1,3 +1,5 @@
+export const categoryName = "Quality Improvement & Research Integration in Midwifery Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

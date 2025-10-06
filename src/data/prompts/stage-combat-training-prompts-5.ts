@@ -1,3 +1,5 @@
+export const categoryName = "Weapon Handling and Combat Props";
+
 export const prompts = [
   {
     id: 'prompt-1',

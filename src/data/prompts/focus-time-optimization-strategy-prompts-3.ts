@@ -1,3 +1,5 @@
+export const categoryName = "Energy and Cognitive Performance Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

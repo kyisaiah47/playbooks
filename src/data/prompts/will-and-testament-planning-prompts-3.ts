@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare Directives and End-of-Life Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

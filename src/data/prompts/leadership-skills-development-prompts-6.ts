@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Intelligence and People Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

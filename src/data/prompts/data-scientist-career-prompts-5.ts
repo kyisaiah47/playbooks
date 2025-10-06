@@ -1,3 +1,5 @@
+export const categoryName = "Data Ethics & Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

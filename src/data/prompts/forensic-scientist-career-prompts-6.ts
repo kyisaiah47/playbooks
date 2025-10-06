@@ -1,3 +1,5 @@
+export const categoryName = "Ethics & Professional Standards in Forensic Science";
+
 export const prompts = [
   {
     id: 'prompt-1',

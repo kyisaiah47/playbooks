@@ -1,3 +1,5 @@
+export const categoryName = "Decision Timing & Environmental Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

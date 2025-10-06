@@ -1,3 +1,5 @@
+export const categoryName = "Children and Family Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

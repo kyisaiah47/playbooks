@@ -1,3 +1,5 @@
+export const categoryName = "Understanding and Managing Attachment to Possessions";
+
 export const prompts = [
   {
     id: 'prompt-1',

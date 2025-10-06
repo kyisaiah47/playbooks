@@ -1,3 +1,5 @@
+export const categoryName = "Legal Status and Citizenship Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

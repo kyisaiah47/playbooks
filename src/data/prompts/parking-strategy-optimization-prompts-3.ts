@@ -1,3 +1,5 @@
+export const categoryName = "Parking Policy Framework & Regulatory Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

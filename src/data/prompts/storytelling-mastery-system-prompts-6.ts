@@ -1,3 +1,5 @@
+export const categoryName = "Theme & Meaning Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

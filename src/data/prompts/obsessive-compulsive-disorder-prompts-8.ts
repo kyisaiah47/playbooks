@@ -1,3 +1,5 @@
+export const categoryName = "OCD Professional and Workplace Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

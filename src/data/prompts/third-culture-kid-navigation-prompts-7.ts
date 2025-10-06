@@ -1,3 +1,5 @@
+export const categoryName = "Global Perspective & Cross-Cultural Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

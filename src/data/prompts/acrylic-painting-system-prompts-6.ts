@@ -1,3 +1,5 @@
+export const categoryName = "Lighting, Atmosphere, and Environmental Effects";
+
 export const prompts = [
   {
     id: 'prompt-1',

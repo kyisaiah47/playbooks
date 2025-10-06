@@ -1,3 +1,5 @@
+export const categoryName = "Rights, Responsibilities, and Legal Obligations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Early Experiences and Development Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Birth Planning & Hospital Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

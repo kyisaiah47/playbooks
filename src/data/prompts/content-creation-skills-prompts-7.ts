@@ -1,3 +1,5 @@
+export const categoryName = "Content Creation Tools & Technical Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

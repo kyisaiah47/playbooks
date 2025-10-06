@@ -1,3 +1,5 @@
+export const categoryName = "Memory Preservation and Storytelling";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Communication Strategies and Language Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

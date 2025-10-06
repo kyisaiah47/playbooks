@@ -1,3 +1,5 @@
+export const categoryName = "Scammer Tactics and Fraud Investigation Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

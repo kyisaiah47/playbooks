@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition Fundamentals & Food Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

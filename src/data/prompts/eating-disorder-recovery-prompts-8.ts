@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition Education and Mindful Eating Practices";
+
 export const prompts = [
   {
     id: 'prompt-1',

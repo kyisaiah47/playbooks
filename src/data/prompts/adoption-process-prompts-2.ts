@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Preparation and Family Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

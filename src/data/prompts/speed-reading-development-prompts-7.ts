@@ -1,3 +1,5 @@
+export const categoryName = "Reading Habits & Behavioral Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

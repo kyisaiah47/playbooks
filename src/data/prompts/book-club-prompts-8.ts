@@ -1,3 +1,5 @@
+export const categoryName = "Critical Thinking & Evaluation Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

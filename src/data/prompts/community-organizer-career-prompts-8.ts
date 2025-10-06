@@ -1,3 +1,5 @@
+export const categoryName = "Policy Analysis and Legislative Advocacy";
+
 export const prompts = [
   {
     id: 'prompt-1',

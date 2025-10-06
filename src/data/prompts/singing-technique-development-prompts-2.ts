@@ -1,3 +1,5 @@
+export const categoryName = "Breath Support and Control";
+
 export const prompts = [
   {
     id: 'prompt-1',

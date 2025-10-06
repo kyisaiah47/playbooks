@@ -1,3 +1,5 @@
+export const categoryName = "HSA Tax Strategy & Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

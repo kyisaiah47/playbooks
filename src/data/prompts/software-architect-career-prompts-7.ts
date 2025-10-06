@@ -1,3 +1,5 @@
+export const categoryName = "Architecture Documentation & Knowledge Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Social Networks and Relationship Capital";
+
 export const prompts = [
   {
     id: 'prompt-1',

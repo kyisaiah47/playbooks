@@ -1,3 +1,5 @@
+export const categoryName = "Project Planning & Construction Methods";
+
 export const prompts = [
   {
     id: 'prompt-1',

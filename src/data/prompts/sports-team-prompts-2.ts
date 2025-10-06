@@ -1,3 +1,5 @@
+export const categoryName = "Team Culture & Communication Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Technology Leadership & Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

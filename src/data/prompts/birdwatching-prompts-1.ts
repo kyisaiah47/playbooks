@@ -1,3 +1,5 @@
+export const categoryName = "Field Observation & Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Language & Communication Heritage";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Network Technologies and Standards Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

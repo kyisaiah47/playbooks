@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Factors & Workspace Atmosphere Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

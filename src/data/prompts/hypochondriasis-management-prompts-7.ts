@@ -1,3 +1,5 @@
+export const categoryName = "Information Sources and Medical Literacy Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

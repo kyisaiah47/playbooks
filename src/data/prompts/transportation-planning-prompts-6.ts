@@ -1,3 +1,5 @@
+export const categoryName = "Transportation Technology and Innovation Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive and Mental Framework Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

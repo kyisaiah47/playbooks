@@ -1,3 +1,5 @@
+export const categoryName = "Technology, Apps, and Digital Dating Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

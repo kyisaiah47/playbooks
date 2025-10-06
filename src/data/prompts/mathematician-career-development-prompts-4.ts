@@ -1,3 +1,5 @@
+export const categoryName = "Teaching Excellence and Mathematical Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

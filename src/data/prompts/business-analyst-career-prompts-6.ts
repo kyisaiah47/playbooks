@@ -1,3 +1,5 @@
+export const categoryName = "Technology Tools & Systems Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

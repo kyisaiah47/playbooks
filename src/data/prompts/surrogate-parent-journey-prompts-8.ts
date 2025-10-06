@@ -1,3 +1,5 @@
+export const categoryName = "Post-Birth Transition and Long-Term Relationships";
+
 export const prompts = [
   {
     id: 'prompt-1',

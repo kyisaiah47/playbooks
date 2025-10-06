@@ -1,3 +1,5 @@
+export const categoryName = "Privacy Settings and Account Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

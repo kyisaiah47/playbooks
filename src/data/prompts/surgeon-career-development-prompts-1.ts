@@ -1,3 +1,5 @@
+export const categoryName = "Surgical Skills & Technical Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

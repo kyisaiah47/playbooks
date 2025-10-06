@@ -1,3 +1,5 @@
+export const categoryName = "Foundation and Surface Preparation Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

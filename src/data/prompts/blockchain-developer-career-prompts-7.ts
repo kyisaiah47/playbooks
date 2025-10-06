@@ -1,3 +1,5 @@
+export const categoryName = "Smart Contract Development & DApp Architecture";
+
 export const prompts = [
   {
     id: 'prompt-1',

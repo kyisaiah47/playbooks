@@ -1,3 +1,5 @@
+export const categoryName = "Grammar Resources & Learning Tools Discovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Habit Environment & Social Influences";
+
 export const prompts = [
   {
     id: 'prompt-1',

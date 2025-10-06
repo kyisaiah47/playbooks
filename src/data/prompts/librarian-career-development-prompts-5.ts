@@ -1,3 +1,5 @@
+export const categoryName = "Collection Development & Resource Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

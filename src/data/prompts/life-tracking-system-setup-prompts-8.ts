@@ -1,3 +1,5 @@
+export const categoryName = "Environment & Living Space Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

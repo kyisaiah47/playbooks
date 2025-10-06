@@ -1,3 +1,5 @@
+export const categoryName = "Trauma History and Recovery Milestones";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Goal Alignment & Purpose Clarity";
+
 export const prompts = [
   {
     id: 'prompt-1',

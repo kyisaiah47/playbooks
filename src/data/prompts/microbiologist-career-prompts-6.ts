@@ -1,3 +1,5 @@
+export const categoryName = "Academic & Educational Foundations";
+
 export const prompts = [
   {
     id: 'prompt-1',

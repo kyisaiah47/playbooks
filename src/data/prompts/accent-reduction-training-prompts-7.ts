@@ -1,3 +1,5 @@
+export const categoryName = "Professional Communication and Workplace Accent Confidence";
+
 export const prompts = [
   {
     id: 'prompt-1',

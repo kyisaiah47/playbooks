@@ -1,3 +1,5 @@
+export const categoryName = "Infrastructure & Environment Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

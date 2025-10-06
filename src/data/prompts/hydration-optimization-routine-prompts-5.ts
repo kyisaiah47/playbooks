@@ -1,3 +1,5 @@
+export const categoryName = "Hydration Challenges & Problem-Solving Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

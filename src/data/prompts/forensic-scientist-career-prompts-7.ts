@@ -1,3 +1,5 @@
+export const categoryName = "Communication & Reporting in Forensic Science";
+
 export const prompts = [
   {
     id: 'prompt-1',

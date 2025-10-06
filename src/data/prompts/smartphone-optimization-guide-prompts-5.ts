@@ -1,3 +1,5 @@
+export const categoryName = "Network Connectivity & Communication Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

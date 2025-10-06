@@ -1,3 +1,5 @@
+export const categoryName = "Audience Engagement and Community Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

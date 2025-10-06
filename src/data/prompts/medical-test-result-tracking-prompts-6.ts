@@ -1,3 +1,5 @@
+export const categoryName = "Medical History Integration and Lifestyle Impact Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

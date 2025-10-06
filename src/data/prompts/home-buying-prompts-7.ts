@@ -1,3 +1,5 @@
+export const categoryName = "Real Estate Professional & Team Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

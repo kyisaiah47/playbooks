@@ -1,3 +1,5 @@
+export const categoryName = "Deep Work Environment Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

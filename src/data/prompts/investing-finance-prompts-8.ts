@@ -1,3 +1,5 @@
+export const categoryName = "Alternative Investments & Emerging Markets";
+
 export const prompts = [
   {
     id: 'prompt-1',

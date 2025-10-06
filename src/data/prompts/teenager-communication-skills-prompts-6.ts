@@ -1,3 +1,5 @@
+export const categoryName = "Family Communication & Intergenerational Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

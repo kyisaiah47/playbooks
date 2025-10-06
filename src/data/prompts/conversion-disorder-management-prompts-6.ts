@@ -1,3 +1,5 @@
+export const categoryName = "Self-Advocacy and Medical Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

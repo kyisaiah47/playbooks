@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Grief Stages and Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

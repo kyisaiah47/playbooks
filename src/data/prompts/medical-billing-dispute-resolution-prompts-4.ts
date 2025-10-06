@@ -1,3 +1,5 @@
+export const categoryName = "Patient Rights, Legal Resources, and Advocacy Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

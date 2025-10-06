@@ -1,3 +1,5 @@
+export const categoryName = "Educational Background and Certification Verification";
+
 export const prompts = [
   {
     id: 'prompt-1',

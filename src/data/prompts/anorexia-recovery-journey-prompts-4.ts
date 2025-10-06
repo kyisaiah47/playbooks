@@ -1,3 +1,5 @@
+export const categoryName = "Rebuilding Body Image and Self-Worth Through Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

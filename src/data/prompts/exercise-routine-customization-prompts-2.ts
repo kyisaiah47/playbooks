@@ -1,3 +1,5 @@
+export const categoryName = "Workout Schedule and Recovery Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

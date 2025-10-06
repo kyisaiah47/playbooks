@@ -1,3 +1,5 @@
+export const categoryName = "Tax Obligations and Financial Compliance";
+
 export const prompts = [
   {
     id: 'prompt-1',

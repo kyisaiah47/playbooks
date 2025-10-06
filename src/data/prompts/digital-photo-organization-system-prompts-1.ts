@@ -1,3 +1,5 @@
+export const categoryName = "Photo Collection Analysis & Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

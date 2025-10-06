@@ -1,3 +1,5 @@
+export const categoryName = "Developing Healthy Eating Patterns and Food Relationship Recovery";
+
 export const prompts = [
   {
     id: 'prompt-1',

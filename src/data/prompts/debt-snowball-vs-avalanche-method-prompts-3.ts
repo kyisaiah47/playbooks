@@ -1,3 +1,5 @@
+export const categoryName = "Real-World Implementation & Case Study Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

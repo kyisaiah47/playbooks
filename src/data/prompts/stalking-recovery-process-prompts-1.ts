@@ -1,3 +1,5 @@
+export const categoryName = "Evidence Documentation and Pattern Recognition";
+
 export const prompts = [
   {
     id: 'prompt-1',

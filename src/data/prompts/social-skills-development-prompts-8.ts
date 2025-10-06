@@ -1,3 +1,5 @@
+export const categoryName = "Leadership & Influence in Social Settings";
+
 export const prompts = [
   {
     id: 'prompt-1',

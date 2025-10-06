@@ -1,3 +1,5 @@
+export const categoryName = "Comfort and Soothing Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

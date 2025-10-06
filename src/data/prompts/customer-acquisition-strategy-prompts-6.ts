@@ -1,3 +1,5 @@
+export const categoryName = "Budget Allocation & ROI Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

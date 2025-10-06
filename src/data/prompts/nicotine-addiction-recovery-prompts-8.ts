@@ -1,3 +1,5 @@
+export const categoryName = "Financial Impact and Recovery Economics";
+
 export const prompts = [
   {
     id: 'prompt-1',

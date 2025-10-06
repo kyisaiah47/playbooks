@@ -1,3 +1,5 @@
+export const categoryName = "Transit Network Connectivity and Transfer Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

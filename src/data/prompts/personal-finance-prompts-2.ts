@@ -1,3 +1,5 @@
+export const categoryName = "Investment Learning & Portfolio Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

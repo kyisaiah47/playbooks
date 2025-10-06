@@ -1,3 +1,5 @@
+export const categoryName = "Community, Teaching, and Sharing Meditation Wisdom";
+
 export const prompts = [
   {
     id: 'prompt-1',

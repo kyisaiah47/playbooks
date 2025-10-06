@@ -1,3 +1,5 @@
+export const categoryName = "Natural Consequences and Problem-Solving Approaches";
+
 export const prompts = [
   {
     id: 'prompt-1',

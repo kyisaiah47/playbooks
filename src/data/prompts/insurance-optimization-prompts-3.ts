@@ -1,3 +1,5 @@
+export const categoryName = "Claims Processing and Customer Experience";
+
 export const prompts = [
   {
     id: 'prompt-1',

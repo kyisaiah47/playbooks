@@ -1,3 +1,5 @@
+export const categoryName = "Framework Integration and Organizational Alignment";
+
 export const prompts = [
   {
     id: 'prompt-1',

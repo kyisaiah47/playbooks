@@ -1,3 +1,5 @@
+export const categoryName = "Navigating Relationships and Communication During Grief";
+
 export const prompts = [
   {
     id: 'prompt-1',

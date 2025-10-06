@@ -1,3 +1,5 @@
+export const categoryName = "Knowledge Management & Intellectual Capital";
+
 export const prompts = [
   {
     id: 'prompt-1',

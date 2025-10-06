@@ -1,3 +1,5 @@
+export const categoryName = "Interdisciplinary Communication and Healthcare Team Dynamics";
+
 export const prompts = [
   {
     id: 'prompt-1',

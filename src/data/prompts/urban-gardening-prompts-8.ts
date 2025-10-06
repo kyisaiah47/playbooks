@@ -1,3 +1,5 @@
+export const categoryName = "Harvest Timing and Yield Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

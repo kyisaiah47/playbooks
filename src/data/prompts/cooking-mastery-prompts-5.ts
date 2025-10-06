@@ -1,3 +1,5 @@
+export const categoryName = "Recipe Development & Menu Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

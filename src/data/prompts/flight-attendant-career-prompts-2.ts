@@ -1,3 +1,5 @@
+export const categoryName = "Airline Industry and Career Opportunities";
+
 export const prompts = [
   {
     id: 'prompt-1',

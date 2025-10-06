@@ -1,3 +1,5 @@
+export const categoryName = "Business & Professional Baking Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

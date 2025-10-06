@@ -1,3 +1,5 @@
+export const categoryName = "Data Management and Assessment Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

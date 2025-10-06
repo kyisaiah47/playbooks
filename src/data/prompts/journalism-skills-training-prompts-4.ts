@@ -1,3 +1,5 @@
+export const categoryName = "Media Ethics & Professional Standards";
+
 export const prompts = [
   {
     id: 'prompt-1',

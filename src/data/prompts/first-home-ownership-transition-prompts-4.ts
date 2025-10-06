@@ -1,3 +1,5 @@
+export const categoryName = "Home Maintenance and Ownership Responsibilities";
+
 export const prompts = [
   {
     id: 'prompt-1',

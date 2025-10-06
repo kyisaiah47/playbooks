@@ -1,3 +1,5 @@
+export const categoryName = "Nonverbal Communication and Body Language";
+
 export const prompts = [
   {
     id: 'prompt-1',

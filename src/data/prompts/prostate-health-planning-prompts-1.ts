@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Prostate Health Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

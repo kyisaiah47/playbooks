@@ -1,3 +1,5 @@
+export const categoryName = "Audition Techniques and Performance Presentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

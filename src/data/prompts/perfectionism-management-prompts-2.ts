@@ -1,3 +1,5 @@
+export const categoryName = "Perfectionism Coping Strategies and Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

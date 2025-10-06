@@ -1,3 +1,5 @@
+export const categoryName = "Sensory Regulation and Self-Advocacy Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

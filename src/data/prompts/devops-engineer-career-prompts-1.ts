@@ -1,3 +1,5 @@
+export const categoryName = "Infrastructure Automation & CI/CD Pipeline Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

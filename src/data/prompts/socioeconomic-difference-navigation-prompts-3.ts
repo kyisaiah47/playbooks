@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Code-Switching and Identity Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

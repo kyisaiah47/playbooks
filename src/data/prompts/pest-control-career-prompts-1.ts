@@ -1,3 +1,5 @@
+export const categoryName = "Pest Identification and Biology Knowledge";
+
 export const prompts = [
   {
     id: 'prompt-1',

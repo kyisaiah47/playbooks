@@ -1,3 +1,5 @@
+export const categoryName = "World Building & Setting Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Physical and Emotional Wellness During Grief";
+
 export const prompts = [
   {
     id: 'prompt-1',

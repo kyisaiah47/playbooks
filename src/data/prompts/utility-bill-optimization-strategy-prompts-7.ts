@@ -1,3 +1,5 @@
+export const categoryName = "Regulatory Environment & Utility Programs Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

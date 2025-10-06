@@ -1,3 +1,5 @@
+export const categoryName = "Self-Perception and Body Image Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

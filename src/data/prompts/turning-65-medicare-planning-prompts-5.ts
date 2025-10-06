@@ -1,3 +1,5 @@
+export const categoryName = "Medicare Supplement Insurance and Additional Coverage Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

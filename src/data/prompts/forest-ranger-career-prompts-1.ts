@@ -1,3 +1,5 @@
+export const categoryName = "Wildlife and Ecosystem Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

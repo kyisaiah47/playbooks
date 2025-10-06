@@ -1,3 +1,5 @@
+export const categoryName = "Post-Exit Transition and Legacy Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

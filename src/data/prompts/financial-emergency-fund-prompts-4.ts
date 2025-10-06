@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Fund Financial Analysis and Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

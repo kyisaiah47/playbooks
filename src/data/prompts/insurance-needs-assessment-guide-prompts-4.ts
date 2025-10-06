@@ -1,3 +1,5 @@
+export const categoryName = "Insurance Provider Research & Policy Comparison";
+
 export const prompts = [
   {
     id: 'prompt-1',

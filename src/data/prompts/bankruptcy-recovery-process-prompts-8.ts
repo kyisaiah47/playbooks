@@ -1,3 +1,5 @@
+export const categoryName = "Post-Bankruptcy Life Transition and Future Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

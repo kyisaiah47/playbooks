@@ -1,3 +1,5 @@
+export const categoryName = "Vocabulary Acquisition & Memory Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

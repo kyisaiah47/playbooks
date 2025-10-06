@@ -1,3 +1,5 @@
+export const categoryName = "Sensory Memory and Trauma-Informed Processing";
+
 export const prompts = [
   {
     id: 'prompt-1',

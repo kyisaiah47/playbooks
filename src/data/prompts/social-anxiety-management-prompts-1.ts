@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Social Anxiety Triggers and Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

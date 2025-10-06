@@ -1,3 +1,5 @@
+export const categoryName = "Daily Rhythms & Lifestyle Harmony";
+
 export const prompts = [
   {
     id: 'prompt-1',

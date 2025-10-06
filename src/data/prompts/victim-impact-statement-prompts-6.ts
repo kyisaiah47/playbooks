@@ -1,3 +1,5 @@
+export const categoryName = "Physical Health and Medical Impact Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

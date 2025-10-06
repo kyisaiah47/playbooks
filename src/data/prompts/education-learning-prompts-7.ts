@@ -1,3 +1,5 @@
+export const categoryName = "Memory and Knowledge Retention Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

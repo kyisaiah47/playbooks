@@ -1,3 +1,5 @@
+export const categoryName = "Memory Lane & Milestone Moments";
+
 export const prompts = [
   {
     id: 'prompt-1',

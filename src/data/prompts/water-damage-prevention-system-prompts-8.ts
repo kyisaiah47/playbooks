@@ -1,3 +1,5 @@
+export const categoryName = "Seasonal & Environmental Water Damage Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

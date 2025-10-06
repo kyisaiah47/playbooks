@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Design & Behavioral Architecture";
+
 export const prompts = [
   {
     id: 'prompt-1',

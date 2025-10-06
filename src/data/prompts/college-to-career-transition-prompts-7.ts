@@ -1,3 +1,5 @@
+export const categoryName = "Academic to Professional Transition and Growth Mindset";
+
 export const prompts = [
   {
     id: 'prompt-1',

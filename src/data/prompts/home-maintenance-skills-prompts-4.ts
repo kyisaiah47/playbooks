@@ -1,3 +1,5 @@
+export const categoryName = "HVAC and Climate Control Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

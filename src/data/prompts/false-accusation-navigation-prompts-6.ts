@@ -1,3 +1,5 @@
+export const categoryName = "Timeline Reconstruction and Fact Pattern Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

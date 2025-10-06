@@ -1,3 +1,5 @@
+export const categoryName = "Surveillance & Undercover Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

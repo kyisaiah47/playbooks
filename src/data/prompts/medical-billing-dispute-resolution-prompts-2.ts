@@ -1,3 +1,5 @@
+export const categoryName = "Medical Bill Analysis and Error Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

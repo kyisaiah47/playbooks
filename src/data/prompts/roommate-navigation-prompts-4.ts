@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle Compatibility & Personal Boundaries";
+
 export const prompts = [
   {
     id: 'prompt-1',

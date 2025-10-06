@@ -1,3 +1,5 @@
+export const categoryName = "Book Impact & Reader Transformation";
+
 export const prompts = [
   {
     id: 'prompt-1',

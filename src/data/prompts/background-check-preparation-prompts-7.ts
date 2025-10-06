@@ -1,3 +1,5 @@
+export const categoryName = "Residential History and Address Verification Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

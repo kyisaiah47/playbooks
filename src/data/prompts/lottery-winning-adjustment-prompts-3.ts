@@ -1,3 +1,5 @@
+export const categoryName = "Psychological and Social Impact Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

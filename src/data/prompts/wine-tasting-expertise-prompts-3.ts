@@ -1,3 +1,5 @@
+export const categoryName = "Tasting Technique and Sensory Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

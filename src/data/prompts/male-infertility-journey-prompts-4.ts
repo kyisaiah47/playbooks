@@ -1,3 +1,5 @@
+export const categoryName = "Emotional & Relationship Impact Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

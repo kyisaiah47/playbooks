@@ -1,3 +1,5 @@
+export const categoryName = "Understanding ODD Behaviors and Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

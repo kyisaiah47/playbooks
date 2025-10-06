@@ -1,3 +1,5 @@
+export const categoryName = "Aviation Industry Knowledge and Market Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

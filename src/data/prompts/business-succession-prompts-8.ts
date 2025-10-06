@@ -1,3 +1,5 @@
+export const categoryName = "Operations and Business Continuity Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

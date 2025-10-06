@@ -1,3 +1,5 @@
+export const categoryName = "Financial Planning Methodologies & Client Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

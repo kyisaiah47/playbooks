@@ -1,3 +1,5 @@
+export const categoryName = "Mindfulness and Awareness in Focus States";
+
 export const prompts = [
   {
     id: 'prompt-1',

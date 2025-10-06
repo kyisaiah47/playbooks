@@ -1,3 +1,5 @@
+export const categoryName = "Sustainability and Corporate Social Responsibility in Supply Chains";
+
 export const prompts = [
   {
     id: 'prompt-1',

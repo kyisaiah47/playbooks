@@ -1,3 +1,5 @@
+export const categoryName = "Options Analysis & Trade-offs";
+
 export const prompts = [
   {
     id: 'prompt-1',

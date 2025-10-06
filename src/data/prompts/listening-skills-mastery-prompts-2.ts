@@ -1,3 +1,5 @@
+export const categoryName = "Empathetic Communication Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

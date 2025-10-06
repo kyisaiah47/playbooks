@@ -1,3 +1,5 @@
+export const categoryName = "Travel Industry Knowledge & Market Trends";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Timeline Development and Case History Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

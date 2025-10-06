@@ -1,3 +1,5 @@
+export const categoryName = "Voice, Style, and Personal Expression";
+
 export const prompts = [
   {
     id: 'prompt-1',

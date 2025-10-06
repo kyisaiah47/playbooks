@@ -1,3 +1,5 @@
+export const categoryName = "Cognitive Patterns and Thought Management in Social Anxiety";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "IPO Valuation & Financial Performance Tracking";
+
 export const prompts = [
   {
     id: 'prompt-1',

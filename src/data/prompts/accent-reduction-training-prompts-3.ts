@@ -1,3 +1,5 @@
+export const categoryName = "Rhythm, Stress, and Timing Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

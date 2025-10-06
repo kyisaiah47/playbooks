@@ -1,3 +1,5 @@
+export const categoryName = "Digital Lifestyle Design & Intentional Living";
+
 export const prompts = [
   {
     id: 'prompt-1',

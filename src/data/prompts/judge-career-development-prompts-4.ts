@@ -1,3 +1,5 @@
+export const categoryName = "Courtroom Leadership and Communication Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

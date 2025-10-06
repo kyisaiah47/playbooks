@@ -1,3 +1,5 @@
+export const categoryName = "Sleep Environment & Comfort Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

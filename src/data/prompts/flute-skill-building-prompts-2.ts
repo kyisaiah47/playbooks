@@ -1,3 +1,5 @@
+export const categoryName = "Embouchure and Tone Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

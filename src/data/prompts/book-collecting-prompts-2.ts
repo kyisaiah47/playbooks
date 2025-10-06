@@ -1,3 +1,5 @@
+export const categoryName = "Book Discovery & Acquisition Sources";
+
 export const prompts = [
   {
     id: 'prompt-1',

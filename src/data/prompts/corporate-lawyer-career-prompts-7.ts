@@ -1,3 +1,5 @@
+export const categoryName = "Legal Industry Trends and Market Intelligence";
+
 export const prompts = [
   {
     id: 'prompt-1',

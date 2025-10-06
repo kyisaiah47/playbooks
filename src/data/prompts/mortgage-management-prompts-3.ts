@@ -1,3 +1,5 @@
+export const categoryName = "Market Analysis & Property Investment Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

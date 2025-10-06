@@ -1,3 +1,5 @@
+export const categoryName = "Mental Health and Psychological Support in Athletic Training";
+
 export const prompts = [
   {
     id: 'prompt-1',

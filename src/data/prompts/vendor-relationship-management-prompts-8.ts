@@ -1,3 +1,5 @@
+export const categoryName = "Vendor Dispute Resolution and Issue Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

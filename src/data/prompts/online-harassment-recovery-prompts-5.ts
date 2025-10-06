@@ -1,3 +1,5 @@
+export const categoryName = "Personal Healing Journey and Emotional Recovery Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

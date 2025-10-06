@@ -1,3 +1,5 @@
+export const categoryName = "Digital Detox and Recovery Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

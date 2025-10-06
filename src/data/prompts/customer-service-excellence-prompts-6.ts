@@ -1,3 +1,5 @@
+export const categoryName = "Service Recovery and Customer Retention";
+
 export const prompts = [
   {
     id: 'prompt-1',

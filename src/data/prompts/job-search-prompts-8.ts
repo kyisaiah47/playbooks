@@ -1,3 +1,5 @@
+export const categoryName = "Job Search Progress Tracking & Reflection";
+
 export const prompts = [
   {
     id: 'prompt-1',

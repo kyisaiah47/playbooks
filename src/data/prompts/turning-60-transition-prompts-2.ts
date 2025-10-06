@@ -1,3 +1,5 @@
+export const categoryName = "Financial Security and Retirement Readiness";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Evidence Analysis & Laboratory Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

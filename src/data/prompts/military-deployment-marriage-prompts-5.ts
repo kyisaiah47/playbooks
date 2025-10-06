@@ -1,3 +1,5 @@
+export const categoryName = "Reintegration & Homecoming Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

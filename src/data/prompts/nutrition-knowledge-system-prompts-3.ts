@@ -1,3 +1,5 @@
+export const categoryName = "Food Psychology and Behavioral Nutrition";
+
 export const prompts = [
   {
     id: 'prompt-1',

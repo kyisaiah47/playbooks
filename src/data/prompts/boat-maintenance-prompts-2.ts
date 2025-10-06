@@ -1,3 +1,5 @@
+export const categoryName = "Engine and Mechanical Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

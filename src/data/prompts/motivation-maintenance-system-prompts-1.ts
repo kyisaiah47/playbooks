@@ -1,3 +1,5 @@
+export const categoryName = "Energy and Focus Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

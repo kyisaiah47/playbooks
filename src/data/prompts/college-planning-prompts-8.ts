@@ -1,3 +1,5 @@
+export const categoryName = "Alumni Networks & Post-Graduation Outcomes";
+
 export const prompts = [
   {
     id: 'prompt-1',

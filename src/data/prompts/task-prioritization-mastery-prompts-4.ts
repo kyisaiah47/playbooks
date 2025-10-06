@@ -1,3 +1,5 @@
+export const categoryName = "Decision-Making and Goal Alignment Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

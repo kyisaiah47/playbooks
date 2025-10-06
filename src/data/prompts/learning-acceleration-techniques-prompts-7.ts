@@ -1,3 +1,5 @@
+export const categoryName = "Collaborative Learning and Knowledge Sharing Networks";
+
 export const prompts = [
   {
     id: 'prompt-1',

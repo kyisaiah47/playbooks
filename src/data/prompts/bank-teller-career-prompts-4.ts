@@ -1,3 +1,5 @@
+export const categoryName = "Financial Products Knowledge and Sales Fundamentals";
+
 export const prompts = [
   {
     id: 'prompt-1',

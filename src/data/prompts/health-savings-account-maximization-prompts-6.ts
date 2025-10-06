@@ -1,3 +1,5 @@
+export const categoryName = "HSA Long-term Planning & Retirement Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

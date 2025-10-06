@@ -1,3 +1,5 @@
+export const categoryName = "Context Analysis and Situation Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

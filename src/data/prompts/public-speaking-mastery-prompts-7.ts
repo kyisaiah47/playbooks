@@ -1,3 +1,5 @@
+export const categoryName = "Feedback Integration and Continuous Improvement";
+
 export const prompts = [
   {
     id: 'prompt-1',

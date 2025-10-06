@@ -1,3 +1,5 @@
+export const categoryName = "Technology and Digital Cultural Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

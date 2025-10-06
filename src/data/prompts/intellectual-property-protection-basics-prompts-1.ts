@@ -1,3 +1,5 @@
+export const categoryName = "Foundational IP Rights and Legal Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

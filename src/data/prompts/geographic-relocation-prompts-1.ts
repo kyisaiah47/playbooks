@@ -1,3 +1,5 @@
+export const categoryName = "Housing Market Analysis and Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

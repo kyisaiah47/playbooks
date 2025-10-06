@@ -1,3 +1,5 @@
+export const categoryName = "Fundamental Movement Patterns & Body Mechanics";
+
 export const prompts = [
   {
     id: 'prompt-1',

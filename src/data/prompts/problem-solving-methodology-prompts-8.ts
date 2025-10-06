@@ -1,3 +1,5 @@
+export const categoryName = "Resource Management and Constraint Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

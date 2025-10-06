@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Architecture Design Patterns";
+
 export const prompts = [
   {
     id: 'prompt-1',

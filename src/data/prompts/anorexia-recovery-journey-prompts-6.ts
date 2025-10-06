@@ -1,3 +1,5 @@
+export const categoryName = "Managing Recovery Setbacks and Building Long-Term Resilience";
+
 export const prompts = [
   {
     id: 'prompt-1',

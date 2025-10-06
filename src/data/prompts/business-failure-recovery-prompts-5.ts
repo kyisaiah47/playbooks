@@ -1,3 +1,5 @@
+export const categoryName = "Strategic Pivoting & Business Model Evolution";
+
 export const prompts = [
   {
     id: 'prompt-1',

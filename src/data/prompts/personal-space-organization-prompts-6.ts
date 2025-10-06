@@ -1,3 +1,5 @@
+export const categoryName = "Creative & Hobby Knowledge Archive";
+
 export const prompts = [
   {
     id: 'prompt-1',

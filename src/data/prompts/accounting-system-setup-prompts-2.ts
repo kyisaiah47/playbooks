@@ -1,3 +1,5 @@
+export const categoryName = "Data Migration and Integration Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

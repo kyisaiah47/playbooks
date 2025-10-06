@@ -1,3 +1,5 @@
+export const categoryName = "Post-Division Implementation and Monitoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

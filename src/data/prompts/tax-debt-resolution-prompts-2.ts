@@ -1,3 +1,5 @@
+export const categoryName = "Tax Debt Resolution Strategies and Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

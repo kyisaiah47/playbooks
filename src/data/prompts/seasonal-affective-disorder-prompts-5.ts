@@ -1,3 +1,5 @@
+export const categoryName = "Seasonal Patterns and Timing Insights";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Research & Fact-Checking Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

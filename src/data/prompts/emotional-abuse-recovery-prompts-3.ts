@@ -1,3 +1,5 @@
+export const categoryName = "Building Self-Worth and Personal Identity";
+
 export const prompts = [
   {
     id: 'prompt-1',

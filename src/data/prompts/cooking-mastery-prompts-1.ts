@@ -1,3 +1,5 @@
+export const categoryName = "Ingredient Knowledge & Selection";
+
 export const prompts = [
   {
     id: 'prompt-1',

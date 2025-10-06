@@ -1,3 +1,5 @@
+export const categoryName = "Time Management & Scheduling Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

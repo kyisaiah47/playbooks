@@ -1,3 +1,5 @@
+export const categoryName = "Return-to-Work Transition and Workplace Safety";
+
 export const prompts = [
   {
     id: 'prompt-1',

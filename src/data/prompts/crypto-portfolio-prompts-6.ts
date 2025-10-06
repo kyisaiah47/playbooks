@@ -1,3 +1,5 @@
+export const categoryName = "Regulatory Environment & Tax Implications";
+
 export const prompts = [
   {
     id: 'prompt-1',

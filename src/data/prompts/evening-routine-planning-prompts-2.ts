@@ -1,3 +1,5 @@
+export const categoryName = "Evening Planning & Goal Organization";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Usage Patterns & Context Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

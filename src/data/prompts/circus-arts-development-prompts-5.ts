@@ -1,3 +1,5 @@
+export const categoryName = "Community & Collaboration in Circus Arts";
+
 export const prompts = [
   {
     id: 'prompt-1',

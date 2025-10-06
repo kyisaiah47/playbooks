@@ -1,3 +1,5 @@
+export const categoryName = "Feedback and Performance Development in Mentoring";
+
 export const prompts = [
   {
     id: 'prompt-1',

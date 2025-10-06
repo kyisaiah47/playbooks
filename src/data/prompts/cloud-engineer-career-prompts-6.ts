@@ -1,3 +1,5 @@
+export const categoryName = "Cloud DevOps and Automation Workflows";
+
 export const prompts = [
   {
     id: 'prompt-1',

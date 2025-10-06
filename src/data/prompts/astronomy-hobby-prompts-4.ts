@@ -1,3 +1,5 @@
+export const categoryName = "Deep Space Objects and Cosmic Phenomena";
+
 export const prompts = [
   {
     id: 'prompt-1',

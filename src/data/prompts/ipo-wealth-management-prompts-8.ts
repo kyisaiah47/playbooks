@@ -1,3 +1,5 @@
+export const categoryName = "IPO Network Building & Professional Relationship Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

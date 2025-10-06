@@ -1,3 +1,5 @@
+export const categoryName = "Meeting Effectiveness & Productivity Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

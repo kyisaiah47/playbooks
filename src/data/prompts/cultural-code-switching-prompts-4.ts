@@ -1,3 +1,5 @@
+export const categoryName = "Professional and Academic Environment Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Travel Documentation & Memory Preservation";
+
 export const prompts = [
   {
     id: 'prompt-1',

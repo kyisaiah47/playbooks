@@ -1,3 +1,5 @@
+export const categoryName = "Technology, Modern Parenting, and Generational Adaptation";
+
 export const prompts = [
   {
     id: 'prompt-1',

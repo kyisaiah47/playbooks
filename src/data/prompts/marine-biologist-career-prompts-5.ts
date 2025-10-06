@@ -1,3 +1,5 @@
+export const categoryName = "Marine Technology & Methodology Applications";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Meeting Resource Management & Cost Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

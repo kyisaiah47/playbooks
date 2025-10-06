@@ -1,3 +1,5 @@
+export const categoryName = "Emotional and Psychological Preparation for Medical Decisions";
+
 export const prompts = [
   {
     id: 'prompt-1',

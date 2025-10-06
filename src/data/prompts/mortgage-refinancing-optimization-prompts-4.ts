@@ -1,3 +1,5 @@
+export const categoryName = "Cost Structure & Break-Even Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

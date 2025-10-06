@@ -1,3 +1,5 @@
+export const categoryName = "Personal Growth and Self-Awareness Through Perfectionism";
+
 export const prompts = [
   {
     id: 'prompt-1',

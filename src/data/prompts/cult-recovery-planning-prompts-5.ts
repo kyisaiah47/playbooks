@@ -1,3 +1,5 @@
+export const categoryName = "Processing Trauma and Healing from Psychological Wounds";
+
 export const prompts = [
   {
     id: 'prompt-1',

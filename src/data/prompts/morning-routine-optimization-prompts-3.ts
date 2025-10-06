@@ -1,3 +1,5 @@
+export const categoryName = "Nutrition and Hydration Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Digital Memorial and Legacy Communication Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

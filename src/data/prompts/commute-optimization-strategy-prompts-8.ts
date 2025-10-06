@@ -1,3 +1,5 @@
+export const categoryName = "Weather and Seasonal Adaptation Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

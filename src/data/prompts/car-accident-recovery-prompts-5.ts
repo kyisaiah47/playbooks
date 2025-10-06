@@ -1,3 +1,5 @@
+export const categoryName = "Vehicle Recovery and Transportation Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

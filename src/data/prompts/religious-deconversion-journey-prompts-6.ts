@@ -1,3 +1,5 @@
+export const categoryName = "Practical Life Reconstruction and Secular Living";
+
 export const prompts = [
   {
     id: 'prompt-1',

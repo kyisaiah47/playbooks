@@ -1,3 +1,5 @@
+export const categoryName = "Pricing Model Design & Strategy Framework";
+
 export const prompts = [
   {
     id: 'prompt-1',

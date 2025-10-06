@@ -1,3 +1,5 @@
+export const categoryName = "Mindful Eating and Behavioral Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Core Business Analysis Skills & Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

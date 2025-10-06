@@ -1,3 +1,5 @@
+export const categoryName = "Investor Relations & Funding Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

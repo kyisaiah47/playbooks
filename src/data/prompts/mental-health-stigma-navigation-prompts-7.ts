@@ -1,3 +1,5 @@
+export const categoryName = "Family and Relationship Dynamics in Mental Health";
+
 export const prompts = [
   {
     id: 'prompt-1',

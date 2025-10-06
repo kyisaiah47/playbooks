@@ -1,3 +1,5 @@
+export const categoryName = "Housing and Community Settlement";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Organizational Development and Human Resources Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

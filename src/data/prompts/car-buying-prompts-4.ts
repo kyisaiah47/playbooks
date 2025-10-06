@@ -1,3 +1,5 @@
+export const categoryName = "Post-Purchase Ownership & Maintenance Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

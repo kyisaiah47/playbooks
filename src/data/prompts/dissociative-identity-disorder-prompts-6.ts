@@ -1,3 +1,5 @@
+export const categoryName = "Self-Advocacy and Community Connection";
+
 export const prompts = [
   {
     id: 'prompt-1',

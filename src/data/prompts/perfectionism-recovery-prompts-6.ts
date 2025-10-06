@@ -1,3 +1,5 @@
+export const categoryName = "Perfectionism in Work & Achievement Contexts";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Employee Onboarding and Integration Process";
+
 export const prompts = [
   {
     id: 'prompt-1',

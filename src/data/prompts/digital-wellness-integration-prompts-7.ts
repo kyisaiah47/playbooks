@@ -1,3 +1,5 @@
+export const categoryName = "Digital Privacy & Security Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

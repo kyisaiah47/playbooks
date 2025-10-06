@@ -1,3 +1,5 @@
+export const categoryName = "Specialized Techniques & Modality Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Spiritual and Belief System Recovery and Reconstruction";
+
 export const prompts = [
   {
     id: 'prompt-1',

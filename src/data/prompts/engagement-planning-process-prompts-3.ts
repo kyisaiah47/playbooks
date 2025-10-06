@@ -1,3 +1,5 @@
+export const categoryName = "Resource Planning & Timeline Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

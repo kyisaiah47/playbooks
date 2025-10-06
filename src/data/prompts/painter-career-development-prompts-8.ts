@@ -1,3 +1,5 @@
+export const categoryName = "Exhibition Strategy & Gallery Relations";
+
 export const prompts = [
   {
     id: 'prompt-1',

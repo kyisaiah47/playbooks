@@ -1,3 +1,5 @@
+export const categoryName = "Studio Management & Operational Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

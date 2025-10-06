@@ -1,3 +1,5 @@
+export const categoryName = "Housing and Location Strategy";
+
 export const prompts = [
   {
     id: 'prompt-1',

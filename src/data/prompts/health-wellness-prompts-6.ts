@@ -1,3 +1,5 @@
+export const categoryName = "Mind-Body Connection & Holistic Integration";
+
 export const prompts = [
   {
     id: 'prompt-1',

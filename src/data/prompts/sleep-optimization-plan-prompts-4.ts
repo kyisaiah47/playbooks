@@ -1,3 +1,5 @@
+export const categoryName = "Lifestyle & Behavioral Influences";
+
 export const prompts = [
   {
     id: 'prompt-1',

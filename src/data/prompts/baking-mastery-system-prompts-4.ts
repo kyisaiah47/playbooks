@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Traditions & Personal Baking Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

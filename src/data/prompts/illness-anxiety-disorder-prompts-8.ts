@@ -1,3 +1,5 @@
+export const categoryName = "Daily Life Impact and Functional Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

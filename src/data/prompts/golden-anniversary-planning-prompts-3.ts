@@ -1,3 +1,5 @@
+export const categoryName = "Guest Experience & Relationship Mapping";
+
 export const prompts = [
   {
     id: 'prompt-1',

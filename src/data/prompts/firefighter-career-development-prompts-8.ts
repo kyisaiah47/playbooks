@@ -1,3 +1,5 @@
+export const categoryName = "Emergency Medical Response & Patient Care Excellence";
+
 export const prompts = [
   {
     id: 'prompt-1',

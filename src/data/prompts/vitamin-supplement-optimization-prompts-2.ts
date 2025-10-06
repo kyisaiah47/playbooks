@@ -1,3 +1,5 @@
+export const categoryName = "Supplement Timing and Dosage Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

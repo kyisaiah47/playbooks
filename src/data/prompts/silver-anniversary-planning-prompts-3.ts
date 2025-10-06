@@ -1,3 +1,5 @@
+export const categoryName = "Celebration & Experience Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Financial Assets and Debt Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

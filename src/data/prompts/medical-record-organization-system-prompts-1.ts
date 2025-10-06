@@ -1,3 +1,5 @@
+export const categoryName = "Patient Health History & Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

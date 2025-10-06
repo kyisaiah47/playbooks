@@ -1,3 +1,5 @@
+export const categoryName = "Investment and Asset Protection During Financial Emergencies";
+
 export const prompts = [
   {
     id: 'prompt-1',

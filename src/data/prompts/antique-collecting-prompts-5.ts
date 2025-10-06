@@ -1,3 +1,5 @@
+export const categoryName = "Building Networks and Relationships in the Antique Collecting Community";
+
 export const prompts = [
   {
     id: 'prompt-1',

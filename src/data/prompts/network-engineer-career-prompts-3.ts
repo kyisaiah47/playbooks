@@ -1,3 +1,5 @@
+export const categoryName = "Network Protocols & Technologies";
+
 export const prompts = [
   {
     id: 'prompt-1',

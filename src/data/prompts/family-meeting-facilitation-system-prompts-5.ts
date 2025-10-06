@@ -1,3 +1,5 @@
+export const categoryName = "Follow-up Actions and Accountability Systems";
+
 export const prompts = [
   {
     id: 'prompt-1',

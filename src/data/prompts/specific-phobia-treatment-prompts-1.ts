@@ -1,3 +1,5 @@
+export const categoryName = "Exposure Therapy Fundamentals and Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

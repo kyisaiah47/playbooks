@@ -1,3 +1,5 @@
+export const categoryName = "Career Exploration & Target Role Definition";
+
 export const prompts = [
   {
     id: 'prompt-1',

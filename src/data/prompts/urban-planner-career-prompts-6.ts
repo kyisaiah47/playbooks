@@ -1,3 +1,5 @@
+export const categoryName = "Housing Policy and Affordable Development Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

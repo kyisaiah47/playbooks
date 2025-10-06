@@ -1,3 +1,5 @@
+export const categoryName = "External Influences & Social Dynamics in Debt Repayment";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "IPO Portfolio Management & Wealth Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

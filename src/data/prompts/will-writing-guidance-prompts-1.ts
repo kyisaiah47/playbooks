@@ -1,3 +1,5 @@
+export const categoryName = "Asset Inventory and Valuation Planning";
+
 export const prompts = [
   {
     id: 'prompt-1',

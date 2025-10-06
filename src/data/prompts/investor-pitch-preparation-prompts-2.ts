@@ -1,3 +1,5 @@
+export const categoryName = "Financial Projections & Business Model";
+
 export const prompts = [
   {
     id: 'prompt-1',

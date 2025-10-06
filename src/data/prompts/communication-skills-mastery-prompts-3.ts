@@ -1,3 +1,5 @@
+export const categoryName = "Verbal Clarity and Persuasive Communication";
+
 export const prompts = [
   {
     id: 'prompt-1',

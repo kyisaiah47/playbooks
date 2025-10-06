@@ -1,3 +1,5 @@
+export const categoryName = "Long-term Goals and Quality of Life Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

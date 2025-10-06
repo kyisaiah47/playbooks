@@ -1,3 +1,5 @@
+export const categoryName = "Property Assessment and Housing Options";
+
 export const prompts = [
   {
     id: 'prompt-1',

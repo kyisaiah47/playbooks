@@ -1,3 +1,5 @@
+export const categoryName = "Coaching Methods & Session Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

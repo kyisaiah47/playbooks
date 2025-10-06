@@ -1,3 +1,5 @@
+export const categoryName = "Peak Performance and Flow State Analysis";
+
 export const prompts = [
   {
     id: 'prompt-1',

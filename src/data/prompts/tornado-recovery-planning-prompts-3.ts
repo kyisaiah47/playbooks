@@ -1,3 +1,5 @@
+export const categoryName = "Damage Assessment and Recovery Prioritization";
+
 export const prompts = [
   {
     id: 'prompt-1',

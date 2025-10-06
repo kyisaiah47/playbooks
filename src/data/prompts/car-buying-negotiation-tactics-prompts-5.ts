@@ -1,3 +1,5 @@
+export const categoryName = "Dealership Dynamics & Sales Psychology";
+
 export const prompts = [
   {
     id: 'prompt-1',

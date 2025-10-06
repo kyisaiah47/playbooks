@@ -1,3 +1,5 @@
+export const categoryName = "Workflow Management and Process Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

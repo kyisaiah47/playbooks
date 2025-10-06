@@ -1,3 +1,5 @@
+export const categoryName = "Treatment Costs, Insurance, and Healthcare Decision-Making";
+
 export const prompts = [
   {
     id: 'prompt-1',

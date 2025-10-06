@@ -1,3 +1,5 @@
+export const categoryName = "Grandparent Role Development and Legacy Building";
+
 export const prompts = [
   {
     id: 'prompt-1',

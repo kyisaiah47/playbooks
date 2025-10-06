@@ -1,3 +1,5 @@
+export const categoryName = "Leadership & Team Collaboration in Midwifery Practice";
+
 export const prompts = [
   {
     id: 'prompt-1',

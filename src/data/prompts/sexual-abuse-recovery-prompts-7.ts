@@ -1,3 +1,5 @@
+export const categoryName = "Legal Rights and Justice System Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Delegation Frameworks and Leadership Development Models";
+
 export const prompts = [
   {
     id: 'prompt-1',

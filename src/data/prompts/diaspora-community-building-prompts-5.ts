@@ -1,3 +1,5 @@
+export const categoryName = "Civic Engagement & Political Participation";
+
 export const prompts = [
   {
     id: 'prompt-1',

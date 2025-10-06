@@ -1,3 +1,5 @@
+export const categoryName = "Memory Care Environment & Living Arrangements";
+
 export const prompts = [
   {
     id: 'prompt-1',

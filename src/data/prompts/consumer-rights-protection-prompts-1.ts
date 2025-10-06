@@ -1,3 +1,5 @@
+export const categoryName = "Marketplace Rights and Protections";
+
 export const prompts = [
   {
     id: 'prompt-1',

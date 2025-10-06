@@ -1,3 +1,5 @@
+export const categoryName = "Ergonomics and Workplace Design Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

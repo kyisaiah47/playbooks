@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare System Capacity and Workforce Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

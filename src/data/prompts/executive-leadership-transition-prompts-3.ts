@@ -1,3 +1,5 @@
+export const categoryName = "Cultural Integration and Change Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

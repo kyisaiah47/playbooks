@@ -1,3 +1,5 @@
+export const categoryName = "Emotional Processing and Grief Journey";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Recovery Tools, Strategies & Coping Mechanisms";
+
 export const prompts = [
   {
     id: 'prompt-1',

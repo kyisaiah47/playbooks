@@ -1,3 +1,5 @@
+export const categoryName = "Storage Architecture and Infrastructure Design";
+
 export const prompts = [
   {
     id: 'prompt-1',

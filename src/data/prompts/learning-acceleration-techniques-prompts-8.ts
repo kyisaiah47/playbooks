@@ -1,3 +1,5 @@
+export const categoryName = "Information Processing and Synthesis Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

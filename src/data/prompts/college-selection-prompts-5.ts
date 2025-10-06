@@ -1,3 +1,5 @@
+export const categoryName = "Location & Geographic Considerations";
+
 export const prompts = [
   {
     id: 'prompt-1',

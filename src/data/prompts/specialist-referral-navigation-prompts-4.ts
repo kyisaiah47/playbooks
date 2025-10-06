@@ -1,3 +1,5 @@
+export const categoryName = "Insurance Coverage & Financial Planning for Specialist Care";
+
 export const prompts = [
   {
     id: 'prompt-1',

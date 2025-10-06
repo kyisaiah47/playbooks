@@ -1,3 +1,5 @@
+export const categoryName = "Inventory Management & Supply Chain Operations";
+
 export const prompts = [
   {
     id: 'prompt-1',

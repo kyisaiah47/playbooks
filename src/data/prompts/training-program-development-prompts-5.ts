@@ -1,3 +1,5 @@
+export const categoryName = "Training Delivery and Facilitation Techniques";
+
 export const prompts = [
   {
     id: 'prompt-1',

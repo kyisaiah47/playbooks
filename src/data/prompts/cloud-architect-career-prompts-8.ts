@@ -1,3 +1,5 @@
+export const categoryName = "Cloud Innovation & Emerging Technologies";
+
 export const prompts = [
   {
     id: 'prompt-1',

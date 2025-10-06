@@ -1,3 +1,5 @@
+export const categoryName = "Nutritional Healing and Meal Planning Foundation";
+
 export const prompts = [
   {
     id: 'prompt-1',

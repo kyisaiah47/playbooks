@@ -1,3 +1,5 @@
+export const categoryName = "Mathematical Analysis & Financial Planning Tools";
+
 export const prompts = [
   {
     id: 'prompt-1',

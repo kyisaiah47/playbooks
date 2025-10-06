@@ -1,3 +1,5 @@
+export const categoryName = "Legislative Process and Policy Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

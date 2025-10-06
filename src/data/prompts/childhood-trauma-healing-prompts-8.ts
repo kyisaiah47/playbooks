@@ -1,3 +1,5 @@
+export const categoryName = "Memory Integration and Narrative Healing";
+
 export const prompts = [
   {
     id: 'prompt-1',

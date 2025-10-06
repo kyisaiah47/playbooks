@@ -1,3 +1,5 @@
+export const categoryName = "Behavioral Interview Preparation & Experience Documentation";
+
 export const prompts = [
   {
     id: 'prompt-1',

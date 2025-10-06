@@ -1,3 +1,5 @@
+export const categoryName = "Data Analytics and Performance Optimization";
+
 export const prompts = [
   {
     id: 'prompt-1',

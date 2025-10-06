@@ -1,3 +1,5 @@
+export const categoryName = "Intellectual and Academic Foundations of Deconversion";
+
 export const prompts = [
   {
     id: 'prompt-1',

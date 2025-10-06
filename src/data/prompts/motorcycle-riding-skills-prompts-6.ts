@@ -1,3 +1,5 @@
+export const categoryName = "Traffic Awareness and Road Navigation";
+
 export const prompts = [
   {
     id: 'prompt-1',

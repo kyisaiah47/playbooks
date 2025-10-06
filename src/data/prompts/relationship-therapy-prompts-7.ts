@@ -1,3 +1,5 @@
+export const categoryName = "Relationship Stages and Life Transitions";
+
 export const prompts = [
   {
     id: 'prompt-1',

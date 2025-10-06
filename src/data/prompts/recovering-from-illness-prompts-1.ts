@@ -1,3 +1,5 @@
+export const categoryName = "Energy and Fatigue Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

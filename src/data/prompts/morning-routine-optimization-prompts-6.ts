@@ -1,3 +1,5 @@
+export const categoryName = "Environmental Design and Optimization Factors";
+
 export const prompts = [
   {
     id: 'prompt-1',

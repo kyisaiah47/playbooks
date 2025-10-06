@@ -1,3 +1,5 @@
+export const categoryName = "Grant Writing & Funding Strategy Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

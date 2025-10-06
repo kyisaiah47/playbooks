@@ -1,3 +1,5 @@
+export const categoryName = "Healthcare System Navigation & Patient Rights Awareness";
+
 export const prompts = [
   {
     id: 'prompt-1',

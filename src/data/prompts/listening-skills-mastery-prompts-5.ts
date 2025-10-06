@@ -1,3 +1,5 @@
+export const categoryName = "Cultural and Context-Aware Listening";
+
 export const prompts = [
   {
     id: 'prompt-1',

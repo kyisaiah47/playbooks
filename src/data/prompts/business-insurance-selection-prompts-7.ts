@@ -1,3 +1,5 @@
+export const categoryName = "Employee Coverage and Workplace Protection";
+
 export const prompts = [
   {
     id: 'prompt-1',

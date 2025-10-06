@@ -1,3 +1,5 @@
+export const categoryName = "Tenant Rights and Legal Protections";
+
 export const prompts = [
   {
     id: 'prompt-1',

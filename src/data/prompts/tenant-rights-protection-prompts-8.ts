@@ -1,3 +1,5 @@
+export const categoryName = "Housing Transitions and Moving Rights";
+
 export const prompts = [
   {
     id: 'prompt-1',

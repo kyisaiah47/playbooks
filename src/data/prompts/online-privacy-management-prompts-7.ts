@@ -1,3 +1,5 @@
+export const categoryName = "Online Communication and Social Media Privacy";
+
 export const prompts = [
   {
     id: 'prompt-1',

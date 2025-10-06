@@ -1,3 +1,5 @@
+export const categoryName = "Audience Psychology and Engagement";
+
 export const prompts = [
   {
     id: 'prompt-1',

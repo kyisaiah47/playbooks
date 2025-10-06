@@ -1,3 +1,5 @@
+export const categoryName = "Piano Maintenance and Repair Specializations";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Physical Fitness and Health Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

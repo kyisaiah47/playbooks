@@ -1,3 +1,5 @@
+export const categoryName = "Decision Context & Constraints";
+
 export const prompts = [
   {
     id: 'prompt-1',

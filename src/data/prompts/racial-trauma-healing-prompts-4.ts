@@ -1,3 +1,5 @@
+export const categoryName = "Historical Context and Systemic Understanding";
+
 export const prompts = [
   {
     id: 'prompt-1',

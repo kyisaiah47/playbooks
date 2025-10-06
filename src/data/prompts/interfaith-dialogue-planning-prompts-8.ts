@@ -1,3 +1,5 @@
+export const categoryName = "Ethical Framework and Moral Values";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Clinical Competence & Care Quality";
+
 export const prompts = [
   {
     id: 'prompt-1',

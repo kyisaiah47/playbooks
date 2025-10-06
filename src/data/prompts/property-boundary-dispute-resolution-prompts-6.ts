@@ -1,3 +1,5 @@
+export const categoryName = "Professional Services and Expert Consultation";
+
 export const prompts = [
   {
     id: 'prompt-1',

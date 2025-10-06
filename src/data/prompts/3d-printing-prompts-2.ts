@@ -1,3 +1,5 @@
+export const categoryName = "Materials and Filament Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

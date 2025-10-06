@@ -1,3 +1,5 @@
+export const categoryName = "Legal Context and Cross-Examination Preparation";
+
 export const prompts = [
   {
     id: 'prompt-1',

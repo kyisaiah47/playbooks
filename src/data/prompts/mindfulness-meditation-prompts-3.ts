@@ -1,3 +1,5 @@
+export const categoryName = "Mindfulness Techniques and Learning Resources";
+
 export const prompts = [
   {
     id: 'prompt-1',

@@ -1,3 +1,5 @@
+export const categoryName = "Language Learning & Cultural Context";
+
 export const prompts = [
   {
     id: 'prompt-1',

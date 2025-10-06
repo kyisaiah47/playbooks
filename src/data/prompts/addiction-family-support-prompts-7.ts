@@ -1,3 +1,5 @@
+export const categoryName = "Understanding Different Addiction Types and Their Impact";
+
 export const prompts = [
   {
     id: 'prompt-1',

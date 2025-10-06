@@ -1,3 +1,5 @@
+export const categoryName = "Initial Financial Assessment and Goal Setting";
+
 export const prompts = [
   {
     id: 'prompt-1',

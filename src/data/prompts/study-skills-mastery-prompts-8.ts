@@ -1,3 +1,5 @@
+export const categoryName = "Resource Discovery & Information Management";
+
 export const prompts = [
   {
     id: 'prompt-1',

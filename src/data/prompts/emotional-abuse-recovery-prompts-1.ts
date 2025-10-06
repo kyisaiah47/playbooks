@@ -1,3 +1,5 @@
+export const categoryName = "Recognizing Manipulation Patterns and Tactics";
+
 export const prompts = [
   {
     id: 'prompt-1',

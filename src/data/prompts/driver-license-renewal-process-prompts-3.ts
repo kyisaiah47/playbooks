@@ -1,3 +1,5 @@
+export const categoryName = "Requirements and Eligibility Assessment";
+
 export const prompts = [
   {
     id: 'prompt-1',

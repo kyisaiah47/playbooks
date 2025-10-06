@@ -1,3 +1,5 @@
+export const categoryName = "Course Evaluation & Improvement Strategies";
+
 export const prompts = [
   {
     id: 'prompt-1',

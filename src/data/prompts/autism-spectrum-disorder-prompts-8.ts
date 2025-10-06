@@ -1,3 +1,5 @@
+export const categoryName = "Career Development and Workplace Accommodations";
+
 export const prompts = [
   {
     id: 'prompt-1',

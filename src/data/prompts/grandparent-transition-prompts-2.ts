@@ -1,3 +1,5 @@
+export const categoryName = "Practical Life Changes and Logistics";
+
 export const prompts = [
   {
     id: 'prompt-1',

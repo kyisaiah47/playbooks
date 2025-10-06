@@ -1,3 +1,5 @@
+export const categoryName = "Research Skills and Methodology Development";
+
 export const prompts = [
   {
     id: 'prompt-1',

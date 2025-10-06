@@ -1,3 +1,5 @@
+export const categoryName = "Audio Production and Post-Production Mastery";
+
 export const prompts = [
   {
     id: 'prompt-1',

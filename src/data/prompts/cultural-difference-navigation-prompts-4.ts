@@ -1,3 +1,5 @@
+export const categoryName = "Time Orientation and Social Rhythms";
+
 export const prompts = [
   {
     id: 'prompt-1',

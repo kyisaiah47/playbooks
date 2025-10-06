@@ -1,3 +1,5 @@
+export const categoryName = "Fundamental Drawing Techniques and Skills";
+
 export const prompts = [
   {
     id: 'prompt-1',

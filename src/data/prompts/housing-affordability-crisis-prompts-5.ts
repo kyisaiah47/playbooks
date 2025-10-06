@@ -1,3 +1,5 @@
+export const categoryName = "Demographics and Population Trends";
+
 export const prompts = [
   {
     id: 'prompt-1',
