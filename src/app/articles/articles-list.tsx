@@ -5,9 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Search, ChevronLeft, ChevronRight, Loader2, BookOpen, Brain, Layers } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
 const ARTICLES_PER_PAGE = 100;
@@ -26,6 +24,7 @@ interface Article {
   slug: string;
   type: string;
   difficulty: string;
+  relatedTemplates?: string[];
 }
 
 interface ArticlesListProps {
@@ -40,40 +39,25 @@ export function ArticlesList({ articles, total, currentPage }: ArticlesListProps
   const [isPending, startTransition] = useTransition();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedType, setSelectedType] = useState<string>('all');
-  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
 
-  // Get unique categories for filtering
-  const categories = useMemo(() => {
-    const uniqueCategories = [...new Set(articles.map(post => post.category))];
-    return uniqueCategories.sort();
-  }, [articles]);
-
-  // Filter articles based on search and filters
+  // Filter articles based on search (client-side for current page only)
   const filteredArticles = useMemo(() => {
+    if (searchQuery === '') return articles;
+
     return articles.filter(post => {
-      const matchesSearch = searchQuery === '' ||
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      return post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-
-      const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
-      const matchesType = selectedType === 'all' || post.type === selectedType;
-      const matchesDifficulty = selectedDifficulty === 'all' || post.difficulty === selectedDifficulty;
-
-      return matchesSearch && matchesCategory && matchesType && matchesDifficulty;
     });
-  }, [articles, searchQuery, selectedCategory, selectedType, selectedDifficulty]);
+  }, [articles, searchQuery]);
 
-  // Pagination calculations - server-side pagination, client-side filtering disabled for now
+  // Pagination calculations - server-side pagination
   const totalPages = Math.ceil(total / ARTICLES_PER_PAGE);
   const startIndex = (currentPage - 1) * ARTICLES_PER_PAGE;
   const endIndex = Math.min(startIndex + ARTICLES_PER_PAGE, total);
 
-  // Use filtered articles if filters are active, otherwise use server-paginated articles
-  const hasActiveFilters = searchQuery !== '' || selectedCategory !== 'all' || selectedType !== 'all' || selectedDifficulty !== 'all';
-  const displayArticles = hasActiveFilters ? filteredArticles : articles;
+  // Display filtered results if search is active, otherwise show paginated results
+  const displayArticles = searchQuery !== '' ? filteredArticles : articles;
 
   // Update URL when page changes
   const updatePage = (page: number) => {
@@ -104,63 +88,20 @@ export function ArticlesList({ articles, total, currentPage }: ArticlesListProps
       {/* Browse Section */}
       <section className="mb-12">
         <h2 className="text-2xl font-bold mb-6">Browse All Articles</h2>
-        <div className="flex flex-col md:flex-row gap-4">
-          {/* Search */}
-          <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
-            <Input
-              type="text"
-              placeholder="Search articles..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
-            />
-          </div>
-
-          {/* Filters */}
-          <div className="flex gap-2">
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
-                {categories.map((category) => (
-                  <SelectItem key={category} value={category}>{category}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select value={selectedType} onValueChange={setSelectedType}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
-                <SelectItem value="guide">Guide</SelectItem>
-                <SelectItem value="article">Article</SelectItem>
-                <SelectItem value="checklist">Checklist</SelectItem>
-                <SelectItem value="tool">Tool</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Select value={selectedDifficulty} onValueChange={setSelectedDifficulty}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Difficulty" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Levels</SelectItem>
-                <SelectItem value="beginner">Beginner</SelectItem>
-                <SelectItem value="intermediate">Intermediate</SelectItem>
-                <SelectItem value="expert">Expert</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+        <div className="relative max-w-2xl">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+          <Input
+            type="text"
+            placeholder="Search articles..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-12 h-12 text-base"
+          />
         </div>
 
         {/* Results count */}
-        <div className="mt-6 text-sm text-muted-foreground">
-          {hasActiveFilters ? (
+        <div className="mt-4 text-sm text-muted-foreground">
+          {searchQuery !== '' ? (
             `${filteredArticles.length} articles found`
           ) : (
             `${total.toLocaleString()} articles across all templates`
@@ -179,15 +120,15 @@ export function ArticlesList({ articles, total, currentPage }: ArticlesListProps
             >
               <div className="flex items-start gap-4">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Badge variant="outline" className="text-xs">{article.category}</Badge>
-                    <Badge variant="secondary" className="text-xs">{article.type}</Badge>
-                    <span className="text-xs text-muted-foreground">{article.readTime}</span>
-                  </div>
                   <h3 className="text-base font-medium mb-1 group-hover:text-primary transition-colors">
                     {article.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-1">{article.excerpt}</p>
+                  <p className="text-sm text-muted-foreground line-clamp-1 mb-2">{article.excerpt}</p>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary" className="text-xs">{article.type}</Badge>
+                    <Badge variant="outline" className="text-xs">{article.difficulty}</Badge>
+                    <span className="text-xs text-muted-foreground">{article.readTime}</span>
+                  </div>
                 </div>
               </div>
             </Link>
