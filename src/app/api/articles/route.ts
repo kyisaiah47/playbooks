@@ -47,6 +47,11 @@ export async function GET(request: Request) {
       throw error;
     }
 
+    // Log all fields from first article to see what's available
+    if (data && data.length > 0) {
+      console.log('[API /articles] Raw DB fields:', Object.keys(data[0]));
+    }
+
     const articles = data.map((article: any) => ({
       id: article.id,
       title: article.title,

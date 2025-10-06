@@ -9,6 +9,11 @@ import templateConnectionsData from '../../knowledge-graph/template-connections.
 import articleConnectionsData from '../../knowledge-graph/article-connections.json';
 import promptConnectionsData from '../../knowledge-graph/prompt-connections.json';
 import marketingConnectionsData from '../../knowledge-graph/marketing-connections.json';
+import semanticClustersData from '../../knowledge-graph/semantic-clusters.json';
+import microClustersData from '../../knowledge-graph/micro-clusters.json';
+import advancedConnectionsData from '../../knowledge-graph/advanced-connections.json';
+import lifeSequencesData from '../../knowledge-graph/life-sequences.json';
+import contextualPromptsData from '../../knowledge-graph/contextual-prompts.json';
 
 // TypeScript interfaces
 export interface TemplateConnection {

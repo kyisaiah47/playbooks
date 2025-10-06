@@ -46,6 +46,20 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
   const [duplicateError, setDuplicateError] = useState<string | null>(null);
   const [highlightedItem, setHighlightedItem] = useState<string | null>(null);
 
+  // Workspace management (must be defined before useEffects that use them)
+  const [workspaces, setWorkspaces] = useState<Workspace[]>([
+    {
+      id: 'default',
+      name: 'Main Workspace',
+      templateId: template.id,
+      allItems: [],
+      responses: {},
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+  ]);
+  const [activeWorkspaceId, setActiveWorkspaceId] = useState<string>('default');
+
   // Command palette keyboard shortcut
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -92,21 +106,6 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
       }
     }
   }, [template.id]);
-
-  // Workspace management
-  const [workspaces, setWorkspaces] = useState<Workspace[]>([
-    {
-      id: 'default',
-      name: 'Main Workspace',
-      templateId: template.id,
-      allItems: [],
-      responses: {},
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }
-  ]);
-  const [activeWorkspaceId, setActiveWorkspaceId] = useState<string>('default');
-
 
   const handleInsertPrompt = (prompt: ReflectionPrompt) => {
     // Insert prompt into TipTap editor
