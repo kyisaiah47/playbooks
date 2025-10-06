@@ -190,19 +190,18 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
             <Link
               key={article.id}
               href={`/articles/${article.slug}`}
-              className="group block py-4 hover:text-primary transition-colors"
+              className="group block py-3 hover:text-primary transition-colors"
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h3 className="text-base font-medium mb-1 group-hover:text-primary transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-1 mb-2">{article.excerpt}</p>
-                  <div className="flex items-center gap-2">
-                    <Badge variant="secondary" className="text-xs">{article.type}</Badge>
-                    <Badge variant="outline" className="text-xs">{article.difficulty}</Badge>
-                    <span className="text-xs text-muted-foreground">{article.readTime}</span>
-                  </div>
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="text-base font-medium group-hover:text-primary transition-colors">
+                  {article.title}
+                </h3>
+                <div className="flex items-center gap-3 text-xs text-muted-foreground whitespace-nowrap">
+                  {article.category && (
+                    <span>{article.category}</span>
+                  )}
+                  <span>·</span>
+                  <span>{article.readTime}</span>
                 </div>
               </div>
             </Link>
