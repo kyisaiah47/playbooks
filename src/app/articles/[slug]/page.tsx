@@ -1,17 +1,12 @@
 import Link from "next/link";
-import type { Metadata } from 'next';
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, User, Heart, Home, Briefcase, Target, Lightbulb } from "lucide-react";
+import { Calendar, Clock, Heart, Home, Briefcase, Target } from "lucide-react";
 import { Marquee } from "@/components/ui/marquee";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
 import { getArticleBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/articles";
 import React from "react";
-import { templateRegistry } from "@/registry/templates";
 import { ArticleContent } from "./article-content";
-import { TableOfContents } from "./table-of-contents";
 
 // Category icon mapping
 const getCategoryIcon = (category: string) => {
@@ -26,41 +21,6 @@ const getCategoryIcon = (category: string) => {
       return Target;
   }
 };
-
-// Extract template name from slug
-function getTemplateFromSlug(slug?: string): string {
-  if (!slug) return 'home buying';
-
-  // Map specific article slugs to proper template names
-  const slugTemplateMap: Record<string, string> = {
-    'complete-first-time-home-buyer-guide-2025': 'home buying',
-    'first-time-home-buyer-timeline-checklist-complete-planning-guide': 'home buying',
-    'alternative-home-financing-options-guide-2025': 'home buying',
-    'wedding-timeline-planning-master-schedule-guide': 'wedding planning',
-    'building-your-baby-budget-financial-planning-guide': 'baby planning',
-    'choosing-first-3d-printer-complete-guide': '3d printing',
-    'advanced-3d-printing-materials-guide': '3d printing',
-    '3d-print-troubleshooting-failures-guide': '3d printing'
-  };
-
-  // Check if we have a specific mapping
-  if (slugTemplateMap[slug]) {
-    return slugTemplateMap[slug];
-  }
-
-  // Try to extract template name from slug structure
-  if (slug.includes('home-buyer') || slug.includes('home-buying')) return 'home buying';
-  if (slug.includes('wedding')) return 'wedding planning';
-  if (slug.includes('baby') || slug.includes('pregnancy')) return 'baby planning';
-  if (slug.includes('3d-print')) return '3d printing';
-  if (slug.includes('travel')) return 'travel planning';
-  if (slug.includes('fitness') || slug.includes('workout')) return 'fitness journey';
-  if (slug.includes('business')) return 'small business';
-  if (slug.includes('investment') || slug.includes('financial')) return 'investment portfolio';
-
-  // Default fallback
-  return 'planning';
-}
 
 // Metadata is handled in layout.tsx
 
@@ -82,26 +42,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     }
   }
 
-  // Generate table of contents from content
-  const tableOfContents = blogPost ? (() => {
-    const headings: Array<{id: string, title: string, level: number}> = [];
-    const lines = blogPost.content.split('\n\n');
-
-    lines.forEach((line) => {
-      if (line.startsWith('## ')) {
-        const title = line.replace('## ', '').trim();
-        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-        headings.push({ id, title, level: 2 });
-      } else if (line.startsWith('### ')) {
-        const title = line.replace('### ', '').trim();
-        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-        headings.push({ id, title, level: 3 });
-      }
-    });
-
-    return headings;
-  })() : [];
-
   if (!blogPost) {
     return (
       <PageLayout>
@@ -118,102 +58,52 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {/* Scroll Progress Bar */}
       <ScrollProgress className="fixed top-0 z-50" />
 
-      <div className="min-h-screen bg-background">
-        {/* Header Section */}
-        <div className="container mx-auto max-w-7xl px-4 pt-8 pb-8">
+      {/* Hero Section */}
+      <section className="py-16 md:py-24 border-b">
+        <div className="container mx-auto max-w-4xl px-4">
+          <div className="space-y-6">
+            {/* Metadata */}
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1">
+                <Calendar className="w-4 h-4" />
+                {new Date(blogPost.publishedAt).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </span>
+              <span>·</span>
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                {blogPost.readTime}
+              </span>
+              <span>·</span>
+              <Badge variant="outline">{blogPost.type}</Badge>
+            </div>
 
-          {/* Article Header */}
-          <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-foreground">
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               {blogPost.title}
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            {/* Excerpt */}
+            <p className="text-xl text-muted-foreground leading-relaxed">
               {blogPost.excerpt}
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex gap-4 mb-8">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90">
-                Get Started
-              </Button>
-              <Button variant="outline" size="lg">
-                {blogPost.category} Guide
-              </Button>
-            </div>
-          </header>
+          </div>
         </div>
+      </section>
 
-        {/* Content with Sidebars */}
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="min-h-screen bg-background">
 
-            {/* Left Sidebar - Sticky */}
-            <aside className="lg:col-span-2 self-start">
-              <div className="sticky top-8 space-y-8 max-h-screen overflow-y-auto">
-                {/* Topics Section */}
-                <div>
-                  <h3 className="font-semibold text-sm text-foreground mb-4">Topics</h3>
-                  <div className="space-y-2">
-                    <Link href="/articles" className="block text-sm text-muted-foreground hover:text-foreground">
-                      All Articles
-                    </Link>
-                    <Link href="#" className="block text-sm text-muted-foreground hover:text-foreground">
-                      Wedding Planning
-                    </Link>
-                    <Link href="#" className="block text-sm text-muted-foreground hover:text-foreground">
-                      Home Buying
-                    </Link>
-                    <Link href="#" className="block text-sm text-muted-foreground hover:text-foreground">
-                      Career Development
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Last Updated */}
-                <div>
-                  <h3 className="font-semibold text-sm text-foreground mb-2">Last Updated</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {new Date(blogPost.publishedAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </p>
-                </div>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <main className="lg:col-span-7">
+        {/* Content */}
+        <div className="container mx-auto max-w-4xl px-4 py-16">
+          <main>
               <ArticleContent content={blogPost.content} />
-
-              {/* CTA Section */}
-              <div className="bg-muted/30 rounded-2xl p-8 mt-16 text-center">
-                <div className="max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold mb-4">
-                    Ready to Get Started?
-                  </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Get our comprehensive {blogPost.category.toLowerCase()} template with expert guidance,
-                    checklists, and step-by-step instructions.
-                  </p>
-                  <Button size="lg" className="mr-4" asChild>
-                    <Link href={`/${blogPost.category.toLowerCase().replace(' ', '-')}/app`}>
-                      Get {blogPost.category} Template
-                    </Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link href="/articles">
-                      Browse More Articles
-                    </Link>
-                  </Button>
-                </div>
-              </div>
 
               {/* Related articles with Marquee */}
               {relatedPosts.length > 0 && (
-                <section className="mt-16 mb-16">
+                <section className="mt-16">
                   <h3 className="text-2xl font-bold mb-8">Related Articles</h3>
                   <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
                     <Marquee pauseOnHover className="[--duration:15s]">
@@ -271,15 +161,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   </div>
                 </section>
               )}
-
-            </main>
-
-            {/* Right Sidebar - Table of Contents - Sticky */}
-            <aside className="lg:col-span-3 self-start">
-              <TableOfContents headings={tableOfContents} />
-            </aside>
-
-          </div>
+          </main>
         </div>
       </div>
     </PageLayout>
