@@ -244,7 +244,7 @@ export default function WorkspacePage() {
 
       {/* Top Bar */}
       <header
-        className="flex h-16 items-center justify-between px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10 transition-transform duration-300 fixed top-0 left-0 right-0 border-b"
+        className="flex h-16 items-center justify-between px-6 bg-emerald-950/80 backdrop-blur z-10 transition-transform duration-300 fixed top-0 left-0 right-0 border-b border-emerald-900/30"
         style={{ transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)' }}
       >
         {/* Left side */}
@@ -410,10 +410,10 @@ export default function WorkspacePage() {
       </header>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden relative bg-emerald-950/20 pt-16">
+      <div className="flex flex-1 overflow-hidden relative bg-emerald-950/30 pt-16">
         {/* Editor - Card style with centered content */}
         <div className="w-full flex flex-col items-center py-8">
-          <div className="flex-1 overflow-y-auto editor-scroll-container w-full max-w-[900px] bg-card border rounded-lg shadow-sm mx-4">
+          <div className="flex-1 overflow-y-auto editor-scroll-container w-full max-w-[900px] bg-emerald-950/50 border border-emerald-900/40 rounded-lg shadow-sm mx-4">
             <Suspense fallback={
               <div className="flex items-center justify-center h-full">
                 <div className="text-muted-foreground">Loading editor...</div>
@@ -433,8 +433,8 @@ export default function WorkspacePage() {
 
         {/* Article Card - Floating in right margin */}
         {openArticle && (
-          <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-muted/30 backdrop-blur-xl rounded-lg shadow-lg z-20">
-            <div className="sticky top-0 bg-background px-6 pt-6 pb-4 z-10 border-b">
+          <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-emerald-950/60 backdrop-blur-xl rounded-lg shadow-lg z-20 border border-emerald-900/40">
+            <div className="sticky top-0 bg-emerald-950/80 px-6 pt-6 pb-4 z-10 border-b border-emerald-900/40">
               <div className="flex items-center justify-between">
                 <Badge variant="outline" className="text-xs">
                   {openArticle.readTime}
