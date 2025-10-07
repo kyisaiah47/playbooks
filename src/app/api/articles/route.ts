@@ -7,6 +7,7 @@ export async function GET(request: Request) {
     const query = searchParams.get('q') || '';
     const type = searchParams.get('type') || '';
     const difficulty = searchParams.get('difficulty') || '';
+    const template = searchParams.get('template') || '';
     const page = parseInt(searchParams.get('page') || '1');
     const pageSize = parseInt(searchParams.get('pageSize') || '100');
     const limit = parseInt(searchParams.get('limit') || pageSize.toString());
@@ -19,6 +20,11 @@ export async function GET(request: Request) {
     let supabaseQuery = supabase
       .from('templata_articles')
       .select('*', { count: 'exact' });
+
+    // Apply template filter
+    if (template) {
+      supabaseQuery = supabaseQuery.eq('template', template);
+    }
 
     // Apply search filter
     if (query) {

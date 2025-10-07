@@ -54,29 +54,12 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
         const promptsData = await promptsRes.json();
         setPrompts(promptsData.prompts || []);
 
-        // Fetch articles for this template
-        const articlesRes = await fetch(`/api/articles?pageSize=1000`);
+        // Fetch articles for this template (server-side filtering)
+        const articlesRes = await fetch(`/api/articles?template=${slug}&pageSize=1000`);
         const articlesData = await articlesRes.json();
 
-        // Debug logging
-        console.log('[Template Browse] Looking for template:', slug);
-        console.log('[Template Browse] Total articles fetched:', articlesData.articles?.length || 0);
-
-        // Sample a few articles to see template field values
-        if (articlesData.articles?.length > 0) {
-          console.log('[Template Browse] Sample articles:', articlesData.articles.slice(0, 3).map((a: any) => ({
-            title: a.title,
-            template: a.template
-          })));
-        }
-
-        // Filter articles by template
-        const templateArticles = articlesData.articles.filter(
-          (a: Article) => (a as any).template === slug
-        );
-
-        console.log('[Template Browse] Filtered articles for', slug, ':', templateArticles.length);
-        setArticles(templateArticles);
+        console.log('[Template Browse] Articles for', slug, ':', articlesData.articles?.length || 0);
+        setArticles(articlesData.articles || []);
       } catch (error) {
         console.error('Error fetching template data:', error);
       } finally {
