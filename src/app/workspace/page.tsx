@@ -410,7 +410,7 @@ export default function WorkspacePage() {
       </header>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden relative bg-muted/20 pt-16">
+      <div className="flex flex-1 overflow-hidden relative bg-emerald-950/20 pt-16">
         {/* Editor - Card style with centered content */}
         <div className="w-full flex flex-col items-center py-8">
           <div className="flex-1 overflow-y-auto editor-scroll-container w-full max-w-[900px] bg-card border rounded-lg shadow-sm mx-4">
