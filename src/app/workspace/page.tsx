@@ -84,11 +84,21 @@ export default function WorkspacePage() {
       (window as any).templateEditor
         .chain()
         .focus()
-        .insertPrompt({
-          id: promptToInsert.id,
-          text: promptToInsert.prompt,
-          category: promptToInsert.categoryName || 'General',
-        })
+        .insertContent([
+          {
+            type: 'blockquote',
+            content: [
+              {
+                type: 'paragraph',
+                content: [{ type: 'text', text: promptToInsert.prompt }]
+              }
+            ]
+          },
+          {
+            type: 'paragraph',
+            content: []
+          }
+        ])
         .run();
 
       setPromptToInsert(null);
@@ -209,11 +219,21 @@ export default function WorkspacePage() {
       (window as any).templateEditor
         .chain()
         .focus()
-        .insertPrompt({
-          id: prompt.id,
-          text: prompt.prompt,
-          category: prompt.categoryName || 'General',
-        })
+        .insertContent([
+          {
+            type: 'blockquote',
+            content: [
+              {
+                type: 'paragraph',
+                content: [{ type: 'text', text: prompt.prompt }]
+              }
+            ]
+          },
+          {
+            type: 'paragraph',
+            content: []
+          }
+        ])
         .run();
     }
   };
