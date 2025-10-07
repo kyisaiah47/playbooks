@@ -428,7 +428,7 @@ export default function WorkspacePage() {
               </button>
 
               {templatesExpanded && (
-                <div className="flex flex-col pl-6 mt-1">
+                <div className="flex flex-col pl-6 mt-1 max-h-60 overflow-y-auto scrollbar-none">
                   {categories.map((category) => (
                     <div key={category} className="mb-2">
                       <div className="text-xs text-sidebar-foreground/50 px-2 py-1">{category}</div>
@@ -471,7 +471,7 @@ export default function WorkspacePage() {
                 </button>
 
                 {promptsExpanded && (
-                  <div className="flex flex-col pl-6 mt-1 max-h-60 overflow-y-auto">
+                  <div className="flex flex-col pl-6 mt-1 max-h-60 overflow-y-auto scrollbar-none">
                     {loadingContent ? (
                       <div className="text-xs text-sidebar-foreground/50 px-2 py-2">Loading...</div>
                     ) : templatePrompts.length === 0 ? (
@@ -515,7 +515,7 @@ export default function WorkspacePage() {
                 </button>
 
                 {articlesExpanded && (
-                  <div className="flex flex-col pl-6 mt-1 max-h-60 overflow-y-auto">
+                  <div className="flex flex-col pl-6 mt-1 max-h-60 overflow-y-auto scrollbar-none">
                     {loadingContent ? (
                       <div className="text-xs text-sidebar-foreground/50 px-2 py-2">Loading...</div>
                     ) : templateArticles.length === 0 ? (
