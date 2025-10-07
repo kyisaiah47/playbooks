@@ -61,7 +61,6 @@ export default function WorkspacePage() {
   const [templatesExpanded, setTemplatesExpanded] = useState(false);
   const [promptsExpanded, setPromptsExpanded] = useState(false);
   const [articlesExpanded, setArticlesExpanded] = useState(false);
-  const [workspaceFontSize, setWorkspaceFontSize] = useState<'sm' | 'md' | 'lg'>('md');
   const { unlockData, loading: unlockLoading } = useUserUnlocks();
   const { currentTheme, setTheme: setCustomTheme } = useCustomTheme();
 
@@ -266,14 +265,8 @@ export default function WorkspacePage() {
     }
   };
 
-  const fontSizeClasses = {
-    sm: 'text-xs',
-    md: 'text-sm',
-    lg: 'text-base'
-  };
-
   return (
-    <div className={`flex flex-col h-screen w-full bg-background text-foreground ${fontSizeClasses[workspaceFontSize]}`}>
+    <div className="flex flex-col h-screen w-full bg-background text-foreground">
       {/* Command Palette */}
       <CommandPalette
         isOpen={commandPaletteOpen}
@@ -373,35 +366,6 @@ export default function WorkspacePage() {
                       </DropdownMenuItem>
                     );
                   })}
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                  <Type className="h-4 w-4 mr-2" />
-                  Font size
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent className="bg-popover">
-                  <DropdownMenuItem
-                    onClick={() => setWorkspaceFontSize('sm')}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="flex-1">Small</span>
-                    {workspaceFontSize === 'sm' && <Check className="h-3 w-3" />}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => setWorkspaceFontSize('md')}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="flex-1">Medium</span>
-                    {workspaceFontSize === 'md' && <Check className="h-3 w-3" />}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => setWorkspaceFontSize('lg')}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="flex-1">Large</span>
-                    {workspaceFontSize === 'lg' && <Check className="h-3 w-3" />}
-                  </DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
               <DropdownMenuItem>
