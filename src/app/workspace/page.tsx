@@ -48,6 +48,8 @@ export default function WorkspacePage() {
   const [templateArticles, setTemplateArticles] = useState<Article[]>([]);
   const [loadingContent, setLoadingContent] = useState(false);
   const [articleFontSize, setArticleFontSize] = useState(100); // percentage
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const { unlockData, loading: unlockLoading } = useUserUnlocks();
 
   // Check for prompt/article to insert from sessionStorage
@@ -105,6 +107,30 @@ export default function WorkspacePage() {
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
   }, []);
+
+  // Auto-hide header on scroll
+  useEffect(() => {
+    const handleScroll = (e: Event) => {
+      const target = e.target as HTMLElement;
+      const currentScrollY = target.scrollTop;
+
+      if (currentScrollY < 50) {
+        setHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setHeaderVisible(false);
+      } else {
+        setHeaderVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    const editorContainer = document.querySelector('.editor-scroll-container');
+    if (editorContainer) {
+      editorContainer.addEventListener('scroll', handleScroll);
+      return () => editorContainer.removeEventListener('scroll', handleScroll);
+    }
+  }, [lastScrollY]);
 
   // Fetch template content when template is selected
   useEffect(() => {
@@ -217,10 +243,13 @@ export default function WorkspacePage() {
       />
 
       {/* Top Bar */}
-      <header className="flex h-16 items-center justify-between px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10">
+      <header
+        className="flex h-16 items-center justify-between px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10 transition-transform duration-300 fixed top-0 left-0 right-0 border-b"
+        style={{ transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)' }}
+      >
         {/* Left side */}
         <div className="flex items-center gap-4">
-          <Badge variant="outline" className="px-3 py-1.5 text-sm font-semibold">
+          <Badge variant="outline" className="px-3 py-1.5 text-sm font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30">
             <Zap className="h-4 w-4 mr-2" />
             Life OS
           </Badge>
@@ -381,16 +410,10 @@ export default function WorkspacePage() {
       </header>
 
       {/* Main Content Area */}
-      <div
-        className="flex flex-1 overflow-hidden relative"
-        style={{
-          backgroundImage: 'radial-gradient(circle, hsl(var(--muted-foreground) / 0.08) 1px, transparent 1px)',
-          backgroundSize: '24px 24px'
-        }}
-      >
-        {/* Editor - Full width with centered content */}
-        <div className="w-full flex flex-col">
-          <div className="flex-1 overflow-y-auto bg-background/80">
+      <div className="flex flex-1 overflow-hidden relative bg-muted/20 pt-16">
+        {/* Editor - Card style with centered content */}
+        <div className="w-full flex flex-col items-center py-8">
+          <div className="flex-1 overflow-y-auto editor-scroll-container w-full max-w-[900px] bg-card border rounded-lg shadow-sm mx-4">
             <Suspense fallback={
               <div className="flex items-center justify-center h-full">
                 <div className="text-muted-foreground">Loading editor...</div>
