@@ -142,22 +142,20 @@ export default function WorkspacePage() {
         {/* Editor - Full width or 50% when article is open */}
         <div className={`${openArticle ? 'w-1/2' : 'w-full'} flex flex-col transition-all duration-300`}>
           <div className="flex-1 overflow-y-auto">
-            <div className="max-w-4xl mx-auto py-12 px-8">
-              <Suspense fallback={
-                <div className="flex items-center justify-center h-full">
-                  <div className="text-muted-foreground">Loading editor...</div>
-                </div>
-              }>
-                <SimpleEditor
-                  content=""
-                  templateId="life-os"
-                  onUpdate={(content) => {
-                    // Auto-save to localStorage
-                    localStorage.setItem('life-os-content', content);
-                  }}
-                />
-              </Suspense>
-            </div>
+            <Suspense fallback={
+              <div className="flex items-center justify-center h-full">
+                <div className="text-muted-foreground">Loading editor...</div>
+              </div>
+            }>
+              <SimpleEditor
+                content=""
+                templateId="life-os"
+                onUpdate={(content) => {
+                  // Auto-save to localStorage
+                  localStorage.setItem('life-os-content', content);
+                }}
+              />
+            </Suspense>
           </div>
         </div>
 

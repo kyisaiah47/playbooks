@@ -18,13 +18,37 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const templateData = template.template;
-  const title = `${templateData.title} - AI-Powered Template | Templata`;
-  const description = `${templateData.description} Get expert guidance with 15,000+ prompts and 26,000+ articles. Transform how you plan your ${templateData.title.toLowerCase()} with Templata's AI-powered workspace.`;
+
+  // Generate long-tail keywords
+  const baseKeywords = [
+    templateData.title.toLowerCase(),
+    `${templateData.title.toLowerCase()} template`,
+    `${templateData.title.toLowerCase()} planning`,
+    `${templateData.title.toLowerCase()} checklist`,
+    `${templateData.title.toLowerCase()} guide`,
+    `how to plan ${templateData.title.toLowerCase()}`,
+    `${templateData.title.toLowerCase()} organization`,
+    templateData.category.toLowerCase(),
+    `${templateData.category.toLowerCase()} template`,
+    'life planning template',
+    'ai planning tool',
+    'templata',
+    'life organization',
+    'planning prompts',
+    'expert articles',
+    'structured planning',
+    'ai-powered template',
+    'life os',
+    'planning workspace'
+  ];
+
+  const title = `${templateData.title} Template - Complete Planning Guide with AI | Templata`;
+  const description = `${templateData.description} Access expert ${templateData.title.toLowerCase()} planning with prompts, articles, and AI-powered guidance. Save 80+ hours with our comprehensive ${templateData.title.toLowerCase()} template. Free to start.`;
 
   return {
     title,
     description,
-    keywords: `${templateData.title.toLowerCase()}, ${templateData.title.toLowerCase()} template, ${templateData.category.toLowerCase()}, life planning, templata, ai planning tool, life organization`,
+    keywords: baseKeywords.join(', '),
     authors: [{ name: 'Templata' }],
     creator: 'Templata',
     publisher: 'Templata',
