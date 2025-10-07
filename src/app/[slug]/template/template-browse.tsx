@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { ArrowRight, Sparkles, FileText, Zap, ChevronRight } from 'lucide-react';
 import { useUserUnlocks } from '@/contexts/UserUnlockContext';
 import { PaywallModal } from '@/components/paywall-modal';
+import { SubtleGlow } from '@/components/ui/glow-variants';
 
 interface TemplateBrowseProps {
   params: Promise<{ slug: string }>;
@@ -347,14 +348,17 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
 
       {/* Floating Action Button */}
       <div className="fixed bottom-8 left-8 z-50">
-        <Button
-          size="lg"
-          onClick={handleOpenInWorkspace}
-          className="shadow-lg hover:shadow-xl transition-shadow flex items-center gap-2"
-        >
-          <Zap className="h-5 w-5" />
-          Open in Life OS
-        </Button>
+        <SubtleGlow>
+          <Button
+            size="lg"
+            onClick={handleOpenInWorkspace}
+            variant="outline"
+            className="bg-background hover:bg-background/80 flex items-center gap-2"
+          >
+            <Zap className="h-5 w-5" />
+            Open in Life OS
+          </Button>
+        </SubtleGlow>
       </div>
     </PageLayout>
     </>
