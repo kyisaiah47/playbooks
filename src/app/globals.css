@@ -306,19 +306,6 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
-
-  /* Force font size on all children */
-  .force-font-xs * {
-    font-size: 0.75rem !important;
-  }
-
-  .force-font-sm * {
-    font-size: 0.875rem !important;
-  }
-
-  .force-font-base * {
-    font-size: 1rem !important;
-  }
 }
 
 @keyframes slideRight {

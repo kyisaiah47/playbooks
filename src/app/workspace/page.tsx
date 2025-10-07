@@ -267,9 +267,9 @@ export default function WorkspacePage() {
   };
 
   const fontSizeClasses = {
-    sm: 'force-font-xs',
-    md: 'force-font-sm',
-    lg: 'force-font-base'
+    sm: 'text-xs',
+    md: 'text-sm',
+    lg: 'text-base'
   };
 
   return (
@@ -660,7 +660,7 @@ export default function WorkspacePage() {
                 {openArticle.content ? (
                   <ArticleContent content={openArticle.content} />
                 ) : (
-                  <p className="text-muted-foreground">Article content loading...</p>
+                  <p className="text-muted-foreground text-sm">Article content loading...</p>
                 )}
               </div>
             </div>
