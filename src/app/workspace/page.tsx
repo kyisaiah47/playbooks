@@ -19,6 +19,7 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { templateRegistry } from '@/registry/templates';
+import { ArticleContent } from '@/app/articles/[slug]/article-content';
 
 // Lazy load editor
 const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
@@ -417,9 +418,13 @@ export default function WorkspacePage() {
               </Button>
             </div>
 
-            <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: openArticle.content || 'Article content loading...' }} />
-            </div>
+            <h2 className="text-lg font-semibold mb-4 leading-tight">{openArticle.title}</h2>
+
+            {openArticle.content ? (
+              <ArticleContent content={openArticle.content} />
+            ) : (
+              <p className="text-muted-foreground text-sm">Article content loading...</p>
+            )}
           </div>
         )}
       </div>
