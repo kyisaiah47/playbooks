@@ -4,7 +4,7 @@ import { useState, useEffect, lazy, Suspense, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Search, X, User, Zap, FileText, Lightbulb, BookOpen, ChevronDown } from 'lucide-react';
+import { Search, X, User, Zap, FileText, Lightbulb, BookOpen, ChevronDown, ZoomIn, ZoomOut } from 'lucide-react';
 import { useUserUnlocks } from '@/contexts/UserUnlockContext';
 import { CommandPalette } from '@/components/command-palette';
 import {
@@ -47,6 +47,7 @@ export default function WorkspacePage() {
   const [templatePrompts, setTemplatePrompts] = useState<Prompt[]>([]);
   const [templateArticles, setTemplateArticles] = useState<Article[]>([]);
   const [loadingContent, setLoadingContent] = useState(false);
+  const [articleFontSize, setArticleFontSize] = useState(100); // percentage
   const { unlockData, loading: unlockLoading } = useUserUnlocks();
 
   // Check for prompt/article to insert from sessionStorage
@@ -408,23 +409,44 @@ export default function WorkspacePage() {
               <Badge variant="outline" className="text-xs">
                 {openArticle.readTime}
               </Badge>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-6 w-6"
-                onClick={handleCloseArticle}
-              >
-                <X className="h-3 w-3" />
-              </Button>
+              <div className="flex items-center gap-1">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-6 w-6"
+                  onClick={() => setArticleFontSize(prev => Math.max(50, prev - 10))}
+                >
+                  <ZoomOut className="h-3 w-3" />
+                </Button>
+                <span className="text-xs text-muted-foreground w-10 text-center">{articleFontSize}%</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-6 w-6"
+                  onClick={() => setArticleFontSize(prev => Math.min(200, prev + 10))}
+                >
+                  <ZoomIn className="h-3 w-3" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-6 w-6"
+                  onClick={handleCloseArticle}
+                >
+                  <X className="h-3 w-3" />
+                </Button>
+              </div>
             </div>
 
             <h2 className="text-lg font-semibold mb-4 leading-tight">{openArticle.title}</h2>
 
-            {openArticle.content ? (
-              <ArticleContent content={openArticle.content} />
-            ) : (
-              <p className="text-muted-foreground text-sm">Article content loading...</p>
-            )}
+            <div style={{ fontSize: `${articleFontSize}%` }}>
+              {openArticle.content ? (
+                <ArticleContent content={openArticle.content} />
+              ) : (
+                <p className="text-muted-foreground text-sm">Article content loading...</p>
+              )}
+            </div>
           </div>
         )}
       </div>
