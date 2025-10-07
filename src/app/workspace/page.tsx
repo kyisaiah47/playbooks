@@ -1,636 +1,435 @@
 'use client';
 
-import { useState, useEffect, lazy, Suspense, useMemo } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Switch } from '@/components/ui/switch';
-import { Search, X, User, Zap, FileText, Lightbulb, BookOpen, ChevronDown, ZoomIn, ZoomOut, MoreHorizontal, Type, Maximize2, Download, Copy, Trash2, Palette, Check, PanelLeft, Home, Clock, Settings, ChevronRight } from 'lucide-react';
-import { useUserUnlocks } from '@/contexts/UserUnlockContext';
-import { CommandPalette } from '@/components/command-palette';
+import { AppSidebar } from "@/components/app-sidebar"
+import { SiteHeader } from "@/components/site-header"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
+  SidebarInset,
+  SidebarProvider,
+} from "@/components/ui/sidebar"
+import { Badge } from "@/components/ui/badge"
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { IconTrendingUp, IconFileText, IconFolders, IconPencil, IconTemplate, IconStar, IconClock, IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import { Button } from "@/components/ui/button"
 import { templateRegistry } from '@/registry/templates';
-import { ArticleContent } from '@/app/articles/[slug]/article-content';
-import { useCustomTheme } from '@/components/theme-provider-custom';
-import { themes } from '@/lib/themes';
-
-// Lazy load editor
-const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
-
-interface Article {
-  id: string;
-  title: string;
-  content: string;
-  excerpt: string;
-  readTime: string;
-}
-
-interface Prompt {
-  id: string;
-  prompt: string;
-  categoryName: string;
-}
+import { useRouter } from 'next/navigation';
+import { ChartAreaInteractive } from '@/components/chart-area-interactive';
+import { useState } from 'react';
 
 export default function WorkspacePage() {
-  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
-  const [openArticle, setOpenArticle] = useState<Article | null>(null);
-  const [promptToInsert, setPromptToInsert] = useState<any>(null);
-  const [currentWorkspace, setCurrentWorkspace] = useState('Untitled');
-  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
-  const [templatePrompts, setTemplatePrompts] = useState<Prompt[]>([]);
-  const [templateArticles, setTemplateArticles] = useState<Article[]>([]);
-  const [loadingContent, setLoadingContent] = useState(false);
-  const [articleFontSize, setArticleFontSize] = useState(100); // percentage
-  const [headerVisible, setHeaderVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [pageTitle, setPageTitle] = useState('Untitled');
-  const [pageIcon, setPageIcon] = useState('📝');
-  const [showCover, setShowCover] = useState(false);
-  const [isFullWidth, setIsFullWidth] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [templatesExpanded, setTemplatesExpanded] = useState(false);
-  const [promptsExpanded, setPromptsExpanded] = useState(false);
-  const [articlesExpanded, setArticlesExpanded] = useState(false);
-  const { unlockData, loading: unlockLoading } = useUserUnlocks();
-  const { currentTheme, setTheme: setCustomTheme } = useCustomTheme();
+  const router = useRouter();
+  const totalTemplates = templateRegistry.length;
+  const [favorites, setFavorites] = useState<string[]>([]);
 
-  // Check for prompt/article to insert from sessionStorage
-  useEffect(() => {
-    const insertPromptData = sessionStorage.getItem('workspace-insert-prompt');
-    const openArticleData = sessionStorage.getItem('workspace-open-article');
+  // Pagination state
+  const [allPage, setAllPage] = useState(0);
+  const [recentPage, setRecentPage] = useState(0);
+  const [favoritesPage, setFavoritesPage] = useState(0);
+  const [workspacesPage, setWorkspacesPage] = useState(0);
+  const pageSize = 10;
 
-    if (insertPromptData) {
-      try {
-        const prompt = JSON.parse(insertPromptData);
-        setPromptToInsert(prompt);
-        sessionStorage.removeItem('workspace-insert-prompt');
-      } catch (error) {
-        console.error('Error parsing prompt data:', error);
-      }
-    }
-
-    if (openArticleData) {
-      try {
-        const article = JSON.parse(openArticleData);
-        setOpenArticle(article);
-        sessionStorage.removeItem('workspace-open-article');
-      } catch (error) {
-        console.error('Error parsing article data:', error);
-      }
-    }
-  }, []);
-
-  // Insert prompt into editor when promptToInsert changes
-  useEffect(() => {
-    if (promptToInsert && (window as any).templateEditor) {
-      (window as any).templateEditor
-        .chain()
-        .focus()
-        .insertContent([
-          {
-            type: 'blockquote',
-            content: [
-              {
-                type: 'paragraph',
-                content: [{ type: 'text', text: promptToInsert.prompt }]
-              }
-            ]
-          },
-          {
-            type: 'paragraph',
-            content: []
-          }
-        ])
-        .run();
-
-      setPromptToInsert(null);
-    }
-  }, [promptToInsert]);
-
-  // Command palette keyboard shortcut
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setCommandPaletteOpen((open) => !open);
-      }
-    };
-
-    document.addEventListener('keydown', down);
-    return () => document.removeEventListener('keydown', down);
-  }, []);
-
-  // Auto-hide header on scroll
-  useEffect(() => {
-    const handleScroll = (e: Event) => {
-      const target = e.target as HTMLElement;
-      const currentScrollY = target.scrollTop;
-
-      if (currentScrollY < 50) {
-        setHeaderVisible(true);
-      } else if (currentScrollY > lastScrollY) {
-        setHeaderVisible(false);
-      } else {
-        setHeaderVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    const editorContainer = document.querySelector('.editor-scroll-container');
-    if (editorContainer) {
-      editorContainer.addEventListener('scroll', handleScroll);
-      return () => editorContainer.removeEventListener('scroll', handleScroll);
-    }
-  }, [lastScrollY]);
-
-  // Fetch template content when template is selected
-  useEffect(() => {
-    if (!selectedTemplate) {
-      setTemplatePrompts([]);
-      setTemplateArticles([]);
-      return;
-    }
-
-    async function fetchTemplateContent() {
-      setLoadingContent(true);
-      try {
-        // Fetch prompts
-        const promptsRes = await fetch(`/api/prompts?templateId=${selectedTemplate}`);
-        const promptsData = await promptsRes.json();
-        setTemplatePrompts(promptsData.prompts || []);
-
-        // Fetch articles
-        const articlesRes = await fetch(`/api/articles?template=${selectedTemplate}&pageSize=1000`);
-        const articlesData = await articlesRes.json();
-        setTemplateArticles(articlesData.articles || []);
-      } catch (error) {
-        console.error('Error fetching template content:', error);
-      } finally {
-        setLoadingContent(false);
-      }
-    }
-
-    fetchTemplateContent();
-  }, [selectedTemplate]);
-
-  // Group templates by category
-  const groupedTemplates = useMemo(() => {
-    const grouped: Record<string, typeof templateRegistry> = {};
-    templateRegistry.forEach(template => {
-      if (!grouped[template.category]) {
-        grouped[template.category] = [];
-      }
-      grouped[template.category].push(template);
-    });
-    return grouped;
-  }, []);
-
-  const categories = Object.keys(groupedTemplates).sort();
-
-  const selectedTemplateName = useMemo(() => {
-    const template = templateRegistry.find(t => t.id === selectedTemplate);
-    return template?.name || 'Select Template';
-  }, [selectedTemplate]);
-
-  // Group prompts by category
-  const groupedPrompts = useMemo(() => {
-    const grouped: Record<string, Prompt[]> = {};
-    templatePrompts.forEach(prompt => {
-      const category = prompt.categoryName || 'General';
-      if (!grouped[category]) {
-        grouped[category] = [];
-      }
-      grouped[category].push(prompt);
-    });
-    return grouped;
-  }, [templatePrompts]);
-
-  const promptCategories = Object.keys(groupedPrompts).sort();
-
-  const handleCloseArticle = () => {
-    setOpenArticle(null);
+  // Mock data - replace with real data later
+  const stats = {
+    totalTemplates: totalTemplates,
+    activeWorkspaces: 3,
+    totalWords: 12450,
+    templatesUsed: 8,
   };
 
-  const handleSelectTemplate = (templateId: string) => {
-    setSelectedTemplate(templateId);
-  };
+  // Group templates by category for the table
+  const allTemplates = templateRegistry;
+  const recentTemplates = templateRegistry.slice(0, 5); // Last 5 used
+  const favoriteTemplates = templateRegistry.filter(t => favorites.includes(t.id));
 
-  const handleInsertPrompt = (prompt: Prompt) => {
-    if ((window as any).templateEditor) {
-      (window as any).templateEditor
-        .chain()
-        .focus()
-        .insertContent([
-          {
-            type: 'blockquote',
-            content: [
-              {
-                type: 'paragraph',
-                content: [{ type: 'text', text: prompt.prompt }]
-              }
-            ]
-          },
-          {
-            type: 'paragraph',
-            content: []
-          }
-        ])
-        .run();
-    }
-  };
+  // Mock workspaces
+  const workspaces = [
+    { id: 1, name: 'Morning Journal', template: 'Daily Reflection', lastEdited: '2 hours ago', wordCount: 450 },
+    { id: 2, name: 'Business Plan Draft', template: 'Strategic Planning', lastEdited: '1 day ago', wordCount: 2340 },
+    { id: 3, name: 'Weekly Review', template: 'Weekly Review', lastEdited: '3 days ago', wordCount: 890 },
+  ];
 
-  const handleOpenArticle = async (article: Article) => {
-    // Set article with loading state
-    setOpenArticle({ ...article, content: '' });
-
-    // Fetch full article content
-    try {
-      const response = await fetch(`/api/articles?id=${article.id}`);
-      const data = await response.json();
-      setOpenArticle({ ...article, content: data.article?.content || '' });
-    } catch (error) {
-      console.error('Error fetching article content:', error);
-      setOpenArticle({ ...article, content: '<p>Failed to load article content.</p>' });
-    }
-  };
+  // Paginated data
+  const paginatedAllTemplates = allTemplates.slice(allPage * pageSize, (allPage + 1) * pageSize);
+  const paginatedRecentTemplates = recentTemplates.slice(recentPage * pageSize, (recentPage + 1) * pageSize);
+  const paginatedFavoriteTemplates = favoriteTemplates.slice(favoritesPage * pageSize, (favoritesPage + 1) * pageSize);
+  const paginatedWorkspaces = workspaces.slice(workspacesPage * pageSize, (workspacesPage + 1) * pageSize);
 
   return (
-    <div className="flex flex-col h-screen w-full bg-background text-foreground">
-      {/* Command Palette */}
-      <CommandPalette
-        isOpen={commandPaletteOpen}
-        onClose={() => setCommandPaletteOpen(false)}
-        mode="life-os-mode"
-      />
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">
+          <div className="@container/main flex flex-1 flex-col gap-2">
+            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
 
-      {/* Top Bar */}
-      <header
-        className="flex h-10 items-center justify-between px-4 bg-background/80 backdrop-blur z-10 transition-transform duration-300 fixed top-0 left-0 right-0 border-b border-border text-sm"
-        style={{ transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)' }}
-      >
-        {/* Left side */}
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="hover:bg-accent"
-          >
-            <PanelLeft className="h-4 w-4" />
-          </Button>
+              {/* Stats Cards */}
+              <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
 
-          <Badge variant="outline" className="px-2 py-0.5 text-xs font-semibold">
-            <Zap className="h-3 w-3 mr-1" />
-            Life OS
-          </Badge>
-
-          {/* Workspace Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                <FileText className="h-4 w-4" />
-                <span className="hidden md:inline">{currentWorkspace}</span>
-                <ChevronDown className="h-3 w-3" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
-              <DropdownMenuItem onClick={() => setCurrentWorkspace('Untitled')}>
-                Untitled
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setCurrentWorkspace('New Workspace')}>
-                + New Workspace
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-
-
-        {/* Right side */}
-        <div className="flex items-center gap-1">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setCommandPaletteOpen(true)}
-            className="flex items-center gap-1 hover:bg-accent h-7 px-2"
-          >
-            <Search className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline text-muted-foreground text-xs">
-              ⌘K
-            </span>
-          </Button>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon-sm" className="hover:bg-accent">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64 bg-popover">
-              <div className="flex items-center justify-between px-2 py-1.5">
-                <span className="text-sm">Full width</span>
-                <Switch checked={isFullWidth} onCheckedChange={setIsFullWidth} />
-              </div>
-              <DropdownMenuSeparator />
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                  <Palette className="h-4 w-4 mr-2" />
-                  Theme
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent className="bg-popover">
-                  {themes.map((themeOption) => {
-                    const currentThemeInfo = themes.find(t =>
-                      JSON.stringify(t.colors.dark) === JSON.stringify(currentTheme)
-                    ) || themes[0];
-
-                    return (
-                      <DropdownMenuItem
-                        key={themeOption.id}
-                        onClick={() => setCustomTheme(themeOption.colors.dark)}
-                        className="flex items-center gap-3"
-                      >
-                        <span className="flex-1">{themeOption.name}</span>
-                        {currentThemeInfo.id === themeOption.id && (
-                          <Check className="h-3 w-3" />
-                        )}
-                      </DropdownMenuItem>
-                    );
-                  })}
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-              <DropdownMenuItem>
-                <Copy className="h-4 w-4 mr-2" />
-                Duplicate workspace
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Download className="h-4 w-4 mr-2" />
-                Export
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-400">
-                <Trash2 className="h-4 w-4 mr-2" />
-                Delete workspace
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </header>
-
-      {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden relative bg-muted/20 pt-10">
-        {/* Sidebar */}
-        <aside
-          className={`${
-            sidebarOpen ? 'w-64' : 'w-0'
-          } flex-shrink-0 border-r border-border bg-sidebar transition-all duration-300 overflow-hidden`}
-        >
-          <div className="h-full flex flex-col p-2">
-            {/* Navigation Items */}
-            <div className="flex flex-col gap-1">
-              <Button variant="ghost" className="justify-start gap-2 hover:bg-sidebar-accent">
-                <Home className="h-4 w-4" />
-                <span className="text-sm">Home</span>
-              </Button>
-              <Button variant="ghost" className="justify-start gap-2 hover:bg-sidebar-accent">
-                <Clock className="h-4 w-4" />
-                <span className="text-sm">Recent</span>
-              </Button>
-            </div>
-
-            {/* Divider */}
-            <div className="h-px bg-sidebar-border my-2" />
-
-            {/* Templates Section */}
-            <div className="flex flex-col">
-              <button
-                onClick={() => setTemplatesExpanded(!templatesExpanded)}
-                className="flex items-center justify-between px-2 py-1.5 text-sm hover:bg-sidebar-accent rounded-sm transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  <span>Templates</span>
-                </div>
-                <ChevronRight className={`h-3 w-3 transition-transform ${templatesExpanded ? 'rotate-90' : ''}`} />
-              </button>
-
-              {templatesExpanded && (
-                <div className="flex flex-col pl-6 mt-1 max-h-[720px] overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-                  {categories.map((category) => (
-                    <div key={category} className="mb-2">
-                      <div className="text-xs text-sidebar-foreground/50 px-2 py-1">{category}</div>
-                      {groupedTemplates[category].map((template) => (
-                        <button
-                          key={template.id}
-                          onClick={() => {
-                            handleSelectTemplate(template.id);
-                            setPromptsExpanded(true);
-                            setArticlesExpanded(true);
-                          }}
-                          className={`text-xs px-2 py-1 rounded-sm w-full text-left hover:bg-sidebar-accent transition-colors ${
-                            selectedTemplate === template.id ? 'bg-sidebar-accent' : ''
-                          }`}
-                        >
-                          {template.name}
-                        </button>
-                      ))}
+                {/* All Templates */}
+                <Card className="@container/card">
+                  <CardHeader>
+                    <CardDescription>All Templates</CardDescription>
+                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+                      {stats.totalTemplates}
+                    </CardTitle>
+                    <CardAction>
+                      <Badge variant="outline">
+                        <IconTemplate className="h-3 w-3" />
+                        Free access
+                      </Badge>
+                    </CardAction>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1 flex gap-2 font-medium">
+                      All templates available
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
+                    <div className="text-muted-foreground">
+                      Across all categories
+                    </div>
+                  </CardFooter>
+                </Card>
 
-            {/* Prompts Section */}
-            {selectedTemplate && (
-              <div className="flex flex-col">
-                <button
-                  onClick={() => setPromptsExpanded(!promptsExpanded)}
-                  className="flex items-center justify-between px-2 py-1.5 text-sm hover:bg-sidebar-accent rounded-sm transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <Lightbulb className="h-4 w-4" />
-                    <span>Prompts</span>
-                    <Badge variant="secondary" className="h-4 px-1 text-xs bg-accent/50 text-accent-foreground border-accent">
-                      {templatePrompts.length}
-                    </Badge>
+                {/* Active Workspaces */}
+                <Card className="@container/card">
+                  <CardHeader>
+                    <CardDescription>Active Workspaces</CardDescription>
+                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+                      {stats.activeWorkspaces}
+                    </CardTitle>
+                    <CardAction>
+                      <Badge variant="outline">
+                        <IconFolders className="h-3 w-3" />
+                        In progress
+                      </Badge>
+                    </CardAction>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1 flex gap-2 font-medium">
+                      Current workspaces
+                    </div>
+                    <div className="text-muted-foreground">
+                      Documents you're working on
+                    </div>
+                  </CardFooter>
+                </Card>
+
+                {/* Total Words */}
+                <Card className="@container/card">
+                  <CardHeader>
+                    <CardDescription>Words This Month</CardDescription>
+                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+                      {stats.totalWords.toLocaleString()}
+                    </CardTitle>
+                    <CardAction>
+                      <Badge variant="outline">
+                        <IconTrendingUp />
+                        +22%
+                      </Badge>
+                    </CardAction>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1 flex gap-2 font-medium">
+                      Great progress <IconTrendingUp className="size-4" />
+                    </div>
+                    <div className="text-muted-foreground">
+                      Keep up the momentum
+                    </div>
+                  </CardFooter>
+                </Card>
+
+                {/* Templates Used */}
+                <Card className="@container/card">
+                  <CardHeader>
+                    <CardDescription>Templates Used</CardDescription>
+                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+                      {stats.templatesUsed}
+                    </CardTitle>
+                    <CardAction>
+                      <Badge variant="outline">
+                        <IconPencil className="h-3 w-3" />
+                        This month
+                      </Badge>
+                    </CardAction>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1 flex gap-2 font-medium">
+                      Exploring templates
+                    </div>
+                    <div className="text-muted-foreground">
+                      Try more to find your favorites
+                    </div>
+                  </CardFooter>
+                </Card>
+
+              </div>
+
+              {/* Activity Chart */}
+              <div className="px-4 lg:px-6">
+                <ChartAreaInteractive />
+              </div>
+
+              {/* Tabbed Tables */}
+              <div className="px-4 lg:px-6">
+                <Tabs defaultValue="all" className="w-full">
+                  <div className="flex items-center justify-between mb-4">
+                    <TabsList>
+                      <TabsTrigger value="all">All Templates</TabsTrigger>
+                      <TabsTrigger value="recent">
+                        <IconClock className="h-3 w-3 mr-1" />
+                        Recent
+                      </TabsTrigger>
+                      <TabsTrigger value="favorites">
+                        <IconStar className="h-3 w-3 mr-1" />
+                        Favorites
+                      </TabsTrigger>
+                      <TabsTrigger value="workspaces">
+                        <IconFolders className="h-3 w-3 mr-1" />
+                        Workspaces
+                      </TabsTrigger>
+                    </TabsList>
                   </div>
-                  <ChevronRight className={`h-3 w-3 transition-transform ${promptsExpanded ? 'rotate-90' : ''}`} />
-                </button>
 
-                {promptsExpanded && (
-                  <div className="flex flex-col pl-6 mt-1 max-h-[720px] overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-                    {loadingContent ? (
-                      <div className="text-xs text-sidebar-foreground/50 px-2 py-2">Loading...</div>
-                    ) : templatePrompts.length === 0 ? (
-                      <div className="text-xs text-sidebar-foreground/50 px-2 py-2">No prompts</div>
-                    ) : (
-                      promptCategories.map((category) => (
-                        <div key={category} className="mb-2">
-                          <div className="text-xs text-sidebar-foreground/50 px-2 py-1">{category}</div>
-                          {groupedPrompts[category].map((prompt) => (
-                            <button
-                              key={prompt.id}
-                              onClick={() => handleInsertPrompt(prompt)}
-                              className="text-xs px-2 py-1 rounded-sm w-full text-left hover:bg-sidebar-accent transition-colors"
-                            >
-                              {prompt.prompt}
-                            </button>
-                          ))}
+                  {/* All Templates Tab */}
+                  <TabsContent value="all">
+                    <div className="space-y-4">
+                      <div className="rounded-lg border overflow-x-auto">
+                        <Table>
+                          <TableHeader className="bg-muted">
+                            <TableRow>
+                              <TableHead className="min-w-[200px]">Template</TableHead>
+                              <TableHead className="min-w-[120px]">Category</TableHead>
+                              <TableHead className="min-w-[300px] max-w-[400px]">Description</TableHead>
+                              <TableHead className="text-right min-w-[100px]">Actions</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {paginatedAllTemplates.map((template) => (
+                              <TableRow key={template.id}>
+                                <TableCell className="font-medium">{template.name}</TableCell>
+                                <TableCell>
+                                  <Badge variant="outline" className="text-muted-foreground px-1.5">
+                                    {template.category}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell className="text-sm text-muted-foreground max-w-[400px] truncate">
+                                  {template.description}
+                                </TableCell>
+                                <TableCell className="text-right">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => router.push(`/templates/${template.id}`)}
+                                  >
+                                    Open
+                                  </Button>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                      <div className="flex items-center justify-between px-2">
+                        <div className="text-sm text-muted-foreground">
+                          Showing {allPage * pageSize + 1} to {Math.min((allPage + 1) * pageSize, allTemplates.length)} of {allTemplates.length} templates
                         </div>
-                      ))
-                    )}
-                  </div>
-                )}
+                        <div className="flex items-center gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setAllPage(Math.max(0, allPage - 1))}
+                            disabled={allPage === 0}
+                          >
+                            <IconChevronLeft className="h-4 w-4" />
+                            Previous
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setAllPage(allPage + 1)}
+                            disabled={(allPage + 1) * pageSize >= allTemplates.length}
+                          >
+                            Next
+                            <IconChevronRight className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </TabsContent>
+
+                  {/* Recent Tab */}
+                  <TabsContent value="recent">
+                    <div className="rounded-lg border">
+                      <Table>
+                        <TableHeader className="bg-muted">
+                          <TableRow>
+                            <TableHead>Template</TableHead>
+                            <TableHead>Category</TableHead>
+                            <TableHead>Last Used</TableHead>
+                            <TableHead className="text-right">Actions</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {recentTemplates.length === 0 ? (
+                            <TableRow>
+                              <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
+                                No recent templates
+                              </TableCell>
+                            </TableRow>
+                          ) : (
+                            recentTemplates.map((template) => (
+                              <TableRow key={template.id}>
+                                <TableCell className="font-medium">{template.name}</TableCell>
+                                <TableCell>
+                                  <Badge variant="outline" className="text-muted-foreground px-1.5">
+                                    {template.category}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell className="text-sm text-muted-foreground">
+                                  2 days ago
+                                </TableCell>
+                                <TableCell className="text-right">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => router.push(`/templates/${template.id}`)}
+                                  >
+                                    Open
+                                  </Button>
+                                </TableCell>
+                              </TableRow>
+                            ))
+                          )}
+                        </TableBody>
+                      </Table>
+                    </div>
+                  </TabsContent>
+
+                  {/* Favorites Tab */}
+                  <TabsContent value="favorites">
+                    <div className="rounded-lg border">
+                      <Table>
+                        <TableHeader className="bg-muted">
+                          <TableRow>
+                            <TableHead>Template</TableHead>
+                            <TableHead>Category</TableHead>
+                            <TableHead>Description</TableHead>
+                            <TableHead className="text-right">Actions</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {favoriteTemplates.length === 0 ? (
+                            <TableRow>
+                              <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
+                                No favorite templates yet. Star templates to add them here.
+                              </TableCell>
+                            </TableRow>
+                          ) : (
+                            favoriteTemplates.map((template) => (
+                              <TableRow key={template.id}>
+                                <TableCell className="font-medium">{template.name}</TableCell>
+                                <TableCell>
+                                  <Badge variant="outline" className="text-muted-foreground px-1.5">
+                                    {template.category}
+                                  </Badge>
+                                </TableCell>
+                                <TableCell className="text-sm text-muted-foreground">
+                                  {template.description}
+                                </TableCell>
+                                <TableCell className="text-right">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => router.push(`/templates/${template.id}`)}
+                                  >
+                                    Open
+                                  </Button>
+                                </TableCell>
+                              </TableRow>
+                            ))
+                          )}
+                        </TableBody>
+                      </Table>
+                    </div>
+                  </TabsContent>
+
+                  {/* Workspaces Tab */}
+                  <TabsContent value="workspaces">
+                    <div className="rounded-lg border">
+                      <Table>
+                        <TableHeader className="bg-muted">
+                          <TableRow>
+                            <TableHead>Workspace</TableHead>
+                            <TableHead>Template</TableHead>
+                            <TableHead>Last Edited</TableHead>
+                            <TableHead>Word Count</TableHead>
+                            <TableHead className="text-right">Actions</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {workspaces.map((workspace) => (
+                            <TableRow key={workspace.id}>
+                              <TableCell className="font-medium">{workspace.name}</TableCell>
+                              <TableCell>
+                                <Badge variant="outline" className="text-muted-foreground px-1.5">
+                                  {workspace.template}
+                                </Badge>
+                              </TableCell>
+                              <TableCell className="text-sm text-muted-foreground">
+                                {workspace.lastEdited}
+                              </TableCell>
+                              <TableCell className="text-sm text-muted-foreground">
+                                {workspace.wordCount.toLocaleString()}
+                              </TableCell>
+                              <TableCell className="text-right">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => router.push(`/workspace/${workspace.id}`)}
+                                >
+                                  Open
+                                </Button>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+                  </TabsContent>
+                </Tabs>
               </div>
-            )}
 
-            {/* Articles Section */}
-            {selectedTemplate && (
-              <div className="flex flex-col">
-                <button
-                  onClick={() => setArticlesExpanded(!articlesExpanded)}
-                  className="flex items-center justify-between px-2 py-1.5 text-sm hover:bg-sidebar-accent rounded-sm transition-colors"
-                >
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" />
-                    <span>Articles</span>
-                    <Badge variant="secondary" className="h-4 px-1 text-xs bg-accent/50 text-accent-foreground border-accent">
-                      {templateArticles.length}
-                    </Badge>
-                  </div>
-                  <ChevronRight className={`h-3 w-3 transition-transform ${articlesExpanded ? 'rotate-90' : ''}`} />
-                </button>
-
-                {articlesExpanded && (
-                  <div className="flex flex-col pl-6 mt-1 max-h-[720px] overflow-y-auto [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-                    {loadingContent ? (
-                      <div className="text-xs text-sidebar-foreground/50 px-2 py-2">Loading...</div>
-                    ) : templateArticles.length === 0 ? (
-                      <div className="text-xs text-sidebar-foreground/50 px-2 py-2">No articles</div>
-                    ) : (
-                      templateArticles.map((article) => (
-                        <button
-                          key={article.id}
-                          onClick={() => handleOpenArticle(article)}
-                          className="text-xs px-2 py-1.5 rounded-sm w-full text-left hover:bg-sidebar-accent transition-colors font-medium"
-                        >
-                          {article.title}
-                        </button>
-                      ))
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </aside>
-
-        {/* Editor - Clean centered content */}
-        <div className="w-full flex flex-col items-center flex-1">
-          <div className={`overflow-y-auto editor-scroll-container w-full ${isFullWidth ? 'max-w-full' : 'max-w-[900px]'}`}>
-
-            {/* Cover Photo */}
-            {showCover && (
-              <div className="relative h-52 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 group">
-                <button
-                  onClick={() => setShowCover(false)}
-                  className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-white/70 hover:text-white bg-black/20 hover:bg-black/40 px-2 py-1 rounded"
-                >
-                  Remove cover
-                </button>
-              </div>
-            )}
-
-            {/* Page Header */}
-            <div className={`pt-24 pb-4 ${isFullWidth ? 'px-24' : 'px-24'}`}>
-              {/* Icon + Add Cover */}
-              <div className="flex items-center gap-2 mb-2">
-                <button className="text-6xl hover:bg-accent rounded p-1 transition-colors">
-                  {pageIcon}
-                </button>
-                {!showCover && (
-                  <button
-                    onClick={() => setShowCover(true)}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors opacity-0 group-hover:opacity-100"
-                  >
-                    Add cover
-                  </button>
-                )}
-              </div>
-
-              {/* Page Title */}
-              <input
-                type="text"
-                value={pageTitle}
-                onChange={(e) => setPageTitle(e.target.value)}
-                placeholder="Untitled"
-                className="text-5xl font-bold bg-transparent border-none outline-none w-full text-foreground placeholder:text-muted-foreground/30 mb-1 -ml-0.5"
-              />
-
-              {/* Metadata */}
-              <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
-                <span>Last edited just now</span>
-              </div>
-            </div>
-
-            {/* Editor Content */}
-            <div className={`pb-40 ${isFullWidth ? 'px-24' : 'px-24'}`}>
-              <Suspense fallback={
-                <div className="flex items-center justify-center h-full">
-                  <div className="text-muted-foreground">Loading editor...</div>
-                </div>
-              }>
-                <SimpleEditor
-                  content=""
-                  templateId="life-os"
-                  onUpdate={(content) => {
-                    // Auto-save to localStorage
-                    localStorage.setItem('life-os-content', content);
-                  }}
-                />
-              </Suspense>
             </div>
           </div>
         </div>
-
-        {/* Article Sidebar - Right side */}
-        {openArticle && (
-          <aside className="w-96 flex-shrink-0 border-l border-border bg-sidebar overflow-hidden">
-            <div className="h-full flex flex-col">
-              {/* Article Header */}
-              <div className="flex items-start justify-between gap-2 px-4 py-3 border-b border-sidebar-border">
-                <h3 className="text-sm font-semibold">{openArticle.title}</h3>
-                <Button
-                  variant="ghost"
-                  size="icon-sm"
-                  onClick={handleCloseArticle}
-                  className="hover:bg-sidebar-accent flex-shrink-0"
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-
-              {/* Article Content */}
-              <div className="flex-1 overflow-y-auto p-6 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
-                {openArticle.content ? (
-                  <ArticleContent content={openArticle.content} />
-                ) : (
-                  <p className="text-muted-foreground text-sm">Article content loading...</p>
-                )}
-              </div>
-            </div>
-          </aside>
-        )}
-      </div>
-    </div>
-  );
+      </SidebarInset>
+    </SidebarProvider>
+  )
 }
