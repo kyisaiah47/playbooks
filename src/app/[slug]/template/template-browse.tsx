@@ -7,7 +7,7 @@ import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { ArrowRight, Sparkles, FileText } from 'lucide-react';
+import { ArrowRight, Sparkles, FileText, Zap } from 'lucide-react';
 import { useUserUnlocks } from '@/contexts/UserUnlockContext';
 import { PaywallModal } from '@/components/paywall-modal';
 
@@ -187,6 +187,17 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
     */
   };
 
+  const handleOpenInWorkspace = () => {
+    // Store template context for workspace cmd+K
+    sessionStorage.setItem('workspace-template-context', JSON.stringify({
+      templateId: slug,
+      templateName: templateData.title
+    }));
+
+    // Navigate to workspace
+    router.push('/workspace');
+  };
+
   return (
     <>
       {/* MVP: Paywall modal disabled */}
@@ -198,11 +209,12 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
       /> */}
 
       <PageLayout>
-      {/* Marketing Hero */}
-      <section className="py-24 md:py-32 border-b">
+      {/* Hero Section */}
+      <section className="py-24 md:py-32">
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="text-center space-y-6 max-w-4xl mx-auto">
             <Badge variant="outline" className="px-4 py-2">
+              <FileText className="mr-2 h-4 w-4" />
               {templateData.category}
             </Badge>
 
@@ -210,11 +222,11 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
               {templateData.title}
             </h1>
 
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {templateData.description}
             </p>
 
-            <div className="flex items-center gap-4 pt-4">
+            <div className="flex items-center justify-center gap-6 pt-4">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Sparkles className="h-4 w-4" />
                 <span>{prompts.length} prompts</span>
@@ -311,16 +323,17 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
         </div>
       </section>
 
-      {/* MVP: Remove sticky select button with pricing language */}
-      {/* <div className="sticky bottom-0 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto max-w-6xl px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="text-sm text-muted-foreground">
-              Use the buttons above to insert prompts into your workspace or read articles
-            </div>
-          </div>
-        </div>
-      </div> */}
+      {/* Floating Action Button */}
+      <div className="fixed bottom-8 right-8 z-50">
+        <Button
+          size="lg"
+          onClick={handleOpenInWorkspace}
+          className="shadow-lg hover:shadow-xl transition-shadow flex items-center gap-2"
+        >
+          <Zap className="h-5 w-5" />
+          Open in Life OS
+        </Button>
+      </div>
     </PageLayout>
     </>
   );
