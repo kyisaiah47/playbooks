@@ -4,9 +4,15 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Search, X, User, Zap } from 'lucide-react';
+import { Search, X, User, Zap, FileText, Lightbulb, BookOpen, ChevronDown } from 'lucide-react';
 import { useUserUnlocks } from '@/contexts/UserUnlockContext';
 import { CommandPalette } from '@/components/command-palette';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 // Lazy load editor
 const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
@@ -19,10 +25,14 @@ interface Article {
   readTime: string;
 }
 
+type PanelType = 'templates' | 'prompts' | 'articles' | null;
+
 export default function WorkspacePage() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [openArticle, setOpenArticle] = useState<Article | null>(null);
   const [promptToInsert, setPromptToInsert] = useState<any>(null);
+  const [activePanel, setActivePanel] = useState<PanelType>(null);
+  const [currentWorkspace, setCurrentWorkspace] = useState('Untitled');
   const { unlockData, loading: unlockLoading } = useUserUnlocks();
 
   // Check for prompt/article to insert from sessionStorage
@@ -109,13 +119,65 @@ export default function WorkspacePage() {
 
       {/* Top Bar */}
       <header className="flex h-16 items-center justify-between px-6 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10">
+        {/* Left side */}
         <div className="flex items-center gap-4">
           <Badge variant="outline" className="px-3 py-1.5 text-sm font-semibold">
             <Zap className="h-4 w-4 mr-2" />
             Life OS
           </Badge>
+
+          {/* Workspace Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                <span className="hidden md:inline">{currentWorkspace}</span>
+                <ChevronDown className="h-3 w-3" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start">
+              <DropdownMenuItem onClick={() => setCurrentWorkspace('Untitled')}>
+                Untitled
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setCurrentWorkspace('New Workspace')}>
+                + New Workspace
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
+        {/* Middle - Quick access */}
+        <div className="hidden lg:flex items-center gap-2">
+          <Button
+            variant={activePanel === 'templates' ? 'secondary' : 'ghost'}
+            size="sm"
+            onClick={() => setActivePanel(activePanel === 'templates' ? null : 'templates')}
+            className="flex items-center gap-2"
+          >
+            <FileText className="h-4 w-4" />
+            Templates
+          </Button>
+          <Button
+            variant={activePanel === 'prompts' ? 'secondary' : 'ghost'}
+            size="sm"
+            onClick={() => setActivePanel(activePanel === 'prompts' ? null : 'prompts')}
+            className="flex items-center gap-2"
+          >
+            <Lightbulb className="h-4 w-4" />
+            Prompts
+          </Button>
+          <Button
+            variant={activePanel === 'articles' ? 'secondary' : 'ghost'}
+            size="sm"
+            onClick={() => setActivePanel(activePanel === 'articles' ? null : 'articles')}
+            className="flex items-center gap-2"
+          >
+            <BookOpen className="h-4 w-4" />
+            Articles
+          </Button>
+        </div>
+
+        {/* Right side */}
         <div className="flex items-center gap-4">
           <Button
             variant="ghost"
@@ -125,14 +187,9 @@ export default function WorkspacePage() {
           >
             <Search className="h-4 w-4" />
             <span className="hidden sm:inline text-muted-foreground text-sm">
-              Search (⌘K)
+              ⌘K
             </span>
           </Button>
-
-          {/* MVP: Hide unlock status - everything is free */}
-          {/* <Badge variant="outline" className="px-3 py-1">
-            {getUnlockStatusText()}
-          </Badge> */}
 
           <Button variant="ghost" size="icon">
             <User className="h-5 w-5" />
@@ -142,8 +199,8 @@ export default function WorkspacePage() {
 
       {/* Main Content Area */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Editor - Full width or 50% when article is open */}
-        <div className={`${openArticle ? 'w-1/2' : 'w-full'} flex flex-col transition-all duration-300`}>
+        {/* Editor - Full width or 50% when panel is open */}
+        <div className={`${(openArticle || activePanel) ? 'w-1/2' : 'w-full'} flex flex-col transition-all duration-300`}>
           <div className="flex-1 overflow-y-auto">
             <Suspense fallback={
               <div className="flex items-center justify-center h-full">
@@ -162,27 +219,57 @@ export default function WorkspacePage() {
           </div>
         </div>
 
-        {/* Article Panel - Slides in from right */}
-        {openArticle && (
+        {/* Right Panel - Templates/Prompts/Articles or Article */}
+        {(openArticle || activePanel) && (
           <div className="w-1/2 flex flex-col border-l bg-muted/20">
+            {/* Panel Header */}
             <div className="flex items-center justify-between p-4 border-b bg-background/95 backdrop-blur flex-shrink-0">
-              <h2 className="text-lg font-semibold truncate">{openArticle.title}</h2>
+              <h2 className="text-lg font-semibold">
+                {openArticle ? openArticle.title :
+                 activePanel === 'templates' ? 'Browse Templates' :
+                 activePanel === 'prompts' ? 'Browse Prompts' :
+                 activePanel === 'articles' ? 'Browse Articles' : ''}
+              </h2>
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={handleCloseArticle}
+                onClick={() => {
+                  setOpenArticle(null);
+                  setActivePanel(null);
+                }}
               >
                 <X className="h-5 w-5" />
               </Button>
             </div>
 
+            {/* Panel Content */}
             <div className="flex-1 overflow-y-auto">
-              <div className="max-w-3xl mx-auto p-8 prose prose-neutral dark:prose-invert">
-                <p className="text-sm text-muted-foreground mb-4">
-                  {openArticle.readTime} • {openArticle.excerpt}
-                </p>
-                <div dangerouslySetInnerHTML={{ __html: openArticle.content || 'Article content loading...' }} />
-              </div>
+              {openArticle && (
+                <div className="max-w-3xl mx-auto p-8 prose prose-neutral dark:prose-invert">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {openArticle.readTime} • {openArticle.excerpt}
+                  </p>
+                  <div dangerouslySetInnerHTML={{ __html: openArticle.content || 'Article content loading...' }} />
+                </div>
+              )}
+
+              {activePanel === 'templates' && (
+                <div className="p-6">
+                  <p className="text-muted-foreground">Templates panel - Coming soon</p>
+                </div>
+              )}
+
+              {activePanel === 'prompts' && (
+                <div className="p-6">
+                  <p className="text-muted-foreground">Prompts panel - Coming soon</p>
+                </div>
+              )}
+
+              {activePanel === 'articles' && (
+                <div className="p-6">
+                  <p className="text-muted-foreground">Articles panel - Coming soon</p>
+                </div>
+              )}
             </div>
           </div>
         )}
