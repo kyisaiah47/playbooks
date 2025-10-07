@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
-import { Search, X, User, Zap, FileText, Lightbulb, BookOpen, ChevronDown, ZoomIn, ZoomOut, MoreHorizontal, Type, Maximize2, Download, Copy, Trash2 } from 'lucide-react';
+import { Search, X, User, Zap, FileText, Lightbulb, BookOpen, ChevronDown, ZoomIn, ZoomOut, MoreHorizontal, Type, Maximize2, Download, Copy, Trash2, Palette, Check, PanelLeft, Home, Clock, Settings } from 'lucide-react';
 import { useUserUnlocks } from '@/contexts/UserUnlockContext';
 import { CommandPalette } from '@/components/command-palette';
 import {
@@ -21,6 +21,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { templateRegistry } from '@/registry/templates';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
+import { useCustomTheme } from '@/components/theme-provider-custom';
+import { themes } from '@/lib/themes';
 
 // Lazy load editor
 const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
@@ -55,7 +57,9 @@ export default function WorkspacePage() {
   const [pageIcon, setPageIcon] = useState('📝');
   const [showCover, setShowCover] = useState(false);
   const [isFullWidth, setIsFullWidth] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const { unlockData, loading: unlockLoading } = useUserUnlocks();
+  const { currentTheme, setTheme: setCustomTheme } = useCustomTheme();
 
   // Check for prompt/article to insert from sessionStorage
   useEffect(() => {
@@ -269,12 +273,21 @@ export default function WorkspacePage() {
 
       {/* Top Bar */}
       <header
-        className="flex h-10 items-center justify-between px-4 bg-emerald-950/80 backdrop-blur z-10 transition-transform duration-300 fixed top-0 left-0 right-0 border-b border-emerald-900/30 text-sm"
+        className="flex h-10 items-center justify-between px-4 bg-background/80 backdrop-blur z-10 transition-transform duration-300 fixed top-0 left-0 right-0 border-b border-border text-sm"
         style={{ transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)' }}
       >
         {/* Left side */}
         <div className="flex items-center gap-2">
-          <Badge variant="outline" className="px-2 py-0.5 text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30">
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="hover:bg-accent"
+          >
+            <PanelLeft className="h-4 w-4" />
+          </Button>
+
+          <Badge variant="outline" className="px-2 py-0.5 text-xs font-semibold">
             <Zap className="h-3 w-3 mr-1" />
             Life OS
           </Badge>
@@ -282,13 +295,13 @@ export default function WorkspacePage() {
           {/* Workspace Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:bg-emerald-900/50">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2">
                 <FileText className="h-4 w-4" />
                 <span className="hidden md:inline">{currentWorkspace}</span>
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="bg-emerald-950/95 border-emerald-900/50">
+            <DropdownMenuContent align="start">
               <DropdownMenuItem onClick={() => setCurrentWorkspace('Untitled')}>
                 Untitled
               </DropdownMenuItem>
@@ -304,17 +317,17 @@ export default function WorkspacePage() {
           {/* Templates Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:bg-emerald-900/50">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:bg-accent">
                 <FileText className="h-4 w-4" />
                 {selectedTemplate ? selectedTemplateName : 'Templates'}
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-64 max-h-[400px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
+            <DropdownMenuContent align="center" className="w-64 max-h-[400px] overflow-y-auto bg-popover">
               {categories.map((category) => (
                 <DropdownMenuSub key={category}>
                   <DropdownMenuSubTrigger>{category}</DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent className="max-h-[300px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
+                  <DropdownMenuSubContent className="max-h-[300px] overflow-y-auto bg-popover">
                     {groupedTemplates[category].map((template) => (
                       <DropdownMenuItem
                         key={template.id}
@@ -335,16 +348,16 @@ export default function WorkspacePage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="flex items-center gap-2 hover:bg-emerald-900/50"
+                className="flex items-center gap-2 hover:bg-accent"
                 disabled={!selectedTemplate}
               >
                 <Lightbulb className="h-4 w-4" />
                 Prompts
-                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs bg-emerald-900/40 text-emerald-300 border-emerald-800">{templatePrompts.length}</Badge>}
+                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs bg-accent/50 text-accent-foreground border-accent">{templatePrompts.length}</Badge>}
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
+            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto bg-popover">
               {loadingContent ? (
                 <div className="p-4 text-center text-sm text-muted-foreground">Loading prompts...</div>
               ) : templatePrompts.length === 0 ? (
@@ -357,7 +370,7 @@ export default function WorkspacePage() {
                     <DropdownMenuSubTrigger>
                       {category}
                     </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="w-80 max-h-[300px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
+                    <DropdownMenuSubContent className="w-80 max-h-[300px] overflow-y-auto bg-popover">
                       {groupedPrompts[category].map((prompt) => (
                         <DropdownMenuItem
                           key={prompt.id}
@@ -380,16 +393,16 @@ export default function WorkspacePage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="flex items-center gap-2 hover:bg-emerald-900/50"
+                className="flex items-center gap-2 hover:bg-accent"
                 disabled={!selectedTemplate}
               >
                 <BookOpen className="h-4 w-4" />
                 Articles
-                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs bg-emerald-900/40 text-emerald-300 border-emerald-800">{templateArticles.length}</Badge>}
+                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs bg-accent/50 text-accent-foreground border-accent">{templateArticles.length}</Badge>}
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
+            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto bg-popover">
               {loadingContent ? (
                 <div className="p-4 text-center text-sm text-muted-foreground">Loading articles...</div>
               ) : templateArticles.length === 0 ? (
@@ -420,7 +433,7 @@ export default function WorkspacePage() {
             variant="ghost"
             size="sm"
             onClick={() => setCommandPaletteOpen(true)}
-            className="flex items-center gap-1 hover:bg-emerald-900/50 h-7 px-2"
+            className="flex items-center gap-1 hover:bg-accent h-7 px-2"
           >
             <Search className="h-3.5 w-3.5" />
             <span className="hidden sm:inline text-muted-foreground text-xs">
@@ -430,16 +443,42 @@ export default function WorkspacePage() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon-sm" className="hover:bg-emerald-900/50">
+              <Button variant="ghost" size="icon-sm" className="hover:bg-accent">
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64 bg-emerald-950/95 border-emerald-900/50">
+            <DropdownMenuContent align="end" className="w-64 bg-popover">
               <div className="flex items-center justify-between px-2 py-1.5">
                 <span className="text-sm">Full width</span>
                 <Switch checked={isFullWidth} onCheckedChange={setIsFullWidth} />
               </div>
               <DropdownMenuSeparator />
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <Palette className="h-4 w-4 mr-2" />
+                  Theme
+                </DropdownMenuSubTrigger>
+                <DropdownMenuSubContent className="bg-popover">
+                  {themes.map((themeOption) => {
+                    const currentThemeInfo = themes.find(t =>
+                      JSON.stringify(t.colors.dark) === JSON.stringify(currentTheme)
+                    ) || themes[0];
+
+                    return (
+                      <DropdownMenuItem
+                        key={themeOption.id}
+                        onClick={() => setCustomTheme(themeOption.colors.dark)}
+                        className="flex items-center gap-3"
+                      >
+                        <span className="flex-1">{themeOption.name}</span>
+                        {currentThemeInfo.id === themeOption.id && (
+                          <Check className="h-3 w-3" />
+                        )}
+                      </DropdownMenuItem>
+                    );
+                  })}
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
               <DropdownMenuItem>
                 <Type className="h-4 w-4 mr-2" />
                 Font style
@@ -463,14 +502,48 @@ export default function WorkspacePage() {
       </header>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden relative bg-emerald-950/30 pt-10">
-        {/* Editor - Card style with centered content */}
-        <div className="w-full flex flex-col items-center">
-          <div className={`overflow-y-auto editor-scroll-container w-full bg-emerald-950/50 border border-emerald-900/40 rounded-lg shadow-sm mx-4 my-8 ${isFullWidth ? 'max-w-full' : 'max-w-[900px]'}`}>
+      <div className="flex flex-1 overflow-hidden relative bg-muted/20 pt-10">
+        {/* Sidebar */}
+        <aside
+          className={`${
+            sidebarOpen ? 'w-64' : 'w-0'
+          } flex-shrink-0 border-r border-border bg-sidebar transition-all duration-300 overflow-hidden`}
+        >
+          <div className="h-full flex flex-col p-2">
+            {/* Navigation Items */}
+            <div className="flex flex-col gap-1">
+              <Button variant="ghost" className="justify-start gap-2 hover:bg-sidebar-accent">
+                <Home className="h-4 w-4" />
+                <span className="text-sm">Home</span>
+              </Button>
+              <Button variant="ghost" className="justify-start gap-2 hover:bg-sidebar-accent">
+                <Clock className="h-4 w-4" />
+                <span className="text-sm">Recent</span>
+              </Button>
+              <Button variant="ghost" className="justify-start gap-2 hover:bg-sidebar-accent">
+                <Settings className="h-4 w-4" />
+                <span className="text-sm">Settings</span>
+              </Button>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-sidebar-border my-4" />
+
+            {/* Workspaces section (placeholder for now) */}
+            <div className="flex-1 overflow-y-auto">
+              <div className="text-xs text-sidebar-foreground/50 px-2 mb-2">WORKSPACES</div>
+              {/* Workspace items will go here */}
+            </div>
+          </div>
+        </aside>
+
+        {/* Editor - Clean centered content */}
+        <div className="w-full flex flex-col items-center flex-1">
+          <div className={`overflow-y-auto editor-scroll-container w-full ${isFullWidth ? 'max-w-full' : 'max-w-[900px]'}`}>
 
             {/* Cover Photo */}
             {showCover && (
-              <div className="relative h-52 bg-gradient-to-br from-emerald-600/20 via-emerald-500/10 to-emerald-400/20 group">
+              <div className="relative h-52 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 group">
                 <button
                   onClick={() => setShowCover(false)}
                   className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-white/70 hover:text-white bg-black/20 hover:bg-black/40 px-2 py-1 rounded"
@@ -481,16 +554,16 @@ export default function WorkspacePage() {
             )}
 
             {/* Page Header */}
-            <div className="px-20 pt-12 pb-2">
+            <div className={`pt-24 pb-4 ${isFullWidth ? 'px-24' : 'px-24'}`}>
               {/* Icon + Add Cover */}
-              <div className="flex items-center gap-2 mb-4">
-                <button className="text-6xl hover:bg-emerald-900/30 rounded p-1 transition-colors">
+              <div className="flex items-center gap-2 mb-2">
+                <button className="text-6xl hover:bg-accent rounded p-1 transition-colors">
                   {pageIcon}
                 </button>
                 {!showCover && (
                   <button
                     onClick={() => setShowCover(true)}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors opacity-0 group-hover:opacity-100"
                   >
                     Add cover
                   </button>
@@ -503,17 +576,17 @@ export default function WorkspacePage() {
                 value={pageTitle}
                 onChange={(e) => setPageTitle(e.target.value)}
                 placeholder="Untitled"
-                className="text-5xl font-bold bg-transparent border-none outline-none w-full text-foreground placeholder:text-muted-foreground/30 mb-2"
+                className="text-5xl font-bold bg-transparent border-none outline-none w-full text-foreground placeholder:text-muted-foreground/30 mb-1 -ml-0.5"
               />
 
               {/* Metadata */}
-              <div className="flex items-center gap-3 text-xs text-muted-foreground mb-8">
+              <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
                 <span>Last edited just now</span>
               </div>
             </div>
 
             {/* Editor Content */}
-            <div className="px-20 pb-20">
+            <div className={`pb-40 ${isFullWidth ? 'px-24' : 'px-24'}`}>
               <Suspense fallback={
                 <div className="flex items-center justify-center h-full">
                   <div className="text-muted-foreground">Loading editor...</div>
@@ -534,8 +607,8 @@ export default function WorkspacePage() {
 
         {/* Article Card - Floating in right margin */}
         {openArticle && (
-          <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-emerald-950/60 backdrop-blur-xl rounded-lg shadow-lg z-20 border border-emerald-900/40">
-            <div className="sticky top-0 bg-emerald-950/80 px-6 pt-6 pb-4 z-10 border-b border-emerald-900/40">
+          <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-popover/60 backdrop-blur-xl rounded-lg shadow-lg z-20 border border-border">
+            <div className="sticky top-0 bg-popover/80 px-6 pt-6 pb-4 z-10 border-b border-border">
               <div className="flex items-center justify-between">
                 <Badge variant="outline" className="text-xs">
                   {openArticle.readTime}
