@@ -18,10 +18,14 @@ import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
 import { NavViewMode, ViewMode } from "@/components/nav-view-mode"
 import { NavTemplateSelector } from "@/components/nav-template-selector"
+import { NavPromptsList } from "@/components/nav-prompts-list"
+import { NavArticlesList } from "@/components/nav-articles-list"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -114,10 +118,17 @@ export function WorkspaceSidebar({ viewMode, onViewModeChange, selectedTemplateI
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavViewMode currentMode={viewMode} onModeChange={onViewModeChange} />
-        <NavTemplateSelector
-          selectedTemplateId={selectedTemplateId}
-          onTemplateChange={onTemplateChange}
-        />
+        <SidebarGroup>
+          <SidebarGroupLabel>Workspace</SidebarGroupLabel>
+          <SidebarMenu>
+            <NavTemplateSelector
+              selectedTemplateId={selectedTemplateId}
+              onTemplateChange={onTemplateChange}
+            />
+            <NavPromptsList templateId={selectedTemplateId} />
+            <NavArticlesList templateId={selectedTemplateId} />
+          </SidebarMenu>
+        </SidebarGroup>
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

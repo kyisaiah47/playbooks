@@ -1,19 +1,18 @@
 "use client"
 
-import { IconTemplate, IconFileText, IconFileAi } from "@tabler/icons-react"
+import { IconPlus, IconMinus } from "@tabler/icons-react"
 import {
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarGroupContent,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import {
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
 import { templateRegistry } from "@/registry/templates"
 
 interface NavTemplateSelectorProps {
@@ -22,48 +21,31 @@ interface NavTemplateSelectorProps {
 }
 
 export function NavTemplateSelector({ selectedTemplateId, onTemplateChange }: NavTemplateSelectorProps) {
-  const selectedTemplate = templateRegistry.find(t => t.id === selectedTemplateId);
-
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Active Template</SidebarGroupLabel>
-      <SidebarGroupContent>
-        <Select value={selectedTemplateId || ''} onValueChange={onTemplateChange}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select a template..." />
-          </SelectTrigger>
-          <SelectContent>
+    <Collapsible defaultOpen className="group/collapsible">
+      <SidebarMenuItem>
+        <CollapsibleTrigger asChild>
+          <SidebarMenuButton>
+            Templates{" "}
+            <IconPlus className="ml-auto group-data-[state=open]/collapsible:hidden" />
+            <IconMinus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
+          </SidebarMenuButton>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <SidebarMenuSub>
             {templateRegistry.map((template) => (
-              <SelectItem key={template.id} value={template.id}>
-                <div className="flex items-center gap-2">
-                  <IconTemplate className="h-4 w-4" />
-                  <span className="truncate">{template.name}</span>
-                </div>
-              </SelectItem>
+              <SidebarMenuSubItem key={template.id}>
+                <SidebarMenuSubButton
+                  onClick={() => onTemplateChange(template.id)}
+                  isActive={selectedTemplateId === template.id}
+                >
+                  {template.name}
+                </SidebarMenuSubButton>
+              </SidebarMenuSubItem>
             ))}
-          </SelectContent>
-        </Select>
-
-        {selectedTemplate && (
-          <div className="mt-3 space-y-2 text-xs">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Badge variant="outline" className="text-xs">
-                {selectedTemplate.category}
-              </Badge>
-            </div>
-            <div className="flex items-center gap-3 text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <IconFileAi className="h-3.5 w-3.5" />
-                <span>~80 prompts</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <IconFileText className="h-3.5 w-3.5" />
-                <span>~160 articles</span>
-              </div>
-            </div>
-          </div>
-        )}
-      </SidebarGroupContent>
-    </SidebarGroup>
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </SidebarMenuItem>
+    </Collapsible>
   )
 }
