@@ -264,10 +264,10 @@ export default function WorkspacePage() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="bg-emerald-950/95 border-emerald-900/50">
-              <DropdownMenuItem onClick={() => setCurrentWorkspace('Untitled')} className="hover:bg-emerald-900/50 focus:bg-emerald-900/50">
+              <DropdownMenuItem onClick={() => setCurrentWorkspace('Untitled')}>
                 Untitled
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setCurrentWorkspace('New Workspace')} className="hover:bg-emerald-900/50 focus:bg-emerald-900/50">
+              <DropdownMenuItem onClick={() => setCurrentWorkspace('New Workspace')}>
                 + New Workspace
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -288,13 +288,12 @@ export default function WorkspacePage() {
             <DropdownMenuContent align="center" className="w-64 max-h-[400px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
               {categories.map((category) => (
                 <DropdownMenuSub key={category}>
-                  <DropdownMenuSubTrigger className="hover:bg-emerald-900/50 focus:bg-emerald-900/50">{category}</DropdownMenuSubTrigger>
+                  <DropdownMenuSubTrigger>{category}</DropdownMenuSubTrigger>
                   <DropdownMenuSubContent className="max-h-[300px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
                     {groupedTemplates[category].map((template) => (
                       <DropdownMenuItem
                         key={template.id}
                         onClick={() => handleSelectTemplate(template.id)}
-                        className="hover:bg-emerald-900/50 focus:bg-emerald-900/50"
                       >
                         {template.name}
                       </DropdownMenuItem>
@@ -330,7 +329,7 @@ export default function WorkspacePage() {
               ) : (
                 promptCategories.map((category) => (
                   <DropdownMenuSub key={category}>
-                    <DropdownMenuSubTrigger className="hover:bg-emerald-900/50 focus:bg-emerald-900/50">
+                    <DropdownMenuSubTrigger>
                       {category}
                     </DropdownMenuSubTrigger>
                     <DropdownMenuSubContent className="w-80 max-h-[300px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
@@ -338,7 +337,7 @@ export default function WorkspacePage() {
                         <DropdownMenuItem
                           key={prompt.id}
                           onClick={() => handleInsertPrompt(prompt)}
-                          className="cursor-pointer hover:bg-emerald-900/50 focus:bg-emerald-900/50"
+                          className="cursor-pointer"
                         >
                           <span className="text-sm line-clamp-2">{prompt.prompt}</span>
                         </DropdownMenuItem>
@@ -377,7 +376,7 @@ export default function WorkspacePage() {
                   <DropdownMenuItem
                     key={article.id}
                     onClick={() => handleOpenArticle(article)}
-                    className="cursor-pointer hover:bg-emerald-900/50 focus:bg-emerald-900/50"
+                    className="cursor-pointer"
                   >
                     <div className="flex flex-col gap-1">
                       <span className="text-sm font-medium line-clamp-1">{article.title}</span>
