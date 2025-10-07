@@ -368,9 +368,9 @@ export default function WorkspacePage() {
       </header>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Editor - Full width or 50% when article is open */}
-        <div className={`${openArticle ? 'w-1/2' : 'w-full'} flex flex-col transition-all duration-300`}>
+      <div className="flex flex-1 overflow-hidden relative">
+        {/* Editor - Full width with centered content */}
+        <div className="w-full flex flex-col">
           <div className="flex-1 overflow-y-auto">
             <Suspense fallback={
               <div className="flex items-center justify-center h-full">
@@ -389,23 +389,23 @@ export default function WorkspacePage() {
           </div>
         </div>
 
-        {/* Article Panel - Slides in from right when article is selected */}
+        {/* Article Panel - Fixed in side margin */}
         {openArticle && (
-          <div className="w-1/2 flex flex-col border-l bg-muted/20">
+          <div className="fixed right-0 top-16 bottom-0 w-96 flex flex-col border-l bg-background shadow-2xl z-20">
             <div className="flex items-center justify-between p-4 border-b bg-background/95 backdrop-blur flex-shrink-0">
-              <h2 className="text-lg font-semibold truncate">{openArticle.title}</h2>
+              <h2 className="text-sm font-semibold truncate">{openArticle.title}</h2>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={handleCloseArticle}
               >
-                <X className="h-5 w-5" />
+                <X className="h-4 w-4" />
               </Button>
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              <div className="max-w-3xl mx-auto p-8 prose prose-neutral dark:prose-invert">
-                <p className="text-sm text-muted-foreground mb-4">
+              <div className="p-6 prose prose-sm prose-neutral dark:prose-invert max-w-none">
+                <p className="text-xs text-muted-foreground mb-4">
                   {openArticle.readTime} • {openArticle.excerpt}
                 </p>
                 <div dangerouslySetInnerHTML={{ __html: openArticle.content || 'Article content loading...' }} />
