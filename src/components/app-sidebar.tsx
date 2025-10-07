@@ -52,19 +52,19 @@ const data = {
       icon: IconFileDescription,
     },
     {
-      title: "Analytics",
-      url: "#analytics",
-      icon: IconChartBar,
+      title: "Prompts",
+      url: "#prompts",
+      icon: IconFileAi,
     },
     {
-      title: "Projects",
-      url: "#projects",
+      title: "Articles",
+      url: "#articles",
+      icon: IconReport,
+    },
+    {
+      title: "Workspaces",
+      url: "#workspaces",
       icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "#team",
-      icon: IconUsers,
     },
   ],
   navClouds: [
