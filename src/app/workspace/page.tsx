@@ -118,7 +118,7 @@ export default function WorkspacePage() {
       />
 
       {/* Top Bar */}
-      <header className="flex h-16 items-center justify-between px-6 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10">
+      <header className="flex h-16 items-center justify-between px-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10">
         {/* Left side */}
         <div className="flex items-center gap-4">
           <Badge variant="outline" className="px-3 py-1.5 text-sm font-semibold">
