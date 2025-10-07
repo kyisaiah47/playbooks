@@ -405,7 +405,7 @@ export default function WorkspacePage() {
         {/* Article Card - Floating in right margin */}
         {openArticle && (
           <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-muted/30 backdrop-blur-xl rounded-lg shadow-lg z-20">
-            <div className="sticky top-0 bg-muted/30 backdrop-blur-xl px-6 pt-6 pb-4 z-10">
+            <div className="sticky top-0 bg-background px-6 pt-6 pb-4 z-10 border-b">
               <div className="flex items-center justify-between">
                 <Badge variant="outline" className="text-xs">
                   {openArticle.readTime}
