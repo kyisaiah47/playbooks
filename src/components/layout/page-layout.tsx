@@ -5,6 +5,9 @@ import { Footer } from "./footer";
 import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
 import { CommandPalette } from "@/components/command-palette";
 import { useCommandPalette } from "@/hooks/use-command-palette";
+import { FeedbackModal } from "@/components/feedback-modal";
+import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 
 interface PageLayoutProps {
 	children: React.ReactNode;
@@ -35,6 +38,20 @@ export function PageLayout({
 
 			{/* Recently Used Footer - shows as sticky footer */}
 			<RecentlyUsedFooter />
+
+			{/* Floating Feedback Button */}
+			<div className="fixed bottom-8 left-8 z-50">
+				<FeedbackModal>
+					<Button
+						size="lg"
+						variant="outline"
+						className="bg-background hover:bg-background/80 flex items-center gap-2"
+					>
+						<MessageCircle className="h-5 w-5" />
+						<span className="hidden sm:inline">Feedback</span>
+					</Button>
+				</FeedbackModal>
+			</div>
 
 			{/* Global Command Palette */}
 			<CommandPalette
