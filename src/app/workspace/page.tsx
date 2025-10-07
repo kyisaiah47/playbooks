@@ -4,7 +4,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Search, X, User } from 'lucide-react';
+import { Search, X, User, Zap } from 'lucide-react';
 import { useUserUnlocks } from '@/contexts/UserUnlockContext';
 import { CommandPalette } from '@/components/command-palette';
 
@@ -110,7 +110,10 @@ export default function WorkspacePage() {
       {/* Top Bar */}
       <header className="flex h-16 items-center justify-between px-6 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10">
         <div className="flex items-center gap-4">
-          <h1 className="text-xl font-bold">Life OS</h1>
+          <Badge variant="outline" className="px-3 py-1.5 text-sm font-semibold">
+            <Zap className="h-4 w-4 mr-2" />
+            Life OS
+          </Badge>
         </div>
 
         <div className="flex items-center gap-4">

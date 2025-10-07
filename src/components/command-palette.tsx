@@ -272,7 +272,7 @@ export function CommandPalette({
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent
         className={`!max-w-3xl w-[90vw] p-0 gap-0 bg-transparent border-0 flex flex-col ${
-          query ? 'h-[70vh]' : 'h-auto'
+          query || tab === 'templates' ? 'h-[70vh]' : 'h-auto'
         }`}
         showCloseButton={false}
       >
