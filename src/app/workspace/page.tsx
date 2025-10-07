@@ -315,7 +315,7 @@ export default function WorkspacePage() {
               >
                 <Lightbulb className="h-4 w-4" />
                 Prompts
-                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs">{templatePrompts.length}</Badge>}
+                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs bg-emerald-900/40 text-emerald-300 border-emerald-800">{templatePrompts.length}</Badge>}
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
@@ -360,7 +360,7 @@ export default function WorkspacePage() {
               >
                 <BookOpen className="h-4 w-4" />
                 Articles
-                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs">{templateArticles.length}</Badge>}
+                {selectedTemplate && <Badge variant="secondary" className="ml-1 h-5 px-1.5 text-xs bg-emerald-900/40 text-emerald-300 border-emerald-800">{templateArticles.length}</Badge>}
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
