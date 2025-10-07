@@ -263,7 +263,7 @@ export default function WorkspacePage() {
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
+            <DropdownMenuContent align="start" className="bg-emerald-950/95 border-emerald-900/50">
               <DropdownMenuItem onClick={() => setCurrentWorkspace('Untitled')}>
                 Untitled
               </DropdownMenuItem>
@@ -285,11 +285,11 @@ export default function WorkspacePage() {
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-64 max-h-[400px] overflow-y-auto">
+            <DropdownMenuContent align="center" className="w-64 max-h-[400px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
               {categories.map((category) => (
                 <DropdownMenuSub key={category}>
                   <DropdownMenuSubTrigger>{category}</DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent className="max-h-[300px] overflow-y-auto">
+                  <DropdownMenuSubContent className="max-h-[300px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
                     {groupedTemplates[category].map((template) => (
                       <DropdownMenuItem
                         key={template.id}
@@ -319,7 +319,7 @@ export default function WorkspacePage() {
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto">
+            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
               {loadingContent ? (
                 <div className="p-4 text-center text-sm text-muted-foreground">Loading prompts...</div>
               ) : templatePrompts.length === 0 ? (
@@ -332,7 +332,7 @@ export default function WorkspacePage() {
                     <DropdownMenuSubTrigger>
                       {category}
                     </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="w-80 max-h-[300px] overflow-y-auto">
+                    <DropdownMenuSubContent className="w-80 max-h-[300px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
                       {groupedPrompts[category].map((prompt) => (
                         <DropdownMenuItem
                           key={prompt.id}
@@ -364,7 +364,7 @@ export default function WorkspacePage() {
                 <ChevronDown className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto">
+            <DropdownMenuContent align="center" className="w-80 max-h-[400px] overflow-y-auto bg-emerald-950/95 border-emerald-900/50">
               {loadingContent ? (
                 <div className="p-4 text-center text-sm text-muted-foreground">Loading articles...</div>
               ) : templateArticles.length === 0 ? (
