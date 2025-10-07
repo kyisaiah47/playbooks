@@ -140,29 +140,31 @@ export default function WorkspacePage() {
       {/* Main Content Area */}
       <div className="flex flex-1 overflow-hidden">
         {/* Editor - Full width or 50% when article is open */}
-        <div className={`${openArticle ? 'w-1/2' : 'w-full'} overflow-auto transition-all duration-300`}>
-          <div className="h-full p-8">
-            <Suspense fallback={
-              <div className="flex items-center justify-center h-full">
-                <div className="text-muted-foreground">Loading editor...</div>
-              </div>
-            }>
-              <SimpleEditor
-                content=""
-                templateId="life-os"
-                onUpdate={(content) => {
-                  // Auto-save to localStorage
-                  localStorage.setItem('life-os-content', content);
-                }}
-              />
-            </Suspense>
+        <div className={`${openArticle ? 'w-1/2' : 'w-full'} flex flex-col transition-all duration-300`}>
+          <div className="flex-1 overflow-y-auto">
+            <div className="max-w-4xl mx-auto py-12 px-8">
+              <Suspense fallback={
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-muted-foreground">Loading editor...</div>
+                </div>
+              }>
+                <SimpleEditor
+                  content=""
+                  templateId="life-os"
+                  onUpdate={(content) => {
+                    // Auto-save to localStorage
+                    localStorage.setItem('life-os-content', content);
+                  }}
+                />
+              </Suspense>
+            </div>
           </div>
         </div>
 
         {/* Article Panel - Slides in from right */}
         {openArticle && (
-          <div className="w-1/2 overflow-auto border-l bg-muted/20">
-            <div className="sticky top-0 z-10 flex items-center justify-between p-4 border-b bg-background/95 backdrop-blur">
+          <div className="w-1/2 flex flex-col border-l bg-muted/20">
+            <div className="flex items-center justify-between p-4 border-b bg-background/95 backdrop-blur flex-shrink-0">
               <h2 className="text-lg font-semibold truncate">{openArticle.title}</h2>
               <Button
                 variant="ghost"
@@ -173,11 +175,13 @@ export default function WorkspacePage() {
               </Button>
             </div>
 
-            <div className="p-8 prose prose-neutral dark:prose-invert max-w-none">
-              <p className="text-sm text-muted-foreground mb-4">
-                {openArticle.readTime} • {openArticle.excerpt}
-              </p>
-              <div dangerouslySetInnerHTML={{ __html: openArticle.content || 'Article content loading...' }} />
+            <div className="flex-1 overflow-y-auto">
+              <div className="max-w-3xl mx-auto p-8 prose prose-neutral dark:prose-invert">
+                <p className="text-sm text-muted-foreground mb-4">
+                  {openArticle.readTime} • {openArticle.excerpt}
+                </p>
+                <div dangerouslySetInnerHTML={{ __html: openArticle.content || 'Article content loading...' }} />
+              </div>
             </div>
           </div>
         )}
