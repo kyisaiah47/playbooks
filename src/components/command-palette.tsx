@@ -127,7 +127,7 @@ export function CommandPalette({
 
   // Fetch article results from API when query changes
   useEffect(() => {
-    if (!debouncedQuery || mode === "templates") {
+    if (!debouncedQuery || searchMode === "prompts") {
       setArticleResults([])
       return
     }
@@ -147,7 +147,7 @@ export function CommandPalette({
     }
 
     fetchArticles()
-  }, [debouncedQuery, mode])
+  }, [debouncedQuery, searchMode])
 
   // Rotate search suggestions
   useEffect(() => {
