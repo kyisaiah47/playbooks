@@ -257,7 +257,7 @@ export default function WorkspacePage() {
           {/* Workspace Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:bg-emerald-900/50">
                 <FileText className="h-4 w-4" />
                 <span className="hidden md:inline">{currentWorkspace}</span>
                 <ChevronDown className="h-3 w-3" />
@@ -279,7 +279,7 @@ export default function WorkspacePage() {
           {/* Templates Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:bg-emerald-900/50">
                 <FileText className="h-4 w-4" />
                 {selectedTemplate ? selectedTemplateName : 'Templates'}
                 <ChevronDown className="h-3 w-3" />
@@ -310,7 +310,7 @@ export default function WorkspacePage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 hover:bg-emerald-900/50"
                 disabled={!selectedTemplate}
               >
                 <Lightbulb className="h-4 w-4" />
@@ -355,7 +355,7 @@ export default function WorkspacePage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 hover:bg-emerald-900/50"
                 disabled={!selectedTemplate}
               >
                 <BookOpen className="h-4 w-4" />
@@ -395,7 +395,7 @@ export default function WorkspacePage() {
             variant="ghost"
             size="sm"
             onClick={() => setCommandPaletteOpen(true)}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 hover:bg-emerald-900/50"
           >
             <Search className="h-4 w-4" />
             <span className="hidden sm:inline text-muted-foreground text-sm">
@@ -403,7 +403,7 @@ export default function WorkspacePage() {
             </span>
           </Button>
 
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="hover:bg-emerald-900/50">
             <User className="h-5 w-5" />
           </Button>
         </div>
