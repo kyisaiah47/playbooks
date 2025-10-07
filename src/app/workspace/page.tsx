@@ -289,9 +289,6 @@ export default function WorkspacePage() {
                   <DropdownMenuSub key={category}>
                     <DropdownMenuSubTrigger>
                       {category}
-                      <Badge variant="secondary" className="ml-2 h-5 px-1.5 text-xs">
-                        {groupedPrompts[category].length}
-                      </Badge>
                     </DropdownMenuSubTrigger>
                     <DropdownMenuSubContent className="w-80 max-h-[300px] overflow-y-auto">
                       {groupedPrompts[category].map((prompt) => (
