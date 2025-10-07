@@ -8,8 +8,8 @@ body {
 
 /* Override TipTap toolbar and button colors to match our theme */
 .tiptap-toolbar {
-  --tt-toolbar-bg-color: hsl(150 60% 10% / 0.95);
-  --tt-toolbar-border-color: hsl(150 50% 20% / 0.5);
+  --tt-toolbar-bg-color: lab(75.08 -60.73 19.41 / 0.15);
+  --tt-toolbar-border-color: lab(75.08 -60.73 19.41 / 0.3);
 }
 
 .tiptap-button {
