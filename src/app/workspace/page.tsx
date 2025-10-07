@@ -606,52 +606,33 @@ export default function WorkspacePage() {
           </div>
         </div>
 
-        {/* Article Card - Floating in right margin */}
+        {/* Article Sidebar - Right side */}
         {openArticle && (
-          <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-popover/60 backdrop-blur-xl rounded-lg shadow-lg z-20 border border-border">
-            <div className="sticky top-0 bg-popover/80 px-6 pt-6 pb-4 z-10 border-b border-border">
-              <div className="flex items-center justify-between">
-                <Badge variant="outline" className="text-xs">
-                  {openArticle.readTime}
-                </Badge>
-                <div className="flex items-center gap-1">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-6 w-6"
-                    onClick={() => setArticleFontSize(prev => Math.max(50, prev - 10))}
-                  >
-                    <ZoomOut className="h-3 w-3" />
-                  </Button>
-                  <span className="text-xs text-muted-foreground w-10 text-center">{articleFontSize}%</span>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-6 w-6"
-                    onClick={() => setArticleFontSize(prev => Math.min(200, prev + 10))}
-                  >
-                    <ZoomIn className="h-3 w-3" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-6 w-6"
-                    onClick={handleCloseArticle}
-                  >
-                    <X className="h-3 w-3" />
-                  </Button>
-                </div>
+          <aside className="w-96 flex-shrink-0 border-l border-border bg-sidebar overflow-hidden">
+            <div className="h-full flex flex-col">
+              {/* Article Header */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-sidebar-border">
+                <h3 className="text-sm font-semibold line-clamp-1">{openArticle.title}</h3>
+                <Button
+                  variant="ghost"
+                  size="icon-sm"
+                  onClick={handleCloseArticle}
+                  className="hover:bg-sidebar-accent flex-shrink-0"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+
+              {/* Article Content */}
+              <div className="flex-1 overflow-y-auto p-6 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+                {openArticle.content ? (
+                  <ArticleContent content={openArticle.content} />
+                ) : (
+                  <p className="text-muted-foreground text-sm">Article content loading...</p>
+                )}
               </div>
             </div>
-
-            <div className="px-6 pb-6 pt-6" style={{ zoom: `${articleFontSize}%` }}>
-              {openArticle.content ? (
-                <ArticleContent content={openArticle.content} />
-              ) : (
-                <p className="text-muted-foreground text-sm">Article content loading...</p>
-              )}
-            </div>
-          </div>
+          </aside>
         )}
       </div>
     </div>
