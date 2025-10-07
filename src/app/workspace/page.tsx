@@ -611,8 +611,8 @@ export default function WorkspacePage() {
           <aside className="w-96 flex-shrink-0 border-l border-border bg-sidebar overflow-hidden">
             <div className="h-full flex flex-col">
               {/* Article Header */}
-              <div className="flex items-center justify-between px-4 py-3 border-b border-sidebar-border">
-                <h3 className="text-sm font-semibold line-clamp-1">{openArticle.title}</h3>
+              <div className="flex items-start justify-between gap-2 px-4 py-3 border-b border-sidebar-border">
+                <h3 className="text-sm font-semibold">{openArticle.title}</h3>
                 <Button
                   variant="ghost"
                   size="icon-sm"
