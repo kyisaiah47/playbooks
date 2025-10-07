@@ -347,7 +347,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
       </section>
 
       {/* Floating Action Button */}
-      <div className="fixed bottom-8 left-8 z-50">
+      <div className="fixed bottom-8 right-8 z-50">
         <SubtleGlow>
           <Button
             size="lg"
