@@ -4,7 +4,13 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(node:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm run build:*)",
+      "Read(//Users/ikim1/Documents/GitHub/templata-sandwich-generation/**)",
+      "Bash(chmod:*)",
+      "Bash(psql:*)",
+      "Read(//Users/ikim1/Documents/**)",
+      "Bash(PGPASSWORD=040796yh psql \"postgresql://postgres.ziqjrhrzqccaqnqlmivv:040796yh@aws-0-us-west-1.pooler.supabase.com:6543/postgres?gssencmode=disable\" -f generation-scripts/create-user-template-unlocks.sql)"
     ],
     "deny": [],
     "ask": []
