@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTemplateById } from '@/registry/templates';
-import TemplateClient from './template-client';
+import TemplateBrowse from './template-browse';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -71,5 +71,5 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export default function TemplatePage({ params }: { params: Promise<{ slug: string }> }) {
-  return <TemplateClient params={params} />;
+  return <TemplateBrowse params={params} />;
 }
