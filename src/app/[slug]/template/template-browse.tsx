@@ -7,7 +7,7 @@ import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { ArrowRight, Sparkles, FileText, Zap } from 'lucide-react';
+import { ArrowRight, Sparkles, FileText, Zap, ChevronRight } from 'lucide-react';
 import { useUserUnlocks } from '@/contexts/UserUnlockContext';
 import { PaywallModal } from '@/components/paywall-modal';
 
@@ -42,6 +42,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
   const [unlocking, setUnlocking] = useState(false);
   const [paywallOpen, setPaywallOpen] = useState(false);
   const [paywallTrigger, setPaywallTrigger] = useState<'unlock-limit' | 'locked-content'>('unlock-limit');
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     async function fetchData() {
@@ -198,6 +199,16 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
     router.push('/workspace');
   };
 
+  const toggleCategory = (category: string) => {
+    const newExpanded = new Set(expandedCategories);
+    if (newExpanded.has(category)) {
+      newExpanded.delete(category);
+    } else {
+      newExpanded.add(category);
+    }
+    setExpandedCategories(newExpanded);
+  };
+
   return (
     <>
       {/* MVP: Paywall modal disabled */}
@@ -255,27 +266,47 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
           ) : prompts.length === 0 ? (
             <p className="text-muted-foreground">No prompts available for this template.</p>
           ) : (
-            <div className="space-y-12">
-              {promptCategories.map(category => (
-                <section key={category} className="border-t pt-8">
-                  <h3 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
-                    {category}
-                  </h3>
+            <div className="space-y-4">
+              {promptCategories.map(category => {
+                const isExpanded = expandedCategories.has(category);
+                const categoryPrompts = groupedPrompts[category];
 
-                  <div className="grid grid-cols-1 gap-y-1">
-                    {groupedPrompts[category].map((prompt) => (
-                      <div
-                        key={prompt.id}
-                        className="group block py-2 hover:text-primary transition-colors"
-                      >
-                        <div className="text-sm">
-                          {prompt.prompt}
-                        </div>
+                return (
+                  <section key={category} className="border-t pt-4">
+                    <button
+                      onClick={() => toggleCategory(category)}
+                      className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                    >
+                      <div className="flex items-center gap-2">
+                        <ChevronRight
+                          className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+                        />
+                        <h3 className="text-xs font-semibold text-muted-foreground tracking-wider uppercase">
+                          {category}
+                        </h3>
                       </div>
-                    ))}
-                  </div>
-                </section>
-              ))}
+                      <Badge variant="outline" className="text-xs">
+                        {categoryPrompts.length}
+                      </Badge>
+                    </button>
+
+                    {isExpanded && (
+                      <div className="mt-2 grid grid-cols-1 gap-y-1 pl-6">
+                        {categoryPrompts.map((prompt) => (
+                          <div
+                            key={prompt.id}
+                            className="group block py-2 hover:text-primary transition-colors"
+                          >
+                            <div className="text-sm">
+                              {prompt.prompt}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </section>
+                );
+              })}
             </div>
           )}
         </div>
