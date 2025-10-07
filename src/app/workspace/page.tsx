@@ -404,54 +404,58 @@ export default function WorkspacePage() {
 
         {/* Article Card - Floating in right margin */}
         {openArticle && (
-          <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-muted/30 backdrop-blur-xl rounded-lg p-6 shadow-lg z-20">
-            <div className="flex items-center justify-between mb-4">
-              <Badge variant="outline" className="text-xs">
-                {openArticle.readTime}
-              </Badge>
-              <div className="flex items-center gap-1">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-6 w-6"
-                  onClick={() => setArticleFontSize(prev => Math.max(50, prev - 10))}
-                >
-                  <ZoomOut className="h-3 w-3" />
-                </Button>
-                <span className="text-xs text-muted-foreground w-10 text-center">{articleFontSize}%</span>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-6 w-6"
-                  onClick={() => setArticleFontSize(prev => Math.min(200, prev + 10))}
-                >
-                  <ZoomIn className="h-3 w-3" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-6 w-6"
-                  onClick={handleCloseArticle}
-                >
-                  <X className="h-3 w-3" />
-                </Button>
+          <div className="fixed right-8 top-24 w-96 max-h-[calc(100vh-12rem)] overflow-y-auto overflow-x-hidden bg-muted/30 backdrop-blur-xl rounded-lg shadow-lg z-20">
+            <div className="sticky top-0 bg-muted/30 backdrop-blur-xl p-6 pb-4 z-10">
+              <div className="flex items-center justify-between mb-4">
+                <Badge variant="outline" className="text-xs">
+                  {openArticle.readTime}
+                </Badge>
+                <div className="flex items-center gap-1">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-6 w-6"
+                    onClick={() => setArticleFontSize(prev => Math.max(50, prev - 10))}
+                  >
+                    <ZoomOut className="h-3 w-3" />
+                  </Button>
+                  <span className="text-xs text-muted-foreground w-10 text-center">{articleFontSize}%</span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-6 w-6"
+                    onClick={() => setArticleFontSize(prev => Math.min(200, prev + 10))}
+                  >
+                    <ZoomIn className="h-3 w-3" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-6 w-6"
+                    onClick={handleCloseArticle}
+                  >
+                    <X className="h-3 w-3" />
+                  </Button>
+                </div>
               </div>
+
+              <h2 className="text-lg font-semibold leading-tight">{openArticle.title}</h2>
             </div>
 
-            <h2 className="text-lg font-semibold mb-4 leading-tight">{openArticle.title}</h2>
-
-            <div
-              style={{
-                transform: `scale(${articleFontSize / 100})`,
-                transformOrigin: 'top left',
-                width: `${100 / (articleFontSize / 100)}%`
-              }}
-            >
-              {openArticle.content ? (
-                <ArticleContent content={openArticle.content} />
-              ) : (
-                <p className="text-muted-foreground text-sm">Article content loading...</p>
-              )}
+            <div className="px-6 pb-6">
+              <div
+                style={{
+                  transform: `scale(${articleFontSize / 100})`,
+                  transformOrigin: 'top left',
+                  width: `${100 / (articleFontSize / 100)}%`
+                }}
+              >
+                {openArticle.content ? (
+                  <ArticleContent content={openArticle.content} />
+                ) : (
+                  <p className="text-muted-foreground text-sm">Article content loading...</p>
+                )}
+              </div>
             </div>
           </div>
         )}
