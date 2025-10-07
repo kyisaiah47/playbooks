@@ -20,6 +20,13 @@ export function NavMain({
     icon?: Icon
   }[]
 }) {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    e.preventDefault();
+    // Simply allow default anchor behavior
+    const cleanHash = url.startsWith('#') ? url.slice(1) : url;
+    window.location.hash = cleanHash;
+  };
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -46,7 +53,7 @@ export function NavMain({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton tooltip={item.title} asChild>
-                <a href={item.url}>
+                <a href={item.url} onClick={(e) => handleNavClick(e, item.url)}>
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
                 </a>

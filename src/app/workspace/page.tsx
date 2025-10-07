@@ -1,6 +1,6 @@
 'use client';
 
-import { AppSidebar } from "@/components/app-sidebar"
+import { WorkspaceSidebar } from "@/components/workspace-sidebar"
 import { SiteHeader } from "@/components/site-header"
 import {
   SidebarInset,
@@ -38,12 +38,18 @@ import { useRouter } from 'next/navigation';
 import { ChartAreaInteractive } from '@/components/chart-area-interactive';
 import { useState, useEffect, useMemo } from 'react';
 import { supabase } from '@/lib/supabase';
+import { ChatView } from '@/components/workspace-views/chat-view';
+import { SplitView } from '@/components/workspace-views/split-view';
+import { BoardView } from '@/components/workspace-views/board-view';
+
+export type ViewMode = 'chat' | 'split' | 'board';
 
 export default function WorkspacePage() {
   const router = useRouter();
   const totalTemplates = templateRegistry.length;
   const [favorites, setFavorites] = useState<string[]>([]);
   const [currentView, setCurrentView] = useState('dashboard');
+  const [viewMode, setViewMode] = useState<ViewMode>('chat');
   const [searchQuery, setSearchQuery] = useState('');
   const [promptsSearchQuery, setPromptsSearchQuery] = useState('');
   const [articlesSearchQuery, setArticlesSearchQuery] = useState('');
@@ -57,7 +63,8 @@ export default function WorkspacePage() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1); // Remove #
-      setCurrentView(hash || 'dashboard');
+      const view = hash || 'dashboard';
+      setCurrentView(view);
     };
 
     handleHashChange(); // Set initial view
@@ -250,7 +257,7 @@ export default function WorkspacePage() {
         } as React.CSSProperties
       }
     >
-      <AppSidebar variant="inset" />
+      <WorkspaceSidebar variant="inset" viewMode={viewMode} onViewModeChange={setViewMode} />
       <SidebarInset>
         <SiteHeader />
         <div className="flex flex-1 flex-col">
@@ -928,114 +935,19 @@ export default function WorkspacePage() {
                 )}
               </div>
             ) : currentView === 'workspaces' ? (
-              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h1 className="text-3xl font-bold">Workspaces</h1>
-                    <p className="text-muted-foreground mt-1">
-                      {filteredWorkspacesView.length} workspaces
-                    </p>
-                  </div>
+              <div className="flex flex-col h-full">
+                {/* Workspace Header */}
+                <div className="border-b px-4 py-3">
+                  <h1 className="text-2xl font-bold">My Workspace</h1>
+                  <p className="text-sm text-muted-foreground">Template: Life Planning</p>
                 </div>
 
-                {/* Search */}
-                <div className="flex items-center gap-2 max-w-md">
-                  <div className="relative flex-1">
-                    <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search workspaces..."
-                      value={workspacesSearchQuery}
-                      onChange={(e) => {
-                        setWorkspacesSearchQuery(e.target.value);
-                        setWorkspacesViewPage(0);
-                      }}
-                      className="pl-10"
-                    />
-                  </div>
+                {/* View Mode Content */}
+                <div className="flex-1 overflow-hidden">
+                  {viewMode === 'chat' && <ChatView />}
+                  {viewMode === 'split' && <SplitView />}
+                  {viewMode === 'board' && <BoardView />}
                 </div>
-
-                {/* Workspaces Table */}
-                <div className="rounded-lg border overflow-x-auto">
-                  <Table>
-                    <TableHeader className="bg-muted">
-                      <TableRow>
-                        <TableHead className="min-w-[200px]">Workspace</TableHead>
-                        <TableHead className="min-w-[150px]">Template</TableHead>
-                        <TableHead className="min-w-[150px]">Last Edited</TableHead>
-                        <TableHead className="min-w-[100px]">Word Count</TableHead>
-                        <TableHead className="text-right min-w-[100px]">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {paginatedWorkspacesView.length === 0 ? (
-                        <TableRow>
-                          <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
-                            No workspaces found
-                          </TableCell>
-                        </TableRow>
-                      ) : (
-                        paginatedWorkspacesView.map((workspace) => (
-                          <TableRow key={workspace.id}>
-                            <TableCell className="font-medium">{workspace.name}</TableCell>
-                            <TableCell>
-                              <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                {workspace.template}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-sm text-muted-foreground">
-                              {workspace.lastEdited}
-                            </TableCell>
-                            <TableCell className="text-sm text-muted-foreground">
-                              {workspace.wordCount.toLocaleString()}
-                            </TableCell>
-                            <TableCell className="text-right">
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => router.push(`/workspace/${workspace.id}`)}
-                              >
-                                Open
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                      )}
-                    </TableBody>
-                  </Table>
-                </div>
-
-                {/* Pagination */}
-                {totalWorkspacesPages > 1 && (
-                  <div className="flex items-center justify-between px-2">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {workspacesViewPage * viewPageSize + 1} to {Math.min((workspacesViewPage + 1) * viewPageSize, filteredWorkspacesView.length)} of {filteredWorkspacesView.length} workspaces
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setWorkspacesViewPage(Math.max(0, workspacesViewPage - 1))}
-                        disabled={workspacesViewPage === 0}
-                      >
-                        <IconChevronLeft className="h-4 w-4" />
-                        Previous
-                      </Button>
-                      <div className="text-sm text-muted-foreground">
-                        Page {workspacesViewPage + 1} of {totalWorkspacesPages}
-                      </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setWorkspacesViewPage(workspacesViewPage + 1)}
-                        disabled={workspacesViewPage >= totalWorkspacesPages - 1}
-                      >
-                        Next
-                        <IconChevronRight className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                )}
               </div>
             ) : (
               <div className="flex items-center justify-center h-full px-4">
