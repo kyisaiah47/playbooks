@@ -440,7 +440,7 @@ export default function WorkspacePage() {
               </div>
             </div>
 
-            <div className="px-6 pb-6 pt-6" style={{ fontSize: `${articleFontSize}%` }}>
+            <div className="px-6 pb-6 pt-6" style={{ zoom: `${articleFontSize}%` }}>
               {openArticle.content ? (
                 <ArticleContent content={openArticle.content} />
               ) : (
