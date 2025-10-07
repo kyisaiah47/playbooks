@@ -72,6 +72,18 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
     fetchData();
   }, [slug]);
 
+  // Group prompts by category
+  const groupedPrompts = prompts.reduce((acc, prompt) => {
+    const category = prompt.categoryName || 'General';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(prompt);
+    return acc;
+  }, {} as Record<string, Prompt[]>);
+
+  const promptCategories = Object.keys(groupedPrompts).sort();
+
   if (!template?.template) {
     return (
       <PageLayout>
@@ -219,39 +231,38 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
       {/* Prompts Library */}
       <section className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-bold mb-8">Prompts</h2>
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-2">Prompts</h2>
+            <p className="text-sm text-muted-foreground">
+              {prompts.length} prompts across {promptCategories.length} categories
+            </p>
+          </div>
 
           {loading ? (
             <p className="text-muted-foreground">Loading prompts...</p>
           ) : prompts.length === 0 ? (
             <p className="text-muted-foreground">No prompts available for this template.</p>
           ) : (
-            <div className="space-y-0 border rounded-lg divide-y">
-              {prompts.map((prompt) => (
-                <div
-                  key={prompt.id}
-                  className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
-                >
-                  <div className="flex-1 min-w-0 mr-4">
-                    <p className="text-sm font-medium truncate">
-                      {prompt.prompt}
-                    </p>
+            <div className="space-y-12">
+              {promptCategories.map(category => (
+                <section key={category} className="border-t pt-8">
+                  <h3 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
+                    {category}
+                  </h3>
+
+                  <div className="grid grid-cols-1 gap-y-1">
+                    {groupedPrompts[category].map((prompt) => (
+                      <div
+                        key={prompt.id}
+                        className="group block py-2 hover:text-primary transition-colors"
+                      >
+                        <div className="text-sm">
+                          {prompt.prompt}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    <Badge variant="secondary" className="text-xs">
-                      {prompt.categoryName}
-                    </Badge>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => handleInsertPrompt(prompt)}
-                      className="flex items-center gap-1"
-                    >
-                      Insert
-                      <ArrowRight className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
+                </section>
               ))}
             </div>
           )}
@@ -263,38 +274,35 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
       {/* Articles Library */}
       <section className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-bold mb-8">Articles</h2>
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-2">Articles</h2>
+            <p className="text-sm text-muted-foreground">
+              {articles.length} articles
+            </p>
+          </div>
 
           {loading ? (
             <p className="text-muted-foreground">Loading articles...</p>
           ) : articles.length === 0 ? (
             <p className="text-muted-foreground">No articles available for this template.</p>
           ) : (
-            <div className="space-y-0 border rounded-lg divide-y">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
               {articles.map((article) => (
                 <div
                   key={article.id}
-                  className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
+                  className="group block py-2"
                 >
-                  <div className="flex-1 min-w-0 mr-4">
-                    <h3 className="text-sm font-medium mb-1">{article.title}</h3>
-                    <p className="text-xs text-muted-foreground line-clamp-1">
-                      {article.excerpt}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    <span className="text-xs text-muted-foreground">
-                      {article.readTime}
-                    </span>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => handleReadArticle(article)}
-                      className="flex items-center gap-1"
-                    >
-                      Read
-                      <ArrowRight className="h-3 w-3" />
-                    </Button>
+                  <h3 className="text-sm font-medium group-hover:text-primary transition-colors mb-1">
+                    {article.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span>{article.readTime}</span>
+                    {article.excerpt && (
+                      <>
+                        <span>•</span>
+                        <span className="line-clamp-1">{article.excerpt}</span>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
