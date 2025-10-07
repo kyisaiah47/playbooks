@@ -326,23 +326,17 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
           ) : articles.length === 0 ? (
             <p className="text-muted-foreground">No articles available for this template.</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+            <div className="border-t">
               {articles.map((article) => (
                 <div
                   key={article.id}
-                  className="group block py-2"
+                  className="group border-b py-3 hover:bg-muted/50 transition-colors"
                 >
-                  <h3 className="text-sm font-medium group-hover:text-primary transition-colors mb-1">
+                  <h3 className="text-sm font-medium group-hover:text-primary transition-colors">
                     {article.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
                     <span>{article.readTime}</span>
-                    {article.excerpt && (
-                      <>
-                        <span>•</span>
-                        <span className="line-clamp-1">{article.excerpt}</span>
-                      </>
-                    )}
                   </div>
                 </div>
               ))}
