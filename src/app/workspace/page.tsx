@@ -317,8 +317,8 @@ export default function WorkspacePage() {
       />
       <SidebarInset>
         <SiteHeader />
-        <div className="flex flex-1 flex-col pb-32">
-          <div className="@container/main flex flex-1 flex-col gap-2">
+        <div className="flex flex-1 flex-col overflow-hidden pb-32">
+          <div className="@container/main flex flex-1 flex-col gap-2 overflow-auto">
             {currentView === 'dashboard' ? (
               <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
 
@@ -660,98 +660,90 @@ export default function WorkspacePage() {
 
               </div>
             ) : currentView === 'templates' ? (
-              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h1 className="text-3xl font-bold">Templates</h1>
-                    <p className="text-muted-foreground mt-1">
-                      {filteredTemplates.length} templates available
-                    </p>
-                  </div>
-                </div>
-
-                {/* Search */}
-                <div className="flex items-center gap-2 max-w-md">
-                  <div className="relative flex-1">
-                    <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search templates..."
-                      value={searchQuery}
-                      onChange={(e) => {
-                        setSearchQuery(e.target.value);
-                        setTemplatesPage(0);
-                      }}
-                      className="pl-10"
-                    />
-                  </div>
-                </div>
-
-                {/* Templates Table */}
-                <div className="rounded-lg border overflow-x-auto">
-                  <Table>
-                    <TableHeader className="bg-muted">
-                      <TableRow>
-                        <TableHead className="min-w-[200px]">Template</TableHead>
-                        <TableHead className="min-w-[120px]">Category</TableHead>
-                        <TableHead className="min-w-[300px] max-w-[400px]">Description</TableHead>
-                        <TableHead className="text-right min-w-[100px]">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {paginatedTemplatesView.length === 0 ? (
-                        <TableRow>
-                          <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
-                            No templates found
-                          </TableCell>
-                        </TableRow>
-                      ) : (
-                        paginatedTemplatesView.map((template) => (
-                          <TableRow key={template.id}>
-                            <TableCell className="font-medium">{template.name}</TableCell>
-                            <TableCell>
-                              <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                {template.category}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-sm text-muted-foreground max-w-[400px] truncate">
-                              {template.description}
-                            </TableCell>
-                            <TableCell className="text-right">
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => router.push(`/${template.id}/template`)}
-                              >
-                                View
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                      )}
-                    </TableBody>
-                  </Table>
-                </div>
-
-                {/* Pagination */}
-                {totalTemplatesPages > 1 && (
-                  <div className="flex items-center justify-between px-2">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {templatesPage * templatesPageSize + 1} to {Math.min((templatesPage + 1) * templatesPageSize, filteredTemplates.length)} of {filteredTemplates.length} templates
+              <div className="flex flex-col h-full py-4 md:py-6">
+                {/* Templates Table View */}
+                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <h1 className="text-2xl font-bold tracking-tight">Templates</h1>
+                      <p className="text-sm text-muted-foreground">
+                        Explore {filteredTemplates.length} curated template{filteredTemplates.length !== 1 ? 's' : ''} for every life moment
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2">
+                  </div>
+
+                  {/* Search */}
+                  <Input
+                    placeholder="Search templates..."
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      setTemplatesPage(0);
+                    }}
+                  />
+
+                  {/* Templates Table */}
+                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
+                    <div className="relative w-full h-full overflow-auto">
+                      <table className="w-full caption-bottom text-sm">
+                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
+                          <tr className="border-b">
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Template
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Category
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Description
+                            </th>
+                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="[&_tr:last-child]:border-0">
+                          {paginatedTemplatesView.map((template) => (
+                            <tr key={template.id} className="border-b transition-colors hover:bg-muted/50">
+                              <td className="p-4 align-middle font-medium">{template.name}</td>
+                              <td className="p-4 align-middle">
+                                <Badge variant="outline">{template.category}</Badge>
+                              </td>
+                              <td className="p-4 align-middle text-muted-foreground">
+                                {template.description}
+                              </td>
+                              <td className="p-4 align-middle text-right">
+                                <div className="flex gap-2 justify-end">
+                                  <Button size="sm" variant="outline" onClick={() => router.push(`/${template.id}/template`)}>
+                                    View
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    Start
+                                  </Button>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Pagination */}
+                  <div className="flex items-center justify-between py-4 shrink-0">
+                    <div className="text-sm text-muted-foreground">
+                      Showing {templatesPage * templatesPageSize + 1} to {Math.min((templatesPage + 1) * templatesPageSize, filteredTemplates.length)} of {filteredTemplates.length}
+                    </div>
+                    <div className="flex gap-2">
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => setTemplatesPage(Math.max(0, templatesPage - 1))}
+                        onClick={() => setTemplatesPage(templatesPage - 1)}
                         disabled={templatesPage === 0}
                       >
                         <IconChevronLeft className="h-4 w-4" />
                         Previous
                       </Button>
-                      <div className="text-sm text-muted-foreground">
-                        Page {templatesPage + 1} of {totalTemplatesPages}
-                      </div>
                       <Button
                         variant="outline"
                         size="sm"
@@ -763,105 +755,93 @@ export default function WorkspacePage() {
                       </Button>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ) : currentView === 'prompts' ? (
-              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h1 className="text-3xl font-bold">Prompts</h1>
-                    <p className="text-muted-foreground mt-1">
-                      {promptsLoading ? 'Loading prompts...' : `${filteredPrompts.length} prompts available`}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Search */}
-                <div className="flex items-center gap-2 max-w-md">
-                  <div className="relative flex-1">
-                    <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search prompts..."
-                      value={promptsSearchQuery}
-                      onChange={(e) => {
-                        setPromptsSearchQuery(e.target.value);
-                        setPromptsPage(0);
-                      }}
-                      className="pl-10"
-                    />
-                  </div>
-                </div>
-
-                {/* Prompts Table */}
-                <div className="rounded-lg border overflow-x-auto">
-                  <Table>
-                    <TableHeader className="bg-muted">
-                      <TableRow>
-                        <TableHead className="min-w-[300px] max-w-[500px]">Prompt</TableHead>
-                        <TableHead className="min-w-[150px]">Template</TableHead>
-                        <TableHead className="min-w-[120px]">Category</TableHead>
-                        <TableHead className="min-w-[100px]">Type</TableHead>
-                        <TableHead className="text-right min-w-[100px]">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {paginatedPrompts.length === 0 ? (
-                        <TableRow>
-                          <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
-                            No prompts found
-                          </TableCell>
-                        </TableRow>
-                      ) : (
-                        paginatedPrompts.map((prompt) => (
-                          <TableRow key={prompt.id}>
-                            <TableCell className="text-sm max-w-[500px] truncate">{prompt.prompt}</TableCell>
-                            <TableCell className="font-medium">{prompt.template}</TableCell>
-                            <TableCell>
-                              <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                {prompt.categoryName || 'General'}
-                              </Badge>
-                            </TableCell>
-                            <TableCell>
-                              <Badge variant="secondary" className="px-1.5">
-                                {prompt.category || 'planning'}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-right">
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => router.push(`/${prompt.templateId}/template`)}
-                              >
-                                View
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                      )}
-                    </TableBody>
-                  </Table>
-                </div>
-
-                {/* Pagination */}
-                {totalPromptsPages > 1 && (
-                  <div className="flex items-center justify-between px-2">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {promptsPage * viewPageSize + 1} to {Math.min((promptsPage + 1) * viewPageSize, filteredPrompts.length)} of {filteredPrompts.length} prompts
+              <div className="flex flex-col h-full py-4 md:py-6">
+                {/* Prompts Table View */}
+                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <h1 className="text-2xl font-bold tracking-tight">Prompts</h1>
+                      <p className="text-sm text-muted-foreground">
+                        Browse {allPrompts.length.toLocaleString()} AI-curated prompt{allPrompts.length !== 1 ? 's' : ''} across all templates
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2">
+                  </div>
+
+                  {/* Search */}
+                  <Input
+                    placeholder="Search prompts..."
+                    value={promptsSearchQuery}
+                    onChange={(e) => {
+                      setPromptsSearchQuery(e.target.value);
+                      setPromptsPage(0);
+                    }}
+                  />
+
+                  {/* Prompts Table */}
+                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
+                    <div className="relative w-full h-full overflow-auto">
+                      <table className="w-full caption-bottom text-sm">
+                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
+                          <tr className="border-b">
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Prompt
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Template
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Category
+                            </th>
+                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="[&_tr:last-child]:border-0">
+                          {paginatedPrompts.map((prompt) => (
+                            <tr key={prompt.id} className="border-b transition-colors hover:bg-muted/50">
+                              <td className="p-4 align-middle font-medium">{prompt.prompt}</td>
+                              <td className="p-4 align-middle text-muted-foreground">
+                                {prompt.template}
+                              </td>
+                              <td className="p-4 align-middle">
+                                <Badge variant="outline">{prompt.categoryName || 'General'}</Badge>
+                              </td>
+                              <td className="p-4 align-middle text-right">
+                                <div className="flex gap-2 justify-end">
+                                  <Button size="sm" variant="outline">
+                                    Copy
+                                  </Button>
+                                  <Button size="sm" variant="ghost" onClick={() => router.push(`/${prompt.templateId}/template`)}>
+                                    View Template
+                                  </Button>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Pagination */}
+                  <div className="flex items-center justify-between py-4 shrink-0">
+                    <div className="text-sm text-muted-foreground">
+                      Showing {promptsPage * viewPageSize + 1} to {Math.min((promptsPage + 1) * viewPageSize, filteredPrompts.length)} of {filteredPrompts.length}
+                    </div>
+                    <div className="flex gap-2">
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => setPromptsPage(Math.max(0, promptsPage - 1))}
+                        onClick={() => setPromptsPage(promptsPage - 1)}
                         disabled={promptsPage === 0}
                       >
                         <IconChevronLeft className="h-4 w-4" />
                         Previous
                       </Button>
-                      <div className="text-sm text-muted-foreground">
-                        Page {promptsPage + 1} of {totalPromptsPages}
-                      </div>
                       <Button
                         variant="outline"
                         size="sm"
@@ -873,111 +853,99 @@ export default function WorkspacePage() {
                       </Button>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ) : currentView === 'articles' ? (
-              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h1 className="text-3xl font-bold">Articles</h1>
-                    <p className="text-muted-foreground mt-1">
-                      {articlesLoading ? 'Loading articles...' : `${filteredArticles.length} articles available`}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Search */}
-                <div className="flex items-center gap-2 max-w-md">
-                  <div className="relative flex-1">
-                    <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search articles..."
-                      value={articlesSearchQuery}
-                      onChange={(e) => {
-                        setArticlesSearchQuery(e.target.value);
-                        setArticlesPage(0);
-                      }}
-                      className="pl-10"
-                    />
-                  </div>
-                </div>
-
-                {/* Articles Table */}
-                <div className="rounded-lg border overflow-x-auto">
-                  <Table>
-                    <TableHeader className="bg-muted">
-                      <TableRow>
-                        <TableHead className="min-w-[250px]">Title</TableHead>
-                        <TableHead className="min-w-[150px]">Template</TableHead>
-                        <TableHead className="min-w-[300px] max-w-[400px]">Excerpt</TableHead>
-                        <TableHead className="min-w-[100px]">Read Time</TableHead>
-                        <TableHead className="min-w-[100px]">Type</TableHead>
-                        <TableHead className="text-right min-w-[100px]">Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {paginatedArticles.length === 0 ? (
-                        <TableRow>
-                          <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
-                            No articles found
-                          </TableCell>
-                        </TableRow>
-                      ) : (
-                        paginatedArticles.map((article) => (
-                          <TableRow key={article.id}>
-                            <TableCell className="font-medium">{article.title}</TableCell>
-                            <TableCell>
-                              <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                {article.template || 'General'}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-sm text-muted-foreground max-w-[400px] truncate">
-                              {article.excerpt || 'No excerpt available'}
-                            </TableCell>
-                            <TableCell className="text-sm text-muted-foreground">
-                              {article.readTime || 5} min
-                            </TableCell>
-                            <TableCell>
-                              <Badge variant="secondary" className="px-1.5">
-                                {article.type || 'guide'}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-right">
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => router.push(`/articles/${article.slug || article.id}`)}
-                              >
-                                Read
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                      )}
-                    </TableBody>
-                  </Table>
-                </div>
-
-                {/* Pagination */}
-                {totalArticlesPages > 1 && (
-                  <div className="flex items-center justify-between px-2">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {articlesPage * viewPageSize + 1} to {Math.min((articlesPage + 1) * viewPageSize, filteredArticles.length)} of {filteredArticles.length} articles
+              <div className="flex flex-col h-full py-4 md:py-6">
+                {/* Articles Table View */}
+                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <h1 className="text-2xl font-bold tracking-tight">Articles</h1>
+                      <p className="text-sm text-muted-foreground">
+                        Discover {allArticles.length.toLocaleString()} expert article{allArticles.length !== 1 ? 's' : ''} and learning resources
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2">
+                  </div>
+
+                  {/* Search */}
+                  <Input
+                    placeholder="Search articles..."
+                    value={articlesSearchQuery}
+                    onChange={(e) => {
+                      setArticlesSearchQuery(e.target.value);
+                      setArticlesPage(0);
+                    }}
+                  />
+
+                  {/* Articles Table */}
+                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
+                    <div className="relative w-full h-full overflow-auto">
+                      <table className="w-full caption-bottom text-sm">
+                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
+                          <tr className="border-b">
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Title
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Template
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Excerpt
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Read Time
+                            </th>
+                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="[&_tr:last-child]:border-0">
+                          {paginatedArticles.map((article) => (
+                            <tr key={article.id} className="border-b transition-colors hover:bg-muted/50">
+                              <td className="p-4 align-middle font-medium">{article.title}</td>
+                              <td className="p-4 align-middle">
+                                <Badge variant="outline">{article.template || 'General'}</Badge>
+                              </td>
+                              <td className="p-4 align-middle text-muted-foreground">
+                                {article.excerpt || 'No excerpt available'}
+                              </td>
+                              <td className="p-4 align-middle text-muted-foreground">
+                                {article.readTime || 5} min
+                              </td>
+                              <td className="p-4 align-middle text-right">
+                                <div className="flex gap-2 justify-end">
+                                  <Button size="sm" variant="outline" onClick={() => router.push(`/articles/${article.slug || article.id}`)}>
+                                    Read
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    Save
+                                  </Button>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Pagination */}
+                  <div className="flex items-center justify-between py-4 shrink-0">
+                    <div className="text-sm text-muted-foreground">
+                      Showing {articlesPage * viewPageSize + 1} to {Math.min((articlesPage + 1) * viewPageSize, filteredArticles.length)} of {filteredArticles.length}
+                    </div>
+                    <div className="flex gap-2">
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => setArticlesPage(Math.max(0, articlesPage - 1))}
+                        onClick={() => setArticlesPage(articlesPage - 1)}
                         disabled={articlesPage === 0}
                       >
                         <IconChevronLeft className="h-4 w-4" />
                         Previous
                       </Button>
-                      <div className="text-sm text-muted-foreground">
-                        Page {articlesPage + 1} of {totalArticlesPages}
-                      </div>
                       <Button
                         variant="outline"
                         size="sm"
@@ -989,20 +957,20 @@ export default function WorkspacePage() {
                       </Button>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ) : currentView === 'workspaces' ? (
-              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+              <div className="flex flex-col h-full py-4 md:py-6">
                 {/* Workspaces Table View */}
-                <div className="px-4 lg:px-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <h1 className="text-2xl font-bold">Workspaces</h1>
+                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <h1 className="text-2xl font-bold tracking-tight">Workspaces</h1>
                       <p className="text-sm text-muted-foreground">
-                        {workspaces.length} workspace{workspaces.length !== 1 ? 's' : ''}
+                        Manage your {workspaces.length} active workspace{workspaces.length !== 1 ? 's' : ''} and projects
                       </p>
                     </div>
-                    <Button>
+                    <Button className="shadow-sm">
                       <IconCirclePlus className="h-4 w-4 mr-2" />
                       New Workspace
                     </Button>
@@ -1013,15 +981,14 @@ export default function WorkspacePage() {
                     placeholder="Search workspaces..."
                     value={workspacesSearchQuery}
                     onChange={(e) => setWorkspacesSearchQuery(e.target.value)}
-                    className="mb-4"
                   />
 
                   {/* Workspaces Table */}
-                  <div className="border rounded-lg">
-                    <div className="relative w-full overflow-auto">
+                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
+                    <div className="relative w-full h-full overflow-auto">
                       <table className="w-full caption-bottom text-sm">
-                        <thead className="[&_tr]:border-b">
-                          <tr className="border-b transition-colors hover:bg-muted/50">
+                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
+                          <tr className="border-b">
                             <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
                               Name
                             </th>
@@ -1086,7 +1053,7 @@ export default function WorkspacePage() {
                   </div>
 
                   {/* Pagination */}
-                  <div className="flex items-center justify-between py-4">
+                  <div className="flex items-center justify-between py-4 shrink-0">
                     <div className="text-sm text-muted-foreground">
                       Showing {workspacesPage * pageSize + 1} to {Math.min((workspacesPage + 1) * pageSize, workspaces.length)} of {workspaces.length}
                     </div>
