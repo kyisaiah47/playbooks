@@ -41,6 +41,7 @@ import { supabase } from '@/lib/supabase';
 import { ChatView } from '@/components/workspace-views/chat-view';
 import { SplitView } from '@/components/workspace-views/split-view';
 import { BoardView } from '@/components/workspace-views/board-view';
+import { ChecklistView } from '@/components/workspace-views/checklist-view';
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/ui/shadcn-io/dock';
 import { IconNotes } from '@tabler/icons-react';
 import {
@@ -53,7 +54,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-export type ViewMode = 'chat' | 'split' | 'board';
+export type ViewMode = 'chat' | 'split' | 'board' | 'text' | 'timeline' | 'table' | 'cards' | 'outline' | 'checklist' | 'tabs';
 
 export default function WorkspacePage() {
   const router = useRouter();
@@ -970,6 +971,13 @@ export default function WorkspacePage() {
                   {viewMode === 'chat' && <ChatView templateId={selectedTemplateId} />}
                   {viewMode === 'split' && <SplitView templateId={selectedTemplateId} />}
                   {viewMode === 'board' && <BoardView templateId={selectedTemplateId} />}
+                  {viewMode === 'checklist' && <ChecklistView templateId={selectedTemplateId} />}
+                  {viewMode === 'text' && <div className="flex items-center justify-center h-full text-muted-foreground">Text Editor View - Coming Soon</div>}
+                  {viewMode === 'timeline' && <div className="flex items-center justify-center h-full text-muted-foreground">Timeline View - Coming Soon</div>}
+                  {viewMode === 'table' && <div className="flex items-center justify-center h-full text-muted-foreground">Table View - Coming Soon</div>}
+                  {viewMode === 'cards' && <div className="flex items-center justify-center h-full text-muted-foreground">Cards View - Coming Soon</div>}
+                  {viewMode === 'outline' && <div className="flex items-center justify-center h-full text-muted-foreground">Outline View - Coming Soon</div>}
+                  {viewMode === 'tabs' && <div className="flex items-center justify-center h-full text-muted-foreground">Tabs View - Coming Soon</div>}
                 </div>
 
                 {/* Floating Dock */}

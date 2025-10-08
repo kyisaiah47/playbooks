@@ -1,6 +1,17 @@
 "use client"
 
-import { IconMessageCircle, IconColumns, IconLayoutKanban } from "@tabler/icons-react"
+import {
+  IconMessageCircle,
+  IconColumns,
+  IconLayoutKanban,
+  IconFileText,
+  IconTimeline,
+  IconTable,
+  IconLayoutGrid,
+  IconListTree,
+  IconChecklist,
+  IconLayoutNavbar,
+} from "@tabler/icons-react"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -10,7 +21,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-export type ViewMode = 'chat' | 'split' | 'board';
+export type ViewMode = 'chat' | 'split' | 'board' | 'text' | 'timeline' | 'table' | 'cards' | 'outline' | 'checklist' | 'tabs';
 
 interface NavViewModeProps {
   currentMode: ViewMode;
@@ -33,6 +44,41 @@ export function NavViewMode({ currentMode, onModeChange }: NavViewModeProps) {
       mode: 'board' as ViewMode,
       title: "Board View",
       icon: IconLayoutKanban,
+    },
+    {
+      mode: 'checklist' as ViewMode,
+      title: "Checklist View",
+      icon: IconChecklist,
+    },
+    {
+      mode: 'text' as ViewMode,
+      title: "Text Editor",
+      icon: IconFileText,
+    },
+    {
+      mode: 'timeline' as ViewMode,
+      title: "Timeline View",
+      icon: IconTimeline,
+    },
+    {
+      mode: 'table' as ViewMode,
+      title: "Table View",
+      icon: IconTable,
+    },
+    {
+      mode: 'cards' as ViewMode,
+      title: "Cards View",
+      icon: IconLayoutGrid,
+    },
+    {
+      mode: 'outline' as ViewMode,
+      title: "Outline View",
+      icon: IconListTree,
+    },
+    {
+      mode: 'tabs' as ViewMode,
+      title: "Tabs View",
+      icon: IconLayoutNavbar,
     },
   ];
 
