@@ -14,7 +14,8 @@
       "Read(//Users/ikim1/Desktop/**)",
       "Bash(generation-scripts/fix-1min-articles.sh:*)",
       "Read(//private/tmp/**)",
-      "Bash(npx shadcn:*)"
+      "Bash(npx shadcn:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []
