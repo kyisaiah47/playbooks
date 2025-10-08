@@ -15,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { IconTrendingUp, IconFileText, IconFolders, IconPencil, IconTemplate, IconStar, IconClock, IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
+import { IconTrendingUp, IconFileText, IconFolders, IconPencil, IconTemplate, IconStar, IconClock, IconChevronLeft, IconChevronRight, IconCirclePlus } from "@tabler/icons-react"
 import {
   Table,
   TableBody,
@@ -64,7 +64,6 @@ export default function WorkspacePage() {
   const totalTemplates = templateRegistry.length;
   const [favorites, setFavorites] = useState<string[]>([]);
   const [currentView, setCurrentView] = useState('dashboard');
-  const [viewMode, setViewMode] = useState<ViewMode>('chat');
   const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(
     templateRegistry[0]?.id || null
   );
@@ -310,12 +309,15 @@ export default function WorkspacePage() {
     >
       <WorkspaceSidebar
         variant="inset"
-        viewMode={viewMode}
-        onViewModeChange={setViewMode}
+        viewMode={currentView as ViewMode}
+        onViewModeChange={(mode) => {
+          setCurrentView(mode);
+          window.location.hash = mode;
+        }}
       />
       <SidebarInset>
         <SiteHeader />
-        <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col pb-32">
           <div className="@container/main flex flex-1 flex-col gap-2">
             {currentView === 'dashboard' ? (
               <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
@@ -990,59 +992,195 @@ export default function WorkspacePage() {
                 )}
               </div>
             ) : currentView === 'workspaces' ? (
-              <div className="flex flex-col h-full relative">
-                {/* Workspace Header */}
+              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+                {/* Workspaces Table View */}
+                <div className="px-4 lg:px-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h1 className="text-2xl font-bold">Workspaces</h1>
+                      <p className="text-sm text-muted-foreground">
+                        {workspaces.length} workspace{workspaces.length !== 1 ? 's' : ''}
+                      </p>
+                    </div>
+                    <Button>
+                      <IconCirclePlus className="h-4 w-4 mr-2" />
+                      New Workspace
+                    </Button>
+                  </div>
+
+                  {/* Search */}
+                  <Input
+                    placeholder="Search workspaces..."
+                    value={workspacesSearchQuery}
+                    onChange={(e) => setWorkspacesSearchQuery(e.target.value)}
+                    className="mb-4"
+                  />
+
+                  {/* Workspaces Table */}
+                  <div className="border rounded-lg">
+                    <div className="relative w-full overflow-auto">
+                      <table className="w-full caption-bottom text-sm">
+                        <thead className="[&_tr]:border-b">
+                          <tr className="border-b transition-colors hover:bg-muted/50">
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Name
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Template
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Last Edited
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Progress
+                            </th>
+                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
+                              Word Count
+                            </th>
+                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
+                              Actions
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="[&_tr:last-child]:border-0">
+                          {paginatedWorkspaces.map((workspace) => (
+                            <tr key={workspace.id} className="border-b transition-colors hover:bg-muted/50">
+                              <td className="p-4 align-middle font-medium">{workspace.name}</td>
+                              <td className="p-4 align-middle">
+                                <Badge variant="outline">{workspace.template}</Badge>
+                              </td>
+                              <td className="p-4 align-middle text-muted-foreground">
+                                {workspace.lastEdited}
+                              </td>
+                              <td className="p-4 align-middle">
+                                <div className="flex items-center gap-2">
+                                  <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                                    <div
+                                      className="h-full bg-primary"
+                                      style={{ width: `${Math.floor(Math.random() * 100)}%` }}
+                                    />
+                                  </div>
+                                  <span className="text-xs text-muted-foreground">
+                                    {Math.floor(Math.random() * 100)}%
+                                  </span>
+                                </div>
+                              </td>
+                              <td className="p-4 align-middle text-muted-foreground">
+                                {workspace.wordCount.toLocaleString()} words
+                              </td>
+                              <td className="p-4 align-middle text-right">
+                                <div className="flex gap-2 justify-end">
+                                  <Button size="sm" variant="outline">
+                                    Open
+                                  </Button>
+                                  <Button size="sm" variant="ghost">
+                                    Export
+                                  </Button>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Pagination */}
+                  <div className="flex items-center justify-between py-4">
+                    <div className="text-sm text-muted-foreground">
+                      Showing {workspacesPage * pageSize + 1} to {Math.min((workspacesPage + 1) * pageSize, workspaces.length)} of {workspaces.length}
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setWorkspacesPage(workspacesPage - 1)}
+                        disabled={workspacesPage === 0}
+                      >
+                        <IconChevronLeft className="h-4 w-4" />
+                        Previous
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setWorkspacesPage(workspacesPage + 1)}
+                        disabled={(workspacesPage + 1) * pageSize >= workspaces.length}
+                      >
+                        Next
+                        <IconChevronRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : currentView === 'chat' || currentView === 'split' || currentView === 'board' ||
+               currentView === 'checklist' || currentView === 'table' || currentView === 'timeline' ||
+               currentView === 'text' || currentView === 'cards' || currentView === 'outline' ||
+               currentView === 'tabs' ? (
+              <div className="flex flex-col h-full">
+                {/* Working View Header */}
                 <div className="border-b px-4 py-3">
                   <h1 className="text-2xl font-bold">My Workspace</h1>
                   <p className="text-sm text-muted-foreground">
-                    Template: {templateRegistry.find(t => t.id === selectedTemplateId)?.name || 'Select a template'}
+                    Template: {templateRegistry.find(t => t.id === selectedTemplateId)?.name || 'Select a template from dock'}
                   </p>
                 </div>
 
                 {/* View Mode Content */}
-                <div className="flex-1 overflow-hidden pb-32">
-                  {viewMode === 'chat' && <ChatView templateId={selectedTemplateId} />}
-                  {viewMode === 'split' && <SplitView templateId={selectedTemplateId} />}
-                  {viewMode === 'board' && <BoardView templateId={selectedTemplateId} />}
-                  {viewMode === 'checklist' && <ChecklistView templateId={selectedTemplateId} />}
-                  {viewMode === 'table' && <TableView templateId={selectedTemplateId} />}
-                  {viewMode === 'timeline' && <TimelineView templateId={selectedTemplateId} />}
-                  {viewMode === 'text' && <TextEditorView templateId={selectedTemplateId} />}
-                  {viewMode === 'cards' && <div className="flex items-center justify-center h-full text-muted-foreground">Cards View - Coming Soon</div>}
-                  {viewMode === 'outline' && <div className="flex items-center justify-center h-full text-muted-foreground">Outline View - Coming Soon</div>}
-                  {viewMode === 'tabs' && <div className="flex items-center justify-center h-full text-muted-foreground">Tabs View - Coming Soon</div>}
+                <div className="flex-1 overflow-hidden">
+                  {currentView === 'chat' && <ChatView templateId={selectedTemplateId} />}
+                  {currentView === 'split' && <SplitView templateId={selectedTemplateId} />}
+                  {currentView === 'board' && <BoardView templateId={selectedTemplateId} />}
+                  {currentView === 'checklist' && <ChecklistView templateId={selectedTemplateId} />}
+                  {currentView === 'table' && <TableView templateId={selectedTemplateId} />}
+                  {currentView === 'timeline' && <TimelineView templateId={selectedTemplateId} />}
+                  {currentView === 'text' && <TextEditorView templateId={selectedTemplateId} />}
+                  {currentView === 'cards' && <div className="flex items-center justify-center h-full text-muted-foreground">Cards View - Coming Soon</div>}
+                  {currentView === 'outline' && <div className="flex items-center justify-center h-full text-muted-foreground">Outline View - Coming Soon</div>}
+                  {currentView === 'tabs' && <div className="flex items-center justify-center h-full text-muted-foreground">Tabs View - Coming Soon</div>}
                 </div>
+              </div>
+            ) : (
+              <div className="flex items-center justify-center h-full px-4">
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold mb-2">Coming Soon</h2>
+                  <p className="text-muted-foreground">This section is under construction.</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
 
-                {/* Floating Dock */}
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center pointer-events-none">
-                  <div className="pointer-events-auto">
-                    <Dock>
-                      {/* Templates Drawer */}
-                      <Drawer
-                        direction="bottom"
-                        open={templatesDrawerOpen}
-                        onOpenChange={(open) => {
-                          setTemplatesDrawerOpen(open);
-                          if (!open) {
-                            setLetterFilter('all');
-                            setSearchQuery('');
-                          }
-                        }}
-                      >
-                        <div onClick={() => setTemplatesDrawerOpen(true)} className="flex items-center justify-center h-full">
-                          <DockItem>
-                            <DockLabel>Templates</DockLabel>
-                            <DockIcon>
-                              <IconTemplate className="h-6 w-6" />
-                            </DockIcon>
-                          </DockItem>
-                        </div>
-                        <DrawerContent>
-                          <DrawerHeader>
-                            <DrawerTitle>Select Template</DrawerTitle>
-                            <DrawerDescription>Choose a template to work with</DrawerDescription>
-                          </DrawerHeader>
-                          <div className="p-4 overflow-y-auto max-h-[60vh]">
+        {/* Floating Dock - Always visible - Fixed overlay */}
+        <div className="fixed bottom-4 left-0 right-0 flex justify-center pointer-events-none z-50">
+          <div className="pointer-events-auto">
+            <Dock>
+                {/* Templates Drawer */}
+                <Drawer
+                  direction="bottom"
+                  open={templatesDrawerOpen}
+                  onOpenChange={(open) => {
+                    setTemplatesDrawerOpen(open);
+                    if (!open) {
+                      setLetterFilter('all');
+                      setSearchQuery('');
+                    }
+                  }}
+                >
+                  <div onClick={() => setTemplatesDrawerOpen(true)} className="flex items-center justify-center h-full">
+                    <DockItem>
+                      <DockLabel>Templates</DockLabel>
+                      <DockIcon>
+                        <IconTemplate className="h-6 w-6" />
+                      </DockIcon>
+                    </DockItem>
+                  </div>
+                  <DrawerContent>
+                    <DrawerHeader>
+                      <DrawerTitle>Select Template</DrawerTitle>
+                      <DrawerDescription>Choose a template to work with</DrawerDescription>
+                    </DrawerHeader>
+                    <div className="p-4 overflow-y-auto max-h-[60vh]">
                             <Input
                               placeholder="Search templates..."
                               value={searchQuery}
@@ -1092,151 +1230,212 @@ export default function WorkspacePage() {
                                 </div>
                               ))}
                             </div>
-                          </div>
-                        </DrawerContent>
-                      </Drawer>
+                    </div>
+                  </DrawerContent>
+                </Drawer>
 
-                      {/* Prompts Drawer */}
-                      <Drawer direction="bottom" open={promptsDrawerOpen} onOpenChange={setPromptsDrawerOpen}>
-                        <div onClick={() => setPromptsDrawerOpen(true)} className="flex items-center justify-center h-full">
-                          <DockItem>
-                            <DockLabel>Prompts</DockLabel>
-                            <DockIcon>
-                              <IconNotes className="h-6 w-6" />
-                            </DockIcon>
-                          </DockItem>
-                        </div>
-                        <DrawerContent>
-                          <DrawerHeader>
-                            <DrawerTitle>Browse Prompts</DrawerTitle>
-                            <DrawerDescription>
-                              {selectedTemplateId
-                                ? `Prompts for ${templateRegistry.find(t => t.id === selectedTemplateId)?.name}`
-                                : 'Select a template first'}
-                            </DrawerDescription>
-                          </DrawerHeader>
-                          <div className="p-4 overflow-y-auto max-h-[60vh]">
-                            <Input
-                              placeholder="Search prompts..."
-                              value={promptsSearchQuery}
-                              onChange={(e) => setPromptsSearchQuery(e.target.value)}
-                              className="mb-4"
-                            />
-                            {!selectedTemplateId ? (
-                              <p className="text-sm text-muted-foreground text-center py-8">
-                                Select a template from the dock to view prompts
-                              </p>
-                            ) : promptsLoading ? (
-                              <p className="text-sm text-muted-foreground text-center py-8">
-                                Loading prompts...
-                              </p>
-                            ) : filteredPrompts.length === 0 ? (
-                              <p className="text-sm text-muted-foreground text-center py-8">
-                                No prompts found
-                              </p>
-                            ) : (
-                              <>
-                                <div className="text-sm text-muted-foreground mb-2">
-                                  {filteredPrompts.length} prompt{filteredPrompts.length !== 1 ? 's' : ''} found
-                                </div>
-                                <div className="space-y-2">
-                                  {filteredPrompts.map((prompt) => (
-                                    <div
-                                      key={prompt.id}
-                                      className="p-3 border rounded-lg hover:bg-muted cursor-pointer transition-colors"
-                                    >
-                                      <div className="font-medium text-sm mb-1">{prompt.prompt}</div>
-                                      {prompt.categoryName && (
-                                        <div className="text-xs text-muted-foreground">{prompt.categoryName}</div>
-                                      )}
-                                    </div>
-                                  ))}
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        </DrawerContent>
-                      </Drawer>
-
-                      {/* Articles Drawer */}
-                      <Drawer direction="bottom" open={articlesDrawerOpen} onOpenChange={setArticlesDrawerOpen}>
-                        <div onClick={() => setArticlesDrawerOpen(true)} className="flex items-center justify-center h-full">
-                          <DockItem>
-                            <DockLabel>Articles</DockLabel>
-                            <DockIcon>
-                              <IconFileText className="h-6 w-6" />
-                            </DockIcon>
-                          </DockItem>
-                        </div>
-                        <DrawerContent>
-                          <DrawerHeader>
-                            <DrawerTitle>Browse Articles</DrawerTitle>
-                            <DrawerDescription>
-                              {selectedTemplateId
-                                ? `Articles for ${templateRegistry.find(t => t.id === selectedTemplateId)?.name}`
-                                : 'Select a template first'}
-                            </DrawerDescription>
-                          </DrawerHeader>
-                          <div className="p-4 overflow-y-auto max-h-[60vh]">
-                            <Input
-                              placeholder="Search articles..."
-                              value={articlesSearchQuery}
-                              onChange={(e) => setArticlesSearchQuery(e.target.value)}
-                              className="mb-4"
-                            />
-                            {!selectedTemplateId ? (
-                              <p className="text-sm text-muted-foreground text-center py-8">
-                                Select a template from the dock to view articles
-                              </p>
-                            ) : articlesLoading ? (
-                              <p className="text-sm text-muted-foreground text-center py-8">
-                                Loading articles...
-                              </p>
-                            ) : filteredArticles.length === 0 ? (
-                              <p className="text-sm text-muted-foreground text-center py-8">
-                                No articles found
-                              </p>
-                            ) : (
-                              <>
-                                <div className="text-sm text-muted-foreground mb-2">
-                                  {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} found
-                                </div>
-                                <div className="space-y-2">
-                                  {filteredArticles.map((article) => (
-                                    <div
-                                      key={article.id}
-                                      className="p-3 border rounded-lg hover:bg-muted cursor-pointer transition-colors"
-                                    >
-                                      <div className="font-medium text-sm mb-1">{article.title}</div>
-                                      {article.excerpt && (
-                                        <div className="text-xs text-muted-foreground line-clamp-2">{article.excerpt}</div>
-                                      )}
-                                      <div className="flex gap-2 mt-2 text-xs text-muted-foreground">
-                                        {article.type && <span>{article.type}</span>}
-                                        {article.readTime && <span>• {article.readTime}</span>}
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        </DrawerContent>
-                      </Drawer>
-                    </Dock>
+                {/* Prompts Drawer */}
+                <Drawer
+                  direction="bottom"
+                  open={promptsDrawerOpen}
+                  onOpenChange={setPromptsDrawerOpen}
+                >
+                  <div onClick={() => setPromptsDrawerOpen(true)} className="flex items-center justify-center h-full">
+                    <DockItem>
+                      <DockLabel>Prompts</DockLabel>
+                      <DockIcon>
+                        <IconNotes className="h-6 w-6" />
+                      </DockIcon>
+                    </DockItem>
                   </div>
-                </div>
-              </div>
-            ) : (
-              <div className="flex items-center justify-center h-full px-4">
-                <div className="text-center">
-                  <h2 className="text-2xl font-bold mb-2">Coming Soon</h2>
-                  <p className="text-muted-foreground">This section is under construction.</p>
-                </div>
-              </div>
-            )}
+                  <DrawerContent>
+                    <DrawerHeader>
+                      <DrawerTitle>Browse Prompts</DrawerTitle>
+                      <DrawerDescription>
+                        {selectedTemplateId
+                          ? `Prompts for ${templateRegistry.find(t => t.id === selectedTemplateId)?.name}`
+                          : 'Select a template first'}
+                      </DrawerDescription>
+                    </DrawerHeader>
+                    <div className="p-4 overflow-y-auto max-h-[60vh]">
+                      <Input
+                        placeholder="Search prompts..."
+                        value={promptsSearchQuery}
+                        onChange={(e) => setPromptsSearchQuery(e.target.value)}
+                        className="mb-4"
+                      />
+                      {!selectedTemplateId ? (
+                        <p className="text-sm text-muted-foreground text-center py-8">
+                          Select a template from the dock to view prompts
+                        </p>
+                      ) : promptsLoading ? (
+                        <p className="text-sm text-muted-foreground text-center py-8">
+                          Loading prompts...
+                        </p>
+                      ) : filteredPrompts.length === 0 ? (
+                        <p className="text-sm text-muted-foreground text-center py-8">
+                          No prompts found
+                        </p>
+                      ) : (
+                        <>
+                          <div className="text-sm text-muted-foreground mb-2">
+                            {filteredPrompts.length} prompt{filteredPrompts.length !== 1 ? 's' : ''} found
+                          </div>
+                          <div className="space-y-2">
+                            {filteredPrompts.map((prompt) => (
+                              <div
+                                key={prompt.id}
+                                className="p-3 border rounded-lg hover:bg-muted transition-colors flex flex-col gap-2"
+                              >
+                                <div className="font-medium text-sm mb-1">{prompt.prompt}</div>
+                                {prompt.categoryName && (
+                                  <div className="text-xs text-muted-foreground">{prompt.categoryName}</div>
+                                )}
+                                <div className="flex gap-2 mt-2">
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      navigator.clipboard.writeText(prompt.prompt);
+                                    }}
+                                    className="px-2 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded"
+                                  >
+                                    Copy
+                                  </button>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      // TODO: Implement insert functionality
+                                      console.log('Insert prompt:', prompt.prompt);
+                                    }}
+                                    className="px-2 py-1 text-xs bg-primary text-primary-foreground hover:bg-primary/90 rounded"
+                                  >
+                                    Insert
+                                  </button>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      // TODO: Implement mark complete functionality
+                                      console.log('Mark complete:', prompt.id);
+                                    }}
+                                    className="px-2 py-1 text-xs bg-muted hover:bg-muted/80 rounded"
+                                  >
+                                    Mark Complete
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </DrawerContent>
+                </Drawer>
+
+                {/* Articles Drawer */}
+                <Drawer
+                  direction="bottom"
+                  open={articlesDrawerOpen}
+                  onOpenChange={setArticlesDrawerOpen}
+                >
+                  <div onClick={() => setArticlesDrawerOpen(true)} className="flex items-center justify-center h-full">
+                    <DockItem>
+                      <DockLabel>Articles</DockLabel>
+                      <DockIcon>
+                        <IconFileText className="h-6 w-6" />
+                      </DockIcon>
+                    </DockItem>
+                  </div>
+                  <DrawerContent>
+                    <DrawerHeader>
+                      <DrawerTitle>Browse Articles</DrawerTitle>
+                      <DrawerDescription>
+                        {selectedTemplateId
+                          ? `Articles for ${templateRegistry.find(t => t.id === selectedTemplateId)?.name}`
+                          : 'Select a template first'}
+                      </DrawerDescription>
+                    </DrawerHeader>
+                    <div className="p-4 overflow-y-auto max-h-[60vh]">
+                      <Input
+                        placeholder="Search articles..."
+                        value={articlesSearchQuery}
+                        onChange={(e) => setArticlesSearchQuery(e.target.value)}
+                        className="mb-4"
+                      />
+                      {!selectedTemplateId ? (
+                        <p className="text-sm text-muted-foreground text-center py-8">
+                          Select a template from the dock to view articles
+                        </p>
+                      ) : articlesLoading ? (
+                        <p className="text-sm text-muted-foreground text-center py-8">
+                          Loading articles...
+                        </p>
+                      ) : filteredArticles.length === 0 ? (
+                        <p className="text-sm text-muted-foreground text-center py-8">
+                          No articles found
+                        </p>
+                      ) : (
+                        <>
+                          <div className="text-sm text-muted-foreground mb-2">
+                            {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} found
+                          </div>
+                          <div className="space-y-2">
+                            {filteredArticles.map((article) => (
+                              <div
+                                key={article.id}
+                                className="p-3 border rounded-lg hover:bg-muted transition-colors flex flex-col gap-2"
+                              >
+                                <div className="font-medium text-sm mb-1">{article.title}</div>
+                                {article.excerpt && (
+                                  <div className="text-xs text-muted-foreground line-clamp-2">{article.excerpt}</div>
+                                )}
+                                <div className="flex gap-2 mt-2 text-xs text-muted-foreground">
+                                  {article.type && <span>{article.type}</span>}
+                                  {article.readTime && <span>• {article.readTime}</span>}
+                                </div>
+                                <div className="flex gap-2 mt-2">
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      // TODO: Implement read functionality (open in side panel or modal)
+                                      console.log('Read article:', article.slug);
+                                      window.open(`/${article.template}/articles/${article.slug}`, '_blank');
+                                    }}
+                                    className="px-2 py-1 text-xs bg-primary text-primary-foreground hover:bg-primary/90 rounded"
+                                  >
+                                    Read
+                                  </button>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      // TODO: Implement save for later functionality
+                                      console.log('Save for later:', article.id);
+                                    }}
+                                    className="px-2 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded"
+                                  >
+                                    Save for Later
+                                  </button>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      // TODO: Implement add reference functionality
+                                      console.log('Add reference:', article.title);
+                                    }}
+                                    className="px-2 py-1 text-xs bg-muted hover:bg-muted/80 rounded"
+                                  >
+                                    Add Reference
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </DrawerContent>
+                </Drawer>
+              </Dock>
+            </div>
           </div>
-        </div>
       </SidebarInset>
     </SidebarProvider>
   )

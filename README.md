@@ -1,10 +1,18 @@
 # Templata
 
-> AI-powered life planning templates and workspaces for organizing life's biggest moments.
+> **Wikipedia meets Notion for Life's Biggest Moments**
+> AI-curated guidance at massive scale + flexible workflows + beautiful UX = A novel life planning experience
 
 ## Overview
 
-**Templata** is a comprehensive life planning platform that provides structured guidance for every major life situation through AI-powered templates, intelligent prompts, and expert articles. Skip the blank page and get organized in minutes with proven frameworks for life's biggest moments.
+**Templata** is not just another productivity app—it's a **life guidance system** that combines the comprehensive knowledge of Wikipedia with the flexible interface of Notion. We provide structured guidance for every major life situation through **1,300+ AI-curated templates**, **104,000+ action prompts**, and **26,000+ expert articles**.
+
+### What Makes Us Different
+
+- **🎓 Unprecedented Scale** - 2+ million pieces of AI-curated guidance
+- **🎨 Flexible Workflow** - 10 view modes that adapt to how you think
+- **🌟 Novel Experience** - "Everything is just here for me to use"
+- **💝 100% Free** - All core features, forever
 
 ## What We Offer
 
@@ -21,7 +29,7 @@ Complete coverage of every conceivable life situation:
 - **Personal Development** - Self-improvement, goal setting, habit formation
 - **Home & Living** - Home organization, lifestyle design, space planning
 
-### 🎯 **15,000+ Action Prompts**
+### 🎯 **104,000+ Action Prompts** (80 per template)
 Each template includes 8 categories of guided prompts:
 - **Tactical Prompts** - Specific action items and next steps
 - **Contextual Prompts** - Situational guidance and considerations
@@ -47,12 +55,24 @@ Deep-dive content covering:
 - **Smart Recommendations** - Context-aware suggestions
 - **Knowledge Graph** - Interconnected template relationships
 
-### 💼 **Three Workspace Modes**
-1. **Guided Workspace** - Structured prompts with AI assistance
-2. **Hybrid Workspace** - Mix of guidance and freeform notes
-3. **Autonomous Workspace** - Full control with optional AI support
+### 💼 **10 Flexible View Modes**
+Work in the style that matches your thinking:
+1. **Chat View** - Conversational Q&A flow
+2. **Split View** - Side-by-side prompts and responses
+3. **Board View** - Kanban-style task organization
+4. **Checklist View** - Simple to-do list format
+5. **Text Editor** - Notion-like rich text document
+6. **Timeline View** - Gantt chart for time-based planning
+7. **Table View** - Spreadsheet-style data entry
+8. **Cards View** - Visual card-based layout
+9. **Outline View** - Hierarchical structure
+10. **Tabs View** - Organized sections with tabs
+
+**Switch between views anytime** - your work adapts to the interface
 
 ### 🎨 **Advanced Features**
+- **Floating Dock** - Templates, prompts, and articles always accessible
+- **Browse & Work Modes** - Explore content or create in your workspace
 - **Rich Text Editor** - TipTap-powered with drag-and-drop
 - **Dark/Light Mode** - Customizable themes
 - **Template Favorites** - Bookmark and organize templates
@@ -109,17 +129,18 @@ templata/
 │   │   ├── axiom-engine/      # AI feature page
 │   │   ├── life-os/           # Dashboard
 │   │   ├── templates/         # Template directory
-│   │   └── workspaces/        # Workspace modes
+│   │   └── workspace/         # Unified workspace with 10 view modes
 │   ├── components/            # React components
 │   │   ├── ui/               # shadcn/ui components
 │   │   ├── landing/          # Landing page sections
 │   │   ├── layout/           # Layout components
 │   │   ├── template/         # Template-specific components
+│   │   ├── workspace-views/  # 10 view mode implementations
 │   │   └── tiptap-templates/ # Editor implementations
 │   ├── contexts/             # React contexts (auth, UI)
 │   ├── data/                 # Static data
 │   │   ├── templates/        # 1,300+ template definitions
-│   │   ├── prompts/          # 15,000+ prompt files
+│   │   ├── prompts/          # 104,000+ prompt files
 │   │   └── articles/         # Article content
 │   ├── hooks/                # Custom React hooks
 │   ├── lib/                  # Utilities and configs
@@ -205,7 +226,7 @@ npm run lint:fix     # Fix ESLint issues
 
 ### Template System
 - **1,300+ templates** covering every life situation
-- **8 prompt categories** per template (15,000+ total prompts)
+- **8 prompt categories** per template (104,000+ total prompts)
 - **Expert-verified** content and frameworks
 - **Dynamic routing** - Each template at `/[slug]/template`
 - **Marketing pages** - SEO-optimized at `/[slug]/marketing`
@@ -217,13 +238,25 @@ npm run lint:fix     # Fix ESLint issues
 - **Knowledge graph** - Interconnected template relationships
 - **Conflict detection** - Identify competing priorities
 
-### Workspaces
-- **Guided Mode** - Structured prompts with AI assistance
-- **Hybrid Mode** - Mix guided and freeform
-- **Autonomous Mode** - Full creative freedom
+### Workspace Experience
+Two distinct modes for different workflows:
+
+**Browse Mode** - Explore and discover:
+- **Dashboard** - Overview of your workspaces and activity
+- **Templates** - Browse 1,300+ templates by category
+- **Prompts** - Search across 104,000+ curated prompts
+- **Articles** - Access 26,000+ expert articles
+- **Workspaces** - Manage all your active projects
+
+**Work Mode** - Create and organize (10 view modes):
+- **Floating Dock** - Templates, prompts, articles always one click away
+- **10 view modes** - Chat, Split, Board, Checklist, Text Editor, Timeline, Table, Cards, Outline, Tabs
+- **Seamless switching** - Change views anytime without losing progress
 - **Rich text editing** - TipTap with drag-and-drop
 - **Auto-save** - Local storage persistence
 - **Export** - PDF and other formats
+
+Each workspace is based on a template and stores all your responses. Switch between any of the 10 view modes to match your workflow—whether you prefer conversational chat, kanban boards, or rich text documents.
 
 ### Authentication
 - **NextAuth.js** - Secure authentication
@@ -295,7 +328,7 @@ We welcome contributions! Please see our contributing guidelines.
 
 ### Plus Plan ($9/month)
 - Full access to 1,300+ templates
-- 15,000+ prompts
+- 104,000+ prompts
 - 26,000+ articles
 - Advanced workspace features
 
