@@ -69,6 +69,7 @@ export default function WorkspacePage() {
     templateRegistry[0]?.id || null
   );
   const [searchQuery, setSearchQuery] = useState('');
+  const [letterFilter, setLetterFilter] = useState<string>('all');
   const [promptsSearchQuery, setPromptsSearchQuery] = useState('');
   const [articlesSearchQuery, setArticlesSearchQuery] = useState('');
   const [workspacesSearchQuery, setWorkspacesSearchQuery] = useState('');
@@ -93,59 +94,69 @@ export default function WorkspacePage() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Load prompts when needed
+  // Load prompts when template is selected
   useEffect(() => {
-    if (currentView === 'prompts' && allPrompts.length === 0 && !promptsLoading) {
-      setPromptsLoading(true);
+    if (!selectedTemplateId) {
+      setAllPrompts([]);
+      setPromptsLoading(false);
+      return;
+    }
 
-      // Load prompts for all templates
-      const loadAllPrompts = async () => {
-        const promptsData: any[] = [];
+    setPromptsLoading(true);
 
-        // Load prompts for each template in batches to avoid overwhelming the server
-        const batchSize = 10;
-        for (let i = 0; i < templateRegistry.length; i += batchSize) {
-          const batch = templateRegistry.slice(i, i + batchSize);
-          const batchPromises = batch.map(template =>
-            fetch(`/api/prompts?templateId=${template.id}`)
-              .then(res => res.json())
-              .then(data => ({
-                templateId: template.id,
-                templateName: template.name,
-                prompts: data.prompts || []
-              }))
-              .catch(() => ({ templateId: template.id, templateName: template.name, prompts: [] }))
-          );
+    const loadTemplatePrompts = async () => {
+      const template = templateRegistry.find(t => t.id === selectedTemplateId);
+      if (!template) {
+        setAllPrompts([]);
+        setPromptsLoading(false);
+        return;
+      }
 
-          const batchResults = await Promise.all(batchPromises);
-          batchResults.forEach(result => {
-            result.prompts.forEach((p: any) => {
-              promptsData.push({
-                ...p,
-                template: result.templateName,
-                templateId: result.templateId
-              });
-            });
-          });
-        }
+      try {
+        const res = await fetch(`/api/prompts?templateId=${selectedTemplateId}`);
+        const data = await res.json();
+
+        const promptsData = (data.prompts || []).map((p: any) => ({
+          ...p,
+          template: template.name,
+          templateId: template.id
+        }));
 
         setAllPrompts(promptsData);
+      } catch (error) {
+        console.error('Error loading prompts:', error);
+        setAllPrompts([]);
+      } finally {
         setPromptsLoading(false);
-      };
+      }
+    };
 
-      loadAllPrompts();
-    }
-  }, [currentView, allPrompts.length, promptsLoading]);
+    loadTemplatePrompts();
+  }, [selectedTemplateId]);
 
-  // Load articles when needed
+  // Load articles when template is selected
   useEffect(() => {
-    if (currentView === 'articles' && allArticles.length === 0 && !articlesLoading) {
-      setArticlesLoading(true);
+    if (!selectedTemplateId) {
+      setAllArticles([]);
+      setArticlesLoading(false);
+      return;
+    }
 
-      const loadArticles = async () => {
+    setArticlesLoading(true);
+
+    const loadTemplateArticles = async () => {
+      const template = templateRegistry.find(t => t.id === selectedTemplateId);
+      if (!template) {
+        setAllArticles([]);
+        setArticlesLoading(false);
+        return;
+      }
+
+      try {
         const { data, error } = await supabase
           .from('templata_articles')
           .select('id, title, excerpt, template, read_time, type, published_at, slug')
+          .eq('template', template.id)
           .order('published_at', { ascending: false });
 
         if (!error && data) {
@@ -159,13 +170,19 @@ export default function WorkspacePage() {
             publishedAt: article.published_at,
             slug: article.slug
           })));
+        } else {
+          setAllArticles([]);
         }
+      } catch (error) {
+        console.error('Error loading articles:', error);
+        setAllArticles([]);
+      } finally {
         setArticlesLoading(false);
-      };
+      }
+    };
 
-      loadArticles();
-    }
-  }, [currentView, allArticles.length, articlesLoading]);
+    loadTemplateArticles();
+  }, [selectedTemplateId]);
 
   // Pagination state
   const [allPage, setAllPage] = useState(0);
@@ -208,13 +225,26 @@ export default function WorkspacePage() {
 
   // Filter templates for templates view
   const filteredTemplates = useMemo(() => {
-    if (!searchQuery.trim()) return templateRegistry;
-    return templateRegistry.filter(t =>
-      t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t.description.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [searchQuery]);
+    let filtered = templateRegistry;
+
+    // Apply search query filter
+    if (searchQuery.trim()) {
+      filtered = filtered.filter(t =>
+        t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    // Apply letter filter
+    if (letterFilter !== 'all') {
+      filtered = filtered.filter(t =>
+        t.name.toLowerCase().startsWith(letterFilter.toLowerCase())
+      );
+    }
+
+    return filtered;
+  }, [searchQuery, letterFilter]);
 
   const paginatedTemplatesView = useMemo(() => {
     return filteredTemplates.slice(templatesPage * templatesPageSize, (templatesPage + 1) * templatesPageSize);
@@ -988,7 +1018,17 @@ export default function WorkspacePage() {
                   <div className="pointer-events-auto">
                     <Dock>
                       {/* Templates Drawer */}
-                      <Drawer direction="bottom" open={templatesDrawerOpen} onOpenChange={setTemplatesDrawerOpen}>
+                      <Drawer
+                        direction="bottom"
+                        open={templatesDrawerOpen}
+                        onOpenChange={(open) => {
+                          setTemplatesDrawerOpen(open);
+                          if (!open) {
+                            setLetterFilter('all');
+                            setSearchQuery('');
+                          }
+                        }}
+                      >
                         <div onClick={() => setTemplatesDrawerOpen(true)} className="flex items-center justify-center h-full">
                           <DockItem>
                             <DockLabel>Templates</DockLabel>
@@ -1009,17 +1049,46 @@ export default function WorkspacePage() {
                               onChange={(e) => setSearchQuery(e.target.value)}
                               className="mb-4"
                             />
-                            <div className="space-y-2">
-                              {filteredTemplates.slice(0, 20).map((template) => (
+
+                            {/* Letter filter */}
+                            <div className="flex gap-1 mb-4 overflow-x-auto pb-2">
+                              <Button
+                                variant={letterFilter === 'all' ? 'default' : 'outline'}
+                                size="sm"
+                                onClick={() => setLetterFilter('all')}
+                                className="min-w-[40px]"
+                              >
+                                All
+                              </Button>
+                              {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((letter) => (
+                                <Button
+                                  key={letter}
+                                  variant={letterFilter === letter ? 'default' : 'outline'}
+                                  size="sm"
+                                  onClick={() => setLetterFilter(letter)}
+                                  className="min-w-[40px]"
+                                >
+                                  {letter}
+                                </Button>
+                              ))}
+                            </div>
+
+                            <div className="text-sm text-muted-foreground mb-2">
+                              {filteredTemplates.length} template{filteredTemplates.length !== 1 ? 's' : ''} found
+                            </div>
+
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                              {filteredTemplates.map((template) => (
                                 <div
                                   key={template.id}
-                                  className="p-3 border rounded-lg hover:bg-muted cursor-pointer"
+                                  className="p-3 border rounded-lg hover:bg-muted cursor-pointer transition-colors"
                                   onClick={() => {
                                     setSelectedTemplateId(template.id);
+                                    setTemplatesDrawerOpen(false);
                                   }}
                                 >
-                                  <div className="font-medium">{template.name}</div>
-                                  <div className="text-sm text-muted-foreground">{template.category}</div>
+                                  <div className="font-medium text-sm truncate">{template.name}</div>
+                                  <div className="text-xs text-muted-foreground truncate">{template.category}</div>
                                 </div>
                               ))}
                             </div>
@@ -1049,16 +1118,41 @@ export default function WorkspacePage() {
                           <div className="p-4 overflow-y-auto max-h-[60vh]">
                             <Input
                               placeholder="Search prompts..."
+                              value={promptsSearchQuery}
+                              onChange={(e) => setPromptsSearchQuery(e.target.value)}
                               className="mb-4"
                             />
-                            {selectedTemplateId ? (
-                              <div className="space-y-2">
-                                <p className="text-sm text-muted-foreground">Prompts will load here...</p>
-                              </div>
-                            ) : (
+                            {!selectedTemplateId ? (
                               <p className="text-sm text-muted-foreground text-center py-8">
                                 Select a template from the dock to view prompts
                               </p>
+                            ) : promptsLoading ? (
+                              <p className="text-sm text-muted-foreground text-center py-8">
+                                Loading prompts...
+                              </p>
+                            ) : filteredPrompts.length === 0 ? (
+                              <p className="text-sm text-muted-foreground text-center py-8">
+                                No prompts found
+                              </p>
+                            ) : (
+                              <>
+                                <div className="text-sm text-muted-foreground mb-2">
+                                  {filteredPrompts.length} prompt{filteredPrompts.length !== 1 ? 's' : ''} found
+                                </div>
+                                <div className="space-y-2">
+                                  {filteredPrompts.map((prompt) => (
+                                    <div
+                                      key={prompt.id}
+                                      className="p-3 border rounded-lg hover:bg-muted cursor-pointer transition-colors"
+                                    >
+                                      <div className="font-medium text-sm mb-1">{prompt.prompt}</div>
+                                      {prompt.categoryName && (
+                                        <div className="text-xs text-muted-foreground">{prompt.categoryName}</div>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </>
                             )}
                           </div>
                         </DrawerContent>
@@ -1086,16 +1180,45 @@ export default function WorkspacePage() {
                           <div className="p-4 overflow-y-auto max-h-[60vh]">
                             <Input
                               placeholder="Search articles..."
+                              value={articlesSearchQuery}
+                              onChange={(e) => setArticlesSearchQuery(e.target.value)}
                               className="mb-4"
                             />
-                            {selectedTemplateId ? (
-                              <div className="space-y-2">
-                                <p className="text-sm text-muted-foreground">Articles will load here...</p>
-                              </div>
-                            ) : (
+                            {!selectedTemplateId ? (
                               <p className="text-sm text-muted-foreground text-center py-8">
                                 Select a template from the dock to view articles
                               </p>
+                            ) : articlesLoading ? (
+                              <p className="text-sm text-muted-foreground text-center py-8">
+                                Loading articles...
+                              </p>
+                            ) : filteredArticles.length === 0 ? (
+                              <p className="text-sm text-muted-foreground text-center py-8">
+                                No articles found
+                              </p>
+                            ) : (
+                              <>
+                                <div className="text-sm text-muted-foreground mb-2">
+                                  {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} found
+                                </div>
+                                <div className="space-y-2">
+                                  {filteredArticles.map((article) => (
+                                    <div
+                                      key={article.id}
+                                      className="p-3 border rounded-lg hover:bg-muted cursor-pointer transition-colors"
+                                    >
+                                      <div className="font-medium text-sm mb-1">{article.title}</div>
+                                      {article.excerpt && (
+                                        <div className="text-xs text-muted-foreground line-clamp-2">{article.excerpt}</div>
+                                      )}
+                                      <div className="flex gap-2 mt-2 text-xs text-muted-foreground">
+                                        {article.type && <span>{article.type}</span>}
+                                        {article.readTime && <span>• {article.readTime}</span>}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </>
                             )}
                           </div>
                         </DrawerContent>
