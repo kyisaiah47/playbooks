@@ -16,7 +16,10 @@
       "Read(//private/tmp/**)",
       "Bash(npx shadcn:*)",
       "Bash(npm install:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(vercel:*)",
+      "Bash(find:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
