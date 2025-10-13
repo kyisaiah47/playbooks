@@ -1,15 +1,9 @@
 // Knowledge Graph Service Wrapper for Browser Environment
+// STUBBED VERSION - Returns empty data
 // Provides clean TypeScript interface to the knowledge graph system
 
 // Import template registry as single source of truth
 import { templateRegistry } from '@/registry/templates';
-
-// Import JSON data directly (works in browser)
-import templateConnectionsData from '../../knowledge-graph/template-connections.json';
-import articleConnectionsData from '../../knowledge-graph/article-connections.json';
-import promptConnectionsData from '../../knowledge-graph/prompt-connections.json';
-import marketingConnectionsData from '../../knowledge-graph/marketing-connections.json';
-import lifeSequencesData from '../../knowledge-graph/life-sequences.json';
 
 // TypeScript interfaces
 export interface TemplateConnection {
@@ -115,280 +109,72 @@ export const templateExists = (id: string): boolean => {
   return templateRegistry.some(template => template.id === id);
 };
 
-// Browser-compatible Knowledge Graph class
+// Stubbed Knowledge Graph class
 class BrowserKnowledgeGraph {
-  private semanticClusters: Record<string, unknown>;
-  private microClusters: Record<string, unknown>;
-  private weightedConnections: Record<string, unknown>;
-  private negativeConnections: Record<string, unknown>;
-  private lifeSequences: Record<string, unknown>;
-  private lifecyclePatterns: Record<string, unknown>;
-  private contextualPrompts: Record<string, unknown>;
-  private promptTriggers: Record<string, unknown>;
-  private loaded = false;
+  private loaded = true;
 
   constructor() {
-    this.load();
+    // No data to load
   }
 
-  private load() {
-    try {
-      // Load available data from imported JSON
-      this.semanticClusters = {};
-      this.microClusters = {};
-      this.weightedConnections = {};
-      this.negativeConnections = {};
-      this.lifeSequences = (lifeSequencesData as any).comprehensive_life_sequences || {};
-      this.lifecyclePatterns = (lifeSequencesData as any).lifecycle_timing_patterns || {};
-      this.contextualPrompts = {};
-      this.promptTriggers = {};
-      this.loaded = true;
-    } catch (error) {
-      console.error('Failed to load Knowledge Graph data:', error);
-    }
-  }
-
-  // Find which semantic cluster a template belongs to
-  findSemanticCluster(templateId: string) {
-    if (!this.loaded) return null;
-
-    // Only process if template exists in registry
-    if (!templateExists(templateId)) {
-      console.warn(`Template ${templateId} not found in registry, skipping semantic cluster lookup`);
-      return null;
-    }
-
-    for (const [clusterName, cluster] of Object.entries(this.semanticClusters)) {
-      const clusterData = cluster as any;
-      if (clusterData.templates?.includes(templateId)) {
-        return {
-          name: clusterName,
-          reasoning: clusterData.reasoning,
-          total_templates: clusterData.templates.length,
-          related_templates: clusterData.templates.filter((t: string) => t !== templateId)
-        };
-      }
-    }
+  findSemanticCluster(_templateId: string) {
     return null;
   }
 
-  // Find which micro-cluster a template belongs to
-  findMicroCluster(templateId: string) {
-    if (!this.loaded) return null;
-
-    // Only process if template exists in registry
-    if (!templateExists(templateId)) {
-      console.warn(`Template ${templateId} not found in registry, skipping micro cluster lookup`);
-      return null;
-    }
-
-    for (const [mainCluster, microClusters] of Object.entries(this.microClusters)) {
-      for (const [microName, microCluster] of Object.entries(microClusters as any)) {
-        const microData = microCluster as any;
-        if (microData.templates?.includes(templateId)) {
-          return {
-            main_cluster: mainCluster,
-            micro_cluster: microName,
-            micro_theme: microData.micro_theme,
-            psychological_focus: microData.psychological_focus,
-            related_templates: microData.templates.filter((t: string) => t !== templateId)
-          };
-        }
-      }
-    }
+  findMicroCluster(_templateId: string) {
     return null;
   }
 
-  // Get weighted connections for a template
-  getWeightedConnections(templateId: string): TemplateConnection[] {
-    if (!this.loaded) return [];
-
-    // Only process if template exists in registry
-    if (!templateExists(templateId)) {
-      console.warn(`Template ${templateId} not found in registry, skipping connections lookup`);
-      return [];
-    }
-
-    const connections = this.weightedConnections[templateId];
-    if (!connections) return [];
-
-    const allConnections: TemplateConnection[] = [];
-
-    // Add critical connections
-    if (connections.critical_connections) {
-      allConnections.push(...connections.critical_connections.map((conn: any) => ({
-        ...conn,
-        strength_level: 'critical' as const
-      })));
-    }
-
-    // Add strong connections
-    if (connections.strong_connections) {
-      allConnections.push(...connections.strong_connections.map((conn: any) => ({
-        ...conn,
-        strength_level: 'strong' as const
-      })));
-    }
-
-    // Add medium connections
-    if (connections.medium_connections) {
-      allConnections.push(...connections.medium_connections.map((conn: any) => ({
-        ...conn,
-        strength_level: 'medium' as const
-      })));
-    }
-
-    return allConnections.sort((a, b) => b.strength - a.strength);
+  getWeightedConnections(_templateId: string): TemplateConnection[] {
+    return [];
   }
 
-  // Get negative connections (conflicts)
-  getNegativeConnections(templateId: string): ConflictConnection[] {
-    if (!this.loaded) return [];
-
-    const conflicts: ConflictConnection[] = [];
-
-    // Check conflicting priorities
-    if (this.negativeConnections.conflicting_priorities) {
-      this.negativeConnections.conflicting_priorities.forEach((conflict: any) => {
-        if (conflict.template1 === templateId || conflict.template2 === templateId) {
-          conflicts.push({
-            conflict_type: 'priority',
-            conflicting_template: conflict.template1 === templateId ? conflict.template2 : conflict.template1,
-            conflict_strength: conflict.conflict_strength,
-            reasoning: conflict.reasoning,
-            psychological_conflict: conflict.psychological_conflict,
-            resolution_strategy: conflict.resolution_strategy
-          });
-        }
-      });
-    }
-
-    // Check timing conflicts
-    if (this.negativeConnections.timing_conflicts) {
-      this.negativeConnections.timing_conflicts.forEach((conflict: any) => {
-        if (conflict.template1 === templateId || conflict.template2 === templateId) {
-          conflicts.push({
-            conflict_type: 'timing',
-            conflicting_template: conflict.template1 === templateId ? conflict.template2 : conflict.template1,
-            conflict_strength: conflict.conflict_strength,
-            reasoning: conflict.reasoning,
-            psychological_conflict: conflict.psychological_conflict,
-            resolution_strategy: conflict.resolution_strategy
-          });
-        }
-      });
-    }
-
-    return conflicts;
+  getNegativeConnections(_templateId: string): ConflictConnection[] {
+    return [];
   }
 
-  // Get comprehensive template relationships
   getTemplateRelationships(templateId: string): TemplateRelationships {
-    const relationships: TemplateRelationships = {
+    return {
       templateId,
-      semantic_cluster: this.findSemanticCluster(templateId),
-      micro_cluster: this.findMicroCluster(templateId),
-      weighted_connections: this.getWeightedConnections(templateId),
-      negative_connections: this.getNegativeConnections(templateId),
+      semantic_cluster: null,
+      micro_cluster: null,
+      weighted_connections: [],
+      negative_connections: [],
       total_relationship_strength: 0
     };
-
-    // Calculate total relationship strength
-    if (relationships.weighted_connections.length > 0) {
-      relationships.total_relationship_strength = relationships.weighted_connections
-        .reduce((sum, conn) => sum + conn.strength, 0) / relationships.weighted_connections.length;
-    }
-
-    return relationships;
   }
 
-  // Determine age group for lifecycle patterns
-  determineAgeGroup(age: number): string {
-    if (age <= 22) return 'teens_18_22';
-    if (age <= 30) return 'young_adults_23_30';
-    if (age <= 40) return 'adults_30_40';
-    if (age <= 55) return 'midlife_40_55';
-    if (age <= 65) return 'pre_retirement_55_65';
-    return 'retirement_65_plus';
+  determineAgeGroup(_age: number): string {
+    return 'adults_30_40';
   }
 
-  // Get optimal life sequence for user
-  getOptimalLifeSequence(userAge: number, userGoals: string[] = [], completedTemplates: string[] = []): UserRecommendation[] {
-    if (!this.loaded) return [];
-
-    const recommendations: UserRecommendation[] = [];
-
-    // Check lifecycle patterns for age-appropriate templates
-    const ageGroup = this.determineAgeGroup(userAge);
-    const agePatterns = this.lifecyclePatterns.life_stage_priorities?.[ageGroup];
-
-    if (agePatterns) {
-      // Primary templates for this age group
-      agePatterns.primary?.forEach((templateId: string) => {
-        if (!completedTemplates.includes(templateId)) {
-          recommendations.push({
-            templateId,
-            priority: 'high',
-            reason: `Primary focus for ${ageGroup}: ${agePatterns.timing_note}`,
-            life_stage: ageGroup
-          });
-        }
-      });
-
-      // Secondary templates
-      agePatterns.secondary?.forEach((templateId: string) => {
-        if (!completedTemplates.includes(templateId)) {
-          recommendations.push({
-            templateId,
-            priority: 'medium',
-            reason: `Secondary focus for ${ageGroup}`,
-            life_stage: ageGroup
-          });
-        }
-      });
-    }
-
-    // Sort by priority and relevance
-    return recommendations.sort((a, b) => {
-      const priorityOrder = { high: 3, sequence: 2, medium: 1 };
-      return priorityOrder[b.priority] - priorityOrder[a.priority];
-    });
+  getOptimalLifeSequence(_userAge: number, _userGoals: string[] = [], _completedTemplates: string[] = []): UserRecommendation[] {
+    return [];
   }
 
-  // Generate comprehensive analysis report
   generateAnalysisReport(templateId: string): AnalysisReport {
-    if (!this.loaded) {
-      throw new Error('Knowledge Graph not loaded');
-    }
-
-    const relationships = this.getTemplateRelationships(templateId);
-
     return {
       template_id: templateId,
       cluster_membership: {
-        semantic: relationships.semantic_cluster,
-        micro: relationships.micro_cluster
+        semantic: {},
+        micro: {}
       },
       connection_strength: {
-        total_weighted_connections: relationships.weighted_connections.length,
-        average_strength: relationships.total_relationship_strength,
-        strongest_connection: relationships.weighted_connections[0] || null,
-        critical_connections_count: relationships.weighted_connections.filter(c => c.strength_level === 'critical').length
+        total_weighted_connections: 0,
+        average_strength: 0,
+        strongest_connection: null,
+        critical_connections_count: 0
       },
       conflict_analysis: {
-        total_conflicts: relationships.negative_connections.length,
-        priority_conflicts: relationships.negative_connections.filter(c => c.conflict_type === 'priority').length,
-        timing_conflicts: relationships.negative_connections.filter(c => c.conflict_type === 'timing').length,
-        highest_conflict: relationships.negative_connections.sort((a, b) => b.conflict_strength - a.conflict_strength)[0] || null
+        total_conflicts: 0,
+        priority_conflicts: 0,
+        timing_conflicts: 0,
+        highest_conflict: null
       },
       recommendations: {
-        high_synergy_templates: relationships.weighted_connections
-          .filter(c => c.strength >= 80)
-          .map(c => c.templateId),
-        avoid_simultaneously: relationships.negative_connections
-          .filter(c => c.conflict_strength >= 70)
-          .map(c => c.conflicting_template),
-        optimal_timing: relationships.micro_cluster?.psychological_focus || 'context_dependent'
+        high_synergy_templates: [],
+        avoid_simultaneously: [],
+        optimal_timing: 'context_dependent'
       }
     };
   }
@@ -398,202 +184,42 @@ class BrowserKnowledgeGraph {
 export const knowledgeGraph = new BrowserKnowledgeGraph();
 
 // Utility functions for common use cases
-export const getRelatedTemplates = (templateId: string, limit = 5) => {
-  // Only process if template exists in registry
-  if (!templateExists(templateId)) {
-    console.warn(`Template ${templateId} not found in registry`);
-    return [];
-  }
-
-  const relationships = knowledgeGraph.getTemplateRelationships(templateId);
-  return relationships.weighted_connections
-    .filter(conn => templateExists(conn.templateId)) // Only include existing templates
-    .slice(0, limit)
-    .map(conn => ({
-      templateId: conn.templateId,
-      strength: conn.strength,
-      reason: conn.reasoning,
-      level: conn.strength_level
-    }));
+export const getRelatedTemplates = (_templateId: string, _limit = 5) => {
+  return [];
 };
 
-export const getConflictingTemplates = (templateIds: string[]) => {
-  const conflicts: Array<{
-    template1: string;
-    template2: string;
-    reason: string;
-    resolution: string;
-  }> = [];
-
-  templateIds.forEach(templateId => {
-    const relationships = knowledgeGraph.getTemplateRelationships(templateId);
-    relationships.negative_connections.forEach(conflict => {
-      if (templateIds.includes(conflict.conflicting_template)) {
-        conflicts.push({
-          template1: templateId,
-          template2: conflict.conflicting_template,
-          reason: conflict.reasoning,
-          resolution: conflict.resolution_strategy
-        });
-      }
-    });
-  });
-
-  return conflicts;
+export const getConflictingTemplates = (_templateIds: string[]) => {
+  return [];
 };
 
-export const getPersonalizedRecommendations = (userProfile: {
+export const getPersonalizedRecommendations = (_userProfile: {
   age?: number;
   goals?: string[];
   completedTemplates?: string[];
   currentTemplates?: string[];
 }) => {
-  const { age = 25, goals = [], completedTemplates = [], currentTemplates = [] } = userProfile;
-
-  const ageRecs = knowledgeGraph.getOptimalLifeSequence(age, goals, completedTemplates);
-
-  // Filter out current templates and only include templates that exist in registry
-  return ageRecs.filter(rec =>
-    !currentTemplates.includes(rec.templateId) &&
-    templateExists(rec.templateId)
-  );
+  return [];
 };
 
 // Article recommendation functions
-export const getRelatedArticles = (articleId: string, limit: number = 4): ArticleConnection[] => {
-  const articleData = (articleConnectionsData as any)[articleId];
-  if (!articleData?.related_articles) return [];
-
-  return articleData.related_articles.slice(0, limit);
+export const getRelatedArticles = (_articleId: string, _limit: number = 4): ArticleConnection[] => {
+  return [];
 };
 
-export const getArticlesForTemplate = (templateId: string, limit: number = 4): ArticleConnection[] => {
-  const articles: ArticleConnection[] = [];
-
-  // Find articles that reference this template
-  Object.entries(articleConnectionsData as any).forEach(([articleId, data]: [string, any]) => {
-    if (data.related_templates) {
-      const templateMatch = data.related_templates.find((t: any) => t.id === templateId);
-      if (templateMatch) {
-        articles.push({
-          id: articleId,
-          strength: templateMatch.strength,
-          reason: templateMatch.reason
-        });
-      }
-    }
-  });
-
-  return articles.sort((a, b) => b.strength - a.strength).slice(0, limit);
+export const getArticlesForTemplate = (_templateId: string, _limit: number = 4): ArticleConnection[] => {
+  return [];
 };
 
 // Prompt recommendation functions
-export const getRelatedPrompts = (promptId: string, limit: number = 4): PromptConnection[] => {
-  const promptData = (promptConnectionsData as any)[promptId];
-  if (!promptData?.related_prompts) return [];
-
-  return promptData.related_prompts.slice(0, limit);
+export const getRelatedPrompts = (_promptId: string, _limit: number = 4): PromptConnection[] => {
+  return [];
 };
 
-export const getPromptsForTemplate = (templateId: string, limit: number = 4): PromptConnection[] => {
-  const prompts: PromptConnection[] = [];
-
-  // Find prompts that reference this template
-  Object.entries(promptConnectionsData as any).forEach(([promptId, data]: [string, any]) => {
-    if (data.related_templates) {
-      const templateMatch = data.related_templates.find((t: any) => t.id === templateId);
-      if (templateMatch) {
-        prompts.push({
-          id: promptId,
-          strength: templateMatch.strength,
-          reason: templateMatch.reason
-        });
-      }
-    }
-  });
-
-  return prompts.sort((a, b) => b.strength - a.strength).slice(0, limit);
+export const getPromptsForTemplate = (_templateId: string, _limit: number = 4): PromptConnection[] => {
+  return [];
 };
 
 // Cross-content recommendations
-export const getCrossRecommendations = (contentType: 'template' | 'article' | 'prompt', contentId: string): CrossConnection[] => {
-  const recommendations: CrossConnection[] = [];
-
-  switch (contentType) {
-    case 'template':
-      // Get related articles for this template
-      const relatedArticles = getArticlesForTemplate(contentId, 3);
-      relatedArticles.forEach(article => {
-        recommendations.push({
-          type: 'article',
-          id: article.id,
-          strength: article.strength,
-          reason: article.reason
-        });
-      });
-
-      // Get related prompts for this template
-      const relatedPrompts = getPromptsForTemplate(contentId, 3);
-      relatedPrompts.forEach(prompt => {
-        recommendations.push({
-          type: 'prompt',
-          id: prompt.id,
-          strength: prompt.strength,
-          reason: prompt.reason
-        });
-      });
-      break;
-
-    case 'article':
-      // Get related templates and prompts for this article
-      const articleData = (articleConnectionsData as any)[contentId];
-      if (articleData?.related_templates) {
-        articleData.related_templates.slice(0, 3).forEach((template: any) => {
-          recommendations.push({
-            type: 'template',
-            id: template.id,
-            strength: template.strength,
-            reason: template.reason
-          });
-        });
-      }
-      if (articleData?.related_prompts) {
-        articleData.related_prompts.slice(0, 3).forEach((prompt: any) => {
-          recommendations.push({
-            type: 'prompt',
-            id: prompt.id,
-            strength: prompt.strength,
-            reason: prompt.reason
-          });
-        });
-      }
-      break;
-
-    case 'prompt':
-      // Get related templates and articles for this prompt
-      const promptData = (promptConnectionsData as any)[contentId];
-      if (promptData?.related_templates) {
-        promptData.related_templates.slice(0, 3).forEach((template: any) => {
-          recommendations.push({
-            type: 'template',
-            id: template.id,
-            strength: template.strength,
-            reason: template.reason
-          });
-        });
-      }
-      if (promptData?.related_articles) {
-        promptData.related_articles.slice(0, 3).forEach((article: any) => {
-          recommendations.push({
-            type: 'article',
-            id: article.id,
-            strength: article.strength,
-            reason: article.reason
-          });
-        });
-      }
-      break;
-  }
-
-  return recommendations.sort((a, b) => b.strength - a.strength);
+export const getCrossRecommendations = (_contentType: 'template' | 'article' | 'prompt', _contentId: string): CrossConnection[] => {
+  return [];
 };
