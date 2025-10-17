@@ -8,6 +8,7 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Announcement, AnnouncementTag, AnnouncementTitle } from "@/components/ui/announcement";
 import {
 	ArrowRight,
 	Layout,
@@ -68,69 +69,61 @@ export default function LandingPage() {
 			/>
 
 			{/* Hero Section */}
-			<motion.section
-				className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-primary/5 to-background"
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.6 }}
-			>
-				<div className="container mx-auto max-w-5xl px-4 relative z-10 text-center space-y-8">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.2 }}
-					>
-						<h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-							Organize life's
+			<section className="h-screen flex items-center justify-center relative overflow-hidden">
+				{/* Background Image */}
+				<div
+					className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+					style={{
+						backgroundImage: 'url(/geometric-monuments.png)',
+						filter: 'brightness(0.4)',
+					}}
+				/>
+
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
+					<div className="text-center space-y-8">
+						<Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
+							<AnnouncementTag>Beta</AnnouncementTag>
+							<AnnouncementTitle>The first encyclopedia for living—now in public beta</AnnouncementTitle>
+						</Announcement>
+
+						<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+							Organize life&apos;s
 							<br />
-							biggest{" "}
-							<Typewriter
-								text={[
-									"moments",
-									"weddings",
-									"careers",
-									"moves",
-									"launches",
-								]}
-								speed={70}
-								waitTime={1500}
-								deleteSpeed={40}
-								cursorChar={"_"}
-							/>
+							<span className="text-white">
+								biggest{" "}
+								<Typewriter
+									text={[
+										"moments",
+										"weddings",
+										"careers",
+										"moves",
+										"launches",
+									]}
+									speed={70}
+									waitTime={1500}
+									deleteSpeed={40}
+									cursorChar={"_"}
+								/>
+							</span>
 						</h1>
-					</motion.div>
 
-					<motion.p
-						className="mx-auto max-w-2xl text-xl text-muted-foreground"
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.4 }}
-					>
-						1,298 guided workspaces with 26,000+ articles and 15,000+ prompts.
-						<br />
-						Never start with a blank page.
-					</motion.p>
+						<p className="mx-auto max-w-2xl text-lg md:text-xl text-white/90">
+							1,298 guided workspaces with 26,000+ articles and 15,000+ prompts.
+							<br />
+							Never start with a blank page.
+						</p>
 
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.6, delay: 0.6 }}
-						className="flex flex-col sm:flex-row items-center justify-center gap-4"
-					>
-						<Button size="lg" className="h-12 px-8 text-base" asChild>
-							<Link href="/app">
-								Browse Workspaces
-								<ArrowRight className="ml-2 h-5 w-5" />
-							</Link>
-						</Button>
-						{!isLoggedIn && (
-							<Button variant="outline" size="lg" className="h-12 px-8 text-base" asChild>
-								<Link href="/login">Get Started Free</Link>
+						<div className="flex items-center justify-center pt-4">
+							<Button size="lg" className="h-12 px-8 text-base bg-white text-black hover:bg-white/90" asChild>
+								<Link href="/app">
+									Browse Workspaces
+									<ArrowRight className="ml-2 h-5 w-5" />
+								</Link>
 							</Button>
-						)}
-					</motion.div>
+						</div>
+					</div>
 				</div>
-			</motion.section>
+			</section>
 
 			{/* What It Is - Split-Screen Workspace */}
 			<motion.section
