@@ -96,40 +96,22 @@ export function Header() {
 						<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
 							<NavigationMenu className="pointer-events-auto" viewport={false}>
 								<NavigationMenuList className="space-x-2">
-									{/* Preview - standalone */}
+									{/* Templates */}
 									<NavigationMenuItem>
 										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/preview">
-												Preview
+											<Link href="/templates">
+												Templates
 											</Link>
 										</NavigationMenuLink>
 									</NavigationMenuItem>
 
-									{/* Browse dropdown */}
+									{/* Articles */}
 									<NavigationMenuItem>
-										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Browse</NavigationMenuTrigger>
-										<NavigationMenuContent>
-											<ul className="grid w-[200px] gap-4">
-												<li>
-													<NavigationMenuLink asChild>
-														<Link href="/templates">
-															<div className="text-sm leading-none font-medium">Templates</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-																1,298 templates for life's moments
-															</p>
-														</Link>
-													</NavigationMenuLink>
-													<NavigationMenuLink asChild>
-														<Link href="/articles">
-															<div className="text-sm leading-none font-medium">Articles</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-																In-depth guidance and insights
-															</p>
-														</Link>
-													</NavigationMenuLink>
-												</li>
-											</ul>
-										</NavigationMenuContent>
+										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
+											<Link href="/articles">
+												Articles
+											</Link>
+										</NavigationMenuLink>
 									</NavigationMenuItem>
 								</NavigationMenuList>
 							</NavigationMenu>
