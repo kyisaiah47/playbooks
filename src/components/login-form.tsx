@@ -42,6 +42,16 @@ export function LoginForm({
         return;
       }
 
+      // Clear localStorage (anonymous user data)
+      const keysToRemove: string[] = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('workspace_') || key.startsWith('reflection-') || key === 'templata-onboarding-seen')) {
+          keysToRemove.push(key);
+        }
+      }
+      keysToRemove.forEach(key => localStorage.removeItem(key));
+
       // Redirect to app after successful login
       router.push("/app");
       router.refresh();
