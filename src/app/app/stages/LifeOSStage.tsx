@@ -6,7 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LayoutGrid, Calendar, BarChart3, FileText, Heart } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { LayoutGrid, Calendar, BarChart3, FileText, Heart, TrendingUp, Flame } from 'lucide-react';
 
 interface TemplateProgress {
   templateId: string;
@@ -34,6 +40,9 @@ export function LifeOSStage() {
   const [templates, setTemplates] = useState<TemplateProgress[]>([]);
   const [reflections, setReflections] = useState<ReflectionSummary[]>([]);
   const [activityData, setActivityData] = useState<ActivityDay[]>([]);
+  const [boardFilter, setBoardFilter] = useState<'all' | 'in-progress' | 'completed'>('all');
+  const [selectedDay, setSelectedDay] = useState<ActivityDay | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -129,6 +138,47 @@ export function LifeOSStage() {
     ? Math.round(reflections.reduce((sum, r) => sum + r.wordCount, 0) / reflections.length)
     : 0;
 
+  // Filter templates based on boardFilter
+  const filteredTemplates = templates.filter(t => {
+    if (boardFilter === 'all') return true;
+    const isCompleted = t.promptsCompleted === t.totalPrompts;
+    if (boardFilter === 'completed') return isCompleted;
+    if (boardFilter === 'in-progress') return !isCompleted;
+    return true;
+  });
+
+  // Calculate longest streak
+  const longestStreak = (() => {
+    let maxStreak = 0;
+    let currentStreak = 0;
+
+    activityData.forEach((day) => {
+      if (day.reflections > 0 || day.promptsWorked > 0) {
+        currentStreak++;
+        maxStreak = Math.max(maxStreak, currentStreak);
+      } else {
+        currentStreak = 0;
+      }
+    });
+
+    return maxStreak;
+  })();
+
+  // Calculate top themes from reflection tags
+  const topThemes = (() => {
+    const tagCounts: Record<string, number> = {};
+    reflections.forEach(r => {
+      r.tags.forEach(tag => {
+        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+      });
+    });
+
+    return Object.entries(tagCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([tag]) => tag);
+  })();
+
   return (
     <div className="h-full flex flex-col bg-background">
       {/* Header */}
@@ -180,19 +230,47 @@ export function LifeOSStage() {
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                       <FileText className="h-5 w-5" />
-                      Templates In Progress
+                      Templates
                     </h3>
-                    <Badge variant="outline">{templates.length}</Badge>
+                    <Badge variant="outline">{filteredTemplates.length}</Badge>
                   </div>
+
+                  {/* Filter Chips */}
+                  <div className="flex gap-2 mb-4">
+                    <Button
+                      variant={boardFilter === 'all' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setBoardFilter('all')}
+                    >
+                      All
+                    </Button>
+                    <Button
+                      variant={boardFilter === 'in-progress' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setBoardFilter('in-progress')}
+                    >
+                      In Progress
+                    </Button>
+                    <Button
+                      variant={boardFilter === 'completed' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setBoardFilter('completed')}
+                    >
+                      Completed
+                    </Button>
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {templates.length === 0 ? (
+                    {filteredTemplates.length === 0 ? (
                       <Card className="p-6 col-span-full">
                         <p className="text-center text-muted-foreground">
-                          No templates started yet. Go to Workspace to begin!
+                          {boardFilter === 'all'
+                            ? 'No templates started yet. Go to Workspace to begin!'
+                            : `No ${boardFilter} templates.`}
                         </p>
                       </Card>
                     ) : (
-                      templates.map((template, index) => (
+                      filteredTemplates.map((template, index) => (
                         <motion.div
                           key={template.templateId}
                           initial={{ opacity: 0, scale: 0.9 }}
@@ -327,6 +405,12 @@ export function LifeOSStage() {
                         transition={{ duration: 0.2, delay: index * 0.02 }}
                         className={`aspect-square rounded border border-border relative group cursor-pointer ${getColor()}`}
                         title={`${formattedDate} (${dayOfWeek}): ${day.reflections} reflections, ${day.promptsWorked} prompts`}
+                        onClick={() => {
+                          if (total > 0) {
+                            setSelectedDay(day);
+                            setDialogOpen(true);
+                          }
+                        }}
                       >
                         {/* Default: Show date for start/end, or month for first of month */}
                         <div className="absolute inset-0 flex flex-col items-center justify-center group-hover:opacity-0 transition-opacity">
@@ -369,112 +453,212 @@ export function LifeOSStage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                className="space-y-6"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
-                  <Card className="p-6 h-full">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <FileText className="h-6 w-6 text-primary" />
+                {/* Stats Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                  >
+                    <Card className="p-6 h-full">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-primary/10">
+                          <FileText className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <motion.p
+                            className="text-2xl font-bold text-foreground"
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.2 }}
+                          >
+                            {totalTemplates}
+                          </motion.p>
+                          <p className="text-sm text-muted-foreground">Templates Started</p>
+                        </div>
                       </div>
-                      <div>
-                        <motion.p
-                          className="text-2xl font-bold text-foreground"
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.2 }}
-                        >
-                          {totalTemplates}
-                        </motion.p>
-                        <p className="text-sm text-muted-foreground">Templates Started</p>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
+                    </Card>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.15 }}
-                >
-                  <Card className="p-6 h-full">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <BarChart3 className="h-6 w-6 text-primary" />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.15 }}
+                  >
+                    <Card className="p-6 h-full">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-primary/10">
+                          <BarChart3 className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <motion.p
+                            className="text-2xl font-bold text-foreground"
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.25 }}
+                          >
+                            {totalPromptsCompleted}
+                          </motion.p>
+                          <p className="text-sm text-muted-foreground">Prompts Completed</p>
+                        </div>
                       </div>
-                      <div>
-                        <motion.p
-                          className="text-2xl font-bold text-foreground"
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.25 }}
-                        >
-                          {totalPromptsCompleted}
-                        </motion.p>
-                        <p className="text-sm text-muted-foreground">Prompts Completed</p>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
+                    </Card>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.2 }}
-                >
-                  <Card className="p-6 h-full">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <Heart className="h-6 w-6 text-primary" />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                  >
+                    <Card className="p-6 h-full">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-primary/10">
+                          <Heart className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <motion.p
+                            className="text-2xl font-bold text-foreground"
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.3 }}
+                          >
+                            {totalReflections}
+                          </motion.p>
+                          <p className="text-sm text-muted-foreground">Reflections Written</p>
+                        </div>
                       </div>
-                      <div>
-                        <motion.p
-                          className="text-2xl font-bold text-foreground"
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.3 }}
-                        >
-                          {totalReflections}
-                        </motion.p>
-                        <p className="text-sm text-muted-foreground">Reflections Written</p>
-                      </div>
-                    </div>
-                  </Card>
-                </motion.div>
+                    </Card>
+                  </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.25 }}
-                >
-                  <Card className="p-6 h-full">
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10">
-                        <Calendar className="h-6 w-6 text-primary" />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.25 }}
+                  >
+                    <Card className="p-6 h-full">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-primary/10">
+                          <Calendar className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <motion.p
+                            className="text-2xl font-bold text-foreground"
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.35 }}
+                          >
+                            {avgWordsPerReflection}
+                          </motion.p>
+                          <p className="text-sm text-muted-foreground">Avg Words/Reflection</p>
+                        </div>
                       </div>
-                      <div>
-                        <motion.p
-                          className="text-2xl font-bold text-foreground"
-                          initial={{ opacity: 0, scale: 0.5 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.35 }}
-                        >
-                          {avgWordsPerReflection}
-                        </motion.p>
-                        <p className="text-sm text-muted-foreground">Avg Words/Reflection</p>
+                    </Card>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.3 }}
+                  >
+                    <Card className="p-6 h-full">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-lg bg-orange-500/10">
+                          <Flame className="h-6 w-6 text-orange-500" />
+                        </div>
+                        <div>
+                          <motion.p
+                            className="text-2xl font-bold text-foreground"
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.4 }}
+                          >
+                            {longestStreak}
+                          </motion.p>
+                          <p className="text-sm text-muted-foreground">Longest Streak</p>
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                </motion.div>
+                    </Card>
+                  </motion.div>
+                </div>
+
+                {/* Top Themes Section */}
+                {topThemes.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.35 }}
+                  >
+                    <Card className="p-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <TrendingUp className="h-5 w-5 text-primary" />
+                        <h3 className="text-lg font-semibold text-foreground">Top Themes</h3>
+                      </div>
+                      <div className="flex gap-2 flex-wrap">
+                        {topThemes.map((theme, index) => (
+                          <motion.div
+                            key={theme}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.2, delay: 0.4 + (index * 0.05) }}
+                          >
+                            <Badge variant="secondary" className="text-sm px-3 py-1">
+                              {theme}
+                            </Badge>
+                          </motion.div>
+                        ))}
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-3">
+                        Most frequently used tags in your reflections
+                      </p>
+                    </Card>
+                  </motion.div>
+                )}
               </motion.div>
             </TabsContent>
           </div>
         </div>
       </Tabs>
+
+      {/* Activity Day Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              {selectedDay && new Date(selectedDay.date).toLocaleDateString('en-US', {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </DialogTitle>
+          </DialogHeader>
+          {selectedDay && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <Card className="p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Heart className="h-4 w-4 text-primary" />
+                    <p className="text-sm font-medium text-foreground">Reflections</p>
+                  </div>
+                  <p className="text-2xl font-bold text-foreground">{selectedDay.reflections}</p>
+                </Card>
+                <Card className="p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <FileText className="h-4 w-4 text-primary" />
+                    <p className="text-sm font-medium text-foreground">Prompts Worked</p>
+                  </div>
+                  <p className="text-2xl font-bold text-foreground">{selectedDay.promptsWorked}</p>
+                </Card>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                <p>Total activity: {selectedDay.reflections + selectedDay.promptsWorked}</p>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

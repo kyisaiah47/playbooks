@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
   SelectContent,
@@ -267,12 +268,10 @@ export function WorkspaceStage() {
 
               {/* Autosave Toggle */}
               <div className="flex items-center gap-2 px-3 py-2 rounded-md border border-border">
-                <input
-                  type="checkbox"
+                <Checkbox
                   id="autosave"
                   checked={autoSave}
-                  onChange={(e) => setAutoSave(e.target.checked)}
-                  className="h-4 w-4"
+                  onCheckedChange={setAutoSave}
                 />
                 <label htmlFor="autosave" className="text-sm text-foreground cursor-pointer">
                   Auto-save
