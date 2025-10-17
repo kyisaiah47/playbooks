@@ -27,7 +27,7 @@ export function ArticleContent({ content }: ArticleContentProps) {
     });
 
   return (
-    <div className="prose prose-lg max-w-none">
+    <div className="max-w-none">
       {cleanedContent.map((paragraph, index) => {
 
         // Main headings with IDs for navigation
@@ -35,7 +35,7 @@ export function ArticleContent({ content }: ArticleContentProps) {
           const headingText = paragraph.replace('## ', '');
           const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return (
-            <h2 key={index} id={id} className="text-3xl font-bold mt-16 mb-6 text-foreground scroll-mt-24">
+            <h2 key={index} id={id} className="text-xl font-semibold mt-8 mb-4 text-foreground">
               {headingText}
             </h2>
           );
@@ -46,7 +46,7 @@ export function ArticleContent({ content }: ArticleContentProps) {
           const headingText = paragraph.replace('### ', '');
           const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return (
-            <h3 key={index} id={id} className="text-2xl font-semibold mt-12 mb-4 text-foreground scroll-mt-24">
+            <h3 key={index} id={id} className="text-lg font-semibold mt-6 mb-3 text-foreground">
               {headingText}
             </h3>
           );
@@ -159,8 +159,8 @@ export function ArticleContent({ content }: ArticleContentProps) {
           // Pull quotes (text starting with >)
           if (paragraph.startsWith('> ')) {
             return (
-              <blockquote key={index} className="bg-muted/50 border-l-4 border-primary/30 p-6 my-8 rounded-r-lg">
-                <p className="text-lg italic text-foreground/80 leading-relaxed">
+              <blockquote key={index} className="bg-muted/50 border-l-2 border-primary/30 pl-4 py-3 my-4">
+                <p className="text-sm italic text-foreground/80">
                   {renderText(paragraph.replace('> ', ''))}
                 </p>
               </blockquote>
@@ -211,14 +211,14 @@ export function ArticleContent({ content }: ArticleContentProps) {
           // Pro Tip callouts with lightbulb
           if (paragraph.includes('Pro Tip:') || paragraph.includes('**Pro Tip:**')) {
             return (
-              <div key={index} className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 my-8">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Lightbulb className="w-4 h-4 text-blue-600" />
+              <div key={index} className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-4">
+                <div className="flex items-start gap-2">
+                  <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Lightbulb className="w-3 h-3 text-blue-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Pro Tip!</h4>
-                    <p className="text-blue-800 dark:text-blue-200 leading-relaxed text-sm">
+                    <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-1 text-sm">Pro Tip!</h4>
+                    <p className="text-blue-800 dark:text-blue-200 text-sm">
                       {renderText(paragraph.replace('**Pro Tip:** ', '').replace('Pro Tip: ', ''))}
                     </p>
                   </div>
@@ -231,9 +231,9 @@ export function ArticleContent({ content }: ArticleContentProps) {
           if (paragraph.startsWith('- ') || paragraph.startsWith('• ')) {
             const items = paragraph.split('\n').filter(line => line.trim().startsWith('-') || line.trim().startsWith('•'));
             return (
-              <ul key={index} className="space-y-2 my-6 ml-6">
+              <ul key={index} className="space-y-1.5 my-3 ml-5 list-disc">
                 {items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="text-lg leading-relaxed text-foreground/90">
+                  <li key={itemIndex} className="text-sm text-foreground/90">
                     {renderText(item.replace(/^[-•]\s*/, ''))}
                   </li>
                 ))}
@@ -243,7 +243,7 @@ export function ArticleContent({ content }: ArticleContentProps) {
 
           // Regular paragraphs
           return (
-            <p key={index} className="text-lg leading-relaxed mb-6 text-foreground/90">
+            <p key={index} className="text-sm leading-relaxed mb-4 text-foreground/90">
               {renderText(paragraph)}
             </p>
           );
