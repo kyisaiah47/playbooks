@@ -264,22 +264,50 @@ export function LifeOSStage() {
             {/* Timeline View */}
             <TabsContent value="timeline" className="mt-0">
               <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-foreground">Last 30 Days</h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-foreground">Last 30 Days</h3>
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span>{activityData[0]?.date && new Date(activityData[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                    <span>→</span>
+                    <span>{activityData[activityData.length - 1]?.date && new Date(activityData[activityData.length - 1].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                  </div>
+                </div>
                 <div className="grid grid-cols-10 gap-2">
-                  {activityData.map((day) => {
+                  {activityData.map((day, index) => {
                     const total = day.reflections + day.promptsWorked;
                     const intensity = total === 0 ? 0 : Math.min(total / 5, 1);
+                    const date = new Date(day.date);
+                    const isFirstOfMonth = date.getDate() === 1;
+                    const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
+                    const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                    // Generate color based on intensity (green scale like GitHub)
+                    const getColor = () => {
+                      if (total === 0) return 'bg-muted';
+                      if (intensity <= 0.2) return 'bg-green-100 dark:bg-green-900/30';
+                      if (intensity <= 0.4) return 'bg-green-200 dark:bg-green-800/40';
+                      if (intensity <= 0.6) return 'bg-green-300 dark:bg-green-700/50';
+                      if (intensity <= 0.8) return 'bg-green-400 dark:bg-green-600/60';
+                      return 'bg-green-500 dark:bg-green-500/70';
+                    };
+
                     return (
-                      <div
-                        key={day.date}
-                        className="aspect-square rounded border border-border relative group cursor-pointer"
-                        style={{
-                          backgroundColor: `hsl(var(--primary) / ${intensity * 0.5})`,
-                        }}
-                        title={`${day.date}: ${day.reflections} reflections, ${day.promptsWorked} prompts`}
-                      >
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <span className="text-xs font-medium">{total}</span>
+                      <div key={day.date} className="flex flex-col items-center gap-1">
+                        {/* Month label - all columns same height */}
+                        <div className="h-4 text-xs text-muted-foreground font-medium">
+                          {isFirstOfMonth && date.toLocaleDateString('en-US', { month: 'short' })}
+                        </div>
+                        <div
+                          className={`aspect-square w-full rounded border border-border relative group cursor-pointer ${getColor()}`}
+                          title={`${formattedDate} (${dayOfWeek}): ${day.reflections} reflections, ${day.promptsWorked} prompts`}
+                        >
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 rounded">
+                            <span className="text-xs font-medium text-foreground">{total}</span>
+                          </div>
+                        </div>
+                        {/* Day number - all columns same height */}
+                        <div className="h-4 text-xs text-muted-foreground">
+                          {(index === 0 || index === activityData.length - 1) && date.getDate()}
                         </div>
                       </div>
                     );
@@ -288,15 +316,12 @@ export function LifeOSStage() {
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <span>Less</span>
                   <div className="flex gap-1">
-                    {[0, 0.2, 0.4, 0.6, 0.8, 1].map((intensity) => (
-                      <div
-                        key={intensity}
-                        className="w-4 h-4 rounded border border-border"
-                        style={{
-                          backgroundColor: `hsl(var(--primary) / ${intensity * 0.5})`,
-                        }}
-                      />
-                    ))}
+                    <div className="w-4 h-4 rounded border border-border bg-muted" />
+                    <div className="w-4 h-4 rounded border border-border bg-green-100 dark:bg-green-900/30" />
+                    <div className="w-4 h-4 rounded border border-border bg-green-200 dark:bg-green-800/40" />
+                    <div className="w-4 h-4 rounded border border-border bg-green-300 dark:bg-green-700/50" />
+                    <div className="w-4 h-4 rounded border border-border bg-green-400 dark:bg-green-600/60" />
+                    <div className="w-4 h-4 rounded border border-border bg-green-500 dark:bg-green-500/70" />
                   </div>
                   <span>More</span>
                 </div>

@@ -16,12 +16,19 @@ export default function StudioPage() {
   const [currentStage, setCurrentStage] = useState<Stage>('workspace');
   const [previousStage, setPreviousStage] = useState<Stage>('workspace');
   const [transitionPhase, setTransitionPhase] = useState<TransitionPhase>('idle');
+  const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
   const handleStageChange = (newStage: Stage) => {
     if (newStage === currentStage) return;
 
     setPreviousStage(currentStage);
     setTransitionPhase('exiting');
+    setButtonsDisabled(true);
+
+    // Re-enable buttons quickly
+    setTimeout(() => {
+      setButtonsDisabled(false);
+    }, 700);
 
     // Wait for exit animation, then switch
     setTimeout(() => {
@@ -96,7 +103,7 @@ export default function StudioPage() {
                 variant={currentStage === 'workspace' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => handleStageChange('workspace')}
-                disabled={transitionPhase !== 'idle'}
+                disabled={buttonsDisabled}
               >
                 Workspace
               </Button>
@@ -104,7 +111,7 @@ export default function StudioPage() {
                 variant={currentStage === 'reflection' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => handleStageChange('reflection')}
-                disabled={transitionPhase !== 'idle'}
+                disabled={buttonsDisabled}
               >
                 Reflection
               </Button>
@@ -112,7 +119,7 @@ export default function StudioPage() {
                 variant={currentStage === 'lifeos' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => handleStageChange('lifeos')}
-                disabled={transitionPhase !== 'idle'}
+                disabled={buttonsDisabled}
               >
                 Life OS
               </Button>
