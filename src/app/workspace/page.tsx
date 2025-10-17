@@ -1,1409 +1,481 @@
 'use client';
 
-import { WorkspaceSidebar } from "@/components/workspace-sidebar"
-import { SiteHeader } from "@/components/site-header"
+import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar"
-import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { IconTrendingUp, IconFileText, IconFolders, IconPencil, IconTemplate, IconStar, IconClock, IconChevronLeft, IconChevronRight, IconCirclePlus } from "@tabler/icons-react"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { IconSearch } from "@tabler/icons-react"
-import { templateRegistry } from '@/registry/templates';
-import { useRouter } from 'next/navigation';
-import { ChartAreaInteractive } from '@/components/chart-area-interactive';
-import { useState, useEffect, useMemo } from 'react';
-import { supabase } from '@/lib/supabase';
-import { ChatView } from '@/components/workspace-views/chat-view';
-import { SplitView } from '@/components/workspace-views/split-view';
-import { BoardView } from '@/components/workspace-views/board-view';
-import { ChecklistView } from '@/components/workspace-views/checklist-view';
-import { TableView } from '@/components/workspace-views/table-view';
-import { TimelineView } from '@/components/workspace-views/timeline-view';
-import { TextEditorView } from '@/components/workspace-views/text-editor-view';
-import { Dock, DockIcon, DockItem, DockLabel } from '@/components/ui/shadcn-io/dock';
-import { IconNotes } from '@tabler/icons-react';
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, Home, ArrowLeft, X } from 'lucide-react';
+import Link from 'next/link';
 
-export type ViewMode = 'chat' | 'split' | 'board' | 'text' | 'timeline' | 'table' | 'cards' | 'outline' | 'checklist' | 'tabs';
+interface Prompt {
+  id: string;
+  prompt: string;
+  categoryName: string;
+}
+
+interface Article {
+  id: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+}
+
+interface ArticleDetail extends Article {
+  content: string;
+  author: string;
+  publishedAt: string;
+}
+
+interface Template {
+  id: string;
+  name: string;
+  category: string;
+}
 
 export default function WorkspacePage() {
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const totalTemplates = templateRegistry.length;
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [currentView, setCurrentView] = useState('dashboard');
-  const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(
-    templateRegistry[0]?.id || null
-  );
-  const [searchQuery, setSearchQuery] = useState('');
-  const [letterFilter, setLetterFilter] = useState<string>('all');
-  const [promptsSearchQuery, setPromptsSearchQuery] = useState('');
-  const [articlesSearchQuery, setArticlesSearchQuery] = useState('');
-  const [workspacesSearchQuery, setWorkspacesSearchQuery] = useState('');
-  const [templatesDrawerOpen, setTemplatesDrawerOpen] = useState(false);
-  const [promptsDrawerOpen, setPromptsDrawerOpen] = useState(false);
-  const [articlesDrawerOpen, setArticlesDrawerOpen] = useState(false);
-  const [allPrompts, setAllPrompts] = useState<any[]>([]);
-  const [allArticles, setAllArticles] = useState<any[]>([]);
-  const [promptsLoading, setPromptsLoading] = useState(false);
-  const [articlesLoading, setArticlesLoading] = useState(false);
+  const templateParam = searchParams.get('template') || 'wedding-planning';
 
-  // Listen for hash changes
+  const [selectedTemplate, setSelectedTemplate] = useState(templateParam);
+  const [templates, setTemplates] = useState<Template[]>([]);
+  const [templateInfo, setTemplateInfo] = useState<{ id: string; name: string } | null>(null);
+  const [prompts, setPrompts] = useState<Prompt[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [selectedPromptId, setSelectedPromptId] = useState<string | null>(null);
+  const [promptResponse, setPromptResponse] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [autoSave, setAutoSave] = useState(true);
+  const [lastSaved, setLastSaved] = useState<Date | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<ArticleDetail | null>(null);
+  const [loadingArticle, setLoadingArticle] = useState(false);
+  const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
+
+  // Load data from localStorage on mount
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1); // Remove #
-      const view = hash || 'dashboard';
-      setCurrentView(view);
-    };
+    if (selectedPromptId) {
+      const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        try {
+          const data = JSON.parse(saved);
+          setPromptResponse(data.response || '');
+          setLastSaved(data.savedAt ? new Date(data.savedAt) : null);
+        } catch (e) {
+          console.error('Error loading saved data:', e);
+        }
+      } else {
+        setPromptResponse('');
+        setLastSaved(null);
+      }
+    }
+  }, [selectedPromptId, selectedTemplate]);
 
-    handleHashChange(); // Set initial view
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+  // Autosave functionality
+  useEffect(() => {
+    if (!autoSave || !selectedPromptId || !promptResponse) return;
+
+    const timeoutId = setTimeout(() => {
+      const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+      const data = {
+        response: promptResponse,
+        savedAt: new Date().toISOString(),
+      };
+      localStorage.setItem(key, JSON.stringify(data));
+      setLastSaved(new Date());
+    }, 2000); // Save 2 seconds after user stops typing
+
+    return () => clearTimeout(timeoutId);
+  }, [promptResponse, autoSave, selectedPromptId, selectedTemplate]);
+
+  // Fetch templates list
+  useEffect(() => {
+    async function fetchTemplates() {
+      try {
+        const res = await fetch('/api/templates');
+        const data = await res.json();
+        setTemplates(data.templates || []);
+      } catch (error) {
+        console.error('Error fetching templates:', error);
+      }
+    }
+    fetchTemplates();
   }, []);
 
-  // Load prompts when template is selected
+  // Fetch prompts and articles when template changes
   useEffect(() => {
-    if (!selectedTemplateId) {
-      setAllPrompts([]);
-      setPromptsLoading(false);
-      return;
-    }
-
-    setPromptsLoading(true);
-
-    const loadTemplatePrompts = async () => {
-      const template = templateRegistry.find(t => t.id === selectedTemplateId);
-      if (!template) {
-        setAllPrompts([]);
-        setPromptsLoading(false);
-        return;
-      }
-
+    async function fetchData() {
       try {
-        const res = await fetch(`/api/prompts?templateId=${selectedTemplateId}`);
-        const data = await res.json();
+        setLoading(true);
 
-        const promptsData = (data.prompts || []).map((p: any) => ({
-          ...p,
-          template: template.name,
-          templateId: template.id
-        }));
-
-        setAllPrompts(promptsData);
-      } catch (error) {
-        console.error('Error loading prompts:', error);
-        setAllPrompts([]);
-      } finally {
-        setPromptsLoading(false);
-      }
-    };
-
-    loadTemplatePrompts();
-  }, [selectedTemplateId]);
-
-  // Load articles when template is selected
-  useEffect(() => {
-    if (!selectedTemplateId) {
-      setAllArticles([]);
-      setArticlesLoading(false);
-      return;
-    }
-
-    setArticlesLoading(true);
-
-    const loadTemplateArticles = async () => {
-      const template = templateRegistry.find(t => t.id === selectedTemplateId);
-      if (!template) {
-        setAllArticles([]);
-        setArticlesLoading(false);
-        return;
-      }
-
-      try {
-        const { data, error } = await supabase
-          .from('templata_articles')
-          .select('id, title, excerpt, template, read_time, type, published_at, slug')
-          .eq('template', template.id)
-          .order('published_at', { ascending: false });
-
-        if (!error && data) {
-          setAllArticles(data.map(article => ({
-            id: article.id,
-            title: article.title,
-            excerpt: article.excerpt,
-            template: article.template,
-            readTime: article.read_time,
-            type: article.type,
-            publishedAt: article.published_at,
-            slug: article.slug
-          })));
-        } else {
-          setAllArticles([]);
+        // Fetch template info from templates list
+        const template = templates.find(t => t.id === selectedTemplate);
+        if (template) {
+          setTemplateInfo({ id: template.id, name: template.name });
         }
+
+        // Fetch prompts
+        const promptsRes = await fetch(`/api/prompts?templateId=${selectedTemplate}`);
+        const promptsData = await promptsRes.json();
+        setPrompts(promptsData.prompts || []);
+
+        // Fetch articles
+        const articlesRes = await fetch(`/api/articles?template=${selectedTemplate}&pageSize=50`);
+        const articlesData = await articlesRes.json();
+        setArticles(articlesData.articles || []);
       } catch (error) {
-        console.error('Error loading articles:', error);
-        setAllArticles([]);
+        console.error('Error fetching data:', error);
       } finally {
-        setArticlesLoading(false);
+        setLoading(false);
       }
-    };
+    }
 
-    loadTemplateArticles();
-  }, [selectedTemplateId]);
+    if (templates.length > 0) {
+      fetchData();
+    }
+  }, [selectedTemplate, templates]);
 
-  // Pagination state
-  const [allPage, setAllPage] = useState(0);
-  const [recentPage, setRecentPage] = useState(0);
-  const [favoritesPage, setFavoritesPage] = useState(0);
-  const [workspacesPage, setWorkspacesPage] = useState(0);
-  const [templatesPage, setTemplatesPage] = useState(0);
-  const [promptsPage, setPromptsPage] = useState(0);
-  const [articlesPage, setArticlesPage] = useState(0);
-  const [workspacesViewPage, setWorkspacesViewPage] = useState(0);
-  const pageSize = 10;
-  const templatesPageSize = 20;
-  const viewPageSize = 20;
-
-  // Mock data - replace with real data later
-  const stats = {
-    totalTemplates: totalTemplates,
-    activeWorkspaces: 3,
-    totalWords: 12450,
-    templatesUsed: 8,
+  // Handle template change
+  const handleTemplateChange = (newTemplateId: string) => {
+    setSelectedTemplate(newTemplateId);
+    setSelectedPromptId(null);
+    setPromptResponse('');
+    router.push(`/workspace?template=${newTemplateId}`);
   };
 
-  // Group templates by category for the table
-  const allTemplates = templateRegistry;
-  const recentTemplates = templateRegistry.slice(0, 5); // Last 5 used
-  const favoriteTemplates = templateRegistry.filter(t => favorites.includes(t.id));
-
-  // Mock workspaces
-  const workspaces = [
-    { id: 1, name: 'Morning Journal', template: 'Daily Reflection', lastEdited: '2 hours ago', wordCount: 450 },
-    { id: 2, name: 'Business Plan Draft', template: 'Strategic Planning', lastEdited: '1 day ago', wordCount: 2340 },
-    { id: 3, name: 'Weekly Review', template: 'Weekly Review', lastEdited: '3 days ago', wordCount: 890 },
-  ];
-
-  // Paginated data
-  const paginatedAllTemplates = allTemplates.slice(allPage * pageSize, (allPage + 1) * pageSize);
-  const paginatedRecentTemplates = recentTemplates.slice(recentPage * pageSize, (recentPage + 1) * pageSize);
-  const paginatedFavoriteTemplates = favoriteTemplates.slice(favoritesPage * pageSize, (favoritesPage + 1) * pageSize);
-  const paginatedWorkspaces = workspaces.slice(workspacesPage * pageSize, (workspacesPage + 1) * pageSize);
-
-  // Filter templates for templates view
-  const filteredTemplates = useMemo(() => {
-    let filtered = templateRegistry;
-
-    // Apply search query filter
-    if (searchQuery.trim()) {
-      filtered = filtered.filter(t =>
-        t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        t.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        t.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+  // Handle article click
+  const handleArticleClick = async (articleId: string) => {
+    try {
+      setLoadingArticle(true);
+      const res = await fetch(`/api/articles?id=${articleId}`);
+      const data = await res.json();
+      setSelectedArticle(data.article);
+    } catch (error) {
+      console.error('Error fetching article:', error);
+    } finally {
+      setLoadingArticle(false);
     }
+  };
 
-    // Apply letter filter
-    if (letterFilter !== 'all') {
-      filtered = filtered.filter(t =>
-        t.name.toLowerCase().startsWith(letterFilter.toLowerCase())
-      );
+  // Handle closing article
+  const handleCloseArticle = () => {
+    setSelectedArticle(null);
+  };
+
+  // Toggle category collapse
+  const toggleCategory = (category: string) => {
+    setCollapsedCategories((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(category)) {
+        newSet.delete(category);
+      } else {
+        newSet.add(category);
+      }
+      return newSet;
+    });
+  };
+
+  // Manual save
+  const handleManualSave = () => {
+    if (selectedPromptId && promptResponse) {
+      const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+      const data = {
+        response: promptResponse,
+        savedAt: new Date().toISOString(),
+      };
+      localStorage.setItem(key, JSON.stringify(data));
+      setLastSaved(new Date());
     }
+  };
 
-    return filtered;
-  }, [searchQuery, letterFilter]);
+  // Group prompts by category
+  const groupedPrompts = prompts.reduce((acc, prompt) => {
+    const category = prompt.categoryName || 'General';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(prompt);
+    return acc;
+  }, {} as Record<string, Prompt[]>);
 
-  const paginatedTemplatesView = useMemo(() => {
-    return filteredTemplates.slice(templatesPage * templatesPageSize, (templatesPage + 1) * templatesPageSize);
-  }, [filteredTemplates, templatesPage]);
-
-  const totalTemplatesPages = Math.ceil(filteredTemplates.length / templatesPageSize);
-
-  // Filter and paginate prompts
-  const filteredPrompts = useMemo(() => {
-    if (!promptsSearchQuery.trim()) return allPrompts;
-    return allPrompts.filter(p =>
-      p.prompt?.toLowerCase().includes(promptsSearchQuery.toLowerCase()) ||
-      p.template?.toLowerCase().includes(promptsSearchQuery.toLowerCase()) ||
-      p.categoryName?.toLowerCase().includes(promptsSearchQuery.toLowerCase())
-    );
-  }, [promptsSearchQuery, allPrompts]);
-
-  const paginatedPrompts = useMemo(() => {
-    return filteredPrompts.slice(promptsPage * viewPageSize, (promptsPage + 1) * viewPageSize);
-  }, [filteredPrompts, promptsPage]);
-
-  const totalPromptsPages = Math.ceil(filteredPrompts.length / viewPageSize);
-
-  // Filter and paginate articles
-  const filteredArticles = useMemo(() => {
-    if (!articlesSearchQuery.trim()) return allArticles;
-    return allArticles.filter(a =>
-      a.title?.toLowerCase().includes(articlesSearchQuery.toLowerCase()) ||
-      a.template?.toLowerCase().includes(articlesSearchQuery.toLowerCase()) ||
-      a.excerpt?.toLowerCase().includes(articlesSearchQuery.toLowerCase())
-    );
-  }, [articlesSearchQuery, allArticles]);
-
-  const paginatedArticles = useMemo(() => {
-    return filteredArticles.slice(articlesPage * viewPageSize, (articlesPage + 1) * viewPageSize);
-  }, [filteredArticles, articlesPage]);
-
-  const totalArticlesPages = Math.ceil(filteredArticles.length / viewPageSize);
-
-  // Filter and paginate workspaces for workspaces view
-  const filteredWorkspacesView = useMemo(() => {
-    if (!workspacesSearchQuery.trim()) return workspaces;
-    return workspaces.filter(w =>
-      w.name.toLowerCase().includes(workspacesSearchQuery.toLowerCase()) ||
-      w.template.toLowerCase().includes(workspacesSearchQuery.toLowerCase())
-    );
-  }, [workspacesSearchQuery]);
-
-  const paginatedWorkspacesView = useMemo(() => {
-    return filteredWorkspacesView.slice(workspacesViewPage * viewPageSize, (workspacesViewPage + 1) * viewPageSize);
-  }, [filteredWorkspacesView, workspacesViewPage]);
-
-  const totalWorkspacesPages = Math.ceil(filteredWorkspacesView.length / viewPageSize);
+  const categories = Object.keys(groupedPrompts).sort();
+  const selectedPrompt = prompts.find(p => p.id === selectedPromptId);
 
   return (
-    <SidebarProvider
-      style={
-        {
-          "--sidebar-width": "calc(var(--spacing) * 72)",
-          "--header-height": "calc(var(--spacing) * 12)",
-        } as React.CSSProperties
-      }
-    >
-      <WorkspaceSidebar
-        variant="inset"
-        viewMode={currentView as ViewMode}
-        onViewModeChange={(mode) => {
-          setCurrentView(mode);
-          window.location.hash = mode;
-        }}
-      />
-      <SidebarInset>
-        <SiteHeader />
-        <div className="flex flex-1 flex-col overflow-hidden pb-32">
-          <div className="@container/main flex flex-1 flex-col gap-2 overflow-auto">
-            {currentView === 'dashboard' ? (
-              <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+    <div className="h-screen flex flex-col bg-background">
+      {/* Custom Header */}
+      <div className="border-b bg-background">
+        <div className="container mx-auto max-w-7xl px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href="/">
+                <Button variant="ghost" size="sm">
+                  <Home className="h-4 w-4 mr-2" />
+                  Home
+                </Button>
+              </Link>
+              <div className="h-6 w-px bg-border" />
+              <div>
+                <h1 className="text-lg font-bold text-foreground">Workspace</h1>
+                {templateInfo && (
+                  <p className="text-xs text-muted-foreground">{templateInfo.name}</p>
+                )}
+              </div>
+            </div>
 
-              {/* Stats Cards */}
-              <div className="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
+            <div className="flex items-center gap-3">
+              {/* Template Selector */}
+              <Select value={selectedTemplate} onValueChange={handleTemplateChange}>
+                <SelectTrigger className="w-[250px]">
+                  <SelectValue placeholder="Select template" />
+                </SelectTrigger>
+                <SelectContent>
+                  {templates.map((template) => (
+                    <SelectItem key={template.id} value={template.id}>
+                      {template.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
-                {/* All Templates */}
-                <Card className="@container/card">
-                  <CardHeader>
-                    <CardDescription>All Templates</CardDescription>
-                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                      {stats.totalTemplates}
-                    </CardTitle>
-                    <CardAction>
-                      <Badge variant="outline">
-                        <IconTemplate className="h-3 w-3" />
-                        Free access
-                      </Badge>
-                    </CardAction>
-                  </CardHeader>
-                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                    <div className="line-clamp-1 flex gap-2 font-medium">
-                      All templates available
-                    </div>
-                    <div className="text-muted-foreground">
-                      Across all categories
-                    </div>
-                  </CardFooter>
-                </Card>
-
-                {/* Active Workspaces */}
-                <Card className="@container/card">
-                  <CardHeader>
-                    <CardDescription>Active Workspaces</CardDescription>
-                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                      {stats.activeWorkspaces}
-                    </CardTitle>
-                    <CardAction>
-                      <Badge variant="outline">
-                        <IconFolders className="h-3 w-3" />
-                        In progress
-                      </Badge>
-                    </CardAction>
-                  </CardHeader>
-                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                    <div className="line-clamp-1 flex gap-2 font-medium">
-                      Current workspaces
-                    </div>
-                    <div className="text-muted-foreground">
-                      Documents you're working on
-                    </div>
-                  </CardFooter>
-                </Card>
-
-                {/* Total Words */}
-                <Card className="@container/card">
-                  <CardHeader>
-                    <CardDescription>Words This Month</CardDescription>
-                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                      {stats.totalWords.toLocaleString()}
-                    </CardTitle>
-                    <CardAction>
-                      <Badge variant="outline">
-                        <IconTrendingUp />
-                        +22%
-                      </Badge>
-                    </CardAction>
-                  </CardHeader>
-                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                    <div className="line-clamp-1 flex gap-2 font-medium">
-                      Great progress <IconTrendingUp className="size-4" />
-                    </div>
-                    <div className="text-muted-foreground">
-                      Keep up the momentum
-                    </div>
-                  </CardFooter>
-                </Card>
-
-                {/* Templates Used */}
-                <Card className="@container/card">
-                  <CardHeader>
-                    <CardDescription>Templates Used</CardDescription>
-                    <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                      {stats.templatesUsed}
-                    </CardTitle>
-                    <CardAction>
-                      <Badge variant="outline">
-                        <IconPencil className="h-3 w-3" />
-                        This month
-                      </Badge>
-                    </CardAction>
-                  </CardHeader>
-                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                    <div className="line-clamp-1 flex gap-2 font-medium">
-                      Exploring templates
-                    </div>
-                    <div className="text-muted-foreground">
-                      Try more to find your favorites
-                    </div>
-                  </CardFooter>
-                </Card>
-
+              {/* Autosave Toggle */}
+              <div className="flex items-center gap-2 px-3 py-2 rounded-md border border-border">
+                <input
+                  type="checkbox"
+                  id="autosave"
+                  checked={autoSave}
+                  onChange={(e) => setAutoSave(e.target.checked)}
+                  className="h-4 w-4"
+                />
+                <label htmlFor="autosave" className="text-sm text-foreground cursor-pointer">
+                  Auto-save
+                </label>
               </div>
 
-              {/* Activity Chart */}
-              <div className="px-4 lg:px-6">
-                <ChartAreaInteractive />
-              </div>
+              {/* Manual Save Button */}
+              <Button
+                onClick={handleManualSave}
+                disabled={!selectedPromptId || !promptResponse}
+                size="sm"
+                variant="outline"
+              >
+                <Save className="h-4 w-4 mr-2" />
+                Save
+              </Button>
 
-              {/* Tabbed Tables */}
-              <div className="px-4 lg:px-6">
-                <Tabs defaultValue="all" className="w-full">
-                  <div className="flex items-center justify-between mb-4">
-                    <TabsList>
-                      <TabsTrigger value="all">All Templates</TabsTrigger>
-                      <TabsTrigger value="recent">
-                        <IconClock className="h-3 w-3 mr-1" />
-                        Recent
-                      </TabsTrigger>
-                      <TabsTrigger value="favorites">
-                        <IconStar className="h-3 w-3 mr-1" />
-                        Favorites
-                      </TabsTrigger>
-                      <TabsTrigger value="workspaces">
-                        <IconFolders className="h-3 w-3 mr-1" />
-                        Workspaces
-                      </TabsTrigger>
-                    </TabsList>
-                  </div>
+              {/* Last Saved Indicator */}
+              {lastSaved && (
+                <span className="text-xs text-muted-foreground">
+                  Saved {lastSaved.toLocaleTimeString()}
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
 
-                  {/* All Templates Tab */}
-                  <TabsContent value="all">
-                    <div className="space-y-4">
-                      <div className="rounded-lg border overflow-x-auto">
-                        <Table>
-                          <TableHeader className="bg-muted">
-                            <TableRow>
-                              <TableHead className="min-w-[200px]">Template</TableHead>
-                              <TableHead className="min-w-[120px]">Category</TableHead>
-                              <TableHead className="min-w-[300px] max-w-[400px]">Description</TableHead>
-                              <TableHead className="text-right min-w-[100px]">Actions</TableHead>
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {paginatedAllTemplates.map((template) => (
-                              <TableRow key={template.id}>
-                                <TableCell className="font-medium">{template.name}</TableCell>
-                                <TableCell>
-                                  <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                    {template.category}
-                                  </Badge>
-                                </TableCell>
-                                <TableCell className="text-sm text-muted-foreground max-w-[400px] truncate">
-                                  {template.description}
-                                </TableCell>
-                                <TableCell className="text-right">
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => router.push(`/templates/${template.id}`)}
-                                  >
-                                    Open
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </div>
-                      <div className="flex items-center justify-between px-2">
-                        <div className="text-sm text-muted-foreground">
-                          Showing {allPage * pageSize + 1} to {Math.min((allPage + 1) * pageSize, allTemplates.length)} of {allTemplates.length} templates
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setAllPage(Math.max(0, allPage - 1))}
-                            disabled={allPage === 0}
+      {/* Main Content - 3 Column Layout */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Left Sidebar - Prompts */}
+        <div className="w-80 border-r bg-background overflow-y-auto">
+          <div className="p-4 space-y-4">
+            <div className="flex items-center gap-2 mb-4">
+              <FileText className="h-4 w-4 text-primary" />
+              <h2 className="font-semibold text-foreground">Action Prompts</h2>
+              <Badge variant="outline" className="ml-auto text-xs">
+                {prompts.length}
+              </Badge>
+            </div>
+
+            {loading ? (
+              <p className="text-sm text-muted-foreground">Loading prompts...</p>
+            ) : (
+              <div className="space-y-4">
+                {categories.map((category) => (
+                  <div key={category} className="space-y-2">
+                    <button
+                      onClick={() => toggleCategory(category)}
+                      className="flex items-center gap-2 w-full text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider hover:text-foreground transition-colors"
+                    >
+                      <ChevronDown
+                        className={`h-3 w-3 transition-transform ${
+                          collapsedCategories.has(category) ? '-rotate-90' : ''
+                        }`}
+                      />
+                      {category}
+                    </button>
+                    {!collapsedCategories.has(category) && (
+                      <div className="space-y-1">
+                        {groupedPrompts[category].map((prompt) => (
+                          <button
+                            key={prompt.id}
+                            onClick={() => setSelectedPromptId(prompt.id)}
+                            className={`w-full text-left p-3 rounded-lg transition-colors text-sm ${
+                              selectedPromptId === prompt.id
+                                ? 'bg-primary/10 text-primary border border-primary/20'
+                                : 'bg-muted/50 text-foreground hover:bg-muted'
+                            }`}
                           >
-                            <IconChevronLeft className="h-4 w-4" />
-                            Previous
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setAllPage(allPage + 1)}
-                            disabled={(allPage + 1) * pageSize >= allTemplates.length}
-                          >
-                            Next
-                            <IconChevronRight className="h-4 w-4" />
-                          </Button>
-                        </div>
+                            {prompt.prompt}
+                          </button>
+                        ))}
                       </div>
-                    </div>
-                  </TabsContent>
-
-                  {/* Recent Tab */}
-                  <TabsContent value="recent">
-                    <div className="rounded-lg border">
-                      <Table>
-                        <TableHeader className="bg-muted">
-                          <TableRow>
-                            <TableHead>Template</TableHead>
-                            <TableHead>Category</TableHead>
-                            <TableHead>Last Used</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {recentTemplates.length === 0 ? (
-                            <TableRow>
-                              <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
-                                No recent templates
-                              </TableCell>
-                            </TableRow>
-                          ) : (
-                            recentTemplates.map((template) => (
-                              <TableRow key={template.id}>
-                                <TableCell className="font-medium">{template.name}</TableCell>
-                                <TableCell>
-                                  <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                    {template.category}
-                                  </Badge>
-                                </TableCell>
-                                <TableCell className="text-sm text-muted-foreground">
-                                  2 days ago
-                                </TableCell>
-                                <TableCell className="text-right">
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => router.push(`/templates/${template.id}`)}
-                                  >
-                                    Open
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
-                            ))
-                          )}
-                        </TableBody>
-                      </Table>
-                    </div>
-                  </TabsContent>
-
-                  {/* Favorites Tab */}
-                  <TabsContent value="favorites">
-                    <div className="rounded-lg border">
-                      <Table>
-                        <TableHeader className="bg-muted">
-                          <TableRow>
-                            <TableHead>Template</TableHead>
-                            <TableHead>Category</TableHead>
-                            <TableHead>Description</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {favoriteTemplates.length === 0 ? (
-                            <TableRow>
-                              <TableCell colSpan={4} className="text-center text-muted-foreground py-8">
-                                No favorite templates yet. Star templates to add them here.
-                              </TableCell>
-                            </TableRow>
-                          ) : (
-                            favoriteTemplates.map((template) => (
-                              <TableRow key={template.id}>
-                                <TableCell className="font-medium">{template.name}</TableCell>
-                                <TableCell>
-                                  <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                    {template.category}
-                                  </Badge>
-                                </TableCell>
-                                <TableCell className="text-sm text-muted-foreground">
-                                  {template.description}
-                                </TableCell>
-                                <TableCell className="text-right">
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => router.push(`/templates/${template.id}`)}
-                                  >
-                                    Open
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
-                            ))
-                          )}
-                        </TableBody>
-                      </Table>
-                    </div>
-                  </TabsContent>
-
-                  {/* Workspaces Tab */}
-                  <TabsContent value="workspaces">
-                    <div className="rounded-lg border">
-                      <Table>
-                        <TableHeader className="bg-muted">
-                          <TableRow>
-                            <TableHead>Workspace</TableHead>
-                            <TableHead>Template</TableHead>
-                            <TableHead>Last Edited</TableHead>
-                            <TableHead>Word Count</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {workspaces.map((workspace) => (
-                            <TableRow key={workspace.id}>
-                              <TableCell className="font-medium">{workspace.name}</TableCell>
-                              <TableCell>
-                                <Badge variant="outline" className="text-muted-foreground px-1.5">
-                                  {workspace.template}
-                                </Badge>
-                              </TableCell>
-                              <TableCell className="text-sm text-muted-foreground">
-                                {workspace.lastEdited}
-                              </TableCell>
-                              <TableCell className="text-sm text-muted-foreground">
-                                {workspace.wordCount.toLocaleString()}
-                              </TableCell>
-                              <TableCell className="text-right">
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => router.push(`/workspace/${workspace.id}`)}
-                                >
-                                  Open
-                                </Button>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </div>
-                  </TabsContent>
-                </Tabs>
+                    )}
+                  </div>
+                ))}
               </div>
+            )}
+          </div>
+        </div>
 
-              </div>
-            ) : currentView === 'templates' ? (
-              <div className="flex flex-col h-full py-4 md:py-6">
-                {/* Templates Table View */}
-                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                      <h1 className="text-2xl font-bold tracking-tight">Templates</h1>
-                      <p className="text-sm text-muted-foreground">
-                        Explore {filteredTemplates.length} curated template{filteredTemplates.length !== 1 ? 's' : ''} for every life moment
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Search */}
-                  <Input
-                    placeholder="Search templates..."
-                    value={searchQuery}
-                    onChange={(e) => {
-                      setSearchQuery(e.target.value);
-                      setTemplatesPage(0);
-                    }}
-                  />
-
-                  {/* Templates Table */}
-                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
-                    <div className="relative w-full h-full overflow-auto">
-                      <table className="w-full caption-bottom text-sm">
-                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
-                          <tr className="border-b">
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Template
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Category
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Description
-                            </th>
-                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
-                              Actions
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="[&_tr:last-child]:border-0">
-                          {paginatedTemplatesView.map((template) => (
-                            <tr key={template.id} className="border-b transition-colors hover:bg-muted/50">
-                              <td className="p-4 align-middle font-medium">{template.name}</td>
-                              <td className="p-4 align-middle">
-                                <Badge variant="outline">{template.category}</Badge>
-                              </td>
-                              <td className="p-4 align-middle text-muted-foreground">
-                                {template.description}
-                              </td>
-                              <td className="p-4 align-middle text-right">
-                                <div className="flex gap-2 justify-end">
-                                  <Button size="sm" variant="outline" onClick={() => router.push(`/${template.id}/template`)}>
-                                    View
-                                  </Button>
-                                  <Button size="sm" variant="ghost">
-                                    Start
-                                  </Button>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  {/* Pagination */}
-                  <div className="flex items-center justify-between py-4 shrink-0">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {templatesPage * templatesPageSize + 1} to {Math.min((templatesPage + 1) * templatesPageSize, filteredTemplates.length)} of {filteredTemplates.length}
-                    </div>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setTemplatesPage(templatesPage - 1)}
-                        disabled={templatesPage === 0}
-                      >
-                        <IconChevronLeft className="h-4 w-4" />
-                        Previous
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setTemplatesPage(templatesPage + 1)}
-                        disabled={templatesPage >= totalTemplatesPages - 1}
-                      >
-                        Next
-                        <IconChevronRight className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : currentView === 'prompts' ? (
-              <div className="flex flex-col h-full py-4 md:py-6">
-                {/* Prompts Table View */}
-                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                      <h1 className="text-2xl font-bold tracking-tight">Prompts</h1>
-                      <p className="text-sm text-muted-foreground">
-                        Browse {allPrompts.length.toLocaleString()} AI-curated prompt{allPrompts.length !== 1 ? 's' : ''} across all templates
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Search */}
-                  <Input
-                    placeholder="Search prompts..."
-                    value={promptsSearchQuery}
-                    onChange={(e) => {
-                      setPromptsSearchQuery(e.target.value);
-                      setPromptsPage(0);
-                    }}
-                  />
-
-                  {/* Prompts Table */}
-                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
-                    <div className="relative w-full h-full overflow-auto">
-                      <table className="w-full caption-bottom text-sm">
-                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
-                          <tr className="border-b">
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Prompt
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Template
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Category
-                            </th>
-                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
-                              Actions
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="[&_tr:last-child]:border-0">
-                          {paginatedPrompts.map((prompt) => (
-                            <tr key={prompt.id} className="border-b transition-colors hover:bg-muted/50">
-                              <td className="p-4 align-middle font-medium">{prompt.prompt}</td>
-                              <td className="p-4 align-middle text-muted-foreground">
-                                {prompt.template}
-                              </td>
-                              <td className="p-4 align-middle">
-                                <Badge variant="outline">{prompt.categoryName || 'General'}</Badge>
-                              </td>
-                              <td className="p-4 align-middle text-right">
-                                <div className="flex gap-2 justify-end">
-                                  <Button size="sm" variant="outline">
-                                    Copy
-                                  </Button>
-                                  <Button size="sm" variant="ghost" onClick={() => router.push(`/${prompt.templateId}/template`)}>
-                                    View Template
-                                  </Button>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  {/* Pagination */}
-                  <div className="flex items-center justify-between py-4 shrink-0">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {promptsPage * viewPageSize + 1} to {Math.min((promptsPage + 1) * viewPageSize, filteredPrompts.length)} of {filteredPrompts.length}
-                    </div>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setPromptsPage(promptsPage - 1)}
-                        disabled={promptsPage === 0}
-                      >
-                        <IconChevronLeft className="h-4 w-4" />
-                        Previous
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setPromptsPage(promptsPage + 1)}
-                        disabled={promptsPage >= totalPromptsPages - 1}
-                      >
-                        Next
-                        <IconChevronRight className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : currentView === 'articles' ? (
-              <div className="flex flex-col h-full py-4 md:py-6">
-                {/* Articles Table View */}
-                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                      <h1 className="text-2xl font-bold tracking-tight">Articles</h1>
-                      <p className="text-sm text-muted-foreground">
-                        Discover {allArticles.length.toLocaleString()} expert article{allArticles.length !== 1 ? 's' : ''} and learning resources
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Search */}
-                  <Input
-                    placeholder="Search articles..."
-                    value={articlesSearchQuery}
-                    onChange={(e) => {
-                      setArticlesSearchQuery(e.target.value);
-                      setArticlesPage(0);
-                    }}
-                  />
-
-                  {/* Articles Table */}
-                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
-                    <div className="relative w-full h-full overflow-auto">
-                      <table className="w-full caption-bottom text-sm">
-                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
-                          <tr className="border-b">
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Title
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Template
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Excerpt
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Read Time
-                            </th>
-                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
-                              Actions
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="[&_tr:last-child]:border-0">
-                          {paginatedArticles.map((article) => (
-                            <tr key={article.id} className="border-b transition-colors hover:bg-muted/50">
-                              <td className="p-4 align-middle font-medium">{article.title}</td>
-                              <td className="p-4 align-middle">
-                                <Badge variant="outline">{article.template || 'General'}</Badge>
-                              </td>
-                              <td className="p-4 align-middle text-muted-foreground">
-                                {article.excerpt || 'No excerpt available'}
-                              </td>
-                              <td className="p-4 align-middle text-muted-foreground">
-                                {article.readTime || 5} min
-                              </td>
-                              <td className="p-4 align-middle text-right">
-                                <div className="flex gap-2 justify-end">
-                                  <Button size="sm" variant="outline" onClick={() => router.push(`/articles/${article.slug || article.id}`)}>
-                                    Read
-                                  </Button>
-                                  <Button size="sm" variant="ghost">
-                                    Save
-                                  </Button>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  {/* Pagination */}
-                  <div className="flex items-center justify-between py-4 shrink-0">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {articlesPage * viewPageSize + 1} to {Math.min((articlesPage + 1) * viewPageSize, filteredArticles.length)} of {filteredArticles.length}
-                    </div>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setArticlesPage(articlesPage - 1)}
-                        disabled={articlesPage === 0}
-                      >
-                        <IconChevronLeft className="h-4 w-4" />
-                        Previous
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setArticlesPage(articlesPage + 1)}
-                        disabled={articlesPage >= totalArticlesPages - 1}
-                      >
-                        Next
-                        <IconChevronRight className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : currentView === 'workspaces' ? (
-              <div className="flex flex-col h-full py-4 md:py-6">
-                {/* Workspaces Table View */}
-                <div className="px-4 lg:px-6 flex flex-col h-full gap-4">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                      <h1 className="text-2xl font-bold tracking-tight">Workspaces</h1>
-                      <p className="text-sm text-muted-foreground">
-                        Manage your {workspaces.length} active workspace{workspaces.length !== 1 ? 's' : ''} and projects
-                      </p>
-                    </div>
-                    <Button className="shadow-sm">
-                      <IconCirclePlus className="h-4 w-4 mr-2" />
-                      New Workspace
-                    </Button>
-                  </div>
-
-                  {/* Search */}
-                  <Input
-                    placeholder="Search workspaces..."
-                    value={workspacesSearchQuery}
-                    onChange={(e) => setWorkspacesSearchQuery(e.target.value)}
-                  />
-
-                  {/* Workspaces Table */}
-                  <div className="border rounded-lg flex-1 min-h-0 shadow-sm">
-                    <div className="relative w-full h-full overflow-auto">
-                      <table className="w-full caption-bottom text-sm">
-                        <thead className="[&_tr]:border-b sticky top-0 bg-muted/50 backdrop-blur-sm z-10">
-                          <tr className="border-b">
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Name
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Template
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Last Edited
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Progress
-                            </th>
-                            <th className="h-12 px-4 text-left align-middle font-medium text-muted-foreground">
-                              Word Count
-                            </th>
-                            <th className="h-12 px-4 text-right align-middle font-medium text-muted-foreground">
-                              Actions
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="[&_tr:last-child]:border-0">
-                          {paginatedWorkspaces.map((workspace) => (
-                            <tr key={workspace.id} className="border-b transition-colors hover:bg-muted/50">
-                              <td className="p-4 align-middle font-medium">{workspace.name}</td>
-                              <td className="p-4 align-middle">
-                                <Badge variant="outline">{workspace.template}</Badge>
-                              </td>
-                              <td className="p-4 align-middle text-muted-foreground">
-                                {workspace.lastEdited}
-                              </td>
-                              <td className="p-4 align-middle">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
-                                    <div
-                                      className="h-full bg-primary"
-                                      style={{ width: `${Math.floor(Math.random() * 100)}%` }}
-                                    />
-                                  </div>
-                                  <span className="text-xs text-muted-foreground">
-                                    {Math.floor(Math.random() * 100)}%
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="p-4 align-middle text-muted-foreground">
-                                {workspace.wordCount.toLocaleString()} words
-                              </td>
-                              <td className="p-4 align-middle text-right">
-                                <div className="flex gap-2 justify-end">
-                                  <Button size="sm" variant="outline">
-                                    Open
-                                  </Button>
-                                  <Button size="sm" variant="ghost">
-                                    Export
-                                  </Button>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  {/* Pagination */}
-                  <div className="flex items-center justify-between py-4 shrink-0">
-                    <div className="text-sm text-muted-foreground">
-                      Showing {workspacesPage * pageSize + 1} to {Math.min((workspacesPage + 1) * pageSize, workspaces.length)} of {workspaces.length}
-                    </div>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setWorkspacesPage(workspacesPage - 1)}
-                        disabled={workspacesPage === 0}
-                      >
-                        <IconChevronLeft className="h-4 w-4" />
-                        Previous
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setWorkspacesPage(workspacesPage + 1)}
-                        disabled={(workspacesPage + 1) * pageSize >= workspaces.length}
-                      >
-                        Next
-                        <IconChevronRight className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : currentView === 'chat' || currentView === 'split' || currentView === 'board' ||
-               currentView === 'checklist' || currentView === 'table' || currentView === 'timeline' ||
-               currentView === 'text' || currentView === 'cards' || currentView === 'outline' ||
-               currentView === 'tabs' ? (
-              <div className="flex flex-col h-full">
-                {/* Working View Header */}
-                <div className="border-b px-4 py-3">
-                  <h1 className="text-2xl font-bold">My Workspace</h1>
+        {/* Middle - Editor */}
+        <div className="flex-1 overflow-y-auto bg-background">
+          <div className="container mx-auto max-w-4xl px-8 py-8">
+            {selectedPrompt ? (
+              <div className="space-y-6">
+                <div>
+                  <Badge variant="outline" className="mb-3">
+                    {selectedPrompt.categoryName}
+                  </Badge>
+                  <h2 className="text-2xl font-bold text-foreground mb-2">
+                    {selectedPrompt.prompt}
+                  </h2>
                   <p className="text-sm text-muted-foreground">
-                    Template: {templateRegistry.find(t => t.id === selectedTemplateId)?.name || 'Select a template from dock'}
+                    {autoSave
+                      ? 'Your work is automatically saved as you type'
+                      : 'Remember to save your work manually'}
                   </p>
                 </div>
 
-                {/* View Mode Content */}
-                <div className="flex-1 overflow-hidden">
-                  {currentView === 'chat' && <ChatView templateId={selectedTemplateId} />}
-                  {currentView === 'split' && <SplitView templateId={selectedTemplateId} />}
-                  {currentView === 'board' && <BoardView templateId={selectedTemplateId} />}
-                  {currentView === 'checklist' && <ChecklistView templateId={selectedTemplateId} />}
-                  {currentView === 'table' && <TableView templateId={selectedTemplateId} />}
-                  {currentView === 'timeline' && <TimelineView templateId={selectedTemplateId} />}
-                  {currentView === 'text' && <TextEditorView templateId={selectedTemplateId} />}
-                  {currentView === 'cards' && <div className="flex items-center justify-center h-full text-muted-foreground">Cards View - Coming Soon</div>}
-                  {currentView === 'outline' && <div className="flex items-center justify-center h-full text-muted-foreground">Outline View - Coming Soon</div>}
-                  {currentView === 'tabs' && <div className="flex items-center justify-center h-full text-muted-foreground">Tabs View - Coming Soon</div>}
-                </div>
+                <Card className="p-6 min-h-[500px] border-border bg-background">
+                  <textarea
+                    className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground"
+                    placeholder="Start typing your response..."
+                    value={promptResponse}
+                    onChange={(e) => setPromptResponse(e.target.value)}
+                  />
+                </Card>
               </div>
             ) : (
-              <div className="flex items-center justify-center h-full px-4">
-                <div className="text-center">
-                  <h2 className="text-2xl font-bold mb-2">Coming Soon</h2>
-                  <p className="text-muted-foreground">This section is under construction.</p>
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center space-y-2">
+                  <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-foreground">
+                    Select a prompt to begin
+                  </h3>
+                  <p className="text-sm text-muted-foreground max-w-md">
+                    Choose a prompt from the left sidebar to start working on your template
+                  </p>
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* Floating Dock - Always visible - Fixed overlay */}
-        <div className="fixed bottom-4 left-0 right-0 flex justify-center pointer-events-none z-50">
-          <div className="pointer-events-auto">
-            <Dock>
-                {/* Templates Drawer */}
-                <Drawer
-                  direction="bottom"
-                  open={templatesDrawerOpen}
-                  onOpenChange={(open) => {
-                    setTemplatesDrawerOpen(open);
-                    if (!open) {
-                      setLetterFilter('all');
-                      setSearchQuery('');
-                    }
-                  }}
-                >
-                  <div onClick={() => setTemplatesDrawerOpen(true)} className="flex items-center justify-center h-full">
-                    <DockItem>
-                      <DockLabel>Templates</DockLabel>
-                      <DockIcon>
-                        <IconTemplate className="h-6 w-6" />
-                      </DockIcon>
-                    </DockItem>
+        {/* Right Sidebar - Articles or Article Content */}
+        <div className={`${selectedArticle ? 'w-[600px]' : 'w-80'} border-l bg-background overflow-y-auto transition-all duration-300`}>
+          <div className="p-6 space-y-4">
+            {selectedArticle ? (
+              // Article Content View
+              <>
+                <div className="flex items-center justify-between mb-4">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleCloseArticle}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    <ArrowLeft className="h-4 w-4 mr-2" />
+                    Back to articles
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleCloseArticle}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
+
+                {loadingArticle ? (
+                  <div className="py-8 text-center">
+                    <p className="text-muted-foreground">Loading article...</p>
                   </div>
-                  <DrawerContent>
-                    <DrawerHeader>
-                      <DrawerTitle>Select Template</DrawerTitle>
-                      <DrawerDescription>Choose a template to work with</DrawerDescription>
-                    </DrawerHeader>
-                    <div className="p-4 overflow-y-auto max-h-[60vh]">
-                            <Input
-                              placeholder="Search templates..."
-                              value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)}
-                              className="mb-4"
-                            />
-
-                            {/* Letter filter */}
-                            <div className="flex gap-1 mb-4 overflow-x-auto pb-2">
-                              <Button
-                                variant={letterFilter === 'all' ? 'default' : 'outline'}
-                                size="sm"
-                                onClick={() => setLetterFilter('all')}
-                                className="min-w-[40px]"
-                              >
-                                All
-                              </Button>
-                              {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((letter) => (
-                                <Button
-                                  key={letter}
-                                  variant={letterFilter === letter ? 'default' : 'outline'}
-                                  size="sm"
-                                  onClick={() => setLetterFilter(letter)}
-                                  className="min-w-[40px]"
-                                >
-                                  {letter}
-                                </Button>
-                              ))}
-                            </div>
-
-                            <div className="text-sm text-muted-foreground mb-2">
-                              {filteredTemplates.length} template{filteredTemplates.length !== 1 ? 's' : ''} found
-                            </div>
-
-                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                              {filteredTemplates.map((template) => (
-                                <div
-                                  key={template.id}
-                                  className="p-3 border rounded-lg hover:bg-muted cursor-pointer transition-colors"
-                                  onClick={() => {
-                                    setSelectedTemplateId(template.id);
-                                    setTemplatesDrawerOpen(false);
-                                  }}
-                                >
-                                  <div className="font-medium text-sm truncate">{template.name}</div>
-                                  <div className="text-xs text-muted-foreground truncate">{template.category}</div>
-                                </div>
-                              ))}
-                            </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div>
+                      <h2 className="text-2xl font-bold text-foreground mb-2">
+                        {selectedArticle.title}
+                      </h2>
+                      <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
+                        <span>{selectedArticle.author}</span>
+                        <span>•</span>
+                        <span>{selectedArticle.readTime}</span>
+                        <span>•</span>
+                        <span>{new Date(selectedArticle.publishedAt).toLocaleDateString()}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground italic border-l-2 border-primary pl-4 mb-6">
+                        {selectedArticle.excerpt}
+                      </p>
                     </div>
-                  </DrawerContent>
-                </Drawer>
 
-                {/* Prompts Drawer */}
-                <Drawer
-                  direction="bottom"
-                  open={promptsDrawerOpen}
-                  onOpenChange={setPromptsDrawerOpen}
-                >
-                  <div onClick={() => setPromptsDrawerOpen(true)} className="flex items-center justify-center h-full">
-                    <DockItem>
-                      <DockLabel>Prompts</DockLabel>
-                      <DockIcon>
-                        <IconNotes className="h-6 w-6" />
-                      </DockIcon>
-                    </DockItem>
+                    <div
+                      className="prose prose-sm max-w-none dark:prose-invert text-foreground"
+                      dangerouslySetInnerHTML={{ __html: selectedArticle.content }}
+                    />
                   </div>
-                  <DrawerContent>
-                    <DrawerHeader>
-                      <DrawerTitle>Browse Prompts</DrawerTitle>
-                      <DrawerDescription>
-                        {selectedTemplateId
-                          ? `Prompts for ${templateRegistry.find(t => t.id === selectedTemplateId)?.name}`
-                          : 'Select a template first'}
-                      </DrawerDescription>
-                    </DrawerHeader>
-                    <div className="p-4 overflow-y-auto max-h-[60vh]">
-                      <Input
-                        placeholder="Search prompts..."
-                        value={promptsSearchQuery}
-                        onChange={(e) => setPromptsSearchQuery(e.target.value)}
-                        className="mb-4"
-                      />
-                      {!selectedTemplateId ? (
-                        <p className="text-sm text-muted-foreground text-center py-8">
-                          Select a template from the dock to view prompts
-                        </p>
-                      ) : promptsLoading ? (
-                        <p className="text-sm text-muted-foreground text-center py-8">
-                          Loading prompts...
-                        </p>
-                      ) : filteredPrompts.length === 0 ? (
-                        <p className="text-sm text-muted-foreground text-center py-8">
-                          No prompts found
-                        </p>
-                      ) : (
-                        <>
-                          <div className="text-sm text-muted-foreground mb-2">
-                            {filteredPrompts.length} prompt{filteredPrompts.length !== 1 ? 's' : ''} found
-                          </div>
-                          <div className="space-y-2">
-                            {filteredPrompts.map((prompt) => (
-                              <div
-                                key={prompt.id}
-                                className="p-3 border rounded-lg hover:bg-muted transition-colors flex flex-col gap-2"
-                              >
-                                <div className="font-medium text-sm mb-1">{prompt.prompt}</div>
-                                {prompt.categoryName && (
-                                  <div className="text-xs text-muted-foreground">{prompt.categoryName}</div>
-                                )}
-                                <div className="flex gap-2 mt-2">
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      navigator.clipboard.writeText(prompt.prompt);
-                                    }}
-                                    className="px-2 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded"
-                                  >
-                                    Copy
-                                  </button>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      // TODO: Implement insert functionality
-                                      console.log('Insert prompt:', prompt.prompt);
-                                    }}
-                                    className="px-2 py-1 text-xs bg-primary text-primary-foreground hover:bg-primary/90 rounded"
-                                  >
-                                    Insert
-                                  </button>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      // TODO: Implement mark complete functionality
-                                      console.log('Mark complete:', prompt.id);
-                                    }}
-                                    className="px-2 py-1 text-xs bg-muted hover:bg-muted/80 rounded"
-                                  >
-                                    Mark Complete
-                                  </button>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </DrawerContent>
-                </Drawer>
+                )}
+              </>
+            ) : (
+              // Articles List View
+              <>
+                <div className="flex items-center gap-2 mb-4">
+                  <BookOpen className="h-4 w-4 text-primary" />
+                  <h2 className="font-semibold text-foreground">Related Articles</h2>
+                  <Badge variant="outline" className="ml-auto text-xs">
+                    {articles.length}
+                  </Badge>
+                </div>
 
-                {/* Articles Drawer */}
-                <Drawer
-                  direction="bottom"
-                  open={articlesDrawerOpen}
-                  onOpenChange={setArticlesDrawerOpen}
-                >
-                  <div onClick={() => setArticlesDrawerOpen(true)} className="flex items-center justify-center h-full">
-                    <DockItem>
-                      <DockLabel>Articles</DockLabel>
-                      <DockIcon>
-                        <IconFileText className="h-6 w-6" />
-                      </DockIcon>
-                    </DockItem>
+                {loading ? (
+                  <p className="text-sm text-muted-foreground">Loading articles...</p>
+                ) : articles.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">No articles available</p>
+                ) : (
+                  <div className="space-y-3">
+                    {articles.map((article) => (
+                      <Card
+                        key={article.id}
+                        className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
+                        onClick={() => handleArticleClick(article.id)}
+                      >
+                        <h3 className="text-sm font-medium text-foreground mb-1">
+                          {article.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+                          {article.excerpt}
+                        </p>
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <span>{article.readTime}</span>
+                          <ChevronRight className="h-3 w-3 ml-auto" />
+                        </div>
+                      </Card>
+                    ))}
                   </div>
-                  <DrawerContent>
-                    <DrawerHeader>
-                      <DrawerTitle>Browse Articles</DrawerTitle>
-                      <DrawerDescription>
-                        {selectedTemplateId
-                          ? `Articles for ${templateRegistry.find(t => t.id === selectedTemplateId)?.name}`
-                          : 'Select a template first'}
-                      </DrawerDescription>
-                    </DrawerHeader>
-                    <div className="p-4 overflow-y-auto max-h-[60vh]">
-                      <Input
-                        placeholder="Search articles..."
-                        value={articlesSearchQuery}
-                        onChange={(e) => setArticlesSearchQuery(e.target.value)}
-                        className="mb-4"
-                      />
-                      {!selectedTemplateId ? (
-                        <p className="text-sm text-muted-foreground text-center py-8">
-                          Select a template from the dock to view articles
-                        </p>
-                      ) : articlesLoading ? (
-                        <p className="text-sm text-muted-foreground text-center py-8">
-                          Loading articles...
-                        </p>
-                      ) : filteredArticles.length === 0 ? (
-                        <p className="text-sm text-muted-foreground text-center py-8">
-                          No articles found
-                        </p>
-                      ) : (
-                        <>
-                          <div className="text-sm text-muted-foreground mb-2">
-                            {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} found
-                          </div>
-                          <div className="space-y-2">
-                            {filteredArticles.map((article) => (
-                              <div
-                                key={article.id}
-                                className="p-3 border rounded-lg hover:bg-muted transition-colors flex flex-col gap-2"
-                              >
-                                <div className="font-medium text-sm mb-1">{article.title}</div>
-                                {article.excerpt && (
-                                  <div className="text-xs text-muted-foreground line-clamp-2">{article.excerpt}</div>
-                                )}
-                                <div className="flex gap-2 mt-2 text-xs text-muted-foreground">
-                                  {article.type && <span>{article.type}</span>}
-                                  {article.readTime && <span>• {article.readTime}</span>}
-                                </div>
-                                <div className="flex gap-2 mt-2">
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      // TODO: Implement read functionality (open in side panel or modal)
-                                      console.log('Read article:', article.slug);
-                                      window.open(`/${article.template}/articles/${article.slug}`, '_blank');
-                                    }}
-                                    className="px-2 py-1 text-xs bg-primary text-primary-foreground hover:bg-primary/90 rounded"
-                                  >
-                                    Read
-                                  </button>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      // TODO: Implement save for later functionality
-                                      console.log('Save for later:', article.id);
-                                    }}
-                                    className="px-2 py-1 text-xs bg-secondary hover:bg-secondary/80 rounded"
-                                  >
-                                    Save for Later
-                                  </button>
-                                  <button
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      // TODO: Implement add reference functionality
-                                      console.log('Add reference:', article.title);
-                                    }}
-                                    className="px-2 py-1 text-xs bg-muted hover:bg-muted/80 rounded"
-                                  >
-                                    Add Reference
-                                  </button>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </DrawerContent>
-                </Drawer>
-              </Dock>
-            </div>
+                )}
+              </>
+            )}
           </div>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+        </div>
+      </div>
+    </div>
+  );
 }
