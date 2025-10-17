@@ -37,7 +37,7 @@ export default function LoginPage() {
         transition={{ duration: 0.8, delay: 0.1 }}
       >
         <img
-          src="/floating-papers.png"
+          src="/geometric-monuments.png"
           alt="Templata"
           className="absolute inset-0 h-full w-full object-cover"
         />
