@@ -7,8 +7,9 @@ export function Footer() {
 	return (
 		<footer className="border-t">
 			<div className="container mx-auto max-w-7xl px-4 py-12">
-				<div className="grid md:grid-cols-4 gap-8">
-					<div className="space-y-4">
+				<div className="flex flex-col md:flex-row items-start justify-between gap-8">
+					{/* Logo and tagline */}
+					<div className="space-y-4 max-w-md">
 						<div className="flex items-center space-x-2">
 							<Image
 								src="/brand/templata-logo.svg"
@@ -25,102 +26,20 @@ export function Footer() {
 						</p>
 					</div>
 
-					<div className="space-y-4">
-						<h4 className="font-semibold">Templates</h4>
-						<ul className="space-y-2 text-muted-foreground">
-							<li>
-								<Link
-									href="/templates"
-									className="hover:text-foreground transition-colors"
-								>
-									Browse Templates
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="#"
-									className="hover:text-foreground transition-colors"
-								>
-									Home Buying
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="#"
-									className="hover:text-foreground transition-colors"
-								>
-									Job Search
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/templates"
-									className="hover:text-foreground transition-colors"
-								>
-									View All
-								</Link>
-							</li>
-						</ul>
-					</div>
-
-					<div className="space-y-4">
-						<h4 className="font-semibold">Company</h4>
-						<ul className="space-y-2 text-muted-foreground">
-							<li>
-								<Link
-									href="/about"
-									className="hover:text-foreground transition-colors"
-								>
-									About
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/faq"
-									className="hover:text-foreground transition-colors"
-								>
-									FAQ
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="#"
-									className="hover:text-foreground transition-colors"
-								>
-									Contact
-								</Link>
-							</li>
-						</ul>
-					</div>
-
-					<div className="space-y-4">
-						<h4 className="font-semibold">Resources</h4>
-						<ul className="space-y-2 text-muted-foreground">
-							<li>
-								<Link
-									href="#"
-									className="hover:text-foreground transition-colors"
-								>
-									Help Center
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="#"
-									className="hover:text-foreground transition-colors"
-								>
-									Community
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="#"
-									className="hover:text-foreground transition-colors"
-								>
-									Privacy
-								</Link>
-							</li>
-						</ul>
+					{/* Simple navigation links */}
+					<div className="flex items-start gap-8 text-muted-foreground">
+						<Link
+							href="/templates"
+							className="hover:text-foreground transition-colors"
+						>
+							Templates
+						</Link>
+						<Link
+							href="/articles"
+							className="hover:text-foreground transition-colors"
+						>
+							Articles
+						</Link>
 					</div>
 				</div>
 
