@@ -16,6 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { ThemeSelector } from '@/components/theme-selector';
 
 type Stage = 'workspace' | 'reflection' | 'lifeos';
 
@@ -89,8 +90,10 @@ export default function StudioPage() {
               </Button>
             </div>
 
-            {/* User Dropdown */}
-            <div className="flex items-center">
+            {/* Theme Selector & User Dropdown */}
+            <div className="flex items-center gap-2">
+              <ThemeSelector iconOnly />
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">
