@@ -55,13 +55,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <h1 className="text-3xl md:text-4xl font-bold leading-tight">
               {blogPost.title}
             </h1>
-
-            {/* Excerpt */}
-            {blogPost.excerpt && (
-              <p className="text-base text-muted-foreground">
-                {blogPost.excerpt}
-              </p>
-            )}
           </div>
         </div>
       </section>
