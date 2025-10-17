@@ -1,23 +1,41 @@
+"use client"
+
 import Link from "next/link"
 import { LoginForm } from "@/components/login-form"
+import { motion } from "framer-motion"
 
 export default function LoginPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
-        <div className="flex justify-center gap-2 md:justify-start">
+        <motion.div
+          className="flex justify-center gap-2 md:justify-start"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <Link href="/" className="flex items-center gap-2 font-medium text-white">
             <img src="/brand/templata-logo.svg" alt="Templata" className="h-8 w-8 brightness-0 invert" />
             <span className="text-lg">Templata</span>
           </Link>
-        </div>
+        </motion.div>
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-xs">
+          <motion.div
+            className="w-full max-w-xs"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <LoginForm />
-          </div>
+          </motion.div>
         </div>
       </div>
-      <div className="relative hidden lg:block">
+      <motion.div
+        className="relative hidden lg:block"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+      >
         <img
           src="/floating-papers.png"
           alt="Templata"
@@ -27,7 +45,7 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-primary/80 mix-blend-multiply dark:mix-blend-screen dark:bg-primary/20" />
         {/* Dark overlay for consistency */}
         <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
-      </div>
+      </motion.div>
     </div>
   )
 }
