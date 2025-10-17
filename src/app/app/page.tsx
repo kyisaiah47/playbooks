@@ -124,19 +124,21 @@ export default function StudioPage() {
 
           {/* Content */}
           <div className="relative z-10 p-8">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="text-center mb-8"
-            >
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-2">
-                Welcome to Templata
-              </h2>
-              <p className="text-muted-foreground">
-                The encyclopedia for living
-              </p>
-            </motion.div>
+            <DialogHeader className="mb-8">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="text-center"
+              >
+                <DialogTitle className="text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-2">
+                  Welcome to Templata
+                </DialogTitle>
+                <DialogDescription className="text-muted-foreground">
+                  The encyclopedia for living
+                </DialogDescription>
+              </motion.div>
+            </DialogHeader>
 
             <div className="grid gap-6 mb-8">
               {[
