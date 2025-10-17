@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { WorkspaceStage } from './stages/WorkspaceStage';
 import { ReflectionStage } from './stages/ReflectionStage';
@@ -12,6 +12,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
@@ -24,6 +26,24 @@ export default function StudioPage() {
     reflection: 0,
     lifeos: 0,
   });
+  const [userEmail, setUserEmail] = useState('');
+
+  useEffect(() => {
+    loadUser();
+
+    async function loadUser() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+
+        if (data.user) {
+          setUserEmail(data.user.email || '');
+        }
+      } catch (error) {
+        console.error('Error loading user:', error);
+      }
+    }
+  }, []);
 
   const handleStageChange = (newStage: Stage) => {
     setCurrentStage(newStage);
@@ -78,6 +98,16 @@ export default function StudioPage() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                  {userEmail && (
+                    <>
+                      <DropdownMenuLabel className="font-normal">
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-sm text-muted-foreground">{userEmail}</p>
+                        </div>
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                    </>
+                  )}
                   <Link href="/app/settings">
                     <DropdownMenuItem>
                       <Settings className="h-4 w-4 mr-2" />
