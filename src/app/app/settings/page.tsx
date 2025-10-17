@@ -1,15 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, User, Bell, Lock, Palette, Database } from 'lucide-react';
+import { ArrowLeft, User, Lock, Database } from 'lucide-react';
 import Link from 'next/link';
 
 export default function SettingsPage() {
-  const [activeSection, setActiveSection] = useState<'profile' | 'notifications' | 'privacy' | 'appearance' | 'data'>('profile');
+  const [activeSection, setActiveSection] = useState<'profile' | 'privacy' | 'data'>('profile');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadUserData();
+
+    async function loadUserData() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+
+        if (data.user) {
+          setName(data.user.name || '');
+          setEmail(data.user.email || '');
+        }
+      } catch (error) {
+        console.error('Error loading user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, []);
 
   return (
     <div className="h-screen flex flex-col bg-background">
@@ -57,17 +81,6 @@ export default function SettingsPage() {
               <span className="font-medium">Profile</span>
             </button>
             <button
-              onClick={() => setActiveSection('notifications')}
-              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left ${
-                activeSection === 'notifications'
-                  ? 'bg-primary/10 text-primary'
-                  : 'text-foreground hover:bg-muted'
-              }`}
-            >
-              <Bell className="h-4 w-4" />
-              <span className="font-medium">Notifications</span>
-            </button>
-            <button
               onClick={() => setActiveSection('privacy')}
               className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left ${
                 activeSection === 'privacy'
@@ -77,17 +90,6 @@ export default function SettingsPage() {
             >
               <Lock className="h-4 w-4" />
               <span className="font-medium">Privacy & Security</span>
-            </button>
-            <button
-              onClick={() => setActiveSection('appearance')}
-              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left ${
-                activeSection === 'appearance'
-                  ? 'bg-primary/10 text-primary'
-                  : 'text-foreground hover:bg-muted'
-              }`}
-            >
-              <Palette className="h-4 w-4" />
-              <span className="font-medium">Appearance</span>
             </button>
             <button
               onClick={() => setActiveSection('data')}
@@ -126,38 +128,52 @@ export default function SettingsPage() {
                 </div>
 
                 <Card className="p-6">
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-sm font-medium text-foreground block mb-2">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Your name"
-                        className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
-                      />
+                  {loading ? (
+                    <p className="text-sm text-muted-foreground">Loading profile...</p>
+                  ) : (
+                    <div className="space-y-4">
+                      <div>
+                        <label className="text-sm font-medium text-foreground block mb-2">
+                          Full Name
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Your name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-foreground block mb-2">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="your@email.com"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                          disabled
+                        />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Email cannot be changed
+                        </p>
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-foreground block mb-2">
+                          Bio
+                        </label>
+                        <textarea
+                          placeholder="Tell us about yourself..."
+                          value={bio}
+                          onChange={(e) => setBio(e.target.value)}
+                          className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground min-h-[100px]"
+                        />
+                      </div>
+                      <Button>Save Changes</Button>
                     </div>
-                    <div>
-                      <label className="text-sm font-medium text-foreground block mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="your@email.com"
-                        className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-foreground block mb-2">
-                        Bio
-                      </label>
-                      <textarea
-                        placeholder="Tell us about yourself..."
-                        className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground min-h-[100px]"
-                      />
-                    </div>
-                    <Button>Save Changes</Button>
-                  </div>
+                  )}
                 </Card>
               </motion.div>
             )}
