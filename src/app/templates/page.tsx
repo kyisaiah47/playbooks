@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Search, Layout, FileText, Lightbulb, Target } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
+import { motion } from 'framer-motion';
 
 
 export default function TemplatesPage() {
@@ -46,7 +47,12 @@ export default function TemplatesPage() {
       {/* Hero Section */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="text-center space-y-6 max-w-4xl mx-auto">
+          <motion.div
+            className="text-center space-y-6 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <Badge variant="outline" className="px-4 py-2">
               <Layout className="mr-2 h-4 w-4" />
               1,298 Templates
@@ -63,12 +69,18 @@ export default function TemplatesPage() {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               From wedding planning to career transitions, home buying to business launches—we've systematically created templates with prompts, articles, and structured guidance for life's biggest decisions.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* What Makes Our Templates Different */}
-      <section className="py-16 bg-muted/30 border-y">
+      <motion.section
+        className="py-16 bg-muted/30 border-y"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container mx-auto max-w-7xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Built for abundance, not curation</h2>
@@ -78,41 +90,54 @@ export default function TemplatesPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg">
-              <CardHeader>
-                <Target className="h-8 w-8 mb-4 text-primary" />
-                <CardTitle>Systematically Generated</CardTitle>
-                <CardDescription>
-                  Every template is built with Axiom Engine, ensuring consistent quality and comprehensive coverage across all life situations.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg">
-              <CardHeader>
-                <FileText className="h-8 w-8 mb-4 text-primary" />
-                <CardTitle>15,000+ Prompts Included</CardTitle>
-                <CardDescription>
-                  Each template comes with tactical prompts and 20+ curated articles, giving you both structure and deep insights.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg">
-              <CardHeader>
-                <Lightbulb className="h-8 w-8 mb-4 text-primary" />
-                <CardTitle>Wikipedia Philosophy</CardTitle>
-                <CardDescription>
-                  Abundance over curation. Browse by category, search what you need, and trust that if it exists, we've covered it.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {[
+              {
+                icon: Target,
+                title: "Systematically Generated",
+                description: "Every template is built with Axiom Engine, ensuring consistent quality and comprehensive coverage across all life situations."
+              },
+              {
+                icon: FileText,
+                title: "15,000+ Prompts Included",
+                description: "Each template comes with tactical prompts and 20+ curated articles, giving you both structure and deep insights."
+              },
+              {
+                icon: Lightbulb,
+                title: "Wikipedia Philosophy",
+                description: "Abundance over curation. Browse by category, search what you need, and trust that if it exists, we've covered it."
+              }
+            ].map((card, index) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Card className="border-0 shadow-lg h-full">
+                    <CardHeader>
+                      <Icon className="h-8 w-8 mb-4 text-primary" />
+                      <CardTitle>{card.title}</CardTitle>
+                      <CardDescription>{card.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Template List */}
-      <div className="container mx-auto px-4 py-16 max-w-6xl">
+      <motion.div
+        className="container mx-auto px-4 py-16 max-w-6xl"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8 }}
+      >
         {/* Search */}
         <div className="mb-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Browse All Templates</h2>
@@ -132,8 +157,15 @@ export default function TemplatesPage() {
 
         {/* Templates List - Grouped by Category */}
         <div className="space-y-12">
-          {categories.map(category => (
-            <section key={category} className="border-t pt-8">
+          {categories.map((category, categoryIndex) => (
+            <motion.section
+              key={category}
+              className="border-t pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.05 }}
+            >
               <h2 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
                 {category}
               </h2>
@@ -151,10 +183,10 @@ export default function TemplatesPage() {
                   </Link>
                 ))}
               </div>
-            </section>
+            </motion.section>
           ))}
         </div>
-      </div>
+      </motion.div>
     </PageLayout>
   );
 }
