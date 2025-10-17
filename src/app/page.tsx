@@ -50,6 +50,42 @@ import { Typewriter } from "@/components/ui/typewriter";
 
 export default function LandingPage() {
 	const { isLoggedIn } = useAuth();
+	const [currentBg, setCurrentBg] = useState(0);
+
+	// Background images mapped to scroll positions
+	const backgrounds = [
+		'/geometric-monuments.png',      // Hero
+		'/chaos-to-order.png',           // Problem
+		'/geometric-emergence.png',      // Solution
+		'/knowledge-architecture.png',   // Workspaces
+		'/cosmic-energy.png',            // Three Stages
+		'/crystal-variety.png',          // Manifesto
+		'/neural-networks.png',          // Axiom Engine
+		'/floating-papers.png',          // Inspiration
+		'/paper-fragments.png',          // FAQ
+		'/prompt-matrix.png',            // Numbers
+		'/geometric-architecture.png',   // Final CTA
+	];
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollPosition = window.scrollY;
+			const windowHeight = window.innerHeight;
+			const documentHeight = document.documentElement.scrollHeight;
+
+			// Calculate which background to show based on scroll position
+			const scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+			const bgIndex = Math.min(
+				Math.floor(scrollPercentage * backgrounds.length),
+				backgrounds.length - 1
+			);
+
+			setCurrentBg(bgIndex);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, [backgrounds.length]);
 
 	const jsonLd = {
 		'@context': 'https://schema.org',
@@ -112,6 +148,27 @@ export default function LandingPage() {
 
 	return (
 		<PageLayout includeHeaderPadding={false}>
+			{/* Fixed Background Layer */}
+			<div className="fixed inset-0 w-full h-full -z-10">
+				{backgrounds.map((bg, index) => (
+					<div
+						key={bg}
+						className="absolute inset-0 transition-opacity duration-1000"
+						style={{
+							backgroundImage: `url(${bg})`,
+							backgroundSize: 'cover',
+							backgroundPosition: 'center',
+							backgroundRepeat: 'no-repeat',
+							opacity: currentBg === index ? 1 : 0,
+						}}
+					/>
+				))}
+				{/* Theme-aware color overlay */}
+				<div className="absolute inset-0 bg-primary/80 mix-blend-multiply dark:mix-blend-screen dark:bg-primary/20" />
+				{/* Dark overlay for text readability */}
+				<div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+			</div>
+
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -119,20 +176,6 @@ export default function LandingPage() {
 
 			{/* Hero Section */}
 			<section className="h-screen flex items-center justify-center relative overflow-hidden">
-				{/* Geometric Background Image */}
-				<div
-					className="absolute inset-0 w-full h-full bg-background"
-					style={{
-						backgroundImage: 'url(/geometric-monuments.png)',
-						backgroundSize: 'cover',
-						backgroundPosition: 'center',
-						backgroundRepeat: 'no-repeat',
-					}}
-				/>
-				{/* Theme-aware color overlay */}
-				<div className="absolute inset-0 bg-primary/80 mix-blend-multiply dark:mix-blend-screen dark:bg-primary/20" />
-				{/* Dark overlay for text readability */}
-				<div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
 
 				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-8">
@@ -187,8 +230,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* The Problem */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<Target className="mr-2 h-4 w-4" />
@@ -242,8 +286,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* The Solution - Split-Screen Workspace */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<Zap className="mr-2 h-4 w-4" />
@@ -340,8 +385,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* 1,298 Guided Workspaces */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="grid md:grid-cols-2 gap-16 items-start">
 						<div className="space-y-8">
 							<div className="space-y-6">
@@ -443,8 +489,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* Three-Stage Evolution */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<TrendingUp className="mr-2 h-4 w-4" />
@@ -506,8 +553,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* The Manifesto - Short Version */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="max-w-4xl mx-auto text-center space-y-6">
 						<Badge variant="outline" className="px-4 py-2">
 							<Sparkles className="mr-2 h-4 w-4" />
@@ -530,8 +578,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* What is the Axiom Engine */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<Brain className="mr-2 h-4 w-4" />
@@ -622,8 +671,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* Inspiration - Notion & Wikipedia */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-6 mb-16">
 						<h2 className="text-3xl md:text-4xl font-bold">
 							Standing on the shoulders of giants
@@ -680,8 +730,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* FAQ Section */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-4xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-4xl px-4 relative z-10">
 					<div className="text-center space-y-6 mb-12">
 						<Badge variant="outline" className="px-4 py-2">
 							<Lightbulb className="mr-2 h-4 w-4" />
@@ -713,8 +764,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* By the Numbers */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-6 mb-16">
 						<h2 className="text-3xl font-bold">Templata by the numbers</h2>
 						<p className="text-xl text-muted-foreground">
@@ -759,8 +811,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* Final CTA */}
-			<section className="py-32 border-t">
-				<div className="container mx-auto max-w-7xl px-4">
+			<section className="py-32 border-t relative">
+				<div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+				<div className="container mx-auto max-w-7xl px-4 relative z-10">
 					<div className="text-center space-y-6 max-w-3xl mx-auto">
 						<h2 className="text-3xl font-bold">
 							Ready to organize your next big moment?
