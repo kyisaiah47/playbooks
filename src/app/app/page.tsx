@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { WorkspaceStage } from './stages/WorkspaceStage';
 import { ReflectionStage } from './stages/ReflectionStage';
 import { LifeOSStage } from './stages/LifeOSStage';
@@ -80,44 +80,42 @@ export default function StudioPage() {
 
       {/* Stage Viewport with transitions */}
       <div className="flex-1 overflow-hidden relative bg-background">
-        <AnimatePresence mode="wait">
-          {currentStage === 'workspace' && (
-            <motion.div
-              key="workspace"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
-            >
-              <WorkspaceStage />
-            </motion.div>
-          )}
-          {currentStage === 'reflection' && (
-            <motion.div
-              key="reflection"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
-            >
-              <ReflectionStage />
-            </motion.div>
-          )}
-          {currentStage === 'lifeos' && (
-            <motion.div
-              key="lifeos"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
-            >
-              <LifeOSStage />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: currentStage === 'workspace' ? 1 : 0,
+            y: currentStage === 'workspace' ? 0 : 20,
+          }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0"
+          style={{ pointerEvents: currentStage === 'workspace' ? 'auto' : 'none' }}
+        >
+          <WorkspaceStage />
+        </motion.div>
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: currentStage === 'reflection' ? 1 : 0,
+            y: currentStage === 'reflection' ? 0 : 20,
+          }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0"
+          style={{ pointerEvents: currentStage === 'reflection' ? 'auto' : 'none' }}
+        >
+          <ReflectionStage />
+        </motion.div>
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: currentStage === 'lifeos' ? 1 : 0,
+            y: currentStage === 'lifeos' ? 0 : 20,
+          }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0"
+          style={{ pointerEvents: currentStage === 'lifeos' ? 'auto' : 'none' }}
+        >
+          <LifeOSStage />
+        </motion.div>
       </div>
     </div>
   );
