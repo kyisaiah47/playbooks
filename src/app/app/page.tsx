@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { WorkspaceStage } from './stages/WorkspaceStage';
 import { ReflectionStage } from './stages/ReflectionStage';
 import { LifeOSStage } from './stages/LifeOSStage';
@@ -15,75 +16,8 @@ import {
 
 type Stage = 'workspace' | 'reflection' | 'lifeos';
 
-type TransitionPhase = 'idle' | 'exiting' | 'entering';
-
 export default function StudioPage() {
   const [currentStage, setCurrentStage] = useState<Stage>('workspace');
-  const [previousStage, setPreviousStage] = useState<Stage>('workspace');
-  const [transitionPhase, setTransitionPhase] = useState<TransitionPhase>('idle');
-  const [buttonsDisabled, setButtonsDisabled] = useState(false);
-
-  const handleStageChange = (newStage: Stage) => {
-    if (newStage === currentStage) return;
-
-    setPreviousStage(currentStage);
-    setTransitionPhase('exiting');
-    setButtonsDisabled(true);
-
-    // Re-enable buttons quickly
-    setTimeout(() => {
-      setButtonsDisabled(false);
-    }, 700);
-
-    // Wait for exit animation, then switch
-    setTimeout(() => {
-      setCurrentStage(newStage);
-      setTransitionPhase('entering');
-
-      // Complete transition
-      setTimeout(() => {
-        setTransitionPhase('idle');
-      }, 800);
-    }, 600);
-  };
-
-  const getTransitionClass = (stage: Stage) => {
-    if (transitionPhase === 'idle') {
-      return stage === currentStage ? 'opacity-100' : 'opacity-0 pointer-events-none';
-    }
-
-    if (transitionPhase === 'exiting' && stage === previousStage) {
-      // Exiting animations based on direction
-      if (previousStage === 'workspace' && currentStage === 'reflection') {
-        return 'animate-workspace-to-reflection-exit';
-      }
-      if (previousStage === 'reflection' && currentStage === 'lifeos') {
-        return 'animate-reflection-to-lifeos-exit';
-      }
-      if (previousStage === 'lifeos' && currentStage === 'workspace') {
-        return 'animate-lifeos-to-workspace-exit';
-      }
-      // Default backward transitions
-      return 'opacity-0 scale-95';
-    }
-
-    if (transitionPhase === 'entering' && stage === currentStage) {
-      // Entering animations based on direction
-      if (previousStage === 'workspace' && currentStage === 'reflection') {
-        return 'animate-workspace-to-reflection-enter';
-      }
-      if (previousStage === 'reflection' && currentStage === 'lifeos') {
-        return 'animate-reflection-to-lifeos-enter';
-      }
-      if (previousStage === 'lifeos' && currentStage === 'workspace') {
-        return 'animate-lifeos-to-workspace-enter';
-      }
-      // Default backward transitions
-      return 'opacity-100 scale-100';
-    }
-
-    return 'opacity-0 pointer-events-none';
-  };
 
   return (
     <div className="h-screen flex flex-col bg-background">
@@ -100,24 +34,21 @@ export default function StudioPage() {
               <Button
                 variant={currentStage === 'workspace' ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => handleStageChange('workspace')}
-                disabled={buttonsDisabled}
+                onClick={() => setCurrentStage('workspace')}
               >
                 Workspace
               </Button>
               <Button
                 variant={currentStage === 'reflection' ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => handleStageChange('reflection')}
-                disabled={buttonsDisabled}
+                onClick={() => setCurrentStage('reflection')}
               >
                 Reflection
               </Button>
               <Button
                 variant={currentStage === 'lifeos' ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => handleStageChange('lifeos')}
-                disabled={buttonsDisabled}
+                onClick={() => setCurrentStage('lifeos')}
               >
                 Life OS
               </Button>
@@ -149,27 +80,44 @@ export default function StudioPage() {
 
       {/* Stage Viewport with transitions */}
       <div className="flex-1 overflow-hidden relative bg-background">
-        <div
-          className={`absolute inset-0 ${getTransitionClass('workspace')} ${
-            currentStage === 'workspace' || previousStage === 'workspace' ? 'z-10' : 'z-0'
-          }`}
-        >
-          <WorkspaceStage />
-        </div>
-        <div
-          className={`absolute inset-0 ${getTransitionClass('reflection')} ${
-            currentStage === 'reflection' || previousStage === 'reflection' ? 'z-10' : 'z-0'
-          }`}
-        >
-          <ReflectionStage />
-        </div>
-        <div
-          className={`absolute inset-0 ${getTransitionClass('lifeos')} ${
-            currentStage === 'lifeos' || previousStage === 'lifeos' ? 'z-10' : 'z-0'
-          }`}
-        >
-          <LifeOSStage />
-        </div>
+        <AnimatePresence mode="wait">
+          {currentStage === 'workspace' && (
+            <motion.div
+              key="workspace"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0"
+            >
+              <WorkspaceStage />
+            </motion.div>
+          )}
+          {currentStage === 'reflection' && (
+            <motion.div
+              key="reflection"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0"
+            >
+              <ReflectionStage />
+            </motion.div>
+          )}
+          {currentStage === 'lifeos' && (
+            <motion.div
+              key="lifeos"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0"
+            >
+              <LifeOSStage />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
