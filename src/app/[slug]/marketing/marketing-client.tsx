@@ -104,7 +104,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const templateData = template.template;
 
   const handleOpenInWorkspace = () => {
-    // Store template context for workspace cmd+K
+    // Store template context for workspace
     sessionStorage.setItem('workspace-template-context', JSON.stringify({
       templateId: slug,
       templateName: templateData.title

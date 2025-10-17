@@ -7,7 +7,6 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/template-sideba
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
 import { Progress } from '@/components/ui/progress';
-import { CommandPalette } from '@/components/command-palette';
 import { DollarSign, MapPin, UserCheck, Briefcase, Church, Music, Palette, Shirt, Heart, Home, CreditCard, Search, HandCoins, FileText, Truck, Target, User, PenTool, Network, MessageSquare, CheckSquare, TrendingUp, Stethoscope, Baby, Calendar, Shield, Activity, ChevronDown, Plus, Edit3, AlertCircle, Sunset, Moon, Layout } from 'lucide-react';
 import {
   Breadcrumb,
@@ -41,7 +40,6 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
   const [responses, setResponses] = useState<Record<string, string>>({});
   const [editMode, setEditMode] = useState(false);
   const [completedItems, setCompletedItems] = useState<Set<string>>(new Set());
-  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [duplicateError, setDuplicateError] = useState<string | null>(null);
   const [highlightedItem, setHighlightedItem] = useState<string | null>(null);
 
@@ -58,19 +56,6 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     }
   ]);
   const [activeWorkspaceId, setActiveWorkspaceId] = useState<string>('default');
-
-  // Command palette keyboard shortcut
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setCommandPaletteOpen((open) => !open);
-      }
-    };
-
-    document.addEventListener('keydown', down);
-    return () => document.removeEventListener('keydown', down);
-  }, []);
 
   // Auto-save to localStorage every 30 seconds
   useEffect(() => {
@@ -273,17 +258,6 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground overflow-hidden [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [-ms-overflow-style:none] [scrollbar-width:none]">
-        <CommandPalette
-          isOpen={commandPaletteOpen}
-          onClose={() => setCommandPaletteOpen(false)}
-          mode="template-mode"
-          templateMode={{
-            template,
-            onSectionChange: setActiveSection,
-            onInsertPrompt: handleInsertPrompt,
-            onOpenResource: handleOpenResource
-          }}
-        />
         <TemplataContentSidebar
           template={template}
           activeSection={activeSection}

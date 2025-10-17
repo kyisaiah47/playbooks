@@ -187,7 +187,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
   };
 
   const handleOpenInWorkspace = () => {
-    // Store template context for workspace cmd+K
+    // Store template context for workspace
     sessionStorage.setItem('workspace-template-context', JSON.stringify({
       templateId: slug,
       templateName: templateData.title

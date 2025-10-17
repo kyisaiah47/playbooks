@@ -3,15 +3,6 @@ import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import { FeedbackModal } from "@/components/feedback-modal"
 
-const openCommandPalette = () => {
-	const event = new KeyboardEvent('keydown', {
-		key: 'k',
-		metaKey: true,
-		bubbles: true
-	});
-	document.dispatchEvent(event);
-};
-
 export function Footer() {
 	return (
 		<footer className="border-t">
@@ -38,12 +29,12 @@ export function Footer() {
 						<h4 className="font-semibold">Templates</h4>
 						<ul className="space-y-2 text-muted-foreground">
 							<li>
-								<button
-									onClick={openCommandPalette}
-									className="hover:text-foreground transition-colors text-left"
+								<Link
+									href="/templates"
+									className="hover:text-foreground transition-colors"
 								>
 									Browse Templates
-								</button>
+								</Link>
 							</li>
 							<li>
 								<Link
@@ -62,12 +53,12 @@ export function Footer() {
 								</Link>
 							</li>
 							<li>
-								<button
-									onClick={openCommandPalette}
-									className="hover:text-foreground transition-colors text-left"
+								<Link
+									href="/templates"
+									className="hover:text-foreground transition-colors"
 								>
 									View All
-								</button>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -158,10 +149,6 @@ export function Footer() {
 						>
 							Terms
 						</Link>
-						<div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-muted/30 rounded-full text-xs">
-							<div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-							<span>Try <kbd className="px-1 bg-muted/60 rounded">Cmd+K</kbd> to search</span>
-						</div>
 					</div>
 				</div>
 			</div>
