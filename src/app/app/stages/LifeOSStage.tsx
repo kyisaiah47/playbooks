@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -167,7 +168,13 @@ export function LifeOSStage() {
           <div className="container mx-auto max-w-7xl px-8 py-8">
             {/* Board View */}
             <TabsContent value="board" className="mt-0">
-              <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
                 {/* Templates Section */}
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -185,29 +192,36 @@ export function LifeOSStage() {
                         </p>
                       </Card>
                     ) : (
-                      templates.map((template) => (
-                        <Card key={template.templateId} className="p-4 hover:bg-muted/50 transition-colors cursor-pointer">
-                          <h4 className="font-medium text-foreground mb-2">{template.templateName}</h4>
-                          <div className="space-y-2">
-                            <div className="flex items-center justify-between text-sm">
-                              <span className="text-muted-foreground">Progress</span>
-                              <span className="text-foreground font-medium">
-                                {template.promptsCompleted}/{template.totalPrompts}
-                              </span>
+                      templates.map((template, index) => (
+                        <motion.div
+                          key={template.templateId}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.2, delay: index * 0.05 }}
+                        >
+                          <Card className="p-4 hover:bg-muted/50 transition-colors cursor-pointer h-full">
+                            <h4 className="font-medium text-foreground mb-2">{template.templateName}</h4>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between text-sm">
+                                <span className="text-muted-foreground">Progress</span>
+                                <span className="text-foreground font-medium">
+                                  {template.promptsCompleted}/{template.totalPrompts}
+                                </span>
+                              </div>
+                              <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                                <motion.div
+                                  className="bg-primary h-2 rounded-full"
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${(template.promptsCompleted / template.totalPrompts) * 100}%` }}
+                                  transition={{ duration: 0.5, delay: index * 0.05 + 0.2 }}
+                                />
+                              </div>
+                              <p className="text-xs text-muted-foreground">
+                                Last worked: {new Date(template.lastWorked).toLocaleDateString()}
+                              </p>
                             </div>
-                            <div className="w-full bg-muted rounded-full h-2">
-                              <div
-                                className="bg-primary h-2 rounded-full transition-all"
-                                style={{
-                                  width: `${(template.promptsCompleted / template.totalPrompts) * 100}%`,
-                                }}
-                              />
-                            </div>
-                            <p className="text-xs text-muted-foreground">
-                              Last worked: {new Date(template.lastWorked).toLocaleDateString()}
-                            </p>
-                          </div>
-                        </Card>
+                          </Card>
+                        </motion.div>
                       ))
                     )}
                   </div>
@@ -230,40 +244,53 @@ export function LifeOSStage() {
                         </p>
                       </Card>
                     ) : (
-                      reflections.slice(0, 8).map((reflection) => (
-                        <Card key={reflection.date} className="p-4 hover:bg-muted/50 transition-colors cursor-pointer">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-medium text-foreground">
-                              {new Date(reflection.date).toLocaleDateString('en-US', {
-                                month: 'short',
-                                day: 'numeric',
-                              })}
-                            </span>
-                            {reflection.mood && <span className="text-xl">{reflection.mood}</span>}
-                          </div>
-                          <p className="text-xs text-muted-foreground mb-2">
-                            {reflection.wordCount} words
-                          </p>
-                          {reflection.tags.length > 0 && (
-                            <div className="flex gap-1 flex-wrap">
-                              {reflection.tags.slice(0, 2).map((tag) => (
-                                <Badge key={tag} variant="secondary" className="text-xs">
-                                  {tag}
-                                </Badge>
-                              ))}
+                      reflections.slice(0, 8).map((reflection, index) => (
+                        <motion.div
+                          key={reflection.date}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.2, delay: (templates.length * 0.05) + (index * 0.03) }}
+                        >
+                          <Card className="p-4 hover:bg-muted/50 transition-colors cursor-pointer h-full">
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="text-sm font-medium text-foreground">
+                                {new Date(reflection.date).toLocaleDateString('en-US', {
+                                  month: 'short',
+                                  day: 'numeric',
+                                })}
+                              </span>
+                              {reflection.mood && <span className="text-xl">{reflection.mood}</span>}
                             </div>
-                          )}
-                        </Card>
+                            <p className="text-xs text-muted-foreground mb-2">
+                              {reflection.wordCount} words
+                            </p>
+                            {reflection.tags.length > 0 && (
+                              <div className="flex gap-1 flex-wrap">
+                                {reflection.tags.slice(0, 2).map((tag) => (
+                                  <Badge key={tag} variant="secondary" className="text-xs">
+                                    {tag}
+                                  </Badge>
+                                ))}
+                              </div>
+                            )}
+                          </Card>
+                        </motion.div>
                       ))
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </TabsContent>
 
             {/* Timeline View */}
             <TabsContent value="timeline" className="mt-0">
-              <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold text-foreground">Last 30 Days</h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -293,8 +320,11 @@ export function LifeOSStage() {
                     };
 
                     return (
-                      <div
+                      <motion.div
                         key={day.date}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.2, delay: index * 0.02 }}
                         className={`aspect-square rounded border border-border relative group cursor-pointer ${getColor()}`}
                         title={`${formattedDate} (${dayOfWeek}): ${day.reflections} reflections, ${day.promptsWorked} prompts`}
                       >
@@ -313,7 +343,7 @@ export function LifeOSStage() {
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 rounded">
                           <span className="text-xs font-medium text-foreground">{total}</span>
                         </div>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
@@ -329,60 +359,118 @@ export function LifeOSStage() {
                   </div>
                   <span>More</span>
                 </div>
-              </div>
+              </motion.div>
             </TabsContent>
 
             {/* Insights View */}
             <TabsContent value="insights" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <FileText className="h-6 w-6 text-primary" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                >
+                  <Card className="p-6 h-full">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-lg bg-primary/10">
+                        <FileText className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <motion.p
+                          className="text-2xl font-bold text-foreground"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.2 }}
+                        >
+                          {totalTemplates}
+                        </motion.p>
+                        <p className="text-sm text-muted-foreground">Templates Started</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-2xl font-bold text-foreground">{totalTemplates}</p>
-                      <p className="text-sm text-muted-foreground">Templates Started</p>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </motion.div>
 
-                <Card className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <BarChart3 className="h-6 w-6 text-primary" />
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.15 }}
+                >
+                  <Card className="p-6 h-full">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-lg bg-primary/10">
+                        <BarChart3 className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <motion.p
+                          className="text-2xl font-bold text-foreground"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.25 }}
+                        >
+                          {totalPromptsCompleted}
+                        </motion.p>
+                        <p className="text-sm text-muted-foreground">Prompts Completed</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-2xl font-bold text-foreground">{totalPromptsCompleted}</p>
-                      <p className="text-sm text-muted-foreground">Prompts Completed</p>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </motion.div>
 
-                <Card className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <Heart className="h-6 w-6 text-primary" />
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
+                  <Card className="p-6 h-full">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-lg bg-primary/10">
+                        <Heart className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <motion.p
+                          className="text-2xl font-bold text-foreground"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.3 }}
+                        >
+                          {totalReflections}
+                        </motion.p>
+                        <p className="text-sm text-muted-foreground">Reflections Written</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-2xl font-bold text-foreground">{totalReflections}</p>
-                      <p className="text-sm text-muted-foreground">Reflections Written</p>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </motion.div>
 
-                <Card className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <Calendar className="h-6 w-6 text-primary" />
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.25 }}
+                >
+                  <Card className="p-6 h-full">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 rounded-lg bg-primary/10">
+                        <Calendar className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <motion.p
+                          className="text-2xl font-bold text-foreground"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.35 }}
+                        >
+                          {avgWordsPerReflection}
+                        </motion.p>
+                        <p className="text-sm text-muted-foreground">Avg Words/Reflection</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-2xl font-bold text-foreground">{avgWordsPerReflection}</p>
-                      <p className="text-sm text-muted-foreground">Avg Words/Reflection</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
+                  </Card>
+                </motion.div>
+              </motion.div>
             </TabsContent>
           </div>
         </div>
