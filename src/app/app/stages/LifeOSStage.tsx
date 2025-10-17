@@ -43,65 +43,148 @@ export function LifeOSStage() {
   const [boardFilter, setBoardFilter] = useState<'all' | 'in-progress' | 'completed'>('all');
   const [selectedDay, setSelectedDay] = useState<ActivityDay | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check if user is logged in
+  useEffect(() => {
+    checkAuth();
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+        setIsLoggedIn(!!data.user);
+      } catch {
+        setIsLoggedIn(false);
+      }
+    }
+  }, []);
 
   useEffect(() => {
-    loadData();
-  }, []);
+    if (isLoggedIn !== null) {
+      loadData();
+    }
+  }, [isLoggedIn]);
 
   const loadData = async () => {
     try {
-      // Fetch workspace responses
-      const workspaceRes = await fetch('/api/workspace/responses');
-      const workspaceData = await workspaceRes.json();
-
-      // Fetch reflections
-      const reflectionsRes = await fetch('/api/reflections');
-      const reflectionsData = await reflectionsRes.json();
-
-      // Process workspace data
       const templateMap = new Map<string, TemplateProgress>();
-
-      if (workspaceData.responses) {
-        workspaceData.responses.forEach((response: any) => {
-          const templateId = response.template_id;
-
-          if (!templateMap.has(templateId)) {
-            templateMap.set(templateId, {
-              templateId,
-              templateName: templateId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-              promptsCompleted: 0,
-              totalPrompts: 0,
-              lastWorked: '',
-            });
-          }
-
-          const template = templateMap.get(templateId)!;
-
-          if (response.response && response.response.trim()) {
-            template.promptsCompleted++;
-          }
-          template.totalPrompts++;
-
-          if (response.updated_at && (!template.lastWorked || response.updated_at > template.lastWorked)) {
-            template.lastWorked = response.updated_at;
-          }
-        });
-      }
-
-      // Process reflections data
       const reflectionsList: ReflectionSummary[] = [];
 
-      if (reflectionsData.reflections) {
-        reflectionsData.reflections.forEach((reflection: any) => {
-          if (reflection.content) {
-            reflectionsList.push({
-              date: reflection.date,
-              mood: reflection.mood || '',
-              tags: reflection.tags || [],
-              wordCount: reflection.content.split(/\s+/).length,
-            });
+      if (isLoggedIn) {
+        // Fetch workspace responses from API
+        const workspaceRes = await fetch('/api/workspace/responses');
+        const workspaceData = await workspaceRes.json();
+
+        // Fetch reflections from API
+        const reflectionsRes = await fetch('/api/reflections');
+        const reflectionsData = await reflectionsRes.json();
+
+        // Process workspace data
+        if (workspaceData.responses) {
+          workspaceData.responses.forEach((response: any) => {
+            const templateId = response.template_id;
+
+            if (!templateMap.has(templateId)) {
+              templateMap.set(templateId, {
+                templateId,
+                templateName: templateId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                promptsCompleted: 0,
+                totalPrompts: 0,
+                lastWorked: '',
+              });
+            }
+
+            const template = templateMap.get(templateId)!;
+
+            if (response.response && response.response.trim()) {
+              template.promptsCompleted++;
+            }
+            template.totalPrompts++;
+
+            if (response.updated_at && (!template.lastWorked || response.updated_at > template.lastWorked)) {
+              template.lastWorked = response.updated_at;
+            }
+          });
+        }
+
+        // Process reflections data
+        if (reflectionsData.reflections) {
+          reflectionsData.reflections.forEach((reflection: any) => {
+            if (reflection.content) {
+              reflectionsList.push({
+                date: reflection.date,
+                mood: reflection.mood || '',
+                tags: reflection.tags || [],
+                wordCount: reflection.content.split(/\s+/).length,
+              });
+            }
+          });
+        }
+      } else {
+        // Load from localStorage for anonymous users
+
+        // Process workspace data from localStorage
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('workspace_')) {
+            const stored = localStorage.getItem(key);
+            if (stored) {
+              try {
+                const data = JSON.parse(stored);
+                const parts = key.split('_');
+                if (parts.length >= 2) {
+                  const templateId = parts[1];
+
+                  if (!templateMap.has(templateId)) {
+                    templateMap.set(templateId, {
+                      templateId,
+                      templateName: templateId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                      promptsCompleted: 0,
+                      totalPrompts: 0,
+                      lastWorked: '',
+                    });
+                  }
+
+                  const template = templateMap.get(templateId)!;
+                  template.totalPrompts++;
+
+                  if (data.response && data.response.trim()) {
+                    template.promptsCompleted++;
+                  }
+
+                  if (data.savedAt && (!template.lastWorked || data.savedAt > template.lastWorked)) {
+                    template.lastWorked = data.savedAt;
+                  }
+                }
+              } catch (e) {
+                console.error('Error parsing localStorage workspace data:', e);
+              }
+            }
           }
-        });
+        }
+
+        // Process reflections from localStorage
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('reflection-')) {
+            const stored = localStorage.getItem(key);
+            if (stored) {
+              try {
+                const reflection = JSON.parse(stored);
+                if (reflection.content) {
+                  reflectionsList.push({
+                    date: reflection.date,
+                    mood: reflection.mood || '',
+                    tags: reflection.tags || [],
+                    wordCount: reflection.content.split(/\s+/).length,
+                  });
+                }
+              } catch (e) {
+                console.error('Error parsing localStorage reflection data:', e);
+              }
+            }
+          }
+        }
       }
 
       setTemplates(Array.from(templateMap.values()).filter(t => t.promptsCompleted > 0));

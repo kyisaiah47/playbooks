@@ -87,7 +87,9 @@ export default function StudioPage() {
         <div className="container mx-auto max-w-7xl px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <h1 className="text-2xl font-bold text-foreground">Templata</h1>
+              <Link href="/">
+                <h1 className="text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer">Templata</h1>
+              </Link>
             </div>
 
             {/* Stage Switcher */}
