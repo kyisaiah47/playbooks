@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, RefreshCw, Home } from 'lucide-react';
+import { RefreshCw, Home } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function Error({
@@ -18,53 +19,57 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full mx-4 text-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg border border-red-100">
-          <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
-              <AlertCircle className="w-8 h-8 text-red-500" />
-            </div>
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center space-y-6 max-w-md"
+      >
+        <motion.div
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <h1 className="text-9xl font-bold text-destructive">500</h1>
+        </motion.div>
 
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            Something went wrong
-          </h1>
-
-          <p className="text-gray-600 mb-6">
-            We encountered an unexpected error. Don't worry - we've been notified and are working on a fix.
+        <div className="space-y-2">
+          <h2 className="text-2xl font-semibold text-foreground">Something went wrong</h2>
+          <p className="text-muted-foreground">
+            An unexpected error occurred. Please try again.
           </p>
-
-          {process.env.NODE_ENV === 'development' && (
-            <details className="mb-6 p-4 bg-red-50 rounded-lg text-left">
-              <summary className="cursor-pointer text-sm font-medium text-red-800 mb-2">
-                Error Details (Development Only)
-              </summary>
-              <code className="text-xs text-red-700 break-all">
-                {error.message}
-              </code>
-            </details>
-          )}
-
-          <div className="space-y-3">
-            <Button
-              onClick={reset}
-              className="w-full"
-              variant="default"
-            >
-              <RefreshCw className="w-4 h-4 mr-2" />
-              Try Again
-            </Button>
-
-            <Link href="/" className="block">
-              <Button variant="outline" className="w-full">
-                <Home className="w-4 h-4 mr-2" />
-                Go Home
-              </Button>
-            </Link>
-          </div>
         </div>
-      </div>
+
+        {process.env.NODE_ENV === 'development' && (
+          <details className="p-4 bg-destructive/10 rounded-lg text-left border border-destructive/20">
+            <summary className="cursor-pointer text-sm font-medium text-destructive mb-2">
+              Error Details (Development Only)
+            </summary>
+            <code className="text-xs text-destructive/80 break-all">
+              {error.message}
+            </code>
+          </details>
+        )}
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-3 justify-center"
+        >
+          <Button variant="default" onClick={reset}>
+            <RefreshCw className="h-4 w-4 mr-2" />
+            Try again
+          </Button>
+          <Button variant="outline" asChild>
+            <Link href="/" className="flex items-center gap-2">
+              <Home className="h-4 w-4" />
+              Go home
+            </Link>
+          </Button>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

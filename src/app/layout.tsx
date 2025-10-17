@@ -7,6 +7,7 @@ import { UIProvider } from "@/components/providers/ui-provider"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { AuthProvider } from "@/contexts/auth-context"
 import { UserUnlockProvider } from "@/contexts/UserUnlockContext"
+import { Analytics } from "@/components/analytics"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -116,6 +117,7 @@ export default function RootLayout({
               <AuthProvider>
                 <UserUnlockProvider>
                   <UIProvider>
+                    <Analytics />
                     {children}
                   </UIProvider>
                 </UserUnlockProvider>
