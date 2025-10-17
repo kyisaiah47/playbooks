@@ -14,7 +14,6 @@ import {
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { ThemeSelector } from "@/components/theme-selector"
-import { ChangelogWidget } from "@/components/changelog/changelog-widget"
 import { useAuth } from "@/contexts/auth-context"
 import {
 	Heart,
@@ -177,14 +176,6 @@ export function Header() {
 											<ul className="grid w-[200px] gap-4">
 												<li>
 													<NavigationMenuLink asChild>
-														<Link href="/articles">
-															<div className="text-sm leading-none font-medium">Articles</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-																In-depth guidance and insights
-															</p>
-														</Link>
-													</NavigationMenuLink>
-													<NavigationMenuLink asChild>
 														<Link href="/templates">
 															<div className="text-sm leading-none font-medium">Templates</div>
 															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
@@ -192,38 +183,11 @@ export function Header() {
 															</p>
 														</Link>
 													</NavigationMenuLink>
-												</li>
-											</ul>
-										</NavigationMenuContent>
-									</NavigationMenuItem>
-
-									{/* Platform dropdown */}
-									<NavigationMenuItem>
-										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Platform</NavigationMenuTrigger>
-										<NavigationMenuContent>
-											<ul className="grid w-[200px] gap-4">
-												<li>
 													<NavigationMenuLink asChild>
-														<Link href="/prompts">
-															<div className="text-sm leading-none font-medium">Prompts</div>
+														<Link href="/articles">
+															<div className="text-sm leading-none font-medium">Articles</div>
 															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-																15,000+ reflection prompts
-															</p>
-														</Link>
-													</NavigationMenuLink>
-													<NavigationMenuLink asChild>
-														<Link href="/reflections">
-															<div className="text-sm leading-none font-medium">Reflections</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-																Guided reflection system
-															</p>
-														</Link>
-													</NavigationMenuLink>
-													<NavigationMenuLink asChild>
-														<Link href="/workspaces">
-															<div className="text-sm leading-none font-medium">Workspaces</div>
-															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-																Three progressive workspace modes
+																In-depth guidance and insights
 															</p>
 														</Link>
 													</NavigationMenuLink>
@@ -237,8 +201,6 @@ export function Header() {
 
 						{/* Right side - Actions */}
 						<div className="flex items-center space-x-3">
-							<ChangelogWidget variant="bell" />
-
 							{isLoggedIn ? (
 								<DropdownMenu>
 									<DropdownMenuTrigger asChild>
