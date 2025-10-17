@@ -53,38 +53,60 @@ export function WorkspaceStage() {
   const [loadingArticle, setLoadingArticle] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
 
-  // Load data from localStorage on mount
+  // Load data from Supabase on mount
   useEffect(() => {
-    if (selectedPromptId) {
-      const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
-      const saved = localStorage.getItem(key);
-      if (saved) {
-        try {
-          const data = JSON.parse(saved);
-          setPromptResponse(data.response || '');
-          setLastSaved(data.savedAt ? new Date(data.savedAt) : null);
-        } catch (e) {
-          console.error('Error loading saved data:', e);
+    if (selectedPromptId && selectedTemplate) {
+      loadResponse();
+    }
+
+    async function loadResponse() {
+      try {
+        const res = await fetch(
+          `/api/workspace/responses?templateId=${selectedTemplate}`
+        );
+        const data = await res.json();
+
+        if (data.responses) {
+          const response = data.responses.find(
+            (r: any) =>
+              r.template_id === selectedTemplate && r.prompt_id === selectedPromptId
+          );
+
+          if (response) {
+            setPromptResponse(response.response || '');
+            setLastSaved(response.updated_at ? new Date(response.updated_at) : null);
+          } else {
+            setPromptResponse('');
+            setLastSaved(null);
+          }
         }
-      } else {
+      } catch (e) {
+        console.error('Error loading saved data:', e);
         setPromptResponse('');
         setLastSaved(null);
       }
     }
   }, [selectedPromptId, selectedTemplate]);
 
-  // Autosave functionality
+  // Autosave functionality - save to Supabase
   useEffect(() => {
-    if (!autoSave || !selectedPromptId || !promptResponse) return;
+    if (!autoSave || !selectedPromptId || !selectedTemplate) return;
 
-    const timeoutId = setTimeout(() => {
-      const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
-      const data = {
-        response: promptResponse,
-        savedAt: new Date().toISOString(),
-      };
-      localStorage.setItem(key, JSON.stringify(data));
-      setLastSaved(new Date());
+    const timeoutId = setTimeout(async () => {
+      try {
+        await fetch('/api/workspace/responses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            templateId: selectedTemplate,
+            promptId: selectedPromptId,
+            response: promptResponse,
+          }),
+        });
+        setLastSaved(new Date());
+      } catch (e) {
+        console.error('Error auto-saving:', e);
+      }
     }, 2000);
 
     return () => clearTimeout(timeoutId);
@@ -169,15 +191,22 @@ export function WorkspaceStage() {
     });
   };
 
-  const handleManualSave = () => {
-    if (selectedPromptId && promptResponse) {
-      const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
-      const data = {
-        response: promptResponse,
-        savedAt: new Date().toISOString(),
-      };
-      localStorage.setItem(key, JSON.stringify(data));
-      setLastSaved(new Date());
+  const handleManualSave = async () => {
+    if (selectedPromptId && selectedTemplate) {
+      try {
+        await fetch('/api/workspace/responses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            templateId: selectedTemplate,
+            promptId: selectedPromptId,
+            response: promptResponse,
+          }),
+        });
+        setLastSaved(new Date());
+      } catch (e) {
+        console.error('Error saving:', e);
+      }
     }
   };
 

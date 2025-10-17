@@ -38,84 +38,87 @@ export function LifeOSStage() {
     loadData();
   }, []);
 
-  const loadData = () => {
-    const templateMap = new Map<string, TemplateProgress>();
-    const reflectionsList: ReflectionSummary[] = [];
+  const loadData = async () => {
+    try {
+      // Fetch workspace responses
+      const workspaceRes = await fetch('/api/workspace/responses');
+      const workspaceData = await workspaceRes.json();
 
-    // Parse localStorage
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (!key) continue;
+      // Fetch reflections
+      const reflectionsRes = await fetch('/api/reflections');
+      const reflectionsData = await reflectionsRes.json();
 
-      // Workspace data
-      if (key.startsWith('workspace_')) {
-        const parts = key.split('_');
-        const templateId = parts.slice(1, -1).join('_');
+      // Process workspace data
+      const templateMap = new Map<string, TemplateProgress>();
 
-        if (!templateMap.has(templateId)) {
-          templateMap.set(templateId, {
-            templateId,
-            templateName: templateId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-            promptsCompleted: 0,
-            totalPrompts: 0,
-            lastWorked: '',
-          });
-        }
+      if (workspaceData.responses) {
+        workspaceData.responses.forEach((response: any) => {
+          const templateId = response.template_id;
 
-        try {
-          const data = JSON.parse(localStorage.getItem(key) || '{}');
+          if (!templateMap.has(templateId)) {
+            templateMap.set(templateId, {
+              templateId,
+              templateName: templateId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+              promptsCompleted: 0,
+              totalPrompts: 0,
+              lastWorked: '',
+            });
+          }
+
           const template = templateMap.get(templateId)!;
-          if (data.response && data.response.trim()) {
+
+          if (response.response && response.response.trim()) {
             template.promptsCompleted++;
           }
           template.totalPrompts++;
-          if (data.savedAt && (!template.lastWorked || data.savedAt > template.lastWorked)) {
-            template.lastWorked = data.savedAt;
+
+          if (response.updated_at && (!template.lastWorked || response.updated_at > template.lastWorked)) {
+            template.lastWorked = response.updated_at;
           }
-        } catch (e) {
-          // Skip invalid data
-        }
+        });
       }
 
-      // Reflection data
-      if (key.startsWith('reflection_')) {
-        try {
-          const data = JSON.parse(localStorage.getItem(key) || '{}');
-          if (data.content) {
+      // Process reflections data
+      const reflectionsList: ReflectionSummary[] = [];
+
+      if (reflectionsData.reflections) {
+        reflectionsData.reflections.forEach((reflection: any) => {
+          if (reflection.content) {
             reflectionsList.push({
-              date: key.replace('reflection_', ''),
-              mood: data.mood || '',
-              tags: data.tags || [],
-              wordCount: data.content.split(/\s+/).length,
+              date: reflection.date,
+              mood: reflection.mood || '',
+              tags: reflection.tags || [],
+              wordCount: reflection.content.split(/\s+/).length,
             });
           }
-        } catch (e) {
-          // Skip invalid data
-        }
+        });
       }
+
+      setTemplates(Array.from(templateMap.values()).filter(t => t.promptsCompleted > 0));
+      setReflections(reflectionsList.sort((a, b) => b.date.localeCompare(a.date)));
+
+      // Generate activity data (last 30 days)
+      const activity: ActivityDay[] = [];
+      const today = new Date();
+
+      for (let i = 29; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(date.getDate() - i);
+        const dateStr = date.toISOString().split('T')[0];
+
+        activity.push({
+          date: dateStr,
+          reflections: reflectionsList.filter(r => r.date === dateStr).length,
+          promptsWorked: Array.from(templateMap.values()).reduce((count, t) => {
+            return count + (t.lastWorked?.startsWith(dateStr) ? 1 : 0);
+          }, 0),
+        });
+      }
+
+      setActivityData(activity);
+    } catch (error) {
+      console.error('Error loading Life OS data:', error);
     }
-
-    setTemplates(Array.from(templateMap.values()).filter(t => t.promptsCompleted > 0));
-    setReflections(reflectionsList.sort((a, b) => b.date.localeCompare(a.date)));
-
-    // Generate activity data (last 30 days)
-    const activity: ActivityDay[] = [];
-    const today = new Date();
-    for (let i = 29; i >= 0; i--) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - i);
-      const dateStr = date.toISOString().split('T')[0];
-
-      activity.push({
-        date: dateStr,
-        reflections: reflectionsList.filter(r => r.date === dateStr).length,
-        promptsWorked: Array.from(templateMap.values()).reduce((count, t) => {
-          // Count prompts worked on this day (rough approximation)
-          return count + (t.lastWorked?.startsWith(dateStr) ? 1 : 0);
-        }, 0),
-      });
-    }
-    setActivityData(activity);
   };
 
   const totalReflections = reflections.length;

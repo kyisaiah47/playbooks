@@ -39,19 +39,23 @@ export function ReflectionStage() {
   const [pastEntries, setPastEntries] = useState<ReflectionEntry[]>([]);
   const [dailyPrompt, setDailyPrompt] = useState('');
 
-  // Load today's entry from localStorage
+  // Load today's entry from Supabase
   useEffect(() => {
-    const key = `reflection_${today}`;
-    const saved = localStorage.getItem(key);
+    loadTodayReflection();
 
-    if (saved) {
+    async function loadTodayReflection() {
       try {
-        const data = JSON.parse(saved);
-        setContent(data.content || '');
-        setSelectedMood(data.mood || '');
-        setTags(data.tags || []);
-        setDailyPrompt(data.prompt || '');
-        setLastSaved(data.savedAt ? new Date(data.savedAt) : null);
+        const res = await fetch(`/api/reflections?date=${today}`);
+        const data = await res.json();
+
+        if (data.reflections && data.reflections.length > 0) {
+          const reflection = data.reflections[0];
+          setContent(reflection.content || '');
+          setSelectedMood(reflection.mood || '');
+          setTags(reflection.tags || []);
+          setDailyPrompt(reflection.prompt || '');
+          setLastSaved(reflection.updated_at ? new Date(reflection.updated_at) : null);
+        }
       } catch (e) {
         console.error('Error loading reflection:', e);
       }
@@ -65,44 +69,57 @@ export function ReflectionStage() {
     }
   }, [today, dailyPrompt]);
 
-  // Load past entries
+  // Load past entries from Supabase
   useEffect(() => {
-    const entries: ReflectionEntry[] = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key?.startsWith('reflection_') && key !== `reflection_${today}`) {
-        try {
-          const data = JSON.parse(localStorage.getItem(key) || '');
-          entries.push({
-            id: key,
-            date: key.replace('reflection_', ''),
-            ...data,
-          });
-        } catch (e) {
-          // Skip invalid entries
+    loadPastEntries();
+
+    async function loadPastEntries() {
+      try {
+        const res = await fetch('/api/reflections?limit=30');
+        const data = await res.json();
+
+        if (data.reflections) {
+          const entries: ReflectionEntry[] = data.reflections
+            .filter((r: any) => r.date !== today)
+            .map((r: any) => ({
+              id: r.id,
+              date: r.date,
+              prompt: r.prompt,
+              content: r.content,
+              mood: r.mood,
+              tags: r.tags || [],
+              savedAt: r.updated_at,
+            }));
+
+          setPastEntries(entries);
         }
+      } catch (e) {
+        console.error('Error loading past entries:', e);
       }
     }
-    // Sort by date descending
-    entries.sort((a, b) => b.date.localeCompare(a.date));
-    setPastEntries(entries);
   }, [today, lastSaved]);
 
-  // Autosave
+  // Autosave to Supabase
   useEffect(() => {
-    if (!content && !selectedMood && tags.length === 0) return;
+    if (!dailyPrompt) return; // Wait for prompt to be set
 
-    const timeoutId = setTimeout(() => {
-      const key = `reflection_${today}`;
-      const data = {
-        content,
-        mood: selectedMood,
-        tags,
-        prompt: dailyPrompt,
-        savedAt: new Date().toISOString(),
-      };
-      localStorage.setItem(key, JSON.stringify(data));
-      setLastSaved(new Date());
+    const timeoutId = setTimeout(async () => {
+      try {
+        await fetch('/api/reflections', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            date: today,
+            prompt: dailyPrompt,
+            content,
+            mood: selectedMood,
+            tags,
+          }),
+        });
+        setLastSaved(new Date());
+      } catch (e) {
+        console.error('Error auto-saving reflection:', e);
+      }
     }, 2000);
 
     return () => clearTimeout(timeoutId);
