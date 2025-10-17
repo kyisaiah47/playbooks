@@ -7,13 +7,19 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle } from 'lucide-react';
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check } from 'lucide-react';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
 import Link from 'next/link';
 
@@ -56,6 +62,7 @@ export function WorkspaceStage() {
   const [selectedArticle, setSelectedArticle] = useState<ArticleDetail | null>(null);
   const [loadingArticle, setLoadingArticle] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
+  const [open, setOpen] = useState(false);
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
@@ -226,6 +233,7 @@ export function WorkspaceStage() {
     setSelectedTemplate(newTemplateId);
     setSelectedPromptId(null);
     setPromptResponse('');
+    setOpen(false);
   };
 
   const handleArticleClick = async (articleId: string) => {
@@ -331,18 +339,47 @@ export function WorkspaceStage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               {/* Template Selector */}
-              <Select value={selectedTemplate} onValueChange={handleTemplateChange}>
-                <SelectTrigger className="w-[350px]">
-                  <SelectValue placeholder="Select template" />
-                </SelectTrigger>
-                <SelectContent>
-                  {templates.map((template) => (
-                    <SelectItem key={template.id} value={template.id}>
-                      {template.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    aria-expanded={open}
+                    className="w-[350px] justify-between"
+                  >
+                    {selectedTemplate
+                      ? templates.find((t) => t.id === selectedTemplate)?.name
+                      : "Select template..."}
+                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[350px] p-0">
+                  <Command>
+                    <CommandInput placeholder="Search templates..." />
+                    <CommandList>
+                      <CommandEmpty>No template found.</CommandEmpty>
+                      <CommandGroup>
+                        {templates.map((template) => (
+                          <CommandItem
+                            key={template.id}
+                            value={template.name}
+                            onSelect={() => {
+                              handleTemplateChange(template.id);
+                            }}
+                          >
+                            <Check
+                              className={`mr-2 h-4 w-4 ${
+                                selectedTemplate === template.id ? "opacity-100" : "opacity-0"
+                              }`}
+                            />
+                            {template.name}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
+                  </Command>
+                </PopoverContent>
+              </Popover>
             </div>
 
             <div className="flex items-center gap-3">
@@ -449,45 +486,61 @@ export function WorkspaceStage() {
         {/* Middle - Editor */}
         <div className="flex-1 overflow-y-auto bg-background">
           <div className="container mx-auto max-w-4xl px-8 py-8">
-            {selectedPrompt ? (
-              <div className="space-y-6">
-                <div>
-                  <Badge variant="outline" className="mb-3">
-                    {selectedPrompt.categoryName}
-                  </Badge>
-                  <h2 className="text-2xl font-bold text-foreground mb-2">
-                    {selectedPrompt.prompt}
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    {autoSave
-                      ? 'Your work is automatically saved as you type'
-                      : 'Remember to save your work manually'}
-                  </p>
-                </div>
+            <AnimatePresence mode="wait">
+              {selectedPrompt ? (
+                <motion.div
+                  key={selectedPromptId}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="space-y-6"
+                >
+                  <div>
+                    <Badge variant="outline" className="mb-3">
+                      {selectedPrompt.categoryName}
+                    </Badge>
+                    <h2 className="text-2xl font-bold text-foreground mb-2">
+                      {selectedPrompt.prompt}
+                    </h2>
+                    <p className="text-sm text-muted-foreground">
+                      {autoSave
+                        ? 'Your work is automatically saved as you type'
+                        : 'Remember to save your work manually'}
+                    </p>
+                  </div>
 
-                <Card className="p-8 min-h-[500px] border-border bg-muted/30">
-                  <textarea
-                    className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground text-[15px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
-                    placeholder="Start writing your response here..."
-                    value={promptResponse}
-                    onChange={(e) => setPromptResponse(e.target.value)}
-                    style={{ fontFamily: 'inherit' }}
-                  />
-                </Card>
-              </div>
-            ) : (
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center space-y-2">
-                  <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-foreground">
-                    Select a prompt to begin
-                  </h3>
-                  <p className="text-sm text-muted-foreground max-w-md">
-                    Choose a prompt from the left sidebar to start working on your template
-                  </p>
-                </div>
-              </div>
-            )}
+                  <Card className="p-8 min-h-[500px] border-border bg-muted/30">
+                    <textarea
+                      className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground text-[15px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
+                      placeholder="Start writing your response here..."
+                      value={promptResponse}
+                      onChange={(e) => setPromptResponse(e.target.value)}
+                      style={{ fontFamily: 'inherit' }}
+                    />
+                  </Card>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="empty-state"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-center h-full"
+                >
+                  <div className="text-center space-y-2">
+                    <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-foreground">
+                      Select a prompt to begin
+                    </h3>
+                    <p className="text-sm text-muted-foreground max-w-md">
+                      Choose a prompt from the left sidebar to start working on your template
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
