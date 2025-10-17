@@ -1,120 +1,80 @@
 # Templata
 
-> **Wikipedia meets Notion for Life's Biggest Moments**
-> AI-curated guidance at massive scale + flexible workflows + beautiful UX = A novel life planning experience
+> **The encyclopedia for living**
+>
+> Systematically organized templates, prompts, and articles for life's biggest decisions—built with abundance over curation.
 
 ## Overview
 
-**Templata** is not just another productivity app—it's a **life guidance system** that combines the comprehensive knowledge of Wikipedia with the flexible interface of Notion. We provide structured guidance for every major life situation through **1,300+ AI-curated templates**, **104,000+ action prompts**, and **26,000+ expert articles**.
+**Templata** is a comprehensive life guidance platform that provides structured templates, tactical prompts, and curated articles for every major life situation. From wedding planning to career transitions, home buying to business launches—we've systematically created guidance for life's biggest moments.
 
 ### What Makes Us Different
 
-- **🎓 Unprecedented Scale** - 2+ million pieces of AI-curated guidance
-- **🎨 Flexible Workflow** - 10 view modes that adapt to how you think
-- **🌟 Novel Experience** - "Everything is just here for me to use"
-- **💝 100% Free** - All core features, forever
+- **📚 Systematic Coverage** - 1,298 templates covering every conceivable life situation
+- **🎯 Actionable Guidance** - 15,000+ tactical prompts to guide your thinking
+- **📰 Deep Insights** - Curated articles for each template
+- **🔍 Built for Abundance** - Wikipedia philosophy: if it exists, we've covered it
 
-## What We Offer
+## Core Features
 
-### 📚 **1,300+ Life Templates**
-Complete coverage of every conceivable life situation:
-- **Life Planning** - Weddings, home buying, major life transitions
-- **Career & Finance** - Job search, career changes, business launches
-- **Health & Wellness** - Fitness journeys, medical planning, mental health
-- **Relationships & Family** - Parenting, relationship milestones, family planning
-- **Creative & Hobbies** - Learning new skills, creative projects, artistic pursuits
-- **Business & Entrepreneurship** - Startups, business strategy, product launches
-- **Education & Learning** - Academic planning, skill development, certifications
-- **Technology & Digital** - Tech projects, digital transformation, software planning
-- **Personal Development** - Self-improvement, goal setting, habit formation
-- **Home & Living** - Home organization, lifestyle design, space planning
+### 📚 **1,298 Life Templates**
+Systematically organized templates covering every life situation:
+- **Personal Milestones** - Weddings, parenthood, retirement
+- **Career & Business** - Job search, career pivots, entrepreneurship
+- **Home & Finance** - Home buying, financial planning, major purchases
+- **Health & Wellness** - Fitness, medical decisions, mental health
+- **Relationships** - Dating, marriage, family dynamics
+- **Education** - College planning, skill development, certifications
+- **Creative Projects** - Learning instruments, artistic pursuits, hobbies
+- And many more...
 
-### 🎯 **104,000+ Action Prompts** (80 per template)
-Each template includes 8 categories of guided prompts:
-- **Tactical Prompts** - Specific action items and next steps
-- **Contextual Prompts** - Situational guidance and considerations
-- **Reflection Prompts** - Deep thinking and planning questions
-- **Decision Prompts** - Framework for making key decisions
-- **Research Prompts** - Areas to investigate and explore
-- **Planning Prompts** - Strategic planning and roadmapping
-- **Consideration Prompts** - Important factors to evaluate
-- **Expert Prompts** - Professional insights and best practices
+### 🎯 **Tactical Prompts**
+Each template includes carefully curated prompts to guide your thinking:
+- Tactical action items
+- Contextual considerations
+- Reflection questions
+- Decision frameworks
+- Research areas
+- Planning guides
 
-### 📰 **26,000+ Expert Articles**
-Deep-dive content covering:
-- Expert insights and professional guidance
-- Step-by-step how-to guides
+### 📰 **Curated Articles**
+20+ articles per template providing:
+- Expert insights and guidance
+- Step-by-step how-tos
 - Research-backed strategies
-- Real-world case studies
-- Industry best practices
+- Real-world examples
+- Best practices
 
-### 🤖 **AI-Powered Features**
-- **Axiom Engine** - Specialized AI system for intelligent guidance
-- **Multi-Template Intelligence** - Cross-template insights and connections
-- **AI Autofill** - Populate templates from documents
-- **Smart Recommendations** - Context-aware suggestions
-- **Knowledge Graph** - Interconnected template relationships
-
-### 💼 **10 Flexible View Modes**
-Work in the style that matches your thinking:
-1. **Chat View** - Conversational Q&A flow
-2. **Split View** - Side-by-side prompts and responses
-3. **Board View** - Kanban-style task organization
-4. **Checklist View** - Simple to-do list format
-5. **Text Editor** - Notion-like rich text document
-6. **Timeline View** - Gantt chart for time-based planning
-7. **Table View** - Spreadsheet-style data entry
-8. **Cards View** - Visual card-based layout
-9. **Outline View** - Hierarchical structure
-10. **Tabs View** - Organized sections with tabs
-
-**Switch between views anytime** - your work adapts to the interface
-
-### 🎨 **Advanced Features**
-- **Floating Dock** - Templates, prompts, and articles always accessible
-- **Browse & Work Modes** - Explore content or create in your workspace
-- **Rich Text Editor** - TipTap-powered with drag-and-drop
-- **Dark/Light Mode** - Customizable themes
-- **Template Favorites** - Bookmark and organize templates
-- **Recent Templates** - Quick access to your work
-- **Export Options** - PDF and other formats
-- **Collaboration** - Team features (Pro plan)
-- **Life OS Dashboard** - Holistic view of all active templates
+### 🎨 **Core Features**
+- **Browse Templates** - Searchable directory of 1,298+ templates
+- **Browse Articles** - Comprehensive article library
+- **Dark/Light Mode** - Beautiful theme system
+- **Responsive Design** - Works on all devices
+- **User Authentication** - Secure Supabase auth with password reset
+- **Clean, Modern UI** - Built with shadcn/ui and Tailwind CSS
 
 ## Tech Stack
 
 ### Core
-- **Next.js 15.5** - React framework with App Router
+- **Next.js 15.5** - React framework with App Router and Turbopack
 - **React 19** - UI library
-- **TypeScript 5.9** - Type safety
-- **Tailwind CSS 4** - Styling
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first styling
 
-### UI Components
-- **Radix UI** - Accessible component primitives
-- **Framer Motion** - Animations
-- **Lucide Icons** - Icon library
+### UI & Design
 - **shadcn/ui** - Component design system
+- **Radix UI** - Accessible primitives
+- **Framer Motion** - Smooth animations
+- **Lucide Icons** - Beautiful icon library
 
-### Editor
-- **TipTap** - Rich text editing
-- **ProseMirror** - Editor framework
-- **Drag & Drop** - Interactive content management
+### Backend & Data
+- **Supabase** - PostgreSQL database and authentication
+- **Server Actions** - Next.js server-side operations
+- **API Routes** - RESTful endpoints
 
-### Data & Auth
-- **Supabase** - Database and authentication
-- **NextAuth.js** - Authentication framework
-- **PostgreSQL** - Database (via Supabase)
-
-### State & Forms
-- **React Hook Form** - Form handling
-- **Zod** - Schema validation
-- **Local Storage** - Client-side state persistence
-
-### Additional Tools
-- **date-fns** - Date utilities
-- **jsPDF** - PDF generation
-- **Unsplash API** - Image integration
-- **Three.js & OGL** - 3D graphics (branding)
+### Deployment
+- **Vercel** - Hosting and continuous deployment
+- **GitHub** - Version control
 
 ## Project Structure
 
@@ -319,46 +279,52 @@ We welcome contributions! Please see our contributing guidelines.
 - TypeScript strict mode
 - Component-first architecture
 
-## Pricing Plans
-
-### Free Plan
-- 1-2 starter templates
-- Basic features
-- Limited prompts
-
-### Plus Plan ($9/month)
-- Full access to 1,300+ templates
-- 104,000+ prompts
-- 26,000+ articles
-- Advanced workspace features
-
-### Pro Plan ($15/month)
-- Everything in Plus
-- AI-powered Axiom Engine
-- Team collaboration
-- Priority support
-
 ## Roadmap
 
-- [ ] Real-time collaboration
-- [ ] Mobile apps (iOS/Android)
+### Phase 1: MVP (Current)
+- [x] Template browsing system
+- [x] Article library
+- [x] User authentication
+- [x] Password reset flow
+- [x] Responsive design
+- [x] Dark/light themes
+
+### Phase 2: Workspace Features
+- [ ] Template workspace creation
+- [ ] Save and edit user responses
+- [ ] Multiple view modes (Chat, Board, Text Editor, etc.)
+- [ ] Export to PDF
+- [ ] Template favorites and organization
+
+### Phase 3: Advanced Features
+- [ ] AI-powered guidance (Axiom Engine)
+- [ ] Smart recommendations
+- [ ] Cross-template insights
+- [ ] Life OS Dashboard
+- [ ] Collaboration features
+
+### Phase 4: Growth
+- [ ] Mobile apps
 - [ ] Template marketplace
-- [ ] Advanced AI features
-- [ ] Analytics dashboard
-- [ ] Custom template builder
 - [ ] API access
-- [ ] Integrations (Notion, Google Docs, etc.)
+- [ ] Integrations
+- [ ] Analytics
 
 ## License
 
 Proprietary - All rights reserved
 
+## Philosophy
+
+**Abundance over curation.** Instead of handpicking 20 "best" templates, we give you access to everything—systematically organized, searchable, and ready when you need it. If a life situation exists, we've covered it.
+
+Like Wikipedia for knowledge, Templata is the comprehensive resource for life guidance.
+
 ## Support
 
-- **Documentation**: [docs.templata.com](https://docs.templata.com)
-- **Email**: support@templata.com
-- **Twitter**: [@templata](https://twitter.com/templata)
+- **Website**: [templata.org](https://templata.org)
+- **GitHub**: [github.com/kyisaiah47/templata](https://github.com/kyisaiah47/templata)
 
 ---
 
-*Skip the blank page. Organize life's biggest moments with AI-powered templates.*
+*The encyclopedia for living.*
