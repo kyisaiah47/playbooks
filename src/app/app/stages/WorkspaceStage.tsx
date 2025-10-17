@@ -13,8 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X } from 'lucide-react';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle } from 'lucide-react';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
+import Link from 'next/link';
 
 interface Prompt {
   id: string;
@@ -56,28 +57,65 @@ export function WorkspaceStage() {
   const [loadingArticle, setLoadingArticle] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
 
-  // Load data from Supabase on mount
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  // Check authentication status
   useEffect(() => {
-    if (selectedPromptId && selectedTemplate) {
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+        setIsAuthenticated(!!data.user);
+      } catch {
+        setIsAuthenticated(false);
+      }
+    }
+    checkAuth();
+  }, []);
+
+  // Load data from Supabase (auth) or localStorage (anonymous)
+  useEffect(() => {
+    if (selectedPromptId && selectedTemplate && isAuthenticated !== null) {
       loadResponse();
     }
 
     async function loadResponse() {
       try {
-        const res = await fetch(
-          `/api/workspace/responses?templateId=${selectedTemplate}`
-        );
-        const data = await res.json();
-
-        if (data.responses) {
-          const response = data.responses.find(
-            (r: any) =>
-              r.template_id === selectedTemplate && r.prompt_id === selectedPromptId
+        if (isAuthenticated) {
+          // Load from Supabase
+          const res = await fetch(
+            `/api/workspace/responses?templateId=${selectedTemplate}`
           );
+          const data = await res.json();
 
-          if (response) {
-            setPromptResponse(response.response || '');
-            setLastSaved(response.updated_at ? new Date(response.updated_at) : null);
+          if (data.responses) {
+            const response = data.responses.find(
+              (r: any) =>
+                r.template_id === selectedTemplate && r.prompt_id === selectedPromptId
+            );
+
+            if (response) {
+              setPromptResponse(response.response || '');
+              setLastSaved(response.updated_at ? new Date(response.updated_at) : null);
+            } else {
+              setPromptResponse('');
+              setLastSaved(null);
+            }
+          }
+        } else {
+          // Load from localStorage
+          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const saved = localStorage.getItem(key);
+          if (saved) {
+            try {
+              const data = JSON.parse(saved);
+              setPromptResponse(data.response || '');
+              setLastSaved(data.savedAt ? new Date(data.savedAt) : null);
+            } catch (e) {
+              console.error('Error loading from localStorage:', e);
+              setPromptResponse('');
+              setLastSaved(null);
+            }
           } else {
             setPromptResponse('');
             setLastSaved(null);
@@ -89,31 +127,43 @@ export function WorkspaceStage() {
         setLastSaved(null);
       }
     }
-  }, [selectedPromptId, selectedTemplate]);
+  }, [selectedPromptId, selectedTemplate, isAuthenticated]);
 
-  // Autosave functionality - save to Supabase
+  // Autosave functionality - save to Supabase or localStorage
   useEffect(() => {
-    if (!autoSave || !selectedPromptId || !selectedTemplate) return;
+    if (!autoSave || !selectedPromptId || !selectedTemplate || isAuthenticated === null) return;
 
     const timeoutId = setTimeout(async () => {
       try {
-        await fetch('/api/workspace/responses', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            templateId: selectedTemplate,
-            promptId: selectedPromptId,
+        if (isAuthenticated) {
+          // Save to Supabase
+          await fetch('/api/workspace/responses', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              templateId: selectedTemplate,
+              promptId: selectedPromptId,
+              response: promptResponse,
+            }),
+          });
+          setLastSaved(new Date());
+        } else {
+          // Save to localStorage
+          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const data = {
             response: promptResponse,
-          }),
-        });
-        setLastSaved(new Date());
+            savedAt: new Date().toISOString(),
+          };
+          localStorage.setItem(key, JSON.stringify(data));
+          setLastSaved(new Date());
+        }
       } catch (e) {
         console.error('Error auto-saving:', e);
       }
     }, 2000);
 
     return () => clearTimeout(timeoutId);
-  }, [promptResponse, autoSave, selectedPromptId, selectedTemplate]);
+  }, [promptResponse, autoSave, selectedPromptId, selectedTemplate, isAuthenticated]);
 
   // Fetch templates list
   useEffect(() => {
@@ -211,16 +261,28 @@ export function WorkspaceStage() {
   const handleManualSave = async () => {
     if (selectedPromptId && selectedTemplate) {
       try {
-        await fetch('/api/workspace/responses', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            templateId: selectedTemplate,
-            promptId: selectedPromptId,
+        if (isAuthenticated) {
+          // Save to Supabase
+          await fetch('/api/workspace/responses', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              templateId: selectedTemplate,
+              promptId: selectedPromptId,
+              response: promptResponse,
+            }),
+          });
+          setLastSaved(new Date());
+        } else {
+          // Save to localStorage
+          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const data = {
             response: promptResponse,
-          }),
-        });
-        setLastSaved(new Date());
+            savedAt: new Date().toISOString(),
+          };
+          localStorage.setItem(key, JSON.stringify(data));
+          setLastSaved(new Date());
+        }
       } catch (e) {
         console.error('Error saving:', e);
       }
@@ -241,6 +303,28 @@ export function WorkspaceStage() {
 
   return (
     <div className="h-full flex flex-col bg-background">
+      {/* Anonymous User Banner */}
+      {isAuthenticated === false && (
+        <div className="bg-yellow-500/10 border-b border-yellow-500/20 px-4 py-3">
+          <div className="container mx-auto max-w-7xl flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-sm">
+              <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
+              <span className="text-foreground">
+                Your work is saved locally in your browser. Create an account to save permanently and access from any device.
+              </span>
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <Link href="/signup">
+                <Button size="sm" variant="default">Create Account</Button>
+              </Link>
+              <Link href="/login">
+                <Button size="sm" variant="ghost">Log In</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Stage Header */}
       <div className="border-b bg-background">
         <div className="container mx-auto max-w-7xl px-4 py-3">

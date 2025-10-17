@@ -39,14 +39,11 @@ export default function StudioPage() {
 
         if (data.user) {
           setUserEmail(data.user.email || '');
-        } else {
-          // No user found, redirect to login
-          window.location.href = '/login';
         }
+        // Allow anonymous users - don't redirect
       } catch (error) {
         console.error('Error loading user:', error);
-        // On error, also redirect to login
-        window.location.href = '/login';
+        // Allow anonymous users - don't redirect
       }
     }
   }, []);

@@ -175,7 +175,7 @@ export default function TemplatesPage() {
                   <Link
                     key={template.id}
                     href={`/templates/${template.id}`}
-                    className="group block py-2 hover:text-primary transition-colors"
+                    className="group block py-2 text-foreground hover:text-primary transition-colors"
                   >
                     <div className="text-base">
                       {template.name}

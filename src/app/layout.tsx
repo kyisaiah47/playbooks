@@ -96,31 +96,13 @@ export default function RootLayout({
                 "contactType": "customer service",
                 "email": "support@templata.com"
               },
-              "offers": [
-                {
-                  "@type": "Offer",
-                  "name": "Free Plan",
-                  "price": "0",
-                  "priceCurrency": "USD",
-                  "description": "1-2 starter templates with basic features"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "Plus Plan",
-                  "price": "9",
-                  "priceCurrency": "USD",
-                  "billingDuration": "P1M",
-                  "description": "Full access to 100+ templates with advanced features"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "Pro Plan",
-                  "price": "15",
-                  "priceCurrency": "USD",
-                  "billingDuration": "P1M",
-                  "description": "Everything in Plus plus AI features and team collaboration"
-                }
-              ]
+              "offers": {
+                "@type": "Offer",
+                "name": "Templata - Free Forever",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Full access to 1,298 templates, 15,000+ prompts, and 26,000+ articles. Completely free, no paywalls."
+              }
             })
           }}
         />
