@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Clock } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import { getArticleBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/articles";
+import { getTemplateById } from "@/registry/templates";
 import { ArticleContent } from "./article-content";
 
 // Metadata is handled in layout.tsx
@@ -10,6 +11,9 @@ import { ArticleContent } from "./article-content";
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const blogPost = await getArticleBySlug(slug);
+
+  // Get template name if article has a template
+  const templateInfo = blogPost?.template ? getTemplateById(blogPost.template) : null;
 
   // Get related posts with multiple fallback strategies
   let relatedPosts = [];
@@ -44,9 +48,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className="space-y-4">
             {/* Metadata */}
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              {blogPost.template && (
+              {templateInfo && (
                 <>
-                  <span>{blogPost.template}</span>
+                  <span>{templateInfo.template.title}</span>
                   <span>·</span>
                 </>
               )}
