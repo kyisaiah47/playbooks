@@ -151,7 +151,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         '@type': 'ListItem',
         position: 4,
         name: templateData.title,
-        item: `https://templata.com/${slug}/marketing`
+        item: `https://templata.com/templates/${slug}/marketing`
       }
     ]
   };
@@ -238,7 +238,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://templata.com/${slug}/marketing`
+      '@id': `https://templata.com/templates/${slug}/marketing`
     },
     datePublished: '2024-01-01',
     dateModified: new Date().toISOString().split('T')[0],
@@ -256,7 +256,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     '@type': 'WebPage',
     name: `${templateData.title} Template`,
     description: `${templateData.description} Get ${prompts.length} expert prompts and ${articles.length} articles.`,
-    url: `https://templata.com/${slug}/marketing`,
+    url: `https://templata.com/templates/${slug}/marketing`,
     isPartOf: {
       '@type': 'WebSite',
       name: 'Templata',
@@ -289,7 +289,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: prompt.prompt.substring(0, 100),
-      item: `https://templata.com/${slug}/marketing#prompt-${prompt.id}`
+      item: `https://templata.com/templates/${slug}/marketing#prompt-${prompt.id}`
     }))
   } : null;
 
@@ -303,7 +303,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: article.title,
-      item: `https://templata.com/${slug}/marketing#article-${article.id}`
+      item: `https://templata.com/templates/${slug}/marketing#article-${article.id}`
     }))
   } : null;
 
@@ -639,7 +639,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                 .map((relatedTemplate) => (
                   <Link
                     key={relatedTemplate.id}
-                    href={`/${relatedTemplate.id}/marketing`}
+                    href={`/templates/${relatedTemplate.id}/marketing`}
                     className="group"
                   >
                     <Card className="h-full hover:shadow-lg transition-shadow">

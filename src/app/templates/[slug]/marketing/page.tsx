@@ -54,12 +54,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     publisher: 'Templata',
     metadataBase: new URL('https://templata.com'),
     alternates: {
-      canonical: `/${slug}/marketing`,
+      canonical: `/templates/${slug}/marketing`,
     },
     openGraph: {
       title,
       description,
-      url: `https://templata.com/${slug}/marketing`,
+      url: `https://templata.com/templates/${slug}/marketing`,
       siteName: 'Templata',
       images: [
         {

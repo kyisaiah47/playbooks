@@ -142,7 +142,7 @@ export default function TemplatesPage() {
                 {groupedTemplates[category].map((template) => (
                   <Link
                     key={template.id}
-                    href={`/${template.id}/template`}
+                    href={`/templates/${template.id}`}
                     className="group block py-2 hover:text-primary transition-colors"
                   >
                     <div className="text-base">
