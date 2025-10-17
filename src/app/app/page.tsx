@@ -6,7 +6,7 @@ import { WorkspaceStage } from './stages/WorkspaceStage';
 import { ReflectionStage } from './stages/ReflectionStage';
 import { LifeOSStage } from './stages/LifeOSStage';
 import { Button } from '@/components/ui/button';
-import { LogOut, Settings, User } from 'lucide-react';
+import { LogOut, Settings, User, FileText, Heart, BarChart3, X } from 'lucide-react';
 import Link from 'next/link';
 import {
   DropdownMenu,
@@ -16,7 +16,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 import { ThemeSelector } from '@/components/theme-selector';
+import { Card } from '@/components/ui/card';
 
 type Stage = 'workspace' | 'reflection' | 'lifeos';
 
@@ -28,9 +36,11 @@ export default function StudioPage() {
     lifeos: 0,
   });
   const [userEmail, setUserEmail] = useState('');
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   useEffect(() => {
     loadUser();
+    checkOnboarding();
 
     async function loadUser() {
       try {
@@ -46,7 +56,19 @@ export default function StudioPage() {
         // Allow anonymous users - don't redirect
       }
     }
+
+    function checkOnboarding() {
+      const hasSeenOnboarding = localStorage.getItem('templata-onboarding-seen');
+      if (!hasSeenOnboarding) {
+        setShowOnboarding(true);
+      }
+    }
   }, []);
+
+  const handleCloseOnboarding = () => {
+    localStorage.setItem('templata-onboarding-seen', 'true');
+    setShowOnboarding(false);
+  };
 
   const handleStageChange = (newStage: Stage) => {
     setCurrentStage(newStage);
@@ -67,7 +89,75 @@ export default function StudioPage() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-background">
+    <>
+      {/* Onboarding Modal */}
+      <Dialog open={showOnboarding} onOpenChange={setShowOnboarding}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">Welcome to Templata</DialogTitle>
+            <DialogDescription>
+              Your life guidance workspace - here's how to get started
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-6 py-4">
+            <div className="grid gap-4">
+              <Card className="p-4 border-primary/20 bg-primary/5">
+                <div className="flex gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 h-fit">
+                    <FileText className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground mb-1">Templates</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Choose from hundreds of life templates. Each template has curated prompts to guide you through important decisions like wedding planning, career changes, or health journeys.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-4 border-border">
+                <div className="flex gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 h-fit">
+                    <Heart className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground mb-1">Reflection</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Daily reflection space with rotating prompts. Track your mood, add tags, and build a journaling habit.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-4 border-border">
+                <div className="flex gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 h-fit">
+                    <BarChart3 className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground mb-1">Overview</h3>
+                    <p className="text-sm text-muted-foreground">
+                      See your complete progress across all templates, reflections, and activity streaks.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="flex items-center justify-between pt-4 border-t">
+              <p className="text-sm text-muted-foreground">
+                All your work auto-saves as you type
+              </p>
+              <Button onClick={handleCloseOnboarding}>
+                Get Started
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <div className="h-screen flex flex-col bg-background">
       {/* Top Nav */}
       <div className="border-b bg-background">
         <div className="container mx-auto max-w-7xl px-4 py-3">
@@ -83,7 +173,7 @@ export default function StudioPage() {
                 size="sm"
                 onClick={() => handleStageChange('workspace')}
               >
-                Workspace
+                Templates
               </Button>
               <Button
                 variant={currentStage === 'reflection' ? 'default' : 'ghost'}
@@ -97,7 +187,7 @@ export default function StudioPage() {
                 size="sm"
                 onClick={() => handleStageChange('lifeos')}
               >
-                Life OS
+                Overview
               </Button>
             </div>
 
@@ -188,5 +278,6 @@ export default function StudioPage() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }

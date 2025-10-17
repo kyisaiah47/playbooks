@@ -27,7 +27,8 @@
       "Bash(PGPASSWORD=040796yh psql:*)",
       "Bash(git reset:*)",
       "Bash(git rm:*)",
-      "Bash(killall:*)"
+      "Bash(killall:*)",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": []

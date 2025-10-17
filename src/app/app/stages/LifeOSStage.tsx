@@ -186,8 +186,8 @@ export function LifeOSStage() {
         <div className="container mx-auto max-w-7xl px-8 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-bold text-foreground">Life OS</h2>
-              <p className="text-sm text-muted-foreground">Your complete overview</p>
+              <h2 className="text-lg font-bold text-foreground">Overview</h2>
+              <p className="text-sm text-muted-foreground">Your complete progress dashboard</p>
             </div>
           </div>
         </div>

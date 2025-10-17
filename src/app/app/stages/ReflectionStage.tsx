@@ -334,13 +334,14 @@ export function ReflectionStage() {
               </div>
 
               {/* Editor */}
-              <Card className="p-8 min-h-[500px] border-border bg-background">
+              <Card className="p-8 min-h-[500px] border-border bg-muted/30">
                 <textarea
-                  className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground text-lg leading-relaxed"
-                  placeholder="Start writing..."
+                  className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground text-[16px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
+                  placeholder="Start writing your reflection..."
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   autoFocus
+                  style={{ fontFamily: 'inherit' }}
                 />
               </Card>
             </div>

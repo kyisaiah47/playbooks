@@ -469,12 +469,13 @@ export function WorkspaceStage() {
                   </p>
                 </div>
 
-                <Card className="p-6 min-h-[500px] border-border bg-background">
+                <Card className="p-8 min-h-[500px] border-border bg-muted/30">
                   <textarea
-                    className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground"
-                    placeholder="Start typing your response..."
+                    className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground text-[15px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
+                    placeholder="Start writing your response here..."
                     value={promptResponse}
                     onChange={(e) => setPromptResponse(e.target.value)}
+                    style={{ fontFamily: 'inherit' }}
                   />
                 </Card>
               </div>
