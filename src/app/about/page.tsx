@@ -324,9 +324,9 @@ export default function AboutPage() {
 						<Card className="border-0 shadow-none bg-background/50 text-center">
 							<CardHeader>
 								<Sparkles className="h-8 w-8 text-primary mx-auto mb-4" />
-								<CardTitle className="text-lg">Accessible Start</CardTitle>
+								<CardTitle className="text-lg">Always Free</CardTitle>
 								<CardDescription>
-									Get started for free and upgrade as your needs grow. No hidden fees or surprise charges.
+									Complete access to all 1,298 templates—no paywalls, no upgrades, no hidden fees.
 								</CardDescription>
 							</CardHeader>
 						</Card>

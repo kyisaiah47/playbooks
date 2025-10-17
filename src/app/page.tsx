@@ -197,7 +197,7 @@ export default function LandingPage() {
 										<Crown className="h-5 w-5 text-amber-600 dark:text-amber-400" />
 									</div>
 									<span className="text-lg">
-										{isLoggedIn ? "Full access to all 1,298 premium templates" : "Start free, upgrade for full access to all 1,298 templates"}
+										Full access to all 1,298 templates—completely free
 									</span>
 								</div>
 							</div>
