@@ -46,7 +46,6 @@ import {
 	BookMarked,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Typewriter } from "@/components/ui/typewriter";
 
 export default function LandingPage() {
@@ -188,20 +187,16 @@ export default function LandingPage() {
 			</section>
 
 			{/* The Problem */}
-			<section className="py-24 border-t">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-8 max-w-4xl mx-auto mb-16">
+					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<Target className="mr-2 h-4 w-4" />
 							The Problem
 						</Badge>
 
 						<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-							Why life&apos;s big decisions
-							<br />
-							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-								feel overwhelming
-							</span>
+							Why life&apos;s big decisions feel overwhelming
 						</h2>
 
 						<p className="text-xl text-muted-foreground">
@@ -211,7 +206,7 @@ export default function LandingPage() {
 					</div>
 
 					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-						<Card className="p-6 border-dashed">
+						<Card className="p-6">
 							<FileText className="h-8 w-8 text-muted-foreground mb-4" />
 							<h3 className="font-semibold mb-2">Scattered Information</h3>
 							<p className="text-sm text-muted-foreground">
@@ -219,7 +214,7 @@ export default function LandingPage() {
 							</p>
 						</Card>
 
-						<Card className="p-6 border-dashed">
+						<Card className="p-6">
 							<Layout className="h-8 w-8 text-muted-foreground mb-4" />
 							<h3 className="font-semibold mb-2">No Structure</h3>
 							<p className="text-sm text-muted-foreground">
@@ -227,7 +222,7 @@ export default function LandingPage() {
 							</p>
 						</Card>
 
-						<Card className="p-6 border-dashed">
+						<Card className="p-6">
 							<Brain className="h-8 w-8 text-muted-foreground mb-4" />
 							<h3 className="font-semibold mb-2">Analysis Paralysis</h3>
 							<p className="text-sm text-muted-foreground">
@@ -235,7 +230,7 @@ export default function LandingPage() {
 							</p>
 						</Card>
 
-						<Card className="p-6 border-dashed">
+						<Card className="p-6">
 							<Sparkles className="h-8 w-8 text-muted-foreground mb-4" />
 							<h3 className="font-semibold mb-2">Missing Questions</h3>
 							<p className="text-sm text-muted-foreground">
@@ -247,20 +242,16 @@ export default function LandingPage() {
 			</section>
 
 			{/* The Solution - Split-Screen Workspace */}
-			<section className="py-24 bg-muted/10">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-8 max-w-4xl mx-auto mb-16">
+					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<Zap className="mr-2 h-4 w-4" />
 							The Solution
 						</Badge>
 
 						<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-							Wikipedia meets Notion
-							<br />
-							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-								for life planning
-							</span>
+							Wikipedia meets Notion for life planning
 						</h2>
 
 						<p className="text-xl text-muted-foreground">
@@ -349,19 +340,17 @@ export default function LandingPage() {
 			</section>
 
 			{/* 1,298 Guided Workspaces */}
-			<section className="py-24 border-t">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
 					<div className="grid md:grid-cols-2 gap-16 items-start">
 						<div className="space-y-8">
-							<div className="space-y-4">
+							<div className="space-y-6">
 								<Badge variant="outline" className="w-fit">
 									<Sparkles className="mr-2 h-4 w-4" />
 									Everything you need
 								</Badge>
 								<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-									1,298 guided workspaces
-									<br />
-									for every life moment
+									1,298 guided workspaces for every life moment
 								</h2>
 								<p className="text-xl text-muted-foreground">
 									Each workspace is a structured environment for thinking through specific life decisions—
@@ -398,119 +387,47 @@ export default function LandingPage() {
 						</div>
 
 						<div className="space-y-6">
-							<ul className="grid grid-cols-2 gap-4">
-								<li className="min-h-[14rem] list-none">
-									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
-										<GlowingEffect
-											spread={40}
-											glow={true}
-											disabled={false}
-											proximity={64}
-											inactiveZone={0.01}
-											borderWidth={3}
-										/>
-										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-											<div className="relative flex flex-1 flex-col justify-between gap-3">
-												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
-													<Heart className="h-4 w-4" />
-												</div>
-												<div className="space-y-3">
-													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Life Planning
-													</h3>
-													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														250+ workspaces for weddings, relationships, personal growth, and life transitions.
-													</h2>
-												</div>
-											</div>
-										</div>
+							<div className="grid grid-cols-2 gap-4">
+								<Card className="p-6">
+									<div className="w-12 h-12 rounded-lg bg-red-50 dark:bg-red-900/20 flex items-center justify-center mb-4">
+										<Heart className="h-6 w-6 text-red-600 dark:text-red-400" />
 									</div>
-								</li>
+									<h3 className="text-xl font-semibold mb-2">Life Planning</h3>
+									<p className="text-sm text-muted-foreground">
+										250+ workspaces for weddings, relationships, personal growth, and life transitions.
+									</p>
+								</Card>
 
-								<li className="min-h-[14rem] list-none">
-									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
-										<GlowingEffect
-											spread={40}
-											glow={true}
-											disabled={false}
-											proximity={64}
-											inactiveZone={0.01}
-											borderWidth={3}
-										/>
-										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-											<div className="relative flex flex-1 flex-col justify-between gap-3">
-												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
-													<Briefcase className="h-4 w-4" />
-												</div>
-												<div className="space-y-3">
-													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Career & Finance
-													</h3>
-													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														475+ workspaces for job searches, career changes, interviews, and professional development.
-													</h2>
-												</div>
-											</div>
-										</div>
+								<Card className="p-6">
+									<div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-4">
+										<Briefcase className="h-6 w-6 text-blue-600 dark:text-blue-400" />
 									</div>
-								</li>
+									<h3 className="text-xl font-semibold mb-2">Career & Finance</h3>
+									<p className="text-sm text-muted-foreground">
+										475+ workspaces for job searches, career changes, interviews, and professional development.
+									</p>
+								</Card>
 
-								<li className="min-h-[14rem] list-none">
-									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
-										<GlowingEffect
-											spread={40}
-											glow={true}
-											disabled={false}
-											proximity={64}
-											inactiveZone={0.01}
-											borderWidth={3}
-										/>
-										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-											<div className="relative flex flex-1 flex-col justify-between gap-3">
-												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
-													<Dumbbell className="h-4 w-4" />
-												</div>
-												<div className="space-y-3">
-													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Health & Wellness
-													</h3>
-													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														270+ workspaces for fitness, nutrition, mental health, and wellness planning.
-													</h2>
-												</div>
-											</div>
-										</div>
+								<Card className="p-6">
+									<div className="w-12 h-12 rounded-lg bg-green-50 dark:bg-green-900/20 flex items-center justify-center mb-4">
+										<Dumbbell className="h-6 w-6 text-green-600 dark:text-green-400" />
 									</div>
-								</li>
+									<h3 className="text-xl font-semibold mb-2">Health & Wellness</h3>
+									<p className="text-sm text-muted-foreground">
+										270+ workspaces for fitness, nutrition, mental health, and wellness planning.
+									</p>
+								</Card>
 
-								<li className="min-h-[14rem] list-none">
-									<div className="relative h-full rounded-[1.25rem] border-[0.75px] border-border p-2 md:rounded-[1.5rem] md:p-3">
-										<GlowingEffect
-											spread={40}
-											glow={true}
-											disabled={false}
-											proximity={64}
-											inactiveZone={0.01}
-											borderWidth={3}
-										/>
-										<div className="relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl border-[0.75px] bg-background p-6 shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] md:p-6">
-											<div className="relative flex flex-1 flex-col justify-between gap-3">
-												<div className="w-fit rounded-lg border-[0.75px] border-border bg-muted p-2">
-													<Target className="h-4 w-4" />
-												</div>
-												<div className="space-y-3">
-													<h3 className="pt-0.5 text-xl leading-[1.375rem] font-semibold font-sans tracking-[-0.04em] md:text-2xl md:leading-[1.875rem] text-balance text-foreground">
-														Personal Growth
-													</h3>
-													<h2 className="font-sans text-sm leading-[1.125rem] md:text-base md:leading-[1.375rem] text-muted-foreground">
-														303+ workspaces for education, skills development, and entrepreneurship.
-													</h2>
-												</div>
-											</div>
-										</div>
+								<Card className="p-6">
+									<div className="w-12 h-12 rounded-lg bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center mb-4">
+										<Target className="h-6 w-6 text-purple-600 dark:text-purple-400" />
 									</div>
-								</li>
-							</ul>
+									<h3 className="text-xl font-semibold mb-2">Personal Growth</h3>
+									<p className="text-sm text-muted-foreground">
+										303+ workspaces for education, skills development, and entrepreneurship.
+									</p>
+								</Card>
+							</div>
 
 							<div className="text-center">
 								<Button variant="outline" size="lg" asChild>
@@ -526,20 +443,16 @@ export default function LandingPage() {
 			</section>
 
 			{/* Three-Stage Evolution */}
-			<section className="py-24 bg-muted/10">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-8 max-w-4xl mx-auto mb-16">
+					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<TrendingUp className="mr-2 h-4 w-4" />
 							Complete System
 						</Badge>
 
 						<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-							From guided learning to
-							<br />
-							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-								life mastery
-							</span>
+							From guided learning to life mastery
 						</h2>
 
 						<p className="text-xl text-muted-foreground">
@@ -549,7 +462,7 @@ export default function LandingPage() {
 					</div>
 
 					<div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-						<Card className="p-8 relative overflow-hidden">
+						<Card className="p-8 relative">
 							<div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold text-sm">
 								1
 							</div>
@@ -565,7 +478,7 @@ export default function LandingPage() {
 							</div>
 						</Card>
 
-						<Card className="p-8 relative overflow-hidden">
+						<Card className="p-8 relative">
 							<div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-purple-600 dark:bg-purple-500 flex items-center justify-center text-white font-bold text-sm">
 								2
 							</div>
@@ -581,7 +494,7 @@ export default function LandingPage() {
 							</div>
 						</Card>
 
-						<Card className="p-8 relative overflow-hidden">
+						<Card className="p-8 relative">
 							<div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold text-sm">
 								3
 							</div>
@@ -598,60 +511,44 @@ export default function LandingPage() {
 						</Card>
 					</div>
 
-					<div className="text-center mt-12 p-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-xl border border-primary/20 max-w-4xl mx-auto">
-						<p className="text-lg font-medium text-foreground">
-							This isn&apos;t just software—it&apos;s a complete system for structured thinking
-						</p>
-						<p className="text-muted-foreground mt-2">
-							Graduate from guided workspaces to autonomous life mastery
-						</p>
-					</div>
 				</div>
 			</section>
 
 			{/* The Manifesto - Short Version */}
-			<section className="py-24 border-t">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="max-w-4xl mx-auto">
-						<Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 p-12">
-							<div className="space-y-6 text-center">
-								<Badge variant="outline" className="px-4 py-2">
-									<Sparkles className="mr-2 h-4 w-4" />
-									Our Philosophy
-								</Badge>
+					<div className="max-w-4xl mx-auto text-center space-y-6">
+						<Badge variant="outline" className="px-4 py-2">
+							<Sparkles className="mr-2 h-4 w-4" />
+							Our Philosophy
+						</Badge>
 
-								<h2 className="text-3xl md:text-4xl font-bold">
-									The blank page is dead
-								</h2>
+						<h2 className="text-3xl md:text-4xl font-bold">
+							The blank page is dead
+						</h2>
 
-								<div className="space-y-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-									<p>A blank page has never planned a wedding.</p>
-									<p>A blank page has never bought a home.</p>
-									<p>A blank page has never changed a life.</p>
-									<p className="text-foreground font-medium pt-4">Templata is the first encyclopedia for living.</p>
-									<p className="text-foreground">Not emptiness — abundance. Not silence — guidance. Not guessing — clarity.</p>
-								</div>
-							</div>
-						</Card>
+						<div className="space-y-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+							<p>A blank page has never planned a wedding.</p>
+							<p>A blank page has never bought a home.</p>
+							<p>A blank page has never changed a life.</p>
+							<p className="text-foreground font-medium pt-4">Templata is the first encyclopedia for living.</p>
+							<p className="text-foreground">Not emptiness — abundance. Not silence — guidance. Not guessing — clarity.</p>
+						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* What is the Axiom Engine */}
-			<section className="py-24 bg-muted/10">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-8 max-w-4xl mx-auto mb-16">
+					<div className="text-center space-y-6 max-w-4xl mx-auto mb-16">
 						<Badge variant="outline" className="px-4 py-2">
 							<Brain className="mr-2 h-4 w-4" />
 							Axiom Engine
 						</Badge>
 
 						<h2 className="text-4xl md:text-5xl font-bold leading-tight">
-							Our AI system for
-							<br />
-							<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-								life guidance
-							</span>
+							Our AI system for life guidance
 						</h2>
 
 						<p className="text-xl text-muted-foreground">
@@ -734,9 +631,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* Inspiration - Notion & Wikipedia */}
-			<section className="py-24 border-t">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-8 mb-16">
+					<div className="text-center space-y-6 mb-16">
 						<h2 className="text-3xl md:text-4xl font-bold">
 							Standing on the shoulders of giants
 						</h2>
@@ -774,7 +671,7 @@ export default function LandingPage() {
 							</div>
 						</Card>
 
-						<Card className="p-6 text-center border-2 border-primary/20 bg-primary/5">
+						<Card className="p-6 text-center">
 							<div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
 								<Sparkles className="h-6 w-6 text-primary" />
 							</div>
@@ -792,9 +689,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* FAQ Section */}
-			<section className="py-24 bg-muted/10">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-4xl px-4">
-					<div className="text-center space-y-8 mb-12">
+					<div className="text-center space-y-6 mb-12">
 						<Badge variant="outline" className="px-4 py-2">
 							<Lightbulb className="mr-2 h-4 w-4" />
 							Frequently Asked
@@ -825,9 +722,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* By the Numbers */}
-			<section className="py-24 border-t">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-8 mb-16">
+					<div className="text-center space-y-6 mb-16">
 						<h2 className="text-3xl font-bold">Templata by the numbers</h2>
 						<p className="text-xl text-muted-foreground">
 							Helping people organize life&apos;s important moments
@@ -871,9 +768,9 @@ export default function LandingPage() {
 			</section>
 
 			{/* Final CTA */}
-			<section className="py-24 bg-muted/10">
+			<section className="py-32 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-8 max-w-3xl mx-auto">
+					<div className="text-center space-y-6 max-w-3xl mx-auto">
 						<h2 className="text-3xl font-bold">
 							Ready to organize your next big moment?
 						</h2>
