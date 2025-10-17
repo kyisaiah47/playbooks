@@ -112,15 +112,6 @@ export default function LandingPage() {
 							<br />
 							Never start with a blank page.
 						</p>
-
-						<div className="flex items-center justify-center pt-4">
-							<Button size="lg" className="h-12 px-8 text-base bg-white text-black hover:bg-white/90" asChild>
-								<Link href="/app">
-									Browse Workspaces
-									<ArrowRight className="ml-2 h-5 w-5" />
-								</Link>
-							</Button>
-						</div>
 					</div>
 				</div>
 			</section>

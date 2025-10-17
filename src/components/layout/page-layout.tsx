@@ -5,7 +5,7 @@ import { Footer } from "./footer";
 import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
 import { FeedbackModal } from "@/components/feedback-modal";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Play } from "lucide-react";
 
 interface PageLayoutProps {
 	children: React.ReactNode;
@@ -47,6 +47,21 @@ export function PageLayout({
 						<span className="hidden sm:inline">Feedback</span>
 					</Button>
 				</FeedbackModal>
+			</div>
+
+			{/* Floating Demo Button */}
+			<div className="fixed bottom-8 right-8 z-50">
+				<Button
+					size="lg"
+					variant="outline"
+					asChild
+					className="bg-background hover:bg-background/80 flex items-center gap-2"
+				>
+					<a href="/app">
+						<Play className="h-5 w-5" />
+						<span className="hidden sm:inline">Try Demo</span>
+					</a>
+				</Button>
 			</div>
 		</div>
 	);
