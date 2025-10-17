@@ -50,7 +50,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               {templateInfo && (
                 <>
-                  <span>{templateInfo.template.title}</span>
+                  <Link href={`/${blogPost.template}/template`} className="hover:text-primary transition-colors">
+                    {templateInfo.template.title}
+                  </Link>
                   <span>·</span>
                 </>
               )}
