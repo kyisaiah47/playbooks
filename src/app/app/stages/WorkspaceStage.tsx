@@ -19,7 +19,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
-import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check } from 'lucide-react';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle } from 'lucide-react';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
 import Link from 'next/link';
 
@@ -65,6 +65,7 @@ export function WorkspaceStage() {
   const [open, setOpen] = useState(false);
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
 
   // Check authentication status
   useEffect(() => {
@@ -228,6 +229,52 @@ export function WorkspaceStage() {
       fetchData();
     }
   }, [selectedTemplate, templates]);
+
+  // Check which prompts have been answered
+  useEffect(() => {
+    async function checkAnsweredPrompts() {
+      if (isAuthenticated === null || prompts.length === 0) return;
+
+      const answered = new Set<string>();
+
+      if (isAuthenticated) {
+        // Check API responses
+        try {
+          const res = await fetch(`/api/workspace/responses?templateId=${selectedTemplate}`);
+          const data = await res.json();
+          if (data.responses) {
+            data.responses.forEach((r: any) => {
+              if (r.response && r.response.trim().length > 0) {
+                answered.add(r.prompt_id);
+              }
+            });
+          }
+        } catch (e) {
+          console.error('Error checking answered prompts:', e);
+        }
+      } else {
+        // Check localStorage
+        prompts.forEach((prompt) => {
+          const key = `workspace_${selectedTemplate}_${prompt.id}`;
+          const saved = localStorage.getItem(key);
+          if (saved) {
+            try {
+              const data = JSON.parse(saved);
+              if (data.response && data.response.trim().length > 0) {
+                answered.add(prompt.id);
+              }
+            } catch (e) {
+              // Ignore parse errors
+            }
+          }
+        });
+      }
+
+      setAnsweredPrompts(answered);
+    }
+
+    checkAnsweredPrompts();
+  }, [selectedTemplate, prompts, isAuthenticated, lastSaved]);
 
   const handleTemplateChange = (newTemplateId: string) => {
     setSelectedTemplate(newTemplateId);
@@ -464,13 +511,16 @@ export function WorkspaceStage() {
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.2, delay: index * 0.03 }}
                               onClick={() => setSelectedPromptId(prompt.id)}
-                              className={`w-full text-left p-3 rounded-lg transition-colors text-sm ${
+                              className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
                                 selectedPromptId === prompt.id
                                   ? 'bg-primary/10 text-primary border border-primary/20'
                                   : 'bg-muted/50 text-foreground hover:bg-muted'
                               }`}
                             >
-                              {prompt.prompt}
+                              {answeredPrompts.has(prompt.id) && (
+                                <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
+                              )}
+                              <span className="flex-1">{prompt.prompt}</span>
                             </motion.button>
                           ))}
                         </motion.div>
