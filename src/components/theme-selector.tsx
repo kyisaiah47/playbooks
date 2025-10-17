@@ -28,9 +28,9 @@ export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
     setMounted(true)
     // Only set default theme on initial mount
     if (!localStorage.getItem('templata-theme')) {
-      // Force dark mode and set default theme to neutral (grey like Notion)
+      // Force dark mode and set default theme to black (Default theme)
       setTheme('dark')
-      const defaultTheme = themes.find(t => t.id === 'neutral') || themes[0]
+      const defaultTheme = themes[0] // Default/Black theme
       setCustomTheme(defaultTheme.colors.dark)
     }
   }, [])
@@ -75,7 +75,7 @@ export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
             switch (name.toLowerCase()) {
               case 'default': return 'bg-gradient-to-r from-white to-gray-200';
               case 'rose': return 'bg-gradient-to-r from-purple-300 to-purple-400';
-              case 'neutral': return 'bg-gradient-to-r from-gray-300 to-gray-400';
+              case 'neutral': return 'bg-gradient-to-r from-orange-300 to-orange-400';
               case 'emerald': return 'bg-gradient-to-r from-emerald-400 to-emerald-500';
               case 'violet': return 'bg-gradient-to-r from-violet-400 to-purple-500';
               case 'midnight': return 'bg-gradient-to-r from-indigo-600 to-teal-500';
