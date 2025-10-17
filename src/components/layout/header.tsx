@@ -21,8 +21,6 @@ import {
 	Home,
 	Briefcase,
 	Target,
-	Search,
-	Command,
 	LogOut,
 	User
 } from "lucide-react"
@@ -239,27 +237,6 @@ export function Header() {
 
 						{/* Right side - Actions */}
 						<div className="flex items-center space-x-3">
-							<Button
-								variant="outline"
-								size="sm"
-								onClick={() => {
-									const event = new KeyboardEvent('keydown', {
-										key: 'k',
-										metaKey: true,
-										ctrlKey: false
-									});
-									document.dispatchEvent(event);
-								}}
-								className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground border-muted-foreground/20 hover:border-primary/50 transition-all"
-							>
-								<Search className="h-3 w-3" />
-								<span className="hidden md:inline">Search</span>
-								<div className="flex items-center gap-0.5 text-xs bg-muted/60 px-1.5 py-0.5 rounded">
-									<Command className="h-2 w-2" />
-									<span>K</span>
-								</div>
-							</Button>
-
 							<ChangelogWidget variant="bell" />
 
 							{isLoggedIn ? (

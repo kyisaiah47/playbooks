@@ -3,8 +3,6 @@
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
-import { CommandPalette } from "@/components/command-palette";
-import { useCommandPalette } from "@/hooks/use-command-palette";
 import { FeedbackModal } from "@/components/feedback-modal";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
@@ -22,8 +20,6 @@ export function PageLayout({
 	includeFooter = true,
 	includeHeaderPadding = true
 }: PageLayoutProps) {
-	const { isOpen, close } = useCommandPalette();
-
 	return (
 		<div className="min-h-screen bg-background">
 			{includeHeader && <Header />}
@@ -52,14 +48,6 @@ export function PageLayout({
 					</Button>
 				</FeedbackModal>
 			</div>
-
-			{/* Global Command Palette */}
-			<CommandPalette
-				isOpen={isOpen}
-				onClose={close}
-				mode="all"
-				autoFocus={true}
-			/>
 		</div>
 	);
 }

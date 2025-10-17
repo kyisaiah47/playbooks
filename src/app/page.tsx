@@ -322,17 +322,12 @@ export default function LandingPage() {
 								<Button
 									variant="outline"
 									size="lg"
-									onClick={() => {
-										const event = new KeyboardEvent('keydown', {
-											key: 'k',
-											metaKey: true,
-											bubbles: true
-										});
-										document.dispatchEvent(event);
-									}}
+									asChild
 								>
-									Browse All Templates
-									<ArrowRight className="ml-2 h-4 w-4" />
+									<Link href="/templates">
+										Browse All Templates
+										<ArrowRight className="ml-2 h-4 w-4" />
+									</Link>
 								</Button>
 							</div>
 						</div>
@@ -533,17 +528,12 @@ export default function LandingPage() {
 							<Button
 								size="lg"
 								className="h-12 px-8 text-base"
-								onClick={() => {
-									const event = new KeyboardEvent('keydown', {
-										key: 'k',
-										metaKey: true,
-										bubbles: true
-									});
-									document.dispatchEvent(event);
-								}}
+								asChild
 							>
-								Browse Templates
-								<ArrowRight className="ml-2 h-5 w-5" />
+								<Link href="/templates">
+									Browse Templates
+									<ArrowRight className="ml-2 h-5 w-5" />
+								</Link>
 							</Button>
 							{!isLoggedIn && (
 								<Button
