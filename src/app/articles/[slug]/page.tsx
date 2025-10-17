@@ -40,7 +40,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     <PageLayout>
       {/* Hero Section - Clean minimal style like templates page */}
       <section className="py-16 border-b">
-        <div className="container mx-auto max-w-3xl px-4">
+        <div className="container mx-auto max-w-6xl px-4">
           <div className="space-y-4">
             {/* Metadata */}
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -67,14 +67,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Content */}
-      <div className="container mx-auto max-w-3xl px-4 py-12">
+      <div className="container mx-auto max-w-6xl px-4 py-12">
         <ArticleContent content={blogPost.content} />
       </div>
 
       {/* Related Articles - Simple list like templates page */}
       {relatedPosts.length > 0 && (
         <section className="border-t py-12">
-          <div className="container mx-auto max-w-3xl px-4">
+          <div className="container mx-auto max-w-6xl px-4">
             <h2 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
               Related Articles
             </h2>
