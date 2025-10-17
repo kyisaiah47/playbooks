@@ -61,14 +61,6 @@ export function LoginForm({
             Enter your email below to login to your account
           </p>
         </div>
-
-        {/* Demo Credentials */}
-        <div className="bg-muted/50 border border-border rounded-lg p-3 text-sm">
-          <p className="font-medium mb-1">Demo Account:</p>
-          <p className="text-muted-foreground">Email: demo@templata.com</p>
-          <p className="text-muted-foreground">Password: demo123</p>
-        </div>
-
         {error && (
           <div className="text-sm text-destructive text-center">{error}</div>
         )}
@@ -113,6 +105,15 @@ export function LoginForm({
           </FieldDescription>
         </Field>
       </FieldGroup>
+
+      {/* Demo Credentials */}
+      <div className="bg-muted/30 border border-border rounded-lg p-4 text-center">
+        <p className="text-sm font-medium text-muted-foreground mb-2">Try the demo account</p>
+        <div className="flex flex-col gap-1 text-xs text-muted-foreground">
+          <p>demo@templata.com</p>
+          <p>demo123</p>
+        </div>
+      </div>
     </form>
   )
 }

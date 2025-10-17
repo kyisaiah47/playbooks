@@ -31,9 +31,9 @@ export async function GET(request: Request) {
     if (search) {
       const searchLower = search.toLowerCase();
       filtered = filtered.filter(template =>
-        template.title.toLowerCase().includes(searchLower) ||
+        template.name.toLowerCase().includes(searchLower) ||
         template.description.toLowerCase().includes(searchLower) ||
-        template.tags?.some(tag => tag.toLowerCase().includes(searchLower))
+        template.template?.tags?.some(tag => tag.toLowerCase().includes(searchLower))
       );
     }
 

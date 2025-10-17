@@ -45,6 +45,18 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-primary/80 mix-blend-multiply dark:mix-blend-screen dark:bg-primary/20" />
         {/* Dark overlay for consistency */}
         <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+
+        {/* Quote */}
+        <div className="absolute inset-0 flex items-center justify-center p-12">
+          <div className="max-w-md text-center space-y-4">
+            <p className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+              "Life's biggest moments deserve more than a blank page"
+            </p>
+            <p className="text-white/80 text-sm">
+              — Templata
+            </p>
+          </div>
+        </div>
       </motion.div>
     </div>
   )
