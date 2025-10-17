@@ -462,11 +462,8 @@ export default function LandingPage() {
 					</div>
 
 					<div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-						<Card className="p-8 relative">
-							<div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold text-sm">
-								1
-							</div>
-							<div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-6">
+						<Card className="p-8">
+							<div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
 								<Layout className="h-8 w-8 text-blue-600 dark:text-blue-400" />
 							</div>
 							<div className="text-center space-y-3">
@@ -478,11 +475,8 @@ export default function LandingPage() {
 							</div>
 						</Card>
 
-						<Card className="p-8 relative">
-							<div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-purple-600 dark:bg-purple-500 flex items-center justify-center text-white font-bold text-sm">
-								2
-							</div>
-							<div className="w-16 h-16 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-6">
+						<Card className="p-8">
+							<div className="w-16 h-16 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
 								<BookMarked className="h-8 w-8 text-purple-600 dark:text-purple-400" />
 							</div>
 							<div className="text-center space-y-3">
@@ -494,11 +488,8 @@ export default function LandingPage() {
 							</div>
 						</Card>
 
-						<Card className="p-8 relative">
-							<div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold text-sm">
-								3
-							</div>
-							<div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6 mb-6">
+						<Card className="p-8">
+							<div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
 								<BarChart3 className="h-8 w-8 text-green-600 dark:text-green-400" />
 							</div>
 							<div className="text-center space-y-3">
