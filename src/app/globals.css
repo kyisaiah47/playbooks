@@ -376,3 +376,113 @@
 .animate-gradient-shift {
   animation: gradient-shift 5s ease infinite;
 }
+
+/* Stage Transition Animations */
+
+/* Workspace → Reflection */
+@keyframes workspace-to-reflection-exit {
+  0% {
+    opacity: 1;
+    filter: saturate(1) brightness(1) blur(0px);
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.7;
+    filter: saturate(0.5) brightness(1.2) blur(2px);
+  }
+  100% {
+    opacity: 0;
+    filter: saturate(0.3) brightness(1.3) blur(4px);
+    transform: translateY(20px);
+  }
+}
+
+@keyframes workspace-to-reflection-enter {
+  0% {
+    opacity: 0;
+    filter: brightness(1.3);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+.animate-workspace-to-reflection-exit {
+  animation: workspace-to-reflection-exit 600ms ease-out forwards;
+}
+
+.animate-workspace-to-reflection-enter {
+  animation: workspace-to-reflection-enter 800ms ease-in forwards;
+}
+
+/* Reflection → Life OS */
+@keyframes reflection-to-lifeos-exit {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    filter: brightness(1.2);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0;
+    filter: brightness(1.3);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes reflection-to-lifeos-enter {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-reflection-to-lifeos-exit {
+  animation: reflection-to-lifeos-exit 600ms ease-out forwards;
+}
+
+.animate-reflection-to-lifeos-enter {
+  animation: reflection-to-lifeos-enter 800ms ease-out forwards;
+}
+
+/* Life OS → Workspace */
+@keyframes lifeos-to-workspace-exit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes lifeos-to-workspace-enter {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-lifeos-to-workspace-exit {
+  animation: lifeos-to-workspace-exit 600ms ease-out forwards;
+}
+
+.animate-lifeos-to-workspace-enter {
+  animation: lifeos-to-workspace-enter 800ms ease-out forwards;
+}
