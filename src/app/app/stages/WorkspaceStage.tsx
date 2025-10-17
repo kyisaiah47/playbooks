@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -323,30 +324,42 @@ export function WorkspaceStage() {
                       onClick={() => toggleCategory(category)}
                       className="flex items-center gap-2 w-full text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider hover:text-foreground transition-colors"
                     >
-                      <ChevronDown
-                        className={`h-3 w-3 transition-transform ${
-                          collapsedCategories.has(category) ? '-rotate-90' : ''
-                        }`}
-                      />
+                      <motion.div
+                        animate={{ rotate: collapsedCategories.has(category) ? -90 : 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ChevronDown className="h-3 w-3" />
+                      </motion.div>
                       {category}
                     </button>
-                    {!collapsedCategories.has(category) && (
-                      <div className="space-y-1">
-                        {groupedPrompts[category].map((prompt) => (
-                          <button
-                            key={prompt.id}
-                            onClick={() => setSelectedPromptId(prompt.id)}
-                            className={`w-full text-left p-3 rounded-lg transition-colors text-sm ${
-                              selectedPromptId === prompt.id
-                                ? 'bg-primary/10 text-primary border border-primary/20'
-                                : 'bg-muted/50 text-foreground hover:bg-muted'
-                            }`}
-                          >
-                            {prompt.prompt}
-                          </button>
-                        ))}
-                      </div>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {!collapsedCategories.has(category) && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="space-y-1 overflow-hidden"
+                        >
+                          {groupedPrompts[category].map((prompt, index) => (
+                            <motion.button
+                              key={prompt.id}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.2, delay: index * 0.03 }}
+                              onClick={() => setSelectedPromptId(prompt.id)}
+                              className={`w-full text-left p-3 rounded-lg transition-colors text-sm ${
+                                selectedPromptId === prompt.id
+                                  ? 'bg-primary/10 text-primary border border-primary/20'
+                                  : 'bg-muted/50 text-foreground hover:bg-muted'
+                              }`}
+                            >
+                              {prompt.prompt}
+                            </motion.button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 ))}
               </div>
@@ -399,92 +412,116 @@ export function WorkspaceStage() {
         </div>
 
         {/* Right Sidebar - Articles or Article Content */}
-        <div className={`${selectedArticle ? 'w-[600px]' : 'w-80'} border-l bg-background overflow-y-auto transition-all duration-300`}>
+        <motion.div
+          className="border-l bg-background overflow-y-auto"
+          animate={{ width: selectedArticle ? 600 : 320 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        >
           <div className="p-6 space-y-4">
-            {selectedArticle ? (
-              <>
-                <div className="flex items-center justify-between mb-4">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={handleCloseArticle}
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back to articles
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={handleCloseArticle}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-
-                {loadingArticle ? (
-                  <div className="py-8 text-center">
-                    <p className="text-muted-foreground">Loading article...</p>
+            <AnimatePresence mode="wait">
+              {selectedArticle ? (
+                <motion.div
+                  key="article-detail"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleCloseArticle}
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      <ArrowLeft className="h-4 w-4 mr-2" />
+                      Back to articles
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleCloseArticle}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
                   </div>
-                ) : (
-                  <div className="space-y-6">
-                    <header>
-                      <h2 className="text-2xl font-bold text-foreground mb-4">
-                        {selectedArticle.title}
-                      </h2>
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                        <span>{selectedArticle.author}</span>
-                        <span>•</span>
-                        <span>{selectedArticle.readTime}</span>
-                        <span>•</span>
-                        <span>{new Date(selectedArticle.publishedAt).toLocaleDateString()}</span>
-                      </div>
-                    </header>
 
-                    <ArticleContent content={selectedArticle.content} />
-                  </div>
-                )}
-              </>
-            ) : (
-              <>
-                <div className="flex items-center gap-2 mb-4">
-                  <BookOpen className="h-4 w-4 text-primary" />
-                  <h2 className="font-semibold text-foreground">Related Articles</h2>
-                  <Badge variant="outline" className="ml-auto text-xs">
-                    {articles.length}
-                  </Badge>
-                </div>
-
-                {loading ? (
-                  <p className="text-sm text-muted-foreground">Loading articles...</p>
-                ) : articles.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">No articles available</p>
-                ) : (
-                  <div className="space-y-3">
-                    {articles.map((article) => (
-                      <Card
-                        key={article.id}
-                        className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
-                        onClick={() => handleArticleClick(article.id)}
-                      >
-                        <h3 className="text-sm font-medium text-foreground mb-1">
-                          {article.title}
-                        </h3>
-                        <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
-                          {article.excerpt}
-                        </p>
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <span>{article.readTime}</span>
-                          <ChevronRight className="h-3 w-3 ml-auto" />
+                  {loadingArticle ? (
+                    <div className="py-8 text-center">
+                      <p className="text-muted-foreground">Loading article...</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      <header>
+                        <h2 className="text-2xl font-bold text-foreground mb-4">
+                          {selectedArticle.title}
+                        </h2>
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                          <span>{selectedArticle.author}</span>
+                          <span>•</span>
+                          <span>{selectedArticle.readTime}</span>
+                          <span>•</span>
+                          <span>{new Date(selectedArticle.publishedAt).toLocaleDateString()}</span>
                         </div>
-                      </Card>
-                    ))}
+                      </header>
+
+                      <ArticleContent content={selectedArticle.content} />
+                    </div>
+                  )}
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="article-list"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex items-center gap-2 mb-4">
+                    <BookOpen className="h-4 w-4 text-primary" />
+                    <h2 className="font-semibold text-foreground">Related Articles</h2>
+                    <Badge variant="outline" className="ml-auto text-xs">
+                      {articles.length}
+                    </Badge>
                   </div>
-                )}
-              </>
-            )}
+
+                  {loading ? (
+                    <p className="text-sm text-muted-foreground">Loading articles...</p>
+                  ) : articles.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">No articles available</p>
+                  ) : (
+                    <div className="space-y-3">
+                      {articles.map((article, index) => (
+                        <motion.div
+                          key={article.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.05 }}
+                        >
+                          <Card
+                            className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
+                            onClick={() => handleArticleClick(article.id)}
+                          >
+                            <h3 className="text-sm font-medium text-foreground mb-1">
+                              {article.title}
+                            </h3>
+                            <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+                              {article.excerpt}
+                            </p>
+                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                              <span>{article.readTime}</span>
+                              <ChevronRight className="h-3 w-3 ml-auto" />
+                            </div>
+                          </Card>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

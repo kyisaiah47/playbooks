@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -157,53 +158,67 @@ export function ReflectionStage() {
   return (
     <div className="h-full flex bg-background">
       {/* Past Entries Sidebar */}
-      <div
-        className={`${
-          showPastEntries ? 'w-80' : 'w-0'
-        } border-r bg-background overflow-y-auto transition-all duration-300`}
+      <motion.div
+        className="border-r bg-background overflow-y-auto"
+        animate={{ width: showPastEntries ? 320 : 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       >
-        {showPastEntries && (
-          <div className="p-4 space-y-3">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-foreground">Past Reflections</h3>
-              <Badge variant="outline" className="text-xs">
-                {pastEntries.length}
-              </Badge>
-            </div>
-            <div className="space-y-2">
-              {pastEntries.map((entry) => (
-                <Card
-                  key={entry.id}
-                  className="p-3 cursor-pointer hover:bg-muted/50 transition-colors border-border"
-                  onClick={() => loadPastEntry(entry)}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-foreground">
-                      {new Date(entry.date).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </span>
-                    {entry.mood && <span className="text-lg">{entry.mood}</span>}
-                  </div>
-                  <p className="text-xs text-muted-foreground line-clamp-2">
-                    {entry.content || 'No content'}
-                  </p>
-                  {entry.tags.length > 0 && (
-                    <div className="flex gap-1 mt-2 flex-wrap">
-                      {entry.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                </Card>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+        <AnimatePresence>
+          {showPastEntries && (
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.2 }}
+              className="p-4 space-y-3"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-foreground">Past Reflections</h3>
+                <Badge variant="outline" className="text-xs">
+                  {pastEntries.length}
+                </Badge>
+              </div>
+              <div className="space-y-2">
+                {pastEntries.map((entry, index) => (
+                  <motion.div
+                    key={entry.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: index * 0.03 }}
+                  >
+                    <Card
+                      className="p-3 cursor-pointer hover:bg-muted/50 transition-colors border-border"
+                      onClick={() => loadPastEntry(entry)}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-foreground">
+                          {new Date(entry.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                          })}
+                        </span>
+                        {entry.mood && <span className="text-lg">{entry.mood}</span>}
+                      </div>
+                      <p className="text-xs text-muted-foreground line-clamp-2">
+                        {entry.content || 'No content'}
+                      </p>
+                      {entry.tags.length > 0 && (
+                        <div className="flex gap-1 mt-2 flex-wrap">
+                          {entry.tags.slice(0, 3).map((tag) => (
+                            <Badge key={tag} variant="secondary" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
