@@ -131,13 +131,7 @@ export default function TemplatesPage() {
       </motion.section>
 
       {/* Template List */}
-      <motion.div
-        className="container mx-auto px-4 py-16 max-w-6xl"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
-      >
+      <div className="container mx-auto px-4 py-16 max-w-6xl">
         {/* Search */}
         <div className="mb-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Browse All Templates</h2>
@@ -157,14 +151,10 @@ export default function TemplatesPage() {
 
         {/* Templates List - Grouped by Category */}
         <div className="space-y-12">
-          {categories.map((category, categoryIndex) => (
-            <motion.section
+          {categories.map((category) => (
+            <section
               key={category}
               className="border-t pt-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.05 }}
             >
               <h2 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
                 {category}
@@ -183,10 +173,10 @@ export default function TemplatesPage() {
                   </Link>
                 ))}
               </div>
-            </motion.section>
+            </section>
           ))}
         </div>
-      </motion.div>
+      </div>
     </PageLayout>
   );
 }
