@@ -27,6 +27,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/brand/favicon-white.svg",
   },
+  manifest: '/manifest.json',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
   openGraph: {
     title: 'Templata | Organize Life\'s Biggest Moments',
     description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments. Get organized in minutes with proven frameworks from domain experts.',

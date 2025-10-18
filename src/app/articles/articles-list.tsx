@@ -143,12 +143,12 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
             />
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
             <Select value={selectedType} onValueChange={(value) => {
               setSelectedType(value);
               handleFilterChange(value, undefined);
             }}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-full sm:w-[180px]">
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
@@ -164,7 +164,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
               setSelectedDifficulty(value);
               handleFilterChange(undefined, value);
             }}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-full sm:w-[180px]">
                 <SelectValue placeholder="Difficulty" />
               </SelectTrigger>
               <SelectContent>
@@ -196,13 +196,13 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
                 href={`/articles/${article.slug}`}
                 className="group block py-3 hover:text-primary transition-colors"
               >
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
                   <h3 className="text-base font-medium group-hover:text-primary transition-colors">
                     {article.title}
                   </h3>
                   <div className="flex items-center gap-3 text-xs text-muted-foreground whitespace-nowrap">
                     {templateName && (
-                      <span>{templateName}</span>
+                      <span className="hidden sm:inline">{templateName}</span>
                     )}
                     <span>{article.readTime}</span>
                   </div>

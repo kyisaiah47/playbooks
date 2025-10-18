@@ -21,7 +21,9 @@ import {
 	Briefcase,
 	Target,
 	LogOut,
-	User
+	User,
+	Menu,
+	X
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
@@ -31,9 +33,17 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+	Sheet,
+	SheetContent,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "@/components/ui/sheet"
 
 export function Header() {
 	const [scrollY, setScrollY] = React.useState(0)
+	const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 	const pathname = usePathname()
 	const { isLoggedIn, user, logout } = useAuth()
 
@@ -72,7 +82,7 @@ export function Header() {
 				>
 					<div className="flex items-center justify-between relative">
 						{/* Left side - Logo and Theme */}
-						<div className="flex items-center space-x-4">
+						<div className="flex items-center space-x-2 md:space-x-4">
 							<Link href="/" className="flex items-center space-x-2">
 								<Image
 									src="/brand/templata-logo.svg"
@@ -81,19 +91,21 @@ export function Header() {
 									height={28}
 									className="dark:invert"
 								/>
-								<div className="flex items-center gap-3">
-									<span className="font-bold text-2xl">Templata</span>
+								<div className="flex items-center gap-2 md:gap-3">
+									<span className="font-bold text-xl md:text-2xl">Templata</span>
 									<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
 										Beta
 									</span>
 								</div>
 							</Link>
 
-							<ThemeSelector />
+							<div className="hidden md:block">
+								<ThemeSelector />
+							</div>
 						</div>
 
-						{/* Center - Navigation */}
-						<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+						{/* Center - Desktop Navigation */}
+						<div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
 							<NavigationMenu className="pointer-events-auto" viewport={false}>
 								<NavigationMenuList className="space-x-2">
 									{/* Templates */}
@@ -118,27 +130,91 @@ export function Header() {
 						</div>
 
 						{/* Right side - Actions */}
-						<div className="flex items-center space-x-3">
-							{isLoggedIn ? (
-								<DropdownMenu>
-									<DropdownMenuTrigger asChild>
-										<Button variant="outline" size="sm" className="flex items-center gap-2">
-											<User className="h-4 w-4" />
-											<span className="hidden sm:inline">{user?.email}</span>
-										</Button>
-									</DropdownMenuTrigger>
-									<DropdownMenuContent align="end">
-										<DropdownMenuItem onClick={logout} className="flex items-center gap-2">
-											<LogOut className="h-4 w-4" />
-											<span>Logout</span>
-										</DropdownMenuItem>
-									</DropdownMenuContent>
-								</DropdownMenu>
-							) : (
+						<div className="flex items-center space-x-2 md:space-x-3">
+							{/* Mobile Menu */}
+							<Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+								<SheetTrigger asChild className="md:hidden">
+									<Button variant="ghost" size="sm">
+										<Menu className="h-5 w-5" />
+									</Button>
+								</SheetTrigger>
+								<SheetContent side="right" className="w-[300px]">
+									<SheetHeader>
+										<SheetTitle>Menu</SheetTitle>
+									</SheetHeader>
+									<div className="flex flex-col space-y-4 mt-8">
+										<Link
+											href="/templates"
+											className="text-lg font-medium hover:text-primary transition-colors"
+											onClick={() => setMobileMenuOpen(false)}
+										>
+											Templates
+										</Link>
+										<Link
+											href="/articles"
+											className="text-lg font-medium hover:text-primary transition-colors"
+											onClick={() => setMobileMenuOpen(false)}
+										>
+											Articles
+										</Link>
+										<div className="pt-4 border-t">
+											<div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+												Theme
+											</div>
+											<ThemeSelector />
+										</div>
+										{isLoggedIn && (
+											<Button
+												variant="outline"
+												onClick={() => {
+													logout();
+													setMobileMenuOpen(false);
+												}}
+												className="flex items-center gap-2 justify-start"
+											>
+												<LogOut className="h-4 w-4" />
+												<span>Logout</span>
+											</Button>
+										)}
+									</div>
+								</SheetContent>
+							</Sheet>
+
+							{/* Desktop User Actions */}
+							<div className="hidden md:flex items-center space-x-3">
+								{isLoggedIn ? (
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Button variant="outline" size="sm" className="flex items-center gap-2">
+												<User className="h-4 w-4" />
+												<span className="hidden sm:inline">{user?.email}</span>
+											</Button>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent align="end">
+											<DropdownMenuItem onClick={logout} className="flex items-center gap-2">
+												<LogOut className="h-4 w-4" />
+												<span>Logout</span>
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								) : (
+									<Button
+										variant="outline"
+										size="sm"
+										className="text-base font-medium"
+										asChild
+									>
+										<Link href="/login">Get Started</Link>
+									</Button>
+								)}
+							</div>
+
+							{/* Mobile Get Started Button (only when not logged in) */}
+							{!isLoggedIn && (
 								<Button
 									variant="outline"
 									size="sm"
-									className="text-base font-medium"
+									className="md:hidden text-sm"
 									asChild
 								>
 									<Link href="/login">Get Started</Link>

@@ -63,16 +63,17 @@ export function Footer() {
 				<Separator className="my-8" />
 
 				<div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-					<div className="flex flex-col lg:flex-row items-center gap-4">
+					<div className="flex flex-col lg:flex-row items-center gap-4 text-center lg:text-left">
 						<p className="text-sm text-muted-foreground">
 							© 2025 Templata. Organize your life with templates.
 						</p>
 						<div className="flex items-center gap-1 text-sm text-muted-foreground bg-muted/30 px-3 py-1 rounded-full">
 							<span className="w-2 h-2 bg-green-500 rounded-full"></span>
-							<span>Your data is private. No ads, no resale.</span>
+							<span className="hidden sm:inline">Your data is private. No ads, no resale.</span>
+							<span className="sm:hidden">Privacy first</span>
 						</div>
 					</div>
-					<div className="flex items-center space-x-4 text-sm text-muted-foreground">
+					<div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
 						<Link
 							href="/privacy"
 							className="hover:text-foreground transition-colors"

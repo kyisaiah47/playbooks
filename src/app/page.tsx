@@ -110,8 +110,8 @@ export default function LandingPage() {
 					</div>
 
 					{/* Split-Screen Visual */}
-					<Card className="p-8 max-w-6xl mx-auto">
-						<div className="grid md:grid-cols-3 gap-6">
+					<Card className="p-4 sm:p-8 max-w-6xl mx-auto">
+						<div className="grid md:grid-cols-3 gap-6 sm:gap-8">
 							{/* Prompts Column */}
 							<div className="space-y-3">
 								<div className="flex items-center gap-2 font-semibold mb-4">
