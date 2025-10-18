@@ -2,7 +2,7 @@
 
 import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { getTemplateById } from '@/registry/templates';
+import type { TemplateRegistryEntry } from '@/registry/templates';
 import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -34,9 +34,9 @@ interface Article {
 export default function TemplateBrowse({ params }: TemplateBrowseProps) {
   const router = useRouter();
   const { slug } = use(params);
-  const template = getTemplateById(slug);
   const { unlockData, isTemplateUnlocked, canUnlockMore, unlockTemplate } = useUserUnlocks();
 
+  const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
   const [prompts, setPrompts] = useState<Prompt[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
@@ -49,6 +49,12 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
     async function fetchData() {
       try {
         setLoading(true);
+
+        // Fetch template data
+        const templatesRes = await fetch('/api/templates');
+        const templatesData = await templatesRes.json();
+        const foundTemplate = templatesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
+        setTemplate(foundTemplate || null);
 
         // Fetch prompts
         const promptsRes = await fetch(`/api/prompts?templateId=${slug}`);

@@ -2,8 +2,7 @@
 // STUBBED VERSION - Returns empty data
 // Provides clean TypeScript interface to the knowledge graph system
 
-// Import template registry as single source of truth
-import { templateRegistry } from '@/registry/templates';
+import type { TemplateRegistryEntry } from '@/registry/templates';
 
 // TypeScript interfaces
 export interface TemplateConnection {
@@ -96,17 +95,38 @@ export interface AnalysisReport {
   };
 }
 
-// Helper functions to use template registry as single source of truth
-export const getAllTemplateIds = (): string[] => {
-  return templateRegistry.map(template => template.id);
+// Helper function to fetch templates
+async function fetchTemplates(): Promise<TemplateRegistryEntry[]> {
+  try {
+    // Determine if we're on server or client
+    const isServer = typeof window === 'undefined';
+    const baseUrl = isServer
+      ? (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000')
+      : ''; // Client-side uses relative URL
+
+    const res = await fetch(`${baseUrl}/api/templates`);
+    const data = await res.json();
+    return data.templates || [];
+  } catch (error) {
+    console.error('Error fetching templates:', error);
+    return [];
+  }
+}
+
+// Helper functions to use API as single source of truth
+export const getAllTemplateIds = async (): Promise<string[]> => {
+  const templates = await fetchTemplates();
+  return templates.map(template => template.id);
 };
 
-export const getTemplateById = (id: string) => {
-  return templateRegistry.find(template => template.id === id);
+export const getTemplateById = async (id: string): Promise<TemplateRegistryEntry | undefined> => {
+  const templates = await fetchTemplates();
+  return templates.find(template => template.id === id);
 };
 
-export const templateExists = (id: string): boolean => {
-  return templateRegistry.some(template => template.id === id);
+export const templateExists = async (id: string): Promise<boolean> => {
+  const templates = await fetchTemplates();
+  return templates.some(template => template.id === id);
 };
 
 // Stubbed Knowledge Graph class

@@ -3,7 +3,7 @@
 import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getTemplateById, templateRegistry } from '@/registry/templates';
+import type { TemplateRegistryEntry } from '@/registry/templates';
 import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -48,8 +48,9 @@ interface Article {
 export default function MarketingClient({ params }: MarketingClientProps) {
   const router = useRouter();
   const { slug } = use(params);
-  const template = getTemplateById(slug);
 
+  const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
+  const [relatedTemplates, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
   const [prompts, setPrompts] = useState<Prompt[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
@@ -59,6 +60,20 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     async function fetchData() {
       try {
         setLoading(true);
+
+        // Fetch all templates
+        const templatesRes = await fetch('/api/templates');
+        const templatesData = await templatesRes.json();
+        const foundTemplate = templatesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
+        setTemplate(foundTemplate || null);
+
+        // Set related templates (same category, different id)
+        if (foundTemplate) {
+          const related = templatesData.templates?.filter(
+            (t: TemplateRegistryEntry) => t.category === foundTemplate.category && t.id !== slug
+          ) || [];
+          setRelatedTemplates(related);
+        }
 
         // Fetch prompts
         const promptsRes = await fetch(`/api/prompts?templateId=${slug}`);
@@ -633,8 +648,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {templateRegistry
-                .filter(t => t.category === templateData.category && t.id !== slug)
+              {relatedTemplates
                 .slice(0, 6)
                 .map((relatedTemplate) => (
                   <Link
@@ -661,7 +675,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                 ))}
             </div>
 
-            {templateRegistry.filter(t => t.category === templateData.category && t.id !== slug).length === 0 && (
+            {relatedTemplates.length === 0 && (
               <p className="text-muted-foreground text-center">
                 No related templates found. <Link href="/templates" className="text-primary hover:underline">Browse all templates</Link>
               </p>

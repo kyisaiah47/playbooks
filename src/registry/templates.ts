@@ -1,13 +1,4 @@
 import { GuidanceTemplate } from '@/types/template';
-import * as templates from '@/data/templates';
-
-// Helper function to capitalize all words in a template name
-function capitalizeTemplateName(name: string): string {
-  return name
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
-}
 
 export interface TemplateRegistryEntry {
   id: string;
@@ -16,16 +7,9 @@ export interface TemplateRegistryEntry {
   category: string;
   icon: string;
   url: string;
-  popular?: boolean;
-  featured?: boolean;
-  expertVerified?: boolean;
   color: string;
   iconColor: string;
   template: GuidanceTemplate;
-}
-
-export function getTemplate(baseTemplate: GuidanceTemplate): GuidanceTemplate {
-  return baseTemplate;
 }
 
 // Helper function to get colors based on category
@@ -46,57 +30,63 @@ function getCategoryColors(category: string): { bg: string; icon: string } {
   return colorMap[category] || { bg: 'bg-gray-50 dark:bg-gray-950/30', icon: 'text-gray-600 dark:text-gray-400' };
 }
 
-const allTemplates: GuidanceTemplate[] = Object.values(templates).filter((t): t is GuidanceTemplate =>
-  t !== null && typeof t === 'object' && 'id' in t
-);
+// Fetch templates from API
+async function fetchTemplates(): Promise<TemplateRegistryEntry[]> {
+  try {
+    // Determine if we're on server or client
+    const isServer = typeof window === 'undefined';
+    const baseUrl = isServer
+      ? (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000')
+      : ''; // Client-side uses relative URL
 
-export const templateRegistry: TemplateRegistryEntry[] = allTemplates
-  .map((t) => ({
-    id: t.id,
-    name: capitalizeTemplateName(t.title && t.title !== "Template" ? t.title : t.id.replace(/-/g, ' ')),
-    description: t.description && t.description !== "Template description" ? t.description : `A comprehensive guide for ${t.id.replace(/-/g, ' ')}`,
-    category: t.category,
-    icon: t.icon,
-    url: `/${t.id}/app`,
-    popular: false,
-    featured: false,
-    expertVerified: false,
-    ...getCategoryColors(t.category),
-    template: getTemplate(t)
-  }))
-  .sort((a, b) => a.name.localeCompare(b.name));
+    const res = await fetch(`${baseUrl}/api/templates`);
+    if (!res.ok) return [];
 
-// Helper functions
-export const getTemplateById = (id: string): TemplateRegistryEntry | undefined => {
-  return templateRegistry.find(template => template.id === id);
+    const data = await res.json();
+    return (data.templates || []).map((t: any) => ({
+      ...t,
+      ...getCategoryColors(t.category)
+    }));
+  } catch (error) {
+    console.error('Error fetching templates:', error);
+    return [];
+  }
+}
+
+// Helper functions - now async
+export const getTemplateById = async (id: string): Promise<TemplateRegistryEntry | undefined> => {
+  const templates = await fetchTemplates();
+  return templates.find(template => template.id === id);
 };
 
-export const getTemplatesByCategory = (category: string): TemplateRegistryEntry[] => {
-  return templateRegistry.filter(template => template.category === category);
+export const getTemplatesByCategory = async (category: string): Promise<TemplateRegistryEntry[]> => {
+  const templates = await fetchTemplates();
+  return templates.filter(template => template.category === category);
 };
 
-export const getFeaturedTemplates = (): TemplateRegistryEntry[] => {
-  return templateRegistry.filter(template => template.featured);
-};
-
-export const getPopularTemplates = (): TemplateRegistryEntry[] => {
-  return templateRegistry.filter(template => template.popular);
-};
-
-export const getAllCategories = (): string[] => {
-  const categories = templateRegistry.map(template => template.category);
+export const getAllCategories = async (): Promise<string[]> => {
+  const templates = await fetchTemplates();
+  const categories = templates.map(template => template.category);
   return [...new Set(categories)].sort();
 };
 
-export const searchTemplates = (query: string): TemplateRegistryEntry[] => {
+export const searchTemplates = async (query: string): Promise<TemplateRegistryEntry[]> => {
+  const templates = await fetchTemplates();
   const lowercaseQuery = query.toLowerCase();
-  return templateRegistry.filter(template =>
+  return templates.filter(template =>
     template.name.toLowerCase().includes(lowercaseQuery) ||
     template.description.toLowerCase().includes(lowercaseQuery) ||
     template.category.toLowerCase().includes(lowercaseQuery) ||
     template.template.tags?.some(tag => tag.toLowerCase().includes(lowercaseQuery))
   );
 };
+
+export const getAllTemplates = async (): Promise<TemplateRegistryEntry[]> => {
+  return fetchTemplates();
+};
+
+// Legacy export for compatibility
+export const templateRegistry = [] as TemplateRegistryEntry[];
 
 export const getArticles = () => {
   return [];

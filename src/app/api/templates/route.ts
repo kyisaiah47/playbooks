@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
-import { templateRegistry } from '@/registry/templates';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export async function GET(request: Request) {
   try {
@@ -9,31 +14,38 @@ export async function GET(request: Request) {
     const search = searchParams.get('search');
     const limit = searchParams.get('limit');
 
-    let filtered = [...templateRegistry];
+    // Build query
+    let query = supabase
+      .from('templata_templates')
+      .select('*');
 
     // Filter by category
     if (category && category !== 'all') {
-      filtered = filtered.filter(template =>
-        template.category.toLowerCase() === category.toLowerCase()
-      );
-    }
-
-    // Filter by type
-    if (type && type !== 'all') {
-      filtered = filtered.filter(template => {
-        if (type === 'featured') return template.featured;
-        if (type === 'popular') return template.popular;
-        return true;
-      });
+      query = query.ilike('category', category);
     }
 
     // Search filter
     if (search) {
+      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
+    }
+
+    const { data: templates, error } = await query;
+
+    if (error) {
+      console.error('Error fetching templates from DB:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch templates' },
+        { status: 500 }
+      );
+    }
+
+    let filtered = templates || [];
+
+    // Client-side search on tags (since we're using JSONB array)
+    if (search) {
       const searchLower = search.toLowerCase();
       filtered = filtered.filter(template =>
-        template.name.toLowerCase().includes(searchLower) ||
-        template.description.toLowerCase().includes(searchLower) ||
-        template.template?.tags?.some(tag => tag.toLowerCase().includes(searchLower))
+        template.tags?.some((tag: string) => tag.toLowerCase().includes(searchLower))
       );
     }
 
@@ -43,10 +55,32 @@ export async function GET(request: Request) {
       filtered = filtered.slice(0, limitNum);
     }
 
+    // Transform DB format to match expected API format
+    const formattedTemplates = filtered.map(template => ({
+      id: template.id,
+      name: template.name,
+      description: template.description,
+      category: template.category,
+      icon: template.icon,
+      url: `/${template.id}/app`,
+      template: {
+        id: template.id,
+        title: template.title,
+        description: template.description,
+        category: template.category,
+        icon: template.icon,
+        difficulty: template.difficulty,
+        estimatedTime: template.estimated_time,
+        tags: template.tags,
+        lastUpdated: template.last_updated,
+        version: template.version,
+      }
+    }));
+
     return NextResponse.json({
-      templates: filtered,
-      total: filtered.length,
-      totalAvailable: templateRegistry.length
+      templates: formattedTemplates,
+      total: formattedTemplates.length,
+      totalAvailable: templates?.length || 0
     });
   } catch (error) {
     console.error('Error in /api/templates:', error);

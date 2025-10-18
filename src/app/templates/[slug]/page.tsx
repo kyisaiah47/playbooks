@@ -4,7 +4,7 @@ import TemplateBrowse from './template-browse';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const template = getTemplateById(slug);
+  const template = await getTemplateById(slug);
 
   if (!template?.template) {
     return {

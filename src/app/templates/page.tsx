@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { templateRegistry } from '@/registry/templates';
+import type { TemplateRegistryEntry } from '@/registry/templates';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -13,17 +13,36 @@ import { motion } from 'framer-motion';
 
 export default function TemplatesPage() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [templates, setTemplates] = useState<TemplateRegistryEntry[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTemplates() {
+      try {
+        setLoading(true);
+        const res = await fetch('/api/templates');
+        const data = await res.json();
+        setTemplates(data.templates || []);
+      } catch (error) {
+        console.error('Error fetching templates:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchTemplates();
+  }, []);
 
   // Group templates by category and sort alphabetically
   const groupedTemplates = useMemo(() => {
     const filtered = searchQuery.trim()
-      ? templateRegistry.filter(t =>
+      ? templates.filter(t =>
           t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           t.category.toLowerCase().includes(searchQuery.toLowerCase())
         )
-      : templateRegistry;
+      : templates;
 
-    const grouped: Record<string, typeof templateRegistry> = {};
+    const grouped: Record<string, TemplateRegistryEntry[]> = {};
 
     filtered.forEach(template => {
       if (!grouped[template.category]) {
@@ -38,7 +57,7 @@ export default function TemplatesPage() {
     });
 
     return grouped;
-  }, [searchQuery]);
+  }, [templates, searchQuery]);
 
   const categories = Object.keys(groupedTemplates).sort();
 
@@ -145,7 +164,7 @@ export default function TemplatesPage() {
             />
           </div>
           <p className="mt-3 text-sm text-muted-foreground">
-            {templateRegistry.length} templates across {categories.length} categories
+            {loading ? 'Loading...' : `${templates.length} templates across ${categories.length} categories`}
           </p>
         </div>
 

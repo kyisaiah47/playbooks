@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
-import { promptLoaders } from '@/data/prompts';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export async function GET(request: Request) {
   try {
@@ -13,42 +18,32 @@ export async function GET(request: Request) {
       );
     }
 
-    // Get all prompt modules that match this template
-    const promptsForTemplate: Array<{
-      id: string;
-      prompt: string;
-      categoryName: string;
-      category?: string;
-    }> = [];
+    // Query prompts from database
+    const { data: prompts, error } = await supabase
+      .from('templata_prompts')
+      .select('*')
+      .eq('template_id', templateId)
+      .order('prompt_number', { ascending: true });
 
-    // Try to load prompt files (templates can have 1-8 prompt files)
-    for (let i = 1; i <= 8; i++) {
-      const loaderKey = `${templateId}-prompts-${i}`;
-      const loader = promptLoaders[loaderKey];
-
-      if (loader) {
-        try {
-          const promptModule = await loader();
-
-          if (promptModule?.prompts && promptModule?.categoryName) {
-            promptModule.prompts.forEach((p: any) => {
-              promptsForTemplate.push({
-                id: p.id,
-                prompt: p.prompt,
-                categoryName: promptModule.categoryName,
-                category: p.category
-              });
-            });
-          }
-        } catch (err) {
-          console.error(`Error loading ${loaderKey}:`, err);
-        }
-      }
+    if (error) {
+      console.error('Error fetching prompts from DB:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch prompts', prompts: [] },
+        { status: 500 }
+      );
     }
 
+    // Transform DB format to match expected API format
+    const formattedPrompts = (prompts || []).map(p => ({
+      id: p.id,
+      prompt: p.prompt,
+      categoryName: p.prompt_group_category || 'Uncategorized',
+      category: p.category
+    }));
+
     return NextResponse.json({
-      prompts: promptsForTemplate,
-      count: promptsForTemplate.length
+      prompts: formattedPrompts,
+      count: formattedPrompts.length
     });
   } catch (error) {
     console.error('Error fetching prompts:', error);
