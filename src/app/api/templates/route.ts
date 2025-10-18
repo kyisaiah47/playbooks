@@ -17,7 +17,8 @@ export async function GET(request: Request) {
     // Build query
     let query = supabase
       .from('templata_templates')
-      .select('*');
+      .select('*')
+      .limit(2000); // Explicitly set limit to get all templates (we have ~1,298)
 
     // Filter by category
     if (category && category !== 'all') {
