@@ -151,43 +151,50 @@ export function Header() {
 										<Menu className="h-5 w-5" />
 									</Button>
 								</SheetTrigger>
-								<SheetContent side="right" className="w-[300px]">
-									<SheetHeader>
-										<SheetTitle>Menu</SheetTitle>
+								<SheetContent side="right" className="w-[280px] sm:w-[320px]">
+									<SheetHeader className="text-left">
+										<SheetTitle className="text-xl">Menu</SheetTitle>
 									</SheetHeader>
-									<div className="flex flex-col space-y-4 mt-8 ml-4">
+
+									<div className="flex flex-col gap-1 mt-8">
 										<Link
 											href="/templates"
-											className="text-lg font-medium hover:text-primary transition-colors"
+											className="px-3 py-2.5 text-base font-medium hover:bg-accent rounded-md transition-colors"
 											onClick={() => setMobileMenuOpen(false)}
 										>
 											Templates
 										</Link>
 										<Link
 											href="/articles"
-											className="text-lg font-medium hover:text-primary transition-colors"
+											className="px-3 py-2.5 text-base font-medium hover:bg-accent rounded-md transition-colors"
 											onClick={() => setMobileMenuOpen(false)}
 										>
 											Articles
 										</Link>
-										<div className="pt-4 border-t">
-											<div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+									</div>
+
+									<div className="mt-6 pt-6 border-t space-y-4">
+										<div className="px-3">
+											<div className="text-sm font-medium mb-3">
 												Theme
 											</div>
 											<ThemeSelector />
 										</div>
+
 										{isLoggedIn && (
-											<Button
-												variant="outline"
-												onClick={() => {
-													logout();
-													setMobileMenuOpen(false);
-												}}
-												className="flex items-center gap-2 justify-start"
-											>
-												<LogOut className="h-4 w-4" />
-												<span>Logout</span>
-											</Button>
+											<div className="px-3">
+												<Button
+													variant="outline"
+													onClick={() => {
+														logout();
+														setMobileMenuOpen(false);
+													}}
+													className="w-full justify-start"
+												>
+													<LogOut className="h-4 w-4 mr-2" />
+													<span>Logout</span>
+												</Button>
+											</div>
 										)}
 									</div>
 								</SheetContent>
