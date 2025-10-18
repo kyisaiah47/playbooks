@@ -1,0 +1,294 @@
+Fetching all articles in batches...
+
+Fetched 1000 articles so far...
+Fetched 2000 articles so far...
+Fetched 3000 articles so far...
+Fetched 4000 articles so far...
+Fetched 5000 articles so far...
+Fetched 6000 articles so far...
+Fetched 7000 articles so far...
+Fetched 8000 articles so far...
+Fetched 9000 articles so far...
+Fetched 10000 articles so far...
+Fetched 11000 articles so far...
+Fetched 12000 articles so far...
+Fetched 13000 articles so far...
+Fetched 14000 articles so far...
+Fetched 15000 articles so far...
+Fetched 16000 articles so far...
+Fetched 17000 articles so far...
+Fetched 18000 articles so far...
+Fetched 19000 articles so far...
+Fetched 20000 articles so far...
+Fetched 21000 articles so far...
+Fetched 22000 articles so far...
+Fetched 23000 articles so far...
+Fetched 24000 articles so far...
+Fetched 25000 articles so far...
+Fetched 26000 articles so far...
+Fetched 26282 articles so far...
+
+Total articles fetched: 26282
+
+
+=== DUPLICATE ARTICLES BY TITLE ===
+Found 346 duplicate title groups
+
+Title: "Building Resilience and Mental Health Strategies for Zookeepers: Thriving in High-Stress Animal Care Environments"
+Count: 2 duplicates
+  - ID: article-building-resilience-and-mental-health-strategies-for..., Slug: building-resilience-and-mental-health-strategies-for-zookeep..., Template: zookeeper-career-development
+  - ID: article-building-resilience-and-mental-health-strategies-for..., Slug: building-resilience-and-mental-health-strategies-for-zookeep..., Template: zookeeper-career-development
+
+Title: "Building Resilience Through Life Transitions: Your Strategic Guide to Navigating Major Changes as a Wheelchair User"
+Count: 2 duplicates
+  - ID: article-building-resilience-through-life-transitions-your-st..., Slug: building-resilience-through-life-transitions-your-strategic-..., Template: wheelchair-life-planning
+  - ID: article-building-resilience-through-life-transitions-your-st..., Slug: building-resilience-through-life-transitions-your-strategic-..., Template: wheelchair-life-planning
+
+Title: "Building Resilience Through Routine: Creating Structure and Stability During Your Workplace Accident Recovery"
+Count: 2 duplicates
+  - ID: article-building-resilience-through-routine-creating-structu..., Slug: building-resilience-through-routine-creating-structure-and-s..., Template: workplace-accident-recovery
+  - ID: article-building-resilience-through-routine-creating-structu..., Slug: building-resilience-through-routine-creating-structure-and-s..., Template: workplace-accident-recovery
+
+Title: "Building Strong Family Relationships as an X-Ray Technician: Navigating Healthcare Career Demands While Nurturing Personal Connections"
+Count: 2 duplicates
+  - ID: article-building-strong-family-relationships-as-an-x-ray-tec..., Slug: building-strong-family-relationships-as-an-x-ray-technician-..., Template: x-ray-technician-career
+  - ID: article-building-strong-family-relationships-as-an-x-ray-tec..., Slug: building-strong-family-relationships-as-an-x-ray-technician-..., Template: x-ray-technician-career
+
+Title: "Building Strong Professional Relationships in the Welding Industry: Networking, Mentorship, and Community Building for Career Success"
+Count: 2 duplicates
+  - ID: article-building-strong-professional-relationships-in-the-we..., Slug: building-strong-professional-relationships-in-the-welding-in..., Template: welder-career-development
+  - ID: article-building-strong-professional-relationships-in-the-we..., Slug: building-strong-professional-relationships-in-the-welding-in..., Template: welder-career-development
+
+Title: "Building Your Financial Security: A Complete Guide to Disability Benefits and Financial Planning for Wheelchair Users"
+Count: 2 duplicates
+  - ID: article-building-your-financial-security-a-complete-guide-to..., Slug: building-your-financial-security-a-complete-guide-to-disabil..., Template: wheelchair-life-planning
+  - ID: article-building-your-financial-security-a-complete-guide-to..., Slug: building-your-financial-security-a-complete-guide-to-disabil..., Template: wheelchair-life-planning
+
+Title: "Building Your Personal Wellness Dashboard: A Step-by-Step Guide to Creating Meaningful Health Visualizations"
+Count: 2 duplicates
+  - ID: article-building-your-personal-wellness-dashboard-a-step-by-..., Slug: building-your-personal-wellness-dashboard-a-step-by-step-gui..., Template: wellness-tracking-system
+  - ID: article-building-your-personal-wellness-dashboard-a-step-by-..., Slug: building-your-personal-wellness-dashboard-a-step-by-step-gui..., Template: wellness-tracking-system
+
+Title: "Building Your Support Network: A Complete Guide to Creating Strong Relationships and Community Connections for Wheelchair Users"
+Count: 2 duplicates
+  - ID: article-building-your-support-network-a-complete-guide-to-cr..., Slug: building-your-support-network-a-complete-guide-to-creating-s..., Template: wheelchair-life-planning
+  - ID: article-building-your-support-network-a-complete-guide-to-cr..., Slug: building-your-support-network-a-complete-guide-to-creating-s..., Template: wheelchair-life-planning
+
+Title: "Building Your Support Network: How to Communicate About Workplace Accommodations with Family, Friends, and Colleagues"
+Count: 2 duplicates
+  - ID: article-building-your-support-network-how-to-communicate-abo..., Slug: building-your-support-network-how-to-communicate-about-workp..., Template: workplace-accommodation-requests
+  - ID: article-building-your-support-network-how-to-communicate-abo..., Slug: building-your-support-network-how-to-communicate-about-workp..., Template: workplace-accommodation-requests
+
+Title: "Building Your Support Network: How to Create a Strong Circle of Care During Workplace Accident Recovery"
+Count: 2 duplicates
+  - ID: article-building-your-support-network-how-to-create-a-strong..., Slug: building-your-support-network-how-to-create-a-strong-circle-..., Template: workplace-accident-recovery
+  - ID: article-building-your-support-network-how-to-create-a-strong..., Slug: building-your-support-network-how-to-create-a-strong-circle-..., Template: workplace-accident-recovery
+
+Title: "Building Your Support System for Workforce Reentry: A Complete Guide to Creating the Network You Need to Succeed"
+Count: 2 duplicates
+  - ID: article-building-your-support-system-for-workforce-reentry-a..., Slug: building-your-support-system-for-workforce-reentry-a-complet..., Template: workforce-reentry
+  - ID: article-building-your-support-system-for-workforce-reentry-a..., Slug: building-your-support-system-for-workforce-reentry-a-complet..., Template: workforce-reentry
+
+Title: "Building Your Wine Vocabulary: Essential Tasting Terms and Descriptors for Clear, Confident Communication"
+Count: 2 duplicates
+  - ID: article-building-your-wine-vocabulary-essential-tasting-term..., Slug: building-your-wine-vocabulary-essential-tasting-terms-and-de..., Template: wine-tasting-expertise
+  - ID: article-building-your-wine-vocabulary-essential-tasting-term..., Slug: building-your-wine-vocabulary-essential-tasting-terms-and-de..., Template: wine-tasting-expertise
+
+Title: "Building Your Young Adult's Support Network: A Parent's Guide to Encouraging Healthy Connections Beyond Family"
+Count: 2 duplicates
+  - ID: article-building-your-young-adults-support-network-a-parents..., Slug: building-your-young-adults-support-network-a-parents-guide-t..., Template: young-adult-parenting-transition
+  - ID: article-building-your-young-adults-support-network-a-parents..., Slug: building-your-young-adults-support-network-a-parents-guide-t..., Template: young-adult-parenting-transition
+
+Title: "Business Ventures and Entrepreneurship After a Windfall: Turning Financial Freedom into Meaningful Enterprise"
+Count: 2 duplicates
+  - ID: article-business-ventures-and-entrepreneurship-after-a-windf..., Slug: business-ventures-and-entrepreneurship-after-a-windfall-turn..., Template: windfall-management-planning
+  - ID: article-business-ventures-and-entrepreneurship-after-a-windf..., Slug: business-ventures-and-entrepreneurship-after-a-windfall-turn..., Template: windfall-management-planning
+
+Title: "Career Development and Workplace Accommodation: Your Strategic Guide to Building a Thriving Professional Life as a Wheelchair User"
+Count: 2 duplicates
+  - ID: article-career-development-and-workplace-accommodation-your-..., Slug: career-development-and-workplace-accommodation-your-strategi..., Template: wheelchair-life-planning
+  - ID: article-career-development-and-workplace-accommodation-your-..., Slug: career-development-and-workplace-accommodation-your-strategi..., Template: wheelchair-life-planning
+
+Title: "Career Transition Strategies for X-Ray Technicians: Navigating Professional Growth and Specialty Changes"
+Count: 2 duplicates
+  - ID: article-career-transition-strategies-for-x-ray-technicians-n..., Slug: career-transition-strategies-for-x-ray-technicians-navigatin..., Template: x-ray-technician-career
+  - ID: article-career-transition-strategies-for-x-ray-technicians-n..., Slug: career-transition-strategies-for-x-ray-technicians-navigatin..., Template: x-ray-technician-career
+
+Title: "Celebrating Milestones and Achievements: How to Honor Your Young Adult's Growth While Respecting Their Independence"
+Count: 2 duplicates
+  - ID: article-celebrating-milestones-and-achievements-how-to-honor..., Slug: celebrating-milestones-and-achievements-how-to-honor-your-yo..., Template: young-adult-parenting-transition
+  - ID: article-celebrating-milestones-and-achievements-how-to-honor..., Slug: celebrating-milestones-and-achievements-how-to-honor-your-yo..., Template: young-adult-parenting-transition
+
+Title: "Charitable Giving Through Your Will: How to Leave a Lasting Legacy While Supporting Causes You Care About"
+Count: 2 duplicates
+  - ID: article-charitable-giving-through-your-will-how-to-leave-a-l..., Slug: charitable-giving-through-your-will-how-to-leave-a-lasting-l..., Template: will-writing-guidance
+  - ID: article-charitable-giving-through-your-will-how-to-leave-a-l..., Slug: charitable-giving-through-your-will-how-to-leave-a-lasting-l..., Template: will-writing-guidance
+
+Title: "Communicating with Family and Friends: How to Navigate Relationships and Set Boundaries During Your Workplace Accident Recovery"
+Count: 2 duplicates
+  - ID: article-communicating-with-family-and-friends-how-to-navigat..., Slug: communicating-with-family-and-friends-how-to-navigate-relati..., Template: workplace-accident-recovery
+  - ID: article-communicating-with-family-and-friends-how-to-navigat..., Slug: communicating-with-family-and-friends-how-to-navigate-relati..., Template: workplace-accident-recovery
+
+Title: "Communication and Advocacy Skills for Zookeepers: Building Your Voice as an Ambassador for Wildlife Conservation"
+Count: 2 duplicates
+  - ID: article-communication-and-advocacy-skills-for-zookeepers-bui..., Slug: communication-and-advocacy-skills-for-zookeepers-building-yo..., Template: zookeeper-career-development
+  - ID: article-communication-and-advocacy-skills-for-zookeepers-bui..., Slug: communication-and-advocacy-skills-for-zookeepers-building-yo..., Template: zookeeper-career-development
+
+Title: "Communication and Social Connection Strategies: Your Complete Guide to Building Meaningful Relationships and Overcoming Social Barriers as a Wheelchair User"
+Count: 2 duplicates
+  - ID: article-communication-and-social-connection-strategies-your-..., Slug: communication-and-social-connection-strategies-your-complete..., Template: wheelchair-life-planning
+  - ID: article-communication-and-social-connection-strategies-your-..., Slug: communication-and-social-connection-strategies-your-complete..., Template: wheelchair-life-planning
+
+Title: "Continuing Education and Professional Development for Zookeepers: Staying Current in an Evolving Field"
+Count: 2 duplicates
+  - ID: article-continuing-education-and-professional-development-fo..., Slug: continuing-education-and-professional-development-for-zookee..., Template: zookeeper-career-development
+  - ID: article-continuing-education-and-professional-development-fo..., Slug: continuing-education-and-professional-development-for-zookee..., Template: zookeeper-career-development
+
+Title: "Continuing Education Pathways for X-Ray Technicians: Advancing Your Career Through Specialized Training and Certifications"
+Count: 2 duplicates
+  - ID: article-continuing-education-pathways-for-x-ray-technicians-..., Slug: continuing-education-pathways-for-x-ray-technicians-advancin..., Template: x-ray-technician-career
+  - ID: article-continuing-education-pathways-for-x-ray-technicians-..., Slug: continuing-education-pathways-for-x-ray-technicians-advancin..., Template: x-ray-technician-career
+
+Title: "Creating a Wildfire Recovery Timeline: Essential Milestones and Phases for Your Journey Back to Normal"
+Count: 2 duplicates
+  - ID: article-creating-a-wildfire-recovery-timeline-essential-mile..., Slug: creating-a-wildfire-recovery-timeline-essential-milestones-a..., Template: wildfire-evacuation-recovery
+  - ID: article-creating-a-wildfire-recovery-timeline-essential-mile..., Slug: creating-a-wildfire-recovery-timeline-essential-milestones-a..., Template: wildfire-evacuation-recovery
+
+Title: "Creating Multiple Income Streams from Your Windfall: Building Sustainable Wealth Through Strategic Diversification"
+Count: 2 duplicates
+  - ID: article-creating-multiple-income-streams-from-your-windfall-..., Slug: creating-multiple-income-streams-from-your-windfall-building..., Template: windfall-management-planning
+  - ID: article-creating-multiple-income-streams-from-your-windfall-..., Slug: creating-multiple-income-streams-from-your-windfall-building..., Template: windfall-management-planning
+
+Title: "Creating Psychological Safety: How to Foster Open Communication and Mental Health Support in Your Workplace"
+Count: 2 duplicates
+  - ID: article-creating-psychological-safety-how-to-foster-open-com..., Slug: creating-psychological-safety-how-to-foster-open-communicati..., Template: workplace-mental-health-management
+  - ID: article-creating-psychological-safety-how-to-foster-open-com..., Slug: creating-psychological-safety-how-to-foster-open-communicati..., Template: workplace-mental-health-management
+
+Title: "Creating Your Personal Brand for Career Reentry: Building an Authentic Professional Identity That Opens Doors"
+Count: 2 duplicates
+  - ID: article-creating-your-personal-brand-for-career-reentry-buil..., Slug: creating-your-personal-brand-for-career-reentry-building-an-..., Template: workforce-reentry
+  - ID: article-creating-your-personal-brand-for-career-reentry-buil..., Slug: creating-your-personal-brand-for-career-reentry-building-an-..., Template: workforce-reentry
+
+Title: "Creating Your Personal Recovery Plan: A Step-by-Step Framework for Long-Term Healing After a Workplace Accident"
+Count: 2 duplicates
+  - ID: article-creating-your-personal-recovery-plan-a-step-by-step-..., Slug: creating-your-personal-recovery-plan-a-step-by-step-framewor..., Template: workplace-accident-recovery
+  - ID: article-creating-your-personal-recovery-plan-a-step-by-step-..., Slug: creating-your-personal-recovery-plan-a-step-by-step-framewor..., Template: workplace-accident-recovery
+
+Title: "Creating Your Personal Welding Brand: How to Stand Out and Advance Your Career in a Competitive Industry"
+Count: 2 duplicates
+  - ID: article-creating-your-personal-welding-brand-how-to-stand-ou..., Slug: creating-your-personal-welding-brand-how-to-stand-out-and-ad..., Template: welder-career-development
+  - ID: article-creating-your-personal-welding-brand-how-to-stand-ou..., Slug: creating-your-personal-welding-brand-how-to-stand-out-and-ad..., Template: welder-career-development
+
+Title: "Cultivating Mindful Leadership: How Yoga Instructors Can Guide Students Through Challenging Times and Personal Struggles"
+Count: 2 duplicates
+  - ID: article-cultivating-mindful-leadership-how-yoga-instructors-..., Slug: cultivating-mindful-leadership-how-yoga-instructors-can-guid..., Template: yoga-instructor-career
+  - ID: article-cultivating-mindful-leadership-how-yoga-instructors-..., Slug: cultivating-mindful-leadership-how-yoga-instructors-can-guid..., Template: yoga-instructor-career
+
+Title: "Cultural Intelligence in Workplace Conflicts: Navigating Cross-Cultural Misunderstandings and Building Inclusive Resolution Strategies"
+Count: 2 duplicates
+  - ID: article-cultural-intelligence-in-workplace-conflicts-navigat..., Slug: cultural-intelligence-in-workplace-conflicts-navigating-cros..., Template: workplace-conflict-resolution
+  - ID: article-cultural-intelligence-in-workplace-conflicts-navigat..., Slug: cultural-intelligence-in-workplace-conflicts-navigating-cros..., Template: workplace-conflict-resolution
+
+Title: "Daily Living Skills and Independence Mastery: Your Complete Guide to Maximizing Personal Autonomy in Everyday Activities"
+Count: 2 duplicates
+  - ID: article-daily-living-skills-and-independence-mastery-your-co..., Slug: daily-living-skills-and-independence-mastery-your-complete-g..., Template: wheelchair-life-planning
+  - ID: article-daily-living-skills-and-independence-mastery-your-co..., Slug: daily-living-skills-and-independence-mastery-your-complete-g..., Template: wheelchair-life-planning
+
+Title: "Dealing with Retaliation and Harassment After Whistleblowing: Legal Protections and Practical Self-Defense Strategies"
+Count: 2 duplicates
+  - ID: article-dealing-with-retaliation-and-harassment-after-whistl..., Slug: dealing-with-retaliation-and-harassment-after-whistleblowing..., Template: whistleblowing-aftermath
+  - ID: article-dealing-with-retaliation-and-harassment-after-whistl..., Slug: dealing-with-retaliation-and-harassment-after-whistleblowing..., Template: whistleblowing-aftermath
+
+Title: "Dealing with Survivor's Guilt After Whistleblowing: Understanding and Overcoming Complex Emotional Responses"
+Count: 2 duplicates
+  - ID: article-dealing-with-survivors-guilt-after-whistleblowing-un..., Slug: dealing-with-survivors-guilt-after-whistleblowing-understand..., Template: whistleblowing-aftermath
+  - ID: article-dealing-with-survivors-guilt-after-whistleblowing-un..., Slug: dealing-with-survivors-guilt-after-whistleblowing-understand..., Template: whistleblowing-aftermath
+
+Title: "Decoding Wine Labels: Your Essential Guide to Reading Between the Lines and Choosing Wines with Confidence"
+Count: 2 duplicates
+  - ID: article-decoding-wine-labels-your-essential-guide-to-reading..., Slug: decoding-wine-labels-your-essential-guide-to-reading-between..., Template: wine-tasting-expertise
+  - ID: article-decoding-wine-labels-your-essential-guide-to-reading..., Slug: decoding-wine-labels-your-essential-guide-to-reading-between..., Template: wine-tasting-expertise
+
+Title: "Designing Your Mental Health Workspace: How Physical Environment Shapes Psychological Wellbeing at Work"
+Count: 2 duplicates
+  - ID: article-designing-your-mental-health-workspace-how-physical-..., Slug: designing-your-mental-health-workspace-how-physical-environm..., Template: workplace-mental-health-management
+  - ID: article-designing-your-mental-health-workspace-how-physical-..., Slug: designing-your-mental-health-workspace-how-physical-environm..., Template: workplace-mental-health-management
+
+Title: "Designing Your Weekend Wedding Day-of Emergency Kit: Essential Items and Crisis Management for Multi-Day Celebrations"
+Count: 2 duplicates
+  - ID: article-designing-your-weekend-wedding-day-of-emergency-kit-..., Slug: designing-your-weekend-wedding-day-of-emergency-kit-essentia..., Template: weekend-marriage-planning
+  - ID: article-designing-your-weekend-wedding-day-of-emergency-kit-..., Slug: designing-your-weekend-wedding-day-of-emergency-kit-essentia..., Template: weekend-marriage-planning
+
+Title: "Developing Resilience and Mental Wellness During Your Workforce Reentry Journey: A Holistic Approach to Sustainable Career Success"
+Count: 2 duplicates
+  - ID: article-developing-resilience-and-mental-wellness-during-you..., Slug: developing-resilience-and-mental-wellness-during-your-workfo..., Template: workforce-reentry
+  - ID: article-developing-resilience-and-mental-wellness-during-you..., Slug: developing-resilience-and-mental-wellness-during-your-workfo..., Template: workforce-reentry
+
+Title: "Digital Age Testimony: Protecting Your Privacy and Managing Online Presence Before and After Court Appearances"
+Count: 2 duplicates
+  - ID: article-digital-age-testimony-protecting-your-privacy-and-ma..., Slug: digital-age-testimony-protecting-your-privacy-and-managing-o..., Template: witness-testimony-preparation
+  - ID: article-digital-age-testimony-protecting-your-privacy-and-ma..., Slug: digital-age-testimony-protecting-your-privacy-and-managing-o..., Template: witness-testimony-preparation
+
+Title: "Digital Wellness for X-Ray Technicians: Managing Screen Time and Technology Boundaries for Better Health and Performance"
+Count: 2 duplicates
+  - ID: article-digital-wellness-for-x-ray-technicians-managing-scre..., Slug: digital-wellness-for-x-ray-technicians-managing-screen-time-..., Template: x-ray-technician-career
+  - ID: article-digital-wellness-for-x-ray-technicians-managing-scre..., Slug: digital-wellness-for-x-ray-technicians-managing-screen-time-..., Template: x-ray-technician-career
+
+Title: "Education and Learning Accessibility: Your Complete Guide to Pursuing Academic Goals and Lifelong Learning as a Wheelchair User"
+Count: 2 duplicates
+  - ID: article-education-and-learning-accessibility-your-complete-g..., Slug: education-and-learning-accessibility-your-complete-guide-to-..., Template: wheelchair-life-planning
+  - ID: article-education-and-learning-accessibility-your-complete-g..., Slug: education-and-learning-accessibility-your-complete-guide-to-..., Template: wheelchair-life-planning
+
+Title: "Emergency Preparedness for Workers with Accommodations: Ensuring Safety and Continuity in Crisis Situations"
+Count: 2 duplicates
+  - ID: article-emergency-preparedness-for-workers-with-accommodatio..., Slug: emergency-preparedness-for-workers-with-accommodations-ensur..., Template: workplace-accommodation-requests
+  - ID: article-emergency-preparedness-for-workers-with-accommodatio..., Slug: emergency-preparedness-for-workers-with-accommodations-ensur..., Template: workplace-accommodation-requests
+
+Title: "Emergency Preparedness for X-Ray Technicians: Essential Skills for Managing Critical Situations and Medical Emergencies"
+Count: 2 duplicates
+  - ID: article-emergency-preparedness-for-x-ray-technicians-essenti..., Slug: emergency-preparedness-for-x-ray-technicians-essential-skill..., Template: x-ray-technician-career
+  - ID: article-emergency-preparedness-for-x-ray-technicians-essenti..., Slug: emergency-preparedness-for-x-ray-technicians-essential-skill..., Template: x-ray-technician-career
+
+Title: "Environmental Restoration After Wildfire: Replanting, Soil Recovery, and Ecosystem Healing on Your Property"
+Count: 2 duplicates
+  - ID: article-environmental-restoration-after-wildfire-replanting-..., Slug: environmental-restoration-after-wildfire-replanting-soil-rec..., Template: wildfire-recovery-planning
+  - ID: article-environmental-restoration-after-wildfire-replanting-..., Slug: environmental-restoration-after-wildfire-replanting-soil-rec..., Template: wildfire-recovery-planning
+
+Title: "Equipment Maintenance and Replacement Planning: Your Strategic Guide to Keeping Essential Mobility Equipment in Peak Condition"
+Count: 2 duplicates
+  - ID: article-equipment-maintenance-and-replacement-planning-your-..., Slug: equipment-maintenance-and-replacement-planning-your-strategi..., Template: wheelchair-life-planning
+  - ID: article-equipment-maintenance-and-replacement-planning-your-..., Slug: equipment-maintenance-and-replacement-planning-your-strategi..., Template: wheelchair-life-planning
+
+Title: "Essential Skills Development Beyond Animal Care: Building Your Professional Toolkit as a Modern Zookeeper"
+Count: 2 duplicates
+  - ID: article-essential-skills-development-beyond-animal-care-buil..., Slug: essential-skills-development-beyond-animal-care-building-you..., Template: zookeeper-career-development
+  - ID: article-essential-skills-development-beyond-animal-care-buil..., Slug: essential-skills-development-beyond-animal-care-building-you..., Template: zookeeper-career-development
+
+Title: "Estate Planning for Aging Parents: How to Have Difficult Conversations and Protect Your Family's Future"
+Count: 2 duplicates
+  - ID: article-estate-planning-for-aging-parents-how-to-have-diffic..., Slug: estate-planning-for-aging-parents-how-to-have-difficult-conv..., Template: will-and-testament-planning
+  - ID: article-estate-planning-for-aging-parents-how-to-have-diffic..., Slug: estate-planning-for-aging-parents-how-to-have-difficult-conv..., Template: will-and-testament-planning
+
+Title: "Financial Planning and Compensation Strategies for Zookeepers: Building Economic Stability in a Passion-Driven Career"
+Count: 2 duplicates
+  - ID: article-financial-planning-and-compensation-strategies-for-z..., Slug: financial-planning-and-compensation-strategies-for-zookeeper..., Template: zookeeper-career-development
+  - ID: article-financial-planning-and-compensation-strategies-for-z..., Slug: financial-planning-and-compensation-strategies-for-zookeeper..., Template: zookeeper-career-development
+
+Title: "Financial Planning for Career Transitions: A Practical Guide to Managing Money During Workforce Reentry"
+Count: 2 duplicates
+  - ID: article-financial-planning-for-career-transitions-a-practica..., Slug: financial-planning-for-career-transitions-a-practical-guide-..., Template: workforce-reentry
+  - ID: article-financial-planning-for-career-transitions-a-practica..., Slug: financial-planning-for-career-transitions-a-practical-guide-..., Template: workforce-reentry
+
+Title: "Financial Planning for Wine Sommeliers: Building Wealth on an Irregular Income in the Hospitality Industry"
+Count: 2 duplicates
+  - ID: article-financial-planning-for-wine-sommeliers-building-weal..., Slug: financial-planning-for-wine-sommeliers-building-wealth-on-an..., Template: wine-sommelier-career
+  - ID: article-financial-planning-for-wine-sommeliers-building-weal..., Slug: financial-planning-for-wine-sommeliers-building-wealth-on-an..., Template: wine-sommelier-career
+
+... and 296 more duplicate groups (not shown)
+
+
+=== SUMMARY ===
+Total articles: 26282
+Duplicate title groups: 346
+Extra articles (duplicates to remove): 346
+Unique articles (after cleanup): 25936

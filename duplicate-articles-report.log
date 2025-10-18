@@ -1,0 +1,63 @@
+Fetching all articles...
+Total articles: 1000
+
+
+=== DUPLICATE ARTICLES BY TITLE ===
+Found 9 duplicate title groups
+
+Title: "5 Workflow Automation Mistakes That Are Secretly Sabotaging Your Productivity (And How to Fix Them Today)"
+Count: 2 duplicates
+  - ID: article-5-workflow-automation-mistakes-that-are-secretly-sabotaging-your-productivity-and-how-to-fix-them-today, Slug: 5-workflow-automation-mistakes-that-are-secretly-sabotaging-your-productivity-and-how-to-fix-them-today, Template: workflow-automation-setup
+  - ID: article-5-workflow-automation-mistakes-that-are-secretly-sabotaging-your-productivity-and-how-to-fix-them-to, Slug: 5-workflow-automation-mistakes-that-are-secretly-sabotaging-your-productivity-and-how-to-fix-them-to, Template: workflow-automation-setup
+
+Title: "Accommodation Partnerships: How to Build Strong Collaborative Relationships with Supervisors and Colleagues"
+Count: 2 duplicates
+  - ID: article-accommodation-partnerships-how-to-build-strong-collaborative-relationships-with-supervisors-and-coll, Slug: accommodation-partnerships-how-to-build-strong-collaborative-relationships-with-supervisors-and-coll, Template: workplace-accommodation-requests
+  - ID: article-accommodation-partnerships-how-to-build-strong-collaborative-relationships-with-supervisors-and-colleagues, Slug: accommodation-partnerships-how-to-build-strong-collaborative-relationships-with-supervisors-and-colleagues, Template: workplace-accommodation-requests
+
+Title: "Adaptive Cooking and Kitchen Independence: Your Complete Guide to Creating a Fully Accessible Culinary Space as a Wheelchair User"
+Count: 2 duplicates
+  - ID: article-adaptive-cooking-and-kitchen-independence-your-complete-guide-to-creating-a-fully-accessible-culinar, Slug: adaptive-cooking-and-kitchen-independence-your-complete-guide-to-creating-a-fully-accessible-culinar, Template: wheelchair-life-planning
+  - ID: article-adaptive-cooking-and-kitchen-independence-your-complete-guide-to-creating-a-fully-accessible-culinary-space-as-a-wheelchair-user, Slug: adaptive-cooking-and-kitchen-independence-your-complete-guide-to-creating-a-fully-accessible-culinary-space-as-a-wheelchair-user, Template: wheelchair-life-planning
+
+Title: "Beyond the Workplace: How to Maintain Your Accommodations During Business Travel, Remote Work, and Off-Site Events"
+Count: 2 duplicates
+  - ID: article-beyond-the-workplace-how-to-maintain-your-accommodations-during-business-travel-remote-work-and-off-, Slug: beyond-the-workplace-how-to-maintain-your-accommodations-during-business-travel-remote-work-and-off-, Template: workplace-accommodation-requests
+  - ID: article-beyond-the-workplace-how-to-maintain-your-accommodations-during-business-travel-remote-work-and-off-site-events, Slug: beyond-the-workplace-how-to-maintain-your-accommodations-during-business-travel-remote-work-and-off-site-events, Template: workplace-accommodation-requests
+
+Title: "Building a Professional Portfolio and Personal Brand for Zookeepers: Showcasing Your Impact in Animal Care and Conservation"
+Count: 2 duplicates
+  - ID: article-building-a-professional-portfolio-and-personal-brand-for-zookeepers-showcasing-your-impact-in-animal, Slug: building-a-professional-portfolio-and-personal-brand-for-zookeepers-showcasing-your-impact-in-animal, Template: zookeeper-career-development
+  - ID: article-building-a-professional-portfolio-and-personal-brand-for-zookeepers-showcasing-your-impact-in-animal-care-and-conservation, Slug: building-a-professional-portfolio-and-personal-brand-for-zookeepers-showcasing-your-impact-in-animal-care-and-conservation, Template: zookeeper-career-development
+
+Title: "Building Confidence Through Practice: Mock Testimony Sessions and Rehearsal Techniques for Effective Witness Preparation"
+Count: 2 duplicates
+  - ID: article-building-confidence-through-practice-mock-testimony-sessions-and-rehearsal-techniques-for-effective-witness-preparation, Slug: building-confidence-through-practice-mock-testimony-sessions-and-rehearsal-techniques-for-effective-witness-preparation, Template: witness-testimony-preparation
+  - ID: article-building-confidence-through-practice-mock-testimony-sessions-and-rehearsal-techniques-for-effective-, Slug: building-confidence-through-practice-mock-testimony-sessions-and-rehearsal-techniques-for-effective-, Template: witness-testimony-preparation
+
+Title: "Building Mental Resilience as an X-Ray Technician: Strategies for Thriving in a High-Stress Medical Environment"
+Count: 2 duplicates
+  - ID: article-building-mental-resilience-as-an-x-ray-technician-strategies-for-thriving-in-a-high-stress-medical-e, Slug: building-mental-resilience-as-an-x-ray-technician-strategies-for-thriving-in-a-high-stress-medical-e, Template: x-ray-technician-career
+  - ID: article-building-mental-resilience-as-an-x-ray-technician-strategies-for-thriving-in-a-high-stress-medical-environment, Slug: building-mental-resilience-as-an-x-ray-technician-strategies-for-thriving-in-a-high-stress-medical-environment, Template: x-ray-technician-career
+
+Title: "Building Mental Resilience for Job Rejection: A Practical Guide to Maintaining Motivation Throughout Your Workforce Reentry Journey"
+Count: 2 duplicates
+  - ID: article-building-mental-resilience-for-job-rejection-a-practical-guide-to-maintaining-motivation-throughout-your-workforce-reentry-journey, Slug: building-mental-resilience-for-job-rejection-a-practical-guide-to-maintaining-motivation-throughout-your-workforce-reentry-journey, Template: workforce-reentry
+  - ID: article-building-mental-resilience-for-job-rejection-a-practical-guide-to-maintaining-motivation-throughout-, Slug: building-mental-resilience-for-job-rejection-a-practical-guide-to-maintaining-motivation-throughout-, Template: workforce-reentry
+
+Title: "Building Professional Confidence After a Career Break: A Step-by-Step Guide to Overcoming Imposter Syndrome"
+Count: 2 duplicates
+  - ID: article-building-professional-confidence-after-a-career-break-a-step-by-step-guide-to-overcoming-imposter-syndrome, Slug: building-professional-confidence-after-a-career-break-a-step-by-step-guide-to-overcoming-imposter-syndrome, Template: workforce-reentry
+  - ID: article-building-professional-confidence-after-a-career-break-a-step-by-step-guide-to-overcoming-imposter-sy, Slug: building-professional-confidence-after-a-career-break-a-step-by-step-guide-to-overcoming-imposter-sy, Template: workforce-reentry
+
+
+=== DUPLICATE ARTICLES BY SLUG ===
+Found 0 duplicate slug groups
+
+
+=== SUMMARY ===
+Total articles: 1000
+Duplicate title groups: 9
+Extra articles (by title): 9
+Duplicate slug groups: 0
+Extra articles (by slug): 0

@@ -30,7 +30,8 @@ const DAILY_PROMPTS = [
 const MOODS = ['😊', '😌', '😐', '😔', '😤', '😴', '🤔'];
 
 export function ReflectionStage() {
-  const today = new Date().toISOString().split('T')[0];
+  // Get today's date in local timezone (not UTC)
+  const today = new Date().toLocaleDateString('en-CA'); // en-CA gives YYYY-MM-DD format
   const [currentDate, setCurrentDate] = useState(today); // Track which date is being viewed
   const [content, setContent] = useState('');
   const [selectedMood, setSelectedMood] = useState('');
@@ -58,6 +59,13 @@ export function ReflectionStage() {
 
   // Load reflection for current date
   useEffect(() => {
+    // Always calculate prompt based on date (don't use saved prompt)
+    const viewDate = new Date(currentDate + 'T00:00:00');
+    const yearStart = new Date(viewDate.getFullYear(), 0, 0);
+    const dayOfYear = Math.floor((viewDate.getTime() - yearStart.getTime()) / 86400000);
+    const promptIndex = dayOfYear % DAILY_PROMPTS.length;
+    setDailyPrompt(DAILY_PROMPTS[promptIndex]);
+
     loadReflection();
 
     async function loadReflection() {
@@ -72,7 +80,6 @@ export function ReflectionStage() {
             setContent(reflection.content || '');
             setSelectedMood(reflection.mood || '');
             setTags(reflection.tags || []);
-            setDailyPrompt(reflection.prompt || '');
             setLastSaved(reflection.updated_at ? new Date(reflection.updated_at) : null);
           } else {
             clearFields();
@@ -89,7 +96,6 @@ export function ReflectionStage() {
           setContent(reflection.content || '');
           setSelectedMood(reflection.mood || '');
           setTags(reflection.tags || []);
-          setDailyPrompt(reflection.prompt || '');
           setLastSaved(reflection.savedAt ? new Date(reflection.savedAt) : null);
         } else {
           clearFields();
@@ -102,13 +108,6 @@ export function ReflectionStage() {
       setSelectedMood('');
       setTags([]);
       setLastSaved(null);
-
-      // Set daily prompt if viewing today
-      if (currentDate === today) {
-        const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
-        const promptIndex = dayOfYear % DAILY_PROMPTS.length;
-        setDailyPrompt(DAILY_PROMPTS[promptIndex]);
-      }
     }
   }, [currentDate, today, isLoggedIn]);
 
@@ -268,7 +267,7 @@ export function ReflectionStage() {
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-medium text-foreground">
-                          {new Date(entry.date).toLocaleDateString('en-US', {
+                          {new Date(entry.date + 'T00:00:00').toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
                           })}
@@ -323,7 +322,7 @@ export function ReflectionStage() {
                 <div className="h-6 w-px bg-border" />
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-medium text-foreground">
-                    {new Date(currentDate).toLocaleDateString('en-US', {
+                    {new Date(currentDate + 'T00:00:00').toLocaleDateString('en-US', {
                       weekday: 'long',
                       month: 'long',
                       day: 'numeric',
