@@ -58,7 +58,7 @@ export default function LandingPage() {
 					<div className="text-center space-y-8">
 						<Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
 							<AnnouncementTag>Beta</AnnouncementTag>
-							<AnnouncementTitle>The first encyclopedia for living—now in public beta</AnnouncementTitle>
+							<AnnouncementTitle>The first encyclopedia for living—<br className="sm:hidden" />now in public beta</AnnouncementTitle>
 						</Announcement>
 
 						<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
