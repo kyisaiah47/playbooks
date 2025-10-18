@@ -28,7 +28,12 @@
       "Bash(git reset:*)",
       "Bash(git rm:*)",
       "Bash(killall:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(supabase db remote execute:*)",
+      "Bash(supabase db remote:*)",
+      "Bash(xargs cat:*)",
+      "Bash(npx tsx:*)",
+      "Bash(tee:*)"
     ],
     "deny": [],
     "ask": []
