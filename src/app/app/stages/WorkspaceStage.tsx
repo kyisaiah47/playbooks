@@ -48,9 +48,12 @@ interface Template {
   category: string;
 }
 
+const TEMPLATES_PER_LOAD = 50;
+
 export function WorkspaceStage() {
   const [selectedTemplate, setSelectedTemplate] = useState('wedding-planning');
   const [templates, setTemplates] = useState<Template[]>([]);
+  const [displayedTemplates, setDisplayedTemplates] = useState<Template[]>([]);
   const [templateInfo, setTemplateInfo] = useState<{ id: string; name: string } | null>(null);
   const [prompts, setPrompts] = useState<Prompt[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
@@ -63,6 +66,8 @@ export function WorkspaceStage() {
   const [loadingArticle, setLoadingArticle] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
   const [open, setOpen] = useState(false);
+  const [hasMoreTemplates, setHasMoreTemplates] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
@@ -179,13 +184,39 @@ export function WorkspaceStage() {
       try {
         const res = await fetch('/api/templates');
         const data = await res.json();
-        setTemplates(data.templates || []);
+        const allTemplates = data.templates || [];
+        setTemplates(allTemplates);
+
+        // Initially load first batch
+        setDisplayedTemplates(allTemplates.slice(0, TEMPLATES_PER_LOAD));
+        setHasMoreTemplates(allTemplates.length > TEMPLATES_PER_LOAD);
       } catch (error) {
         console.error('Error fetching templates:', error);
       }
     }
     fetchTemplates();
   }, []);
+
+  // Load more templates
+  const loadMoreTemplates = () => {
+    if (!hasMoreTemplates) return;
+
+    const currentLength = displayedTemplates.length;
+    const nextBatch = templates.slice(currentLength, currentLength + TEMPLATES_PER_LOAD);
+
+    if (nextBatch.length > 0) {
+      setDisplayedTemplates(prev => [...prev, ...nextBatch]);
+      setHasMoreTemplates(currentLength + nextBatch.length < templates.length);
+    }
+  };
+
+  // Filter templates based on search
+  const filteredTemplates = searchQuery.trim()
+    ? templates.filter(t =>
+        t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t.category.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : displayedTemplates;
 
   // Fetch prompts and articles when template changes
   useEffect(() => {
@@ -280,6 +311,7 @@ export function WorkspaceStage() {
     setSelectedTemplate(newTemplateId);
     setSelectedPromptId(null);
     setPromptResponse('');
+    setSearchQuery('');
     setOpen(false);
   };
 
@@ -386,7 +418,15 @@ export function WorkspaceStage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               {/* Template Selector */}
-              <Popover open={open} onOpenChange={setOpen}>
+              <Popover
+                open={open}
+                onOpenChange={(isOpen) => {
+                  setOpen(isOpen);
+                  if (!isOpen) {
+                    setSearchQuery('');
+                  }
+                }}
+              >
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
@@ -402,11 +442,25 @@ export function WorkspaceStage() {
                 </PopoverTrigger>
                 <PopoverContent className="w-[350px] p-0">
                   <Command>
-                    <CommandInput placeholder="Search templates..." />
-                    <CommandList>
+                    <CommandInput
+                      placeholder="Search templates..."
+                      value={searchQuery}
+                      onValueChange={setSearchQuery}
+                    />
+                    <CommandList
+                      onScroll={(e) => {
+                        const target = e.target as HTMLElement;
+                        const scrollPercentage = (target.scrollTop + target.clientHeight) / target.scrollHeight;
+
+                        // Load more when scrolled 80% down
+                        if (scrollPercentage > 0.8 && !searchQuery.trim()) {
+                          loadMoreTemplates();
+                        }
+                      }}
+                    >
                       <CommandEmpty>No template found.</CommandEmpty>
                       <CommandGroup>
-                        {templates.map((template) => (
+                        {filteredTemplates.map((template) => (
                           <CommandItem
                             key={template.id}
                             value={template.name}
@@ -422,6 +476,11 @@ export function WorkspaceStage() {
                             {template.name}
                           </CommandItem>
                         ))}
+                        {!searchQuery.trim() && hasMoreTemplates && (
+                          <div className="py-2 text-center text-xs text-muted-foreground">
+                            Scroll for more...
+                          </div>
+                        )}
                       </CommandGroup>
                     </CommandList>
                   </Command>
