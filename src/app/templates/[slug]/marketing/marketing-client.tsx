@@ -11,17 +11,12 @@ import { Separator } from '@/components/ui/separator';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import {
   ArrowRight,
-  Sparkles,
   FileText,
-  Zap,
   ChevronRight,
-  Layout,
   BookOpen,
-  MessageSquare,
-  Crown,
-  TrendingUp,
-  Timer,
-  Target
+  Globe,
+  CheckCircle2,
+  Zap
 } from 'lucide-react';
 import { SubtleGlow } from '@/components/ui/glow-variants';
 import { Announcement, AnnouncementTag, AnnouncementTitle } from '@/components/ui/announcement';
@@ -407,134 +402,106 @@ export default function MarketingClient({ params }: MarketingClientProps) {
           </div>
         </section>
 
-        {/* What is Templata Section */}
-        <section className="py-24 border-t bg-muted/10">
+        {/* What It Is - Split-Screen Workspace */}
+        <section className="py-24 md:py-32">
           <div className="container mx-auto max-w-7xl px-4">
-            <div className="text-center space-y-8 mb-16">
-              <Badge variant="outline" className="px-4 py-2">
-                <Sparkles className="mr-2 h-4 w-4" />
-                Powered by Templata
-              </Badge>
-
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight max-w-3xl mx-auto">
-                AI-powered workspaces for
-                <br />
-                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  life's biggest moments
-                </span>
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold">
+                Wikipedia meets Notion for life planning
               </h2>
-
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Templata combines 15,000+ action prompts and 26,000+ expert articles with intelligent workspaces to guide you through any life decision.
+                Our split-screen interface combines guided prompts, a structured workspace, and an encyclopedia of knowledge.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <MessageSquare className="h-6 w-6 text-primary" />
+            {/* Split-Screen Visual */}
+            <Card className="p-8 max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Prompts Column */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 font-semibold mb-4">
+                    <FileText className="h-5 w-5 text-primary" />
+                    <span>Guided Prompts</span>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">15,000+ Action Prompts</h3>
-                  <CardDescription>
-                    Tactical, practical prompts that drive decision-making. Categorized by planning phases and organized for maximum impact.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+                  <div className="space-y-2">
+                    <div className="p-3 bg-muted rounded text-sm">What's your venue budget?</div>
+                    <div className="p-3 bg-muted rounded text-sm">Expected guest count?</div>
+                    <div className="p-3 bg-primary/10 rounded text-primary border border-primary/20 text-sm">→ Who are must-have vendors?</div>
+                  </div>
+                </div>
 
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center mb-4">
-                    <BookOpen className="h-6 w-6 text-green-600 dark:text-green-400" />
+                {/* Workspace Column */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 font-semibold mb-4">
+                    <BookOpen className="h-5 w-5 text-primary" />
+                    <span>Your Workspace</span>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">26,000+ Expert Articles</h3>
-                  <CardDescription>
-                    In-depth guidance and insights for every situation. Contextually relevant to your current prompts and decisions.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+                  <div className="p-4 bg-background rounded border min-h-[160px] text-sm text-muted-foreground">
+                    <div className="space-y-2">
+                      <p>Photographer - top priority</p>
+                      <p>Videographer - nice to have</p>
+                      <p>Florist - DIY option possible</p>
+                    </div>
+                  </div>
+                </div>
 
-              <Card className="border-0 shadow-lg">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center mb-4">
-                    <Layout className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                {/* Articles Column */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 font-semibold mb-4">
+                    <Globe className="h-5 w-5 text-primary" />
+                    <span>Knowledge Base</span>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Split-Screen Interface</h3>
-                  <CardDescription>
-                    Prompts on the left, articles on the right. Drag insights directly into your answers without losing momentum.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </div>
+                  <div className="space-y-2">
+                    <div className="p-3 bg-primary/5 rounded cursor-pointer hover:bg-primary/10 transition-colors text-sm">
+                      <div className="font-medium mb-1">Vendor Cost Breakdown</div>
+                      <div className="text-xs text-muted-foreground">Average costs by category...</div>
+                    </div>
+                    <div className="p-3 bg-primary/5 rounded cursor-pointer hover:bg-primary/10 transition-colors text-sm">
+                      <div className="font-medium mb-1">Contract Checklist</div>
+                      <div className="text-xs text-muted-foreground">What to look for...</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t mt-8 pt-6 space-y-3">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                  <span>15,000+ categorized prompts ensure you consider everything</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                  <span>26,000+ articles like Wikipedia for life decisions</span>
+                </div>
+              </div>
+            </Card>
           </div>
         </section>
 
-        {/* Workspace Evolution Section */}
-        <section className="py-24 bg-muted/20">
-          <div className="container mx-auto max-w-7xl px-4">
-            <div className="text-center space-y-8 max-w-4xl mx-auto">
-              <Badge variant="outline" className="px-4 py-2">
-                <TrendingUp className="mr-2 h-4 w-4" />
-                Complete Evolution
-              </Badge>
+        {/* Numbers */}
+        <section className="py-24 md:py-32 bg-muted/30">
+          <div className="container mx-auto max-w-5xl px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Built for every life moment</h2>
+              <p className="text-lg text-muted-foreground">Comprehensive, structured, and completely free</p>
+            </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                From guided templates to
-                <br />
-                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  life mastery
-                </span>
-              </h2>
-
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Learn structure, then graduate to complete autonomy. Our three progressive workspace modes take you from guided learning to mastering your own life operating system.
-              </p>
-
-              <div className="relative pt-8">
-                {/* Workspace Cards */}
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="relative text-center space-y-4">
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold text-sm">
-                      1
-                    </div>
-                    <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6">
-                      <Layout className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                    </div>
-                    <h3 className="text-xl font-semibold">Template Workspace</h3>
-                    <p className="text-sm font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wide">Start Here</p>
-                    <p className="text-muted-foreground">
-                      Split-screen guided experience with prompts and contextual articles. Learn structure first.
-                    </p>
-                  </div>
-
-                  <div className="relative text-center space-y-4">
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-purple-600 dark:bg-purple-500 flex items-center justify-center text-white font-bold text-sm">
-                      2
-                    </div>
-                    <div className="w-16 h-16 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6">
-                      <Timer className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-                    </div>
-                    <h3 className="text-xl font-semibold">Reflection Workspace</h3>
-                    <p className="text-sm font-medium text-purple-600 dark:text-purple-400 uppercase tracking-wide">Then Process</p>
-                    <p className="text-muted-foreground">
-                      Daily fullscreen immersion for processing your journey. Pause and think deeply about progress.
-                    </p>
-                  </div>
-
-                  <div className="relative text-center space-y-4">
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold text-sm">
-                      3
-                    </div>
-                    <div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mx-auto mt-6">
-                      <Crown className="h-8 w-8 text-green-600 dark:text-green-400" />
-                    </div>
-                    <h3 className="text-xl font-semibold">Life OS</h3>
-                    <p className="text-sm font-medium text-green-600 dark:text-green-400 uppercase tracking-wide">Finally Master</p>
-                    <p className="text-muted-foreground">
-                      Unified life OS combining all your template work. Like Notion, but built from your foundation.
-                    </p>
-                  </div>
-                </div>
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-5xl font-bold mb-2">1,298</div>
+                <p className="text-muted-foreground">Guided Workspaces</p>
+              </div>
+              <div className="text-center">
+                <div className="text-5xl font-bold mb-2">15k+</div>
+                <p className="text-muted-foreground">Action Prompts</p>
+              </div>
+              <div className="text-center">
+                <div className="text-5xl font-bold mb-2">26k+</div>
+                <p className="text-muted-foreground">Expert Articles</p>
+              </div>
+              <div className="text-center">
+                <div className="text-5xl font-bold mb-2">Free</div>
+                <p className="text-muted-foreground">No Paywalls</p>
               </div>
             </div>
           </div>
@@ -684,42 +651,38 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         </section>
 
         {/* Final CTA Section */}
-        <section className="py-24 bg-black text-white">
-          <div className="container mx-auto max-w-7xl px-4">
-            <div className="text-center space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Ready to organize your {templateData.title.toLowerCase()}?
-              </h2>
-              <p className="text-xl opacity-90 max-w-2xl mx-auto">
-                Get started with this template in Life OS. Answer prompts, read articles, and build your plan.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  size="lg"
-                  className="bg-white text-black hover:bg-white/90"
-                  onClick={handleOpenInWorkspace}
-                >
-                  <Zap className="mr-2 h-5 w-5" />
-                  Open in Life OS
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10"
-                  onClick={() => {
-                    const event = new KeyboardEvent('keydown', {
-                      key: 'k',
-                      metaKey: true,
-                      bubbles: true
-                    });
-                    document.dispatchEvent(event);
-                  }}
-                >
-                  Browse All Templates
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
+        <section className="py-24 md:py-32">
+          <div className="container mx-auto max-w-3xl px-4 text-center space-y-8">
+            <h2 className="text-3xl md:text-5xl font-bold">
+              Ready to organize your {templateData.title.toLowerCase()}?
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Start with this template. Everything is free—no credit card required.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                size="lg"
+                className="h-12 px-8 text-base"
+                onClick={handleOpenInWorkspace}
+              >
+                Start This Template
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-12 px-8 text-base"
+                onClick={() => {
+                  const event = new KeyboardEvent('keydown', {
+                    key: 'k',
+                    metaKey: true,
+                    bubbles: true
+                  });
+                  document.dispatchEvent(event);
+                }}
+              >
+                Browse All Templates
+              </Button>
             </div>
           </div>
         </section>
