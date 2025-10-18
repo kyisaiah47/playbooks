@@ -85,6 +85,12 @@ export function Footer() {
 						>
 							Terms
 						</Link>
+						<Link
+							href="/changelog"
+							className="hover:text-foreground transition-colors"
+						>
+							Changelog
+						</Link>
 					</div>
 				</div>
 			</div>
