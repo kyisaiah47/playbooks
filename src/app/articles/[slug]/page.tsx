@@ -13,7 +13,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const blogPost = await getArticleBySlug(slug);
 
   // Get template name if article has a template
-  const templateInfo = blogPost?.template ? getTemplateById(blogPost.template) : null;
+  const templateInfo = blogPost?.template ? await getTemplateById(blogPost.template) : null;
 
   // Get related posts with multiple fallback strategies
   let relatedPosts = [];
