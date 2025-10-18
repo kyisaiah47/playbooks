@@ -175,10 +175,10 @@ export function Header() {
 
 									<div className="mt-6 pt-6 border-t space-y-4">
 										<div className="px-3">
-											<div className="text-sm font-medium mb-3">
-												Theme
+											<div className="flex items-center gap-2">
+												<span className="text-sm font-medium">Theme</span>
+												<ThemeSelector />
 											</div>
-											<ThemeSelector />
 										</div>
 
 										{isLoggedIn && (
