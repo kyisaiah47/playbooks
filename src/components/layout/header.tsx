@@ -155,7 +155,7 @@ export function Header() {
 									<SheetHeader>
 										<SheetTitle>Menu</SheetTitle>
 									</SheetHeader>
-									<div className="flex flex-col space-y-4 mt-8">
+									<div className="flex flex-col space-y-4 mt-8 ml-4">
 										<Link
 											href="/templates"
 											className="text-lg font-medium hover:text-primary transition-colors"
