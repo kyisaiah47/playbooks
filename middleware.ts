@@ -5,8 +5,8 @@ export function middleware(request: NextRequest) {
   const sessionCookie = request.cookies.get('session');
   const { pathname } = request.nextUrl;
 
-  // Protect /app routes
-  if (pathname.startsWith('/app')) {
+  // Protect /app/settings only (allow /app to be accessed anonymously as demo)
+  if (pathname.startsWith('/app/settings')) {
     if (!sessionCookie) {
       // Redirect to login if no session
       const loginUrl = new URL('/login', request.url);
@@ -35,7 +35,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/app',
-    '/app/:path*',
+    '/app/settings',
+    '/app/settings/:path*',
   ],
 };
