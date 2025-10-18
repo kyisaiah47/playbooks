@@ -134,7 +134,7 @@ export default function PrivacyPage() {
               If you have any questions about this Privacy Policy or our data practices, please contact us at:
             </p>
             <p className="mb-4">
-              Email: privacy@templata.com
+              Email: templata.app@gmail.com
             </p>
           </section>
         </div>

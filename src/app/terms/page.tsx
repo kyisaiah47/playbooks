@@ -168,7 +168,7 @@ export default function TermsPage() {
               If you have any questions about these Terms of Service, please contact us at:
             </p>
             <p className="mb-4">
-              Email: legal@templata.com
+              Email: templata.app@gmail.com
             </p>
           </section>
         </div>
