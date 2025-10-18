@@ -1,24 +1,19 @@
 'use client';
 
 import { use, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { TemplateRegistryEntry } from '@/registry/templates';
 import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import {
-  ArrowRight,
   FileText,
   ChevronRight,
   BookOpen,
   Globe,
-  CheckCircle2,
-  Zap
+  CheckCircle2
 } from 'lucide-react';
-import { SubtleGlow } from '@/components/ui/glow-variants';
 import { Announcement, AnnouncementTag, AnnouncementTitle } from '@/components/ui/announcement';
 
 interface MarketingClientProps {
@@ -41,7 +36,6 @@ interface Article {
 }
 
 export default function MarketingClient({ params }: MarketingClientProps) {
-  const router = useRouter();
   const { slug } = use(params);
 
   const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
@@ -112,17 +106,6 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   }
 
   const templateData = template.template;
-
-  const handleOpenInWorkspace = () => {
-    // Store template context for workspace
-    sessionStorage.setItem('workspace-template-context', JSON.stringify({
-      templateId: slug,
-      templateName: templateData.title
-    }));
-
-    // Navigate to workspace
-    router.push('/workspace');
-  };
 
   const toggleCategory = (category: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -369,35 +352,6 @@ export default function MarketingClient({ params }: MarketingClientProps) {
               <p className="mx-auto max-w-2xl text-xl text-white">
                 {templateData.description}
               </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <SubtleGlow>
-                  <Button
-                    size="lg"
-                    onClick={handleOpenInWorkspace}
-                    className="h-12 px-8 text-base bg-white text-black hover:bg-white/90"
-                  >
-                    <Zap className="mr-2 h-5 w-5" />
-                    Open in Life OS
-                  </Button>
-                </SubtleGlow>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="h-12 px-8 text-base border-white/30 text-white hover:bg-white/10"
-                  onClick={() => {
-                    const event = new KeyboardEvent('keydown', {
-                      key: 'k',
-                      metaKey: true,
-                      bubbles: true
-                    });
-                    document.dispatchEvent(event);
-                  }}
-                >
-                  Browse All Templates
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
             </div>
           </div>
         </section>
@@ -659,31 +613,6 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             <p className="text-xl text-muted-foreground">
               Start with this template. Everything is free—no credit card required.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                size="lg"
-                className="h-12 px-8 text-base"
-                onClick={handleOpenInWorkspace}
-              >
-                Start This Template
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12 px-8 text-base"
-                onClick={() => {
-                  const event = new KeyboardEvent('keydown', {
-                    key: 'k',
-                    metaKey: true,
-                    bubbles: true
-                  });
-                  document.dispatchEvent(event);
-                }}
-              >
-                Browse All Templates
-              </Button>
-            </div>
           </div>
         </section>
 
