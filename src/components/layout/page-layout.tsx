@@ -1,11 +1,14 @@
 "use client"
 
+import { useEffect } from "react";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 
 interface PageLayoutProps {
 	children: React.ReactNode;
@@ -21,6 +24,28 @@ export function PageLayout({
 	includeHeaderPadding = true
 }: PageLayoutProps) {
 	const { isLoggedIn } = useAuth();
+
+	// Initialize Lenis smooth scrolling site-wide
+	useEffect(() => {
+		const lenis = new Lenis({
+			duration: 1.2,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+			orientation: 'vertical',
+			smoothWheel: true,
+			wheelMultiplier: 1,
+			touchMultiplier: 2,
+		});
+
+		function raf(time: number) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
 
 	return (
 		<div className="min-h-screen bg-transparent">

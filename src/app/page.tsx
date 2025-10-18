@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import { useAuth } from "@/contexts/auth-context";
 import { motion } from "framer-motion";
-import Lenis from "lenis";
-import "lenis/dist/lenis.css";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Announcement, AnnouncementTag, AnnouncementTitle } from "@/components/ui/announcement";
@@ -22,28 +19,6 @@ import { Typewriter } from "@/components/ui/typewriter";
 
 export default function LandingPage() {
 	const { isLoggedIn } = useAuth();
-
-	useEffect(() => {
-		// Initialize Lenis for smooth scrolling
-		const lenis = new Lenis({
-			duration: 1.2,
-			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-			orientation: 'vertical',
-			smoothWheel: true,
-			wheelMultiplier: 1,
-			touchMultiplier: 2,
-		});
-
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
-
-		return () => {
-			lenis.destroy();
-		};
-	}, []);
 
 	const jsonLd = {
 		'@context': 'https://schema.org',

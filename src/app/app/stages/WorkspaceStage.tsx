@@ -18,8 +18,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from '@/components/ui/command';
-import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle } from 'lucide-react';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star } from 'lucide-react';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
 import Link from 'next/link';
 
@@ -49,6 +50,14 @@ interface Template {
 }
 
 const TEMPLATES_PER_LOAD = 50;
+
+// Featured templates for demo mode
+const FEATURED_TEMPLATE_IDS = [
+  'wedding-planning',
+  'job-search',
+  'home-buying',
+  'business-launch',
+];
 
 export function WorkspaceStage() {
   const [selectedTemplate, setSelectedTemplate] = useState('wedding-planning');
@@ -219,6 +228,16 @@ export function WorkspaceStage() {
         t.category.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : displayedTemplates;
+
+  // Split into featured and regular templates (only when no search)
+  // Always pull featured from full templates array to ensure they're included
+  const showFeatured = !searchQuery.trim();
+  const featuredTemplates = showFeatured
+    ? templates.filter(t => FEATURED_TEMPLATE_IDS.includes(t.id))
+    : [];
+  const regularTemplates = showFeatured
+    ? filteredTemplates.filter(t => !FEATURED_TEMPLATE_IDS.includes(t.id))
+    : filteredTemplates;
 
   // Fetch prompts and articles when template changes
   useEffect(() => {
@@ -461,8 +480,35 @@ export function WorkspaceStage() {
                       }}
                     >
                       <CommandEmpty>No template found.</CommandEmpty>
-                      <CommandGroup>
-                        {filteredTemplates.map((template) => (
+
+                      {/* Featured Templates */}
+                      {showFeatured && featuredTemplates.length > 0 && (
+                        <>
+                          <CommandGroup heading="Featured">
+                            {featuredTemplates.map((template) => (
+                              <CommandItem
+                                key={template.id}
+                                value={template.name}
+                                onSelect={() => {
+                                  handleTemplateChange(template.id);
+                                }}
+                              >
+                                <Check
+                                  className={`mr-2 h-4 w-4 ${
+                                    selectedTemplate === template.id ? "opacity-100" : "opacity-0"
+                                  }`}
+                                />
+                                {template.name}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                          <CommandSeparator />
+                        </>
+                      )}
+
+                      {/* All Templates */}
+                      <CommandGroup heading={showFeatured ? "All Templates" : undefined}>
+                        {regularTemplates.map((template) => (
                           <CommandItem
                             key={template.id}
                             value={template.name}

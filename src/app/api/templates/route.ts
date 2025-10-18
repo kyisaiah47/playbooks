@@ -18,7 +18,7 @@ export async function GET(request: Request) {
     let query = supabase
       .from('templata_templates')
       .select('*')
-      .limit(2000); // Explicitly set limit to get all templates (we have ~1,298)
+      .range(0, 2999); // Use range to bypass Supabase's default 1000-row limit
 
     // Filter by category
     if (category && category !== 'all') {
