@@ -184,7 +184,9 @@ export function WorkspaceStage() {
       try {
         const res = await fetch('/api/templates');
         const data = await res.json();
-        const allTemplates = data.templates || [];
+        const allTemplates = (data.templates || []).sort((a: Template, b: Template) =>
+          a.name.localeCompare(b.name)
+        );
         setTemplates(allTemplates);
 
         // Initially load first batch
