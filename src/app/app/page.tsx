@@ -165,31 +165,14 @@ export default function StudioPage() {
         </div>
       </div>
 
-      {/* Dismissible Welcome Banner */}
-      {showOnboarding && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="border-b bg-primary/5 border-primary/20"
-        >
-          <div className="container mx-auto max-w-7xl px-4 py-3">
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-sm text-foreground">
-                <span className="font-semibold">Welcome to Templata!</span> Choose <span className="font-medium">Templates</span> to start a guided workspace, <span className="font-medium">Reflection</span> for daily journaling, or <span className="font-medium">Overview</span> to see your progress.
-              </p>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleCloseOnboarding}
-                className="flex-shrink-0"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </motion.div>
-      )}
+      {/* Info Banner */}
+      <div className="border-b bg-primary/5 border-primary/20">
+        <div className="container mx-auto max-w-7xl px-4 py-3">
+          <p className="text-sm text-foreground text-center">
+            Pick a template that fits your goal → Answer thoughtful prompts → Read curated articles for help → See everything you've written in Overview.
+          </p>
+        </div>
+      </div>
 
       {/* View Viewport with transitions */}
       <div className="flex-1 overflow-hidden relative bg-background">
