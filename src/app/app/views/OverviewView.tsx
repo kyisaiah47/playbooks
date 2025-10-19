@@ -486,11 +486,15 @@ export function OverviewView() {
     let pageNum = 1;
 
     // Header with logo and title
-    doc.setFontSize(24);
+    doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(79, 70, 229); // Primary color
-    doc.text('Templata', margin, yPosition);
-    yPosition += 8;
+    doc.setTextColor(0, 0, 0);
+    doc.text('Templata', margin + 8, yPosition);
+
+    // Add logo (simple black square as placeholder - representing the favicon)
+    doc.setFillColor(0, 0, 0);
+    doc.rect(margin, yPosition - 4, 5, 5, 'F');
+    yPosition += 6;
 
     // Subtitle
     doc.setFontSize(10);
@@ -531,7 +535,7 @@ export function OverviewView() {
       // Question number and category badge
       doc.setFontSize(9);
       doc.setFont('helvetica', 'bold');
-      doc.setTextColor(79, 70, 229);
+      doc.setTextColor(0, 0, 0);
       doc.text(`Q${index + 1}`, margin, yPosition);
 
       doc.setFont('helvetica', 'normal');
@@ -618,11 +622,15 @@ export function OverviewView() {
     let pageNum = 1;
 
     // Header with logo and title
-    doc.setFontSize(24);
+    doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(79, 70, 229); // Primary color
-    doc.text('Templata', margin, yPosition);
-    yPosition += 8;
+    doc.setTextColor(0, 0, 0);
+    doc.text('Templata', margin + 8, yPosition);
+
+    // Add logo (simple black square as placeholder - representing the favicon)
+    doc.setFillColor(0, 0, 0);
+    doc.rect(margin, yPosition - 4, 5, 5, 'F');
+    yPosition += 6;
 
     // Subtitle
     doc.setFontSize(10);
@@ -659,7 +667,7 @@ export function OverviewView() {
         yPosition = margin;
       }
 
-      // Date and mood
+      // Date (without emoji - jsPDF can't render emojis properly)
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(0, 0, 0);
@@ -669,7 +677,14 @@ export function OverviewView() {
         day: 'numeric',
         year: 'numeric',
       });
-      doc.text(`${date}${reflection.mood ? ' ' + reflection.mood : ''}`, margin, yPosition);
+      doc.text(date, margin, yPosition);
+
+      // Mood as text (if present)
+      if (reflection.mood) {
+        doc.setFontSize(10);
+        doc.setTextColor(128, 128, 128);
+        doc.text(`Mood: ${reflection.mood}`, margin, yPosition + 6);
+      }
       yPosition += 10;
 
       // Prompt
@@ -694,7 +709,7 @@ export function OverviewView() {
       if (reflection.tags.length > 0) {
         doc.setFontSize(9);
         doc.setFont('helvetica', 'normal');
-        doc.setTextColor(79, 70, 229);
+        doc.setTextColor(100, 100, 100);
         doc.text(`Tags: ${reflection.tags.join(' · ')}`, margin, yPosition);
         yPosition += 10;
       }

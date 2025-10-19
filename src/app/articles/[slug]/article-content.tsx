@@ -79,7 +79,7 @@ export function ArticleContent({ content, searchQuery = '' }: ArticleContentProp
                   highlighted.push(str.slice(lastIndex, searchMatch.index));
                 }
                 highlighted.push(
-                  <mark key={`${keyPrefix}-search-${searchMatch.index}`} className="bg-yellow-200 dark:bg-yellow-500/40 text-foreground rounded px-0.5">
+                  <mark key={`${keyPrefix}-search-${searchMatch.index}`} className="bg-yellow-500/20 dark:bg-yellow-500/40 text-foreground rounded px-0.5">
                     {searchMatch[0]}
                   </mark>
                 );
