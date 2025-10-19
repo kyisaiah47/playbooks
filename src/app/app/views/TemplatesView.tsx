@@ -61,16 +61,21 @@ interface Template {
 const TEMPLATES_PER_LOAD = 50;
 
 // Featured templates for demo mode
-const FEATURED_TEMPLATE_IDS = [
+const FEATURED_GENERAL_IDS = [
   'wedding-planning',
   'job-search',
   'home-buying',
   'business-launch',
+];
+
+const FEATURED_GENZ_IDS = [
   'college-planning',
   'first-job-transition',
   'first-apartment-independence',
   'content-creator-career',
 ];
+
+const FEATURED_TEMPLATE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS];
 
 interface TemplatesViewProps {
   onViewChange?: (view: 'templates' | 'reflection' | 'overview') => void;
@@ -308,8 +313,11 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
   // Split into featured and regular templates (only when no search)
   // Always pull featured from full templates array to ensure they're included
   const showFeatured = !searchQuery.trim();
-  const featuredTemplates = showFeatured
-    ? templates.filter(t => FEATURED_TEMPLATE_IDS.includes(t.id))
+  const featuredGeneralTemplates = showFeatured
+    ? templates.filter(t => FEATURED_GENERAL_IDS.includes(t.id))
+    : [];
+  const featuredGenZTemplates = showFeatured
+    ? templates.filter(t => FEATURED_GENZ_IDS.includes(t.id))
     : [];
   const regularTemplates = showFeatured
     ? filteredTemplates.filter(t => !FEATURED_TEMPLATE_IDS.includes(t.id))
@@ -563,11 +571,36 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
                     >
                       <CommandEmpty>No template found.</CommandEmpty>
 
-                      {/* Featured Templates */}
-                      {showFeatured && featuredTemplates.length > 0 && (
+                      {/* Featured Templates - General */}
+                      {showFeatured && featuredGeneralTemplates.length > 0 && (
                         <>
-                          <CommandGroup heading="Featured">
-                            {featuredTemplates.map((template) => (
+                          <CommandGroup heading="Featured - General">
+                            {featuredGeneralTemplates.map((template) => (
+                              <CommandItem
+                                key={template.id}
+                                value={template.name}
+                                onSelect={() => {
+                                  handleTemplateChange(template.id);
+                                }}
+                              >
+                                <Check
+                                  className={`mr-2 h-4 w-4 ${
+                                    selectedTemplate === template.id ? "opacity-100" : "opacity-0"
+                                  }`}
+                                />
+                                {template.name}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                          <CommandSeparator />
+                        </>
+                      )}
+
+                      {/* Featured Templates - Gen Z */}
+                      {showFeatured && featuredGenZTemplates.length > 0 && (
+                        <>
+                          <CommandGroup heading="Featured - Gen Z">
+                            {featuredGenZTemplates.map((template) => (
                               <CommandItem
                                 key={template.id}
                                 value={template.name}
