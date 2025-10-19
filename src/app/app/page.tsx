@@ -238,7 +238,7 @@ export default function StudioPage() {
       </div>
 
       {/* View Viewport with transitions */}
-      <div className="flex-1 overflow-y-auto relative bg-background">
+      <div className="flex-1 overflow-hidden relative bg-background">
         <motion.div
           initial={{ opacity: 1, y: 0 }}
           animate={{
