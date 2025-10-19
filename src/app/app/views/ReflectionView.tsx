@@ -372,7 +372,7 @@ export function ReflectionView({ onViewChange }: ReflectionViewProps = {}) {
               </div>
 
               <div className="flex items-center gap-2 md:gap-3">
-                <div className="hidden lg:block text-xs text-muted-foreground max-w-xs text-right">
+                <div className="hidden lg:block text-xs text-muted-foreground max-w-xs">
                   <p>This isn't graded - reflect at your own pace.</p>
                   <p>
                     See all your reflections in the{' '}
