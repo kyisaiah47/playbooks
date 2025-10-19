@@ -83,6 +83,15 @@ export function OverviewView() {
     }
   }, [isLoggedIn]);
 
+  // Check if we should navigate to responses tab
+  useEffect(() => {
+    const targetTab = sessionStorage.getItem('overview-tab');
+    if (targetTab === 'responses') {
+      setView('responses');
+      sessionStorage.removeItem('overview-tab');
+    }
+  }, []);
+
   const loadResponses = async () => {
     try {
       const responsesMap = new Map<string, TemplateResponses>();

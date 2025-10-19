@@ -574,7 +574,10 @@ export function TemplatesView({ onViewChange }: TemplatesViewProps) {
                 <p>
                   See all your answered prompts in the{' '}
                   <button
-                    onClick={() => onViewChange?.('overview')}
+                    onClick={() => {
+                      sessionStorage.setItem('overview-tab', 'responses');
+                      onViewChange?.('overview');
+                    }}
                     className="text-primary hover:underline"
                   >
                     Overview
