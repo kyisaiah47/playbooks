@@ -176,60 +176,44 @@ export default function StudioPage() {
       <div className="border-b bg-primary/5 border-primary/20">
         <div className="container mx-auto max-w-7xl px-4 py-3">
           <p className="text-sm text-foreground text-center">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">1</span>
-              Pick a{' '}
-              <button
-                onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
-                  setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
-                }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                template
-              </button>{' '}
-              that fits your goal
-            </span>
+            Pick a{' '}
+            <button
+              onClick={() => {
+                if (currentView !== 'templates') handleViewChange('templates');
+                setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
+              }}
+              className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+            >
+              template
+            </button>{' '}
+            that fits your goal → Answer thoughtful{' '}
+            <button
+              onClick={() => {
+                if (currentView !== 'templates') handleViewChange('templates');
+                setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
+              }}
+              className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+            >
+              prompts
+            </button>
             {' → '}
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">2</span>
-              Answer thoughtful{' '}
-              <button
-                onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
-                  setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
-                }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                prompts
-              </button>
-            </span>
-            {' → '}
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
-              Read curated{' '}
-              <button
-                onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
-                  setTimeout(() => templatesActions.openFirstArticle?.(), 100);
-                }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                articles
-              </button>{' '}
-              for help
-            </span>
-            {' → '}
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
-              See everything you've written in{' '}
-              <button
-                onClick={() => handleViewChange('overview')}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                Overview
-              </button>
-            </span>.
+            Read curated{' '}
+            <button
+              onClick={() => {
+                if (currentView !== 'templates') handleViewChange('templates');
+                setTimeout(() => templatesActions.openFirstArticle?.(), 100);
+              }}
+              className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+            >
+              articles
+            </button>{' '}
+            for help → See everything you've written in{' '}
+            <button
+              onClick={() => handleViewChange('overview')}
+              className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+            >
+              Overview
+            </button>.
           </p>
         </div>
       </div>
