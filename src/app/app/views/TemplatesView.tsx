@@ -21,7 +21,7 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command';
-import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu } from 'lucide-react';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu, Search } from 'lucide-react';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
 import Link from 'next/link';
 import {
@@ -114,6 +114,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
   const [searchQuery, setSearchQuery] = useState('');
   const [promptSearchQuery, setPromptSearchQuery] = useState('');
   const [articleSearchQuery, setArticleSearchQuery] = useState('');
+  const [articleContentSearchQuery, setArticleContentSearchQuery] = useState('');
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
@@ -454,6 +455,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
 
   const handleCloseArticle = () => {
     setSelectedArticle(null);
+    setArticleContentSearchQuery(''); // Clear search when closing article
   };
 
   const toggleCategory = (category: string) => {
@@ -936,23 +938,30 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={handleCloseArticle}
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      <ArrowLeft className="h-4 w-4 mr-2" />
-                      Back to articles
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={handleCloseArticle}
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={handleCloseArticle}
+                        className="text-muted-foreground hover:text-foreground"
+                      >
+                        <ArrowLeft className="h-4 w-4 mr-2" />
+                        Back to articles
+                      </Button>
+                    </div>
+
+                    {/* Floating search bar */}
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                      <Input
+                        type="text"
+                        placeholder="Search in article..."
+                        value={articleContentSearchQuery}
+                        onChange={(e) => setArticleContentSearchQuery(e.target.value)}
+                        className="h-9 text-sm pl-9"
+                      />
+                    </div>
                   </div>
 
                   {loadingArticle ? (
@@ -974,7 +983,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
                         </div>
                       </header>
 
-                      <ArticleContent content={selectedArticle.content} />
+                      <ArticleContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
                     </div>
                   )}
                 </motion.div>
@@ -1052,7 +1061,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
         <Drawer open={!!selectedArticle} onOpenChange={(open) => !open && handleCloseArticle()}>
           <DrawerContent className="max-h-[90vh]">
             <DrawerHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-3">
                 <DrawerTitle className="text-left">{selectedArticle.title}</DrawerTitle>
                 <Button
                   variant="ghost"
@@ -1062,10 +1071,21 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
                   <X className="h-4 w-4" />
                 </Button>
               </div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
+              <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                 <span>{selectedArticle.author}</span>
                 <span>•</span>
                 <span>{selectedArticle.readTime}</span>
+              </div>
+              {/* Search bar for mobile */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                <Input
+                  type="text"
+                  placeholder="Search in article..."
+                  value={articleContentSearchQuery}
+                  onChange={(e) => setArticleContentSearchQuery(e.target.value)}
+                  className="h-9 text-sm pl-9"
+                />
               </div>
             </DrawerHeader>
             <div className="flex-1 overflow-y-auto px-4 pb-4">
@@ -1074,7 +1094,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
                   <p className="text-muted-foreground">Loading article...</p>
                 </div>
               ) : (
-                <ArticleContent content={selectedArticle.content} />
+                <ArticleContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
               )}
             </div>
           </DrawerContent>

@@ -7,9 +7,10 @@ import { Highlighter } from "@/components/ui/highlighter";
 
 interface ArticleContentProps {
   content: string;
+  searchQuery?: string;
 }
 
-export function ArticleContent({ content }: ArticleContentProps) {
+export function ArticleContent({ content, searchQuery = '' }: ArticleContentProps) {
   // Normalize line breaks and split content
   // Handle both \n\n and \n as paragraph separators
   const normalizedContent = content.replace(/\n\n+/g, '\n\n'); // Normalize multiple newlines to double
@@ -58,19 +59,53 @@ export function ArticleContent({ content }: ArticleContentProps) {
             const parts: (string | React.JSX.Element)[] = [];
             let currentIndex = 0;
 
+            // Helper function to highlight search query in text
+            const highlightSearchQuery = (str: string, keyPrefix: string | number = '') => {
+              if (!searchQuery.trim() || searchQuery.length < 2) return str;
+
+              const searchLower = searchQuery.toLowerCase();
+              const regex = new RegExp(`(${searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+              const matches = str.match(regex);
+
+              if (!matches) return str;
+
+              const highlighted: (string | React.JSX.Element)[] = [];
+              let lastIndex = 0;
+
+              regex.lastIndex = 0; // Reset regex
+              let searchMatch;
+              while ((searchMatch = regex.exec(str)) !== null) {
+                if (searchMatch.index > lastIndex) {
+                  highlighted.push(str.slice(lastIndex, searchMatch.index));
+                }
+                highlighted.push(
+                  <mark key={`${keyPrefix}-search-${searchMatch.index}`} className="bg-yellow-200 dark:bg-yellow-500/40 text-foreground rounded px-0.5">
+                    {searchMatch[0]}
+                  </mark>
+                );
+                lastIndex = searchMatch.index + searchMatch[0].length;
+              }
+
+              if (lastIndex < str.length) {
+                highlighted.push(str.slice(lastIndex));
+              }
+
+              return highlighted;
+            };
+
             // Combined regex for bold text, links, highlights, underlines, percentages, and dollar amounts
             const combinedRegex = /(\*\*(.*?)\*\*|\[([^\]]+)\]\(([^)]+)\)|==(.*?)==|__(.*?)__|\$[\d,]+(?:\.\d{2})?(?:-\$[\d,]+(?:\.\d{2})?)?|\d+(?:\.\d+)?(?:-\d+(?:\.\d+)?)?%)/g;
             let match;
 
             while ((match = combinedRegex.exec(text)) !== null) {
               if (match.index > currentIndex) {
-                parts.push(text.slice(currentIndex, match.index));
+                parts.push(...(Array.isArray(highlightSearchQuery(text.slice(currentIndex, match.index), `p${index}-${currentIndex}`)) ? highlightSearchQuery(text.slice(currentIndex, match.index), `p${index}-${currentIndex}`) as (string | React.JSX.Element)[] : [highlightSearchQuery(text.slice(currentIndex, match.index), `p${index}-${currentIndex}`)]));
               }
 
               if (match[0].startsWith('**')) {
                 // Bold text - extract text between **
                 const boldText = match[0].slice(2, -2);
-                parts.push(<strong key={match.index} className="font-semibold">{boldText}</strong>);
+                parts.push(<strong key={match.index} className="font-semibold">{highlightSearchQuery(boldText, `bold-${match.index}`)}</strong>);
               } else if (match[0].startsWith('[')) {
                 // Link - extract from full match
                 const linkMatch = match[0].match(/\[([^\]]+)\]\(([^)]+)\)/);
@@ -81,7 +116,7 @@ export function ArticleContent({ content }: ArticleContentProps) {
                       href={linkMatch[2]}
                       className="text-primary hover:text-primary/80 underline underline-offset-2"
                     >
-                      {linkMatch[1]}
+                      {highlightSearchQuery(linkMatch[1], `link-${match.index}`)}
                     </Link>
                   );
                 }
@@ -150,7 +185,8 @@ export function ArticleContent({ content }: ArticleContentProps) {
             }
 
             if (currentIndex < text.length) {
-              parts.push(text.slice(currentIndex));
+              const remaining = text.slice(currentIndex);
+              parts.push(...(Array.isArray(highlightSearchQuery(remaining, `end-${currentIndex}`)) ? highlightSearchQuery(remaining, `end-${currentIndex}`) as (string | React.JSX.Element)[] : [highlightSearchQuery(remaining, `end-${currentIndex}`)]));
             }
 
             return parts.length > 0 ? parts : text;
