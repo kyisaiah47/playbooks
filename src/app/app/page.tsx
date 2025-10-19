@@ -85,19 +85,20 @@ export default function StudioPage() {
       {/* Top Nav */}
       <div className="border-b bg-background">
         <div className="container mx-auto max-w-7xl px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link href="/">
+          <div className="flex items-center justify-between gap-2 w-full md:relative">
+            <div className="md:flex items-center gap-4">
+              <Link href="/" className="hidden md:block">
                 <h1 className="text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer">Templata</h1>
               </Link>
             </div>
 
             {/* View Switcher */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 md:gap-2 md:absolute md:left-1/2 md:-translate-x-1/2">
               <Button
                 variant={currentView === 'templates' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => handleViewChange('templates')}
+                className="text-xs md:text-sm px-2 md:px-4"
               >
                 Templates
               </Button>
@@ -105,6 +106,7 @@ export default function StudioPage() {
                 variant={currentView === 'reflection' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => handleViewChange('reflection')}
+                className="text-xs md:text-sm px-2 md:px-4"
               >
                 Reflection
               </Button>
@@ -112,13 +114,14 @@ export default function StudioPage() {
                 variant={currentView === 'overview' ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => handleViewChange('overview')}
+                className="text-xs md:text-sm px-2 md:px-4"
               >
                 Overview
               </Button>
             </div>
 
             {/* Theme Selector & User Dropdown */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 md:gap-2">
               <ThemeSelector iconOnly />
 
               {userEmail && (

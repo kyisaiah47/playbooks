@@ -20,9 +20,18 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command';
-import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star } from 'lucide-react';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu } from 'lucide-react';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
 import Link from 'next/link';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface Prompt {
   id: string;
@@ -80,6 +89,20 @@ export function TemplatesView() {
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
+
+  // Mobile drawer state
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [mobileDrawerTab, setMobileDrawerTab] = useState<'prompts' | 'articles'>('prompts');
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Check authentication status
   useEffect(() => {
@@ -414,19 +437,20 @@ export function TemplatesView() {
       {/* Anonymous User Banner */}
       {isAuthenticated === false && (
         <div className="bg-yellow-500/10 border-b border-yellow-500/20 px-4 py-3">
-          <div className="container mx-auto max-w-7xl flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-sm">
+          <div className="container mx-auto max-w-7xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-xs sm:text-sm">
               <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
               <span className="text-foreground">
-                Your work is saved locally in your browser. Create an account to save permanently and access from any device.
+                <span className="hidden sm:inline">Your work is saved locally in your browser. Create an account to save permanently and access from any device.</span>
+                <span className="sm:hidden">Saved locally. Sign up to sync across devices.</span>
               </span>
             </div>
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <Link href="/signup">
-                <Button size="sm" variant="default">Create Account</Button>
+            <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto">
+              <Link href="/signup" className="flex-1 sm:flex-initial">
+                <Button size="sm" variant="default" className="w-full sm:w-auto">Sign Up</Button>
               </Link>
-              <Link href="/login">
-                <Button size="sm" variant="ghost">Log In</Button>
+              <Link href="/login" className="flex-1 sm:flex-initial">
+                <Button size="sm" variant="ghost" className="w-full sm:w-auto">Log In</Button>
               </Link>
             </div>
           </div>
@@ -453,7 +477,7 @@ export function TemplatesView() {
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="w-[350px] justify-between"
+                    className="w-full md:w-[350px] justify-between"
                   >
                     {selectedTemplate
                       ? templates.find((t) => t.id === selectedTemplate)?.name
@@ -461,7 +485,7 @@ export function TemplatesView() {
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-[350px] p-0">
+                <PopoverContent className="w-[calc(100vw-2rem)] md:w-[350px] p-0">
                   <Command>
                     <CommandInput
                       placeholder="Search templates..."
@@ -536,9 +560,9 @@ export function TemplatesView() {
               </Popover>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               {/* Autosave Toggle */}
-              <div className="flex items-center gap-2 px-3 py-2 rounded-md border border-border">
+              <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-md border border-border">
                 <Checkbox
                   id="autosave"
                   checked={autoSave}
@@ -556,13 +580,13 @@ export function TemplatesView() {
                 size="sm"
                 variant="outline"
               >
-                <Save className="h-4 w-4 mr-2" />
-                Save
+                <Save className="h-4 w-4 md:mr-2" />
+                <span className="hidden md:inline">Save</span>
               </Button>
 
               {/* Last Saved Indicator */}
               {lastSaved && (
-                <span className="text-xs text-muted-foreground">
+                <span className="hidden sm:inline text-xs text-muted-foreground">
                   Saved {lastSaved.toLocaleTimeString()}
                 </span>
               )}
@@ -573,8 +597,8 @@ export function TemplatesView() {
 
       {/* Main Content - 3 Column Layout */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar - Prompts */}
-        <div className="w-80 border-r bg-background overflow-y-auto">
+        {/* Left Sidebar - Prompts (Desktop only) */}
+        <div className="hidden md:block w-80 border-r bg-background overflow-y-auto">
           <div className="p-4 space-y-4">
             <div className="flex items-center gap-2 mb-4">
               <FileText className="h-4 w-4 text-primary" />
@@ -701,9 +725,9 @@ export function TemplatesView() {
           </div>
         </div>
 
-        {/* Right Sidebar - Articles or Article Content */}
+        {/* Right Sidebar - Articles or Article Content (Desktop only) */}
         <motion.div
-          className="border-l bg-background overflow-y-auto"
+          className="hidden md:block border-l bg-background overflow-y-auto"
           animate={{ width: selectedArticle ? 600 : 320 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
@@ -813,6 +837,166 @@ export function TemplatesView() {
           </div>
         </motion.div>
       </div>
+
+      {/* Mobile Article Viewer */}
+      {isMobile && selectedArticle && (
+        <Drawer open={!!selectedArticle} onOpenChange={(open) => !open && handleCloseArticle()}>
+          <DrawerContent className="max-h-[90vh]">
+            <DrawerHeader>
+              <div className="flex items-center justify-between">
+                <DrawerTitle className="text-left">{selectedArticle.title}</DrawerTitle>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleCloseArticle}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
+                <span>{selectedArticle.author}</span>
+                <span>•</span>
+                <span>{selectedArticle.readTime}</span>
+              </div>
+            </DrawerHeader>
+            <div className="flex-1 overflow-y-auto px-4 pb-4">
+              {loadingArticle ? (
+                <div className="py-8 text-center">
+                  <p className="text-muted-foreground">Loading article...</p>
+                </div>
+              ) : (
+                <ArticleContent content={selectedArticle.content} />
+              )}
+            </div>
+          </DrawerContent>
+        </Drawer>
+      )}
+
+      {/* Mobile Drawer - Prompts & Articles */}
+      {isMobile && (
+        <Drawer open={mobileDrawerOpen} onOpenChange={setMobileDrawerOpen}>
+          <DrawerTrigger asChild>
+            <Button
+              size="lg"
+              className="fixed bottom-6 right-6 z-40 rounded-full w-14 h-14 shadow-lg"
+            >
+              <Menu className="h-6 w-6" />
+            </Button>
+          </DrawerTrigger>
+          <DrawerContent className="max-h-[85vh]">
+          <DrawerHeader>
+            <DrawerTitle>Browse</DrawerTitle>
+          </DrawerHeader>
+
+          <Tabs value={mobileDrawerTab} onValueChange={(v) => setMobileDrawerTab(v as 'prompts' | 'articles')} className="flex-1 flex flex-col overflow-hidden">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="prompts" className="gap-1.5">
+                <FileText className="h-4 w-4" />
+                <span>Prompts</span>
+              </TabsTrigger>
+              <TabsTrigger value="articles" className="gap-1.5">
+                <BookOpen className="h-4 w-4" />
+                <span>Articles</span>
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="prompts" className="flex-1 overflow-y-auto px-4 mt-0">
+              <div className="space-y-4 py-4">
+                {loading ? (
+                  <p className="text-sm text-muted-foreground">Loading prompts...</p>
+                ) : (
+                  <div className="space-y-4">
+                    {categories.map((category) => (
+                      <div key={category} className="space-y-2">
+                        <button
+                          onClick={() => toggleCategory(category)}
+                          className="flex items-center gap-2 w-full text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider hover:text-foreground transition-colors"
+                        >
+                          <motion.div
+                            animate={{ rotate: collapsedCategories.has(category) ? -90 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <ChevronDown className="h-3 w-3" />
+                          </motion.div>
+                          {category}
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {!collapsedCategories.has(category) && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="space-y-1 overflow-hidden"
+                            >
+                              {groupedPrompts[category].map((prompt) => (
+                                <button
+                                  key={prompt.id}
+                                  onClick={() => {
+                                    setSelectedPromptId(prompt.id);
+                                    setMobileDrawerOpen(false);
+                                  }}
+                                  className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
+                                    selectedPromptId === prompt.id
+                                      ? 'bg-primary/10 text-primary border border-primary/20'
+                                      : 'bg-muted/50 text-foreground hover:bg-muted'
+                                  }`}
+                                >
+                                  {answeredPrompts.has(prompt.id) && (
+                                    <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
+                                  )}
+                                  <span className="flex-1">{prompt.prompt}</span>
+                                </button>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="articles" className="flex-1 overflow-y-auto px-4 mt-0">
+              <div className="space-y-4 py-4">
+                {loading ? (
+                  <p className="text-sm text-muted-foreground">Loading articles...</p>
+                ) : articles.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">
+                    No articles available for this template yet.
+                  </p>
+                ) : (
+                  <div className="space-y-2">
+                    {articles.map((article) => (
+                      <Card
+                        key={article.id}
+                        className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
+                        onClick={() => {
+                          handleArticleClick(article.id);
+                          setMobileDrawerOpen(false);
+                        }}
+                      >
+                        <h3 className="text-sm font-medium text-foreground mb-1">
+                          {article.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+                          {article.excerpt}
+                        </p>
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <span>{article.readTime}</span>
+                          <ChevronRight className="h-3 w-3 ml-auto" />
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </DrawerContent>
+        </Drawer>
+      )}
     </div>
   );
 }
