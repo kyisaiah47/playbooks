@@ -368,26 +368,26 @@ export function ReflectionView({ onViewChange }: ReflectionViewProps = {}) {
                       <span className="md:hidden">Today</span>
                     </Button>
                   )}
+                  <div className="hidden lg:block text-xs text-muted-foreground max-w-md ml-4">
+                    <p>This isn't graded - reflect at your own pace.</p>
+                    <p>
+                      See all your reflections in the{' '}
+                      <button
+                        onClick={() => {
+                          sessionStorage.setItem('overview-tab', 'reflections');
+                          onViewChange?.('overview');
+                        }}
+                        className="text-primary hover:underline"
+                      >
+                        Overview
+                      </button>{' '}
+                      tab.
+                    </p>
+                  </div>
                 </div>
               </div>
 
               <div className="flex items-center gap-2 md:gap-3">
-                <div className="hidden lg:block text-xs text-muted-foreground max-w-xs">
-                  <p>This isn't graded - reflect at your own pace.</p>
-                  <p>
-                    See all your reflections in the{' '}
-                    <button
-                      onClick={() => {
-                        sessionStorage.setItem('overview-tab', 'reflections');
-                        onViewChange?.('overview');
-                      }}
-                      className="text-primary hover:underline"
-                    >
-                      Overview
-                    </button>{' '}
-                    tab.
-                  </p>
-                </div>
                 {lastSaved && (
                   <span className="hidden md:inline text-xs text-muted-foreground">
                     Saved {lastSaved.toLocaleTimeString()}
