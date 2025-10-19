@@ -34,7 +34,8 @@
       "Bash(xargs cat:*)",
       "Bash(npx tsx:*)",
       "Bash(tee:*)",
-      "Bash(ffmpeg:*)"
+      "Bash(ffmpeg:*)",
+      "Bash(git revert --no-edit HEAD)"
     ],
     "deny": [],
     "ask": []
