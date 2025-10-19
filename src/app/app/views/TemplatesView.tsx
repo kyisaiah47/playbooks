@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
 import {
   Popover,
   PopoverContent,
@@ -75,7 +76,14 @@ const FEATURED_GENZ_IDS = [
   'content-creator-career',
 ];
 
-const FEATURED_TEMPLATE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS];
+const FEATURED_HEALTH_IDS = [
+  'fitness-journey',
+  'mental-health',
+  'nutrition-planning-system',
+  'health-wellness',
+];
+
+const FEATURED_TEMPLATE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS, ...FEATURED_HEALTH_IDS];
 
 interface TemplatesViewProps {
   onViewChange?: (view: 'templates' | 'reflection' | 'overview') => void;
@@ -104,6 +112,8 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
   const [open, setOpen] = useState(false);
   const [hasMoreTemplates, setHasMoreTemplates] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [promptSearchQuery, setPromptSearchQuery] = useState('');
+  const [articleSearchQuery, setArticleSearchQuery] = useState('');
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
@@ -319,6 +329,9 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
   const featuredGenZTemplates = showFeatured
     ? templates.filter(t => FEATURED_GENZ_IDS.includes(t.id))
     : [];
+  const featuredHealthTemplates = showFeatured
+    ? templates.filter(t => FEATURED_HEALTH_IDS.includes(t.id))
+    : [];
   const regularTemplates = showFeatured
     ? filteredTemplates.filter(t => !FEATURED_TEMPLATE_IDS.includes(t.id))
     : filteredTemplates;
@@ -486,7 +499,15 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
     }
   };
 
-  const groupedPrompts = prompts.reduce((acc, prompt) => {
+  // Filter prompts based on search query
+  const filteredPrompts = promptSearchQuery.trim()
+    ? prompts.filter(p =>
+        p.prompt.toLowerCase().includes(promptSearchQuery.toLowerCase()) ||
+        (p.categoryName && p.categoryName.toLowerCase().includes(promptSearchQuery.toLowerCase()))
+      )
+    : prompts;
+
+  const groupedPrompts = filteredPrompts.reduce((acc, prompt) => {
     const category = prompt.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
@@ -497,6 +518,30 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
 
   const categories = Object.keys(groupedPrompts).sort();
   const selectedPrompt = prompts.find(p => p.id === selectedPromptId);
+
+  // Auto-expand all categories when filtering
+  useEffect(() => {
+    if (promptSearchQuery.trim()) {
+      // Expand all categories when searching
+      setCollapsedCategories(new Set());
+    } else {
+      // Collapse all categories when filter is cleared
+      const allCategories = Object.keys(prompts.reduce((acc, prompt) => {
+        const category = prompt.categoryName || 'General';
+        acc[category] = true;
+        return acc;
+      }, {} as Record<string, boolean>));
+      setCollapsedCategories(new Set(allCategories));
+    }
+  }, [promptSearchQuery, prompts]);
+
+  // Filter articles based on search query
+  const filteredArticles = articleSearchQuery.trim()
+    ? articles.filter(a =>
+        a.title.toLowerCase().includes(articleSearchQuery.toLowerCase()) ||
+        a.excerpt.toLowerCase().includes(articleSearchQuery.toLowerCase())
+      )
+    : articles;
 
   return (
     <div className="h-full flex flex-col bg-background">
@@ -621,6 +666,31 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
                         </>
                       )}
 
+                      {/* Featured Templates - Health & Wellness */}
+                      {showFeatured && featuredHealthTemplates.length > 0 && (
+                        <>
+                          <CommandGroup heading="Featured - Health & Wellness">
+                            {featuredHealthTemplates.map((template) => (
+                              <CommandItem
+                                key={template.id}
+                                value={template.name}
+                                onSelect={() => {
+                                  handleTemplateChange(template.id);
+                                }}
+                              >
+                                <Check
+                                  className={`mr-2 h-4 w-4 ${
+                                    selectedTemplate === template.id ? "opacity-100" : "opacity-0"
+                                  }`}
+                                />
+                                {template.name}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                          <CommandSeparator />
+                        </>
+                      )}
+
                       {/* All Templates */}
                       <CommandGroup heading={showFeatured ? "All Templates" : undefined}>
                         {regularTemplates.map((template) => (
@@ -710,13 +780,20 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
         <div className="hidden md:block w-80 border-r bg-background overflow-y-auto">
           <div className="p-4 space-y-4">
             <div className="mb-4">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-2">
                 <FileText className="h-4 w-4 text-primary" />
                 <h2 className="font-semibold text-foreground">Action Prompts</h2>
                 <Badge variant="outline" className="ml-auto text-xs">
                   {prompts.length}
                 </Badge>
               </div>
+              <Input
+                type="text"
+                placeholder="Filter prompts..."
+                value={promptSearchQuery}
+                onChange={(e) => setPromptSearchQuery(e.target.value)}
+                className="h-8 text-sm mb-2"
+              />
               <p className="text-xs text-muted-foreground">
                 Select a prompt, write your answer, and see a checkmark appear
               </p>
@@ -724,6 +801,10 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
 
             {loading ? (
               <p className="text-sm text-muted-foreground">Loading prompts...</p>
+            ) : categories.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                {promptSearchQuery.trim() ? 'No prompts match your search' : 'No prompts available'}
+              </p>
             ) : (
               <div className="space-y-4">
                 {categories.map((category) => (
@@ -906,13 +987,20 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
                   transition={{ duration: 0.2 }}
                 >
                   <div className="mb-4">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-2">
                       <BookOpen className="h-4 w-4 text-primary" />
                       <h2 className="font-semibold text-foreground">Related Articles</h2>
                       <Badge variant="outline" className="ml-auto text-xs">
                         {articles.length}
                       </Badge>
                     </div>
+                    <Input
+                      type="text"
+                      placeholder="Filter articles..."
+                      value={articleSearchQuery}
+                      onChange={(e) => setArticleSearchQuery(e.target.value)}
+                      className="h-8 text-sm mb-2"
+                    />
                     <p className="text-xs text-muted-foreground">
                       Read articles to help guide your responses
                     </p>
@@ -920,11 +1008,13 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
 
                   {loading ? (
                     <p className="text-sm text-muted-foreground">Loading articles...</p>
-                  ) : articles.length === 0 ? (
-                    <p className="text-sm text-muted-foreground">No articles available</p>
+                  ) : filteredArticles.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">
+                      {articleSearchQuery.trim() ? 'No articles match your search' : 'No articles available'}
+                    </p>
                   ) : (
                     <div className="space-y-3">
-                      {articles.map((article, index) => (
+                      {filteredArticles.map((article, index) => (
                         <motion.div
                           key={article.id}
                           initial={{ opacity: 0, y: 20 }}
@@ -1021,11 +1111,22 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
 
             <TabsContent value="prompts" className="flex-1 overflow-y-auto px-4 mt-0">
               <div className="space-y-4 py-4">
+                <Input
+                  type="text"
+                  placeholder="Filter prompts..."
+                  value={promptSearchQuery}
+                  onChange={(e) => setPromptSearchQuery(e.target.value)}
+                  className="h-8 text-sm -mt-2"
+                />
                 <p className="text-xs text-muted-foreground -mt-2">
                   Select a prompt, write your answer, and see a checkmark appear
                 </p>
                 {loading ? (
                   <p className="text-sm text-muted-foreground">Loading prompts...</p>
+                ) : categories.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">
+                    {promptSearchQuery.trim() ? 'No prompts match your search' : 'No prompts available'}
+                  </p>
                 ) : (
                   <div className="space-y-4">
                     {categories.map((category) => (
@@ -1082,15 +1183,22 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
 
             <TabsContent value="articles" className="flex-1 overflow-y-auto px-4 mt-0">
               <div className="space-y-4 py-4">
+                <Input
+                  type="text"
+                  placeholder="Filter articles..."
+                  value={articleSearchQuery}
+                  onChange={(e) => setArticleSearchQuery(e.target.value)}
+                  className="h-8 text-sm -mt-2"
+                />
                 {loading ? (
                   <p className="text-sm text-muted-foreground">Loading articles...</p>
-                ) : articles.length === 0 ? (
+                ) : filteredArticles.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    No articles available for this template yet.
+                    {articleSearchQuery.trim() ? 'No articles match your search' : 'No articles available for this template yet.'}
                   </p>
                 ) : (
                   <div className="space-y-2">
-                    {articles.map((article) => (
+                    {filteredArticles.map((article) => (
                       <Card
                         key={article.id}
                         className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
