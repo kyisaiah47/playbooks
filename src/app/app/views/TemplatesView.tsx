@@ -708,11 +708,19 @@ export function TemplatesView({ onViewChange }: TemplatesViewProps) {
                     <h2 className="text-lg md:text-xl font-bold text-foreground mb-2">
                       {selectedPrompt.prompt}
                     </h2>
-                    <p className="text-xs md:text-sm text-muted-foreground hidden md:block">
-                      {autoSave
-                        ? 'Your work is automatically saved as you type'
-                        : 'Remember to save your work manually'}
-                    </p>
+                    <div className="text-xs md:text-sm text-muted-foreground hidden md:block">
+                      <p>This isn't graded - work at your own pace.</p>
+                      <p>
+                        See all your answered prompts in the{' '}
+                        <button
+                          onClick={() => onViewChange?.('overview')}
+                          className="text-primary hover:underline"
+                        >
+                          Overview
+                        </button>{' '}
+                        tab.
+                      </p>
+                    </div>
                   </div>
 
                   <Card className="p-4 md:p-8 flex-1 border-border bg-muted/30">
