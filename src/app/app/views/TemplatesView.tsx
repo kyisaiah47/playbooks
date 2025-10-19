@@ -666,7 +666,7 @@ export function TemplatesView() {
 
         {/* Middle - Editor */}
         <div className="flex-1 overflow-y-auto bg-background">
-          <div className="container mx-auto max-w-4xl px-8 py-8">
+          <div className="container mx-auto max-w-4xl px-4 md:px-8 py-4 md:py-8">
             <AnimatePresence mode="wait">
               {selectedPrompt ? (
                 <motion.div
@@ -675,25 +675,25 @@ export function TemplatesView() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className="space-y-6"
+                  className="space-y-4 md:space-y-6 h-full flex flex-col"
                 >
                   <div>
-                    <Badge variant="outline" className="mb-3">
+                    <Badge variant="outline" className="mb-2 md:mb-3">
                       {selectedPrompt.categoryName}
                     </Badge>
-                    <h2 className="text-2xl font-bold text-foreground mb-2">
+                    <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
                       {selectedPrompt.prompt}
                     </h2>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs md:text-sm text-muted-foreground hidden md:block">
                       {autoSave
                         ? 'Your work is automatically saved as you type'
                         : 'Remember to save your work manually'}
                     </p>
                   </div>
 
-                  <Card className="p-8 min-h-[500px] border-border bg-muted/30">
+                  <Card className="p-4 md:p-8 flex-1 border-border bg-muted/30">
                     <textarea
-                      className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground text-[15px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
+                      className="w-full h-full bg-transparent border-none outline-none resize-none text-foreground text-[15px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
                       placeholder="Start writing your response here..."
                       value={promptResponse}
                       onChange={(e) => setPromptResponse(e.target.value)}

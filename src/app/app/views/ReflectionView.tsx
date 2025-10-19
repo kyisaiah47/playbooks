@@ -299,38 +299,48 @@ export function ReflectionView() {
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
         <div className="border-b bg-background">
-          <div className="container mx-auto max-w-4xl px-8 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+          <div className="container mx-auto max-w-4xl px-4 md:px-8 py-3 md:py-4">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2 md:gap-4 flex-1">
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => setShowPastEntries(!showPastEntries)}
+                  className="text-xs md:text-sm"
                 >
                   {showPastEntries ? (
                     <>
-                      <ChevronLeft className="h-4 w-4 mr-2" />
-                      Hide Past
+                      <ChevronLeft className="h-4 w-4 md:mr-2" />
+                      <span className="hidden md:inline">Hide Past</span>
                     </>
                   ) : (
                     <>
-                      <ChevronRight className="h-4 w-4 mr-2" />
-                      Past Reflections
+                      <ChevronRight className="h-4 w-4 md:mr-2" />
+                      <span className="hidden md:inline">Past Reflections</span>
                     </>
                   )}
                 </Button>
-                <div className="h-6 w-px bg-border" />
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-foreground">
-                    {new Date(currentDate + 'T00:00:00').toLocaleDateString('en-US', {
-                      weekday: 'long',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
+                <div className="h-6 w-px bg-border hidden md:block" />
+                <div className="flex items-center gap-2 flex-1">
+                  <p className="text-xs md:text-sm font-medium text-foreground">
+                    <span className="hidden md:inline">
+                      {new Date(currentDate + 'T00:00:00').toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </span>
+                    <span className="md:hidden">
+                      {new Date(currentDate + 'T00:00:00').toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                    </span>
                   </p>
                   {currentDate !== today && (
-                    <Button variant="ghost" size="sm" onClick={returnToToday}>
-                      Back to Today
+                    <Button variant="ghost" size="sm" onClick={returnToToday} className="text-xs md:text-sm">
+                      <span className="hidden md:inline">Back to Today</span>
+                      <span className="md:hidden">Today</span>
                     </Button>
                   )}
                 </div>
@@ -338,7 +348,7 @@ export function ReflectionView() {
 
               <div className="flex items-center gap-3">
                 {lastSaved && (
-                  <span className="text-xs text-muted-foreground">
+                  <span className="hidden md:inline text-xs text-muted-foreground">
                     Saved {lastSaved.toLocaleTimeString()}
                   </span>
                 )}
@@ -349,26 +359,26 @@ export function ReflectionView() {
 
         {/* Main Editor */}
         <div className="flex-1 overflow-y-auto">
-          <div className="container mx-auto max-w-4xl px-8 py-8">
-            <div className="space-y-6">
+          <div className="container mx-auto max-w-4xl px-4 md:px-8 py-4 md:py-8 h-full flex flex-col">
+            <div className="space-y-4 md:space-y-6 h-full flex flex-col">
               {/* Prompt */}
               <div>
-                <p className="text-xl font-medium text-foreground mb-6 leading-relaxed">
+                <p className="text-lg md:text-xl font-medium text-foreground leading-relaxed">
                   {dailyPrompt}
                 </p>
               </div>
 
               {/* Mood & Tags */}
-              <div className="flex items-center gap-4 pb-4 border-b border-border">
+              <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4 pb-4 border-b border-border">
                 {/* Mood Selector */}
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-muted-foreground">Mood:</span>
+                  <span className="text-xs md:text-sm text-muted-foreground">Mood:</span>
                   <div className="flex gap-2">
                     {MOODS.map((mood) => (
                       <button
                         key={mood}
                         onClick={() => setSelectedMood(mood)}
-                        className={`text-2xl transition-all ${
+                        className={`text-xl md:text-2xl transition-all ${
                           selectedMood === mood
                             ? 'scale-125'
                             : 'opacity-50 hover:opacity-100'
@@ -380,17 +390,17 @@ export function ReflectionView() {
                   </div>
                 </div>
 
-                <div className="h-6 w-px bg-border" />
+                <div className="h-px w-full md:h-6 md:w-px bg-border" />
 
                 {/* Tags */}
                 <div className="flex items-center gap-2 flex-1">
-                  <span className="text-sm text-muted-foreground">Tags:</span>
+                  <span className="text-xs md:text-sm text-muted-foreground">Tags:</span>
                   <div className="flex gap-1 flex-wrap items-center">
                     {tags.map((tag) => (
                       <Badge
                         key={tag}
                         variant="secondary"
-                        className="cursor-pointer"
+                        className="cursor-pointer text-xs"
                         onClick={() => handleRemoveTag(tag)}
                       >
                         {tag} ×
@@ -402,16 +412,16 @@ export function ReflectionView() {
                       onChange={(e) => setTagInput(e.target.value)}
                       onKeyDown={handleAddTag}
                       placeholder="Add tag..."
-                      className="text-sm bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground w-24"
+                      className="text-xs md:text-sm bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground w-20 md:w-24"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Editor */}
-              <Card className="p-8 min-h-[500px] border-border bg-muted/30">
+              <Card className="p-4 md:p-8 flex-1 border-border bg-muted/30">
                 <textarea
-                  className="w-full h-full min-h-[500px] bg-transparent border-none outline-none resize-none text-foreground text-[16px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
+                  className="w-full h-full bg-transparent border-none outline-none resize-none text-foreground text-[15px] md:text-[16px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
                   placeholder="Start writing your reflection..."
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
