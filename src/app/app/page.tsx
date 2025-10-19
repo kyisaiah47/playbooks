@@ -184,7 +184,7 @@ export default function StudioPage() {
                   if (currentView !== 'templates') handleViewChange('templates');
                   setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
                 }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors animate-pulse"
+                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
               >
                 template
               </button>{' '}
@@ -199,7 +199,7 @@ export default function StudioPage() {
                   if (currentView !== 'templates') handleViewChange('templates');
                   setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
                 }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors animate-pulse"
+                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
               >
                 prompts
               </button>
@@ -213,7 +213,7 @@ export default function StudioPage() {
                   if (currentView !== 'templates') handleViewChange('templates');
                   setTimeout(() => templatesActions.openFirstArticle?.(), 100);
                 }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors animate-pulse"
+                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
               >
                 articles
               </button>{' '}
@@ -228,7 +228,7 @@ export default function StudioPage() {
                   sessionStorage.setItem('overview-tab', 'responses');
                   handleViewChange('overview');
                 }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors animate-pulse"
+                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
               >
                 Overview
               </button>
