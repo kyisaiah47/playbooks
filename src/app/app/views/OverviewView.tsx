@@ -755,7 +755,7 @@ export function OverviewView() {
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1">
           <div className="container mx-auto max-w-7xl px-8 py-8">
             {/* Board View */}
             <TabsContent value="board" className="mt-0">
