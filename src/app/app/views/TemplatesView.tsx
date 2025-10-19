@@ -349,11 +349,16 @@ export function TemplatesView({ onViewChange }: TemplatesViewProps) {
         });
       }
 
+      // Optimistically show checkmark for current prompt if it has content
+      if (selectedPromptId && promptResponse.trim().length > 0) {
+        answered.add(selectedPromptId);
+      }
+
       setAnsweredPrompts(answered);
     }
 
     checkAnsweredPrompts();
-  }, [selectedTemplate, prompts, isAuthenticated, lastSaved]);
+  }, [selectedTemplate, prompts, isAuthenticated, lastSaved, selectedPromptId, promptResponse]);
 
   const handleTemplateChange = (newTemplateId: string) => {
     setSelectedTemplate(newTemplateId);
