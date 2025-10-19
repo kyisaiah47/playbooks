@@ -169,7 +169,13 @@ export default function StudioPage() {
       <div className="border-b bg-primary/5 border-primary/20">
         <div className="container mx-auto max-w-7xl px-4 py-3">
           <p className="text-sm text-foreground text-center">
-            Pick a template that fits your goal → Answer thoughtful prompts → Read curated articles for help → See everything you've written in Overview.
+            Pick a template that fits your goal → Answer thoughtful prompts → Read curated articles for help → See everything you've written in{' '}
+            <button
+              onClick={() => handleViewChange('overview')}
+              className="text-primary hover:underline font-medium"
+            >
+              Overview
+            </button>.
           </p>
         </div>
       </div>
