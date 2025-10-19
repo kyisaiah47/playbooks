@@ -485,16 +485,15 @@ export function OverviewView() {
 
     let pageNum = 1;
 
-    // Header with logo and title
+    // Add logo
+    doc.addImage('/brand/templata-logo.jpg', 'JPEG', margin, yPosition, 10, 10);
+
+    // Header with title
     doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(0, 0, 0);
-    doc.text('Templata', margin + 8, yPosition);
-
-    // Add logo (simple black square as placeholder - representing the favicon)
-    doc.setFillColor(0, 0, 0);
-    doc.rect(margin, yPosition - 4, 5, 5, 'F');
-    yPosition += 6;
+    doc.text('Templata', margin + 12, yPosition + 7);
+    yPosition += 20;
 
     // Subtitle
     doc.setFontSize(10);
@@ -514,7 +513,7 @@ export function OverviewView() {
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(100, 100, 100);
-    doc.text(`${template.responses.length} ${template.responses.length === 1 ? 'response' : 'responses'} · ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`, margin, yPosition);
+    doc.text(`${template.responses.length} ${template.responses.length === 1 ? 'response' : 'responses'} · Exported on ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`, margin, yPosition);
     yPosition += 15;
 
     // Separator line
@@ -602,6 +601,38 @@ export function OverviewView() {
     URL.revokeObjectURL(url);
   };
 
+  // Helper function to convert emoji moods to text
+  const emojiToText = (emoji: string): string => {
+    const moodMap: Record<string, string> = {
+      '😊': 'Happy',
+      '😃': 'Happy',
+      '😄': 'Happy',
+      '😁': 'Happy',
+      '🙂': 'Content',
+      '😌': 'Peaceful',
+      '😢': 'Sad',
+      '😭': 'Sad',
+      '😔': 'Down',
+      '😞': 'Disappointed',
+      '😡': 'Angry',
+      '😠': 'Angry',
+      '😤': 'Frustrated',
+      '😰': 'Anxious',
+      '😨': 'Worried',
+      '😓': 'Stressed',
+      '😩': 'Tired',
+      '😴': 'Sleepy',
+      '🤔': 'Thoughtful',
+      '🥳': 'Excited',
+      '😍': 'Grateful',
+      '🤗': 'Grateful',
+      '😎': 'Confident',
+      '🥰': 'Loved',
+      '❤️': 'Loved',
+    };
+    return moodMap[emoji] || emoji;
+  };
+
   const exportReflectionsAsPDF = () => {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
@@ -621,35 +652,28 @@ export function OverviewView() {
 
     let pageNum = 1;
 
-    // Header with logo and title
+    // Add logo
+    doc.addImage('/brand/templata-logo.jpg', 'JPEG', margin, yPosition, 10, 10);
+
+    // Header with title
     doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(0, 0, 0);
-    doc.text('Templata', margin + 8, yPosition);
-
-    // Add logo (simple black square as placeholder - representing the favicon)
-    doc.setFillColor(0, 0, 0);
-    doc.rect(margin, yPosition - 4, 5, 5, 'F');
-    yPosition += 6;
-
-    // Subtitle
-    doc.setFontSize(10);
-    doc.setTextColor(128, 128, 128);
-    doc.text('Your Reflections', margin, yPosition);
-    yPosition += 15;
+    doc.text('Templata', margin + 12, yPosition + 7);
+    yPosition += 25;
 
     // Title
     doc.setFontSize(20);
     doc.setTextColor(0, 0, 0);
     doc.setFont('helvetica', 'bold');
     doc.text('My Reflections', margin, yPosition);
-    yPosition += 8;
+    yPosition += 13;
 
     // Metadata
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(100, 100, 100);
-    doc.text(`${reflectionDetails.length} ${reflectionDetails.length === 1 ? 'entry' : 'entries'} · ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`, margin, yPosition);
+    doc.text(`${reflectionDetails.length} ${reflectionDetails.length === 1 ? 'entry' : 'entries'} · Exported on ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`, margin, yPosition);
     yPosition += 15;
 
     // Separator line
@@ -667,7 +691,7 @@ export function OverviewView() {
         yPosition = margin;
       }
 
-      // Date (without emoji - jsPDF can't render emojis properly)
+      // Date with mood as text
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(0, 0, 0);
@@ -677,14 +701,8 @@ export function OverviewView() {
         day: 'numeric',
         year: 'numeric',
       });
-      doc.text(date, margin, yPosition);
-
-      // Mood as text (if present)
-      if (reflection.mood) {
-        doc.setFontSize(10);
-        doc.setTextColor(128, 128, 128);
-        doc.text(`Mood: ${reflection.mood}`, margin, yPosition + 6);
-      }
+      const moodText = reflection.mood ? ` - ${emojiToText(reflection.mood)}` : '';
+      doc.text(`${date}${moodText}`, margin, yPosition);
       yPosition += 10;
 
       // Prompt
