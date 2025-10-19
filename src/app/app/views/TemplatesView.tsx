@@ -70,9 +70,14 @@ const FEATURED_TEMPLATE_IDS = [
 
 interface TemplatesViewProps {
   onViewChange?: (view: 'templates' | 'reflection' | 'overview') => void;
+  setActions?: (actions: {
+    openTemplateDropdown?: () => void;
+    selectFirstPrompt?: () => void;
+    openFirstArticle?: () => void;
+  }) => void;
 }
 
-export function TemplatesView({ onViewChange }: TemplatesViewProps) {
+export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) {
   const [selectedTemplate, setSelectedTemplate] = useState('wedding-planning');
   const [templates, setTemplates] = useState<Template[]>([]);
   const [displayedTemplates, setDisplayedTemplates] = useState<Template[]>([]);
@@ -107,6 +112,46 @@ export function TemplatesView({ onViewChange }: TemplatesViewProps) {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Set up actions for parent to call
+  useEffect(() => {
+    if (setActions) {
+      setActions({
+        openTemplateDropdown: () => {
+          setOpen(true);
+        },
+        selectFirstPrompt: () => {
+          if (prompts.length > 0) {
+            const groupedPrompts = prompts.reduce((acc, prompt) => {
+              const category = prompt.categoryName || 'General';
+              if (!acc[category]) {
+                acc[category] = [];
+              }
+              acc[category].push(prompt);
+              return acc;
+            }, {} as Record<string, Prompt[]>);
+            const firstCategory = Object.keys(groupedPrompts).sort()[0];
+            // Expand first category
+            setCollapsedCategories((prev) => {
+              const newSet = new Set(prev);
+              newSet.delete(firstCategory);
+              return newSet;
+            });
+            // Select first prompt
+            const firstPrompt = groupedPrompts[firstCategory][0];
+            if (firstPrompt) {
+              setSelectedPromptId(firstPrompt.id);
+            }
+          }
+        },
+        openFirstArticle: () => {
+          if (articles.length > 0) {
+            handleArticleClick(articles[0].id);
+          }
+        },
+      });
+    }
+  }, [prompts, articles, setActions]);
 
   // Check authentication status
   useEffect(() => {

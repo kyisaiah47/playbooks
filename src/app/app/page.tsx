@@ -31,6 +31,13 @@ export default function StudioPage() {
   const [userEmail, setUserEmail] = useState('');
   const [showOnboarding, setShowOnboarding] = useState(false);
 
+  // Callbacks for interactive banner
+  const [templatesActions, setTemplatesActions] = useState<{
+    openTemplateDropdown?: () => void;
+    selectFirstPrompt?: () => void;
+    openFirstArticle?: () => void;
+  }>({});
+
   useEffect(() => {
     loadUser();
     checkOnboarding();
@@ -171,17 +178,46 @@ export default function StudioPage() {
           <p className="text-sm text-foreground text-center">
             <span className="inline-flex items-center gap-1.5">
               <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">1</span>
-              Pick a template that fits your goal
+              Pick a{' '}
+              <button
+                onClick={() => {
+                  if (currentView !== 'templates') handleViewChange('templates');
+                  setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
+                }}
+                className="text-primary hover:underline font-medium"
+              >
+                template
+              </button>{' '}
+              that fits your goal
             </span>
             {' → '}
             <span className="inline-flex items-center gap-1.5">
               <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">2</span>
-              Answer thoughtful prompts
+              Answer thoughtful{' '}
+              <button
+                onClick={() => {
+                  if (currentView !== 'templates') handleViewChange('templates');
+                  setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
+                }}
+                className="text-primary hover:underline font-medium"
+              >
+                prompts
+              </button>
             </span>
             {' → '}
             <span className="inline-flex items-center gap-1.5">
               <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
-              Read curated articles for help
+              Read curated{' '}
+              <button
+                onClick={() => {
+                  if (currentView !== 'templates') handleViewChange('templates');
+                  setTimeout(() => templatesActions.openFirstArticle?.(), 100);
+                }}
+                className="text-primary hover:underline font-medium"
+              >
+                articles
+              </button>{' '}
+              for help
             </span>
             {' → '}
             <span className="inline-flex items-center gap-1.5">
@@ -213,7 +249,11 @@ export default function StudioPage() {
             zIndex: currentView === 'templates' ? 10 : 0
           }}
         >
-          <TemplatesView key={`templates-${viewKeys.templates}`} onViewChange={handleViewChange} />
+          <TemplatesView
+            key={`templates-${viewKeys.templates}`}
+            onViewChange={handleViewChange}
+            setActions={setTemplatesActions}
+          />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
