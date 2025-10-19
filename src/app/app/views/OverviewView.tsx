@@ -29,6 +29,15 @@ interface ReflectionSummary {
   wordCount: number;
 }
 
+interface ReflectionDetail {
+  id: string;
+  date: string;
+  content: string;
+  mood: string;
+  tags: string[];
+  prompt?: string;
+}
+
 interface ActivityDay {
   date: string;
   reflections: number;
@@ -51,10 +60,11 @@ interface TemplateResponses {
 }
 
 export function OverviewView() {
-  const [view, setView] = useState<'board' | 'timeline' | 'insights' | 'responses'>('board');
+  const [view, setView] = useState<'board' | 'timeline' | 'insights' | 'responses' | 'reflections'>('board');
   const [templateResponses, setTemplateResponses] = useState<TemplateResponses[]>([]);
   const [templates, setTemplates] = useState<TemplateProgress[]>([]);
   const [reflections, setReflections] = useState<ReflectionSummary[]>([]);
+  const [reflectionDetails, setReflectionDetails] = useState<ReflectionDetail[]>([]);
   const [activityData, setActivityData] = useState<ActivityDay[]>([]);
   const [boardFilter, setBoardFilter] = useState<'all' | 'in-progress' | 'completed'>('all');
   const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(null);
@@ -83,11 +93,11 @@ export function OverviewView() {
     }
   }, [isLoggedIn]);
 
-  // Check if we should navigate to responses tab
+  // Check if we should navigate to specific tab
   useEffect(() => {
     const targetTab = sessionStorage.getItem('overview-tab');
-    if (targetTab === 'responses') {
-      setView('responses');
+    if (targetTab === 'responses' || targetTab === 'reflections') {
+      setView(targetTab);
       sessionStorage.removeItem('overview-tab');
     }
   }, []);
@@ -256,6 +266,7 @@ export function OverviewView() {
 
         // Process reflections data
         if (reflectionsData.reflections) {
+          const details: ReflectionDetail[] = [];
           reflectionsData.reflections.forEach((reflection: any) => {
             if (reflection.content) {
               reflectionsList.push({
@@ -264,8 +275,17 @@ export function OverviewView() {
                 tags: reflection.tags || [],
                 wordCount: reflection.content.split(/\s+/).length,
               });
+              details.push({
+                id: reflection.id || reflection.date,
+                date: reflection.date,
+                content: reflection.content,
+                mood: reflection.mood || '',
+                tags: reflection.tags || [],
+                prompt: reflection.prompt,
+              });
             }
           });
+          setReflectionDetails(details.sort((a, b) => b.date.localeCompare(a.date)));
         }
       } else {
         // Load from localStorage for anonymous users
@@ -311,6 +331,7 @@ export function OverviewView() {
         }
 
         // Process reflections from localStorage
+        const details: ReflectionDetail[] = [];
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
           if (key && key.startsWith('reflection-')) {
@@ -325,6 +346,14 @@ export function OverviewView() {
                     tags: reflection.tags || [],
                     wordCount: reflection.content.split(/\s+/).length,
                   });
+                  details.push({
+                    id: key,
+                    date: reflection.date,
+                    content: reflection.content,
+                    mood: reflection.mood || '',
+                    tags: reflection.tags || [],
+                    prompt: reflection.prompt,
+                  });
                 }
               } catch (e) {
                 console.error('Error parsing localStorage reflection data:', e);
@@ -332,6 +361,7 @@ export function OverviewView() {
             }
           }
         }
+        setReflectionDetails(details.sort((a, b) => b.date.localeCompare(a.date)));
       }
 
       setTemplates(Array.from(templateMap.values()).filter(t => t.promptsCompleted > 0));
@@ -443,6 +473,10 @@ export function OverviewView() {
               <TabsTrigger value="responses" className="data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none">
                 <FileText className="h-4 w-4 mr-2" />
                 Responses
+              </TabsTrigger>
+              <TabsTrigger value="reflections" className="data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none">
+                <Heart className="h-4 w-4 mr-2" />
+                Reflections
               </TabsTrigger>
             </TabsList>
           </div>
@@ -927,6 +961,69 @@ export function OverviewView() {
                       </motion.div>
                     )}
                   </>
+                )}
+              </motion.div>
+            </TabsContent>
+
+            {/* Reflections View */}
+            <TabsContent value="reflections" className="mt-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                {reflectionDetails.length === 0 ? (
+                  <Card className="p-8">
+                    <p className="text-center text-muted-foreground">
+                      No reflections yet. Go to Reflection to start writing!
+                    </p>
+                  </Card>
+                ) : (
+                  reflectionDetails.map((reflection, index) => (
+                    <motion.div
+                      key={reflection.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                    >
+                      <Card className="p-6">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-3">
+                            <h3 className="text-lg font-bold text-foreground">
+                              {new Date(reflection.date + 'T00:00:00').toLocaleDateString('en-US', {
+                                weekday: 'long',
+                                month: 'long',
+                                day: 'numeric',
+                                year: 'numeric',
+                              })}
+                            </h3>
+                            {reflection.mood && <span className="text-2xl">{reflection.mood}</span>}
+                          </div>
+                        </div>
+                        {reflection.prompt && (
+                          <p className="text-sm text-muted-foreground italic mb-4">
+                            "{reflection.prompt}"
+                          </p>
+                        )}
+                        <div className="p-4 bg-muted/30 rounded-lg">
+                          <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
+                            {reflection.content}
+                          </p>
+                        </div>
+                        {reflection.tags.length > 0 && (
+                          <div className="flex gap-2 flex-wrap mt-4">
+                            {reflection.tags.map((tag) => (
+                              <Badge key={tag} variant="secondary" className="text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
+                        )}
+                      </Card>
+                    </motion.div>
+                  ))
                 )}
               </motion.div>
             </TabsContent>

@@ -37,7 +37,11 @@ const DAILY_PROMPTS = [
 
 const MOODS = ['😊', '😌', '😐', '😔', '😤', '😴', '🤔'];
 
-export function ReflectionView() {
+interface ReflectionViewProps {
+  onViewChange?: (view: 'templates' | 'reflection' | 'overview') => void;
+}
+
+export function ReflectionView({ onViewChange }: ReflectionViewProps = {}) {
   // Get today's date in local timezone (not UTC)
   const today = new Date().toLocaleDateString('en-CA'); // en-CA gives YYYY-MM-DD format
   const [currentDate, setCurrentDate] = useState(today); // Track which date is being viewed
@@ -367,7 +371,23 @@ export function ReflectionView() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="hidden lg:block text-xs text-muted-foreground max-w-xs text-right">
+                  <p>This isn't graded - reflect at your own pace.</p>
+                  <p>
+                    See all your reflections in the{' '}
+                    <button
+                      onClick={() => {
+                        sessionStorage.setItem('overview-tab', 'reflections');
+                        onViewChange?.('overview');
+                      }}
+                      className="text-primary hover:underline"
+                    >
+                      Overview
+                    </button>{' '}
+                    tab.
+                  </p>
+                </div>
                 {lastSaved && (
                   <span className="hidden md:inline text-xs text-muted-foreground">
                     Saved {lastSaved.toLocaleTimeString()}

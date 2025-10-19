@@ -221,7 +221,7 @@ export default function StudioPage() {
             zIndex: currentView === 'reflection' ? 10 : 0
           }}
         >
-          <ReflectionView key={`reflection-${viewKeys.reflection}`} />
+          <ReflectionView key={`reflection-${viewKeys.reflection}`} onViewChange={handleViewChange} />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
