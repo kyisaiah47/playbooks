@@ -66,10 +66,6 @@ const FEATURED_TEMPLATE_IDS = [
   'job-search',
   'home-buying',
   'business-launch',
-  'career-change',
-  'relationship-breakup',
-  'moving-cities',
-  'starting-family',
 ];
 
 interface TemplatesViewProps {
