@@ -140,7 +140,7 @@ export default function HowItWorksPage() {
                   <Card className="border-0 shadow-lg h-full">
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-yellow-500/20 text-yellow-600 dark:text-yellow-500 font-bold border-2 border-yellow-500/30">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground font-bold">
                           {step.number}
                         </div>
                         <Icon className="h-6 w-6 text-primary" />
@@ -149,8 +149,8 @@ export default function HowItWorksPage() {
                       <CardDescription className="text-base mt-2">{step.description}</CardDescription>
                       <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                         {step.details.map((detail, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <span className="text-primary mt-1">•</span>
+                          <li key={i} className="flex items-center gap-2">
+                            <span className="text-primary">•</span>
                             <span>{detail}</span>
                           </li>
                         ))}
