@@ -41,6 +41,7 @@ export default function ChangelogPage() {
                 <div>
                   <h3 className="text-lg font-semibold mb-2">New Features</h3>
                   <ul className="list-disc pl-6 space-y-2">
+                    <li>Added How It Works page to help new users understand the app</li>
                     <li>Added PDF export for your responses and reflections</li>
                     <li>Added Responses and Reflections tabs to Overview to view everything in one place</li>
                     <li>Added search in articles to find specific information</li>
