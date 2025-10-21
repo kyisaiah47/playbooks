@@ -6,7 +6,7 @@ import type { TemplateRegistryEntry } from '@/registry/templates';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Search, Layout, ArrowLeft } from 'lucide-react';
+import { Search, Layout } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { motion } from 'framer-motion';
 import { use } from 'react';
@@ -85,14 +85,6 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Link
-              href="/templates"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to all templates
-            </Link>
-
             <Badge variant="outline" className="px-4 py-2">
               <Layout className="mr-2 h-4 w-4" />
               {filteredTemplates.length} Templates
