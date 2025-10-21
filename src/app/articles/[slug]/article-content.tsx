@@ -263,6 +263,20 @@ export function ArticleContent({ content, searchQuery = '' }: ArticleContentProp
             );
           }
 
+          // Numbered lists (ordered lists) - optimized for featured snippets
+          if (paragraph.match(/^\d+\.\s/)) {
+            const items = paragraph.split('\n').filter(line => line.trim().match(/^\d+\.\s/));
+            return (
+              <ol key={index} className="space-y-2 my-4 ml-5 list-decimal">
+                {items.map((item, itemIndex) => (
+                  <li key={itemIndex} className="text-sm text-foreground/90 pl-2">
+                    {renderText(item.replace(/^\d+\.\s*/, ''))}
+                  </li>
+                ))}
+              </ol>
+            );
+          }
+
           // Bullet points
           if (paragraph.startsWith('- ') || paragraph.startsWith('• ')) {
             const items = paragraph.split('\n').filter(line => line.trim().startsWith('-') || line.trim().startsWith('•'));
