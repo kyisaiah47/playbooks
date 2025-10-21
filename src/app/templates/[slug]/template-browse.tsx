@@ -2,6 +2,7 @@
 
 import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import type { TemplateRegistryEntry } from '@/registry/templates';
 import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
@@ -227,7 +228,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
                     </button>
 
                     {isExpanded && (
-                      <ol className="mt-2 space-y-2 pl-6 list-decimal">
+                      <ol className="mt-2 space-y-2 pl-6 list-decimal marker:text-sm">
                         {categoryPrompts.map((prompt) => (
                           <li
                             key={prompt.id}
@@ -263,18 +264,20 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
           ) : articles.length === 0 ? (
             <p className="text-muted-foreground">No articles available for this template.</p>
           ) : (
-            <ol className="space-y-3 pl-6 list-decimal border-t pt-6">
+            <ol className="space-y-3 pl-6 list-decimal marker:text-sm border-t pt-6">
               {articles.map((article) => (
                 <li
                   key={article.id}
                   className="group py-2"
                 >
-                  <h3 className="text-sm font-medium group-hover:text-primary transition-colors">
-                    {article.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
-                    <span>{article.readTime}</span>
-                  </div>
+                  <Link href={`/articles/${article.slug}`}>
+                    <h3 className="text-sm font-medium group-hover:text-primary transition-colors">
+                      {article.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
+                      <span>{article.readTime}</span>
+                    </div>
+                  </Link>
                 </li>
               ))}
             </ol>
