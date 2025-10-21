@@ -41,35 +41,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Category pages
-  const categories = [
-    'life-planning',
-    'career-finance',
-    'health-wellness',
-    'relationships-family',
-    'creative-hobbies',
-    'business-entrepreneurship',
-    'education-learning',
-    'technology-digital',
-    'personal-development',
-    'home-living',
-  ];
-
-  const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-    url: `${baseUrl}/templates/categories/${category}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.85,
-  }));
-
   try {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch all template IDs
+    // Fetch all templates to get categories dynamically
     const { data: templates } = await supabase
       .from('templata_templates')
-      .select('id, created_at')
+      .select('id, category, created_at')
       .order('created_at', { ascending: false });
+
+    // Get unique categories and generate category pages dynamically
+    const uniqueCategories = [...new Set((templates || []).map(t => t.category))];
+    const categoryPages: MetadataRoute.Sitemap = uniqueCategories.map((category) => ({
+      url: `${baseUrl}/templates/categories/${category.toLowerCase().replace(/\s+&?\s*/g, '-')}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    }));
 
     // Fetch all article slugs
     const { data: articles } = await supabase
@@ -104,7 +92,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return [...staticPages, ...categoryPages, ...templatePages, ...articlePages];
   } catch (error) {
     console.error('Error generating sitemap:', error);
-    // Return just static pages and category pages if database fetch fails
-    return [...staticPages, ...categoryPages];
+    // Return just static pages if database fetch fails
+    return staticPages;
   }
 }
