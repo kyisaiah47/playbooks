@@ -5,7 +5,7 @@ import Link from 'next/link';
 import type { TemplateRegistryEntry } from '@/registry/templates';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Search, Layout, Sparkles, FileText, ChevronRight } from 'lucide-react';
+import { Search, Layout, Sparkles, FileText, Plus, Minus } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { motion } from 'framer-motion';
 import { use } from 'react';
@@ -208,9 +208,11 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                           className="p-2 hover:bg-muted rounded-lg transition-colors"
                           aria-label={isExpanded ? "Collapse" : "Expand"}
                         >
-                          <ChevronRight
-                            className={`w-5 h-5 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
-                          />
+                          {isExpanded ? (
+                            <Minus className="w-5 h-5" />
+                          ) : (
+                            <Plus className="w-5 h-5" />
+                          )}
                         </button>
                       </div>
                     </div>
