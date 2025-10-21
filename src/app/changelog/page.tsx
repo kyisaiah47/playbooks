@@ -37,27 +37,19 @@ export default function ChangelogPage() {
               <div className="flex items-baseline gap-3 mb-4">
                 <span className="text-sm text-muted-foreground">October 21, 2025</span>
               </div>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Platform & SEO</h3>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>
-                      Approved and listed on{' '}
-                      <a
-                        href="https://alternativeto.net/software/templata/about/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        AlternativeTo
-                      </a>
-                    </li>
-                    <li>Added category index pages for better SEO (/templates/categories/[category])</li>
-                    <li>Implemented CreativeWork schema markup on all template pages</li>
-                    <li>Added related templates section for improved internal linking</li>
-                  </ul>
-                </div>
-              </div>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  Approved and listed on{' '}
+                  <a
+                    href="https://alternativeto.net/software/templata/about/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    AlternativeTo
+                  </a>
+                </li>
+              </ul>
             </section>
 
             <section className="mb-8">
