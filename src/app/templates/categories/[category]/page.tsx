@@ -5,7 +5,6 @@ import Link from 'next/link';
 import type { TemplateRegistryEntry } from '@/registry/templates';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Search, Layout } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { motion } from 'framer-motion';
@@ -123,9 +122,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </section>
 
-      {/* Templates Grid */}
+      {/* Templates List */}
       <section className="py-16">
-        <div className="container mx-auto max-w-7xl px-4">
+        <div className="container mx-auto max-w-6xl px-4">
           {loading ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">Loading templates...</p>
@@ -137,21 +136,24 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredTemplates.map((template) => (
-                <Link key={template.id} href={`/templates/${template.id}`}>
-                  <Card className="h-full hover:shadow-lg transition-all duration-300 group cursor-pointer border-2 hover:border-primary/50">
-                    <CardHeader>
-                      <CardTitle className="group-hover:text-primary transition-colors">
+            <div className="border-t pt-8">
+              <h2 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
+                {categoryName}
+              </h2>
+              <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
+                {filteredTemplates.map((template) => (
+                  <li key={template.id} className="py-2">
+                    <Link
+                      href={`/templates/${template.id}`}
+                      className="group block text-foreground hover:text-primary transition-colors"
+                    >
+                      <div className="text-base">
                         {template.name}
-                      </CardTitle>
-                      <CardDescription className="line-clamp-2">
-                        {template.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                </Link>
-              ))}
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
             </div>
           )}
         </div>
