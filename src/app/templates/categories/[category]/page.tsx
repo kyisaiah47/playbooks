@@ -190,56 +190,59 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                       </div>
                     </div>
 
-                    {/* Prompts Section */}
-                    {data.prompts.length > 0 && (
-                      <div className="mb-8">
-                        <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
-                          Prompts
-                        </h3>
-                        <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
-                          {data.prompts.slice(0, 10).map((prompt: any) => (
-                            <li key={prompt.id} className="py-1 text-sm">
-                              {prompt.prompt}
-                            </li>
-                          ))}
-                          {data.prompts.length > 10 && (
-                            <li className="py-1 text-sm text-muted-foreground italic">
-                              <Link href={`/templates/${template.id}`} className="hover:text-primary">
-                                +{data.prompts.length - 10} more prompts →
-                              </Link>
-                            </li>
-                          )}
-                        </ol>
-                      </div>
-                    )}
+                    {/* Prompts & Articles - 2 Column Layout */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Prompts Section */}
+                      {data.prompts.length > 0 && (
+                        <div>
+                          <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
+                            Prompts
+                          </h3>
+                          <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
+                            {data.prompts.slice(0, 5).map((prompt: any) => (
+                              <li key={prompt.id} className="py-1 text-sm">
+                                {prompt.prompt}
+                              </li>
+                            ))}
+                            {data.prompts.length > 5 && (
+                              <li className="py-1 text-sm text-muted-foreground italic">
+                                <Link href={`/templates/${template.id}`} className="hover:text-primary">
+                                  +{data.prompts.length - 5} more prompts →
+                                </Link>
+                              </li>
+                            )}
+                          </ol>
+                        </div>
+                      )}
 
-                    {/* Articles Section */}
-                    {data.articles.length > 0 && (
-                      <div>
-                        <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
-                          Articles
-                        </h3>
-                        <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
-                          {data.articles.slice(0, 10).map((article: any) => (
-                            <li key={article.id} className="py-1">
-                              <Link
-                                href={`/articles/${article.slug}`}
-                                className="text-sm hover:text-primary transition-colors"
-                              >
-                                {article.title}
-                              </Link>
-                            </li>
-                          ))}
-                          {data.articles.length > 10 && (
-                            <li className="py-1 text-sm text-muted-foreground italic">
-                              <Link href={`/templates/${template.id}`} className="hover:text-primary">
-                                +{data.articles.length - 10} more articles →
-                              </Link>
-                            </li>
-                          )}
-                        </ol>
-                      </div>
-                    )}
+                      {/* Articles Section */}
+                      {data.articles.length > 0 && (
+                        <div>
+                          <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
+                            Articles
+                          </h3>
+                          <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
+                            {data.articles.slice(0, 5).map((article: any) => (
+                              <li key={article.id} className="py-1">
+                                <Link
+                                  href={`/articles/${article.slug}`}
+                                  className="text-sm hover:text-primary transition-colors"
+                                >
+                                  {article.title}
+                                </Link>
+                              </li>
+                            ))}
+                            {data.articles.length > 5 && (
+                              <li className="py-1 text-sm text-muted-foreground italic">
+                                <Link href={`/templates/${template.id}`} className="hover:text-primary">
+                                  +{data.articles.length - 5} more articles →
+                                </Link>
+                              </li>
+                            )}
+                          </ol>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 );
               })}
