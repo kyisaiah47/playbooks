@@ -5,7 +5,7 @@ import Link from 'next/link';
 import type { TemplateRegistryEntry } from '@/registry/templates';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Search, Layout, Sparkles, FileText, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search, Layout, ChevronDown, ChevronUp } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { motion } from 'framer-motion';
 import { use } from 'react';
@@ -192,16 +192,6 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                           <p className="text-sm text-muted-foreground mt-2">
                             {template.description}
                           </p>
-                          <div className="flex items-center gap-6 mt-4 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-2">
-                              <Sparkles className="h-4 w-4" />
-                              <span>{data.prompts.length} prompts</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <FileText className="h-4 w-4" />
-                              <span>{data.articles.length} articles</span>
-                            </div>
-                          </div>
                         </div>
                         <button
                           onClick={() => toggleTemplate(template.id)}
