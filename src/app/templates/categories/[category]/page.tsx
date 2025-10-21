@@ -142,11 +142,6 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 <Link key={template.id} href={`/templates/${template.id}`}>
                   <Card className="h-full hover:shadow-lg transition-all duration-300 group cursor-pointer border-2 hover:border-primary/50">
                     <CardHeader>
-                      <div className="flex items-start justify-end mb-3">
-                        <Badge variant="outline" className="text-xs">
-                          {template.category}
-                        </Badge>
-                      </div>
                       <CardTitle className="group-hover:text-primary transition-colors">
                         {template.name}
                       </CardTitle>
