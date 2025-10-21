@@ -173,7 +173,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               </p>
             </div>
           ) : (
-            <div className="space-y-16">
+            <div className="space-y-8">
               {filteredTemplates.map((template) => {
                 const data = templateData[template.id] || { prompts: [], articles: [] };
                 const isExpanded = expandedTemplates.has(template.id);
