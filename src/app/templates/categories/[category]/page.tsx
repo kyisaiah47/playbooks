@@ -140,16 +140,26 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               <h2 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
                 {categoryName}
               </h2>
-              <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
+              <ol className="space-y-4 pl-6 list-decimal marker:text-sm">
                 {filteredTemplates.map((template) => (
-                  <li key={template.id} className="py-2">
+                  <li key={template.id} className="py-3">
                     <Link
                       href={`/templates/${template.id}`}
-                      className="group block text-foreground hover:text-primary transition-colors"
+                      className="group block"
                     >
-                      <div className="text-base">
+                      <div className="text-base font-medium group-hover:text-primary transition-colors">
                         {template.name}
                       </div>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {template.description}
+                      </p>
+                      {template.template && (
+                        <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
+                          <span>{template.template.estimatedTime}</span>
+                          <span>•</span>
+                          <span className="capitalize">{template.template.difficulty}</span>
+                        </div>
+                      )}
                     </Link>
                   </li>
                 ))}
