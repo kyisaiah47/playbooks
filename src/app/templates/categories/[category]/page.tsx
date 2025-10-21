@@ -5,7 +5,7 @@ import Link from 'next/link';
 import type { TemplateRegistryEntry } from '@/registry/templates';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Search, Layout, Sparkles, FileText } from 'lucide-react';
+import { Search, Layout, Sparkles, FileText, ChevronRight } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
 import { motion } from 'framer-motion';
 import { use } from 'react';
@@ -33,7 +33,18 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [templates, setTemplates] = useState<TemplateRegistryEntry[]>([]);
   const [templateData, setTemplateData] = useState<Record<string, { prompts: any[], articles: any[] }>>({});
+  const [expandedTemplates, setExpandedTemplates] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
+
+  const toggleTemplate = (templateId: string) => {
+    const newExpanded = new Set(expandedTemplates);
+    if (newExpanded.has(templateId)) {
+      newExpanded.delete(templateId);
+    } else {
+      newExpanded.add(templateId);
+    }
+    setExpandedTemplates(newExpanded);
+  };
 
   // Convert URL slug to proper title case
   const categoryName = categoryDisplayNames[category] ||
@@ -165,33 +176,48 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             <div className="space-y-16">
               {filteredTemplates.map((template) => {
                 const data = templateData[template.id] || { prompts: [], articles: [] };
+                const isExpanded = expandedTemplates.has(template.id);
 
                 return (
                   <div key={template.id} className="border-t pt-8">
                     {/* Template Header */}
                     <div className="mb-6">
-                      <Link href={`/templates/${template.id}`}>
-                        <h2 className="text-2xl font-bold hover:text-primary transition-colors">
-                          {template.name}
-                        </h2>
-                      </Link>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        {template.description}
-                      </p>
-                      <div className="flex items-center gap-6 mt-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <Sparkles className="h-4 w-4" />
-                          <span>{data.prompts.length} prompts</span>
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <Link href={`/templates/${template.id}`}>
+                            <h2 className="text-2xl font-bold hover:text-primary transition-colors">
+                              {template.name}
+                            </h2>
+                          </Link>
+                          <p className="text-sm text-muted-foreground mt-2">
+                            {template.description}
+                          </p>
+                          <div className="flex items-center gap-6 mt-4 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-2">
+                              <Sparkles className="h-4 w-4" />
+                              <span>{data.prompts.length} prompts</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <FileText className="h-4 w-4" />
+                              <span>{data.articles.length} articles</span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <FileText className="h-4 w-4" />
-                          <span>{data.articles.length} articles</span>
-                        </div>
+                        <button
+                          onClick={() => toggleTemplate(template.id)}
+                          className="p-2 hover:bg-muted rounded-lg transition-colors"
+                          aria-label={isExpanded ? "Collapse" : "Expand"}
+                        >
+                          <ChevronRight
+                            className={`w-5 h-5 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+                          />
+                        </button>
                       </div>
                     </div>
 
                     {/* Prompts & Articles - 2 Column Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {isExpanded && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       {/* Prompts Section */}
                       {data.prompts.length > 0 && (
                         <div>
@@ -242,7 +268,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                           </ol>
                         </div>
                       )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 );
               })}
