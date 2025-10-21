@@ -126,25 +126,25 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://templata.com'
+        item: 'https://templata.org'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Templates',
-        item: 'https://templata.com/templates'
+        item: 'https://templata.org/templates'
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: templateData.category,
-        item: `https://templata.com/templates?category=${encodeURIComponent(templateData.category)}`
+        item: `https://templata.org/templates?category=${encodeURIComponent(templateData.category)}`
       },
       {
         '@type': 'ListItem',
         position: 4,
         name: templateData.title,
-        item: `https://templata.com/templates/${slug}/marketing`
+        item: `https://templata.org/templates/${slug}/marketing`
       }
     ]
   };
@@ -219,19 +219,19 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     author: {
       '@type': 'Organization',
       name: 'Templata',
-      url: 'https://templata.com'
+      url: 'https://templata.org'
     },
     publisher: {
       '@type': 'Organization',
       name: 'Templata',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://templata.com/brand/templata-logo.svg'
+        url: 'https://templata.org/brand/templata-logo.svg'
       }
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://templata.com/templates/${slug}/marketing`
+      '@id': `https://templata.org/templates/${slug}/marketing`
     },
     datePublished: '2024-01-01',
     dateModified: new Date().toISOString().split('T')[0],
@@ -249,11 +249,11 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     '@type': 'WebPage',
     name: `${templateData.title} Template`,
     description: `${templateData.description} Get ${prompts.length} expert prompts and ${articles.length} articles.`,
-    url: `https://templata.com/templates/${slug}/marketing`,
+    url: `https://templata.org/templates/${slug}/marketing`,
     isPartOf: {
       '@type': 'WebSite',
       name: 'Templata',
-      url: 'https://templata.com'
+      url: 'https://templata.org'
     },
     about: {
       '@type': 'SoftwareApplication',
@@ -268,7 +268,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     },
     primaryImageOfPage: {
       '@type': 'ImageObject',
-      url: 'https://templata.com/og-image.jpg'
+      url: 'https://templata.org/og-image.jpg'
     }
   };
 
@@ -282,7 +282,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: prompt.prompt.substring(0, 100),
-      item: `https://templata.com/templates/${slug}/marketing#prompt-${prompt.id}`
+      item: `https://templata.org/templates/${slug}/marketing#prompt-${prompt.id}`
     }))
   } : null;
 
@@ -296,7 +296,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: article.title,
-      item: `https://templata.com/templates/${slug}/marketing#article-${article.id}`
+      item: `https://templata.org/templates/${slug}/marketing#article-${article.id}`
     }))
   } : null;
 

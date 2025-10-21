@@ -36,11 +36,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Templata | Organize Life\'s Biggest Moments',
     description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments. Get organized in minutes with proven frameworks from domain experts.',
-    url: 'https://templata.com',
+    url: 'https://templata.org',
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.com/og-image.png',
+        url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Templata - Organize Life\'s Biggest Moments',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Templata | Organize Life\'s Biggest Moments',
     description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments.',
-    images: ['https://templata.com/og-image.png'],
+    images: ['https://templata.org/og-image.png'],
     creator: '@templata',
   },
   robots: {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code',
   },
   alternates: {
-    canonical: 'https://templata.com',
+    canonical: 'https://templata.org',
   },
   category: 'productivity',
 };
@@ -92,8 +92,8 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "Templata",
               "description": "Expert-crafted templates for life's biggest moments",
-              "url": "https://templata.com",
-              "logo": "https://templata.com/logo.png",
+              "url": "https://templata.org",
+              "logo": "https://templata.org/logo.png",
               "sameAs": [
                 "https://twitter.com/templata",
                 "https://linkedin.com/company/templata"

@@ -28,14 +28,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     authors: [{ name: 'Templata Team' }],
     creator: 'Templata',
     publisher: 'Templata',
-    metadataBase: new URL('https://templata.com'),
+    metadataBase: new URL('https://templata.org'),
     alternates: {
-      canonical: `/${slug}/template`,
+      canonical: `/templates/${slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://templata.com/${slug}/template`,
+      url: `https://templata.org/templates/${slug}`,
       siteName: 'Templata',
       images: [
         {

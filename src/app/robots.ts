@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://templata.com';
+  const baseUrl = 'https://templata.org';
 
   return {
     rules: [

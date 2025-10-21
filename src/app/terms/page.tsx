@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Terms of Service | Templata',
     description: 'Terms of service for Templata - Rules and guidelines for using our life planning platform.',
-    url: 'https://templata.com/terms',
+    url: 'https://templata.org/terms',
     siteName: 'Templata',
     locale: 'en_US',
     type: 'website',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://templata.com/terms',
+    canonical: 'https://templata.org/terms',
   },
 };
 

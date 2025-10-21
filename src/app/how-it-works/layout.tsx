@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'How It Works | Templata',
     description: 'Learn how to use Templata to organize your thoughts during major life transitions.',
-    url: 'https://templata.com/how-it-works',
+    url: 'https://templata.org/how-it-works',
     siteName: 'Templata',
     locale: 'en_US',
     type: 'website',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://templata.com/how-it-works',
+    canonical: 'https://templata.org/how-it-works',
   },
 };
 

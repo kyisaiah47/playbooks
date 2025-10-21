@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Browse 1,298 Life Templates | The Encyclopedia for Living',
     description: 'Systematically organized templates for every life situation. Wedding planning, career transitions, business launches, home buying & more. 104,000+ prompts and 25,936 articles.',
-    url: 'https://templata.com/templates',
+    url: 'https://templata.org/templates',
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.com/og-image.png',
+        url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Templata - 1,298 Life Planning Templates',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Browse 1,298 Life Templates | The Encyclopedia for Living',
     description: '1,298 systematically organized templates for every life situation. 104,000+ prompts and 25,936 articles. Completely free.',
-    images: ['https://templata.com/og-image.png'],
+    images: ['https://templata.org/og-image.png'],
     creator: '@templata',
   },
   robots: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://templata.com/templates',
+    canonical: 'https://templata.org/templates',
   },
 };
 
@@ -59,7 +59,7 @@ export default function TemplatesLayout({
             "@type": "CollectionPage",
             "name": "Life Planning Templates",
             "description": "Browse 1,298 systematically organized templates for every life situation",
-            "url": "https://templata.com/templates",
+            "url": "https://templata.org/templates",
             "mainEntity": {
               "@type": "ItemList",
               "name": "Template Collection",
@@ -71,7 +71,7 @@ export default function TemplatesLayout({
                   "name": "Wedding Planning Template",
                   "category": "Personal Life",
                   "description": "Complete wedding planning guide with budget tracking, vendor management, and timeline planning",
-                  "url": "https://templata.com/wedding-planning",
+                  "url": "https://templata.org/wedding-planning",
                   "applicationCategory": "Productivity",
                   "offers": {
                     "@type": "Offer",
@@ -84,7 +84,7 @@ export default function TemplatesLayout({
                   "name": "Home Buying Template",
                   "category": "Property & Moving",
                   "description": "First-time home buyer guide with mortgage calculator and inspection checklist",
-                  "url": "https://templata.com/home-buying",
+                  "url": "https://templata.org/home-buying",
                   "applicationCategory": "Productivity",
                   "offers": {
                     "@type": "Offer",
@@ -97,7 +97,7 @@ export default function TemplatesLayout({
                   "name": "Career Change Template",
                   "category": "Career & Work",
                   "description": "Strategic career transition planning with skill assessment and networking guides",
-                  "url": "https://templata.com/career-change",
+                  "url": "https://templata.org/career-change",
                   "applicationCategory": "Productivity",
                   "offers": {
                     "@type": "Offer",
@@ -110,7 +110,7 @@ export default function TemplatesLayout({
                   "name": "Business Launch Template",
                   "category": "Business & Finance",
                   "description": "Complete business startup guide with financial planning and marketing strategy",
-                  "url": "https://templata.com/business-launch",
+                  "url": "https://templata.org/business-launch",
                   "applicationCategory": "Productivity",
                   "offers": {
                     "@type": "Offer",
@@ -127,13 +127,13 @@ export default function TemplatesLayout({
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://templata.com"
+                  "item": "https://templata.org"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Templates",
-                  "item": "https://templata.com/templates"
+                  "item": "https://templata.org/templates"
                 }
               ]
             }

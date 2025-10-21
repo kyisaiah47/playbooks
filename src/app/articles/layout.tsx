@@ -7,18 +7,18 @@ export const metadata: Metadata = {
   authors: [{ name: 'Templata Team' }],
   creator: 'Templata',
   publisher: 'Templata',
-  metadataBase: new URL('https://templata.com'),
+  metadataBase: new URL('https://templata.org'),
   alternates: {
     canonical: '/articles',
   },
   openGraph: {
     title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
     description: '25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying & more. Like Wikipedia for life guidance.',
-    url: 'https://templata.com/articles',
+    url: 'https://templata.org/articles',
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.com/og-image.png',
+        url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Templata Articles - 25,936 Expert Articles',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
     description: '25,936 expert articles for every life situation. Wedding planning, career changes, business launches & more. Completely free.',
-    images: ['https://templata.com/og-image.png'],
+    images: ['https://templata.org/og-image.png'],
     creator: '@templata',
     site: '@templata',
   },

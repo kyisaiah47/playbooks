@@ -12,7 +12,7 @@ export interface SEOConfig {
 }
 
 export function generateMetadata(config: SEOConfig): Metadata {
-  const baseUrl = 'https://templata.com';
+  const baseUrl = 'https://templata.org';
   const fullTitle = config.title.includes('Templata') ? config.title : `${config.title} | Templata`;
 
   return {
@@ -90,7 +90,7 @@ export function generateStructuredData(type: 'CollectionPage' | 'Article' | 'Web
           name: 'Templata',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://templata.com/logo.png'
+            url: 'https://templata.org/logo.png'
           }
         }
       };
@@ -109,7 +109,7 @@ export function generateBreadcrumbStructuredData(breadcrumbs: Array<{ name: stri
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,
-      item: `https://templata.com${crumb.url}`
+      item: `https://templata.org${crumb.url}`
     }))
   };
 }
@@ -119,11 +119,11 @@ export function generatePaginationLinks(currentPage: number, totalPages: number,
 
   if (currentPage > 1) {
     const prevPage = currentPage === 2 ? basePath : `${basePath}?page=${currentPage - 1}`;
-    links.push({ rel: 'prev', href: `https://templata.com${prevPage}` });
+    links.push({ rel: 'prev', href: `https://templata.org${prevPage}` });
   }
 
   if (currentPage < totalPages) {
-    links.push({ rel: 'next', href: `https://templata.com${basePath}?page=${currentPage + 1}` });
+    links.push({ rel: 'next', href: `https://templata.org${basePath}?page=${currentPage + 1}` });
   }
 
   return links;

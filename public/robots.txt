@@ -1,5 +1,5 @@
 # robots.txt for Templata
-# https://templata.com
+# https://templata.org
 
 User-agent: *
 Allow: /
@@ -20,4 +20,4 @@ Disallow: /reset-password
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://templata.com/sitemap.xml
+Sitemap: https://templata.org/sitemap.xml

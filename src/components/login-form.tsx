@@ -181,7 +181,7 @@ export function LoginForm({
       <div className="bg-muted/30 border border-border rounded-lg p-4 text-center">
         <p className="text-sm font-medium text-muted-foreground mb-2">Try the demo account</p>
         <div className="flex flex-col gap-1 text-xs text-muted-foreground">
-          <p>demo@templata.com</p>
+          <p>demo@templata.org</p>
           <p>demo123</p>
         </div>
       </div>

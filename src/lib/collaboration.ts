@@ -44,7 +44,7 @@ export interface Comment {
 
 // Generate shareable link for a template
 export function generateShareableLink(templateId: string, shareId: string): string {
-  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://templata.com"
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://templata.org"
   return `${baseUrl}/shared/${templateId}/${shareId}`
 }
 

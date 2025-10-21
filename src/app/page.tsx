@@ -25,7 +25,7 @@ export default function LandingPage() {
 		'@type': 'SoftwareApplication',
 		name: 'Templata',
 		description: 'The first encyclopedia for living. 1,298 guided workspaces with 26,000+ articles and 104,000+ prompts for life\'s biggest decisions.',
-		url: 'https://templata.com',
+		url: 'https://templata.org',
 		applicationCategory: 'ProductivityApplication',
 		operatingSystem: 'Web',
 		featureList: [

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Changelog | Templata',
     description: 'Latest updates, features, and improvements to Templata.',
-    url: 'https://templata.com/changelog',
+    url: 'https://templata.org/changelog',
     siteName: 'Templata',
     locale: 'en_US',
     type: 'website',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://templata.com/changelog',
+    canonical: 'https://templata.org/changelog',
   },
 };
 

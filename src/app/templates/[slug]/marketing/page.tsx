@@ -52,14 +52,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     authors: [{ name: 'Templata' }],
     creator: 'Templata',
     publisher: 'Templata',
-    metadataBase: new URL('https://templata.com'),
+    metadataBase: new URL('https://templata.org'),
     alternates: {
       canonical: `/templates/${slug}/marketing`,
     },
     openGraph: {
       title,
       description,
-      url: `https://templata.com/templates/${slug}/marketing`,
+      url: `https://templata.org/templates/${slug}/marketing`,
       siteName: 'Templata',
       images: [
         {
