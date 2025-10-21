@@ -49,7 +49,7 @@ export default function LandingPage() {
 				<div
 					className="absolute inset-0 bg-cover bg-center bg-no-repeat"
 					style={{
-						backgroundImage: 'url(/geometric-monuments.png)',
+						backgroundImage: 'url(/geometric-monuments.webp)',
 						filter: 'brightness(0.4)',
 					}}
 				/>

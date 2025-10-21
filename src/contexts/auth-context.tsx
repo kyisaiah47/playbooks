@@ -21,13 +21,24 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Start as false - assume logged out
 
-  // Load auth state from session API on mount
+  // Load auth state from session API on mount (only if needed)
   useEffect(() => {
+    // Check if there's a session cookie before making API call
+    const hasSessionCookie = document.cookie.includes('session=');
+    if (!hasSessionCookie) {
+      setLoading(false);
+      return;
+    }
+
     async function loadSession() {
       try {
-        const res = await fetch('/api/auth/me');
+        setLoading(true);
+        const res = await fetch('/api/auth/me', {
+          credentials: 'include',
+          cache: 'no-store'
+        });
         const data = await res.json();
 
         if (data.user) {

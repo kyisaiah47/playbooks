@@ -6,7 +6,6 @@ import { SessionProvider } from "@/components/providers/session-provider"
 import { UIProvider } from "@/components/providers/ui-provider"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { AuthProvider } from "@/contexts/auth-context"
-import { UserUnlockProvider } from "@/contexts/UserUnlockContext"
 import { Analytics } from "@/components/analytics"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -122,13 +121,11 @@ export default function RootLayout({
           <CustomThemeProvider>
             <SessionProvider>
               <AuthProvider>
-                <UserUnlockProvider>
-                  <UIProvider>
-                    <Analytics />
-                    <SpeedInsights />
-                    {children}
-                  </UIProvider>
-                </UserUnlockProvider>
+                <UIProvider>
+                  <Analytics />
+                  <SpeedInsights />
+                  {children}
+                </UIProvider>
               </AuthProvider>
             </SessionProvider>
           </CustomThemeProvider>

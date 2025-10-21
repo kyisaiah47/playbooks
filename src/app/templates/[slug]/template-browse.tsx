@@ -8,8 +8,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ArrowRight, Sparkles, FileText, Zap, ChevronRight } from 'lucide-react';
-import { useUserUnlocks } from '@/contexts/UserUnlockContext';
-import { PaywallModal } from '@/components/paywall-modal';
 import { SubtleGlow } from '@/components/ui/glow-variants';
 
 interface TemplateBrowseProps {
@@ -34,15 +32,11 @@ interface Article {
 export default function TemplateBrowse({ params }: TemplateBrowseProps) {
   const router = useRouter();
   const { slug } = use(params);
-  const { unlockData, isTemplateUnlocked, canUnlockMore, unlockTemplate } = useUserUnlocks();
 
   const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
   const [prompts, setPrompts] = useState<Prompt[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
-  const [unlocking, setUnlocking] = useState(false);
-  const [paywallOpen, setPaywallOpen] = useState(false);
-  const [paywallTrigger, setPaywallTrigger] = useState<'unlock-limit' | 'locked-content'>('unlock-limit');
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -102,7 +96,6 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
   const templateData = template.template;
 
   const handleInsertPrompt = async (prompt: Prompt) => {
-    // MVP: No paywall checks - everything is free
     try {
       // Store prompt data for workspace to use
       sessionStorage.setItem('workspace-insert-prompt', JSON.stringify(prompt));
@@ -113,49 +106,9 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
       console.error('Error inserting prompt:', error);
       alert('Failed to insert prompt. Please try again.');
     }
-
-    /* TODO: Enable for production with paywall
-    try {
-      setUnlocking(true);
-
-      // Check if template is already unlocked
-      if (!isTemplateUnlocked(slug)) {
-        // Check if user can unlock more
-        if (!canUnlockMore()) {
-          setPaywallTrigger('unlock-limit');
-          setPaywallOpen(true);
-          return;
-        }
-
-        // Auto-unlock the template
-        try {
-          await unlockTemplate(slug);
-        } catch (error: any) {
-          if (error.message === 'UPGRADE_REQUIRED') {
-            setPaywallTrigger('unlock-limit');
-            setPaywallOpen(true);
-            return;
-          }
-          throw error;
-        }
-      }
-
-      // Store prompt data for workspace to use
-      sessionStorage.setItem('workspace-insert-prompt', JSON.stringify(prompt));
-
-      // Redirect to workspace
-      router.push('/workspace');
-    } catch (error) {
-      console.error('Error inserting prompt:', error);
-      alert('Failed to insert prompt. Please try again.');
-    } finally {
-      setUnlocking(false);
-    }
-    */
   };
 
   const handleReadArticle = async (article: Article) => {
-    // MVP: No paywall checks - everything is free
     try {
       // Store article data for workspace to use
       sessionStorage.setItem('workspace-open-article', JSON.stringify(article));
@@ -166,30 +119,6 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
       console.error('Error opening article:', error);
       alert('Failed to open article. Please try again.');
     }
-
-    /* TODO: Enable for production with paywall
-    try {
-      setUnlocking(true);
-
-      // Check if template is already unlocked
-      if (!isTemplateUnlocked(slug)) {
-        setPaywallTrigger('locked-content');
-        setPaywallOpen(true);
-        return;
-      }
-
-      // Store article data for workspace to use
-      sessionStorage.setItem('workspace-open-article', JSON.stringify(article));
-
-      // Redirect to workspace
-      router.push('/workspace');
-    } catch (error) {
-      console.error('Error opening article:', error);
-      alert('Failed to open article. Please try again.');
-    } finally {
-      setUnlocking(false);
-    }
-    */
   };
 
   const handleOpenInWorkspace = () => {
@@ -214,16 +143,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
   };
 
   return (
-    <>
-      {/* MVP: Paywall modal disabled */}
-      {/* <PaywallModal
-        isOpen={paywallOpen}
-        onClose={() => setPaywallOpen(false)}
-        trigger={paywallTrigger}
-        templateName={templateData.title}
-      /> */}
-
-      <PageLayout>
+    <PageLayout>
       {/* Hero Section */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto max-w-7xl px-4">
@@ -367,6 +287,5 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
         </SubtleGlow>
       </div>
     </PageLayout>
-    </>
   );
 }
