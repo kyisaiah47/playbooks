@@ -222,14 +222,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                                 {prompt.prompt}
                               </li>
                             ))}
-                            {data.prompts.length > 5 && (
-                              <li className="py-1 text-sm text-muted-foreground italic">
-                                <Link href={`/templates/${template.id}`} className="hover:text-primary">
-                                  +{data.prompts.length - 5} more prompts →
-                                </Link>
-                              </li>
-                            )}
                           </ol>
+                          {data.prompts.length > 5 && (
+                            <div className="mt-3 pl-6">
+                              <Link href={`/templates/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
+                                +{data.prompts.length - 5} more prompts →
+                              </Link>
+                            </div>
+                          )}
                         </div>
                       )}
 
@@ -250,14 +250,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                                 </Link>
                               </li>
                             ))}
-                            {data.articles.length > 5 && (
-                              <li className="py-1 text-sm text-muted-foreground italic">
-                                <Link href={`/templates/${template.id}`} className="hover:text-primary">
-                                  +{data.articles.length - 5} more articles →
-                                </Link>
-                              </li>
-                            )}
                           </ol>
+                          {data.articles.length > 5 && (
+                            <div className="mt-3 pl-6">
+                              <Link href={`/templates/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
+                                +{data.articles.length - 5} more articles →
+                              </Link>
+                            </div>
+                          )}
                         </div>
                       )}
                       </div>
