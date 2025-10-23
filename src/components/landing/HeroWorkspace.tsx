@@ -1,13 +1,14 @@
-import { FileText, BookOpen, User, Moon, X, Plus, Circle, CheckCircle2, ChevronRight, Search, Star, Clock, Calendar, ListTodo, BarChart3, LayoutDashboard, PanelLeftClose, PanelLeft, Compass, PenLine } from "lucide-react";
+import { FileText, BookOpen, User, Moon, X, Plus, Circle, CheckCircle2, ChevronRight, Search, Star, Clock, Calendar, ListTodo, BarChart3, LayoutDashboard, PanelLeftClose, PanelLeft, Compass, PenLine, Command, Network, CalendarDays, Settings, Library, TrendingUp, Archive } from "lucide-react";
 import { useState } from "react";
 
 export function HeroWorkspace() {
-  const [activeView, setActiveView] = useState<'guides' | 'calendar' | 'tasks' | 'timeline' | 'overview' | 'discover' | 'journal'>('guides');
+  const [activeView, setActiveView] = useState<'guides' | 'calendar' | 'tasks' | 'timeline' | 'overview' | 'discover' | 'journal' | 'graph' | 'daily' | 'settings' | 'library' | 'analytics' | 'archive'>('guides');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [openTabs, setOpenTabs] = useState<string[]>(['Wedding Planning']);
   const [activeTab, setActiveTab] = useState('Wedding Planning');
+  const [showCommandPalette, setShowCommandPalette] = useState(false);
 
-  const handleViewClick = (view: 'guides' | 'calendar' | 'tasks' | 'timeline' | 'overview' | 'discover' | 'journal') => {
+  const handleViewClick = (view: 'guides' | 'calendar' | 'tasks' | 'timeline' | 'overview' | 'discover' | 'journal' | 'graph' | 'daily' | 'settings' | 'library' | 'analytics' | 'archive') => {
     setActiveView(view);
     if (view !== 'guides') {
       // Open a new tab for the view
@@ -18,7 +19,7 @@ export function HeroWorkspace() {
       setActiveTab(viewName);
     } else {
       // Switch to most recently used guide tab
-      const guideTabs = openTabs.filter(tab => !['Calendar', 'Tasks', 'Timeline', 'Overview', 'Discover', 'Journal'].includes(tab));
+      const guideTabs = openTabs.filter(tab => !['Calendar', 'Tasks', 'Timeline', 'Overview', 'Discover', 'Journal', 'Graph', 'Daily', 'Settings', 'Library', 'Analytics', 'Archive', 'New Page'].includes(tab));
       if (guideTabs.length > 0) {
         setActiveTab(guideTabs[guideTabs.length - 1]);
       }
@@ -132,6 +133,84 @@ export function HeroWorkspace() {
             }`}
           >
             <PenLine className="w-3 h-3" />
+          </button>
+
+          {/* Divider */}
+          <div className="w-4 h-px bg-border my-1" />
+
+          {/* Graph View Icon */}
+          <button
+            onClick={() => handleViewClick('graph')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'graph'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <Network className="w-3 h-3" />
+          </button>
+
+          {/* Daily Note Icon */}
+          <button
+            onClick={() => handleViewClick('daily')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'daily'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <CalendarDays className="w-3 h-3" />
+          </button>
+
+          {/* Reading Library Icon */}
+          <button
+            onClick={() => handleViewClick('library')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'library'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <Library className="w-3 h-3" />
+          </button>
+
+          {/* Divider */}
+          <div className="w-4 h-px bg-border my-1" />
+
+          {/* Analytics Icon */}
+          <button
+            onClick={() => handleViewClick('analytics')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'analytics'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <TrendingUp className="w-3 h-3" />
+          </button>
+
+          {/* Archive Icon */}
+          <button
+            onClick={() => handleViewClick('archive')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'archive'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <Archive className="w-3 h-3" />
+          </button>
+
+          {/* Settings Icon */}
+          <button
+            onClick={() => handleViewClick('settings')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'settings'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <Settings className="w-3 h-3" />
           </button>
         </div>
 
@@ -311,8 +390,22 @@ export function HeroWorkspace() {
               <div className="flex-1 flex items-center gap-0.5 overflow-x-auto -mb-px">
                 {openTabs.map((tab, i) => {
                   const isActive = tab === activeTab;
-                  const isGuide = !['Calendar', 'Tasks', 'Timeline', 'Overview', 'Discover', 'Journal'].includes(tab);
-                  const Icon = isGuide ? FileText : tab === 'Calendar' ? Calendar : tab === 'Tasks' ? ListTodo : tab === 'Timeline' ? BarChart3 : tab === 'Overview' ? LayoutDashboard : tab === 'Discover' ? Compass : PenLine;
+                  const isGuide = !['Calendar', 'Tasks', 'Timeline', 'Overview', 'Discover', 'Journal', 'Graph', 'Daily', 'Settings', 'Library', 'Analytics', 'Archive', 'New Page'].includes(tab);
+                  const Icon = isGuide ? FileText :
+                    tab === 'Calendar' ? Calendar :
+                    tab === 'Tasks' ? ListTodo :
+                    tab === 'Timeline' ? BarChart3 :
+                    tab === 'Overview' ? LayoutDashboard :
+                    tab === 'Discover' ? Compass :
+                    tab === 'Journal' ? PenLine :
+                    tab === 'Graph' ? Network :
+                    tab === 'Daily' ? CalendarDays :
+                    tab === 'Settings' ? Settings :
+                    tab === 'Library' ? Library :
+                    tab === 'Analytics' ? TrendingUp :
+                    tab === 'Archive' ? Archive :
+                    tab === 'New Page' ? Plus :
+                    FileText;
                   const colors = ['blue', 'green', 'purple', 'orange', 'pink'];
                   const color = colors[i % colors.length];
 
@@ -328,6 +421,12 @@ export function HeroWorkspace() {
                         else if (tab === 'Overview') setActiveView('overview');
                         else if (tab === 'Discover') setActiveView('discover');
                         else if (tab === 'Journal') setActiveView('journal');
+                        else if (tab === 'Graph') setActiveView('graph');
+                        else if (tab === 'Daily') setActiveView('daily');
+                        else if (tab === 'Settings') setActiveView('settings');
+                        else if (tab === 'Library') setActiveView('library');
+                        else if (tab === 'Analytics') setActiveView('analytics');
+                        else if (tab === 'Archive') setActiveView('archive');
                         else setActiveView('guides');
                       }}
                       className={`flex items-center gap-2 px-3 py-1.5 min-w-fit cursor-pointer ${
@@ -920,6 +1019,330 @@ export function HeroWorkspace() {
                         <span className="text-[9px] text-muted-foreground">{entry.date}</span>
                       </div>
                     ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : activeTab === 'Graph' ? (
+            /* Graph View */
+            <div className="flex-1 p-6 overflow-y-auto bg-muted/5">
+              <div className="mb-6">
+                <h2 className="text-sm font-semibold mb-0.5">Graph View</h2>
+                <p className="text-[10px] text-muted-foreground">Visualize connections between your guides</p>
+              </div>
+
+              {/* Mock Graph Visualization */}
+              <div className="relative h-96 rounded-lg border border-border/40 bg-background overflow-hidden">
+                {/* Central node */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-20 h-20 rounded-full bg-[#6366f1]/20 border-2 border-[#6366f1] flex items-center justify-center">
+                    <span className="text-[10px] font-semibold text-center px-2">Wedding Planning</span>
+                  </div>
+                </div>
+
+                {/* Connected nodes */}
+                <div className="absolute top-1/4 left-1/4">
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center">
+                    <span className="text-[9px] font-semibold text-center px-2">Home Buying</span>
+                  </div>
+                </div>
+
+                <div className="absolute top-1/4 right-1/4">
+                  <div className="w-16 h-16 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center">
+                    <span className="text-[9px] font-semibold text-center px-2">Career</span>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-1/4 left-1/3">
+                  <div className="w-14 h-14 rounded-full bg-pink-500/20 border-2 border-pink-500 flex items-center justify-center">
+                    <span className="text-[8px] font-semibold text-center px-1">Boundaries</span>
+                  </div>
+                </div>
+
+                {/* Connection lines (SVG would be better in real implementation) */}
+                <svg className="absolute inset-0 pointer-events-none">
+                  <line x1="50%" y1="50%" x2="25%" y2="25%" stroke="#6366f1" strokeWidth="1" opacity="0.3" />
+                  <line x1="50%" y1="50%" x2="75%" y2="25%" stroke="#6366f1" strokeWidth="1" opacity="0.3" />
+                  <line x1="50%" y1="50%" x2="33%" y2="75%" stroke="#6366f1" strokeWidth="1" opacity="0.3" />
+                </svg>
+              </div>
+
+              {/* Legend */}
+              <div className="mt-6 p-4 rounded-lg border border-border/40 bg-background">
+                <h3 className="text-[10px] font-semibold mb-3">Connections</h3>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-[10px]">
+                    <span className="text-muted-foreground">Shared timeline dates</span>
+                    <span className="font-medium">3 connections</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px]">
+                    <span className="text-muted-foreground">Shared resources</span>
+                    <span className="font-medium">5 connections</span>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px]">
+                    <span className="text-muted-foreground">Related themes</span>
+                    <span className="font-medium">2 connections</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : activeTab === 'Daily' ? (
+            /* Daily Note View */
+            <div className="flex-1 p-6 overflow-y-auto">
+              <div className="max-w-3xl mx-auto">
+                <div className="mb-6">
+                  <h2 className="text-lg font-semibold mb-1">Today's Note</h2>
+                  <p className="text-[11px] text-muted-foreground">November 22, 2024</p>
+                </div>
+
+                {/* Today's Agenda */}
+                <div className="mb-6 p-4 rounded-lg border border-border/40 bg-muted/10">
+                  <h3 className="text-[11px] font-semibold mb-3">Today's Agenda</h3>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-[10px]">
+                      <Circle className="w-3 h-3 text-blue-500" />
+                      <span>Call venue about catering options</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[10px]">
+                      <Circle className="w-3 h-3 text-emerald-500" />
+                      <span>Submit mortgage pre-approval documents</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-[10px]">
+                      <Circle className="w-3 h-3 text-purple-500" />
+                      <span>Review job posting for Senior Engineer role</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Note Content */}
+                <div className="mb-4">
+                  <textarea
+                    placeholder="What's on your mind today..."
+                    className="w-full h-64 p-4 rounded-lg border border-border/40 bg-background text-[11px] resize-none focus:outline-none focus:ring-2 focus:ring-[#6366f1]/20"
+                  />
+                </div>
+
+                <button className="px-4 py-2 rounded-lg text-[11px] font-medium bg-[#6366f1] text-white hover:bg-[#6366f1]/90">
+                  Save Note
+                </button>
+              </div>
+            </div>
+          ) : activeTab === 'Library' ? (
+            /* Reading Library View */
+            <div className="flex-1 p-6 overflow-y-auto">
+              <div className="mb-6">
+                <h2 className="text-sm font-semibold mb-0.5">Reading Library</h2>
+                <p className="text-[10px] text-muted-foreground">All articles from your guides</p>
+              </div>
+
+              {/* Filters */}
+              <div className="mb-6 flex items-center gap-2">
+                <button className="px-3 py-1.5 rounded text-[10px] font-medium bg-[#6366f1]/10 text-[#6366f1]">
+                  All
+                </button>
+                <button className="px-3 py-1.5 rounded text-[10px] font-medium text-muted-foreground hover:bg-muted/30">
+                  Bookmarked
+                </button>
+                <button className="px-3 py-1.5 rounded text-[10px] font-medium text-muted-foreground hover:bg-muted/30">
+                  Unread
+                </button>
+              </div>
+
+              {/* Articles Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { title: 'Ceremony Planning Essentials', guide: 'Wedding Planning', read: true },
+                  { title: 'Mortgage Pre-Approval Guide', guide: 'Home Buying', read: false },
+                  { title: 'Negotiating Your Salary', guide: 'Career Transition', read: true },
+                  { title: 'Setting Healthy Boundaries', guide: 'Personal Growth', read: false },
+                  { title: 'Wedding Budget Breakdown', guide: 'Wedding Planning', read: true },
+                  { title: 'First-Time Home Buyer Tips', guide: 'Home Buying', read: false },
+                ].map((article, i) => (
+                  <div key={i} className="p-4 rounded-lg border border-border/40 bg-background hover:shadow-sm transition-shadow cursor-pointer">
+                    <div className={`text-[9px] font-medium px-2 py-1 rounded inline-block mb-2 ${
+                      article.guide === 'Wedding Planning' ? 'bg-[#6366f1]/10 text-[#6366f1]' :
+                      article.guide === 'Home Buying' ? 'bg-emerald-500/10 text-emerald-600' :
+                      article.guide === 'Career Transition' ? 'bg-blue-500/10 text-blue-600' :
+                      'bg-purple-500/10 text-purple-600'
+                    }`}>
+                      {article.guide}
+                    </div>
+                    <h3 className="text-[12px] font-semibold mb-2">{article.title}</h3>
+                    <div className="flex items-center gap-2">
+                      {article.read ? (
+                        <span className="text-[9px] text-muted-foreground">Read</span>
+                      ) : (
+                        <span className="text-[9px] text-[#6366f1]">Unread</span>
+                      )}
+                      <span className="text-[9px] text-muted-foreground">· 5 min read</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : activeTab === 'Analytics' ? (
+            /* Analytics View */
+            <div className="flex-1 p-6 overflow-y-auto">
+              <div className="mb-6">
+                <h2 className="text-sm font-semibold mb-0.5">Analytics</h2>
+                <p className="text-[10px] text-muted-foreground">Your progress and insights</p>
+              </div>
+
+              {/* Stats Cards */}
+              <div className="grid grid-cols-4 gap-4 mb-6">
+                <div className="p-4 rounded-lg border border-border/40 bg-background">
+                  <div className="text-[9px] text-muted-foreground mb-1">Questions Answered</div>
+                  <div className="text-2xl font-semibold">42</div>
+                  <div className="text-[9px] text-green-600">+8 this week</div>
+                </div>
+                <div className="p-4 rounded-lg border border-border/40 bg-background">
+                  <div className="text-[9px] text-muted-foreground mb-1">Active Guides</div>
+                  <div className="text-2xl font-semibold">5</div>
+                  <div className="text-[9px] text-muted-foreground">2 completed</div>
+                </div>
+                <div className="p-4 rounded-lg border border-border/40 bg-background">
+                  <div className="text-[9px] text-muted-foreground mb-1">Current Streak</div>
+                  <div className="text-2xl font-semibold">7</div>
+                  <div className="text-[9px] text-muted-foreground">days</div>
+                </div>
+                <div className="p-4 rounded-lg border border-border/40 bg-background">
+                  <div className="text-[9px] text-muted-foreground mb-1">Time Invested</div>
+                  <div className="text-2xl font-semibold">12h</div>
+                  <div className="text-[9px] text-muted-foreground">this month</div>
+                </div>
+              </div>
+
+              {/* Activity Chart Placeholder */}
+              <div className="p-6 rounded-lg border border-border/40 bg-background mb-6">
+                <h3 className="text-[11px] font-semibold mb-4">Activity Over Time</h3>
+                <div className="h-48 flex items-end justify-between gap-2">
+                  {[3, 5, 2, 8, 4, 6, 7].map((height, i) => (
+                    <div key={i} className="flex-1 bg-[#6366f1]/20 rounded-t" style={{height: `${height * 20}px`}} />
+                  ))}
+                </div>
+                <div className="flex justify-between mt-2 text-[9px] text-muted-foreground">
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span>Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                  <span>Sat</span>
+                  <span>Sun</span>
+                </div>
+              </div>
+
+              {/* Guide Progress */}
+              <div className="p-4 rounded-lg border border-border/40 bg-background">
+                <h3 className="text-[11px] font-semibold mb-4">Guide Progress</h3>
+                <div className="space-y-3">
+                  {[
+                    { name: 'Wedding Planning', progress: 60, color: '#6366f1' },
+                    { name: 'Career Transition', progress: 45, color: '#3b82f6' },
+                    { name: 'Home Buying', progress: 30, color: '#10b981' },
+                  ].map((guide, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between text-[10px] mb-1">
+                        <span>{guide.name}</span>
+                        <span className="text-muted-foreground">{guide.progress}%</span>
+                      </div>
+                      <div className="h-2 bg-muted/30 rounded-full overflow-hidden">
+                        <div className="h-full rounded-full" style={{width: `${guide.progress}%`, backgroundColor: guide.color}} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : activeTab === 'Archive' ? (
+            /* Archive View */
+            <div className="flex-1 p-6 overflow-y-auto">
+              <div className="mb-6">
+                <h2 className="text-sm font-semibold mb-0.5">Archive</h2>
+                <p className="text-[10px] text-muted-foreground">Completed and inactive guides</p>
+              </div>
+
+              {/* Archived Guides */}
+              <div className="space-y-3">
+                {[
+                  { title: 'College Planning', completed: 'Sept 2024', questions: 11, color: 'yellow' },
+                  { title: 'Breakup Recovery', completed: 'Aug 2024', questions: 9, color: 'pink' },
+                ].map((guide, i) => (
+                  <div key={i} className="p-4 rounded-lg border border-border/40 bg-muted/20 opacity-60 hover:opacity-100 transition-opacity">
+                    <div className="flex items-start justify-between mb-2">
+                      <div>
+                        <h3 className="text-[12px] font-semibold mb-1">{guide.title}</h3>
+                        <p className="text-[10px] text-muted-foreground">Completed {guide.completed}</p>
+                      </div>
+                      <button className="text-[10px] text-[#6366f1] hover:underline">Restore</button>
+                    </div>
+                    <div className="text-[10px] text-muted-foreground">
+                      {guide.questions} questions answered
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Empty State */}
+              {false && (
+                <div className="text-center py-12">
+                  <Archive className="w-12 h-12 mx-auto text-muted-foreground/50 mb-3" />
+                  <p className="text-[11px] text-muted-foreground">No archived guides yet</p>
+                </div>
+              )}
+            </div>
+          ) : activeTab === 'Settings' ? (
+            /* Settings View */
+            <div className="flex-1 p-6 overflow-y-auto">
+              <div className="max-w-2xl">
+                <div className="mb-6">
+                  <h2 className="text-sm font-semibold mb-0.5">Settings</h2>
+                  <p className="text-[10px] text-muted-foreground">Manage your preferences</p>
+                </div>
+
+                {/* Appearance */}
+                <div className="mb-6 p-4 rounded-lg border border-border/40 bg-background">
+                  <h3 className="text-[11px] font-semibold mb-4">Appearance</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px]">Theme</span>
+                      <div className="flex items-center gap-2">
+                        <button className="px-3 py-1.5 rounded text-[10px] bg-[#6366f1]/10 text-[#6366f1]">Light</button>
+                        <button className="px-3 py-1.5 rounded text-[10px] text-muted-foreground hover:bg-muted/30">Dark</button>
+                        <button className="px-3 py-1.5 rounded text-[10px] text-muted-foreground hover:bg-muted/30">Auto</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Notifications */}
+                <div className="mb-6 p-4 rounded-lg border border-border/40 bg-background">
+                  <h3 className="text-[11px] font-semibold mb-4">Notifications</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px]">Daily reminders</span>
+                      <button className="w-10 h-5 rounded-full bg-[#6366f1] relative">
+                        <div className="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white" />
+                      </button>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px]">Task deadlines</span>
+                      <button className="w-10 h-5 rounded-full bg-[#6366f1] relative">
+                        <div className="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Data */}
+                <div className="mb-6 p-4 rounded-lg border border-border/40 bg-background">
+                  <h3 className="text-[11px] font-semibold mb-4">Data & Privacy</h3>
+                  <div className="space-y-2">
+                    <button className="w-full text-left px-3 py-2 rounded text-[11px] hover:bg-muted/30">
+                      Export all data
+                    </button>
+                    <button className="w-full text-left px-3 py-2 rounded text-[11px] text-red-600 hover:bg-red-500/10">
+                      Delete account
+                    </button>
                   </div>
                 </div>
               </div>
