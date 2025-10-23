@@ -119,38 +119,32 @@ export default function DocsPage() {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex min-h-screen">
       {/* Sidebar Navigation */}
-      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border h-[calc(100vh-3.5rem)] sticky top-14 overflow-y-auto">
-          <div className="p-6 space-y-6">
-            <div>
-              <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                Documentation
-              </h2>
-            </div>
-
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border h-[calc(100vh-3.5rem)] sticky top-14 overflow-y-auto bg-background">
+          <div className="py-6 px-4 space-y-6">
             <nav className="space-y-1">
               {sidebarSections.map((section) => (
                 <div key={section.id}>
                   <button
                     onClick={() => toggleSection(section.id)}
-                    className="flex items-center justify-between w-full text-sm font-medium py-2 px-2 hover:bg-muted rounded-md transition-colors"
+                    className="flex items-center justify-between w-full text-sm font-medium py-1.5 px-2 hover:bg-muted/50 rounded transition-colors text-left"
                   >
-                    <span>{section.title}</span>
+                    <span className="text-sm">{section.title}</span>
                     {expandedSections.includes(section.id) ? (
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
                     ) : (
-                      <ChevronRight className="h-4 w-4" />
+                      <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
                     )}
                   </button>
 
                   {expandedSections.includes(section.id) && (
-                    <div className="ml-2 mt-1 space-y-1">
+                    <div className="ml-3 mt-1 space-y-0.5 border-l border-border pl-3">
                       {section.items.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="block text-sm text-muted-foreground hover:text-foreground py-2 px-3 rounded-md hover:bg-muted transition-colors"
+                          className="block text-sm text-muted-foreground hover:text-foreground py-1.5 px-2 rounded hover:bg-muted/50 transition-colors"
                         >
                           {item.title}
                         </Link>
@@ -164,31 +158,31 @@ export default function DocsPage() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 px-6 lg:px-12 py-12">
-          <div className="max-w-5xl">
+        <main className="flex-1 overflow-y-auto">
+          <div className="max-w-6xl mx-auto px-6 lg:px-12 py-8">
             {/* Header */}
-            <div className="mb-12">
-              <h1 className="text-4xl font-semibold tracking-tight mb-3">Documentation</h1>
-              <p className="text-lg text-muted-foreground">
+            <div className="mb-10">
+              <h1 className="text-3xl font-semibold tracking-tight mb-2">Documentation</h1>
+              <p className="text-base text-muted-foreground">
                 Everything you need to know about using Templata
               </p>
             </div>
 
             {/* Popular */}
-            <div className="mb-16">
-              <h2 className="text-2xl font-semibold mb-6">Popular</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="mb-12">
+              <h2 className="text-xl font-semibold mb-4">Popular</h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {popularDocs.map((doc) => (
                   <Link
                     key={doc.href}
                     href={doc.href}
-                    className="group border border-border rounded-lg p-5 hover:border-primary/50 transition-colors"
+                    className="group border border-border rounded-md p-4 hover:border-primary/50 transition-colors bg-card"
                   >
-                    <doc.icon className="h-5 w-5 text-muted-foreground mb-3" />
-                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
+                    <doc.icon className="h-4 w-4 text-muted-foreground mb-2" />
+                    <h3 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors">
                       {doc.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
+                    <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                       {doc.description}
                     </p>
                   </Link>
@@ -198,19 +192,19 @@ export default function DocsPage() {
 
             {/* Templata Basics */}
             <div>
-              <h2 className="text-2xl font-semibold mb-6">Templata Basics</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <h2 className="text-xl font-semibold mb-4">Templata Basics</h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {basicsDocs.map((doc) => (
                   <Link
                     key={doc.href}
                     href={doc.href}
-                    className="group border border-border rounded-lg p-5 hover:border-primary/50 transition-colors"
+                    className="group border border-border rounded-md p-4 hover:border-primary/50 transition-colors bg-card"
                   >
-                    <doc.icon className="h-5 w-5 text-muted-foreground mb-3" />
-                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
+                    <doc.icon className="h-4 w-4 text-muted-foreground mb-2" />
+                    <h3 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors">
                       {doc.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
+                    <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                       {doc.description}
                     </p>
                   </Link>
