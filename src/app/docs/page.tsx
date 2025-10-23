@@ -1,167 +1,126 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { PageLayout } from "@/components/layout";
-import { ArrowRight, FileText, BookOpen, Download, RotateCcw } from "lucide-react";
+import {
+  BookOpen,
+  FileText,
+  Users,
+  Shield,
+  Zap,
+  MessageSquare,
+  Download,
+  Search,
+  ArrowRight
+} from "lucide-react";
 
-export default function HowItWorksPage() {
+export default function DocsPage() {
+  const popularDocs = [
+    {
+      title: "Getting Started",
+      description: "Learn the basics of using Templata guides",
+      icon: Zap,
+      href: "/docs/getting-started"
+    },
+    {
+      title: "How Guides Work",
+      description: "Understand the structure and purpose of guides",
+      icon: BookOpen,
+      href: "/docs/how-guides-work"
+    },
+    {
+      title: "Privacy & Data",
+      description: "How we handle your information",
+      icon: Shield,
+      href: "/docs/privacy"
+    },
+    {
+      title: "Community Guidelines",
+      description: "Rules for discussions and contributions",
+      icon: Users,
+      href: "/docs/community-guidelines"
+    }
+  ];
+
+  const basicsDocs = [
+    {
+      title: "Browse Guides",
+      description: "How to find the right guide for your situation",
+      icon: Search,
+      href: "/docs/browse-guides"
+    },
+    {
+      title: "Using the Workspace",
+      description: "Answer questions and save your progress",
+      icon: FileText,
+      href: "/docs/workspace"
+    },
+    {
+      title: "Export & Share",
+      description: "Download your work as PDF",
+      icon: Download,
+      href: "/docs/export"
+    },
+    {
+      title: "Request a Guide",
+      description: "Suggest new guides for the community",
+      icon: MessageSquare,
+      href: "/docs/request-guide"
+    }
+  ];
+
   return (
     <PageLayout>
-      <div className="container mx-auto max-w-4xl px-4 py-16 space-y-16">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Header */}
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold">How Templata Works</h1>
-          <p className="text-xl text-muted-foreground">
-            Four simple steps to make better life decisions
+        <div className="mb-12">
+          <h1 className="text-4xl font-semibold tracking-tight mb-3">Documentation</h1>
+          <p className="text-lg text-muted-foreground">
+            Everything you need to know about using Templata
           </p>
         </div>
 
-        {/* Steps */}
-        <div className="space-y-12">
-          {/* Step 1 */}
-          <Card className="p-8">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-2xl font-bold text-primary">1</span>
-              </div>
-              <div className="flex-1 space-y-3">
-                <h2 className="text-2xl font-bold">Pick a life situation</h2>
-                <p className="text-muted-foreground">
-                  Browse 1,200+ guides organized by category: Career, Relationships, Health,
-                  Personal Growth, Finance, and Life Events.
+        {/* Popular */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-semibold mb-6">Popular</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {popularDocs.map((doc) => (
+              <Link
+                key={doc.href}
+                href={doc.href}
+                className="group border border-border rounded-lg p-5 hover:border-primary/50 transition-colors"
+              >
+                <doc.icon className="h-5 w-5 text-muted-foreground mb-3" />
+                <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
+                  {doc.title}
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {doc.description}
                 </p>
-                <p className="text-sm text-muted-foreground italic">
-                  Example: "Career Transition," "Setting Boundaries," "Moving to a New City"
-                </p>
-              </div>
-            </div>
-          </Card>
-
-          {/* Step 2 */}
-          <Card className="p-8">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <FileText className="h-6 w-6 text-primary" />
-              </div>
-              <div className="flex-1 space-y-3">
-                <h2 className="text-2xl font-bold">Open the guide</h2>
-                <p className="text-muted-foreground">
-                  Each guide has two main sections side-by-side:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                  <li>
-                    <strong>Guided Questions:</strong> Structured prompts to help you think through
-                    all angles
-                  </li>
-                  <li>
-                    <strong>Curated Reading:</strong> Expert articles and resources for deeper
-                    context
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </Card>
-
-          {/* Step 3 */}
-          <Card className="p-8">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <BookOpen className="h-6 w-6 text-primary" />
-              </div>
-              <div className="flex-1 space-y-3">
-                <h2 className="text-2xl font-bold">Work through questions & decisions</h2>
-                <p className="text-muted-foreground">
-                  Answer the guided questions in the built-in workspace. Your answers auto-save in
-                  your browser — no account needed. Read the curated resources for deeper
-                  understanding.
-                </p>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold mb-2">💡 Pro tip</p>
-                  <p className="text-sm text-muted-foreground">
-                    You don't need to answer everything at once. Come back anytime — your progress
-                    is saved locally.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          {/* Step 4 */}
-          <Card className="p-8">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Download className="h-6 w-6 text-primary" />
-              </div>
-              <div className="flex-1 space-y-3">
-                <h2 className="text-2xl font-bold">Export or return anytime</h2>
-                <p className="text-muted-foreground">
-                  When you're done, export your work to PDF. Or just leave it — your answers stay
-                  saved in your browser for next time.
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                  <li>Export responses to PDF</li>
-                  <li>Share with a friend, therapist, or advisor</li>
-                  <li>Return anytime to revise your thinking</li>
-                </ul>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="space-y-8 pt-8 border-t">
-          <h2 className="text-3xl font-bold text-center">Frequently Asked Questions</h2>
-
-          <div className="space-y-6">
-            <Card className="p-6">
-              <h3 className="font-semibold mb-2">Why is it free?</h3>
-              <p className="text-sm text-muted-foreground">
-                The core library of guides is free — like Wikipedia. We'll add optional premium,
-                expert-authored guides later. The everyday guides stay open and free forever.
-              </p>
-            </Card>
-
-            <Card className="p-6">
-              <h3 className="font-semibold mb-2">Is this therapy?</h3>
-              <p className="text-sm text-muted-foreground">
-                No. Templata provides structured self-guidance for everyday decisions. If you're
-                struggling with mental health issues, please see a licensed professional.
-              </p>
-            </Card>
-
-            <Card className="p-6">
-              <h3 className="font-semibold mb-2">How does privacy work?</h3>
-              <p className="text-sm text-muted-foreground">
-                Your answers are saved locally in your browser. We don't see them. In the future,
-                we'll offer optional cloud sync, but local-first will always be available.
-              </p>
-            </Card>
-
-            <Card className="p-6">
-              <h3 className="font-semibold mb-2">Can I request a guide?</h3>
-              <p className="text-sm text-muted-foreground">
-                Yes! Use the "Request a Guide" button on any page. We review requests and may
-                create guides based on popular demand.
-              </p>
-            </Card>
+              </Link>
+            ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center space-y-6 pt-8">
-          <h2 className="text-3xl font-bold">Ready to get started?</h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" asChild>
-              <Link href="/guides">
-                Browse Guides
-                <ArrowRight className="ml-2 h-5 w-5" />
+        {/* Templata Basics */}
+        <div>
+          <h2 className="text-2xl font-semibold mb-6">Templata Basics</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {basicsDocs.map((doc) => (
+              <Link
+                key={doc.href}
+                href={doc.href}
+                className="group border border-border rounded-lg p-5 hover:border-primary/50 transition-colors"
+              >
+                <doc.icon className="h-5 w-5 text-muted-foreground mb-3" />
+                <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
+                  {doc.title}
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {doc.description}
+                </p>
               </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/app">Try Demo</Link>
-            </Button>
+            ))}
           </div>
         </div>
       </div>
