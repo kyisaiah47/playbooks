@@ -1,217 +1,197 @@
 "use client"
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import type { TemplateRegistryEntry } from '@/registry/templates';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Search, Layout, FileText, Lightbulb, Target } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { PageLayout } from '@/components/layout';
-import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-export default function TemplatesPage() {
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  icon: string | null;
+  display_order: number;
+  count: number;
+}
+
+interface Guide {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  icon: string | null;
+  tags: string[];
+}
+
+export default function GuidesPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [allTemplates, setAllTemplates] = useState<TemplateRegistryEntry[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [guides, setGuides] = useState<Guide[]>([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [loadingGuides, setLoadingGuides] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Fetch all templates once and display all of them
+  // Fetch categories on mount
   useEffect(() => {
-    async function fetchTemplates() {
+    async function fetchCategories() {
       try {
-        setLoading(true);
-        const res = await fetch('/api/templates');
+        setLoadingCategories(true);
+        const res = await fetch('/api/guides');
         const data = await res.json();
-        const templates = data.templates || [];
-        setAllTemplates(templates);
+        setCategories(data.categories || []);
+
+        // Auto-select first category
+        if (data.categories && data.categories.length > 0) {
+          setSelectedCategory(data.categories[0].id);
+        }
       } catch (error) {
-        console.error('Error fetching templates:', error);
+        console.error('Error fetching categories:', error);
       } finally {
-        setLoading(false);
+        setLoadingCategories(false);
       }
     }
 
-    fetchTemplates();
+    fetchCategories();
   }, []);
 
-  // Group templates by category and sort alphabetically
-  const groupedTemplates = useMemo(() => {
-    // Use all templates, filter by search if needed
-    const templatesToUse = allTemplates;
+  // Fetch guides when category changes or search query changes
+  useEffect(() => {
+    async function fetchGuides() {
+      if (!selectedCategory) return;
 
-    const filtered = searchQuery.trim()
-      ? templatesToUse.filter(t =>
-          t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          t.category.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-      : templatesToUse;
+      try {
+        setLoadingGuides(true);
+        const params = new URLSearchParams({ category: selectedCategory });
+        if (searchQuery.trim()) {
+          params.append('search', searchQuery.trim());
+        }
 
-    const grouped: Record<string, TemplateRegistryEntry[]> = {};
-
-    filtered.forEach(template => {
-      if (!grouped[template.category]) {
-        grouped[template.category] = [];
+        const res = await fetch(`/api/guides?${params}`);
+        const data = await res.json();
+        setGuides(data.guides || []);
+      } catch (error) {
+        console.error('Error fetching guides:', error);
+      } finally {
+        setLoadingGuides(false);
       }
-      grouped[template.category].push(template);
-    });
+    }
 
-    // Sort templates within each category alphabetically
-    Object.keys(grouped).forEach(category => {
-      grouped[category].sort((a, b) => a.name.localeCompare(b.name));
-    });
+    fetchGuides();
+  }, [selectedCategory, searchQuery]);
 
-    return grouped;
-  }, [allTemplates, searchQuery]);
-
-  const categories = Object.keys(groupedTemplates).sort();
-  const displayedCount = Object.values(groupedTemplates).flat().length;
+  const totalGuides = categories.reduce((sum, cat) => sum + cat.count, 0);
+  const selectedCategoryData = categories.find(cat => cat.id === selectedCategory);
 
   return (
     <PageLayout>
-      {/* Hero Section */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto max-w-7xl px-4">
-          <motion.div
-            className="text-center space-y-6 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="outline" className="px-4 py-2">
-              <Layout className="mr-2 h-4 w-4" />
-              1,298 Templates
-            </Badge>
-
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Life guidance for
-              <br />
-              <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                every situation
-              </span>
-            </h1>
-
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From wedding planning to career transitions, home buying to business launches—we've systematically created templates with prompts, articles, and structured guidance for life's biggest decisions.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* What Makes Our Templates Different */}
-      <motion.section
-        className="py-16 bg-muted/30 border-y"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Built for abundance, not curation</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Instead of handpicking 20 "best" templates, we give you access to everything—systematically organized, searchable, and ready when you need it.
+      {/* Two-Column Layout */}
+      <div className="pt-8">
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
+          {/* Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-semibold mb-2">Browse Guides</h1>
+            <p className="text-muted-foreground">
+              {loadingCategories ? 'Loading guides...' : `${totalGuides} guides across ${categories.length} categories`}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Target,
-                title: "Systematically Generated",
-                description: "Every template is built with Axiom Engine, ensuring consistent quality and comprehensive coverage across all life situations."
-              },
-              {
-                icon: FileText,
-                title: "104,000+ Prompts Included",
-                description: "Each template comes with tactical prompts and 20+ curated articles, giving you both structure and deep insights."
-              },
-              {
-                icon: Lightbulb,
-                title: "Wikipedia Philosophy",
-                description: "Abundance over curation. Browse by category, search what you need, and trust that if it exists, we've covered it."
-              }
-            ].map((card, index) => {
-              const Icon = card.icon;
-              return (
-                <motion.div
-                  key={card.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <Card className="border-0 shadow-lg h-full">
-                    <CardHeader>
-                      <Icon className="h-8 w-8 mb-4 text-primary" />
-                      <CardTitle>{card.title}</CardTitle>
-                      <CardDescription>{card.description}</CardDescription>
-                    </CardHeader>
-                  </Card>
-                </motion.div>
-              );
-            })}
+          {/* Search */}
+          <div className="mb-8 max-w-2xl">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+              <Input
+                placeholder="Search guides..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-12 h-12 text-base"
+              />
+            </div>
+            {searchQuery.trim() && (
+              <p className="mt-3 text-sm text-muted-foreground">
+                {guides.length} result{guides.length !== 1 ? 's' : ''} found
+              </p>
+            )}
           </div>
-        </div>
-      </motion.section>
 
-      {/* Template List */}
-      <div className="container mx-auto px-4 py-16 max-w-6xl">
-        {/* Search */}
-        <div className="mb-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4">Browse All Templates</h2>
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
-            <Input
-              placeholder="Search templates..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 h-12 text-base"
-            />
-          </div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            {loading ? 'Loading...' : searchQuery.trim()
-              ? `${displayedCount} results across ${categories.length} categories`
-              : `${displayedCount} templates across ${categories.length} categories`
-            }
-          </p>
-        </div>
+          <div className="flex gap-8">
+            {/* Left Sidebar - Categories */}
+            <aside className="w-64 flex-shrink-0">
+              <div className="sticky top-20">
+                <h3 className="text-xs font-semibold text-muted-foreground tracking-wider uppercase mb-4">
+                  Categories
+                </h3>
+                <nav className="space-y-1">
+                  {categories.map((category) => {
+                    const isSelected = selectedCategory === category.id;
 
-        {/* Templates List - Grouped by Category */}
-        <div className="space-y-12">
-          {categories.map((category) => (
-            <section
-              key={category}
-              className="border-t pt-8"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xs font-semibold text-muted-foreground tracking-wider uppercase">
-                  {category}
-                </h2>
-                <Link
-                  href={`/templates/categories/${category.toLowerCase().replace(/\s+&?\s*/g, '-')}`}
-                  className="text-xs text-primary hover:underline"
-                >
-                  View all →
-                </Link>
+                    return (
+                      <button
+                        key={category.id}
+                        onClick={() => setSelectedCategory(category.id)}
+                        className={cn(
+                          "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                          isSelected
+                            ? "bg-primary/10 text-primary font-medium"
+                            : "text-foreground hover:bg-muted/50"
+                        )}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span>{category.name}</span>
+                          <span className="text-xs text-muted-foreground">{category.count}</span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </nav>
               </div>
+            </aside>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1">
-                {groupedTemplates[category].map((template) => (
-                  <Link
-                    key={template.id}
-                    href={`/templates/${template.id}`}
-                    className="group block py-2 text-foreground hover:text-primary transition-colors"
-                  >
-                    <div className="text-base">
-                      {template.name}
+            {/* Right Content - Guide List */}
+            <main className="flex-1 min-w-0">
+              {selectedCategoryData && (
+                <div>
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-semibold mb-2">{selectedCategoryData.name}</h2>
+                    <p className="text-sm text-muted-foreground">
+                      {selectedCategoryData.description}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {loadingGuides ? 'Loading...' : `${guides.length} guide${guides.length !== 1 ? 's' : ''}`}
+                    </p>
+                  </div>
+
+                  {loadingGuides ? (
+                    <div className="text-center py-12 text-muted-foreground">
+                      Loading guides...
                     </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {guides.map((guide) => (
+                        <Link
+                          key={guide.id}
+                          href={`/templates/${guide.id}`}
+                          className="group block p-4 border border-border rounded-lg hover:border-primary/50 transition-colors bg-card"
+                        >
+                          <h3 className="font-medium text-sm group-hover:text-primary transition-colors">
+                            {guide.name}
+                          </h3>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
 
+              {!selectedCategory && !loadingCategories && (
+                <div className="text-center py-12 text-muted-foreground">
+                  Select a category to view guides
+                </div>
+              )}
+            </main>
+          </div>
+        </div>
       </div>
     </PageLayout>
   );
