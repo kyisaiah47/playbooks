@@ -44,7 +44,8 @@
       "Bash(for img in geometric-architecture.png crystal-variety.png chaos-to-order.png floating-papers.png geometric-emergence.png prompt-matrix.png neural-networks.png knowledge-architecture.png cosmic-energy.png paper-fragments.png)",
       "Bash(do echo \"Converting $img...\")",
       "Bash(ls:*)",
-      "WebFetch(domain:templata.org)"
+      "WebFetch(domain:templata.org)",
+      "WebFetch(domain:linear.app)"
     ],
     "deny": [],
     "ask": []

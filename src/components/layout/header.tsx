@@ -122,6 +122,15 @@ export function Header() {
 										</NavigationMenuLink>
 									</NavigationMenuItem>
 
+									{/* About */}
+									<NavigationMenuItem>
+										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
+											<Link href="/about">
+												About
+											</Link>
+										</NavigationMenuLink>
+									</NavigationMenuItem>
+
 									{/* Demo */}
 									<NavigationMenuItem>
 										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
