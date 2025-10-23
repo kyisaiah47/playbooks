@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes"
 import { CustomThemeProvider } from "@/components/theme-provider-custom"
 import { SessionProvider } from "@/components/providers/session-provider"
 import { UIProvider } from "@/components/providers/ui-provider"
@@ -118,17 +119,19 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ErrorBoundary>
-          <CustomThemeProvider>
-            <SessionProvider>
-              <AuthProvider>
-                <UIProvider>
-                  <Analytics />
-                  <SpeedInsights />
-                  {children}
-                </UIProvider>
-              </AuthProvider>
-            </SessionProvider>
-          </CustomThemeProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+            <CustomThemeProvider>
+              <SessionProvider>
+                <AuthProvider>
+                  <UIProvider>
+                    <Analytics />
+                    <SpeedInsights />
+                    {children}
+                  </UIProvider>
+                </AuthProvider>
+              </SessionProvider>
+            </CustomThemeProvider>
+          </ThemeProvider>
         </ErrorBoundary>
       </body>
     </html>

@@ -46,8 +46,8 @@ export interface Theme {
   }
 }
 
-// Main Templata brand theme - Vercel theme (dark)
-export const templataThemeDark: ThemeColors = {
+// Vercel-style theme (dark) - LEGACY, not used
+export const vercelThemeDark: ThemeColors = {
   background: 'oklch(0 0 0)',
   foreground: 'oklch(1 0 0)',
   card: 'oklch(0.1400 0 0)',
@@ -82,8 +82,8 @@ export const templataThemeDark: ThemeColors = {
   sidebarRing: 'oklch(0.7200 0 0)'
 }
 
-// Main Templata brand theme - Vercel theme (light)  
-export const templataThemeLight: ThemeColors = {
+// Vercel-style theme (light) - LEGACY, not used
+export const vercelThemeLight: ThemeColors = {
   background: 'oklch(0.9900 0 0)',
   foreground: 'oklch(0 0 0)',
   card: 'oklch(1 0 0)',
@@ -190,7 +190,79 @@ export const weddingThemeDark: ThemeColors = {
   sidebarRing: 'oklch(0.7058 0.0777 302.0489)'
 }
 
-// Neutral theme with warm accents (light)
+// Templata Single Theme - Neutral base with passionfruit orange accent (light)
+export const templataThemeLight: ThemeColors = {
+  background: 'oklch(0.9821 0 0)',
+  foreground: 'oklch(0.2435 0 0)',
+  card: 'oklch(0.9911 0 0)',
+  cardForeground: 'oklch(0.2435 0 0)',
+  popover: 'oklch(0.9911 0 0)',
+  popoverForeground: 'oklch(0.2435 0 0)',
+  primary: 'oklch(0.7076 0.1975 46.4558)', // #FF6F00 passionfruit orange
+  primaryForeground: 'oklch(1.0000 0 0)',
+  secondary: 'oklch(0.9200 0 0)',
+  secondaryForeground: 'oklch(0.2435 0 0)',
+  muted: 'oklch(0.9521 0 0)',
+  mutedForeground: 'oklch(0.5032 0 0)',
+  accent: 'oklch(0.9310 0 0)',
+  accentForeground: 'oklch(0.2435 0 0)',
+  destructive: 'oklch(0.6271 0.1936 33.3390)',
+  destructiveForeground: 'oklch(1.0000 0 0)',
+  border: 'oklch(0.8822 0 0)',
+  input: 'oklch(0.8822 0 0)',
+  ring: 'oklch(0.7076 0.1975 46.4558)', // #FF6F00 passionfruit orange
+  chart1: 'oklch(0.7076 0.1975 46.4558)', // #FF6F00
+  chart2: 'oklch(0.8000 0.1600 46.4558)', // lighter passionfruit
+  chart3: 'oklch(0.9310 0 0)',
+  chart4: 'oklch(0.9367 0 0)',
+  chart5: 'oklch(0.6000 0.2200 46.4558)', // darker passionfruit
+  sidebar: 'oklch(0.9881 0 0)',
+  sidebarForeground: 'oklch(0.2645 0 0)',
+  sidebarPrimary: 'oklch(0.3250 0 0)',
+  sidebarPrimaryForeground: 'oklch(0.9881 0 0)',
+  sidebarAccent: 'oklch(0.9761 0 0)',
+  sidebarAccentForeground: 'oklch(0.3250 0 0)',
+  sidebarBorder: 'oklch(0.9401 0 0)',
+  sidebarRing: 'oklch(0.7731 0 0)'
+}
+
+// Templata Single Theme - Pure black with passionfruit orange accent (dark)
+export const templataThemeDark: ThemeColors = {
+  background: 'oklch(0 0 0)', // Pure black
+  foreground: 'oklch(1 0 0)', // Pure white
+  card: 'oklch(0.1400 0 0)', // Very dark gray
+  cardForeground: 'oklch(1 0 0)',
+  popover: 'oklch(0.1800 0 0)',
+  popoverForeground: 'oklch(1 0 0)',
+  primary: 'oklch(0.7076 0.1975 46.4558)', // #FF6F00 passionfruit orange (same as light)
+  primaryForeground: 'oklch(0 0 0)',
+  secondary: 'oklch(0.2500 0 0)',
+  secondaryForeground: 'oklch(1 0 0)',
+  muted: 'oklch(0.2300 0 0)',
+  mutedForeground: 'oklch(0.7200 0 0)',
+  accent: 'oklch(0.3200 0 0)',
+  accentForeground: 'oklch(1 0 0)',
+  destructive: 'oklch(0.6900 0.2000 23.9100)',
+  destructiveForeground: 'oklch(0 0 0)',
+  border: 'oklch(0.2600 0 0)',
+  input: 'oklch(0.3200 0 0)',
+  ring: 'oklch(0.7076 0.1975 46.4558)', // #FF6F00 passionfruit orange
+  chart1: 'oklch(0.7076 0.1975 46.4558)',
+  chart2: 'oklch(0.8000 0.1600 46.4558)',
+  chart3: 'oklch(0.5600 0 0)',
+  chart4: 'oklch(0.4400 0 0)',
+  chart5: 'oklch(0.6000 0.2200 46.4558)',
+  sidebar: 'oklch(0.1800 0 0)',
+  sidebarForeground: 'oklch(1 0 0)',
+  sidebarPrimary: 'oklch(1 0 0)',
+  sidebarPrimaryForeground: 'oklch(0 0 0)',
+  sidebarAccent: 'oklch(0.3200 0 0)',
+  sidebarAccentForeground: 'oklch(1 0 0)',
+  sidebarBorder: 'oklch(0.3200 0 0)',
+  sidebarRing: 'oklch(0.7200 0 0)'
+}
+
+// Neutral theme with warm accents (light) - LEGACY
 export const neutralThemeLight: ThemeColors = {
   background: 'oklch(0.9821 0 0)',
   foreground: 'oklch(0.2435 0 0)',
@@ -198,7 +270,7 @@ export const neutralThemeLight: ThemeColors = {
   cardForeground: 'oklch(0.2435 0 0)',
   popover: 'oklch(0.9911 0 0)',
   popoverForeground: 'oklch(0.2435 0 0)',
-  primary: 'oklch(0.4341 0.0392 41.9938)',
+  primary: 'oklch(0.5500 0 0)', // Neutral gray accent
   primaryForeground: 'oklch(1.0000 0 0)',
   secondary: 'oklch(0.9200 0.0651 74.3695)',
   secondaryForeground: 'oklch(0.3499 0.0685 40.8288)',
@@ -210,12 +282,12 @@ export const neutralThemeLight: ThemeColors = {
   destructiveForeground: 'oklch(1.0000 0 0)',
   border: 'oklch(0.8822 0 0)',
   input: 'oklch(0.8822 0 0)',
-  ring: 'oklch(0.4341 0.0392 41.9938)',
-  chart1: 'oklch(0.4341 0.0392 41.9938)',
+  ring: 'oklch(0.5500 0 0)', // Neutral gray
+  chart1: 'oklch(0.5500 0 0)',
   chart2: 'oklch(0.9200 0.0651 74.3695)',
   chart3: 'oklch(0.9310 0 0)',
   chart4: 'oklch(0.9367 0.0523 75.5009)',
-  chart5: 'oklch(0.4338 0.0437 41.6746)',
+  chart5: 'oklch(0.4500 0 0)',
   sidebar: 'oklch(0.9881 0 0)',
   sidebarForeground: 'oklch(0.2645 0 0)',
   sidebarPrimary: 'oklch(0.3250 0 0)',
@@ -226,7 +298,7 @@ export const neutralThemeLight: ThemeColors = {
   sidebarRing: 'oklch(0.7731 0 0)'
 }
 
-// Neutral theme with warm accents (dark)
+// Neutral theme with warm accents (dark) - LEGACY
 export const neutralThemeDark: ThemeColors = {
   background: 'oklch(0.1776 0 0)',
   foreground: 'oklch(0.9491 0 0)',
@@ -234,8 +306,8 @@ export const neutralThemeDark: ThemeColors = {
   cardForeground: 'oklch(0.9491 0 0)',
   popover: 'oklch(0.2134 0 0)',
   popoverForeground: 'oklch(0.9491 0 0)',
-  primary: 'oklch(0.9247 0.0524 66.1732)',
-  primaryForeground: 'oklch(0.2029 0.0240 200.1962)',
+  primary: 'oklch(0.7000 0 0)', // Neutral gray accent
+  primaryForeground: 'oklch(0.1776 0 0)',
   secondary: 'oklch(0.3163 0.0190 63.6992)',
   secondaryForeground: 'oklch(0.9247 0.0524 66.1732)',
   muted: 'oklch(0.2520 0 0)',
@@ -246,12 +318,12 @@ export const neutralThemeDark: ThemeColors = {
   destructiveForeground: 'oklch(1.0000 0 0)',
   border: 'oklch(0.2351 0.0115 91.7467)',
   input: 'oklch(0.4017 0 0)',
-  ring: 'oklch(0.9247 0.0524 66.1732)',
-  chart1: 'oklch(0.9247 0.0524 66.1732)',
+  ring: 'oklch(0.7000 0 0)', // Neutral gray
+  chart1: 'oklch(0.7000 0 0)',
   chart2: 'oklch(0.3163 0.0190 63.6992)',
   chart3: 'oklch(0.2850 0 0)',
   chart4: 'oklch(0.3481 0.0219 67.0001)',
-  chart5: 'oklch(0.9245 0.0533 67.0855)',
+  chart5: 'oklch(0.6000 0 0)',
   sidebar: 'oklch(0.2103 0.0059 285.8852)',
   sidebarForeground: 'oklch(0.9674 0.0013 286.3752)',
   sidebarPrimary: 'oklch(0.4882 0.2172 264.3763)',
@@ -1413,60 +1485,13 @@ export const betaTealThemeDark: ThemeColors = {
 }
 
 export const themes: Theme[] = [
-  // Free themes
-  {
-    id: 'default',
-    name: 'Default',
-    description: 'Clean black and white with subtle grays',
-    colors: {
-      light: templataThemeLight,
-      dark: templataThemeDark
-    }
-  },
-  {
-    id: 'rose',
-    name: 'Rose',
-    description: 'Romantic rose tones perfect for weddings',
-    colors: {
-      light: weddingThemeLight,
-      dark: weddingThemeDark
-    }
-  },
   {
     id: 'neutral',
     name: 'Neutral',
-    description: 'Clean neutral tones with subtle warm accents',
+    description: 'Clean neutral tones with grayscale accents',
     colors: {
       light: neutralThemeLight,
       dark: neutralThemeDark
-    }
-  },
-  {
-    id: 'emerald',
-    name: 'Emerald',
-    description: 'Fresh emerald greens with natural earth tones',
-    colors: {
-      light: emeraldThemeLight,
-      dark: emeraldThemeDark
-    }
-  },
-  {
-    id: 'beta',
-    name: 'Violet',
-    description: 'Rich purple and magenta tones for creative work',
-    isLimited: true,
-    colors: {
-      light: betaThemeLight,
-      dark: betaThemeDark
-    }
-  },
-  {
-    id: 'midnight',
-    name: 'Midnight',
-    description: 'Deep navy theme optimized for focused reading and long-form work',
-    colors: {
-      light: midnightThemeLight,
-      dark: midnightThemeDark
     }
   },
 ]

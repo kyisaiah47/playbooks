@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useContext, useEffect, useState } from 'react'
-import { ThemeColors, templataThemeLight, applyTheme, getThemeForTemplate, themes } from '@/lib/themes'
+import { ThemeColors, templataThemeLight, templataThemeDark, applyTheme, getThemeForTemplate, themes } from '@/lib/themes'
 
 interface ThemeContextType {
   currentTheme: ThemeColors
@@ -42,8 +42,8 @@ export function CustomThemeProvider({ children, defaultTheme = themes[0].colors.
         console.error('Failed to parse saved theme:', error)
       }
     } else {
-      // Apply default theme immediately if no saved theme
-      applyTheme(defaultTheme)
+      // Apply neutral dark theme as default
+      applyTheme(themes[0].colors.dark)
     }
     setMounted(true)
   }, [])
