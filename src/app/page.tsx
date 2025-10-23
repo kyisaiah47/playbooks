@@ -18,6 +18,7 @@ import { ExportOverview } from "@/components/landing/ExportOverview";
 import { CategorySelection } from "@/components/landing/CategorySelection";
 import { StructuredGuide } from "@/components/landing/StructuredGuide";
 import { PopularGuides } from "@/components/landing/PopularGuides";
+import { CommunityHub } from "@/components/landing/CommunityHub";
 
 export default function LandingPage() {
 	const jsonLd = {
@@ -218,52 +219,51 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			{/* Use Cases */}
+			{/* Community */}
 			<section className="px-6 py-32 border-t border-border/40">
 				<div className="mx-auto max-w-6xl">
 					<h2 className="text-3xl font-semibold tracking-tight mb-16 text-center">
-						Common situations
+						Built by the community
 					</h2>
 
-					<div className="grid md:grid-cols-2 gap-12">
-						<div className="space-y-4">
-							<h3 className="font-medium text-lg">Career decisions</h3>
-							<ul className="space-y-3 text-sm text-muted-foreground">
-								<li>→ Should I switch careers or stay?</li>
-								<li>→ How to negotiate a promotion</li>
-								<li>→ Dealing with difficult manager</li>
-								<li>→ Starting a side business</li>
-							</ul>
+					<div className="grid lg:grid-cols-2 gap-12 items-center">
+						{/* Screenshot */}
+						<div>
+							<CommunityHub />
 						</div>
 
-						<div className="space-y-4">
-							<h3 className="font-medium text-lg">Relationship decisions</h3>
-							<ul className="space-y-3 text-sm text-muted-foreground">
-								<li>→ Should we move in together?</li>
-								<li>→ Handling conflict with partner</li>
-								<li>→ Setting boundaries with family</li>
-								<li>→ Recovering from breakup</li>
-							</ul>
-						</div>
-
-						<div className="space-y-4">
-							<h3 className="font-medium text-lg">Life transitions</h3>
-							<ul className="space-y-3 text-sm text-muted-foreground">
-								<li>→ Moving to a new city</li>
-								<li>→ Deciding on grad school</li>
-								<li>→ Buying first home</li>
-								<li>→ Having kids vs. not</li>
-							</ul>
-						</div>
-
-						<div className="space-y-4">
-							<h3 className="font-medium text-lg">Personal growth</h3>
-							<ul className="space-y-3 text-sm text-muted-foreground">
-								<li>→ Building better habits</li>
-								<li>→ Managing decision fatigue</li>
-								<li>→ Finding your purpose</li>
-								<li>→ Dealing with burnout</li>
-							</ul>
+						{/* Benefits */}
+						<div className="space-y-6">
+							<div className="space-y-3 text-sm">
+								<div className="flex items-start gap-3">
+									<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+									<div>
+										<div className="font-medium">Community-curated content</div>
+										<div className="text-muted-foreground">Like Wikipedia, guides are created and refined by experts and users</div>
+									</div>
+								</div>
+								<div className="flex items-start gap-3">
+									<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+									<div>
+										<div className="font-medium">Request what you need</div>
+										<div className="text-muted-foreground">Can't find a guide? Request it and the community will create it</div>
+									</div>
+								</div>
+								<div className="flex items-start gap-3">
+									<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+									<div>
+										<div className="font-medium">Verified experts</div>
+										<div className="text-muted-foreground">Guides are reviewed by domain experts to ensure quality and accuracy</div>
+									</div>
+								</div>
+								<div className="flex items-start gap-3">
+									<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+									<div>
+										<div className="font-medium">Submit your own guides</div>
+										<div className="text-muted-foreground">Share your expertise and help others navigate similar situations</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
