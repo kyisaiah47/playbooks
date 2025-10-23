@@ -45,7 +45,7 @@ export function HeroWorkspace() {
       <div className="flex h-[600px] bg-background">
         {/* Leftmost Icon Bar - Obsidian style */}
         <div className="w-9 border-r border-border/40 bg-muted/10 flex flex-col items-center py-1.5 gap-0.5">
-          {/* Guides Icon */}
+          {/* Core Views */}
           <button
             onClick={() => handleViewClick('guides')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
@@ -57,61 +57,6 @@ export function HeroWorkspace() {
             <FileText className="w-3 h-3" />
           </button>
 
-          {/* Divider */}
-          <div className="w-4 h-px bg-border my-1" />
-
-          {/* Calendar Icon */}
-          <button
-            onClick={() => handleViewClick('calendar')}
-            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-              activeView === 'calendar'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
-                : 'text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <Calendar className="w-3 h-3" />
-          </button>
-
-          {/* Tasks Icon */}
-          <button
-            onClick={() => handleViewClick('tasks')}
-            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-              activeView === 'tasks'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
-                : 'text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <ListTodo className="w-3 h-3" />
-          </button>
-
-          {/* Timeline Icon */}
-          <button
-            onClick={() => handleViewClick('timeline')}
-            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-              activeView === 'timeline'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
-                : 'text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <BarChart3 className="w-3 h-3" />
-          </button>
-
-          {/* Overview Icon */}
-          <button
-            onClick={() => handleViewClick('overview')}
-            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-              activeView === 'overview'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
-                : 'text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <LayoutDashboard className="w-3 h-3" />
-          </button>
-
-          {/* Divider */}
-          <div className="w-4 h-px bg-border my-1" />
-
-          {/* Discover Icon */}
           <button
             onClick={() => handleViewClick('discover')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
@@ -123,46 +68,6 @@ export function HeroWorkspace() {
             <Compass className="w-3 h-3" />
           </button>
 
-          {/* Journal Icon */}
-          <button
-            onClick={() => handleViewClick('journal')}
-            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-              activeView === 'journal'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
-                : 'text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <PenLine className="w-3 h-3" />
-          </button>
-
-          {/* Divider */}
-          <div className="w-4 h-px bg-border my-1" />
-
-          {/* Graph View Icon */}
-          <button
-            onClick={() => handleViewClick('graph')}
-            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-              activeView === 'graph'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
-                : 'text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <Network className="w-3 h-3" />
-          </button>
-
-          {/* Daily Note Icon */}
-          <button
-            onClick={() => handleViewClick('daily')}
-            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
-              activeView === 'daily'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
-                : 'text-muted-foreground hover:bg-muted/50'
-            }`}
-          >
-            <CalendarDays className="w-3 h-3" />
-          </button>
-
-          {/* Reading Library Icon */}
           <button
             onClick={() => handleViewClick('library')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
@@ -177,7 +82,92 @@ export function HeroWorkspace() {
           {/* Divider */}
           <div className="w-4 h-px bg-border my-1" />
 
-          {/* Analytics Icon */}
+          {/* Planning & Organization */}
+          <button
+            onClick={() => handleViewClick('calendar')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'calendar'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <Calendar className="w-3 h-3" />
+          </button>
+
+          <button
+            onClick={() => handleViewClick('tasks')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'tasks'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <ListTodo className="w-3 h-3" />
+          </button>
+
+          <button
+            onClick={() => handleViewClick('timeline')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'timeline'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <BarChart3 className="w-3 h-3" />
+          </button>
+
+          {/* Divider */}
+          <div className="w-4 h-px bg-border my-1" />
+
+          {/* Notes & Insights */}
+          <button
+            onClick={() => handleViewClick('daily')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'daily'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <CalendarDays className="w-3 h-3" />
+          </button>
+
+          <button
+            onClick={() => handleViewClick('journal')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'journal'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <PenLine className="w-3 h-3" />
+          </button>
+
+          <button
+            onClick={() => handleViewClick('graph')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'graph'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <Network className="w-3 h-3" />
+          </button>
+
+          {/* Divider */}
+          <div className="w-4 h-px bg-border my-1" />
+
+          {/* Meta Views */}
+          <button
+            onClick={() => handleViewClick('overview')}
+            className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
+              activeView === 'overview'
+                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                : 'text-muted-foreground hover:bg-muted/50'
+            }`}
+          >
+            <LayoutDashboard className="w-3 h-3" />
+          </button>
+
           <button
             onClick={() => handleViewClick('analytics')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
@@ -189,7 +179,6 @@ export function HeroWorkspace() {
             <TrendingUp className="w-3 h-3" />
           </button>
 
-          {/* Archive Icon */}
           <button
             onClick={() => handleViewClick('archive')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
@@ -201,7 +190,6 @@ export function HeroWorkspace() {
             <Archive className="w-3 h-3" />
           </button>
 
-          {/* Settings Icon */}
           <button
             onClick={() => handleViewClick('settings')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
