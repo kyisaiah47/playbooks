@@ -4,9 +4,70 @@ import { useState } from "react";
 export function HeroWorkspace() {
   const [activeView, setActiveView] = useState<'guides' | 'calendar' | 'tasks' | 'timeline' | 'overview' | 'discover' | 'journal' | 'graph' | 'daily' | 'settings' | 'library' | 'analytics' | 'archive'>('guides');
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [openTabs, setOpenTabs] = useState<string[]>(['Wedding Planning']);
-  const [activeTab, setActiveTab] = useState('Wedding Planning');
+  const [openTabs, setOpenTabs] = useState<string[]>(["Sarah & Mike's Wedding"]);
+  const [activeTab, setActiveTab] = useState("Sarah & Mike's Wedding");
   const [showCommandPalette, setShowCommandPalette] = useState(false);
+  const [currentWorkspace, setCurrentWorkspace] = useState('My Life Planning');
+  const [showWorkspaceSwitcher, setShowWorkspaceSwitcher] = useState(false);
+
+  // Workspace data
+  const workspaces = {
+    'My Life Planning': {
+      icon: '🏠',
+      pages: [
+        {
+          name: "Sarah & Mike's Wedding",
+          icon: '💍',
+          subPages: [
+            { name: 'Venue Research', icon: '📍' },
+            { name: 'Guest List', icon: '👥' },
+            { name: 'Budget Tracker', icon: '💰' }
+          ]
+        },
+        { name: 'Dream Home in Austin', icon: '🏡', subPages: [] },
+        { name: 'Tech Lead Transition', icon: '💼', subPages: [
+          { name: 'Interview Prep', icon: '📝' },
+          { name: 'Skill Goals', icon: '🎯' }
+        ]},
+        { name: 'Setting Boundaries', icon: '🛡️', subPages: [] },
+        { name: 'Health Reset', icon: '💪', subPages: [] }
+      ]
+    },
+    'Work Projects': {
+      icon: '💼',
+      pages: [
+        {
+          name: 'Q4 OKRs',
+          icon: '🎯',
+          subPages: [
+            { name: 'Team Goals', icon: '👥' },
+            { name: 'Performance Metrics', icon: '📊' }
+          ]
+        },
+        { name: 'Product Roadmap', icon: '🗺️', subPages: [] },
+        { name: 'Team 1:1s', icon: '👤', subPages: [] },
+        { name: 'System Design Review', icon: '🏗️', subPages: [] }
+      ]
+    },
+    'Side Hustles': {
+      icon: '🚀',
+      pages: [
+        {
+          name: 'Indie SaaS Launch',
+          icon: '💡',
+          subPages: [
+            { name: 'MVP Features', icon: '⚙️' },
+            { name: 'Marketing Plan', icon: '📣' },
+            { name: 'Pricing Strategy', icon: '💵' }
+          ]
+        },
+        { name: 'Content Creation', icon: '✍️', subPages: [] },
+        { name: 'Course Development', icon: '🎓', subPages: [] }
+      ]
+    }
+  };
+
+  const workspace = workspaces[currentWorkspace as keyof typeof workspaces];
 
   const handleViewClick = (view: 'guides' | 'calendar' | 'tasks' | 'timeline' | 'overview' | 'discover' | 'journal' | 'graph' | 'daily' | 'settings' | 'library' | 'analytics' | 'archive') => {
     setActiveView(view);
@@ -207,75 +268,94 @@ export function HeroWorkspace() {
         <div className="w-52 border-r border-border/40 flex flex-col bg-muted/5">
           {activeView === 'guides' ? (
             <>
-              {/* Sidebar Header */}
-              <div className="p-1.5">
-                <div className="flex items-center gap-1.5 px-1.5 py-1 hover:bg-muted/50 rounded cursor-pointer">
-                  <svg viewBox="0 0 51 43" className="w-3 h-2.5 flex-shrink-0" fill="currentColor">
-                    <path d="M42 6.63334C41.5 6.13334 41 5.63334 40.5 5.13334C39 3.53334 37.4 1.93334 35.4 0.93334C33.1 -0.26666 30.6 0.033331 28.1 0.033331C24.3 0.033331 14.8 0.033331 9.2 0.033331L13 5.13334C19.9 5.13334 30.7 5.13334 35.7 5.13334C37.8 5.13334 39.6 5.53334 41.3 6.63334C41.6 6.73334 41.9 6.73334 42 6.63334Z"/>
-                    <path d="M46.2 14.8333C45.7 14.3333 45.2 13.8333 44.7 13.3333C43.2 11.7333 41.6 10.1333 39.6 9.13334C37.3 7.93334 34.8 8.23335 32.3 8.23335C29 8.23335 21.1 8.23335 15.5 8.23335L19.3 13.3333C26.1 13.3333 35.4 13.3333 40 13.3333C42.1 13.3333 43.9 13.7333 45.6 14.8333C45.8 14.9333 46 14.9333 46.2 14.8333Z"/>
-                    <path d="M50.9 22.8334C50.4 22.3334 49.9 21.8334 49.4 21.3334C47.9 19.7334 46.3 18.1333 44.3 17.1333C42 15.9333 39.5 16.2333 37 16.2333C33.9 16.2333 27.1 16.2333 21.6 16.2333L25.4 21.3334C32 21.3334 40.4 21.3334 44.6 21.3334C46.7 21.3334 48.5 21.7334 50.2 22.8334C50.5 22.9334 50.7 23.0334 50.9 22.8334Z"/>
-                    <path d="M8.8 36.3333C9.3 36.8333 9.8 37.3333 10.3 37.8333C11.8 39.4333 13.4 41.0333 15.4 42.0333C17.7 43.2333 20.2 42.9333 22.7 42.9333H41.6L37.8 37.8333C30.9 37.8333 20.1 37.8333 15.1 37.8333C13 37.8333 11.2 37.4333 9.5 36.3333C9.2 36.2333 9 36.2333 8.8 36.3333Z"/>
-                    <path d="M4.60001 28.1333C5.10001 28.6333 5.60001 29.1333 6.10001 29.6333C7.60001 31.2333 9.2 32.8333 11.2 33.8333C13.5 35.0333 16 34.7333 18.5 34.7333H35.3L31.5 29.6333C24.7 29.6333 15.4 29.6333 10.8 29.6333C8.7 29.6333 6.9 29.2333 5.2 28.1333C5 28.0333 4.80001 28.0333 4.60001 28.1333Z"/>
-                    <path d="M0 20.0333C0.5 20.5333 1 21.0333 1.5 21.5333C3 23.1333 4.60001 24.7333 6.60001 25.7333C8.90001 26.9333 11.4 26.6333 13.9 26.6333H29.3L25.5 21.5333C18.9 21.5333 10.5 21.5333 6.3 21.5333C4.2 21.5333 2.4 21.1333 0.699997 20.0333C0.399997 19.9333 0.2 19.9333 0 20.0333Z"/>
-                  </svg>
-                  <span className="font-medium text-[11px] flex-1">Templata</span>
-                  <ChevronRight className="w-3 h-3 text-muted-foreground" />
+              {/* Workspace Switcher */}
+              <div className="p-1.5 border-b border-border/40 relative">
+                <div
+                  onClick={() => setShowWorkspaceSwitcher(!showWorkspaceSwitcher)}
+                  className="flex items-center gap-2 px-1.5 py-1 hover:bg-muted/50 rounded cursor-pointer group"
+                >
+                  <div className="text-base">{workspace.icon}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[11px] font-medium truncate">{currentWorkspace}</div>
+                    <div className="text-[9px] text-muted-foreground">{workspace.pages.length} pages</div>
+                  </div>
+                  <ChevronRight className={`w-3 h-3 text-muted-foreground transition-all ${showWorkspaceSwitcher ? 'rotate-90 opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
                 </div>
+
+                {/* Workspace Dropdown */}
+                {showWorkspaceSwitcher && (
+                  <div className="absolute top-full left-1.5 right-1.5 mt-1 bg-background border border-border/60 rounded-lg shadow-lg z-50 overflow-hidden">
+                    {Object.entries(workspaces).map(([name, ws]) => (
+                      <div
+                        key={name}
+                        onClick={() => {
+                          setCurrentWorkspace(name);
+                          setShowWorkspaceSwitcher(false);
+                          // Switch to first page of new workspace
+                          setOpenTabs([ws.pages[0].name]);
+                          setActiveTab(ws.pages[0].name);
+                        }}
+                        className={`flex items-center gap-2 px-2 py-1.5 cursor-pointer transition-colors ${
+                          currentWorkspace === name
+                            ? 'bg-[#6366f1]/10'
+                            : 'hover:bg-muted/50'
+                        }`}
+                      >
+                        <div className="text-sm">{ws.icon}</div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[11px] font-medium truncate">{name}</div>
+                          <div className="text-[9px] text-muted-foreground">{ws.pages.length} pages</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Search */}
-              <div className="px-1.5 pb-1.5">
+              <div className="px-1.5 py-1.5">
                 <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded bg-muted/30 text-muted-foreground hover:bg-muted/50 cursor-pointer">
                   <Search className="w-3 h-3" />
                   <span className="text-[10px]">Search</span>
                 </div>
               </div>
 
-              {/* My Pages Section */}
+              {/* Pages Section */}
               <div className="flex-1 overflow-y-auto px-1.5">
-                <div className="text-[9px] font-medium text-muted-foreground px-1.5 py-1">
-                  My Pages
+                <div className="text-[9px] font-medium text-muted-foreground px-1.5 py-1 uppercase tracking-wider">
+                  Pages
                 </div>
-            <div className="space-y-0.5">
-              {/* Active Page */}
-              <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded bg-muted/50 cursor-pointer group">
-                <FileText className="w-3 h-3 flex-shrink-0" />
-                <span className="text-[11px] flex-1 truncate">Wedding Planning</span>
-              </div>
+                <div className="space-y-0.5">
+                  {workspace.pages.map((page, index) => (
+                    <div key={page.name}>
+                      {/* Main Page */}
+                      <div
+                        className={`flex items-center gap-1.5 px-1.5 py-0.5 rounded cursor-pointer group ${
+                          index === 0 ? 'bg-muted/50 font-medium' : 'text-muted-foreground hover:bg-muted/50'
+                        }`}
+                      >
+                        <div className="text-sm leading-none">{page.icon}</div>
+                        <span className="text-[11px] flex-1 truncate">{page.name}</span>
+                      </div>
 
-              {/* Other Pages */}
-              <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded text-muted-foreground hover:bg-muted/50 cursor-pointer group">
-                <FileText className="w-3 h-3 flex-shrink-0" />
-                <span className="text-[11px] flex-1 truncate">Career Transition</span>
+                      {/* Sub-pages */}
+                      {page.subPages && page.subPages.length > 0 && (
+                        <div className="ml-4 space-y-0.5">
+                          {page.subPages.map((subPage) => (
+                            <div
+                              key={subPage.name}
+                              className="flex items-center gap-1.5 px-1.5 py-0.5 rounded text-muted-foreground hover:bg-muted/50 cursor-pointer group"
+                            >
+                              <div className="text-xs leading-none">{subPage.icon}</div>
+                              <span className="text-[10px] flex-1 truncate">{subPage.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-
-              <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded text-muted-foreground hover:bg-muted/50 cursor-pointer group">
-                <FileText className="w-3 h-3 flex-shrink-0" />
-                <span className="text-[11px] flex-1 truncate">Setting Boundaries</span>
-              </div>
-
-              <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded text-muted-foreground hover:bg-muted/50 cursor-pointer group">
-                <FileText className="w-3 h-3 flex-shrink-0" />
-                <span className="text-[11px] flex-1 truncate">Personal Growth</span>
-              </div>
-
-              <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded text-muted-foreground hover:bg-muted/50 cursor-pointer group">
-                <FileText className="w-3 h-3 flex-shrink-0" />
-                <span className="text-[11px] flex-1 truncate">Home Buying</span>
-              </div>
-            </div>
-
-            {/* Favorites */}
-            <div className="text-[9px] font-medium text-muted-foreground px-1.5 py-1 mt-3">
-              Favorites
-            </div>
-            <div className="space-y-0.5">
-              <div className="flex items-center gap-1.5 px-1.5 py-0.5 rounded text-muted-foreground hover:bg-muted/50 cursor-pointer group">
-                <Star className="w-3 h-3 flex-shrink-0" />
-                <span className="text-[11px] flex-1 truncate">Career Transition</span>
-              </div>
-            </div>
-          </div>
 
               {/* New Page Button */}
               <div className="p-1.5 border-t border-border/40">
@@ -379,6 +459,20 @@ export function HeroWorkspace() {
                 {openTabs.map((tab, i) => {
                   const isActive = tab === activeTab;
                   const isGuide = !['Calendar', 'Tasks', 'Timeline', 'Overview', 'Discover', 'Journal', 'Graph', 'Daily', 'Settings', 'Library', 'Analytics', 'Archive', 'New Page'].includes(tab);
+
+                  // Get emoji icon for guide pages
+                  let pageIcon = null;
+                  if (isGuide) {
+                    // Find the page in all workspaces
+                    for (const ws of Object.values(workspaces)) {
+                      const page = ws.pages.find(p => p.name === tab);
+                      if (page) {
+                        pageIcon = page.icon;
+                        break;
+                      }
+                    }
+                  }
+
                   const Icon = isGuide ? FileText :
                     tab === 'Calendar' ? Calendar :
                     tab === 'Tasks' ? ListTodo :
@@ -423,7 +517,11 @@ export function HeroWorkspace() {
                           : 'hover:bg-muted/20 border-transparent'
                       }`}
                     >
-                      <Icon className={`w-3 h-3 ${isActive ? `text-${color}-600 dark:text-${color}-400` : 'text-muted-foreground'}`} style={isActive && tab === 'Calendar' ? {color: '#6366f1'} : {}} />
+                      {pageIcon ? (
+                        <div className="text-sm leading-none">{pageIcon}</div>
+                      ) : (
+                        <Icon className={`w-3 h-3 ${isActive ? `text-${color}-600 dark:text-${color}-400` : 'text-muted-foreground'}`} style={isActive && tab === 'Calendar' ? {color: '#6366f1'} : {}} />
+                      )}
                       <span className={`text-[11px] ${isActive ? 'font-medium' : 'text-muted-foreground'}`}>{tab}</span>
                       <button className="p-0.5 rounded hover:bg-background" onClick={(e) => {
                         e.stopPropagation();
@@ -1354,20 +1452,34 @@ export function HeroWorkspace() {
           {/* Left Column - Prompts & Articles */}
           <div className="w-72 border-r border-border/40 flex flex-col bg-muted/20">
             {/* Page Header */}
-            <div className="p-3 border-b border-border/40">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-6 rounded bg-blue-500/10 flex items-center justify-center">
-                  <FileText className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-[12px] font-semibold truncate">Wedding Planning</h2>
-                  <p className="text-[9px] text-muted-foreground">Created Nov 2024</p>
+            <div className="border-b border-border/40">
+              {/* Cover Image */}
+              <div className="h-24 bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-blue-500/20 relative group cursor-pointer">
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity text-[9px] text-white font-medium px-2 py-1 bg-black/50 rounded">
+                    Change cover
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center gap-3 text-[9px] text-muted-foreground">
-                <span>3 of 15 complete</span>
-                <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-500 w-1/5" />
+
+              {/* Icon + Title */}
+              <div className="p-3">
+                <div className="flex items-start gap-2 mb-2">
+                  {/* Emoji Icon Picker */}
+                  <div className="text-3xl leading-none cursor-pointer hover:bg-muted/50 rounded p-1 transition-colors" title="Change icon">
+                    💍
+                  </div>
+                  <div className="flex-1 min-w-0 pt-1">
+                    {/* Editable Title */}
+                    <h2 className="text-[13px] font-semibold truncate">Sarah & Mike's Wedding</h2>
+                    <p className="text-[9px] text-muted-foreground">Wedding Planning Guide · Created Nov 2024</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 text-[9px] text-muted-foreground">
+                  <span>3 of 15 complete</span>
+                  <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-pink-500 w-1/5" />
+                  </div>
                 </div>
               </div>
             </div>
