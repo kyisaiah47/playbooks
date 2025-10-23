@@ -17,6 +17,7 @@ import { WorkspaceActive } from "@/components/landing/WorkspaceActive";
 import { ExportOverview } from "@/components/landing/ExportOverview";
 import { CategorySelection } from "@/components/landing/CategorySelection";
 import { StructuredGuide } from "@/components/landing/StructuredGuide";
+import { PopularGuides } from "@/components/landing/PopularGuides";
 
 export default function LandingPage() {
 	const jsonLd = {
@@ -210,62 +211,10 @@ export default function LandingPage() {
 			{/* Featured Guides */}
 			<section className="px-6 py-32 border-t border-border/40">
 				<div className="mx-auto max-w-6xl">
-					<h2 className="text-3xl font-semibold tracking-tight mb-4 text-center">
+					<h2 className="text-3xl font-semibold tracking-tight mb-16 text-center">
 						Popular guides
 					</h2>
-					<p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-						Most used frameworks by the community
-					</p>
-
-					<div className="grid md:grid-cols-3 gap-4">
-						{[
-							{
-								title: "Career Transition",
-								questions: 12,
-								readings: 8,
-								slug: "career-transition"
-							},
-							{
-								title: "Setting Boundaries",
-								questions: 10,
-								readings: 6,
-								slug: "setting-boundaries"
-							},
-							{
-								title: "Breakup Recovery",
-								questions: 9,
-								readings: 7,
-								slug: "breakup-recovery"
-							},
-							{
-								title: "Decision Fatigue",
-								questions: 11,
-								readings: 5,
-								slug: "decision-fatigue"
-							},
-							{
-								title: "Finding Purpose",
-								questions: 15,
-								readings: 6,
-								slug: "finding-purpose"
-							},
-							{
-								title: "Building Habits",
-								questions: 10,
-								readings: 5,
-								slug: "healthy-habits"
-							},
-						].map((guide) => (
-							<Link key={guide.slug} href={`/guides/${guide.slug}`}>
-								<Card className="p-6 hover:border-foreground/20 transition-colors cursor-pointer h-full">
-									<h3 className="font-medium mb-3">{guide.title}</h3>
-									<p className="text-sm text-muted-foreground">
-										{guide.questions} questions · {guide.readings} readings
-									</p>
-								</Card>
-							</Link>
-						))}
-					</div>
+					<PopularGuides />
 				</div>
 			</section>
 
