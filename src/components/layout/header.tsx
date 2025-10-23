@@ -66,17 +66,17 @@ export function Header() {
 			<nav className="fixed z-50 w-full px-4">
 				<div
 					className={cn(
-						"mx-auto mt-4 transition-all duration-300 ease-out",
+						"mx-auto mt-4",
 						isScrolled && isHomePage ? "border backdrop-blur-lg" : "border-transparent"
 					)}
 					style={{
-						width: isHomePage ? `${headerWidth}%` : '100%',
-						borderRadius: isHomePage ? `${borderRadius}px` : '0px',
-						backgroundColor: isScrolled && isHomePage ? `rgba(var(--background-rgb), ${backgroundOpacity})` : 'transparent',
+						width: '100%',
+						borderRadius: '0px',
+						backgroundColor: isScrolled && isHomePage ? `rgba(var(--background-rgb), 0.8)` : 'transparent',
 						paddingTop: '16px',
 						paddingBottom: '16px',
-						paddingLeft: isHomePage ? `${24 - scrollProgress * 8}px` : '24px',
-						paddingRight: isHomePage ? `${24 - scrollProgress * 8}px` : '24px'
+						paddingLeft: '24px',
+						paddingRight: '24px'
 					}}
 				>
 					<div className="flex items-center justify-between relative">
