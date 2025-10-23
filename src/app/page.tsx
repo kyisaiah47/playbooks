@@ -16,6 +16,7 @@ import { SplitScreenOpen } from "@/components/landing/SplitScreenOpen";
 import { WorkspaceActive } from "@/components/landing/WorkspaceActive";
 import { ExportOverview } from "@/components/landing/ExportOverview";
 import { CategorySelection } from "@/components/landing/CategorySelection";
+import { StructuredGuide } from "@/components/landing/StructuredGuide";
 
 export default function LandingPage() {
 	const jsonLd = {
@@ -135,71 +136,73 @@ export default function LandingPage() {
 
 			{/* Why different */}
 			<section className="px-6 py-32 border-t border-border/40">
-				<div className="mx-auto max-w-4xl">
+				<div className="mx-auto max-w-6xl">
 					<h2 className="text-3xl font-semibold tracking-tight mb-16 text-center">
 						Not just another tool
 					</h2>
 
-					<div className="space-y-4">
-						<Card className="p-6">
-							<div className="grid md:grid-cols-2 gap-8">
-								<div>
-									<h3 className="font-medium mb-3">ChatGPT / AI</h3>
-									<ul className="space-y-2 text-sm text-muted-foreground">
-										<li>Generic responses</li>
-										<li>Starts from zero</li>
-										<li>No structure</li>
-									</ul>
-								</div>
-								<div>
-									<h3 className="font-medium mb-3">Templata</h3>
-									<ul className="space-y-2 text-sm">
-										<li className="flex items-start gap-2">
-											<Check className="h-4 w-4 mt-0.5 flex-shrink-0" />
-											<span>Expert-curated templates</span>
-										</li>
-										<li className="flex items-start gap-2">
-											<Check className="h-4 w-4 mt-0.5 flex-shrink-0" />
-											<span>Structured frameworks</span>
-										</li>
-										<li className="flex items-start gap-2">
-											<Check className="h-4 w-4 mt-0.5 flex-shrink-0" />
-											<span>Ready to use</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</Card>
+					<div className="grid lg:grid-cols-2 gap-12 items-center">
+						{/* Screenshot */}
+						<div>
+							<StructuredGuide />
+						</div>
 
-						<Card className="p-6">
-							<div className="grid md:grid-cols-2 gap-8">
-								<div>
-									<h3 className="font-medium mb-3">Blank journal</h3>
-									<ul className="space-y-2 text-sm text-muted-foreground">
-										<li>Don't know what to write</li>
-										<li>No guidance</li>
-										<li>Easy to miss things</li>
-									</ul>
-								</div>
-								<div>
-									<h3 className="font-medium mb-3">Templata</h3>
-									<ul className="space-y-2 text-sm">
-										<li className="flex items-start gap-2">
-											<Check className="h-4 w-4 mt-0.5 flex-shrink-0" />
-											<span>Pre-written questions</span>
-										</li>
-										<li className="flex items-start gap-2">
-											<Check className="h-4 w-4 mt-0.5 flex-shrink-0" />
-											<span>Expert frameworks</span>
-										</li>
-										<li className="flex items-start gap-2">
-											<Check className="h-4 w-4 mt-0.5 flex-shrink-0" />
-											<span>Comprehensive coverage</span>
-										</li>
-									</ul>
+						{/* Comparisons */}
+						<div className="space-y-8">
+							<div>
+								<h3 className="text-lg font-semibold mb-4">vs. ChatGPT / AI</h3>
+								<div className="space-y-3 text-sm">
+									<div className="flex items-start gap-3">
+										<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+										<div>
+											<div className="font-medium">Expert-curated frameworks</div>
+											<div className="text-muted-foreground">Pre-structured questions and resources, not generic AI responses</div>
+										</div>
+									</div>
+									<div className="flex items-start gap-3">
+										<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+										<div>
+											<div className="font-medium">Ready to use</div>
+											<div className="text-muted-foreground">Start with a complete framework instead of building from scratch</div>
+										</div>
+									</div>
+									<div className="flex items-start gap-3">
+										<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+										<div>
+											<div className="font-medium">Vetted content</div>
+											<div className="text-muted-foreground">Curated articles and resources, no hallucinations</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						</Card>
+
+							<div>
+								<h3 className="text-lg font-semibold mb-4">vs. Blank journal</h3>
+								<div className="space-y-3 text-sm">
+									<div className="flex items-start gap-3">
+										<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+										<div>
+											<div className="font-medium">Pre-written questions</div>
+											<div className="text-muted-foreground">Know exactly what to think through, no blank page anxiety</div>
+										</div>
+									</div>
+									<div className="flex items-start gap-3">
+										<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+										<div>
+											<div className="font-medium">Comprehensive coverage</div>
+											<div className="text-muted-foreground">Expert frameworks ensure you don't miss important considerations</div>
+										</div>
+									</div>
+									<div className="flex items-start gap-3">
+										<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
+										<div>
+											<div className="font-medium">Guided progress</div>
+											<div className="text-muted-foreground">Track completion and see your progress as you work</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
