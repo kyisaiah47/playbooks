@@ -1,4 +1,4 @@
-import { FileText, BookOpen, User, Moon, X, Plus, Circle, CheckCircle2, ChevronRight, Search, Star, Clock } from "lucide-react";
+import { FileText, BookOpen, User, Moon, X, Plus, Circle, CheckCircle2, ChevronRight, Search, Star, Clock, Calendar, ListTodo, BarChart3, LayoutDashboard } from "lucide-react";
 
 export function HeroWorkspace() {
   return (
@@ -18,7 +18,35 @@ export function HeroWorkspace() {
       </div>
 
       <div className="flex h-[600px] bg-background">
-        {/* Left Sidebar - My Pages */}
+        {/* Leftmost Icon Bar - Obsidian style */}
+        <div className="w-9 border-r border-border/40 bg-muted/10 flex flex-col items-center py-1.5 gap-0.5">
+          {/* Guides Icon - Active */}
+          <button className="w-6 h-6 rounded flex items-center justify-center bg-[#6366f1]/10 text-[#6366f1] hover:bg-[#6366f1]/20 transition-colors">
+            <FileText className="w-3 h-3" />
+          </button>
+
+          {/* Calendar Icon */}
+          <button className="w-6 h-6 rounded flex items-center justify-center text-muted-foreground hover:bg-muted/50 transition-colors">
+            <Calendar className="w-3 h-3" />
+          </button>
+
+          {/* Tasks Icon */}
+          <button className="w-6 h-6 rounded flex items-center justify-center text-muted-foreground hover:bg-muted/50 transition-colors">
+            <ListTodo className="w-3 h-3" />
+          </button>
+
+          {/* Timeline Icon */}
+          <button className="w-6 h-6 rounded flex items-center justify-center text-muted-foreground hover:bg-muted/50 transition-colors">
+            <BarChart3 className="w-3 h-3" />
+          </button>
+
+          {/* Overview Icon */}
+          <button className="w-6 h-6 rounded flex items-center justify-center text-muted-foreground hover:bg-muted/50 transition-colors">
+            <LayoutDashboard className="w-3 h-3" />
+          </button>
+        </div>
+
+        {/* Main Sidebar - My Pages (when Guides icon is active) */}
         <div className="w-52 border-r border-border/40 flex flex-col bg-muted/5">
           {/* Sidebar Header */}
           <div className="p-1.5">
