@@ -15,7 +15,7 @@ import { BrowseGuides } from "@/components/landing/BrowseGuides";
 import { SplitScreenOpen } from "@/components/landing/SplitScreenOpen";
 import { WorkspaceActive } from "@/components/landing/WorkspaceActive";
 import { ExportOverview } from "@/components/landing/ExportOverview";
-import { CategoryPreview } from "@/components/landing/CategoryPreview";
+import { CategorySelection } from "@/components/landing/CategorySelection";
 
 export default function LandingPage() {
 	const jsonLd = {
@@ -123,164 +123,13 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			{/* Categories - Visual Grid */}
+			{/* Categories */}
 			<section className="px-6 py-32 border-t border-border/40">
-				<div className="mx-auto max-w-7xl">
-					<h2 className="text-3xl font-semibold tracking-tight mb-4 text-center">
-						Guides for every situation
+				<div className="mx-auto max-w-6xl">
+					<h2 className="text-3xl font-semibold tracking-tight mb-16 text-center">
+						Browse by category
 					</h2>
-					<p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-						Preview questions and resources from each category
-					</p>
-
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						{/* Career */}
-						<Link href="/guides/categories/career" className="group">
-							<div className="space-y-3">
-								<div className="flex items-center justify-between">
-									<h3 className="font-semibold">Career & Work</h3>
-									<span className="text-xs text-muted-foreground">156 guides</span>
-								</div>
-								<CategoryPreview
-									category={{
-										name: "Career & Work",
-										color: "blue",
-										guide: "Career Transition",
-										questions: [
-											"What energizes you about your current role?",
-											"What would success look like in 5 years?",
-											"What skills do you want to develop?"
-										],
-										resources: ["The Dip: When to Quit", "Career Capital Theory"]
-									}}
-								/>
-							</div>
-						</Link>
-
-						{/* Relationships */}
-						<Link href="/guides/categories/relationships" className="group">
-							<div className="space-y-3">
-								<div className="flex items-center justify-between">
-									<h3 className="font-semibold">Relationships</h3>
-									<span className="text-xs text-muted-foreground">203 guides</span>
-								</div>
-								<CategoryPreview
-									category={{
-										name: "Relationships",
-										color: "pink",
-										guide: "Setting Boundaries",
-										questions: [
-											"Where do you feel most drained?",
-											"What are your non-negotiables?",
-											"How do you currently communicate needs?"
-										],
-										resources: ["Boundaries Book Summary", "Assertive Communication"]
-									}}
-								/>
-							</div>
-						</Link>
-
-						{/* Health */}
-						<Link href="/guides/categories/health" className="group">
-							<div className="space-y-3">
-								<div className="flex items-center justify-between">
-									<h3 className="font-semibold">Health & Wellness</h3>
-									<span className="text-xs text-muted-foreground">142 guides</span>
-								</div>
-								<CategoryPreview
-									category={{
-										name: "Health & Wellness",
-										color: "green",
-										guide: "Fitness Journey",
-										questions: [
-											"What's your current fitness baseline?",
-											"What time of day works best for you?",
-											"What activities do you actually enjoy?"
-										],
-										resources: ["Starting Strength", "Habit Formation Science"]
-									}}
-								/>
-							</div>
-						</Link>
-
-						{/* Personal Growth */}
-						<Link href="/guides/categories/personal-growth" className="group">
-							<div className="space-y-3">
-								<div className="flex items-center justify-between">
-									<h3 className="font-semibold">Personal Growth</h3>
-									<span className="text-xs text-muted-foreground">189 guides</span>
-								</div>
-								<CategoryPreview
-									category={{
-										name: "Personal Growth",
-										color: "purple",
-										guide: "Building Habits",
-										questions: [
-											"What habit would have the biggest impact?",
-											"What's your current morning routine?",
-											"When do you have the most willpower?"
-										],
-										resources: ["Atomic Habits Summary", "Willpower Research"]
-									}}
-								/>
-							</div>
-						</Link>
-
-						{/* Finance */}
-						<Link href="/guides/categories/finance" className="group">
-							<div className="space-y-3">
-								<div className="flex items-center justify-between">
-									<h3 className="font-semibold">Finance</h3>
-									<span className="text-xs text-muted-foreground">127 guides</span>
-								</div>
-								<CategoryPreview
-									category={{
-										name: "Finance",
-										color: "emerald",
-										guide: "Home Buying",
-										questions: [
-											"What's your budget range?",
-											"What neighborhoods are you considering?",
-											"What's your timeline for moving?"
-										],
-										resources: ["First-Time Buyer Guide", "Mortgage Basics"]
-									}}
-								/>
-							</div>
-						</Link>
-
-						{/* Life Events */}
-						<Link href="/guides/categories/life-events" className="group">
-							<div className="space-y-3">
-								<div className="flex items-center justify-between">
-									<h3 className="font-semibold">Life Events</h3>
-									<span className="text-xs text-muted-foreground">181 guides</span>
-								</div>
-								<CategoryPreview
-									category={{
-										name: "Life Events",
-										color: "orange",
-										guide: "Wedding Planning",
-										questions: [
-											"What's your total budget?",
-											"How many guests are you planning for?",
-											"What's your ideal timeline?"
-										],
-										resources: ["Wedding Budget Breakdown", "Vendor Checklist"]
-									}}
-								/>
-							</div>
-						</Link>
-					</div>
-
-					<div className="text-center mt-12">
-						<Button variant="outline" size="lg" asChild>
-							<Link href="/guides">
-								View all 1,200+ guides
-								<ArrowRight className="h-4 w-4" />
-							</Link>
-						</Button>
-					</div>
+					<CategorySelection />
 				</div>
 			</section>
 
