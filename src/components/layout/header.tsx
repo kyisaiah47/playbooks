@@ -104,11 +104,11 @@ export function Header() {
 										</NavigationMenuLink>
 									</NavigationMenuItem>
 
-									{/* How It Works */}
+									{/* Docs */}
 									<NavigationMenuItem>
 										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/how-it-works">
-												How It Works
+											<Link href="/docs">
+												Docs
 											</Link>
 										</NavigationMenuLink>
 									</NavigationMenuItem>
