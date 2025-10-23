@@ -9,7 +9,7 @@ export const articles = articleRegistry;
 // Helper function to get article by ID
 export async function getArticleById(id: string) {
   const { data, error } = await supabase
-    .from('templata_articles')
+    .from('readings')
     .select('*')
     .eq('id', id)
     .single();
@@ -40,7 +40,7 @@ export async function getArticleById(id: string) {
 // Helper function to get article by slug
 export async function getArticleBySlug(slug: string) {
   const { data, error } = await supabase
-    .from('templata_articles')
+    .from('readings')
     .select('*')
     .eq('slug', slug)
     .single();
@@ -71,7 +71,7 @@ export async function getArticleBySlug(slug: string) {
 // Helper function to get articles by category
 export async function getArticlesByCategory(category: string) {
   const { data, error } = await supabase
-    .from('templata_articles')
+    .from('readings')
     .select('*')
     .eq('category', category);
 
@@ -82,7 +82,7 @@ export async function getArticlesByCategory(category: string) {
 // Helper function to get related articles
 export async function getRelatedArticles(articleId: string, count = 3) {
   const { data, error } = await supabase
-    .from('templata_articles')
+    .from('readings')
     .select('*')
     .neq('id', articleId)
     .limit(count);
@@ -94,7 +94,7 @@ export async function getRelatedArticles(articleId: string, count = 3) {
 // Helper function to get articles by template (for component compatibility)
 export async function getArticlesByTemplate(templateId: string) {
   const { data, error } = await supabase
-    .from('templata_articles')
+    .from('readings')
     .select('*')
     .eq('template', templateId);
 
@@ -105,7 +105,7 @@ export async function getArticlesByTemplate(templateId: string) {
 // Helper function to get all available article IDs
 export async function getArticleIds(): Promise<string[]> {
   const { data, error } = await supabase
-    .from('templata_articles')
+    .from('readings')
     .select('id');
 
   if (error || !data) return [];
@@ -118,7 +118,7 @@ export async function getArticles(page = 1, pageSize = 50) {
   const to = from + pageSize - 1;
 
   const { data, error, count } = await supabase
-    .from('templata_articles')
+    .from('readings')
     .select('*', { count: 'exact' })
     .order('published_at', { ascending: false })
     .range(from, to);

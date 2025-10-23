@@ -46,7 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Fetch all templates to get categories dynamically
     const { data: templates } = await supabase
-      .from('templata_templates')
+      .from('guides')
       .select('id, category, created_at')
       .order('created_at', { ascending: false });
 
@@ -61,7 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Fetch all article slugs
     const { data: articles } = await supabase
-      .from('templata_articles')
+      .from('readings')
       .select('slug, created_at')
       .order('created_at', { ascending: false });
 

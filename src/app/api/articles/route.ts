@@ -16,7 +16,7 @@ export async function GET(request: Request) {
     // If ID is provided, fetch single article with content
     if (id) {
       const { data, error } = await supabase
-        .from('templata_articles')
+        .from('readings')
         .select('*')
         .eq('id', id)
         .single();
@@ -53,7 +53,7 @@ export async function GET(request: Request) {
 
     // Build query
     let supabaseQuery = supabase
-      .from('templata_articles')
+      .from('readings')
       .select('*', { count: 'exact' });
 
     // Apply template filter

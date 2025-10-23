@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
   const templateId = searchParams.get('templateId');
 
   let query = supabase
-    .from('workspace_responses')
+    .from('responses')
     .select('*')
     .eq('user_id', userId);
 
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
   // Upsert (insert or update)
   const { data, error } = await supabase
-    .from('workspace_responses')
+    .from('responses')
     .upsert(
       {
         user_id: userId,

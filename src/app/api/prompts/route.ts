@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 
     // Query prompts from database
     const { data: prompts, error } = await supabase
-      .from('templata_prompts')
+      .from('questions')
       .select('*')
       .eq('template_id', templateId)
       .order('prompt_number', { ascending: true });

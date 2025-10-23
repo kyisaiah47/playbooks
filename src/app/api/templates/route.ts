@@ -16,7 +16,7 @@ export async function GET(request: Request) {
 
     // Build query
     let query = supabase
-      .from('templata_templates')
+      .from('guides')
       .select('*')
       .range(0, 2999); // Use range to bypass Supabase's default 1000-row limit
 

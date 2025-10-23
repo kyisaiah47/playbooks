@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
         try {
           // Check if already exists
           const { data: existing } = await supabase
-            .from('workspace_responses')
+            .from('responses')
             .select('id')
             .eq('user_id', userId)
             .eq('template_id', item.templateId)
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
 
           if (!existing && item.response && item.response.trim()) {
             await supabase
-              .from('workspace_responses')
+              .from('responses')
               .insert({
                 user_id: userId,
                 template_id: item.templateId,

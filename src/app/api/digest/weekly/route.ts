@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
     // Fetch new guides (would need a published_at column)
     // const { data: newGuides } = await supabase
-    //   .from('templata_templates')
+    //   .from('guides')
     //   .select('slug, title')
     //   .gte('published_at', weekStart.toISOString())
     //   .order('published_at', { ascending: false })
