@@ -212,7 +212,15 @@ export function HeroWorkspace() {
 
               {/* New Page Button */}
               <div className="p-1.5 border-t border-border/40">
-                <button className="w-full flex items-center gap-1.5 px-1.5 py-1 rounded text-muted-foreground hover:bg-muted/50 transition-colors">
+                <button
+                  onClick={() => {
+                    if (!openTabs.includes('New Page')) {
+                      setOpenTabs([...openTabs, 'New Page']);
+                    }
+                    setActiveTab('New Page');
+                  }}
+                  className="w-full flex items-center gap-1.5 px-1.5 py-1 rounded text-muted-foreground hover:bg-muted/50 transition-colors"
+                >
                   <Plus className="w-3 h-3" />
                   <span className="text-[11px]">New Page</span>
                 </button>
@@ -344,7 +352,15 @@ export function HeroWorkspace() {
                 })}
 
                 {/* New Tab Button */}
-                <button className="p-1.5 rounded hover:bg-muted/30">
+                <button
+                  onClick={() => {
+                    if (!openTabs.includes('New Page')) {
+                      setOpenTabs([...openTabs, 'New Page']);
+                    }
+                    setActiveTab('New Page');
+                  }}
+                  className="p-1.5 rounded hover:bg-muted/30"
+                >
                   <Plus className="w-3 h-3 text-muted-foreground" />
                 </button>
               </div>
@@ -363,7 +379,118 @@ export function HeroWorkspace() {
 
           {/* Page Content */}
           <div className="flex-1 overflow-hidden bg-background flex">
-          {activeTab === 'Tasks' ? (
+          {activeTab === 'New Page' ? (
+            /* New Page View */
+            <div className="flex-1 p-8 overflow-y-auto">
+              <div className="max-w-3xl mx-auto">
+                {/* Header */}
+                <div className="mb-8">
+                  <h2 className="text-2xl font-semibold mb-2">Create New Page</h2>
+                  <p className="text-[13px] text-muted-foreground">Choose a guide to get started, or create a blank page</p>
+                </div>
+
+                {/* Search Bar */}
+                <div className="mb-8">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/40" />
+                    <input
+                      type="text"
+                      placeholder="Search 1,200+ guides..."
+                      className="w-full h-11 pl-10 pr-4 bg-muted/20 border border-border/60 rounded-lg outline-none focus:border-[#6366f1]/50 transition-colors text-[13px]"
+                    />
+                  </div>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="grid grid-cols-2 gap-4 mb-10">
+                  <button className="p-5 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:bg-[#6366f1]/5 transition-all text-left group">
+                    <FileText className="w-6 h-6 mb-3 text-muted-foreground group-hover:text-[#6366f1]" />
+                    <div className="text-[14px] font-medium mb-1">Blank Page</div>
+                    <div className="text-[11px] text-muted-foreground">Start with an empty page</div>
+                  </button>
+                  <button className="p-5 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:bg-[#6366f1]/5 transition-all text-left group">
+                    <PenLine className="w-6 h-6 mb-3 text-muted-foreground group-hover:text-[#6366f1]" />
+                    <div className="text-[14px] font-medium mb-1">Journal Entry</div>
+                    <div className="text-[11px] text-muted-foreground">Free-form writing space</div>
+                  </button>
+                </div>
+
+                {/* Popular Guides */}
+                <div className="mb-8">
+                  <h3 className="text-[12px] font-semibold text-muted-foreground uppercase tracking-wider mb-4">Popular Guides</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { title: "Wedding Planning", category: "Life Events", color: "indigo", questions: 15, readings: 12, users: 1203 },
+                      { title: "Career Transition", category: "Career & Work", color: "blue", questions: 12, readings: 8, users: 2847 },
+                      { title: "Home Buying", category: "Finance", color: "emerald", questions: 14, readings: 10, users: 1654 },
+                      { title: "Starting a Business", category: "Career & Work", color: "blue", questions: 18, readings: 15, users: 2103 },
+                    ].map((guide) => (
+                      <button
+                        key={guide.title}
+                        className="p-4 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:shadow-sm transition-all text-left group"
+                      >
+                        <div className="flex items-start justify-between mb-2">
+                          <div className={`text-[10px] font-medium px-2 py-1 rounded ${
+                            guide.color === 'indigo' ? 'bg-[#6366f1]/10' :
+                            guide.color === 'blue' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400' :
+                            'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
+                          }`} style={guide.color === 'indigo' ? { color: '#6366f1' } : {}}>
+                            {guide.category}
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#6366f1]" />
+                        </div>
+                        <h4 className="text-[14px] font-medium mb-2">{guide.title}</h4>
+                        <div className="flex items-center gap-3 text-[11px] text-muted-foreground mb-2">
+                          <span>{guide.questions} questions</span>
+                          <span>·</span>
+                          <span>{guide.readings} articles</span>
+                        </div>
+                        <div className="text-[10px] text-muted-foreground">
+                          {guide.users.toLocaleString()} working on this
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Browse by Category */}
+                <div>
+                  <h3 className="text-[12px] font-semibold text-muted-foreground uppercase tracking-wider mb-4">Browse by Category</h3>
+                  <div className="space-y-2">
+                    {[
+                      { name: "Career & Work", guides: 156, color: "blue" },
+                      { name: "Relationships", guides: 203, color: "pink" },
+                      { name: "Health & Wellness", guides: 142, color: "green" },
+                      { name: "Personal Growth", guides: 189, color: "purple" },
+                      { name: "Finance", guides: 127, color: "emerald" },
+                      { name: "Life Events", guides: 181, color: "indigo" },
+                    ].map((category) => (
+                      <button
+                        key={category.name}
+                        className="w-full flex items-center justify-between p-3 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:bg-[#6366f1]/5 transition-all group"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`w-2.5 h-2.5 rounded-full ${
+                            category.color === 'indigo' ? 'bg-[#6366f1]' :
+                            category.color === 'blue' ? 'bg-blue-500' :
+                            category.color === 'pink' ? 'bg-pink-500' :
+                            category.color === 'green' ? 'bg-green-500' :
+                            category.color === 'purple' ? 'bg-purple-500' :
+                            'bg-emerald-500'
+                          }`} />
+                          <span className="text-[14px] font-medium">{category.name}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[12px] text-muted-foreground">{category.guides} guides</span>
+                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#6366f1]" />
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : activeTab === 'Tasks' ? (
             /* Tasks View - Kanban */
             <div className="flex-1 p-6 overflow-y-auto">
               <div className="mb-6">
