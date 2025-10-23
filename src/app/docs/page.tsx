@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { PageLayout } from "@/components/layout";
 import {
   BookOpen,
   FileText,
@@ -120,10 +119,9 @@ export default function DocsPage() {
   ];
 
   return (
-    <PageLayout>
-      <div className="flex">
-        {/* Sidebar Navigation */}
-        <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border h-[calc(100vh-4rem)] sticky top-16 overflow-y-auto">
+    <div className="flex">
+      {/* Sidebar Navigation */}
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border h-[calc(100vh-3.5rem)] sticky top-14 overflow-y-auto">
           <div className="p-6 space-y-6">
             <div>
               <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
@@ -222,6 +220,5 @@ export default function DocsPage() {
           </div>
         </main>
       </div>
-    </PageLayout>
   );
 }
