@@ -45,7 +45,8 @@
       "Bash(do echo \"Converting $img...\")",
       "Bash(ls:*)",
       "WebFetch(domain:templata.org)",
-      "WebFetch(domain:linear.app)"
+      "WebFetch(domain:linear.app)",
+      "Read(//Users/ikim1/Downloads/**)"
     ],
     "deny": [],
     "ask": []
