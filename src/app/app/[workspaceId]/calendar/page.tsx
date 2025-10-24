@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
-import { Calendar as CalendarIcon, Plus, Loader2 } from 'lucide-react';
+import { Calendar as CalendarIcon, Plus, Loader2, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MonthView } from '@/components/app/calendar/MonthView';
 import { EventList } from '@/components/app/calendar/EventList';
@@ -179,28 +179,38 @@ export default function CalendarPage() {
 
               {/* Selected Event Details */}
               {selectedEvent && (
-                <div className="border border-border rounded-lg p-6 bg-background">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold">{selectedEvent.title}</h3>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setSelectedEvent(null)}
-                    >
-                      ✕
-                    </Button>
+                <div className="border border-border rounded-lg overflow-hidden bg-background">
+                  {/* Header */}
+                  <div className="bg-[#6366f1]/5 px-6 py-4 border-b border-border">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xl font-bold mb-1 text-[#6366f1]">{selectedEvent.title}</h3>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <CalendarIcon className="w-4 h-4" />
+                          <span>{format(new Date(selectedEvent.date), 'EEEE, MMMM d, yyyy')}</span>
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="icon-sm"
+                        onClick={() => setSelectedEvent(null)}
+                        className="text-muted-foreground hover:text-foreground"
+                      >
+                        ✕
+                      </Button>
+                    </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <div>
-                      <div className="text-sm font-medium text-muted-foreground mb-1">Date</div>
-                      <div className="text-sm">{format(new Date(selectedEvent.date), 'EEEE, MMMM d, yyyy')}</div>
-                    </div>
-
-                    {selectedEvent.description && (
-                      <div>
-                        <div className="text-sm font-medium text-muted-foreground mb-1">Description</div>
-                        <div className="text-sm">{selectedEvent.description}</div>
+                  {/* Content */}
+                  <div className="p-6">
+                    {selectedEvent.description ? (
+                      <div className="mb-6">
+                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Description</div>
+                        <p className="text-sm leading-relaxed">{selectedEvent.description}</p>
+                      </div>
+                    ) : (
+                      <div className="mb-6 text-sm text-muted-foreground italic">
+                        No description
                       </div>
                     )}
 
@@ -213,6 +223,7 @@ export default function CalendarPage() {
                       }}
                       className="w-full"
                     >
+                      <Trash2 className="w-4 h-4 mr-2" />
                       Delete Event
                     </Button>
                   </div>
