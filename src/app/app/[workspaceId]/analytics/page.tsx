@@ -48,21 +48,21 @@ export default function AnalyticsPage() {
   const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Get selected guide IDs from URL - if any selected, show ONLY those for comparison
+  // Get selected guide IDs from URL
   const selectedGuideIds = searchParams.get('analyticsGuides')?.split(',').filter(Boolean) || [];
 
-  // If guides selected, filter to show comparison. Otherwise show all workspace data
+  // Nothing checked = nothing shown
   const userGuides = selectedGuideIds.length > 0
     ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
-    : allUserGuides;
+    : [];
 
   const tasks = selectedGuideIds.length > 0
     ? allTasks.filter(task => task.user_guide_id && selectedGuideIds.includes(task.user_guide_id))
-    : allTasks;
+    : [];
 
   const events = selectedGuideIds.length > 0
     ? allEvents.filter(event => event.user_guide_id && selectedGuideIds.includes(event.user_guide_id))
-    : allEvents;
+    : [];
 
   useEffect(() => {
     async function fetchData() {
@@ -176,7 +176,7 @@ export default function AnalyticsPage() {
             <p className="text-xs text-muted-foreground">
               {selectedGuideIds.length > 0
                 ? `Showing analytics for ${selectedGuideIds.length} selected note${selectedGuideIds.length > 1 ? 's' : ''}`
-                : 'Workspace-wide usage history and statistics'}
+                : 'Select notes from sidebar to view analytics'}
             </p>
           </div>
         </div>
@@ -187,6 +187,12 @@ export default function AnalyticsPage() {
         {loading ? (
           <div className="flex items-center justify-center h-96">
             <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
+          </div>
+        ) : selectedGuideIds.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-96 text-muted-foreground">
+            <TrendingUp className="w-16 h-16 mb-4 opacity-20" />
+            <p className="text-lg font-medium">No notes selected</p>
+            <p className="text-sm">Select notes from the sidebar to view analytics</p>
           </div>
         ) : (
           <div className="space-y-4">
