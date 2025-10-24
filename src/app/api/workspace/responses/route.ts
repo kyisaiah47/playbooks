@@ -33,6 +33,7 @@ export async function GET(request: NextRequest) {
 
   const { searchParams } = new URL(request.url);
   const templateId = searchParams.get('templateId');
+  const userGuideId = searchParams.get('userGuideId');
 
   let query = supabase
     .from('responses')
@@ -41,6 +42,11 @@ export async function GET(request: NextRequest) {
 
   if (templateId) {
     query = query.eq('template_id', templateId);
+  }
+
+  // Filter by user_guide_id if provided
+  if (userGuideId) {
+    query = query.eq('user_guide_id', userGuideId);
   }
 
   const { data, error } = await query;
@@ -60,7 +66,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { templateId, promptId, response } = await request.json();
+  const { templateId, promptId, response, userGuideId } = await request.json();
 
   if (!templateId || !promptId) {
     return NextResponse.json(
@@ -69,21 +75,31 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // Prepare the upsert data
+  const upsertData: any = {
+    user_id: userId,
+    template_id: templateId,
+    prompt_id: promptId,
+    response: response || '',
+    updated_at: new Date().toISOString(),
+  };
+
+  // Include user_guide_id if provided
+  if (userGuideId) {
+    upsertData.user_guide_id = userGuideId;
+  }
+
   // Upsert (insert or update)
+  // The unique constraint depends on whether we have a user_guide_id or not
+  const conflictColumns = userGuideId
+    ? 'user_id,user_guide_id,prompt_id'
+    : 'user_id,template_id,prompt_id';
+
   const { data, error } = await supabase
     .from('responses')
-    .upsert(
-      {
-        user_id: userId,
-        template_id: templateId,
-        prompt_id: promptId,
-        response: response || '',
-        updated_at: new Date().toISOString(),
-      },
-      {
-        onConflict: 'user_id,template_id,prompt_id',
-      }
-    )
+    .upsert(upsertData, {
+      onConflict: conflictColumns,
+    })
     .select()
     .single();
 

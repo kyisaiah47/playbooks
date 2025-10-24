@@ -37,8 +37,8 @@ export function DocsHeader() {
 
 						<div className="h-4 w-px bg-border" />
 
-						<Link href="/docs" className="text-sm font-medium text-muted-foreground hover:text-foreground">
-							Docs
+						<Link href="/guides" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+							Guides
 						</Link>
 					</div>
 

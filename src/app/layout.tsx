@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes"
 import { CustomThemeProvider } from "@/components/theme-provider-custom"
 import { SessionProvider } from "@/components/providers/session-provider"
 import { UIProvider } from "@/components/providers/ui-provider"
+import { QueryProvider } from "@/components/providers/QueryProvider"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { AuthProvider } from "@/contexts/auth-context"
 import { Analytics } from "@/components/analytics"
@@ -121,15 +122,17 @@ export default function RootLayout({
         <ErrorBoundary>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
             <CustomThemeProvider>
-              <SessionProvider>
-                <AuthProvider>
-                  <UIProvider>
-                    <Analytics />
-                    <SpeedInsights />
-                    {children}
-                  </UIProvider>
-                </AuthProvider>
-              </SessionProvider>
+              <QueryProvider>
+                <SessionProvider>
+                  <AuthProvider>
+                    <UIProvider>
+                      <Analytics />
+                      <SpeedInsights />
+                      {children}
+                    </UIProvider>
+                  </AuthProvider>
+                </SessionProvider>
+              </QueryProvider>
             </CustomThemeProvider>
           </ThemeProvider>
         </ErrorBoundary>

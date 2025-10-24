@@ -1,52 +1,119 @@
-/**
- * Workspace Types
- *
- * Three workspace modes representing different states of mind:
- * - template: Guided progress (structure, learning)
- * - reflect: Quiet depth (introspection, stillness)
- * - lifeos: Synthesis & perspective (mastery, panoramic view)
- */
+// TypeScript types for workspace system
 
-export type WorkspaceMode = 'template' | 'reflect' | 'lifeos';
-
-export interface WorkspaceProps {
-  mode: WorkspaceMode;
-  templateId?: string;
-  workspaceId?: string;
+export interface Workspace {
+  id: string;
+  user_id: string;
+  name: string;
+  icon: string | null;
+  created_at: string;
+  updated_at: string;
 }
 
-export interface TemplatePrompt {
+export interface Page {
   id: string;
-  text: string;
-  category: string;
-  order: number;
-  completed?: boolean;
+  workspace_id: string;
+  name: string;
+  icon: string | null;
+  parent_page_id: string | null;
+  guide_id: string | null;
+  position: number;
+  created_at: string;
+  updated_at: string;
 }
 
-export interface TemplateArticle {
+export interface UserGuide {
   id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  readTime: number;
-  category: string;
-}
-
-export interface WorkspaceSession {
-  id: string;
-  templateId: string;
-  mode: WorkspaceMode;
+  user_id: string;
+  workspace_id: string;
+  page_id: string | null;
+  guide_id: string;
   progress: number;
-  lastModified: Date;
-  prompts: TemplatePrompt[];
-  responses: Record<string, string>;
+  archived: boolean;
+  archived_at: string | null;
+  created_at: string;
+  updated_at: string;
 }
 
-export interface ReflectionEntry {
+export interface Task {
   id: string;
-  date: Date;
-  promptId: string;
-  promptText: string;
+  user_id: string;
+  user_guide_id: string | null;
+  title: string;
+  description: string | null;
+  status: 'todo' | 'in_progress' | 'done';
+  due_date: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CalendarEvent {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string | null;
+  date: string;
+  start_time: string;
+  end_time?: string | null;
+  all_day?: boolean;
+  location?: string | null;
+  user_guide_id: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface JournalEntry {
+  id: string;
+  user_id: string;
+  title: string | null;
   content: string;
-  templateId?: string;
+  tags: string[] | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DailyNote {
+  id: string;
+  user_id: string;
+  date: string;
+  content: string | null;
+  agenda: any;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UserReadingProgress {
+  id: string;
+  user_id: string;
+  reading_id: string;
+  completed: boolean;
+  completed_at: string | null;
+  created_at: string;
+}
+
+export type TabType =
+  | 'overview'
+  | 'guide'
+  | 'discover'
+  | 'calendar'
+  | 'tasks'
+  | 'timeline'
+  | 'daily'
+  | 'journal'
+  | 'graph'
+  | 'library'
+  | 'analytics'
+  | 'archive'
+  | 'settings';
+
+export interface Tab {
+  id: string;
+  type: TabType;
+  label: string;
+  icon?: string;
+  pageId?: string;
+  guideId?: string;
+}
+
+export interface PageWithSubPages extends Page {
+  subPages: Page[];
 }

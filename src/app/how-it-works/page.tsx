@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PageLayout } from "@/components/layout";
+import { HeroWorkspace } from "@/components/landing/hero-workspace";
+import { BrowseGuides } from "@/components/landing/browse-guides";
 import { ArrowRight, BookOpen, FileText, Search, Download } from "lucide-react";
 
 export default function HowItWorksPage() {
@@ -38,12 +40,67 @@ export default function HowItWorksPage() {
                   Example: "Career Transition," "Setting Boundaries," "Moving to a New City"
                 </p>
               </div>
-              <div className="border border-border rounded-lg p-8 bg-muted/20">
-                <div className="space-y-3">
-                  <div className="h-8 bg-primary/20 rounded w-3/4"></div>
-                  <div className="h-8 bg-muted rounded w-full"></div>
-                  <div className="h-8 bg-muted rounded w-5/6"></div>
-                  <div className="h-8 bg-muted rounded w-full"></div>
+              <div className="border border-border rounded-lg overflow-hidden bg-muted/30 shadow-lg">
+                {/* Browser Chrome */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/50">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
+                      templata.org/guides
+                    </div>
+                  </div>
+                  <div className="w-16"></div>
+                </div>
+
+                {/* Content */}
+                <div className="bg-background">
+                  {/* Search bar */}
+                  <div className="p-4 border-b border-border">
+                    <div className="flex items-center gap-2 px-3 py-2 border border-border rounded-md bg-muted/50">
+                      <Search className="h-4 w-4 text-muted-foreground" />
+                      <input
+                        type="text"
+                        placeholder="Search guides..."
+                        className="flex-1 bg-transparent text-sm outline-none"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                  {/* Categories */}
+                  <div className="p-4 space-y-2">
+                    <div className="flex items-center gap-3 p-3 rounded-md hover:bg-muted/50 cursor-pointer">
+                      <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                      <div className="flex-1">
+                        <div className="font-medium text-sm">Career & Work</div>
+                        <div className="text-xs text-muted-foreground">156 guides</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-md hover:bg-muted/50 cursor-pointer bg-primary/5 border border-primary/20">
+                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                      <div className="flex-1">
+                        <div className="font-medium text-sm">Relationships</div>
+                        <div className="text-xs text-muted-foreground">203 guides</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-md hover:bg-muted/50 cursor-pointer">
+                      <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                      <div className="flex-1">
+                        <div className="font-medium text-sm">Health & Wellness</div>
+                        <div className="text-xs text-muted-foreground">142 guides</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 rounded-md hover:bg-muted/50 cursor-pointer">
+                      <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                      <div className="flex-1">
+                        <div className="font-medium text-sm">Personal Growth</div>
+                        <div className="text-xs text-muted-foreground">189 guides</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,15 +119,44 @@ export default function HowItWorksPage() {
                   Your answers auto-save in your browser—no account needed.
                 </p>
               </div>
-              <div className="md:order-1 border border-border rounded-lg p-8 bg-muted/20">
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <div className="h-4 bg-muted rounded w-2/3"></div>
-                    <div className="h-20 bg-background border border-border rounded"></div>
+              <div className="md:order-1 border border-border rounded-lg overflow-hidden bg-muted/30 shadow-lg">
+                {/* Browser Chrome */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/50">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                   </div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-muted rounded w-3/4"></div>
-                    <div className="h-20 bg-background border border-border rounded"></div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
+                      templata.org/templates/career-transition
+                    </div>
+                  </div>
+                  <div className="w-16"></div>
+                </div>
+
+                {/* Content */}
+                <div className="bg-background">
+                  <div className="border-b border-border bg-muted/20 px-4 py-3">
+                    <div className="font-semibold text-sm">Career Transition Guide</div>
+                  </div>
+                  <div className="p-4 space-y-4">
+                    <div className="space-y-2">
+                      <div className="font-medium text-sm">What skills from my current role give me energy vs. drain me?</div>
+                      <div className="border border-border rounded-md p-3 bg-muted/30 min-h-[80px] text-xs text-muted-foreground">
+                        I really enjoy problem-solving and working directly with clients...
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="font-medium text-sm">What's my financial runway? (savings ÷ monthly expenses)</div>
+                      <div className="border border-border rounded-md p-3 bg-background min-h-[60px] flex items-center">
+                        <div className="w-1 h-4 bg-primary animate-pulse"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-muted-foreground pt-2">
+                      <span>2 of 12 questions answered</span>
+                      <span className="text-green-600">✓ Auto-saved</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -90,17 +176,85 @@ export default function HowItWorksPage() {
                   No need to Google—we've done the research for you.
                 </p>
               </div>
-              <div className="border border-border rounded-lg p-8 bg-muted/20">
-                <div className="space-y-3">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="flex items-start gap-3 p-3 bg-background border border-border rounded">
-                      <div className="w-2 h-2 rounded-full bg-primary mt-2"></div>
-                      <div className="flex-1 space-y-2">
-                        <div className="h-3 bg-muted rounded w-3/4"></div>
-                        <div className="h-2 bg-muted/50 rounded w-full"></div>
+              <div className="border border-border rounded-lg overflow-hidden bg-muted/30 shadow-lg">
+                {/* Browser Chrome */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/50">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
+                      templata.org/templates/career-transition
+                    </div>
+                  </div>
+                  <div className="w-16"></div>
+                </div>
+
+                {/* Content */}
+                <div className="bg-background">
+                  <div className="border-b border-border bg-muted/20 px-4 py-3">
+                    <div className="font-semibold text-sm">Related Articles</div>
+                  </div>
+                  <div className="p-4 space-y-3">
+                    <div className="p-4 border border-border rounded-lg hover:border-primary/50 transition-colors cursor-pointer bg-card">
+                      <div className="flex items-start gap-3">
+                        <FileText className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-sm mb-1.5 line-clamp-1">
+                            The Science of Career Change: What Research Says
+                          </h3>
+                          <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                            A meta-analysis of 50+ studies on successful career transitions and the key factors that predict satisfaction.
+                          </p>
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span>Harvard Business Review</span>
+                            <span>•</span>
+                            <span>8 min read</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  ))}
+
+                    <div className="p-4 border border-border rounded-lg hover:border-primary/50 transition-colors cursor-pointer bg-card">
+                      <div className="flex items-start gap-3">
+                        <FileText className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-sm mb-1.5 line-clamp-1">
+                            Financial Planning for Career Transitions
+                          </h3>
+                          <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                            How to calculate your runway, build an emergency fund, and make smart financial decisions during job changes.
+                          </p>
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span>Forbes</span>
+                            <span>•</span>
+                            <span>5 min read</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 border border-border rounded-lg hover:border-primary/50 transition-colors cursor-pointer bg-card">
+                      <div className="flex items-start gap-3">
+                        <FileText className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-sm mb-1.5 line-clamp-1">
+                            Transferable Skills: A Practical Framework
+                          </h3>
+                          <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                            Identify and articulate your transferable skills to position yourself for new opportunities and industries.
+                          </p>
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <span>McKinsey Quarterly</span>
+                            <span>•</span>
+                            <span>12 min read</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -130,12 +284,62 @@ export default function HowItWorksPage() {
                   </li>
                 </ul>
               </div>
-              <div className="md:order-1 border border-border rounded-lg p-8 bg-muted/20 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <Download className="h-12 w-12 text-muted-foreground mx-auto" />
-                  <div className="space-y-2">
-                    <div className="h-3 bg-muted rounded w-32 mx-auto"></div>
-                    <div className="h-2 bg-muted/50 rounded w-24 mx-auto"></div>
+              <div className="md:order-1 border border-border rounded-lg overflow-hidden bg-muted/30 shadow-lg">
+                {/* Browser Chrome */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/50">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
+                      templata.org/templates/career-transition
+                    </div>
+                  </div>
+                  <div className="w-16"></div>
+                </div>
+
+                {/* Content */}
+                <div className="bg-background">
+                  <div className="border-b border-border bg-muted/20 px-4 py-3">
+                    <div className="font-semibold text-sm">Career Transition Guide</div>
+                  </div>
+                  <div className="p-6">
+                    <div className="mb-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="text-sm font-medium">Your Progress</div>
+                        <div className="text-xs text-muted-foreground">12 of 12 questions</div>
+                      </div>
+                      <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                        <div className="h-full bg-primary w-full transition-all"></div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <button className="w-full flex items-center justify-center gap-2 px-4 py-3 border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary/5 transition-colors">
+                        <Download className="h-4 w-4" />
+                        <span className="text-sm">Export to PDF</span>
+                      </button>
+
+                      <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                          <div className="w-full border-t border-border"></div>
+                        </div>
+                        <div className="relative flex justify-center text-xs">
+                          <span className="bg-background px-2 text-muted-foreground">or</span>
+                        </div>
+                      </div>
+
+                      <div className="text-center py-4 px-4 bg-muted/30 rounded-lg border border-border">
+                        <div className="text-xs text-muted-foreground mb-2">
+                          Your answers are saved locally
+                        </div>
+                        <div className="text-xs text-green-600 font-medium">
+                          ✓ Auto-saved in your browser
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

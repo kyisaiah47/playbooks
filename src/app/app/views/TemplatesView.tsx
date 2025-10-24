@@ -24,6 +24,7 @@ import {
 import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu, Search } from 'lucide-react';
 import { ArticleContent } from '@/app/articles/[slug]/article-content';
 import Link from 'next/link';
+import { GuideHeader } from '@/components/app/guides/GuideHeader';
 import {
   Drawer,
   DrawerClose,
@@ -92,10 +93,13 @@ interface TemplatesViewProps {
     selectFirstPrompt?: () => void;
     openFirstArticle?: () => void;
   }) => void;
+  workspaceId?: string;
+  userGuideId?: string;
+  defaultTemplateId?: string;
 }
 
-export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) {
-  const [selectedTemplate, setSelectedTemplate] = useState('wedding-planning');
+export function TemplatesView({ onViewChange, setActions, workspaceId, userGuideId, defaultTemplateId }: TemplatesViewProps) {
+  const [selectedTemplate, setSelectedTemplate] = useState(defaultTemplateId || 'wedding-planning');
   const [templates, setTemplates] = useState<Template[]>([]);
   const [displayedTemplates, setDisplayedTemplates] = useState<Template[]>([]);
   const [templateInfo, setTemplateInfo] = useState<{ id: string; name: string } | null>(null);
@@ -118,6 +122,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
+  const [userGuide, setUserGuide] = useState<any | null>(null);
 
   // Mobile drawer state
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -187,6 +192,23 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
     checkAuth();
   }, []);
 
+  // Fetch user guide data if userGuideId is provided
+  useEffect(() => {
+    async function fetchUserGuide() {
+      if (!userGuideId || !isAuthenticated) return;
+
+      try {
+        const res = await fetch(`/api/user-guides/${userGuideId}`);
+        const data = await res.json();
+        setUserGuide(data.userGuide);
+      } catch (error) {
+        console.error('Error fetching user guide:', error);
+      }
+    }
+
+    fetchUserGuide();
+  }, [userGuideId, isAuthenticated]);
+
   // Load data from Supabase (auth) or localStorage (anonymous)
   useEffect(() => {
     if (selectedPromptId && selectedTemplate && isAuthenticated !== null) {
@@ -197,9 +219,16 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
       try {
         if (isAuthenticated) {
           // Load from Supabase
-          const res = await fetch(
-            `/api/workspace/responses?templateId=${selectedTemplate}`
-          );
+          const params = new URLSearchParams({
+            templateId: selectedTemplate,
+          });
+
+          // If we have a userGuideId, include it for filtering
+          if (userGuideId) {
+            params.append('userGuideId', userGuideId);
+          }
+
+          const res = await fetch(`/api/workspace/responses?${params.toString()}`);
           const data = await res.json();
 
           if (data.responses) {
@@ -241,7 +270,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
         setLastSaved(null);
       }
     }
-  }, [selectedPromptId, selectedTemplate, isAuthenticated]);
+  }, [selectedPromptId, selectedTemplate, isAuthenticated, userGuideId]);
 
   // Autosave functionality - save to Supabase or localStorage
   useEffect(() => {
@@ -251,14 +280,21 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
       try {
         if (isAuthenticated) {
           // Save to Supabase
+          const body: any = {
+            templateId: selectedTemplate,
+            promptId: selectedPromptId,
+            response: promptResponse,
+          };
+
+          // Include userGuideId if available
+          if (userGuideId) {
+            body.userGuideId = userGuideId;
+          }
+
           await fetch('/api/workspace/responses', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              templateId: selectedTemplate,
-              promptId: selectedPromptId,
-              response: promptResponse,
-            }),
+            body: JSON.stringify(body),
           });
           setLastSaved(new Date());
         } else {
@@ -277,7 +313,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
     }, 2000);
 
     return () => clearTimeout(timeoutId);
-  }, [promptResponse, autoSave, selectedPromptId, selectedTemplate, isAuthenticated]);
+  }, [promptResponse, autoSave, selectedPromptId, selectedTemplate, isAuthenticated, userGuideId]);
 
   // Fetch templates list
   useEffect(() => {
@@ -390,7 +426,16 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
       if (isAuthenticated) {
         // Check API responses
         try {
-          const res = await fetch(`/api/workspace/responses?templateId=${selectedTemplate}`);
+          const params = new URLSearchParams({
+            templateId: selectedTemplate,
+          });
+
+          // If we have a userGuideId, include it for filtering
+          if (userGuideId) {
+            params.append('userGuideId', userGuideId);
+          }
+
+          const res = await fetch(`/api/workspace/responses?${params.toString()}`);
           const data = await res.json();
           if (data.responses) {
             data.responses.forEach((r: any) => {
@@ -429,7 +474,7 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
     }
 
     checkAnsweredPrompts();
-  }, [selectedTemplate, prompts, isAuthenticated, lastSaved, selectedPromptId, promptResponse]);
+  }, [selectedTemplate, prompts, isAuthenticated, lastSaved, selectedPromptId, promptResponse, userGuideId]);
 
   const handleTemplateChange = (newTemplateId: string) => {
     setSelectedTemplate(newTemplateId);
@@ -475,14 +520,21 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
       try {
         if (isAuthenticated) {
           // Save to Supabase
+          const body: any = {
+            templateId: selectedTemplate,
+            promptId: selectedPromptId,
+            response: promptResponse,
+          };
+
+          // Include userGuideId if available
+          if (userGuideId) {
+            body.userGuideId = userGuideId;
+          }
+
           await fetch('/api/workspace/responses', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              templateId: selectedTemplate,
-              promptId: selectedPromptId,
-              response: promptResponse,
-            }),
+            body: JSON.stringify(body),
           });
           setLastSaved(new Date());
         } else {
@@ -568,6 +620,15 @@ export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) 
             </div>
           </div>
         </div>
+      )}
+
+      {/* Guide Header - Only show in workspace context */}
+      {userGuideId && userGuide && (
+        <GuideHeader
+          guideName={userGuide.guides?.name || templateInfo?.name || 'Guide'}
+          guideIcon={userGuide.guides?.icon}
+          progress={userGuide.progress || 0}
+        />
       )}
 
       {/* Stage Header */}

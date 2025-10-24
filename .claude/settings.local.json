@@ -46,7 +46,16 @@
       "Bash(ls:*)",
       "WebFetch(domain:templata.org)",
       "WebFetch(domain:linear.app)",
-      "Read(//Users/ikim1/Downloads/**)"
+      "Read(//Users/ikim1/Downloads/**)",
+      "Bash(cat:*)",
+      "mcp__supabase__apply_migration",
+      "mcp__supabase__list_tables",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)",
+      "mcp__supabase__list_projects",
+      "mcp__supabase__execute_sql",
+      "Bash(npm run lint:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []

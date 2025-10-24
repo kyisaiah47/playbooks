@@ -1,0 +1,62 @@
+'use client';
+
+import { useParams } from 'next/navigation';
+import { LayoutDashboard } from 'lucide-react';
+
+export default function OverviewPage() {
+  const params = useParams();
+  const workspaceId = params.workspaceId as string;
+
+  return (
+    <div className="h-full w-full">
+      <div className="max-w-7xl mx-auto p-8">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-10 h-10 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
+            <LayoutDashboard className="w-5 h-5 text-[#6366f1]" />
+          </div>
+          <h1 className="text-3xl font-bold">Overview</h1>
+        </div>
+
+        {/* Content Placeholder */}
+        <div className="space-y-6">
+          <div className="rounded-lg border border-border/40 bg-muted/20 p-6">
+            <h2 className="text-xl font-semibold mb-2">Welcome to your workspace</h2>
+            <p className="text-muted-foreground">
+              This is your overview dashboard. More features will be added here soon.
+            </p>
+          </div>
+
+          {/* Stats Grid Placeholder */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { label: 'Active Guides', value: '0', icon: '📚' },
+              { label: 'Tasks', value: '0', icon: '✅' },
+              { label: 'Calendar Events', value: '0', icon: '📅' },
+              { label: 'Journal Entries', value: '0', icon: '✍️' },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-lg border border-border/40 bg-background p-4"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-2xl">{stat.icon}</span>
+                  <span className="text-sm text-muted-foreground">{stat.label}</span>
+                </div>
+                <div className="text-2xl font-bold">{stat.value}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Recent Activity Placeholder */}
+          <div className="rounded-lg border border-border/40 bg-background p-6">
+            <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
+            <div className="text-sm text-muted-foreground text-center py-8">
+              No recent activity yet. Start by creating some pages or adding guides!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
