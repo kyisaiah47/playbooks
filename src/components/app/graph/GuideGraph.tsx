@@ -244,7 +244,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
   }
 
   return (
-    <div className="w-full h-[700px] rounded-lg border border-border/40 bg-background overflow-hidden">
+    <div className="w-full h-[500px] rounded-lg border border-border/40 bg-background overflow-hidden">
       <ReactFlow
         nodes={nodes}
         edges={edges}
