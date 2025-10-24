@@ -31,10 +31,10 @@ export default function GraphPage() {
   // Get selected guide IDs from URL
   const selectedGuideIds = searchParams.get('graphGuides')?.split(',').filter(Boolean) || [];
 
-  // Filter guides by selection - if no selection, show all; if selection exists, only show selected
+  // Filter guides by selection - only show checked guides
   const userGuides = selectedGuideIds.length > 0
     ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
-    : allUserGuides;
+    : [];
 
   useEffect(() => {
     async function fetchUserGuides() {
