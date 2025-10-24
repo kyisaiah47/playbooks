@@ -91,15 +91,15 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                 key={note.id}
                 onClick={() => onNoteClick(note.guide_id)}
                 className={cn(
-                  "w-full flex items-center gap-2 px-2 py-1.5 rounded text-left transition-colors group",
+                  "w-full flex items-center gap-1.5 px-2 py-1.5 rounded text-sm transition-colors group",
                   activeGuideId === note.guide_id
-                    ? "bg-muted text-foreground"
-                    : "hover:bg-muted/50 text-muted-foreground"
+                    ? "bg-[#6366f1]/10 text-[#6366f1]"
+                    : "hover:bg-muted/50 text-foreground"
                 )}
               >
-                <FileText className="h-3 w-3 flex-shrink-0" />
+                <FileText className="h-3.5 w-3.5 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] font-medium truncate">
+                  <div className="font-normal truncate">
                     {note.guides.name}
                   </div>
                   {note.progress > 0 && (
