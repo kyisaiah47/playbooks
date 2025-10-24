@@ -8,6 +8,7 @@ import { TabBar } from '@/components/app/layout/TabBar';
 import { PagesSidebarContent } from '@/components/app/layout/PagesSidebarContent';
 import { CategorySidebarContent } from '@/components/app/layout/CategorySidebarContent';
 import { NotesSidebarContent } from '@/components/app/layout/NotesSidebarContent';
+import { LibrarySidebarContent } from '@/components/app/layout/LibrarySidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -44,6 +45,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedReadingId, setSelectedReadingId] = useState<string | null>(null);
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -177,6 +179,16 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       }
     }
   }, [searchParams, activeView, selectedCategory]);
+
+  // Sync reading selection from URL
+  useEffect(() => {
+    if (activeView === 'library') {
+      const readingParam = searchParams.get('readingId');
+      if (readingParam && readingParam !== selectedReadingId) {
+        setSelectedReadingId(readingParam);
+      }
+    }
+  }, [searchParams, activeView, selectedReadingId]);
 
   // Update URL when category changes
   const handleCategorySelect = useCallback((categoryId: string) => {
@@ -354,6 +366,17 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     handleViewClick('discover');
   }, [handleViewClick]);
 
+  // Handle reading click from Library Sidebar
+  const handleReadingClick = useCallback((readingId: string) => {
+    setSelectedReadingId(readingId);
+
+    // Update URL with reading ID
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('readingId', readingId);
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -386,9 +409,10 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
             onNewNote={handleNewNote}
           />
         ) : activeView === 'library' ? (
-          <div className="text-xs text-muted-foreground p-4">
-            Library sidebar (readings list in main content)
-          </div>
+          <LibrarySidebarContent
+            selectedReadingId={selectedReadingId}
+            onReadingClick={handleReadingClick}
+          />
         ) : (
           <PagesSidebarContent
             pages={pages}
