@@ -87,7 +87,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
             )} />
             <span className={cn(
               "text-xs font-medium truncate flex-1 transition-colors",
-              isActive ? "text-[#6366f1]" : "text-muted-foreground"
+              isActive ? "text-foreground" : "text-muted-foreground"
             )}>
               {tab.label}
             </span>
