@@ -96,6 +96,7 @@ export function AnalyticsSidebarContent({ selectedGuideIds, onGuideToggle }: Ana
           </motion.div>
         ) : (
           <motion.div
+            key={filteredGuides.length}
             className="space-y-0.5"
             variants={{
               hidden: { opacity: 0 },

@@ -96,6 +96,7 @@ export function CalendarSidebarContent({ selectedNoteIds, onNoteToggle }: Calend
           </motion.div>
         ) : (
           <motion.div
+            key={filteredNotes.length}
             className="space-y-0.5"
             variants={{
               hidden: { opacity: 0 },
