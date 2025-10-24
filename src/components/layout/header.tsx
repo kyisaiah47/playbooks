@@ -95,15 +95,6 @@ export function Header() {
 						<div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
 							<NavigationMenu className="pointer-events-auto" viewport={false}>
 								<NavigationMenuList className="space-x-2">
-									{/* Guides */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/guides">
-												Guides
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-
 									{/* How It Works */}
 									<NavigationMenuItem>
 										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
