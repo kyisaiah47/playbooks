@@ -111,7 +111,7 @@ export function KanbanBoard({
                   const task = item as KanbanItemProps & ExtendedTask;
                   return (
                     <KanbanCard key={task.id} id={task.id} name={task.name} column={task.column}>
-                      <TaskCard task={task} onDelete={onDeleteTask} onClick={() => setEditingTask(task)} />
+                      <TaskCard task={task} onDelete={onDeleteTask} onEdit={() => setEditingTask(task)} />
                     </KanbanCard>
                   );
                 }}

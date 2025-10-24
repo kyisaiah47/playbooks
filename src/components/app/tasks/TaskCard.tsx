@@ -2,7 +2,7 @@
 
 import { Task } from '@/types/workspace';
 import { Button } from '@/components/ui/button';
-import { Trash2, Calendar } from 'lucide-react';
+import { Trash2, Calendar, Pencil } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 
@@ -17,28 +17,43 @@ interface TaskCardProps {
     } | null;
   };
   onDelete: (taskId: string) => void;
-  onClick?: () => void;
+  onEdit: () => void;
 }
 
-export function TaskCard({ task, onDelete, onClick }: TaskCardProps) {
+export function TaskCard({ task, onDelete, onEdit }: TaskCardProps) {
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     onDelete(task.id);
   };
 
+  const handleEdit = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onEdit();
+  };
+
   return (
-    <div className="space-y-2 cursor-pointer" onClick={onClick}>
+    <div className="space-y-2">
       {/* Title */}
       <div className="flex items-start justify-between gap-2">
         <h3 className="font-medium text-sm leading-tight flex-1">{task.title}</h3>
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={handleDelete}
-          className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0 h-6 w-6"
-        >
-          <Trash2 className="h-3.5 w-3.5 text-destructive" />
-        </Button>
+        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={handleEdit}
+            className="shrink-0 h-6 w-6"
+          >
+            <Pencil className="h-3.5 w-3.5" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={handleDelete}
+            className="shrink-0 h-6 w-6"
+          >
+            <Trash2 className="h-3.5 w-3.5 text-destructive" />
+          </Button>
+        </div>
       </div>
 
       {/* Description */}
