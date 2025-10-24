@@ -286,35 +286,16 @@ export default function TasksPage() {
 
   return (
     <div className="h-full w-full flex flex-col overflow-hidden">
-      {/* Header */}
-      <div className="px-8 pt-8 pb-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
-              <ListTodo className="w-5 h-5 text-[#6366f1]" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold">Tasks</h1>
-              <p className="text-sm text-muted-foreground mt-1">
-                Manage your tasks with a simple kanban board
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Kanban Board */}
       <div className="flex-1 overflow-auto">
-        <div className="max-w-7xl mx-auto h-full">
-          <KanbanBoard
-            tasks={data || []}
-            onCreateTask={handleCreateTask}
-            onDeleteTask={handleDeleteTask}
-            onUpdateTaskStatus={handleUpdateTaskStatus}
-            onUpdateTask={handleUpdateTask}
-            workspaceId={workspaceId}
-          />
-        </div>
+        <KanbanBoard
+          tasks={data || []}
+          onCreateTask={handleCreateTask}
+          onDeleteTask={handleDeleteTask}
+          onUpdateTaskStatus={handleUpdateTaskStatus}
+          onUpdateTask={handleUpdateTask}
+          workspaceId={workspaceId}
+        />
       </div>
     </div>
   );
