@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import { Task } from '@/types/workspace';
 import { Button } from '@/components/ui/button';
 import { Trash2, Calendar, Pencil } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { TaskDeleteDialog } from './TaskDeleteDialog';
 
 interface TaskCardProps {
   task: Task & {
@@ -21,10 +23,17 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task, onDelete, onEdit }: TaskCardProps) {
-  const handleDelete = (e: React.MouseEvent) => {
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
+  const handleDeleteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    setShowDeleteDialog(true);
+  };
+
+  const handleConfirmDelete = () => {
     onDelete(task.id);
+    setShowDeleteDialog(false);
   };
 
   const handleEdit = (e: React.MouseEvent) => {
@@ -52,7 +61,7 @@ export function TaskCard({ task, onDelete, onEdit }: TaskCardProps) {
           <Button
             variant="ghost"
             size="icon-sm"
-            onClick={handleDelete}
+            onClick={handleDeleteClick}
             onPointerDown={(e) => e.stopPropagation()}
             onMouseDown={(e) => e.stopPropagation()}
             className="shrink-0 h-6 w-6"
@@ -83,6 +92,14 @@ export function TaskCard({ task, onDelete, onEdit }: TaskCardProps) {
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Dialog */}
+      <TaskDeleteDialog
+        open={showDeleteDialog}
+        onOpenChange={setShowDeleteDialog}
+        onConfirm={handleConfirmDelete}
+        taskTitle={task.title}
+      />
     </div>
   );
 }
