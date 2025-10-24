@@ -48,18 +48,21 @@ export default function AnalyticsPage() {
   const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Get selected guide IDs from URL for COMPARISON only (not filtering)
+  // Get selected guide IDs from URL - if any selected, show ONLY those for comparison
   const selectedGuideIds = searchParams.get('analyticsGuides')?.split(',').filter(Boolean) || [];
 
-  // NO FILTERING - analytics shows ALL workspace data
-  const userGuides = allUserGuides;
-  const tasks = allTasks;
-  const events = allEvents;
-
-  // But we can highlight selected guides for comparison
-  const selectedGuides = selectedGuideIds.length > 0
+  // If guides selected, filter to show comparison. Otherwise show all workspace data
+  const userGuides = selectedGuideIds.length > 0
     ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
-    : [];
+    : allUserGuides;
+
+  const tasks = selectedGuideIds.length > 0
+    ? allTasks.filter(task => task.user_guide_id && selectedGuideIds.includes(task.user_guide_id))
+    : allTasks;
+
+  const events = selectedGuideIds.length > 0
+    ? allEvents.filter(event => event.user_guide_id && selectedGuideIds.includes(event.user_guide_id))
+    : allEvents;
 
   useEffect(() => {
     async function fetchData() {
@@ -170,7 +173,11 @@ export default function AnalyticsPage() {
           </div>
           <div>
             <h1 className="text-xl font-semibold">Analytics</h1>
-            <p className="text-xs text-muted-foreground">Usage history and statistics</p>
+            <p className="text-xs text-muted-foreground">
+              {selectedGuideIds.length > 0
+                ? `Showing analytics for ${selectedGuideIds.length} selected note${selectedGuideIds.length > 1 ? 's' : ''}`
+                : 'Workspace-wide usage history and statistics'}
+            </p>
           </div>
         </div>
       </div>
