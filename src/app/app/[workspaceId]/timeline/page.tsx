@@ -1,60 +1,62 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState, useCallback } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
 import { BarChart3, Loader2 } from 'lucide-react';
 import { GanttView } from '@/components/app/timeline/GanttView';
-
-interface UserGuide {
-  id: string;
-  guides: {
-    id: string;
-    name: string;
-    description: string;
-    icon: string;
-  };
-  progress: number;
-  created_at: string;
-  archived: boolean;
-}
+import { CalendarEvent, Task } from '@/types/workspace';
+import { startOfMonth, endOfMonth, format } from 'date-fns';
 
 export default function TimelinePage() {
   const params = useParams();
-  const router = useRouter();
+  const searchParams = useSearchParams();
   const workspaceId = params.workspaceId as string;
 
-  const [userGuides, setUserGuides] = useState<UserGuide[]>([]);
+  const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allTasks, setAllTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchUserGuides() {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `/api/user-guides?workspace_id=${workspaceId}&archived=false`
-        );
+  // Get selected note IDs from URL
+  const selectedNoteIds = searchParams.get('timelineNotes')?.split(',').filter(Boolean) || [];
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch user guides');
-        }
+  // Filter events and tasks by selected notes
+  const events = selectedNoteIds.length > 0
+    ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
+    : [];
 
-        const data = await response.json();
-        setUserGuides(data.userGuides || []);
-      } catch (err) {
-        console.error('Error fetching user guides:', err);
-        setError('Failed to load guides');
-      } finally {
-        setLoading(false);
-      }
+  const tasks = selectedNoteIds.length > 0
+    ? allTasks.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
+    : [];
+
+  // Fetch data
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Fetch events
+      const eventsResponse = await fetch('/api/calendar');
+      if (!eventsResponse.ok) throw new Error('Failed to fetch events');
+      const eventsData = await eventsResponse.json();
+      setAllEvents(eventsData.events || []);
+
+      // Fetch tasks
+      const tasksResponse = await fetch('/api/tasks');
+      if (!tasksResponse.ok) throw new Error('Failed to fetch tasks');
+      const tasksData = await tasksResponse.json();
+      setAllTasks(tasksData.tasks || []);
+    } catch (err) {
+      console.error('Error fetching timeline data:', err);
+      setError('Failed to load timeline data');
+    } finally {
+      setLoading(false);
     }
+  }, []);
 
-    fetchUserGuides();
-  }, [workspaceId]);
-
-  const handleGuideClick = (guideId: string) => {
-    router.push(`/app/${workspaceId}/guide/${guideId}`);
-  };
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <div className="h-full w-full flex flex-col overflow-hidden">
@@ -73,31 +75,17 @@ export default function TimelinePage() {
 
       {/* Content */}
       <div className="flex-1 overflow-auto p-6">
-        <div className="rounded-lg border border-border/40 bg-background p-6">
-          {loading ? (
-            <div className="flex items-center justify-center h-96">
-              <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
-            </div>
-          ) : error ? (
-            <div className="flex items-center justify-center h-96 text-destructive">
-              <p>{error}</p>
-            </div>
-          ) : (
-            <GanttView userGuides={userGuides} onGuideClick={handleGuideClick} />
-          )}
-        </div>
-
-        {/* Help Text */}
-        <div className="mt-6 p-4 rounded-lg bg-muted/20 border border-border/20">
-          <h3 className="text-sm font-semibold mb-2">How to use the Timeline</h3>
-          <ul className="text-sm text-muted-foreground space-y-1">
-            <li>• Each bar represents an active guide in your workspace</li>
-            <li>• The length of the bar shows the estimated duration from start to completion</li>
-            <li>• Progress is shown both as a percentage and as a fill within the bar</li>
-            <li>• Click on any guide bar to navigate to that guide</li>
-            <li>• The vertical blue line indicates today's date</li>
-          </ul>
-        </div>
+        {loading ? (
+          <div className="flex items-center justify-center h-96">
+            <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
+          </div>
+        ) : error ? (
+          <div className="flex items-center justify-center h-96 text-destructive">
+            <p>{error}</p>
+          </div>
+        ) : (
+          <GanttView events={events} tasks={tasks} />
+        )}
       </div>
     </div>
   );

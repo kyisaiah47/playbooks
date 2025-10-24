@@ -11,6 +11,7 @@ import { NotesSidebarContent } from '@/components/app/layout/NotesSidebarContent
 import { LibrarySidebarContent } from '@/components/app/layout/LibrarySidebarContent';
 import { CalendarSidebarContent } from '@/components/app/layout/CalendarSidebarContent';
 import { TasksSidebarContent } from '@/components/app/layout/TasksSidebarContent';
+import { TimelineSidebarContent } from '@/components/app/layout/TimelineSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -50,6 +51,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedReadingId, setSelectedReadingId] = useState<string | null>(null);
   const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(new Set());
   const [selectedTasksNoteIds, setSelectedTasksNoteIds] = useState<Set<string>>(new Set());
+  const [selectedTimelineNoteIds, setSelectedTimelineNoteIds] = useState<Set<string>>(new Set());
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -216,6 +218,19 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         setSelectedTasksNoteIds(noteIds);
       } else {
         setSelectedTasksNoteIds(new Set());
+      }
+    }
+  }, [searchParams, activeView]);
+
+  // Sync timeline note selection from URL
+  useEffect(() => {
+    if (activeView === 'timeline') {
+      const timelineNotesParam = searchParams.get('timelineNotes');
+      if (timelineNotesParam) {
+        const noteIds = new Set(timelineNotesParam.split(','));
+        setSelectedTimelineNoteIds(noteIds);
+      } else {
+        setSelectedTimelineNoteIds(new Set());
       }
     }
   }, [searchParams, activeView]);
@@ -451,6 +466,28 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
   }, [selectedTasksNoteIds, searchParams, router]);
 
+  // Handle timeline note toggle
+  const handleTimelineNoteToggle = useCallback((noteId: string) => {
+    const newSet = new Set(selectedTimelineNoteIds);
+    if (newSet.has(noteId)) {
+      newSet.delete(noteId);
+    } else {
+      newSet.add(noteId);
+    }
+
+    setSelectedTimelineNoteIds(newSet);
+
+    // Update URL with selected note IDs
+    const params = new URLSearchParams(searchParams.toString());
+    if (newSet.size > 0) {
+      params.set('timelineNotes', Array.from(newSet).join(','));
+    } else {
+      params.delete('timelineNotes');
+    }
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [selectedTimelineNoteIds, searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -496,6 +533,11 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           <TasksSidebarContent
             selectedNoteIds={selectedTasksNoteIds}
             onNoteToggle={handleTasksNoteToggle}
+          />
+        ) : activeView === 'timeline' ? (
+          <TimelineSidebarContent
+            selectedNoteIds={selectedTimelineNoteIds}
+            onNoteToggle={handleTimelineNoteToggle}
           />
         ) : (
           <PagesSidebarContent
