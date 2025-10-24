@@ -58,7 +58,6 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
         onClick={onToggleSidebar}
         className="h-full px-3 border-r border-border/40 hover:bg-muted/30 transition-colors shrink-0"
         title={sidebarOpen ? 'Close sidebar' : 'Open sidebar'}
-        whileHover={{ backgroundColor: 'rgba(0,0,0,0.05)' }}
         whileTap={{ scale: 0.95 }}
       >
         <motion.div
@@ -95,7 +94,6 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
                   : 'hover:bg-muted/30'
               )}
               onClick={() => onTabClick(tab.id)}
-              whileHover={{ backgroundColor: isActive ? undefined : 'rgba(0,0,0,0.03)' }}
             >
               <motion.div
                 initial={false}
