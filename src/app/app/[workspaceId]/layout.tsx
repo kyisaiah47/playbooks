@@ -385,6 +385,10 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
             onNoteClick={handleNoteClick}
             onNewNote={handleNewNote}
           />
+        ) : activeView === 'library' ? (
+          <div className="text-xs text-muted-foreground p-4">
+            Library sidebar (readings list in main content)
+          </div>
         ) : (
           <PagesSidebarContent
             pages={pages}

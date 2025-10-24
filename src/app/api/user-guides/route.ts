@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     const archived = searchParams.get('archived');
 
     let query = supabase
-      .from('user_guides')
+      .from('notes')
       .select('*, guides(id, name, description, icon)')
       .eq('user_id', user.userId);
 
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { data: userGuide, error } = await supabase
-      .from('user_guides')
+      .from('notes')
       .insert({
         user_id: user.userId,
         guide_id,

@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
     // Verify user_guide_id belongs to user if provided
     if (user_guide_id) {
       const { data: userGuide, error: guideError } = await supabase
-        .from('user_guides')
+        .from('notes')
         .select('id')
         .eq('id', user_guide_id)
         .eq('user_id', user.userId)

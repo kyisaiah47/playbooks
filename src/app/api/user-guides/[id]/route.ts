@@ -20,7 +20,7 @@ export async function GET(
     const { id } = await params;
 
     const { data: userGuide, error } = await supabase
-      .from('user_guides')
+      .from('notes')
       .select('*, guides(id, name, description, icon)')
       .eq('id', id)
       .eq('user_id', user.userId)
@@ -99,7 +99,7 @@ export async function PATCH(
     }
 
     const { data: userGuide, error } = await supabase
-      .from('user_guides')
+      .from('notes')
       .update(updateData)
       .eq('id', id)
       .eq('user_id', user.userId)
@@ -134,7 +134,7 @@ export async function DELETE(
     const { id } = await params;
 
     const { error } = await supabase
-      .from('user_guides')
+      .from('notes')
       .delete()
       .eq('id', id)
       .eq('user_id', user.userId);
