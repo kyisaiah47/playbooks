@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { LayoutDashboard, ListTodo, Calendar, CheckCircle2, Circle, Loader2, Clock, AlertCircle } from 'lucide-react';
 import { format, isToday, isTomorrow, isPast, isFuture, parseISO, startOfDay } from 'date-fns';
 
@@ -95,37 +96,88 @@ export default function OverviewPage() {
   }, [workspaceId]);
 
   return (
-    <div className="h-full w-full flex flex-col overflow-hidden">
+    <motion.div
+      className="h-full w-full flex flex-col overflow-hidden"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3 }}
+    >
       {/* Header */}
-      <div className="border-b border-border/40 px-6 py-4">
+      <motion.div
+        className="border-b border-border/40 px-6 py-4"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+      >
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
+          <motion.div
+            className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
             <LayoutDashboard className="w-4 h-4 text-[#6366f1]" />
-          </div>
+          </motion.div>
           <div>
             <h1 className="text-xl font-semibold">Overview</h1>
             <p className="text-xs text-muted-foreground">Your workspace dashboard</p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="flex-1 overflow-auto p-6">
         {loading ? (
-          <div className="flex items-center justify-center h-96">
+          <motion.div
+            className="flex items-center justify-center h-96"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
             <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
-          </div>
+          </motion.div>
         ) : selectedNoteIds.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-96 text-muted-foreground">
+          <motion.div
+            className="flex flex-col items-center justify-center h-96 text-muted-foreground"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
             <LayoutDashboard className="w-16 h-16 mb-4 opacity-20" />
             <p className="text-lg font-medium">No notes selected</p>
             <p className="text-sm">Select notes from the sidebar to see your overview</p>
-          </div>
+          </motion.div>
         ) : (
-          <div className="space-y-4">
+          <motion.div
+            className="space-y-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+          >
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="rounded-lg border border-border/40 bg-background p-4">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+              variants={{
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.1
+                  }
+                }
+              }}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div
+                className="rounded-lg border border-border/40 bg-background p-4"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 }
+                }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <ListTodo className="w-5 h-5 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">Total Tasks</span>
@@ -134,9 +186,17 @@ export default function OverviewPage() {
                 <div className="text-xs text-muted-foreground mt-1">
                   {tasks.filter(t => t.status === 'completed').length} completed
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="rounded-lg border border-border/40 bg-background p-4">
+              <motion.div
+                className="rounded-lg border border-border/40 bg-background p-4"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 }
+                }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <AlertCircle className="w-5 h-5 text-amber-500" />
                   <span className="text-sm text-muted-foreground">Overdue Tasks</span>
@@ -147,9 +207,17 @@ export default function OverviewPage() {
                 <div className="text-xs text-muted-foreground mt-1">
                   Need attention
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="rounded-lg border border-border/40 bg-background p-4">
+              <motion.div
+                className="rounded-lg border border-border/40 bg-background p-4"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 }
+                }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <Clock className="w-5 h-5 text-blue-500" />
                   <span className="text-sm text-muted-foreground">Due Today</span>
@@ -160,9 +228,17 @@ export default function OverviewPage() {
                 <div className="text-xs text-muted-foreground mt-1">
                   Tasks for today
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="rounded-lg border border-border/40 bg-background p-4">
+              <motion.div
+                className="rounded-lg border border-border/40 bg-background p-4"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 }
+                }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-5 h-5 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">Events</span>
@@ -171,8 +247,8 @@ export default function OverviewPage() {
                 <div className="text-xs text-muted-foreground mt-1">
                   Total events
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {/* Upcoming Tasks */}
@@ -289,9 +365,9 @@ export default function OverviewPage() {
                 })}
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

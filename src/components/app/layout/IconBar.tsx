@@ -15,6 +15,7 @@ import {
   Archive,
   Settings
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { TabType } from '@/types/workspace';
 
@@ -60,7 +61,7 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
         return (
           <div key={view.type}>
             {divider}
-            <button
+            <motion.button
               onClick={() => onViewClick(view.type)}
               className={cn(
                 "w-8 h-8 rounded-md flex items-center justify-center transition-colors",
@@ -69,9 +70,21 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
                   : 'text-muted-foreground hover:bg-muted/50'
               )}
               title={view.label}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.15 }}
             >
-              <Icon className="w-4 h-4" />
-            </button>
+              <motion.div
+                initial={false}
+                animate={{
+                  scale: isActive ? 1.1 : 1,
+                  rotate: isActive ? [0, -5, 5, 0] : 0
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <Icon className="w-4 h-4" />
+              </motion.div>
+            </motion.button>
           </div>
         );
       })}

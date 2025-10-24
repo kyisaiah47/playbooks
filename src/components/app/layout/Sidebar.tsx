@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { Search, Plus, ChevronRight, ChevronDown, X, PanelLeftOpen, FileText, Folder } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { PageWithSubPages, Workspace } from '@/types/workspace';
 import { Input } from '@/components/ui/input';
@@ -32,7 +33,13 @@ export function Sidebar({
   }
 
   return (
-    <div className="w-64 border-r border-border/40 bg-background flex flex-col">
+    <motion.div
+      className="w-64 border-r border-border/40 bg-background flex flex-col"
+      initial={{ x: -256, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -256, opacity: 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       {/* Workspace Switcher */}
       <div className="px-3 py-2.5 border-b border-border/40">
         <WorkspaceSwitcher
@@ -45,8 +52,15 @@ export function Sidebar({
       </div>
 
       {/* Dynamic content from children */}
-      {children}
-    </div>
+      <motion.div
+        key={String(children)}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
+      >
+        {children}
+      </motion.div>
+    </motion.div>
   );
 }
 

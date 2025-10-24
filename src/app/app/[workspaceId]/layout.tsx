@@ -2,6 +2,7 @@
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { IconBar } from '@/components/app/layout/IconBar';
 import { Sidebar } from '@/components/app/layout/Sidebar';
 import { TabBar } from '@/components/app/layout/TabBar';
@@ -797,7 +798,9 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
           {/* Content Area */}
           <div className="flex-1 overflow-auto">
-            {children}
+            <AnimatePresence mode="wait">
+              {children}
+            </AnimatePresence>
           </div>
         </div>
       </div>
