@@ -17,6 +17,7 @@ import { JournalSidebarContent } from '@/components/app/layout/JournalSidebarCon
 import { GraphSidebarContent } from '@/components/app/layout/GraphSidebarContent';
 import { OverviewSidebarContent } from '@/components/app/layout/OverviewSidebarContent';
 import { AnalyticsSidebarContent } from '@/components/app/layout/AnalyticsSidebarContent';
+import { ArchiveSidebarContent } from '@/components/app/layout/ArchiveSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -728,6 +729,8 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
             selectedGuideIds={selectedAnalyticsGuideIds}
             onGuideToggle={handleAnalyticsGuideToggle}
           />
+        ) : activeView === 'archive' ? (
+          <ArchiveSidebarContent />
         ) : (
           <PagesSidebarContent
             pages={pages}

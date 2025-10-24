@@ -77,7 +77,8 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (guideError || !guide) {
-      return errorResponse('Guide not found', 404);
+      console.error('Guide not found for guide_id:', guide_id, 'Error:', guideError);
+      return errorResponse(`Guide not found: ${guide_id}`, 404);
     }
 
     // If workspace_id is provided, verify it belongs to the user
