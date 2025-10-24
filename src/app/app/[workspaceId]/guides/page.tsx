@@ -1,74 +1,224 @@
 'use client';
 
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { TemplatesView } from '@/app/app/views/TemplatesView';
-import { Loader2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { Briefcase, Heart, Activity, Sprout, DollarSign, Calendar, Search } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  icon: string | null;
+  display_order: number;
+  count: number;
+}
+
+interface Guide {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  icon: string | null;
+  tags: string[];
+}
+
+const categoryIcons: Record<string, any> = {
+  'career-work': Briefcase,
+  'relationships': Heart,
+  'health-wellness': Activity,
+  'personal-growth': Sprout,
+  'finance': DollarSign,
+  'life-events': Calendar,
+};
+
+const categoryColors: Record<string, { bg: string; text: string; icon: string }> = {
+  'career-work': { bg: "bg-blue-500/10", text: "text-blue-600 dark:text-blue-400", icon: "text-blue-600 dark:text-blue-400" },
+  'relationships': { bg: "bg-pink-500/10", text: "text-pink-600 dark:text-pink-400", icon: "text-pink-600 dark:text-pink-400" },
+  'health-wellness': { bg: "bg-green-500/10", text: "text-green-600 dark:text-green-400", icon: "text-green-600 dark:text-green-400" },
+  'personal-growth': { bg: "bg-purple-500/10", text: "text-purple-600 dark:text-purple-400", icon: "text-purple-600 dark:text-purple-400" },
+  'finance': { bg: "bg-emerald-500/10", text: "text-emerald-600 dark:text-emerald-400", icon: "text-emerald-600 dark:text-emerald-400" },
+  'life-events': { bg: "bg-[#6366f1]/10", text: "text-[#6366f1]", icon: "text-[#6366f1]" },
+};
 
 export default function GuidesPage() {
   const params = useParams();
+  const router = useRouter();
   const workspaceId = params.workspaceId as string;
 
-  const [userGuides, setUserGuides] = useState<any[]>([]);
-  const [selectedGuideId, setSelectedGuideId] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [guides, setGuides] = useState<Guide[]>([]);
+  const [loadingCategories, setLoadingCategories] = useState(true);
+  const [loadingGuides, setLoadingGuides] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Fetch user guides for this workspace
+  // Fetch categories on mount
   useEffect(() => {
-    async function fetchUserGuides() {
+    async function fetchCategories() {
       try {
-        const response = await fetch(`/api/user-guides?workspace_id=${workspaceId}`);
-        if (!response.ok) throw new Error('Failed to fetch user guides');
+        setLoadingCategories(true);
+        const res = await fetch('/api/guides');
+        const data = await res.json();
+        setCategories(data.categories || []);
 
-        const data = await response.json();
-        setUserGuides(data.userGuides || []);
-
-        // Auto-select first guide if available
-        if (data.userGuides && data.userGuides.length > 0) {
-          setSelectedGuideId(data.userGuides[0].id);
+        // Auto-select first category
+        if (data.categories && data.categories.length > 0) {
+          setSelectedCategory(data.categories[0].id);
         }
       } catch (error) {
-        console.error('Error fetching user guides:', error);
+        console.error('Error fetching categories:', error);
       } finally {
-        setLoading(false);
+        setLoadingCategories(false);
       }
     }
 
-    if (workspaceId) {
-      fetchUserGuides();
+    fetchCategories();
+  }, []);
+
+  // Fetch guides when category changes or search query changes
+  useEffect(() => {
+    async function fetchGuides() {
+      if (!selectedCategory) return;
+
+      try {
+        setLoadingGuides(true);
+        const params = new URLSearchParams({ category: selectedCategory });
+        if (searchQuery.trim()) {
+          params.append('search', searchQuery.trim());
+        }
+
+        const res = await fetch(`/api/guides?${params}`);
+        const data = await res.json();
+        setGuides(data.guides || []);
+      } catch (error) {
+        console.error('Error fetching guides:', error);
+      } finally {
+        setLoadingGuides(false);
+      }
     }
-  }, [workspaceId]);
 
-  if (loading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
-      </div>
-    );
-  }
+    fetchGuides();
+  }, [selectedCategory, searchQuery]);
 
-  // If no guides, show empty state
-  if (userGuides.length === 0) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <div className="text-center space-y-4 max-w-md px-4">
-          <div className="text-6xl mb-4">📚</div>
-          <h2 className="text-2xl font-bold text-foreground">No Guides Yet</h2>
-          <p className="text-muted-foreground">
-            You haven't added any guides to this workspace yet. Head to the Discover view to browse and add guides.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const handleGuideClick = async (guideId: string) => {
+    // Open guide in the guide view
+    router.push(`/app/${workspaceId}/guide?id=${guideId}`);
+  };
 
-  const selectedUserGuide = userGuides.find(ug => ug.id === selectedGuideId);
+  const selectedCategoryData = categories.find(cat => cat.id === selectedCategory);
 
   return (
-    <TemplatesView
-      workspaceId={workspaceId}
-      userGuideId={selectedGuideId || undefined}
-      defaultTemplateId={selectedUserGuide?.guide_id}
-    />
+    <div className="flex h-full">
+      {/* Sidebar Navigation */}
+      <aside className="w-56 flex-shrink-0 border-r border-border/40 bg-muted/20 overflow-y-auto">
+        <div className="p-3">
+          <div className="px-2 py-1 text-[11px] font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            Categories
+          </div>
+          <nav className="space-y-0.5">
+            {categories.map((category) => {
+              const colors = categoryColors[category.id] || categoryColors['career-work'];
+              const Icon = categoryIcons[category.id] || Briefcase;
+              const isSelected = selectedCategory === category.id;
+
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={cn(
+                    "w-full px-2 py-1.5 rounded text-[13px] transition-colors text-left",
+                    isSelected
+                      ? `${colors.bg} font-medium ${colors.text}`
+                      : 'text-muted-foreground hover:bg-muted/50'
+                  )}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Icon className={cn("h-3.5 w-3.5", isSelected && colors.icon)} />
+                      <span>{category.name}</span>
+                    </div>
+                    <span className="text-[11px] opacity-60">{category.count}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="p-6">
+          {selectedCategoryData ? (
+            <>
+              {/* Header */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-2">
+                  {(() => {
+                    const Icon = categoryIcons[selectedCategoryData.id] || Briefcase;
+                    const colors = categoryColors[selectedCategoryData.id] || categoryColors['career-work'];
+                    return <Icon className={cn("h-4 w-4", colors.icon)} />;
+                  })()}
+                  <h2 className="text-xl font-semibold tracking-tight">{selectedCategoryData.name}</h2>
+                </div>
+                <p className="text-[12px] text-muted-foreground mb-4">
+                  {selectedCategoryData.description}
+                </p>
+
+                {/* Search */}
+                <div className="relative max-w-xs">
+                  <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
+                  <input
+                    type="text"
+                    placeholder="Search guides..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Guides List */}
+              <div>
+                <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
+                  <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
+                    {loadingGuides ? 'Loading...' : `${guides.length} guides`}
+                  </span>
+                </div>
+
+                {loadingGuides ? (
+                  <div className="text-center py-12 text-muted-foreground text-sm">
+                    Loading guides...
+                  </div>
+                ) : (
+                  <div className="space-y-0">
+                    {guides.map((guide) => {
+                      const Icon = categoryIcons[selectedCategoryData.id] || Briefcase;
+                      return (
+                        <button
+                          key={guide.id}
+                          onClick={() => handleGuideClick(guide.id)}
+                          className="flex items-center gap-3 py-2.5 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group w-full text-left"
+                        >
+                          <Icon className="h-3.5 w-3.5 text-muted-foreground/60" />
+                          <span className="text-[13px] font-medium group-hover:text-primary transition-colors">
+                            {guide.name}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-12 text-muted-foreground">
+              {loadingCategories ? 'Loading categories...' : 'Select a category to view guides'}
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
   );
 }

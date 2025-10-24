@@ -1,6 +1,6 @@
 'use client';
 
-import { X } from 'lucide-react';
+import { X, PanelLeftOpen, PanelLeftClose } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tab } from '@/types/workspace';
 
@@ -9,13 +9,29 @@ interface TabBarProps {
   activeTabId: string | null;
   onTabClick: (tabId: string) => void;
   onTabClose: (tabId: string) => void;
+  sidebarOpen: boolean;
+  onToggleSidebar: () => void;
 }
 
-export function TabBar({ tabs, activeTabId, onTabClick, onTabClose }: TabBarProps) {
+export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen, onToggleSidebar }: TabBarProps) {
   if (tabs.length === 0) return null;
 
   return (
     <div className="h-10 border-b border-border/40 bg-background flex items-center gap-px overflow-x-auto">
+      {/* Sidebar Toggle Button */}
+      <button
+        onClick={onToggleSidebar}
+        className="h-full px-3 border-r border-border/40 hover:bg-muted/30 transition-colors shrink-0"
+        title={sidebarOpen ? 'Close sidebar' : 'Open sidebar'}
+      >
+        {sidebarOpen ? (
+          <PanelLeftClose className="w-4 h-4 text-muted-foreground" />
+        ) : (
+          <PanelLeftOpen className="w-4 h-4 text-muted-foreground" />
+        )}
+      </button>
+
+      {/* Tabs */}
       {tabs.map((tab) => {
         const isActive = tab.id === activeTabId;
 

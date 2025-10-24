@@ -297,6 +297,8 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           activeTabId={activeTabId}
           onTabClick={switchTab}
           onTabClose={removeTab}
+          sidebarOpen={sidebarOpen}
+          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
         />
 
         {/* Content Area */}

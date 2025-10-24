@@ -1,27 +1,32 @@
 'use client';
 
-import { Search, Plus, ChevronRight, ChevronDown, X } from 'lucide-react';
+import { Search, Plus, ChevronRight, ChevronDown, X, PanelLeftOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PageWithSubPages, Workspace } from '@/types/workspace';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { WorkspaceSwitcher } from './WorkspaceSwitcher';
 import { useState } from 'react';
 
 interface SidebarProps {
   workspace: Workspace;
+  workspaces?: Workspace[];
   pages: PageWithSubPages[];
   activePageId: string | null;
   onPageClick: (pageId: string) => void;
+  onWorkspaceChange?: (workspaceId: string) => void;
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
 }
 
 export function Sidebar({
   workspace,
+  workspaces = [],
   pages,
   activePageId,
   onPageClick,
+  onWorkspaceChange,
   sidebarOpen,
   setSidebarOpen,
 }: SidebarProps) {
@@ -48,24 +53,23 @@ export function Sidebar({
 
   return (
     <div className="w-52 border-r border-border/40 bg-background flex flex-col">
-      {/* Workspace Header */}
-      <div className="px-3 py-2.5 border-b border-border/40 flex items-center justify-between">
-        <button
-          className="flex items-center gap-2 flex-1 min-w-0 hover:bg-muted/50 rounded px-2 py-1.5 transition-colors"
-          onClick={() => {}}
-        >
-          <span className="text-lg shrink-0">{workspace.icon || '📁'}</span>
-          <span className="font-medium text-sm truncate">{workspace.name}</span>
-        </button>
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          onClick={() => setSidebarOpen(false)}
-          className="shrink-0"
-        >
-          <X className="w-3.5 h-3.5" />
-        </Button>
-      </div>
+      {/* Workspace Switcher */}
+      {workspaces.length > 0 && onWorkspaceChange ? (
+        <div className="px-3 py-2.5 border-b border-border/40">
+          <WorkspaceSwitcher
+            workspaces={workspaces}
+            currentWorkspaceId={workspace.id}
+            onWorkspaceChange={onWorkspaceChange}
+          />
+        </div>
+      ) : (
+        <div className="px-3 py-2.5 border-b border-border/40 flex items-center justify-between">
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            <span className="text-lg shrink-0">{workspace.icon || '📁'}</span>
+            <span className="font-medium text-sm truncate">{workspace.name}</span>
+          </div>
+        </div>
+      )}
 
       {/* Search Bar */}
       <div className="px-3 py-2">
