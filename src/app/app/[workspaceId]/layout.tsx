@@ -269,9 +269,8 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       if (graphGuidesParam) {
         const guideIds = new Set(graphGuidesParam.split(','));
         setSelectedGraphGuideIds(guideIds);
-      } else {
-        setSelectedGraphGuideIds(new Set());
       }
+      // Note: If no param, we leave it empty which means show all guides
     }
   }, [searchParams, activeView]);
 
