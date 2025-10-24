@@ -7,6 +7,7 @@ import { Sidebar } from '@/components/app/layout/Sidebar';
 import { TabBar } from '@/components/app/layout/TabBar';
 import { PagesSidebarContent } from '@/components/app/layout/PagesSidebarContent';
 import { CategorySidebarContent } from '@/components/app/layout/CategorySidebarContent';
+import { NotesSidebarContent } from '@/components/app/layout/NotesSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -165,6 +166,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   // Get active view from active tab (needed before useEffects)
   const activeView: TabType = tabs.find(t => t.id === activeTabId)?.type || 'overview';
   const activePageId = tabs.find(t => t.id === activeTabId)?.pageId || null;
+  const activeGuideId = tabs.find(t => t.id === activeTabId)?.guideId || null;
 
   // Sync category selection to URL
   useEffect(() => {
@@ -210,6 +212,11 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         // Add pageId to query params if it exists
         if (activeTab.pageId) {
           params.set('pageId', activeTab.pageId);
+        }
+
+        // Add guideId to query params if it exists (as 'id' for backwards compatibility)
+        if (activeTab.guideId) {
+          params.set('id', activeTab.guideId);
         }
 
         const queryString = params.toString();
@@ -329,6 +336,24 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     addTab(newTab);
   }, [pages, addTab]);
 
+  // Handle note click from Notes Sidebar
+  const handleNoteClick = useCallback((guideId: string) => {
+    const newTab: Tab = {
+      id: `note-${guideId}`,
+      type: 'notes',
+      label: 'Note', // Will be updated when guide data loads
+      icon: FileText,
+      guideId: guideId,
+    };
+
+    addTab(newTab);
+  }, [addTab]);
+
+  // Handle new note button click from Notes Sidebar
+  const handleNewNote = useCallback(() => {
+    handleViewClick('discover');
+  }, [handleViewClick]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -353,6 +378,12 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           <CategorySidebarContent
             selectedCategory={selectedCategory}
             onCategorySelect={handleCategorySelect}
+          />
+        ) : activeView === 'notes' ? (
+          <NotesSidebarContent
+            activeGuideId={activeGuideId}
+            onNoteClick={handleNoteClick}
+            onNewNote={handleNewNote}
           />
         ) : (
           <PagesSidebarContent

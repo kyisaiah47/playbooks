@@ -53,7 +53,7 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { progress, archived, name, icon } = body;
+    const { progress, archived, name, icon, cover_image } = body;
 
     // Build update object
     const updateData: any = {};
@@ -86,6 +86,12 @@ export async function PATCH(
         return errorResponse('Icon must be a string', 400);
       }
       updateData.custom_icon = icon;
+    }
+    if (cover_image !== undefined) {
+      if (typeof cover_image !== 'string') {
+        return errorResponse('Cover image must be a string', 400);
+      }
+      updateData.custom_cover_image = cover_image;
     }
 
     if (Object.keys(updateData).length === 0) {

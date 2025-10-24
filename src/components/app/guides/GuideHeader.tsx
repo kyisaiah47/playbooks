@@ -392,14 +392,14 @@ export function GuideHeader({
       </div>
 
       {/* Content area with icon and title */}
-      <div className="max-w-4xl mx-auto px-8 py-3">
-        <div className="flex items-start gap-3">
-          {/* Icon - smaller */}
-          <div className="-mt-6">
+      <div className="px-8">
+        <div className="space-y-2">
+          {/* Icon - overlapping cover photo */}
+          <div className="-mt-5">
             <Popover open={iconPickerOpen} onOpenChange={setIconPickerOpen}>
               <PopoverTrigger asChild>
                 <button
-                  className={`bg-background border-2 border-border rounded-lg p-2 hover:bg-muted/50 transition-colors ${
+                  className={`bg-background border-2 border-border rounded-lg p-2 hover:bg-muted/50 transition-colors shadow-sm ${
                     onIconChange ? 'cursor-pointer' : 'cursor-default'
                   }`}
                   disabled={!onIconChange}
@@ -452,7 +452,7 @@ export function GuideHeader({
           </div>
 
           {/* Title and subtitle */}
-          <div className="flex-1 min-w-0 pt-0.5">
+          <div className="flex-1 min-w-0 pb-3">
             {isEditingName ? (
               <Input
                 ref={inputRef}

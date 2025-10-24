@@ -631,8 +631,9 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       {/* Guide Header - Only show in workspace context */}
       {userGuideId && userGuide && (
         <GuideHeader
-          guideName={userGuide.guides?.name || templateInfo?.name || 'Guide'}
-          guideIcon={userGuide.guides?.icon}
+          guideName={userGuide.custom_name || userGuide.guides?.name || templateInfo?.name || 'Guide'}
+          guideIcon={userGuide.custom_icon || userGuide.guides?.icon}
+          coverImage={userGuide.custom_cover_image}
           progress={userGuide.progress || 0}
           templateName={templateInfo?.name}
           onNameChange={async (newName) => {
@@ -652,17 +653,38 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           }}
           onIconChange={async (newIcon) => {
             try {
+              console.log('Updating icon to:', newIcon);
               const res = await fetch(`/api/user-guides/${userGuideId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ icon: newIcon }),
+              });
+              console.log('Response status:', res.status);
+              if (res.ok) {
+                const data = await res.json();
+                console.log('Updated userGuide:', data.userGuide);
+                setUserGuide(data.userGuide);
+              } else {
+                const errorData = await res.json();
+                console.error('Error response:', errorData);
+              }
+            } catch (error) {
+              console.error('Error updating guide icon:', error);
+            }
+          }}
+          onCoverChange={async (coverUrl) => {
+            try {
+              const res = await fetch(`/api/user-guides/${userGuideId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cover_image: coverUrl }),
               });
               if (res.ok) {
                 const data = await res.json();
                 setUserGuide(data.userGuide);
               }
             } catch (error) {
-              console.error('Error updating guide icon:', error);
+              console.error('Error updating cover image:', error);
             }
           }}
         />

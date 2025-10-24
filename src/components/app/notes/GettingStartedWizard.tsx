@@ -1,183 +1,183 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FileText, Sparkles, ChevronRight, X, Search } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
+import { Briefcase, Heart, Activity, Sprout, DollarSign, Calendar, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  icon: string | null;
+  display_order: number;
+  count: number;
+}
 
 interface Guide {
   id: string;
   name: string;
   description: string;
   category: string;
+  icon: string | null;
+  tags: string[];
 }
 
 interface GettingStartedWizardProps {
   workspaceId: string;
-  onCreateBlank: () => void;
   onSelectGuide: (guideId: string) => void;
 }
 
+const categoryIconComponents: Record<string, any> = {
+  'career-work': Briefcase,
+  'relationships': Heart,
+  'health-wellness': Activity,
+  'personal-growth': Sprout,
+  'finance': DollarSign,
+  'life-events': Calendar,
+};
+
+const categoryColors: Record<string, { bg: string; text: string; icon: string }> = {
+  'career-work': { bg: "bg-blue-500/10", text: "text-blue-600 dark:text-blue-400", icon: "text-blue-600 dark:text-blue-400" },
+  'relationships': { bg: "bg-pink-500/10", text: "text-pink-600 dark:text-pink-400", icon: "text-pink-600 dark:text-pink-400" },
+  'health-wellness': { bg: "bg-green-500/10", text: "text-green-600 dark:text-green-400", icon: "text-green-600 dark:text-green-400" },
+  'personal-growth': { bg: "bg-purple-500/10", text: "text-purple-600 dark:text-purple-400", icon: "text-purple-600 dark:text-purple-400" },
+  'finance': { bg: "bg-emerald-500/10", text: "text-emerald-600 dark:text-emerald-400", icon: "text-emerald-600 dark:text-emerald-400" },
+  'life-events': { bg: "bg-[#6366f1]/10", text: "text-[#6366f1]", icon: "text-[#6366f1]" },
+};
+
 export function GettingStartedWizard({
   workspaceId,
-  onCreateBlank,
   onSelectGuide,
 }: GettingStartedWizardProps) {
-  const [showGuideDialog, setShowGuideDialog] = useState(false);
-  const [guides, setGuides] = useState<Guide[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [guides, setGuides] = useState<Guide[]>([]);
+  const [loadingGuides, setLoadingGuides] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Fetch guides when dialog opens
+  // Fetch categories on mount
   useEffect(() => {
-    if (!showGuideDialog) return;
-
-    async function fetchGuides() {
+    async function fetchCategories() {
       try {
-        setLoading(true);
         const res = await fetch('/api/guides');
+        const data = await res.json();
+        setCategories(data.categories || []);
+
+        // Auto-select first category
+        if (data.categories && data.categories.length > 0) {
+          setSelectedCategory(data.categories[0].id);
+        }
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
+
+  // Fetch guides when category changes or search query changes
+  useEffect(() => {
+    async function fetchGuides() {
+      if (!selectedCategory) return;
+
+      try {
+        setLoadingGuides(true);
+        const params = new URLSearchParams({ category: selectedCategory });
+        if (searchQuery.trim()) {
+          params.append('search', searchQuery.trim());
+        }
+
+        const res = await fetch(`/api/guides?${params}`);
         const data = await res.json();
         setGuides(data.guides || []);
       } catch (error) {
         console.error('Error fetching guides:', error);
       } finally {
-        setLoading(false);
+        setLoadingGuides(false);
       }
     }
 
     fetchGuides();
-  }, [showGuideDialog]);
+  }, [selectedCategory, searchQuery]);
 
-  const filteredGuides = guides.filter(guide =>
-    guide.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    guide.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const selectedCategoryData = categories.find(cat => cat.id === selectedCategory);
 
   return (
-    <div className="h-full w-full flex items-center justify-center p-8">
-      <div className="max-w-2xl w-full">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Your Workspace</h1>
-          <p className="text-lg text-muted-foreground">
-            Create your first note to get started
-          </p>
-        </div>
+    <div className="h-full overflow-y-auto">
+      <div className="p-6">
+        {selectedCategoryData ? (
+          <>
+            {/* Header */}
+            <div className="mb-6">
+              <h1 className="text-2xl font-bold mb-2">Choose a Guide Template</h1>
+              <p className="text-sm text-muted-foreground mb-4">
+                Select a guide to create your first note
+              </p>
 
-        {/* Options */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Blank Note */}
-          <button
-            onClick={onCreateBlank}
-            className={cn(
-              "group relative p-8 rounded-lg border-2 border-border",
-              "hover:border-[#6366f1] hover:bg-[#6366f1]/5",
-              "transition-all duration-200",
-              "text-left"
-            )}
-          >
-            <div className="mb-4">
-              <div className="w-12 h-12 rounded-lg bg-muted/50 group-hover:bg-[#6366f1]/10 flex items-center justify-center transition-colors">
-                <FileText className="w-6 h-6 text-muted-foreground group-hover:text-[#6366f1] transition-colors" />
+              <div className="flex items-center gap-2 mb-4">
+                {(() => {
+                  const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
+                  const colors = categoryColors[selectedCategoryData.id] || categoryColors['career-work'];
+                  return <Icon className={cn("h-4 w-4", colors.icon)} />;
+                })()}
+                <h2 className="text-lg font-semibold">{selectedCategoryData.name}</h2>
+              </div>
+              <p className="text-xs text-muted-foreground mb-4">
+                {selectedCategoryData.description}
+              </p>
+
+              {/* Search */}
+              <div className="relative max-w-xs">
+                <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
+                <input
+                  type="text"
+                  placeholder="Search guides..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-sm transition-colors"
+                />
               </div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Start from Blank</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Create an empty note and build it from scratch, just like Notion.
-            </p>
-            <div className="flex items-center text-sm font-medium text-[#6366f1] opacity-0 group-hover:opacity-100 transition-opacity">
-              Create blank note
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </div>
-          </button>
 
-          {/* Guided Template */}
-          <button
-            onClick={() => setShowGuideDialog(true)}
-            className={cn(
-              "group relative p-8 rounded-lg border-2 border-border",
-              "hover:border-[#6366f1] hover:bg-[#6366f1]/5",
-              "transition-all duration-200",
-              "text-left"
-            )}
-          >
-            <div className="mb-4">
-              <div className="w-12 h-12 rounded-lg bg-muted/50 group-hover:bg-[#6366f1]/10 flex items-center justify-center transition-colors">
-                <Sparkles className="w-6 h-6 text-muted-foreground group-hover:text-[#6366f1] transition-colors" />
+            {/* Guides List */}
+            <div>
+              <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
+                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  {loadingGuides ? 'Loading...' : `${guides.length} guides`}
+                </span>
               </div>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Use a Guide Template</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Get started quickly with a structured template from our guide library.
-            </p>
-            <div className="flex items-center text-sm font-medium text-[#6366f1] opacity-0 group-hover:opacity-100 transition-opacity">
-              Choose a template
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </div>
-          </button>
-        </div>
 
-        {/* Help Text */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            You can always create more notes from the sidebar
-          </p>
-        </div>
+              {loadingGuides ? (
+                <div className="text-center py-12 text-muted-foreground text-sm">
+                  Loading guides...
+                </div>
+              ) : (
+                <div className="space-y-0">
+                  {guides.map((guide) => {
+                    const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
+                    return (
+                      <button
+                        key={guide.id}
+                        onClick={() => onSelectGuide(guide.id)}
+                        className="flex items-center gap-3 py-2.5 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group w-full text-left"
+                      >
+                        <Icon className="h-3.5 w-3.5 text-muted-foreground/60" />
+                        <span className="text-sm font-medium group-hover:text-primary transition-colors">
+                          {guide.name}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <div className="text-center py-12 text-muted-foreground">
+            Loading categories...
+          </div>
+        )}
       </div>
-
-      {/* Guide Selection Dialog */}
-      <Dialog open={showGuideDialog} onOpenChange={setShowGuideDialog}>
-        <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
-          <DialogHeader>
-            <DialogTitle>Choose a Guide Template</DialogTitle>
-          </DialogHeader>
-
-          {/* Search */}
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input
-              placeholder="Search guides..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9"
-            />
-          </div>
-
-          {/* Guides List */}
-          <div className="flex-1 overflow-y-auto space-y-2 pr-2">
-            {loading ? (
-              <div className="text-center py-12 text-muted-foreground text-sm">
-                Loading guides...
-              </div>
-            ) : filteredGuides.length === 0 ? (
-              <div className="text-center py-12 text-muted-foreground text-sm">
-                No guides found
-              </div>
-            ) : (
-              filteredGuides.map((guide) => (
-                <button
-                  key={guide.id}
-                  onClick={() => {
-                    onSelectGuide(guide.id);
-                    setShowGuideDialog(false);
-                  }}
-                  className="w-full p-4 rounded-lg border border-border hover:border-[#6366f1] hover:bg-[#6366f1]/5 transition-colors text-left"
-                >
-                  <h4 className="font-medium mb-1">{guide.name}</h4>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {guide.description}
-                  </p>
-                  <div className="mt-2">
-                    <span className="text-xs text-muted-foreground">{guide.category}</span>
-                  </div>
-                </button>
-              ))
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

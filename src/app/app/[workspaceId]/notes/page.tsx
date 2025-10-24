@@ -4,6 +4,7 @@ import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { TemplatesView } from '@/app/app/views/TemplatesView';
 import { GettingStartedWizard } from '@/components/app/notes/GettingStartedWizard';
+import { NotesListView } from '@/components/app/notes/NotesListView';
 import { Loader2, FileText } from 'lucide-react';
 
 export default function NotesPage() {
@@ -29,6 +30,13 @@ export default function NotesPage() {
       try {
         // Check if user already has this guide in workspace
         const response = await fetch(`/api/user-guides?workspace_id=${workspaceId}&guide_id=${guideId}`);
+
+        if (!response.ok) {
+          console.error('Failed to fetch user guides:', response.status);
+          setLoading(false);
+          return;
+        }
+
         const data = await response.json();
 
         if (data.userGuides && data.userGuides.length > 0) {
@@ -48,6 +56,8 @@ export default function NotesPage() {
           if (createResponse.ok) {
             const createData = await createResponse.json();
             setUserGuideId(createData.userGuide.id);
+          } else {
+            console.error('Failed to create user guide:', createResponse.status);
           }
         }
       } catch (error) {
@@ -89,11 +99,6 @@ export default function NotesPage() {
     );
   }
 
-  const handleCreateBlank = () => {
-    // TODO: Create a new blank page
-    console.log('Create blank note');
-  };
-
   const handleSelectGuide = (guideId: string) => {
     // Navigate to notes view with the selected guide
     router.push(`/app/${workspaceId}/notes?id=${guideId}`);
@@ -101,12 +106,11 @@ export default function NotesPage() {
 
   // If viewing a page (not a guide template)
   if (pageId && !guideId) {
-    // Show wizard for "Getting Started" page
+    // Show guide selection for "Getting Started" page
     if (pageName === 'Getting Started') {
       return (
         <GettingStartedWizard
           workspaceId={workspaceId}
-          onCreateBlank={handleCreateBlank}
           onSelectGuide={handleSelectGuide}
         />
       );
@@ -126,19 +130,7 @@ export default function NotesPage() {
   }
 
   if (!guideId && !pageId) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <div className="text-center space-y-4 max-w-md px-4">
-          <div className="mb-4 flex justify-center">
-            <FileText className="w-16 h-16 text-muted-foreground/40" />
-          </div>
-          <h2 className="text-2xl font-bold text-foreground">No Note Selected</h2>
-          <p className="text-muted-foreground">
-            Select a note from the sidebar or create a new one.
-          </p>
-        </div>
-      </div>
-    );
+    return <NotesListView workspaceId={workspaceId} />;
   }
 
   return (

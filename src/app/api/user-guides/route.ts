@@ -16,6 +16,7 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
     const workspace_id = searchParams.get('workspace_id');
+    const guide_id = searchParams.get('guide_id');
     const archived = searchParams.get('archived');
 
     let query = supabase
@@ -26,6 +27,11 @@ export async function GET(request: NextRequest) {
     // Filter by workspace if provided
     if (workspace_id) {
       query = query.eq('workspace_id', workspace_id);
+    }
+
+    // Filter by guide_id if provided
+    if (guide_id) {
+      query = query.eq('guide_id', guide_id);
     }
 
     // Filter by archived status if provided
