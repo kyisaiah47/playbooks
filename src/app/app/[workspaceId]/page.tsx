@@ -8,18 +8,23 @@ export default function OverviewPage() {
   const workspaceId = params.workspaceId as string;
 
   return (
-    <div className="h-full w-full">
-      <div className="max-w-7xl mx-auto p-8">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
-            <LayoutDashboard className="w-5 h-5 text-[#6366f1]" />
+    <div className="h-full w-full flex flex-col overflow-hidden">
+      {/* Header */}
+      <div className="border-b border-border/40 px-6 py-4">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
+            <LayoutDashboard className="w-4 h-4 text-[#6366f1]" />
           </div>
-          <h1 className="text-3xl font-bold">Overview</h1>
+          <div>
+            <h1 className="text-xl font-semibold">Overview</h1>
+            <p className="text-xs text-muted-foreground">Your workspace dashboard</p>
+          </div>
         </div>
+      </div>
 
-        {/* Content Placeholder */}
-        <div className="space-y-6">
+      {/* Content */}
+      <div className="flex-1 overflow-auto p-6">
+        <div className="space-y-4">
           <div className="rounded-lg border border-border/40 bg-muted/20 p-6">
             <h2 className="text-xl font-semibold mb-2">Welcome to your workspace</h2>
             <p className="text-muted-foreground">

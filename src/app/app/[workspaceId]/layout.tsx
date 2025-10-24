@@ -15,6 +15,7 @@ import { TimelineSidebarContent } from '@/components/app/layout/TimelineSidebarC
 import { DailySidebarContent } from '@/components/app/layout/DailySidebarContent';
 import { JournalSidebarContent } from '@/components/app/layout/JournalSidebarContent';
 import { GraphSidebarContent } from '@/components/app/layout/GraphSidebarContent';
+import { OverviewSidebarContent } from '@/components/app/layout/OverviewSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -606,7 +607,9 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         setSidebarOpen={setSidebarOpen}
       >
         {/* Render sidebar content based on active view */}
-        {activeView === 'discover' ? (
+        {activeView === 'overview' ? (
+          <OverviewSidebarContent />
+        ) : activeView === 'discover' ? (
           <CategorySidebarContent
             selectedCategory={selectedCategory}
             onCategorySelect={handleCategorySelect}
