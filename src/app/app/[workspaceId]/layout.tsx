@@ -9,6 +9,7 @@ import { PagesSidebarContent } from '@/components/app/layout/PagesSidebarContent
 import { CategorySidebarContent } from '@/components/app/layout/CategorySidebarContent';
 import { NotesSidebarContent } from '@/components/app/layout/NotesSidebarContent';
 import { LibrarySidebarContent } from '@/components/app/layout/LibrarySidebarContent';
+import { CalendarSidebarContent } from '@/components/app/layout/CalendarSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -46,6 +47,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedReadingId, setSelectedReadingId] = useState<string | null>(null);
+  const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(new Set());
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -189,6 +191,17 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       }
     }
   }, [searchParams, activeView, selectedReadingId]);
+
+  // Sync calendar note selection from URL
+  useEffect(() => {
+    if (activeView === 'calendar') {
+      const calendarNotesParam = searchParams.get('calendarNotes');
+      if (calendarNotesParam) {
+        const noteIds = new Set(calendarNotesParam.split(','));
+        setSelectedCalendarNoteIds(noteIds);
+      }
+    }
+  }, [searchParams, activeView]);
 
   // Update URL when category changes
   const handleCategorySelect = useCallback((categoryId: string) => {
@@ -377,6 +390,30 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
   }, [searchParams, router]);
 
+  // Handle calendar note toggle
+  const handleCalendarNoteToggle = useCallback((noteId: string) => {
+    setSelectedCalendarNoteIds(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(noteId)) {
+        newSet.delete(noteId);
+      } else {
+        newSet.add(noteId);
+      }
+
+      // Update URL with selected note IDs
+      const params = new URLSearchParams(searchParams.toString());
+      if (newSet.size > 0) {
+        params.set('calendarNotes', Array.from(newSet).join(','));
+      } else {
+        params.delete('calendarNotes');
+      }
+      const queryString = params.toString();
+      router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+
+      return newSet;
+    });
+  }, [searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -412,6 +449,11 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           <LibrarySidebarContent
             selectedReadingId={selectedReadingId}
             onReadingClick={handleReadingClick}
+          />
+        ) : activeView === 'calendar' ? (
+          <CalendarSidebarContent
+            selectedNoteIds={selectedCalendarNoteIds}
+            onNoteToggle={handleCalendarNoteToggle}
           />
         ) : (
           <PagesSidebarContent

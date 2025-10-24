@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { Calendar as CalendarIcon, Plus, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MonthView } from '@/components/app/calendar/MonthView';
@@ -12,15 +12,24 @@ import { startOfMonth, endOfMonth, format } from 'date-fns';
 
 export default function CalendarPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const workspaceId = params.workspaceId as string;
 
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+
+  // Get selected note IDs from URL
+  const selectedNoteIds = searchParams.get('calendarNotes')?.split(',').filter(Boolean) || [];
+
+  // Filter events by selected notes
+  const events = selectedNoteIds.length > 0
+    ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
+    : allEvents;
 
   // Fetch calendar events
   const fetchEvents = useCallback(async () => {
@@ -38,11 +47,13 @@ export default function CalendarPage() {
       );
 
       if (!eventsResponse.ok) {
-        throw new Error('Failed to fetch events');
+        const errorData = await eventsResponse.json();
+        console.error('Calendar API error:', errorData);
+        throw new Error(errorData.error || 'Failed to fetch events');
       }
 
       const eventsData = await eventsResponse.json();
-      setEvents(eventsData.events || []);
+      setAllEvents(eventsData.events || []);
 
       // Fetch tasks with due dates
       const tasksResponse = await fetch('/api/tasks');
