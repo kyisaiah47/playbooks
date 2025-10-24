@@ -110,7 +110,7 @@ export function CalendarSidebarContent({ selectedNoteIds, onNoteToggle }: Calend
                     )}
                   </div>
                   <div className="flex-1 min-w-0 text-left">
-                    <div className="font-normal truncate text-foreground">
+                    <div className="font-normal text-foreground break-words">
                       {displayName}
                     </div>
                   </div>
