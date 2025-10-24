@@ -3,7 +3,7 @@
 import { useParams, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { TemplatesView } from '@/app/app/views/TemplatesView';
-import { Loader2 } from 'lucide-react';
+import { Loader2, FileText } from 'lucide-react';
 
 export default function GuidePage() {
   const params = useParams();
