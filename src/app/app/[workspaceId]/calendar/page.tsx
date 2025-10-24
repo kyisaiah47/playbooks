@@ -32,13 +32,6 @@ export default function CalendarPage() {
     ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
     : [];
 
-  console.log('🔍 Calendar Debug:', {
-    selectedNoteIds,
-    allEventsCount: allEvents.length,
-    filteredEventsCount: events.length,
-    sampleEventUserGuideId: allEvents[0]?.user_guide_id
-  });
-
   // Fetch calendar events
   const fetchEvents = useCallback(async () => {
     try {
