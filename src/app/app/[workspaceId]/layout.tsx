@@ -390,7 +390,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       {/* IconBar - 36px wide */}
       <IconBar activeView={activeView} onViewClick={handleViewClick} />
 
-      {/* Sidebar - 208px wide (collapsible) */}
+      {/* Sidebar - 256px wide (collapsible) */}
       <Sidebar
         workspace={workspace}
         sidebarOpen={sidebarOpen}

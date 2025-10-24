@@ -29,7 +29,7 @@ export function Sidebar({
   }
 
   return (
-    <div className="w-52 border-r border-border/40 bg-background flex flex-col">
+    <div className="w-64 border-r border-border/40 bg-background flex flex-col">
       {/* Workspace Switcher */}
       {workspaces.length > 0 ? (
         <div className="px-3 py-2.5 border-b border-border/40">
