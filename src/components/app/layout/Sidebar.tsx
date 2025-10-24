@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { Search, Plus, ChevronRight, ChevronDown, X, PanelLeftOpen, FileText, Folder } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PageWithSubPages, Workspace } from '@/types/workspace';
@@ -24,6 +25,8 @@ export function Sidebar({
   setSidebarOpen,
   children,
 }: SidebarProps) {
+  const router = useRouter();
+
   if (!sidebarOpen) {
     return null;
   }
@@ -31,28 +34,15 @@ export function Sidebar({
   return (
     <div className="w-64 border-r border-border/40 bg-background flex flex-col">
       {/* Workspace Switcher */}
-      {workspaces.length > 0 ? (
-        <div className="px-3 py-2.5 border-b border-border/40">
-          <WorkspaceSwitcher
-            workspaces={workspaces}
-            currentWorkspaceId={workspace.id}
-            onWorkspaceChange={(id) => {
-              // Handle workspace change
-            }}
-          />
-        </div>
-      ) : (
-        <div className="px-3 py-2.5 border-b border-border/40 flex items-center justify-between">
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            {workspace.icon ? (
-              <span className="text-lg shrink-0">{workspace.icon}</span>
-            ) : (
-              <Folder className="w-4 h-4 text-muted-foreground shrink-0" />
-            )}
-            <span className="font-medium text-sm truncate">{workspace.name}</span>
-          </div>
-        </div>
-      )}
+      <div className="px-3 py-2.5 border-b border-border/40">
+        <WorkspaceSwitcher
+          workspaces={workspaces}
+          currentWorkspaceId={workspace.id}
+          onWorkspaceChange={(id) => {
+            router.push(`/app/${id}`);
+          }}
+        />
+      </div>
 
       {/* Dynamic content from children */}
       {children}

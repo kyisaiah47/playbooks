@@ -49,6 +49,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
   // State
   const [workspace, setWorkspace] = useState<Workspace | null>(null);
+  const [workspaces, setWorkspaces] = useState<Workspace[]>([]);
   const [pages, setPages] = useState<PageWithSubPages[]>([]);
   const [tabs, setTabs] = useState<Tab[]>([]);
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
@@ -117,7 +118,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     }
   }, [searchParams]);
 
-  // Fetch workspace data
+  // Fetch workspace data and all workspaces
   useEffect(() => {
     async function fetchWorkspace() {
       try {
@@ -142,8 +143,20 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       }
     }
 
+    async function fetchAllWorkspaces() {
+      try {
+        const response = await fetch('/api/workspaces');
+        if (!response.ok) throw new Error('Failed to fetch workspaces');
+        const data = await response.json();
+        setWorkspaces(data.workspaces || []);
+      } catch (error) {
+        console.error('Error fetching workspaces:', error);
+      }
+    }
+
     if (workspaceId) {
       fetchWorkspace();
+      fetchAllWorkspaces();
     }
   }, [workspaceId, router]);
 
@@ -693,6 +706,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         {/* Sidebar - 256px wide (collapsible) */}
         <Sidebar
           workspace={workspace}
+          workspaces={workspaces}
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
         >
