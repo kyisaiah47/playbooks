@@ -7,6 +7,8 @@ import { ReadingCard } from './ReadingCard';
 import { Skeleton } from '@/components/ui/skeleton';
 import { BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface Reading {
   id: string;
@@ -100,21 +102,6 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
 
   const isLoading = readingsLoading || progressLoading || userGuidesLoading;
 
-  if (isLoading) {
-    return (
-      <motion.div
-        className="space-y-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        {[...Array(5)].map((_, i) => (
-          <Skeleton key={i} className="h-32 w-full" />
-        ))}
-      </motion.div>
-    );
-  }
-
   const selectedReading = readings.find(r => r.id === selectedReadingId);
 
   if (readings.length === 0) {
@@ -139,7 +126,7 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
       {selectedReading ? (
         <motion.div
           key={selectedReading.id}
-          className="max-w-4xl mx-auto p-8"
+          className="w-full p-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
@@ -152,7 +139,6 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
           >
             <div className="text-xs text-muted-foreground mb-2">{selectedReading.guide_name}</div>
             <h1 className="text-3xl font-bold mb-2">{selectedReading.title}</h1>
-            <p className="text-sm text-muted-foreground">{selectedReading.description}</p>
             <div className="flex items-center gap-3 mt-4">
               <span className="text-xs text-muted-foreground">{selectedReading.reading_time} min read</span>
               <motion.button
@@ -173,12 +159,25 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
             </div>
           </motion.div>
           <motion.div
-            className="prose prose-sm max-w-none"
+            className="w-full prose dark:prose-invert max-w-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
-            <div dangerouslySetInnerHTML={{ __html: selectedReading.content }} />
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: ({ node, ...props }) => <h1 className="text-2xl font-semibold mt-12 mb-6 tracking-normal" {...props} />,
+                h2: ({ node, ...props }) => <h2 className="text-xl font-semibold mt-10 mb-5 tracking-normal" {...props} />,
+                h3: ({ node, ...props }) => <h3 className="text-lg font-semibold mt-8 mb-4 tracking-normal" {...props} />,
+                p: ({ node, ...props }) => <p className="text-sm leading-loose my-3 tracking-normal" {...props} />,
+                ul: ({ node, ...props }) => <ul className="text-sm leading-loose my-3 tracking-normal" {...props} />,
+                ol: ({ node, ...props }) => <ol className="text-sm leading-loose my-3 tracking-normal" {...props} />,
+                li: ({ node, ...props }) => <li className="text-sm leading-loose my-1 tracking-normal" {...props} />,
+              }}
+            >
+              {selectedReading.content}
+            </ReactMarkdown>
           </motion.div>
         </motion.div>
       ) : (

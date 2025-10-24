@@ -35,13 +35,28 @@ export function Sidebar({
   return (
     <motion.div
       className="w-64 border-r border-border/40 bg-background flex flex-col"
-      initial={{ x: -256, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: -256, opacity: 0 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      initial="hidden"
+      animate="show"
+      exit="hidden"
+      variants={{
+        hidden: { opacity: 0 },
+        show: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.08,
+            delayChildren: 0.05
+          }
+        }
+      }}
     >
       {/* Workspace Switcher */}
-      <div className="px-3 py-2.5 border-b border-border/40">
+      <motion.div
+        className="px-3 py-2.5 border-b border-border/40"
+        variants={{
+          hidden: { opacity: 0, y: -10 },
+          show: { opacity: 1, y: 0 }
+        }}
+      >
         <WorkspaceSwitcher
           workspaces={workspaces}
           currentWorkspaceId={workspace.id}
@@ -49,14 +64,15 @@ export function Sidebar({
             router.push(`/app/${id}`);
           }}
         />
-      </div>
+      </motion.div>
 
       {/* Dynamic content from children */}
       <motion.div
         key={String(children)}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2, delay: 0.1 }}
+        variants={{
+          hidden: { opacity: 0, y: 10 },
+          show: { opacity: 1, y: 0 }
+        }}
       >
         {children}
       </motion.div>
