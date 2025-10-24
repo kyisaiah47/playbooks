@@ -15,6 +15,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { motion } from 'framer-motion';
 import { Network } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
 interface UserGuide {
   id: string;
@@ -51,6 +52,17 @@ function GuideNode({ data }: { data: any }) {
   const color = getCategoryColor(data.category);
   const progressRing = 2 * Math.PI * 38; // circumference for r=38
   const progressOffset = progressRing - (data.progress / 100) * progressRing;
+
+  // Convert kebab-case to PascalCase for Lucide icons
+  const toPascalCase = (str: string) => {
+    return str
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('');
+  };
+
+  const iconName = data.icon ? toPascalCase(data.icon) : null;
+  const IconComponent = iconName && (LucideIcons as any)[iconName];
 
   return (
     <motion.div
@@ -89,7 +101,11 @@ function GuideNode({ data }: { data: any }) {
         className="w-20 h-20 rounded-full flex flex-col items-center justify-center bg-background border-2 shadow-lg cursor-pointer relative z-10"
         style={{ borderColor: color }}
       >
-        <span className="text-3xl mb-1">{data.icon}</span>
+        {IconComponent ? (
+          <IconComponent className="w-8 h-8 mb-1" style={{ color }} />
+        ) : (
+          <Network className="w-8 h-8 mb-1" style={{ color }} />
+        )}
         <span className="text-[10px] font-semibold" style={{ color }}>
           {data.progress}%
         </span>
