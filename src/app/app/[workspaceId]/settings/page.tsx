@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-type SettingsSection = 'profile' | 'privacy' | 'data' | 'notifications' | 'appearance';
+type SettingsSection = 'profile' | 'privacy' | 'data' | 'notifications' | 'appearance' | 'workspace';
 
 export default function SettingsPage() {
   const searchParams = useSearchParams();
@@ -14,6 +14,8 @@ export default function SettingsPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
+  const [workspaceName, setWorkspaceName] = useState('');
+  const [workspaceIcon, setWorkspaceIcon] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -121,6 +123,20 @@ export default function SettingsPage() {
               <h1 className="text-lg font-semibold">Data</h1>
               <p className="text-xs text-muted-foreground mt-0.5">
                 Export or delete your data
+              </p>
+            </motion.div>
+          )}
+          {activeSection === 'workspace' && (
+            <motion.div
+              key="workspace-header"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+            >
+              <h1 className="text-lg font-semibold">Workspace</h1>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Manage this workspace
               </p>
             </motion.div>
           )}
@@ -322,6 +338,58 @@ export default function SettingsPage() {
                     This will permanently delete your account and all data
                   </p>
                   <Button variant="destructive" size="sm" className="h-8 px-4 text-xs">Delete</Button>
+                </div>
+              </motion.div>
+            )}
+
+            {activeSection === 'workspace' && (
+              <motion.div
+                key="workspace"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.15 }}
+                className="space-y-6"
+              >
+                <div className="space-y-1.5">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                    Workspace Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Workspace name"
+                    value={workspaceName}
+                    onChange={(e) => setWorkspaceName(e.target.value)}
+                    className="w-full px-3 py-2 border-0 border-b border-border bg-transparent text-foreground text-sm focus:outline-none focus:border-foreground transition-colors"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                    Icon (Lucide Icon Name)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g., Briefcase, Home, Folder"
+                    value={workspaceIcon}
+                    onChange={(e) => setWorkspaceIcon(e.target.value)}
+                    className="w-full px-3 py-2 border-0 border-b border-border bg-transparent text-foreground text-sm focus:outline-none focus:border-foreground transition-colors"
+                  />
+                  <p className="text-xs text-muted-foreground pt-1">
+                    Enter a Lucide icon name like "Briefcase", "Home", or "Folder"
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <Button size="sm" className="h-8 px-4 text-xs">Save Changes</Button>
+                </div>
+
+                <div className="pt-6 border-t border-border/40">
+                  <div className="p-4 border border-destructive/20 rounded-md bg-destructive/5 max-w-md">
+                    <p className="text-sm text-destructive mb-1 font-medium">Delete workspace</p>
+                    <p className="text-xs text-muted-foreground mb-4">
+                      This will permanently delete this workspace and all its content
+                    </p>
+                    <Button variant="destructive" size="sm" className="h-8 px-4 text-xs">Delete Workspace</Button>
+                  </div>
                 </div>
               </motion.div>
             )}
