@@ -58,7 +58,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           id: 'overview-default',
           type: 'overview',
           label: 'Overview',
-          icon: '📊',
+          icon: LayoutDashboard,
         };
         setTabs([defaultTab]);
         setActiveTabId(defaultTab.id);
@@ -69,7 +69,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         id: 'overview-default',
         type: 'overview',
         label: 'Overview',
-        icon: '📊',
+        icon: LayoutDashboard,
       };
       setTabs([defaultTab]);
       setActiveTabId(defaultTab.id);
@@ -270,7 +270,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       id: `page-${pageId}`,
       type: 'guide', // Pages are treated as guides
       label: page.name,
-      icon: page.icon || '📄',
+      icon: page.icon || FileText,
       pageId: pageId,
     };
 

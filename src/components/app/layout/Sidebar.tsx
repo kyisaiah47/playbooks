@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, Plus, ChevronRight, ChevronDown, X, PanelLeftOpen } from 'lucide-react';
+import { Search, Plus, ChevronRight, ChevronDown, X, PanelLeftOpen, FileText, Folder } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PageWithSubPages, Workspace } from '@/types/workspace';
 import { Input } from '@/components/ui/input';
@@ -65,7 +65,11 @@ export function Sidebar({
       ) : (
         <div className="px-3 py-2.5 border-b border-border/40 flex items-center justify-between">
           <div className="flex items-center gap-2 flex-1 min-w-0">
-            <span className="text-lg shrink-0">{workspace.icon || '📁'}</span>
+            {workspace.icon ? (
+              <span className="text-lg shrink-0">{workspace.icon}</span>
+            ) : (
+              <Folder className="w-4 h-4 text-muted-foreground shrink-0" />
+            )}
             <span className="font-medium text-sm truncate">{workspace.name}</span>
           </div>
         </div>
@@ -166,7 +170,11 @@ function PageItem({
           </button>
         )}
         {!hasSubPages && <div className="w-4" />}
-        <span className="shrink-0 text-base leading-none">{page.icon || '📄'}</span>
+        {page.icon ? (
+          <span className="shrink-0 text-base leading-none">{page.icon}</span>
+        ) : (
+          <FileText className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+        )}
         <span className="truncate flex-1 text-left">{page.name}</span>
       </button>
 

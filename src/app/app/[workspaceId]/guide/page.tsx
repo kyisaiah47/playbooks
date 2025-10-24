@@ -68,7 +68,9 @@ export default function GuidePage() {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <div className="text-center space-y-4 max-w-md px-4">
-          <div className="text-6xl mb-4">📄</div>
+          <div className="mb-4 flex justify-center">
+            <FileText className="w-16 h-16 text-muted-foreground/40" />
+          </div>
           <h2 className="text-2xl font-bold text-foreground">No Guide Selected</h2>
           <p className="text-muted-foreground">
             Please select a guide from the sidebar or use the Discover view to find guides.

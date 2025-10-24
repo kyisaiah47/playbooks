@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { LayoutDashboard } from 'lucide-react';
+import { LayoutDashboard, Library, ListTodo, Calendar, PenLine } from 'lucide-react';
 
 export default function OverviewPage() {
   const params = useParams();
@@ -30,22 +30,25 @@ export default function OverviewPage() {
           {/* Stats Grid Placeholder */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { label: 'Active Guides', value: '0', icon: '📚' },
-              { label: 'Tasks', value: '0', icon: '✅' },
-              { label: 'Calendar Events', value: '0', icon: '📅' },
-              { label: 'Journal Entries', value: '0', icon: '✍️' },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-lg border border-border/40 bg-background p-4"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">{stat.icon}</span>
-                  <span className="text-sm text-muted-foreground">{stat.label}</span>
+              { label: 'Active Guides', value: '0', icon: Library },
+              { label: 'Tasks', value: '0', icon: ListTodo },
+              { label: 'Calendar Events', value: '0', icon: Calendar },
+              { label: 'Journal Entries', value: '0', icon: PenLine },
+            ].map((stat) => {
+              const IconComponent = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="rounded-lg border border-border/40 bg-background p-4"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <IconComponent className="w-5 h-5 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">{stat.label}</span>
+                  </div>
+                  <div className="text-2xl font-bold">{stat.value}</div>
                 </div>
-                <div className="text-2xl font-bold">{stat.value}</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Recent Activity Placeholder */}

@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, ChevronsUpDown, Plus } from 'lucide-react';
+import { Check, ChevronsUpDown, Plus, Folder } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Workspace } from '@/types/workspace';
 import { Button } from '@/components/ui/button';
@@ -38,9 +38,11 @@ export function WorkspaceSwitcher({
           className="w-full justify-between gap-2 px-2"
         >
           <div className="flex items-center gap-2 min-w-0">
-            <span className="text-lg shrink-0">
-              {currentWorkspace?.icon || '📁'}
-            </span>
+            {currentWorkspace?.icon ? (
+              <span className="text-lg shrink-0">{currentWorkspace.icon}</span>
+            ) : (
+              <Folder className="w-4 h-4 text-muted-foreground shrink-0" />
+            )}
             <span className="font-medium text-sm truncate">
               {currentWorkspace?.name || 'Select workspace'}
             </span>
@@ -74,7 +76,11 @@ export function WorkspaceSwitcher({
                       : "hover:bg-muted/50"
                   )}
                 >
-                  <span className="text-lg shrink-0">{workspace.icon || '📁'}</span>
+                  {workspace.icon ? (
+                    <span className="text-lg shrink-0">{workspace.icon}</span>
+                  ) : (
+                    <Folder className="w-4 h-4 text-muted-foreground shrink-0" />
+                  )}
                   <div className="flex-1 min-w-0 text-left">
                     <div className="font-medium truncate">{workspace.name}</div>
                     {count > 0 && (
