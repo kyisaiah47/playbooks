@@ -25,13 +25,13 @@ export async function GET(request: NextRequest) {
 
     // Filter by date range if provided
     if (start_date) {
-      query = query.gte('start_time', start_date);
+      query = query.gte('date', start_date);
     }
     if (end_date) {
-      query = query.lte('start_time', end_date);
+      query = query.lte('date', end_date);
     }
 
-    query = query.order('start_time', { ascending: true });
+    query = query.order('date', { ascending: true });
 
     const { data: events, error } = await query;
 
@@ -55,14 +55,14 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { title, description, start_time, end_time, all_day, location, user_guide_id } = body;
+    const { title, description, date, user_guide_id } = body;
 
     if (!title || typeof title !== 'string' || title.trim().length === 0) {
       return errorResponse('Event title is required', 400);
     }
 
-    if (!start_time) {
-      return errorResponse('Start time is required', 400);
+    if (!date) {
+      return errorResponse('Date is required', 400);
     }
 
     // Verify user_guide_id belongs to user if provided
@@ -85,10 +85,7 @@ export async function POST(request: NextRequest) {
         user_id: user.userId,
         title: title.trim(),
         description: description || null,
-        start_time,
-        end_time: end_time || null,
-        all_day: all_day || false,
-        location: location || null,
+        date,
         user_guide_id: user_guide_id || null,
       })
       .select()
