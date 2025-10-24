@@ -1,62 +1,86 @@
 'use client';
 
-import { Search, Plus, ChevronRight, ChevronDown, X, PanelLeftOpen, FileText, Folder } from 'lucide-react';
+import { Search, Plus, ChevronRight, ChevronDown, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { PageWithSubPages, Workspace } from '@/types/workspace';
+import { PageWithSubPages } from '@/types/workspace';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { WorkspaceSwitcher } from './WorkspaceSwitcher';
 import { useState } from 'react';
 
-interface SidebarProps {
-  workspace: Workspace;
-  workspaces?: Workspace[];
-  sidebarOpen: boolean;
-  setSidebarOpen: (open: boolean) => void;
-  children?: React.ReactNode; // Dynamic content for different views
+interface PagesSidebarContentProps {
+  pages: PageWithSubPages[];
+  activePageId: string | null;
+  onPageClick: (pageId: string) => void;
 }
 
-export function Sidebar({
-  workspace,
-  workspaces = [],
-  sidebarOpen,
-  setSidebarOpen,
-  children,
-}: SidebarProps) {
-  if (!sidebarOpen) {
-    return null;
-  }
+export function PagesSidebarContent({
+  pages,
+  activePageId,
+  onPageClick,
+}: PagesSidebarContentProps) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set());
+
+  const togglePageExpanded = (pageId: string) => {
+    const newExpanded = new Set(expandedPages);
+    if (newExpanded.has(pageId)) {
+      newExpanded.delete(pageId);
+    } else {
+      newExpanded.add(pageId);
+    }
+    setExpandedPages(newExpanded);
+  };
+
+  const filteredPages = pages.filter(page =>
+    page.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <div className="w-52 border-r border-border/40 bg-background flex flex-col">
-      {/* Workspace Switcher */}
-      {workspaces.length > 0 ? (
-        <div className="px-3 py-2.5 border-b border-border/40">
-          <WorkspaceSwitcher
-            workspaces={workspaces}
-            currentWorkspaceId={workspace.id}
-            onWorkspaceChange={(id) => {
-              // Handle workspace change
-            }}
+    <>
+      {/* Search Bar */}
+      <div className="px-3 py-2">
+        <div className="relative">
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
+          <Input
+            placeholder="Search pages..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-8 h-8 text-sm"
           />
         </div>
-      ) : (
-        <div className="px-3 py-2.5 border-b border-border/40 flex items-center justify-between">
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            {workspace.icon ? (
-              <span className="text-lg shrink-0">{workspace.icon}</span>
-            ) : (
-              <Folder className="w-4 h-4 text-muted-foreground shrink-0" />
-            )}
-            <span className="font-medium text-sm truncate">{workspace.name}</span>
-          </div>
-        </div>
-      )}
+      </div>
 
-      {/* Dynamic content from children */}
-      {children}
-    </div>
+      {/* Pages List */}
+      <ScrollArea className="flex-1">
+        <div className="px-2 py-1">
+          {filteredPages.map((page) => (
+            <PageItem
+              key={page.id}
+              page={page}
+              activePageId={activePageId}
+              onPageClick={onPageClick}
+              expanded={expandedPages.has(page.id)}
+              onToggleExpanded={togglePageExpanded}
+              level={0}
+            />
+          ))}
+        </div>
+      </ScrollArea>
+
+      {/* New Page Button */}
+      <div className="px-2 py-2 border-t border-border/40">
+        <Button
+          variant="ghost"
+          size="sm"
+          className="w-full justify-start gap-2"
+          onClick={() => {}}
+        >
+          <Plus className="w-3.5 h-3.5" />
+          <span>New Page</span>
+        </Button>
+      </div>
+    </>
   );
 }
 

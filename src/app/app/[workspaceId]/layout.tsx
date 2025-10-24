@@ -5,6 +5,8 @@ import { useEffect, useState, useCallback } from 'react';
 import { IconBar } from '@/components/app/layout/IconBar';
 import { Sidebar } from '@/components/app/layout/Sidebar';
 import { TabBar } from '@/components/app/layout/TabBar';
+import { PagesSidebarContent } from '@/components/app/layout/PagesSidebarContent';
+import { CategorySidebarContent } from '@/components/app/layout/CategorySidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -40,6 +42,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -158,6 +161,31 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       fetchPages();
     }
   }, [workspaceId]);
+
+  // Get active view from active tab (needed before useEffects)
+  const activeView: TabType = tabs.find(t => t.id === activeTabId)?.type || 'overview';
+  const activePageId = tabs.find(t => t.id === activeTabId)?.pageId || null;
+
+  // Sync category selection to URL
+  useEffect(() => {
+    if (activeView === 'discover' || activeView === 'guide') {
+      const categoryParam = searchParams.get('category');
+      if (categoryParam && categoryParam !== selectedCategory) {
+        setSelectedCategory(categoryParam);
+      }
+    }
+  }, [searchParams, activeView, selectedCategory]);
+
+  // Update URL when category changes
+  const handleCategorySelect = useCallback((categoryId: string) => {
+    setSelectedCategory(categoryId);
+
+    // Update URL with category param
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('category', categoryId);
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [searchParams, router]);
 
   // Sync tabs to URL and navigate to the correct route
   const syncTabsToURL = useCallback((newTabs: Tab[], newActiveTabId: string | null, navigate: boolean = true) => {
@@ -295,10 +323,6 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     addTab(newTab);
   }, [pages, addTab]);
 
-  // Get active view from active tab
-  const activeView: TabType = tabs.find(t => t.id === activeTabId)?.type || 'overview';
-  const activePageId = tabs.find(t => t.id === activeTabId)?.pageId || null;
-
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -315,12 +339,23 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       {/* Sidebar - 208px wide (collapsible) */}
       <Sidebar
         workspace={workspace}
-        pages={pages}
-        activePageId={activePageId}
-        onPageClick={handlePageClick}
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
-      />
+      >
+        {/* Render sidebar content based on active view */}
+        {(activeView === 'discover' || activeView === 'guide') ? (
+          <CategorySidebarContent
+            selectedCategory={selectedCategory}
+            onCategorySelect={handleCategorySelect}
+          />
+        ) : (
+          <PagesSidebarContent
+            pages={pages}
+            activePageId={activePageId}
+            onPageClick={handlePageClick}
+          />
+        )}
+      </Sidebar>
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
