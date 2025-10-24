@@ -61,7 +61,7 @@ export function MonthView({
   // Get events for a specific date
   const getEventsForDate = (date: Date) => {
     return events.filter(event => {
-      const eventDate = new Date(event.start_time);
+      const eventDate = new Date(event.date);
       return isSameDay(eventDate, date);
     });
   };
