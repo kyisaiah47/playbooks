@@ -117,6 +117,7 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
           </motion.div>
         ) : (
           <motion.div
+            key={filteredReadings.length}
             className="space-y-4"
             variants={{
               hidden: { opacity: 0 },

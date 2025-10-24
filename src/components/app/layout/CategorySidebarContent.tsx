@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Briefcase, Heart, Activity, Sprout, DollarSign, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 interface Category {
   id: string;
@@ -68,9 +69,14 @@ export function CategorySidebarContent({ selectedCategory, onCategorySelect }: C
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center">
+      <motion.div
+        className="flex-1 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className="text-xs text-muted-foreground">Loading...</div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -80,14 +86,26 @@ export function CategorySidebarContent({ selectedCategory, onCategorySelect }: C
         <div className="px-2 py-1 text-[11px] font-medium text-muted-foreground uppercase tracking-wider mb-2">
           Categories
         </div>
-        <nav className="space-y-0.5">
+        <motion.nav
+          key={categories.length}
+          className="space-y-0.5"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: { staggerChildren: 0.03 }
+            }
+          }}
+          initial="hidden"
+          animate="show"
+        >
           {categories.map((category) => {
             const colors = categoryColors[category.id] || categoryColors['career-work'];
             const Icon = categoryIconComponents[category.id] || Briefcase;
             const isSelected = selectedCategory === category.id;
 
             return (
-              <button
+              <motion.button
                 key={category.id}
                 onClick={() => onCategorySelect(category.id)}
                 className={cn(
@@ -96,6 +114,12 @@ export function CategorySidebarContent({ selectedCategory, onCategorySelect }: C
                     ? `${colors.bg} font-medium ${colors.text}`
                     : 'text-muted-foreground hover:bg-muted/50'
                 )}
+                variants={{
+                  hidden: { opacity: 0, x: -10 },
+                  show: { opacity: 1, x: 0 }
+                }}
+                whileHover={{ x: 4 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -104,10 +128,10 @@ export function CategorySidebarContent({ selectedCategory, onCategorySelect }: C
                   </div>
                   <span className="text-[11px] opacity-60">{category.count}</span>
                 </div>
-              </button>
+              </motion.button>
             );
           })}
-        </nav>
+        </motion.nav>
       </div>
     </div>
   );
