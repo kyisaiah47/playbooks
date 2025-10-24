@@ -17,16 +17,17 @@ interface TaskCardProps {
     } | null;
   };
   onDelete: (taskId: string) => void;
+  onClick?: () => void;
 }
 
-export function TaskCard({ task, onDelete }: TaskCardProps) {
+export function TaskCard({ task, onDelete, onClick }: TaskCardProps) {
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     onDelete(task.id);
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 cursor-pointer" onClick={onClick}>
       {/* Title */}
       <div className="flex items-start justify-between gap-2">
         <h3 className="font-medium text-sm leading-tight flex-1">{task.title}</h3>

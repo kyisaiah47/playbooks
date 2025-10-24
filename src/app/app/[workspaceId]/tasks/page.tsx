@@ -176,6 +176,56 @@ export default function TasksPage() {
     },
   });
 
+  // Update task mutation
+  const updateTaskMutation = useMutation({
+    mutationFn: async ({
+      taskId,
+      updates,
+    }: {
+      taskId: string;
+      updates: {
+        title: string;
+        description: string;
+        due_date: string | null;
+      };
+    }) => {
+      const res = await fetch(`/api/tasks/${taskId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates),
+      });
+      if (!res.ok) throw new Error('Failed to update task');
+      return res.json();
+    },
+    onMutate: async ({ taskId, updates }) => {
+      await queryClient.cancelQueries({ queryKey: ['tasks'] });
+
+      const previousTasks = queryClient.getQueryData<ExtendedTask[]>(['tasks']);
+
+      queryClient.setQueryData<ExtendedTask[]>(['tasks'], (old = []) =>
+        old.map((task) =>
+          task.id === taskId
+            ? { ...task, ...updates }
+            : task
+        )
+      );
+
+      return { previousTasks };
+    },
+    onError: (err, variables, context) => {
+      if (context?.previousTasks) {
+        queryClient.setQueryData(['tasks'], context.previousTasks);
+      }
+      toast.error('Failed to update task');
+    },
+    onSuccess: () => {
+      toast.success('Task updated successfully');
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+    },
+  });
+
   const handleCreateTask = (task: {
     title: string;
     description: string;
@@ -195,6 +245,17 @@ export default function TasksPage() {
     newStatus: 'todo' | 'in_progress' | 'done'
   ) => {
     updateTaskStatusMutation.mutate({ taskId, status: newStatus });
+  };
+
+  const handleUpdateTask = (
+    taskId: string,
+    updates: {
+      title: string;
+      description: string;
+      due_date: string | null;
+    }
+  ) => {
+    updateTaskMutation.mutate({ taskId, updates });
   };
 
   if (isLoading) {
@@ -250,6 +311,7 @@ export default function TasksPage() {
             onCreateTask={handleCreateTask}
             onDeleteTask={handleDeleteTask}
             onUpdateTaskStatus={handleUpdateTaskStatus}
+            onUpdateTask={handleUpdateTask}
             workspaceId={workspaceId}
           />
         </div>
