@@ -114,7 +114,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                 key={note.id}
                 onClick={() => onNoteClick(note.guide_id)}
                 className={cn(
-                  "w-full flex items-center gap-1.5 px-2 py-1.5 rounded text-sm transition-colors group",
+                  "w-full flex items-center gap-1.5 px-2 py-1.5 rounded transition-colors group",
                   activeGuideId === note.guide_id
                     ? "bg-[#6366f1]/10 text-[#6366f1]"
                     : "hover:bg-muted/50 text-foreground"
@@ -128,7 +128,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
               >
                 <FileText className="h-3.5 w-3.5 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
-                  <div className="font-normal truncate">
+                  <div className="font-normal truncate text-[11px]">
                     {note.guides.name}
                   </div>
                   {note.progress > 0 && (
@@ -139,7 +139,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                           style={{ width: `${note.progress}%` }}
                         />
                       </div>
-                      <span className="text-[9px] text-muted-foreground">{Math.round(note.progress)}%</span>
+                      <span className="text-[10px] text-muted-foreground">{Math.round(note.progress)}%</span>
                     </div>
                   )}
                 </div>

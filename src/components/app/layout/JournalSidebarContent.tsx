@@ -59,7 +59,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
       <div className="px-3 py-2 border-b border-border/40">
         <motion.button
           onClick={() => onEntrySelect(null)}
-          className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded bg-[#6366f1] hover:bg-[#5558e3] text-white text-sm font-medium transition-colors"
+          className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded bg-[#6366f1] hover:bg-[#5558e3] text-white text-[11px] font-medium transition-colors"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -144,7 +144,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
                   <div className="text-[10px] text-muted-foreground/70 line-clamp-2 mb-1">
                     {preview}...
                   </div>
-                  <div className="text-[9px] text-muted-foreground/50">
+                  <div className="text-[10px] text-muted-foreground/50">
                     {format(new Date(entry.created_at), 'MMM d, yyyy')}
                   </div>
                 </motion.button>

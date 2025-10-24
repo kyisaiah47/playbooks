@@ -59,7 +59,7 @@ export function ArchiveSidebarContent() {
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-3 py-2 border-b border-border/40">
-        <h3 className="text-xs font-semibold text-foreground">Archived Notes</h3>
+        <h3 className="text-xs font-medium text-foreground uppercase tracking-wider">Archived Notes</h3>
         <p className="text-[10px] text-muted-foreground mt-0.5">
           {guides.length} archived {guides.length === 1 ? 'note' : 'notes'}
         </p>

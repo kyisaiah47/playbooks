@@ -109,7 +109,7 @@ export function CategorySidebarContent({ selectedCategory, onCategorySelect }: C
                 key={category.id}
                 onClick={() => onCategorySelect(category.id)}
                 className={cn(
-                  "w-full px-2 py-1.5 rounded text-[13px] transition-colors text-left",
+                  "w-full px-2 py-1.5 rounded transition-colors text-left",
                   isSelected
                     ? `${colors.bg} font-medium ${colors.text}`
                     : 'text-muted-foreground hover:bg-muted/50'
@@ -124,9 +124,9 @@ export function CategorySidebarContent({ selectedCategory, onCategorySelect }: C
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Icon className={cn("h-3.5 w-3.5", isSelected && colors.icon)} />
-                    <span>{category.name}</span>
+                    <span className="text-[11px]">{category.name}</span>
                   </div>
-                  <span className="text-[11px] opacity-60">{category.count}</span>
+                  <span className="text-[10px] opacity-60">{category.count}</span>
                 </div>
               </motion.button>
             );

@@ -146,7 +146,7 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
                       key={reading.id}
                       onClick={() => onReadingClick(reading.id)}
                       className={cn(
-                        "w-full text-left px-2 py-1.5 rounded text-sm transition-colors flex items-center gap-1.5",
+                        "w-full text-left px-2 py-1.5 rounded transition-colors flex items-center gap-1.5",
                         selectedReadingId === reading.id
                           ? 'bg-[#6366f1]/10 text-[#6366f1]'
                           : 'hover:bg-muted/50 text-foreground'
@@ -155,7 +155,7 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
                       whileTap={{ scale: 0.98 }}
                     >
                       <BookOpen className="h-3.5 w-3.5 flex-shrink-0" />
-                      <span className="flex-1 truncate">{reading.title}</span>
+                      <span className="flex-1 truncate text-[11px]">{reading.title}</span>
                       {progressMap.has(reading.id) && (
                         <div className="h-1.5 w-1.5 rounded-full bg-green-500 flex-shrink-0" />
                       )}
