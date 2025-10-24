@@ -92,7 +92,7 @@ export interface UserReadingProgress {
 
 export type TabType =
   | 'overview'
-  | 'guide'
+  | 'notes'
   | 'discover'
   | 'calendar'
   | 'tasks'

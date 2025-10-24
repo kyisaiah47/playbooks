@@ -34,7 +34,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
   // Map tab types to icon components
   const iconMap: Record<string, any> = {
     overview: LayoutDashboard,
-    guide: FileText,
+    notes: FileText,
     discover: Compass,
     library: Library,
     calendar: Calendar,

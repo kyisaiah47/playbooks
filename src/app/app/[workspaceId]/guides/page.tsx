@@ -96,8 +96,8 @@ export default function GuidesPage() {
   }, [selectedCategory, searchQuery]);
 
   const handleGuideClick = async (guideId: string) => {
-    // Open guide in the guide view
-    router.push(`/app/${workspaceId}/guide?id=${guideId}`);
+    // Open guide in the notes view
+    router.push(`/app/${workspaceId}/notes?id=${guideId}`);
   };
 
   const selectedCategoryData = categories.find(cat => cat.id === selectedCategory);

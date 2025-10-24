@@ -24,7 +24,7 @@ interface IconBarProps {
 }
 
 const ICON_VIEWS: { type: TabType; icon: any; label: string }[] = [
-  { type: 'guide', icon: FileText, label: 'Guides' },
+  { type: 'notes', icon: FileText, label: 'Notes' },
   { type: 'discover', icon: Compass, label: 'Discover' },
   { type: 'library', icon: Library, label: 'Library' },
   { type: 'calendar', icon: Calendar, label: 'Calendar' },

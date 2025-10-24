@@ -47,7 +47,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
     overview: LayoutDashboard,
-    guide: FileText,
+    notes: FileText,
     discover: Compass,
     library: Library,
     calendar: Calendar,
@@ -168,7 +168,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
   // Sync category selection to URL
   useEffect(() => {
-    if (activeView === 'discover' || activeView === 'guide') {
+    if (activeView === 'discover' || activeView === 'notes') {
       const categoryParam = searchParams.get('category');
       if (categoryParam && categoryParam !== selectedCategory) {
         setSelectedCategory(categoryParam);
@@ -267,7 +267,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const handleViewClick = useCallback((viewType: TabType) => {
     const viewLabels: Record<TabType, string> = {
       overview: 'Overview',
-      guide: 'Guides',
+      notes: 'Notes',
       discover: 'Discover',
       library: 'Library',
       calendar: 'Calendar',
@@ -283,7 +283,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
     const viewIcons: Record<TabType, any> = {
       overview: LayoutDashboard,
-      guide: FileText,
+      notes: FileText,
       discover: Compass,
       library: Library,
       calendar: Calendar,
@@ -314,7 +314,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
     const newTab: Tab = {
       id: `page-${pageId}`,
-      type: 'guide', // Pages are treated as guides
+      type: 'notes', // Pages are treated as notes
       label: page.name,
       icon: page.icon || FileText,
       pageId: pageId,
@@ -343,7 +343,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         setSidebarOpen={setSidebarOpen}
       >
         {/* Render sidebar content based on active view */}
-        {(activeView === 'discover' || activeView === 'guide') ? (
+        {activeView === 'discover' ? (
           <CategorySidebarContent
             selectedCategory={selectedCategory}
             onCategorySelect={handleCategorySelect}
