@@ -66,13 +66,9 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     if (tabsParam) {
       try {
         const parsedTabs = JSON.parse(decodeURIComponent(tabsParam));
-        // Convert emoji icons to components
-        const tabsWithComponents = parsedTabs.map((tab: Tab) => ({
-          ...tab,
-          icon: typeof tab.icon === 'string' ? iconComponentMap[tab.type] || FileText : tab.icon
-        }));
-        setTabs(tabsWithComponents);
-        setActiveTabId(activeParam || tabsWithComponents[0]?.id || null);
+        // Don't set icons from URL - they'll be added when needed
+        setTabs(parsedTabs);
+        setActiveTabId(activeParam || parsedTabs[0]?.id || null);
       } catch (error) {
         console.error('Error parsing tabs from URL:', error);
         // Default to overview tab
@@ -80,7 +76,6 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           id: 'overview-default',
           type: 'overview',
           label: 'Overview',
-          icon: LayoutDashboard,
         };
         setTabs([defaultTab]);
         setActiveTabId(defaultTab.id);
@@ -91,7 +86,6 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         id: 'overview-default',
         type: 'overview',
         label: 'Overview',
-        icon: LayoutDashboard,
       };
       setTabs([defaultTab]);
       setActiveTabId(defaultTab.id);

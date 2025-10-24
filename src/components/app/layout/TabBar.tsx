@@ -1,6 +1,23 @@
 'use client';
 
-import { X, PanelLeftOpen, PanelLeftClose } from 'lucide-react';
+import {
+  X,
+  PanelLeftOpen,
+  PanelLeftClose,
+  LayoutDashboard,
+  FileText,
+  Compass,
+  Library,
+  Calendar,
+  ListTodo,
+  BarChart3,
+  CalendarDays,
+  PenLine,
+  Network,
+  TrendingUp,
+  Archive,
+  Settings
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tab } from '@/types/workspace';
 
@@ -14,6 +31,23 @@ interface TabBarProps {
 }
 
 export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen, onToggleSidebar }: TabBarProps) {
+  // Map tab types to icon components
+  const iconMap: Record<string, any> = {
+    overview: LayoutDashboard,
+    guide: FileText,
+    discover: Compass,
+    library: Library,
+    calendar: Calendar,
+    tasks: ListTodo,
+    timeline: BarChart3,
+    daily: CalendarDays,
+    journal: PenLine,
+    graph: Network,
+    analytics: TrendingUp,
+    archive: Archive,
+    settings: Settings,
+  };
+
   if (tabs.length === 0) return null;
 
   return (
@@ -34,8 +68,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
       {/* Tabs */}
       {tabs.map((tab) => {
         const isActive = tab.id === activeTabId;
-        const IconComponent = tab.icon;
-        const isIconComponent = typeof IconComponent === 'function';
+        const IconComponent = iconMap[tab.type] || FileText;
 
         return (
           <div
@@ -48,13 +81,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
             )}
             onClick={() => onTabClick(tab.id)}
           >
-            {tab.icon && (
-              isIconComponent ? (
-                <IconComponent className="w-3.5 h-3.5 text-muted-foreground" />
-              ) : (
-                <span className="text-sm">{tab.icon}</span>
-              )
-            )}
+            <IconComponent className="w-3.5 h-3.5 text-muted-foreground" />
             <span className="text-xs font-medium truncate flex-1">
               {tab.label}
             </span>
