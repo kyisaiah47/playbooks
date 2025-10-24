@@ -38,7 +38,9 @@ async function cleanReadingArtifacts() {
       totalProcessed++;
 
       if (reading.content.includes('ARTICLE GENERATION COMPLETE')) {
-        const cleanedContent = reading.content.replace(/\n\nARTICLE GENERATION COMPLETE - Article #\d+$/g, '');
+        // Cut off everything from the marker onwards (it's garbage concatenated content)
+        const markerIndex = reading.content.indexOf('ARTICLE GENERATION COMPLETE');
+        let cleanedContent = reading.content.substring(0, markerIndex).trim();
 
         const { error: updateError } = await supabase
           .from('readings')
