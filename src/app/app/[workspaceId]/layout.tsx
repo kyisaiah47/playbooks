@@ -59,6 +59,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedDailyNoteIds, setSelectedDailyNoteIds] = useState<Set<string>>(new Set());
   const [selectedJournalEntryId, setSelectedJournalEntryId] = useState<string | null>(null);
   const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(new Set());
+  const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(new Set());
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -271,7 +272,17 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         const guideIds = new Set(graphGuidesParam.split(','));
         setSelectedGraphGuideIds(guideIds);
       }
-      // Note: If no param, we leave it empty which means show all guides
+    }
+  }, [searchParams, activeView]);
+
+  // Sync overview guide selection from URL
+  useEffect(() => {
+    if (activeView === 'overview') {
+      const overviewGuidesParam = searchParams.get('overviewGuides');
+      if (overviewGuidesParam) {
+        const guideIds = new Set(overviewGuidesParam.split(','));
+        setSelectedOverviewGuideIds(guideIds);
+      }
     }
   }, [searchParams, activeView]);
 
@@ -587,6 +598,28 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
   }, [selectedGraphGuideIds, searchParams, router]);
 
+  // Handle overview guide toggle
+  const handleOverviewGuideToggle = useCallback((guideId: string) => {
+    const newSet = new Set(selectedOverviewGuideIds);
+    if (newSet.has(guideId)) {
+      newSet.delete(guideId);
+    } else {
+      newSet.add(guideId);
+    }
+
+    setSelectedOverviewGuideIds(newSet);
+
+    // Update URL with selected guide IDs
+    const params = new URLSearchParams(searchParams.toString());
+    if (newSet.size > 0) {
+      params.set('overviewGuides', Array.from(newSet).join(','));
+    } else {
+      params.delete('overviewGuides');
+    }
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [selectedOverviewGuideIds, searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -608,7 +641,10 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       >
         {/* Render sidebar content based on active view */}
         {activeView === 'overview' ? (
-          <OverviewSidebarContent />
+          <OverviewSidebarContent
+            selectedGuideIds={selectedOverviewGuideIds}
+            onGuideToggle={handleOverviewGuideToggle}
+          />
         ) : activeView === 'discover' ? (
           <CategorySidebarContent
             selectedCategory={selectedCategory}

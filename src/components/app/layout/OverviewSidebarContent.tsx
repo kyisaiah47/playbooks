@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import { LayoutDashboard, Loader2 } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { Search, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { format } from 'date-fns';
 
 interface UserGuide {
   id: string;
@@ -22,13 +21,18 @@ interface UserGuide {
   };
 }
 
-export function OverviewSidebarContent() {
+interface OverviewSidebarContentProps {
+  selectedGuideIds: Set<string>;
+  onGuideToggle: (guideId: string) => void;
+}
+
+export function OverviewSidebarContent({ selectedGuideIds, onGuideToggle }: OverviewSidebarContentProps) {
   const params = useParams();
-  const router = useRouter();
   const workspaceId = params.workspaceId as string;
 
   const [guides, setGuides] = useState<UserGuide[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     async function fetchGuides() {
@@ -36,11 +40,7 @@ export function OverviewSidebarContent() {
         setLoading(true);
         const guidesResponse = await fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`);
         const guidesData = await guidesResponse.json();
-        // Sort by most recently updated
-        const sortedGuides = (guidesData.userGuides || []).sort((a: UserGuide, b: UserGuide) =>
-          new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-        );
-        setGuides(sortedGuides.slice(0, 10)); // Show only top 10
+        setGuides(guidesData.userGuides || []);
       } catch (error) {
         console.error('Error fetching guides:', error);
       } finally {
@@ -51,15 +51,24 @@ export function OverviewSidebarContent() {
     fetchGuides();
   }, [workspaceId]);
 
-  const handleGuideClick = (guideId: string) => {
-    router.push(`/app/${workspaceId}/notes?id=${guideId}`);
-  };
+  const filteredGuides = guides.filter(guide =>
+    (guide.custom_name || guide.guides.name).toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header */}
+      {/* Search */}
       <div className="px-3 py-2 border-b border-border/40">
-        <div className="text-[11px] font-semibold text-muted-foreground">RECENT GUIDES</div>
+        <div className="relative">
+          <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground/40" />
+          <input
+            type="text"
+            placeholder="Search guides..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full h-7 pl-7 pr-2 bg-transparent border border-border/40 rounded text-[11px] focus:outline-none focus:border-foreground/40 transition-colors"
+          />
+        </div>
       </div>
 
       {/* Guides List */}
@@ -68,27 +77,45 @@ export function OverviewSidebarContent() {
           <div className="flex items-center justify-center py-8">
             <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
           </div>
-        ) : guides.length === 0 ? (
+        ) : filteredGuides.length === 0 ? (
           <div className="text-center py-8 px-2">
-            <p className="text-[11px] text-muted-foreground">No guides yet</p>
+            <p className="text-[11px] text-muted-foreground">
+              {searchQuery ? 'No guides found' : 'No guides yet'}
+            </p>
           </div>
         ) : (
           <div className="space-y-0.5">
-            {guides.map((guide) => {
+            {filteredGuides.map((guide) => {
+              const isSelected = selectedGuideIds.has(guide.id);
               const displayName = guide.custom_name || guide.guides.name;
 
               return (
                 <button
                   key={guide.id}
-                  onClick={() => handleGuideClick(guide.id)}
-                  className="w-full text-left px-2 py-2 rounded text-sm transition-colors hover:bg-muted/50"
+                  onClick={() => onGuideToggle(guide.id)}
+                  className={cn(
+                    "w-full flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-colors group hover:bg-muted/50"
+                  )}
                 >
-                  <div className="font-medium text-foreground text-[11px] truncate mb-0.5">
-                    {displayName}
+                  <div className={cn(
+                    "h-3.5 w-3.5 rounded border flex items-center justify-center flex-shrink-0 transition-colors",
+                    isSelected
+                      ? "bg-[#6366f1] border-[#6366f1]"
+                      : "border-muted-foreground/40"
+                  )}>
+                    {isSelected && (
+                      <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 12 12" fill="none">
+                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
                   </div>
-                  <div className="flex items-center justify-between text-[10px] text-muted-foreground/70">
-                    <span>{guide.progress}% complete</span>
-                    <span>{format(new Date(guide.updated_at), 'MMM d')}</span>
+                  <div className="flex-1 min-w-0 text-left">
+                    <div className="font-normal text-foreground break-words text-[11px]">
+                      {displayName}
+                    </div>
+                    <div className="text-[10px] text-muted-foreground/70">
+                      {guide.progress}% complete
+                    </div>
                   </div>
                 </button>
               );
@@ -100,7 +127,7 @@ export function OverviewSidebarContent() {
       {/* Info Text */}
       <div className="p-3 border-t border-border/40">
         <p className="text-[10px] text-muted-foreground">
-          Recently updated guides
+          Toggle guides to show in overview
         </p>
       </div>
     </div>

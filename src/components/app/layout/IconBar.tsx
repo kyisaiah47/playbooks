@@ -27,13 +27,13 @@ const ICON_VIEWS: { type: TabType; icon: any; label: string }[] = [
   { type: 'notes', icon: FileText, label: 'Notes' },
   { type: 'discover', icon: Compass, label: 'Discover' },
   { type: 'library', icon: Library, label: 'Library' },
+  { type: 'overview', icon: LayoutDashboard, label: 'Overview' },
   { type: 'calendar', icon: Calendar, label: 'Calendar' },
   { type: 'tasks', icon: ListTodo, label: 'Tasks' },
   { type: 'timeline', icon: BarChart3, label: 'Timeline' },
   { type: 'daily', icon: CalendarDays, label: 'Daily' },
   { type: 'journal', icon: PenLine, label: 'Journal' },
   { type: 'graph', icon: Network, label: 'Graph' },
-  { type: 'overview', icon: LayoutDashboard, label: 'Overview' },
   { type: 'analytics', icon: TrendingUp, label: 'Analytics' },
   { type: 'archive', icon: Archive, label: 'Archive' },
   { type: 'settings', icon: Settings, label: 'Settings' },
@@ -49,7 +49,7 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
         const isActive = activeView === view.type;
 
         // Add dividers
-        const showDivider = index === 3 || index === 6 || index === 9;
+        const showDivider = index === 3 || index === 7 || index === 10;
         const divider = showDivider && !lastWasDivider ? (
           <div key={`divider-${index}`} className="w-5 h-px bg-border my-1" />
         ) : null;
