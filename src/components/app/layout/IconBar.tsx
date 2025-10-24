@@ -43,7 +43,7 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
   let lastWasDivider = false;
 
   return (
-    <div className="w-9 border-r border-border/40 bg-muted/10 flex flex-col items-center py-1.5 gap-0.5">
+    <div className="w-12 border-r border-border/40 bg-muted/10 flex flex-col items-center py-2 gap-0.5">
       {ICON_VIEWS.map((view, index) => {
         const Icon = view.icon;
         const isActive = activeView === view.type;
@@ -51,7 +51,7 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
         // Add dividers
         const showDivider = index === 3 || index === 6 || index === 9;
         const divider = showDivider && !lastWasDivider ? (
-          <div key={`divider-${index}`} className="w-4 h-px bg-border my-1" />
+          <div key={`divider-${index}`} className="w-5 h-px bg-border my-1" />
         ) : null;
 
         if (showDivider) lastWasDivider = true;
@@ -63,14 +63,14 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
             <button
               onClick={() => onViewClick(view.type)}
               className={cn(
-                "w-6 h-6 rounded flex items-center justify-center transition-colors",
+                "w-8 h-8 rounded-md flex items-center justify-center transition-colors",
                 isActive
                   ? 'bg-[#6366f1]/10 text-[#6366f1]'
                   : 'text-muted-foreground hover:bg-muted/50'
               )}
               title={view.label}
             >
-              <Icon className="w-3 h-3" />
+              <Icon className="w-4 h-4" />
             </button>
           </div>
         );
