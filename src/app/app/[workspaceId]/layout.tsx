@@ -14,6 +14,7 @@ import { TasksSidebarContent } from '@/components/app/layout/TasksSidebarContent
 import { TimelineSidebarContent } from '@/components/app/layout/TimelineSidebarContent';
 import { DailySidebarContent } from '@/components/app/layout/DailySidebarContent';
 import { JournalSidebarContent } from '@/components/app/layout/JournalSidebarContent';
+import { GraphSidebarContent } from '@/components/app/layout/GraphSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -56,6 +57,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedTimelineNoteIds, setSelectedTimelineNoteIds] = useState<Set<string>>(new Set());
   const [selectedDailyNoteIds, setSelectedDailyNoteIds] = useState<Set<string>>(new Set());
   const [selectedJournalEntryId, setSelectedJournalEntryId] = useState<string | null>(null);
+  const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(new Set());
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -257,6 +259,19 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     if (activeView === 'journal') {
       const entryParam = searchParams.get('entryId');
       setSelectedJournalEntryId(entryParam);
+    }
+  }, [searchParams, activeView]);
+
+  // Sync graph guide selection from URL
+  useEffect(() => {
+    if (activeView === 'graph') {
+      const graphGuidesParam = searchParams.get('graphGuides');
+      if (graphGuidesParam) {
+        const guideIds = new Set(graphGuidesParam.split(','));
+        setSelectedGraphGuideIds(guideIds);
+      } else {
+        setSelectedGraphGuideIds(new Set());
+      }
     }
   }, [searchParams, activeView]);
 
@@ -550,6 +565,28 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
   }, [searchParams, router]);
 
+  // Handle graph guide toggle
+  const handleGraphGuideToggle = useCallback((guideId: string) => {
+    const newSet = new Set(selectedGraphGuideIds);
+    if (newSet.has(guideId)) {
+      newSet.delete(guideId);
+    } else {
+      newSet.add(guideId);
+    }
+
+    setSelectedGraphGuideIds(newSet);
+
+    // Update URL with selected guide IDs
+    const params = new URLSearchParams(searchParams.toString());
+    if (newSet.size > 0) {
+      params.set('graphGuides', Array.from(newSet).join(','));
+    } else {
+      params.delete('graphGuides');
+    }
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [selectedGraphGuideIds, searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -610,6 +647,11 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           <JournalSidebarContent
             selectedEntryId={selectedJournalEntryId}
             onEntrySelect={handleJournalEntrySelect}
+          />
+        ) : activeView === 'graph' ? (
+          <GraphSidebarContent
+            selectedGuideIds={selectedGraphGuideIds}
+            onGuideToggle={handleGraphGuideToggle}
           />
         ) : (
           <PagesSidebarContent

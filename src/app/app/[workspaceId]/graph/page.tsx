@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { Network, Loader2 } from 'lucide-react';
 import { GuideGraph } from '@/components/app/graph/GuideGraph';
 
@@ -21,11 +21,20 @@ interface UserGuide {
 export default function GraphPage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const workspaceId = params.workspaceId as string;
 
-  const [userGuides, setUserGuides] = useState<UserGuide[]>([]);
+  const [allUserGuides, setAllUserGuides] = useState<UserGuide[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Get selected guide IDs from URL
+  const selectedGuideIds = searchParams.get('graphGuides')?.split(',').filter(Boolean) || [];
+
+  // Filter guides by selection - show selected guides, or all if none selected
+  const userGuides = selectedGuideIds.length > 0
+    ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
+    : allUserGuides;
 
   useEffect(() => {
     async function fetchUserGuides() {
@@ -40,7 +49,7 @@ export default function GraphPage() {
         }
 
         const data = await response.json();
-        setUserGuides(data.userGuides || []);
+        setAllUserGuides(data.userGuides || []);
       } catch (err) {
         console.error('Error fetching user guides:', err);
         setError('Failed to load guides');
