@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { MonthView } from '@/components/app/calendar/MonthView';
 import { EventList } from '@/components/app/calendar/EventList';
 import { EventCreateForm } from '@/components/app/calendar/EventCreateForm';
+import { EventDetailDrawer } from '@/components/app/calendar/EventDetailDrawer';
 import { CalendarEvent, Task } from '@/types/workspace';
 import { startOfMonth, endOfMonth, format } from 'date-fns';
 
@@ -22,6 +23,8 @@ export default function CalendarPage() {
   const [error, setError] = useState<string | null>(null);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [eventDetailOpen, setEventDetailOpen] = useState(false);
 
   // Get selected note IDs from URL
   const selectedNoteIds = searchParams.get('calendarNotes')?.split(',').filter(Boolean) || [];
@@ -93,8 +96,25 @@ export default function CalendarPage() {
   };
 
   const handleEventClick = (event: CalendarEvent) => {
-    // TODO: Implement event detail view or edit
-    console.log('Event clicked:', event);
+    setSelectedEvent(event);
+    setEventDetailOpen(true);
+  };
+
+  const handleDeleteEvent = async (eventId: string) => {
+    try {
+      const response = await fetch(`/api/calendar/${eventId}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete event');
+      }
+
+      // Refresh events after deletion
+      fetchEvents();
+    } catch (err) {
+      console.error('Error deleting event:', err);
+    }
   };
 
   return (
@@ -169,6 +189,14 @@ export default function CalendarPage() {
           onOpenChange={setCreateDialogOpen}
           selectedDate={selectedDate}
           onEventCreated={handleEventCreated}
+        />
+
+        {/* Event Detail Drawer */}
+        <EventDetailDrawer
+          event={selectedEvent}
+          open={eventDetailOpen}
+          onOpenChange={setEventDetailOpen}
+          onDelete={handleDeleteEvent}
         />
       </div>
     </div>
