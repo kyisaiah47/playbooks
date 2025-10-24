@@ -7,6 +7,40 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const user = await getAuthenticatedUser();
+    if (!user) {
+      return unauthorizedResponse();
+    }
+
+    const { id } = await params;
+
+    const { data: userGuide, error } = await supabase
+      .from('user_guides')
+      .select('*, guides(id, name, description, icon)')
+      .eq('id', id)
+      .eq('user_id', user.userId)
+      .single();
+
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return errorResponse('User guide not found', 404);
+      }
+      console.error('Error fetching user guide:', error);
+      return errorResponse('Failed to fetch user guide');
+    }
+
+    return successResponse({ userGuide });
+  } catch (error) {
+    console.error('Error in GET /api/user-guides/[id]:', error);
+    return errorResponse('Internal server error');
+  }
+}
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -19,7 +53,7 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { progress, archived } = body;
+    const { progress, archived, name, icon } = body;
 
     // Build update object
     const updateData: any = {};
@@ -40,6 +74,18 @@ export async function PATCH(
       } else {
         updateData.archived_at = null;
       }
+    }
+    if (name !== undefined) {
+      if (typeof name !== 'string' || name.trim().length === 0) {
+        return errorResponse('Name must be a non-empty string', 400);
+      }
+      updateData.custom_name = name.trim();
+    }
+    if (icon !== undefined) {
+      if (typeof icon !== 'string') {
+        return errorResponse('Icon must be a string', 400);
+      }
+      updateData.custom_icon = icon;
     }
 
     if (Object.keys(updateData).length === 0) {

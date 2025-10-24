@@ -199,6 +199,12 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
 
       try {
         const res = await fetch(`/api/user-guides/${userGuideId}`);
+
+        if (!res.ok) {
+          console.error('Failed to fetch user guide:', res.status);
+          return;
+        }
+
         const data = await res.json();
         setUserGuide(data.userGuide);
       } catch (error) {
@@ -628,214 +634,39 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           guideName={userGuide.guides?.name || templateInfo?.name || 'Guide'}
           guideIcon={userGuide.guides?.icon}
           progress={userGuide.progress || 0}
+          templateName={templateInfo?.name}
+          onNameChange={async (newName) => {
+            try {
+              const res = await fetch(`/api/user-guides/${userGuideId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: newName }),
+              });
+              if (res.ok) {
+                const data = await res.json();
+                setUserGuide(data.userGuide);
+              }
+            } catch (error) {
+              console.error('Error updating guide name:', error);
+            }
+          }}
+          onIconChange={async (newIcon) => {
+            try {
+              const res = await fetch(`/api/user-guides/${userGuideId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ icon: newIcon }),
+              });
+              if (res.ok) {
+                const data = await res.json();
+                setUserGuide(data.userGuide);
+              }
+            } catch (error) {
+              console.error('Error updating guide icon:', error);
+            }
+          }}
         />
       )}
-
-      {/* Stage Header */}
-      <div className="border-b bg-background">
-        <div className="container mx-auto max-w-7xl px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              {/* Template Selector */}
-              <Popover
-                open={open}
-                onOpenChange={(isOpen) => {
-                  setOpen(isOpen);
-                  if (!isOpen) {
-                    setSearchQuery('');
-                  }
-                }}
-              >
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    role="combobox"
-                    aria-expanded={open}
-                    className="w-full md:w-[350px] justify-between"
-                  >
-                    {selectedTemplate
-                      ? templates.find((t) => t.id === selectedTemplate)?.name
-                      : "Select template..."}
-                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-[calc(100vw-2rem)] md:w-[350px] p-0">
-                  <Command>
-                    <CommandInput
-                      placeholder="Search templates..."
-                      value={searchQuery}
-                      onValueChange={setSearchQuery}
-                    />
-                    <CommandList
-                      onScroll={(e) => {
-                        const target = e.target as HTMLElement;
-                        const scrollPercentage = (target.scrollTop + target.clientHeight) / target.scrollHeight;
-
-                        // Load more when scrolled 80% down
-                        if (scrollPercentage > 0.8 && !searchQuery.trim()) {
-                          loadMoreTemplates();
-                        }
-                      }}
-                    >
-                      <CommandEmpty>No template found.</CommandEmpty>
-
-                      {/* Featured Templates - General */}
-                      {showFeatured && featuredGeneralTemplates.length > 0 && (
-                        <>
-                          <CommandGroup heading="Featured - General">
-                            {featuredGeneralTemplates.map((template) => (
-                              <CommandItem
-                                key={template.id}
-                                value={template.name}
-                                onSelect={() => {
-                                  handleTemplateChange(template.id);
-                                }}
-                              >
-                                <Check
-                                  className={`mr-2 h-4 w-4 ${
-                                    selectedTemplate === template.id ? "opacity-100" : "opacity-0"
-                                  }`}
-                                />
-                                {template.name}
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                          <CommandSeparator />
-                        </>
-                      )}
-
-                      {/* Featured Templates - Gen Z */}
-                      {showFeatured && featuredGenZTemplates.length > 0 && (
-                        <>
-                          <CommandGroup heading="Featured - Gen Z">
-                            {featuredGenZTemplates.map((template) => (
-                              <CommandItem
-                                key={template.id}
-                                value={template.name}
-                                onSelect={() => {
-                                  handleTemplateChange(template.id);
-                                }}
-                              >
-                                <Check
-                                  className={`mr-2 h-4 w-4 ${
-                                    selectedTemplate === template.id ? "opacity-100" : "opacity-0"
-                                  }`}
-                                />
-                                {template.name}
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                          <CommandSeparator />
-                        </>
-                      )}
-
-                      {/* Featured Templates - Health & Wellness */}
-                      {showFeatured && featuredHealthTemplates.length > 0 && (
-                        <>
-                          <CommandGroup heading="Featured - Health & Wellness">
-                            {featuredHealthTemplates.map((template) => (
-                              <CommandItem
-                                key={template.id}
-                                value={template.name}
-                                onSelect={() => {
-                                  handleTemplateChange(template.id);
-                                }}
-                              >
-                                <Check
-                                  className={`mr-2 h-4 w-4 ${
-                                    selectedTemplate === template.id ? "opacity-100" : "opacity-0"
-                                  }`}
-                                />
-                                {template.name}
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                          <CommandSeparator />
-                        </>
-                      )}
-
-                      {/* All Templates */}
-                      <CommandGroup heading={showFeatured ? "All Templates" : undefined}>
-                        {regularTemplates.map((template) => (
-                          <CommandItem
-                            key={template.id}
-                            value={template.name}
-                            onSelect={() => {
-                              handleTemplateChange(template.id);
-                            }}
-                          >
-                            <Check
-                              className={`mr-2 h-4 w-4 ${
-                                selectedTemplate === template.id ? "opacity-100" : "opacity-0"
-                              }`}
-                            />
-                            {template.name}
-                          </CommandItem>
-                        ))}
-                        {!searchQuery.trim() && hasMoreTemplates && (
-                          <div className="py-2 text-center text-xs text-muted-foreground">
-                            Scroll for more...
-                          </div>
-                        )}
-                      </CommandGroup>
-                    </CommandList>
-                  </Command>
-                </PopoverContent>
-              </Popover>
-
-              {/* Helper Text */}
-              <div className="hidden lg:block text-xs text-muted-foreground max-w-md">
-                <p>This isn't graded - work at your own pace.</p>
-                <p>
-                  See all your answered prompts in the{' '}
-                  <button
-                    onClick={() => {
-                      sessionStorage.setItem('overview-tab', 'responses');
-                      onViewChange?.('overview');
-                    }}
-                    className="text-primary hover:underline"
-                  >
-                    Overview
-                  </button>{' '}
-                  tab.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 md:gap-3">
-              {/* Autosave Toggle */}
-              <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-md border border-border">
-                <Checkbox
-                  id="autosave"
-                  checked={autoSave}
-                  onCheckedChange={setAutoSave}
-                />
-                <label htmlFor="autosave" className="text-sm text-foreground cursor-pointer">
-                  Auto-save
-                </label>
-              </div>
-
-              {/* Manual Save Button */}
-              <Button
-                onClick={handleManualSave}
-                disabled={!selectedPromptId || !promptResponse}
-                size="sm"
-                variant="outline"
-              >
-                <Save className="h-4 w-4 md:mr-2" />
-                <span className="hidden md:inline">Save</span>
-              </Button>
-
-              {/* Last Saved Indicator */}
-              {lastSaved && (
-                <span className="hidden sm:inline text-xs text-muted-foreground">
-                  Saved {lastSaved.toLocaleTimeString()}
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Main Content - 3 Column Layout */}
       <div className="flex-1 flex overflow-hidden">
