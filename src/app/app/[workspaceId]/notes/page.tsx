@@ -5,11 +5,12 @@ import { useEffect, useState } from 'react';
 import { TemplatesView } from '@/app/app/views/TemplatesView';
 import { Loader2, FileText } from 'lucide-react';
 
-export default function GuidePage() {
+export default function NotesPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const workspaceId = params.workspaceId as string;
   const guideId = searchParams.get('id');
+  const pageId = searchParams.get('pageId');
 
   const [userGuideId, setUserGuideId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -64,16 +65,33 @@ export default function GuidePage() {
     );
   }
 
-  if (!guideId) {
+  // If viewing a page (not a guide template)
+  if (pageId && !guideId) {
+    return (
+      <div className="h-full w-full p-8">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl font-bold mb-4">Page Content</h1>
+          <p className="text-muted-foreground">
+            Page ID: {pageId}
+          </p>
+          <p className="text-sm text-muted-foreground mt-4">
+            This is where the page editor will go - showing content for the selected page from the sidebar.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!guideId && !pageId) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <div className="text-center space-y-4 max-w-md px-4">
           <div className="mb-4 flex justify-center">
             <FileText className="w-16 h-16 text-muted-foreground/40" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">No Guide Selected</h2>
+          <h2 className="text-2xl font-bold text-foreground">No Note Selected</h2>
           <p className="text-muted-foreground">
-            Please select a guide from the sidebar or use the Discover view to find guides.
+            Select a note from the sidebar or create a new one.
           </p>
         </div>
       </div>

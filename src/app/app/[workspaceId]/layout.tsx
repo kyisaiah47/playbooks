@@ -206,6 +206,12 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       const activeTab = newTabs.find(t => t.id === newActiveTabId);
       if (activeTab) {
         const viewPath = activeTab.type === 'overview' ? '' : `/${activeTab.type}`;
+
+        // Add pageId to query params if it exists
+        if (activeTab.pageId) {
+          params.set('pageId', activeTab.pageId);
+        }
+
         const queryString = params.toString();
         router.push(`/app/${workspaceId}${viewPath}${queryString ? `?${queryString}` : ''}`, { scroll: false });
       }
