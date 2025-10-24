@@ -55,7 +55,13 @@
       "mcp__supabase__list_projects",
       "mcp__supabase__execute_sql",
       "Bash(npm run lint:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npx depcheck:*)",
+      "Bash(for file in workspace-sidebar nav-documents nav-favorites nav-guided-notes nav-my-notes nav-prompts-list nav-resources)",
+      "Bash(do echo \"=== Checking $file ===\")",
+      "Bash(rmdir:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
