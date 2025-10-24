@@ -10,6 +10,7 @@ import { CategorySidebarContent } from '@/components/app/layout/CategorySidebarC
 import { NotesSidebarContent } from '@/components/app/layout/NotesSidebarContent';
 import { LibrarySidebarContent } from '@/components/app/layout/LibrarySidebarContent';
 import { CalendarSidebarContent } from '@/components/app/layout/CalendarSidebarContent';
+import { TasksSidebarContent } from '@/components/app/layout/TasksSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -48,6 +49,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedReadingId, setSelectedReadingId] = useState<string | null>(null);
   const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(new Set());
+  const [selectedTasksNoteIds, setSelectedTasksNoteIds] = useState<Set<string>>(new Set());
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -201,6 +203,19 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
         setSelectedCalendarNoteIds(noteIds);
       } else {
         setSelectedCalendarNoteIds(new Set());
+      }
+    }
+  }, [searchParams, activeView]);
+
+  // Sync tasks note selection from URL
+  useEffect(() => {
+    if (activeView === 'tasks') {
+      const tasksNotesParam = searchParams.get('tasksNotes');
+      if (tasksNotesParam) {
+        const noteIds = new Set(tasksNotesParam.split(','));
+        setSelectedTasksNoteIds(noteIds);
+      } else {
+        setSelectedTasksNoteIds(new Set());
       }
     }
   }, [searchParams, activeView]);
@@ -414,6 +429,28 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
   }, [selectedCalendarNoteIds, searchParams, router]);
 
+  // Handle tasks note toggle
+  const handleTasksNoteToggle = useCallback((noteId: string) => {
+    const newSet = new Set(selectedTasksNoteIds);
+    if (newSet.has(noteId)) {
+      newSet.delete(noteId);
+    } else {
+      newSet.add(noteId);
+    }
+
+    setSelectedTasksNoteIds(newSet);
+
+    // Update URL with selected note IDs
+    const params = new URLSearchParams(searchParams.toString());
+    if (newSet.size > 0) {
+      params.set('tasksNotes', Array.from(newSet).join(','));
+    } else {
+      params.delete('tasksNotes');
+    }
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [selectedTasksNoteIds, searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -454,6 +491,11 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
           <CalendarSidebarContent
             selectedNoteIds={selectedCalendarNoteIds}
             onNoteToggle={handleCalendarNoteToggle}
+          />
+        ) : activeView === 'tasks' ? (
+          <TasksSidebarContent
+            selectedNoteIds={selectedTasksNoteIds}
+            onNoteToggle={handleTasksNoteToggle}
           />
         ) : (
           <PagesSidebarContent

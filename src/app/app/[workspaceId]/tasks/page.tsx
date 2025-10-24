@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { ListTodo, Loader2 } from 'lucide-react';
 import { KanbanBoard } from '@/components/app/tasks/KanbanBoard';
@@ -19,11 +19,15 @@ interface ExtendedTask extends Task {
 
 export default function TasksPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const workspaceId = params.workspaceId as string;
   const queryClient = useQueryClient();
 
+  // Get selected note IDs from URL
+  const selectedNoteIds = searchParams.get('tasksNotes')?.split(',').filter(Boolean) || [];
+
   // Fetch tasks
-  const { data, isLoading, error } = useQuery({
+  const { data: allTasks, isLoading, error } = useQuery({
     queryKey: ['tasks'],
     queryFn: async () => {
       const res = await fetch('/api/tasks');
@@ -32,6 +36,11 @@ export default function TasksPage() {
       return data.tasks as ExtendedTask[];
     },
   });
+
+  // Filter tasks by selected notes - only show tasks if notes are selected
+  const data = selectedNoteIds.length > 0
+    ? (allTasks || []).filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
+    : [];
 
   // Create task mutation
   const createTaskMutation = useMutation({
