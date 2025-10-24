@@ -135,7 +135,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
                     hidden: { opacity: 0, x: -10 },
                     show: { opacity: 1, x: 0 }
                   }}
-                  whileHover={{ x: 4, backgroundColor: 'rgba(0,0,0,0.02)' }}
+                  whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="font-medium text-foreground text-[11px] truncate mb-0.5">

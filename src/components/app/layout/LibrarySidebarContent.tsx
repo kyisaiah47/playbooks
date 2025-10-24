@@ -150,7 +150,7 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
                           ? 'bg-[#6366f1]/10 text-[#6366f1]'
                           : 'hover:bg-muted/50 text-foreground'
                       )}
-                      whileHover={{ x: 4, backgroundColor: 'rgba(0,0,0,0.02)' }}
+                      whileHover={{ x: 4 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <BookOpen className="h-3.5 w-3.5 flex-shrink-0" />

@@ -97,6 +97,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
           </motion.div>
         ) : (
           <motion.div
+            key={filteredNotes.length}
             className="space-y-0.5"
             variants={{
               hidden: { opacity: 0 },
@@ -122,7 +123,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                   hidden: { opacity: 0, x: -10 },
                   show: { opacity: 1, x: 0 }
                 }}
-                whileHover={{ x: 4, backgroundColor: 'rgba(0,0,0,0.02)' }}
+                whileHover={{ x: 4 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <FileText className="h-3.5 w-3.5 flex-shrink-0" />
