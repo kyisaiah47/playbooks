@@ -170,7 +170,9 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     const params = new URLSearchParams();
 
     if (newTabs.length > 0) {
-      params.set('tabs', encodeURIComponent(JSON.stringify(newTabs)));
+      // Remove icon components before serializing to URL (they can't be serialized)
+      const tabsForUrl = newTabs.map(({ icon, ...tab }) => tab);
+      params.set('tabs', encodeURIComponent(JSON.stringify(tabsForUrl)));
     }
 
     if (newActiveTabId) {
