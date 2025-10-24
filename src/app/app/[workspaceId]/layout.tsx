@@ -41,6 +41,23 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [loading, setLoading] = useState(true);
 
+  // Icon component mapping for converting emoji strings to components
+  const iconComponentMap: Record<TabType, any> = {
+    overview: LayoutDashboard,
+    guide: FileText,
+    discover: Compass,
+    library: Library,
+    calendar: Calendar,
+    tasks: ListTodo,
+    timeline: BarChart3,
+    daily: CalendarDays,
+    journal: PenLine,
+    graph: Network,
+    analytics: TrendingUp,
+    archive: Archive,
+    settings: Settings,
+  };
+
   // Parse tabs from URL
   useEffect(() => {
     const tabsParam = searchParams.get('tabs');
@@ -49,8 +66,13 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     if (tabsParam) {
       try {
         const parsedTabs = JSON.parse(decodeURIComponent(tabsParam));
-        setTabs(parsedTabs);
-        setActiveTabId(activeParam || parsedTabs[0]?.id || null);
+        // Convert emoji icons to components
+        const tabsWithComponents = parsedTabs.map((tab: Tab) => ({
+          ...tab,
+          icon: typeof tab.icon === 'string' ? iconComponentMap[tab.type] || FileText : tab.icon
+        }));
+        setTabs(tabsWithComponents);
+        setActiveTabId(activeParam || tabsWithComponents[0]?.id || null);
       } catch (error) {
         console.error('Error parsing tabs from URL:', error);
         // Default to overview tab
