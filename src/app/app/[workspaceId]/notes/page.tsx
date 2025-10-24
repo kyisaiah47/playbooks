@@ -94,9 +94,9 @@ export default function NotesPage() {
     console.log('Create blank note');
   };
 
-  const handleChooseTemplate = () => {
-    // Navigate to discover view
-    router.push(`/app/${workspaceId}/discover`);
+  const handleSelectGuide = (guideId: string) => {
+    // Navigate to notes view with the selected guide
+    router.push(`/app/${workspaceId}/notes?id=${guideId}`);
   };
 
   // If viewing a page (not a guide template)
@@ -107,7 +107,7 @@ export default function NotesPage() {
         <GettingStartedWizard
           workspaceId={workspaceId}
           onCreateBlank={handleCreateBlank}
-          onChooseTemplate={handleChooseTemplate}
+          onSelectGuide={handleSelectGuide}
         />
       );
     }
