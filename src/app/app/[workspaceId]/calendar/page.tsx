@@ -179,53 +179,40 @@ export default function CalendarPage() {
 
               {/* Selected Event Details */}
               {selectedEvent && (
-                <div className="border border-border rounded-lg overflow-hidden bg-background">
-                  {/* Header */}
-                  <div className="bg-[#6366f1]/5 px-6 py-4 border-b border-border">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-xl font-bold mb-1 text-[#6366f1]">{selectedEvent.title}</h3>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <CalendarIcon className="w-4 h-4" />
-                          <span>{format(new Date(selectedEvent.date), 'EEEE, MMMM d, yyyy')}</span>
-                        </div>
-                      </div>
-                      <Button
-                        variant="ghost"
-                        size="icon-sm"
-                        onClick={() => setSelectedEvent(null)}
-                        className="text-muted-foreground hover:text-foreground"
-                      >
-                        ✕
-                      </Button>
-                    </div>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-sm font-semibold">Event Details</h3>
+                    <button
+                      onClick={() => setSelectedEvent(null)}
+                      className="text-muted-foreground hover:text-foreground text-sm"
+                    >
+                      ✕
+                    </button>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    {selectedEvent.description ? (
-                      <div className="mb-6">
-                        <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Description</div>
-                        <p className="text-sm leading-relaxed">{selectedEvent.description}</p>
-                      </div>
-                    ) : (
-                      <div className="mb-6 text-sm text-muted-foreground italic">
-                        No description
-                      </div>
+                  <div className="space-y-3">
+                    <div>
+                      <h4 className="font-medium mb-1">{selectedEvent.title}</h4>
+                      <p className="text-sm text-muted-foreground">
+                        {format(new Date(selectedEvent.date), 'EEEE, MMMM d, yyyy')}
+                      </p>
+                    </div>
+
+                    {selectedEvent.description && (
+                      <p className="text-sm text-muted-foreground">
+                        {selectedEvent.description}
+                      </p>
                     )}
 
-                    <Button
-                      variant="destructive"
-                      size="sm"
+                    <button
                       onClick={() => {
                         handleDeleteEvent(selectedEvent.id);
                         setSelectedEvent(null);
                       }}
-                      className="w-full"
+                      className="text-xs text-red-600 hover:text-red-700"
                     >
-                      <Trash2 className="w-4 h-4 mr-2" />
                       Delete Event
-                    </Button>
+                    </button>
                   </div>
                 </div>
               )}
