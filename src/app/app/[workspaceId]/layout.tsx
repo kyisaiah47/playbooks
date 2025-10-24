@@ -18,6 +18,7 @@ import { GraphSidebarContent } from '@/components/app/layout/GraphSidebarContent
 import { OverviewSidebarContent } from '@/components/app/layout/OverviewSidebarContent';
 import { AnalyticsSidebarContent } from '@/components/app/layout/AnalyticsSidebarContent';
 import { ArchiveSidebarContent } from '@/components/app/layout/ArchiveSidebarContent';
+import { SettingsSidebarContent } from '@/components/app/layout/SettingsSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
   Loader2,
@@ -63,6 +64,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(new Set());
   const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(new Set());
   const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(new Set());
+  const [settingsSection, setSettingsSection] = useState<'profile' | 'privacy' | 'data' | 'notifications' | 'appearance'>('profile');
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -293,6 +295,16 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       if (analyticsGuidesParam) {
         const guideIds = new Set(analyticsGuidesParam.split(','));
         setSelectedAnalyticsGuideIds(guideIds);
+      }
+    }
+  }, [searchParams, activeView]);
+
+  // Sync settings section from URL
+  useEffect(() => {
+    if (activeView === 'settings') {
+      const sectionParam = searchParams.get('section') as 'profile' | 'privacy' | 'data' | 'notifications' | 'appearance';
+      if (sectionParam) {
+        setSettingsSection(sectionParam);
       }
     }
   }, [searchParams, activeView]);
@@ -653,6 +665,17 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
   }, [selectedAnalyticsGuideIds, searchParams, router]);
 
+  // Handle settings section change
+  const handleSettingsSectionChange = useCallback((section: 'profile' | 'privacy' | 'data' | 'notifications' | 'appearance') => {
+    setSettingsSection(section);
+
+    // Update URL with section param
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('section', section);
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -662,101 +685,108 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   }
 
   return (
-    <div className="h-screen w-screen flex overflow-hidden bg-background">
-      {/* IconBar - 36px wide */}
-      <IconBar activeView={activeView} onViewClick={handleViewClick} />
+    <>
+      <div className="h-screen w-screen flex overflow-hidden bg-background">
+        {/* IconBar - 36px wide */}
+        <IconBar activeView={activeView} onViewClick={handleViewClick} />
 
-      {/* Sidebar - 256px wide (collapsible) */}
-      <Sidebar
-        workspace={workspace}
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-      >
-        {/* Render sidebar content based on active view */}
-        {activeView === 'overview' ? (
-          <OverviewSidebarContent
-            selectedGuideIds={selectedOverviewGuideIds}
-            onGuideToggle={handleOverviewGuideToggle}
-          />
-        ) : activeView === 'discover' ? (
-          <CategorySidebarContent
-            selectedCategory={selectedCategory}
-            onCategorySelect={handleCategorySelect}
-          />
-        ) : activeView === 'notes' ? (
-          <NotesSidebarContent
-            activeGuideId={activeGuideId}
-            onNoteClick={handleNoteClick}
-            onNewNote={handleNewNote}
-          />
-        ) : activeView === 'library' ? (
-          <LibrarySidebarContent
-            selectedReadingId={selectedReadingId}
-            onReadingClick={handleReadingClick}
-          />
-        ) : activeView === 'calendar' ? (
-          <CalendarSidebarContent
-            selectedNoteIds={selectedCalendarNoteIds}
-            onNoteToggle={handleCalendarNoteToggle}
-          />
-        ) : activeView === 'tasks' ? (
-          <TasksSidebarContent
-            selectedNoteIds={selectedTasksNoteIds}
-            onNoteToggle={handleTasksNoteToggle}
-          />
-        ) : activeView === 'timeline' ? (
-          <TimelineSidebarContent
-            selectedNoteIds={selectedTimelineNoteIds}
-            onNoteToggle={handleTimelineNoteToggle}
-          />
-        ) : activeView === 'daily' ? (
-          <DailySidebarContent
-            selectedNoteIds={selectedDailyNoteIds}
-            onNoteToggle={handleDailyNoteToggle}
-          />
-        ) : activeView === 'journal' ? (
-          <JournalSidebarContent
-            selectedEntryId={selectedJournalEntryId}
-            onEntrySelect={handleJournalEntrySelect}
-          />
-        ) : activeView === 'graph' ? (
-          <GraphSidebarContent
-            selectedGuideIds={selectedGraphGuideIds}
-            onGuideToggle={handleGraphGuideToggle}
-          />
-        ) : activeView === 'analytics' ? (
-          <AnalyticsSidebarContent
-            selectedGuideIds={selectedAnalyticsGuideIds}
-            onGuideToggle={handleAnalyticsGuideToggle}
-          />
-        ) : activeView === 'archive' ? (
-          <ArchiveSidebarContent />
-        ) : (
-          <PagesSidebarContent
-            pages={pages}
-            activePageId={activePageId}
-            onPageClick={handlePageClick}
-          />
-        )}
-      </Sidebar>
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* TabBar - 40px high */}
-        <TabBar
-          tabs={tabs}
-          activeTabId={activeTabId}
-          onTabClick={switchTab}
-          onTabClose={removeTab}
+        {/* Sidebar - 256px wide (collapsible) */}
+        <Sidebar
+          workspace={workspace}
           sidebarOpen={sidebarOpen}
-          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
-        />
+          setSidebarOpen={setSidebarOpen}
+        >
+          {/* Render sidebar content based on active view */}
+          {activeView === 'overview' ? (
+            <OverviewSidebarContent
+              selectedGuideIds={selectedOverviewGuideIds}
+              onGuideToggle={handleOverviewGuideToggle}
+            />
+          ) : activeView === 'discover' ? (
+            <CategorySidebarContent
+              selectedCategory={selectedCategory}
+              onCategorySelect={handleCategorySelect}
+            />
+          ) : activeView === 'notes' ? (
+            <NotesSidebarContent
+              activeGuideId={activeGuideId}
+              onNoteClick={handleNoteClick}
+              onNewNote={handleNewNote}
+            />
+          ) : activeView === 'library' ? (
+            <LibrarySidebarContent
+              selectedReadingId={selectedReadingId}
+              onReadingClick={handleReadingClick}
+            />
+          ) : activeView === 'calendar' ? (
+            <CalendarSidebarContent
+              selectedNoteIds={selectedCalendarNoteIds}
+              onNoteToggle={handleCalendarNoteToggle}
+            />
+          ) : activeView === 'tasks' ? (
+            <TasksSidebarContent
+              selectedNoteIds={selectedTasksNoteIds}
+              onNoteToggle={handleTasksNoteToggle}
+            />
+          ) : activeView === 'timeline' ? (
+            <TimelineSidebarContent
+              selectedNoteIds={selectedTimelineNoteIds}
+              onNoteToggle={handleTimelineNoteToggle}
+            />
+          ) : activeView === 'daily' ? (
+            <DailySidebarContent
+              selectedNoteIds={selectedDailyNoteIds}
+              onNoteToggle={handleDailyNoteToggle}
+            />
+          ) : activeView === 'journal' ? (
+            <JournalSidebarContent
+              selectedEntryId={selectedJournalEntryId}
+              onEntrySelect={handleJournalEntrySelect}
+            />
+          ) : activeView === 'graph' ? (
+            <GraphSidebarContent
+              selectedGuideIds={selectedGraphGuideIds}
+              onGuideToggle={handleGraphGuideToggle}
+            />
+          ) : activeView === 'analytics' ? (
+            <AnalyticsSidebarContent
+              selectedGuideIds={selectedAnalyticsGuideIds}
+              onGuideToggle={handleAnalyticsGuideToggle}
+            />
+          ) : activeView === 'archive' ? (
+            <ArchiveSidebarContent />
+          ) : activeView === 'settings' ? (
+            <SettingsSidebarContent
+              activeSection={settingsSection}
+              onSectionChange={handleSettingsSectionChange}
+            />
+          ) : (
+            <PagesSidebarContent
+              pages={pages}
+              activePageId={activePageId}
+              onPageClick={handlePageClick}
+            />
+          )}
+        </Sidebar>
 
-        {/* Content Area */}
-        <div className="flex-1 overflow-auto">
-          {children}
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col min-w-0">
+          {/* TabBar - 40px high */}
+          <TabBar
+            tabs={tabs}
+            activeTabId={activeTabId}
+            onTabClick={switchTab}
+            onTabClose={removeTab}
+            sidebarOpen={sidebarOpen}
+            onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+          />
+
+          {/* Content Area */}
+          <div className="flex-1 overflow-auto">
+            {children}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
