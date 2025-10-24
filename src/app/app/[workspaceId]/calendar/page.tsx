@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { MonthView } from '@/components/app/calendar/MonthView';
 import { EventList } from '@/components/app/calendar/EventList';
 import { EventCreateForm } from '@/components/app/calendar/EventCreateForm';
-import { EventDetailDrawer } from '@/components/app/calendar/EventDetailDrawer';
 import { CalendarEvent, Task } from '@/types/workspace';
 import { startOfMonth, endOfMonth, format } from 'date-fns';
 
@@ -24,7 +23,6 @@ export default function CalendarPage() {
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
-  const [eventDetailOpen, setEventDetailOpen] = useState(false);
 
   // Get selected note IDs from URL
   const selectedNoteIds = searchParams.get('calendarNotes')?.split(',').filter(Boolean) || [];
@@ -97,7 +95,6 @@ export default function CalendarPage() {
 
   const handleEventClick = (event: CalendarEvent) => {
     setSelectedEvent(event);
-    setEventDetailOpen(true);
   };
 
   const handleDeleteEvent = async (eventId: string) => {
@@ -173,12 +170,54 @@ export default function CalendarPage() {
             </div>
 
             {/* Upcoming Events Sidebar - Takes 1 column */}
-            <div className="lg:col-span-1 overflow-y-auto">
+            <div className="lg:col-span-1 overflow-y-auto space-y-6">
               <EventList
                 events={events}
                 tasks={tasks}
                 onEventClick={handleEventClick}
               />
+
+              {/* Selected Event Details */}
+              {selectedEvent && (
+                <div className="border border-border rounded-lg p-6 bg-background">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-semibold">{selectedEvent.title}</h3>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSelectedEvent(null)}
+                    >
+                      ✕
+                    </Button>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <div className="text-sm font-medium text-muted-foreground mb-1">Date</div>
+                      <div className="text-sm">{format(new Date(selectedEvent.date), 'EEEE, MMMM d, yyyy')}</div>
+                    </div>
+
+                    {selectedEvent.description && (
+                      <div>
+                        <div className="text-sm font-medium text-muted-foreground mb-1">Description</div>
+                        <div className="text-sm">{selectedEvent.description}</div>
+                      </div>
+                    )}
+
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={() => {
+                        handleDeleteEvent(selectedEvent.id);
+                        setSelectedEvent(null);
+                      }}
+                      className="w-full"
+                    >
+                      Delete Event
+                    </Button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -189,14 +228,6 @@ export default function CalendarPage() {
           onOpenChange={setCreateDialogOpen}
           selectedDate={selectedDate}
           onEventCreated={handleEventCreated}
-        />
-
-        {/* Event Detail Drawer */}
-        <EventDetailDrawer
-          event={selectedEvent}
-          open={eventDetailOpen}
-          onOpenChange={setEventDetailOpen}
-          onDelete={handleDeleteEvent}
         />
       </div>
     </div>
