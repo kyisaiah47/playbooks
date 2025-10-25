@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import {
   BookOpen,
   FileText,
@@ -51,10 +50,8 @@ type DocSection =
   | 'support';
 
 export default function DocsPage() {
-  const searchParams = useSearchParams();
-  const initialSection = (searchParams.get('section') as DocSection) || 'getting-started';
-  const [expandedSections, setExpandedSections] = useState<string[]>(['features']);
-  const [activeDoc, setActiveDoc] = useState<DocSection>(initialSection);
+  const [expandedSections, setExpandedSections] = useState<string[]>(['getting-started', 'features']);
+  const [activeDoc, setActiveDoc] = useState<DocSection>('getting-started');
 
   const toggleSection = (section: string) => {
     setExpandedSections(prev =>
@@ -120,68 +117,55 @@ export default function DocsPage() {
   };
 
   return (
-      <div className="min-h-screen pt-4 pb-16 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="mb-8">
-              <h1 className="text-4xl font-bold mb-2">Documentation</h1>
-              <p className="text-lg text-muted-foreground">
-                Learn how to use Templata
-              </p>
-            </div>
+    <div className="flex min-h-screen">
+      {/* Sidebar Navigation */}
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border h-[calc(100vh-3.5rem)] sticky top-14 overflow-y-auto bg-background">
+          <div className="py-6 px-4 space-y-6">
+            <nav className="space-y-1">
+              {sidebarSections.map((section) => (
+                <div key={section.id}>
+                  <button
+                    onClick={() => toggleSection(section.id)}
+                    className="flex items-center justify-between w-full text-sm font-medium py-1.5 px-2 hover:bg-muted/50 rounded transition-colors text-left"
+                  >
+                    <span className="text-sm">{section.title}</span>
+                    {expandedSections.includes(section.id) ? (
+                      <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                    ) : (
+                      <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    )}
+                  </button>
 
-            {/* Two Column Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
-              {/* Sidebar */}
-              <aside className="lg:sticky lg:top-24 h-fit">
-                <nav className="space-y-1">
-                  {sidebarSections.map((section) => (
-                    <div key={section.id}>
-                      <button
-                        onClick={() => toggleSection(section.id)}
-                        className="flex items-center justify-between w-full text-left text-sm font-semibold text-muted-foreground uppercase tracking-wider hover:text-foreground transition-colors py-1.5 px-2"
-                      >
-                        {section.title}
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform ${
-                            expandedSections.includes(section.id) ? 'rotate-180' : ''
+                  {expandedSections.includes(section.id) && (
+                    <div className="ml-3 mt-1 space-y-0.5 border-l border-border pl-3">
+                      {section.items.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => setActiveDoc(item.id)}
+                          className={`flex items-center gap-2 w-full text-left text-sm py-1.5 px-2 rounded transition-colors ${
+                            activeDoc === item.id
+                              ? 'text-foreground bg-muted/50'
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                           }`}
-                        />
-                      </button>
-                      {expandedSections.includes(section.id) && (
-                        <div className="mt-1 space-y-0.5 mb-4">
-                          {section.items.map((item) => {
-                            const Icon = item.icon;
-                            return (
-                              <button
-                                key={item.id}
-                                onClick={() => setActiveDoc(item.id)}
-                                className={`w-full text-left p-2 rounded-lg transition-colors text-sm flex items-center gap-2 ${
-                                  activeDoc === item.id
-                                    ? 'bg-primary/10 text-primary font-medium'
-                                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                                }`}
-                              >
-                                <Icon className="w-4 h-4" />
-                                {item.title}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
+                        >
+                          <item.icon className="h-3.5 w-3.5" />
+                          {item.title}
+                        </button>
+                      ))}
                     </div>
-                  ))}
-                </nav>
-              </aside>
-
-              {/* Main Content */}
-              <main className="prose prose-sm max-w-none">
-                {renderDocContent()}
-              </main>
-            </div>
+                  )}
+                </div>
+              ))}
+            </nav>
           </div>
-        </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto">
+          <div className="max-w-6xl mx-auto px-6 lg:px-12 py-8">
+            {renderDocContent()}
+          </div>
+        </main>
       </div>
   );
 }
