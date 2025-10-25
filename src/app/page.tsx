@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import {
-	ArrowRight,
-	FileText,
-	BookOpen,
-	Check,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import { HeroWorkspace } from "@/components/landing/HeroWorkspace";
 import { BrowseGuides } from "@/components/landing/BrowseGuides";
@@ -16,12 +10,7 @@ import { SplitScreenOpen } from "@/components/landing/SplitScreenOpen";
 import { WorkspaceActive } from "@/components/landing/WorkspaceActive";
 import { ExportOverview } from "@/components/landing/ExportOverview";
 import { CategorySelection } from "@/components/landing/CategorySelection";
-import { StructuredGuide } from "@/components/landing/StructuredGuide";
 import { PopularGuides } from "@/components/landing/PopularGuides";
-import { CommunityHub } from "@/components/landing/CommunityHub";
-import { ExpertProfile } from "@/components/landing/ExpertProfile";
-import { SubmitGuide } from "@/components/landing/SubmitGuide";
-import { CommunityActivity } from "@/components/landing/CommunityActivity";
 import { motion } from "framer-motion";
 
 export default function LandingPage() {
@@ -51,10 +40,10 @@ export default function LandingPage() {
 			{/* Hero Section - 3-line layout with CTA on right */}
 			<section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-24">
 				<div className="mx-auto max-w-7xl">
-					<div className="flex items-end justify-between gap-12">
+					<div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
 						<div className="max-w-3xl">
 							<motion.h1
-								className="text-[4rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
+								className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: 0 }}
@@ -62,7 +51,7 @@ export default function LandingPage() {
 								Wikipedia
 							</motion.h1>
 							<motion.h2
-								className="text-[4rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
+								className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: 0.1 }}
