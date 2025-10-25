@@ -4,15 +4,6 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-	navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
 import { ThemeSelector } from "@/components/theme-selector"
 import { useAuth } from "@/contexts/auth-context"
 import {
@@ -26,6 +17,7 @@ import {
 	BookMarked,
 	Network,
 	BarChart3,
+	ChevronDown,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
@@ -39,6 +31,7 @@ import {
 export function Header() {
 	const [scrollY, setScrollY] = React.useState(0)
 	const [isMobile, setIsMobile] = React.useState(false)
+	const [showFeaturesDropdown, setShowFeaturesDropdown] = React.useState(false)
 	const pathname = usePathname()
 	const { isLoggedIn, user, logout } = useAuth()
 
@@ -63,18 +56,72 @@ export function Header() {
 
 	const scrollProgress = Math.min(scrollY / 100, 1)
 	const isScrolled = scrollY > 10
-	// Disable shrinking effect on mobile
-	const headerWidth = isMobile ? 100 : (100 - (scrollProgress * 30)) // Goes from 100% to 70%
-	const borderRadius = isMobile ? 0 : (scrollProgress * 16) // Goes from 0 to 16px
-	const backgroundOpacity = scrollProgress * 0.8
 	const isHomePage = pathname === "/"
 
+	const features = [
+		{
+			href: "/features/notes",
+			icon: FileText,
+			title: "Notes",
+			description: "Capture thoughts and insights during your transition"
+		},
+		{
+			href: "/features/library",
+			icon: BookOpen,
+			title: "Library",
+			description: "Your personal collection of saved resources"
+		},
+		{
+			href: "/features/calendar",
+			icon: Calendar,
+			title: "Calendar",
+			description: "Schedule and plan your transition work"
+		},
+		{
+			href: "/features/tasks",
+			icon: CheckSquare,
+			title: "Tasks",
+			description: "Turn reflection into actionable steps"
+		},
+		{
+			href: "/features/timeline",
+			icon: Clock,
+			title: "Timeline",
+			description: "Visualize your journey chronologically"
+		},
+		{
+			href: "/features/daily",
+			icon: Calendar,
+			title: "Daily",
+			description: "Daily notes for consistent progress"
+		},
+		{
+			href: "/features/journal",
+			icon: BookMarked,
+			title: "Journal",
+			description: "Process emotions through private writing"
+		},
+		{
+			href: "/features/graph",
+			icon: Network,
+			title: "Graph",
+			description: "See connections across your work"
+		},
+		{
+			href: "/features/analytics",
+			icon: BarChart3,
+			title: "Analytics",
+			description: "Track progress with data and insights"
+		},
+	]
+
 	return (
-		<header className={cn(
-			"fixed z-50 w-full border-b transition-colors duration-300",
-			isScrolled && isHomePage ? "bg-background" : "border-transparent"
-		)}>
-			<nav className="container mx-auto px-4 py-4">
+		<>
+			<header className={cn(
+				"fixed top-0 z-50 w-full border-b transition-colors duration-300",
+				isScrolled && isHomePage ? "bg-background" : "border-transparent"
+			)}>
+				<nav className="container mx-auto px-4 py-4">
 					<div className="flex items-center justify-between relative">
 						{/* Left side - Logo and Theme */}
 						<div className="flex items-center space-x-2 md:space-x-4">
@@ -101,169 +148,53 @@ export function Header() {
 
 						{/* Center - Desktop Navigation */}
 						<div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
-							<NavigationMenu className="pointer-events-auto">
-								<NavigationMenuList className="space-x-2">
-									{/* Features Dropdown */}
-									<NavigationMenuItem>
-										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											Features
-										</NavigationMenuTrigger>
-										<NavigationMenuContent>
-											<div className="grid w-[600px] gap-3 p-6 md:grid-cols-2">
-												<Link
-													href="/features/notes"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<FileText className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Notes</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Capture thoughts and insights during your transition
-													</p>
-												</Link>
-												<Link
-													href="/features/library"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<BookOpen className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Library</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Your personal collection of saved resources
-													</p>
-												</Link>
-												<Link
-													href="/features/calendar"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<Calendar className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Calendar</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Schedule and plan your transition work
-													</p>
-												</Link>
-												<Link
-													href="/features/tasks"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<CheckSquare className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Tasks</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Turn reflection into actionable steps
-													</p>
-												</Link>
-												<Link
-													href="/features/timeline"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<Clock className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Timeline</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Visualize your journey chronologically
-													</p>
-												</Link>
-												<Link
-													href="/features/daily"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<Calendar className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Daily</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Daily notes for consistent progress
-													</p>
-												</Link>
-												<Link
-													href="/features/journal"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<BookMarked className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Journal</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Process emotions through private writing
-													</p>
-												</Link>
-												<Link
-													href="/features/graph"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<Network className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Graph</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														See connections across your work
-													</p>
-												</Link>
-												<Link
-													href="/features/analytics"
-													className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-												>
-													<div className="flex items-center gap-2 mb-2">
-														<BarChart3 className="h-4 w-4 text-primary" />
-														<div className="text-sm font-medium leading-none">Analytics</div>
-													</div>
-													<p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-														Track progress with data and insights
-													</p>
-												</Link>
-											</div>
-										</NavigationMenuContent>
-									</NavigationMenuItem>
+							<div className="flex items-center space-x-2 pointer-events-auto">
+								{/* Features Dropdown */}
+								<button
+									onMouseEnter={() => setShowFeaturesDropdown(true)}
+									onMouseLeave={() => setShowFeaturesDropdown(false)}
+									className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
+								>
+									Features
+									<ChevronDown className="h-4 w-4" />
+								</button>
 
-									{/* How It Works */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/how-it-works">
-												How It Works
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
+								{/* How It Works */}
+								<Link
+									href="/how-it-works"
+									className="px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
+								>
+									How It Works
+								</Link>
 
-									{/* Community */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/community">
-												Community
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
+								{/* Community */}
+								<Link
+									href="/community"
+									className="px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
+								>
+									Community
+								</Link>
 
-									{/* About */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/about">
-												About
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
+								{/* About */}
+								<Link
+									href="/about"
+									className="px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
+								>
+									About
+								</Link>
 
-									{/* Demo */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/app">
-												Demo
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-								</NavigationMenuList>
-							</NavigationMenu>
+								{/* Demo */}
+								<Link
+									href="/app"
+									className="px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
+								>
+									Demo
+								</Link>
+							</div>
 						</div>
 
 						{/* Right side - Actions */}
 						<div className="flex items-center space-x-2 md:space-x-3">
-
 							{/* Desktop User Actions */}
 							<div className="hidden md:flex items-center space-x-3">
 								{isLoggedIn ? (
@@ -306,7 +237,44 @@ export function Header() {
 							)}
 						</div>
 					</div>
-			</nav>
-		</header>
+				</nav>
+			</header>
+
+			{/* Full-Width Features Dropdown */}
+			<div
+				onMouseEnter={() => setShowFeaturesDropdown(true)}
+				onMouseLeave={() => setShowFeaturesDropdown(false)}
+				className={cn(
+					"fixed top-[73px] left-0 right-0 z-40 bg-background border-b shadow-lg transition-all duration-200",
+					showFeaturesDropdown ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+				)}
+			>
+				<div className="container mx-auto px-4 py-8">
+					<div className="grid grid-cols-3 gap-6 max-w-5xl mx-auto">
+						{features.map((feature) => {
+							const Icon = feature.icon
+							return (
+								<Link
+									key={feature.href}
+									href={feature.href}
+									className="group flex items-start gap-3 p-4 rounded-lg hover:bg-accent transition-colors"
+									onClick={() => setShowFeaturesDropdown(false)}
+								>
+									<div className="flex-shrink-0 h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+										<Icon className="h-5 w-5 text-primary" />
+									</div>
+									<div className="flex-1 min-w-0">
+										<div className="text-sm font-semibold mb-1">{feature.title}</div>
+										<p className="text-xs text-muted-foreground leading-relaxed">
+											{feature.description}
+										</p>
+									</div>
+								</Link>
+							)
+						})}
+					</div>
+				</div>
+			</div>
+		</>
 	)
 }
