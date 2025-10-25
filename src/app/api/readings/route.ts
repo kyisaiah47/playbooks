@@ -39,17 +39,17 @@ export async function GET(request: NextRequest) {
         content,
         excerpt,
         read_time,
-        template,
+        guide,
         tags
       `)
       .eq('type', 'guide');
 
     // Filter by user's guides if we have them
     if (userGuideIds.length > 0) {
-      query = query.in('template', userGuideIds);
+      query = query.in('guide', userGuideIds);
     }
 
-    query = query.order('template', { ascending: true });
+    query = query.order('guide', { ascending: true });
 
     const { data: readings, error } = await query;
 
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
       return errorResponse('Failed to fetch readings');
     }
 
-    // Fetch all guides to match template field
+    // Fetch all guides to match guide field
     const { data: guides, error: guidesError } = await supabase
       .from('guides')
       .select('id, name');
@@ -73,15 +73,15 @@ export async function GET(request: NextRequest) {
 
     // Transform the data
     const transformedReadings = readings
-      .filter((reading: any) => reading.template) // Only include readings with a template/guide
+      .filter((reading: any) => reading.guide) // Only include readings with a guide/guide
       .map((reading: any) => ({
         id: reading.id,
         title: reading.title,
         content: reading.content,
         description: reading.excerpt || '',
         reading_time: parseInt(reading.read_time) || 5,
-        guide_id: reading.template,
-        guide_name: guideMap.get(reading.template) || 'Unknown Guide',
+        guide_id: reading.guide,
+        guide_name: guideMap.get(reading.guide) || 'Unknown Guide',
       }));
 
     return successResponse({ readings: transformedReadings });

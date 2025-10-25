@@ -88,7 +88,7 @@ export function RelatedTemplates({
       if (!guide) return null
 
       return {
-        template,
+        guide,
         strength: relation.strength,
         reason: relation.reason,
         level: relation.level
@@ -117,9 +117,9 @@ export function RelatedTemplates({
 
       <div className="grid gap-2">
         {relatedGuides.map(({ guide, strength, reason, level }) => (
-          <TemplateCard
+          <GuideCard
             key={guide.id}
-            guide={template}
+            guide={guide}
             strength={strength}
             reason={reason}
             level={level}

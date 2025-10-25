@@ -38,7 +38,7 @@ export interface SaveResourceData {
 export class UserDataService {
   // Template Sessions
   static async createTemplateSession(data: CreateTemplateSessionData): Promise<TemplateSession> {
-    return await prisma.templateSession.create({
+    return await prisma.guideSession.create({
       data: {
         userId: data.userId,
         guideId: data.guideId,
@@ -48,7 +48,7 @@ export class UserDataService {
   }
 
   static async getTemplateSession(sessionId: string): Promise<TemplateSession | null> {
-    return await prisma.templateSession.findUnique({
+    return await prisma.guideSession.findUnique({
       where: { id: sessionId },
       include: {
         responses: true,
@@ -58,7 +58,7 @@ export class UserDataService {
   }
 
   static async getUserTemplateSessions(userId: string): Promise<TemplateSession[]> {
-    return await prisma.templateSession.findMany({
+    return await prisma.guideSession.findMany({
       where: { userId },
       orderBy: { updatedAt: 'desc' },
       include: {
@@ -74,7 +74,7 @@ export class UserDataService {
     if (data.isCompleted !== undefined) updateData.isCompleted = data.isCompleted;
     if (data.metadata !== undefined) updateData.metadata = data.metadata;
     
-    return await prisma.templateSession.update({
+    return await prisma.guideSession.update({
       where: { id: data.sessionId },
       data: {
         ...updateData,
@@ -177,8 +177,8 @@ export class UserDataService {
       totalResponses,
       savedResourcesCount,
     ] = await Promise.all([
-      prisma.templateSession.count({ where: { userId } }),
-      prisma.templateSession.count({ where: { userId, isCompleted: true } }),
+      prisma.guideSession.count({ where: { userId } }),
+      prisma.guideSession.count({ where: { userId, isCompleted: true } }),
       prisma.userResponse.count({ where: { userId } }),
       prisma.savedResource.count({ where: { userId } }),
     ]);
@@ -199,9 +199,9 @@ export class UserDataService {
       completedSessions,
       averageProgress,
     ] = await Promise.all([
-      prisma.templateSession.count({ where: { guideId } }),
-      prisma.templateSession.count({ where: { guideId, isCompleted: true } }),
-      prisma.templateSession.aggregate({
+      prisma.guideSession.count({ where: { guideId } }),
+      prisma.guideSession.count({ where: { guideId, isCompleted: true } }),
+      prisma.guideSession.aggregate({
         where: { guideId },
         _avg: { progress: true },
       }),

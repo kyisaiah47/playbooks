@@ -125,7 +125,7 @@ export function TemplataContentSidebar({
       .then(data => {
         const readings = data.readings || []
         // Filter to only readings that match this guide ID
-        const filtered = readings.filter((a: any) => a.template === guide.id)
+        const filtered = readings.filter((a: any) => a.guide === guide.id)
         setTemplateResources(filtered)
       })
       .catch(err => console.error('Failed to load readings:', err))

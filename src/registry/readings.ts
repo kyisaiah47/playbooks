@@ -33,7 +33,7 @@ export async function getArticleById(id: string) {
       metaTitle: data.meta_title,
       metaDescription: data.meta_description
     },
-    guide: data.template
+    guide: data.guide
   };
 }
 
@@ -64,7 +64,7 @@ export async function getReadingBySlug(slug: string) {
       metaTitle: data.meta_title,
       metaDescription: data.meta_description
     },
-    guide: data.template
+    guide: data.guide
   };
 }
 
@@ -148,7 +148,7 @@ export async function getArticles(page = 1, pageSize = 50) {
       metaDescription: reading.meta_description,
       ogImage: reading.og_image
     },
-    guide: reading.template,
+    guide: reading.guide,
     relatedPosts: reading.related_posts
   }));
 

@@ -80,18 +80,18 @@ export class AnalyticsEngine {
    * Analyze category usage patterns
    */
   private analyzeCategoryUsage(period: InsightPeriod): CategoryUsageInsight | null {
-    const filteredTemplates = this.filterByPeriod(this.templates, period);
+    const filteredGuides = this.filterByPeriod(this.templates, period);
 
-    if (filteredTemplates.length === 0) return null;
+    if (filteredGuides.length === 0) return null;
 
     // Count templates by category
     const categoryCounts: Record<string, number> = {};
-    filteredTemplates.forEach((template) => {
+    filteredGuides.forEach((template) => {
       const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
 
-    const total = filteredTemplates.length;
+    const total = filteredGuides.length;
     const categories = Object.entries(categoryCounts).map(([name, count]) => ({
       name,
       count,
@@ -179,12 +179,12 @@ export class AnalyticsEngine {
    * Analyze template completion rates
    */
   private analyzeCompletionRate(period: InsightPeriod): CompletionRateInsight | null {
-    const filteredTemplates = this.filterByPeriod(this.templates, period);
+    const filteredGuides = this.filterByPeriod(this.templates, period);
 
-    if (filteredTemplates.length === 0) return null;
+    if (filteredGuides.length === 0) return null;
 
-    const completed = filteredTemplates.filter((t) => t.completion === 100);
-    const completionRate = (completed.length / filteredTemplates.length) * 100;
+    const completed = filteredGuides.filter((t) => t.completion === 100);
+    const completionRate = (completed.length / filteredGuides.length) * 100;
 
     // Calculate average completion time (mock for now)
     const completionTimes = completed.map((t) => {
@@ -199,7 +199,7 @@ export class AnalyticsEngine {
 
     // By category
     const byCategory: Record<string, { started: number; completed: number; rate: number }> = {};
-    filteredTemplates.forEach((template) => {
+    filteredGuides.forEach((template) => {
       const category = this.extractCategory(guide.tags);
       if (!byCategory[category]) {
         byCategory[category] = { started: 0, completed: 0, rate: 0 };
@@ -224,7 +224,7 @@ export class AnalyticsEngine {
       generatedAt: new Date(),
       period,
       data: {
-        totalStarted: filteredTemplates.length,
+        totalStarted: filteredGuides.length,
         totalCompleted: completed.length,
         completionRate,
         averageCompletionTime: avgTime,

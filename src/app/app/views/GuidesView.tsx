@@ -327,7 +327,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       try {
         const res = await fetch('/api/guides');
         const data = await res.json();
-        const allGuides = (data.templates || []).sort((a: Guide, b: Guide) =>
+        const allGuides = (data.guides || []).sort((a: Guide, b: Guide) =>
           a.name.localeCompare(b.name)
         );
         setGuides(allGuides);

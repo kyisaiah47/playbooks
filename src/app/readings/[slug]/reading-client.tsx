@@ -89,7 +89,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
   const relatedGuides = useMemo(() => {
     if (!post || kgLoading) return [];
 
-    const templates = [];
+    const guides = [];
 
     // Get templates related to the article's category
     const categoryTemplates = getRelatedTemplates(post.category.toLowerCase());
@@ -278,7 +278,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                     <div key={guide.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
                       <h4 className="font-medium mb-2">
                         <Link
-                          href={`/${guide.id}/template`}
+                          href={`//guide`}
                           className="hover:text-primary transition-colors"
                         >
                           {guide.name}
@@ -288,7 +288,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                         {guide.description}
                       </p>
                       <Button asChild size="sm" variant="outline">
-                        <Link href={`/${guide.id}/template`}>
+                        <Link href={`//guide`}>
                           Use Template
                         </Link>
                       </Button>

@@ -53,12 +53,12 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         // Fetch all templates
         const templatesRes = await fetch('/api/guides');
         const guidesData = await templatesRes.json();
-        const foundGuide = guidesData.templates?.find((t:GuideRegistryEntry) => t.id === slug);
+        const foundGuide = guidesData.guides?.find((t:GuideRegistryEntry) => t.id === slug);
         setGuide(foundGuide || null);
 
         // Set related guides (same category, different id)
         if (foundGuide) {
-          const related = guidesData.templates?.filter(
+          const related = guidesData.guides?.filter(
             (t:GuideRegistryEntry) => t.category === foundGuide.category && t.id !== slug
           ) || [];
           setRelatedTemplates(related);

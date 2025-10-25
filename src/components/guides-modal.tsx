@@ -32,7 +32,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
     async function fetchData() {
       const res = await fetch('/api/guides')
       const data = await res.json()
-      const fetchedTemplates = data.templates || []
+      const fetchedTemplates = data.guides || []
       setTemplates(fetchedTemplates)
 
       const uniqueCategories = [...new Set(fetchedTemplates.map((t:GuideRegistryEntry) => t.category))].sort()
@@ -41,7 +41,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
     fetchData()
   }, [])
 
-  const filteredTemplates = templates.filter(template => {
+  const filteredGuides = guides.filter(template => {
     const matchesSearch = searchQuery === "" ||
                          guide.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          guide.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -87,11 +87,11 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
         {/* Templates Grid */}
         <div className="flex-1 overflow-y-auto">
           {/* All Guides */}
-          {filteredTemplates.length > 0 && (
+          {filteredGuides.length > 0 && (
             <div>
               <h3 className="text-lg font-semibold mb-4">All Guides</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                {filteredTemplates.map((guide) => {
+                {filteredGuides.map((guide) => {
                   const CardContent = () => (
                     <>
                       <div className="flex items-center gap-3 mb-3">
@@ -130,7 +130,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
           )}
 
           {/* No Results */}
-          {filteredTemplates.length === 0 && (
+          {filteredGuides.length === 0 && (
             <div className="text-center py-12">
               <Search className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">No guides found</h3>

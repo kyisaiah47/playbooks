@@ -46,7 +46,7 @@ async function fetchGuides(): Promise<GuideRegistryEntry[]> {
     if (!res.ok) return [];
 
     const data = await res.json();
-    return (data.templates || []).map((t: any) => ({
+    return (data.guides || []).map((t: any) => ({
       ...t,
       ...getCategoryColors(t.category)
     }));

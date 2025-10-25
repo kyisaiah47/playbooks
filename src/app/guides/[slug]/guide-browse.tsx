@@ -50,7 +50,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
         // Fetch guide data
         const templatesRes = await fetch('/api/guides');
         const guidesData = await templatesRes.json();
-        const foundGuide = guidesData.templates?.find((t:GuideRegistryEntry) => t.id === slug);
+        const foundGuide = guidesData.guides?.find((t:GuideRegistryEntry) => t.id === slug);
         setGuide(foundGuide || null);
 
         // Fetch questions
@@ -67,7 +67,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
         // Fetch related guides (same category, exclude current)
         if (foundGuide) {
-          const related = guidesData.templates
+          const related = guidesData.guides
             ?.filter((t:GuideRegistryEntry) =>
               t.category === foundGuide.category && t.id !== slug
             )

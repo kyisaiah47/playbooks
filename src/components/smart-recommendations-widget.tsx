@@ -98,9 +98,9 @@ export function SmartRecommendationsWidget({
           recs = personalizedRecs.map(rec => ({
             id: rec.guideId,
             name: rec.guideId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-            url: `/template/${rec.guideId}`,
+            url: `/guide/${rec.guideId}`,
             category: getCategoryFromTemplate(rec.guideId),
-            type: 'template',
+            type: 'guide',
             reason: rec.reason
           }))
           break
@@ -110,9 +110,9 @@ export function SmartRecommendationsWidget({
           recs = ageRecs.map(rec => ({
             id: rec.guideId,
             name: rec.guideId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-            url: `/template/${rec.guideId}`,
+            url: `/guide/${rec.guideId}`,
             category: getCategoryFromTemplate(rec.guideId),
-            type: 'template',
+            type: 'guide',
             reason: rec.reason
           }))
           break
@@ -125,9 +125,9 @@ export function SmartRecommendationsWidget({
           recs = combined.map(rec => ({
             id: rec.guideId,
             name: rec.guideId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-            url: `/template/${rec.guideId}`,
+            url: `/guide/${rec.guideId}`,
             category: getCategoryFromTemplate(rec.guideId),
-            type: 'template',
+            type: 'guide',
             reason: rec.reason
           }))
       }

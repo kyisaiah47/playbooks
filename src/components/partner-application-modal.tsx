@@ -108,7 +108,7 @@ export function PartnerApplicationModal({ children }: PartnerApplicationModalPro
     }, 3000)
   }
 
-  const isFormValid = formData.name && formData.email && formData.domain && formData.experience && formData.templatesProposed
+  const isFormValid = formData.name && formData.email && formData.domain && formData.experience && formData.guidesProposed
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -256,7 +256,7 @@ export function PartnerApplicationModal({ children }: PartnerApplicationModalPro
                 <Label htmlFor="templatesProposed">What templates would you like to create? *</Label>
                 <Textarea
                   id="templatesProposed"
-                  value={formData.templatesProposed}
+                  value={formData.guidesProposed}
                   onChange={(e) => handleInputChange("templatesProposed", e.target.value)}
                   placeholder="Describe 2-3 specific templates you'd like to contribute (e.g., '60-day wedding planning timeline', 'First-time home buyer checklist', 'Career transition roadmap')"
                   rows={4}

@@ -56,7 +56,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         setLoading(true);
         const res = await fetch('/api/guides');
         const data = await res.json();
-        const allTemplates = data.templates || [];
+        const allTemplates = data.guides || [];
 
         // Filter by category - normalize both for comparison
         const filtered = allTemplates.filter((t:GuideRegistryEntry) => {
@@ -103,10 +103,10 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   }, [category]);
 
   // Filter templates by search query
-  const filteredTemplates = useMemo(() => {
+  const filteredGuides = useMemo(() => {
     if (!searchQuery.trim()) return templates;
 
-    return templates.filter(t =>
+    return guides.filter(t =>
       t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       t.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -125,7 +125,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           >
             <Badge variant="outline" className="px-4 py-2">
               <Layout className="mr-2 h-4 w-4" />
-              {filteredTemplates.length} {filteredTemplates.length === 1 ? 'Template' : 'Templates'}
+              {filteredGuides.length} {filteredGuides.length === 1 ? 'Template' : 'Templates'}
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
@@ -166,7 +166,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             <div className="text-center py-12">
               <p className="text-muted-foreground">Loading templates...</p>
             </div>
-          ) : filteredTemplates.length === 0 ? (
+          ) : filteredGuides.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
                 {searchQuery ? 'No guides found matching your search.' : 'No templates available in this category.'}
@@ -174,7 +174,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             </div>
           ) : (
             <div className="space-y-8">
-              {filteredTemplates.map((guide) => {
+              {filteredGuides.map((guide) => {
                 const data = guideData[guide.id] || { questions: [], readings: [] };
                 const isExpanded = expandedGuides.has(guide.id);
 

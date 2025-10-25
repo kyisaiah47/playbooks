@@ -29,7 +29,7 @@ export function NavTemplateSelector({ selectedGuideId, onTemplateChange }: NavTe
       try {
         const res = await fetch('/api/guides')
         const data = await res.json()
-        setTemplates(data.templates || [])
+        setTemplates(data.guides || [])
       } catch (error) {
         console.error("Failed to load templates:", error)
       }
