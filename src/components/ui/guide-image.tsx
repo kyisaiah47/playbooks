@@ -6,7 +6,7 @@ import { useTemplateImage } from '@/hooks/use-guide-image';
 import { formatImageUrl, getImageAttribution, getImageAttributionUrl } from '@/lib/unsplash';
 
 interface TemplateImageProps {
-  templateName: string;
+  guideName: string;
   width?: number;
   height?: number;
   className?: string;
@@ -17,7 +17,7 @@ interface TemplateImageProps {
 }
 
 export function TemplateImage({
-  templateName,
+  guideName,
   width = 800,
   height = 600,
   className,
@@ -26,7 +26,7 @@ export function TemplateImage({
   quality = 95,
   fallbackSrc
 }: TemplateImageProps) {
-  const { image, loading, error } = useTemplateImage(templateName);
+  const { image, loading, error } = useTemplateImage(guideName);
 
   // Show loading state
   if (loading) {
@@ -48,7 +48,7 @@ export function TemplateImage({
     return fallbackSrc ? (
       <Image
         src={fallbackSrc}
-        alt={alt || `${templateName.replace(/-/g, ' ')} template`}
+        alt={alt || `${guideName.replace(/-/g, ' ')} template`}
         width={width}
         height={height}
         className={cn("rounded-lg object-cover", className)}
@@ -69,7 +69,7 @@ export function TemplateImage({
   }
 
   const imageUrl = formatImageUrl(image, width, height, quality);
-  const imageAlt = alt || image.alt_description || `${templateName.replace(/-/g, ' ')} template`;
+  const imageAlt = alt || image.alt_description || `${guideName.replace(/-/g, ' ')} template`;
 
   return (
     <div className={cn("relative", className)}>

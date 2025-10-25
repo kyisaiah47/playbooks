@@ -17,11 +17,11 @@ import {
 import type { TemplateRegistryEntry } from "@/registry/guides"
 
 interface NavTemplateSelectorProps {
-  selectedTemplateId: string | null;
-  onTemplateChange: (templateId: string) => void;
+  selectedGuideId: string | null;
+  onTemplateChange: (guideId: string) => void;
 }
 
-export function NavTemplateSelector({ selectedTemplateId, onTemplateChange }: NavTemplateSelectorProps) {
+export function NavTemplateSelector({ selectedGuideId, onTemplateChange }: NavTemplateSelectorProps) {
   const [templates, setTemplates] = useState<TemplateRegistryEntry[]>([])
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export function NavTemplateSelector({ selectedTemplateId, onTemplateChange }: Na
               <SidebarMenuSubItem key={template.id}>
                 <SidebarMenuSubButton
                   onClick={() => onTemplateChange(template.id)}
-                  isActive={selectedTemplateId === template.id}
+                  isActive={selectedGuideId === template.id}
                 >
                   {template.name}
                 </SidebarMenuSubButton>

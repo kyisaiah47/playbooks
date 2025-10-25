@@ -8,10 +8,10 @@ export const marketingRegistry = Object.values(marketingPageModules)
 
 // Helper function to get marketing page data by template slug
 export const getMarketingPageData = (slug: string) => {
-  return marketingRegistry.find((marketing: any) => marketing.templateId === slug) || null;
+  return marketingRegistry.find((marketing: any) => marketing.guideId === slug) || null;
 };
 
 // Helper function to get all available marketing page slugs
 export const getMarketingPageSlugs = (): string[] => {
-  return marketingRegistry.map((marketing: any) => marketing.templateId);
+  return marketingRegistry.map((marketing: any) => marketing.guideId);
 };

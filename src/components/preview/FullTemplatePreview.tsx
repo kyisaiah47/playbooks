@@ -60,7 +60,7 @@ interface FullTemplatePreviewProps {
   templateType: string;
 }
 
-const templateData = {
+const guideData = {
   "Wedding Planning": {
     icon: Heart,
     sections: [
@@ -190,7 +190,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
   const [activeSection, setActiveSection] = useState(0);
   const [selectedPrompts, setSelectedPrompts] = useState<string[]>([]);
   
-  const template = templateData[templateType as keyof typeof templateData];
+  const template = guideData[templateType as keyof typeof guideData];
   if (!template) return null;
 
   // Auto-open resource and add some prompts for preview

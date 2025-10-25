@@ -15,7 +15,7 @@ import {
 
 interface ReflectionViewProps {
   template: GuidanceTemplate;
-  onSwitchMode: (mode: 'template' | 'reflection' | 'master') => void;
+  onSwitchMode: (mode: 'guide' | 'reflection' | 'master') => void;
 }
 
 export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) {

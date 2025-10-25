@@ -90,7 +90,7 @@ export function TemplateWorkspaceEditor({
   }
 
   return (
-    <div className="template-workspace-container">
+    <div className="guide-workspace-container">
       {isEmpty && (
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
           <div className="text-center p-8">
@@ -130,7 +130,7 @@ export function TemplateWorkspaceEditor({
 
       <EditorContent
         editor={editor}
-        className="template-workspace-editor-content"
+        className="guide-workspace-editor-content"
       />
 
       <style jsx>{`

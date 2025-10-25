@@ -21,7 +21,7 @@ export interface FreeformNote {
 export interface Workspace {
   id: string;
   name: string;
-  templateId: string;
+  guideId: string;
   allItems: FreeformNote[];
   responses: Record<string, string>;
   createdAt: Date;
@@ -29,7 +29,7 @@ export interface Workspace {
 }
 
 export interface UserGuidanceDocument {
-  templateId: string;
+  guideId: string;
   userId: string;
   title: string;
   content: Record<string, unknown>; // Tiptap JSON document

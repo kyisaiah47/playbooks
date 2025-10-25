@@ -188,7 +188,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
         <div className="space-y-0 divide-y divide-border">
           {articles.map((article: any) => {
             // Get template name from relatedTemplates or fallback to category
-            const templateName = article.relatedTemplates?.[0] || article.category;
+            const guideName = article.relatedTemplates?.[0] || article.category;
 
             return (
               <Link
@@ -201,8 +201,8 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
                     {article.title}
                   </h3>
                   <div className="flex items-center gap-3 text-xs text-muted-foreground whitespace-nowrap">
-                    {templateName && (
-                      <span className="hidden sm:inline">{templateName}</span>
+                    {guideName && (
+                      <span className="hidden sm:inline">{guideName}</span>
                     )}
                     <span>{article.readTime}</span>
                   </div>

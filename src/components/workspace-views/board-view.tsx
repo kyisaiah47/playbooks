@@ -29,10 +29,10 @@ interface PromptCard {
 }
 
 interface BoardViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function BoardView({ templateId }: BoardViewProps) {
+export function BoardView({ guideId }: BoardViewProps) {
   const [prompts, setPrompts] = useState<PromptCard[]>([
     {
       id: '1',
@@ -88,9 +88,9 @@ export function BoardView({ templateId }: BoardViewProps) {
     setDialogOpen(false);
   };
 
-  const movePrompt = (promptId: string, newColumn: PromptCard['column']) => {
+  const movePrompt = (questionId: string, newColumn: PromptCard['column']) => {
     setPrompts(prompts.map(p =>
-      p.id === promptId ? { ...p, column: newColumn } : p
+      p.id === questionId ? { ...p, column: newColumn } : p
     ));
   };
 

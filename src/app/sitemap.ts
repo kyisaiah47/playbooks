@@ -44,14 +44,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch all templates to get categories dynamically
-    const { data: templates } = await supabase
+    // Fetch all guides to get categories dynamically
+    const { data: guides } = await supabase
       .from('guides')
       .select('id, category, created_at')
       .order('created_at', { ascending: false });
 
     // Get unique categories and generate category pages dynamically
-    const uniqueCategories = [...new Set((templates || []).map(t => t.category))];
+    const uniqueCategories = [...new Set((guides || []).map(t => t.category))];
     const categoryPages: MetadataRoute.Sitemap = uniqueCategories.map((category) => ({
       url: `${baseUrl}/guides/categories/${category.toLowerCase().replace(/\s+&?\s*/g, '-')}`,
       lastModified: new Date(),
@@ -59,37 +59,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.85,
     }));
 
-    // Fetch all article slugs
-    const { data: articles } = await supabase
+    // Fetch all reading slugs
+    const { data: readings } = await supabase
       .from('readings')
       .select('slug, created_at')
       .order('created_at', { ascending: false });
 
-    // Generate template pages
-    const templatePages: MetadataRoute.Sitemap = (templates || []).flatMap((template) => [
+    // Generate guide pages
+    const guidePages: MetadataRoute.Sitemap = (guides || []).flatMap((guide) => [
       {
-        url: `${baseUrl}/guides/${template.id}`,
-        lastModified: new Date(template.created_at),
+        url: `${baseUrl}/guides/${guide.id}`,
+        lastModified: new Date(guide.created_at),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/guides/${template.id}/marketing`,
-        lastModified: new Date(template.created_at),
+        url: `${baseUrl}/guides/${guide.id}/marketing`,
+        lastModified: new Date(guide.created_at),
         changeFrequency: 'weekly' as const,
         priority: 0.7,
       },
     ]);
 
-    // Generate article pages
-    const articlePages: MetadataRoute.Sitemap = (articles || []).map((article) => ({
-      url: `${baseUrl}/readings/${article.slug}`,
-      lastModified: new Date(article.created_at),
+    // Generate reading pages
+    const readingPages: MetadataRoute.Sitemap = (readings || []).map((reading) => ({
+      url: `${baseUrl}/readings/${reading.slug}`,
+      lastModified: new Date(reading.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     }));
 
-    return [...staticPages, ...categoryPages, ...templatePages, ...articlePages];
+    return [...staticPages, ...categoryPages, ...guidePages, ...readingPages];
   } catch (error) {
     console.error('Error generating sitemap:', error);
     // Return just static pages if database fetch fails

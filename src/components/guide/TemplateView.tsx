@@ -30,7 +30,7 @@ const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/sim
 
 interface TemplateViewProps {
   template: GuidanceTemplate;
-  onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void;
+  onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void;
 }
 
 export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
@@ -48,7 +48,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     {
       id: 'default',
       name: 'Main Workspace',
-      templateId: template.id,
+      guideId: template.id,
       allItems: [],
       responses: {},
       createdAt: new Date(),
@@ -67,7 +67,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
         completedItems: Array.from(completedItems),
         lastSaved: new Date().toISOString()
       };
-      localStorage.setItem(`template-${template.id}`, JSON.stringify(saveData));
+      localStorage.setItem(`guide-${template.id}`, JSON.stringify(saveData));
       console.log('[Auto-save] Workspace saved to localStorage');
     }, 30000); // Save every 30 seconds
 
@@ -76,7 +76,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const savedData = localStorage.getItem(`template-${template.id}`);
+    const savedData = localStorage.getItem(`guide-${template.id}`);
     if (savedData) {
       try {
         const parsed = JSON.parse(savedData);
@@ -118,8 +118,8 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     ));
   };
 
-  const handleRemovePrompt = (promptId: string) => {
-    const newItems = allItems.filter(item => item.id !== promptId);
+  const handleRemovePrompt = (questionId: string) => {
+    const newItems = allItems.filter(item => item.id !== questionId);
     setAllItems(newItems);
 
     // Update current workspace
@@ -229,7 +229,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     const newWorkspace: Workspace = {
       id: `workspace-${Date.now()}`,
       name: `Workspace ${workspaces.length}`,
-      templateId: template.id,
+      guideId: template.id,
       allItems: [],
       responses: {},
       createdAt: new Date(),
@@ -296,14 +296,14 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="sm" className="flex items-center gap-2">
                       <Layout className="h-4 w-4" />
-                      <span className="hidden sm:inline">Template Workspace</span>
+                      <span className="hidden sm:inline">Guide Workspace</span>
                       <ChevronDown className="h-3 w-3" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem onClick={() => onSwitchMode?.('template')} className="flex items-center gap-2">
+                    <DropdownMenuItem onClick(() => onSwitchMode?.('guide')} className="flex items-center gap-2">
                       <Layout className="h-4 w-4" />
-                      <span>Template Workspace</span>
+                      <span>Guide Workspace</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => onSwitchMode?.('reflection')} className="flex items-center gap-2">
                       <Moon className="h-4 w-4" />
@@ -329,7 +329,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
               }>
                 <SimpleEditor
                   content=""
-                  templateId={template.id}
+                  guideId={template.id}
                   onUpdate={(content) => {
                   }}
                 />

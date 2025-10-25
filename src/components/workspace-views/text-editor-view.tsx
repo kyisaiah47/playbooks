@@ -8,10 +8,10 @@ import {
 import { IconFileText } from '@tabler/icons-react';
 
 interface TextEditorViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function TextEditorView({ templateId }: TextEditorViewProps) {
+export function TextEditorView({ guideId }: TextEditorViewProps) {
   const [initialContent] = useState({
     type: 'doc',
     content: [
@@ -27,7 +27,7 @@ export function TextEditorView({ templateId }: TextEditorViewProps) {
     ],
   });
 
-  if (!templateId) {
+  if (!guideId) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">

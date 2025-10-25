@@ -3,7 +3,7 @@
 // Lightweight collaboration system
 export interface ShareableTemplate {
   id: string
-  templateId: string
+  guideId: string
   title: string
   description: string
   createdBy: string
@@ -34,7 +34,7 @@ export interface Collaborator {
 export interface Comment {
   id: string
   sectionId: string
-  promptId?: string
+  questionId?: string
   text: string
   author: Collaborator
   createdAt: string
@@ -43,14 +43,14 @@ export interface Comment {
 }
 
 // Generate shareable link for a template
-export function generateShareableLink(templateId: string, shareId: string): string {
+export function generateShareableLink(guideId: string, shareId: string): string {
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://templata.org"
-  return `${baseUrl}/shared/${templateId}/${shareId}`
+  return `${baseUrl}/shared/${guideId}/${shareId}`
 }
 
 // Create a shareable template (mock implementation)
 export function createShareableTemplate(
-  templateId: string,
+  guideId: string,
   title: string,
   responses: Record<string, string>,
   permissions: Partial<SharePermissions> = {}
@@ -66,7 +66,7 @@ export function createShareableTemplate(
 
   return {
     id: shareId,
-    templateId,
+    guideId,
     title: title || `Shared Template - ${new Date().toLocaleDateString()}`,
     description: "Shared template with responses and collaboration",
     createdBy: "current-user", // In real app, get from auth
@@ -92,7 +92,7 @@ export async function shareTemplate(
   shareableTemplate: ShareableTemplate,
   method: "link" | "email" | "social"
 ): Promise<{ success: boolean; shareUrl?: string; message?: string }> {
-  const shareUrl = generateShareableLink(shareableTemplate.templateId, shareableTemplate.id)
+  const shareUrl = generateShareableLink(shareableTemplate.guideId, shareableTemplate.id)
 
   try {
     switch (method) {
@@ -154,12 +154,12 @@ export function addComment(
   template: ShareableTemplate,
   sectionId: string,
   text: string,
-  promptId?: string
+  questionId?: string
 ): Comment {
   const comment: Comment = {
     id: Math.random().toString(36).substr(2, 9),
     sectionId,
-    promptId,
+    questionId,
     text,
     author: template.collaborators[0], // Current user
     createdAt: new Date().toISOString(),
@@ -195,7 +195,7 @@ export function getRecentCollaborations(userId: string, limit: number = 5): Shar
   const mockCollaborations: ShareableTemplate[] = [
     {
       id: "share-1",
-      templateId: "wedding-planning",
+      guideId: "wedding-planning",
       title: "Sarah & Mike's Wedding Plan",
       description: "Wedding planning template with budget and vendor details",
       createdBy: userId,

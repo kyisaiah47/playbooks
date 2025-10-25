@@ -33,9 +33,9 @@ export interface UserProfile {
 // Hook return interface
 export interface UseKnowledgeGraphReturn {
   // Template relationships
-  getTemplateRelationships: (templateId: string) => TemplateRelationships;
-  getRelatedTemplates: (templateId: string, limit?: number) => Array<{
-    templateId: string;
+  getTemplateRelationships: (guideId: string) => TemplateRelationships;
+  getRelatedTemplates: (guideId: string, limit?: number) => Array<{
+    guideId: string;
     strength: number;
     reason: string;
     level: 'critical' | 'strong' | 'medium';
@@ -46,13 +46,13 @@ export interface UseKnowledgeGraphReturn {
   getAgeAppropriateTemplates: (age: number, limit?: number) => UserRecommendation[];
 
   // Conflict detection
-  getConflictingTemplates: (templateIds: string[]) => Array<{
+  getConflictingTemplates: (guideIds: string[]) => Array<{
     template1: string;
     template2: string;
     reason: string;
     resolution: string;
   }>;
-  checkTemplateConflicts: (templateId: string, activeTemplates: string[]) => Array<{
+  checkTemplateConflicts: (guideId: string, activeTemplates: string[]) => Array<{
     conflictingTemplate: string;
     reason: string;
     resolution: string;
@@ -60,8 +60,8 @@ export interface UseKnowledgeGraphReturn {
   }>;
 
   // Analysis and insights
-  generateAnalysisReport: (templateId: string) => AnalysisReport | null;
-  getTemplateCluster: (templateId: string) => {
+  generateAnalysisReport: (guideId: string) => AnalysisReport | null;
+  getTemplateCluster: (guideId: string) => {
     semantic?: string;
     micro?: string;
     theme?: string;
@@ -73,14 +73,14 @@ export interface UseKnowledgeGraphReturn {
   getLifeStageRecommendations: (lifeStage: string, limit?: number) => UserRecommendation[];
 
   // Utility functions
-  isTemplateRecommended: (templateId: string, userProfile: UserProfile) => boolean;
+  isTemplateRecommended: (guideId: string, userProfile: UserProfile) => boolean;
   getTemplateStrength: (template1: string, template2: string) => number;
 
   // Article and prompt recommendations
   getRelatedArticles: (articleId: string, limit?: number) => ArticleConnection[];
-  getArticlesForTemplate: (templateId: string, limit?: number) => ArticleConnection[];
-  getRelatedPrompts: (promptId: string, limit?: number) => PromptConnection[];
-  getPromptsForTemplate: (templateId: string, limit?: number) => PromptConnection[];
+  getArticlesForTemplate: (guideId: string, limit?: number) => ArticleConnection[];
+  getRelatedPrompts: (questionId: string, limit?: number) => PromptConnection[];
+  getPromptsForTemplate: (guideId: string, limit?: number) => PromptConnection[];
   getCrossRecommendations: (contentType: 'template' | 'article' | 'prompt', contentId: string) => CrossConnection[];
 }
 
@@ -93,14 +93,14 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [error]);
 
   // Get template relationships with error handling
-  const getTemplateRelationshipsSafe = useCallback((templateId: string): TemplateRelationships => {
+  const getTemplateRelationshipsSafe = useCallback((guideId: string): TemplateRelationships => {
     try {
       clearError();
-      return knowledgeGraph.getTemplateRelationships(templateId);
+      return knowledgeGraph.getTemplateRelationships(guideId);
     } catch (err) {
-      setError(`Failed to get relationships for ${templateId}`);
+      setError(`Failed to get relationships for ${guideId}`);
       return {
-        templateId,
+        guideId,
         semantic_cluster: null,
         micro_cluster: null,
         weighted_connections: [],
@@ -111,12 +111,12 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   // Get related templates with memoization
-  const getRelatedTemplatesMemo = useCallback((templateId: string, limit = 5) => {
+  const getRelatedTemplatesMemo = useCallback((guideId: string, limit = 5) => {
     try {
       clearError();
-      return getRelatedTemplates(templateId, limit);
+      return getRelatedTemplates(guideId, limit);
     } catch (err) {
-      setError(`Failed to get related templates for ${templateId}`);
+      setError(`Failed to get related templates for ${guideId}`);
       return [];
     }
   }, [clearError]);
@@ -145,10 +145,10 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   // Get conflicting templates
-  const getConflictingTemplatesMemo = useCallback((templateIds: string[]) => {
+  const getConflictingTemplatesMemo = useCallback((guideIds: string[]) => {
     try {
       clearError();
-      return getConflictingTemplates(templateIds);
+      return getConflictingTemplates(guideIds);
     } catch (err) {
       setError('Failed to get conflicting templates');
       return [];
@@ -156,10 +156,10 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   // Check template conflicts with severity assessment
-  const checkTemplateConflicts = useCallback((templateId: string, activeTemplates: string[]) => {
+  const checkTemplateConflicts = useCallback((guideId: string, activeTemplates: string[]) => {
     try {
       clearError();
-      const relationships = knowledgeGraph.getTemplateRelationships(templateId);
+      const relationships = knowledgeGraph.getTemplateRelationships(guideId);
 
       return relationships.negative_connections
         .filter(conflict => activeTemplates.includes(conflict.conflicting_template))
@@ -177,21 +177,21 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   // Generate analysis report
-  const generateAnalysisReportSafe = useCallback((templateId: string): AnalysisReport | null => {
+  const generateAnalysisReportSafe = useCallback((guideId: string): AnalysisReport | null => {
     try {
       clearError();
-      return knowledgeGraph.generateAnalysisReport(templateId);
+      return knowledgeGraph.generateAnalysisReport(guideId);
     } catch (err) {
-      setError(`Failed to generate analysis for ${templateId}`);
+      setError(`Failed to generate analysis for ${guideId}`);
       return null;
     }
   }, [clearError]);
 
   // Get template cluster information
-  const getTemplateCluster = useCallback((templateId: string) => {
+  const getTemplateCluster = useCallback((guideId: string) => {
     try {
       clearError();
-      const relationships = knowledgeGraph.getTemplateRelationships(templateId);
+      const relationships = knowledgeGraph.getTemplateRelationships(guideId);
 
       return {
         semantic: relationships.semantic_cluster?.name,
@@ -240,11 +240,11 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   // Check if template is recommended for user
-  const isTemplateRecommended = useCallback((templateId: string, userProfile: UserProfile): boolean => {
+  const isTemplateRecommended = useCallback((guideId: string, userProfile: UserProfile): boolean => {
     try {
       clearError();
       const recommendations = getPersonalizedRecommendations(userProfile);
-      return recommendations.some(rec => rec.templateId === templateId && rec.priority === 'high');
+      return recommendations.some(rec => rec.guideId === guideId && rec.priority === 'high');
     } catch (err) {
       return false;
     }
@@ -255,7 +255,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     try {
       clearError();
       const relationships = knowledgeGraph.getTemplateRelationships(template1);
-      const connection = relationships.weighted_connections.find(conn => conn.templateId === template2);
+      const connection = relationships.weighted_connections.find(conn => conn.guideId === template2);
       return connection?.strength || 0;
     } catch (err) {
       return 0;
@@ -312,13 +312,13 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
 // Specialized hooks for common use cases
 
 // Hook for template selection pages
-export function useTemplateRecommendations(templateId: string, userProfile: UserProfile) {
+export function useTemplateRecommendations(guideId: string, userProfile: UserProfile) {
   const kg = useKnowledgeGraph();
 
   return useMemo(() => {
-    const related = kg.getRelatedTemplates(templateId, 4);
-    const conflicts = kg.checkTemplateConflicts(templateId, userProfile.currentTemplates || []);
-    const cluster = kg.getTemplateCluster(templateId);
+    const related = kg.getRelatedTemplates(guideId, 4);
+    const conflicts = kg.checkTemplateConflicts(guideId, userProfile.currentTemplates || []);
+    const cluster = kg.getTemplateCluster(guideId);
 
     return {
       relatedTemplates: related,
@@ -327,7 +327,7 @@ export function useTemplateRecommendations(templateId: string, userProfile: User
       hasConflicts: conflicts.length > 0,
       highSeverityConflicts: conflicts.filter(c => c.severity === 'high')
     };
-  }, [kg, templateId, userProfile]);
+  }, [kg, guideId, userProfile]);
 }
 
 // Hook for dashboard/workspace pages
@@ -351,16 +351,16 @@ export function useUserRecommendations(userProfile: UserProfile) {
 }
 
 // Hook for multi-template workspaces
-export function useMultiTemplateIntelligence(activeTemplateIds: string[], userProfile: UserProfile) {
+export function useMultiTemplateIntelligence(activeGuideIds: string[], userProfile: UserProfile) {
   const kg = useKnowledgeGraph();
 
   return useMemo(() => {
-    const allConflicts = kg.getConflictingTemplates(activeTemplateIds);
+    const allConflicts = kg.getConflictingTemplates(activeGuideIds);
     const synergies: Array<{template1: string, template2: string, strength: number}> = [];
 
     // Find synergistic connections between active templates
-    activeTemplateIds.forEach((template1, i) => {
-      activeTemplateIds.slice(i + 1).forEach(template2 => {
+    activeGuideIds.forEach((template1, i) => {
+      activeGuideIds.slice(i + 1).forEach(template2 => {
         const strength = kg.getTemplateStrength(template1, template2);
         if (strength >= 70) { // Strong synergy threshold
           synergies.push({ template1, template2, strength });
@@ -376,5 +376,5 @@ export function useMultiTemplateIntelligence(activeTemplateIds: string[], userPr
       overallHealth: allConflicts.length === 0 ? 'healthy' :
                    allConflicts.length <= 2 ? 'caution' : 'problematic'
     };
-  }, [kg, activeTemplateIds, userProfile]);
+  }, [kg, activeGuideIds, userProfile]);
 }

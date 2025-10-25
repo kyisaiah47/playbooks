@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Brain } from "lucide-react"
 
 interface RelatedTemplatesProps {
-  templateId: string
+  guideId: string
   className?: string
   showReasoning?: boolean
   limit?: number
@@ -67,7 +67,7 @@ function TemplateCard({ template, strength, reason, level, showReasoning, onNavi
 }
 
 export function RelatedTemplates({
-  templateId,
+  guideId,
   className,
   showReasoning = true,
   limit = 4
@@ -79,12 +79,12 @@ export function RelatedTemplates({
   const { getRelatedTemplates } = useKnowledgeGraph()
 
   // Get knowledge graph relationships
-  const knowledgeRelations = getRelatedTemplates(templateId, limit)
+  const knowledgeRelations = getRelatedTemplates(guideId, limit)
 
   // Map knowledge graph results to template registry entries
   const relatedTemplates = knowledgeRelations
     .map(relation => {
-      const template = templateRegistry.find(t => t.id === relation.templateId)
+      const template = templateRegistry.find(t => t.id === relation.guideId)
       if (!template) return null
 
       return {

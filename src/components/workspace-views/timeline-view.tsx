@@ -19,7 +19,7 @@ import { IconTimeline } from '@tabler/icons-react';
 import { addDays } from 'date-fns';
 
 interface TimelineViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
 const statuses: GanttStatus[] = [
@@ -28,7 +28,7 @@ const statuses: GanttStatus[] = [
   { id: '3', name: 'Completed', color: '#34d399' },
 ];
 
-export function TimelineView({ templateId }: TimelineViewProps) {
+export function TimelineView({ guideId }: TimelineViewProps) {
   const today = new Date();
 
   // Mock prompts with timeline data
@@ -82,7 +82,7 @@ export function TimelineView({ templateId }: TimelineViewProps) {
     // Handle feature move
   };
 
-  if (!templateId) {
+  if (!guideId) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">

@@ -20,10 +20,10 @@ interface Category {
 }
 
 interface SplitViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function SplitView({ templateId }: SplitViewProps) {
+export function SplitView({ guideId }: SplitViewProps) {
   const [selectedPrompt, setSelectedPrompt] = useState<Prompt | null>(null);
   const [responses, setResponses] = useState<Record<string, string>>({});
   const [searchQuery, setSearchQuery] = useState('');

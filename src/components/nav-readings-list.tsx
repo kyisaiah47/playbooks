@@ -16,19 +16,19 @@ import {
 } from "@/components/ui/sidebar"
 
 interface NavReadingsListProps {
-  templateId: string | null;
+  guideId: string | null;
   onArticleSelect?: (article: any) => void;
 }
 
-export function NavReadingsList({ templateId, onArticleSelect }: NavReadingsListProps) {
+export function NavReadingsList({ guideId, onArticleSelect }: NavReadingsListProps) {
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (templateId) {
+    if (guideId) {
       setLoading(true);
       setArticles([]); // Clear old articles first
-      fetch(`/api/readings?templateId=${templateId}`)
+      fetch(`/api/readings?guideId=${guideId}`)
         .then(res => res.json())
         .then(data => {
           setArticles(data.articles || []);
@@ -41,9 +41,9 @@ export function NavReadingsList({ templateId, onArticleSelect }: NavReadingsList
     } else {
       setArticles([]);
     }
-  }, [templateId]);
+  }, [guideId]);
 
-  if (!templateId) {
+  if (!guideId) {
     return null;
   }
 

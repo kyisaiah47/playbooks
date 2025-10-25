@@ -241,7 +241,7 @@ interface GuideHeaderProps {
   guideIcon?: string | null;
   coverImage?: string | null;
   progress?: number;
-  templateName?: string | null; // The template this is based on
+  baseGuideName?: string | null; // The template this is based on
   onNameChange?: (name: string) => void;
   onIconChange?: (icon: string) => void;
   onCoverChange?: (coverUrl: string) => void;
@@ -322,7 +322,7 @@ export function GuideHeader({
   guideIcon,
   coverImage,
   progress = 0,
-  templateName,
+  baseGuideName,
   onNameChange,
   onIconChange,
   onCoverChange,
@@ -474,9 +474,9 @@ export function GuideHeader({
               </h1>
             )}
 
-            {templateName && (
+            {baseGuideName && (
               <p className="text-xs text-muted-foreground">
-                Based on {templateName}
+                Based on {baseGuideName}
               </p>
             )}
 

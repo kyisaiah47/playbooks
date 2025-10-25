@@ -84,7 +84,7 @@ const FEATURED_HEALTH_IDS = [
   'health-wellness',
 ];
 
-const FEATURED_TEMPLATE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS, ...FEATURED_HEALTH_IDS];
+const FEATURED_GUIDE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS, ...FEATURED_HEALTH_IDS];
 
 interface TemplatesViewProps {
   onViewChange?: (view: 'templates' | 'reflection' | 'overview') => void;
@@ -95,17 +95,17 @@ interface TemplatesViewProps {
   }) => void;
   workspaceId?: string;
   userGuideId?: string;
-  defaultTemplateId?: string;
+  defaultGuideId?: string;
 }
 
-export function TemplatesView({ onViewChange, setActions, workspaceId, userGuideId, defaultTemplateId }: TemplatesViewProps) {
-  const [selectedTemplate, setSelectedTemplate] = useState(defaultTemplateId || 'wedding-planning');
+export function TemplatesView({ onViewChange, setActions, workspaceId, userGuideId, defaultGuideId }: TemplatesViewProps) {
+  const [selectedGuide, setSelectedGuide] = useState(defaultGuideId || 'wedding-planning');
   const [templates, setTemplates] = useState<Template[]>([]);
   const [displayedTemplates, setDisplayedTemplates] = useState<Template[]>([]);
-  const [templateInfo, setTemplateInfo] = useState<{ id: string; name: string } | null>(null);
+  const [guideInfo, setGuideInfo] = useState<{ id: string; name: string } | null>(null);
   const [prompts, setPrompts] = useState<Prompt[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
-  const [selectedPromptId, setSelectedPromptId] = useState<string | null>(null);
+  const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(null);
   const [promptResponse, setPromptResponse] = useState('');
   const [loading, setLoading] = useState(true);
   const [autoSave, setAutoSave] = useState(true);
@@ -117,7 +117,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   const [hasMoreTemplates, setHasMoreTemplates] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [promptSearchQuery, setPromptSearchQuery] = useState('');
-  const [articleSearchQuery, setArticleSearchQuery] = useState('');
+  const [readingSearchQuery, setReadingSearchQuery] = useState('');
   const [articleContentSearchQuery, setReadingContentSearchQuery] = useState('');
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
@@ -165,7 +165,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
             // Select first prompt
             const firstPrompt = groupedPrompts[firstCategory][0];
             if (firstPrompt) {
-              setSelectedPromptId(firstPrompt.id);
+              setSelectedQuestionId(firstPrompt.id);
             }
           }
         },
@@ -217,7 +217,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
 
   // Load data from Supabase (auth) or localStorage (anonymous)
   useEffect(() => {
-    if (selectedPromptId && selectedTemplate && isAuthenticated !== null) {
+    if (selectedQuestionId && selectedGuide && isAuthenticated !== null) {
       loadResponse();
     }
 
@@ -226,7 +226,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         if (isAuthenticated) {
           // Load from Supabase
           const params = new URLSearchParams({
-            templateId: selectedTemplate,
+            guideId: selectedGuide,
           });
 
           // If we have a userGuideId, include it for filtering
@@ -240,7 +240,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           if (data.responses) {
             const response = data.responses.find(
               (r: any) =>
-                r.template_id === selectedTemplate && r.prompt_id === selectedPromptId
+                r.guide_id === selectedGuide && r.question_id === selectedQuestionId
             );
 
             if (response) {
@@ -253,7 +253,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           }
         } else {
           // Load from localStorage
-          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {
@@ -276,19 +276,19 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         setLastSaved(null);
       }
     }
-  }, [selectedPromptId, selectedTemplate, isAuthenticated, userGuideId]);
+  }, [selectedQuestionId, selectedGuide, isAuthenticated, userGuideId]);
 
   // Autosave functionality - save to Supabase or localStorage
   useEffect(() => {
-    if (!autoSave || !selectedPromptId || !selectedTemplate || isAuthenticated === null) return;
+    if (!autoSave || !selectedQuestionId || !selectedGuide || isAuthenticated === null) return;
 
     const timeoutId = setTimeout(async () => {
       try {
         if (isAuthenticated) {
           // Save to Supabase
           const body: any = {
-            templateId: selectedTemplate,
-            promptId: selectedPromptId,
+            guideId: selectedGuide,
+            questionId: selectedQuestionId,
             response: promptResponse,
           };
 
@@ -305,7 +305,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           setLastSaved(new Date());
         } else {
           // Save to localStorage
-          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const data = {
             response: promptResponse,
             savedAt: new Date().toISOString(),
@@ -319,7 +319,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
     }, 2000);
 
     return () => clearTimeout(timeoutId);
-  }, [promptResponse, autoSave, selectedPromptId, selectedTemplate, isAuthenticated, userGuideId]);
+  }, [promptResponse, autoSave, selectedQuestionId, selectedGuide, isAuthenticated, userGuideId]);
 
   // Fetch templates list
   useEffect(() => {
@@ -376,7 +376,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
     ? templates.filter(t => FEATURED_HEALTH_IDS.includes(t.id))
     : [];
   const regularTemplates = showFeatured
-    ? filteredTemplates.filter(t => !FEATURED_TEMPLATE_IDS.includes(t.id))
+    ? filteredTemplates.filter(t => !FEATURED_GUIDE_IDS.includes(t.id))
     : filteredTemplates;
 
   // Fetch prompts and articles when template changes
@@ -385,13 +385,13 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       try {
         setLoading(true);
 
-        const template = templates.find(t => t.id === selectedTemplate);
+        const template = templates.find(t => t.id === selectedGuide);
         if (template) {
-          setTemplateInfo({ id: template.id, name: template.name });
+          setGuideInfo({ id: template.id, name: template.name });
         }
 
-        const promptsRes = await fetch(`/api/prompts?templateId=${selectedTemplate}`);
-        const promptsData = await promptsRes.json();
+        const questionsRes = await fetch(`/api/prompts?guideId=${selectedGuide}`);
+        const promptsData = await questionsRes.json();
         const fetchedPrompts = promptsData.prompts || [];
         setPrompts(fetchedPrompts);
 
@@ -407,8 +407,8 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         const allCategories = Object.keys(groupedPrompts);
         setCollapsedCategories(new Set(allCategories));
 
-        const articlesRes = await fetch(`/api/readings?template=${selectedTemplate}&pageSize=50`);
-        const articlesData = await articlesRes.json();
+        const readingsRes = await fetch(`/api/readings?template=${selectedGuide}&pageSize=50`);
+        const articlesData = await readingsRes.json();
         setArticles(articlesData.articles || []);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -420,7 +420,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
     if (templates.length > 0) {
       fetchData();
     }
-  }, [selectedTemplate, templates]);
+  }, [selectedGuide, templates]);
 
   // Check which prompts have been answered
   useEffect(() => {
@@ -433,7 +433,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         // Check API responses
         try {
           const params = new URLSearchParams({
-            templateId: selectedTemplate,
+            guideId: selectedGuide,
           });
 
           // If we have a userGuideId, include it for filtering
@@ -446,7 +446,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           if (data.responses) {
             data.responses.forEach((r: any) => {
               if (r.response && r.response.trim().length > 0) {
-                answered.add(r.prompt_id);
+                answered.add(r.question_id);
               }
             });
           }
@@ -456,7 +456,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       } else {
         // Check localStorage
         prompts.forEach((prompt) => {
-          const key = `workspace_${selectedTemplate}_${prompt.id}`;
+          const key = `workspace_${selectedGuide}_${prompt.id}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {
@@ -472,19 +472,19 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       }
 
       // Optimistically show checkmark for current prompt if it has content
-      if (selectedPromptId && promptResponse.trim().length > 0) {
-        answered.add(selectedPromptId);
+      if (selectedQuestionId && promptResponse.trim().length > 0) {
+        answered.add(selectedQuestionId);
       }
 
       setAnsweredPrompts(answered);
     }
 
     checkAnsweredPrompts();
-  }, [selectedTemplate, prompts, isAuthenticated, lastSaved, selectedPromptId, promptResponse, userGuideId]);
+  }, [selectedGuide, prompts, isAuthenticated, lastSaved, selectedQuestionId, promptResponse, userGuideId]);
 
-  const handleTemplateChange = (newTemplateId: string) => {
-    setSelectedTemplate(newTemplateId);
-    setSelectedPromptId(null);
+  const handleTemplateChange = (newGuideId: string) => {
+    setSelectedGuide(newGuideId);
+    setSelectedQuestionId(null);
     setPromptResponse('');
     setSearchQuery('');
     setOpen(false);
@@ -522,13 +522,13 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   };
 
   const handleManualSave = async () => {
-    if (selectedPromptId && selectedTemplate) {
+    if (selectedQuestionId && selectedGuide) {
       try {
         if (isAuthenticated) {
           // Save to Supabase
           const body: any = {
-            templateId: selectedTemplate,
-            promptId: selectedPromptId,
+            guideId: selectedGuide,
+            questionId: selectedQuestionId,
             response: promptResponse,
           };
 
@@ -545,7 +545,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           setLastSaved(new Date());
         } else {
           // Save to localStorage
-          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const data = {
             response: promptResponse,
             savedAt: new Date().toISOString(),
@@ -577,7 +577,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   }, {} as Record<string, Prompt[]>);
 
   const categories = Object.keys(groupedPrompts).sort();
-  const selectedPrompt = prompts.find(p => p.id === selectedPromptId);
+  const selectedPrompt = prompts.find(p => p.id === selectedQuestionId);
 
   // Auto-expand all categories when filtering
   useEffect(() => {
@@ -596,10 +596,10 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   }, [promptSearchQuery, prompts]);
 
   // Filter articles based on search query
-  const filteredArticles = articleSearchQuery.trim()
+  const filteredArticles = readingSearchQuery.trim()
     ? articles.filter(a =>
-        a.title.toLowerCase().includes(articleSearchQuery.toLowerCase()) ||
-        a.excerpt.toLowerCase().includes(articleSearchQuery.toLowerCase())
+        a.title.toLowerCase().includes(readingSearchQuery.toLowerCase()) ||
+        a.excerpt.toLowerCase().includes(readingSearchQuery.toLowerCase())
       )
     : articles;
 
@@ -631,11 +631,11 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       {/* Guide Header - Only show in workspace context */}
       {userGuideId && userGuide && (
         <GuideHeader
-          guideName={userGuide.custom_name || userGuide.guides?.name || templateInfo?.name || 'Guide'}
+          guideName={userGuide.custom_name || userGuide.guides?.name || guideInfo?.name || 'Guide'}
           guideIcon={userGuide.custom_icon || userGuide.guides?.icon}
           coverImage={userGuide.custom_cover_image}
           progress={userGuide.progress || 0}
-          templateName={templateInfo?.name}
+          guideName={guideInfo?.name}
           onNameChange={async (newName) => {
             try {
               const res = await fetch(`/api/user-guides/${userGuideId}`, {
@@ -752,9 +752,9 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.2, delay: index * 0.03 }}
-                              onClick={() => setSelectedPromptId(prompt.id)}
+                              onClick={() => setSelectedQuestionId(prompt.id)}
                               className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
-                                selectedPromptId === prompt.id
+                                selectedQuestionId === prompt.id
                                   ? 'bg-primary/10 text-primary border border-primary/20'
                                   : 'bg-muted/50 text-foreground hover:bg-muted'
                               }`}
@@ -781,7 +781,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
             <AnimatePresence mode="wait">
               {selectedPrompt ? (
                 <motion.div
-                  key={selectedPromptId}
+                  key={selectedQuestionId}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -920,8 +920,8 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                     <Input
                       type="text"
                       placeholder="Filter articles..."
-                      value={articleSearchQuery}
-                      onChange={(e) => setArticleSearchQuery(e.target.value)}
+                      value={readingSearchQuery}
+                      onChange={(e) => setReadingSearchQuery(e.target.value)}
                       className="h-8 text-sm mb-2"
                     />
                     <p className="text-xs text-muted-foreground">
@@ -933,7 +933,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                     <p className="text-sm text-muted-foreground">Loading articles...</p>
                   ) : filteredArticles.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
-                      {articleSearchQuery.trim() ? 'No articles match your search' : 'No articles available'}
+                      {readingSearchQuery.trim() ? 'No articles match your search' : 'No articles available'}
                     </p>
                   ) : (
                     <div className="space-y-3">
@@ -1090,11 +1090,11 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                                 <button
                                   key={prompt.id}
                                   onClick={() => {
-                                    setSelectedPromptId(prompt.id);
+                                    setSelectedQuestionId(prompt.id);
                                     setMobileDrawerOpen(false);
                                   }}
                                   className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
-                                    selectedPromptId === prompt.id
+                                    selectedQuestionId === prompt.id
                                       ? 'bg-primary/10 text-primary border border-primary/20'
                                       : 'bg-muted/50 text-foreground hover:bg-muted'
                                   }`}
@@ -1120,15 +1120,15 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                 <Input
                   type="text"
                   placeholder="Filter articles..."
-                  value={articleSearchQuery}
-                  onChange={(e) => setArticleSearchQuery(e.target.value)}
+                  value={readingSearchQuery}
+                  onChange={(e) => setReadingSearchQuery(e.target.value)}
                   className="h-8 text-sm -mt-2"
                 />
                 {loading ? (
                   <p className="text-sm text-muted-foreground">Loading articles...</p>
                 ) : filteredArticles.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    {articleSearchQuery.trim() ? 'No articles match your search' : 'No articles available for this template yet.'}
+                    {readingSearchQuery.trim() ? 'No articles match your search' : 'No articles available for this template yet.'}
                   </p>
                 ) : (
                   <div className="space-y-2">

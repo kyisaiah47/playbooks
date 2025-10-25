@@ -65,13 +65,13 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         }
 
         // Fetch prompts
-        const promptsRes = await fetch(`/api/prompts?templateId=${slug}`);
-        const promptsData = await promptsRes.json();
+        const questionsRes = await fetch(`/api/prompts?guideId=${slug}`);
+        const promptsData = await questionsRes.json();
         setPrompts(promptsData.prompts || []);
 
         // Fetch articles for this template (server-side filtering)
-        const articlesRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
-        const articlesData = await articlesRes.json();
+        const readingsRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
+        const articlesData = await readingsRes.json();
         setArticles(articlesData.articles || []);
       } catch (error) {
         console.error('Error fetching template data:', error);
@@ -105,7 +105,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     );
   }
 
-  const templateData = template.template;
+  const guideData = template.template;
 
   const toggleCategory = (category: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -137,13 +137,13 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       {
         '@type': 'ListItem',
         position: 3,
-        name: templateData.category,
-        item: `https://templata.org/guides?category=${encodeURIComponent(templateData.category)}`
+        name: guideData.category,
+        item: `https://templata.org/guides?category=${encodeURIComponent(guideData.category)}`
       },
       {
         '@type': 'ListItem',
         position: 4,
-        name: templateData.title,
+        name: guideData.title,
         item: `https://templata.org/guides/${slug}/marketing`
       }
     ]
@@ -152,13 +152,13 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `How to Use the ${templateData.title} Template`,
-    description: `Complete guide to using Templata's ${templateData.title} template with AI-powered prompts and articles`,
+    name: `How to Use the ${guideData.title} Template`,
+    description: `Complete guide to using Templata's ${guideData.title} template with AI-powered prompts and articles`,
     step: [
       {
         '@type': 'HowToStep',
         position: 1,
-        name: 'Start with Template Workspace',
+        name: 'Start with Guide Workspace',
         text: 'Begin with our split-screen guided experience. Answer prompts on the left while reading contextual articles on the right. Learn the structure of effective planning.',
         itemListElement: [
           {
@@ -214,8 +214,8 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: `${templateData.title} - Complete Planning Template`,
-    description: templateData.description,
+    headline: `${guideData.title} - Complete Planning Template`,
+    description: guideData.description,
     author: {
       '@type': 'Organization',
       name: 'Templata',
@@ -235,20 +235,20 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     },
     datePublished: '2024-01-01',
     dateModified: new Date().toISOString().split('T')[0],
-    articleSection: templateData.category,
-    keywords: `${templateData.title.toLowerCase()}, ${templateData.title.toLowerCase()} template, ${templateData.category.toLowerCase()}, life planning, ai planning tool, templata, life organization, planning prompts, expert articles`,
+    articleSection: guideData.category,
+    keywords: `${guideData.title.toLowerCase()}, ${guideData.title.toLowerCase()} template, ${guideData.category.toLowerCase()}, life planning, ai planning tool, templata, life organization, planning prompts, expert articles`,
     about: {
       '@type': 'Thing',
-      name: templateData.title,
-      description: templateData.description
+      name: guideData.title,
+      description: guideData.description
     }
   };
 
   const webPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: `${templateData.title} Template`,
-    description: `${templateData.description} Get ${prompts.length} expert prompts and ${articles.length} articles.`,
+    name: `${guideData.title} Template`,
+    description: `${guideData.description} Get ${prompts.length} expert prompts and ${articles.length} articles.`,
     url: `https://templata.org/guides/${slug}/marketing`,
     isPartOf: {
       '@type': 'WebSite',
@@ -275,8 +275,8 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const promptsListSchema = prompts.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: `${templateData.title} Prompts`,
-    description: `${prompts.length} expert prompts for ${templateData.title.toLowerCase()}`,
+    name: `${guideData.title} Prompts`,
+    description: `${prompts.length} expert prompts for ${guideData.title.toLowerCase()}`,
     numberOfItems: prompts.length,
     itemListElement: prompts.slice(0, 10).map((prompt, index) => ({
       '@type': 'ListItem',
@@ -289,8 +289,8 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const articlesListSchema = articles.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: `${templateData.title} Articles`,
-    description: `${articles.length} expert articles for ${templateData.title.toLowerCase()}`,
+    name: `${guideData.title} Articles`,
+    description: `${articles.length} expert articles for ${guideData.title.toLowerCase()}`,
     numberOfItems: articles.length,
     itemListElement: articles.slice(0, 10).map((article, index) => ({
       '@type': 'ListItem',
@@ -341,16 +341,16 @@ export default function MarketingClient({ params }: MarketingClientProps) {
           <div className="container mx-auto max-w-7xl px-4 relative z-10">
             <div className="text-center space-y-8">
               <Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
-                <AnnouncementTag>{templateData.category}</AnnouncementTag>
+                <AnnouncementTag>{guideData.category}</AnnouncementTag>
                 <AnnouncementTitle>{prompts.length} prompts · {articles.length} articles</AnnouncementTitle>
               </Announcement>
 
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
-                {templateData.title}
+                {guideData.title}
               </h1>
 
               <p className="mx-auto max-w-2xl text-xl text-white">
-                {templateData.description}
+                {guideData.description}
               </p>
             </div>
           </div>
@@ -564,7 +564,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-2">Related Templates</h2>
               <p className="text-sm text-muted-foreground">
-                Explore more {templateData.category} templates
+                Explore more {guideData.category} templates
               </p>
             </div>
 
@@ -608,7 +608,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         <section className="py-24 md:py-32">
           <div className="container mx-auto max-w-3xl px-4 text-center space-y-8">
             <h2 className="text-3xl md:text-5xl font-bold">
-              Ready to organize your {templateData.title.toLowerCase()}?
+              Ready to organize your {guideData.title.toLowerCase()}?
             </h2>
             <p className="text-xl text-muted-foreground">
               Start with this template. Everything is free—no credit card required.

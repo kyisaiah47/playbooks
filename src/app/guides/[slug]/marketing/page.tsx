@@ -17,19 +17,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const templateData = template.template;
+  const guideData = template.template;
 
   // Generate long-tail keywords
   const baseKeywords = [
-    templateData.title.toLowerCase(),
-    `${templateData.title.toLowerCase()} template`,
-    `${templateData.title.toLowerCase()} planning`,
-    `${templateData.title.toLowerCase()} checklist`,
-    `${templateData.title.toLowerCase()} guide`,
-    `how to plan ${templateData.title.toLowerCase()}`,
-    `${templateData.title.toLowerCase()} organization`,
-    templateData.category.toLowerCase(),
-    `${templateData.category.toLowerCase()} template`,
+    guideData.title.toLowerCase(),
+    `${guideData.title.toLowerCase()} template`,
+    `${guideData.title.toLowerCase()} planning`,
+    `${guideData.title.toLowerCase()} checklist`,
+    `${guideData.title.toLowerCase()} guide`,
+    `how to plan ${guideData.title.toLowerCase()}`,
+    `${guideData.title.toLowerCase()} organization`,
+    guideData.category.toLowerCase(),
+    `${guideData.category.toLowerCase()} template`,
     'life planning template',
     'ai planning tool',
     'templata',
@@ -42,8 +42,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     'planning workspace'
   ];
 
-  const title = `${templateData.title} Template - Complete Planning Guide with AI | Templata`;
-  const description = `${templateData.description} Access expert ${templateData.title.toLowerCase()} planning with prompts, articles, and AI-powered guidance. Save 80+ hours with our comprehensive ${templateData.title.toLowerCase()} template. Free to start.`;
+  const title = `${guideData.title} Template - Complete Planning Guide with AI | Templata`;
+  const description = `${guideData.description} Access expert ${guideData.title.toLowerCase()} planning with prompts, articles, and AI-powered guidance. Save 80+ hours with our comprehensive ${guideData.title.toLowerCase()} template. Free to start.`;
 
   return {
     title,
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: `/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: `${templateData.title} Template - Templata`,
+          alt: `${guideData.title} Template - Templata`,
         },
       ],
       locale: 'en_US',

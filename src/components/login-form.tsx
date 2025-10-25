@@ -57,8 +57,8 @@ export function LoginForm({
                 const parts = key.split('_');
                 if (parts.length >= 3) {
                   workspaceData.push({
-                    templateId: parts[1],
-                    promptId: parts[2],
+                    guideId: parts[1],
+                    questionId: parts[2],
                     response: data.response,
                   });
                 }

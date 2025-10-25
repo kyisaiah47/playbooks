@@ -39,7 +39,7 @@ export function generateMarkdownSummary(
   if (templates.length > 0) {
     markdown += `## Templates (${templates.length})\n\n`;
     templates.forEach((template, index) => {
-      markdown += `### ${index + 1}. ${template.templateId}\n\n`;
+      markdown += `### ${index + 1}. ${template.guideId}\n\n`;
       markdown += `- **Status:** ${template.completion === 100 ? 'Completed' : 'In Progress'} (${template.completion}%)\n`;
       markdown += `- **Tags:** ${template.tags.join(', ')}\n`;
       markdown += `- **Started:** ${template.startedAt.toLocaleDateString()}\n`;
@@ -256,7 +256,7 @@ export function generateHTMLForPDF(
     html += `<h2>Templates (${templates.length})</h2>`;
     templates.forEach((template, index) => {
       html += `
-  <h3>${index + 1}. ${template.templateId}</h3>
+  <h3>${index + 1}. ${template.guideId}</h3>
   <p class="meta">
     Started: ${template.startedAt.toLocaleDateString()} |
     Last Updated: ${template.updatedAt.toLocaleDateString()}

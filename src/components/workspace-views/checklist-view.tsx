@@ -5,10 +5,10 @@ import { PinList, type PinListItem } from '@/components/ui/shadcn-io/pin-list';
 import { IconFileText, IconCheckbox } from '@tabler/icons-react';
 
 interface ChecklistViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function ChecklistView({ templateId }: ChecklistViewProps) {
+export function ChecklistView({ guideId }: ChecklistViewProps) {
   // Mock prompts data - will be replaced with real data
   const [prompts] = useState<PinListItem[]>([
     {
@@ -48,7 +48,7 @@ export function ChecklistView({ templateId }: ChecklistViewProps) {
     },
   ]);
 
-  if (!templateId) {
+  if (!guideId) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">

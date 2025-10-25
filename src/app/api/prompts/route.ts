@@ -9,11 +9,11 @@ const supabase = createClient(
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const templateId = searchParams.get('templateId');
+    const guideId = searchParams.get('guideId');
 
-    if (!templateId) {
+    if (!guideId) {
       return NextResponse.json(
-        { error: 'templateId is required' },
+        { error: 'guideId is required' },
         { status: 400 }
       );
     }
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     const { data: prompts, error } = await supabase
       .from('questions')
       .select('*')
-      .eq('template_id', templateId)
+      .eq('guide_id', guideId)
       .order('prompt_number', { ascending: true });
 
     if (error) {

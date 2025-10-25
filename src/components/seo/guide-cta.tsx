@@ -4,11 +4,11 @@ import Link from "next/link"
 
 interface TemplateCTAProps {
   templateType: 'wedding' | 'baby' | 'home-buying'
-  templateName: string
+  guideName: string
   appLink: string
 }
 
-export function TemplateCTA({ templateType, templateName, appLink }: TemplateCTAProps) {
+export function TemplateCTA({ templateType, guideName, appLink }: TemplateCTAProps) {
   const getIcon = () => {
     switch (templateType) {
       case 'wedding':
@@ -67,7 +67,7 @@ export function TemplateCTA({ templateType, templateName, appLink }: TemplateCTA
       <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
         <Button size="lg" asChild className="text-lg px-8 py-6">
           <Link href={appLink}>
-            Start Using {templateName}
+            Start Using {guideName}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Link>
         </Button>

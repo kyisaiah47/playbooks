@@ -54,13 +54,13 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
         setTemplate(foundTemplate || null);
 
         // Fetch prompts
-        const promptsRes = await fetch(`/api/prompts?templateId=${slug}`);
-        const promptsData = await promptsRes.json();
+        const questionsRes = await fetch(`/api/prompts?guideId=${slug}`);
+        const promptsData = await questionsRes.json();
         setPrompts(promptsData.prompts || []);
 
         // Fetch articles for this template (server-side filtering)
-        const articlesRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
-        const articlesData = await articlesRes.json();
+        const readingsRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
+        const articlesData = await readingsRes.json();
 
         console.log('[Template Browse] Articles for', slug, ':', articlesData.articles?.length || 0);
         setArticles(articlesData.articles || []);
@@ -106,7 +106,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
     );
   }
 
-  const templateData = template.template;
+  const guideData = template.template;
 
   const handleInsertPrompt = async (prompt: Prompt) => {
     try {
@@ -137,8 +137,8 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
   const handleOpenInWorkspace = () => {
     // Store template context for workspace
     sessionStorage.setItem('workspace-template-context', JSON.stringify({
-      templateId: slug,
-      templateName: templateData.title
+      guideId: slug,
+      guideName: guideData.title
     }));
 
     // Navigate to workspace
@@ -163,15 +163,15 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
           <div className="text-center space-y-6 max-w-4xl mx-auto">
             <Badge variant="outline" className="px-4 py-2">
               <FileText className="mr-2 h-4 w-4" />
-              {templateData.category}
+              {guideData.category}
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              {templateData.title}
+              {guideData.title}
             </h1>
 
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {templateData.description}
+              {guideData.description}
             </p>
 
             <div className="flex items-center justify-center gap-6 pt-4">
@@ -294,7 +294,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-2">Related Templates</h2>
               <p className="text-sm text-muted-foreground">
-                Explore similar templates in {templateData.category}
+                Explore similar templates in {guideData.category}
               </p>
             </div>
 
@@ -323,14 +323,14 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
       {/* Schema.org CreativeWork Markup */}
       <Script
-        id="template-schema"
+        id="guide-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CreativeWork',
-            name: `${templateData.title} Template`,
-            description: templateData.description,
+            name: `${guideData.title} Template`,
+            description: guideData.description,
             creator: {
               '@type': 'Organization',
               name: 'Templata',
@@ -339,7 +339,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             url: `https://templata.org/guides/${slug}`,
             inLanguage: 'en-US',
             genre: 'Planning Template',
-            keywords: templateData.tags?.join(', ') || templateData.category,
+            keywords: guideData.tags?.join(', ') || guideData.category,
             isPartOf: {
               '@type': 'WebSite',
               name: 'Templata',
@@ -347,7 +347,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             },
             about: {
               '@type': 'Thing',
-              name: templateData.category
+              name: guideData.category
             }
           })
         }}

@@ -17,14 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const templateData = template.template;
-  const title = `${templateData.title} Template | Templata`;
-  const description = `${templateData.description} Complete template with prompts, articles, and guided steps. Save 80+ hours with our AI-powered ${templateData.title.toLowerCase()} template.`;
+  const guideData = template.template;
+  const title = `${guideData.title} Template | Templata`;
+  const description = `${guideData.description} Complete template with prompts, articles, and guided steps. Save 80+ hours with our AI-powered ${guideData.title.toLowerCase()} template.`;
 
   return {
     title,
     description,
-    keywords: `${templateData.title.toLowerCase()} template, ${templateData.category.toLowerCase()}, life planning template, structured planning, templata`,
+    keywords: `${guideData.title.toLowerCase()} template, ${guideData.category.toLowerCase()}, life planning template, structured planning, templata`,
     authors: [{ name: 'Templata Team' }],
     creator: 'Templata',
     publisher: 'Templata',
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: `/guides/${slug}-preview.jpg`,
           width: 1200,
           height: 630,
-          alt: `${templateData.title} Template Preview`,
+          alt: `${guideData.title} Template Preview`,
         },
       ],
       locale: 'en_US',

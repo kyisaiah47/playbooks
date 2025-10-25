@@ -21,7 +21,7 @@ import { WorkspaceMode } from '@/types/workspace';
 
 export interface TemplateSession {
   id: string;
-  templateId: string;
+  guideId: string;
   answers: Record<string, string>;
   completion: number;
   tags: string[];
@@ -35,7 +35,7 @@ export interface ReflectionEntry {
   text: string;
   mood?: 'happy' | 'neutral' | 'sad';
   tags: string[];
-  linkedTemplateIds: string[];
+  linkedGuideIds: string[];
   createdAt: Date;
   sentiment?: number; // -1 to 1
 }
@@ -59,7 +59,7 @@ interface WorkspaceState {
   completeStep: () => void;
   finishTemplate: () => void;
   saveReflection: () => void;
-  openTemplate: (templateId: string) => void;
+  openTemplate: (guideId: string) => void;
   openReflection: (entryId: string) => void;
 
   // Setters
@@ -188,12 +188,12 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   },
 
   // Deep link: OPEN_TEMPLATE
-  openTemplate: (templateId) => {
+  openTemplate: (guideId) => {
     // Load template session (future: fetch from DB)
     set({
       currentTemplateSession: {
         id: 'mock-session',
-        templateId,
+        guideId,
         answers: {},
         completion: 0,
         tags: [],
@@ -213,7 +213,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
         id: entryId,
         text: '',
         tags: [],
-        linkedTemplateIds: [],
+        linkedGuideIds: [],
         createdAt: new Date(),
       },
       stage: 'reflect',

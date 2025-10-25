@@ -88,7 +88,7 @@ export function TemplataContentSidebar({
   const [templateRegistryPrompts, setTemplateRegistryPrompts] = React.useState<any[]>([])
 
   React.useEffect(() => {
-    fetch(`/api/prompts?templateId=${template.id}`)
+    fetch(`/api/prompts?guideId=${template.id}`)
       .then(res => res.json())
       .then(data => setTemplateRegistryPrompts(data.prompts || []))
       .catch(err => console.error('Failed to load prompts:', err))
@@ -454,7 +454,7 @@ export function TemplataContentSidebar({
 
               {activeTab === 'related' && (
                 <div className="p-4">
-                  <RelatedTemplates templateId={template.id} />
+                  <RelatedTemplates guideId={template.id} />
                 </div>
               )}
             </SidebarGroupContent>

@@ -32,16 +32,16 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const { category } = use(params);
   const [searchQuery, setSearchQuery] = useState('');
   const [templates, setTemplates] = useState<TemplateRegistryEntry[]>([]);
-  const [templateData, setTemplateData] = useState<Record<string, { prompts: any[], articles: any[] }>>({});
+  const [guideData, setGuideData] = useState<Record<string, { prompts: any[], articles: any[] }>>({});
   const [expandedTemplates, setExpandedTemplates] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
 
-  const toggleTemplate = (templateId: string) => {
+  const toggleTemplate = (guideId: string) => {
     const newExpanded = new Set(expandedTemplates);
-    if (newExpanded.has(templateId)) {
-      newExpanded.delete(templateId);
+    if (newExpanded.has(guideId)) {
+      newExpanded.delete(guideId);
     } else {
-      newExpanded.add(templateId);
+      newExpanded.add(guideId);
     }
     setExpandedTemplates(newExpanded);
   };
@@ -70,13 +70,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
         // Fetch prompts and articles for each template
         const dataPromises = filtered.map(async (template) => {
-          const [promptsRes, articlesRes] = await Promise.all([
-            fetch(`/api/prompts?templateId=${template.id}`),
+          const [questionsRes, readingsRes] = await Promise.all([
+            fetch(`/api/prompts?guideId=${template.id}`),
             fetch(`/api/readings?template=${template.id}&pageSize=1000`)
           ]);
 
-          const promptsData = await promptsRes.json();
-          const articlesData = await articlesRes.json();
+          const promptsData = await questionsRes.json();
+          const articlesData = await readingsRes.json();
 
           return {
             id: template.id,
@@ -91,7 +91,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           dataMap[item.id] = { prompts: item.prompts, articles: item.articles };
         });
 
-        setTemplateData(dataMap);
+        setGuideData(dataMap);
       } catch (error) {
         console.error('Error fetching templates:', error);
       } finally {
@@ -175,7 +175,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           ) : (
             <div className="space-y-8">
               {filteredTemplates.map((template) => {
-                const data = templateData[template.id] || { prompts: [], articles: [] };
+                const data = guideData[template.id] || { prompts: [], articles: [] };
                 const isExpanded = expandedTemplates.has(template.id);
 
                 return (

@@ -161,7 +161,7 @@ export default function NotesPage() {
     <TemplatesView
       workspaceId={workspaceId}
       userGuideId={userGuideId || undefined}
-      defaultTemplateId={guideId}
+      defaultGuideId={guideId}
     />
   );
 }

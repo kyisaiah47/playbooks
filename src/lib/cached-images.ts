@@ -4,11 +4,11 @@ import { UnsplashImage } from './unsplash';
 /**
  * Get cached image for a template from blog post metadata
  */
-export async function getCachedImageForTemplate(templateName: string): Promise<UnsplashImage | null> {
+export async function getCachedImageForTemplate(guideName: string): Promise<UnsplashImage | null> {
   // Find blog posts for this template
   const templatePosts = articleRegistry.filter(post =>
-    post.relatedTemplates?.includes(templateName) ||
-    (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
+    post.relatedTemplates?.includes(guideName) ||
+    (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
 
   // Find the first post with a cached hero image
@@ -45,10 +45,10 @@ export async function getCachedImageForTemplate(templateName: string): Promise<U
 /**
  * Check if a template has cached images
  */
-export function templateHasCachedImages(templateName: string): boolean {
+export function templateHasCachedImages(guideName: string): boolean {
   const templatePosts = articleRegistry.filter(post =>
-    post.relatedTemplates?.includes(templateName) ||
-    (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
+    post.relatedTemplates?.includes(guideName) ||
+    (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
 
   return templatePosts.some(post => post.heroImage?.cached);

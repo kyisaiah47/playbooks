@@ -24,8 +24,8 @@ import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph"
 import { useFavorites } from "@/hooks/use-favorites"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 
-const getTemplateIcon = (templateId: string) => {
-  switch (templateId) {
+const getTemplateIcon = (guideId: string) => {
+  switch (guideId) {
     case 'wedding-planning': return Heart
     case 'home-buying': return Home
     case 'baby-planning': return Baby
@@ -52,14 +52,14 @@ interface SmartRecommendationsWidgetProps {
   title?: string
   limit?: number
   type?: "contextual" | "discovery" | "mixed"
-  currentTemplateId?: string // To exclude current template from recommendations
+  currentGuideId?: string // To exclude current template from recommendations
 }
 
 export function SmartRecommendationsWidget({
   title = "You might also like",
   limit = 4,
   type = "mixed",
-  currentTemplateId
+  currentGuideId
 }: SmartRecommendationsWidgetProps) {
   const { getPersonalizedRecommendations, getAgeAppropriateTemplates } = useKnowledgeGraph()
   const { isFavorited, toggleFavorite } = useFavorites()
@@ -69,7 +69,7 @@ export function SmartRecommendationsWidget({
     age: 28, // Could come from user profile
     goals: ['career_focused', 'financial_independence'],
     completedTemplates: [],
-    currentTemplates: currentTemplateId ? [currentTemplateId] : []
+    currentTemplates: currentGuideId ? [currentGuideId] : []
   }
 
   // Get template registry for mapping
@@ -96,10 +96,10 @@ export function SmartRecommendationsWidget({
           // Get personalized recommendations
           const personalizedRecs = getPersonalizedRecommendations(userProfile)
           recs = personalizedRecs.map(rec => ({
-            id: rec.templateId,
-            name: rec.templateId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-            url: `/template/${rec.templateId}`,
-            category: getCategoryFromTemplate(rec.templateId),
+            id: rec.guideId,
+            name: rec.guideId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+            url: `/template/${rec.guideId}`,
+            category: getCategoryFromTemplate(rec.guideId),
             type: 'template',
             reason: rec.reason
           }))
@@ -108,10 +108,10 @@ export function SmartRecommendationsWidget({
           // Get age-appropriate templates
           const ageRecs = getAgeAppropriateTemplates(userProfile.age || 25, limit)
           recs = ageRecs.map(rec => ({
-            id: rec.templateId,
-            name: rec.templateId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-            url: `/template/${rec.templateId}`,
-            category: getCategoryFromTemplate(rec.templateId),
+            id: rec.guideId,
+            name: rec.guideId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+            url: `/template/${rec.guideId}`,
+            category: getCategoryFromTemplate(rec.guideId),
             type: 'template',
             reason: rec.reason
           }))
@@ -123,18 +123,18 @@ export function SmartRecommendationsWidget({
           const combined = [...personalizedMix, ...ageMix].slice(0, limit)
 
           recs = combined.map(rec => ({
-            id: rec.templateId,
-            name: rec.templateId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-            url: `/template/${rec.templateId}`,
-            category: getCategoryFromTemplate(rec.templateId),
+            id: rec.guideId,
+            name: rec.guideId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+            url: `/template/${rec.guideId}`,
+            category: getCategoryFromTemplate(rec.guideId),
             type: 'template',
             reason: rec.reason
           }))
       }
 
       // Filter out current template if provided
-      if (currentTemplateId) {
-        recs = recs.filter(rec => rec.id !== currentTemplateId)
+      if (currentGuideId) {
+        recs = recs.filter(rec => rec.id !== currentGuideId)
       }
 
       // Remove duplicates
@@ -147,10 +147,10 @@ export function SmartRecommendationsWidget({
       console.warn('Knowledge graph recommendations failed, falling back to empty:', error)
       return []
     }
-  }, [type, limit, currentTemplateId, getPersonalizedRecommendations, getAgeAppropriateTemplates, userProfile])
+  }, [type, limit, currentGuideId, getPersonalizedRecommendations, getAgeAppropriateTemplates, userProfile])
 
   // Helper function to determine category from template ID
-  function getCategoryFromTemplate(templateId: string): string {
+  function getCategoryFromTemplate(guideId: string): string {
     const categoryMap: Record<string, string> = {
       'wedding-planning': 'Family Life',
       'home-buying': 'Real Estate',
@@ -163,7 +163,7 @@ export function SmartRecommendationsWidget({
       'fitness-journey': 'Health & Wellness',
       'apartment-hunting': 'Housing'
     }
-    return categoryMap[templateId] || 'Personal Development'
+    return categoryMap[guideId] || 'Personal Development'
   }
 
   if (recommendations.length === 0) {

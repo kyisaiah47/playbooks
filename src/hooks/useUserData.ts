@@ -31,7 +31,7 @@ export function useTemplateSessions() {
     }
   };
 
-  const createSession = async (templateId: string, title: string) => {
+  const createSession = async (guideId: string, title: string) => {
     if (!session?.user?.id) return null;
     
     try {
@@ -40,7 +40,7 @@ export function useTemplateSessions() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ templateId, title }),
+        body: JSON.stringify({ guideId, title }),
       });
       
       if (!response.ok) {
@@ -106,9 +106,9 @@ export function useUserResponses() {
   
   const saveResponse = async (responseData: {
     sessionId: string;
-    templateId: string;
+    guideId: string;
     sectionId: string;
-    promptId: string;
+    questionId: string;
     response: string;
     metadata?: Record<string, unknown>;
   }) => {
@@ -162,7 +162,7 @@ export function useSavedResources() {
   };
 
   const saveResource = async (resourceData: {
-    templateId: string;
+    guideId: string;
     resourceId: string;
     title: string;
     userNotes?: string;

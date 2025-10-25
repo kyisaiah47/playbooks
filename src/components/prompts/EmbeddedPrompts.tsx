@@ -22,7 +22,7 @@ interface EmbeddedPromptsProps {
   section: GuidanceSection;
   allItems?: (ReflectionPrompt | FreeformNote)[];
   onResponsesChange?: (responses: Record<string, string>) => void;
-  onRemovePrompt?: (promptId: string) => void;
+  onRemovePrompt?: (questionId: string) => void;
   onRemoveNote?: (noteId: string) => void;
   onUpdateNote?: (noteId: string, updates: Partial<FreeformNote>) => void;
   onReorderItems?: (items: (ReflectionPrompt | FreeformNote)[]) => void;
@@ -64,16 +64,16 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
     }
   }, [highlightedItem]);
 
-  const handleResponseChange = (promptId: string, value: string) => {
-    const newResponses = { ...responses, [promptId]: value };
+  const handleResponseChange = (questionId: string, value: string) => {
+    const newResponses = { ...responses, [questionId]: value };
     setResponses(newResponses);
     onResponsesChange?.(newResponses);
   };
 
-  const handleDragOver = (e: React.DragEvent, promptId: string) => {
+  const handleDragOver = (e: React.DragEvent, questionId: string) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = 'copy';
-    setDraggedOver(promptId);
+    setDraggedOver(questionId);
   };
 
   const handleDragLeave = () => {
@@ -101,17 +101,17 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
     setDragOverIndex(null);
   };
 
-  const handleDrop = (e: React.DragEvent, promptId: string) => {
+  const handleDrop = (e: React.DragEvent, questionId: string) => {
     e.preventDefault();
     const text = e.dataTransfer.getData('text/plain');
     const draggedItemId = e.dataTransfer.getData('application/json');
 
     // Handle text drop (existing functionality) - only if not dragging items
     if (text && !draggedItemId) {
-      const currentText = responses[promptId] || '';
+      const currentText = responses[questionId] || '';
       const newText = currentText ? `${currentText}\n\n${text}` : text;
 
-      const newResponses = { ...responses, [promptId]: newText };
+      const newResponses = { ...responses, [questionId]: newText };
       setResponses(newResponses);
       onResponsesChange?.(newResponses);
 

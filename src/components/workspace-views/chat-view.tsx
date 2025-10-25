@@ -15,10 +15,10 @@ interface Message {
 }
 
 interface ChatViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function ChatView({ templateId }: ChatViewProps) {
+export function ChatView({ guideId }: ChatViewProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',

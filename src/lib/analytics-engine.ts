@@ -346,7 +346,7 @@ export class AnalyticsEngine {
         }
         wordCounts[word].count += 1;
         wordCounts[word].lastSeen = reflection.createdAt;
-        reflection.linkedTemplateIds.forEach((id) => {
+        reflection.linkedGuideIds.forEach((id) => {
           const template = this.templates.find((t) => t.id === id);
           if (template) {
             const category = this.extractCategory(template.tags);

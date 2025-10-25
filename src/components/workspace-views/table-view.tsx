@@ -16,7 +16,7 @@ import { Badge } from '@/components/ui/badge';
 import { IconTable } from '@tabler/icons-react';
 
 interface TableViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
 type PromptTableData = {
@@ -27,7 +27,7 @@ type PromptTableData = {
   response: string;
 };
 
-export function TableView({ templateId }: TableViewProps) {
+export function TableView({ guideId }: TableViewProps) {
   // Mock data - will be replaced with real prompts
   const [data] = useState<PromptTableData[]>([
     {
@@ -124,7 +124,7 @@ export function TableView({ templateId }: TableViewProps) {
     },
   ];
 
-  if (!templateId) {
+  if (!guideId) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">

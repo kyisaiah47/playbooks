@@ -13,7 +13,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const blogPost = await getArticleBySlug(slug);
 
   // Get template name if article has a template
-  const templateInfo = blogPost?.template ? await getTemplateById(blogPost.template) : null;
+  const guideInfo = blogPost?.template ? await getTemplateById(blogPost.template) : null;
 
   // Get related posts with multiple fallback strategies
   let relatedPosts = [];
@@ -48,10 +48,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className="space-y-4">
             {/* Metadata */}
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              {templateInfo && (
+              {guideInfo && (
                 <>
                   <Link href={`/guides/${blogPost.template}`} className="hover:text-primary transition-colors">
-                    {templateInfo.template.title}
+                    {guideInfo.template.title}
                   </Link>
                   <span>·</span>
                 </>

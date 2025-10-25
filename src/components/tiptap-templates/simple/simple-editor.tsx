@@ -92,7 +92,7 @@ const MainToolbarContent = ({
   onHighlighterClick: () => void
   onLinkClick: () => void
   isMobile: boolean
-  onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void
+  onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void
 }) => {
   return (
     <>
@@ -193,11 +193,11 @@ const MobileToolbarContent = ({
 interface SimpleEditorProps {
   content?: string | object;
   onUpdate?: (content: string) => void;
-  onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void;
-  templateId?: string;
+  onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void;
+  guideId?: string;
 }
 
-export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId }: SimpleEditorProps = {}) {
+export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: SimpleEditorProps = {}) {
   const isMobile = useIsMobile()
   const { height } = useWindowSize()
   const [mobileView, setMobileView] = React.useState<
@@ -267,15 +267,15 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
 
   // Get prompts for slash command
   const prompts = React.useMemo(() => {
-    if (!templateId) return []
-    const templatePrompts = getPromptsByTemplate(templateId)
+    if (!guideId) return []
+    const templatePrompts = getPromptsByTemplate(guideId)
     return templatePrompts.map(p => ({
       id: p.id,
       prompt: p.prompt,
       category: p.category,
       helpText: p.helpText
     }))
-  }, [templateId])
+  }, [guideId])
 
   // Expose editor globally for prompt insertion
   React.useEffect(() => {
