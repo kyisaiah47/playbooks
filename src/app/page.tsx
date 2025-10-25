@@ -193,7 +193,7 @@ export default function LandingPage() {
 										<Check className="h-4 w-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
 										<div>
 											<div className="font-medium">Vetted content</div>
-											<div className="text-muted-foreground">Curated articles and resources, no hallucinations</div>
+											<div className="text-muted-foreground">Curated readings and resources, no hallucinations</div>
 										</div>
 									</div>
 								</div>
@@ -324,7 +324,7 @@ export default function LandingPage() {
 						</div>
 						<div>
 							<div className="text-5xl font-semibold mb-3">25k+</div>
-							<div className="text-sm text-muted-foreground">Curated articles</div>
+							<div className="text-sm text-muted-foreground">Curated readings</div>
 						</div>
 						<div>
 							<div className="text-5xl font-semibold mb-3">100%</div>
@@ -383,7 +383,7 @@ export default function LandingPage() {
 							<h3 className="font-medium mb-2">How is this different from ChatGPT?</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								ChatGPT gives generic responses. Templata provides pre-curated expert frameworks
-								with specific questions and vetted articles. You get structure, not generic advice.
+								with specific questions and vetted readings. You get structure, not generic advice.
 							</p>
 						</div>
 					</div>

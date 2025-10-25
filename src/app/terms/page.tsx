@@ -48,7 +48,7 @@ export default function TermsPage() {
               <li>Access to a library of pre-made templates</li>
               <li>Tools to customize and personalize templates</li>
               <li>Workspace for organizing your template-based projects</li>
-              <li>Educational articles and resources</li>
+              <li>Educational readings and resources</li>
             </ul>
           </section>
 
@@ -98,7 +98,7 @@ export default function TermsPage() {
 
             <h3 className="text-xl font-semibold mb-3">Our Content</h3>
             <p className="mb-4">
-              All templates, articles, designs, text, graphics, and other materials provided by Templata are owned by
+              All templates, readings, designs, text, graphics, and other materials provided by Templata are owned by
               us or our licensors and are protected by copyright and other intellectual property laws. You may use
               our content in accordance with these terms, but you may not:
             </p>

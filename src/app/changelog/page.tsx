@@ -63,7 +63,7 @@ export default function ChangelogPage() {
                     <li>Added How It Works page to help new users understand the app</li>
                     <li>Added PDF export for your responses and reflections</li>
                     <li>Added Responses and Reflections tabs to Overview to view everything in one place</li>
-                    <li>Added search in articles to find specific information</li>
+                    <li>Added search in readings to find specific information</li>
                     <li>Organized featured templates into 3 sections: General, Gen Z, and Health & Wellness</li>
                   </ul>
                 </div>
@@ -101,8 +101,8 @@ export default function ChangelogPage() {
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
                     <li>1,298 guides across all life categories</li>
-                    <li>104K+ AI-generated prompts</li>
-                    <li>25,936 articles providing expert knowledge</li>
+                    <li>104K+ AI-generated questions</li>
+                    <li>25,936 readings providing expert knowledge</li>
                     <li>User authentication and workspace management</li>
                     <li>3 view model: Templates, Reflection, and Overview for comprehensive life planning</li>
                     <li>Demo mode for unauthenticated users</li>

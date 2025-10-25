@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title,
     description,
-    keywords: `${article.title?.toLowerCase() || 'article'}, ${article.category?.toLowerCase() || 'planning'}, life planning, ${article.tags?.join(', ') || ''}, templata articles, expert guidance`,
+    keywords: `${article.title?.toLowerCase() || 'article'}, ${article.category?.toLowerCase() || 'planning'}, life planning, ${article.tags?.join(', ') || ''}, templata readings, expert guidance`,
     authors: [{ name: 'Templata Team' }],
     creator: 'Templata',
     publisher: 'Templata',

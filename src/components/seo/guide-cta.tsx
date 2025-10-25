@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Heart, Sparkles } from "lucide-react"
 import Link from "next/link"
 
-interface TemplateCTAProps {
+interface GuideCTAProps {
   templateType: 'wedding' | 'baby' | 'home-buying'
   guideName: string
   appLink: string

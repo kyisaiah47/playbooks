@@ -7,7 +7,7 @@ import { UnsplashImage } from './unsplash';
 export async function getCachedImageForTemplate(guideName: string): Promise<UnsplashImage | null> {
   // Find blog posts for this template
   const templatePosts = articleRegistry.filter(post =>
-    post.relatedTemplates?.includes(guideName) ||
+    post.relatedGuides?.includes(guideName) ||
     (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
 
@@ -47,7 +47,7 @@ export async function getCachedImageForTemplate(guideName: string): Promise<Unsp
  */
 export function templateHasCachedImages(guideName: string): boolean {
   const templatePosts = articleRegistry.filter(post =>
-    post.relatedTemplates?.includes(guideName) ||
+    post.relatedGuides?.includes(guideName) ||
     (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
 
@@ -62,9 +62,9 @@ export function getTemplatesWithCachedImages(): string[] {
 
   articleRegistry.forEach(post => {
     if (post.heroImage?.cached) {
-      // Extract template name from slug or relatedTemplates
-      if (post.relatedTemplates) {
-        post.relatedTemplates.forEach(template => templatesWithImages.add(template));
+      // Extract template name from slug or relatedGuides
+      if (post.relatedGuides) {
+        post.relatedGuides.forEach(template => templatesWithImages.add(template));
       }
 
       // Also try to extract from slug

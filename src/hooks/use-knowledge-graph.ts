@@ -321,7 +321,7 @@ export function useTemplateRecommendations(guideId: string, userProfile: UserPro
     const cluster = kg.getTemplateCluster(guideId);
 
     return {
-      relatedTemplates: related,
+      relatedGuides: related,
       conflicts,
       cluster,
       hasConflicts: conflicts.length > 0,

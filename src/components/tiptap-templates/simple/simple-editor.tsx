@@ -75,7 +75,7 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility"
 
 // --- Lib ---
 import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils"
-import { getPromptsByTemplate } from "@/registry/prompts"
+import { getPromptsByTemplate } from "@/registry/questions"
 
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss"
@@ -265,8 +265,8 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: 
     }
   }, [isMobile, mobileView])
 
-  // Get prompts for slash command
-  const prompts = React.useMemo(() => {
+  // Get questions for slash command
+  const questions = React.useMemo(() => {
     if (!guideId) return []
     const templatePrompts = getPromptsByTemplate(guideId)
     return templatePrompts.map(p => ({
@@ -326,7 +326,7 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: 
         {editor && (
           <SlashCommand
             editor={editor}
-            prompts={prompts}
+            questions={questions}
           />
         )}
 

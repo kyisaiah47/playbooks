@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     'ai planning tool',
     'templata',
     'life organization',
-    'planning prompts',
-    'expert articles',
+    'planning questions',
+    'expert readings',
     'structured planning',
     'ai-powered template',
     'life os',
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   ];
 
   const title = `${guideData.title} Template - Complete Planning Guide with AI | Templata`;
-  const description = `${guideData.description} Access expert ${guideData.title.toLowerCase()} planning with prompts, articles, and AI-powered guidance. Save 80+ hours with our comprehensive ${guideData.title.toLowerCase()} template. Free to start.`;
+  const description = `${guideData.description} Access expert ${guideData.title.toLowerCase()} planning with questions, readings, and AI-powered guidance. Save 80+ hours with our comprehensive ${guideData.title.toLowerCase()} template. Free to start.`;
 
   return {
     title,

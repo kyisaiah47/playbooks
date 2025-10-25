@@ -53,7 +53,7 @@ export function StructuredGuide() {
               <div className="text-zinc-500 text-[11px] ml-0 mt-1">  + The Dip: When to Quit (and When to Stick)</div>
               <div className="text-zinc-500 text-[11px] ml-0">  + Career Capital Theory - Cal Newport</div>
               <div className="text-zinc-500 text-[11px] ml-0">  + Switching Costs in Career Changes</div>
-              <div className="text-zinc-600 text-[11px] ml-0 mt-1">  [████████░░] 80% • 3 of 6 articles</div>
+              <div className="text-zinc-600 text-[11px] ml-0 mt-1">  [████████░░] 80% • 3 of 6 readings</div>
             </div>
           </div>
 

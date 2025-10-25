@@ -13,7 +13,7 @@ export function FaqDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-4">
               <p className="text-sm font-medium mb-2">What is Templata?</p>
               <p className="text-xs text-muted-foreground">
-                Templata is a platform for navigating major life transitions. We provide structured guides—curated collections of readings, reflection prompts, tasks, and tools—designed to help you work through career changes, relationship shifts, identity questions, major decisions, and other significant life transitions with clarity and intention.
+                Templata is a platform for navigating major life transitions. We provide structured guides—curated collections of readings, reflection questions, tasks, and tools—designed to help you work through career changes, relationship shifts, identity questions, major decisions, and other significant life transitions with clarity and intention.
               </p>
             </div>
 
@@ -49,7 +49,7 @@ export function FaqDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-4">
               <p className="text-sm font-medium mb-2">How do guides work?</p>
               <p className="text-xs text-muted-foreground">
-                Each guide contains readings (articles, prompts, frameworks) that you work through sequentially. After each reading, you respond to reflection prompts. Your responses help you process the material and apply it to your specific situation. Guides also include tasks, calendar integration, and journaling prompts to support action alongside reflection.
+                Each guide contains readings (readings, questions, frameworks) that you work through sequentially. After each reading, you respond to reflection questions. Your responses help you process the material and apply it to your specific situation. Guides also include tasks, calendar integration, and journaling questions to support action alongside reflection.
               </p>
             </div>
 
@@ -80,7 +80,7 @@ export function FaqDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-4">
               <p className="text-sm font-medium mb-2">What if a reading doesn't resonate with me?</p>
               <p className="text-xs text-muted-foreground">
-                That's normal. Not every reading will feel relevant to your specific situation. You can mark it complete and move on, or use the reflection prompts to articulate why it doesn't resonate—that's valuable self-knowledge too.
+                That's normal. Not every reading will feel relevant to your specific situation. You can mark it complete and move on, or use the reflection questions to articulate why it doesn't resonate—that's valuable self-knowledge too.
               </p>
             </div>
 

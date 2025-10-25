@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { useTemplateImage } from '@/hooks/use-guide-image';
 import { formatImageUrl, getImageAttribution, getImageAttributionUrl } from '@/lib/unsplash';
 
-interface TemplateImageProps {
+interface GuideImageProps {
   guideName: string;
   width?: number;
   height?: number;

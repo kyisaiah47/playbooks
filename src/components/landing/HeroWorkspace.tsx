@@ -628,7 +628,7 @@ export function HeroWorkspace() {
                         <div className="flex items-center gap-3 text-[11px] text-muted-foreground mb-2">
                           <span>{guide.questions} questions</span>
                           <span>·</span>
-                          <span>{guide.readings} articles</span>
+                          <span>{guide.readings} readings</span>
                         </div>
                         <div className="text-[10px] text-muted-foreground">
                           {guide.users.toLocaleString()} working on this
@@ -1224,7 +1224,7 @@ export function HeroWorkspace() {
               <div className="mb-6 flex items-center justify-between">
                 <div>
                   <h2 className="text-sm font-semibold mb-0.5">Reading Library</h2>
-                  <p className="text-[10px] text-muted-foreground">42 articles across your guides</p>
+                  <p className="text-[10px] text-muted-foreground">42 readings across your guides</p>
                 </div>
                 {/* Filters - minimal */}
                 <div className="flex items-center gap-1.5">

@@ -59,7 +59,7 @@ export function LibraryDocs() {
         <div>
           <h3 className="text-base font-medium mb-2">Reading a Reading from Library</h3>
           <p className="text-sm text-muted-foreground mb-3">
-            Click any reading to open it in the Library view. You'll see the same content and reflection prompts as in the Notes view, but with additional context:
+            Click any reading to open it in the Library view. You'll see the same content and reflection questions as in the Notes view, but with additional context:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
             <p className="text-xs text-muted-foreground"><strong>Parent Guide Context:</strong> See which guide this reading belongs to</p>
@@ -178,7 +178,7 @@ export function LibraryDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Do reflection responses sync between Library and Notes views?</p>
               <p className="text-xs text-muted-foreground">
-                Yes. Whether you answer reflection prompts in the Library or Notes view, your responses are saved and accessible from either location.
+                Yes. Whether you answer reflection questions in the Library or Notes view, your responses are saved and accessible from either location.
               </p>
             </div>
             <div className="bg-muted/30 border border-border rounded-lg p-3">

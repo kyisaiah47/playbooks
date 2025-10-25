@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const { category } = await params;
   const categoryName = categoryDisplayNames[category] ||
     category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  const description = categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} templates with prompts, articles, and expert guidance.`;
+  const description = categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} templates with questions, readings, and expert guidance.`;
 
   const title = `${categoryName} Templates | Templata`;
 

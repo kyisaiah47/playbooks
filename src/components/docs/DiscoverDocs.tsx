@@ -12,7 +12,7 @@ export function DiscoverDocs() {
           <h3 className="text-base font-medium mb-2">Finding the Right Guide</h3>
           <p className="text-sm text-muted-foreground mb-3">
             We organize guides into categories based on major life domains. Each guide is carefully curated with readings,
-            reflection prompts, and actionable frameworks to support you through specific transitions.
+            reflection questions, and actionable frameworks to support you through specific transitions.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
             <p className="text-xs font-medium mb-2">Available Categories:</p>

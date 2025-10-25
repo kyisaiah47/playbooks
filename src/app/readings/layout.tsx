@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Browse 25,936 Articles | Expert Knowledge Base for Life | Templata',
   description: 'Explore 25,936 expert readings covering every life situation. Wedding planning, career changes, business launches, home buying, health decisions & more. Like Wikipedia for life guidance.',
-  keywords: 'life planning articles, expert guides, how-to articles, wedding planning tips, career change advice, business launch guides, home buying guidance, life decisions, knowledge base, templata articles',
+  keywords: 'life planning readings, expert guides, how-to readings, wedding planning tips, career change advice, business launch guides, home buying guidance, life decisions, knowledge base, templata readings',
   authors: [{ name: 'Templata Team' }],
   creator: 'Templata',
   publisher: 'Templata',

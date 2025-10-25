@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const guideData = template.template;
   const title = `${guideData.title} Template | Templata`;
-  const description = `${guideData.description} Complete template with prompts, articles, and guided steps. Save 80+ hours with our AI-powered ${guideData.title.toLowerCase()} template.`;
+  const description = `${guideData.description} Complete template with questions, readings, and guided steps. Save 80+ hours with our AI-powered ${guideData.title.toLowerCase()} template.`;
 
   return {
     title,

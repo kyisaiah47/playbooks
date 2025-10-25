@@ -28,7 +28,7 @@ type PromptTableData = {
 };
 
 export function TableView({ guideId }: TableViewProps) {
-  // Mock data - will be replaced with real prompts
+  // Mock data - will be replaced with real questions
   const [data] = useState<PromptTableData[]>([
     {
       id: '1',

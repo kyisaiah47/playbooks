@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 const ARTICLES_PER_PAGE = 100;
 
-interface Article {
+interface Reading {
   id: string;
   title: string;
   excerpt: string;
@@ -25,11 +25,11 @@ interface Article {
   slug: string;
   type: string;
   difficulty: string;
-  relatedTemplates?: string[];
+  relatedGuides?: string[];
 }
 
 interface ReadingsListProps {
-  initialArticles: Article[];
+  initialArticles: Reading[];
   initialTotal: number;
 }
 
@@ -38,7 +38,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
   const searchParams = useSearchParams();
 
   // State
-  const [articles, setArticles] = useState<Article[]>(initialArticles);
+  const [readings, setReadings] = useState<Reading[]>(initialArticles);
   const [total, setTotal] = useState(initialTotal);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState('all');
@@ -54,7 +54,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
     setSelectedDifficulty(searchParams.get('difficulty') || 'all');
   }, []);
 
-  // Fetch articles from API when URL params change
+  // Fetch readings from API when URL params change
   useEffect(() => {
     const fetchArticles = async () => {
       const params = new URLSearchParams();
@@ -71,10 +71,10 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
       try {
         const response = await fetch(`/api/readings?${params.toString()}`);
         const data = await response.json();
-        setArticles(data.articles || []);
+        setReadings(data.readings || []);
         setTotal(data.total || 0);
       } catch (error) {
-        console.error('Failed to fetch articles:', error);
+        console.error('Failed to fetch readings:', error);
       }
     };
 
@@ -186,9 +186,9 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
       {/* Articles List */}
       <section className="mb-12">
         <div className="space-y-0 divide-y divide-border">
-          {articles.map((article: any) => {
-            // Get template name from relatedTemplates or fallback to category
-            const guideName = article.relatedTemplates?.[0] || article.category;
+          {readings.map((article: any) => {
+            // Get template name from relatedGuides or fallback to category
+            const guideName = article.relatedGuides?.[0] || article.category;
 
             return (
               <Link

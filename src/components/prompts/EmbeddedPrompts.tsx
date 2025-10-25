@@ -216,7 +216,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                 transition={{ type: "spring", stiffness: 180, damping: 20, delay: 0.8 }}
                 containerClassName="text-sm text-muted-foreground mb-4 max-w-sm mx-auto"
               >
-                Add prompts from the sidebar to create your customized planning experience. ← Your journey starts here.
+                Add questions from the sidebar to create your customized planning experience. ← Your journey starts here.
               </VerticalCutReveal>
               <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                 <Plus className="h-4 w-4" />

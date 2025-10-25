@@ -32,7 +32,7 @@ import {
 
 interface SlashCommandProps {
   editor: Editor
-  prompts: Array<{
+  questions: Array<{
     id: string
     prompt: string
     category: string
@@ -123,7 +123,7 @@ const SLASH_COMMANDS = [
   }
 ]
 
-export function SlashCommand({ editor, prompts = [] }: SlashCommandProps) {
+export function SlashCommand({ editor, questions = [] }: SlashCommandProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState('')
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -182,7 +182,7 @@ export function SlashCommand({ editor, prompts = [] }: SlashCommandProps) {
     cmd.description.toLowerCase().includes(search.toLowerCase())
   )
 
-  const filteredPrompts = prompts.filter(prompt =>
+  const filteredQuestions = questions.filter(prompt =>
     prompt.prompt.toLowerCase().includes(search.toLowerCase()) ||
     prompt.category.toLowerCase().includes(search.toLowerCase())
   )
@@ -222,9 +222,9 @@ export function SlashCommand({ editor, prompts = [] }: SlashCommandProps) {
             </CommandGroup>
           )}
 
-          {filteredPrompts.length > 0 && (
+          {filteredQuestions.length > 0 && (
             <CommandGroup heading="Prompts">
-              {filteredPrompts.slice(0, 5).map((prompt) => (
+              {filteredQuestions.slice(0, 5).map((prompt) => (
                 <CommandItem
                   key={prompt.id}
                   onSelect={() => executeCommand((editor) => {

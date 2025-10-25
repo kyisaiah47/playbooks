@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 
-interface TemplateHeroProps {
+interface GuideHeroProps {
   templateType: string
   title: string
   subtitle: string

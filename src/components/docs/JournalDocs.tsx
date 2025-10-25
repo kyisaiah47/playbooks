@@ -45,7 +45,7 @@ export function JournalDocs() {
             <div className="border-l-2 border-primary pl-4">
               <p className="text-sm font-medium mb-1">From Prompts</p>
               <p className="text-xs text-muted-foreground">
-                Use reflection prompts from readings as journal starters. Guide prompts often spark deeper thinking that deserves full journal exploration.
+                Use reflection questions from readings as journal starters. Guide questions often spark deeper thinking that deserves full journal exploration.
               </p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export function JournalDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Structured Reflection</p>
               <p className="text-xs text-muted-foreground">
-                Use prompts like: "What am I feeling right now?" "What's the real issue here?" "What would I tell a friend in this situation?" "What do I need?"
+                Use questions like: "What am I feeling right now?" "What's the real issue here?" "What would I tell a friend in this situation?" "What do I need?"
               </p>
             </div>
 

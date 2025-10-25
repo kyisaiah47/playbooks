@@ -9,8 +9,8 @@ interface ChecklistViewProps {
 }
 
 export function ChecklistView({ guideId }: ChecklistViewProps) {
-  // Mock prompts data - will be replaced with real data
-  const [prompts] = useState<PinListItem[]>([
+  // Mock questions data - will be replaced with real data
+  const [questions] = useState<PinListItem[]>([
     {
       id: 1,
       name: 'Define your wedding vision',
@@ -73,7 +73,7 @@ export function ChecklistView({ guideId }: ChecklistViewProps) {
         </div>
 
         <PinList
-          items={prompts}
+          items={questions}
           labels={{
             pinned: 'Pinned Questions',
             unpinned: 'All Questions',

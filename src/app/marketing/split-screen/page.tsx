@@ -7,7 +7,7 @@ export default function SplitScreenAdPage() {
 				{/* Header */}
 				<div className="space-y-6">
 					<h1 className="text-8xl lg:text-9xl font-black leading-none tracking-tight">
-						Prompts meet articles.
+						Prompts meet readings.
 						<br />
 						<span className="bg-white text-purple-800 px-6">Magic happens.</span>
 					</h1>

@@ -28,7 +28,7 @@ import {
 // Lazy load SimpleEditor to reduce initial bundle size
 const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
 
-interface TemplateViewProps {
+interface GuideViewProps {
   template: GuidanceTemplate;
   onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void;
 }

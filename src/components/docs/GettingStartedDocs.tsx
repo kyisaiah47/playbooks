@@ -11,7 +11,7 @@ export function GettingStartedDocs() {
             reflection tools, and actionable frameworks to support your journey.
           </p>
           <p className="text-sm text-muted-foreground">
-            Think of Templata as your personal guide through uncertainty—offering expert-curated content, thoughtful prompts, and
+            Think of Templata as your personal guide through uncertainty—offering expert-curated content, thoughtful questions, and
             organizational tools to help you make informed decisions during important life transitions.
           </p>
         </div>
@@ -65,7 +65,7 @@ export function GettingStartedDocs() {
               <p className="text-sm font-medium mb-1">4. Start Working Through Content</p>
               <p className="text-xs text-muted-foreground mb-2">
                 Click the Notes icon in the sidebar to access your guides. Select a guide from the sidebar to view its readings.
-                Work through each reading, complete reflection prompts, and mark items as complete as you progress.
+                Work through each reading, complete reflection questions, and mark items as complete as you progress.
               </p>
               <p className="text-xs text-muted-foreground italic">
                 Tip: There's no rush—work at your own pace and revisit content as often as needed.
@@ -109,7 +109,7 @@ export function GettingStartedDocs() {
             </div>
             <div className="flex items-start gap-2 text-xs">
               <span className="text-muted-foreground min-w-20">Notes</span>
-              <span className="text-muted-foreground">Work through guide readings and complete reflection prompts</span>
+              <span className="text-muted-foreground">Work through guide readings and complete reflection questions</span>
             </div>
             <div className="flex items-start gap-2 text-xs">
               <span className="text-muted-foreground min-w-20">Discover</span>

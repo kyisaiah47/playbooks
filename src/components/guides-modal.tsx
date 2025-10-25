@@ -17,7 +17,7 @@ import { Search } from "lucide-react"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 
 
-interface TemplatesModalProps {
+interface GuidesModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
 }

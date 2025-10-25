@@ -24,7 +24,7 @@ const weddingFAQs = [
   },
   {
     question: "How do the guided planning sections work?",
-    answer: "Each of the 12 guided sections includes specific prompts, examples, and expert tips to walk you through different aspects of wedding planning. From timeline creation to vendor questions, vows writing to emergency planning - each section provides structure while allowing complete customization."
+    answer: "Each of the 12 guided sections includes specific questions, examples, and expert tips to walk you through different aspects of wedding planning. From timeline creation to vendor questions, vows writing to emergency planning - each section provides structure while allowing complete customization."
   },
   {
     question: "Can my partner and wedding party access the template too?",
@@ -48,7 +48,7 @@ const weddingFAQs = [
   }
 ]
 
-interface TemplateFAQProps {
+interface GuideFAQProps {
   templateType: 'wedding' | 'baby' | 'home-buying'
 }
 

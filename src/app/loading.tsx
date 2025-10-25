@@ -9,8 +9,8 @@ const loadingMessages = [
   "Loading templates...",
   "Gathering insights...",
   "Preparing your workspace...",
-  "Curating articles...",
-  "Setting up prompts...",
+  "Curating readings...",
+  "Setting up questions...",
 ];
 
 export default function Loading() {

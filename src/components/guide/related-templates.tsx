@@ -15,7 +15,7 @@ interface RelatedTemplatesProps {
   limit?: number
 }
 
-interface TemplateCardProps {
+interface GuideCardProps {
   template: TemplateRegistryEntry
   strength: number
   reason: string
@@ -82,7 +82,7 @@ export function RelatedTemplates({
   const knowledgeRelations = getRelatedTemplates(guideId, limit)
 
   // Map knowledge graph results to template registry entries
-  const relatedTemplates = knowledgeRelations
+  const relatedGuides = knowledgeRelations
     .map(relation => {
       const template = templateRegistry.find(t => t.id === relation.guideId)
       if (!template) return null
@@ -101,7 +101,7 @@ export function RelatedTemplates({
       level: 'critical' | 'strong' | 'medium'
     }>
 
-  if (relatedTemplates.length === 0) {
+  if (relatedGuides.length === 0) {
     return null
   }
   */
@@ -116,7 +116,7 @@ export function RelatedTemplates({
       </div>
 
       <div className="grid gap-2">
-        {relatedTemplates.map(({ template, strength, reason, level }) => (
+        {relatedGuides.map(({ template, strength, reason, level }) => (
           <TemplateCard
             key={template.id}
             template={template}

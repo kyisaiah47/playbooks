@@ -27,7 +27,7 @@ export default function PromptsAdPage() {
 					<h1 className="text-7xl lg:text-8xl font-black leading-none tracking-tight">
 						104,000+
 						<br />
-						prompts for
+						questions for
 						<br />
 						every
 						<br />

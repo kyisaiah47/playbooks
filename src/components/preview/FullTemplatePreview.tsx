@@ -73,7 +73,7 @@ const guideData = {
       { id: 'styling-decor', title: 'Styling & Decor', icon: Palette },
       { id: 'attire-beauty', title: 'Attire & Beauty', icon: Shirt },
     ],
-    prompts: [
+    questions: [
       "What's your total wedding budget?",
       "How will you track expenses throughout planning?",
       "What's your ideal venue style and capacity?",
@@ -97,7 +97,7 @@ const guideData = {
       { id: 'negotiations', title: 'Negotiations', icon: Handshake },
       { id: 'closing', title: 'Closing Process', icon: Key },
     ],
-    prompts: [
+    questions: [
       "What's your target price range?",
       "Have you been pre-approved for a mortgage?",
       "What neighborhoods are you considering?",
@@ -121,7 +121,7 @@ const guideData = {
       { id: 'job-applications', title: 'Job Applications', icon: Send },
       { id: 'interviews', title: 'Interviews', icon: MessageCircle },
     ],
-    prompts: [
+    questions: [
       "What are your key transferable skills?",
       "What accomplishments showcase your value?",
       "What type of work environment do you thrive in?",
@@ -145,7 +145,7 @@ const guideData = {
       { id: 'marketing-strategy', title: 'Marketing Strategy', icon: Megaphone },
       { id: 'operations', title: 'Operations', icon: Settings },
     ],
-    prompts: [
+    questions: [
       "What's your business concept in one sentence?",
       "Who are your main competitors?",
       "What problem are you solving for customers?",
@@ -169,7 +169,7 @@ const guideData = {
       { id: 'logistics', title: 'Logistics', icon: CheckSquare },
       { id: 'day-of-coordination', title: 'Day-of Coordination', icon: CalendarIcon },
     ],
-    prompts: [
+    questions: [
       "What type of event are you planning?",
       "What atmosphere do you want to create?",
       "What's the purpose of this event?",
@@ -193,9 +193,9 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
   const template = guideData[templateType as keyof typeof guideData];
   if (!template) return null;
 
-  // Auto-open resource and add some prompts for preview
+  // Auto-open resource and add some questions for preview
   const openResource = template.resources[0];
-  const previewPrompts = template.prompts.slice(0, 2);
+  const previewPrompts = template.questions.slice(0, 2);
 
   const TemplateIcon = template.icon;
   const sections = template.sections;
@@ -242,7 +242,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
               <div className="mt-6">
                 <div className="text-xs font-medium text-muted-foreground mb-2 px-2">Reflection Prompts</div>
                 <div className="space-y-1">
-                  {template.prompts.slice(0, 3).map((prompt, index) => (
+                  {template.questions.slice(0, 3).map((prompt, index) => (
                     <div
                       key={index}
                       className="w-full p-2 bg-background rounded border text-xs"

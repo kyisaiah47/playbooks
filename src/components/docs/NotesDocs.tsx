@@ -4,7 +4,7 @@ export function NotesDocs() {
       <h2 className="text-lg font-semibold mb-4">Notes</h2>
       <div className="space-y-6">
         <p className="text-sm text-muted-foreground">
-          The Notes view is where you actively work through your guides—reading expert content, completing reflection prompts,
+          The Notes view is where you actively work through your guides—reading expert content, completing reflection questions,
           and tracking your progress. This is the heart of your Templata experience, where structured guidance meets personal insight.
         </p>
 
@@ -73,14 +73,14 @@ export function NotesDocs() {
                   Your responses are automatically saved as you type, so you never lose your work.
                 </p>
                 <p className="text-xs text-muted-foreground italic">
-                  Tip: There are no "right" answers to reflection prompts. Be honest and thoughtful—these are for you, not for judgment.
+                  Tip: There are no "right" answers to reflection questions. Be honest and thoughtful—these are for you, not for judgment.
                 </p>
               </div>
 
               <div>
                 <p className="text-sm font-medium mb-1">4. Mark as Complete</p>
                 <p className="text-xs text-muted-foreground">
-                  When you've finished a reading and completed its prompts, mark it as complete using the checkbox or
+                  When you've finished a reading and completed its questions, mark it as complete using the checkbox or
                   "Mark Complete" button. This helps you track your progress and builds momentum.
                 </p>
               </div>
@@ -104,7 +104,7 @@ export function NotesDocs() {
             </div>
             <div className="flex items-start gap-2 text-xs">
               <span className="text-muted-foreground">→</span>
-              <span className="text-muted-foreground">Which reflection prompts you've answered</span>
+              <span className="text-muted-foreground">Which reflection questions you've answered</span>
             </div>
             <div className="flex items-start gap-2 text-xs">
               <span className="text-muted-foreground">→</span>

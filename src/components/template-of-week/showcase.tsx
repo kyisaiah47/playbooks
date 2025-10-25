@@ -22,7 +22,7 @@ import {
 } from "@/lib/template-of-week"
 import { cn } from "@/lib/utils"
 
-interface TemplateOfWeekShowcaseProps {
+interface GuideOfWeekShowcaseProps {
   variant?: "full" | "compact" | "banner"
   className?: string
 }

@@ -35,34 +35,34 @@ import {
 } from '@/components/ui/drawer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-interface Prompt {
+interface Question {
   id: string;
-  prompt: string;
+  question: string;
   categoryName: string;
 }
 
-interface Article {
+interface Reading {
   id: string;
   title: string;
   excerpt: string;
   readTime: string;
 }
 
-interface ArticleDetail extends Article {
+interface ReadingDetail extends Reading {
   content: string;
   author: string;
   publishedAt: string;
 }
 
-interface Template {
+interface Guide {
   id: string;
   name: string;
   category: string;
 }
 
-const TEMPLATES_PER_LOAD = 50;
+const GUIDES_PER_LOAD = 50;
 
-// Featured templates for demo mode
+// Featured guides for demo mode
 const FEATURED_GENERAL_IDS = [
   'wedding-planning',
   'job-search',
@@ -86,12 +86,12 @@ const FEATURED_HEALTH_IDS = [
 
 const FEATURED_GUIDE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS, ...FEATURED_HEALTH_IDS];
 
-interface TemplatesViewProps {
-  onViewChange?: (view: 'templates' | 'reflection' | 'overview') => void;
+interface GuidesViewProps {
+  onViewChange?: (view: 'guides' | 'reflection' | 'overview') => void;
   setActions?: (actions: {
-    openTemplateDropdown?: () => void;
-    selectFirstPrompt?: () => void;
-    openFirstArticle?: () => void;
+    openGuideDropdown?: () => void;
+    selectFirstQuestion?: () => void;
+    openFirstReading?: () => void;
   }) => void;
   workspaceId?: string;
   userGuideId?: string;
@@ -100,33 +100,33 @@ interface TemplatesViewProps {
 
 export function TemplatesView({ onViewChange, setActions, workspaceId, userGuideId, defaultGuideId }: TemplatesViewProps) {
   const [selectedGuide, setSelectedGuide] = useState(defaultGuideId || 'wedding-planning');
-  const [templates, setTemplates] = useState<Template[]>([]);
-  const [displayedTemplates, setDisplayedTemplates] = useState<Template[]>([]);
+  const [guides, setGuides] = useState<Guide[]>([]);
+  const [displayedGuides, setDisplayedGuides] = useState<Guide[]>([]);
   const [guideInfo, setGuideInfo] = useState<{ id: string; name: string } | null>(null);
-  const [prompts, setPrompts] = useState<Prompt[]>([]);
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [readings, setReadings] = useState<Reading[]>([]);
   const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(null);
-  const [promptResponse, setPromptResponse] = useState('');
+  const [questionResponse, setQuestionResponse] = useState('');
   const [loading, setLoading] = useState(true);
   const [autoSave, setAutoSave] = useState(true);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const [selectedArticle, setSelectedArticle] = useState<ArticleDetail | null>(null);
-  const [loadingArticle, setLoadingArticle] = useState(false);
+  const [selectedReading, setSelectedReading] = useState<ReadingDetail | null>(null);
+  const [loadingReading, setLoadingReading] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
   const [open, setOpen] = useState(false);
-  const [hasMoreTemplates, setHasMoreTemplates] = useState(true);
+  const [hasMoreGuides, setHasMoreGuides] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [promptSearchQuery, setPromptSearchQuery] = useState('');
+  const [questionSearchQuery, setQuestionSearchQuery] = useState('');
   const [readingSearchQuery, setReadingSearchQuery] = useState('');
-  const [articleContentSearchQuery, setReadingContentSearchQuery] = useState('');
+  const [readingContentSearchQuery, setReadingContentSearchQuery] = useState('');
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
+  const [answeredQuestions, setAnsweredQuestions] = useState<Set<string>>(new Set());
   const [userGuide, setUserGuide] = useState<any | null>(null);
 
   // Mobile drawer state
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-  const [mobileDrawerTab, setMobileDrawerTab] = useState<'prompts' | 'articles'>('prompts');
+  const [mobileDrawerTab, setMobileDrawerTab] = useState<'questions' | 'readings'>('questions');
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -142,41 +142,41 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   useEffect(() => {
     if (setActions) {
       setActions({
-        openTemplateDropdown: () => {
+        openGuideDropdown: () => {
           setOpen(true);
         },
-        selectFirstPrompt: () => {
-          if (prompts.length > 0) {
-            const groupedPrompts = prompts.reduce((acc, prompt) => {
-              const category = prompt.categoryName || 'General';
+        selectFirstQuestion: () => {
+          if (questions.length > 0) {
+            const groupedQuestions = questions.reduce((acc, question) => {
+              const category = question.categoryName || 'General';
               if (!acc[category]) {
                 acc[category] = [];
               }
-              acc[category].push(prompt);
+              acc[category].push(question);
               return acc;
-            }, {} as Record<string, Prompt[]>);
-            const firstCategory = Object.keys(groupedPrompts).sort()[0];
+            }, {} as Record<string, Question[]>);
+            const firstCategory = Object.keys(groupedQuestions).sort()[0];
             // Expand first category
             setCollapsedCategories((prev) => {
               const newSet = new Set(prev);
               newSet.delete(firstCategory);
               return newSet;
             });
-            // Select first prompt
-            const firstPrompt = groupedPrompts[firstCategory][0];
-            if (firstPrompt) {
-              setSelectedQuestionId(firstPrompt.id);
+            // Select first question
+            const firstQuestion = groupedQuestions[firstCategory][0];
+            if (firstQuestion) {
+              setSelectedQuestionId(firstQuestion.id);
             }
           }
         },
-        openFirstArticle: () => {
-          if (articles.length > 0) {
-            handleArticleClick(articles[0].id);
+        openFirstReading: () => {
+          if (readings.length > 0) {
+            handleReadingClick(readings[0].id);
           }
         },
       });
     }
-  }, [prompts, articles, setActions]);
+  }, [questions, readings, setActions]);
 
   // Check authentication status
   useEffect(() => {
@@ -244,10 +244,10 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
             );
 
             if (response) {
-              setPromptResponse(response.response || '');
+              setQuestionResponse(response.response || '');
               setLastSaved(response.updated_at ? new Date(response.updated_at) : null);
             } else {
-              setPromptResponse('');
+              setQuestionResponse('');
               setLastSaved(null);
             }
           }
@@ -258,21 +258,21 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           if (saved) {
             try {
               const data = JSON.parse(saved);
-              setPromptResponse(data.response || '');
+              setQuestionResponse(data.response || '');
               setLastSaved(data.savedAt ? new Date(data.savedAt) : null);
             } catch (e) {
               console.error('Error loading from localStorage:', e);
-              setPromptResponse('');
+              setQuestionResponse('');
               setLastSaved(null);
             }
           } else {
-            setPromptResponse('');
+            setQuestionResponse('');
             setLastSaved(null);
           }
         }
       } catch (e) {
         console.error('Error loading saved data:', e);
-        setPromptResponse('');
+        setQuestionResponse('');
         setLastSaved(null);
       }
     }
@@ -289,7 +289,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           const body: any = {
             guideId: selectedGuide,
             questionId: selectedQuestionId,
-            response: promptResponse,
+            response: questionResponse,
           };
 
           // Include userGuideId if available
@@ -307,7 +307,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           // Save to localStorage
           const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const data = {
-            response: promptResponse,
+            response: questionResponse,
             savedAt: new Date().toISOString(),
           };
           localStorage.setItem(key, JSON.stringify(data));
@@ -319,97 +319,97 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
     }, 2000);
 
     return () => clearTimeout(timeoutId);
-  }, [promptResponse, autoSave, selectedQuestionId, selectedGuide, isAuthenticated, userGuideId]);
+  }, [questionResponse, autoSave, selectedQuestionId, selectedGuide, isAuthenticated, userGuideId]);
 
-  // Fetch templates list
+  // Fetch guides list
   useEffect(() => {
-    async function fetchTemplates() {
+    async function fetchGuides() {
       try {
         const res = await fetch('/api/guides');
         const data = await res.json();
-        const allTemplates = (data.templates || []).sort((a: Template, b: Template) =>
+        const allGuides = (data.templates || []).sort((a: Guide, b: Guide) =>
           a.name.localeCompare(b.name)
         );
-        setTemplates(allTemplates);
+        setGuides(allGuides);
 
         // Initially load first batch
-        setDisplayedTemplates(allTemplates.slice(0, TEMPLATES_PER_LOAD));
-        setHasMoreTemplates(allTemplates.length > TEMPLATES_PER_LOAD);
+        setDisplayedGuides(allGuides.slice(0, GUIDES_PER_LOAD));
+        setHasMoreGuides(allGuides.length > GUIDES_PER_LOAD);
       } catch (error) {
-        console.error('Error fetching templates:', error);
+        console.error('Error fetching guides:', error);
       }
     }
-    fetchTemplates();
+    fetchGuides();
   }, []);
 
-  // Load more templates
-  const loadMoreTemplates = () => {
-    if (!hasMoreTemplates) return;
+  // Load more guides
+  const loadMoreGuides = () => {
+    if (!hasMoreGuides) return;
 
-    const currentLength = displayedTemplates.length;
-    const nextBatch = templates.slice(currentLength, currentLength + TEMPLATES_PER_LOAD);
+    const currentLength = displayedGuides.length;
+    const nextBatch = guides.slice(currentLength, currentLength + GUIDES_PER_LOAD);
 
     if (nextBatch.length > 0) {
-      setDisplayedTemplates(prev => [...prev, ...nextBatch]);
-      setHasMoreTemplates(currentLength + nextBatch.length < templates.length);
+      setDisplayedGuides(prev => [...prev, ...nextBatch]);
+      setHasMoreGuides(currentLength + nextBatch.length < guides.length);
     }
   };
 
-  // Filter templates based on search
-  const filteredTemplates = searchQuery.trim()
-    ? templates.filter(t =>
-        t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        t.category.toLowerCase().includes(searchQuery.toLowerCase())
+  // Filter guides based on search
+  const filteredGuides = searchQuery.trim()
+    ? guides.filter(g =>
+        g.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        g.category.toLowerCase().includes(searchQuery.toLowerCase())
       )
-    : displayedTemplates;
+    : displayedGuides;
 
-  // Split into featured and regular templates (only when no search)
-  // Always pull featured from full templates array to ensure they're included
+  // Split into featured and regular guides (only when no search)
+  // Always pull featured from full guides array to ensure they're included
   const showFeatured = !searchQuery.trim();
-  const featuredGeneralTemplates = showFeatured
-    ? templates.filter(t => FEATURED_GENERAL_IDS.includes(t.id))
+  const featuredGeneralGuides = showFeatured
+    ? guides.filter(g => FEATURED_GENERAL_IDS.includes(g.id))
     : [];
-  const featuredGenZTemplates = showFeatured
-    ? templates.filter(t => FEATURED_GENZ_IDS.includes(t.id))
+  const featuredGenZGuides = showFeatured
+    ? guides.filter(g => FEATURED_GENZ_IDS.includes(g.id))
     : [];
-  const featuredHealthTemplates = showFeatured
-    ? templates.filter(t => FEATURED_HEALTH_IDS.includes(t.id))
+  const featuredHealthGuides = showFeatured
+    ? guides.filter(g => FEATURED_HEALTH_IDS.includes(g.id))
     : [];
-  const regularTemplates = showFeatured
-    ? filteredTemplates.filter(t => !FEATURED_GUIDE_IDS.includes(t.id))
-    : filteredTemplates;
+  const regularGuides = showFeatured
+    ? filteredGuides.filter(g => !FEATURED_GUIDE_IDS.includes(g.id))
+    : filteredGuides;
 
-  // Fetch prompts and articles when template changes
+  // Fetch questions and readings when guide changes
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
 
-        const template = templates.find(t => t.id === selectedGuide);
-        if (template) {
-          setGuideInfo({ id: template.id, name: template.name });
+        const guide = guides.find(g => g.id === selectedGuide);
+        if (guide) {
+          setGuideInfo({ id: guide.id, name: guide.name });
         }
 
-        const questionsRes = await fetch(`/api/prompts?guideId=${selectedGuide}`);
-        const promptsData = await questionsRes.json();
-        const fetchedPrompts = promptsData.prompts || [];
-        setPrompts(fetchedPrompts);
+        const questionsRes = await fetch(`/api/questions?guideId=${selectedGuide}`);
+        const questionsData = await questionsRes.json();
+        const fetchedQuestions = questionsData.questions || [];
+        setQuestions(fetchedQuestions);
 
         // Collapse all categories by default
-        const groupedPrompts = fetchedPrompts.reduce((acc: Record<string, Prompt[]>, prompt: Prompt) => {
-          const category = prompt.categoryName || 'General';
+        const groupedQuestions = fetchedQuestions.reduce((acc: Record<string, Question[]>, question: Question) => {
+          const category = question.categoryName || 'General';
           if (!acc[category]) {
             acc[category] = [];
           }
-          acc[category].push(prompt);
+          acc[category].push(question);
           return acc;
         }, {});
-        const allCategories = Object.keys(groupedPrompts);
+        const allCategories = Object.keys(groupedQuestions);
         setCollapsedCategories(new Set(allCategories));
 
         const readingsRes = await fetch(`/api/readings?template=${selectedGuide}&pageSize=50`);
-        const articlesData = await readingsRes.json();
-        setArticles(articlesData.articles || []);
+        const readingsData = await readingsRes.json();
+        setReadings(readingsData.readings || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -417,15 +417,15 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       }
     }
 
-    if (templates.length > 0) {
+    if (guides.length > 0) {
       fetchData();
     }
-  }, [selectedGuide, templates]);
+  }, [selectedGuide, guides]);
 
-  // Check which prompts have been answered
+  // Check which questions have been answered
   useEffect(() => {
-    async function checkAnsweredPrompts() {
-      if (isAuthenticated === null || prompts.length === 0) return;
+    async function checkAnsweredQuestions() {
+      if (isAuthenticated === null || questions.length === 0) return;
 
       const answered = new Set<string>();
 
@@ -451,18 +451,18 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
             });
           }
         } catch (e) {
-          console.error('Error checking answered prompts:', e);
+          console.error('Error checking answered questions:', e);
         }
       } else {
         // Check localStorage
-        prompts.forEach((prompt) => {
-          const key = `workspace_${selectedGuide}_${prompt.id}`;
+        questions.forEach((question) => {
+          const key = `workspace_${selectedGuide}_${question.id}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {
               const data = JSON.parse(saved);
               if (data.response && data.response.trim().length > 0) {
-                answered.add(prompt.id);
+                answered.add(question.id);
               }
             } catch (e) {
               // Ignore parse errors
@@ -471,42 +471,42 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         });
       }
 
-      // Optimistically show checkmark for current prompt if it has content
-      if (selectedQuestionId && promptResponse.trim().length > 0) {
+      // Optimistically show checkmark for current question if it has content
+      if (selectedQuestionId && questionResponse.trim().length > 0) {
         answered.add(selectedQuestionId);
       }
 
-      setAnsweredPrompts(answered);
+      setAnsweredQuestions(answered);
     }
 
-    checkAnsweredPrompts();
-  }, [selectedGuide, prompts, isAuthenticated, lastSaved, selectedQuestionId, promptResponse, userGuideId]);
+    checkAnsweredQuestions();
+  }, [selectedGuide, questions, isAuthenticated, lastSaved, selectedQuestionId, questionResponse, userGuideId]);
 
-  const handleTemplateChange = (newGuideId: string) => {
+  const handleGuideChange = (newGuideId: string) => {
     setSelectedGuide(newGuideId);
     setSelectedQuestionId(null);
-    setPromptResponse('');
+    setQuestionResponse('');
     setSearchQuery('');
     setOpen(false);
   };
 
-  const handleArticleClick = async (articleId: string) => {
+  const handleReadingClick = async (readingId: string) => {
     try {
-      setLoadingArticle(true);
-      const res = await fetch(`/api/readings?id=${articleId}`);
+      setLoadingReading(true);
+      const res = await fetch(`/api/readings?id=${readingId}`);
       const data = await res.json();
 
-      setSelectedArticle(data.article);
+      setSelectedReading(data.article);
     } catch (error) {
-      console.error('Error fetching article:', error);
+      console.error('Error fetching reading:', error);
     } finally {
-      setLoadingArticle(false);
+      setLoadingReading(false);
     }
   };
 
-  const handleCloseArticle = () => {
-    setSelectedArticle(null);
-    setReadingContentSearchQuery(''); // Clear search when closing article
+  const handleCloseReading = () => {
+    setSelectedReading(null);
+    setReadingContentSearchQuery(''); // Clear search when closing reading
   };
 
   const toggleCategory = (category: string) => {
@@ -529,7 +529,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           const body: any = {
             guideId: selectedGuide,
             questionId: selectedQuestionId,
-            response: promptResponse,
+            response: questionResponse,
           };
 
           // Include userGuideId if available
@@ -547,7 +547,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
           // Save to localStorage
           const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const data = {
-            response: promptResponse,
+            response: questionResponse,
             savedAt: new Date().toISOString(),
           };
           localStorage.setItem(key, JSON.stringify(data));
@@ -559,49 +559,49 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
     }
   };
 
-  // Filter prompts based on search query
-  const filteredPrompts = promptSearchQuery.trim()
-    ? prompts.filter(p =>
-        p.prompt.toLowerCase().includes(promptSearchQuery.toLowerCase()) ||
-        (p.categoryName && p.categoryName.toLowerCase().includes(promptSearchQuery.toLowerCase()))
+  // Filter questions based on search query
+  const filteredQuestions = questionSearchQuery.trim()
+    ? questions.filter(q =>
+        q.question.toLowerCase().includes(questionSearchQuery.toLowerCase()) ||
+        (q.categoryName && q.categoryName.toLowerCase().includes(questionSearchQuery.toLowerCase()))
       )
-    : prompts;
+    : questions;
 
-  const groupedPrompts = filteredPrompts.reduce((acc, prompt) => {
-    const category = prompt.categoryName || 'General';
+  const groupedQuestions = filteredQuestions.reduce((acc, question) => {
+    const category = question.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
     }
-    acc[category].push(prompt);
+    acc[category].push(question);
     return acc;
-  }, {} as Record<string, Prompt[]>);
+  }, {} as Record<string, Question[]>);
 
-  const categories = Object.keys(groupedPrompts).sort();
-  const selectedPrompt = prompts.find(p => p.id === selectedQuestionId);
+  const categories = Object.keys(groupedQuestions).sort();
+  const selectedQuestion = questions.find(q => q.id === selectedQuestionId);
 
   // Auto-expand all categories when filtering
   useEffect(() => {
-    if (promptSearchQuery.trim()) {
+    if (questionSearchQuery.trim()) {
       // Expand all categories when searching
       setCollapsedCategories(new Set());
     } else {
       // Collapse all categories when filter is cleared
-      const allCategories = Object.keys(prompts.reduce((acc, prompt) => {
-        const category = prompt.categoryName || 'General';
+      const allCategories = Object.keys(questions.reduce((acc, question) => {
+        const category = question.categoryName || 'General';
         acc[category] = true;
         return acc;
       }, {} as Record<string, boolean>));
       setCollapsedCategories(new Set(allCategories));
     }
-  }, [promptSearchQuery, prompts]);
+  }, [questionSearchQuery, questions]);
 
-  // Filter articles based on search query
-  const filteredArticles = readingSearchQuery.trim()
-    ? articles.filter(a =>
-        a.title.toLowerCase().includes(readingSearchQuery.toLowerCase()) ||
-        a.excerpt.toLowerCase().includes(readingSearchQuery.toLowerCase())
+  // Filter readings based on search query
+  const filteredReadings = readingSearchQuery.trim()
+    ? readings.filter(r =>
+        r.title.toLowerCase().includes(readingSearchQuery.toLowerCase()) ||
+        r.excerpt.toLowerCase().includes(readingSearchQuery.toLowerCase())
       )
-    : articles;
+    : readings;
 
   return (
     <div className="h-full flex flex-col bg-background">
@@ -700,14 +700,14 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                 <FileText className="h-4 w-4 text-primary" />
                 <h2 className="font-semibold text-foreground">Questions</h2>
                 <Badge variant="outline" className="ml-auto text-xs">
-                  {prompts.length}
+                  {questions.length}
                 </Badge>
               </div>
               <Input
                 type="text"
                 placeholder="Filter questions..."
-                value={promptSearchQuery}
-                onChange={(e) => setPromptSearchQuery(e.target.value)}
+                value={questionSearchQuery}
+                onChange={(e) => setQuestionSearchQuery(e.target.value)}
                 className="h-8 text-sm mb-2"
               />
               <p className="text-xs text-muted-foreground">
@@ -719,7 +719,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
               <p className="text-sm text-muted-foreground">Loading questions...</p>
             ) : categories.length === 0 ? (
               <p className="text-sm text-muted-foreground">
-                {promptSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
+                {questionSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
               </p>
             ) : (
               <div className="space-y-4">
@@ -746,23 +746,23 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                           transition={{ duration: 0.2 }}
                           className="space-y-1 overflow-hidden"
                         >
-                          {groupedPrompts[category].map((prompt, index) => (
+                          {groupedQuestions[category].map((question, index) => (
                             <motion.button
-                              key={prompt.id}
+                              key={question.id}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.2, delay: index * 0.03 }}
-                              onClick={() => setSelectedQuestionId(prompt.id)}
+                              onClick={() => setSelectedQuestionId(question.id)}
                               className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
-                                selectedQuestionId === prompt.id
+                                selectedQuestionId === question.id
                                   ? 'bg-primary/10 text-primary border border-primary/20'
                                   : 'bg-muted/50 text-foreground hover:bg-muted'
                               }`}
                             >
-                              {answeredPrompts.has(prompt.id) && (
+                              {answeredQuestions.has(question.id) && (
                                 <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
                               )}
-                              <span className="flex-1">{prompt.prompt}</span>
+                              <span className="flex-1">{question.question}</span>
                             </motion.button>
                           ))}
                         </motion.div>
@@ -779,7 +779,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         <div className="flex-1 overflow-y-auto bg-background">
           <div className="container mx-auto max-w-4xl px-4 md:px-8 py-4 md:py-8 h-full">
             <AnimatePresence mode="wait">
-              {selectedPrompt ? (
+              {selectedQuestion ? (
                 <motion.div
                   key={selectedQuestionId}
                   initial={{ opacity: 0, y: 20 }}
@@ -790,10 +790,10 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                 >
                   <div>
                     <Badge variant="outline" className="mb-2 md:mb-3 text-xs">
-                      {selectedPrompt.categoryName}
+                      {selectedQuestion.categoryName}
                     </Badge>
                     <h2 className="text-lg md:text-xl font-bold text-foreground mb-2">
-                      {selectedPrompt.prompt}
+                      {selectedQuestion.question}
                     </h2>
                     <p className="text-xs md:text-sm text-muted-foreground hidden md:block">
                       {autoSave
@@ -806,8 +806,8 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                     <textarea
                       className="w-full h-full bg-transparent border-none outline-none resize-none text-foreground text-[15px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
                       placeholder="Start writing your response here..."
-                      value={promptResponse}
-                      onChange={(e) => setPromptResponse(e.target.value)}
+                      value={questionResponse}
+                      onChange={(e) => setQuestionResponse(e.target.value)}
                       style={{ fontFamily: 'inherit' }}
                     />
                   </Card>
@@ -844,7 +844,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         >
           <div className="p-6 space-y-4">
             <AnimatePresence mode="wait">
-              {selectedArticle ? (
+              {selectedReading ? (
                 <motion.div
                   key="article-detail"
                   initial={{ opacity: 0, x: 20 }}
@@ -857,11 +857,11 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={handleCloseArticle}
+                        onClick={handleCloseReading}
                         className="text-muted-foreground hover:text-foreground"
                       >
                         <ArrowLeft className="h-4 w-4 mr-2" />
-                        Back to articles
+                        Back to readings
                       </Button>
                     </div>
 
@@ -871,14 +871,14 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                       <Input
                         type="text"
                         placeholder="Search in reading..."
-                        value={articleContentSearchQuery}
+                        value={readingContentSearchQuery}
                         onChange={(e) => setReadingContentSearchQuery(e.target.value)}
                         className="h-9 text-sm pl-9"
                       />
                     </div>
                   </div>
 
-                  {loadingArticle ? (
+                  {loadingReading ? (
                     <div className="py-8 text-center">
                       <p className="text-muted-foreground">Loading reading...</p>
                     </div>
@@ -886,18 +886,18 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                     <div className="space-y-6">
                       <header>
                         <h2 className="text-2xl font-bold text-foreground mb-4">
-                          {selectedArticle.title}
+                          {selectedReading.title}
                         </h2>
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span>{selectedArticle.author}</span>
+                          <span>{selectedReading.author}</span>
                           <span>•</span>
-                          <span>{selectedArticle.readTime}</span>
+                          <span>{selectedReading.readTime}</span>
                           <span>•</span>
-                          <span>{new Date(selectedArticle.publishedAt).toLocaleDateString()}</span>
+                          <span>{new Date(selectedReading.publishedAt).toLocaleDateString()}</span>
                         </div>
                       </header>
 
-                      <ReadingContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
+                      <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
                     </div>
                   )}
                 </motion.div>
@@ -914,7 +914,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                       <BookOpen className="h-4 w-4 text-primary" />
                       <h2 className="font-semibold text-foreground">Readings</h2>
                       <Badge variant="outline" className="ml-auto text-xs">
-                        {articles.length}
+                        {readings.length}
                       </Badge>
                     </div>
                     <Input
@@ -931,31 +931,31 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
 
                   {loading ? (
                     <p className="text-sm text-muted-foreground">Loading readings...</p>
-                  ) : filteredArticles.length === 0 ? (
+                  ) : filteredReadings.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
                       {readingSearchQuery.trim() ? 'No readings match your search' : 'No readings available'}
                     </p>
                   ) : (
                     <div className="space-y-3">
-                      {filteredArticles.map((article, index) => (
+                      {filteredReadings.map((reading, index) => (
                         <motion.div
-                          key={article.id}
+                          key={reading.id}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: index * 0.05 }}
                         >
                           <Card
                             className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
-                            onClick={() => handleArticleClick(article.id)}
+                            onClick={() => handleReadingClick(reading.id)}
                           >
                             <h3 className="text-sm font-medium text-foreground mb-1">
-                              {article.title}
+                              {reading.title}
                             </h3>
                             <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
-                              {article.excerpt}
+                              {reading.excerpt}
                             </p>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span>{article.readTime}</span>
+                              <span>{reading.readTime}</span>
                               <ChevronRight className="h-3 w-3 ml-auto" />
                             </div>
                           </Card>
@@ -971,8 +971,8 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
       </div>
 
       {/* Mobile Article Viewer */}
-      {isMobile && selectedArticle && (
-        <Drawer open={!!selectedArticle} onOpenChange={(open) => !open && handleCloseArticle()}>
+      {isMobile && selectedReading && (
+        <Drawer open={!!selectedReading} onOpenChange={(open) => !open && handleCloseReading()}>
           <DrawerContent className="max-h-[90vh]">
             <DrawerHeader>
               <div className="flex items-center justify-between mb-3">
@@ -980,7 +980,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={handleCloseArticle}
+                  onClick={handleCloseReading}
                 >
                   <X className="h-4 w-4" />
                 </Button>
@@ -1031,19 +1031,19 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
             <DrawerTitle>Browse</DrawerTitle>
           </DrawerHeader>
 
-          <Tabs value={mobileDrawerTab} onValueChange={(v) => setMobileDrawerTab(v as 'prompts' | 'articles')} className="flex-1 flex flex-col overflow-hidden">
+          <Tabs value={mobileDrawerTab} onValueChange={(v) => setMobileDrawerTab(v as 'questions' | 'readings')} className="flex-1 flex flex-col overflow-hidden">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="prompts" className="gap-1.5">
+              <TabsTrigger value="questions" className="gap-1.5">
                 <FileText className="h-4 w-4" />
                 <span>Prompts</span>
               </TabsTrigger>
-              <TabsTrigger value="articles" className="gap-1.5">
+              <TabsTrigger value="readings" className="gap-1.5">
                 <BookOpen className="h-4 w-4" />
                 <span>Articles</span>
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="prompts" className="flex-1 overflow-y-auto px-4 mt-0">
+            <TabsContent value="questions" className="flex-1 overflow-y-auto px-4 mt-0">
               <div className="space-y-4 py-4">
                 <Input
                   type="text"
@@ -1059,7 +1059,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                   <p className="text-sm text-muted-foreground">Loading questions...</p>
                 ) : categories.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    {promptSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
+                    {questionSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
                   </p>
                 ) : (
                   <div className="space-y-4">
@@ -1086,23 +1086,23 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                               transition={{ duration: 0.2 }}
                               className="space-y-1 overflow-hidden"
                             >
-                              {groupedPrompts[category].map((prompt) => (
+                              {groupedQuestions[category].map((prompt) => (
                                 <button
-                                  key={prompt.id}
+                                  key={question.id}
                                   onClick={() => {
                                     setSelectedQuestionId(prompt.id);
                                     setMobileDrawerOpen(false);
                                   }}
                                   className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
-                                    selectedQuestionId === prompt.id
+                                    selectedQuestionId === question.id
                                       ? 'bg-primary/10 text-primary border border-primary/20'
                                       : 'bg-muted/50 text-foreground hover:bg-muted'
                                   }`}
                                 >
-                                  {answeredPrompts.has(prompt.id) && (
+                                  {answeredQuestions.has(question.id) && (
                                     <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
                                   )}
-                                  <span className="flex-1">{prompt.prompt}</span>
+                                  <span className="flex-1">{question.question}</span>
                                 </button>
                               ))}
                             </motion.div>
@@ -1115,7 +1115,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
               </div>
             </TabsContent>
 
-            <TabsContent value="articles" className="flex-1 overflow-y-auto px-4 mt-0">
+            <TabsContent value="readings" className="flex-1 overflow-y-auto px-4 mt-0">
               <div className="space-y-4 py-4">
                 <Input
                   type="text"

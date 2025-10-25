@@ -12,7 +12,7 @@ import { ReflectionPrompt } from '@/types/guide'
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 import { Plus, Target } from 'lucide-react'
 
-interface TemplateWorkspaceEditorProps {
+interface GuideWorkspaceEditorProps {
   onInsertPrompt?: (prompt: ReflectionPrompt) => void
   initialContent?: string
   onContentChange?: (content: string) => void
@@ -113,7 +113,7 @@ export function TemplateWorkspaceEditor({
               transition={{ type: "spring", stiffness: 180, damping: 20, delay: 0.8 }}
               containerClassName="text-sm text-muted-foreground mb-4 max-w-sm mx-auto"
             >
-              Add prompts from the sidebar to create your customized planning experience. ← Your journey starts here.
+              Add questions from the sidebar to create your customized planning experience. ← Your journey starts here.
             </VerticalCutReveal>
             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
               <Plus className="h-4 w-4" />

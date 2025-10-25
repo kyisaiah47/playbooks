@@ -3,8 +3,8 @@ import { supabase } from '@/lib/supabase';
 // Article registry - empty by default, will be populated from Supabase
 export const articleRegistry: any[] = [];
 
-// Export all articles as array for backward compatibility
-export const articles = articleRegistry;
+// Export all readings as array for backward compatibility
+export const readings = articleRegistry;
 
 // Helper function to get article by ID
 export async function getArticleById(id: string) {
@@ -68,7 +68,7 @@ export async function getArticleBySlug(slug: string) {
   };
 }
 
-// Helper function to get articles by category
+// Helper function to get readings by category
 export async function getArticlesByCategory(category: string) {
   const { data, error } = await supabase
     .from('readings')
@@ -79,7 +79,7 @@ export async function getArticlesByCategory(category: string) {
   return data;
 }
 
-// Helper function to get related articles
+// Helper function to get related readings
 export async function getRelatedArticles(articleId: string, count = 3) {
   const { data, error } = await supabase
     .from('readings')
@@ -91,7 +91,7 @@ export async function getRelatedArticles(articleId: string, count = 3) {
   return data;
 }
 
-// Helper function to get articles by template (for component compatibility)
+// Helper function to get readings by template (for component compatibility)
 export async function getArticlesByTemplate(guideId: string) {
   const { data, error } = await supabase
     .from('readings')
@@ -112,7 +112,7 @@ export async function getArticleIds(): Promise<string[]> {
   return data.map((article: any) => article.id);
 }
 
-// Helper function to get paginated articles
+// Helper function to get paginated readings
 export async function getArticles(page = 1, pageSize = 50) {
   const from = (page - 1) * pageSize;
   const to = from + pageSize - 1;
@@ -125,10 +125,10 @@ export async function getArticles(page = 1, pageSize = 50) {
 
   if (error || !data) {
     console.error('[getArticles] Supabase error:', error);
-    return { articles: [], total: 0 };
+    return { readings: [], total: 0 };
   }
 
-  const articles = data.map((article: any) => ({
+  const readings = data.map((article: any) => ({
     id: article.id,
     title: article.title,
     excerpt: article.excerpt,
@@ -152,5 +152,5 @@ export async function getArticles(page = 1, pageSize = 50) {
     relatedPosts: article.related_posts
   }));
 
-  return { articles, total: count || 0 };
+  return { readings, total: count || 0 };
 }

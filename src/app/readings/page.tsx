@@ -14,8 +14,8 @@ export default async function ArticlesPage({
   const params = await searchParams;
   const page = parseInt(params.page || '1', 10);
 
-  const { articles, total } = await getArticles(page, 100);
-  console.log(`[ArticlesPage] Fetched ${articles.length} articles (page ${page}, total: ${total})`);
+  const { readings, total } = await getArticles(page, 100);
+  console.log(`[ArticlesPage] Fetched ${readings.length} readings (page ${page}, total: ${total})`);
 
   return (
     <PageLayout>
@@ -24,7 +24,7 @@ export default async function ArticlesPage({
 
       {/* Article List */}
       <div className="py-16">
-        <ReadingsList initialArticles={articles} initialTotal={total} />
+        <ReadingsList initialArticles={readings} initialTotal={total} />
       </div>
     </PageLayout>
   );

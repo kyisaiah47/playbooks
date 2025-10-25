@@ -16,13 +16,13 @@ interface GuideBrowseProps {
   params: Promise<{ slug: string }>;
 }
 
-interface Prompt {
+interface Question {
   id: string;
   prompt: string;
   categoryName: string;
 }
 
-interface Article {
+interface Reading {
   id: string;
   title: string;
   excerpt: string;
@@ -36,9 +36,9 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
   const { slug } = use(params);
 
   const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
-  const [prompts, setPrompts] = useState<Prompt[]>([]);
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [relatedTemplates, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [readings, setReadings] = useState<Reading[]>([]);
+  const [relatedGuides, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
 
@@ -49,27 +49,27 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
         // Fetch template data
         const templatesRes = await fetch('/api/guides');
-        const templatesData = await templatesRes.json();
-        const foundTemplate = templatesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
-        setTemplate(foundTemplate || null);
+        const guidesData = await templatesRes.json();
+        const foundGuide = guidesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
+        setTemplate(foundGuide || null);
 
-        // Fetch prompts
-        const questionsRes = await fetch(`/api/prompts?guideId=${slug}`);
-        const promptsData = await questionsRes.json();
-        setPrompts(promptsData.prompts || []);
+        // Fetch questions
+        const questionsRes = await fetch(`/api/questions?guideId=${slug}`);
+        const questionsData = await questionsRes.json();
+        setQuestions(questionsData.questions || []);
 
-        // Fetch articles for this template (server-side filtering)
+        // Fetch readings for this template (server-side filtering)
         const readingsRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
-        const articlesData = await readingsRes.json();
+        const readingsData = await readingsRes.json();
 
-        console.log('[Template Browse] Articles for', slug, ':', articlesData.articles?.length || 0);
-        setArticles(articlesData.articles || []);
+        console.log('[Template Browse] Articles for', slug, ':', readingsData.readings?.length || 0);
+        setReadings(readingsData.readings || []);
 
         // Fetch related templates (same category, exclude current)
-        if (foundTemplate) {
-          const related = templatesData.templates
+        if (foundGuide) {
+          const related = guidesData.templates
             ?.filter((t: TemplateRegistryEntry) =>
-              t.category === foundTemplate.category && t.id !== slug
+              t.category === foundGuide.category && t.id !== slug
             )
             .slice(0, 5) || [];
           setRelatedTemplates(related);
@@ -84,17 +84,17 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
     fetchData();
   }, [slug]);
 
-  // Group prompts by category
-  const groupedPrompts = prompts.reduce((acc, prompt) => {
+  // Group questions by category
+  const groupedQuestions = questions.reduce((acc, prompt) => {
     const category = prompt.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
     }
     acc[category].push(prompt);
     return acc;
-  }, {} as Record<string, Prompt[]>);
+  }, {} as Record<string, Question[]>);
 
-  const promptCategories = Object.keys(groupedPrompts).sort();
+  const questionCategories = Object.keys(groupedQuestions).sort();
 
   if (!template?.template) {
     return (
@@ -108,7 +108,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
   const guideData = template.template;
 
-  const handleInsertPrompt = async (prompt: Prompt) => {
+  const handleInsertPrompt = async (prompt: Question) => {
     try {
       // Store prompt data for workspace to use
       sessionStorage.setItem('workspace-insert-prompt', JSON.stringify(prompt));
@@ -121,7 +121,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
     }
   };
 
-  const handleReadArticle = async (article: Article) => {
+  const handleReadArticle = async (article: Reading) => {
     try {
       // Store article data for workspace to use
       sessionStorage.setItem('workspace-open-article', JSON.stringify(article));
@@ -177,11 +177,11 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             <div className="flex items-center justify-center gap-6 pt-4">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Sparkles className="h-4 w-4" />
-                <span>{prompts.length} questions</span>
+                <span>{questions.length} questions</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <FileText className="h-4 w-4" />
-                <span>{articles.length} readings</span>
+                <span>{readings.length} readings</span>
               </div>
             </div>
           </div>
@@ -194,19 +194,19 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-2">Questions</h2>
             <p className="text-sm text-muted-foreground">
-              {prompts.length} questions across {promptCategories.length} categories
+              {questions.length} questions across {questionCategories.length} categories
             </p>
           </div>
 
           {loading ? (
             <p className="text-muted-foreground">Loading questions...</p>
-          ) : prompts.length === 0 ? (
+          ) : questions.length === 0 ? (
             <p className="text-muted-foreground">No questions available for this guide.</p>
           ) : (
             <div className="space-y-4">
-              {promptCategories.map(category => {
+              {questionCategories.map(category => {
                 const isExpanded = expandedCategories.has(category);
-                const categoryPrompts = groupedPrompts[category];
+                const categoryPrompts = groupedQuestions[category];
 
                 return (
                   <section key={category} className="border-t pt-4">
@@ -255,17 +255,17 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-2">Readings</h2>
             <p className="text-sm text-muted-foreground">
-              {articles.length} readings
+              {readings.length} readings
             </p>
           </div>
 
           {loading ? (
             <p className="text-muted-foreground">Loading readings...</p>
-          ) : articles.length === 0 ? (
+          ) : readings.length === 0 ? (
             <p className="text-muted-foreground">No readings available for this guide.</p>
           ) : (
             <ol className="space-y-3 pl-6 list-decimal marker:text-sm border-t pt-6">
-              {articles.map((article) => (
+              {readings.map((article) => (
                 <li
                   key={article.id}
                   className="group py-2"
@@ -288,7 +288,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
       <Separator />
 
       {/* Related Templates */}
-      {relatedTemplates.length > 0 && (
+      {relatedGuides.length > 0 && (
         <section className="py-16">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-8">
@@ -299,7 +299,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             </div>
 
             <div className="border-t">
-              {relatedTemplates.map((relatedTemplate) => (
+              {relatedGuides.map((relatedTemplate) => (
                 <a
                   key={relatedTemplate.id}
                   href={`/guides/${relatedTemplate.id}`}

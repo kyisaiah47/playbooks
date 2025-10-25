@@ -18,37 +18,37 @@ export async function GET(request: Request) {
       );
     }
 
-    // Query prompts from database
-    const { data: prompts, error } = await supabase
+    // Query questions from database
+    const { data: questions, error } = await supabase
       .from('questions')
       .select('*')
       .eq('guide_id', guideId)
       .order('prompt_number', { ascending: true });
 
     if (error) {
-      console.error('Error fetching prompts from DB:', error);
+      console.error('Error fetching questions from DB:', error);
       return NextResponse.json(
-        { error: 'Failed to fetch prompts', prompts: [] },
+        { error: 'Failed to fetch questions', questions: [] },
         { status: 500 }
       );
     }
 
     // Transform DB format to match expected API format
-    const formattedPrompts = (prompts || []).map(p => ({
-      id: p.id,
-      prompt: p.prompt,
-      categoryName: p.prompt_group_category || 'Uncategorized',
-      category: p.category
+    const formattedQuestions = (questions || []).map(q => ({
+      id: q.id,
+      prompt: q.prompt,
+      categoryName: q.prompt_group_category || 'Uncategorized',
+      category: q.category
     }));
 
     return NextResponse.json({
-      prompts: formattedPrompts,
-      count: formattedPrompts.length
+      questions: formattedQuestions,
+      count: formattedQuestions.length
     });
   } catch (error) {
-    console.error('Error fetching prompts:', error);
+    console.error('Error fetching questions:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch prompts', prompts: [] },
+      { error: 'Failed to fetch questions', questions: [] },
       { status: 500 }
     );
   }

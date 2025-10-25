@@ -19,7 +19,7 @@ export default function LibraryPage() {
                 Your personal collection of wisdom
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Save articles, resources, and references from your guides. Build a curated library of everything meaningful you discover along your journey.
+                Save readings, resources, and references from your guides. Build a curated library of everything meaningful you discover along your journey.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -47,7 +47,7 @@ export default function LibraryPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Save from Guides</h3>
                 <p className="text-muted-foreground">
-                  As you work through guide readings, save the most impactful articles and resources to your Library with one click.
+                  As you work through guide readings, save the most impactful readings and resources to your Library with one click.
                 </p>
               </div>
 
@@ -113,7 +113,7 @@ export default function LibraryPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Build your reading list</h3>
                   <p className="text-muted-foreground mb-4">
-                    Not every guide reading hits at the right time. Save articles that feel too advanced or not yet relevant to revisit when you're ready.
+                    Not every guide reading hits at the right time. Save readings that feel too advanced or not yet relevant to revisit when you're ready.
                   </p>
                   <p className="text-muted-foreground">
                     Your Library becomes a curated reading list that grows with you—always accessible, never lost in browser bookmarks.
@@ -127,7 +127,7 @@ export default function LibraryPage() {
                 <div className="md:order-2">
                   <h3 className="text-2xl font-bold mb-4">Revisit what resonated most</h3>
                   <p className="text-muted-foreground mb-4">
-                    Certain articles hit different as your situation evolves. Your Library lets you easily revisit and re-read content with fresh perspective.
+                    Certain readings hit different as your situation evolves. Your Library lets you easily revisit and re-read content with fresh perspective.
                   </p>
                   <p className="text-muted-foreground">
                     Add new notes on second readings to capture how your understanding has changed.
@@ -139,7 +139,7 @@ export default function LibraryPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Share wisdom with others</h3>
                   <p className="text-muted-foreground mb-4">
-                    When friends face similar challenges, you can easily find and share the articles that helped you most.
+                    When friends face similar challenges, you can easily find and share the readings that helped you most.
                   </p>
                   <p className="text-muted-foreground">
                     Your Library becomes a resource not just for you, but for others navigating similar journeys.

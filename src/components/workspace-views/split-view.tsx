@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
-interface Prompt {
+interface Question {
   id: string;
   text: string;
   category: string;
@@ -16,7 +16,7 @@ interface Prompt {
 
 interface Category {
   name: string;
-  prompts: Prompt[];
+  questions: Question[];
 }
 
 interface SplitViewProps {
@@ -29,18 +29,18 @@ export function SplitView({ guideId }: SplitViewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['Getting Started']));
 
-  // Mock data - replace with real prompts
+  // Mock data - replace with real questions
   const categories: Category[] = [
     {
       name: 'Getting Started',
-      prompts: [
+      questions: [
         { id: '1', text: 'What are your main goals for the next year?', category: 'Getting Started' },
         { id: '2', text: 'What challenges do you anticipate?', category: 'Getting Started' },
       ]
     },
     {
       name: 'Planning',
-      prompts: [
+      questions: [
         { id: '3', text: 'What steps will you take to achieve your goals?', category: 'Planning' },
         { id: '4', text: 'What resources do you need?', category: 'Planning' },
       ]
@@ -90,13 +90,13 @@ export function SplitView({ guideId }: SplitViewProps) {
                 />
                 {category.name}
                 <Badge variant="secondary" className="ml-auto">
-                  {category.prompts.length}
+                  {category.questions.length}
                 </Badge>
               </Button>
 
               {expandedCategories.has(category.name) && (
                 <div className="ml-6 space-y-1 mt-1">
-                  {category.prompts.map((prompt) => (
+                  {category.questions.map((prompt) => (
                     <Button
                       key={prompt.id}
                       variant={selectedPrompt?.id === prompt.id ? "secondary" : "ghost"}

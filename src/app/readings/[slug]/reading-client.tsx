@@ -86,7 +86,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
     return concepts.slice(0, 10); // Limit to 10 concepts
   }, [post, getConnectedConcepts, kgLoading]);
 
-  const relatedTemplates = useMemo(() => {
+  const relatedGuides = useMemo(() => {
     if (!post || kgLoading) return [];
 
     const templates = [];
@@ -267,14 +267,14 @@ export default function ReadingClient({ params }: ReadingClientProps) {
             )}
 
             {/* Related Templates */}
-            {relatedTemplates.length > 0 && (
+            {relatedGuides.length > 0 && (
               <section className="mt-12">
                 <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
                   <Target className="w-5 h-5" />
                   Templates That Can Help
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {relatedTemplates.map((template) => (
+                  {relatedGuides.map((template) => (
                     <div key={template.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
                       <h4 className="font-medium mb-2">
                         <Link

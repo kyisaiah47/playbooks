@@ -33,7 +33,7 @@ interface BoardViewProps {
 }
 
 export function BoardView({ guideId }: BoardViewProps) {
-  const [prompts, setPrompts] = useState<PromptCard[]>([
+  const [questions, setQuestions] = useState<PromptCard[]>([
     {
       id: '1',
       name: 'Main Goals',
@@ -78,7 +78,7 @@ export function BoardView({ guideId }: BoardViewProps) {
   const handleSaveNotes = () => {
     if (!editingPrompt) return;
 
-    setPrompts(prompts.map(p =>
+    setQuestions(questions.map(p =>
       p.id === editingPrompt.id
         ? { ...p, notes: editNotes }
         : p
@@ -89,7 +89,7 @@ export function BoardView({ guideId }: BoardViewProps) {
   };
 
   const movePrompt = (questionId: string, newColumn: PromptCard['column']) => {
-    setPrompts(prompts.map(p =>
+    setQuestions(questions.map(p =>
       p.id === questionId ? { ...p, column: newColumn } : p
     ));
   };
@@ -98,8 +98,8 @@ export function BoardView({ guideId }: BoardViewProps) {
     <div className="h-full p-4">
       <KanbanProvider
         columns={columns}
-        data={prompts}
-        onDataChange={setPrompts}
+        data={questions}
+        onDataChange={setQuestions}
         className="h-full"
       >
         {(column) => (
@@ -108,7 +108,7 @@ export function BoardView({ guideId }: BoardViewProps) {
               <div className="flex items-center justify-between">
                 <span>{column.name}</span>
                 <Badge variant="secondary" className="ml-2">
-                  {prompts.filter(p => p.column === column.id).length}
+                  {questions.filter(p => p.column === column.id).length}
                 </Badge>
               </div>
             </KanbanHeader>

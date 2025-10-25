@@ -113,7 +113,7 @@ export default function HowItWorksPage() {
                 </div>
                 <h2 className="text-3xl font-semibold mb-4">2. Answer questions</h2>
                 <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                  Each guide has structured prompts that help you think through all angles of your situation. Work through them at your own pace.
+                  Each guide has structured questions that help you think through all angles of your situation. Work through them at your own pace.
                 </p>
                 <p className="text-sm text-muted-foreground italic">
                   Your answers auto-save in your browser—no account needed.
@@ -168,9 +168,9 @@ export default function HowItWorksPage() {
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-6">
                   <FileText className="h-6 w-6 text-primary" />
                 </div>
-                <h2 className="text-3xl font-semibold mb-4">3. Read curated articles</h2>
+                <h2 className="text-3xl font-semibold mb-4">3. Read curated readings</h2>
                 <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                  Access expert articles and resources for deeper context. Each guide includes hand-picked readings to inform your decisions.
+                  Access expert readings and resources for deeper context. Each guide includes hand-picked readings to inform your decisions.
                 </p>
                 <p className="text-sm text-muted-foreground italic">
                   No need to Google—we've done the research for you.

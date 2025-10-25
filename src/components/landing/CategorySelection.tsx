@@ -128,7 +128,7 @@ export function CategorySelection() {
                     </div>
                     <div className="flex items-center gap-6 text-[12px] text-muted-foreground">
                       <span>{guide.questions} questions</span>
-                      <span>{guide.readings} articles</span>
+                      <span>{guide.readings} readings</span>
                     </div>
                   </div>
                 ))}

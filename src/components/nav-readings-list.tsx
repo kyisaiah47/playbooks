@@ -21,25 +21,25 @@ interface NavReadingsListProps {
 }
 
 export function NavReadingsList({ guideId, onArticleSelect }: NavReadingsListProps) {
-  const [articles, setArticles] = useState<any[]>([]);
+  const [readings, setReadings] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (guideId) {
       setLoading(true);
-      setArticles([]); // Clear old articles first
+      setReadings([]); // Clear old readings first
       fetch(`/api/readings?guideId=${guideId}`)
         .then(res => res.json())
         .then(data => {
-          setArticles(data.articles || []);
+          setReadings(data.readings || []);
           setLoading(false);
         })
         .catch(() => {
-          setArticles([]);
+          setReadings([]);
           setLoading(false);
         });
     } else {
-      setArticles([]);
+      setReadings([]);
     }
   }, [guideId]);
 
@@ -61,10 +61,10 @@ export function NavReadingsList({ guideId, onArticleSelect }: NavReadingsListPro
           <SidebarMenuSub className="max-h-[200px] overflow-y-auto">
             {loading ? (
               <div className="text-xs text-muted-foreground p-2">Loading...</div>
-            ) : articles.length === 0 ? (
-              <div className="text-xs text-muted-foreground p-2">No articles</div>
+            ) : readings.length === 0 ? (
+              <div className="text-xs text-muted-foreground p-2">No readings</div>
             ) : (
-              articles.map((article: any) => (
+              readings.map((article: any) => (
                 <SidebarMenuSubItem key={article.id}>
                   <SidebarMenuSubButton
                     onClick={() => onArticleSelect?.(article)}

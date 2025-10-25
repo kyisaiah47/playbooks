@@ -31,7 +31,7 @@ const statuses: GanttStatus[] = [
 export function TimelineView({ guideId }: TimelineViewProps) {
   const today = new Date();
 
-  // Mock prompts with timeline data
+  // Mock questions with timeline data
   const [features] = useState<GanttFeature[]>([
     {
       id: '1',
@@ -102,7 +102,7 @@ export function TimelineView({ guideId }: TimelineViewProps) {
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">Timeline View</h2>
           <p className="text-sm text-muted-foreground">
-            Visualize prompts on a timeline. Drag to adjust dates.
+            Visualize questions on a timeline. Drag to adjust dates.
           </p>
         </div>
 

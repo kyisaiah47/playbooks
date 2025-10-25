@@ -100,7 +100,7 @@ export function useTemplateSessions() {
   };
 }
 
-// Hook for managing user responses to prompts
+// Hook for managing user responses to questions
 export function useUserResponses() {
   const { data: session } = useSession();
   

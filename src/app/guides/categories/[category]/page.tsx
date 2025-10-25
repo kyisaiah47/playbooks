@@ -32,7 +32,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const { category } = use(params);
   const [searchQuery, setSearchQuery] = useState('');
   const [templates, setTemplates] = useState<TemplateRegistryEntry[]>([]);
-  const [guideData, setGuideData] = useState<Record<string, { prompts: any[], articles: any[] }>>({});
+  const [guideData, setGuideData] = useState<Record<string, { questions: any[], readings: any[] }>>({});
   const [expandedTemplates, setExpandedTemplates] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
 
@@ -68,27 +68,27 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
         setTemplates(filtered);
 
-        // Fetch prompts and articles for each template
+        // Fetch questions and readings for each template
         const dataPromises = filtered.map(async (template) => {
           const [questionsRes, readingsRes] = await Promise.all([
-            fetch(`/api/prompts?guideId=${template.id}`),
+            fetch(`/api/questions?guideId=${template.id}`),
             fetch(`/api/readings?template=${template.id}&pageSize=1000`)
           ]);
 
-          const promptsData = await questionsRes.json();
-          const articlesData = await readingsRes.json();
+          const questionsData = await questionsRes.json();
+          const readingsData = await readingsRes.json();
 
           return {
             id: template.id,
-            prompts: promptsData.prompts || [],
-            articles: articlesData.articles || []
+            questions: questionsData.questions || [],
+            readings: readingsData.readings || []
           };
         });
 
         const allData = await Promise.all(dataPromises);
-        const dataMap: Record<string, { prompts: any[], articles: any[] }> = {};
+        const dataMap: Record<string, { questions: any[], readings: any[] }> = {};
         allData.forEach(item => {
-          dataMap[item.id] = { prompts: item.prompts, articles: item.articles };
+          dataMap[item.id] = { questions: item.questions, readings: item.readings };
         });
 
         setGuideData(dataMap);
@@ -137,7 +137,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             </h1>
 
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Expertly crafted templates for {categoryName.toLowerCase()}. Each template includes prompts, articles, and structured guidance.
+              Expertly crafted templates for {categoryName.toLowerCase()}. Each template includes questions, readings, and structured guidance.
             </p>
           </motion.div>
         </div>
@@ -175,7 +175,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           ) : (
             <div className="space-y-8">
               {filteredTemplates.map((template) => {
-                const data = guideData[template.id] || { prompts: [], articles: [] };
+                const data = guideData[template.id] || { questions: [], readings: [] };
                 const isExpanded = expandedTemplates.has(template.id);
 
                 return (
@@ -211,22 +211,22 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                     {isExpanded && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       {/* Prompts Section */}
-                      {data.prompts.length > 0 && (
+                      {data.questions.length > 0 && (
                         <div>
                           <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
                             Prompts
                           </h3>
                           <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
-                            {data.prompts.slice(0, 5).map((prompt: any) => (
+                            {data.questions.slice(0, 5).map((prompt: any) => (
                               <li key={prompt.id} className="py-1 text-sm">
                                 {prompt.prompt}
                               </li>
                             ))}
                           </ol>
-                          {data.prompts.length > 5 && (
+                          {data.questions.length > 5 && (
                             <div className="mt-3">
                               <Link href={`/guides/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
-                                +{data.prompts.length - 5} more prompts →
+                                +{data.questions.length - 5} more questions →
                               </Link>
                             </div>
                           )}
@@ -234,13 +234,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                       )}
 
                       {/* Articles Section */}
-                      {data.articles.length > 0 && (
+                      {data.readings.length > 0 && (
                         <div>
                           <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
                             Articles
                           </h3>
                           <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
-                            {data.articles.slice(0, 5).map((article: any) => (
+                            {data.readings.slice(0, 5).map((article: any) => (
                               <li key={article.id} className="py-1">
                                 <Link
                                   href={`/readings/${article.slug}`}
@@ -251,10 +251,10 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                               </li>
                             ))}
                           </ol>
-                          {data.articles.length > 5 && (
+                          {data.readings.length > 5 && (
                             <div className="mt-3">
                               <Link href={`/guides/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
-                                +{data.articles.length - 5} more articles →
+                                +{data.readings.length - 5} more readings →
                               </Link>
                             </div>
                           )}

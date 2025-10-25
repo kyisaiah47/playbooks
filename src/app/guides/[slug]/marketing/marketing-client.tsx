@@ -20,13 +20,13 @@ interface MarketingClientProps {
   params: Promise<{ slug: string }>;
 }
 
-interface Prompt {
+interface Question {
   id: string;
   prompt: string;
   categoryName: string;
 }
 
-interface Article {
+interface Reading {
   id: string;
   title: string;
   excerpt: string;
@@ -39,9 +39,9 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const { slug } = use(params);
 
   const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
-  const [relatedTemplates, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
-  const [prompts, setPrompts] = useState<Prompt[]>([]);
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [relatedGuides, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [readings, setReadings] = useState<Reading[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
 
@@ -52,27 +52,27 @@ export default function MarketingClient({ params }: MarketingClientProps) {
 
         // Fetch all templates
         const templatesRes = await fetch('/api/guides');
-        const templatesData = await templatesRes.json();
-        const foundTemplate = templatesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
-        setTemplate(foundTemplate || null);
+        const guidesData = await templatesRes.json();
+        const foundGuide = guidesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
+        setTemplate(foundGuide || null);
 
         // Set related templates (same category, different id)
-        if (foundTemplate) {
-          const related = templatesData.templates?.filter(
-            (t: TemplateRegistryEntry) => t.category === foundTemplate.category && t.id !== slug
+        if (foundGuide) {
+          const related = guidesData.templates?.filter(
+            (t: TemplateRegistryEntry) => t.category === foundGuide.category && t.id !== slug
           ) || [];
           setRelatedTemplates(related);
         }
 
-        // Fetch prompts
-        const questionsRes = await fetch(`/api/prompts?guideId=${slug}`);
-        const promptsData = await questionsRes.json();
-        setPrompts(promptsData.prompts || []);
+        // Fetch questions
+        const questionsRes = await fetch(`/api/questions?guideId=${slug}`);
+        const questionsData = await questionsRes.json();
+        setQuestions(questionsData.questions || []);
 
-        // Fetch articles for this template (server-side filtering)
+        // Fetch readings for this template (server-side filtering)
         const readingsRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
-        const articlesData = await readingsRes.json();
-        setArticles(articlesData.articles || []);
+        const readingsData = await readingsRes.json();
+        setReadings(readingsData.readings || []);
       } catch (error) {
         console.error('Error fetching template data:', error);
       } finally {
@@ -83,17 +83,17 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     fetchData();
   }, [slug]);
 
-  // Group prompts by category
-  const groupedPrompts = prompts.reduce((acc, prompt) => {
+  // Group questions by category
+  const groupedQuestions = questions.reduce((acc, prompt) => {
     const category = prompt.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
     }
     acc[category].push(prompt);
     return acc;
-  }, {} as Record<string, Prompt[]>);
+  }, {} as Record<string, Question[]>);
 
-  const promptCategories = Object.keys(groupedPrompts).sort();
+  const questionCategories = Object.keys(groupedQuestions).sort();
 
   if (!template?.template) {
     return (
@@ -248,7 +248,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: `${guideData.title} Guide`,
-    description: `${guideData.description} Get ${prompts.length} expert questions and ${articles.length} readings.`,
+    description: `${guideData.description} Get ${questions.length} expert questions and ${readings.length} readings.`,
     url: `https://templata.org/guides/${slug}/marketing`,
     isPartOf: {
       '@type': 'WebSite',
@@ -272,13 +272,13 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     }
   };
 
-  const promptsListSchema = prompts.length > 0 ? {
+  const promptsListSchema = questions.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: `${guideData.title} Questions`,
-    description: `${prompts.length} expert questions for ${guideData.title.toLowerCase()}`,
-    numberOfItems: prompts.length,
-    itemListElement: prompts.slice(0, 10).map((prompt, index) => ({
+    description: `${questions.length} expert questions for ${guideData.title.toLowerCase()}`,
+    numberOfItems: questions.length,
+    itemListElement: questions.slice(0, 10).map((prompt, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: prompt.prompt.substring(0, 100),
@@ -286,13 +286,13 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     }))
   } : null;
 
-  const articlesListSchema = articles.length > 0 ? {
+  const articlesListSchema = readings.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: `${guideData.title} Readings`,
-    description: `${articles.length} expert readings for ${guideData.title.toLowerCase()}`,
-    numberOfItems: articles.length,
-    itemListElement: articles.slice(0, 10).map((article, index) => ({
+    description: `${readings.length} expert readings for ${guideData.title.toLowerCase()}`,
+    numberOfItems: readings.length,
+    itemListElement: readings.slice(0, 10).map((article, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: article.title,
@@ -342,7 +342,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             <div className="text-center space-y-8">
               <Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
                 <AnnouncementTag>{guideData.category}</AnnouncementTag>
-                <AnnouncementTitle>{prompts.length} questions · {articles.length} readings</AnnouncementTitle>
+                <AnnouncementTitle>{questions.length} questions · {readings.length} readings</AnnouncementTitle>
               </Announcement>
 
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
@@ -467,19 +467,19 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-2">Questions</h2>
               <p className="text-sm text-muted-foreground">
-                {prompts.length} questions across {promptCategories.length} categories
+                {questions.length} questions across {questionCategories.length} categories
               </p>
             </div>
 
             {loading ? (
               <p className="text-muted-foreground">Loading questions...</p>
-            ) : prompts.length === 0 ? (
+            ) : questions.length === 0 ? (
               <p className="text-muted-foreground">No questions available for this guide.</p>
             ) : (
               <div className="space-y-4">
-                {promptCategories.map(category => {
+                {questionCategories.map(category => {
                   const isExpanded = expandedCategories.has(category);
-                  const categoryPrompts = groupedPrompts[category];
+                  const categoryPrompts = groupedQuestions[category];
 
                   return (
                     <section key={category} className="border-t pt-4">
@@ -530,17 +530,17 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-2">Readings</h2>
               <p className="text-sm text-muted-foreground">
-                {articles.length} readings
+                {readings.length} readings
               </p>
             </div>
 
             {loading ? (
               <p className="text-muted-foreground">Loading readings...</p>
-            ) : articles.length === 0 ? (
+            ) : readings.length === 0 ? (
               <p className="text-muted-foreground">No readings available for this guide.</p>
             ) : (
               <div className="border-t">
-                {articles.map((article) => (
+                {readings.map((article) => (
                   <div
                     key={article.id}
                     className="group border-b py-3 hover:bg-muted/50 transition-colors"
@@ -569,7 +569,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedTemplates
+              {relatedGuides
                 .slice(0, 6)
                 .map((relatedTemplate) => (
                   <Link
@@ -596,7 +596,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                 ))}
             </div>
 
-            {relatedTemplates.length === 0 && (
+            {relatedGuides.length === 0 && (
               <p className="text-muted-foreground text-center">
                 No related guides found. <Link href="/guides" className="text-primary hover:underline">Browse all guides</Link>
               </p>

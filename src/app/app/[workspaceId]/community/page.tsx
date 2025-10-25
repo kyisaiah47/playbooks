@@ -52,7 +52,7 @@ export default function CommunityPage() {
       comments: 31,
       upvotes: 67,
       lastActivity: "1d ago",
-      preview: "As someone with lupus, the medical decision prompts were life-changing. I'd add: track your symptoms in a spreadsheet for doctor visits..."
+      preview: "As someone with lupus, the medical decision questions were life-changing. I'd add: track your symptoms in a spreadsheet for doctor visits..."
     },
     {
       id: 4,

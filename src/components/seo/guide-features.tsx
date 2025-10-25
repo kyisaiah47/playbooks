@@ -69,7 +69,7 @@ const guidedNotes = [
   { icon: CheckSquare, name: "Day-of Schedule", description: "Coordinate your wedding day" }
 ]
 
-interface TemplateFeaturesProps {
+interface GuideFeaturesProps {
   templateType: 'wedding' | 'baby' | 'home-buying'
 }
 
@@ -118,7 +118,7 @@ export function TemplateFeatures({ templateType }: TemplateFeaturesProps) {
           </Badge>
           <h3 className="text-2xl font-bold mb-3">12 Step-by-Step Planning Guides</h3>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Each section includes prompts, examples, and expert tips to guide you through every aspect of wedding planning
+            Each section includes questions, examples, and expert tips to guide you through every aspect of wedding planning
           </p>
         </div>
 

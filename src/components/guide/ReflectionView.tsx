@@ -22,7 +22,7 @@ export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) 
   const [reflectionResponse, setReflectionResponse] = useState('');
   const [currentPrompt, setCurrentPrompt] = useState<DailyReflectionPrompt | null>(null);
 
-  // Sample reflection prompts for wedding planning (we'll move this to data later)
+  // Sample reflection questions for wedding planning (we'll move this to data later)
   const reflectionPrompts: DailyReflectionPrompt[] = [
     {
       id: 'wedding-reflection-1',
