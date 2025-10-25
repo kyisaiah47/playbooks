@@ -169,7 +169,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           ) : filteredTemplates.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
-                {searchQuery ? 'No templates found matching your search.' : 'No templates available in this category.'}
+                {searchQuery ? 'No guides found matching your search.' : 'No templates available in this category.'}
               </p>
             </div>
           ) : (

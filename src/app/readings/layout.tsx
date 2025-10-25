@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Browse 25,936 Articles | Expert Knowledge Base for Life | Templata',
-  description: 'Explore 25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying, health decisions & more. Like Wikipedia for life guidance.',
+  description: 'Explore 25,936 expert readings covering every life situation. Wedding planning, career changes, business launches, home buying, health decisions & more. Like Wikipedia for life guidance.',
   keywords: 'life planning articles, expert guides, how-to articles, wedding planning tips, career change advice, business launch guides, home buying guidance, life decisions, knowledge base, templata articles',
   authors: [{ name: 'Templata Team' }],
   creator: 'Templata',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
-    description: '25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying & more. Like Wikipedia for life guidance.',
+    description: '25,936 expert readings covering every life situation. Wedding planning, career changes, business launches, home buying & more. Like Wikipedia for life guidance.',
     url: 'https://templata.org/readings',
     siteName: 'Templata',
     images: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Templata Articles - 25,936 Expert Articles',
+        alt: 'Templata Readings - 25,936 Expert Readings',
       },
     ],
     locale: 'en_US',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
-    description: '25,936 expert articles for every life situation. Wedding planning, career changes, business launches & more. Completely free.',
+    description: '25,936 expert readings for every life situation. Wedding planning, career changes, business launches & more. Completely free.',
     images: ['https://templata.org/og-image.png'],
     creator: '@templata',
     site: '@templata',

@@ -29,7 +29,7 @@ export default function SplitScreenAdPage() {
 						<div className="space-y-4">
 							<div className="flex items-center gap-3 mb-4">
 								<MessageSquare className="h-5 w-5 text-purple-600" />
-								<h3 className="text-2xl font-bold">Action Prompts</h3>
+								<h3 className="text-2xl font-bold">Questions</h3>
 							</div>
 
 							<div className="space-y-3">
@@ -52,7 +52,7 @@ export default function SplitScreenAdPage() {
 						<div className="space-y-4">
 							<div className="flex items-center gap-3 mb-4">
 								<BookOpen className="h-5 w-5 text-purple-600" />
-								<h3 className="text-2xl font-bold">Related Articles</h3>
+								<h3 className="text-2xl font-bold">Related Readings</h3>
 							</div>
 
 							<div className="space-y-3">

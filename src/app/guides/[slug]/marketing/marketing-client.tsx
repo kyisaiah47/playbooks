@@ -159,7 +159,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         '@type': 'HowToStep',
         position: 1,
         name: 'Start with Guide Workspace',
-        text: 'Begin with our split-screen guided experience. Answer prompts on the left while reading contextual articles on the right. Learn the structure of effective planning.',
+        text: 'Begin with our split-screen guided experience. Answer questions on the left while reading contextual readings on the right. Learn the structure of effective planning.',
         itemListElement: [
           {
             '@type': 'HowToDirection',
@@ -364,7 +364,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                 Wikipedia meets Notion for life planning
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Our split-screen interface combines guided prompts, a structured workspace, and an encyclopedia of knowledge.
+                Our split-screen interface combines guided questions, a structured workspace, and an encyclopedia of knowledge.
               </p>
             </div>
 

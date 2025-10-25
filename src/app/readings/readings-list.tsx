@@ -136,7 +136,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search articles..."
+              placeholder="Search readings..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-12 h-12 text-base"

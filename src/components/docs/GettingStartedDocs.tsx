@@ -25,7 +25,7 @@ export function GettingStartedDocs() {
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
             <p className="text-sm"><strong>Discover:</strong> Browse and find guides relevant to your current situation</p>
             <p className="text-sm"><strong>Work Through:</strong> Add guides to your workspace and progress through readings at your pace</p>
-            <p className="text-sm"><strong>Reflect:</strong> Answer prompts and capture insights as you learn</p>
+            <p className="text-sm"><strong>Reflect:</strong> Answer questions and capture insights as you learn</p>
             <p className="text-sm"><strong>Act:</strong> Create tasks, schedule events, and track your progress</p>
             <p className="text-sm"><strong>Connect:</strong> Share experiences and learn from others in the community</p>
           </div>

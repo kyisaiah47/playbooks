@@ -224,7 +224,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                   staggerDuration={0.08}
                   transition={{ type: "spring", stiffness: 160, damping: 18, delay: 1.5 }}
                 >
-                  Select prompts to begin your planning
+                  Select questions to begin your planning
                 </VerticalCutReveal>
               </div>
             </div>

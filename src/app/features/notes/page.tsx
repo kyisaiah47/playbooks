@@ -113,7 +113,7 @@ export default function NotesPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Capture insights as you work through guides</h3>
                   <p className="text-muted-foreground mb-4">
-                    As you read articles and reflect on prompts in your guides, capture key insights in notes. Link notes directly to specific readings so you can revisit them later.
+                    As you read readings and reflect on prompts in your guides, capture key insights in notes. Link notes directly to specific readings so you can revisit them later.
                   </p>
                   <p className="text-muted-foreground">
                     Your notes become a personalized knowledge base built from your work—not generic content, but insights specific to your situation.

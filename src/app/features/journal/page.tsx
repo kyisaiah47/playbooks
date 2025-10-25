@@ -55,9 +55,9 @@ export default function JournalPage() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Heart className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Prompts & Templates</h3>
+                <h3 className="text-xl font-semibold mb-2">Questions & Guides</h3>
                 <p className="text-muted-foreground">
-                  Start with guided prompts when you don't know what to write. Templates for grief, decision-making, gratitude, or free writing.
+                  Start with guided questions when you don't know what to write. Guides for grief, decision-making, gratitude, or free writing.
                 </p>
               </div>
 

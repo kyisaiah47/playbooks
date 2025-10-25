@@ -34,7 +34,7 @@ export default function ArticlesAdPage() {
 			<div className="absolute right-0 top-0 bottom-0 transform translate-x-[60%]">
 				<div className="h-full w-[400px] bg-white rounded-l-2xl shadow-2xl overflow-hidden">
 					<div className="p-6 border-b border-gray-200">
-						<h3 className="text-lg font-semibold text-black">Expert Articles</h3>
+						<h3 className="text-lg font-semibold text-black">Expert Readings</h3>
 						<p className="text-sm text-gray-600">Axiom Engine powered guidance</p>
 					</div>
 					<div className="p-4 space-y-3 text-black">

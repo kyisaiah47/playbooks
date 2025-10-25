@@ -314,13 +314,13 @@ export function TemplataContentSidebar({
           <div className="flex w-full items-center justify-between">
             <div className="text-foreground text-base font-medium">
               {activeTab === 'prompts' ? currentSection?.title :
-               activeTab === 'resources' ? 'Resources' : 'Related Templates'}
+               activeTab === 'resources' ? 'Resources' : 'Related Guides'}
             </div>
           </div>
           {activeTab !== 'related' && (
             <div className="flex flex-col gap-2">
               <SidebarInput
-                placeholder={activeTab === 'prompts' ? 'Search prompts...' : 'Search resources...'}
+                placeholder={activeTab === 'prompts' ? 'Search questions...' : 'Search resources...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
