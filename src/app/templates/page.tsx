@@ -91,7 +91,7 @@ export default function TemplatesPage() {
             </h1>
 
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From wedding planning to career transitions, home buying to business launches—we've systematically created templates with prompts, articles, and structured guidance for life's biggest decisions.
+              From wedding planning to career changes, home buying to business launches—we've systematically created templates with prompts, articles, and structured guidance for life's biggest decisions.
             </p>
           </motion.div>
         </div>

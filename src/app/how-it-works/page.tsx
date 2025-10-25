@@ -37,7 +37,7 @@ export default function HowItWorksPage() {
                   Browse 1,200+ guides organized by category: Career, Relationships, Health, Personal Growth, Finance, and Life Events.
                 </p>
                 <p className="text-sm text-muted-foreground italic">
-                  Example: "Career Transition," "Setting Boundaries," "Moving to a New City"
+                  Example: "Career Change," "Setting Boundaries," "Moving to a New City"
                 </p>
               </div>
               <div className="border border-border rounded-lg overflow-hidden bg-muted/30 shadow-lg">
@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
-                      templata.org/templates/career-transition
+                      templata.org/templates/career-change
                     </div>
                   </div>
                   <div className="w-16"></div>
@@ -138,7 +138,7 @@ export default function HowItWorksPage() {
                 {/* Content */}
                 <div className="bg-background">
                   <div className="border-b border-border bg-muted/20 px-4 py-3">
-                    <div className="font-semibold text-sm">Career Transition Guide</div>
+                    <div className="font-semibold text-sm">Career Change Guide</div>
                   </div>
                   <div className="p-4 space-y-4">
                     <div className="space-y-2">
@@ -186,7 +186,7 @@ export default function HowItWorksPage() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
-                      templata.org/templates/career-transition
+                      templata.org/templates/career-change
                     </div>
                   </div>
                   <div className="w-16"></div>
@@ -206,7 +206,7 @@ export default function HowItWorksPage() {
                             The Science of Career Change: What Research Says
                           </h3>
                           <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
-                            A meta-analysis of 50+ studies on successful career transitions and the key factors that predict satisfaction.
+                            A meta-analysis of 50+ studies on successful career changes and the key factors that predict satisfaction.
                           </p>
                           <div className="flex items-center gap-2 text-xs text-muted-foreground">
                             <span>Harvard Business Review</span>
@@ -222,7 +222,7 @@ export default function HowItWorksPage() {
                         <FileText className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-sm mb-1.5 line-clamp-1">
-                            Financial Planning for Career Transitions
+                            Financial Planning for Career Changes
                           </h3>
                           <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
                             How to calculate your runway, build an emergency fund, and make smart financial decisions during job changes.
@@ -294,7 +294,7 @@ export default function HowItWorksPage() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
-                      templata.org/templates/career-transition
+                      templata.org/templates/career-change
                     </div>
                   </div>
                   <div className="w-16"></div>
@@ -303,7 +303,7 @@ export default function HowItWorksPage() {
                 {/* Content */}
                 <div className="bg-background">
                   <div className="border-b border-border bg-muted/20 px-4 py-3">
-                    <div className="font-semibold text-sm">Career Transition Guide</div>
+                    <div className="font-semibold text-sm">Career Change Guide</div>
                   </div>
                   <div className="p-6">
                     <div className="mb-6">

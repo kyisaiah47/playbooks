@@ -21,7 +21,7 @@ const categoryDisplayNames: Record<string, string> = {
 
 const categoryDescriptions: Record<string, string> = {
   'life-planning': 'Comprehensive templates for major life planning decisions and milestones.',
-  'career-finance': 'Expert templates for career transitions, job searches, and financial planning.',
+  'career-finance': 'Expert templates for career changes, job searches, and financial planning.',
   'health-wellness': 'Structured guides for health goals, wellness routines, and medical planning.',
   'relationships-family': 'Templates for relationships, family planning, and important life events.',
   'creative-hobbies': 'Planning frameworks for creative projects, hobbies, and artistic pursuits.',

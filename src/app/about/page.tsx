@@ -54,7 +54,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold">The problem</h3>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Career changes, wedding planning, health decisions, relationship transitions—these aren't problems that need invention. Millions have walked these paths. But the knowledge is scattered across Reddit threads, blog posts, and closed communities.
+                Career changes, wedding planning, health decisions, relationship changes—these aren't problems that need invention. Millions have walked these paths. But the knowledge is scattered across Reddit threads, blog posts, and closed communities.
               </p>
             </div>
 

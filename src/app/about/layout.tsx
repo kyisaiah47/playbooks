@@ -74,7 +74,7 @@ export default function AboutLayout({
                   {
                     "@type": "OfferCatalog",
                     "name": "Personal Life Templates",
-                    "description": "25+ templates for weddings, relationships, personal growth, and life transitions"
+                    "description": "25+ templates for weddings, relationships, personal growth, and life changes"
                   },
                   {
                     "@type": "OfferCatalog",

@@ -37,8 +37,8 @@ export default function DiscussionsPage() {
 	// Mock discussions data
 	const mockDiscussions: Discussion[] = [
 		{
-			templateName: "Career Transition",
-			templateSlug: "career-transition",
+			templateName: "Career Change",
+			templateSlug: "career-change",
 			category: "Career",
 			commentCount: 23,
 			lastActivity: "2 hours ago",

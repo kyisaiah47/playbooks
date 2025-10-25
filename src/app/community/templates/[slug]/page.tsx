@@ -51,9 +51,9 @@ export default function TemplateDiscussionPage({
 
 	// Mock data for template discussions
 	const mockDiscussions: Record<string, TemplateDiscussion> = {
-		"career-transition": {
-			templateName: "Career Transition",
-			templateSlug: "career-transition",
+		"career-change": {
+			templateName: "Career Change",
+			templateSlug: "career-change",
 			category: "Career",
 			commentCount: 23,
 			comments: [
@@ -94,7 +94,7 @@ export default function TemplateDiscussionPage({
 							id: "2-1",
 							author: "Alex Thompson",
 							content:
-								"This is so true. I felt like an imposter for months after my transition. Would love to see prompts specifically about identity and mindset.",
+								"This is so true. I felt like an imposter for months after my career change. Would love to see prompts specifically about identity and mindset.",
 							upvotes: 8,
 							isExpert: false,
 							isHelpful: false,
@@ -105,7 +105,7 @@ export default function TemplateDiscussionPage({
 							id: "2-2",
 							author: "Dr. Jennifer Park",
 							content:
-								"Exactly, Alex. The imposter syndrome is real during transitions. I usually recommend: 1) Journal about what skills ARE transferable, 2) Find a community in your new field ASAP, 3) Give yourself 6 months before judging if you 'belong'.",
+								"Exactly, Alex. The imposter syndrome is real during career changes. I usually recommend: 1) Journal about what skills ARE transferable, 2) Find a community in your new field ASAP, 3) Give yourself 6 months before judging if you 'belong'.",
 							upvotes: 15,
 							isExpert: true,
 							isHelpful: true,
@@ -118,7 +118,7 @@ export default function TemplateDiscussionPage({
 					id: "3",
 					author: "David Liu",
 					content:
-						"Used this guide when transitioning from teaching to corporate training. The financial runway calculation was a wake-up call—I thought I had 6 months saved but it was really only 3 when I factored in health insurance and moving costs. Started freelancing on the side first instead of a cold jump.",
+						"Used this guide when changing from teaching to corporate training. The financial runway calculation was a wake-up call—I thought I had 6 months saved but it was really only 3 when I factored in health insurance and moving costs. Started freelancing on the side first instead of a cold jump.",
 					upvotes: 19,
 					isExpert: false,
 					isHelpful: true,

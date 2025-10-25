@@ -25,13 +25,13 @@ export default function CommunityPage() {
 	const discussions = [
 		{
 			id: 1,
-			title: "Career Transition: Finance → Tech",
+			title: "Career Change: Finance → Tech",
 			guide: "Career Change Guide",
 			author: "Sarah M.",
 			comments: 23,
 			upvotes: 45,
 			lastActivity: "2h ago",
-			preview: "Used this guide for my transition last year. The networking section was invaluable, but I'd add more about salary negotiations..."
+			preview: "Used this guide for my career change last year. The networking section was invaluable, but I'd add more about salary negotiations..."
 		},
 		{
 			id: 2,

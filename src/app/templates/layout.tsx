@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Browse 1,298 Life Templates | The Encyclopedia for Living | Templata',
-  description: 'Explore 1,298 systematically organized templates for every life situation. From wedding planning to career transitions, business launches to home buying—comprehensive guidance with 104,000+ prompts and 25,936 articles.',
+  description: 'Explore 1,298 systematically organized templates for every life situation. From wedding planning to career changes, business launches to home buying—comprehensive guidance with 104,000+ prompts and 25,936 articles.',
   keywords: 'life templates, wedding planning template, career change guide, home buying checklist, business plan template, life planning, template directory, planning tools, life organization, structured guidance, templata templates',
   openGraph: {
     title: 'Browse 1,298 Life Templates | The Encyclopedia for Living',
-    description: 'Systematically organized templates for every life situation. Wedding planning, career transitions, business launches, home buying & more. 104,000+ prompts and 25,936 articles.',
+    description: 'Systematically organized templates for every life situation. Wedding planning, career changes, business launches, home buying & more. 104,000+ prompts and 25,936 articles.',
     url: 'https://templata.org/templates',
     siteName: 'Templata',
     images: [

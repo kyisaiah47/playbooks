@@ -72,7 +72,7 @@ const FEATURED_GENERAL_IDS = [
 
 const FEATURED_GENZ_IDS = [
   'college-planning',
-  'first-job-transition',
+  'first-job-change',
   'first-apartment-independence',
   'content-creator-career',
 ];

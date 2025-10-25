@@ -3,7 +3,7 @@ import { DocsHeader } from '@/components/layout/docs-header';
 
 export const metadata: Metadata = {
   title: 'Documentation | Templata',
-  description: 'Learn how to use Templata to organize your thoughts and navigate life transitions with guided prompts and curated articles.',
+  description: 'Learn how to use Templata to organize your thoughts and navigate life changes with guided prompts and curated articles.',
   openGraph: {
     title: 'Documentation | Templata',
     description: 'Everything you need to know about using Templata.',

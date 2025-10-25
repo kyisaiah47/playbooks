@@ -26,7 +26,7 @@ export default function CommunityPage() {
   const discussions = [
     {
       id: 1,
-      title: "Career Transition: Finance → Tech",
+      title: "Career Change: Finance → Tech",
       guide: "Career Change Guide",
       author: "Sarah M.",
       comments: 23,
