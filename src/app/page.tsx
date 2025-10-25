@@ -51,7 +51,7 @@ export default function LandingPage() {
 			{/* Hero Section - 3-line layout with CTA on right */}
 			<section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-24">
 				<div className="mx-auto max-w-7xl">
-					<div className="flex items-end justify-between">
+					<div className="flex items-end justify-between gap-12">
 						<div className="max-w-3xl">
 							<motion.h1
 								className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]"
@@ -84,8 +84,8 @@ export default function LandingPage() {
 							transition={{ duration: 0.5, delay: 0.3 }}
 						>
 							<Button size="lg" asChild>
-								<Link href="/guides">
-									Get Started
+								<Link href="/docs">
+									Learn More
 									<ArrowRight className="h-4 w-4" />
 								</Link>
 							</Button>
