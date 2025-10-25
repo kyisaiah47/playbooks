@@ -62,7 +62,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
         const readingsRes = await fetch(`/api/readings?guide=${slug}&pageSize=1000`);
         const readingsData = await readingsRes.json();
 
-        console.log('[Template Browse] Articles for', slug, ':', readingsData.readings?.length || 0);
+        console.log('[Guide Browse] Readings for', slug, ':', readingsData.readings?.length || 0);
         setReadings(readingsData.readings || []);
 
         // Fetch related guides (same category, exclude current)
@@ -188,7 +188,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
         </div>
       </section>
 
-      {/* Prompts Library */}
+      {/* Questions Library */}
       <section className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12">
@@ -249,7 +249,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
       <Separator />
 
-      {/* Articles Library */}
+      {/* Readings Library */}
       <section className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12">
@@ -287,7 +287,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
       <Separator />
 
-      {/* Related Templates */}
+      {/* Related Guides */}
       {relatedGuides.length > 0 && (
         <section className="py-16">
           <div className="container mx-auto max-w-6xl px-4">

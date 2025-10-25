@@ -4,19 +4,19 @@
 import { useMemo, useState, useCallback } from 'react';
 import {
   knowledgeGraph,
-  getRelatedTemplates,
-  getConflictingTemplates,
+  getRelatedGuides,
+  getConflictingGuides,
   getPersonalizedRecommendations,
-  getRelatedArticles,
-  getArticlesForTemplate,
-  getRelatedPrompts,
-  getPromptsForTemplate,
+  getRelatedReadings,
+  getReadingsForTemplate,
+  getRelatedQuestions,
+  getQuestionsForGuide,
   getCrossRecommendations,
-  type TemplateRelationships,
+  type GuideRelationships,
   type UserRecommendation,
   type AnalysisReport,
-  type ArticleConnection,
-  type PromptConnection,
+  type ReadingConnection,
+  type QuestionConnection,
   type CrossConnection
 } from '@/lib/knowledge-graph';
 
@@ -24,17 +24,17 @@ import {
 export interface UserProfile {
   age?: number;
   goals?: string[];
-  completedTemplates?: string[];
-  currentTemplates?: string[];
+  completedGuides?: string[];
+  currentGuides?: string[];
   interests?: string[];
   lifeStage?: string;
 }
 
 // Hook return interface
 export interface UseKnowledgeGraphReturn {
-  // Template relationships
-  getTemplateRelationships: (guideId: string) => TemplateRelationships;
-  getRelatedTemplates: (guideId: string, limit?: number) => Array<{
+  // Guide relationships
+  getGuideRelationships: (guideId: string) => GuideRelationships;
+  getRelatedGuides: (guideId: string, limit?: number) => Array<{
     guideId: string;
     strength: number;
     reason: string;
@@ -43,17 +43,17 @@ export interface UseKnowledgeGraphReturn {
 
   // User recommendations
   getPersonalizedRecommendations: (userProfile: UserProfile) => UserRecommendation[];
-  getAgeAppropriateTemplates: (age: number, limit?: number) => UserRecommendation[];
+  getAgeAppropriateGuides: (age: number, limit?: number) => UserRecommendation[];
 
   // Conflict detection
-  getConflictingTemplates: (guideIds: string[]) => Array<{
-    template1: string;
-    template2: string;
+  getConflictingGuides: (guideIds: string[]) => Array<{
+    guide1: string;
+    guide2: string;
     reason: string;
     resolution: string;
   }>;
-  checkTemplateConflicts: (guideId: string, activeTemplates: string[]) => Array<{
-    conflictingTemplate: string;
+  checkGuideConflicts: (guideId: string, activeGuides: string[]) => Array<{
+    conflictingGuide: string;
     reason: string;
     resolution: string;
     severity: 'high' | 'medium' | 'low';
@@ -61,7 +61,7 @@ export interface UseKnowledgeGraphReturn {
 
   // Analysis and insights
   generateAnalysisReport: (guideId: string) => AnalysisReport | null;
-  getTemplateCluster: (guideId: string) => {
+  getGuideCluster: (guideId: string) => {
     semantic?: string;
     micro?: string;
     theme?: string;
@@ -69,18 +69,18 @@ export interface UseKnowledgeGraphReturn {
   };
 
   // Life sequences and progressions
-  getNextInSequence: (completedTemplates: string[], userProfile: UserProfile) => UserRecommendation[];
+  getNextInSequence: (completedGuides: string[], userProfile: UserProfile) => UserRecommendation[];
   getLifeStageRecommendations: (lifeStage: string, limit?: number) => UserRecommendation[];
 
   // Utility functions
-  isTemplateRecommended: (guideId: string, userProfile: UserProfile) => boolean;
-  getTemplateStrength: (template1: string, template2: string) => number;
+  isGuideRecommended: (guideId: string, userProfile: UserProfile) => boolean;
+  getGuideStrength: (guide1: string, guide2: string) => number;
 
-  // Article and question recommendations
-  getRelatedArticles: (articleId: string, limit?: number) => ArticleConnection[];
-  getArticlesForTemplate: (guideId: string, limit?: number) => ArticleConnection[];
-  getRelatedPrompts: (questionId: string, limit?: number) => PromptConnection[];
-  getPromptsForTemplate: (guideId: string, limit?: number) => PromptConnection[];
+  // Reading and question recommendations
+  getRelatedReadings: (readingId: string, limit?: number) => ReadingConnection[];
+  getReadingsForTemplate: (guideId: string, limit?: number) => ReadingConnection[];
+  getRelatedQuestions: (questionId: string, limit?: number) => QuestionConnection[];
+  getQuestionsForGuide: (guideId: string, limit?: number) => QuestionConnection[];
   getCrossRecommendations: (contentType: 'guide' | 'reading' | 'question', contentId: string) => CrossConnection[];
 }
 
@@ -92,11 +92,11 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     if (error) setError(null);
   }, [error]);
 
-  // Get template relationships with error handling
-  const getTemplateRelationshipsSafe = useCallback((guideId: string): TemplateRelationships => {
+  // Get guide relationships with error handling
+  const getTemplateRelationshipsSafe = useCallback((guideId: string): GuideRelationships => {
     try {
       clearError();
-      return knowledgeGraph.getTemplateRelationships(guideId);
+      return knowledgeGraph.getGuideRelationships(guideId);
     } catch (err) {
       setError(`Failed to get relationships for ${guideId}`);
       return {
@@ -114,7 +114,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   const getRelatedTemplatesMemo = useCallback((guideId: string, limit = 5) => {
     try {
       clearError();
-      return getRelatedTemplates(guideId, limit);
+      return getRelatedGuides(guideId, limit);
     } catch (err) {
       setError(`Failed to get related guides for ${guideId}`);
       return [];
@@ -132,39 +132,39 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     }
   }, [clearError]);
 
-  // Get age-appropriate templates
-  const getAgeAppropriateTemplates = useCallback((age: number, limit = 6): UserRecommendation[] => {
+  // Get age-appropriate guides
+  const getAgeAppropriateGuides = useCallback((age: number, limit = 6): UserRecommendation[] => {
     try {
       clearError();
       const recommendations = knowledgeGraph.getOptimalLifeSequence(age, [], []);
       return recommendations.slice(0, limit);
     } catch (err) {
-      setError('Failed to get age-appropriate templates');
+      setError('Failed to get age-appropriate guides');
       return [];
     }
   }, [clearError]);
 
-  // Get conflicting templates
+  // Get conflicting guides
   const getConflictingTemplatesMemo = useCallback((guideIds: string[]) => {
     try {
       clearError();
-      return getConflictingTemplates(guideIds);
+      return getConflictingGuides(guideIds);
     } catch (err) {
-      setError('Failed to get conflicting templates');
+      setError('Failed to get conflicting guides');
       return [];
     }
   }, [clearError]);
 
   // Check guide conflicts with severity assessment
-  const checkTemplateConflicts = useCallback((guideId: string, activeTemplates: string[]) => {
+  const checkGuideConflicts = useCallback((guideId: string, activeGuides: string[]) => {
     try {
       clearError();
-      const relationships = knowledgeGraph.getTemplateRelationships(guideId);
+      const relationships = knowledgeGraph.getGuideRelationships(guideId);
 
       return relationships.negative_connections
-        .filter(conflict => activeTemplates.includes(conflict.conflicting_template))
+        .filter(conflict => activeGuides.includes(conflict.conflicting_template))
         .map(conflict => ({
-          conflictingTemplate: conflict.conflicting_template,
+          conflictingGuide: conflict.conflicting_template,
           reason: conflict.reasoning,
           resolution: conflict.resolution_strategy,
           severity: conflict.conflict_strength >= 80 ? 'high' as const :
@@ -188,10 +188,10 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   // Get guide cluster information
-  const getTemplateCluster = useCallback((guideId: string) => {
+  const getGuideCluster = useCallback((guideId: string) => {
     try {
       clearError();
-      const relationships = knowledgeGraph.getTemplateRelationships(guideId);
+      const relationships = knowledgeGraph.getGuideRelationships(guideId);
 
       return {
         semantic: relationships.semantic_cluster?.name,
@@ -205,12 +205,12 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     }
   }, [clearError]);
 
-  // Get next templates in sequence
-  const getNextInSequence = useCallback((completedTemplates: string[], userProfile: UserProfile): UserRecommendation[] => {
+  // Get next guides in sequence
+  const getNextInSequence = useCallback((completedGuides: string[], userProfile: UserProfile): UserRecommendation[] => {
     try {
       clearError();
       const { age = 25, goals = [] } = userProfile;
-      return knowledgeGraph.getOptimalLifeSequence(age, goals, completedTemplates);
+      return knowledgeGraph.getOptimalLifeSequence(age, goals, completedGuides);
     } catch (err) {
       setError('Failed to get sequence recommendations');
       return [];
@@ -240,7 +240,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   // Check if guide is recommended for user
-  const isTemplateRecommended = useCallback((guideId: string, userProfile: UserProfile): boolean => {
+  const isGuideRecommended = useCallback((guideId: string, userProfile: UserProfile): boolean => {
     try {
       clearError();
       const recommendations = getPersonalizedRecommendations(userProfile);
@@ -250,12 +250,12 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     }
   }, [clearError]);
 
-  // Get connection strength between two templates
-  const getTemplateStrength = useCallback((template1: string, template2: string): number => {
+  // Get connection strength between two guides
+  const getGuideStrength = useCallback((guide1: string, guide2: string): number => {
     try {
       clearError();
-      const relationships = knowledgeGraph.getTemplateRelationships(template1);
-      const connection = relationships.weighted_connections.find(conn => conn.guideId === template2);
+      const relationships = knowledgeGraph.getGuideRelationships(guide1);
+      const connection = relationships.weighted_connections.find(conn => conn.guideId === guide2);
       return connection?.strength || 0;
     } catch (err) {
       return 0;
@@ -263,49 +263,49 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
   }, [clearError]);
 
   return useMemo(() => ({
-    // Template relationships
-    getTemplateRelationships: getTemplateRelationshipsSafe,
-    getRelatedTemplates: getRelatedTemplatesMemo,
+    // Guide relationships
+    getGuideRelationships: getTemplateRelationshipsSafe,
+    getRelatedGuides: getRelatedTemplatesMemo,
 
     // User recommendations
     getPersonalizedRecommendations: getPersonalizedRecommendationsMemo,
-    getAgeAppropriateTemplates,
+    getAgeAppropriateGuides,
 
     // Conflict detection
-    getConflictingTemplates: getConflictingTemplatesMemo,
-    checkTemplateConflicts,
+    getConflictingGuides: getConflictingTemplatesMemo,
+    checkGuideConflicts,
 
     // Analysis and insights
     generateAnalysisReport: generateAnalysisReportSafe,
-    getTemplateCluster,
+    getGuideCluster,
 
     // Life sequences and progressions
     getNextInSequence,
     getLifeStageRecommendations,
 
     // Utility functions
-    isTemplateRecommended,
-    getTemplateStrength,
+    isGuideRecommended,
+    getGuideStrength,
 
-    // Article and question recommendations
-    getRelatedArticles,
-    getArticlesForTemplate,
-    getRelatedPrompts,
-    getPromptsForTemplate,
+    // Reading and question recommendations
+    getRelatedReadings,
+    getReadingsForTemplate,
+    getRelatedQuestions,
+    getQuestionsForGuide,
     getCrossRecommendations,
   }), [
     getTemplateRelationshipsSafe,
     getRelatedTemplatesMemo,
     getPersonalizedRecommendationsMemo,
-    getAgeAppropriateTemplates,
+    getAgeAppropriateGuides,
     getConflictingTemplatesMemo,
-    checkTemplateConflicts,
+    checkGuideConflicts,
     generateAnalysisReportSafe,
-    getTemplateCluster,
+    getGuideCluster,
     getNextInSequence,
     getLifeStageRecommendations,
-    isTemplateRecommended,
-    getTemplateStrength,
+    isGuideRecommended,
+    getGuideStrength,
   ]);
 }
 
@@ -316,9 +316,9 @@ export function useTemplateRecommendations(guideId: string, userProfile: UserPro
   const kg = useKnowledgeGraph();
 
   return useMemo(() => {
-    const related = kg.getRelatedTemplates(guideId, 4);
-    const conflicts = kg.checkTemplateConflicts(guideId, userProfile.currentTemplates || []);
-    const cluster = kg.getTemplateCluster(guideId);
+    const related = kg.getRelatedGuides(guideId, 4);
+    const conflicts = kg.checkGuideConflicts(guideId, userProfile.currentGuides || []);
+    const cluster = kg.getGuideCluster(guideId);
 
     return {
       relatedGuides: related,
@@ -336,9 +336,9 @@ export function useUserRecommendations(userProfile: UserProfile) {
 
   return useMemo(() => {
     const personalized = kg.getPersonalizedRecommendations(userProfile);
-    const ageAppropriate = userProfile.age ? kg.getAgeAppropriateTemplates(userProfile.age, 6) : [];
-    const nextInSequence = kg.getNextInSequence(userProfile.completedTemplates || [], userProfile);
-    const conflicts = kg.getConflictingTemplates(userProfile.currentTemplates || []);
+    const ageAppropriate = userProfile.age ? kg.getAgeAppropriateGuides(userProfile.age, 6) : [];
+    const nextInSequence = kg.getNextInSequence(userProfile.completedGuides || [], userProfile);
+    const conflicts = kg.getConflictingGuides(userProfile.currentGuides || []);
 
     return {
       personalizedRecommendations: personalized.slice(0, 6),
@@ -355,15 +355,15 @@ export function useMultiTemplateIntelligence(activeGuideIds: string[], userProfi
   const kg = useKnowledgeGraph();
 
   return useMemo(() => {
-    const allConflicts = kg.getConflictingTemplates(activeGuideIds);
-    const synergies: Array<{template1: string, template2: string, strength: number}> = [];
+    const allConflicts = kg.getConflictingGuides(activeGuideIds);
+    const synergies: Array<{guide1: string, guide2: string, strength: number}> = [];
 
-    // Find synergistic connections between active templates
-    activeGuideIds.forEach((template1, i) => {
-      activeGuideIds.slice(i + 1).forEach(template2 => {
-        const strength = kg.getTemplateStrength(template1, template2);
+    // Find synergistic connections between active guides
+    activeGuideIds.forEach((guide1, i) => {
+      activeGuideIds.slice(i + 1).forEach(guide2 => {
+        const strength = kg.getGuideStrength(guide1, guide2);
         if (strength >= 70) { // Strong synergy threshold
-          synergies.push({ template1, template2, strength });
+          synergies.push({ guide1, guide2, strength });
         }
       });
     });

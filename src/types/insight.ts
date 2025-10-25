@@ -2,7 +2,7 @@
  * Insight Types for Life OS Analytics
  *
  * Provides data structures for computing and displaying insights
- * about user progress, patterns, and growth across templates and reflections.
+ * about user progress, patterns, and growth across guides and reflections.
  */
 
 export type InsightType =

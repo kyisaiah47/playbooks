@@ -128,7 +128,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
     <div className="container mx-auto px-4 max-w-6xl relative">
       {/* Browse Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">Browse All Articles</h2>
+        <h2 className="text-2xl font-bold mb-6">Browse All Readings</h2>
 
         {/* Search and Filters */}
         <div className="flex flex-col md:flex-row gap-4 mb-6">
@@ -154,7 +154,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
               <SelectContent>
                 <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="guide">Guide</SelectItem>
-                <SelectItem value="reading">Article</SelectItem>
+                <SelectItem value="reading">Reading</SelectItem>
                 <SelectItem value="checklist">Checklist</SelectItem>
                 <SelectItem value="tutorial">Tutorial</SelectItem>
               </SelectContent>
@@ -183,7 +183,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
         </div>
       </section>
 
-      {/* Articles List */}
+      {/* Readings List */}
       <section className="mb-12">
         <div className="space-y-0 divide-y divide-border">
           {readings.map((reading: any) => {

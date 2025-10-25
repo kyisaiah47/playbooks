@@ -11,14 +11,14 @@ import {
 import { Moon, Layout, CheckSquare } from "lucide-react"
 
 interface WorkspaceSwitcherProps {
-  currentMode?: 'template' | 'reflection' | 'master'
+  currentMode?: 'guide' | 'reflection' | 'master'
   onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void
 }
 
 export function WorkspaceSwitcher({ currentMode = 'reflection', onSwitchMode }: WorkspaceSwitcherProps) {
   const getIcon = (mode: string) => {
     switch (mode) {
-      case 'template':
+      case 'guide':
         return <Layout className="w-4 h-4" />
       case 'reflection':
         return <Moon className="w-4 h-4" />
@@ -31,7 +31,7 @@ export function WorkspaceSwitcher({ currentMode = 'reflection', onSwitchMode }: 
 
   const getLabel = (mode: string) => {
     switch (mode) {
-      case 'template':
+      case 'guide':
         return 'Guide Workspace'
       case 'reflection':
         return 'Reflection Mode'
@@ -51,7 +51,7 @@ export function WorkspaceSwitcher({ currentMode = 'reflection', onSwitchMode }: 
         </div>
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="template">
+        <SelectItem value="guide">
           <div className="flex items-center gap-2">
             <Layout className="w-4 h-4" />
             <span>Guide Workspace</span>

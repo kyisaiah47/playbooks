@@ -22,7 +22,7 @@ interface GuidesModalProps {
   onOpenChange: (open: boolean) => void
 }
 
-export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
+export function GuidesModal({ open, onOpenChange }: GuidesModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [guides, setTemplates] = useState<GuideRegistryEntry[]>([])
@@ -53,7 +53,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-none !max-w-none w-[96vw] !w-[96vw] h-[96vh] !h-[96vh] sm:max-w-none sm:w-[96vw] sm:h-[96vh] md:max-w-none md:w-[96vw] md:h-[96vh] lg:max-w-none lg:w-[96vw] lg:h-[96vh] overflow-hidden flex flex-col p-8" style={{ maxWidth: '96vw', width: '96vw', height: '96vh' }}>
         <DialogHeader>
-          <DialogTitle className="text-2xl">Choose a Template</DialogTitle>
+          <DialogTitle className="text-2xl">Choose a Guide</DialogTitle>
           <DialogDescription>
             Get started with a pre-built guide designed for your needs
           </DialogDescription>
@@ -84,7 +84,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
           </div>
         </div>
 
-        {/* Templates Grid */}
+        {/* Guides Grid */}
         <div className="flex-1 overflow-y-auto">
           {/* All Guides */}
           {filteredGuides.length > 0 && (

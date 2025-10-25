@@ -25,7 +25,7 @@ interface GuideHeroProps {
   }>
 }
 
-export function TemplateHero(props: TemplateHeroProps) {
+export function GuideHero(props: GuideHeroProps) {
   const BadgeIcon = props.badge.icon
   
   return (

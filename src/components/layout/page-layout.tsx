@@ -136,14 +136,14 @@ export function PageLayout({
 								className="px-3 py-3 text-base font-medium hover:bg-accent rounded-md transition-colors"
 								onClick={() => setMobileMenuOpen(false)}
 							>
-								Templates
+								Guides
 							</Link>
 							<Link
 								href="/readings"
 								className="px-3 py-3 text-base font-medium hover:bg-accent rounded-md transition-colors"
 								onClick={() => setMobileMenuOpen(false)}
 							>
-								Articles
+								Readings
 							</Link>
 							<Link
 								href="/how-it-works"

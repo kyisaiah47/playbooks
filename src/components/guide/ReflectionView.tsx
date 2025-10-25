@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { GuidanceTemplate, DailyReflectionQuestion } from '@/types/guide';
-import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
-import { WorkspaceSwitcher } from '@/components/tiptap-templates/simple/workspace-switcher';
+import { SimpleEditor } from '@/components/tiptap-guides/simple/simple-editor';
+import { WorkspaceSwitcher } from '@/components/tiptap-guides/simple/workspace-switcher';
 import { ThemeSelector } from '@/components/theme-selector';
 import { Info } from 'lucide-react';
 import {

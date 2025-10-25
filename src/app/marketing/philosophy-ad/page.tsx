@@ -30,7 +30,7 @@ export default function PhilosophyAdPage() {
 				</Announcement>
 
 				<h1 className="text-7xl lg:text-8xl font-black leading-none tracking-tight">
-					Templates evolve
+					Guides evolve
 					<br />
 					into your
 					<br />

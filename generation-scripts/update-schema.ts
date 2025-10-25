@@ -14,7 +14,7 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 async function updateSchema() {
   console.log('🔧 Updating database schema...');
 
-  const sqlPath = path.join(__dirname, 'update-templates-schema.sql');
+  const sqlPath = path.join(__dirname, 'update-guides-schema.sql');
   const sql = fs.readFileSync(sqlPath, 'utf-8');
 
   try {
@@ -39,7 +39,7 @@ async function updateSchema() {
       if (!response.ok) {
         console.error('❌ Alternative method also failed');
         console.log('\n⚠️  Please run the SQL manually in Supabase Dashboard:');
-        console.log('📋 SQL file location: generation-scripts/update-templates-schema.sql\n');
+        console.log('📋 SQL file location: generation-scripts/update-guides-schema.sql\n');
         process.exit(1);
       }
     } else {
@@ -48,7 +48,7 @@ async function updateSchema() {
   } catch (e) {
     console.error('❌ Exception:', e);
     console.log('\n⚠️  Please run the SQL manually in Supabase Dashboard:');
-    console.log('📋 SQL file location: generation-scripts/update-templates-schema.sql\n');
+    console.log('📋 SQL file location: generation-scripts/update-guides-schema.sql\n');
     console.log('SQL content:');
     console.log('---');
     console.log(sql);

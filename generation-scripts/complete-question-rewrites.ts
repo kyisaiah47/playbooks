@@ -10,8 +10,8 @@ const END_OFFSET = 30920;
 const BATCH_SIZE = 50;
 
 // Rewrite function to convert Wikipedia style to Notion style
-function rewriteToNotionStyle(prompt: string): string {
-  let rewritten = prompt;
+function rewriteToNotionStyle(question: string): string {
+  let rewritten = question;
 
   // Main transformations
   rewritten = rewritten.replace(/^Document /, 'Write down ');
@@ -50,7 +50,7 @@ async function processBatch(offset: number) {
   // Fetch questions
   const { data: questions, error: fetchError } = await supabase
     .from('questions')
-    .select('id, prompt')
+    .select('id, question')
     .order('id')
     .range(offset, offset + BATCH_SIZE - 1);
 
@@ -66,14 +66,14 @@ async function processBatch(offset: number) {
 
   // Build CASE statement for batch update
   const cases = questions.map(q => {
-    const rewritten = rewriteToNotionStyle(q.prompt);
+    const rewritten = rewriteToNotionStyle(q.question);
     const escaped = rewritten.replace(/'/g, "''");
     return `WHEN '${q.id}' THEN '${escaped}'`;
   }).join('\n  ');
 
   const ids = questions.map(q => `'${q.id}'`).join(', ');
 
-  const updateSQL = `UPDATE questions SET prompt = CASE id
+  const updateSQL = `UPDATE questions SET question = CASE id
   ${cases}
 END
 WHERE id IN (${ids})`;

@@ -21,7 +21,7 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
       const trimmed = paragraph.trim();
       // Remove generation metadata
       if (trimmed.includes('ARTICLE GENERATION COMPLETE')) return false;
-      if (trimmed.includes('Article #')) return false;
+      if (trimmed.includes('Reading #')) return false;
       if (trimmed.match(/^---+$/)) return false; // Remove separator lines
       if (trimmed.length === 0) return false; // Remove empty paragraphs
       return true;

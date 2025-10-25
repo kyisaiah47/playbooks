@@ -692,7 +692,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
 
       {/* Main Content - 3 Column Layout */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Sidebar - Prompts (Desktop only) */}
+        {/* Left Sidebar - Questions (Desktop only) */}
         <div className="hidden md:block w-80 border-r bg-background overflow-y-auto">
           <div className="p-4 space-y-4">
             <div className="mb-4">
@@ -836,10 +836,10 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           </div>
         </div>
 
-        {/* Right Sidebar - Articles or Article Content (Desktop only) */}
+        {/* Right Sidebar - Readings or Reading Content (Desktop only) */}
         <motion.div
           className="hidden md:block border-l bg-background overflow-y-auto"
-          animate={{ width: selectedArticle ? 600 : 320 }}
+          animate={{ width: selectedReading ? 600 : 320 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <div className="p-6 space-y-4">
@@ -970,13 +970,13 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
         </motion.div>
       </div>
 
-      {/* Mobile Article Viewer */}
+      {/* Mobile Reading Viewer */}
       {isMobile && selectedReading && (
         <Drawer open={!!selectedReading} onOpenChange={(open) => !open && handleCloseReading()}>
           <DrawerContent className="max-h-[90vh]">
             <DrawerHeader>
               <div className="flex items-center justify-between mb-3">
-                <DrawerTitle className="text-left">{selectedArticle.title}</DrawerTitle>
+                <DrawerTitle className="text-left">{selectedReading.title}</DrawerTitle>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -986,9 +986,9 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                 </Button>
               </div>
               <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-                <span>{selectedArticle.author}</span>
+                <span>{selectedReading.author}</span>
                 <span>•</span>
-                <span>{selectedArticle.readTime}</span>
+                <span>{selectedReading.readTime}</span>
               </div>
               {/* Search bar for mobile */}
               <div className="relative">
@@ -996,26 +996,26 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                 <Input
                   type="text"
                   placeholder="Search in reading..."
-                  value={articleContentSearchQuery}
+                  value={readingContentSearchQuery}
                   onChange={(e) => setReadingContentSearchQuery(e.target.value)}
                   className="h-9 text-sm pl-9"
                 />
               </div>
             </DrawerHeader>
             <div className="flex-1 overflow-y-auto px-4 pb-4">
-              {loadingArticle ? (
+              {loadingReading ? (
                 <div className="py-8 text-center">
                   <p className="text-muted-foreground">Loading reading...</p>
                 </div>
               ) : (
-                <ReadingContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
+                <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
               )}
             </div>
           </DrawerContent>
         </Drawer>
       )}
 
-      {/* Mobile Drawer - Prompts & Articles */}
+      {/* Mobile Drawer - Questions & Readings */}
       {isMobile && (
         <Drawer open={mobileDrawerOpen} onOpenChange={setMobileDrawerOpen}>
           <DrawerTrigger asChild>
@@ -1035,11 +1035,11 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="questions" className="gap-1.5">
                 <FileText className="h-4 w-4" />
-                <span>Prompts</span>
+                <span>Questions</span>
               </TabsTrigger>
               <TabsTrigger value="readings" className="gap-1.5">
                 <BookOpen className="h-4 w-4" />
-                <span>Articles</span>
+                <span>Readings</span>
               </TabsTrigger>
             </TabsList>
 

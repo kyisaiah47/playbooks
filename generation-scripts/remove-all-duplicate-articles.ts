@@ -9,7 +9,7 @@ const BATCH_SIZE = 1000;
 
 async function removeAllDuplicateArticles() {
   try {
-    console.log('Fetching all articles in batches...\n');
+    console.log('Fetching all readings in batches...\n');
 
     let allArticles: any[] = [];
     let offset = 0;
@@ -18,7 +18,7 @@ async function removeAllDuplicateArticles() {
     while (hasMore) {
       const { data, error } = await supabase
         .from('templata_articles')
-        .select('id, title, slug, template')
+        .select('id, title, slug, guide')
         .order('title')
         .range(offset, offset + BATCH_SIZE - 1);
 
@@ -33,7 +33,7 @@ async function removeAllDuplicateArticles() {
       }
 
       allArticles = allArticles.concat(data);
-      console.log(`Fetched ${allArticles.length} articles so far...`);
+      console.log(`Fetched ${allArticles.length} readings so far...`);
 
       if (data.length < BATCH_SIZE) {
         hasMore = false;
@@ -42,18 +42,18 @@ async function removeAllDuplicateArticles() {
       }
     }
 
-    console.log(`\nTotal articles fetched: ${allArticles.length}\n`);
+    console.log(`\nTotal readings fetched: ${allArticles.length}\n`);
 
     // Find duplicates by title
     const titleMap = new Map<string, any[]>();
-    allArticles.forEach(article => {
-      const existing = titleMap.get(article.title) || [];
-      existing.push(article);
-      titleMap.set(article.title, existing);
+    allArticles.forEach(reading => {
+      const existing = titleMap.get(reading.title) || [];
+      existing.push(reading);
+      titleMap.set(reading.title, existing);
     });
 
     const duplicateTitles = Array.from(titleMap.entries())
-      .filter(([_, articles]) => articles.length > 1);
+      .filter(([_, readings]) => readings.length > 1);
 
     console.log(`Found ${duplicateTitles.length} duplicate title groups\n`);
 
@@ -70,14 +70,14 @@ async function removeAllDuplicateArticles() {
     });
 
     console.log(`\n=== SUMMARY ===`);
-    console.log(`Total articles to delete: ${idsToDelete.length}`);
+    console.log(`Total readings to delete: ${idsToDelete.length}`);
 
     if (idsToDelete.length === 0) {
       console.log('No duplicates to remove!');
       return;
     }
 
-    console.log('\nDeleting duplicate articles in batches...');
+    console.log('\nDeleting duplicate readings in batches...');
 
     // Delete in batches of 100 to avoid query size limits
     const DELETE_BATCH_SIZE = 100;
@@ -97,11 +97,11 @@ async function removeAllDuplicateArticles() {
       }
 
       deletedCount += batch.length;
-      console.log(`Deleted ${deletedCount}/${idsToDelete.length} articles...`);
+      console.log(`Deleted ${deletedCount}/${idsToDelete.length} readings...`);
     }
 
-    console.log(`\n✓ Successfully deleted ${deletedCount} duplicate articles!`);
-    console.log(`Articles remaining: ${allArticles.length - deletedCount}`);
+    console.log(`\n✓ Successfully deleted ${deletedCount} duplicate readings!`);
+    console.log(`Readings remaining: ${allArticles.length - deletedCount}`);
 
   } catch (error) {
     console.error('Fatal error:', error);

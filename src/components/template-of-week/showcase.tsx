@@ -19,7 +19,7 @@ import {
   getTemplateOfWeekDetails,
   getTemplateOfWeekBadgeText,
   getWeeksRemaining
-} from "@/lib/template-of-week"
+} from "@/lib/guide-of-week"
 import { cn } from "@/lib/utils"
 
 interface GuideOfWeekShowcaseProps {
@@ -27,10 +27,10 @@ interface GuideOfWeekShowcaseProps {
   className?: string
 }
 
-export function TemplateOfWeekShowcase({
+export function GuideOfWeekShowcase({
   variant = "full",
   className
-}: TemplateOfWeekShowcaseProps) {
+}: GuideOfWeekShowcaseProps) {
   const templateOfWeek = getCurrentTemplateOfWeek()
   const templateDetails = templateOfWeek ? getTemplateOfWeekDetails(templateOfWeek) : null
   const badgeText = getTemplateOfWeekBadgeText()
@@ -206,7 +206,7 @@ export function TemplateOfWeekShowcase({
           )}
 
           <div className="mb-6">
-            <h4 className="mb-3 font-semibold">Why This Template Stands Out:</h4>
+            <h4 className="mb-3 font-semibold">Why This Guide Stands Out:</h4>
             <div className="grid gap-2">
               {templateOfWeek.reasons.map((reason, index) => (
                 <div key={index} className="flex items-start gap-2 text-sm">

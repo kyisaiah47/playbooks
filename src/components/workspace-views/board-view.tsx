@@ -19,7 +19,7 @@ import {
   KanbanCard,
 } from "@/components/ui/shadcn-io/kanban"
 
-interface PromptCard {
+interface QuestionCard {
   id: string;
   name: string; // Required by KanbanCard
   text: string;
@@ -33,7 +33,7 @@ interface BoardViewProps {
 }
 
 export function BoardView({ guideId }: BoardViewProps) {
-  const [questions, setQuestions] = useState<PromptCard[]>([
+  const [questions, setQuestions] = useState<QuestionCard[]>([
     {
       id: '1',
       name: 'Main Goals',
@@ -65,11 +65,11 @@ export function BoardView({ guideId }: BoardViewProps) {
     { id: 'done' as const, name: 'Done' },
   ];
 
-  const [editingPrompt, setEditingPrompt] = useState<PromptCard | null>(null);
+  const [editingPrompt, setEditingPrompt] = useState<QuestionCard | null>(null);
   const [editNotes, setEditNotes] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleEditQuestion = (question: PromptCard) => {
+  const handleEditQuestion = (question: QuestionCard) => {
     setEditingPrompt(question);
     setEditNotes(question.notes || '');
     setDialogOpen(true);
@@ -88,7 +88,7 @@ export function BoardView({ guideId }: BoardViewProps) {
     setDialogOpen(false);
   };
 
-  const movePrompt = (questionId: string, newColumn: PromptCard['column']) => {
+  const movePrompt = (questionId: string, newColumn: QuestionCard['column']) => {
     setQuestions(questions.map(p =>
       p.id === questionId ? { ...p, column: newColumn } : p
     ));
@@ -113,7 +113,7 @@ export function BoardView({ guideId }: BoardViewProps) {
               </div>
             </KanbanHeader>
             <KanbanCards id={column.id}>
-              {(item: PromptCard) => (
+              {(item: QuestionCard) => (
                 <KanbanCard key={item.id} {...item}>
                   <div
                     className="cursor-pointer"

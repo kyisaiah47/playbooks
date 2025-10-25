@@ -52,7 +52,7 @@ export function NavReadingsList({ guideId, onReadingSelect }: NavReadingsListPro
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
           <SidebarMenuButton>
-            Articles{" "}
+            Readings{" "}
             <IconPlus className="ml-auto group-data-[state=open]/collapsible:hidden" />
             <IconMinus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
           </SidebarMenuButton>

@@ -7,31 +7,31 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function removeDuplicateArticles() {
   try {
-    console.log('Fetching all articles...');
+    console.log('Fetching all readings...');
 
-    const { data: articles, error } = await supabase
+    const { data: readings, error } = await supabase
       .from('templata_articles')
-      .select('id, title, slug, template')
+      .select('id, title, slug, guide')
       .order('title')
-      .limit(100000); // Fetch up to 100k articles
+      .limit(100000); // Fetch up to 100k readings
 
     if (error) {
-      console.error('Error fetching articles:', error);
+      console.error('Error fetching readings:', error);
       return;
     }
 
-    console.log(`Total articles fetched: ${articles.length}\n`);
+    console.log(`Total readings fetched: ${readings.length}\n`);
 
     // Find duplicates by title
     const titleMap = new Map<string, any[]>();
-    articles.forEach(article => {
-      const existing = titleMap.get(article.title) || [];
-      existing.push(article);
-      titleMap.set(article.title, existing);
+    readings.forEach(reading => {
+      const existing = titleMap.get(reading.title) || [];
+      existing.push(reading);
+      titleMap.set(reading.title, existing);
     });
 
     const duplicateTitles = Array.from(titleMap.entries())
-      .filter(([_, articles]) => articles.length > 1);
+      .filter(([_, readings]) => readings.length > 1);
 
     console.log(`Found ${duplicateTitles.length} duplicate title groups\n`);
 
@@ -54,14 +54,14 @@ async function removeDuplicateArticles() {
     });
 
     console.log(`\n\n=== SUMMARY ===`);
-    console.log(`Total articles to delete: ${idsToDelete.length}`);
+    console.log(`Total readings to delete: ${idsToDelete.length}`);
 
     if (idsToDelete.length === 0) {
       console.log('No duplicates to remove!');
       return;
     }
 
-    console.log('\nDeleting duplicate articles...');
+    console.log('\nDeleting duplicate readings...');
 
     const { error: deleteError } = await supabase
       .from('templata_articles')
@@ -69,11 +69,11 @@ async function removeDuplicateArticles() {
       .in('id', idsToDelete);
 
     if (deleteError) {
-      console.error('Error deleting articles:', deleteError);
+      console.error('Error deleting readings:', deleteError);
       return;
     }
 
-    console.log(`✓ Successfully deleted ${idsToDelete.length} duplicate articles!`);
+    console.log(`✓ Successfully deleted ${idsToDelete.length} duplicate readings!`);
     console.log(`\nArticles deleted:`);
     idsToDelete.forEach(id => console.log(`  - ${id}`));
 

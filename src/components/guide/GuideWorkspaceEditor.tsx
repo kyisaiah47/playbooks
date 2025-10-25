@@ -18,11 +18,11 @@ interface GuideWorkspaceEditorProps {
   onContentChange?: (content: string) => void
 }
 
-export function TemplateWorkspaceEditor({
+export function GuideWorkspaceEditor({
   onInsertQuestion,
   initialContent,
   onContentChange,
-}: TemplateWorkspaceEditorProps) {
+}: GuideWorkspaceEditorProps) {
   const [isEmpty, setIsEmpty] = useState(!initialContent)
 
   const editor = useEditor({

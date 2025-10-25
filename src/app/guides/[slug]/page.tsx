@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!guide?.guide) {
     return {
-      title: 'Template Not Found | Templata',
+      title: 'Guide Not Found | Templata',
       description: 'The requested guide could not be found.',
       robots: {
         index: false,
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const guideData = guide.guide;
-  const title = `${guideData.title} Template | Templata`;
+  const title = `${guideData.title} Guide | Templata`;
   const description = `${guideData.description} Complete guide with questions, readings, and guided steps. Save 80+ hours with our AI-powered ${guideData.title.toLowerCase()} guide.`;
 
   return {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: `/guides/${slug}-preview.jpg`,
           width: 1200,
           height: 630,
-          alt: `${guideData.title} Template Preview`,
+          alt: `${guideData.title} Guide Preview`,
         },
       ],
       locale: 'en_US',

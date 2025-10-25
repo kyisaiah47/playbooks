@@ -64,7 +64,7 @@ export default function ChangelogPage() {
                     <li>Added PDF export for your responses and reflections</li>
                     <li>Added Responses and Reflections tabs to Overview to view everything in one place</li>
                     <li>Added search in readings to find specific information</li>
-                    <li>Organized featured templates into 3 sections: General, Gen Z, and Health & Wellness</li>
+                    <li>Organized featured guides into 3 sections: General, Gen Z, and Health & Wellness</li>
                   </ul>
                 </div>
                 <div>
@@ -82,7 +82,7 @@ export default function ChangelogPage() {
                 <span className="text-sm text-muted-foreground">October 18, 2025</span>
               </div>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Featured templates section added for quick access to popular templates in your workspace</li>
+                <li>Featured guides section added for quick access to popular guides in your workspace</li>
               </ul>
             </section>
 
@@ -104,7 +104,7 @@ export default function ChangelogPage() {
                     <li>104K+ AI-generated questions</li>
                     <li>25,936 readings providing expert knowledge</li>
                     <li>User authentication and workspace management</li>
-                    <li>3 view model: Templates, Reflection, and Overview for comprehensive life planning</li>
+                    <li>3 view model: Guides, Reflection, and Overview for comprehensive life planning</li>
                     <li>Demo mode for unauthenticated users</li>
                   </ul>
                 </div>

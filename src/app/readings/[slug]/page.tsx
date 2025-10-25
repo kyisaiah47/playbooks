@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Clock } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { getReadingBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/readings";
+import { getReadingBySlug, getRelatedReadings, getReadingsByCategory } from "@/registry/readings";
 import { getGuideById } from "@/registry/guides";
 import { ReadingContent } from "./reading-content";
 
@@ -19,12 +19,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   let relatedPosts = [];
   if (blogPost) {
     // First try: official related posts
-    const officialRelated = await getRelatedArticles(blogPost.id, 6);
+    const officialRelated = await getRelatedReadings(blogPost.id, 6);
     if (officialRelated.length > 0) {
       relatedPosts = officialRelated;
     } else {
       // Second try: same category posts
-      const categoryPosts = await getArticlesByCategory(blogPost.category);
+      const categoryPosts = await getReadingsByCategory(blogPost.category);
       relatedPosts = categoryPosts.filter(post => post.id !== blogPost.id).slice(0, 6);
     }
   }
@@ -33,7 +33,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     return (
       <PageLayout>
         <div className="py-24 md:py-32 text-center">
-          <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
+          <h1 className="text-4xl font-bold mb-4">Reading Not Found</h1>
           <p className="text-muted-foreground">The reading you&apos;re looking for doesn&apos;t exist.</p>
         </div>
       </PageLayout>
@@ -42,7 +42,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <PageLayout>
-      {/* Hero Section - Clean minimal style like templates page */}
+      {/* Hero Section - Clean minimal style like guides page */}
       <section className="py-16 border-b">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="space-y-4">
@@ -76,12 +76,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <ReadingContent content={blogPost.content} />
       </div>
 
-      {/* Related Articles - Simple list like templates page */}
+      {/* Related Readings - Simple list like guides page */}
       {relatedPosts.length > 0 && (
         <section className="border-t py-12">
           <div className="container mx-auto max-w-6xl px-4">
             <h2 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
-              Related Articles
+              Related Readings
             </h2>
             <div className="space-y-0 divide-y divide-border">
               {relatedPosts.map((post) => (

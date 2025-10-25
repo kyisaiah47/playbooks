@@ -20,27 +20,27 @@ interface GuidanceTemplate {
   version?: string;
 }
 
-interface Prompt {
+interface Question {
   id: string;
-  prompt: string;
+  question: string;
   category: string;
 }
 
-interface PromptFile {
+interface QuestionFile {
   categoryName: string;
-  prompts: Prompt[];
+  questions: Question[];
 }
 
 async function migrateTemplates() {
-  console.log('🚀 Starting migration of templates to database...\n');
+  console.log('🚀 Starting migration of guides to database...\n');
 
-  const templatesDir = path.join(process.cwd(), 'src', 'data', 'templates');
-  const promptsDir = path.join(process.cwd(), 'src', 'data', 'prompts');
+  const templatesDir = path.join(process.cwd(), 'src', 'data', 'guides');
+  const promptsDir = path.join(process.cwd(), 'src', 'data', 'questions');
 
-  // Get all template files
+  // Get all guide files
   const templateFiles = fs.readdirSync(templatesDir).filter(f => f.endsWith('.ts'));
 
-  console.log(`📦 Found ${templateFiles.length} template files\n`);
+  console.log(`📦 Found ${templateFiles.length} guide files\n`);
 
   let templatesCreated = 0;
   let promptsCreated = 0;
@@ -50,93 +50,93 @@ async function migrateTemplates() {
     try {
       const templatePath = path.join(templatesDir, templateFile);
       const templateModule = require(templatePath);
-      const template: GuidanceTemplate = templateModule.template;
+      const guide: GuidanceTemplate = templateModule.guide;
 
-      if (!template || !template.id) {
-        console.log(`⚠️  Skipping ${templateFile} - no template export`);
+      if (!guide || !guide.id) {
+        console.log(`⚠️  Skipping ${templateFile} - no guide export`);
         continue;
       }
 
-      // Insert template
+      // Insert guide
       const { error: templateError } = await supabase
         .from('templata_templates')
         .upsert({
-          id: template.id,
-          name: template.title || template.id,
-          title: template.title,
-          description: template.description,
-          category: template.category,
-          icon: template.icon,
-          difficulty: template.difficulty,
-          estimated_time: template.estimatedTime,
-          tags: template.tags,
-          last_updated: template.lastUpdated,
-          version: template.version,
+          id: guide.id,
+          name: guide.title || guide.id,
+          title: guide.title,
+          description: guide.description,
+          category: guide.category,
+          icon: guide.icon,
+          difficulty: guide.difficulty,
+          estimated_time: guide.estimatedTime,
+          tags: guide.tags,
+          last_updated: guide.lastUpdated,
+          version: guide.version,
           sections: {}, // placeholder for now
         });
 
       if (templateError) {
-        console.error(`❌ Error inserting template ${template.id}:`, templateError);
+        console.error(`❌ Error inserting guide ${guide.id}:`, templateError);
         errors++;
         continue;
       }
 
       templatesCreated++;
-      console.log(`✅ Created template: ${template.id}`);
+      console.log(`✅ Created guide: ${guide.id}`);
 
-      // Now load the prompts for this template
-      // Prompts are in files like: {template-id}-prompts-1.ts through {template-id}-prompts-8.ts
+      // Now load the questions for this guide
+      // Questions are in files like: {guide-id}-questions-1.ts through {guide-id}-questions-8.ts
       for (let i = 1; i <= 8; i++) {
-        const promptFile = `${template.id}-prompts-${i}.ts`;
+        const promptFile = `${guide.id}-questions-${i}.ts`;
         const promptPath = path.join(promptsDir, promptFile);
 
         if (!fs.existsSync(promptPath)) {
-          console.log(`   ⚠️  Prompt file not found: ${promptFile}`);
+          console.log(`   ⚠️  Question file not found: ${promptFile}`);
           continue;
         }
 
         try {
           const promptModule = require(promptPath);
           const categoryName: string = promptModule.categoryName;
-          const prompts: Prompt[] = promptModule.prompts;
+          const questions: Question[] = promptModule.questions;
 
-          if (!prompts || prompts.length === 0) {
-            console.log(`   ⚠️  No prompts in ${promptFile}`);
+          if (!questions || questions.length === 0) {
+            console.log(`   ⚠️  No questions in ${promptFile}`);
             continue;
           }
 
-          // Insert each prompt
-          for (let promptIndex = 0; promptIndex < prompts.length; promptIndex++) {
-            const prompt = prompts[promptIndex];
+          // Insert each question
+          for (let promptIndex = 0; promptIndex < questions.length; promptIndex++) {
+            const question = questions[promptIndex];
 
             const { error: promptError } = await supabase
               .from('templata_prompts')
               .upsert({
-                id: `${template.id}-${i}-${promptIndex + 1}`,
-                prompt: prompt.prompt,
-                category: prompt.category,
-                type: prompt.category, // using category as type for now
-                template_id: template.id,
+                id: `${guide.id}-${i}-${promptIndex + 1}`,
+                question: question.question,
+                category: question.category,
+                type: question.category, // using category as type for now
+                template_id: guide.id,
                 prompt_group_category: categoryName,
                 prompt_number: (i - 1) * 10 + (promptIndex + 1), // global ordering
               });
 
             if (promptError) {
-              console.error(`   ❌ Error inserting prompt for ${template.id}:`, promptError);
+              console.error(`   ❌ Error inserting question for ${guide.id}:`, promptError);
               errors++;
             } else {
               promptsCreated++;
             }
           }
 
-          console.log(`   ✅ Added ${prompts.length} prompts from ${promptFile} (${categoryName})`);
+          console.log(`   ✅ Added ${questions.length} questions from ${promptFile} (${categoryName})`);
         } catch (e) {
-          console.error(`   ❌ Error loading prompts from ${promptFile}:`, e);
+          console.error(`   ❌ Error loading questions from ${promptFile}:`, e);
           errors++;
         }
       }
 
-      console.log(''); // blank line between templates
+      console.log(''); // blank line between guides
     } catch (e) {
       console.error(`❌ Error processing ${templateFile}:`, e);
       errors++;
@@ -144,8 +144,8 @@ async function migrateTemplates() {
   }
 
   console.log('\n📊 Migration Summary:');
-  console.log(`   Templates created: ${templatesCreated}`);
-  console.log(`   Prompts created: ${promptsCreated}`);
+  console.log(`   Guides created: ${templatesCreated}`);
+  console.log(`   Questions created: ${promptsCreated}`);
   console.log(`   Errors: ${errors}`);
 
   if (errors === 0) {

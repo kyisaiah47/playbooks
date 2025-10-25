@@ -40,7 +40,7 @@ export default function CollaborationAdPage() {
 					</h1>
 
 					<p className="text-3xl text-gray-400 max-w-3xl mx-auto font-light">
-						Collaborative templates for couples, families, and teams.
+						Collaborative guides for couples, families, and teams.
 					</p>
 				</div>
 			</div>

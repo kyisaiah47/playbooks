@@ -8,8 +8,8 @@ import { Marquee } from "@/components/ui/marquee";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
-import { getReadingBySlug, getRelatedArticles, getArticlesByCategory, articleRegistry } from "@/registry/readings";
-import { TemplateImage } from "@/components/ui/guide-image";
+import { getReadingBySlug, getRelatedReadings, getReadingsByCategory, readingRegistry } from "@/registry/readings";
+import { GuideImage } from "@/components/ui/guide-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph";
@@ -41,7 +41,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
   // Knowledge graph integration
   const {
     getConnectedConcepts,
-    getRelatedTemplates,
+    getRelatedGuides,
     getConceptByName,
     isLoading: kgLoading
   } = useKnowledgeGraph();
@@ -66,7 +66,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Get connected concepts and templates
+  // Get connected concepts and guides
   const connectedConcepts = useMemo(() => {
     if (!post || kgLoading) return [];
 
@@ -91,13 +91,13 @@ export default function ReadingClient({ params }: ReadingClientProps) {
 
     const guides = [];
 
-    // Get templates related to the article's category
-    const categoryTemplates = getRelatedTemplates(post.category.toLowerCase());
+    // Get guides related to the reading's category
+    const categoryTemplates = getRelatedGuides(post.category.toLowerCase());
     guides.push(...categoryTemplates);
 
-    // Get templates from connected concepts
+    // Get guides from connected concepts
     for (const concept of connectedConcepts.slice(0, 3)) {
-      const conceptTemplates = getRelatedTemplates(concept.name);
+      const conceptTemplates = getRelatedGuides(concept.name);
       guides.push(...conceptTemplates);
     }
 
@@ -108,20 +108,20 @@ export default function ReadingClient({ params }: ReadingClientProps) {
       .slice(0, 6);
 
     return uniqueTemplates;
-  }, [post, connectedConcepts, getRelatedTemplates, kgLoading]);
+  }, [post, connectedConcepts, getRelatedGuides, kgLoading]);
 
   if (!post) {
     return (
       <PageLayout>
         <div className="container max-w-4xl mx-auto py-16">
           <div className="text-center">
-            <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
+            <h1 className="text-3xl font-bold mb-4">Reading Not Found</h1>
             <p className="text-muted-foreground mb-8">
               The reading you're looking for doesn't exist or has been moved.
             </p>
             <Button asChild>
               <Link href="/readings">
-                Browse All Articles
+                Browse All Readings
               </Link>
             </Button>
           </div>
@@ -130,8 +130,8 @@ export default function ReadingClient({ params }: ReadingClientProps) {
     );
   }
 
-  const relatedPosts = getRelatedArticles(slug, 3);
-  const categoryPosts = getArticlesByCategory(post.category, 4);
+  const relatedPosts = getRelatedReadings(slug, 3);
+  const categoryPosts = getReadingsByCategory(post.category, 4);
   const CategoryIcon = getCategoryIcon(post.category);
 
   // Extract headings for table of contents
@@ -155,12 +155,12 @@ export default function ReadingClient({ params }: ReadingClientProps) {
     <PageLayout>
       <ScrollProgress />
 
-      <article className="container max-w-4xl mx-auto py-8">
-        {/* Article Header */}
+      <reading className="container max-w-4xl mx-auto py-8">
+        {/* Reading Header */}
         <header className="mb-8">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
             <Link href="/readings" className="hover:text-foreground transition-colors">
-              Articles
+              Readings
             </Link>
             <span>/</span>
             <Badge variant="secondary" className="flex items-center gap-1">
@@ -200,10 +200,10 @@ export default function ReadingClient({ params }: ReadingClientProps) {
           )}
         </header>
 
-        {/* Article Image */}
+        {/* Reading Image */}
         {post.image && (
           <div className="mb-8">
-            <TemplateImage
+            <GuideImage
               src={post.image}
               alt={post.title}
               width={800}
@@ -240,7 +240,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
             </aside>
           )}
 
-          {/* Article Content */}
+          {/* Reading Content */}
           <div className="lg:col-span-3">
             {post.content && (
               <div
@@ -266,12 +266,12 @@ export default function ReadingClient({ params }: ReadingClientProps) {
               </section>
             )}
 
-            {/* Related Templates */}
+            {/* Related Guides */}
             {relatedGuides.length > 0 && (
               <section className="mt-12">
                 <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
                   <Target className="w-5 h-5" />
-                  Templates That Can Help
+                  Guides That Can Help
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {relatedGuides.map((guide) => (
@@ -289,7 +289,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                       </p>
                       <Button asChild size="sm" variant="outline">
                         <Link href={`//guide`}>
-                          Use Template
+                          Use Guide
                         </Link>
                       </Button>
                     </div>
@@ -313,12 +313,12 @@ export default function ReadingClient({ params }: ReadingClientProps) {
             )}
           </div>
         </div>
-      </article>
+      </reading>
 
-      {/* Related Articles */}
+      {/* Related Readings */}
       {relatedPosts.length > 0 && (
         <section className="container max-w-6xl mx-auto py-16 border-t">
-          <h2 className="text-3xl font-bold text-center mb-12">Related Articles</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Related Readings</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {relatedPosts.map((relatedPost) => (
               <Link
@@ -326,10 +326,10 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                 href={`/readings/${relatedPost.slug}`}
                 className="group block"
               >
-                <article className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <reading className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                   {relatedPost.image && (
                     <div className="aspect-video overflow-hidden">
-                      <TemplateImage
+                      <GuideImage
                         src={relatedPost.image}
                         alt={relatedPost.title}
                         width={400}
@@ -355,19 +355,19 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                       </p>
                     )}
                   </div>
-                </article>
+                </reading>
               </Link>
             ))}
           </div>
         </section>
       )}
 
-      {/* Category Articles Marquee */}
+      {/* Category Readings Marquee */}
       {categoryPosts.length > 0 && (
         <section className="py-16 bg-muted/30">
           <div className="container max-w-6xl mx-auto mb-8">
             <h2 className="text-2xl font-bold text-center">
-              More {post.category} Articles
+              More {post.category} Readings
             </h2>
           </div>
           <Marquee className="py-4" pauseOnHover>
@@ -377,10 +377,10 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                 href={`/readings/${categoryPost.slug}`}
                 className="mx-4"
               >
-                <article className="w-80 border rounded-lg overflow-hidden bg-background hover:shadow-lg transition-shadow">
+                <reading className="w-80 border rounded-lg overflow-hidden bg-background hover:shadow-lg transition-shadow">
                   {categoryPost.image && (
                     <div className="aspect-video overflow-hidden">
-                      <TemplateImage
+                      <GuideImage
                         src={categoryPost.image}
                         alt={categoryPost.title}
                         width={320}
@@ -405,7 +405,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                       {categoryPost.title}
                     </h3>
                   </div>
-                </article>
+                </reading>
               </Link>
             ))}
           </Marquee>

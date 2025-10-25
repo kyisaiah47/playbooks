@@ -9,8 +9,8 @@ const END_OFFSET = 90920;
 const BATCH_SIZE = 50;
 
 // Transformation function: Wikipedia-style to Notion-style
-function transformPrompt(prompt: string): string {
-  let transformed = prompt;
+function transformPrompt(question: string): string {
+  let transformed = question;
 
   // Document → Write down
   transformed = transformed.replace(/^Document /i, 'Write down ');
@@ -84,7 +84,7 @@ async function processBatch(offset: number): Promise<void> {
   // Fetch questions
   const { data: questions, error: fetchError } = await supabase
     .from('questions')
-    .select('id, prompt')
+    .select('id, question')
     .order('id')
     .range(offset, offset + BATCH_SIZE - 1);
 
@@ -100,11 +100,11 @@ async function processBatch(offset: number): Promise<void> {
 
   // Transform and update each question
   for (const question of questions) {
-    const newPrompt = transformPrompt(question.prompt);
+    const newPrompt = transformPrompt(question.question);
 
     const { error: updateError } = await supabase
       .from('questions')
-      .update({ prompt: newPrompt })
+      .update({ question: newPrompt })
       .eq('id', question.id);
 
     if (updateError) {

@@ -9,8 +9,8 @@ const END_OFFSET = 85920;
 const BATCH_SIZE = 50;
 
 // Transformation function: Wikipedia-style to Notion-style
-function transformPrompt(prompt: string): string {
-  let transformed = prompt;
+function transformPrompt(question: string): string {
+  let transformed = question;
 
   // Document → Write down
   transformed = transformed.replace(/^Document /i, 'Write down ');
@@ -91,7 +91,7 @@ async function processBatch(offset: number): Promise<boolean> {
   // Fetch questions
   const { data: questions, error: fetchError } = await supabase
     .from('questions')
-    .select('id, prompt, template_id')
+    .select('id, question, template_id')
     .order('id')
     .range(offset, offset + BATCH_SIZE - 1);
 
@@ -105,21 +105,21 @@ async function processBatch(offset: number): Promise<boolean> {
     return true;
   }
 
-  // Transform prompts
+  // Transform questions
   const updates = questions.map(q => ({
     id: q.id,
-    originalPrompt: q.prompt,
-    prompt: transformPrompt(q.prompt)
+    originalPrompt: q.question,
+    question: transformPrompt(q.question)
   }));
 
   // Build SQL CASE statement
   const caseStatements = updates.map(u =>
-    `WHEN '${u.id}' THEN '${u.prompt.replace(/'/g, "''")}'`
+    `WHEN '${u.id}' THEN '${u.question.replace(/'/g, "''")}'`
   ).join('\n  ');
 
   const ids = updates.map(u => `'${u.id}'`).join(', ');
 
-  const sql = `UPDATE questions SET prompt = CASE id
+  const sql = `UPDATE questions SET question = CASE id
   ${caseStatements}
 END
 WHERE id IN (${ids})`;
@@ -133,7 +133,7 @@ WHERE id IN (${ids})`;
     console.error(`Error updating batch at offset ${offset}:`, updateError);
     console.error('First question transformation example:');
     console.error('Original:', updates[0]?.originalPrompt);
-    console.error('Transformed:', updates[0]?.prompt);
+    console.error('Transformed:', updates[0]?.question);
     return false;
   } else {
     console.log(`✓ Successfully updated ${questions.length} questions at offset ${offset}`);

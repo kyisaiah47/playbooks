@@ -73,7 +73,7 @@ interface GuideFeaturesProps {
   templateType: 'wedding' | 'baby' | 'home-buying'
 }
 
-export function TemplateFeatures({ templateType }: TemplateFeaturesProps) {
+export function GuideFeatures({ templateType }: GuideFeaturesProps) {
   if (templateType !== 'wedding') {
     return <div>Features for {templateType} coming soon...</div>
   }

@@ -1,13 +1,13 @@
 import { supabase } from '@/lib/supabase';
 
-// Article registry - empty by default, will be populated from Supabase
-export const articleRegistry: any[] = [];
+// Reading registry - empty by default, will be populated from Supabase
+export const readingRegistry: any[] = [];
 
 // Export all readings as array for backward compatibility
-export const readings = articleRegistry;
+export const readings = readingRegistry;
 
 // Helper function to get reading by ID
-export async function getArticleById(id: string) {
+export async function getReadingById(id: string) {
   const { data, error } = await supabase
     .from('readings')
     .select('*')
@@ -69,7 +69,7 @@ export async function getReadingBySlug(slug: string) {
 }
 
 // Helper function to get readings by category
-export async function getArticlesByCategory(category: string) {
+export async function getReadingsByCategory(category: string) {
   const { data, error } = await supabase
     .from('readings')
     .select('*')
@@ -80,30 +80,30 @@ export async function getArticlesByCategory(category: string) {
 }
 
 // Helper function to get related readings
-export async function getRelatedArticles(articleId: string, count = 3) {
+export async function getRelatedReadings(readingId: string, count = 3) {
   const { data, error } = await supabase
     .from('readings')
     .select('*')
-    .neq('id', articleId)
+    .neq('id', readingId)
     .limit(count);
 
   if (error || !data) return [];
   return data;
 }
 
-// Helper function to get readings by template (for component compatibility)
-export async function getArticlesByTemplate(guideId: string) {
+// Helper function to get readings by guide (for component compatibility)
+export async function getReadingsByGuide(guideId: string) {
   const { data, error } = await supabase
     .from('readings')
     .select('*')
-    .eq('template', guideId);
+    .eq('guide', guideId);
 
   if (error || !data) return [];
   return data;
 }
 
 // Helper function to get all available reading IDs
-export async function getArticleIds(): Promise<string[]> {
+export async function getReadingIds(): Promise<string[]> {
   const { data, error } = await supabase
     .from('readings')
     .select('id');
@@ -113,7 +113,7 @@ export async function getArticleIds(): Promise<string[]> {
 }
 
 // Helper function to get paginated readings
-export async function getArticles(page = 1, pageSize = 50) {
+export async function getReadings(page = 1, pageSize = 50) {
   const from = (page - 1) * pageSize;
   const to = from + pageSize - 1;
 
@@ -124,7 +124,7 @@ export async function getArticles(page = 1, pageSize = 50) {
     .range(from, to);
 
   if (error || !data) {
-    console.error('[getArticles] Supabase error:', error);
+    console.error('[getReadings] Supabase error:', error);
     return { readings: [], total: 0 };
   }
 

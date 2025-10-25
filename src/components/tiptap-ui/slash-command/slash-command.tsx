@@ -223,7 +223,7 @@ export function SlashCommand({ editor, questions = [] }: SlashCommandProps) {
           )}
 
           {filteredQuestions.length > 0 && (
-            <CommandGroup heading="Prompts">
+            <CommandGroup heading="Questions">
               {filteredQuestions.slice(0, 5).map((question) => (
                 <CommandItem
                   key={question.id}

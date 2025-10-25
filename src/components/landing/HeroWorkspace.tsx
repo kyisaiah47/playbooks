@@ -1240,7 +1240,7 @@ export function HeroWorkspace() {
                 </div>
               </div>
 
-              {/* Articles List - cleaner */}
+              {/* Readings List - cleaner */}
               <div className="space-y-2">
                 {[
                   { title: 'Ceremony Planning Essentials', guide: 'Wedding Planning', read: true, time: '5 min' },
@@ -1449,7 +1449,7 @@ export function HeroWorkspace() {
             </div>
           ) : (
             <>
-          {/* Left Column - Prompts & Articles */}
+          {/* Left Column - Questions & Readings */}
           <div className="w-72 border-r border-border/40 flex flex-col bg-muted/20">
             {/* Page Header */}
             <div className="border-b border-border/40">

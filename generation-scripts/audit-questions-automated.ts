@@ -7,7 +7,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 interface Question {
   id: string;
-  prompt: string;
+  question: string;
   category: string;
   type: string;
   template_id: string;
@@ -19,7 +19,7 @@ interface AuditIssue {
   issue_type: string;
   severity: 'low' | 'medium' | 'high';
   details: string;
-  prompt: string;
+  question: string;
 }
 
 async function auditQuestionsAutomated() {
@@ -33,7 +33,7 @@ async function auditQuestionsAutomated() {
   while (true) {
     const { data: questions, error } = await supabase
       .from('questions')
-      .select('id, prompt, category, type, template_id')
+      .select('id, question, category, type, template_id')
       .range(offset, offset + batchSize - 1);
 
     if (error) {
@@ -48,15 +48,15 @@ async function auditQuestionsAutomated() {
     for (const q of questions) {
       totalProcessed++;
 
-      // Check 1: Very short prompts (likely incomplete)
-      if (q.prompt.length < 20) {
+      // Check 1: Very short questions (likely incomplete)
+      if (q.question.length < 20) {
         issues.push({
           id: q.id,
           template_id: q.template_id,
           issue_type: 'very_short_prompt',
           severity: 'high',
-          details: `Prompt is only ${q.prompt.length} characters`,
-          prompt: q.prompt
+          details: `Question is only ${q.question.length} characters`,
+          question: q.question
         });
       }
 
@@ -72,44 +72,44 @@ async function auditQuestionsAutomated() {
       ];
 
       for (const artifact of artifacts) {
-        if (q.prompt.includes(artifact)) {
+        if (q.question.includes(artifact)) {
           issues.push({
             id: q.id,
             template_id: q.template_id,
             issue_type: 'generation_artifact',
             severity: 'high',
             details: `Contains artifact: "${artifact}"`,
-            prompt: q.prompt
+            question: q.question
           });
         }
       }
 
       // Check 3: Excessive whitespace
-      if (q.prompt.includes('  ') || q.prompt.startsWith(' ') || q.prompt.endsWith(' ')) {
+      if (q.question.includes('  ') || q.question.startsWith(' ') || q.question.endsWith(' ')) {
         issues.push({
           id: q.id,
           template_id: q.template_id,
           issue_type: 'whitespace_issue',
           severity: 'low',
           details: 'Has extra whitespace',
-          prompt: q.prompt
+          question: q.question
         });
       }
 
       // Check 4: Weird characters or encoding issues
-      if (/[\u0000-\u001F\u007F-\u009F]/.test(q.prompt)) {
+      if (/[\u0000-\u001F\u007F-\u009F]/.test(q.question)) {
         issues.push({
           id: q.id,
           template_id: q.template_id,
           issue_type: 'encoding_issue',
           severity: 'medium',
           details: 'Contains control characters',
-          prompt: q.prompt
+          question: q.question
         });
       }
 
       // Check 5: Missing punctuation at end
-      const lastChar = q.prompt.trim().slice(-1);
+      const lastChar = q.question.trim().slice(-1);
       if (!['.', '?', '!'].includes(lastChar)) {
         issues.push({
           id: q.id,
@@ -117,7 +117,7 @@ async function auditQuestionsAutomated() {
           issue_type: 'missing_punctuation',
           severity: 'low',
           details: 'Missing ending punctuation',
-          prompt: q.prompt
+          question: q.question
         });
       }
 
@@ -129,23 +129,23 @@ async function auditQuestionsAutomated() {
           issue_type: 'category_type_mismatch',
           severity: 'medium',
           details: `Category "${q.category}" != Type "${q.type}"`,
-          prompt: q.prompt
+          question: q.question
         });
       }
 
-      // Check 7: Suspiciously long prompts (might be concatenated)
-      if (q.prompt.length > 500) {
+      // Check 7: Suspiciously long questions (might be concatenated)
+      if (q.question.length > 500) {
         issues.push({
           id: q.id,
           template_id: q.template_id,
           issue_type: 'very_long_prompt',
           severity: 'medium',
-          details: `Prompt is ${q.prompt.length} characters (unusually long)`,
-          prompt: q.prompt
+          details: `Question is ${q.question.length} characters (unusually long)`,
+          question: q.question
         });
       }
 
-      // Check 8: Generic/vague prompts
+      // Check 8: Generic/vague questions
       const vaguePhrases = [
         'think about',
         'consider this',
@@ -155,14 +155,14 @@ async function auditQuestionsAutomated() {
       ];
 
       for (const phrase of vaguePhrases) {
-        if (q.prompt.toLowerCase().includes(phrase)) {
+        if (q.question.toLowerCase().includes(phrase)) {
           issues.push({
             id: q.id,
             template_id: q.template_id,
             issue_type: 'vague_prompt',
             severity: 'medium',
             details: `Contains vague phrase: "${phrase}"`,
-            prompt: q.prompt
+            question: q.question
           });
         }
       }
@@ -229,7 +229,7 @@ async function auditQuestionsAutomated() {
     fs.writeFileSync(
       'generation-scripts/question-audit-high-severity.txt',
       highSeverityIssues.map(i =>
-        `${i.id} [${i.issue_type}]\nTemplate: ${i.template_id}\nDetails: ${i.details}\nPrompt: ${i.prompt}\n\n`
+        `${i.id} [${i.issue_type}]\nTemplate: ${i.template_id}\nDetails: ${i.details}\nPrompt: ${i.question}\n\n`
       ).join('---\n\n')
     );
     console.log(`✓ ${highSeverityIssues.length} high-severity issues saved to generation-scripts/question-audit-high-severity.txt`);

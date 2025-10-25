@@ -16,7 +16,7 @@ interface GuideImageProps {
   fallbackSrc?: string;
 }
 
-export function TemplateImage({
+export function GuideImage({
   guideName,
   width = 800,
   height = 600,
@@ -25,7 +25,7 @@ export function TemplateImage({
   showAttribution = false,
   quality = 95,
   fallbackSrc
-}: TemplateImageProps) {
+}: GuideImageProps) {
   const { image, loading, error } = useTemplateImage(guideName);
 
   // Show loading state

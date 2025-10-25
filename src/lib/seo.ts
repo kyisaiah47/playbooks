@@ -5,7 +5,7 @@ export interface SEOConfig {
   description: string;
   canonical?: string;
   robots?: string;
-  type?: 'website' | 'article' | 'profile'; // OpenGraph standard type
+  type?: 'website' | 'reading' | 'profile'; // OpenGraph standard type
   image?: string;
   noIndex?: boolean;
   keywords?: string[];
@@ -38,7 +38,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
   };
 }
 
-export function generateStructuredData(type: 'CollectionPage' | 'Article' | 'WebPage', data: any) {
+export function generateStructuredData(type: 'CollectionPage' | 'Reading' | 'WebPage', data: any) {
   const baseStructure = {
     '@context': 'https://schema.org',
     '@type': type,
@@ -70,7 +70,7 @@ export function generateStructuredData(type: 'CollectionPage' | 'Article' | 'Web
         }
       };
 
-    case 'Article':
+    case 'Reading':
       return {
         ...baseStructure,
         '@type': 'Reading',

@@ -76,10 +76,10 @@ export function RelatedTemplates({
   return null
 
   /*
-  const { getRelatedTemplates } = useKnowledgeGraph()
+  const { getRelatedGuides } = useKnowledgeGraph()
 
   // Get knowledge graph relationships
-  const knowledgeRelations = getRelatedTemplates(guideId, limit)
+  const knowledgeRelations = getRelatedGuides(guideId, limit)
 
   // Map knowledge graph results to guide registry entries
   const relatedGuides = knowledgeRelations
@@ -111,7 +111,7 @@ export function RelatedTemplates({
       <div className="flex items-center gap-2">
         <Brain className="w-4 h-4 text-primary" />
         <h3 className="font-medium text-sm text-muted-foreground">
-          Psychologically Connected Templates
+          Psychologically Connected Guides
         </h3>
       </div>
 

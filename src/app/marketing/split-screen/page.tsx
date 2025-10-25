@@ -7,7 +7,7 @@ export default function SplitScreenAdPage() {
 				{/* Header */}
 				<div className="space-y-6">
 					<h1 className="text-8xl lg:text-9xl font-black leading-none tracking-tight">
-						Prompts meet readings.
+						Questions meet readings.
 						<br />
 						<span className="bg-white text-purple-800 px-6">Magic happens.</span>
 					</h1>
@@ -25,7 +25,7 @@ export default function SplitScreenAdPage() {
 					</div>
 
 					<div className="grid lg:grid-cols-2 gap-8">
-						{/* Left Side - Prompts */}
+						{/* Left Side - Questions */}
 						<div className="space-y-4">
 							<div className="flex items-center gap-3 mb-4">
 								<MessageSquare className="h-5 w-5 text-purple-600" />
@@ -48,7 +48,7 @@ export default function SplitScreenAdPage() {
 							</div>
 						</div>
 
-						{/* Right Side - Articles */}
+						{/* Right Side - Readings */}
 						<div className="space-y-4">
 							<div className="flex items-center gap-3 mb-4">
 								<BookOpen className="h-5 w-5 text-purple-600" />

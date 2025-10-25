@@ -78,10 +78,10 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils"
 import { getPromptsByTemplate } from "@/registry/questions"
 
 // --- Styles ---
-import "@/components/tiptap-templates/simple/simple-editor.scss"
+import "@/components/tiptap-guides/simple/simple-editor.scss"
 import "@/components/tiptap-ui/drag-handle/drag-handle.scss"
 
-// import content from "@/components/tiptap-templates/simple/data/content.json"
+// import content from "@/components/tiptap-guides/simple/data/content.json"
 
 const MainToolbarContent = ({
   onHighlighterClick,

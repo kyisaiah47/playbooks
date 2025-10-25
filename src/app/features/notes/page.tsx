@@ -95,9 +95,9 @@ export default function NotesPage() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <FileText className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Templates</h3>
+                <h3 className="text-xl font-semibold mb-2">Guides</h3>
                 <p className="text-muted-foreground">
-                  Start with templates for common note types: meeting notes, decision logs, reflections, or create your own.
+                  Start with guides for common note types: meeting notes, decision logs, reflections, or create your own.
                 </p>
               </div>
             </div>

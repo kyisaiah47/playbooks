@@ -19,7 +19,7 @@ export default function FeaturePromptsAdPage() {
 					</p>
 				</div>
 
-				{/* Right Side - Prompt Examples */}
+				{/* Right Side - Question Examples */}
 				<div className="space-y-6">
 					<div className="flex items-center gap-4 mb-8">
 						<MessageSquare className="h-8 w-8 text-white" />

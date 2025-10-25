@@ -254,9 +254,9 @@ export function SettingsModal({ open, onOpenChange }: SettingsModalProps) {
                         </div>
                         <div className="flex items-center justify-between py-4 border-b border-border/40">
                           <div>
-                            <p className="text-sm text-foreground">Template updates</p>
+                            <p className="text-sm text-foreground">Guide updates</p>
                             <p className="text-xs text-muted-foreground">
-                              New templates and features
+                              New guides and features
                             </p>
                           </div>
                           <input type="checkbox" className="h-4 w-4 accent-foreground" />

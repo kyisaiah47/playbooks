@@ -6,7 +6,7 @@ export const marketingRegistry = Object.values(marketingPageModules)
   .filter((module: any) => module && module.marketing)
   .map((module: any) => module.marketing);
 
-// Helper function to get marketing page data by template slug
+// Helper function to get marketing page data by guide slug
 export const getMarketingPageData = (slug: string) => {
   return marketingRegistry.find((marketing: any) => marketing.guideId === slug) || null;
 };

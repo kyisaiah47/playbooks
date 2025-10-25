@@ -67,7 +67,7 @@ export function NotesDocs() {
               </div>
 
               <div>
-                <p className="text-sm font-medium mb-1">3. Answer Reflection Prompts</p>
+                <p className="text-sm font-medium mb-1">3. Answer Reflection Questions</p>
                 <p className="text-xs text-muted-foreground mb-2">
                   Most readings include reflection questions to help you apply the content to your specific situation.
                   Your responses are automatically saved as you type, so you never lose your work.

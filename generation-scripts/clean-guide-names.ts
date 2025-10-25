@@ -18,7 +18,7 @@ const redundantWords = [
   'Journey',
   'Program',
   'Plan',
-  'Template',
+  'Guide',
   'Learning',
   'Mastery',
   'Strategy',

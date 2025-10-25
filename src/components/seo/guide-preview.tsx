@@ -156,7 +156,7 @@ export function TemplatePreview({ templateType }: TemplatePreviewProps) {
         <div className="text-center pt-4 border-t">
           <p className="text-muted-foreground mb-4">Ready to start planning your perfect wedding?</p>
           <Button size="lg" className="text-lg px-8">
-            Start Using This Template
+            Start Using This Guide
           </Button>
         </div>
       </div>

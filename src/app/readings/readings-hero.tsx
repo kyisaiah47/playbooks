@@ -16,7 +16,7 @@ export function ReadingsHero() {
         >
           <Badge variant="outline" className="px-4 py-2">
             <BookOpen className="mr-2 h-4 w-4" />
-            Curated Articles
+            Curated Readings
           </Badge>
 
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">

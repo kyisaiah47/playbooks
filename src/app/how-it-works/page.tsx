@@ -195,7 +195,7 @@ export default function HowItWorksPage() {
                 {/* Content */}
                 <div className="bg-background">
                   <div className="border-b border-border bg-muted/20 px-4 py-3">
-                    <div className="font-semibold text-sm">Related Articles</div>
+                    <div className="font-semibold text-sm">Related Readings</div>
                   </div>
                   <div className="p-4 space-y-3">
                     <div className="p-4 border border-border rounded-lg hover:border-primary/50 transition-colors cursor-pointer bg-card">

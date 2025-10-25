@@ -7,12 +7,12 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 interface Question {
   id: string;
-  prompt: string;
+  question: string;
   template_id: string;
 }
 
-function rewriteToNotionStyle(prompt: string): string {
-  let rewritten = prompt;
+function rewriteToNotionStyle(question: string): string {
+  let rewritten = question;
 
   // Replace formal verbs with conversational ones
   rewritten = rewritten.replace(/^Document /i, 'What ');
@@ -43,7 +43,7 @@ function rewriteToNotionStyle(prompt: string): string {
     }
   }
 
-  // Add question prompts at the end if it's a statement
+  // Add question questions at the end if it's a statement
   if (!rewritten.includes('?')) {
     if (rewritten.toLowerCase().includes('notice') || rewritten.toLowerCase().includes('observe')) {
       rewritten += ' What do you notice?';
@@ -60,7 +60,7 @@ async function processBatch(offset: number, batchSize: number): Promise<number> 
     // Fetch questions
     const { data: questions, error: fetchError } = await supabase
       .from('questions')
-      .select('id, prompt, template_id')
+      .select('id, question, template_id')
       .range(offset, offset + batchSize - 1)
       .order('id');
 
@@ -76,18 +76,18 @@ async function processBatch(offset: number, batchSize: number): Promise<number> 
     // Rewrite each question
     const updates = questions.map(q => ({
       id: q.id,
-      prompt: rewriteToNotionStyle(q.prompt)
+      question: rewriteToNotionStyle(q.question)
     }));
 
     // Build the SQL update
     const caseStatements = updates
-      .map(u => `WHEN '${u.id}' THEN '${u.prompt.replace(/'/g, "''")}'`)
+      .map(u => `WHEN '${u.id}' THEN '${u.question.replace(/'/g, "''")}'`)
       .join('\n  ');
 
     const ids = updates.map(u => `'${u.id}'`).join(', ');
 
     const updateQuery = `
-      UPDATE questions SET prompt = CASE id
+      UPDATE questions SET question = CASE id
         ${caseStatements}
       END
       WHERE id IN (${ids})
@@ -99,7 +99,7 @@ async function processBatch(offset: number, batchSize: number): Promise<number> 
       // Try direct update if RPC fails
       const { error: directError } = await supabase
         .from('questions')
-        .upsert(updates.map(u => ({ id: u.id, prompt: u.prompt })));
+        .upsert(updates.map(u => ({ id: u.id, question: u.question })));
 
       if (directError) {
         console.error(`Error updating batch at offset ${offset}:`, directError);

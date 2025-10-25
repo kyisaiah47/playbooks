@@ -21,7 +21,7 @@ export function Footer() {
 							<span className="font-bold text-xl">Templata</span>
 						</div>
 						<p className="text-muted-foreground">
-							Skip the blank page. Start with proven templates for life&apos;s
+							Skip the blank page. Start with proven guides for life&apos;s
 							biggest moments.
 						</p>
 					</div>
@@ -33,13 +33,13 @@ export function Footer() {
 								href="/guides"
 								className="hover:text-foreground transition-colors"
 							>
-								Templates
+								Guides
 							</Link>
 							<Link
 								href="/readings"
 								className="hover:text-foreground transition-colors"
 							>
-								Articles
+								Readings
 							</Link>
 						</div>
 						<a

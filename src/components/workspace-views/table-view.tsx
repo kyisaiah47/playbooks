@@ -19,7 +19,7 @@ interface TableViewProps {
   guideId: string | null;
 }
 
-type PromptTableData = {
+type QuestionTableData = {
   id: string;
   question: string;
   type: string;
@@ -29,7 +29,7 @@ type PromptTableData = {
 
 export function TableView({ guideId }: TableViewProps) {
   // Mock data - will be replaced with real questions
-  const [data] = useState<PromptTableData[]>([
+  const [data] = useState<QuestionTableData[]>([
     {
       id: '1',
       question: 'Define your wedding vision',
@@ -67,7 +67,7 @@ export function TableView({ guideId }: TableViewProps) {
     },
   ]);
 
-  const columns: ColumnDef<PromptTableData>[] = [
+  const columns: ColumnDef<QuestionTableData>[] = [
     {
       accessorKey: 'question',
       header: ({ column }) => (

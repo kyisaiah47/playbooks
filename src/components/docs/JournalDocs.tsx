@@ -43,7 +43,7 @@ export function JournalDocs() {
             </div>
 
             <div className="border-l-2 border-primary pl-4">
-              <p className="text-sm font-medium mb-1">From Prompts</p>
+              <p className="text-sm font-medium mb-1">From Questions</p>
               <p className="text-xs text-muted-foreground">
                 Use reflection questions from readings as journal starters. Guide questions often spark deeper thinking that deserves full journal exploration.
               </p>

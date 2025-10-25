@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { date, prompt, content, mood, tags } = await request.json();
+  const { date, question, content, mood, tags } = await request.json();
 
   if (!date) {
     return NextResponse.json({ error: 'date is required' }, { status: 400 });
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       {
         user_id: userId,
         date,
-        prompt: prompt || '',
+        question: question || '',
         content: content || '',
         mood: mood || '',
         tags: tags || [],

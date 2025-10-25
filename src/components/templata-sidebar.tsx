@@ -7,7 +7,7 @@ import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase,
 import { GuidanceTemplate, ReflectionQuestion, Resource } from "@/types/guide"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { RelatedTemplates } from "@/components/guide/related-templates"
+import { RelatedTemplates } from "@/components/guide/related-guides"
 import { ThemeSelector } from "@/components/theme-selector"
 import {
   Sidebar,
@@ -60,7 +60,7 @@ interface TemplataContentSidebarProps {
 }
 
 export function TemplataContentSidebar({
-  template,
+  guide,
   activeSection,
   onSectionChange,
   onInsertQuestion,
@@ -115,7 +115,7 @@ export function TemplataContentSidebar({
   const uniqueCategoryNames = Array.from(new Set(displayPrompts.map((p: any) => p.categoryName).filter(Boolean)))
   const uniqueCategoryTypes = Array.from(new Set(displayPrompts.map((p: any) => p.category).filter(Boolean)))
 
-  // Articles loading - fetch from API client-side filtered by guide
+  // Readings loading - fetch from API client-side filtered by guide
   const [templateResources, setTemplateResources] = React.useState<any[]>([])
 
   React.useEffect(() => {
@@ -234,7 +234,7 @@ export function TemplataContentSidebar({
                     <div className="transition-transform duration-200">
                       <MessageSquare className="w-4 h-4" />
                     </div>
-                    <span className="text-xs">Prompts</span>
+                    <span className="text-xs">Questions</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 

@@ -55,9 +55,9 @@ export default function DailyPage() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <ListChecks className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Daily Templates</h3>
+                <h3 className="text-xl font-semibold mb-2">Daily Guides</h3>
                 <p className="text-muted-foreground">
-                  Use templates for daily planning: Morning intentions, evening reflections, task lists, or simple freeform notes.
+                  Use guides for daily planning: Morning intentions, evening reflections, task lists, or simple freeform notes.
                 </p>
               </div>
 

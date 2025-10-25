@@ -102,9 +102,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     fetchTemplates();
   }, [category]);
 
-  // Filter templates by search query
+  // Filter guides by search query
   const filteredGuides = useMemo(() => {
-    if (!searchQuery.trim()) return templates;
+    if (!searchQuery.trim()) return guides;
 
     return guides.filter(t =>
       t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -125,14 +125,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           >
             <Badge variant="outline" className="px-4 py-2">
               <Layout className="mr-2 h-4 w-4" />
-              {filteredGuides.length} {filteredGuides.length === 1 ? 'Template' : 'Templates'}
+              {filteredGuides.length} {filteredGuides.length === 1 ? 'Guide' : 'Guides'}
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               {categoryName}
               <br />
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                Templates
+                Guides
               </span>
             </h1>
 
@@ -159,7 +159,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </section>
 
-      {/* Templates List */}
+      {/* Guides List */}
       <section className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           {loading ? (
@@ -169,7 +169,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           ) : filteredGuides.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
-                {searchQuery ? 'No guides found matching your search.' : 'No templates available in this category.'}
+                {searchQuery ? 'No guides found matching your search.' : 'No guides available in this category.'}
               </p>
             </div>
           ) : (
@@ -180,7 +180,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
                 return (
                   <div key={guide.id} className="border-t pt-8">
-                    {/* Template Header */}
+                    {/* Guide Header */}
                     <div className="mb-6">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
@@ -207,14 +207,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                       </div>
                     </div>
 
-                    {/* Prompts & Articles - 2 Column Layout */}
+                    {/* Questions & Readings - 2 Column Layout */}
                     {isExpanded && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      {/* Prompts Section */}
+                      {/* Questions Section */}
                       {data.questions.length > 0 && (
                         <div>
                           <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
-                            Prompts
+                            Questions
                           </h3>
                           <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
                             {data.questions.slice(0, 5).map((question: any) => (
@@ -233,11 +233,11 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                         </div>
                       )}
 
-                      {/* Articles Section */}
+                      {/* Readings Section */}
                       {data.readings.length > 0 && (
                         <div>
                           <h3 className="text-xs font-semibold text-muted-foreground mb-4 tracking-wider uppercase">
-                            Articles
+                            Readings
                           </h3>
                           <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
                             {data.readings.slice(0, 5).map((reading: any) => (

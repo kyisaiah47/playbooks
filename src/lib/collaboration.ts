@@ -42,7 +42,7 @@ export interface Comment {
   replies: Comment[]
 }
 
-// Generate shareable link for a template
+// Generate shareable link for a guide
 export function generateShareableLink(guideId: string, shareId: string): string {
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://templata.org"
   return `${baseUrl}/shared/${guideId}/${shareId}`
@@ -67,7 +67,7 @@ export function createShareableTemplate(
   return {
     id: shareId,
     guideId,
-    title: title || `Shared Template - ${new Date().toLocaleDateString()}`,
+    title: title || `Shared Guide - ${new Date().toLocaleDateString()}`,
     description: "Shared guide with responses and collaboration",
     createdBy: "current-user", // In real app, get from auth
     createdAt: new Date().toISOString(),
@@ -149,7 +149,7 @@ export async function shareTemplate(
   }
 }
 
-// Add comment to template
+// Add comment to guide
 export function addComment(
   guide: ShareableTemplate,
   sectionId: string,

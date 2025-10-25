@@ -1,11 +1,11 @@
-export default function PromptsAdPage() {
+export default function QuestionsAdPage() {
 	return (
 		<div className="min-h-screen bg-black text-white flex items-center justify-center p-16 relative overflow-hidden">
 			{/* Background Image */}
 			<div
 				className="absolute inset-0 bg-cover bg-center opacity-25"
 				style={{
-					backgroundImage: "url('/prompt-matrix.png')"
+					backgroundImage: "url('/question-matrix.png')"
 				}}
 			></div>
 

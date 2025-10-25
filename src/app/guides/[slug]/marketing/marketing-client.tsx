@@ -50,7 +50,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       try {
         setLoading(true);
 
-        // Fetch all templates
+        // Fetch all guides
         const templatesRes = await fetch('/api/guides');
         const guidesData = await templatesRes.json();
         const foundGuide = guidesData.guides?.find((t:GuideRegistryEntry) => t.id === slug);
@@ -371,7 +371,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             {/* Split-Screen Visual */}
             <Card className="p-8 max-w-6xl mx-auto">
               <div className="grid md:grid-cols-3 gap-6">
-                {/* Prompts Column */}
+                {/* Questions Column */}
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 font-semibold mb-4">
                     <FileText className="h-5 w-5 text-primary" />
@@ -399,7 +399,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                   </div>
                 </div>
 
-                {/* Articles Column */}
+                {/* Readings Column */}
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 font-semibold mb-4">
                     <Globe className="h-5 w-5 text-primary" />
@@ -461,7 +461,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
           </div>
         </section>
 
-        {/* Prompts Library */}
+        {/* Questions Library */}
         <section className="py-16">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-12">
@@ -524,7 +524,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
 
         <Separator />
 
-        {/* Articles Library */}
+        {/* Readings Library */}
         <section className="py-16">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-12">
@@ -558,7 +558,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
           </div>
         </section>
 
-        {/* Related Templates Section */}
+        {/* Related Guides Section */}
         <section className="py-16 bg-muted/20">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-12">

@@ -24,7 +24,7 @@ interface SplitViewProps {
 }
 
 export function SplitView({ guideId }: SplitViewProps) {
-  const [selectedPrompt, setSelectedPrompt] = useState<Prompt | null>(null);
+  const [selectedPrompt, setSelectedPrompt] = useState<Question | null>(null);
   const [responses, setResponses] = useState<Record<string, string>>({});
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['Getting Started']));
@@ -59,7 +59,7 @@ export function SplitView({ guideId }: SplitViewProps) {
 
   return (
     <div className="flex h-full">
-      {/* Left Panel - Prompts List */}
+      {/* Left Panel - Questions List */}
       <div className="w-[350px] border-r flex flex-col">
         {/* Search */}
         <div className="p-4 border-b">
@@ -74,7 +74,7 @@ export function SplitView({ guideId }: SplitViewProps) {
           </div>
         </div>
 
-        {/* Categories & Prompts */}
+        {/* Categories & Questions */}
         <div className="flex-1 overflow-y-auto p-2">
           {categories.map((category) => (
             <div key={category.name} className="mb-2">
@@ -117,7 +117,7 @@ export function SplitView({ guideId }: SplitViewProps) {
       <div className="flex-1 flex flex-col">
         {selectedPrompt ? (
           <>
-            {/* Selected Prompt Header */}
+            {/* Selected Question Header */}
             <div className="p-4 border-b bg-muted/30">
               <Badge variant="outline" className="mb-2">
                 {selectedPrompt.category}

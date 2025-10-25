@@ -11,7 +11,7 @@ const weddingFAQs = [
     answer: "Everything we wish we'd had for our own weddings! You get budget tracking (so you don't accidentally spend your honeymoon fund on centerpieces), vendor management (no more lost contracts!), guest list organization, task management, 12 step-by-step guides for everything from writing vows to emergency kits, plus budget guides and checklists. It's like having a wedding planner friend who's really, really organized."
   },
   {
-    question: "How much does the Wedding Planning Template cost?",
+    question: "How much does the Wedding Planning Guide cost?",
     answer: "You can start using the guide completely free! Create your wedding planning workspace, use all the guided sections, and organize your planning process at no cost. Premium features and advanced customization options are available for couples who want additional functionality."
   },
   {
@@ -52,7 +52,7 @@ interface GuideFAQProps {
   templateType: 'wedding' | 'baby' | 'home-buying'
 }
 
-export function TemplateFAQ({ templateType }: TemplateFAQProps) {
+export function GuideFAQ({ templateType }: GuideFAQProps) {
   if (templateType !== 'wedding') {
     return <div>FAQ for {templateType} coming soon...</div>
   }

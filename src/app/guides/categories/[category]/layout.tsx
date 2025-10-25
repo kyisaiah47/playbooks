@@ -20,14 +20,14 @@ const categoryDisplayNames: Record<string, string> = {
 };
 
 const categoryDescriptions: Record<string, string> = {
-  'life-planning': 'Comprehensive templates for major life planning decisions and milestones.',
-  'career-finance': 'Expert templates for career changes, job searches, and financial planning.',
+  'life-planning': 'Comprehensive guides for major life planning decisions and milestones.',
+  'career-finance': 'Expert guides for career changes, job searches, and financial planning.',
   'health-wellness': 'Structured guides for health goals, wellness routines, and medical planning.',
-  'relationships-family': 'Templates for relationships, family planning, and important life events.',
+  'relationships-family': 'Guides for relationships, family planning, and important life events.',
   'creative-hobbies': 'Planning frameworks for creative projects, hobbies, and artistic pursuits.',
-  'business-entrepreneurship': 'Business planning templates for entrepreneurs and startup founders.',
+  'business-entrepreneurship': 'Business planning guides for entrepreneurs and startup founders.',
   'education-learning': 'Educational planning guides for students and lifelong learners.',
-  'technology-digital': 'Templates for digital projects, tech planning, and online initiatives.',
+  'technology-digital': 'Guides for digital projects, tech planning, and online initiatives.',
   'personal-development': 'Self-improvement frameworks and personal growth planning guides.',
   'home-living': 'Home buying, moving, renovation, and living space planning guides.',
 };
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
     category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const description = categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} guides with questions, readings, and expert guidance.`;
 
-  const title = `${categoryName} Templates | Templata`;
+  const title = `${categoryName} Guides | Templata`;
 
   return {
     title,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
           url: 'https://templata.org/og-image.png',
           width: 1200,
           height: 630,
-          alt: `${categoryName} Templates - Templata`,
+          alt: `${categoryName} Guides - Templata`,
         },
       ],
       locale: 'en_US',
@@ -101,7 +101,7 @@ export default async function CategoryLayout({ children, params }: CategoryLayou
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: `${categoryName} Templates`,
+            name: `${categoryName} Guides`,
             description: categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} guides.`,
             url: `https://templata.org/guides/categories/${category}`,
             isPartOf: {
@@ -121,7 +121,7 @@ export default async function CategoryLayout({ children, params }: CategoryLayou
                 {
                   '@type': 'ListItem',
                   position: 2,
-                  name: 'Templates',
+                  name: 'Guides',
                   item: 'https://templata.org/guides'
                 },
                 {

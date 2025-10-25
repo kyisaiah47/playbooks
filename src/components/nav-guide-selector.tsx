@@ -42,7 +42,7 @@ export function NavTemplateSelector({ selectedGuideId, onTemplateChange }: NavTe
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
           <SidebarMenuButton>
-            Templates{" "}
+            Guides{" "}
             <IconPlus className="ml-auto group-data-[state=open]/collapsible:hidden" />
             <IconMinus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
           </SidebarMenuButton>

@@ -1,4 +1,4 @@
-export default function ArticlesAdPage() {
+export default function ReadingsAdPage() {
 	return (
 		<div className="min-h-screen bg-black text-white flex items-center justify-center p-16 relative overflow-hidden">
 			{/* Logo in corner */}
@@ -30,7 +30,7 @@ export default function ArticlesAdPage() {
 				</div>
 			</div>
 
-			{/* Articles list peeking from right */}
+			{/* Readings list peeking from right */}
 			<div className="absolute right-0 top-0 bottom-0 transform translate-x-[60%]">
 				<div className="h-full w-[400px] bg-white rounded-l-2xl shadow-2xl overflow-hidden">
 					<div className="p-6 border-b border-gray-200">

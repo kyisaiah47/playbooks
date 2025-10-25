@@ -41,12 +41,12 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Description of Service</h2>
             <p className="mb-4">
-              Templata provides a platform for creating, managing, and using templates for various life events and
+              Templata provides a platform for creating, managing, and using guides for various life events and
               projects. Our service includes:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Access to a library of pre-made templates</li>
-              <li>Tools to customize and personalize templates</li>
+              <li>Access to a library of pre-made guides</li>
+              <li>Tools to customize and personalize guides</li>
               <li>Workspace for organizing your guide-based projects</li>
               <li>Educational readings and resources</li>
             </ul>
@@ -103,7 +103,7 @@ export default function TermsPage() {
               our content in accordance with these terms, but you may not:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Resell or redistribute our templates</li>
+              <li>Resell or redistribute our guides</li>
               <li>Claim our content as your own</li>
               <li>Use our content in a way that suggests endorsement by Templata</li>
             </ul>

@@ -119,7 +119,7 @@ export function PartnerApplicationModal({ children }: PartnerApplicationModalPro
         <DialogHeader>
           <DialogTitle className="text-2xl">Become a Templata Partner</DialogTitle>
           <DialogDescription>
-            Tell us about your expertise and the templates you'd like to create. We'll review your application and get back to you within 3-5 business days.
+            Tell us about your expertise and the guides you'd like to create. We'll review your application and get back to you within 3-5 business days.
           </DialogDescription>
         </DialogHeader>
 
@@ -248,17 +248,17 @@ export function PartnerApplicationModal({ children }: PartnerApplicationModalPro
               </div>
             </div>
 
-            {/* Template Contribution */}
+            {/* Guide Contribution */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-lg border-b pb-2">Template Ideas</h4>
+              <h4 className="font-semibold text-lg border-b pb-2">Guide Ideas</h4>
 
               <div className="space-y-2">
-                <Label htmlFor="templatesProposed">What templates would you like to create? *</Label>
+                <Label htmlFor="templatesProposed">What guides would you like to create? *</Label>
                 <Textarea
                   id="templatesProposed"
                   value={formData.guidesProposed}
                   onChange={(e) => handleInputChange("templatesProposed", e.target.value)}
-                  placeholder="Describe 2-3 specific templates you'd like to contribute (e.g., '60-day wedding planning timeline', 'First-time home buyer checklist', 'Career transition roadmap')"
+                  placeholder="Describe 2-3 specific guides you'd like to contribute (e.g., '60-day wedding planning timeline', 'First-time home buyer checklist', 'Career transition roadmap')"
                   rows={4}
                   required
                 />
@@ -270,7 +270,7 @@ export function PartnerApplicationModal({ children }: PartnerApplicationModalPro
                   id="audience"
                   value={formData.audience}
                   onChange={(e) => handleInputChange("audience", e.target.value)}
-                  placeholder="Who would benefit most from your templates? (e.g., 'Couples planning their first wedding', 'Mid-career professionals looking to switch industries')"
+                  placeholder="Who would benefit most from your guides? (e.g., 'Couples planning their first wedding', 'Mid-career professionals looking to switch industries')"
                   rows={3}
                 />
               </div>

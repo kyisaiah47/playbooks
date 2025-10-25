@@ -83,7 +83,7 @@ const guideData = {
     ],
     resources: [
       { title: "Wedding Budget Tracker", type: "spreadsheet", description: "Track all expenses and payments" },
-      { title: "Guest List Template", type: "document", description: "Manage RSVPs and seating" },
+      { title: "Guest List Guide", type: "document", description: "Manage RSVPs and seating" },
       { title: "Vendor Contact Sheet", type: "document", description: "Keep all vendor info organized" },
       { title: "Wedding Timeline", type: "checklist", description: "Month-by-month planning guide" }
     ]
@@ -131,7 +131,7 @@ const guideData = {
     ],
     resources: [
       { title: "Skills Assessment Worksheet", type: "worksheet", description: "Identify transferable skills" },
-      { title: "Resume Template", type: "document", description: "Professional resume format" },
+      { title: "Resume Guide", type: "document", description: "Professional resume format" },
       { title: "Interview Prep Guide", type: "guide", description: "Common questions and answers" },
       { title: "Networking Tracker", type: "spreadsheet", description: "Track contacts and follow-ups" }
     ]
@@ -154,10 +154,10 @@ const guideData = {
       "How will you measure success in year one?"
     ],
     resources: [
-      { title: "Business Plan Template", type: "document", description: "Comprehensive business plan outline" },
+      { title: "Business Plan Guide", type: "document", description: "Comprehensive business plan outline" },
       { title: "Financial Projections", type: "spreadsheet", description: "Revenue and expense forecasting" },
       { title: "Legal Checklist", type: "checklist", description: "Required business registrations" },
-      { title: "Marketing Plan Template", type: "document", description: "Strategic marketing approach" }
+      { title: "Marketing Plan Guide", type: "document", description: "Strategic marketing approach" }
     ]
   },
   "Event Planning": {
@@ -197,7 +197,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
   const openResource = guide.resources[0];
   const previewPrompts = guide.questions.slice(0, 2);
 
-  const TemplateIcon = guide.icon;
+  const GuideIcon = guide.icon;
   const sections = guide.sections;
   const currentSection = sections[activeSection];
   const SectionIcon = currentSection.icon;
@@ -238,9 +238,9 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
                 })}
               </div>
 
-              {/* Reflection Prompts */}
+              {/* Reflection Questions */}
               <div className="mt-6">
-                <div className="text-xs font-medium text-muted-foreground mb-2 px-2">Reflection Prompts</div>
+                <div className="text-xs font-medium text-muted-foreground mb-2 px-2">Reflection Questions</div>
                 <div className="space-y-1">
                   {guide.questions.slice(0, 3).map((question, index) => (
                     <div
@@ -257,7 +257,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
 
           {/* Main Content Area */}
           <div className="flex-1 flex h-full">
-            {/* Prompts Area */}
+            {/* Questions Area */}
             <div className="w-1/2 flex flex-col border-r h-full">
               {/* Header */}
               <div className="flex h-12 shrink-0 items-center gap-2 border-b px-4">
@@ -283,7 +283,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
                 </Breadcrumb>
               </div>
 
-              {/* Prompts Content */}
+              {/* Questions Content */}
               <div className="flex-1 overflow-auto">
                 <div className="min-h-full">
                   {previewPrompts.map((question, index) => (
@@ -346,7 +346,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
                         This is a preview of your {openResource.type}. The actual resource would contain:
                       </div>
                       <ul className="text-xs space-y-1 text-muted-foreground">
-                        <li>• Interactive templates and worksheets</li>
+                        <li>• Interactive guides and worksheets</li>
                         <li>• Step-by-step instructions</li>
                         <li>• Expert tips and best practices</li>
                         <li>• Examples and case studies</li>

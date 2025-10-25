@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Browse 25,936 Articles | Expert Knowledge Base for Life | Templata',
+  title: 'Browse 25,936 Readings | Expert Knowledge Base for Life | Templata',
   description: 'Explore 25,936 expert readings covering every life situation. Wedding planning, career changes, business launches, home buying, health decisions & more. Like Wikipedia for life guidance.',
   keywords: 'life planning readings, expert guides, how-to readings, wedding planning tips, career change advice, business launch guides, home buying guidance, life decisions, knowledge base, templata readings',
   authors: [{ name: 'Templata Team' }],
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     canonical: '/readings',
   },
   openGraph: {
-    title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
+    title: 'Browse 25,936 Readings | Expert Knowledge Base for Life',
     description: '25,936 expert readings covering every life situation. Wedding planning, career changes, business launches, home buying & more. Like Wikipedia for life guidance.',
     url: 'https://templata.org/readings',
     siteName: 'Templata',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
+    title: 'Browse 25,936 Readings | Expert Knowledge Base for Life',
     description: '25,936 expert readings for every life situation. Wedding planning, career changes, business launches & more. Completely free.',
     images: ['https://templata.org/og-image.png'],
     creator: '@templata',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ArticlesLayout({
+export default function ReadingsLayout({
   children,
 }: {
   children: React.ReactNode;

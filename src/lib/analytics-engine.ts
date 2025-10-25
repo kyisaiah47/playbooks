@@ -1,7 +1,7 @@
 /**
  * Analytics Engine
  *
- * Computes insights from user templates and reflections.
+ * Computes insights from user guides and reflections.
  * Analyzes patterns, trends, and provides actionable intelligence.
  */
 
@@ -17,17 +17,17 @@ import {
   InsightConfig,
   InsightDashboard,
 } from '@/types/insight';
-import { TemplateSession, ReflectionEntry } from '@/stores/workspace-store';
+import { GuideSession, ReflectionEntry } from '@/stores/workspace-store';
 
 /**
  * Main Analytics Engine class
  */
 export class AnalyticsEngine {
-  private guides: TemplateSession[];
+  private guides: GuideSession[];
   private reflections: ReflectionEntry[];
 
-  constructor(guides: TemplateSession[], reflections: ReflectionEntry[]) {
-    this.templates = templates;
+  constructor(guides: GuideSession[], reflections: ReflectionEntry[]) {
+    this.guides = guides;
     this.reflections = reflections;
   }
 
@@ -84,7 +84,7 @@ export class AnalyticsEngine {
 
     if (filteredGuides.length === 0) return null;
 
-    // Count templates by category
+    // Count guides by category
     const categoryCounts: Record<string, number> = {};
     filteredGuides.forEach((guide) => {
       const category = this.extractCategory(guide.tags);
@@ -176,7 +176,7 @@ export class AnalyticsEngine {
   }
 
   /**
-   * Analyze template completion rates
+   * Analyze guide completion rates
    */
   private analyzeCompletionRate(period: InsightPeriod): CompletionRateInsight | null {
     const filteredGuides = this.filterByPeriod(this.guides, period);
@@ -219,7 +219,7 @@ export class AnalyticsEngine {
       id: `completion-rate-${Date.now()}`,
       type: 'completion-rate',
       title: 'Completion Rate',
-      description: `You're completing ${completionRate.toFixed(0)}% of started templates`,
+      description: `You're completing ${completionRate.toFixed(0)}% of started guides`,
       severity: completionRate >= 70 ? 'success' : completionRate >= 50 ? 'info' : 'warning',
       generatedAt: new Date(),
       period,
@@ -348,7 +348,7 @@ export class AnalyticsEngine {
         wordCounts[word].lastSeen = reflection.createdAt;
         reflection.linkedGuideIds.forEach((id) => {
           const guide = this.guides.find((t) => t.id === id);
-          if (template) {
+          if (guide) {
             const category = this.extractCategory(guide.tags);
             wordCounts[word].categories.add(category);
           }
@@ -432,7 +432,7 @@ export class AnalyticsEngine {
    */
   private generateSummary() {
     const categoryCounts: Record<string, number> = {};
-    this.guides.forEach((template) => {
+    this.guides.forEach((guide) => {
       const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
@@ -587,6 +587,6 @@ export class AnalyticsEngine {
 /**
  * Create analytics engine instance from store data
  */
-export function createAnalyticsEngine(guides: TemplateSession[], reflections: ReflectionEntry[]): AnalyticsEngine {
+export function createAnalyticsEngine(guides: GuideSession[], reflections: ReflectionEntry[]): AnalyticsEngine {
   return new AnalyticsEngine(guides, reflections);
 }

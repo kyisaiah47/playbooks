@@ -61,15 +61,15 @@ export function SmartRecommendationsWidget({
   type = "mixed",
   currentGuideId
 }: SmartRecommendationsWidgetProps) {
-  const { getPersonalizedRecommendations, getAgeAppropriateTemplates } = useKnowledgeGraph()
+  const { getPersonalizedRecommendations, getAgeAppropriateGuides } = useKnowledgeGraph()
   const { isFavorited, toggleFavorite } = useFavorites()
 
   // Mock user profile - in real app, get from user context/props
   const userProfile = {
     age: 28, // Could come from user profile
     goals: ['career_focused', 'financial_independence'],
-    completedTemplates: [],
-    currentTemplates: currentGuideId ? [currentGuideId] : []
+    completedGuides: [],
+    currentGuides: currentGuideId ? [currentGuideId] : []
   }
 
   // Get guide registry for mapping
@@ -105,8 +105,8 @@ export function SmartRecommendationsWidget({
           }))
           break
         case "discovery":
-          // Get age-appropriate templates
-          const ageRecs = getAgeAppropriateTemplates(userProfile.age || 25, limit)
+          // Get age-appropriate guides
+          const ageRecs = getAgeAppropriateGuides(userProfile.age || 25, limit)
           recs = ageRecs.map(rec => ({
             id: rec.guideId,
             name: rec.guideId.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
@@ -119,7 +119,7 @@ export function SmartRecommendationsWidget({
         default:
           // Mixed: combine both approaches
           const personalizedMix = getPersonalizedRecommendations(userProfile)
-          const ageMix = getAgeAppropriateTemplates(userProfile.age || 25, Math.ceil(limit / 2))
+          const ageMix = getAgeAppropriateGuides(userProfile.age || 25, Math.ceil(limit / 2))
           const combined = [...personalizedMix, ...ageMix].slice(0, limit)
 
           recs = combined.map(rec => ({
@@ -147,7 +147,7 @@ export function SmartRecommendationsWidget({
       console.warn('Knowledge graph recommendations failed, falling back to empty:', error)
       return []
     }
-  }, [type, limit, currentGuideId, getPersonalizedRecommendations, getAgeAppropriateTemplates, userProfile])
+  }, [type, limit, currentGuideId, getPersonalizedRecommendations, getAgeAppropriateGuides, userProfile])
 
   // Helper function to determine category from guide ID
   function getCategoryFromTemplate(guideId: string): string {
@@ -197,7 +197,7 @@ export function SmartRecommendationsWidget({
       <CardContent>
         <div className="space-y-3">
           {recommendations.map((rec) => {
-            const Icon = rec.type === "template" ? getGuideIcon(rec.id) : getCategoryIcon(rec.category)
+            const Icon = rec.type === "guide" ? getGuideIcon(rec.id) : getCategoryIcon(rec.category)
             const isStarred = isFavorited(rec.id)
 
             return (

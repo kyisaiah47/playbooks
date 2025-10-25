@@ -52,7 +52,7 @@ export function DailyDocs() {
         </div>
 
         <div>
-          <h3 className="text-base font-medium mb-2">Daily Note Templates</h3>
+          <h3 className="text-base font-medium mb-2">Daily Note Guides</h3>
           <p className="text-sm text-muted-foreground mb-3">
             You can customize your daily note guide or use one of ours. Here are popular structures:
           </p>

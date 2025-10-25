@@ -15,7 +15,7 @@ async function countArticles() {
     return;
   }
 
-  console.log(`Total articles in database: ${count}`);
+  console.log(`Total readings in database: ${count}`);
 }
 
 countArticles();

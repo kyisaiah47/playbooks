@@ -129,7 +129,7 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
                 </div>
                 <h2 className="text-xl font-semibold text-foreground">No Notes Yet</h2>
                 <p className="text-sm text-muted-foreground max-w-md mx-auto">
-                  Get started by creating your first note. Choose from our guided templates or start from scratch.
+                  Get started by creating your first note. Choose from our guided guides or start from scratch.
                 </p>
                 <button
                   onClick={handleCreateNote}

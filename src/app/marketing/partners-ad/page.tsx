@@ -40,7 +40,7 @@ export default function PartnersAdPage() {
 					</h1>
 
 					<p className="text-3xl text-gray-400 max-w-3xl mx-auto font-light">
-						Templates designed by therapists, coaches, and specialists.
+						Guides designed by therapists, coaches, and specialists.
 					</p>
 				</div>
 			</div>

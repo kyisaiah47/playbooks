@@ -39,7 +39,7 @@ export default function PrivacyPage() {
               We collect information about how you interact with our service:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Templates you use and create</li>
+              <li>Guides you use and create</li>
               <li>Content you generate (stored securely)</li>
               <li>Features you access</li>
               <li>Time and date of your visits</li>

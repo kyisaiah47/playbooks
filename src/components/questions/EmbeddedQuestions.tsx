@@ -231,7 +231,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
             </div>
           </div>
         ) : (
-        /* Embedded Prompts in Backdrop */
+        /* Embedded Questions in Backdrop */
         <div className="relative p-8 space-y-8 z-10">
           {/* Active Items Section */}
           {activeItems.length > 0 && (
@@ -273,7 +273,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                         highlightedItem === question.id ? 'animate-pulse' : ''
                       }`}
                     >
-                      {/* Embedded Prompt Question */}
+                      {/* Embedded Question Question */}
                       <div className="text-center">
                         <VerticalCutReveal
                           staggerDuration={0.08}

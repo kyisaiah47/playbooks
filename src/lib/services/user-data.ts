@@ -1,5 +1,5 @@
 import { prisma } from '../prisma';
-import type { User, TemplateSession, UserResponse, SavedResource } from '../../generated/prisma';
+import type { User, GuideSession, UserResponse, SavedResource } from '../../generated/prisma';
 
 // Types for user data operations
 export interface CreateTemplateSessionData {
@@ -36,8 +36,8 @@ export interface SaveResourceData {
 
 // User Data Service
 export class UserDataService {
-  // Template Sessions
-  static async createTemplateSession(data: CreateTemplateSessionData): Promise<TemplateSession> {
+  // Guide Sessions
+  static async createTemplateSession(data: CreateTemplateSessionData): Promise<GuideSession> {
     return await prisma.guideSession.create({
       data: {
         userId: data.userId,
@@ -47,7 +47,7 @@ export class UserDataService {
     });
   }
 
-  static async getTemplateSession(sessionId: string): Promise<TemplateSession | null> {
+  static async getTemplateSession(sessionId: string): Promise<GuideSession | null> {
     return await prisma.guideSession.findUnique({
       where: { id: sessionId },
       include: {
@@ -57,7 +57,7 @@ export class UserDataService {
     });
   }
 
-  static async getUserTemplateSessions(userId: string): Promise<TemplateSession[]> {
+  static async getUserTemplateSessions(userId: string): Promise<GuideSession[]> {
     return await prisma.guideSession.findMany({
       where: { userId },
       orderBy: { updatedAt: 'desc' },
@@ -67,7 +67,7 @@ export class UserDataService {
     });
   }
 
-  static async updateTemplateSession(data: UpdateTemplateSessionData): Promise<TemplateSession> {
+  static async updateTemplateSession(data: UpdateTemplateSessionData): Promise<GuideSession> {
     const updateData: any = {};
     if (data.progress !== undefined) updateData.progress = data.progress;
     if (data.currentSection !== undefined) updateData.currentSection = data.currentSection;
@@ -192,7 +192,7 @@ export class UserDataService {
     };
   }
 
-  // Template Analytics (for admin/insights)
+  // Guide Analytics (for admin/insights)
   static async getTemplateStats(guideId: string) {
     const [
       totalSessions,

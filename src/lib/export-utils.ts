@@ -7,14 +7,14 @@
  * - JSON (structured data export)
  */
 
-import { TemplateSession, ReflectionEntry } from '@/stores/workspace-store';
+import { GuideSession, ReflectionEntry } from '@/stores/workspace-store';
 import { InsightDashboard } from '@/types/insight';
 
 /**
  * Generate Markdown summary
  */
 export function generateMarkdownSummary(
-  guides: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -27,7 +27,7 @@ export function generateMarkdownSummary(
   // Summary Stats
   if (insights) {
     markdown += `## Summary\n\n`;
-    markdown += `- **Total Templates:** ${insights.summary.totalTemplates}\n`;
+    markdown += `- **Total Guides:** ${insights.summary.totalTemplates}\n`;
     markdown += `- **Total Reflections:** ${insights.summary.totalReflections}\n`;
     markdown += `- **Active Days:** ${insights.summary.activeDays}\n`;
     markdown += `- **Current Streak:** ${insights.summary.currentStreak} days\n`;
@@ -35,9 +35,9 @@ export function generateMarkdownSummary(
     markdown += `---\n\n`;
   }
 
-  // Templates
+  // Guides
   if (guides.length > 0) {
-    markdown += `## Templates (${guides.length})\n\n`;
+    markdown += `## Guides (${guides.length})\n\n`;
     guides.forEach((guide, index) => {
       markdown += `### ${index + 1}. ${guide.guideId}\n\n`;
       markdown += `- **Status:** ${guide.completion === 100 ? 'Completed' : 'In Progress'} (${guide.completion}%)\n`;
@@ -96,7 +96,7 @@ export function generateMarkdownSummary(
  * Generate JSON export
  */
 export function generateJSONExport(
-  guides: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -117,7 +117,7 @@ export function generateJSONExport(
  * Generate HTML for PDF conversion
  */
 export function generateHTMLForPDF(
-  guides: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -155,7 +155,7 @@ export function generateHTMLForPDF(
     }
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-guide-columns: repeat(2, 1fr);
       gap: 20px;
       margin: 20px 0;
     }
@@ -231,7 +231,7 @@ export function generateHTMLForPDF(
   <h2>Summary</h2>
   <div class="summary-grid">
     <div class="summary-card">
-      <h4>Total Templates</h4>
+      <h4>Total Guides</h4>
       <p>${insights.summary.totalTemplates}</p>
     </div>
     <div class="summary-card">
@@ -251,9 +251,9 @@ export function generateHTMLForPDF(
 `;
   }
 
-  // Templates
+  // Guides
   if (guides.length > 0) {
-    html += `<h2>Templates (${guides.length})</h2>`;
+    html += `<h2>Guides (${guides.length})</h2>`;
     guides.forEach((guide, index) => {
       html += `
   <h3>${index + 1}. ${guide.guideId}</h3>
@@ -324,7 +324,7 @@ export function downloadFile(content: string, filename: string, mimeType: string
  * Export as Markdown
  */
 export function exportAsMarkdown(
-  guides: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
@@ -337,7 +337,7 @@ export function exportAsMarkdown(
  * Export as JSON
  */
 export function exportAsJSON(
-  guides: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
@@ -350,7 +350,7 @@ export function exportAsJSON(
  * Export as HTML (for PDF printing)
  */
 export function exportAsHTML(
-  guides: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {

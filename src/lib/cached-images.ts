@@ -1,12 +1,12 @@
-import { articleRegistry } from '@/registry/readings';
+import { readingRegistry } from '@/registry/readings';
 import { UnsplashImage } from './unsplash';
 
 /**
  * Get cached image for a guide from blog post metadata
  */
 export async function getCachedImageForTemplate(guideName: string): Promise<UnsplashImage | null> {
-  // Find blog posts for this template
-  const templatePosts = articleRegistry.filter(post =>
+  // Find blog posts for this guide
+  const templatePosts = readingRegistry.filter(post =>
     post.relatedGuides?.includes(guideName) ||
     (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
@@ -46,7 +46,7 @@ export async function getCachedImageForTemplate(guideName: string): Promise<Unsp
  * Check if a guide has cached images
  */
 export function templateHasCachedImages(guideName: string): boolean {
-  const templatePosts = articleRegistry.filter(post =>
+  const templatePosts = readingRegistry.filter(post =>
     post.relatedGuides?.includes(guideName) ||
     (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
@@ -55,16 +55,16 @@ export function templateHasCachedImages(guideName: string): boolean {
 }
 
 /**
- * Get all templates that have cached images
+ * Get all guides that have cached images
  */
 export function getTemplatesWithCachedImages(): string[] {
   const templatesWithImages = new Set<string>();
 
-  articleRegistry.forEach(post => {
+  readingRegistry.forEach(post => {
     if (post.heroImage?.cached) {
       // Extract guide name from slug or relatedGuides
       if (post.relatedGuides) {
-        post.relatedGuides.forEach(template => templatesWithImages.add(template));
+        post.relatedGuides.forEach(guide => templatesWithImages.add(guide));
       }
 
       // Also try to extract from slug
@@ -83,8 +83,8 @@ export function getTemplatesWithCachedImages(): string[] {
  * Get cached image statistics
  */
 export function getCachedImageStats() {
-  const totalPosts = articleRegistry.length;
-  const postsWithImages = articleRegistry.filter(post => post.heroImage?.cached).length;
+  const totalPosts = readingRegistry.length;
+  const postsWithImages = readingRegistry.filter(post => post.heroImage?.cached).length;
   const templatesWithImages = getTemplatesWithCachedImages().length;
 
   return {

@@ -81,7 +81,7 @@ export function FloatingToolbar({ editor }: FloatingToolbarProps) {
   const toggleCode = () => editor.chain().focus().toggleCode().run()
 
   const addLink = () => {
-    const url = window.prompt('Enter URL:')
+    const url = window.question('Enter URL:')
     if (url) {
       editor.chain().focus().setLink({ href: url }).run()
     }

@@ -9,7 +9,7 @@ const BATCH_SIZE = 1000;
 
 async function findAllDuplicateArticles() {
   try {
-    console.log('Fetching all articles in batches...\n');
+    console.log('Fetching all readings in batches...\n');
 
     let allArticles: any[] = [];
     let offset = 0;
@@ -18,7 +18,7 @@ async function findAllDuplicateArticles() {
     while (hasMore) {
       const { data, error } = await supabase
         .from('templata_articles')
-        .select('id, title, slug, template')
+        .select('id, title, slug, guide')
         .order('title')
         .range(offset, offset + BATCH_SIZE - 1);
 
@@ -33,7 +33,7 @@ async function findAllDuplicateArticles() {
       }
 
       allArticles = allArticles.concat(data);
-      console.log(`Fetched ${allArticles.length} articles so far...`);
+      console.log(`Fetched ${allArticles.length} readings so far...`);
 
       if (data.length < BATCH_SIZE) {
         hasMore = false;
@@ -42,18 +42,18 @@ async function findAllDuplicateArticles() {
       }
     }
 
-    console.log(`\nTotal articles fetched: ${allArticles.length}\n`);
+    console.log(`\nTotal readings fetched: ${allArticles.length}\n`);
 
     // Find duplicates by title
     const titleMap = new Map<string, any[]>();
-    allArticles.forEach(article => {
-      const existing = titleMap.get(article.title) || [];
-      existing.push(article);
-      titleMap.set(article.title, existing);
+    allArticles.forEach(reading => {
+      const existing = titleMap.get(reading.title) || [];
+      existing.push(reading);
+      titleMap.set(reading.title, existing);
     });
 
     const duplicateTitles = Array.from(titleMap.entries())
-      .filter(([_, articles]) => articles.length > 1)
+      .filter(([_, readings]) => readings.length > 1)
       .sort((a, b) => b[1].length - a[1].length);
 
     console.log(`\n=== DUPLICATE ARTICLES BY TITLE ===`);
@@ -64,8 +64,8 @@ async function findAllDuplicateArticles() {
     duplicateTitles.slice(0, displayLimit).forEach(([title, dupes]) => {
       console.log(`Title: "${title}"`);
       console.log(`Count: ${dupes.length} duplicates`);
-      dupes.forEach(article => {
-        console.log(`  - ID: ${article.id.slice(0, 60)}..., Slug: ${article.slug.slice(0, 60)}..., Template: ${article.template || 'N/A'}`);
+      dupes.forEach(reading => {
+        console.log(`  - ID: ${reading.id.slice(0, 60)}..., Slug: ${reading.slug.slice(0, 60)}..., Guide: ${reading.guide || 'N/A'}`);
       });
       console.log('');
     });
@@ -78,10 +78,10 @@ async function findAllDuplicateArticles() {
     const totalDuplicatesByTitle = duplicateTitles.reduce((sum, [_, dupes]) => sum + (dupes.length - 1), 0);
 
     console.log(`\n=== SUMMARY ===`);
-    console.log(`Total articles: ${allArticles.length}`);
+    console.log(`Total readings: ${allArticles.length}`);
     console.log(`Duplicate title groups: ${duplicateTitles.length}`);
-    console.log(`Extra articles (duplicates to remove): ${totalDuplicatesByTitle}`);
-    console.log(`Unique articles (after cleanup): ${allArticles.length - totalDuplicatesByTitle}`);
+    console.log(`Extra readings (duplicates to remove): ${totalDuplicatesByTitle}`);
+    console.log(`Unique readings (after cleanup): ${allArticles.length - totalDuplicatesByTitle}`);
 
   } catch (error) {
     console.error('Fatal error:', error);

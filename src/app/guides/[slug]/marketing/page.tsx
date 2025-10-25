@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!guide?.guide) {
     return {
-      title: 'Template Not Found | Templata',
+      title: 'Guide Not Found | Templata',
       description: 'The requested guide could not be found.',
       robots: {
         index: false,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     'planning workspace'
   ];
 
-  const title = `${guideData.title} Template - Complete Planning Guide with AI | Templata`;
+  const title = `${guideData.title} Guide - Complete Planning Guide with AI | Templata`;
   const description = `${guideData.description} Access expert ${guideData.title.toLowerCase()} planning with questions, readings, and AI-powered guidance. Save 80+ hours with our comprehensive ${guideData.title.toLowerCase()} guide. Free to start.`;
 
   return {
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: `/og-image.jpg`,
           width: 1200,
           height: 630,
-          alt: `${guideData.title} Template - Templata`,
+          alt: `${guideData.title} Guide - Templata`,
         },
       ],
       locale: 'en_US',
@@ -94,6 +94,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default function TemplateMarketingPage({ params }: { params: Promise<{ slug: string }> }) {
+export default function GuideMarketingPage({ params }: { params: Promise<{ slug: string }> }) {
   return <MarketingClient params={params} />;
 }

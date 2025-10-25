@@ -3,7 +3,7 @@
 
 import type { GuidanceTemplate } from '@/types/guide';
 
-// Temporary alias - Guide is the same as Template/GuidanceTemplate
+// Temporary alias - Guide is the same as Guide/GuidanceTemplate
 export type Guide = GuidanceTemplate;
 
 // Helper to convert if needed (currently a pass-through)

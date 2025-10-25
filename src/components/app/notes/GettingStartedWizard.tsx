@@ -109,7 +109,7 @@ export function GettingStartedWizard({
           <>
             {/* Header */}
             <div className="mb-6">
-              <h1 className="text-2xl font-bold mb-2">Choose a Guide Template</h1>
+              <h1 className="text-2xl font-bold mb-2">Choose a Guide Guide</h1>
               <p className="text-sm text-muted-foreground mb-4">
                 Select a guide to create your first note
               </p>

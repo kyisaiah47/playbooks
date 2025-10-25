@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 // Lazy load SimpleEditor to reduce initial bundle size
-const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
+const SimpleEditor = lazy(() => import('@/components/tiptap-guides/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
 
 interface GuideViewProps {
   guide: GuidanceTemplate;
@@ -259,7 +259,7 @@ export function GuideView({ guide, onSwitchMode }: GuideViewProps) {
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground overflow-hidden [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [-ms-overflow-style:none] [scrollbar-width:none]">
         <TemplataContentSidebar
-          guide={template}
+          guide={guide}
           activeSection={activeSection}
           onSectionChange={setActiveSection}
           onInsertQuestion={handleInsertQuestion}

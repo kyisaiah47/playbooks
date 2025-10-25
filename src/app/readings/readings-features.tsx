@@ -8,7 +8,7 @@ export function ReadingsFeatures() {
   const features = [
     {
       icon: Target,
-      title: "Template-Matched",
+      title: "Guide-Matched",
       description: "Each reading is connected to specific guides, giving you relevant insights exactly when you need them."
     },
     {
@@ -35,7 +35,7 @@ export function ReadingsFeatures() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Knowledge when you need it</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Articles that don't just inform—they guide you through the specific challenges you're facing.
+            Readings that don't just inform—they guide you through the specific challenges you're facing.
           </p>
         </div>
 

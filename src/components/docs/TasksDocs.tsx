@@ -150,22 +150,22 @@ export function TasksDocs() {
         </div>
 
         <div>
-          <h3 className="text-base font-medium mb-2">Task Templates</h3>
+          <h3 className="text-base font-medium mb-2">Task Guides</h3>
           <p className="text-sm text-muted-foreground mb-3">
             Some transitions have common action patterns. Save time by using or creating task guides:
           </p>
           <div className="space-y-2">
             <div className="flex items-start gap-2 text-xs">
               <span className="text-muted-foreground">→</span>
-              <span className="text-muted-foreground"><strong>Job Application Template:</strong> Research company, customize resume, write cover letter, submit, follow up</span>
+              <span className="text-muted-foreground"><strong>Job Application Guide:</strong> Research company, customize resume, write cover letter, submit, follow up</span>
             </div>
             <div className="flex items-start gap-2 text-xs">
               <span className="text-muted-foreground">→</span>
-              <span className="text-muted-foreground"><strong>Networking Template:</strong> Find contact, research background, send connection request, schedule call, send thank you</span>
+              <span className="text-muted-foreground"><strong>Networking Guide:</strong> Find contact, research background, send connection request, schedule call, send thank you</span>
             </div>
             <div className="flex items-start gap-2 text-xs">
               <span className="text-muted-foreground">→</span>
-              <span className="text-muted-foreground"><strong>Learning Template:</strong> Find resource, schedule study time, complete course, practice skills, share learning</span>
+              <span className="text-muted-foreground"><strong>Learning Guide:</strong> Find resource, schedule study time, complete course, practice skills, share learning</span>
             </div>
           </div>
         </div>

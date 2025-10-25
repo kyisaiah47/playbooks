@@ -8,7 +8,7 @@ interface GuideCTAProps {
   appLink: string
 }
 
-export function TemplateCTA({ templateType, guideName, appLink }: TemplateCTAProps) {
+export function GuideCTA({ templateType, guideName, appLink }: GuideCTAProps) {
   const getIcon = () => {
     switch (templateType) {
       case 'wedding':
@@ -73,7 +73,7 @@ export function TemplateCTA({ templateType, guideName, appLink }: TemplateCTAPro
         </Button>
         <Button size="lg" variant="outline" asChild className="text-lg px-8 py-6">
           <Link href="#preview">
-            View Template Preview
+            View Guide Preview
           </Link>
         </Button>
       </div>

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { ChevronDown, Plus } from "lucide-react"
-import { TemplatesModal } from "@/components/guides-modal"
+import { GuidesModal } from "@/components/guides-modal"
 
 import {
   DropdownMenu,
@@ -55,7 +55,7 @@ export function TeamSwitcher({
             sideOffset={4}
           >
             <DropdownMenuLabel className="text-muted-foreground text-xs">
-              Templates
+              Guides
             </DropdownMenuLabel>
             {teams.map((team, index) => (
               <DropdownMenuItem
@@ -83,7 +83,7 @@ export function TeamSwitcher({
           </DropdownMenuContent>
         </DropdownMenu>
         
-        <TemplatesModal 
+        <GuidesModal 
           open={templatesModalOpen} 
           onOpenChange={setTemplatesModalOpen}
         />
