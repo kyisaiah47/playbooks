@@ -1,209 +1,163 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { PageLayout } from '@/components/layout/page-layout';
 import {
   BookOpen,
   FileText,
-  Users,
-  Shield,
-  Zap,
-  MessageSquare,
-  Download,
-  Search,
-  ChevronDown,
-  ChevronRight
-} from "lucide-react";
+  Calendar,
+  CheckSquare,
+  Clock,
+  BookMarked,
+  Network,
+  BarChart3,
+  Archive,
+  HelpCircle,
+  LifeBuoy,
+  Compass,
+  Library,
+  ChevronRight,
+} from 'lucide-react';
+import { GettingStartedDocs } from '@/components/docs/GettingStartedDocs';
+import { NotesDocs } from '@/components/docs/NotesDocs';
+import { DiscoverDocs } from '@/components/docs/DiscoverDocs';
+import { LibraryDocs } from '@/components/docs/LibraryDocs';
+import { CalendarDocs } from '@/components/docs/CalendarDocs';
+import { TasksDocs } from '@/components/docs/TasksDocs';
+import { TimelineDocs } from '@/components/docs/TimelineDocs';
+import { DailyDocs } from '@/components/docs/DailyDocs';
+import { JournalDocs } from '@/components/docs/JournalDocs';
+import { GraphDocs } from '@/components/docs/GraphDocs';
+import { AnalyticsDocs } from '@/components/docs/AnalyticsDocs';
+import { ArchiveDocs } from '@/components/docs/ArchiveDocs';
+import { FaqDocs } from '@/components/docs/FaqDocs';
+import { SupportDocs } from '@/components/docs/SupportDocs';
+
+type SectionType =
+  | 'getting-started'
+  | 'notes'
+  | 'discover'
+  | 'library'
+  | 'calendar'
+  | 'tasks'
+  | 'timeline'
+  | 'daily'
+  | 'journal'
+  | 'graph'
+  | 'analytics'
+  | 'archive'
+  | 'faq'
+  | 'support';
+
+const sections = [
+  { id: 'getting-started', label: 'Getting Started', icon: BookOpen },
+  { id: 'notes', label: 'Notes', icon: FileText },
+  { id: 'discover', label: 'Discover', icon: Compass },
+  { id: 'library', label: 'Library', icon: Library },
+  { id: 'calendar', label: 'Calendar', icon: Calendar },
+  { id: 'tasks', label: 'Tasks', icon: CheckSquare },
+  { id: 'timeline', label: 'Timeline', icon: Clock },
+  { id: 'daily', label: 'Daily', icon: Calendar },
+  { id: 'journal', label: 'Journal', icon: BookMarked },
+  { id: 'graph', label: 'Graph', icon: Network },
+  { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+  { id: 'archive', label: 'Archive', icon: Archive },
+  { id: 'faq', label: 'FAQ', icon: HelpCircle },
+  { id: 'support', label: 'Support', icon: LifeBuoy },
+] as const;
 
 export default function DocsPage() {
-  const [expandedSections, setExpandedSections] = useState<string[]>(['getting-started']);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [activeSection, setActiveSection] = useState<SectionType>(
+    (searchParams.get('section') as SectionType) || 'getting-started'
+  );
 
-  const toggleSection = (section: string) => {
-    setExpandedSections(prev =>
-      prev.includes(section)
-        ? prev.filter(s => s !== section)
-        : [...prev, section]
-    );
+  const handleSectionChange = (sectionId: SectionType) => {
+    setActiveSection(sectionId);
+    router.push(`/docs?section=${sectionId}`);
   };
 
-  const sidebarSections = [
-    {
-      id: 'getting-started',
-      title: 'Getting Started',
-      items: [
-        { title: 'Introduction', href: '/docs/intro' },
-        { title: 'Quick Start', href: '/docs/quick-start' },
-        { title: 'Browse Guides', href: '/docs/browse-guides' }
-      ]
-    },
-    {
-      id: 'guides',
-      title: 'Using Guides',
-      items: [
-        { title: 'How Guides Work', href: '/docs/how-guides-work' },
-        { title: 'Workspace', href: '/docs/workspace' },
-        { title: 'Export & Share', href: '/docs/export' }
-      ]
-    },
-    {
-      id: 'account',
-      title: 'Account & Privacy',
-      items: [
-        { title: 'Privacy & Data', href: '/docs/privacy' },
-        { title: 'Account Settings', href: '/docs/account' }
-      ]
+  const renderContent = () => {
+    switch (activeSection) {
+      case 'getting-started':
+        return <GettingStartedDocs />;
+      case 'notes':
+        return <NotesDocs />;
+      case 'discover':
+        return <DiscoverDocs />;
+      case 'library':
+        return <LibraryDocs />;
+      case 'calendar':
+        return <CalendarDocs />;
+      case 'tasks':
+        return <TasksDocs />;
+      case 'timeline':
+        return <TimelineDocs />;
+      case 'daily':
+        return <DailyDocs />;
+      case 'journal':
+        return <JournalDocs />;
+      case 'graph':
+        return <GraphDocs />;
+      case 'analytics':
+        return <AnalyticsDocs />;
+      case 'archive':
+        return <ArchiveDocs />;
+      case 'faq':
+        return <FaqDocs />;
+      case 'support':
+        return <SupportDocs />;
+      default:
+        return null;
     }
-  ];
-
-  const popularDocs = [
-    {
-      title: "Getting Started",
-      description: "Learn the basics of using Templata guides",
-      icon: Zap,
-      href: "/docs/getting-started"
-    },
-    {
-      title: "How Guides Work",
-      description: "Understand the structure and purpose of guides",
-      icon: BookOpen,
-      href: "/docs/how-guides-work"
-    },
-    {
-      title: "Privacy & Data",
-      description: "How we handle your information",
-      icon: Shield,
-      href: "/docs/privacy"
-    },
-    {
-      title: "Community Guidelines",
-      description: "Rules for discussions and contributions",
-      icon: Users,
-      href: "/docs/community-guidelines"
-    }
-  ];
-
-  const basicsDocs = [
-    {
-      title: "Browse Guides",
-      description: "How to find the right guide for your situation",
-      icon: Search,
-      href: "/docs/browse-guides"
-    },
-    {
-      title: "Using the Workspace",
-      description: "Answer questions and save your progress",
-      icon: FileText,
-      href: "/docs/workspace"
-    },
-    {
-      title: "Export & Share",
-      description: "Download your work as PDF",
-      icon: Download,
-      href: "/docs/export"
-    },
-    {
-      title: "Request a Guide",
-      description: "Suggest new guides for the community",
-      icon: MessageSquare,
-      href: "/docs/request-guide"
-    }
-  ];
+  };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Sidebar Navigation */}
-      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border h-[calc(100vh-3.5rem)] sticky top-14 overflow-y-auto bg-background">
-          <div className="py-6 px-4 space-y-6">
-            <nav className="space-y-1">
-              {sidebarSections.map((section) => (
-                <div key={section.id}>
+    <PageLayout>
+      <div className="min-h-screen pt-20">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          {/* Header */}
+          <div className="mb-12">
+            <h1 className="text-4xl font-bold mb-4">Documentation</h1>
+            <p className="text-xl text-muted-foreground">
+              Learn how to use Templata
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-[240px_1fr] gap-8">
+            {/* Sidebar Navigation */}
+            <aside className="space-y-1">
+              {sections.map((section) => {
+                const Icon = section.icon;
+                return (
                   <button
-                    onClick={() => toggleSection(section.id)}
-                    className="flex items-center justify-between w-full text-sm font-medium py-1.5 px-2 hover:bg-muted/50 rounded transition-colors text-left"
+                    key={section.id}
+                    onClick={() => handleSectionChange(section.id as SectionType)}
+                    className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      activeSection === section.id
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    }`}
                   >
-                    <span className="text-sm">{section.title}</span>
-                    {expandedSections.includes(section.id) ? (
-                      <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
-                    ) : (
-                      <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+                    <Icon className="h-4 w-4" />
+                    {section.label}
+                    {activeSection === section.id && (
+                      <ChevronRight className="h-4 w-4 ml-auto" />
                     )}
                   </button>
+                );
+              })}
+            </aside>
 
-                  {expandedSections.includes(section.id) && (
-                    <div className="ml-3 mt-1 space-y-0.5 border-l border-border pl-3">
-                      {section.items.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="block text-sm text-muted-foreground hover:text-foreground py-1.5 px-2 rounded hover:bg-muted/50 transition-colors"
-                        >
-                          {item.title}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
+            {/* Content */}
+            <main className="prose prose-sm max-w-none">
+              {renderContent()}
+            </main>
           </div>
-        </aside>
-
-        {/* Main Content */}
-        <main className="flex-1 overflow-y-auto">
-          <div className="max-w-6xl mx-auto px-6 lg:px-12 py-8">
-            {/* Header */}
-            <div className="mb-10">
-              <h1 className="text-3xl font-semibold tracking-tight mb-2">Documentation</h1>
-              <p className="text-base text-muted-foreground">
-                Everything you need to know about using Templata
-              </p>
-            </div>
-
-            {/* Popular */}
-            <div className="mb-12">
-              <h2 className="text-xl font-semibold mb-4">Popular</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {popularDocs.map((doc) => (
-                  <Link
-                    key={doc.href}
-                    href={doc.href}
-                    className="group border border-border rounded-md p-4 hover:border-primary/50 transition-colors bg-card"
-                  >
-                    <doc.icon className="h-4 w-4 text-muted-foreground mb-2" />
-                    <h3 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors">
-                      {doc.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-                      {doc.description}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Templata Basics */}
-            <div>
-              <h2 className="text-xl font-semibold mb-4">Templata Basics</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {basicsDocs.map((doc) => (
-                  <Link
-                    key={doc.href}
-                    href={doc.href}
-                    className="group border border-border rounded-md p-4 hover:border-primary/50 transition-colors bg-card"
-                  >
-                    <doc.icon className="h-4 w-4 text-muted-foreground mb-2" />
-                    <h3 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors">
-                      {doc.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-                      {doc.description}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </main>
+        </div>
       </div>
+    </PageLayout>
   );
 }
