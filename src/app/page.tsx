@@ -47,19 +47,29 @@ export default function LandingPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
 
-			{/* Hero Section - 3-line layout */}
+			{/* Hero Section - 3-line layout with CTA on right */}
 			<section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-24">
 				<div className="mx-auto max-w-7xl">
-					<div className="max-w-3xl">
-						<h1 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
-							Wikipedia
-						</h1>
-						<h2 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
-							×
-						</h2>
-						<h3 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
-							Notion
-						</h3>
+					<div className="flex items-center justify-between">
+						<div className="max-w-3xl">
+							<h1 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
+								Wikipedia
+							</h1>
+							<h2 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
+								×
+							</h2>
+							<h3 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
+								Notion
+							</h3>
+						</div>
+						<div>
+							<Button size="lg" asChild>
+								<Link href="/guides">
+									Get Started
+									<ArrowRight className="h-4 w-4" />
+								</Link>
+							</Button>
+						</div>
 					</div>
 				</div>
 			</section>
