@@ -3,8 +3,6 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useCustomTheme } from "@/components/theme-provider-custom"
-import { themes } from "@/lib/themes"
 import { Button } from "@/components/ui/button"
 
 interface ThemeSelectorProps {
@@ -13,20 +11,11 @@ interface ThemeSelectorProps {
 
 export function ThemeSelector({ iconOnly = false }: ThemeSelectorProps) {
   const { theme, setTheme } = useTheme()
-  const { setTheme: setCustomTheme } = useCustomTheme()
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
     setMounted(true)
   }, [])
-
-  // Sync custom theme colors when next-themes changes
-  React.useEffect(() => {
-    if (mounted && theme) {
-      const neutralTheme = themes[0]
-      setCustomTheme(theme === 'dark' ? neutralTheme.colors.dark : neutralTheme.colors.light)
-    }
-  }, [theme, mounted, setCustomTheme])
 
   if (!mounted) {
     return (

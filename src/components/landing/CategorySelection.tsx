@@ -16,7 +16,7 @@ export function CategorySelection() {
     green: { bg: "bg-green-500/10", text: "text-green-600 dark:text-green-400", icon: "text-green-600 dark:text-green-400" },
     purple: { bg: "bg-purple-500/10", text: "text-purple-600 dark:text-purple-400", icon: "text-purple-600 dark:text-purple-400" },
     emerald: { bg: "bg-emerald-500/10", text: "text-emerald-600 dark:text-emerald-400", icon: "text-emerald-600 dark:text-emerald-400" },
-    indigo: { bg: "bg-[#6366f1]/10", text: "", icon: "" },
+    indigo: { bg: "bg-primary/10", text: "", icon: "" },
   };
 
   const guides = [
@@ -65,11 +65,11 @@ export function CategorySelection() {
                       ? `${colors.bg} font-medium`
                       : 'text-muted-foreground hover:bg-muted/50'
                   }`}
-                  style={isSelected && cat.color === 'indigo' ? { color: '#6366f1' } : {}}
+                  style={isSelected && cat.color === 'indigo' ? { color: 'var(--primary)' } : {}}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Icon className={`h-3.5 w-3.5 ${isSelected && cat.color !== 'indigo' ? colors.icon : ''}`} style={isSelected && cat.color === 'indigo' ? { color: '#6366f1' } : {}} />
+                      <Icon className={`h-3.5 w-3.5 ${isSelected && cat.color !== 'indigo' ? colors.icon : ''}`} style={isSelected && cat.color === 'indigo' ? { color: 'var(--primary)' } : {}} />
                       <span>{cat.name}</span>
                     </div>
                     <span className="text-[11px] opacity-60">{cat.guides}</span>

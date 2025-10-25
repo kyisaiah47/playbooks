@@ -59,7 +59,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
       <div className="px-3 py-2 border-b border-border/40">
         <motion.button
           onClick={() => onEntrySelect(null)}
-          className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded bg-[#6366f1] hover:bg-[#5558e3] text-white text-[11px] font-medium transition-colors"
+          className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded bg-primary hover:bg-[#5558e3] text-white text-[11px] font-medium transition-colors"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -128,7 +128,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
                   className={cn(
                     "w-full text-left px-2 py-2 rounded text-sm transition-colors",
                     isSelected
-                      ? "bg-[#6366f1]/10 border border-[#6366f1]/40"
+                      ? "bg-primary/10 border border-primary/40"
                       : "hover:bg-muted/50"
                   )}
                   variants={{

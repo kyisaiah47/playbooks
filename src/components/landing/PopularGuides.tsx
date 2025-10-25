@@ -51,13 +51,13 @@ export function PopularGuides() {
                   key={section.name}
                   className={`px-2 py-1.5 rounded text-[13px] transition-colors cursor-pointer ${
                     isSelected
-                      ? 'bg-[#6366f1]/10 font-medium'
+                      ? 'bg-primary/10 font-medium'
                       : 'text-muted-foreground hover:bg-muted/50'
                   }`}
-                  style={isSelected ? { color: '#6366f1' } : {}}
+                  style={isSelected ? { color: 'var(--primary)' } : {}}
                 >
                   <div className="flex items-center gap-2">
-                    <Icon className={`h-3.5 w-3.5`} style={isSelected ? { color: '#6366f1' } : {}} />
+                    <Icon className={`h-3.5 w-3.5`} style={isSelected ? { color: 'var(--primary)' } : {}} />
                     <span>{section.name}</span>
                   </div>
                 </div>
@@ -72,7 +72,7 @@ export function PopularGuides() {
             {/* Header */}
             <div className="mb-6">
               <div className="flex items-center gap-2 mb-4">
-                <TrendingUp className="h-4 w-4" style={{ color: '#6366f1' }} />
+                <TrendingUp className="h-4 w-4" style={{ color: 'var(--primary)' }} />
                 <h2 className="text-xl font-semibold tracking-tight">Trending</h2>
               </div>
               {/* Search */}

@@ -39,7 +39,7 @@ const categoryColors: Record<string, { bg: string; text: string; icon: string }>
   'health-wellness': { bg: "bg-green-500/10", text: "text-green-600 dark:text-green-400", icon: "text-green-600 dark:text-green-400" },
   'personal-growth': { bg: "bg-purple-500/10", text: "text-purple-600 dark:text-purple-400", icon: "text-purple-600 dark:text-purple-400" },
   'finance': { bg: "bg-emerald-500/10", text: "text-emerald-600 dark:text-emerald-400", icon: "text-emerald-600 dark:text-emerald-400" },
-  'life-events': { bg: "bg-[#6366f1]/10", text: "text-[#6366f1]", icon: "text-[#6366f1]" },
+  'life-events': { bg: "bg-primary/10", text: "text-primary", icon: "text-primary" },
 };
 
 export default function DiscoverPage() {

@@ -158,12 +158,12 @@ export function GanttView({ events, tasks }: GanttViewProps) {
 
           {/* Today Marker */}
           <div
-            className="absolute top-0 bottom-0 w-0.5 bg-[#6366f1] z-50 pointer-events-none"
+            className="absolute top-0 bottom-0 w-0.5 bg-primary z-50 pointer-events-none"
             style={{
               left: `${((new Date().getTime() - timelineData.startDate.getTime()) / (1000 * 60 * 60 * 24) / timelineData.totalDays) * 100}%`,
             }}
           >
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-1.5 py-0.5 bg-[#6366f1] text-white text-[9px] font-medium rounded whitespace-nowrap shadow-lg z-50">
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-1.5 py-0.5 bg-primary text-white text-[9px] font-medium rounded whitespace-nowrap shadow-lg z-50">
               Today
             </div>
           </div>
@@ -183,7 +183,7 @@ export function GanttView({ events, tasks }: GanttViewProps) {
                     px-2.5 py-1 rounded border flex items-center gap-1.5 shadow-sm
                     transition-all hover:shadow-md hover:scale-105 cursor-pointer
                     ${item.type === 'event'
-                      ? 'bg-[#6366f1] border-[#6366f1] text-white hover:bg-[#5558e3]'
+                      ? 'bg-primary border-primary text-white hover:bg-[#5558e3]'
                       : item.status === 'done'
                         ? 'bg-green-600 border-green-600 text-white hover:bg-green-700'
                         : item.status === 'in_progress'

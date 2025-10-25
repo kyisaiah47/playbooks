@@ -46,7 +46,7 @@ function GuideNode({ data }: { data: any }) {
       'Life Transitions': '#f59e0b',
       'Financial': '#10b981',
     };
-    return colors[category] || '#6366f1';
+    return colors[category] || 'var(--primary)';
   };
 
   const color = getCategoryColor(data.category);
@@ -210,7 +210,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             type: 'smoothstep',
             animated: false,
             style: {
-              stroke: '#6366f1',
+              stroke: 'var(--primary)',
               strokeWidth: 1,
               strokeDasharray: '5,5',
               opacity: 0.3,
@@ -263,7 +263,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
         minZoom={0.5}
         maxZoom={2}
       >
-        <Background color="#6366f1" gap={16} size={1} />
+        <Background color="var(--primary)" gap={16} size={1} />
         <Controls
           className="bg-background border border-border/40 rounded-lg"
           showInteractive={false}
@@ -282,11 +282,11 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             <div className="text-sm font-semibold">Knowledge Graph</div>
             <div className="text-xs text-muted-foreground space-y-1">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-0.5 bg-[#6366f1]" />
+                <div className="w-2 h-0.5 bg-primary" />
                 <span>Solid lines: Same category</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-0.5 border-t border-dashed border-[#6366f1]" />
+                <div className="w-2 h-0.5 border-t border-dashed border-primary" />
                 <span>Dashed lines: Shared keywords</span>
               </div>
             </div>
@@ -329,7 +329,7 @@ function getCategoryColorForEdge(category: string): string {
     'Life Transitions': '#f59e0b',
     'Financial': '#10b981',
   };
-  return colors[category] || '#6366f1';
+  return colors[category] || 'var(--primary)';
 }
 
 function extractKeywords(text: string): string[] {

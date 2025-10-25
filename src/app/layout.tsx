@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes"
-import { CustomThemeProvider } from "@/components/theme-provider-custom"
 import { SessionProvider } from "@/components/providers/session-provider"
 import { UIProvider } from "@/components/providers/ui-provider"
 import { QueryProvider } from "@/components/providers/QueryProvider"
@@ -11,13 +10,8 @@ import { AuthProvider } from "@/contexts/auth-context"
 import { Analytics } from "@/components/analytics"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -117,23 +111,21 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${outfit.variable} antialiased font-sans`}
       >
         <ErrorBoundary>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-            <CustomThemeProvider>
-              <QueryProvider>
-                <SessionProvider>
-                  <AuthProvider>
-                    <UIProvider>
-                      <Analytics />
-                      <SpeedInsights />
-                      {children}
-                    </UIProvider>
-                  </AuthProvider>
-                </SessionProvider>
-              </QueryProvider>
-            </CustomThemeProvider>
+            <QueryProvider>
+              <SessionProvider>
+                <AuthProvider>
+                  <UIProvider>
+                    <Analytics />
+                    <SpeedInsights />
+                    {children}
+                  </UIProvider>
+                </AuthProvider>
+              </SessionProvider>
+            </QueryProvider>
           </ThemeProvider>
         </ErrorBoundary>
       </body>

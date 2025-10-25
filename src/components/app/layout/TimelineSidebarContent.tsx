@@ -129,7 +129,7 @@ export function TimelineSidebarContent({ selectedNoteIds, onNoteToggle }: Timeli
                   <div className={cn(
                     "h-3.5 w-3.5 rounded border flex items-center justify-center flex-shrink-0 transition-colors",
                     isSelected
-                      ? "bg-[#6366f1] border-[#6366f1]"
+                      ? "bg-primary border-primary"
                       : "border-muted-foreground/40"
                   )}>
                     {isSelected && (

@@ -78,7 +78,7 @@ export function EventList({ events, tasks, onEventClick }: EventListProps) {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-2">
-        <Calendar className="w-5 h-5 text-[#6366f1]" />
+        <Calendar className="w-5 h-5 text-primary" />
         <h3 className="text-lg font-semibold">Upcoming Events</h3>
       </div>
 
@@ -113,7 +113,7 @@ export function EventList({ events, tasks, onEventClick }: EventListProps) {
                     }}
                     className={cn(
                       'w-full text-left rounded-lg border border-border/40 p-3 hover:bg-muted/30 transition-colors',
-                      item.type === 'event' && 'hover:border-[#6366f1]/30'
+                      item.type === 'event' && 'hover:border-primary/30'
                     )}
                   >
                     <div className="flex items-start gap-3">
@@ -121,7 +121,7 @@ export function EventList({ events, tasks, onEventClick }: EventListProps) {
                         className={cn(
                           'w-1 h-full rounded-full shrink-0',
                           item.type === 'event'
-                            ? 'bg-[#6366f1]'
+                            ? 'bg-primary'
                             : 'bg-orange-500'
                         )}
                       />
@@ -147,7 +147,7 @@ export function EventList({ events, tasks, onEventClick }: EventListProps) {
                             className={cn(
                               'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium',
                               item.type === 'event'
-                                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                                ? 'bg-primary/10 text-primary'
                                 : 'bg-orange-500/10 text-orange-700 dark:text-orange-400'
                             )}
                           >

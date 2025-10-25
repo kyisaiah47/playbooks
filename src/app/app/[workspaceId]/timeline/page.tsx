@@ -69,8 +69,8 @@ export default function TimelinePage() {
       {/* Header */}
       <div className="border-b border-border/40 px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
-            <BarChart3 className="w-4 h-4 text-[#6366f1]" />
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <BarChart3 className="w-4 h-4 text-primary" />
           </div>
           <div>
             <h1 className="text-xl font-semibold">Timeline</h1>
@@ -88,7 +88,7 @@ export default function TimelinePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </motion.div>
         ) : error ? (
           <motion.div

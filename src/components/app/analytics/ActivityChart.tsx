@@ -33,8 +33,8 @@ export function ActivityChart({ data, isLoading = false }: ActivityChartProps) {
         <AreaChart data={data}>
           <defs>
             <linearGradient id="colorResponses" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+              <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.3} />
+              <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#333" opacity={0.2} />
@@ -55,7 +55,7 @@ export function ActivityChart({ data, isLoading = false }: ActivityChartProps) {
               borderRadius: '8px',
             }}
             labelStyle={{ color: '#fff' }}
-            itemStyle={{ color: '#6366f1' }}
+            itemStyle={{ color: 'var(--primary)' }}
             labelFormatter={(value) => {
               const date = new Date(value);
               return date.toLocaleDateString('en-US', {
@@ -68,7 +68,7 @@ export function ActivityChart({ data, isLoading = false }: ActivityChartProps) {
           <Area
             type="monotone"
             dataKey="responses"
-            stroke="#6366f1"
+            stroke="var(--primary)"
             strokeWidth={2}
             fillOpacity={1}
             fill="url(#colorResponses)"

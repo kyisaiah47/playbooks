@@ -108,7 +108,7 @@ function PageItem({
         className={cn(
           "w-full flex items-center gap-1.5 rounded px-2 py-1.5 text-sm transition-colors group",
           isActive
-            ? "bg-[#6366f1]/10 text-[#6366f1]"
+            ? "bg-primary/10 text-primary"
             : "hover:bg-muted/50 text-foreground"
         )}
         style={{ paddingLeft: `${paddingLeft}px` }}

@@ -116,7 +116,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                 className={cn(
                   "w-full flex items-center gap-1.5 px-2 py-1.5 rounded transition-colors group",
                   activeGuideId === note.guide_id
-                    ? "bg-[#6366f1]/10 text-[#6366f1]"
+                    ? "bg-primary/10 text-primary"
                     : "hover:bg-muted/50 text-foreground"
                 )}
                 variants={{

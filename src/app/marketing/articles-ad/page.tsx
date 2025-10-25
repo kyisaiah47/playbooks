@@ -58,7 +58,7 @@ export default function ArticlesAdPage() {
 							<div className="font-medium text-sm">Investment Portfolio Setup</div>
 							<div className="text-xs text-gray-600">Beginner wealth building</div>
 						</div>
-						<div className="p-3 bg-gray-50 rounded border-l-4 border-indigo-500">
+						<div className="p-3 bg-gray-50 rounded border-l-4 border-primary">
 							<div className="font-medium text-sm">Fitness Goal Planning</div>
 							<div className="text-xs text-gray-600">Sustainable habit formation</div>
 						</div>

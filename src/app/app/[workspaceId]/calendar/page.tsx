@@ -126,8 +126,8 @@ export default function CalendarPage() {
       <div className="border-b border-border/40 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
-              <CalendarIcon className="w-4 h-4 text-[#6366f1]" />
+            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+              <CalendarIcon className="w-4 h-4 text-primary" />
             </div>
             <div>
               <h1 className="text-xl font-semibold">Calendar</h1>
@@ -160,7 +160,7 @@ export default function CalendarPage() {
       {loading && !error ? (
         <div className="flex-1 flex items-center justify-center">
           <div className="flex flex-col items-center gap-3">
-            <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
             <p className="text-sm text-muted-foreground">Loading calendar...</p>
           </div>
         </div>

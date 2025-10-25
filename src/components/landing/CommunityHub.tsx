@@ -32,10 +32,10 @@ export function CommunityHub() {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <MessageSquarePlus className="h-4 w-4" style={{ color: '#6366f1' }} />
+              <MessageSquarePlus className="h-4 w-4" style={{ color: 'var(--primary)' }} />
               <h2 className="text-xl font-semibold tracking-tight">Guide Requests</h2>
             </div>
-            <button className="h-8 px-4 rounded-lg text-white text-sm font-medium" style={{ backgroundColor: '#6366f1' }}>
+            <button className="h-8 px-4 rounded-lg text-white text-sm font-medium" style={{ backgroundColor: 'var(--primary)' }}>
               New Request
             </button>
           </div>

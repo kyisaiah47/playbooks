@@ -66,7 +66,7 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
               className={cn(
                 "w-8 h-8 rounded-md flex items-center justify-center transition-colors",
                 isActive
-                  ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                  ? 'bg-primary/10 text-primary'
                   : 'text-muted-foreground hover:bg-muted/50'
               )}
               title={view.label}

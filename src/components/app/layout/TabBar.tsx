@@ -102,7 +102,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
               >
                 <IconComponent className={cn(
                   "w-3.5 h-3.5 transition-colors",
-                  isActive ? "text-[#6366f1]" : "text-muted-foreground"
+                  isActive ? "text-primary" : "text-muted-foreground"
                 )} />
               </motion.div>
               <span className={cn(

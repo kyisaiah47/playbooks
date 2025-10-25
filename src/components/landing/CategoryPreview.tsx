@@ -41,9 +41,9 @@ export function CategoryPreview({ category }: CategoryPreviewProps) {
       text: "text-emerald-600 dark:text-emerald-400"
     },
     indigo: {
-      bg: "bg-[#6366f1]/5",
-      border: "border-[#6366f1]/30",
-      badge: "bg-[#6366f1]/10",
+      bg: "bg-primary/5",
+      border: "border-primary/30",
+      badge: "bg-primary/10",
       text: ""
     },
   };

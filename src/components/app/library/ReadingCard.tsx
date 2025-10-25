@@ -27,7 +27,7 @@ export function ReadingCard({
 }: ReadingCardProps) {
   return (
     <div
-      className="group rounded-lg border border-border/40 bg-background p-4 hover:border-[#6366f1]/40 transition-all cursor-pointer"
+      className="group rounded-lg border border-border/40 bg-background p-4 hover:border-primary/40 transition-all cursor-pointer"
       onClick={onClick}
     >
       <div className="flex items-start justify-between gap-4">
@@ -37,7 +37,7 @@ export function ReadingCard({
             <span className="text-xs text-muted-foreground">{guideName}</span>
           </div>
 
-          <h3 className="font-semibold mb-1 group-hover:text-[#6366f1] transition-colors">
+          <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
             {title}
           </h3>
 

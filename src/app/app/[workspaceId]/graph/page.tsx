@@ -76,8 +76,8 @@ export default function GraphPage() {
       {/* Header */}
       <div className="border-b border-border/40 px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
-            <Network className="w-4 h-4 text-[#6366f1]" />
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Network className="w-4 h-4 text-primary" />
           </div>
           <div>
             <h1 className="text-xl font-semibold">Knowledge Graph</h1>
@@ -99,7 +99,7 @@ export default function GraphPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </motion.div>
         ) : error ? (
           <motion.div
@@ -174,12 +174,12 @@ export default function GraphPage() {
 
         {/* Additional Info */}
         <motion.div
-          className="mt-4 p-4 rounded-lg bg-[#6366f1]/5 border border-[#6366f1]/20"
+          className="mt-4 p-4 rounded-lg bg-primary/5 border border-primary/20"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
         >
-          <h3 className="text-sm font-semibold mb-2 text-[#6366f1]">Understanding Connections</h3>
+          <h3 className="text-sm font-semibold mb-2 text-primary">Understanding Connections</h3>
           <div className="text-xs text-muted-foreground space-y-1">
             <p>
               <strong>Solid lines:</strong> Guides in the same category - these may have similar goals or approaches

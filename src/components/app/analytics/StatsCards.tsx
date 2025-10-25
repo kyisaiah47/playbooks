@@ -66,7 +66,7 @@ export function StatsCards({
         return (
           <div
             key={stat.label}
-            className="rounded-lg border border-border/40 bg-background p-6 hover:border-[#6366f1]/40 transition-all"
+            className="rounded-lg border border-border/40 bg-background p-6 hover:border-primary/40 transition-all"
           >
             <div className="flex items-start justify-between mb-4">
               <div className={`w-12 h-12 rounded-lg ${stat.bgColor} flex items-center justify-center`}>

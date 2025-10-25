@@ -148,7 +148,7 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
                       className={cn(
                         "w-full text-left px-2 py-1.5 rounded transition-colors flex items-center gap-1.5",
                         selectedReadingId === reading.id
-                          ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                          ? 'bg-primary/10 text-primary'
                           : 'hover:bg-muted/50 text-foreground'
                       )}
                       whileHover={{ x: 4 }}

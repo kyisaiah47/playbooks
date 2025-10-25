@@ -112,11 +112,11 @@ export default function OverviewPage() {
       >
         <div className="flex items-center gap-3">
           <motion.div
-            className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center"
+            className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <LayoutDashboard className="w-4 h-4 text-[#6366f1]" />
+            <LayoutDashboard className="w-4 h-4 text-primary" />
           </motion.div>
           <div>
             <h1 className="text-xl font-semibold">Overview</h1>
@@ -134,7 +134,7 @@ export default function OverviewPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <Loader2 className="w-8 h-8 animate-spin text-[#6366f1]" />
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </motion.div>
         ) : selectedNoteIds.length === 0 ? (
           <motion.div
@@ -342,11 +342,11 @@ export default function OverviewPage() {
                     <div key={guide.id} className="p-3 rounded-lg border border-border/40 bg-muted/20">
                       <div className="flex items-center justify-between mb-2">
                         <div className="font-medium text-sm">{displayName}</div>
-                        <div className="text-sm font-semibold text-[#6366f1]">{guide.progress}%</div>
+                        <div className="text-sm font-semibold text-primary">{guide.progress}%</div>
                       </div>
                       <div className="w-full h-2 bg-muted rounded-full overflow-hidden mb-2">
                         <div
-                          className="h-full bg-[#6366f1] transition-all"
+                          className="h-full bg-primary transition-all"
                           style={{ width: `${guide.progress}%` }}
                         />
                       </div>

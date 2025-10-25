@@ -51,7 +51,7 @@ export function MonthGrid({
               className={cn(
                 'relative border-r border-b border-border/40 p-2 cursor-pointer transition-colors hover:bg-muted/30',
                 !isCurrentMonth && 'bg-muted/10',
-                isDayToday && 'bg-[#6366f1]/5',
+                isDayToday && 'bg-primary/5',
                 'last-in-row:border-r-0'
               )}
               onClick={() => onDateClick(day)}
@@ -66,7 +66,7 @@ export function MonthGrid({
                   className={cn(
                     'text-sm font-medium',
                     !isCurrentMonth && 'text-muted-foreground/50',
-                    isDayToday && 'w-6 h-6 rounded-full bg-[#6366f1] text-white flex items-center justify-center text-xs'
+                    isDayToday && 'w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs'
                   )}
                 >
                   {format(day, 'd')}
@@ -83,7 +83,7 @@ export function MonthGrid({
                       e.stopPropagation();
                       onEventClick?.(event);
                     }}
-                    className="w-full text-left px-1.5 py-0.5 rounded text-xs truncate bg-[#6366f1]/10 text-[#6366f1] hover:bg-[#6366f1]/20 transition-colors"
+                    className="w-full text-left px-1.5 py-0.5 rounded text-xs truncate bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
                     title={event.title}
                   >
                     {event.title}

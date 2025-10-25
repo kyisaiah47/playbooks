@@ -48,7 +48,8 @@
       "mcp__supabase__apply_migration",
       "mcp__supabase__execute_sql",
       "Bash(SUPABASE_SERVICE_ROLE_KEY=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV2Y3N0Y2FqY3RxYnhkZG9zZGJmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1Nzk3OTcwNywiZXhwIjoyMDczNTU1NzA3fQ.PjcGj6uFV1M5yFju1YYvbxG3ld55llauMUPlrjow6I4\" npx tsx:*)",
-      "Bash(SUPABASE_SERVICE_ROLE_KEY=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV2Y3N0Y2FqY3RxYnhkZG9zZGJmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1Nzk3OTcwNywiZXhwIjoyMDczNTU1NzA3fQ.PjcGj6uFV1M5yFju1YYvbxG3ld55llauMUPlrjow6I4\" ANTHROPIC_API_KEY=\"$ANTHROPIC_API_KEY\" npx tsx:*)"
+      "Bash(SUPABASE_SERVICE_ROLE_KEY=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV2Y3N0Y2FqY3RxYnhkZG9zZGJmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1Nzk3OTcwNywiZXhwIjoyMDczNTU1NzA3fQ.PjcGj6uFV1M5yFju1YYvbxG3ld55llauMUPlrjow6I4\" ANTHROPIC_API_KEY=\"$ANTHROPIC_API_KEY\" npx tsx:*)",
+      "Bash({} ;)"
     ],
     "deny": [],
     "ask": []

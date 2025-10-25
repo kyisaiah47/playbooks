@@ -111,7 +111,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('guides')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'guides'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -122,7 +122,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('discover')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'discover'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -133,7 +133,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('library')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'library'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -148,7 +148,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('calendar')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'calendar'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -159,7 +159,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('tasks')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'tasks'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -170,7 +170,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('timeline')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'timeline'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -185,7 +185,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('daily')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'daily'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -196,7 +196,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('journal')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'journal'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -207,7 +207,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('graph')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'graph'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -222,7 +222,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('overview')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'overview'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -233,7 +233,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('analytics')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'analytics'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -244,7 +244,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('archive')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'archive'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -255,7 +255,7 @@ export function HeroWorkspace() {
             onClick={() => handleViewClick('settings')}
             className={`w-6 h-6 rounded flex items-center justify-center transition-colors ${
               activeView === 'settings'
-                ? 'bg-[#6366f1]/10 text-[#6366f1]'
+                ? 'bg-primary/10 text-primary'
                 : 'text-muted-foreground hover:bg-muted/50'
             }`}
           >
@@ -297,7 +297,7 @@ export function HeroWorkspace() {
                         }}
                         className={`flex items-center gap-2 px-2 py-1.5 cursor-pointer transition-colors ${
                           currentWorkspace === name
-                            ? 'bg-[#6366f1]/10'
+                            ? 'bg-primary/10'
                             : 'hover:bg-muted/50'
                         }`}
                       >
@@ -419,7 +419,7 @@ export function HeroWorkspace() {
                       }`}
                     >
                       <div className={`w-3 h-3 rounded border flex items-center justify-center flex-shrink-0 ${
-                        guide.checked ? 'bg-[#6366f1] border-[#6366f1]' : 'border-border'
+                        guide.checked ? 'bg-primary border-primary' : 'border-border'
                       }`}>
                         {guide.checked && (
                           <svg className="w-2 h-2 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" viewBox="0 0 24 24" stroke="currentColor">
@@ -520,7 +520,7 @@ export function HeroWorkspace() {
                       {pageIcon ? (
                         <div className="text-sm leading-none">{pageIcon}</div>
                       ) : (
-                        <Icon className={`w-3 h-3 ${isActive ? `text-${color}-600 dark:text-${color}-400` : 'text-muted-foreground'}`} style={isActive && tab === 'Calendar' ? {color: '#6366f1'} : {}} />
+                        <Icon className={`w-3 h-3 ${isActive ? `text-${color}-600 dark:text-${color}-400` : 'text-muted-foreground'}`} style={isActive && tab === 'Calendar' ? {color: 'var(--primary)'} : {}} />
                       )}
                       <span className={`text-[11px] ${isActive ? 'font-medium' : 'text-muted-foreground'}`}>{tab}</span>
                       <button className="p-0.5 rounded hover:bg-background" onClick={(e) => {
@@ -581,20 +581,20 @@ export function HeroWorkspace() {
                     <input
                       type="text"
                       placeholder="Search 1,200+ guides..."
-                      className="w-full h-11 pl-10 pr-4 bg-muted/20 border border-border/60 rounded-lg outline-none focus:border-[#6366f1]/50 transition-colors text-[13px]"
+                      className="w-full h-11 pl-10 pr-4 bg-muted/20 border border-border/60 rounded-lg outline-none focus:border-primary/50 transition-colors text-[13px]"
                     />
                   </div>
                 </div>
 
                 {/* Quick Actions */}
                 <div className="grid grid-cols-2 gap-4 mb-10">
-                  <button className="p-5 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:bg-[#6366f1]/5 transition-all text-left group">
-                    <FileText className="w-6 h-6 mb-3 text-muted-foreground group-hover:text-[#6366f1]" />
+                  <button className="p-5 rounded-lg border border-border/60 hover:border-primary/50 hover:bg-primary/5 transition-all text-left group">
+                    <FileText className="w-6 h-6 mb-3 text-muted-foreground group-hover:text-primary" />
                     <div className="text-[14px] font-medium mb-1">Blank Page</div>
                     <div className="text-[11px] text-muted-foreground">Start with an empty page</div>
                   </button>
-                  <button className="p-5 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:bg-[#6366f1]/5 transition-all text-left group">
-                    <PenLine className="w-6 h-6 mb-3 text-muted-foreground group-hover:text-[#6366f1]" />
+                  <button className="p-5 rounded-lg border border-border/60 hover:border-primary/50 hover:bg-primary/5 transition-all text-left group">
+                    <PenLine className="w-6 h-6 mb-3 text-muted-foreground group-hover:text-primary" />
                     <div className="text-[14px] font-medium mb-1">Journal Entry</div>
                     <div className="text-[11px] text-muted-foreground">Free-form writing space</div>
                   </button>
@@ -612,17 +612,17 @@ export function HeroWorkspace() {
                     ].map((guide) => (
                       <button
                         key={guide.title}
-                        className="p-4 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:shadow-sm transition-all text-left group"
+                        className="p-4 rounded-lg border border-border/60 hover:border-primary/50 hover:shadow-sm transition-all text-left group"
                       >
                         <div className="flex items-start justify-between mb-2">
                           <div className={`text-[10px] font-medium px-2 py-1 rounded ${
-                            guide.color === 'indigo' ? 'bg-[#6366f1]/10' :
+                            guide.color === 'indigo' ? 'bg-primary/10' :
                             guide.color === 'blue' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400' :
                             'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400'
-                          }`} style={guide.color === 'indigo' ? { color: '#6366f1' } : {}}>
+                          }`} style={guide.color === 'indigo' ? { color: 'var(--primary)' } : {}}>
                             {guide.category}
                           </div>
-                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#6366f1]" />
+                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
                         </div>
                         <h4 className="text-[14px] font-medium mb-2">{guide.title}</h4>
                         <div className="flex items-center gap-3 text-[11px] text-muted-foreground mb-2">
@@ -652,11 +652,11 @@ export function HeroWorkspace() {
                     ].map((category) => (
                       <button
                         key={category.name}
-                        className="w-full flex items-center justify-between p-3 rounded-lg border border-border/60 hover:border-[#6366f1]/50 hover:bg-[#6366f1]/5 transition-all group"
+                        className="w-full flex items-center justify-between p-3 rounded-lg border border-border/60 hover:border-primary/50 hover:bg-primary/5 transition-all group"
                       >
                         <div className="flex items-center gap-3">
                           <div className={`w-2.5 h-2.5 rounded-full ${
-                            category.color === 'indigo' ? 'bg-[#6366f1]' :
+                            category.color === 'indigo' ? 'bg-primary' :
                             category.color === 'blue' ? 'bg-blue-500' :
                             category.color === 'pink' ? 'bg-pink-500' :
                             category.color === 'green' ? 'bg-green-500' :
@@ -667,7 +667,7 @@ export function HeroWorkspace() {
                         </div>
                         <div className="flex items-center gap-2">
                           <span className="text-[12px] text-muted-foreground">{category.guides} guides</span>
-                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-[#6366f1]" />
+                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
                         </div>
                       </button>
                     ))}
@@ -933,7 +933,7 @@ export function HeroWorkspace() {
                         >
                           <div className={`text-[10px] mb-1 ${
                             isToday
-                              ? 'w-5 h-5 rounded-full bg-[#6366f1] text-white flex items-center justify-center font-medium'
+                              ? 'w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center font-medium'
                               : day < 1 || day > 30
                               ? 'text-muted-foreground/40'
                               : 'text-foreground'
@@ -1005,7 +1005,7 @@ export function HeroWorkspace() {
                     <input
                       type="text"
                       placeholder="Search guides..."
-                      className="w-full h-9 pl-9 pr-4 rounded-lg border border-border/60 bg-background text-[11px] focus:outline-none focus:ring-2 focus:ring-[#6366f1]/20"
+                      className="w-full h-9 pl-9 pr-4 rounded-lg border border-border/60 bg-background text-[11px] focus:outline-none focus:ring-2 focus:ring-primary/20"
                     />
                   </div>
                 </div>
@@ -1081,7 +1081,7 @@ export function HeroWorkspace() {
                     />
                     <div className="flex items-center justify-between pt-3 border-t border-border/40">
                       <span className="text-[9px] text-muted-foreground">Today, 3:42 PM</span>
-                      <button className="px-3 py-1.5 rounded text-[10px] font-medium bg-[#6366f1] text-white hover:bg-[#6366f1]/90">
+                      <button className="px-3 py-1.5 rounded text-[10px] font-medium bg-primary text-white hover:bg-primary/90">
                         Save Entry
                       </button>
                     </div>
@@ -1121,16 +1121,16 @@ export function HeroWorkspace() {
               <div className="relative h-[500px] rounded-lg border border-border/30 bg-muted/5 overflow-hidden">
                 {/* Connection lines */}
                 <svg className="absolute inset-0 pointer-events-none">
-                  <line x1="50%" y1="50%" x2="25%" y2="25%" stroke="#6366f1" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
-                  <line x1="50%" y1="50%" x2="75%" y2="25%" stroke="#6366f1" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
-                  <line x1="50%" y1="50%" x2="33%" y2="75%" stroke="#6366f1" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
-                  <line x1="50%" y1="50%" x2="70%" y2="70%" stroke="#6366f1" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
+                  <line x1="50%" y1="50%" x2="25%" y2="25%" stroke="var(--primary)" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
+                  <line x1="50%" y1="50%" x2="75%" y2="25%" stroke="var(--primary)" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
+                  <line x1="50%" y1="50%" x2="33%" y2="75%" stroke="var(--primary)" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
+                  <line x1="50%" y1="50%" x2="70%" y2="70%" stroke="var(--primary)" strokeWidth="1.5" opacity="0.2" strokeDasharray="4 4" />
                 </svg>
 
                 {/* Central node - larger, active */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
-                  <div className="w-24 h-24 rounded-full bg-[#6366f1]/10 border border-[#6366f1]/40 group-hover:border-[#6366f1] flex items-center justify-center transition-all group-hover:shadow-lg">
-                    <span className="text-[10px] font-semibold text-center px-2 text-[#6366f1]">Wedding<br/>Planning</span>
+                  <div className="w-24 h-24 rounded-full bg-primary/10 border border-primary/40 group-hover:border-primary flex items-center justify-center transition-all group-hover:shadow-lg">
+                    <span className="text-[10px] font-semibold text-center px-2 text-primary">Wedding<br/>Planning</span>
                   </div>
                 </div>
 
@@ -1163,15 +1163,15 @@ export function HeroWorkspace() {
               {/* Connection Stats - minimal */}
               <div className="mt-4 flex items-center gap-6 text-[10px] text-muted-foreground">
                 <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-[#6366f1]/30" />
+                  <div className="w-2 h-2 rounded-full bg-primary/30" />
                   <span>3 date connections</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-[#6366f1]/30" />
+                  <div className="w-2 h-2 rounded-full bg-primary/30" />
                   <span>5 shared resources</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-[#6366f1]/30" />
+                  <div className="w-2 h-2 rounded-full bg-primary/30" />
                   <span>2 themes</span>
                 </div>
               </div>
@@ -1207,12 +1207,12 @@ export function HeroWorkspace() {
                 {/* Note Content - clean */}
                 <textarea
                   placeholder="What's on your mind today..."
-                  className="w-full h-80 p-4 rounded-lg border border-border/30 bg-background text-[11px] leading-relaxed resize-none focus:outline-none focus:border-[#6366f1]/50 transition-colors"
+                  className="w-full h-80 p-4 rounded-lg border border-border/30 bg-background text-[11px] leading-relaxed resize-none focus:outline-none focus:border-primary/50 transition-colors"
                 />
 
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-[9px] text-muted-foreground">Last saved at 3:42 PM</span>
-                  <button className="px-3 py-1.5 rounded text-[10px] font-medium bg-[#6366f1] text-white hover:bg-[#6366f1]/90 transition-colors">
+                  <button className="px-3 py-1.5 rounded text-[10px] font-medium bg-primary text-white hover:bg-primary/90 transition-colors">
                     Save
                   </button>
                 </div>
@@ -1228,7 +1228,7 @@ export function HeroWorkspace() {
                 </div>
                 {/* Filters - minimal */}
                 <div className="flex items-center gap-1.5">
-                  <button className="px-2.5 py-1 rounded text-[10px] font-medium bg-[#6366f1]/10 text-[#6366f1]">
+                  <button className="px-2.5 py-1 rounded text-[10px] font-medium bg-primary/10 text-primary">
                     All
                   </button>
                   <button className="px-2.5 py-1 rounded text-[10px] text-muted-foreground hover:bg-muted/30 transition-colors">
@@ -1258,12 +1258,12 @@ export function HeroWorkspace() {
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="text-[11px] font-medium truncate">{article.title}</h3>
                           {!article.read && (
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#6366f1] flex-shrink-0" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                           )}
                         </div>
                         <div className="flex items-center gap-2 text-[9px] text-muted-foreground">
                           <span className={`${
-                            article.guide === 'Wedding Planning' ? 'text-[#6366f1]' :
+                            article.guide === 'Wedding Planning' ? 'text-primary' :
                             article.guide === 'Home Buying' ? 'text-emerald-600' :
                             article.guide === 'Career Transition' ? 'text-blue-600' :
                             'text-purple-600'
@@ -1315,7 +1315,7 @@ export function HeroWorkspace() {
                 <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-4">This Week</div>
                 <div className="h-32 flex items-end justify-between gap-1.5">
                   {[3, 5, 2, 8, 4, 6, 7].map((height, i) => (
-                    <div key={i} className="flex-1 bg-[#6366f1]/10 hover:bg-[#6366f1]/20 rounded-t transition-colors cursor-pointer" style={{height: `${height * 12}px`}} />
+                    <div key={i} className="flex-1 bg-primary/10 hover:bg-primary/20 rounded-t transition-colors cursor-pointer" style={{height: `${height * 12}px`}} />
                   ))}
                 </div>
                 <div className="flex justify-between mt-2 text-[9px] text-muted-foreground">
@@ -1328,7 +1328,7 @@ export function HeroWorkspace() {
               {/* Guide Progress - thin bars */}
               <div className="space-y-3">
                 {[
-                  { name: 'Wedding Planning', progress: 60, questions: '9/15', color: '#6366f1' },
+                  { name: 'Wedding Planning', progress: 60, questions: '9/15', color: 'var(--primary)' },
                   { name: 'Career Transition', progress: 45, questions: '6/12', color: '#3b82f6' },
                   { name: 'Home Buying', progress: 30, questions: '4/14', color: '#10b981' },
                   { name: 'Personal Growth', progress: 75, questions: '12/16', color: '#a855f7' },
@@ -1369,7 +1369,7 @@ export function HeroWorkspace() {
                           <span>{guide.questions} questions</span>
                         </div>
                       </div>
-                      <button className="text-[10px] text-[#6366f1] opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button className="text-[10px] text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                         Restore
                       </button>
                     </div>
@@ -1392,7 +1392,7 @@ export function HeroWorkspace() {
                   <div className="flex items-center justify-between">
                     <span className="text-[10px]">Theme</span>
                     <div className="flex items-center gap-1.5">
-                      <button className="px-2.5 py-1 rounded text-[10px] font-medium bg-[#6366f1]/10 text-[#6366f1]">Light</button>
+                      <button className="px-2.5 py-1 rounded text-[10px] font-medium bg-primary/10 text-primary">Light</button>
                       <button className="px-2.5 py-1 rounded text-[10px] text-muted-foreground hover:bg-muted/30 transition-colors">Dark</button>
                       <button className="px-2.5 py-1 rounded text-[10px] text-muted-foreground hover:bg-muted/30 transition-colors">Auto</button>
                     </div>
@@ -1405,13 +1405,13 @@ export function HeroWorkspace() {
                   <div className="space-y-2.5">
                     <div className="flex items-center justify-between">
                       <span className="text-[10px]">Daily reminders</span>
-                      <button className="w-9 h-5 rounded-full bg-[#6366f1] relative transition-colors">
+                      <button className="w-9 h-5 rounded-full bg-primary relative transition-colors">
                         <div className="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white shadow-sm" />
                       </button>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-[10px]">Task deadlines</span>
-                      <button className="w-9 h-5 rounded-full bg-[#6366f1] relative transition-colors">
+                      <button className="w-9 h-5 rounded-full bg-primary relative transition-colors">
                         <div className="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white shadow-sm" />
                       </button>
                     </div>

@@ -303,8 +303,8 @@ export default function TasksPage() {
       {/* Header */}
       <div className="border-b border-border/40 px-6 py-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#6366f1]/10 flex items-center justify-center">
-            <ListTodo className="w-4 h-4 text-[#6366f1]" />
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+            <ListTodo className="w-4 h-4 text-primary" />
           </div>
           <div>
             <h1 className="text-xl font-semibold">Tasks</h1>

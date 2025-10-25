@@ -36,7 +36,7 @@ export function TimelineBar({
       'Life Transitions': { bg: 'bg-amber-500/20', border: 'border-amber-500/40', progress: 'bg-amber-500' },
       'Financial': { bg: 'bg-emerald-500/20', border: 'border-emerald-500/40', progress: 'bg-emerald-500' },
     };
-    return colors[category] || { bg: 'bg-[#6366f1]/20', border: 'border-[#6366f1]/40', progress: 'bg-[#6366f1]' };
+    return colors[category] || { bg: 'bg-primary/20', border: 'border-primary/40', progress: 'bg-primary' };
   };
 
   const colors = getCategoryColor(guide.category);
@@ -87,7 +87,7 @@ export function TimelineBar({
             relative h-12 rounded-lg border-2 overflow-hidden
             ${colors.bg} ${colors.border}
             hover:brightness-110 transition-all cursor-pointer
-            focus:outline-none focus:ring-2 focus:ring-[#6366f1] focus:ring-offset-2
+            focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
           `}
           style={{
             marginLeft: `${startOffset}%`,
