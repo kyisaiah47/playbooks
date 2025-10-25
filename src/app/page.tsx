@@ -8,7 +8,7 @@ import { HeroWorkspace } from "@/components/landing/HeroWorkspace";
 import { BrowseGuides } from "@/components/landing/BrowseGuides";
 import { SplitScreenOpen } from "@/components/landing/SplitScreenOpen";
 import { WorkspaceActive } from "@/components/landing/WorkspaceActive";
-import { ExportOverview } from "@/components/landing/ExportOverview";
+import { StructuredGuide } from "@/components/landing/StructuredGuide";
 import { CategorySelection } from "@/components/landing/CategorySelection";
 import { PopularGuides } from "@/components/landing/PopularGuides";
 import { motion } from "framer-motion";
@@ -129,7 +129,7 @@ export default function LandingPage() {
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Expert-selected for each guide
 							</p>
-							<WorkspaceActive />
+							<StructuredGuide />
 						</div>
 
 						<div className="space-y-3">
@@ -137,7 +137,7 @@ export default function LandingPage() {
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Calendar, tasks, journal, timeline
 							</p>
-							<ExportOverview />
+							<WorkspaceActive />
 						</div>
 					</div>
 				</div>
