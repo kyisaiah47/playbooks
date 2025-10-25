@@ -99,7 +99,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-2xl font-bold">Template not found</h1>
+          <h1 className="text-2xl font-bold">Guide not found</h1>
         </div>
       </PageLayout>
     );
@@ -131,7 +131,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Templates',
+        name: 'Guides',
         item: 'https://templata.org/guides'
       },
       {
@@ -152,8 +152,8 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `How to Use the ${guideData.title} Template`,
-    description: `Complete guide to using Templata's ${guideData.title} template with AI-powered prompts and articles`,
+    name: `How to Use the ${guideData.title} Guide`,
+    description: `Complete guide to using Templata's ${guideData.title} guide with AI-powered questions and readings`,
     step: [
       {
         '@type': 'HowToStep',
@@ -163,15 +163,15 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         itemListElement: [
           {
             '@type': 'HowToDirection',
-            text: 'Browse through categorized prompts specific to your situation'
+            text: 'Browse through categorized questions specific to your situation'
           },
           {
             '@type': 'HowToDirection',
-            text: 'Read expert articles that provide context and guidance'
+            text: 'Read expert readings that provide context and guidance'
           },
           {
             '@type': 'HowToDirection',
-            text: 'Drag insights from articles directly into your prompt answers'
+            text: 'Drag insights from readings directly into your question answers'
           }
         ]
       },
@@ -195,11 +195,11 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         '@type': 'HowToStep',
         position: 3,
         name: 'Master with Life OS',
-        text: 'Graduate to your unified Life OS that combines all your template work. Like Notion, but built from your personal foundation.',
+        text: 'Graduate to your unified Life OS that combines all your guide work. Like Notion, but built from your personal foundation.',
         itemListElement: [
           {
             '@type': 'HowToDirection',
-            text: 'Access all your templates in one unified workspace'
+            text: 'Access all your guides in one unified workspace'
           },
           {
             '@type': 'HowToDirection',
@@ -214,7 +214,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: `${guideData.title} - Complete Planning Template`,
+    headline: `${guideData.title} - Complete Planning Guide`,
     description: guideData.description,
     author: {
       '@type': 'Organization',
@@ -236,7 +236,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     datePublished: '2024-01-01',
     dateModified: new Date().toISOString().split('T')[0],
     articleSection: guideData.category,
-    keywords: `${guideData.title.toLowerCase()}, ${guideData.title.toLowerCase()} template, ${guideData.category.toLowerCase()}, life planning, ai planning tool, templata, life organization, planning prompts, expert articles`,
+    keywords: `${guideData.title.toLowerCase()}, ${guideData.title.toLowerCase()} guide, ${guideData.category.toLowerCase()}, life planning, ai planning tool, templata, life organization, planning questions, expert readings`,
     about: {
       '@type': 'Thing',
       name: guideData.title,
@@ -247,8 +247,8 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const webPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: `${guideData.title} Template`,
-    description: `${guideData.description} Get ${prompts.length} expert prompts and ${articles.length} articles.`,
+    name: `${guideData.title} Guide`,
+    description: `${guideData.description} Get ${prompts.length} expert questions and ${articles.length} readings.`,
     url: `https://templata.org/guides/${slug}/marketing`,
     isPartOf: {
       '@type': 'WebSite',
@@ -275,8 +275,8 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const promptsListSchema = prompts.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: `${guideData.title} Prompts`,
-    description: `${prompts.length} expert prompts for ${guideData.title.toLowerCase()}`,
+    name: `${guideData.title} Questions`,
+    description: `${prompts.length} expert questions for ${guideData.title.toLowerCase()}`,
     numberOfItems: prompts.length,
     itemListElement: prompts.slice(0, 10).map((prompt, index) => ({
       '@type': 'ListItem',
@@ -289,8 +289,8 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   const articlesListSchema = articles.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: `${guideData.title} Articles`,
-    description: `${articles.length} expert articles for ${guideData.title.toLowerCase()}`,
+    name: `${guideData.title} Readings`,
+    description: `${articles.length} expert readings for ${guideData.title.toLowerCase()}`,
     numberOfItems: articles.length,
     itemListElement: articles.slice(0, 10).map((article, index) => ({
       '@type': 'ListItem',
@@ -342,7 +342,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
             <div className="text-center space-y-8">
               <Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
                 <AnnouncementTag>{guideData.category}</AnnouncementTag>
-                <AnnouncementTitle>{prompts.length} prompts · {articles.length} articles</AnnouncementTitle>
+                <AnnouncementTitle>{prompts.length} questions · {articles.length} readings</AnnouncementTitle>
               </Announcement>
 
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
@@ -375,7 +375,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 font-semibold mb-4">
                     <FileText className="h-5 w-5 text-primary" />
-                    <span>Guided Prompts</span>
+                    <span>Guided Questions</span>
                   </div>
                   <div className="space-y-2">
                     <div className="p-3 bg-muted rounded text-sm">What's your venue budget?</div>
@@ -421,11 +421,11 @@ export default function MarketingClient({ params }: MarketingClientProps) {
               <div className="border-t mt-8 pt-6 space-y-3">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-                  <span>104,000+ categorized prompts ensure you consider everything</span>
+                  <span>104,000+ categorized questions ensure you consider everything</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-                  <span>26,000+ articles like Wikipedia for life decisions</span>
+                  <span>26,000+ readings like Wikipedia for life decisions</span>
                 </div>
               </div>
             </Card>
@@ -447,11 +447,11 @@ export default function MarketingClient({ params }: MarketingClientProps) {
               </div>
               <div className="text-center">
                 <div className="text-5xl font-bold mb-2">104K+</div>
-                <p className="text-muted-foreground">Action Prompts</p>
+                <p className="text-muted-foreground">Questions</p>
               </div>
               <div className="text-center">
                 <div className="text-5xl font-bold mb-2">26k+</div>
-                <p className="text-muted-foreground">Expert Articles</p>
+                <p className="text-muted-foreground">Expert Readings</p>
               </div>
               <div className="text-center">
                 <div className="text-5xl font-bold mb-2">Free</div>
@@ -465,16 +465,16 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         <section className="py-16">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-2">Prompts</h2>
+              <h2 className="text-2xl font-bold mb-2">Questions</h2>
               <p className="text-sm text-muted-foreground">
-                {prompts.length} prompts across {promptCategories.length} categories
+                {prompts.length} questions across {promptCategories.length} categories
               </p>
             </div>
 
             {loading ? (
-              <p className="text-muted-foreground">Loading prompts...</p>
+              <p className="text-muted-foreground">Loading questions...</p>
             ) : prompts.length === 0 ? (
-              <p className="text-muted-foreground">No prompts available for this template.</p>
+              <p className="text-muted-foreground">No questions available for this guide.</p>
             ) : (
               <div className="space-y-4">
                 {promptCategories.map(category => {
@@ -528,16 +528,16 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         <section className="py-16">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-2">Articles</h2>
+              <h2 className="text-2xl font-bold mb-2">Readings</h2>
               <p className="text-sm text-muted-foreground">
-                {articles.length} articles
+                {articles.length} readings
               </p>
             </div>
 
             {loading ? (
-              <p className="text-muted-foreground">Loading articles...</p>
+              <p className="text-muted-foreground">Loading readings...</p>
             ) : articles.length === 0 ? (
-              <p className="text-muted-foreground">No articles available for this template.</p>
+              <p className="text-muted-foreground">No readings available for this guide.</p>
             ) : (
               <div className="border-t">
                 {articles.map((article) => (
@@ -562,9 +562,9 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         <section className="py-16 bg-muted/20">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-2">Related Templates</h2>
+              <h2 className="text-2xl font-bold mb-2">Related Guides</h2>
               <p className="text-sm text-muted-foreground">
-                Explore more {guideData.category} templates
+                Explore more {guideData.category} guides
               </p>
             </div>
 
@@ -598,7 +598,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
 
             {relatedTemplates.length === 0 && (
               <p className="text-muted-foreground text-center">
-                No related templates found. <Link href="/guides" className="text-primary hover:underline">Browse all templates</Link>
+                No related guides found. <Link href="/guides" className="text-primary hover:underline">Browse all guides</Link>
               </p>
             )}
           </div>

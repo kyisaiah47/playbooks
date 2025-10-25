@@ -66,7 +66,7 @@ export function SplitView({ guideId }: SplitViewProps) {
           <div className="relative">
             <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search prompts..."
+              placeholder="Search questions..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
@@ -151,8 +151,8 @@ export function SplitView({ guideId }: SplitViewProps) {
         ) : (
           <div className="flex-1 flex items-center justify-center text-muted-foreground">
             <div className="text-center">
-              <p className="text-lg font-medium mb-2">No prompt selected</p>
-              <p className="text-sm">Select a prompt from the left to start writing</p>
+              <p className="text-lg font-medium mb-2">No question selected</p>
+              <p className="text-sm">Select a question from the left to start writing</p>
             </div>
           </div>
         )}

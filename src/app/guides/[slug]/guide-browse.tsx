@@ -100,7 +100,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-2xl font-bold">Template not found</h1>
+          <h1 className="text-2xl font-bold">Guide not found</h1>
         </div>
       </PageLayout>
     );
@@ -177,11 +177,11 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             <div className="flex items-center justify-center gap-6 pt-4">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Sparkles className="h-4 w-4" />
-                <span>{prompts.length} prompts</span>
+                <span>{prompts.length} questions</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <FileText className="h-4 w-4" />
-                <span>{articles.length} articles</span>
+                <span>{articles.length} readings</span>
               </div>
             </div>
           </div>
@@ -192,16 +192,16 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
       <section className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-2">Prompts</h2>
+            <h2 className="text-2xl font-bold mb-2">Questions</h2>
             <p className="text-sm text-muted-foreground">
-              {prompts.length} prompts across {promptCategories.length} categories
+              {prompts.length} questions across {promptCategories.length} categories
             </p>
           </div>
 
           {loading ? (
-            <p className="text-muted-foreground">Loading prompts...</p>
+            <p className="text-muted-foreground">Loading questions...</p>
           ) : prompts.length === 0 ? (
-            <p className="text-muted-foreground">No prompts available for this template.</p>
+            <p className="text-muted-foreground">No questions available for this guide.</p>
           ) : (
             <div className="space-y-4">
               {promptCategories.map(category => {
@@ -253,16 +253,16 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
       <section className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-2">Articles</h2>
+            <h2 className="text-2xl font-bold mb-2">Readings</h2>
             <p className="text-sm text-muted-foreground">
-              {articles.length} articles
+              {articles.length} readings
             </p>
           </div>
 
           {loading ? (
-            <p className="text-muted-foreground">Loading articles...</p>
+            <p className="text-muted-foreground">Loading readings...</p>
           ) : articles.length === 0 ? (
-            <p className="text-muted-foreground">No articles available for this template.</p>
+            <p className="text-muted-foreground">No readings available for this guide.</p>
           ) : (
             <ol className="space-y-3 pl-6 list-decimal marker:text-sm border-t pt-6">
               {articles.map((article) => (
@@ -292,9 +292,9 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
         <section className="py-16">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-2">Related Templates</h2>
+              <h2 className="text-2xl font-bold mb-2">Related Guides</h2>
               <p className="text-sm text-muted-foreground">
-                Explore similar templates in {guideData.category}
+                Explore similar guides in {guideData.category}
               </p>
             </div>
 
@@ -329,7 +329,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CreativeWork',
-            name: `${guideData.title} Template`,
+            name: `${guideData.title} Guide`,
             description: guideData.description,
             creator: {
               '@type': 'Organization',
@@ -338,7 +338,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             },
             url: `https://templata.org/guides/${slug}`,
             inLanguage: 'en-US',
-            genre: 'Planning Template',
+            genre: 'Planning Guide',
             keywords: guideData.tags?.join(', ') || guideData.category,
             isPartOf: {
               '@type': 'WebSite',

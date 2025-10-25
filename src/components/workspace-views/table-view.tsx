@@ -71,7 +71,7 @@ export function TableView({ guideId }: TableViewProps) {
     {
       accessorKey: 'prompt',
       header: ({ column }) => (
-        <TableColumnHeader column={column} title="Prompt" />
+        <TableColumnHeader column={column} title="Question" />
       ),
       cell: ({ row }) => (
         <div className="font-medium max-w-md truncate">{row.getValue('prompt')}</div>
@@ -129,9 +129,9 @@ export function TableView({ guideId }: TableViewProps) {
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
           <IconTable className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-semibold mb-2">No Template Selected</h3>
+          <h3 className="text-lg font-semibold mb-2">No Guide Selected</h3>
           <p className="text-sm text-muted-foreground">
-            Select a template from the dock to view prompts
+            Select a guide from the dock to view questions
           </p>
         </div>
       </div>
@@ -144,7 +144,7 @@ export function TableView({ guideId }: TableViewProps) {
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">Table View</h2>
           <p className="text-sm text-muted-foreground">
-            Track prompts in a spreadsheet format. Click column headers to sort.
+            Track questions in a spreadsheet format. Click column headers to sort.
           </p>
         </div>
 
