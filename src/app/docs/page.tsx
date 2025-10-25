@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { PageLayout } from "@/components/layout/page-layout";
 import {
   BookOpen,
   FileText,
@@ -121,8 +120,7 @@ export default function DocsPage() {
   };
 
   return (
-    <PageLayout>
-      <div className="min-h-screen pt-24 pb-16 bg-background">
+      <div className="min-h-screen pt-4 pb-16 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
@@ -185,6 +183,5 @@ export default function DocsPage() {
           </div>
         </div>
       </div>
-    </PageLayout>
   );
 }
