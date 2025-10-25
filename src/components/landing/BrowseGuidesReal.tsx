@@ -11,9 +11,9 @@ export function BrowseGuidesReal() {
           <div className="w-3 h-3 rounded-full bg-[#28CA42]" />
         </div>
         <div className="flex-1 flex justify-center -ml-16">
-          <div className="w-[420px] h-7 px-4 bg-background/50 rounded-md border border-border/40 flex items-center gap-2">
-            <div className="w-3.5 h-3.5 rounded-sm bg-muted-foreground/20" />
-            <span className="text-xs text-muted-foreground/80">templata.org/app/guides</span>
+          <div className="w-[280px] h-7 px-3 bg-background/50 rounded-md border border-border/40 flex items-center gap-2">
+            <div className="w-3 h-3 rounded-sm bg-muted-foreground/20" />
+            <span className="text-[11px] text-muted-foreground/80">templata.org/app/guides</span>
           </div>
         </div>
       </div>
