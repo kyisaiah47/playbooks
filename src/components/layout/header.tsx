@@ -311,7 +311,7 @@ export function Header() {
 												Create account
 											</div>
 											<p className="text-xs text-muted-foreground leading-relaxed">
-												Start your transition journey today
+												Start organizing your work today
 											</p>
 										</Link>
 										<Link
@@ -335,7 +335,7 @@ export function Header() {
 												How it works
 											</div>
 											<p className="text-xs text-muted-foreground leading-relaxed">
-												Learn how Templata supports transitions
+												Learn how Templata works
 											</p>
 										</Link>
 									</div>
