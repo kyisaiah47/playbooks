@@ -2,17 +2,18 @@ import { LayoutDashboard, ListTodo, Calendar, Clock, AlertCircle, Circle } from 
 
 export function WorkspaceDashboard() {
   return (
-    <div className="w-full bg-background rounded-lg overflow-hidden shadow-[0_20px_70px_-10px_rgba(0,0,0,0.3)] ring-1 ring-border">
+    <div className="w-full bg-muted/10 rounded-2xl overflow-hidden shadow-[0_20px_70px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_70px_-10px_rgba(0,0,0,0.8)]">
       {/* Browser Header */}
-      <div className="h-8 bg-muted/30 border-b border-border flex items-center px-3 gap-2">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#28CA42]" />
+      <div className="h-11 bg-gradient-to-b from-muted/60 to-muted/40 border-b border-border/60 flex items-center px-4 gap-3">
+        <div className="flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+          <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+          <div className="w-3 h-3 rounded-full bg-[#28CA42]" />
         </div>
-        <div className="flex-1 flex items-center justify-center">
-          <div className="bg-background/50 rounded px-3 py-0.5 text-[10px] text-muted-foreground font-mono">
-            templata.org/app/overview
+        <div className="flex-1 flex justify-center -ml-16">
+          <div className="w-[420px] h-7 px-4 bg-background/50 rounded-md border border-border/40 flex items-center gap-2">
+            <div className="w-3.5 h-3.5 rounded-sm bg-muted-foreground/20" />
+            <span className="text-xs text-muted-foreground/80">templata.org/app/overview</span>
           </div>
         </div>
       </div>
