@@ -132,8 +132,9 @@ export function Header() {
 	return (
 		<>
 			<header className={cn(
-				"fixed top-0 z-50 w-full border-b transition-colors duration-300",
-				isScrolled ? "bg-background" : "border-transparent"
+				"fixed top-0 z-50 w-full transition-colors duration-300",
+				isScrolled ? "bg-background border-b" : "border-b border-transparent",
+				showFeaturesDropdown && "border-transparent"
 			)}>
 				<nav className="container mx-auto px-4 py-4">
 					<div className="flex items-center justify-between relative">
@@ -163,7 +164,7 @@ export function Header() {
 						{/* Center - Desktop Navigation */}
 						<div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
 							<div className="flex items-center space-x-2 pointer-events-auto">
-								{/* Features Dropdown */}
+								{/* Templata Dropdown */}
 								<div
 									onMouseEnter={handleMouseEnter}
 									onMouseLeave={handleMouseLeave}
@@ -172,7 +173,7 @@ export function Header() {
 									<button
 										className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
 									>
-										Features
+										Templata
 										<ChevronDown className="h-4 w-4" />
 									</button>
 								</div>
