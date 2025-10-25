@@ -86,7 +86,7 @@ export class AnalyticsEngine {
 
     // Count templates by category
     const categoryCounts: Record<string, number> = {};
-    filteredGuides.forEach((template) => {
+    filteredGuides.forEach((guide) => {
       const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
@@ -199,7 +199,7 @@ export class AnalyticsEngine {
 
     // By category
     const byCategory: Record<string, { started: number; completed: number; rate: number }> = {};
-    filteredGuides.forEach((template) => {
+    filteredGuides.forEach((guide) => {
       const category = this.extractCategory(guide.tags);
       if (!byCategory[category]) {
         byCategory[category] = { started: 0, completed: 0, rate: 0 };
@@ -347,7 +347,7 @@ export class AnalyticsEngine {
         wordCounts[word].count += 1;
         wordCounts[word].lastSeen = reflection.createdAt;
         reflection.linkedGuideIds.forEach((id) => {
-          const guide = this.templates.find((t) => t.id === id);
+          const guide = this.guides.find((t) => t.id === id);
           if (template) {
             const category = this.extractCategory(guide.tags);
             wordCounts[word].categories.add(category);
@@ -432,7 +432,7 @@ export class AnalyticsEngine {
    */
   private generateSummary() {
     const categoryCounts: Record<string, number> = {};
-    this.templates.forEach((template) => {
+    this.guides.forEach((template) => {
       const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
@@ -441,14 +441,14 @@ export class AnalyticsEngine {
       .sort(([, a], [, b]) => b - a)[0]?.[0] || 'None';
 
     const activeDays = new Set(
-      [...this.templates.map((t) => t.startedAt.toDateString()),
+      [...this.guides.map((t) => t.startedAt.toDateString()),
        ...this.reflections.map((r) => r.createdAt.toDateString())]
     ).size;
 
     const streak = this.calculateReflectionStreak(this.reflections);
 
     return {
-      totalTemplates: this.templates.length,
+      totalTemplates: this.guides.length,
       totalReflections: this.reflections.length,
       activeDays,
       mostActiveCategory,

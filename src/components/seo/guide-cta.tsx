@@ -44,7 +44,7 @@ export function TemplateCTA({ templateType, guideName, appLink }: TemplateCTAPro
       case 'home-buying':
         return "Join thousands of families who've found their dream home with our comprehensive guide. Start your home buying journey today - completely free."
       default:
-        return "Start using this template today - completely free."
+        return "Start using this guide today - completely free."
     }
   }
 

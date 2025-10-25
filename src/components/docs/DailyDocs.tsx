@@ -224,7 +224,7 @@ export function DailyDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Can I customize the daily note guide?</p>
               <p className="text-xs text-muted-foreground">
-                Yes. Go to Settings to create your own template or modify the default structure to match your preferences.
+                Yes. Go to Settings to create your own guide or modify the default structure to match your preferences.
               </p>
             </div>
             <div className="bg-muted/30 border border-border rounded-lg p-3">

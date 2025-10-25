@@ -41,7 +41,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
     fetchData()
   }, [])
 
-  const filteredGuides = guides.filter(template => {
+  const filteredGuides = guides.filter(guide => {
     const matchesSearch = searchQuery === "" ||
                          guide.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          guide.description.toLowerCase().includes(searchQuery.toLowerCase())

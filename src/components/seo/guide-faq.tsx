@@ -12,14 +12,14 @@ const weddingFAQs = [
   },
   {
     question: "How much does the Wedding Planning Template cost?",
-    answer: "You can start using the template completely free! Create your wedding planning workspace, use all the guided sections, and organize your planning process at no cost. Premium features and advanced customization options are available for couples who want additional functionality."
+    answer: "You can start using the guide completely free! Create your wedding planning workspace, use all the guided sections, and organize your planning process at no cost. Premium features and advanced customization options are available for couples who want additional functionality."
   },
   {
-    question: "Can I customize the template for my specific wedding style?",
-    answer: "Absolutely! The template is 100% customizable. You can modify all sections, add your own notes, customize budget categories, adjust guest list fields, and tailor every aspect to match your unique wedding vision and requirements."
+    question: "Can I customize the guide for my specific wedding style?",
+    answer: "Absolutely! The guide is 100% customizable. You can modify all sections, add your own notes, customize budget categories, adjust guest list fields, and tailor every aspect to match your unique wedding vision and requirements."
   },
   {
-    question: "Do I need any special software to use this template?",
+    question: "Do I need any special software to use this guide?",
     answer: "No special software required! The wedding planning guide works directly in your web browser. It's accessible from any device - desktop, tablet, or mobile - so you can plan your wedding from anywhere."
   },
   {
@@ -27,12 +27,12 @@ const weddingFAQs = [
     answer: "Each of the 12 guided sections includes specific questions, examples, and expert tips to walk you through different aspects of wedding planning. From timeline creation to vendor questions, vows writing to emergency planning - each section provides structure while allowing complete customization."
   },
   {
-    question: "Can my partner and wedding party access the template too?",
+    question: "Can my partner and wedding party access the guide too?",
     answer: "Yes! You can share your wedding planning guide with your partner, wedding party members, or family to collaborate on planning. Everyone can contribute to different sections while maintaining organization and avoiding duplicate work."
   },
   {
     question: "What if I'm planning a destination wedding or non-traditional ceremony?",
-    answer: "The template is flexible enough to accommodate any wedding style - destination weddings, elopements, backyard ceremonies, cultural traditions, or modern celebrations. All sections can be customized to match your specific planning needs and wedding format."
+    answer: "The guide is flexible enough to accommodate any wedding style - destination weddings, elopements, backyard ceremonies, cultural traditions, or modern celebrations. All sections can be customized to match your specific planning needs and wedding format."
   },
   {
     question: "How does the budget tracking feature work?",
@@ -43,7 +43,7 @@ const weddingFAQs = [
     answer: "Yes, your wedding planning information is completely private and secure. Only you and people you explicitly share access with can view your wedding plans. We use industry-standard security measures to protect your personal information and planning details."
   },
   {
-    question: "What if I need help using the template or have planning questions?",
+    question: "What if I need help using the guide or have planning questions?",
     answer: "The template includes built-in tips and guidance for each section. Additionally, our support team is available to help with technical questions, and each guided section provides expert wedding planning advice to help you make informed decisions."
   }
 ]

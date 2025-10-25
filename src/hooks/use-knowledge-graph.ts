@@ -81,7 +81,7 @@ export interface UseKnowledgeGraphReturn {
   getArticlesForTemplate: (guideId: string, limit?: number) => ArticleConnection[];
   getRelatedPrompts: (questionId: string, limit?: number) => PromptConnection[];
   getPromptsForTemplate: (guideId: string, limit?: number) => PromptConnection[];
-  getCrossRecommendations: (contentType: 'template' | 'reading' | 'question', contentId: string) => CrossConnection[];
+  getCrossRecommendations: (contentType: 'guide' | 'reading' | 'question', contentId: string) => CrossConnection[];
 }
 
 export function useKnowledgeGraph(): UseKnowledgeGraphReturn {

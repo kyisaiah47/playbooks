@@ -38,7 +38,7 @@ export function generateMarkdownSummary(
   // Templates
   if (templates.length > 0) {
     markdown += `## Templates (${templates.length})\n\n`;
-    templates.forEach((template, index) => {
+    guides.forEach((guide, index) => {
       markdown += `### ${index + 1}. ${guide.guideId}\n\n`;
       markdown += `- **Status:** ${guide.completion === 100 ? 'Completed' : 'In Progress'} (${guide.completion}%)\n`;
       markdown += `- **Tags:** ${guide.tags.join(', ')}\n`;
@@ -254,7 +254,7 @@ export function generateHTMLForPDF(
   // Templates
   if (templates.length > 0) {
     html += `<h2>Templates (${templates.length})</h2>`;
-    templates.forEach((template, index) => {
+    guides.forEach((guide, index) => {
       html += `
   <h3>${index + 1}. ${guide.guideId}</h3>
   <p class="meta">

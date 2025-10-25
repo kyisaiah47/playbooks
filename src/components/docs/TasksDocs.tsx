@@ -139,7 +139,7 @@ export function TasksDocs() {
             <div className="space-y-1">
               <p className="text-xs text-muted-foreground">→ Subtask: Identify 10 target companies</p>
               <p className="text-xs text-muted-foreground">→ Subtask: Update resume</p>
-              <p className="text-xs text-muted-foreground">→ Subtask: Write cover letter template</p>
+              <p className="text-xs text-muted-foreground">→ Subtask: Write cover letter draft</p>
               <p className="text-xs text-muted-foreground">→ Subtask: Set up job search tracker</p>
               <p className="text-xs text-muted-foreground">→ Subtask: Apply to 5 positions this week</p>
             </div>
