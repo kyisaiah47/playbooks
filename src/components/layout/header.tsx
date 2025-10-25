@@ -186,14 +186,6 @@ export function Header() {
 									How It Works
 								</Link>
 
-								{/* Community */}
-								<Link
-									href="/community"
-									className="px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
-								>
-									Community
-								</Link>
-
 								{/* About */}
 								<Link
 									href="/about"
