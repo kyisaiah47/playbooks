@@ -21,7 +21,7 @@ import {
   SidebarMenuItem,
   useSidebar,
   SidebarFooter,
-} from "@/components/ui/template-sidebar"
+} from "@/components/ui/guide-sidebar"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 
 export const getCategoryIcon = (category: string) => {

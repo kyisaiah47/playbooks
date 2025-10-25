@@ -3,7 +3,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { GuidanceTemplate, Resource, ReflectionQuestion, FreeformNote, Workspace } from '@/types/guide';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/template-sidebar';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/guide-sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
 import { ResourceViewer } from '@/components/resource/ResourceViewer';
 import { Progress } from '@/components/ui/progress';

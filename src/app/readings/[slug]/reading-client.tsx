@@ -9,7 +9,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
 import { getReadingBySlug, getRelatedArticles, getArticlesByCategory, articleRegistry } from "@/registry/readings";
-import { TemplateImage } from "@/components/ui/template-image";
+import { TemplateImage } from "@/components/ui/guide-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph";

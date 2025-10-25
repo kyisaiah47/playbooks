@@ -244,7 +244,7 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: 
       }),
       QuestionNode.configure({
         HTMLAttributes: {
-          class: 'template-question-node',
+          class: 'guide-question-node',
         },
       }),
     ],

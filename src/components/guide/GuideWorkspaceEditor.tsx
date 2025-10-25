@@ -39,14 +39,14 @@ export function TemplateWorkspaceEditor({
       Typography,
       QuestionNode.configure({
         HTMLAttributes: {
-          class: 'template-question-node',
+          class: 'guide-question-node',
         },
       }),
     ],
     content: initialContent || '',
     editorProps: {
       attributes: {
-        class: 'template-workspace-editor',
+        class: 'guide-workspace-editor',
         spellcheck: 'false',
       },
     },
@@ -134,13 +134,13 @@ export function TemplateWorkspaceEditor({
       />
 
       <style jsx>{`
-        .template-workspace-container {
+        .guide-workspace-container {
           position: relative;
           min-height: 93vh;
           width: 100%;
         }
 
-        :global(.template-workspace-editor) {
+        :global(.guide-workspace-editor) {
           background: transparent !important;
           color: inherit;
           min-height: 93vh;
@@ -149,12 +149,12 @@ export function TemplateWorkspaceEditor({
           border: none;
         }
 
-        :global(.template-workspace-editor-content) {
+        :global(.guide-workspace-editor-content) {
           position: relative;
           z-index: 20;
         }
 
-        :global(.template-workspace-editor .ProseMirror) {
+        :global(.guide-workspace-editor .ProseMirror) {
           background: transparent !important;
           outline: none !important;
           border: none !important;
@@ -162,7 +162,7 @@ export function TemplateWorkspaceEditor({
           padding: 0;
         }
 
-        :global(.template-workspace-editor .transparent-paragraph) {
+        :global(.guide-workspace-editor .transparent-paragraph) {
           background: transparent;
           margin: 1rem 0;
         }
