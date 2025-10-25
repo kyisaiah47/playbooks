@@ -125,7 +125,7 @@ export default function LandingPage() {
 						</div>
 
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Read curated articles</h3>
+							<h3 className="text-base font-medium">Read curated readings</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Expert-selected for each guide
 							</p>
