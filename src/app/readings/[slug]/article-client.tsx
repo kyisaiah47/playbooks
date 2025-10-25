@@ -8,12 +8,12 @@ import { Marquee } from "@/components/ui/marquee";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
 import { PageLayout } from "@/components/layout";
-import { getArticleBySlug, getRelatedArticles, getArticlesByCategory, articleRegistry } from "@/registry/articles";
+import { getArticleBySlug, getRelatedArticles, getArticlesByCategory, articleRegistry } from "@/registry/readings";
 import { TemplateImage } from "@/components/ui/template-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph";
-import { templateRegistry } from "@/registry/templates";
+import { templateRegistry } from "@/registry/guides";
 
 // Category icon mapping
 const getCategoryIcon = (category: string) => {
@@ -120,7 +120,7 @@ export default function ArticleClient({ params }: ArticleClientProps) {
               The article you're looking for doesn't exist or has been moved.
             </p>
             <Button asChild>
-              <Link href="/articles">
+              <Link href="/readings">
                 Browse All Articles
               </Link>
             </Button>
@@ -159,7 +159,7 @@ export default function ArticleClient({ params }: ArticleClientProps) {
         {/* Article Header */}
         <header className="mb-8">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-            <Link href="/articles" className="hover:text-foreground transition-colors">
+            <Link href="/readings" className="hover:text-foreground transition-colors">
               Articles
             </Link>
             <span>/</span>
@@ -323,7 +323,7 @@ export default function ArticleClient({ params }: ArticleClientProps) {
             {relatedPosts.map((relatedPost) => (
               <Link
                 key={relatedPost.slug}
-                href={`/articles/${relatedPost.slug}`}
+                href={`/readings/${relatedPost.slug}`}
                 className="group block"
               >
                 <article className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
@@ -374,7 +374,7 @@ export default function ArticleClient({ params }: ArticleClientProps) {
             {categoryPosts.map((categoryPost) => (
               <Link
                 key={categoryPost.slug}
-                href={`/articles/${categoryPost.slug}`}
+                href={`/readings/${categoryPost.slug}`}
                 className="mx-4"
               >
                 <article className="w-80 border rounded-lg overflow-hidden bg-background hover:shadow-lg transition-shadow">

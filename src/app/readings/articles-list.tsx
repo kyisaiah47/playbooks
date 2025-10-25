@@ -69,7 +69,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
       params.set('pageSize', ARTICLES_PER_PAGE.toString());
 
       try {
-        const response = await fetch(`/api/articles?${params.toString()}`);
+        const response = await fetch(`/api/readings?${params.toString()}`);
         const data = await response.json();
         setArticles(data.articles || []);
         setTotal(data.total || 0);
@@ -90,7 +90,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
       else params.delete('q');
       params.delete('page'); // Reset to page 1
 
-      const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+      const newUrl = params.toString() ? `/readings?${params.toString()}` : '/readings';
       router.push(newUrl, { scroll: false });
     }, 300);
 
@@ -111,7 +111,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     }
     params.delete('page'); // Reset to page 1
 
-    const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+    const newUrl = params.toString() ? `/readings?${params.toString()}` : '/readings';
     router.push(newUrl, { scroll: false });
   };
 
@@ -120,7 +120,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     if (page === 1) params.delete('page');
     else params.set('page', page.toString());
 
-    const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+    const newUrl = params.toString() ? `/readings?${params.toString()}` : '/readings';
     router.push(newUrl, { scroll: false });
   };
 
@@ -193,7 +193,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
             return (
               <Link
                 key={article.id}
-                href={`/articles/${article.slug}`}
+                href={`/readings/${article.slug}`}
                 className="group block py-3 hover:text-primary transition-colors"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">

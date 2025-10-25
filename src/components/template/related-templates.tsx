@@ -1,8 +1,8 @@
 "use client"
 
 import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph"
-import { templateRegistry } from "@/registry/templates"
-import type { TemplateRegistryEntry } from "@/registry/templates"
+import { templateRegistry } from "@/registry/guides"
+import type { TemplateRegistryEntry } from "@/registry/guides"
 import { cn } from "@/lib/utils"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 import { Badge } from "@/components/ui/badge"

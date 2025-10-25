@@ -1,4 +1,4 @@
-import { articleRegistry } from '@/registry/articles';
+import { articleRegistry } from '@/registry/readings';
 import { UnsplashImage } from './unsplash';
 
 /**

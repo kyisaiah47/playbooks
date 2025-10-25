@@ -2,7 +2,7 @@
 
 import { use, useState, useEffect } from 'react';
 import Link from 'next/link';
-import type { TemplateRegistryEntry } from '@/registry/templates';
+import type { TemplateRegistryEntry } from '@/registry/guides';
 import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -51,7 +51,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         setLoading(true);
 
         // Fetch all templates
-        const templatesRes = await fetch('/api/templates');
+        const templatesRes = await fetch('/api/guides');
         const templatesData = await templatesRes.json();
         const foundTemplate = templatesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
         setTemplate(foundTemplate || null);
@@ -70,7 +70,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         setPrompts(promptsData.prompts || []);
 
         // Fetch articles for this template (server-side filtering)
-        const articlesRes = await fetch(`/api/articles?template=${slug}&pageSize=1000`);
+        const articlesRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
         const articlesData = await articlesRes.json();
         setArticles(articlesData.articles || []);
       } catch (error) {
@@ -132,19 +132,19 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         '@type': 'ListItem',
         position: 2,
         name: 'Templates',
-        item: 'https://templata.org/templates'
+        item: 'https://templata.org/guides'
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: templateData.category,
-        item: `https://templata.org/templates?category=${encodeURIComponent(templateData.category)}`
+        item: `https://templata.org/guides?category=${encodeURIComponent(templateData.category)}`
       },
       {
         '@type': 'ListItem',
         position: 4,
         name: templateData.title,
-        item: `https://templata.org/templates/${slug}/marketing`
+        item: `https://templata.org/guides/${slug}/marketing`
       }
     ]
   };
@@ -231,7 +231,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://templata.org/templates/${slug}/marketing`
+      '@id': `https://templata.org/guides/${slug}/marketing`
     },
     datePublished: '2024-01-01',
     dateModified: new Date().toISOString().split('T')[0],
@@ -249,7 +249,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     '@type': 'WebPage',
     name: `${templateData.title} Template`,
     description: `${templateData.description} Get ${prompts.length} expert prompts and ${articles.length} articles.`,
-    url: `https://templata.org/templates/${slug}/marketing`,
+    url: `https://templata.org/guides/${slug}/marketing`,
     isPartOf: {
       '@type': 'WebSite',
       name: 'Templata',
@@ -282,7 +282,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: prompt.prompt.substring(0, 100),
-      item: `https://templata.org/templates/${slug}/marketing#prompt-${prompt.id}`
+      item: `https://templata.org/guides/${slug}/marketing#prompt-${prompt.id}`
     }))
   } : null;
 
@@ -296,7 +296,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
       '@type': 'ListItem',
       position: index + 1,
       name: article.title,
-      item: `https://templata.org/templates/${slug}/marketing#article-${article.id}`
+      item: `https://templata.org/guides/${slug}/marketing#article-${article.id}`
     }))
   } : null;
 
@@ -574,7 +574,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                 .map((relatedTemplate) => (
                   <Link
                     key={relatedTemplate.id}
-                    href={`/templates/${relatedTemplate.id}/marketing`}
+                    href={`/guides/${relatedTemplate.id}/marketing`}
                     className="group"
                   >
                     <Card className="h-full hover:shadow-lg transition-shadow">
@@ -598,7 +598,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
 
             {relatedTemplates.length === 0 && (
               <p className="text-muted-foreground text-center">
-                No related templates found. <Link href="/templates" className="text-primary hover:underline">Browse all templates</Link>
+                No related templates found. <Link href="/guides" className="text-primary hover:underline">Browse all templates</Link>
               </p>
             )}
           </div>

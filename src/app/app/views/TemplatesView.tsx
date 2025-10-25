@@ -22,7 +22,7 @@ import {
   CommandSeparator,
 } from '@/components/ui/command';
 import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu, Search } from 'lucide-react';
-import { ArticleContent } from '@/app/articles/[slug]/article-content';
+import { ArticleContent } from '@/app/readings/[slug]/article-content';
 import Link from 'next/link';
 import { GuideHeader } from '@/components/app/guides/GuideHeader';
 import {
@@ -325,7 +325,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   useEffect(() => {
     async function fetchTemplates() {
       try {
-        const res = await fetch('/api/templates');
+        const res = await fetch('/api/guides');
         const data = await res.json();
         const allTemplates = (data.templates || []).sort((a: Template, b: Template) =>
           a.name.localeCompare(b.name)
@@ -407,7 +407,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
         const allCategories = Object.keys(groupedPrompts);
         setCollapsedCategories(new Set(allCategories));
 
-        const articlesRes = await fetch(`/api/articles?template=${selectedTemplate}&pageSize=50`);
+        const articlesRes = await fetch(`/api/readings?template=${selectedTemplate}&pageSize=50`);
         const articlesData = await articlesRes.json();
         setArticles(articlesData.articles || []);
       } catch (error) {
@@ -493,7 +493,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   const handleArticleClick = async (articleId: string) => {
     try {
       setLoadingArticle(true);
-      const res = await fetch(`/api/articles?id=${articleId}`);
+      const res = await fetch(`/api/readings?id=${articleId}`);
       const data = await res.json();
 
       setSelectedArticle(data.article);

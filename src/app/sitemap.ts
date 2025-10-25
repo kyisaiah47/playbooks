@@ -16,13 +16,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/templates`,
+      url: `${baseUrl}/guides`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/articles`,
+      url: `${baseUrl}/readings`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
@@ -53,7 +53,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Get unique categories and generate category pages dynamically
     const uniqueCategories = [...new Set((templates || []).map(t => t.category))];
     const categoryPages: MetadataRoute.Sitemap = uniqueCategories.map((category) => ({
-      url: `${baseUrl}/templates/categories/${category.toLowerCase().replace(/\s+&?\s*/g, '-')}`,
+      url: `${baseUrl}/guides/categories/${category.toLowerCase().replace(/\s+&?\s*/g, '-')}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.85,
@@ -68,13 +68,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Generate template pages
     const templatePages: MetadataRoute.Sitemap = (templates || []).flatMap((template) => [
       {
-        url: `${baseUrl}/templates/${template.id}`,
+        url: `${baseUrl}/guides/${template.id}`,
         lastModified: new Date(template.created_at),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
       },
       {
-        url: `${baseUrl}/templates/${template.id}/marketing`,
+        url: `${baseUrl}/guides/${template.id}/marketing`,
         lastModified: new Date(template.created_at),
         changeFrequency: 'weekly' as const,
         priority: 0.7,
@@ -83,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Generate article pages
     const articlePages: MetadataRoute.Sitemap = (articles || []).map((article) => ({
-      url: `${baseUrl}/articles/${article.slug}`,
+      url: `${baseUrl}/readings/${article.slug}`,
       lastModified: new Date(article.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.6,

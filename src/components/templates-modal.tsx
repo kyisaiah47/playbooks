@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import type { TemplateRegistryEntry } from "@/registry/templates"
+import type { TemplateRegistryEntry } from "@/registry/guides"
 import { Search } from "lucide-react"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 
@@ -30,7 +30,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch('/api/templates')
+      const res = await fetch('/api/guides')
       const data = await res.json()
       const fetchedTemplates = data.templates || []
       setTemplates(fetchedTemplates)

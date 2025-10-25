@@ -3,7 +3,7 @@
 import { use, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import type { TemplateRegistryEntry } from '@/registry/templates';
+import type { TemplateRegistryEntry } from '@/registry/guides';
 import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -48,7 +48,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
         setLoading(true);
 
         // Fetch template data
-        const templatesRes = await fetch('/api/templates');
+        const templatesRes = await fetch('/api/guides');
         const templatesData = await templatesRes.json();
         const foundTemplate = templatesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
         setTemplate(foundTemplate || null);
@@ -59,7 +59,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
         setPrompts(promptsData.prompts || []);
 
         // Fetch articles for this template (server-side filtering)
-        const articlesRes = await fetch(`/api/articles?template=${slug}&pageSize=1000`);
+        const articlesRes = await fetch(`/api/readings?template=${slug}&pageSize=1000`);
         const articlesData = await articlesRes.json();
 
         console.log('[Template Browse] Articles for', slug, ':', articlesData.articles?.length || 0);
@@ -270,7 +270,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
                   key={article.id}
                   className="group py-2"
                 >
-                  <Link href={`/articles/${article.slug}`}>
+                  <Link href={`/readings/${article.slug}`}>
                     <h3 className="text-sm font-medium group-hover:text-primary transition-colors">
                       {article.title}
                     </h3>
@@ -302,7 +302,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
               {relatedTemplates.map((relatedTemplate) => (
                 <a
                   key={relatedTemplate.id}
-                  href={`/templates/${relatedTemplate.id}`}
+                  href={`/guides/${relatedTemplate.id}`}
                   className="group border-b py-4 hover:bg-muted/50 transition-colors flex items-center justify-between"
                 >
                   <div className="flex-1">
@@ -336,7 +336,7 @@ export default function TemplateBrowse({ params }: TemplateBrowseProps) {
               name: 'Templata',
               url: 'https://templata.org'
             },
-            url: `https://templata.org/templates/${slug}`,
+            url: `https://templata.org/guides/${slug}`,
             inLanguage: 'en-US',
             genre: 'Planning Template',
             keywords: templateData.tags?.join(', ') || templateData.category,

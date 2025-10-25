@@ -28,7 +28,7 @@ export function NavArticlesList({ templateId, onArticleSelect }: NavArticlesList
     if (templateId) {
       setLoading(true);
       setArticles([]); // Clear old articles first
-      fetch(`/api/articles?templateId=${templateId}`)
+      fetch(`/api/readings?templateId=${templateId}`)
         .then(res => res.json())
         .then(data => {
           setArticles(data.articles || []);

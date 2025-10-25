@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Clock } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { getArticleBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/articles";
-import { getTemplateById } from "@/registry/templates";
+import { getArticleBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/readings";
+import { getTemplateById } from "@/registry/guides";
 import { ArticleContent } from "./article-content";
 
 // Metadata is handled in layout.tsx
@@ -50,7 +50,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               {templateInfo && (
                 <>
-                  <Link href={`/templates/${blogPost.template}`} className="hover:text-primary transition-colors">
+                  <Link href={`/guides/${blogPost.template}`} className="hover:text-primary transition-colors">
                     {templateInfo.template.title}
                   </Link>
                   <span>·</span>
@@ -87,7 +87,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               {relatedPosts.map((post) => (
                 <Link
                   key={post.id}
-                  href={`/articles/${post.slug}`}
+                  href={`/readings/${post.slug}`}
                   className="group block py-3 hover:text-primary transition-colors"
                 >
                   <div className="flex items-center justify-between gap-4">

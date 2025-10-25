@@ -30,13 +30,13 @@ export function Footer() {
 					<div className="flex flex-col items-end gap-4">
 						<div className="flex items-start gap-8 text-muted-foreground">
 							<Link
-								href="/templates"
+								href="/guides"
 								className="hover:text-foreground transition-colors"
 							>
 								Templates
 							</Link>
 							<Link
-								href="/articles"
+								href="/readings"
 								className="hover:text-foreground transition-colors"
 							>
 								Articles

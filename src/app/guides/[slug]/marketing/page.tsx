@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTemplateById } from '@/registry/templates';
+import { getTemplateById } from '@/registry/guides';
 import MarketingClient from './marketing-client';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -54,12 +54,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     publisher: 'Templata',
     metadataBase: new URL('https://templata.org'),
     alternates: {
-      canonical: `/templates/${slug}/marketing`,
+      canonical: `/guides/${slug}/marketing`,
     },
     openGraph: {
       title,
       description,
-      url: `https://templata.org/templates/${slug}/marketing`,
+      url: `https://templata.org/guides/${slug}/marketing`,
       siteName: 'Templata',
       images: [
         {

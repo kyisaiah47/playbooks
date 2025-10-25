@@ -14,7 +14,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
-import type { TemplateRegistryEntry } from "@/registry/templates"
+import type { TemplateRegistryEntry } from "@/registry/guides"
 
 interface NavTemplateSelectorProps {
   selectedTemplateId: string | null;
@@ -27,7 +27,7 @@ export function NavTemplateSelector({ selectedTemplateId, onTemplateChange }: Na
   useEffect(() => {
     async function fetchTemplates() {
       try {
-        const res = await fetch('/api/templates')
+        const res = await fetch('/api/guides')
         const data = await res.json()
         setTemplates(data.templates || [])
       } catch (error) {

@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
-                      templata.org/templates/career-change
+                      templata.org/guides/career-change
                     </div>
                   </div>
                   <div className="w-16"></div>
@@ -186,7 +186,7 @@ export default function HowItWorksPage() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
-                      templata.org/templates/career-change
+                      templata.org/guides/career-change
                     </div>
                   </div>
                   <div className="w-16"></div>
@@ -294,7 +294,7 @@ export default function HowItWorksPage() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="px-3 py-1 bg-background/50 rounded text-xs text-muted-foreground">
-                      templata.org/templates/career-change
+                      templata.org/guides/career-change
                     </div>
                   </div>
                   <div className="w-16"></div>

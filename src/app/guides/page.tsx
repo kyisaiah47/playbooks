@@ -190,7 +190,7 @@ export default function GuidesPage() {
                         return (
                           <Link
                             key={guide.id}
-                            href={`/templates/${guide.id}`}
+                            href={`/guides/${guide.id}`}
                             className="flex items-center gap-3 py-2.5 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group"
                           >
                             <Icon className="h-3.5 w-3.5 text-muted-foreground/60" />

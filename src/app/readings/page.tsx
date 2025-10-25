@@ -1,8 +1,8 @@
 import { PageLayout } from '@/components/layout';
-import { getArticles } from '@/registry/articles';
-import { ArticlesList } from './articles-list';
-import { ArticlesHero } from './articles-hero';
-import { ArticlesFeatures } from './articles-features';
+import { getArticles } from '@/registry/readings';
+import { ArticlesList } from './readings-list';
+import { ArticlesHero } from './readings-hero';
+import { ArticlesFeatures } from './readings-features';
 
 // Metadata is handled in layout.tsx
 

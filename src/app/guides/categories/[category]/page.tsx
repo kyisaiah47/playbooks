@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import type { TemplateRegistryEntry } from '@/registry/templates';
+import type { TemplateRegistryEntry } from '@/registry/guides';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Search, Layout, ChevronDown, ChevronUp } from 'lucide-react';
@@ -54,7 +54,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     async function fetchTemplates() {
       try {
         setLoading(true);
-        const res = await fetch('/api/templates');
+        const res = await fetch('/api/guides');
         const data = await res.json();
         const allTemplates = data.templates || [];
 
@@ -72,7 +72,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         const dataPromises = filtered.map(async (template) => {
           const [promptsRes, articlesRes] = await Promise.all([
             fetch(`/api/prompts?templateId=${template.id}`),
-            fetch(`/api/articles?template=${template.id}&pageSize=1000`)
+            fetch(`/api/readings?template=${template.id}&pageSize=1000`)
           ]);
 
           const promptsData = await promptsRes.json();
@@ -184,7 +184,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                     <div className="mb-6">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
-                          <Link href={`/templates/${template.id}`}>
+                          <Link href={`/guides/${template.id}`}>
                             <h2 className="text-2xl font-bold hover:text-primary transition-colors">
                               {template.name}
                             </h2>
@@ -225,7 +225,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                           </ol>
                           {data.prompts.length > 5 && (
                             <div className="mt-3">
-                              <Link href={`/templates/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
+                              <Link href={`/guides/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
                                 +{data.prompts.length - 5} more prompts →
                               </Link>
                             </div>
@@ -243,7 +243,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                             {data.articles.slice(0, 5).map((article: any) => (
                               <li key={article.id} className="py-1">
                                 <Link
-                                  href={`/articles/${article.slug}`}
+                                  href={`/readings/${article.slug}`}
                                   className="text-sm hover:text-primary transition-colors"
                                 >
                                   {article.title}
@@ -253,7 +253,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                           </ol>
                           {data.articles.length > 5 && (
                             <div className="mt-3">
-                              <Link href={`/templates/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
+                              <Link href={`/guides/${template.id}`} className="text-sm text-muted-foreground hover:text-primary italic">
                                 +{data.articles.length - 5} more articles →
                               </Link>
                             </div>

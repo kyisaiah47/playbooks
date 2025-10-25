@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
     openGraph: {
       title,
       description,
-      url: `https://templata.org/templates/categories/${category}`,
+      url: `https://templata.org/guides/categories/${category}`,
       siteName: 'Templata',
       images: [
         {
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
       site: '@templata',
     },
     alternates: {
-      canonical: `/templates/categories/${category}`,
+      canonical: `/guides/categories/${category}`,
     },
     robots: {
       index: true,
@@ -103,7 +103,7 @@ export default async function CategoryLayout({ children, params }: CategoryLayou
             '@type': 'CollectionPage',
             name: `${categoryName} Templates`,
             description: categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} templates.`,
-            url: `https://templata.org/templates/categories/${category}`,
+            url: `https://templata.org/guides/categories/${category}`,
             isPartOf: {
               '@type': 'WebSite',
               name: 'Templata',
@@ -122,13 +122,13 @@ export default async function CategoryLayout({ children, params }: CategoryLayou
                   '@type': 'ListItem',
                   position: 2,
                   name: 'Templates',
-                  item: 'https://templata.org/templates'
+                  item: 'https://templata.org/guides'
                 },
                 {
                   '@type': 'ListItem',
                   position: 3,
                   name: categoryName,
-                  item: `https://templata.org/templates/categories/${category}`
+                  item: `https://templata.org/guides/categories/${category}`
                 }
               ]
             }

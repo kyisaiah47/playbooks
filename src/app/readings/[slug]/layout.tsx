@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getArticleBySlug } from '@/registry/articles';
+import { getArticleBySlug } from '@/registry/readings';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -28,16 +28,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     publisher: 'Templata',
     metadataBase: new URL('https://templata.org'),
     alternates: {
-      canonical: `/articles/${slug}`,
+      canonical: `/readings/${slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://templata.org/articles/${slug}`,
+      url: `https://templata.org/readings/${slug}`,
       siteName: 'Templata',
       images: [
         {
-          url: `/articles/${slug}-preview.jpg`,
+          url: `/readings/${slug}-preview.jpg`,
           width: 1200,
           height: 630,
           alt: `${article.title} - Expert Guidance Article`,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title,
       description,
-      images: [`/articles/${slug}-twitter.jpg`],
+      images: [`/readings/${slug}-twitter.jpg`],
       creator: '@templata',
       site: '@templata',
     },

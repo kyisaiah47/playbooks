@@ -130,14 +130,14 @@ export function PageLayout({
 						</DrawerHeader>
 						<div className="flex flex-col gap-1 px-4 pb-4">
 							<Link
-								href="/templates"
+								href="/guides"
 								className="px-3 py-3 text-base font-medium hover:bg-accent rounded-md transition-colors"
 								onClick={() => setMobileMenuOpen(false)}
 							>
 								Templates
 							</Link>
 							<Link
-								href="/articles"
+								href="/readings"
 								className="px-3 py-3 text-base font-medium hover:bg-accent rounded-md transition-colors"
 								onClick={() => setMobileMenuOpen(false)}
 							>

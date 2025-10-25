@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   publisher: 'Templata',
   metadataBase: new URL('https://templata.org'),
   alternates: {
-    canonical: '/articles',
+    canonical: '/readings',
   },
   openGraph: {
     title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
     description: '25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying & more. Like Wikipedia for life guidance.',
-    url: 'https://templata.org/articles',
+    url: 'https://templata.org/readings',
     siteName: 'Templata',
     images: [
       {

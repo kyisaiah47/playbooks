@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTemplateById } from '@/registry/templates';
+import { getTemplateById } from '@/registry/guides';
 import TemplateBrowse from './template-browse';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -30,16 +30,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     publisher: 'Templata',
     metadataBase: new URL('https://templata.org'),
     alternates: {
-      canonical: `/templates/${slug}`,
+      canonical: `/guides/${slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://templata.org/templates/${slug}`,
+      url: `https://templata.org/guides/${slug}`,
       siteName: 'Templata',
       images: [
         {
-          url: `/templates/${slug}-preview.jpg`,
+          url: `/guides/${slug}-preview.jpg`,
           width: 1200,
           height: 630,
           alt: `${templateData.title} Template Preview`,
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title,
       description,
-      images: [`/templates/${slug}-twitter.jpg`],
+      images: [`/guides/${slug}-twitter.jpg`],
       creator: '@templata',
       site: '@templata',
     },

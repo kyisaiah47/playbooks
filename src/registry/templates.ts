@@ -39,7 +39,7 @@ async function fetchTemplates(): Promise<TemplateRegistryEntry[]> {
       ? (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000')
       : ''; // Client-side uses relative URL
 
-    const res = await fetch(`${baseUrl}/api/templates`);
+    const res = await fetch(`${baseUrl}/api/guides`);
     if (!res.ok) return [];
 
     const data = await res.json();

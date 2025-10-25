@@ -120,7 +120,7 @@ export function TemplataContentSidebar({
 
   React.useEffect(() => {
     // Fetch articles that have this template ID
-    fetch(`/api/articles?limit=100`)
+    fetch(`/api/readings?limit=100`)
       .then(res => res.json())
       .then(data => {
         const articles = data.articles || []
