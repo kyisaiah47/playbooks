@@ -16,6 +16,7 @@ import {
   Network,
   TrendingUp,
   Archive,
+  Users,
   Settings
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -46,6 +47,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
     graph: Network,
     analytics: TrendingUp,
     archive: Archive,
+    community: Users,
     settings: Settings,
   };
 

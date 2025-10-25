@@ -19,6 +19,7 @@ import { GraphSidebarContent } from '@/components/app/layout/GraphSidebarContent
 import { OverviewSidebarContent } from '@/components/app/layout/OverviewSidebarContent';
 import { AnalyticsSidebarContent } from '@/components/app/layout/AnalyticsSidebarContent';
 import { ArchiveSidebarContent } from '@/components/app/layout/ArchiveSidebarContent';
+import { CommunitySidebarContent } from '@/components/app/layout/CommunitySidebarContent';
 import { SettingsSidebarContent } from '@/components/app/layout/SettingsSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
@@ -35,6 +36,7 @@ import {
   Network,
   TrendingUp,
   Archive,
+  Users,
   Settings
 } from 'lucide-react';
 
@@ -67,6 +69,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(new Set());
   const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(new Set());
   const [settingsSection, setSettingsSection] = useState<'profile' | 'privacy' | 'data' | 'notifications' | 'appearance'>('profile');
+  const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -82,6 +85,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     graph: Network,
     analytics: TrendingUp,
     archive: Archive,
+    community: Users,
     settings: Settings,
   };
 
@@ -436,6 +440,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       graph: 'Graph',
       analytics: 'Analytics',
       archive: 'Archive',
+      community: 'Community',
       settings: 'Settings',
     };
 
@@ -452,6 +457,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       graph: Network,
       analytics: TrendingUp,
       archive: Archive,
+      community: Users,
       settings: Settings,
     };
 
@@ -770,6 +776,11 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
             />
           ) : activeView === 'archive' ? (
             <ArchiveSidebarContent />
+          ) : activeView === 'community' ? (
+            <CommunitySidebarContent
+              selectedTab={communityTab}
+              onTabClick={setCommunityTab}
+            />
           ) : activeView === 'settings' ? (
             <SettingsSidebarContent
               activeSection={settingsSection}

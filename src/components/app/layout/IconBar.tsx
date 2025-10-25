@@ -13,6 +13,7 @@ import {
   LayoutDashboard,
   TrendingUp,
   Archive,
+  Users,
   Settings
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -37,6 +38,7 @@ const ICON_VIEWS: { type: TabType; icon: any; label: string }[] = [
   { type: 'graph', icon: Network, label: 'Graph' },
   { type: 'analytics', icon: TrendingUp, label: 'Analytics' },
   { type: 'archive', icon: Archive, label: 'Archive' },
+  { type: 'community', icon: Users, label: 'Community' },
   { type: 'settings', icon: Settings, label: 'Settings' },
 ];
 
@@ -49,10 +51,10 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
         const Icon = view.icon;
         const isActive = activeView === view.type;
 
-        // Add dividers
-        const showDivider = index === 3 || index === 7 || index === 10;
+        // Add dividers - archive at 11, community at 12
+        const showDivider = index === 3 || index === 7 || index === 10 || index === 12;
         const divider = showDivider && !lastWasDivider ? (
-          <div key={`divider-${index}`} className="w-5 h-px bg-border my-1" />
+          <div key={`divider-${index}`} className="w-8 h-px bg-border my-1" />
         ) : null;
 
         if (showDivider) lastWasDivider = true;
