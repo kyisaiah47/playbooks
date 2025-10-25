@@ -54,7 +54,7 @@ export default function LandingPage() {
 					<div className="flex items-end justify-between gap-12">
 						<div className="max-w-3xl">
 							<motion.h1
-								className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]"
+								className="text-[4rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: 0 }}
@@ -62,7 +62,7 @@ export default function LandingPage() {
 								Wikipedia
 							</motion.h1>
 							<motion.h2
-								className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]"
+								className="text-[4rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: 0.1 }}
@@ -70,7 +70,7 @@ export default function LandingPage() {
 								×
 							</motion.h2>
 							<motion.h3
-								className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]"
+								className="text-[4rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: 0.2 }}
@@ -83,7 +83,7 @@ export default function LandingPage() {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
 						>
-							<Button size="lg" asChild>
+							<Button size="lg" asChild className="font-medium">
 								<Link href="/docs">
 									Learn More
 									<ArrowRight className="h-4 w-4" />
@@ -104,40 +104,40 @@ export default function LandingPage() {
 			{/* How It Works - 2x2 grid */}
 			<section className="px-6 py-24 border-t border-border/40">
 				<div className="mx-auto max-w-5xl">
-					<div className="mb-12">
-						<h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+					<div className="mb-16">
+						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.01em] mb-4 leading-tight">
 							How it works
 						</h2>
 					</div>
 
 					<div className="grid md:grid-cols-2 gap-12">
-						<div className="space-y-2">
-							<h3 className="text-lg font-semibold">Pick a guide</h3>
-							<p className="text-sm text-muted-foreground">
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Pick a guide</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
 								1,200+ guides for life decisions
 							</p>
 							<BrowseGuides />
 						</div>
 
-						<div className="space-y-2">
-							<h3 className="text-lg font-semibold">Work through it</h3>
-							<p className="text-sm text-muted-foreground">
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Work through it</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
 								Answer questions, add notes
 							</p>
 							<SplitScreenOpen />
 						</div>
 
-						<div className="space-y-2">
-							<h3 className="text-lg font-semibold">Read curated resources</h3>
-							<p className="text-sm text-muted-foreground">
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Read curated resources</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
 								Expert-selected readings
 							</p>
 							<WorkspaceActive />
 						</div>
 
-						<div className="space-y-2">
-							<h3 className="text-lg font-semibold">Export when done</h3>
-							<p className="text-sm text-muted-foreground">
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Export when done</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
 								PDF export, auto-save
 							</p>
 							<ExportOverview />
@@ -149,8 +149,8 @@ export default function LandingPage() {
 			{/* Categories */}
 			<section className="px-6 py-24 border-t border-border/40">
 				<div className="mx-auto max-w-6xl">
-					<div className="mb-12">
-						<h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+					<div className="mb-16">
+						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.01em] mb-4 leading-tight">
 							Browse by category
 						</h2>
 					</div>
@@ -161,8 +161,8 @@ export default function LandingPage() {
 			{/* Featured Guides */}
 			<section className="px-6 py-24 border-t border-border/40">
 				<div className="mx-auto max-w-6xl">
-					<div className="mb-12">
-						<h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+					<div className="mb-16">
+						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.01em] mb-4 leading-tight">
 							Popular guides
 						</h2>
 					</div>
@@ -171,10 +171,11 @@ export default function LandingPage() {
 			</section>
 
 			{/* Simple footer */}
-			<section className="px-6 py-16 border-t border-border/40">
+			<section className="px-6 py-20 border-t border-border/40">
 				<div className="mx-auto max-w-6xl">
-					<Link href="/guides" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-						Browse all guides →
+					<Link href="/guides" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/60 hover:text-foreground transition-colors">
+						Browse all guides
+						<ArrowRight className="h-3.5 w-3.5" />
 					</Link>
 				</div>
 			</section>
