@@ -17,6 +17,7 @@ import {
   TrendingUp,
   Archive,
   Users,
+  BookOpen,
   Settings
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -48,6 +49,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
     analytics: TrendingUp,
     archive: Archive,
     community: Users,
+    docs: BookOpen,
     settings: Settings,
   };
 

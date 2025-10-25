@@ -6,7 +6,7 @@ set -e
 # Configuration
 TOTAL_QUESTIONS=103820
 QUESTIONS_PER_INSTANCE=5000
-START_OFFSET=${1:-920}  # Resume from where we left off
+START_OFFSET=${1:-0}  # Start from beginning
 CONCURRENT_INSTANCES=${2:-10}  # Run 10 Claude instances at once
 
 # Colors
@@ -85,11 +85,13 @@ for ((i=0; i<$TOTAL_RANGES; i+=$CONCURRENT_INSTANCES)); do
 2. Rewrite each prompt to Notion-style tone following the guidelines above
 
 3. Update the database using mcp__supabase__execute_sql with a SQL CASE statement:
-   \`UPDATE questions SET prompt = CASE id
-     WHEN 'id1' THEN 'rewritten prompt 1'
-     WHEN 'id2' THEN 'rewritten prompt 2'
-     ...
-   END
+   \`UPDATE questions SET
+     prompt = CASE id
+       WHEN 'id1' THEN 'rewritten prompt 1'
+       WHEN 'id2' THEN 'rewritten prompt 2'
+       ...
+     END,
+     updated_at = NOW()
    WHERE id IN ('id1', 'id2', ...)\`
 
 4. Process in batches of 50 questions at a time

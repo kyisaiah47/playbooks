@@ -20,6 +20,7 @@ import { OverviewSidebarContent } from '@/components/app/layout/OverviewSidebarC
 import { AnalyticsSidebarContent } from '@/components/app/layout/AnalyticsSidebarContent';
 import { ArchiveSidebarContent } from '@/components/app/layout/ArchiveSidebarContent';
 import { CommunitySidebarContent } from '@/components/app/layout/CommunitySidebarContent';
+import { DocsSidebarContent } from '@/components/app/layout/DocsSidebarContent';
 import { SettingsSidebarContent } from '@/components/app/layout/SettingsSidebarContent';
 import { Tab, TabType, Workspace, PageWithSubPages } from '@/types/workspace';
 import {
@@ -37,6 +38,7 @@ import {
   TrendingUp,
   Archive,
   Users,
+  BookOpen,
   Settings
 } from 'lucide-react';
 
@@ -70,6 +72,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(new Set());
   const [settingsSection, setSettingsSection] = useState<'profile' | 'privacy' | 'data' | 'notifications' | 'appearance'>('profile');
   const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
+  const [docsSection, setDocsSection] = useState<'getting-started' | 'features' | 'guides' | 'reference' | 'faq' | 'support'>('getting-started');
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -86,6 +89,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     analytics: TrendingUp,
     archive: Archive,
     community: Users,
+    docs: BookOpen,
     settings: Settings,
   };
 
@@ -327,6 +331,16 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     }
   }, [searchParams, activeView]);
 
+  // Sync docs section from URL
+  useEffect(() => {
+    if (activeView === 'docs') {
+      const sectionParam = searchParams.get('section') as 'getting-started' | 'features' | 'guides' | 'reference' | 'faq' | 'support';
+      if (sectionParam) {
+        setDocsSection(sectionParam);
+      }
+    }
+  }, [searchParams, activeView]);
+
   // Update URL when category changes
   const handleCategorySelect = useCallback((categoryId: string) => {
     setSelectedCategory(categoryId);
@@ -441,6 +455,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       analytics: 'Analytics',
       archive: 'Archive',
       community: 'Community',
+      docs: 'Docs',
       settings: 'Settings',
     };
 
@@ -458,6 +473,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       analytics: TrendingUp,
       archive: Archive,
       community: Users,
+      docs: BookOpen,
       settings: Settings,
     };
 
@@ -696,6 +712,17 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
   }, [searchParams, router]);
 
+  // Handle docs section change
+  const handleDocsSectionChange = useCallback((section: 'getting-started' | 'features' | 'guides' | 'reference' | 'faq' | 'support') => {
+    setDocsSection(section);
+
+    // Update URL with section param
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('section', section);
+    const queryString = params.toString();
+    router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+  }, [searchParams, router]);
+
   if (loading || !workspace) {
     return (
       <div className="h-screen w-screen flex items-center justify-center">
@@ -780,6 +807,11 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
             <CommunitySidebarContent
               selectedTab={communityTab}
               onTabClick={setCommunityTab}
+            />
+          ) : activeView === 'docs' ? (
+            <DocsSidebarContent
+              activeSection={docsSection}
+              onSectionClick={handleDocsSectionChange}
             />
           ) : activeView === 'settings' ? (
             <SettingsSidebarContent

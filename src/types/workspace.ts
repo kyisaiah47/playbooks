@@ -104,6 +104,7 @@ export type TabType =
   | 'analytics'
   | 'archive'
   | 'community'
+  | 'docs'
   | 'settings';
 
 export interface Tab {
