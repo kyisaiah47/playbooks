@@ -25,13 +25,15 @@ interface PageLayoutProps {
 	includeHeader?: boolean;
 	includeFooter?: boolean;
 	includeHeaderPadding?: boolean;
+	className?: string;
 }
 
 export function PageLayout({
 	children,
 	includeHeader = true,
 	includeFooter = true,
-	includeHeaderPadding = true
+	includeHeaderPadding = true,
+	className
 }: PageLayoutProps) {
 	const { isLoggedIn } = useAuth();
 	const pathname = usePathname();
@@ -72,7 +74,7 @@ export function PageLayout({
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-transparent">
+		<div className={cn("min-h-screen", className)}>
 			{includeHeader && <Header />}
 
 			{includeHeader && includeHeaderPadding && (

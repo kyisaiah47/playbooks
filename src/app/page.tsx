@@ -41,7 +41,7 @@ export default function LandingPage() {
 	};
 
 	return (
-		<PageLayout includeHeaderPadding={false}>
+		<PageLayout includeHeaderPadding={false} className="bg-gradient-to-b from-primary/50 via-20% via-muted to-muted/80">
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
