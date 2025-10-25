@@ -15,7 +15,7 @@ export default function FeaturePromptsAdPage() {
 					</h1>
 
 					<p className="text-3xl text-gray-300 max-w-lg leading-relaxed">
-						104,000+ action prompts guide you through every decision
+						104,000+ questions guide you through every decision
 					</p>
 				</div>
 
@@ -23,7 +23,7 @@ export default function FeaturePromptsAdPage() {
 				<div className="space-y-6">
 					<div className="flex items-center gap-4 mb-8">
 						<MessageSquare className="h-8 w-8 text-white" />
-						<span className="text-2xl font-semibold">Live Prompts Preview</span>
+						<span className="text-2xl font-semibold">Live Questions Preview</span>
 					</div>
 
 					<div className="space-y-4">
@@ -50,7 +50,7 @@ export default function FeaturePromptsAdPage() {
 
 					<div className="flex items-center gap-3 text-gray-400 pt-4">
 						<ArrowRight className="h-5 w-5" />
-						<span className="text-lg">104,000+ prompts across 1,298 templates</span>
+						<span className="text-lg">104,000+ questions across 1,298 guides</span>
 					</div>
 				</div>
 			</div>

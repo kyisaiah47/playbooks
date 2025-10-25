@@ -13,7 +13,7 @@ export default function SplitScreenAdPage() {
 					</h1>
 
 					<p className="text-3xl text-purple-100 max-w-4xl mx-auto leading-relaxed">
-						Split-screen workspace where 104,000+ prompts work with 26,000+ expert articles
+						Split-screen workspace where 104,000+ questions work with 26,000+ expert readings
 					</p>
 				</div>
 

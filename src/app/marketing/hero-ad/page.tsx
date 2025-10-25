@@ -32,7 +32,7 @@ export default function HeroAdPage() {
 					</h1>
 
 					<p className="text-3xl text-gray-400 max-w-3xl mx-auto font-light">
-						1,298 templates. 104,000+ prompts. Zero overwhelm.
+						1,298 guides. 104,000+ questions. Zero overwhelm.
 					</p>
 				</div>
 			</div>

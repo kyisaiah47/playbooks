@@ -35,7 +35,7 @@ export default function TemplateVarietyAdPage() {
 					</h1>
 
 					<p className="text-3xl text-gray-400 max-w-3xl mx-auto font-light">
-						1,298 templates for every life moment.
+						1,298 guides for every life moment.
 					</p>
 				</div>
 			</div>

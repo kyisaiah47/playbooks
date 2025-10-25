@@ -100,7 +100,7 @@ export default function ChangelogPage() {
                     Templata is now live in public beta with a comprehensive template library for life planning.
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>1,298 templates across all life categories</li>
+                    <li>1,298 guides across all life categories</li>
                     <li>104K+ AI-generated prompts</li>
                     <li>25,936 articles providing expert knowledge</li>
                     <li>User authentication and workspace management</li>

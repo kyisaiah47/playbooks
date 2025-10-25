@@ -40,7 +40,7 @@ export default function AIEngineAdPage() {
 					</h1>
 
 					<p className="text-3xl text-gray-400 max-w-3xl mx-auto font-light">
-						26,000+ articles powered by intelligent guidance.
+						26,000+ readings powered by intelligent guidance.
 					</p>
 				</div>
 			</div>
