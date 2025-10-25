@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import { HeroWorkspace } from "@/components/landing/HeroWorkspace";
-import { BrowseGuides } from "@/components/landing/BrowseGuides";
-import { SplitScreenOpen } from "@/components/landing/SplitScreenOpen";
-import { WorkspaceActive } from "@/components/landing/WorkspaceActive";
-import { StructuredGuide } from "@/components/landing/StructuredGuide";
+import { BrowseGuidesReal } from "@/components/landing/BrowseGuidesReal";
+import { SplitScreenReal } from "@/components/landing/SplitScreenReal";
+import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
+import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
 import { CategorySelection } from "@/components/landing/CategorySelection";
 import { PopularGuides } from "@/components/landing/PopularGuides";
 import { motion } from "framer-motion";
@@ -113,7 +113,7 @@ export default function LandingPage() {
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Expert-curated for major decisions
 							</p>
-							<BrowseGuides />
+							<BrowseGuidesReal />
 						</div>
 
 						<div className="space-y-3">
@@ -121,7 +121,7 @@ export default function LandingPage() {
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Questions on left, notes on right
 							</p>
-							<SplitScreenOpen />
+							<SplitScreenReal />
 						</div>
 
 						<div className="space-y-3">
@@ -129,7 +129,7 @@ export default function LandingPage() {
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Expert-selected for each guide
 							</p>
-							<StructuredGuide />
+							<ReadingsLibrary />
 						</div>
 
 						<div className="space-y-3">
@@ -137,7 +137,7 @@ export default function LandingPage() {
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Calendar, tasks, journal, timeline
 							</p>
-							<WorkspaceActive />
+							<WorkspaceDashboard />
 						</div>
 					</div>
 				</div>
