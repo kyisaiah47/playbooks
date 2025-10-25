@@ -28,12 +28,12 @@ interface Article {
   relatedTemplates?: string[];
 }
 
-interface ArticlesListProps {
+interface ReadingsListProps {
   initialArticles: Article[];
   initialTotal: number;
 }
 
-export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProps) {
+export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 

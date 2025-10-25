@@ -1,8 +1,8 @@
 import { PageLayout } from '@/components/layout';
 import { getArticles } from '@/registry/readings';
-import { ArticlesList } from './readings-list';
-import { ArticlesHero } from './readings-hero';
-import { ArticlesFeatures } from './readings-features';
+import { ReadingsList } from './readings-list';
+import { ReadingsHero } from './readings-hero';
+import { ReadingsFeatures } from './readings-features';
 
 // Metadata is handled in layout.tsx
 
@@ -19,12 +19,12 @@ export default async function ArticlesPage({
 
   return (
     <PageLayout>
-      <ArticlesHero />
-      <ArticlesFeatures />
+      <ReadingsHero />
+      <ReadingsFeatures />
 
       {/* Article List */}
       <div className="py-16">
-        <ArticlesList initialArticles={articles} initialTotal={total} />
+        <ReadingsList initialArticles={articles} initialTotal={total} />
       </div>
     </PageLayout>
   );

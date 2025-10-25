@@ -29,11 +29,11 @@ const getCategoryIcon = (category: string) => {
   }
 };
 
-interface ArticleClientProps {
+interface ReadingClientProps {
   params: Promise<{ slug: string }>;
 }
 
-export default function ArticleClient({ params }: ArticleClientProps) {
+export default function ReadingClient({ params }: ReadingClientProps) {
   const { slug } = use(params);
   const post = getArticleBySlug(slug);
   const [activeSection, setActiveSection] = useState('');

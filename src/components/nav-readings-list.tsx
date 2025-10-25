@@ -15,12 +15,12 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-interface NavArticlesListProps {
+interface NavReadingsListProps {
   templateId: string | null;
   onArticleSelect?: (article: any) => void;
 }
 
-export function NavArticlesList({ templateId, onArticleSelect }: NavArticlesListProps) {
+export function NavReadingsList({ templateId, onArticleSelect }: NavReadingsListProps) {
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 

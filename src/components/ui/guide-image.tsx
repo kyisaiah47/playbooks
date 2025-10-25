@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useTemplateImage } from '@/hooks/use-template-image';
+import { useTemplateImage } from '@/hooks/use-guide-image';
 import { formatImageUrl, getImageAttribution, getImageAttributionUrl } from '@/lib/unsplash';
 
 interface TemplateImageProps {

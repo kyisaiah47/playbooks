@@ -29,7 +29,7 @@ export function DragHandle({ editor }: DragHandleProps) {
 			depth > 0 &&
 			$from.node(depth).type.name !== "paragraph" &&
 			$from.node(depth).type.name !== "heading" &&
-			$from.node(depth).type.name !== "promptNode"
+			$from.node(depth).type.name !== "questionNode"
 		) {
 			depth--;
 		}
@@ -73,7 +73,7 @@ export function DragHandle({ editor }: DragHandleProps) {
 			while (blockElement && blockElement !== editorElement) {
 				if (
 					blockElement.matches(
-						'p, h1, h2, h3, h4, h5, h6, [data-type="prompt-node"], blockquote, pre, li'
+						'p, h1, h2, h3, h4, h5, h6, [data-type="question-node"], blockquote, pre, li'
 					)
 				) {
 					const rect = blockElement.getBoundingClientRect();

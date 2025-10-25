@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Target, Sparkles, BookMarked } from 'lucide-react';
 
-export function ArticlesFeatures() {
+export function ReadingsFeatures() {
   const features = [
     {
       icon: Target,

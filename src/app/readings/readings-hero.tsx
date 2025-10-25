@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen } from 'lucide-react';
 
-export function ArticlesHero() {
+export function ReadingsHero() {
   return (
     <section className="py-24 md:py-32">
       <div className="container mx-auto max-w-7xl px-4">

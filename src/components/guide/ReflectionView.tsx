@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GuidanceTemplate, DailyReflectionPrompt } from '@/types/template';
+import { GuidanceTemplate, DailyReflectionPrompt } from '@/types/guide';
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 import { WorkspaceSwitcher } from '@/components/tiptap-templates/simple/workspace-switcher';
 import { ThemeSelector } from '@/components/theme-selector';

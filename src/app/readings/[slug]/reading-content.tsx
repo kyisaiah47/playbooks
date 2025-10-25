@@ -5,12 +5,12 @@ import React from "react";
 import { Lightbulb } from "lucide-react";
 import { Highlighter } from "@/components/ui/highlighter";
 
-interface ArticleContentProps {
+interface ReadingContentProps {
   content: string;
   searchQuery?: string;
 }
 
-export function ArticleContent({ content, searchQuery = '' }: ArticleContentProps) {
+export function ReadingContent({ content, searchQuery = '' }: ReadingContentProps) {
   // Normalize line breaks and split content
   // Handle both \n\n and \n as paragraph separators
   const normalizedContent = content.replace(/\n\n+/g, '\n\n'); // Normalize multiple newlines to double

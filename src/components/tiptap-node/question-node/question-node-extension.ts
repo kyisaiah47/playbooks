@@ -1,8 +1,8 @@
 import { mergeAttributes, Node } from "@tiptap/react"
 import { ReactNodeViewRenderer } from "@tiptap/react"
-import { PromptNode as PromptNodeComponent } from "@/components/tiptap-node/prompt-node/prompt-node"
+import { QuestionNode as QuestionNodeComponent } from "@/components/tiptap-node/question-node/question-node"
 
-export interface PromptNodeOptions {
+export interface QuestionNodeOptions {
   /**
    * HTML attributes to add to the prompt element.
    * @default {}
@@ -12,7 +12,7 @@ export interface PromptNodeOptions {
 
 declare module "@tiptap/core" {
   interface Commands<ReturnType> {
-    promptNode: {
+    questionNode: {
       /**
        * Insert a prompt node
        */
@@ -26,8 +26,8 @@ declare module "@tiptap/core" {
   }
 }
 
-export const PromptNode = Node.create<PromptNodeOptions>({
-  name: "promptNode",
+export const QuestionNode = Node.create<QuestionNodeOptions>({
+  name: "questionNode",
 
   group: "block",
 
@@ -107,7 +107,7 @@ export const PromptNode = Node.create<PromptNodeOptions>({
   parseHTML() {
     return [
       {
-        tag: "div[data-type='prompt-node']",
+        tag: "div[data-type='question-node']",
       },
     ]
   },
@@ -117,7 +117,7 @@ export const PromptNode = Node.create<PromptNodeOptions>({
       "div",
       mergeAttributes(
         {
-          "data-type": "prompt-node",
+          "data-type": "question-node",
         },
         this.options.HTMLAttributes,
         HTMLAttributes
@@ -145,7 +145,7 @@ export const PromptNode = Node.create<PromptNodeOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(PromptNodeComponent, {
+    return ReactNodeViewRenderer(QuestionNodeComponent, {
       as: "div",
     })
   },

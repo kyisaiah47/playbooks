@@ -12,7 +12,7 @@ import { ArrowRight, Sparkles, FileText, Zap, ChevronRight } from 'lucide-react'
 import { SubtleGlow } from '@/components/ui/glow-variants';
 import Script from 'next/script';
 
-interface TemplateBrowseProps {
+interface GuideBrowseProps {
   params: Promise<{ slug: string }>;
 }
 
@@ -31,7 +31,7 @@ interface Article {
   type: string;
 }
 
-export default function TemplateBrowse({ params }: TemplateBrowseProps) {
+export default function GuideBrowse({ params }: GuideBrowseProps) {
   const router = useRouter();
   const { slug } = use(params);
 

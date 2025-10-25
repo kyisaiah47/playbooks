@@ -22,7 +22,7 @@ import {
   CommandSeparator,
 } from '@/components/ui/command';
 import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu, Search } from 'lucide-react';
-import { ArticleContent } from '@/app/readings/[slug]/article-content';
+import { ReadingContent } from '@/app/readings/[slug]/reading-content';
 import Link from 'next/link';
 import { GuideHeader } from '@/components/app/guides/GuideHeader';
 import {
@@ -118,7 +118,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
   const [searchQuery, setSearchQuery] = useState('');
   const [promptSearchQuery, setPromptSearchQuery] = useState('');
   const [articleSearchQuery, setArticleSearchQuery] = useState('');
-  const [articleContentSearchQuery, setArticleContentSearchQuery] = useState('');
+  const [articleContentSearchQuery, setReadingContentSearchQuery] = useState('');
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
@@ -506,7 +506,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
 
   const handleCloseArticle = () => {
     setSelectedArticle(null);
-    setArticleContentSearchQuery(''); // Clear search when closing article
+    setReadingContentSearchQuery(''); // Clear search when closing article
   };
 
   const toggleCategory = (category: string) => {
@@ -872,7 +872,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                         type="text"
                         placeholder="Search in article..."
                         value={articleContentSearchQuery}
-                        onChange={(e) => setArticleContentSearchQuery(e.target.value)}
+                        onChange={(e) => setReadingContentSearchQuery(e.target.value)}
                         className="h-9 text-sm pl-9"
                       />
                     </div>
@@ -897,7 +897,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                         </div>
                       </header>
 
-                      <ArticleContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
+                      <ReadingContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
                     </div>
                   )}
                 </motion.div>
@@ -997,7 +997,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                   type="text"
                   placeholder="Search in article..."
                   value={articleContentSearchQuery}
-                  onChange={(e) => setArticleContentSearchQuery(e.target.value)}
+                  onChange={(e) => setReadingContentSearchQuery(e.target.value)}
                   className="h-9 text-sm pl-9"
                 />
               </div>
@@ -1008,7 +1008,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                   <p className="text-muted-foreground">Loading article...</p>
                 </div>
               ) : (
-                <ArticleContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
+                <ReadingContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
               )}
             </div>
           </DrawerContent>

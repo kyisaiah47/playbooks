@@ -1,4 +1,4 @@
-import { GuidanceTemplate } from '@/types/template';
+import { GuidanceTemplate } from '@/types/guide';
 
 export interface GuideRegistryEntry {
   id: string;

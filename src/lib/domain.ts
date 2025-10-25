@@ -1,7 +1,7 @@
 // Domain alias layer for terminology transition
 // This allows us to use "Guide" terminology in the UI while keeping DB tables unchanged
 
-import type { GuidanceTemplate } from '@/types/template';
+import type { GuidanceTemplate } from '@/types/guide';
 
 // Temporary alias - Guide is the same as Template/GuidanceTemplate
 export type Guide = GuidanceTemplate;

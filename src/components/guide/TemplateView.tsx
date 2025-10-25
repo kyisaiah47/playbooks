@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/template';
+import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/guide';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/template-sidebar';
 import { ThemeSelector } from '@/components/theme-selector';

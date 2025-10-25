@@ -27,7 +27,7 @@ import {
 // --- Tiptap Node ---
 import { ImageUploadNode } from "@/components/tiptap-node/image-upload-node/image-upload-node-extension"
 import { HorizontalRule } from "@/components/tiptap-node/horizontal-rule-node/horizontal-rule-node-extension"
-import { PromptNode } from "@/components/tiptap-node/prompt-node/prompt-node-extension"
+import { QuestionNode } from "@/components/tiptap-node/question-node/question-node-extension"
 import "@/components/tiptap-node/blockquote-node/blockquote-node.scss"
 import "@/components/tiptap-node/code-block-node/code-block-node.scss"
 import "@/components/tiptap-node/horizontal-rule-node/horizontal-rule-node.scss"
@@ -35,7 +35,7 @@ import "@/components/tiptap-node/list-node/list-node.scss"
 import "@/components/tiptap-node/image-node/image-node.scss"
 import "@/components/tiptap-node/heading-node/heading-node.scss"
 import "@/components/tiptap-node/paragraph-node/paragraph-node.scss"
-import "@/components/tiptap-node/prompt-node/prompt-node.scss"
+import "@/components/tiptap-node/question-node/question-node.scss"
 
 // --- Tiptap UI ---
 import { HeadingDropdownMenu } from "@/components/tiptap-ui/heading-dropdown-menu"
@@ -242,9 +242,9 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
         upload: handleImageUpload,
         onError: (error) => console.error("Upload failed:", error),
       }),
-      PromptNode.configure({
+      QuestionNode.configure({
         HTMLAttributes: {
-          class: 'template-prompt-node',
+          class: 'template-question-node',
         },
       }),
     ],

@@ -4,7 +4,7 @@ import { Clock } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import { getArticleBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/readings";
 import { getTemplateById } from "@/registry/guides";
-import { ArticleContent } from "./article-content";
+import { ReadingContent } from "./reading-content";
 
 // Metadata is handled in layout.tsx
 
@@ -73,7 +73,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       {/* Content */}
       <div className="container mx-auto max-w-6xl px-4 py-12">
-        <ArticleContent content={blogPost.content} />
+        <ReadingContent content={blogPost.content} />
       </div>
 
       {/* Related Articles - Simple list like templates page */}

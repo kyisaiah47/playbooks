@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
 
-interface PromptNodeProps {
+interface QuestionNodeProps {
   node: {
     attrs: {
       id: string
@@ -19,7 +19,7 @@ interface PromptNodeProps {
   selected?: boolean
 }
 
-export const PromptNode: React.FC<PromptNodeProps> = ({
+export const QuestionNode: React.FC<QuestionNodeProps> = ({
   node,
   deleteNode,
   selected,
@@ -45,9 +45,9 @@ export const PromptNode: React.FC<PromptNodeProps> = ({
   }
 
   return (
-    <NodeViewWrapper className="prompt-node-wrapper">
+    <NodeViewWrapper className="question-node-wrapper">
       <div
-        className={`prompt-node group relative ${
+        className={`question-node group relative ${
           selected ? "ring-1 ring-blue-400/30" : ""
         }`}
       >
