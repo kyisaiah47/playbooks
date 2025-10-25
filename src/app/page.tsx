@@ -9,8 +9,7 @@ import { BrowseGuidesReal } from "@/components/landing/BrowseGuidesReal";
 import { SplitScreenReal } from "@/components/landing/SplitScreenReal";
 import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
 import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
-import { CategorySelection } from "@/components/landing/CategorySelection";
-import { PopularGuides } from "@/components/landing/PopularGuides";
+import { BrowseAndFeatured } from "@/components/landing/BrowseAndFeatured";
 import { motion } from "framer-motion";
 
 export default function LandingPage() {
@@ -143,27 +142,10 @@ export default function LandingPage() {
 				</div>
 			</section>
 
-			{/* Categories */}
+			{/* Browse and Featured */}
 			<section className="px-6 py-24 border-t border-border/40">
 				<div className="mx-auto max-w-6xl">
-					<div className="mb-16">
-						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.01em] mb-4 leading-tight">
-							Browse by category
-						</h2>
-					</div>
-					<CategorySelection />
-				</div>
-			</section>
-
-			{/* Featured Guides */}
-			<section className="px-6 py-24 border-t border-border/40">
-				<div className="mx-auto max-w-6xl">
-					<div className="mb-16">
-						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.01em] mb-4 leading-tight">
-							Popular guides
-						</h2>
-					</div>
-					<PopularGuides />
+					<BrowseAndFeatured />
 				</div>
 			</section>
 
