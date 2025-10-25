@@ -18,7 +18,7 @@ interface GuideBrowseProps {
 
 interface Question {
   id: string;
-  prompt: string;
+  question: string;
   categoryName: string;
 }
 
@@ -50,7 +50,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
         // Fetch template data
         const templatesRes = await fetch('/api/guides');
         const guidesData = await templatesRes.json();
-        const foundGuide = guidesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
+        const foundGuide = guidesData.templates?.find((t:GuideRegistryEntry) => t.id === slug);
         setTemplate(foundGuide || null);
 
         // Fetch questions
@@ -68,7 +68,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
         // Fetch related templates (same category, exclude current)
         if (foundGuide) {
           const related = guidesData.templates
-            ?.filter((t: TemplateRegistryEntry) =>
+            ?.filter((t:GuideRegistryEntry) =>
               t.category === foundGuide.category && t.id !== slug
             )
             .slice(0, 5) || [];
@@ -85,12 +85,12 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
   }, [slug]);
 
   // Group questions by category
-  const groupedQuestions = questions.reduce((acc, prompt) => {
-    const category = prompt.categoryName || 'General';
+  const groupedQuestions = questions.reduce((acc, question) => {
+    const category = question.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
     }
-    acc[category].push(prompt);
+    acc[category].push(question);
     return acc;
   }, {} as Record<string, Question[]>);
 
@@ -108,20 +108,20 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
   const guideData = template.template;
 
-  const handleInsertPrompt = async (prompt: Question) => {
+  const handleInsertQuestion = async (question: Question) => {
     try {
-      // Store prompt data for workspace to use
-      sessionStorage.setItem('workspace-insert-prompt', JSON.stringify(prompt));
+      // Store question data for workspace to use
+      sessionStorage.setItem('workspace-insert-question', JSON.stringify(question));
 
       // Redirect to workspace
       router.push('/workspace');
     } catch (error) {
-      console.error('Error inserting prompt:', error);
-      alert('Failed to insert prompt. Please try again.');
+      console.error('Error inserting question:', error);
+      alert('Failed to insert question. Please try again.');
     }
   };
 
-  const handleReadArticle = async (article: Reading) => {
+  const handleReadArticle = async (reading: Reading) => {
     try {
       // Store article data for workspace to use
       sessionStorage.setItem('workspace-open-article', JSON.stringify(article));
@@ -206,7 +206,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             <div className="space-y-4">
               {questionCategories.map(category => {
                 const isExpanded = expandedCategories.has(category);
-                const categoryPrompts = groupedQuestions[category];
+                const categoryQuestions = groupedQuestions[category];
 
                 return (
                   <section key={category} className="border-t pt-4">
@@ -223,15 +223,15 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
                         </h3>
                       </div>
                       <Badge variant="outline" className="text-xs">
-                        {categoryPrompts.length}
+                        {categoryQuestions.length}
                       </Badge>
                     </button>
 
                     {isExpanded && (
                       <ol className="mt-2 space-y-2 pl-6 list-decimal marker:text-sm">
-                        {categoryPrompts.map((prompt) => (
+                        {categoryQuestions.map((question) => (
                           <li
-                            key={prompt.id}
+                            key={question.id}
                             className="group py-2 text-sm hover:text-primary transition-colors"
                           >
                             {question.question}
@@ -265,7 +265,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
             <p className="text-muted-foreground">No readings available for this guide.</p>
           ) : (
             <ol className="space-y-3 pl-6 list-decimal marker:text-sm border-t pt-6">
-              {readings.map((article) => (
+              {readings.map((reading) => (
                 <li
                   key={article.id}
                   className="group py-2"

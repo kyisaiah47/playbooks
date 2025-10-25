@@ -8,18 +8,18 @@ import { Typography } from '@tiptap/extension-typography'
 import { QuestionNode } from '@/components/tiptap-node/question-node/question-node-extension'
 import '@/components/tiptap-node/question-node/question-node.scss'
 
-import { ReflectionPrompt } from '@/types/guide'
+import { ReflectionQuestion } from '@/types/guide'
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 import { Plus, Target } from 'lucide-react'
 
 interface GuideWorkspaceEditorProps {
-  onInsertPrompt?: (prompt: ReflectionPrompt) => void
+  onInsertQuestion?: (question: ReflectionQuestion) => void
   initialContent?: string
   onContentChange?: (content: string) => void
 }
 
 export function TemplateWorkspaceEditor({
-  onInsertPrompt,
+  onInsertQuestion,
   initialContent,
   onContentChange,
 }: TemplateWorkspaceEditorProps) {
@@ -58,32 +58,32 @@ export function TemplateWorkspaceEditor({
     },
   })
 
-  // Function to insert a prompt node
-  const insertPrompt = useCallback(
-    (prompt: ReflectionPrompt) => {
+  // Function to insert a question node
+  const insertQuestion = useCallback(
+    (question: ReflectionQuestion) => {
       if (!editor) return
 
       editor
         .chain()
         .focus()
-        .insertPrompt({
-          id: prompt.id,
+        .insertQuestion({
+          id: question.id,
           text: question.question,
-          category: prompt.category || 'General',
-          helpText: prompt.helpText,
+          category: question.category || 'General',
+          helpText: question.helpText,
         })
         .run()
     },
     [editor]
   )
 
-  // Expose the insertPrompt function to parent
+  // Expose the insertQuestion function to parent
   React.useEffect(() => {
-    if (onInsertPrompt && editor) {
+    if (onInsertQuestion && editor) {
       // Store the function in a way parent can call it
-      (window as any).insertPromptIntoEditor = insertPrompt
+      (window as any).insertQuestionIntoEditor = insertQuestion
     }
-  }, [editor, insertPrompt, onInsertPrompt])
+  }, [editor, insertQuestion, onInsertQuestion])
 
   if (!editor) {
     return null

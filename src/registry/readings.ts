@@ -109,7 +109,7 @@ export async function getArticleIds(): Promise<string[]> {
     .select('id');
 
   if (error || !data) return [];
-  return data.map((article: any) => article.id);
+  return data.map((reading: any) => article.id);
 }
 
 // Helper function to get paginated readings
@@ -128,7 +128,7 @@ export async function getArticles(page = 1, pageSize = 50) {
     return { readings: [], total: 0 };
   }
 
-  const readings = data.map((article: any) => ({
+  const readings = data.map((reading: any) => ({
     id: article.id,
     title: article.title,
     excerpt: article.excerpt,

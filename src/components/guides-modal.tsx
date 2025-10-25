@@ -35,7 +35,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
       const fetchedTemplates = data.templates || []
       setTemplates(fetchedTemplates)
 
-      const uniqueCategories = [...new Set(fetchedTemplates.map((t: TemplateRegistryEntry) => t.category))].sort()
+      const uniqueCategories = [...new Set(fetchedTemplates.map((t:GuideRegistryEntry) => t.category))].sort()
       setCategories(["All", ...uniqueCategories])
     }
     fetchData()
@@ -91,7 +91,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
             <div>
               <h3 className="text-lg font-semibold mb-4">All Guides</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                {filteredTemplates.map((template) => {
+                {filteredTemplates.map((guide) => {
                   const CardContent = () => (
                     <>
                       <div className="flex items-center gap-3 mb-3">

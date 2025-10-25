@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/guide';
+import { GuidanceTemplate, Resource, ReflectionQuestion, FreeformNote, Workspace } from '@/types/guide';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/template-sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
@@ -35,7 +35,7 @@ interface GuideViewProps {
 
 export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
   const [activeSection, setActiveSection] = useState(0);
-  const [allItems, setAllItems] = useState<(ReflectionPrompt | FreeformNote)[]>([]);
+  const [allItems, setAllItems] = useState<(ReflectionQuestion | FreeformNote)[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
   const [responses, setResponses] = useState<Record<string, string>>({});
   const [editMode, setEditMode] = useState(false);
@@ -91,23 +91,23 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     }
   }, [template.id]);
 
-  const handleInsertPrompt = (prompt: ReflectionPrompt) => {
-    // Insert prompt into TipTap editor
+  const handleInsertQuestion = (question: ReflectionQuestion) => {
+    // Insert question into TipTap editor
     if ((window as any).templateEditor) {
       (window as any).templateEditor
         .chain()
         .focus()
-        .insertPrompt({
-          id: prompt.id,
+        .insertQuestion({
+          id: question.id,
           text: question.question,
-          category: prompt.category || 'General',
-          helpText: prompt.helpText,
+          category: question.category || 'General',
+          helpText: question.helpText,
         })
         .run();
     }
 
     // Keep track for legacy compatibility if needed
-    const newItems = [prompt, ...allItems];
+    const newItems = [question, ...allItems];
     setAllItems(newItems);
 
     // Update current workspace
@@ -174,7 +174,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     ));
   };
 
-  const handleReorderItems = (items: (ReflectionPrompt | FreeformNote)[]) => {
+  const handleReorderItems = (items: (ReflectionQuestion | FreeformNote)[]) => {
     setAllItems(items);
 
     // Update current workspace
@@ -262,7 +262,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
           template={template}
           activeSection={activeSection}
           onSectionChange={setActiveSection}
-          onInsertPrompt={handleInsertPrompt}
+          onInsertQuestion={handleInsertQuestion}
           onInsertNote={handleInsertNote}
           onOpenResource={handleOpenResource}
           responses={responses}

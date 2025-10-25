@@ -69,9 +69,9 @@ export function BoardView({ guideId }: BoardViewProps) {
   const [editNotes, setEditNotes] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleEditPrompt = (prompt: PromptCard) => {
-    setEditingPrompt(prompt);
-    setEditNotes(prompt.notes || '');
+  const handleEditQuestion = (question: PromptCard) => {
+    setEditingPrompt(question);
+    setEditNotes(question.notes || '');
     setDialogOpen(true);
   };
 
@@ -117,7 +117,7 @@ export function BoardView({ guideId }: BoardViewProps) {
                 <KanbanCard key={item.id} {...item}>
                   <div
                     className="cursor-pointer"
-                    onClick={() => handleEditPrompt(item)}
+                    onClick={() => handleEditQuestion(item)}
                   >
                     <Badge variant="outline" className="mb-2 text-xs">
                       {item.category}

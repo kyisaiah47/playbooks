@@ -59,7 +59,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         const allTemplates = data.templates || [];
 
         // Filter by category - normalize both for comparison
-        const filtered = allTemplates.filter((t: TemplateRegistryEntry) => {
+        const filtered = allTemplates.filter((t:GuideRegistryEntry) => {
           // Normalize by removing spaces and ampersands, then compare
           const normalizedDbCategory = t.category.toLowerCase().replace(/[\s&]+/g, '');
           const normalizedUrlCategory = category.toLowerCase().replace(/[-]/g, '');
@@ -174,7 +174,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             </div>
           ) : (
             <div className="space-y-8">
-              {filteredTemplates.map((template) => {
+              {filteredTemplates.map((guide) => {
                 const data = guideData[template.id] || { questions: [], readings: [] };
                 const isExpanded = expandedTemplates.has(template.id);
 
@@ -217,8 +217,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                             Prompts
                           </h3>
                           <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
-                            {data.questions.slice(0, 5).map((prompt: any) => (
-                              <li key={prompt.id} className="py-1 text-sm">
+                            {data.questions.slice(0, 5).map((question: any) => (
+                              <li key={question.id} className="py-1 text-sm">
                                 {question.question}
                               </li>
                             ))}
@@ -240,7 +240,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                             Articles
                           </h3>
                           <ol className="space-y-2 pl-6 list-decimal marker:text-sm">
-                            {data.readings.slice(0, 5).map((article: any) => (
+                            {data.readings.slice(0, 5).map((reading: any) => (
                               <li key={article.id} className="py-1">
                                 <Link
                                   href={`/readings/${article.slug}`}

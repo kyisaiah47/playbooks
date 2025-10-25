@@ -96,12 +96,12 @@ export function SplitView({ guideId }: SplitViewProps) {
 
               {expandedCategories.has(category.name) && (
                 <div className="ml-6 space-y-1 mt-1">
-                  {category.questions.map((prompt) => (
+                  {category.questions.map((question) => (
                     <Button
-                      key={prompt.id}
-                      variant={selectedPrompt?.id === prompt.id ? "secondary" : "ghost"}
+                      key={question.id}
+                      variant={selectedPrompt?.id === question.id ? "secondary" : "ghost"}
                       className="w-full justify-start text-left h-auto py-2 px-3"
-                      onClick={() => setSelectedPrompt(prompt)}
+                      onClick={() => setSelectedPrompt(question)}
                     >
                       <span className="line-clamp-2 text-sm">{prompt.text}</span>
                     </Button>

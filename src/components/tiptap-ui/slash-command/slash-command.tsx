@@ -34,7 +34,7 @@ interface SlashCommandProps {
   editor: Editor
   questions: Array<{
     id: string
-    prompt: string
+    question: string
     category: string
     helpText?: string
   }>
@@ -184,7 +184,7 @@ export function SlashCommand({ editor, questions = [] }: SlashCommandProps) {
 
   const filteredQuestions = questions.filter(prompt =>
     question.question.toLowerCase().includes(search.toLowerCase()) ||
-    prompt.category.toLowerCase().includes(search.toLowerCase())
+    question.category.toLowerCase().includes(search.toLowerCase())
   )
 
   if (!isOpen) return null
@@ -224,17 +224,17 @@ export function SlashCommand({ editor, questions = [] }: SlashCommandProps) {
 
           {filteredQuestions.length > 0 && (
             <CommandGroup heading="Prompts">
-              {filteredQuestions.slice(0, 5).map((prompt) => (
+              {filteredQuestions.slice(0, 5).map((question) => (
                 <CommandItem
-                  key={prompt.id}
+                  key={question.id}
                   onSelect={() => executeCommand((editor) => {
                     editor.chain()
                       .focus()
-                      .insertPrompt({
-                        id: prompt.id,
+                      .insertQuestion({
+                        id: question.id,
                         text: question.question,
-                        category: prompt.category,
-                        helpText: prompt.helpText,
+                        category: question.category,
+                        helpText: question.helpText,
                       })
                       .run()
                   }, true)}
@@ -243,7 +243,7 @@ export function SlashCommand({ editor, questions = [] }: SlashCommandProps) {
                   <MessageSquare className="w-4 h-4 mt-0.5 text-muted-foreground" />
                   <div className="flex-1">
                     <div className="text-sm font-medium line-clamp-1">{question.question}</div>
-                    <div className="text-xs text-muted-foreground">{prompt.category}</div>
+                    <div className="text-xs text-muted-foreground">{question.category}</div>
                   </div>
                 </CommandItem>
               ))}

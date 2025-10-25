@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GuidanceSection, ReflectionPrompt, FreeformNote } from '@/types/guide';
+import { GuidanceSection, ReflectionQuestion, FreeformNote } from '@/types/guide';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
@@ -20,12 +20,12 @@ import {
 
 interface EmbeddedPromptsProps {
   section: GuidanceSection;
-  allItems?: (ReflectionPrompt | FreeformNote)[];
+  allItems?: (ReflectionQuestion | FreeformNote)[];
   onResponsesChange?: (responses: Record<string, string>) => void;
   onRemovePrompt?: (questionId: string) => void;
   onRemoveNote?: (noteId: string) => void;
   onUpdateNote?: (noteId: string, updates: Partial<FreeformNote>) => void;
-  onReorderItems?: (items: (ReflectionPrompt | FreeformNote)[]) => void;
+  onReorderItems?: (items: (ReflectionQuestion | FreeformNote)[]) => void;
   hideHeader?: boolean;
   responses?: Record<string, string>;
   editMode?: boolean;
@@ -123,7 +123,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
     setDraggedOver(null);
   };
 
-  const handleDragStart = (e: React.DragEvent, itemId: string, itemType: 'prompt' | 'note') => {
+  const handleDragStart = (e: React.DragEvent, itemId: string, itemType: 'question' | 'note') => {
     setDraggedItem(itemId);
     e.dataTransfer.setData('application/json', JSON.stringify({ type: itemType, id: itemId }));
     e.dataTransfer.effectAllowed = 'move';
@@ -151,7 +151,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
   };
 
   // Items are already unified and ordered chronologically
-  const additionalPrompts = allItems.filter(item => 'prompt' in item) as ReflectionPrompt[];
+  const additionalPrompts = allItems.filter(item => 'prompt' in item) as ReflectionQuestion[];
   const additionalNotes = allItems.filter(item => 'title' in item && !('prompt' in item)) as FreeformNote[];
 
   // Separate active and completed items
@@ -249,28 +249,28 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
 
               {activeItems.map((item, index) => {
             // Check if this is a prompt or a note
-            const isPrompt = 'prompt' in item;
+            const isQuestion = 'question' in item;
             const isNote = 'title' in item && !('prompt' in item);
 
             return (
               <div key={item.id}>
                 {isPrompt && (() => {
-                  const prompt = item as ReflectionPrompt;
-                  const isAdditional = additionalPrompts.some(p => p.id === prompt.id);
-                  const hasContent = responses[prompt.id]?.trim();
+                  const prompt = item as ReflectionQuestion;
+                  const isAdditional = additionalPrompts.some(p => p.id === question.id);
+                  const hasContent = responses[question.id]?.trim();
                   return (
                     <div
-                      key={prompt.id}
-                      data-item-id={prompt.id}
+                      key={question.id}
+                      data-item-id={question.id}
                       draggable={editMode}
-                      onDragStart={(e) => handleDragStart(e, prompt.id, 'prompt')}
+                      onDragStart={(e) => handleDragStart(e, question.id, 'prompt')}
                       onDragEnd={handleDragEnd}
                       className={`group space-y-4 transition-all duration-300 ${
                         editMode ? 'cursor-move' : ''
                       } ${
-                        draggedItem === prompt.id ? 'opacity-50 scale-95' : ''
+                        draggedItem === question.id ? 'opacity-50 scale-95' : ''
                       } ${
-                        highlightedItem === prompt.id ? 'animate-pulse' : ''
+                        highlightedItem === question.id ? 'animate-pulse' : ''
                       }`}
                     >
                       {/* Embedded Prompt Question */}
@@ -285,9 +285,9 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                         </VerticalCutReveal>
                         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground mb-4">
                           <Badge variant="outline" className="text-xs opacity-60">
-                            {prompt.category}
+                            {question.category}
                           </Badge>
-                          {prompt.helpText && (
+                          {question.helpText && (
                             <Tooltip>
                               <TooltipTrigger asChild>
                                 <Button variant="ghost" size="sm" className="h-4 w-4 p-0 text-muted-foreground hover:text-foreground">
@@ -295,7 +295,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                                 </Button>
                               </TooltipTrigger>
                               <TooltipContent side="bottom" className="max-w-xs">
-                                <p className="text-xs">{prompt.helpText}</p>
+                                <p className="text-xs">{question.helpText}</p>
                               </TooltipContent>
                             </Tooltip>
                           )}
@@ -303,7 +303,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => onRemovePrompt?.(prompt.id)}
+                              onClick={() => onRemovePrompt?.(question.id)}
                               className="h-4 w-4 p-0 text-muted-foreground hover:text-destructive"
                             >
                               <X className="w-3 h-3" />
@@ -316,13 +316,13 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                       <div className="max-w-2xl mx-auto">
                         <Textarea
                           placeholder="Share your thoughts here..."
-                          value={responses[prompt.id] || ''}
-                          onChange={(e) => handleResponseChange(prompt.id, e.target.value)}
-                          onDragOver={(e) => handleDragOver(e, prompt.id)}
+                          value={responses[question.id] || ''}
+                          onChange={(e) => handleResponseChange(question.id, e.target.value)}
+                          onDragOver={(e) => handleDragOver(e, question.id)}
                           onDragLeave={handleDragLeave}
-                          onDrop={(e) => handleDrop(e, prompt.id)}
+                          onDrop={(e) => handleDrop(e, question.id)}
                           className={`min-h-[120px] text-sm resize-none transition-all duration-300 backdrop-blur-sm bg-background/10 border-white/10 text-foreground placeholder:text-muted-foreground/70 focus:bg-background/20 focus:border-white/20 focus:backdrop-blur-md ${
-                            draggedOver === prompt.id
+                            draggedOver === question.id
                               ? 'ring-2 ring-blue-500/30 bg-blue-500/5'
                               : ''
                           }`}
@@ -332,7 +332,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => onToggleComplete?.(prompt.id)}
+                              onClick={() => onToggleComplete?.(question.id)}
                               className="text-xs text-muted-foreground hover:text-primary transition-colors"
                             >
                               <CircleCheck className="w-4 h-4 mr-2" />
@@ -458,7 +458,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
               </div>
               <div className="space-y-2">
                 {completedItemsList.map((item) => {
-                  const isPrompt = 'prompt' in item;
+                  const isQuestion = 'question' in item;
                   const isNote = 'title' in item && !('prompt' in item);
                   const content = responses[item.id];
                   const preview = content ? content.slice(0, 80) + (content.length > 80 ? '...' : '') : '';
@@ -477,7 +477,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                           </span>
                           {isPrompt && (
                             <Badge variant="outline" className="text-xs h-4 px-1 opacity-60">
-                              {(item as ReflectionPrompt).category}
+                              {(item as ReflectionQuestion).category}
                             </Badge>
                           )}
                         </div>

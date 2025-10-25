@@ -22,7 +22,7 @@ interface MarketingClientProps {
 
 interface Question {
   id: string;
-  prompt: string;
+  question: string;
   categoryName: string;
 }
 
@@ -53,13 +53,13 @@ export default function MarketingClient({ params }: MarketingClientProps) {
         // Fetch all templates
         const templatesRes = await fetch('/api/guides');
         const guidesData = await templatesRes.json();
-        const foundGuide = guidesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
+        const foundGuide = guidesData.templates?.find((t:GuideRegistryEntry) => t.id === slug);
         setTemplate(foundGuide || null);
 
         // Set related templates (same category, different id)
         if (foundGuide) {
           const related = guidesData.templates?.filter(
-            (t: TemplateRegistryEntry) => t.category === foundGuide.category && t.id !== slug
+            (t:GuideRegistryEntry) => t.category === foundGuide.category && t.id !== slug
           ) || [];
           setRelatedTemplates(related);
         }
@@ -84,12 +84,12 @@ export default function MarketingClient({ params }: MarketingClientProps) {
   }, [slug]);
 
   // Group questions by category
-  const groupedQuestions = questions.reduce((acc, prompt) => {
-    const category = prompt.categoryName || 'General';
+  const groupedQuestions = questions.reduce((acc, question) => {
+    const category = question.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
     }
-    acc[category].push(prompt);
+    acc[category].push(question);
     return acc;
   }, {} as Record<string, Question[]>);
 
@@ -278,11 +278,11 @@ export default function MarketingClient({ params }: MarketingClientProps) {
     name: `${guideData.title} Questions`,
     description: `${questions.length} expert questions for ${guideData.title.toLowerCase()}`,
     numberOfItems: questions.length,
-    itemListElement: questions.slice(0, 10).map((prompt, index) => ({
+    itemListElement: questions.slice(0, 10).map((question, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: question.question.substring(0, 100),
-      item: `https://templata.org/guides/${slug}/marketing#prompt-${prompt.id}`
+      item: `https://templata.org/guides/${slug}/marketing#question-${question.id}`
     }))
   } : null;
 
@@ -479,7 +479,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
               <div className="space-y-4">
                 {questionCategories.map(category => {
                   const isExpanded = expandedCategories.has(category);
-                  const categoryPrompts = groupedQuestions[category];
+                  const categoryQuestions = groupedQuestions[category];
 
                   return (
                     <section key={category} className="border-t pt-4">
@@ -496,15 +496,15 @@ export default function MarketingClient({ params }: MarketingClientProps) {
                           </h3>
                         </div>
                         <Badge variant="outline" className="text-xs">
-                          {categoryPrompts.length}
+                          {categoryQuestions.length}
                         </Badge>
                       </button>
 
                       {isExpanded && (
                         <div className="mt-2 grid grid-cols-1 gap-y-1 pl-6">
-                          {categoryPrompts.map((prompt) => (
+                          {categoryQuestions.map((question) => (
                             <div
-                              key={prompt.id}
+                              key={question.id}
                               className="group block py-2 hover:text-primary transition-colors"
                             >
                               <div className="text-sm">
@@ -540,7 +540,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
               <p className="text-muted-foreground">No readings available for this guide.</p>
             ) : (
               <div className="border-t">
-                {readings.map((article) => (
+                {readings.map((reading) => (
                   <div
                     key={article.id}
                     className="group border-b py-3 hover:bg-muted/50 transition-colors"

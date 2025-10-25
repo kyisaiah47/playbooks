@@ -17,7 +17,7 @@ import {
 
 interface NavReadingsListProps {
   guideId: string | null;
-  onArticleSelect?: (article: any) => void;
+  onArticleSelect?: (reading: any) => void;
 }
 
 export function NavReadingsList({ guideId, onArticleSelect }: NavReadingsListProps) {
@@ -64,7 +64,7 @@ export function NavReadingsList({ guideId, onArticleSelect }: NavReadingsListPro
             ) : readings.length === 0 ? (
               <div className="text-xs text-muted-foreground p-2">No readings</div>
             ) : (
-              readings.map((article: any) => (
+              readings.map((reading: any) => (
                 <SidebarMenuSubItem key={article.id}>
                   <SidebarMenuSubButton
                     onClick={() => onArticleSelect?.(article)}

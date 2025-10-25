@@ -242,7 +242,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
               <div className="mt-6">
                 <div className="text-xs font-medium text-muted-foreground mb-2 px-2">Reflection Prompts</div>
                 <div className="space-y-1">
-                  {template.questions.slice(0, 3).map((prompt, index) => (
+                  {template.questions.slice(0, 3).map((question, index) => (
                     <div
                       key={index}
                       className="w-full p-2 bg-background rounded border text-xs"
@@ -286,7 +286,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
               {/* Prompts Content */}
               <div className="flex-1 overflow-auto">
                 <div className="min-h-full">
-                  {previewPrompts.map((prompt, index) => (
+                  {previewPrompts.map((question, index) => (
                     <div key={index} className="border-b p-4 space-y-3">
                       <div className="flex items-start gap-2">
                         <span className="w-5 h-5 bg-primary/10 rounded text-xs text-primary font-medium flex items-center justify-center flex-shrink-0 mt-0.5">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GuidanceTemplate, DailyReflectionPrompt } from '@/types/guide';
+import { GuidanceTemplate, DailyReflectionQuestion } from '@/types/guide';
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 import { WorkspaceSwitcher } from '@/components/tiptap-templates/simple/workspace-switcher';
 import { ThemeSelector } from '@/components/theme-selector';
@@ -20,10 +20,10 @@ interface ReflectionViewProps {
 
 export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) {
   const [reflectionResponse, setReflectionResponse] = useState('');
-  const [currentPrompt, setCurrentPrompt] = useState<DailyReflectionPrompt | null>(null);
+  const [currentPrompt, setCurrentPrompt] = useState<DailyReflectionQuestion | null>(null);
 
   // Sample reflection questions for wedding planning (we'll move this to data later)
-  const reflectionPrompts: DailyReflectionPrompt[] = [
+  const reflectionPrompts: DailyReflectionQuestion[] = [
     {
       id: 'wedding-reflection-1',
       text: 'What aspects of your wedding planning journey have surprised you the most, and what do they reveal about your values as a couple?',
@@ -66,7 +66,7 @@ export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) 
     }
   ];
 
-  // Get today's reflection prompt (simple daily rotation)
+  // Get today's reflection question (simple daily rotation)
   useEffect(() => {
     const today = new Date();
     const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24);
@@ -84,7 +84,7 @@ export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) 
 
   return (
     <div className="h-screen w-full overflow-hidden flex flex-col font-sans bg-background text-foreground">
-      {/* Header with workspace switcher and reflection prompt */}
+      {/* Header with workspace switcher and reflection question */}
       <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="absolute left-4">
           <ThemeSelector />

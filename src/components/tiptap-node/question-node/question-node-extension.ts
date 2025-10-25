@@ -16,7 +16,7 @@ declare module "@tiptap/core" {
       /**
        * Insert a prompt node
        */
-      insertPrompt: (prompt: {
+      insertQuestion: (prompt: {
         id: string
         text: string
         category: string
@@ -127,16 +127,16 @@ export const QuestionNode = Node.create<QuestionNodeOptions>({
 
   addCommands() {
     return {
-      insertPrompt:
-        (prompt) =>
+      insertQuestion:
+        (question) =>
         ({ commands }) => {
           return commands.insertContent({
             type: this.name,
             attrs: {
-              id: prompt.id,
+              id: question.id,
               text: prompt.text,
-              category: prompt.category,
-              helpText: prompt.helpText,
+              category: question.category,
+              helpText: question.helpText,
               response: "",
             },
           })

@@ -274,7 +274,7 @@ export default function ReadingClient({ params }: ReadingClientProps) {
                   Templates That Can Help
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {relatedGuides.map((template) => (
+                  {relatedGuides.map((guide) => (
                     <div key={template.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
                       <h4 className="font-medium mb-2">
                         <Link

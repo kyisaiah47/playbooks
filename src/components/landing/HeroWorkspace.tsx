@@ -1496,7 +1496,7 @@ export function HeroWorkspace() {
                   { q: 'What is your ideal guest count?', done: true },
                   { q: 'What are your ceremony priorities?', done: false },
                   { q: 'What are your catering preferences?', done: false },
-                ].map((prompt, i) => (
+                ].map((question, i) => (
                   <div
                     key={i}
                     className={`p-2 rounded text-[10px] cursor-pointer transition-colors flex items-start gap-2 ${
@@ -1505,12 +1505,12 @@ export function HeroWorkspace() {
                         : 'text-muted-foreground hover:bg-muted/50'
                     }`}
                   >
-                    {prompt.done ? (
+                    {question.done ? (
                       <CheckCircle2 className="w-3 h-3 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                     ) : (
                       <Circle className="w-3 h-3 flex-shrink-0 mt-0.5" />
                     )}
-                    <span className="flex-1">{prompt.q}</span>
+                    <span className="flex-1">{question.q}</span>
                   </div>
                 ))}
               </div>

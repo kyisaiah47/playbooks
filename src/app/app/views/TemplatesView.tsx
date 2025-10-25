@@ -1086,11 +1086,11 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                               transition={{ duration: 0.2 }}
                               className="space-y-1 overflow-hidden"
                             >
-                              {groupedQuestions[category].map((prompt) => (
+                              {groupedQuestions[category].map((question) => (
                                 <button
                                   key={question.id}
                                   onClick={() => {
-                                    setSelectedQuestionId(prompt.id);
+                                    setSelectedQuestionId(question.id);
                                     setMobileDrawerOpen(false);
                                   }}
                                   className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
@@ -1132,7 +1132,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                   </p>
                 ) : (
                   <div className="space-y-2">
-                    {filteredArticles.map((article) => (
+                    {filteredArticles.map((reading) => (
                       <Card
                         key={article.id}
                         className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"

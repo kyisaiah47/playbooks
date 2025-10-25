@@ -21,7 +21,7 @@ interface TableViewProps {
 
 type PromptTableData = {
   id: string;
-  prompt: string;
+  question: string;
   type: string;
   status: 'pending' | 'in_progress' | 'completed';
   response: string;
@@ -32,35 +32,35 @@ export function TableView({ guideId }: TableViewProps) {
   const [data] = useState<PromptTableData[]>([
     {
       id: '1',
-      prompt: 'Define your wedding vision',
+      question: 'Define your wedding vision',
       type: 'Contextual',
       status: 'completed',
       response: 'Rustic outdoor ceremony with natural elements',
     },
     {
       id: '2',
-      prompt: 'Set your budget',
+      question: 'Set your budget',
       type: 'Tactical',
       status: 'in_progress',
       response: '$25,000 - $30,000 range',
     },
     {
       id: '3',
-      prompt: 'Choose your venue',
+      question: 'Choose your venue',
       type: 'Decision',
       status: 'pending',
       response: '',
     },
     {
       id: '4',
-      prompt: 'Create guest list',
+      question: 'Create guest list',
       type: 'Planning',
       status: 'pending',
       response: '',
     },
     {
       id: '5',
-      prompt: 'Select vendors',
+      question: 'Select vendors',
       type: 'Research',
       status: 'pending',
       response: '',
@@ -69,12 +69,12 @@ export function TableView({ guideId }: TableViewProps) {
 
   const columns: ColumnDef<PromptTableData>[] = [
     {
-      accessorKey: 'prompt',
+      accessorKey: 'question',
       header: ({ column }) => (
         <TableColumnHeader column={column} title="Question" />
       ),
       cell: ({ row }) => (
-        <div className="font-medium max-w-md truncate">{row.getValue('prompt')}</div>
+        <div className="font-medium max-w-md truncate">{row.getValue('question')}</div>
       ),
     },
     {

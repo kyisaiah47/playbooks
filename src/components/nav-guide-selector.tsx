@@ -49,7 +49,7 @@ export function NavTemplateSelector({ selectedGuideId, onTemplateChange }: NavTe
         </CollapsibleTrigger>
         <CollapsibleContent>
           <SidebarMenuSub className="max-h-[200px] overflow-y-auto">
-            {templates.map((template) => (
+            {templates.map((guide) => (
               <SidebarMenuSubItem key={template.id}>
                 <SidebarMenuSubButton
                   onClick={() => onTemplateChange(template.id)}
