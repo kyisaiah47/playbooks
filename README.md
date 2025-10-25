@@ -137,7 +137,7 @@ Use multiple workspaces for different life areas. Keep active projects accessibl
 
 **Home Buyers** - First-time and experienced buyers navigating the complex home purchasing process.
 
-**Students** - College students, grad students, and lifelong learners managing education and career transitions.
+**Students** - College students, grad students, and lifelong learners managing education and career changes.
 
 **Entrepreneurs** - Business founders working through launches, planning, and growth strategies.
 
@@ -145,7 +145,7 @@ Use multiple workspaces for different life areas. Keep active projects accessibl
 
 **Creative Builders** - Artists, musicians, writers, and hobbyists developing skills and projects.
 
-**Anyone Facing Change** - People experiencing divorce, relocation, job loss, health challenges, or any major life transition.
+**Anyone Facing Change** - People experiencing divorce, relocation, job loss, health challenges, or any major life change.
 
 ## Key Features
 

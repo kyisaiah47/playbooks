@@ -32,7 +32,7 @@ export default function CommunityPage() {
       comments: 23,
       upvotes: 45,
       lastActivity: "2h ago",
-      preview: "Used this guide for my transition last year. The networking section was invaluable, but I'd add more about salary negotiations..."
+      preview: "Used this guide for my career change last year. The networking section was invaluable, but I'd add more about salary negotiations..."
     },
     {
       id: 2,
