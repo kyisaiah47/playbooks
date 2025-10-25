@@ -133,7 +133,7 @@ export function Header() {
 		<>
 			<header className={cn(
 				"fixed top-0 z-50 w-full border-b transition-colors duration-300",
-				isScrolled && isHomePage ? "bg-background" : "border-transparent"
+				isScrolled ? "bg-background" : "border-transparent"
 			)}>
 				<nav className="container mx-auto px-4 py-4">
 					<div className="flex items-center justify-between relative">
