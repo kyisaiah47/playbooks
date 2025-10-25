@@ -1,6 +1,6 @@
 import { GuidanceTemplate } from '@/types/template';
 
-export interface TemplateRegistryEntry {
+export interface GuideRegistryEntry {
   id: string;
   name: string;
   description: string;
@@ -11,6 +11,9 @@ export interface TemplateRegistryEntry {
   iconColor: string;
   template: GuidanceTemplate;
 }
+
+// Legacy type alias for compatibility
+export type TemplateRegistryEntry = GuideRegistryEntry;
 
 // Helper function to get colors based on category
 function getCategoryColors(category: string): { bg: string; icon: string } {
@@ -30,8 +33,8 @@ function getCategoryColors(category: string): { bg: string; icon: string } {
   return colorMap[category] || { bg: 'bg-gray-50 dark:bg-gray-950/30', icon: 'text-gray-600 dark:text-gray-400' };
 }
 
-// Fetch templates from API
-async function fetchTemplates(): Promise<TemplateRegistryEntry[]> {
+// Fetch guides from API
+async function fetchGuides(): Promise<GuideRegistryEntry[]> {
   try {
     // Determine if we're on server or client
     const isServer = typeof window === 'undefined';
@@ -48,46 +51,51 @@ async function fetchTemplates(): Promise<TemplateRegistryEntry[]> {
       ...getCategoryColors(t.category)
     }));
   } catch (error) {
-    console.error('Error fetching templates:', error);
+    console.error('Error fetching guides:', error);
     return [];
   }
 }
 
 // Helper functions - now async
-export const getTemplateById = async (id: string): Promise<TemplateRegistryEntry | undefined> => {
-  const templates = await fetchTemplates();
-  return templates.find(template => template.id === id);
+export const getGuideById = async (id: string): Promise<GuideRegistryEntry | undefined> => {
+  const guides = await fetchGuides();
+  return guides.find(guide => guide.id === id);
 };
 
-export const getTemplatesByCategory = async (category: string): Promise<TemplateRegistryEntry[]> => {
-  const templates = await fetchTemplates();
-  return templates.filter(template => template.category === category);
+export const getGuidesByCategory = async (category: string): Promise<GuideRegistryEntry[]> => {
+  const guides = await fetchGuides();
+  return guides.filter(guide => guide.category === category);
 };
 
 export const getAllCategories = async (): Promise<string[]> => {
-  const templates = await fetchTemplates();
-  const categories = templates.map(template => template.category);
+  const guides = await fetchGuides();
+  const categories = guides.map(guide => guide.category);
   return [...new Set(categories)].sort();
 };
 
-export const searchTemplates = async (query: string): Promise<TemplateRegistryEntry[]> => {
-  const templates = await fetchTemplates();
+export const searchGuides = async (query: string): Promise<GuideRegistryEntry[]> => {
+  const guides = await fetchGuides();
   const lowercaseQuery = query.toLowerCase();
-  return templates.filter(template =>
-    template.name.toLowerCase().includes(lowercaseQuery) ||
-    template.description.toLowerCase().includes(lowercaseQuery) ||
-    template.category.toLowerCase().includes(lowercaseQuery) ||
-    template.template.tags?.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+  return guides.filter(guide =>
+    guide.name.toLowerCase().includes(lowercaseQuery) ||
+    guide.description.toLowerCase().includes(lowercaseQuery) ||
+    guide.category.toLowerCase().includes(lowercaseQuery) ||
+    guide.template.tags?.some(tag => tag.toLowerCase().includes(lowercaseQuery))
   );
 };
 
-export const getAllTemplates = async (): Promise<TemplateRegistryEntry[]> => {
-  return fetchTemplates();
+export const getAllGuides = async (): Promise<GuideRegistryEntry[]> => {
+  return fetchGuides();
 };
 
-// Legacy export for compatibility
-export const templateRegistry = [] as TemplateRegistryEntry[];
+// Legacy exports for compatibility
+export const getTemplateById = getGuideById;
+export const getTemplatesByCategory = getGuidesByCategory;
+export const searchTemplates = searchGuides;
+export const getAllTemplates = getAllGuides;
+export const templateRegistry = [] as GuideRegistryEntry[];
+export const guideRegistry = [] as GuideRegistryEntry[];
 
-export const getArticles = () => {
+export const getReadings = () => {
   return [];
 };
