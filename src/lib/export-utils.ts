@@ -39,15 +39,15 @@ export function generateMarkdownSummary(
   if (templates.length > 0) {
     markdown += `## Templates (${templates.length})\n\n`;
     templates.forEach((template, index) => {
-      markdown += `### ${index + 1}. ${template.guideId}\n\n`;
-      markdown += `- **Status:** ${template.completion === 100 ? 'Completed' : 'In Progress'} (${template.completion}%)\n`;
-      markdown += `- **Tags:** ${template.tags.join(', ')}\n`;
-      markdown += `- **Started:** ${template.startedAt.toLocaleDateString()}\n`;
-      markdown += `- **Last Updated:** ${template.updatedAt.toLocaleDateString()}\n\n`;
+      markdown += `### ${index + 1}. ${guide.guideId}\n\n`;
+      markdown += `- **Status:** ${guide.completion === 100 ? 'Completed' : 'In Progress'} (${guide.completion}%)\n`;
+      markdown += `- **Tags:** ${guide.tags.join(', ')}\n`;
+      markdown += `- **Started:** ${guide.startedAt.toLocaleDateString()}\n`;
+      markdown += `- **Last Updated:** ${guide.updatedAt.toLocaleDateString()}\n\n`;
 
-      if (Object.keys(template.answers).length > 0) {
+      if (Object.keys(guide.answers).length > 0) {
         markdown += `**Responses:**\n\n`;
-        Object.entries(template.answers).forEach(([question, answer]) => {
+        Object.entries(guide.answers).forEach(([question, answer]) => {
           markdown += `- ${question}: ${answer}\n`;
         });
         markdown += `\n`;
@@ -256,21 +256,21 @@ export function generateHTMLForPDF(
     html += `<h2>Templates (${templates.length})</h2>`;
     templates.forEach((template, index) => {
       html += `
-  <h3>${index + 1}. ${template.guideId}</h3>
+  <h3>${index + 1}. ${guide.guideId}</h3>
   <p class="meta">
-    Started: ${template.startedAt.toLocaleDateString()} |
-    Last Updated: ${template.updatedAt.toLocaleDateString()}
+    Started: ${guide.startedAt.toLocaleDateString()} |
+    Last Updated: ${guide.updatedAt.toLocaleDateString()}
   </p>
   <div class="progress-bar">
-    <div class="progress-fill" style="width: ${template.completion}%">
-      ${template.completion}%
+    <div class="progress-fill" style="width: ${guide.completion}%">
+      ${guide.completion}%
     </div>
   </div>
-  <p><strong>Tags:</strong> ${template.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
+  <p><strong>Tags:</strong> ${guide.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
 `;
-      if (Object.keys(template.answers).length > 0) {
+      if (Object.keys(guide.answers).length > 0) {
         html += `<p><strong>Responses:</strong></p><ul>`;
-        Object.entries(template.answers).forEach(([question, answer]) => {
+        Object.entries(guide.answers).forEach(([question, answer]) => {
           html += `<li><strong>${question}:</strong> ${answer}</li>`;
         });
         html += `</ul>`;

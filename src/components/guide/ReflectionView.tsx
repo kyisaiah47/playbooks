@@ -18,7 +18,7 @@ interface ReflectionViewProps {
   onSwitchMode: (mode: 'guide' | 'reflection' | 'master') => void;
 }
 
-export function ReflectionView({ template, onSwitchMode }: ReflectionViewProps) {
+export function ReflectionView({ guide, onSwitchMode }: ReflectionViewProps) {
   const [reflectionResponse, setReflectionResponse] = useState('');
   const [currentPrompt, setCurrentPrompt] = useState<DailyReflectionQuestion | null>(null);
 

@@ -35,7 +35,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
   const router = useRouter();
   const { slug } = use(params);
 
-  const [template, setTemplate] = useState<GuideRegistryEntry | null>(null);
+  const [guide, setGuide] = useState<GuideRegistryEntry | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [readings, setReadings] = useState<Reading[]>([]);
   const [relatedGuides, setRelatedTemplates] = useState<GuideRegistryEntry[]>([]);
@@ -96,7 +96,7 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
 
   const questionCategories = Object.keys(groupedQuestions).sort();
 
-  if (!guide?.template) {
+  if (!guide?.guide) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-16">
@@ -135,8 +135,8 @@ export default function GuideBrowse({ params }: GuideBrowseProps) {
   };
 
   const handleOpenInWorkspace = () => {
-    // Store template context for workspace
-    sessionStorage.setItem('workspace-template-context', JSON.stringify({
+    // Store guide context for workspace
+    sessionStorage.setItem('workspace-guide-context', JSON.stringify({
       guideId: slug,
       guideName: guideData.title
     }));

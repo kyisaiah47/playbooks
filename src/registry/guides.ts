@@ -80,7 +80,7 @@ export const searchGuides = async (query: string): Promise<GuideRegistryEntry[]>
     guide.name.toLowerCase().includes(lowercaseQuery) ||
     guide.description.toLowerCase().includes(lowercaseQuery) ||
     guide.category.toLowerCase().includes(lowercaseQuery) ||
-    guide.template.tags?.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+    guide.guide.tags?.some(tag => tag.toLowerCase().includes(lowercaseQuery))
   );
 };
 

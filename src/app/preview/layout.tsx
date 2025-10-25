@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Template Previews | See Templata Templates in Action',
-  description: 'Experience how Templata\'s expert-crafted templates transform overwhelming planning into organized, actionable dashboards. Preview wedding planning, home buying, career change, and business launch templates.',
-  keywords: 'template preview, templata demo, wedding planning template, home buying template, career change template, business launch template, expert-crafted dashboards',
+  description: 'Experience how Templata\'s expert-crafted templates transform overwhelming planning into organized, actionable dashboards. Preview wedding planning, home buying, career change, and business launch guides.',
+  keywords: 'guide preview, templata demo, wedding planning guide, home buying guide, career change guide, business launch guide, expert-crafted dashboards',
   openGraph: {
     title: 'Template Previews | See Templata Templates in Action',
     description: 'Experience how Templata\'s expert-crafted templates transform overwhelming planning into organized, actionable dashboards.',
@@ -74,33 +74,33 @@ export default function PreviewLayout({
               {
                 "@type": "CreativeWork",
                 "name": "Wedding Planning Template Preview",
-                "description": "Interactive preview of wedding planning template with budget tracking, venue selection, and guest management"
+                "description": "Interactive preview of wedding planning guide with budget tracking, venue selection, and guest management"
               },
               {
                 "@type": "CreativeWork",
                 "name": "Home Buying Template Preview",
-                "description": "Interactive preview of home buying template with pre-approval process, house hunting, and inspections"
+                "description": "Interactive preview of home buying guide with pre-approval process, house hunting, and inspections"
               },
               {
                 "@type": "CreativeWork",
                 "name": "Career Change Template Preview",
-                "description": "Interactive preview of career change template with resume building, networking, and job applications"
+                "description": "Interactive preview of career change guide with resume building, networking, and job applications"
               },
               {
                 "@type": "CreativeWork",
                 "name": "Business Launch Template Preview",
-                "description": "Interactive preview of business launch template with business planning, legal setup, and marketing strategy"
+                "description": "Interactive preview of business launch guide with business planning, legal setup, and marketing strategy"
               },
               {
                 "@type": "CreativeWork",
                 "name": "Event Planning Template Preview",
-                "description": "Interactive preview of event planning template with concept development, venue selection, and entertainment"
+                "description": "Interactive preview of event planning guide with concept development, venue selection, and entertainment"
               }
             ],
             "potentialAction": {
               "@type": "InteractAction",
               "name": "Try Template Demo",
-              "description": "Experience interactive template demos",
+              "description": "Experience interactive guide demos",
               "target": "https://templata.org/preview"
             }
           })

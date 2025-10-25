@@ -38,7 +38,7 @@ interface Reading {
 export default function MarketingClient({ params }: MarketingClientProps) {
   const { slug } = use(params);
 
-  const [template, setTemplate] = useState<GuideRegistryEntry | null>(null);
+  const [guide, setGuide] = useState<GuideRegistryEntry | null>(null);
   const [relatedGuides, setRelatedTemplates] = useState<GuideRegistryEntry[]>([]);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [readings, setReadings] = useState<Reading[]>([]);
@@ -95,7 +95,7 @@ export default function MarketingClient({ params }: MarketingClientProps) {
 
   const questionCategories = Object.keys(groupedQuestions).sort();
 
-  if (!guide?.template) {
+  if (!guide?.guide) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-16">

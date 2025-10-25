@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { Archive } from 'lucide-react';
-import { TemplatesView } from '@/app/app/views/TemplatesView';
+import { GuidesView } from '@/app/app/views/GuidesView';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ArchivePage() {
@@ -43,7 +43,7 @@ export default function ArchivePage() {
               transition={{ duration: 0.3 }}
               className="h-full"
             >
-              <TemplatesView userGuideId={selectedNoteId} />
+              <GuidesView userGuideId={selectedNoteId} />
             </motion.div>
           ) : (
             <motion.div

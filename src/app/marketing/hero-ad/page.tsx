@@ -1,4 +1,4 @@
-import { FullTemplatePreview } from "@/components/preview/FullTemplatePreview";
+import { FullGuidePreview } from "@/components/preview/FullTemplatePreview";
 
 export default function HeroAdPage() {
 	return (
@@ -42,7 +42,7 @@ export default function HeroAdPage() {
 				<div className="w-[80vw]">
 					<div className="bg-white rounded-t-2xl shadow-2xl overflow-hidden">
 						<div className="h-[60vh] overflow-hidden">
-							<FullTemplatePreview templateType="Wedding Planning" />
+							<FullGuidePreview templateType="Wedding Planning" />
 						</div>
 					</div>
 				</div>

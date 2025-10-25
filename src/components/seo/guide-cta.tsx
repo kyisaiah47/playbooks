@@ -38,11 +38,11 @@ export function TemplateCTA({ templateType, guideName, appLink }: TemplateCTAPro
   const getDescription = () => {
     switch (templateType) {
       case 'wedding':
-        return "Join thousands of couples who've planned their perfect wedding with our comprehensive template. Start organizing your special day today - completely free."
+        return "Join thousands of couples who've planned their perfect wedding with our comprehensive guide. Start organizing your special day today - completely free."
       case 'baby':
-        return "Join thousands of families who've prepared for their new arrival with our comprehensive template. Start planning for your little one today - completely free."
+        return "Join thousands of families who've prepared for their new arrival with our comprehensive guide. Start planning for your little one today - completely free."
       case 'home-buying':
-        return "Join thousands of families who've found their dream home with our comprehensive template. Start your home buying journey today - completely free."
+        return "Join thousands of families who've found their dream home with our comprehensive guide. Start your home buying journey today - completely free."
       default:
         return "Start using this template today - completely free."
     }

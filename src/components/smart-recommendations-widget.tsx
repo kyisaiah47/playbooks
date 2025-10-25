@@ -24,7 +24,7 @@ import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph"
 import { useFavorites } from "@/hooks/use-favorites"
 import { SubtleGlow } from "@/components/ui/glow-variants"
 
-const getTemplateIcon = (guideId: string) => {
+const getGuideIcon = (guideId: string) => {
   switch (guideId) {
     case 'wedding-planning': return Heart
     case 'home-buying': return Home
@@ -52,7 +52,7 @@ interface SmartRecommendationsWidgetProps {
   title?: string
   limit?: number
   type?: "contextual" | "discovery" | "mixed"
-  currentGuideId?: string // To exclude current template from recommendations
+  currentGuideId?: string // To exclude current guide from recommendations
 }
 
 export function SmartRecommendationsWidget({
@@ -72,9 +72,9 @@ export function SmartRecommendationsWidget({
     currentTemplates: currentGuideId ? [currentGuideId] : []
   }
 
-  // Get template registry for mapping
+  // Get guide registry for mapping
   const templateRegistry = React.useMemo(() => {
-    // This would normally come from your template registry
+    // This would normally come from your guide registry
     // For now, creating mock entries based on knowledge graph results
     return []
   }, [])
@@ -149,7 +149,7 @@ export function SmartRecommendationsWidget({
     }
   }, [type, limit, currentGuideId, getPersonalizedRecommendations, getAgeAppropriateTemplates, userProfile])
 
-  // Helper function to determine category from template ID
+  // Helper function to determine category from guide ID
   function getCategoryFromTemplate(guideId: string): string {
     const categoryMap: Record<string, string> = {
       'wedding-planning': 'Family Life',
@@ -197,7 +197,7 @@ export function SmartRecommendationsWidget({
       <CardContent>
         <div className="space-y-3">
           {recommendations.map((rec) => {
-            const Icon = rec.type === "template" ? getTemplateIcon(rec.id) : getCategoryIcon(rec.category)
+            const Icon = rec.type === "template" ? getGuideIcon(rec.id) : getCategoryIcon(rec.category)
             const isStarred = isFavorited(rec.id)
 
             return (

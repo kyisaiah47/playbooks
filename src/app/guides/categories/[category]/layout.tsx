@@ -36,14 +36,14 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const { category } = await params;
   const categoryName = categoryDisplayNames[category] ||
     category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  const description = categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} templates with questions, readings, and expert guidance.`;
+  const description = categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} guides with questions, readings, and expert guidance.`;
 
   const title = `${categoryName} Templates | Templata`;
 
   return {
     title,
     description,
-    keywords: `${categoryName.toLowerCase()} templates, ${categoryName.toLowerCase()} planning, life planning, structured frameworks, templata`,
+    keywords: `${categoryName.toLowerCase()} guides, ${categoryName.toLowerCase()} planning, life planning, structured frameworks, templata`,
     openGraph: {
       title,
       description,
@@ -102,7 +102,7 @@ export default async function CategoryLayout({ children, params }: CategoryLayou
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
             name: `${categoryName} Templates`,
-            description: categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} templates.`,
+            description: categoryDescriptions[category] || `Browse all ${categoryName.toLowerCase()} guides.`,
             url: `https://templata.org/guides/categories/${category}`,
             isPartOf: {
               '@type': 'WebSite',

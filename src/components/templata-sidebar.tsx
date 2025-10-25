@@ -81,7 +81,7 @@ export function TemplataContentSidebar({
   const [categoryTypeFilter, setCategoryTypeFilter] = React.useState<string>('all')
   const { setOpen } = useSidebar()
 
-  const currentSection = template.sections?.[activeSection]
+  const currentSection = guide.sections?.[activeSection]
   const sectionPrompts = currentSection?.reflectionPrompts || []
 
   // Fetch questions from API client-side
@@ -119,12 +119,12 @@ export function TemplataContentSidebar({
   const [templateResources, setTemplateResources] = React.useState<any[]>([])
 
   React.useEffect(() => {
-    // Fetch readings that have this template ID
+    // Fetch readings that have this guide ID
     fetch(`/api/readings?limit=100`)
       .then(res => res.json())
       .then(data => {
         const readings = data.readings || []
-        // Filter to only readings that match this template ID
+        // Filter to only readings that match this guide ID
         const filtered = readings.filter((a: any) => a.template === guide.id)
         setTemplateResources(filtered)
       })
@@ -198,7 +198,7 @@ export function TemplataContentSidebar({
                   </div>
                 </SidebarMenuItem>
 
-                {template.sections?.map((section, index) => (
+                {guide.sections?.map((section, index) => (
                   <SidebarMenuItem key={section.id}>
                     <SidebarMenuButton
                       onClick={() => {

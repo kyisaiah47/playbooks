@@ -48,7 +48,7 @@ export function TemplateImage({
     return fallbackSrc ? (
       <Image
         src={fallbackSrc}
-        alt={alt || `${guideName.replace(/-/g, ' ')} template`}
+        alt={alt || `${guideName.replace(/-/g, ' ')} guide`}
         width={width}
         height={height}
         className={cn("rounded-lg object-cover", className)}
@@ -69,7 +69,7 @@ export function TemplateImage({
   }
 
   const imageUrl = formatImageUrl(image, width, height, quality);
-  const imageAlt = alt || image.alt_description || `${guideName.replace(/-/g, ' ')} template`;
+  const imageAlt = alt || image.alt_description || `${guideName.replace(/-/g, ' ')} guide`;
 
   return (
     <div className={cn("relative", className)}>

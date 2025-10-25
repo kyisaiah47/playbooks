@@ -107,9 +107,9 @@ export async function shareTemplate(
 
       case "email":
         // Generate email URL
-        const subject = encodeURIComponent(`Check out my ${shareableTemplate.title} template`)
+        const subject = encodeURIComponent(`Check out my ${shareableTemplate.title} guide`)
         const body = encodeURIComponent(
-          `I'd like to share my ${shareableTemplate.title} template with you.\n\n` +
+          `I'd like to share my ${shareableTemplate.title} guide with you.\n\n` +
           `You can view and collaborate on it here: ${shareUrl}\n\n` +
           `Made with Templata - Life doesn't have to start with a blank page`
         )
@@ -125,13 +125,13 @@ export async function shareTemplate(
         if (typeof navigator !== "undefined" && navigator.share) {
           await navigator.share({
             title: shareableTemplate.title,
-            text: `Check out my ${shareableTemplate.title} template on Templata`,
+            text: `Check out my ${shareableTemplate.title} guide on Templata`,
             url: shareUrl
           })
           return { success: true, shareUrl, message: "Shared successfully!" }
         } else {
           // Fallback to Twitter
-          const text = encodeURIComponent(`Check out my ${shareableTemplate.title} template on Templata`)
+          const text = encodeURIComponent(`Check out my ${shareableTemplate.title} guide on Templata`)
           const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(shareUrl)}`
 
           if (typeof window !== "undefined") {
@@ -161,13 +161,13 @@ export function addComment(
     sectionId,
     questionId,
     text,
-    author: template.collaborators[0], // Current user
+    author: guide.collaborators[0], // Current user
     createdAt: new Date().toISOString(),
     resolved: false,
     replies: []
   }
 
-  template.comments.push(comment)
+  guide.comments.push(comment)
   return comment
 }
 
@@ -228,16 +228,16 @@ export function getRecentCollaborations(userId: string, limit: number = 5): Shar
 
 // Permission helpers
 export function canEdit(guide: ShareableTemplate, userId: string): boolean {
-  const collaborator = template.collaborators.find(c => c.id === userId)
-  return collaborator?.role === "owner" || collaborator?.role === "editor" || template.permissions.edit
+  const collaborator = guide.collaborators.find(c => c.id === userId)
+  return collaborator?.role === "owner" || collaborator?.role === "editor" || guide.permissions.edit
 }
 
 export function canComment(guide: ShareableTemplate, userId: string): boolean {
-  const collaborator = template.collaborators.find(c => c.id === userId)
-  return collaborator !== undefined || template.permissions.comment
+  const collaborator = guide.collaborators.find(c => c.id === userId)
+  return collaborator !== undefined || guide.permissions.comment
 }
 
 export function canShare(guide: ShareableTemplate, userId: string): boolean {
-  const collaborator = template.collaborators.find(c => c.id === userId)
-  return collaborator?.role === "owner" || template.permissions.share
+  const collaborator = guide.collaborators.find(c => c.id === userId)
+  return collaborator?.role === "owner" || guide.permissions.share
 }

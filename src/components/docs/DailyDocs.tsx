@@ -54,7 +54,7 @@ export function DailyDocs() {
         <div>
           <h3 className="text-base font-medium mb-2">Daily Note Templates</h3>
           <p className="text-sm text-muted-foreground mb-3">
-            You can customize your daily note template or use one of ours. Here are popular structures:
+            You can customize your daily note guide or use one of ours. Here are popular structures:
           </p>
           <div className="space-y-3">
             <div className="bg-muted/30 border border-border rounded-lg p-3">
@@ -222,7 +222,7 @@ export function DailyDocs() {
               </p>
             </div>
             <div className="bg-muted/30 border border-border rounded-lg p-3">
-              <p className="text-sm font-medium mb-1">Can I customize the daily note template?</p>
+              <p className="text-sm font-medium mb-1">Can I customize the daily note guide?</p>
               <p className="text-xs text-muted-foreground">
                 Yes. Go to Settings to create your own template or modify the default structure to match your preferences.
               </p>

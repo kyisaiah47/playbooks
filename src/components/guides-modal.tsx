@@ -96,7 +96,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
                     <>
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
-                          <div className="text-lg text-muted-foreground">{template.icon}</div>
+                          <div className="text-lg text-muted-foreground">{guide.icon}</div>
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
@@ -116,7 +116,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
                   return (
                     <SubtleGlow key={guide.id}>
                       <Link
-                        href={template.url}
+                        href={guide.url}
                         className="block p-4 rounded-xl transition-all hover:scale-[1.02] bg-card"
                         onClick={() => onOpenChange(false)}
                       >

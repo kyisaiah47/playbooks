@@ -20,7 +20,7 @@ const weddingFAQs = [
   },
   {
     question: "Do I need any special software to use this template?",
-    answer: "No special software required! The wedding planning template works directly in your web browser. It's accessible from any device - desktop, tablet, or mobile - so you can plan your wedding from anywhere."
+    answer: "No special software required! The wedding planning guide works directly in your web browser. It's accessible from any device - desktop, tablet, or mobile - so you can plan your wedding from anywhere."
   },
   {
     question: "How do the guided planning sections work?",
@@ -28,7 +28,7 @@ const weddingFAQs = [
   },
   {
     question: "Can my partner and wedding party access the template too?",
-    answer: "Yes! You can share your wedding planning template with your partner, wedding party members, or family to collaborate on planning. Everyone can contribute to different sections while maintaining organization and avoiding duplicate work."
+    answer: "Yes! You can share your wedding planning guide with your partner, wedding party members, or family to collaborate on planning. Everyone can contribute to different sections while maintaining organization and avoiding duplicate work."
   },
   {
     question: "What if I'm planning a destination wedding or non-traditional ceremony?",

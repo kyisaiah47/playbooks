@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const guide = await getGuideById(slug);
 
-  if (!guide?.template) {
+  if (!guide?.guide) {
     return {
       title: 'Template Not Found | Templata',
       description: 'The requested guide could not be found.',

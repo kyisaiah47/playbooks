@@ -12,8 +12,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const blogPost = await getReadingBySlug(slug);
 
-  // Get guide name if reading has a template
-  const guideInfo = blogPost?.template ? await getGuideById(blogPost.template) : null;
+  // Get guide name if reading has a guide
+  const guideInfo = blogPost?.guide ? await getGuideById(blogPost.guide) : null;
 
   // Get related posts with multiple fallback strategies
   let relatedPosts = [];
@@ -50,7 +50,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               {guideInfo && (
                 <>
-                  <Link href={`/guides/${blogPost.template}`} className="hover:text-primary transition-colors">
+                  <Link href={`/guides/${blogPost.guide}`} className="hover:text-primary transition-colors">
                     {guideInfo.guide.title}
                   </Link>
                   <span>·</span>

@@ -187,7 +187,7 @@ export function ReadingsList({ initialArticles, initialTotal }: ReadingsListProp
       <section className="mb-12">
         <div className="space-y-0 divide-y divide-border">
           {readings.map((reading: any) => {
-            // Get template name from relatedGuides or fallback to category
+            // Get guide name from relatedGuides or fallback to category
             const guideName = reading.relatedGuides?.[0] || reading.category;
 
             return (

@@ -24,12 +24,12 @@ interface GuideCardProps {
   onNavigate?: (url: string) => void
 }
 
-function TemplateCard({ template, strength, reason, level, showReasoning, onNavigate }: TemplateCardProps) {
+function GuideCard({ guide, strength, reason, level, showReasoning, onNavigate }: GuideCardProps) {
   const handleClick = () => {
     if (onNavigate) {
-      onNavigate(template.url)
+      onNavigate(guide.url)
     } else {
-      window.location.href = template.url
+      window.location.href = guide.url
     }
   }
 
@@ -47,7 +47,7 @@ function TemplateCard({ template, strength, reason, level, showReasoning, onNavi
       >
         <div className="flex items-center gap-3">
           <div className="w-4 h-4 flex items-center justify-center text-sm shrink-0">
-            {template.icon}
+            {guide.icon}
           </div>
           <span className="text-sm font-medium truncate flex-1">{guide.name}</span>
           <Badge variant="outline" className={cn("text-xs", strengthBg, strengthColor)}>
@@ -81,11 +81,11 @@ export function RelatedTemplates({
   // Get knowledge graph relationships
   const knowledgeRelations = getRelatedTemplates(guideId, limit)
 
-  // Map knowledge graph results to template registry entries
+  // Map knowledge graph results to guide registry entries
   const relatedGuides = knowledgeRelations
     .map(relation => {
       const guide = templateRegistry.find(t => t.id === relation.guideId)
-      if (!template) return null
+      if (!guide) return null
 
       return {
         template,
@@ -116,10 +116,10 @@ export function RelatedTemplates({
       </div>
 
       <div className="grid gap-2">
-        {relatedGuides.map(({ template, strength, reason, level }) => (
+        {relatedGuides.map(({ guide, strength, reason, level }) => (
           <TemplateCard
             key={guide.id}
-            template={template}
+            guide={template}
             strength={strength}
             reason={reason}
             level={level}

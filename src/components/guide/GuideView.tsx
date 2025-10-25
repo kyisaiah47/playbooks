@@ -33,7 +33,7 @@ interface GuideViewProps {
   onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void;
 }
 
-export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
+export function GuideView({ guide, onSwitchMode }: GuideViewProps) {
   const [activeSection, setActiveSection] = useState(0);
   const [allItems, setAllItems] = useState<(ReflectionQuestion | FreeformNote)[]>([]);
   const [openResource, setOpenResource] = useState<Resource | null>(null);
@@ -259,7 +259,7 @@ export function TemplateView({ template, onSwitchMode }: TemplateViewProps) {
     <SidebarProvider>
       <div className="flex h-screen w-full bg-background text-foreground overflow-hidden [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [-ms-overflow-style:none] [scrollbar-width:none]">
         <TemplataContentSidebar
-          template={template}
+          guide={template}
           activeSection={activeSection}
           onSectionChange={setActiveSection}
           onInsertQuestion={handleInsertQuestion}

@@ -69,7 +69,7 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
   };
 
   const handleCreateNote = () => {
-    // Navigate to Getting Started page to select a template
+    // Navigate to Getting Started page to select a guide
     if (gettingStartedPageId) {
       router.push(`/app/${workspaceId}/notes?pageId=${gettingStartedPageId}`);
     }

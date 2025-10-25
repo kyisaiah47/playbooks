@@ -3,7 +3,7 @@
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { TemplatesView } from '@/app/app/views/TemplatesView';
+import { GuidesView } from '@/app/app/views/GuidesView';
 import { GettingStartedWizard } from '@/components/app/notes/GettingStartedWizard';
 import { NotesListView } from '@/components/app/notes/NotesListView';
 import { Loader2, FileText } from 'lucide-react';
@@ -158,7 +158,7 @@ export default function NotesPage() {
   }
 
   return (
-    <TemplatesView
+    <GuidesView
       workspaceId={workspaceId}
       userGuideId={userGuideId || undefined}
       defaultGuideId={guideId}

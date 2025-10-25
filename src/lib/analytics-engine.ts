@@ -87,7 +87,7 @@ export class AnalyticsEngine {
     // Count templates by category
     const categoryCounts: Record<string, number> = {};
     filteredTemplates.forEach((template) => {
-      const category = this.extractCategory(template.tags);
+      const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
 
@@ -200,12 +200,12 @@ export class AnalyticsEngine {
     // By category
     const byCategory: Record<string, { started: number; completed: number; rate: number }> = {};
     filteredTemplates.forEach((template) => {
-      const category = this.extractCategory(template.tags);
+      const category = this.extractCategory(guide.tags);
       if (!byCategory[category]) {
         byCategory[category] = { started: 0, completed: 0, rate: 0 };
       }
       byCategory[category].started += 1;
-      if (template.completion === 100) {
+      if (guide.completion === 100) {
         byCategory[category].completed += 1;
       }
     });
@@ -349,7 +349,7 @@ export class AnalyticsEngine {
         reflection.linkedGuideIds.forEach((id) => {
           const guide = this.templates.find((t) => t.id === id);
           if (template) {
-            const category = this.extractCategory(template.tags);
+            const category = this.extractCategory(guide.tags);
             wordCounts[word].categories.add(category);
           }
         });
@@ -433,7 +433,7 @@ export class AnalyticsEngine {
   private generateSummary() {
     const categoryCounts: Record<string, number> = {};
     this.templates.forEach((template) => {
-      const category = this.extractCategory(template.tags);
+      const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
 

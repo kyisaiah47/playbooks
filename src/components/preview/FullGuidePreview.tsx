@@ -191,14 +191,14 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
   const [selectedPrompts, setSelectedPrompts] = useState<string[]>([]);
   
   const guide = guideData[templateType as keyof typeof guideData];
-  if (!template) return null;
+  if (!guide) return null;
 
   // Auto-open resource and add some questions for preview
-  const openResource = template.resources[0];
+  const openResource = guide.resources[0];
   const previewPrompts = guide.questions.slice(0, 2);
 
-  const TemplateIcon = template.icon;
-  const sections = template.sections;
+  const TemplateIcon = guide.icon;
+  const sections = guide.sections;
   const currentSection = sections[activeSection];
   const SectionIcon = currentSection.icon;
 
