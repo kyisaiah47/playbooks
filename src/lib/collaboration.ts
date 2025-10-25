@@ -48,7 +48,7 @@ export function generateShareableLink(guideId: string, shareId: string): string 
   return `${baseUrl}/shared/${guideId}/${shareId}`
 }
 
-// Create a shareable template (mock implementation)
+// Create a shareable guide (mock implementation)
 export function createShareableTemplate(
   guideId: string,
   title: string,
@@ -68,7 +68,7 @@ export function createShareableTemplate(
     id: shareId,
     guideId,
     title: title || `Shared Template - ${new Date().toLocaleDateString()}`,
-    description: "Shared template with responses and collaboration",
+    description: "Shared guide with responses and collaboration",
     createdBy: "current-user", // In real app, get from auth
     createdAt: new Date().toISOString(),
     responses,
@@ -197,7 +197,7 @@ export function getRecentCollaborations(userId: string, limit: number = 5): Shar
       id: "share-1",
       guideId: "wedding-planning",
       title: "Sarah & Mike's Wedding Plan",
-      description: "Wedding planning template with budget and vendor details",
+      description: "Wedding planning guide with budget and vendor details",
       createdBy: userId,
       createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
       responses: {},

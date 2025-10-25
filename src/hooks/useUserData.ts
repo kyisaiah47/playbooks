@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 
-// Hook for managing user template sessions
+// Hook for managing user guide sessions
 export function useTemplateSessions() {
   const { data: session } = useSession();
   const [sessions, setSessions] = useState([]);

@@ -98,7 +98,7 @@ interface GuidesViewProps {
   defaultGuideId?: string;
 }
 
-export function TemplatesView({ onViewChange, setActions, workspaceId, userGuideId, defaultGuideId }: TemplatesViewProps) {
+export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId, defaultGuideId }: GuidesViewProps) {
   const [selectedGuide, setSelectedGuide] = useState(defaultGuideId || 'wedding-planning');
   const [guides, setGuides] = useState<Guide[]>([]);
   const [displayedGuides, setDisplayedGuides] = useState<Guide[]>([]);

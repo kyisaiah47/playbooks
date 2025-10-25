@@ -44,7 +44,7 @@ const weddingFAQs = [
   },
   {
     question: "What if I need help using the guide or have planning questions?",
-    answer: "The template includes built-in tips and guidance for each section. Additionally, our support team is available to help with technical questions, and each guided section provides expert wedding planning advice to help you make informed decisions."
+    answer: "The guide includes built-in tips and guidance for each section. Additionally, our support team is available to help with technical questions, and each guided section provides expert wedding planning advice to help you make informed decisions."
   }
 ]
 

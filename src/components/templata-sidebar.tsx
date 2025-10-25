@@ -115,7 +115,7 @@ export function TemplataContentSidebar({
   const uniqueCategoryNames = Array.from(new Set(displayPrompts.map((p: any) => p.categoryName).filter(Boolean)))
   const uniqueCategoryTypes = Array.from(new Set(displayPrompts.map((p: any) => p.category).filter(Boolean)))
 
-  // Articles loading - fetch from API client-side filtered by template
+  // Articles loading - fetch from API client-side filtered by guide
   const [templateResources, setTemplateResources] = React.useState<any[]>([])
 
   React.useEffect(() => {

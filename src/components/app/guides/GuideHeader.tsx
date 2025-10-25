@@ -241,7 +241,7 @@ interface GuideHeaderProps {
   guideIcon?: string | null;
   coverImage?: string | null;
   progress?: number;
-  baseGuideName?: string | null; // The template this is based on
+  baseGuideName?: string | null; // The guide this is based on
   onNameChange?: (name: string) => void;
   onIconChange?: (icon: string) => void;
   onCoverChange?: (coverUrl: string) => void;

@@ -2,7 +2,7 @@ import { articleRegistry } from '@/registry/readings';
 import { UnsplashImage } from './unsplash';
 
 /**
- * Get cached image for a template from blog post metadata
+ * Get cached image for a guide from blog post metadata
  */
 export async function getCachedImageForTemplate(guideName: string): Promise<UnsplashImage | null> {
   // Find blog posts for this template
@@ -43,7 +43,7 @@ export async function getCachedImageForTemplate(guideName: string): Promise<Unsp
 }
 
 /**
- * Check if a template has cached images
+ * Check if a guide has cached images
  */
 export function templateHasCachedImages(guideName: string): boolean {
   const templatePosts = articleRegistry.filter(post =>
@@ -62,7 +62,7 @@ export function getTemplatesWithCachedImages(): string[] {
 
   articleRegistry.forEach(post => {
     if (post.heroImage?.cached) {
-      // Extract template name from slug or relatedGuides
+      // Extract guide name from slug or relatedGuides
       if (post.relatedGuides) {
         post.relatedGuides.forEach(template => templatesWithImages.add(template));
       }

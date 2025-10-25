@@ -132,7 +132,7 @@ export function SmartRecommendationsWidget({
           }))
       }
 
-      // Filter out current template if provided
+      // Filter out current guide if provided
       if (currentGuideId) {
         recs = recs.filter(rec => rec.id !== currentGuideId)
       }

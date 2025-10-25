@@ -155,7 +155,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     }
   }, [clearError]);
 
-  // Check template conflicts with severity assessment
+  // Check guide conflicts with severity assessment
   const checkTemplateConflicts = useCallback((guideId: string, activeTemplates: string[]) => {
     try {
       clearError();
@@ -171,7 +171,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
                    conflict.conflict_strength >= 60 ? 'medium' as const : 'low' as const
         }));
     } catch (err) {
-      setError('Failed to check template conflicts');
+      setError('Failed to check guide conflicts');
       return [];
     }
   }, [clearError]);
@@ -187,7 +187,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     }
   }, [clearError]);
 
-  // Get template cluster information
+  // Get guide cluster information
   const getTemplateCluster = useCallback((guideId: string) => {
     try {
       clearError();
@@ -200,7 +200,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
         focus: relationships.micro_cluster?.psychological_focus
       };
     } catch (err) {
-      setError('Failed to get template cluster');
+      setError('Failed to get guide cluster');
       return {};
     }
   }, [clearError]);
@@ -239,7 +239,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     }
   }, [clearError]);
 
-  // Check if template is recommended for user
+  // Check if guide is recommended for user
   const isTemplateRecommended = useCallback((guideId: string, userProfile: UserProfile): boolean => {
     try {
       clearError();
@@ -311,7 +311,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
 
 // Specialized hooks for common use cases
 
-// Hook for template selection pages
+// Hook for guide selection pages
 export function useTemplateRecommendations(guideId: string, userProfile: UserProfile) {
   const kg = useKnowledgeGraph();
 
@@ -350,7 +350,7 @@ export function useUserRecommendations(userProfile: UserProfile) {
   }, [kg, userProfile]);
 }
 
-// Hook for multi-template workspaces
+// Hook for multi-guide workspaces
 export function useMultiTemplateIntelligence(activeGuideIds: string[], userProfile: UserProfile) {
   const kg = useKnowledgeGraph();
 
