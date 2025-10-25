@@ -59,7 +59,7 @@ export default function LandingPage() {
 								×
 							</motion.h2>
 							<motion.h3
-								className="text-[4rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9] mb-6"
+								className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9] mb-6"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, delay: 0.2 }}
@@ -109,33 +109,33 @@ export default function LandingPage() {
 
 					<div className="grid md:grid-cols-2 gap-12">
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Pick a guide</h3>
+							<h3 className="text-base font-medium">Browse 1,200+ guides</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
-								1,200+ guides for life decisions
+								Expert-curated for major decisions
 							</p>
 							<BrowseGuides />
 						</div>
 
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Work through it</h3>
+							<h3 className="text-base font-medium">Work in split-screen</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
-								Answer questions, add notes
+								Questions on left, notes on right
 							</p>
 							<SplitScreenOpen />
 						</div>
 
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Read curated resources</h3>
+							<h3 className="text-base font-medium">Read curated articles</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
-								Expert-selected readings
+								Expert-selected for each guide
 							</p>
 							<WorkspaceActive />
 						</div>
 
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Export when done</h3>
+							<h3 className="text-base font-medium">Track across workspaces</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
-								PDF export, auto-save
+								Calendar, tasks, journal, timeline
 							</p>
 							<ExportOverview />
 						</div>
