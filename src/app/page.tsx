@@ -47,37 +47,19 @@ export default function LandingPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
 
-			{/* Hero Section - Left-aligned, 3-line layout */}
+			{/* Hero Section - 3-line layout */}
 			<section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-24">
 				<div className="mx-auto max-w-7xl">
 					<div className="max-w-3xl">
-						<h1 className="text-6xl font-semibold tracking-tight md:text-8xl mb-6 leading-[0.95]">
-							Wikipedia × Notion
+						<h1 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
+							Wikipedia
 						</h1>
-						<h2 className="text-6xl font-semibold tracking-tight md:text-8xl mb-8 leading-[0.95]">
-							for life planning
+						<h2 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
+							×
 						</h2>
-
-						<p className="text-xl mb-10 leading-relaxed text-muted-foreground max-w-2xl">
-							Expert-curated guides for life's biggest decisions.
-							Get the framework — not a blank page.
-						</p>
-
-						<div className="flex flex-col sm:flex-row items-start gap-3 mb-10">
-							<Button size="lg" asChild>
-								<Link href="/guides">
-									Browse Guides
-									<ArrowRight className="h-4 w-4" />
-								</Link>
-							</Button>
-							<Button variant="outline" size="lg" asChild>
-								<Link href="/app">Try Demo</Link>
-							</Button>
-						</div>
-
-						<p className="text-sm text-muted-foreground">
-							No signup needed · Export to PDF anytime · 100% free
-						</p>
+						<h3 className="text-6xl font-semibold tracking-tight md:text-8xl leading-[0.95]">
+							Notion
+						</h3>
 					</div>
 				</div>
 			</section>
