@@ -72,7 +72,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(new Set());
   const [settingsSection, setSettingsSection] = useState<'profile' | 'privacy' | 'data' | 'notifications' | 'appearance'>('profile');
   const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
-  const [docsSection, setDocsSection] = useState<'getting-started' | 'features' | 'guides' | 'reference' | 'faq' | 'support'>('getting-started');
+  const [docsSection, setDocsSection] = useState<'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'daily' | 'journal' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support'>('getting-started');
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -334,7 +334,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   // Sync docs section from URL
   useEffect(() => {
     if (activeView === 'docs') {
-      const sectionParam = searchParams.get('section') as 'getting-started' | 'features' | 'guides' | 'reference' | 'faq' | 'support';
+      const sectionParam = searchParams.get('section') as 'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'daily' | 'journal' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support';
       if (sectionParam) {
         setDocsSection(sectionParam);
       }
@@ -713,7 +713,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
   }, [searchParams, router]);
 
   // Handle docs section change
-  const handleDocsSectionChange = useCallback((section: 'getting-started' | 'features' | 'guides' | 'reference' | 'faq' | 'support') => {
+  const handleDocsSectionChange = useCallback((section: 'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'daily' | 'journal' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support') => {
     setDocsSection(section);
 
     // Update URL with section param

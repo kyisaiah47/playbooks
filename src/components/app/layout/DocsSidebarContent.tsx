@@ -1,6 +1,22 @@
 'use client';
 
-import { BookOpen, Rocket, Grid3x3, Book, FileQuestion, HelpCircle } from 'lucide-react';
+import {
+  BookOpen,
+  Rocket,
+  FileText,
+  Compass,
+  Library,
+  Calendar,
+  ListTodo,
+  BarChart3,
+  CalendarDays,
+  PenLine,
+  Network,
+  TrendingUp,
+  Archive,
+  FileQuestion,
+  HelpCircle
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
@@ -15,37 +31,85 @@ const DOC_SECTIONS: DocSection[] = [
   {
     id: 'getting-started',
     label: 'Getting Started',
-    description: 'Introduction and quick start guide',
+    description: 'Introduction and quick start',
     icon: Rocket,
   },
   {
-    id: 'features',
-    label: 'Features',
-    description: 'Overview of main features',
-    icon: Grid3x3,
+    id: 'notes',
+    label: 'Notes',
+    description: 'Work through guides',
+    icon: FileText,
   },
   {
-    id: 'guides',
-    label: 'Guides',
-    description: 'Step-by-step tutorials',
-    icon: Book,
+    id: 'discover',
+    label: 'Discover',
+    description: 'Browse available guides',
+    icon: Compass,
   },
   {
-    id: 'reference',
-    label: 'Reference',
-    description: 'Keyboard shortcuts and API',
-    icon: BookOpen,
+    id: 'library',
+    label: 'Library',
+    description: 'Access all readings',
+    icon: Library,
+  },
+  {
+    id: 'calendar',
+    label: 'Calendar',
+    description: 'Schedule and events',
+    icon: Calendar,
+  },
+  {
+    id: 'tasks',
+    label: 'Tasks',
+    description: 'Manage action items',
+    icon: ListTodo,
+  },
+  {
+    id: 'timeline',
+    label: 'Timeline',
+    description: 'Track progress over time',
+    icon: BarChart3,
+  },
+  {
+    id: 'daily',
+    label: 'Daily',
+    description: 'Daily notes and planning',
+    icon: CalendarDays,
+  },
+  {
+    id: 'journal',
+    label: 'Journal',
+    description: 'Daily reflections',
+    icon: PenLine,
+  },
+  {
+    id: 'graph',
+    label: 'Graph',
+    description: 'Visualize connections',
+    icon: Network,
+  },
+  {
+    id: 'analytics',
+    label: 'Analytics',
+    description: 'Progress insights',
+    icon: TrendingUp,
+  },
+  {
+    id: 'archive',
+    label: 'Archive',
+    description: 'Archived guides',
+    icon: Archive,
   },
   {
     id: 'faq',
     label: 'FAQ',
-    description: 'Frequently asked questions',
+    description: 'Common questions',
     icon: FileQuestion,
   },
   {
     id: 'support',
     label: 'Support',
-    description: 'Get help and contact us',
+    description: 'Get help',
     icon: HelpCircle,
   },
 ];
