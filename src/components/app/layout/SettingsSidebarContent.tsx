@@ -22,7 +22,7 @@ export function SettingsSidebarContent({ activeSection, onSectionChange }: Setti
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-3 py-2 border-b border-border/40">
-        <h3 className="text-xs font-semibold text-foreground">Settings</h3>
+        <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Settings</h3>
       </div>
 
       {/* Navigation */}
@@ -37,14 +37,11 @@ export function SettingsSidebarContent({ activeSection, onSectionChange }: Setti
                 onClick={() => onSectionChange(item.id)}
                 className={cn(
                   "w-full flex items-center gap-2 px-2 py-2 rounded text-sm transition-colors hover:bg-muted/50",
-                  isActive && "bg-muted/50"
+                  isActive ? "bg-primary/10 text-primary" : "text-foreground"
                 )}
               >
                 <div className="flex-1 min-w-0 text-left">
-                  <div className={cn(
-                    "font-normal break-words text-[11px]",
-                    isActive ? "text-foreground" : "text-muted-foreground"
-                  )}>
+                  <div className="font-medium break-words text-sm">
                     {item.label}
                   </div>
                 </div>

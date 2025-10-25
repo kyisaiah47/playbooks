@@ -59,7 +59,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
       <div className="px-3 py-2 border-b border-border/40">
         <motion.button
           onClick={() => onEntrySelect(null)}
-          className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded bg-primary hover:bg-[#5558e3] text-white text-[11px] font-medium transition-colors"
+          className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded bg-primary hover:bg-[#5558e3] text-white text-sm font-medium transition-colors"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -100,7 +100,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               {searchQuery ? 'No entries found' : 'No entries yet'}
             </p>
           </motion.div>
@@ -138,13 +138,13 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="font-medium text-foreground text-[11px] truncate mb-0.5">
+                  <div className="font-medium text-foreground text-sm truncate mb-0.5">
                     {entry.title || 'Untitled'}
                   </div>
-                  <div className="text-[10px] text-muted-foreground/70 line-clamp-2 mb-1">
+                  <div className="text-xs text-muted-foreground/70 line-clamp-2 mb-1">
                     {preview}...
                   </div>
-                  <div className="text-[10px] text-muted-foreground/50">
+                  <div className="text-xs text-muted-foreground/50">
                     {format(new Date(entry.created_at), 'MMM d, yyyy')}
                   </div>
                 </motion.button>
@@ -156,7 +156,7 @@ export function JournalSidebarContent({ selectedEntryId, onEntrySelect }: Journa
 
       {/* Info Text */}
       <div className="p-3 border-t border-border/40">
-        <p className="text-[10px] text-muted-foreground">
+        <p className="text-xs text-muted-foreground">
           {filteredEntries.length} {filteredEntries.length === 1 ? 'entry' : 'entries'}
         </p>
       </div>

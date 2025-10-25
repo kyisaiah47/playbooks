@@ -111,7 +111,7 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               {searchQuery ? 'No readings found' : 'No readings available'}
             </p>
           </motion.div>
@@ -146,7 +146,7 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
                       key={reading.id}
                       onClick={() => onReadingClick(reading.id)}
                       className={cn(
-                        "w-full text-left px-2 py-1.5 rounded transition-colors flex items-center gap-1.5",
+                        "w-full text-left px-2 py-2 rounded transition-colors flex items-center gap-2",
                         selectedReadingId === reading.id
                           ? 'bg-primary/10 text-primary'
                           : 'hover:bg-muted/50 text-foreground'
@@ -154,8 +154,8 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
                       whileHover={{ x: 4 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <BookOpen className="h-3.5 w-3.5 flex-shrink-0" />
-                      <span className="flex-1 truncate text-[11px]">{reading.title}</span>
+                      <BookOpen className="h-4 w-4 flex-shrink-0" />
+                      <span className="flex-1 truncate text-sm font-medium">{reading.title}</span>
                       {progressMap.has(reading.id) && (
                         <div className="h-1.5 w-1.5 rounded-full bg-green-500 flex-shrink-0" />
                       )}

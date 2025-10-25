@@ -97,7 +97,7 @@ export function ArchiveSidebarContent() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               {searchQuery ? 'No archived notes found' : 'No archived notes yet'}
             </p>
           </motion.div>
@@ -135,10 +135,10 @@ export function ArchiveSidebarContent() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex-1 min-w-0 text-left">
-                    <div className="font-normal text-foreground break-words text-[11px]">
+                    <div className="font-medium text-foreground break-words text-sm">
                       {displayName}
                     </div>
-                    <div className="text-[10px] text-muted-foreground/70">
+                    <div className="text-xs text-muted-foreground/70">
                       {guide.progress}% complete • Archived {new Date(guide.archived_at).toLocaleDateString()}
                     </div>
                   </div>
@@ -151,7 +151,7 @@ export function ArchiveSidebarContent() {
 
       {/* Info Text */}
       <div className="p-3 border-t border-border/40">
-        <p className="text-[10px] text-muted-foreground">
+        <p className="text-xs text-muted-foreground">
           Archived notes are shown in the main view
         </p>
       </div>

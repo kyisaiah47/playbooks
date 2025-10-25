@@ -79,7 +79,7 @@ export function OverviewSidebarContent({ selectedGuideIds, onGuideToggle }: Over
           </div>
         ) : filteredGuides.length === 0 ? (
           <div className="text-center py-8 px-2">
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               {searchQuery ? 'No guides found' : 'No guides yet'}
             </p>
           </div>
@@ -94,26 +94,26 @@ export function OverviewSidebarContent({ selectedGuideIds, onGuideToggle }: Over
                   key={guide.id}
                   onClick={() => onGuideToggle(guide.id)}
                   className={cn(
-                    "w-full flex items-center gap-2 px-2 py-1.5 rounded text-sm transition-colors group hover:bg-muted/50"
+                    "w-full flex items-center gap-2 px-2 py-2 rounded text-sm transition-colors group hover:bg-muted/50"
                   )}
                 >
                   <div className={cn(
-                    "h-3.5 w-3.5 rounded border flex items-center justify-center flex-shrink-0 transition-colors",
+                    "h-4 w-4 rounded border flex items-center justify-center flex-shrink-0 transition-colors",
                     isSelected
                       ? "bg-primary border-primary"
                       : "border-muted-foreground/40"
                   )}>
                     {isSelected && (
-                      <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 12 12" fill="none">
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 12 12" fill="none">
                         <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     )}
                   </div>
                   <div className="flex-1 min-w-0 text-left">
-                    <div className="font-normal text-foreground break-words text-[11px]">
+                    <div className="font-medium text-foreground break-words text-sm">
                       {displayName}
                     </div>
-                    <div className="text-[10px] text-muted-foreground/70">
+                    <div className="text-xs text-muted-foreground/70">
                       {guide.progress}% complete
                     </div>
                   </div>
@@ -126,7 +126,7 @@ export function OverviewSidebarContent({ selectedGuideIds, onGuideToggle }: Over
 
       {/* Info Text */}
       <div className="p-3 border-t border-border/40">
-        <p className="text-[10px] text-muted-foreground">
+        <p className="text-xs text-muted-foreground">
           Toggle guides to show in overview
         </p>
       </div>

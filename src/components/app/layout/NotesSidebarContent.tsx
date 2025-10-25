@@ -91,7 +91,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               {searchQuery ? 'No notes found' : 'No notes yet'}
             </p>
           </motion.div>
@@ -114,7 +114,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                 key={note.id}
                 onClick={() => onNoteClick(note.guide_id)}
                 className={cn(
-                  "w-full flex items-center gap-1.5 px-2 py-1.5 rounded transition-colors group",
+                  "w-full flex items-center gap-2 px-2 py-2 rounded transition-colors group",
                   activeGuideId === note.guide_id
                     ? "bg-primary/10 text-primary"
                     : "hover:bg-muted/50 text-foreground"
@@ -126,9 +126,9 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                 whileHover={{ x: 4 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <FileText className="h-3.5 w-3.5 flex-shrink-0" />
+                <FileText className="h-4 w-4 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
-                  <div className="font-normal truncate text-[11px]">
+                  <div className="font-medium truncate text-sm">
                     {note.guides.name}
                   </div>
                   {note.progress > 0 && (
@@ -139,7 +139,7 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
                           style={{ width: `${note.progress}%` }}
                         />
                       </div>
-                      <span className="text-[10px] text-muted-foreground">{Math.round(note.progress)}%</span>
+                      <span className="text-xs text-muted-foreground">{Math.round(note.progress)}%</span>
                     </div>
                   )}
                 </div>
@@ -157,8 +157,8 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <Plus className="h-3.5 w-3.5" />
-          <span className="text-[11px] font-medium">New Note</span>
+          <Plus className="h-4 w-4" />
+          <span className="text-sm font-medium">New Note</span>
         </motion.button>
       </div>
     </div>
