@@ -307,15 +307,15 @@ export function Header() {
 											</p>
 										</Link>
 										<Link
-											href="/demo"
+											href="/docs"
 											className="block group"
 											onClick={() => setShowFeaturesDropdown(false)}
 										>
 											<div className="text-[15px] font-medium mb-0.5 text-foreground group-hover:text-primary transition-colors">
-												Try the demo
+												Documentation
 											</div>
 											<p className="text-xs text-muted-foreground leading-relaxed">
-												Explore features with sample data
+												Learn how to use Templata
 											</p>
 										</Link>
 										<Link
