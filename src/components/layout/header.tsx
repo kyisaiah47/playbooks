@@ -77,55 +77,55 @@ export function Header() {
 			href: "/features/notes",
 			icon: FileText,
 			title: "Notes",
-			description: "Capture thoughts and insights during your transition"
+			description: "Capture thoughts and insights"
 		},
 		{
 			href: "/features/library",
 			icon: BookOpen,
 			title: "Library",
-			description: "Your personal collection of saved resources"
+			description: "Saved resources and readings"
 		},
 		{
 			href: "/features/calendar",
 			icon: Calendar,
 			title: "Calendar",
-			description: "Schedule and plan your transition work"
+			description: "Plan and schedule events"
 		},
 		{
 			href: "/features/tasks",
 			icon: CheckSquare,
 			title: "Tasks",
-			description: "Turn reflection into actionable steps"
+			description: "Track what needs doing"
 		},
 		{
 			href: "/features/timeline",
 			icon: Clock,
 			title: "Timeline",
-			description: "Visualize your journey chronologically"
+			description: "View everything chronologically"
 		},
 		{
 			href: "/features/daily",
 			icon: Calendar,
 			title: "Daily",
-			description: "Daily notes for consistent progress"
+			description: "Daily notes and logging"
 		},
 		{
 			href: "/features/journal",
 			icon: BookMarked,
 			title: "Journal",
-			description: "Process emotions through private writing"
+			description: "Private writing space"
 		},
 		{
 			href: "/features/graph",
 			icon: Network,
 			title: "Graph",
-			description: "See connections across your work"
+			description: "Visualize connections"
 		},
 		{
 			href: "/features/analytics",
 			icon: BarChart3,
 			title: "Analytics",
-			description: "Track progress with data and insights"
+			description: "Track progress and patterns"
 		},
 	]
 
@@ -270,25 +270,75 @@ export function Header() {
 				<div className="bg-background border-b shadow-sm">
 					<div className="container mx-auto px-8 py-8">
 						<div className="max-w-5xl mx-auto">
-							<div className="mb-6">
-								<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Features</h3>
-							</div>
-							<div className="grid grid-cols-3 gap-x-12 gap-y-1">
-								{features.map((feature) => (
-									<Link
-										key={feature.href}
-										href={feature.href}
-										className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
-										onClick={() => setShowFeaturesDropdown(false)}
-									>
-										<div className="text-[15px] font-medium mb-0.5 text-foreground">
-											{feature.title}
-										</div>
-										<p className="text-xs text-muted-foreground leading-relaxed">
-											{feature.description}
-										</p>
-									</Link>
-								))}
+							<div className="grid grid-cols-[1fr_auto] gap-12">
+								{/* Left side - Features */}
+								<div>
+									<div className="mb-6">
+										<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Features</h3>
+									</div>
+									<div className="grid grid-cols-3 gap-x-12 gap-y-1">
+										{features.map((feature) => (
+											<Link
+												key={feature.href}
+												href={feature.href}
+												className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
+												onClick={() => setShowFeaturesDropdown(false)}
+											>
+												<div className="text-[15px] font-medium mb-0.5 text-foreground">
+													{feature.title}
+												</div>
+												<p className="text-xs text-muted-foreground leading-relaxed">
+													{feature.description}
+												</p>
+											</Link>
+										))}
+									</div>
+								</div>
+
+								{/* Right side - Get Started */}
+								<div className="border-l pl-8 w-[240px]">
+									<div className="mb-6">
+										<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Get Started</h3>
+									</div>
+									<div className="space-y-4">
+										<Link
+											href="/signup"
+											className="block group"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground group-hover:text-primary transition-colors">
+												Create account
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Start your transition journey today
+											</p>
+										</Link>
+										<Link
+											href="/demo"
+											className="block group"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground group-hover:text-primary transition-colors">
+												Try the demo
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Explore features with sample data
+											</p>
+										</Link>
+										<Link
+											href="/how-it-works"
+											className="block group"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground group-hover:text-primary transition-colors">
+												How it works
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Learn how Templata supports transitions
+											</p>
+										</Link>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

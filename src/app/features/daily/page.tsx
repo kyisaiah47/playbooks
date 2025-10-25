@@ -16,10 +16,10 @@ export default function DailyPage() {
                 Daily
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Structure your days during transition
+                Structure your days with daily notes
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Daily notes anchor your transition work in everyday life. Plan your day, track progress on guides, capture quick thoughts, and maintain consistency through simple daily practice.
+                Daily notes anchor your work in everyday life. Plan your day, track progress on guides, capture quick thoughts, and maintain consistency through simple daily practice.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -97,7 +97,7 @@ export default function DailyPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Calendar Integration</h3>
                 <p className="text-muted-foreground">
-                  Your daily notes show calendar events and scheduled tasks. See your full day in context with transition work.
+                  Your daily notes show calendar events and scheduled tasks. See your full day in context with your work.
                 </p>
               </div>
             </div>
@@ -111,9 +111,9 @@ export default function DailyPage() {
             <div className="space-y-12">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Maintain daily consistency during chaos</h3>
+                  <h3 className="text-2xl font-bold mb-4">Maintain daily consistency</h3>
                   <p className="text-muted-foreground mb-4">
-                    Transitions are messy and unpredictable. Daily notes provide a simple, repeatable practice: open today's note, write something, close it. Even 2 minutes counts.
+                    Life is messy and unpredictable. Daily notes provide a simple, repeatable practice: open today's note, write something, close it. Even 2 minutes counts.
                   </p>
                   <p className="text-muted-foreground">
                     Consistency through simplicity—Daily is the easiest habit to maintain when everything else feels hard.
@@ -127,7 +127,7 @@ export default function DailyPage() {
                 <div className="md:order-2">
                   <h3 className="text-2xl font-bold mb-4">Track micro-progress between milestones</h3>
                   <p className="text-muted-foreground mb-4">
-                    Big transitions have long gaps between major wins. Daily notes capture the small stuff: a good conversation, a helpful article, a small realization.
+                    Big projects have long gaps between major wins. Daily notes capture the small stuff: a good conversation, a helpful article, a small realization.
                   </p>
                   <p className="text-muted-foreground">
                     Week to week, you see progress accumulating even when nothing dramatic happened.
@@ -137,12 +137,12 @@ export default function DailyPage() {
 
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Create a log of your transition days</h3>
+                  <h3 className="text-2xl font-bold mb-4">Create a log of your days</h3>
                   <p className="text-muted-foreground mb-4">
                     Years later, you can revisit any day and remember what you were working on, struggling with, or celebrating. Daily creates a dated record.
                   </p>
                   <p className="text-muted-foreground">
-                    Future you will appreciate having a complete log of how you spent these transition months.
+                    Future you will appreciate having a complete log of how you spent these months.
                   </p>
                 </div>
                 <div className="aspect-video bg-muted rounded-lg border" />
@@ -156,7 +156,7 @@ export default function DailyPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Start your daily practice</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Consistency compounds. Begin tracking your transition days, one note at a time.
+              Consistency compounds. Begin tracking your days, one note at a time.
             </p>
             <Button asChild size="lg">
               <Link href="/signup">Get Started Free</Link>

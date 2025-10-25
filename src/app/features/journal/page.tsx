@@ -16,10 +16,10 @@ export default function JournalPage() {
                 Journal
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Process emotions as you navigate change
+                Process emotions and reflect privately
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Transitions stir up feelings—uncertainty, grief, excitement, fear, hope. Journal is your private space to process emotions, explore what you're experiencing, and make sense of internal shifts.
+                Journal is your private space to process emotions, explore what you're experiencing, and make sense of internal shifts. Write freely without judgment.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -97,7 +97,7 @@ export default function JournalPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Link to Guides</h3>
                 <p className="text-muted-foreground">
-                  Connect journal entries to specific guides or readings. Process emotions that surface during guide work.
+                  Connect journal entries to specific guides or readings. Process emotions that surface during your work.
                 </p>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function JournalPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Process difficult emotions safely</h3>
                   <p className="text-muted-foreground mb-4">
-                    Transitions bring up grief, anger, fear, regret. Journal gives you permission to feel these without judgment. Write freely, be messy, express what's hard.
+                    Life brings up grief, anger, fear, regret. Journal gives you permission to feel these without judgment. Write freely, be messy, express what's hard.
                   </p>
                   <p className="text-muted-foreground">
                     Getting emotions onto the page often reduces their intensity and creates distance for perspective.
@@ -130,7 +130,7 @@ export default function JournalPage() {
                     Tag entries by emotion. Weeks later, filter by "anxiety" or "excitement" to see how often those feelings appear and what triggers them.
                   </p>
                   <p className="text-muted-foreground">
-                    Patterns reveal themselves: you feel anxious every Sunday, or excited after therapy. Data you can act on.
+                    Patterns reveal themselves: you feel anxious every Sunday, or excited after certain activities. Data you can act on.
                   </p>
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function JournalPage() {
         {/* CTA */}
         <section className="py-20 px-6 bg-primary/5">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Start processing your transition emotions</h2>
+            <h2 className="text-3xl font-bold mb-4">Start processing your emotions</h2>
             <p className="text-xl text-muted-foreground mb-8">
               Your feelings matter. Give them space to be heard, understood, and processed.
             </p>

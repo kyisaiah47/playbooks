@@ -19,7 +19,7 @@ export default function GraphPage() {
                 Visualize how everything connects
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Your transition work isn't linear—it's interconnected. Graph shows how guides, readings, tasks, journal entries, and notes relate to each other, revealing patterns and insights hidden in the connections.
+                Your work isn't linear—it's interconnected. Graph shows how guides, readings, tasks, journal entries, and notes relate to each other, revealing patterns and insights hidden in the connections.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -47,7 +47,7 @@ export default function GraphPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Interactive Network View</h3>
                 <p className="text-muted-foreground">
-                  See your entire transition work as an interactive network. Nodes represent guides, readings, tasks, notes. Lines show connections.
+                  See all your work as an interactive network. Nodes represent guides, readings, tasks, notes. Lines show connections.
                 </p>
               </div>
 
@@ -113,7 +113,7 @@ export default function GraphPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Discover hidden connections</h3>
                   <p className="text-muted-foreground mb-4">
-                    You wrote a journal entry about career anxiety. Graph shows it connects to three different guides, two tasks you created, and a note about values. Suddenly you see the pattern.
+                    You wrote a journal entry about career questions. Graph shows it connects to three different guides, two tasks you created, and a note about values. Suddenly you see the pattern.
                   </p>
                   <p className="text-muted-foreground">
                     Graph reveals how separate-seeming work actually relates—insights you'd miss in linear views.
@@ -125,7 +125,7 @@ export default function GraphPage() {
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="aspect-video bg-muted rounded-lg border md:order-1" />
                 <div className="md:order-2">
-                  <h3 className="text-2xl font-bold mb-4">Understand your transition landscape</h3>
+                  <h3 className="text-2xl font-bold mb-4">Understand your knowledge landscape</h3>
                   <p className="text-muted-foreground mb-4">
                     Zoom out on the full graph. See which guides are densely connected (lots of activity) versus isolated (barely touched). Understand your focus distribution visually.
                   </p>
@@ -139,7 +139,7 @@ export default function GraphPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Navigate your work spatially</h3>
                   <p className="text-muted-foreground mb-4">
-                    Some people think spatially, not linearly. Graph lets you explore your work by following connections instead of scrolling lists.
+                    Some people think spatially, not linearly. Graph lets you explore by following connections instead of scrolling lists.
                   </p>
                   <p className="text-muted-foreground">
                     Click from a guide to a reading to a note to a task—navigating by relationship feels more natural than searching.
@@ -156,7 +156,7 @@ export default function GraphPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Start seeing your connections</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Your transition work is richer than you realize. Visualize the network and discover new insights.
+              Your work is richer than you realize. Visualize the network and discover new insights.
             </p>
             <Button asChild size="lg">
               <Link href="/signup">Get Started Free</Link>

@@ -19,7 +19,7 @@ export default function AnalyticsPage() {
                 See your progress objectively
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                During transitions, it's hard to know if you're making progress. Analytics shows completion rates, momentum trends, activity patterns, and behavioral insights—proof of movement when emotions make it hard to see.
+                Track completion rates, momentum trends, activity patterns, and behavioral insights. Get objective proof of progress when it's hard to see subjectively.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -77,7 +77,7 @@ export default function AnalyticsPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Focus Distribution</h3>
                 <p className="text-muted-foreground">
-                  Pie charts showing time and energy across guides. See which transitions get attention and which are neglected.
+                  Pie charts showing time and energy across different areas. See which topics get attention and which are neglected.
                 </p>
               </div>
 
@@ -87,7 +87,7 @@ export default function AnalyticsPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Streak Tracking</h3>
                 <p className="text-muted-foreground">
-                  Track consecutive days of activity. Build and maintain streaks for consistent habit formation during transitions.
+                  Track consecutive days of activity. Build and maintain streaks for consistent habit formation.
                 </p>
               </div>
 
@@ -116,7 +116,7 @@ export default function AnalyticsPage() {
                     You feel stuck, like nothing's changing. Check Analytics: you've completed 12 readings this month, checked off 20 tasks, wrote 8 journal entries. Progress is happening.
                   </p>
                   <p className="text-muted-foreground">
-                    Data counters the emotional lie that you're not moving forward. Numbers don't lie.
+                    Data counters the emotional sense that you're not moving forward. Numbers don't lie.
                   </p>
                 </div>
                 <div className="aspect-video bg-muted rounded-lg border" />
@@ -139,7 +139,7 @@ export default function AnalyticsPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Celebrate data-backed wins</h3>
                   <p className="text-muted-foreground mb-4">
-                    Hit a 30-day streak. Completed 50% of your Career Transition guide. Maintained 5 active days per week for a month. Analytics shows achievements worth celebrating.
+                    Hit a 30-day streak. Completed 50% of a guide. Maintained 5 active days per week for a month. Analytics shows achievements worth celebrating.
                   </p>
                   <p className="text-muted-foreground">
                     Milestones become real when you can quantify them. Numbers make progress feel legitimate.
@@ -156,7 +156,7 @@ export default function AnalyticsPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Start tracking your progress</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              See your transition work objectively. Measure momentum, identify patterns, celebrate wins.
+              See your work objectively. Measure momentum, identify patterns, celebrate wins.
             </p>
             <Button asChild size="lg">
               <Link href="/signup">Get Started Free</Link>
