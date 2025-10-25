@@ -698,28 +698,28 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-2">
                 <FileText className="h-4 w-4 text-primary" />
-                <h2 className="font-semibold text-foreground">Action Prompts</h2>
+                <h2 className="font-semibold text-foreground">Questions</h2>
                 <Badge variant="outline" className="ml-auto text-xs">
                   {prompts.length}
                 </Badge>
               </div>
               <Input
                 type="text"
-                placeholder="Filter prompts..."
+                placeholder="Filter questions..."
                 value={promptSearchQuery}
                 onChange={(e) => setPromptSearchQuery(e.target.value)}
                 className="h-8 text-sm mb-2"
               />
               <p className="text-xs text-muted-foreground">
-                Select a prompt, write your answer, and see a checkmark appear
+                Select a question, write your answer, and see a checkmark appear
               </p>
             </div>
 
             {loading ? (
-              <p className="text-sm text-muted-foreground">Loading prompts...</p>
+              <p className="text-sm text-muted-foreground">Loading questions...</p>
             ) : categories.length === 0 ? (
               <p className="text-sm text-muted-foreground">
-                {promptSearchQuery.trim() ? 'No prompts match your search' : 'No prompts available'}
+                {promptSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
               </p>
             ) : (
               <div className="space-y-4">
@@ -824,10 +824,10 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                   <div className="text-center space-y-2">
                     <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-foreground">
-                      Select a prompt to begin
+                      Select a question to begin
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-md">
-                      Choose a prompt from the left sidebar to start working on your template
+                      Choose a question from the left sidebar to start working on your guide
                     </p>
                   </div>
                 </motion.div>
@@ -870,7 +870,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
                       <Input
                         type="text"
-                        placeholder="Search in article..."
+                        placeholder="Search in reading..."
                         value={articleContentSearchQuery}
                         onChange={(e) => setReadingContentSearchQuery(e.target.value)}
                         className="h-9 text-sm pl-9"
@@ -880,7 +880,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
 
                   {loadingArticle ? (
                     <div className="py-8 text-center">
-                      <p className="text-muted-foreground">Loading article...</p>
+                      <p className="text-muted-foreground">Loading reading...</p>
                     </div>
                   ) : (
                     <div className="space-y-6">
@@ -912,28 +912,28 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                   <div className="mb-4">
                     <div className="flex items-center gap-2 mb-2">
                       <BookOpen className="h-4 w-4 text-primary" />
-                      <h2 className="font-semibold text-foreground">Related Articles</h2>
+                      <h2 className="font-semibold text-foreground">Readings</h2>
                       <Badge variant="outline" className="ml-auto text-xs">
                         {articles.length}
                       </Badge>
                     </div>
                     <Input
                       type="text"
-                      placeholder="Filter articles..."
+                      placeholder="Filter readings..."
                       value={readingSearchQuery}
                       onChange={(e) => setReadingSearchQuery(e.target.value)}
                       className="h-8 text-sm mb-2"
                     />
                     <p className="text-xs text-muted-foreground">
-                      Read articles to help guide your responses
+                      Read to help guide your responses
                     </p>
                   </div>
 
                   {loading ? (
-                    <p className="text-sm text-muted-foreground">Loading articles...</p>
+                    <p className="text-sm text-muted-foreground">Loading readings...</p>
                   ) : filteredArticles.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
-                      {readingSearchQuery.trim() ? 'No articles match your search' : 'No articles available'}
+                      {readingSearchQuery.trim() ? 'No readings match your search' : 'No readings available'}
                     </p>
                   ) : (
                     <div className="space-y-3">
@@ -995,7 +995,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
                 <Input
                   type="text"
-                  placeholder="Search in article..."
+                  placeholder="Search in reading..."
                   value={articleContentSearchQuery}
                   onChange={(e) => setReadingContentSearchQuery(e.target.value)}
                   className="h-9 text-sm pl-9"
@@ -1005,7 +1005,7 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
             <div className="flex-1 overflow-y-auto px-4 pb-4">
               {loadingArticle ? (
                 <div className="py-8 text-center">
-                  <p className="text-muted-foreground">Loading article...</p>
+                  <p className="text-muted-foreground">Loading reading...</p>
                 </div>
               ) : (
                 <ReadingContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
@@ -1047,19 +1047,19 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
               <div className="space-y-4 py-4">
                 <Input
                   type="text"
-                  placeholder="Filter prompts..."
+                  placeholder="Filter questions..."
                   value={promptSearchQuery}
                   onChange={(e) => setPromptSearchQuery(e.target.value)}
                   className="h-8 text-sm -mt-2"
                 />
                 <p className="text-xs text-muted-foreground -mt-2">
-                  Select a prompt, write your answer, and see a checkmark appear
+                  Select a question, write your answer, and see a checkmark appear
                 </p>
                 {loading ? (
-                  <p className="text-sm text-muted-foreground">Loading prompts...</p>
+                  <p className="text-sm text-muted-foreground">Loading questions...</p>
                 ) : categories.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    {promptSearchQuery.trim() ? 'No prompts match your search' : 'No prompts available'}
+                    {promptSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
                   </p>
                 ) : (
                   <div className="space-y-4">
@@ -1119,16 +1119,16 @@ export function TemplatesView({ onViewChange, setActions, workspaceId, userGuide
               <div className="space-y-4 py-4">
                 <Input
                   type="text"
-                  placeholder="Filter articles..."
+                  placeholder="Filter readings..."
                   value={readingSearchQuery}
                   onChange={(e) => setReadingSearchQuery(e.target.value)}
                   className="h-8 text-sm -mt-2"
                 />
                 {loading ? (
-                  <p className="text-sm text-muted-foreground">Loading articles...</p>
+                  <p className="text-sm text-muted-foreground">Loading readings...</p>
                 ) : filteredArticles.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    {readingSearchQuery.trim() ? 'No articles match your search' : 'No articles available for this template yet.'}
+                    {readingSearchQuery.trim() ? 'No readings match your search' : 'No readings available for this guide yet.'}
                   </p>
                 ) : (
                   <div className="space-y-2">
