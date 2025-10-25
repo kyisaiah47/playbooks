@@ -19,7 +19,7 @@ export default function NotesPage() {
                 Your thoughts, organized and connected
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Capture ideas, reflections, and insights during your transition. Notes in Templata aren't just text—they're connected to your guides, tasks, and timeline, creating a living knowledge base.
+                Capture ideas, reflections, and insights as you work. Notes in Templata aren't just text—they're connected to your guides, tasks, and timeline, creating a living knowledge base.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -116,7 +116,7 @@ export default function NotesPage() {
                     As you read articles and reflect on prompts in your guides, capture key insights in notes. Link notes directly to specific readings so you can revisit them later.
                   </p>
                   <p className="text-muted-foreground">
-                    Your notes become a personalized knowledge base built from your transition work—not generic content, but insights specific to your situation.
+                    Your notes become a personalized knowledge base built from your work—not generic content, but insights specific to your situation.
                   </p>
                 </div>
                 <div className="aspect-video bg-muted rounded-lg border" />
@@ -127,7 +127,7 @@ export default function NotesPage() {
                 <div className="md:order-2">
                   <h3 className="text-2xl font-bold mb-4">Track decisions and their reasoning</h3>
                   <p className="text-muted-foreground mb-4">
-                    During transitions, you make countless decisions. Create decision logs in Notes to track what you decided, why, and what information influenced you.
+                    You make countless decisions in your work. Create decision logs in Notes to track what you decided, why, and what information influenced you.
                   </p>
                   <p className="text-muted-foreground">
                     Months later, when questioning a choice, you can revisit your reasoning instead of second-guessing yourself.
@@ -154,7 +154,7 @@ export default function NotesPage() {
         {/* CTA */}
         <section className="py-20 px-6 bg-primary/5">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Start capturing your transition insights</h2>
+            <h2 className="text-3xl font-bold mb-4">Start capturing your insights</h2>
             <p className="text-xl text-muted-foreground mb-8">
               Every thought captured is a step toward clarity. Begin building your knowledge base today.
             </p>

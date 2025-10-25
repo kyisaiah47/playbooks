@@ -19,7 +19,7 @@ export default function TasksPage() {
                 Turn reflection into action
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Your guides will surface actions to take. Tasks helps you track what needs doing, when, and why it matters to your transition. Not just another to-do list—tasks connected to your journey.
+                Your guides will surface actions to take. Tasks helps you track what needs doing, when, and why it matters to your work. Not just another to-do list—tasks connected to your journey.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -47,7 +47,7 @@ export default function TasksPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Guide-Connected Tasks</h3>
                 <p className="text-muted-foreground">
-                  Tasks automatically link to the guides they came from. See why each action matters in your bigger transition story.
+                  Tasks automatically link to the guides they came from. See why each action matters in your bigger story.
                 </p>
               </div>
 
@@ -67,7 +67,7 @@ export default function TasksPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Smart Filters</h3>
                 <p className="text-muted-foreground">
-                  Filter by guide, priority, due date, or status. Focus on what's urgent, what's for a specific transition, or what's overdue.
+                  Filter by guide, priority, due date, or status. Focus on what's urgent, what's for a specific project, or what's overdue.
                 </p>
               </div>
 
@@ -137,12 +137,12 @@ export default function TasksPage() {
 
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Organize transition logistics</h3>
+                  <h3 className="text-2xl font-bold mb-4">Organize your logistics</h3>
                   <p className="text-muted-foreground mb-4">
-                    Transitions involve practical work: canceling subscriptions, updating addresses, scheduling appointments, filing paperwork.
+                    Your work involves practical tasks: scheduling appointments, filing paperwork, coordinating with others, organizing resources.
                   </p>
                   <p className="text-muted-foreground">
-                    Keep all transition-related tasks in one place alongside your reflection work. Nothing slips through.
+                    Keep all your tasks in one place alongside your reflection work. Nothing slips through.
                   </p>
                 </div>
                 <div className="aspect-video bg-muted rounded-lg border" />
@@ -156,7 +156,7 @@ export default function TasksPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Start turning insights into actions</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Reflection matters, but so does doing. Track the actions that move your transition forward.
+              Reflection matters, but so does doing. Track the actions that move your work forward.
             </p>
             <Button asChild size="lg">
               <Link href="/signup">Get Started Free</Link>

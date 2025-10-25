@@ -19,7 +19,7 @@ export default function TimelinePage() {
                 See your journey unfold
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Your Timeline visualizes every reading completed, task checked off, journal entry written, and milestone reached. Watch your transition progress become visible—chronologically, honestly, completely.
+                Your Timeline visualizes every reading completed, task checked off, journal entry written, and milestone reached. Watch your progress become visible—chronologically, honestly, completely.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -113,7 +113,7 @@ export default function TimelinePage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Prove to yourself you're making progress</h3>
                   <p className="text-muted-foreground mb-4">
-                    When transitions feel stuck, your Timeline shows objective evidence of movement. Look back a month—see how many readings you completed, tasks you checked off, reflections you wrote.
+                    When work feels stuck, your Timeline shows objective evidence of movement. Look back a month—see how many readings you completed, tasks you checked off, reflections you wrote.
                   </p>
                   <p className="text-muted-foreground">
                     Progress often feels invisible until you visualize it chronologically.
@@ -125,12 +125,12 @@ export default function TimelinePage() {
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="aspect-video bg-muted rounded-lg border md:order-1" />
                 <div className="md:order-2">
-                  <h3 className="text-2xl font-bold mb-4">Understand your transition patterns</h3>
+                  <h3 className="text-2xl font-bold mb-4">Understand your patterns</h3>
                   <p className="text-muted-foreground mb-4">
                     Notice when you're most active. See which weeks had intense work and which were quiet. Identify what events triggered bursts of activity or periods of pause.
                   </p>
                   <p className="text-muted-foreground">
-                    Your Timeline reveals patterns you wouldn't consciously notice—insights about how you navigate change.
+                    Your Timeline reveals patterns you wouldn't consciously notice—insights about how you work and grow.
                   </p>
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function TimelinePage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Revisit your journey during reflection</h3>
                   <p className="text-muted-foreground mb-4">
-                    During monthly or annual reviews, scroll through your Timeline to see the full arc of your transition. Where did it start? What milestones happened? How did momentum shift?
+                    During monthly or annual reviews, scroll through your Timeline to see the full arc of your work. Where did it start? What milestones happened? How did momentum shift?
                   </p>
                   <p className="text-muted-foreground">
                     Your Timeline tells the complete story of how you moved through this chapter.
@@ -154,7 +154,7 @@ export default function TimelinePage() {
         {/* CTA */}
         <section className="py-20 px-6 bg-primary/5">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Start building your transition timeline</h2>
+            <h2 className="text-3xl font-bold mb-4">Start building your timeline</h2>
             <p className="text-xl text-muted-foreground mb-8">
               Every action you take becomes part of your story. Watch your journey unfold.
             </p>

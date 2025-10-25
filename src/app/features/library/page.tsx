@@ -19,7 +19,7 @@ export default function LibraryPage() {
                 Your personal collection of wisdom
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Save articles, resources, and references from your guides. Build a curated library of everything meaningful you discover during your transition journey.
+                Save articles, resources, and references from your guides. Build a curated library of everything meaningful you discover along your journey.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Button asChild size="lg">
@@ -111,7 +111,7 @@ export default function LibraryPage() {
             <div className="space-y-12">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">Build your transition reading list</h3>
+                  <h3 className="text-2xl font-bold mb-4">Build your reading list</h3>
                   <p className="text-muted-foreground mb-4">
                     Not every guide reading hits at the right time. Save articles that feel too advanced or not yet relevant to revisit when you're ready.
                   </p>
@@ -127,7 +127,7 @@ export default function LibraryPage() {
                 <div className="md:order-2">
                   <h3 className="text-2xl font-bold mb-4">Revisit what resonated most</h3>
                   <p className="text-muted-foreground mb-4">
-                    During transitions, certain articles hit different as your situation evolves. Your Library lets you easily revisit and re-read content with fresh perspective.
+                    Certain articles hit different as your situation evolves. Your Library lets you easily revisit and re-read content with fresh perspective.
                   </p>
                   <p className="text-muted-foreground">
                     Add new notes on second readings to capture how your understanding has changed.
@@ -139,7 +139,7 @@ export default function LibraryPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Share wisdom with others</h3>
                   <p className="text-muted-foreground mb-4">
-                    When friends face similar transitions, you can easily find and share the articles that helped you most.
+                    When friends face similar challenges, you can easily find and share the articles that helped you most.
                   </p>
                   <p className="text-muted-foreground">
                     Your Library becomes a resource not just for you, but for others navigating similar journeys.
