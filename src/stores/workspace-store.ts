@@ -12,7 +12,7 @@ import { WorkspaceMode } from '@/types/workspace';
  * - OPEN_GUIDE / OPEN_REFLECTION → deep link from Life OS
  *
  * Guards:
- * - Unsaved changes → prompt "Save & continue?"
+ * - Unsaved changes → show "Save & continue?" dialog
  *
  * Effects:
  * - On enter Reflection → set dim theme, focus editor

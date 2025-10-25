@@ -76,12 +76,12 @@ export interface UseKnowledgeGraphReturn {
   isTemplateRecommended: (guideId: string, userProfile: UserProfile) => boolean;
   getTemplateStrength: (template1: string, template2: string) => number;
 
-  // Article and prompt recommendations
+  // Article and question recommendations
   getRelatedArticles: (articleId: string, limit?: number) => ArticleConnection[];
   getArticlesForTemplate: (guideId: string, limit?: number) => ArticleConnection[];
   getRelatedPrompts: (questionId: string, limit?: number) => PromptConnection[];
   getPromptsForTemplate: (guideId: string, limit?: number) => PromptConnection[];
-  getCrossRecommendations: (contentType: 'template' | 'article' | 'prompt', contentId: string) => CrossConnection[];
+  getCrossRecommendations: (contentType: 'template' | 'article' | 'question', contentId: string) => CrossConnection[];
 }
 
 export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
@@ -287,7 +287,7 @@ export function useKnowledgeGraph(): UseKnowledgeGraphReturn {
     isTemplateRecommended,
     getTemplateStrength,
 
-    // Article and prompt recommendations
+    // Article and question recommendations
     getRelatedArticles,
     getArticlesForTemplate,
     getRelatedPrompts,

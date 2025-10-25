@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 
 interface Message {
   id: string;
-  type: 'prompt' | 'response';
+  type: 'question' | 'response';
   content: string;
   category?: string;
 }
@@ -22,7 +22,7 @@ export function ChatView({ guideId }: ChatViewProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      type: 'prompt',
+      type: 'question',
       content: 'What are your main goals for the next year?',
       category: 'Getting Started'
     }
@@ -41,7 +41,7 @@ export function ChatView({ guideId }: ChatViewProps) {
       },
       {
         id: (Date.now() + 1).toString(),
-        type: 'prompt',
+        type: 'question',
         content: 'How do you plan to achieve these goals?',
         category: 'Planning'
       }
@@ -57,9 +57,9 @@ export function ChatView({ guideId }: ChatViewProps) {
           <div key={message.id} className={`flex gap-3 ${message.type === 'response' ? 'flex-row-reverse' : ''}`}>
             {/* Avatar */}
             <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-              message.type === 'prompt' ? 'bg-primary' : 'bg-muted'
+              message.type === 'question' ? 'bg-primary' : 'bg-muted'
             }`}>
-              {message.type === 'prompt' ? (
+              {message.type === 'question' ? (
                 <IconRobot className="w-5 h-5 text-primary-foreground" />
               ) : (
                 <IconUser className="w-5 h-5 text-muted-foreground" />
@@ -74,7 +74,7 @@ export function ChatView({ guideId }: ChatViewProps) {
                 </Badge>
               )}
               <Card className={`p-4 ${
-                message.type === 'prompt'
+                message.type === 'question'
                   ? 'bg-muted/50'
                   : 'bg-primary/10 border-primary/20'
               }`}>

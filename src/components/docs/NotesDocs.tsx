@@ -179,7 +179,7 @@ export function NotesDocs() {
               <p className="text-sm font-medium mb-1">What if I can't answer a reflection question?</p>
               <p className="text-xs text-muted-foreground">
                 That's okay. Skip it and come back later. Sometimes we need time and experience before we're ready to answer
-                certain questions. You can mark a reading complete even if you haven't answered every prompt.
+                certain questions. You can mark a reading complete even if you haven't answered every question.
               </p>
             </div>
             <div className="bg-muted/30 border border-border rounded-lg p-3">

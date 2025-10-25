@@ -4,7 +4,7 @@ import { QuestionNode as QuestionNodeComponent } from "@/components/tiptap-node/
 
 export interface QuestionNodeOptions {
   /**
-   * HTML attributes to add to the prompt element.
+   * HTML attributes to add to the question element.
    * @default {}
    */
   HTMLAttributes?: Record<string, any>
@@ -14,9 +14,9 @@ declare module "@tiptap/core" {
   interface Commands<ReturnType> {
     questionNode: {
       /**
-       * Insert a prompt node
+       * Insert a question node
        */
-      insertQuestion: (prompt: {
+      insertQuestion: (question: {
         id: string
         text: string
         category: string
@@ -43,61 +43,61 @@ export const QuestionNode = Node.create<QuestionNodeOptions>({
     return {
       id: {
         default: null,
-        parseHTML: (element) => element.getAttribute("data-prompt-id"),
+        parseHTML: (element) => element.getAttribute("data-question-id"),
         renderHTML: (attributes) => {
           if (!attributes.id) {
             return {}
           }
           return {
-            "data-prompt-id": attributes.id,
+            "data-question-id": attributes.id,
           }
         },
       },
       text: {
         default: "",
-        parseHTML: (element) => element.getAttribute("data-prompt-text"),
+        parseHTML: (element) => element.getAttribute("data-question-text"),
         renderHTML: (attributes) => {
           if (!attributes.text) {
             return {}
           }
           return {
-            "data-prompt-text": attributes.text,
+            "data-question-text": attributes.text,
           }
         },
       },
       category: {
         default: "",
-        parseHTML: (element) => element.getAttribute("data-prompt-category"),
+        parseHTML: (element) => element.getAttribute("data-question-category"),
         renderHTML: (attributes) => {
           if (!attributes.category) {
             return {}
           }
           return {
-            "data-prompt-category": attributes.category,
+            "data-question-category": attributes.category,
           }
         },
       },
       helpText: {
         default: "",
-        parseHTML: (element) => element.getAttribute("data-prompt-help"),
+        parseHTML: (element) => element.getAttribute("data-question-help"),
         renderHTML: (attributes) => {
           if (!attributes.helpText) {
             return {}
           }
           return {
-            "data-prompt-help": attributes.helpText,
+            "data-question-help": attributes.helpText,
           }
         },
       },
       response: {
         default: "",
-        parseHTML: (element) => element.getAttribute("data-prompt-response"),
+        parseHTML: (element) => element.getAttribute("data-question-response"),
         renderHTML: (attributes) => {
           if (!attributes.response) {
             return {}
           }
           return {
-            "data-prompt-response": attributes.response,
+            "data-question-response": attributes.response,
           }
         },
       },
@@ -134,7 +134,7 @@ export const QuestionNode = Node.create<QuestionNodeOptions>({
             type: this.name,
             attrs: {
               id: question.id,
-              text: prompt.text,
+              text: question.text,
               category: question.category,
               helpText: question.helpText,
               response: "",

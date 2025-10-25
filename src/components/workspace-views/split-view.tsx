@@ -103,7 +103,7 @@ export function SplitView({ guideId }: SplitViewProps) {
                       className="w-full justify-start text-left h-auto py-2 px-3"
                       onClick={() => setSelectedPrompt(question)}
                     >
-                      <span className="line-clamp-2 text-sm">{prompt.text}</span>
+                      <span className="line-clamp-2 text-sm">{question.text}</span>
                     </Button>
                   ))}
                 </div>

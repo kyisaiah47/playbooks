@@ -182,7 +182,7 @@ export function SlashCommand({ editor, questions = [] }: SlashCommandProps) {
     cmd.description.toLowerCase().includes(search.toLowerCase())
   )
 
-  const filteredQuestions = questions.filter(prompt =>
+  const filteredQuestions = questions.filter(question =>
     question.question.toLowerCase().includes(search.toLowerCase()) ||
     question.category.toLowerCase().includes(search.toLowerCase())
   )

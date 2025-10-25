@@ -151,8 +151,8 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
   };
 
   // Items are already unified and ordered chronologically
-  const additionalPrompts = allItems.filter(item => 'prompt' in item) as ReflectionQuestion[];
-  const additionalNotes = allItems.filter(item => 'title' in item && !('prompt' in item)) as FreeformNote[];
+  const additionalQuestions = allItems.filter(item => 'question' in item) as ReflectionQuestion[];
+  const additionalNotes = allItems.filter(item => 'title' in item && !('question' in item)) as FreeformNote[];
 
   // Separate active and completed items
   const activeItems = allItems.filter(item => !completedItems.has(item.id));
@@ -248,14 +248,14 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
               )}
 
               {activeItems.map((item, index) => {
-            // Check if this is a prompt or a note
+            // Check if this is a question or a note
             const isQuestion = 'question' in item;
-            const isNote = 'title' in item && !('prompt' in item);
+            const isNote = 'title' in item && !('question' in item);
 
             return (
               <div key={item.id}>
                 {isPrompt && (() => {
-                  const prompt = item as ReflectionQuestion;
+                  const question = item as ReflectionQuestion;
                   const isAdditional = additionalPrompts.some(p => p.id === question.id);
                   const hasContent = responses[question.id]?.trim();
                   return (
@@ -263,7 +263,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
                       key={question.id}
                       data-item-id={question.id}
                       draggable={editMode}
-                      onDragStart={(e) => handleDragStart(e, question.id, 'prompt')}
+                      onDragStart={(e) => handleDragStart(e, question.id, 'question')}
                       onDragEnd={handleDragEnd}
                       className={`group space-y-4 transition-all duration-300 ${
                         editMode ? 'cursor-move' : ''
@@ -459,7 +459,7 @@ export function EmbeddedPrompts({ section, allItems = [], onResponsesChange, onR
               <div className="space-y-2">
                 {completedItemsList.map((item) => {
                   const isQuestion = 'question' in item;
-                  const isNote = 'title' in item && !('prompt' in item);
+                  const isNote = 'title' in item && !('question' in item);
                   const content = responses[item.id];
                   const preview = content ? content.slice(0, 80) + (content.length > 80 ? '...' : '') : '';
 

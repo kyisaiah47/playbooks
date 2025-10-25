@@ -277,7 +277,7 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: 
     }))
   }, [guideId])
 
-  // Expose editor globally for prompt insertion
+  // Expose editor globally for question insertion
   React.useEffect(() => {
     if (editor) {
       (window as any).templateEditor = editor

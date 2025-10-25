@@ -247,7 +247,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
                       key={index}
                       className="w-full p-2 bg-background rounded border text-xs"
                     >
-                      <div className="line-clamp-2">{prompt}</div>
+                      <div className="line-clamp-2">{question}</div>
                     </div>
                   ))}
                 </div>
@@ -293,7 +293,7 @@ export function FullTemplatePreview({ templateType }: FullTemplatePreviewProps) 
                           {index + 1}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-sm line-clamp-2">{prompt}</h4>
+                          <h4 className="font-medium text-sm line-clamp-2">{question}</h4>
                           <div className="flex items-center gap-2 mt-1">
                             <Badge variant="outline" className="text-xs h-4 px-1.5">
                               planning
