@@ -25,7 +25,7 @@ interface GuidesModalProps {
 export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const [templates, setTemplates] = useState<GuideRegistryEntry[]>([])
+  const [guides, setTemplates] = useState<GuideRegistryEntry[]>([])
   const [categories, setCategories] = useState<string[]>(["All"])
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export function TemplatesModal({ open, onOpenChange }: TemplatesModalProps) {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
-              placeholder="Search templates..."
+              placeholder="Search guides..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"

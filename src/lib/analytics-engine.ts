@@ -23,10 +23,10 @@ import { TemplateSession, ReflectionEntry } from '@/stores/workspace-store';
  * Main Analytics Engine class
  */
 export class AnalyticsEngine {
-  private templates: TemplateSession[];
+  private guides: TemplateSession[];
   private reflections: ReflectionEntry[];
 
-  constructor(templates: TemplateSession[], reflections: ReflectionEntry[]) {
+  constructor(guides: TemplateSession[], reflections: ReflectionEntry[]) {
     this.templates = templates;
     this.reflections = reflections;
   }
@@ -80,7 +80,7 @@ export class AnalyticsEngine {
    * Analyze category usage patterns
    */
   private analyzeCategoryUsage(period: InsightPeriod): CategoryUsageInsight | null {
-    const filteredGuides = this.filterByPeriod(this.templates, period);
+    const filteredGuides = this.filterByPeriod(this.guides, period);
 
     if (filteredGuides.length === 0) return null;
 
@@ -179,7 +179,7 @@ export class AnalyticsEngine {
    * Analyze template completion rates
    */
   private analyzeCompletionRate(period: InsightPeriod): CompletionRateInsight | null {
-    const filteredGuides = this.filterByPeriod(this.templates, period);
+    const filteredGuides = this.filterByPeriod(this.guides, period);
 
     if (filteredGuides.length === 0) return null;
 
@@ -587,6 +587,6 @@ export class AnalyticsEngine {
 /**
  * Create analytics engine instance from store data
  */
-export function createAnalyticsEngine(templates: TemplateSession[], reflections: ReflectionEntry[]): AnalyticsEngine {
-  return new AnalyticsEngine(templates, reflections);
+export function createAnalyticsEngine(guides: TemplateSession[], reflections: ReflectionEntry[]): AnalyticsEngine {
+  return new AnalyticsEngine(guides, reflections);
 }

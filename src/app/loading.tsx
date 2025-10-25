@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const loadingMessages = [
   "Organizing your thoughts...",
-  "Loading templates...",
+  "Loading guides...",
   "Gathering insights...",
   "Preparing your workspace...",
   "Curating readings...",

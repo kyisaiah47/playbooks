@@ -22,7 +22,7 @@ interface NavTemplateSelectorProps {
 }
 
 export function NavTemplateSelector({ selectedGuideId, onTemplateChange }: NavTemplateSelectorProps) {
-  const [templates, setTemplates] = useState<GuideRegistryEntry[]>([])
+  const [guides, setTemplates] = useState<GuideRegistryEntry[]>([])
 
   useEffect(() => {
     async function fetchTemplates() {
@@ -31,7 +31,7 @@ export function NavTemplateSelector({ selectedGuideId, onTemplateChange }: NavTe
         const data = await res.json()
         setTemplates(data.guides || [])
       } catch (error) {
-        console.error("Failed to load templates:", error)
+        console.error("Failed to load guides:", error)
       }
     }
     fetchTemplates()
@@ -49,7 +49,7 @@ export function NavTemplateSelector({ selectedGuideId, onTemplateChange }: NavTe
         </CollapsibleTrigger>
         <CollapsibleContent>
           <SidebarMenuSub className="max-h-[200px] overflow-y-auto">
-            {templates.map((guide) => (
+            {guides.map((guide) => (
               <SidebarMenuSubItem key={guide.id}>
                 <SidebarMenuSubButton
                   onClick={() => onTemplateChange(guide.id)}

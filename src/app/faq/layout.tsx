@@ -73,7 +73,7 @@ export default function FAQLayout({
                 "name": "How much does Templata cost?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Templata offers three tiers: Free (1-2 starter templates, basic features), Plus ($9/mo for full access to 100+ templates, advanced workflows, unlimited active templates), and Pro ($15/mo adding AI Autofill, integrations, team collaboration, and white-label exports). All plans include 14-day free trials with no commitment."
+                  "text": "Templata offers three tiers: Free (1-2 starter guides, basic features), Plus ($9/mo for full access to 100+ guides, advanced workflows, unlimited active guides), and Pro ($15/mo adding AI Autofill, integrations, team collaboration, and white-label exports). All plans include 14-day free trials with no commitment."
                 }
               },
               {
@@ -89,7 +89,7 @@ export default function FAQLayout({
                 "name": "How many templates are available?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "We currently offer 100+ templates across categories like Personal Life (25+ templates), Career & Work (30+ templates), Property & Moving (20+ templates), and Business & Finance (25+ templates). We're constantly adding new templates based on user requests."
+                  "text": "We currently offer 100+ templates across categories like Personal Life (25+ guides), Career & Work (30+ guides), Property & Moving (20+ guides), and Business & Finance (25+ guides). We're constantly adding new templates based on user requests."
                 }
               },
               {

@@ -88,12 +88,7 @@ export const getAllGuides = async (): Promise<GuideRegistryEntry[]> => {
   return fetchGuides();
 };
 
-// Legacy exports for compatibility
-export const getTemplateById = getGuideById;
-export const getTemplatesByCategory = getGuidesByCategory;
-export const searchTemplates = searchGuides;
-export const getAllTemplates = getAllGuides;
-export const templateRegistry = [] as GuideRegistryEntry[];
+// Main exports
 export const guideRegistry = [] as GuideRegistryEntry[];
 
 export const getReadings = () => {

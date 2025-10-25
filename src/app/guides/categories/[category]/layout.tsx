@@ -29,7 +29,7 @@ const categoryDescriptions: Record<string, string> = {
   'education-learning': 'Educational planning guides for students and lifelong learners.',
   'technology-digital': 'Templates for digital projects, tech planning, and online initiatives.',
   'personal-development': 'Self-improvement frameworks and personal growth planning guides.',
-  'home-living': 'Home buying, moving, renovation, and living space planning templates.',
+  'home-living': 'Home buying, moving, renovation, and living space planning guides.',
 };
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {

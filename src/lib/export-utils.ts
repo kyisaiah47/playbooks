@@ -14,7 +14,7 @@ import { InsightDashboard } from '@/types/insight';
  * Generate Markdown summary
  */
 export function generateMarkdownSummary(
-  templates: TemplateSession[],
+  guides: TemplateSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -36,8 +36,8 @@ export function generateMarkdownSummary(
   }
 
   // Templates
-  if (templates.length > 0) {
-    markdown += `## Templates (${templates.length})\n\n`;
+  if (guides.length > 0) {
+    markdown += `## Templates (${guides.length})\n\n`;
     guides.forEach((guide, index) => {
       markdown += `### ${index + 1}. ${guide.guideId}\n\n`;
       markdown += `- **Status:** ${guide.completion === 100 ? 'Completed' : 'In Progress'} (${guide.completion}%)\n`;
@@ -96,7 +96,7 @@ export function generateMarkdownSummary(
  * Generate JSON export
  */
 export function generateJSONExport(
-  templates: TemplateSession[],
+  guides: TemplateSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -104,7 +104,7 @@ export function generateJSONExport(
     exportDate: new Date().toISOString(),
     version: '1.0',
     data: {
-      templates,
+      guides,
       reflections,
       insights: insights || null,
     },
@@ -117,7 +117,7 @@ export function generateJSONExport(
  * Generate HTML for PDF conversion
  */
 export function generateHTMLForPDF(
-  templates: TemplateSession[],
+  guides: TemplateSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -252,8 +252,8 @@ export function generateHTMLForPDF(
   }
 
   // Templates
-  if (templates.length > 0) {
-    html += `<h2>Templates (${templates.length})</h2>`;
+  if (guides.length > 0) {
+    html += `<h2>Templates (${guides.length})</h2>`;
     guides.forEach((guide, index) => {
       html += `
   <h3>${index + 1}. ${guide.guideId}</h3>
@@ -324,11 +324,11 @@ export function downloadFile(content: string, filename: string, mimeType: string
  * Export as Markdown
  */
 export function exportAsMarkdown(
-  templates: TemplateSession[],
+  guides: TemplateSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
-  const markdown = generateMarkdownSummary(templates, reflections, insights);
+  const markdown = generateMarkdownSummary(guides, reflections, insights);
   const filename = `lifeos-export-${new Date().toISOString().split('T')[0]}.md`;
   downloadFile(markdown, filename, 'text/markdown');
 }
@@ -337,11 +337,11 @@ export function exportAsMarkdown(
  * Export as JSON
  */
 export function exportAsJSON(
-  templates: TemplateSession[],
+  guides: TemplateSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
-  const json = generateJSONExport(templates, reflections, insights);
+  const json = generateJSONExport(guides, reflections, insights);
   const filename = `lifeos-export-${new Date().toISOString().split('T')[0]}.json`;
   downloadFile(json, filename, 'application/json');
 }
@@ -350,11 +350,11 @@ export function exportAsJSON(
  * Export as HTML (for PDF printing)
  */
 export function exportAsHTML(
-  templates: TemplateSession[],
+  guides: TemplateSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
-  const html = generateHTMLForPDF(templates, reflections, insights);
+  const html = generateHTMLForPDF(guides, reflections, insights);
   const filename = `lifeos-export-${new Date().toISOString().split('T')[0]}.html`;
   downloadFile(html, filename, 'text/html');
 

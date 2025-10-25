@@ -93,17 +93,17 @@ export default function ReadingClient({ params }: ReadingClientProps) {
 
     // Get templates related to the article's category
     const categoryTemplates = getRelatedTemplates(post.category.toLowerCase());
-    templates.push(...categoryTemplates);
+    guides.push(...categoryTemplates);
 
     // Get templates from connected concepts
     for (const concept of connectedConcepts.slice(0, 3)) {
       const conceptTemplates = getRelatedTemplates(concept.name);
-      templates.push(...conceptTemplates);
+      guides.push(...conceptTemplates);
     }
 
     // Remove duplicates and limit
-    const uniqueTemplates = Array.from(new Set(templates.map(t => t.id)))
-      .map(id => templates.find(t => t.id === id))
+    const uniqueTemplates = Array.from(new Set(guides.map(t => t.id)))
+      .map(id => guides.find(t => t.id === id))
       .filter(Boolean)
       .slice(0, 6);
 

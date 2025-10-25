@@ -31,7 +31,7 @@ const categoryDisplayNames: Record<string, string> = {
 export default function CategoryPage({ params }: CategoryPageProps) {
   const { category } = use(params);
   const [searchQuery, setSearchQuery] = useState('');
-  const [templates, setTemplates] = useState<GuideRegistryEntry[]>([]);
+  const [guides, setTemplates] = useState<GuideRegistryEntry[]>([]);
   const [guideData, setGuideData] = useState<Record<string, { questions: any[], readings: any[] }>>({});
   const [expandedGuides, setExpandedTemplates] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
@@ -93,7 +93,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
         setGuideData(dataMap);
       } catch (error) {
-        console.error('Error fetching templates:', error);
+        console.error('Error fetching guides:', error);
       } finally {
         setLoading(false);
       }
@@ -110,7 +110,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       t.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [templates, searchQuery]);
+  }, [guides, searchQuery]);
 
   return (
     <PageLayout>
@@ -150,7 +150,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Search templates..."
+              placeholder="Search guides..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-12 h-12 text-base"
@@ -164,7 +164,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <div className="container mx-auto max-w-6xl px-4">
           {loading ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">Loading templates...</p>
+              <p className="text-muted-foreground">Loading guides...</p>
             </div>
           ) : filteredGuides.length === 0 ? (
             <div className="text-center py-12">

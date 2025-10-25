@@ -152,7 +152,7 @@ export function TasksDocs() {
         <div>
           <h3 className="text-base font-medium mb-2">Task Templates</h3>
           <p className="text-sm text-muted-foreground mb-3">
-            Some transitions have common action patterns. Save time by using or creating task templates:
+            Some transitions have common action patterns. Save time by using or creating task guides:
           </p>
           <div className="space-y-2">
             <div className="flex items-start gap-2 text-xs">

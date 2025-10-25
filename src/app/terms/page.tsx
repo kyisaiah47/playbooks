@@ -98,7 +98,7 @@ export default function TermsPage() {
 
             <h3 className="text-xl font-semibold mb-3">Our Content</h3>
             <p className="mb-4">
-              All templates, readings, designs, text, graphics, and other materials provided by Templata are owned by
+              All guides, readings, designs, text, graphics, and other materials provided by Templata are owned by
               us or our licensors and are protected by copyright and other intellectual property laws. You may use
               our content in accordance with these terms, but you may not:
             </p>

@@ -9,7 +9,7 @@ export function ReadingsFeatures() {
     {
       icon: Target,
       title: "Template-Matched",
-      description: "Each reading is connected to specific templates, giving you relevant insights exactly when you need them."
+      description: "Each reading is connected to specific guides, giving you relevant insights exactly when you need them."
     },
     {
       icon: Sparkles,
