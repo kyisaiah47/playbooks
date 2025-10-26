@@ -4,12 +4,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { HeroWorkspace } from "@/components/landing/HeroWorkspace";
 import { BrowseGuidesReal } from "@/components/landing/BrowseGuidesReal";
 import { SplitScreenReal } from "@/components/landing/SplitScreenReal";
 import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
 import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
 import { BrowseAndFeatured } from "@/components/landing/BrowseAndFeatured";
+import WorkspaceLayout from "@/app/app/[workspaceId]/layout";
+import NotesPage from "@/app/app/[workspaceId]/notes/page";
 
 export default function LandingPage() {
 	const jsonLd = {
@@ -68,7 +69,27 @@ export default function LandingPage() {
 			{/* Hero Screenshot - Wider layout */}
 			<section className="px-6 pb-32">
 				<div className="mx-auto max-w-[1400px]">
-					<HeroWorkspace />
+					<div className="w-full bg-background rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] ring-1 ring-black/5 dark:ring-white/10">
+						{/* Browser Chrome */}
+						<div className="h-7 bg-muted/60 border-b border-border/60 flex items-center px-2 gap-2">
+							<div className="flex gap-1.5">
+								<div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+								<div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+								<div className="w-2.5 h-2.5 rounded-full bg-[#28CA42]" />
+							</div>
+							<div className="flex-1 flex justify-center -ml-12">
+								<div className="px-3 py-0.5 bg-background/50 rounded text-[9px] text-muted-foreground border border-border/40 max-w-[200px] truncate">
+									templata.org
+								</div>
+							</div>
+						</div>
+						{/* App Content */}
+						<div className="h-[600px] overflow-hidden">
+							<WorkspaceLayout demoMode={true}>
+								<NotesPage />
+							</WorkspaceLayout>
+						</div>
+					</div>
 				</div>
 			</section>
 

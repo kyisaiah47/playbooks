@@ -44,13 +44,14 @@ import {
 
 interface WorkspaceLayoutProps {
   children: React.ReactNode;
+  demoMode?: boolean;
 }
 
-export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
+export default function WorkspaceLayout({ children, demoMode = false }: WorkspaceLayoutProps) {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const workspaceId = params.workspaceId as string;
+  const workspaceId = demoMode ? 'demo' : (params.workspaceId as string);
 
   // State
   const [workspace, setWorkspace] = useState<Workspace | null>(null);
@@ -129,6 +130,38 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
   // Fetch workspace data and all workspaces
   useEffect(() => {
+    if (demoMode) {
+      // Use mock data for demo
+      setWorkspace({
+        id: 'demo',
+        name: 'My Life Planning',
+        icon: '🏠',
+        user_id: 'demo-user',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      });
+      setWorkspaces([
+        {
+          id: 'demo',
+          name: 'My Life Planning',
+          icon: '🏠',
+          user_id: 'demo-user',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          id: 'demo-2',
+          name: 'Work Projects',
+          icon: '💼',
+          user_id: 'demo-user',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }
+      ]);
+      setLoading(false);
+      return;
+    }
+
     async function fetchWorkspace() {
       try {
         const response = await fetch(`/api/workspaces/${workspaceId}`);
@@ -167,10 +200,41 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
       fetchWorkspace();
       fetchAllWorkspaces();
     }
-  }, [workspaceId, router]);
+  }, [workspaceId, router, demoMode]);
 
   // Fetch pages data
   useEffect(() => {
+    if (demoMode) {
+      // Use mock pages for demo
+      setPages([
+        {
+          id: 'demo-page-1',
+          workspace_id: 'demo',
+          name: "Planning Wedding",
+          icon: '💍',
+          content: {},
+          parent_page_id: null,
+          display_order: 0,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          subPages: []
+        },
+        {
+          id: 'demo-page-2',
+          workspace_id: 'demo',
+          name: "Career Transition",
+          icon: '💼',
+          content: {},
+          parent_page_id: null,
+          display_order: 1,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          subPages: []
+        }
+      ]);
+      return;
+    }
+
     async function fetchPages() {
       try {
         const response = await fetch(`/api/workspaces/${workspaceId}/pages`);
@@ -204,7 +268,7 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
     if (workspaceId) {
       fetchPages();
     }
-  }, [workspaceId]);
+  }, [workspaceId, demoMode]);
 
   // Get active view from active tab (needed before useEffects)
   const activeView: TabType = tabs.find(t => t.id === activeTabId)?.type || 'overview';
