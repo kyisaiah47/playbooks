@@ -55,18 +55,18 @@ export default function AnalyticsPage() {
   // Get selected guide IDs from URL
   const selectedGuideIds = searchParams.get('analyticsGuides')?.split(',').filter(Boolean) || [];
 
-  // Nothing checked = nothing shown
+  // Filter by selected guides - in demo mode, show all if nothing selected
   const userGuides = selectedGuideIds.length > 0
     ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
-    : [];
+    : (demoMode ? allUserGuides : []);
 
   const tasks = selectedGuideIds.length > 0
     ? allTasks.filter(task => task.user_guide_id && selectedGuideIds.includes(task.user_guide_id))
-    : [];
+    : (demoMode ? allTasks : []);
 
   const events = selectedGuideIds.length > 0
     ? allEvents.filter(event => event.user_guide_id && selectedGuideIds.includes(event.user_guide_id))
-    : [];
+    : (demoMode ? allEvents : []);
 
   useEffect(() => {
     async function fetchData() {

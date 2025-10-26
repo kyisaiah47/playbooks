@@ -52,17 +52,18 @@ export default function OverviewPage() {
   const selectedNoteIds = searchParams.get('overviewGuides')?.split(',').filter(Boolean) || [];
 
   // Filter by selection - only show data from checked notes
+  // In demo mode, show all data if nothing is selected
   const userGuides = selectedNoteIds.length > 0
     ? allUserGuides.filter(guide => selectedNoteIds.includes(guide.id))
-    : [];
+    : (demoMode ? allUserGuides : []);
 
   const tasks = selectedNoteIds.length > 0
     ? allTasks.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
-    : [];
+    : (demoMode ? allTasks : []);
 
   const events = selectedNoteIds.length > 0
     ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
-    : [];
+    : (demoMode ? allEvents : []);
 
   useEffect(() => {
     if (demoMode) {

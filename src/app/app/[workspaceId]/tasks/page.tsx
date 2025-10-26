@@ -41,10 +41,10 @@ export default function TasksPage() {
     },
   });
 
-  // Filter tasks by selected notes - only show tasks if notes are selected
+  // Filter tasks by selected notes - in demo mode, show all tasks if nothing selected
   const data = selectedNoteIds.length > 0
     ? (allTasks || []).filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
-    : [];
+    : (demoMode ? (allTasks || []) : []);
 
   // Create task mutation
   const createTaskMutation = useMutation({
