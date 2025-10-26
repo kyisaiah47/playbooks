@@ -311,41 +311,41 @@ export default function LibraryPage() {
                           params.set('reading', reading.id);
                           router.push(`/library?${params.toString()}`);
                         }}
-                        className="py-3 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group cursor-pointer"
+                        className="py-4 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group cursor-pointer"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-[13px] font-medium group-hover:text-primary transition-colors truncate">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">
                                 {reading.title}
                               </span>
                             </div>
-                            <p className="text-[11px] text-muted-foreground mb-1">
+                            <p className="text-xs text-muted-foreground mb-2">
                               {reading.author}
                             </p>
                             {reading.influences && reading.influences.length > 0 && (
-                              <div className="flex flex-wrap gap-1 mb-1">
+                              <div className="flex flex-wrap gap-1 mb-2">
                                 {reading.influences.slice(0, 3).map((influence, idx) => (
                                   <Badge
                                     key={idx}
                                     variant="outline"
-                                    className="text-[9px] px-1 py-0"
+                                    className="text-[10px] px-1.5 py-0.5"
                                   >
                                     {influence}
                                   </Badge>
                                 ))}
                                 {reading.influences.length > 3 && (
-                                  <span className="text-[9px] text-muted-foreground">+{reading.influences.length - 3} more</span>
+                                  <span className="text-[10px] text-muted-foreground">+{reading.influences.length - 3} more</span>
                                 )}
                               </div>
                             )}
-                            <p className="text-[11px] text-muted-foreground/80 line-clamp-2">
+                            <p className="text-xs text-muted-foreground/80 line-clamp-2">
                               {reading.excerpt}
                             </p>
                           </div>
                           <Badge
                             variant="secondary"
-                            className={cn("text-[10px] px-1.5 py-0.5 font-medium", getTypeColor(reading.type))}
+                            className={cn("text-[10px] px-2 py-1 font-medium", getTypeColor(reading.type))}
                           >
                             {reading.type}
                           </Badge>
