@@ -56,8 +56,8 @@ export default function DiscoverPage() {
   const [guides, setGuides] = useState<Guide[]>([]);
   const [loadingGuides, setLoadingGuides] = useState(false);
 
-  // Get selected category from URL
-  const selectedCategory = searchParams.get('category');
+  // Get selected category from URL, or default to 'career-work' in demo mode
+  const selectedCategory = searchParams.get('category') || (demoMode ? 'career-work' : null);
 
   // Fetch categories to display category info
   useEffect(() => {
