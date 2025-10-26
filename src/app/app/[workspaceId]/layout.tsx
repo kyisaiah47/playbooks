@@ -929,7 +929,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
   if (loading || !workspace) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className={demoMode ? "h-full w-full flex items-center justify-center" : "h-screen w-screen flex items-center justify-center"}>
         <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
       </div>
     );
