@@ -74,55 +74,55 @@ export function Header() {
 
 	const features = [
 		{
-			href: "/features/notes",
+			href: "/docs?section=notes",
 			icon: FileText,
 			title: "Notes",
 			description: "Capture thoughts and insights"
 		},
 		{
-			href: "/features/library",
+			href: "/docs?section=library",
 			icon: BookOpen,
 			title: "Library",
 			description: "Saved resources and readings"
 		},
 		{
-			href: "/features/calendar",
+			href: "/docs?section=calendar",
 			icon: Calendar,
 			title: "Calendar",
 			description: "Plan and schedule events"
 		},
 		{
-			href: "/features/tasks",
+			href: "/docs?section=tasks",
 			icon: CheckSquare,
 			title: "Tasks",
 			description: "Track what needs doing"
 		},
 		{
-			href: "/features/timeline",
+			href: "/docs?section=timeline",
 			icon: Clock,
 			title: "Timeline",
 			description: "View everything chronologically"
 		},
 		{
-			href: "/features/daily",
+			href: "/docs?section=daily",
 			icon: Calendar,
 			title: "Daily",
 			description: "Daily notes and logging"
 		},
 		{
-			href: "/features/journal",
+			href: "/docs?section=journal",
 			icon: BookMarked,
 			title: "Journal",
 			description: "Private writing space"
 		},
 		{
-			href: "/features/graph",
+			href: "/docs?section=graph",
 			icon: Network,
 			title: "Graph",
 			description: "Visualize connections"
 		},
 		{
-			href: "/features/analytics",
+			href: "/docs?section=analytics",
 			icon: BarChart3,
 			title: "Analytics",
 			description: "Track progress and patterns"

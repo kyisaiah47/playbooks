@@ -48,6 +48,7 @@ export default function GuidesPage() {
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [loadingGuides, setLoadingGuides] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
 
   // Fetch categories on mount
   useEffect(() => {

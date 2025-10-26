@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   BookOpen,
   FileText,
@@ -50,8 +51,18 @@ type DocSection =
   | 'support';
 
 export default function DocsPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [expandedSections, setExpandedSections] = useState<string[]>(['getting-started', 'features']);
   const [activeDoc, setActiveDoc] = useState<DocSection>('getting-started');
+
+  // Read section from query params on mount
+  useEffect(() => {
+    const section = searchParams.get('section') as DocSection | null;
+    if (section) {
+      setActiveDoc(section);
+    }
+  }, [searchParams]);
 
   const toggleSection = (section: string) => {
     setExpandedSections(prev =>
@@ -59,6 +70,11 @@ export default function DocsPage() {
         ? prev.filter(s => s !== section)
         : [...prev, section]
     );
+  };
+
+  const handleDocChange = (docId: DocSection) => {
+    setActiveDoc(docId);
+    router.push(`/docs?section=${docId}`, { scroll: false });
   };
 
   const sidebarSections = [
@@ -141,7 +157,7 @@ export default function DocsPage() {
                       {section.items.map((item) => (
                         <button
                           key={item.id}
-                          onClick={() => setActiveDoc(item.id)}
+                          onClick={() => handleDocChange(item.id)}
                           className={`flex items-center gap-2 w-full text-left text-sm py-1.5 px-2 rounded transition-colors ${
                             activeDoc === item.id
                               ? 'text-foreground bg-muted/50'
