@@ -139,24 +139,26 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
       return { nodes: [], edges: [] };
     }
 
-    // Create nodes
-    const nodes: Node[] = userGuides.map((ug, index) => {
-      const angle = (index * 2 * Math.PI) / userGuides.length;
-      const radius = Math.min(300, 150 + userGuides.length * 20);
-      const x = 400 + radius * Math.cos(angle);
-      const y = 400 + radius * Math.sin(angle);
+    // Create nodes - filter out guides with null data
+    const nodes: Node[] = userGuides
+      .filter(ug => ug.guides && ug.guides.name)
+      .map((ug, index) => {
+        const angle = (index * 2 * Math.PI) / userGuides.length;
+        const radius = Math.min(300, 150 + userGuides.length * 20);
+        const x = 400 + radius * Math.cos(angle);
+        const y = 400 + radius * Math.sin(angle);
 
-      const category = determineCategory(ug.guides.name, ug.guides.description);
+        const category = determineCategory(ug.guides.name, ug.guides.description);
 
-      return {
-        id: ug.id,
-        type: 'guideNode',
-        position: { x, y },
-        data: {
-          label: ug.guides.name,
-          icon: ug.guides.icon || '📚',
-          progress: ug.progress,
-          category,
+        return {
+          id: ug.id,
+          type: 'guideNode',
+          position: { x, y },
+          data: {
+            label: ug.guides.name,
+            icon: ug.guides.icon || '📚',
+            progress: ug.progress,
+            category,
           guideId: ug.guides.id,
         },
       };
