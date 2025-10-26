@@ -278,7 +278,7 @@ export function Header() {
 									<div className="mb-6">
 										<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Learn More</h3>
 									</div>
-									<div className="space-y-4">
+									<div className="space-y-1">
 										<Link
 											href="/docs"
 											className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
