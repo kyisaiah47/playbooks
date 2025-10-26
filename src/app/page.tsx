@@ -53,63 +53,36 @@ export default function LandingPage() {
 							Templata is
 						</motion.p>
 
-						{/* Title - flexbox layout */}
-						<div className="flex items-center justify-between mb-12">
-							<motion.div
-								initial={{ opacity: 0, x: -30 }}
-								animate={{
-									opacity: hoveredSide === 'notion' ? 0.15 : 1,
-									x: 0
-								}}
-								transition={{ duration: 0.2, ease: "easeOut" }}
+						{/* Wikipedia and Notion sections with features */}
+						<div className="flex items-start justify-between gap-8">
+							{/* Wikipedia side */}
+							<div
 								onMouseEnter={() => setHoveredSide('wikipedia')}
 								onMouseLeave={() => setHoveredSide(null)}
-								className="cursor-pointer"
+								className="cursor-pointer flex flex-col items-start"
 							>
-								<h1 className="text-[5rem] font-medium tracking-[-0.02em] md:text-[8rem] leading-[0.9]">
-									Wikipedia
-								</h1>
-							</motion.div>
-							<motion.div
-								className="px-8"
-								initial={{ opacity: 0, scale: 0.8 }}
-								animate={{ opacity: 1, scale: 1 }}
-								transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-							>
-								<h2 className="text-[5rem] font-medium tracking-[-0.02em] md:text-[8rem] leading-[0.9]">
-									×
-								</h2>
-							</motion.div>
-							<motion.div
-								initial={{ opacity: 0, x: 30 }}
-								animate={{
-									opacity: hoveredSide === 'wikipedia' ? 0.15 : 1,
-									x: 0
-								}}
-								transition={{ duration: 0.2, ease: "easeOut" }}
-								onMouseEnter={() => setHoveredSide('notion')}
-								onMouseLeave={() => setHoveredSide(null)}
-								className="cursor-pointer"
-							>
-								<h3 className="text-[5rem] font-medium tracking-[-0.02em] md:text-[8rem] leading-[0.9]">
-									Notion
-								</h3>
-							</motion.div>
-						</div>
-
-						{/* Features - below left and right */}
-						<div className="flex justify-between gap-16">
-							<motion.div
-								className="text-base md:text-lg space-y-3"
-								initial={{ opacity: 0, y: 20 }}
-								animate={{
-									opacity: hoveredSide === 'notion' ? 0.15 : 1,
-									y: 0
-								}}
-								transition={{ opacity: { duration: 0.2 }, y: { duration: 0.6, delay: 0.4 }, ease: "easeOut" }}
-								onMouseEnter={() => setHoveredSide('wikipedia')}
-								onMouseLeave={() => setHoveredSide(null)}
-							>
+								<motion.div
+									initial={{ opacity: 0, x: -30 }}
+									animate={{
+										opacity: hoveredSide === 'notion' ? 0.15 : 1,
+										x: 0
+									}}
+									transition={{ duration: 0.2, ease: "easeOut" }}
+									className="mb-12"
+								>
+									<h1 className="text-[5rem] font-medium tracking-[-0.02em] md:text-[8rem] leading-[0.9]">
+										Wikipedia
+									</h1>
+								</motion.div>
+								<motion.div
+									className="text-base md:text-lg space-y-3"
+									initial={{ opacity: 0, y: 20 }}
+									animate={{
+										opacity: hoveredSide === 'notion' ? 0.15 : 1,
+										y: 0
+									}}
+									transition={{ opacity: { duration: 0.2 }, y: { duration: 0.6, delay: 0.4 }, ease: "easeOut" }}
+								>
 								<motion.div className="flex items-center gap-4 cursor-pointer">
 									<span className="text-muted-foreground">
 										Guides
@@ -158,17 +131,48 @@ export default function LandingPage() {
 									</motion.span>
 								</motion.div>
 							</motion.div>
+							</div>
+
+							{/* × in the middle */}
 							<motion.div
-								className="text-base md:text-lg space-y-3 text-right"
-								initial={{ opacity: 0, y: 20 }}
-								animate={{
-									opacity: hoveredSide === 'wikipedia' ? 0.15 : 1,
-									y: 0
-								}}
-								transition={{ opacity: { duration: 0.2 }, y: { duration: 0.6, delay: 0.4 }, ease: "easeOut" }}
+								className="px-8 pt-0"
+								initial={{ opacity: 0, scale: 0.8 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+							>
+								<h2 className="text-[5rem] font-medium tracking-[-0.02em] md:text-[8rem] leading-[0.9]">
+									×
+								</h2>
+							</motion.div>
+
+							{/* Notion side */}
+							<div
 								onMouseEnter={() => setHoveredSide('notion')}
 								onMouseLeave={() => setHoveredSide(null)}
+								className="cursor-pointer flex flex-col items-end"
 							>
+								<motion.div
+									initial={{ opacity: 0, x: 30 }}
+									animate={{
+										opacity: hoveredSide === 'wikipedia' ? 0.15 : 1,
+										x: 0
+									}}
+									transition={{ duration: 0.2, ease: "easeOut" }}
+									className="mb-12"
+								>
+									<h3 className="text-[5rem] font-medium tracking-[-0.02em] md:text-[8rem] leading-[0.9]">
+										Notion
+									</h3>
+								</motion.div>
+								<motion.div
+									className="text-base md:text-lg space-y-3 text-right"
+									initial={{ opacity: 0, y: 20 }}
+									animate={{
+										opacity: hoveredSide === 'wikipedia' ? 0.15 : 1,
+										y: 0
+									}}
+									transition={{ opacity: { duration: 0.2 }, y: { duration: 0.6, delay: 0.4 }, ease: "easeOut" }}
+								>
 								<motion.div className="flex items-center justify-end gap-4 cursor-pointer">
 									<motion.span
 										className="text-sm text-muted-foreground whitespace-nowrap"
@@ -255,6 +259,7 @@ export default function LandingPage() {
 									</motion.span>
 								</motion.div>
 							</motion.div>
+							</div>
 						</div>
 					</div>
 				</div>
