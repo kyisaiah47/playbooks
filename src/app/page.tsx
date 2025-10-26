@@ -68,7 +68,7 @@ export default function LandingPage() {
 			{/* Hero Screenshot - Wider layout */}
 			<section className="px-6 pb-32">
 				<div className="mx-auto max-w-[1400px]">
-					<div className="w-full bg-background rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] ring-1 ring-black/5 dark:ring-white/10">
+					<div className="w-full bg-background rounded-xl overflow-auto shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] ring-1 ring-black/5 dark:ring-white/10">
 						{/* Browser Chrome */}
 						<div className="h-7 bg-muted/60 border-b border-border/60 flex items-center px-2 gap-2">
 							<div className="flex gap-1.5">
@@ -84,8 +84,7 @@ export default function LandingPage() {
 						</div>
 						{/* App Content */}
 						<div
-							className="h-[600px] overflow-hidden"
-							data-lenis-prevent
+							className="h-[600px] overflow-auto"
 							onClick={(e) => {
 								e.preventDefault();
 								e.stopPropagation();
