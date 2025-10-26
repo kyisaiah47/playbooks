@@ -15,11 +15,14 @@ import {
   Archive,
   Users,
   BookOpen,
-  Settings
+  Settings,
+  LogOut
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { TabType } from '@/types/workspace';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 
 interface IconBarProps {
   activeView: TabType;
@@ -45,7 +48,14 @@ const ICON_VIEWS: { type: TabType; icon: any; label: string }[] = [
 ];
 
 export function IconBar({ activeView, onViewClick }: IconBarProps) {
+  const router = useRouter();
+  const supabase = createClient();
   let lastWasDivider = false;
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+  };
 
   return (
     <div className="w-12 border-r border-border/40 bg-muted/10 flex flex-col items-center py-2 gap-0.5">
@@ -97,6 +107,23 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
           </div>
         );
       })}
+
+      {/* Spacer to push logout to bottom */}
+      <div className="flex-1" />
+
+      {/* Logout Button */}
+      <div className="w-8 h-px bg-border mb-1" />
+      <motion.button
+        type="button"
+        onClick={handleLogout}
+        className="w-8 h-8 rounded-md flex items-center justify-center transition-colors text-muted-foreground hover:bg-red-500/10 hover:text-red-500"
+        title="Logout"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.15 }}
+      >
+        <LogOut className="w-4 h-4" />
+      </motion.button>
     </div>
   );
 }
