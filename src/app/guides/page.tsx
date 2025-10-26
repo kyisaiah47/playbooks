@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { Briefcase, Heart, Activity, Sprout, DollarSign, Calendar, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -176,21 +175,47 @@ export default function GuidesPage() {
                     <div className="text-center py-12 text-muted-foreground text-sm">
                       Loading guides...
                     </div>
+                  ) : selectedGuide ? (
+                    <div className="max-w-3xl">
+                      <button
+                        onClick={() => setSelectedGuide(null)}
+                        className="text-sm text-muted-foreground hover:text-foreground mb-6 flex items-center gap-1"
+                      >
+                        ← Back to guides
+                      </button>
+                      <h1 className="text-3xl font-semibold mb-3">{selectedGuide.name}</h1>
+                      <p className="text-base text-muted-foreground mb-6">{selectedGuide.description}</p>
+                      {selectedGuide.tags && selectedGuide.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-8">
+                          {selectedGuide.tags.map((tag, idx) => (
+                            <span
+                              key={idx}
+                              className="text-xs px-2 py-1 bg-muted rounded"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      <div className="prose dark:prose-invert max-w-none">
+                        <p className="text-sm text-muted-foreground">Guide content would go here...</p>
+                      </div>
+                    </div>
                   ) : (
                     <div className="space-y-0">
                       {guides.map((guide) => {
                         const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
                         return (
-                          <Link
+                          <button
                             key={guide.id}
-                            href={`/guides/${guide.id}`}
-                            className="flex items-center gap-3 py-2.5 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group"
+                            onClick={() => setSelectedGuide(guide)}
+                            className="flex items-center gap-3 py-2.5 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group w-full text-left"
                           >
                             <Icon className="h-3.5 w-3.5 text-muted-foreground/60" />
                             <span className="text-[13px] font-medium group-hover:text-primary transition-colors">
                               {guide.name}
                             </span>
-                          </Link>
+                          </button>
                         );
                       })}
                     </div>
