@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ReactNode } from "react"
+import { FeatureCarousel } from "@/components/auth/FeatureCarousel"
 
 interface AuthLayoutProps {
   children: ReactNode
@@ -35,30 +36,12 @@ export function AuthLayout({ children }: AuthLayoutProps) {
         </div>
       </div>
       <motion.div
-        className="relative hidden lg:block"
+        className="relative hidden lg:block bg-gradient-to-br from-primary/10 via-primary/5 to-background"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.05, ease: "easeOut" }}
       >
-        <img
-          src="/geometric-monuments.png"
-          alt="Templata"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        {/* Theme-aware color overlay */}
-        <div className="absolute inset-0 bg-primary/80 mix-blend-multiply dark:mix-blend-screen dark:bg-primary/20" />
-        {/* Dark overlay for consistency */}
-        <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
-
-        {/* Tagline in bottom corner */}
-        <div className="absolute bottom-8 left-8">
-          <p className="text-white/90 text-sm font-medium">
-            Wikipedia × Notion for life planning
-          </p>
-          <p className="text-white/60 text-xs mt-1">
-            Plan, reflect, and grow with Templata
-          </p>
-        </div>
+        <FeatureCarousel />
       </motion.div>
     </div>
   )
