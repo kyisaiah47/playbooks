@@ -138,32 +138,47 @@ export function Header() {
 			)}>
 				<nav className="container mx-auto px-4 py-4">
 					<div className="flex items-center justify-between relative">
-						{/* Left side - Logo with Dropdown and Theme */}
+						{/* Left side - Logo and Theme */}
 						<div className="flex items-center space-x-2 md:space-x-4">
-							<div
-								onMouseEnter={handleMouseEnter}
-								onMouseLeave={handleMouseLeave}
-								className="relative"
-							>
-								<Link href="/" className="flex items-center space-x-2">
-									<Image
-										src="/brand/templata-logo.svg"
-										alt="Templata"
-										width={28}
-										height={28}
-										className="dark:invert"
-									/>
-									<div className="flex items-center gap-2 md:gap-3">
-										<span className="font-bold text-xl md:text-2xl">Templata</span>
-										<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
-											Beta
-										</span>
-									</div>
-								</Link>
-							</div>
+							<Link href="/" className="flex items-center space-x-2">
+								<Image
+									src="/brand/templata-logo.svg"
+									alt="Templata"
+									width={28}
+									height={28}
+									className="dark:invert"
+								/>
+								<div className="flex items-center gap-2 md:gap-3">
+									<span className="font-bold text-xl md:text-2xl">Templata</span>
+									<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
+										Beta
+									</span>
+								</div>
+							</Link>
 
 							<div className="hidden md:block">
 								<ThemeSelector />
+							</div>
+						</div>
+
+						{/* Center - Desktop Navigation */}
+						<div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
+							<div className="flex items-center space-x-2 pointer-events-auto">
+								{/* Templata Dropdown */}
+								<div
+									onMouseEnter={handleMouseEnter}
+									onMouseLeave={handleMouseLeave}
+									className="relative"
+								>
+									<button
+										className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors"
+									>
+										Templata
+										<ChevronDown className="h-4 w-4" />
+									</button>
+								</div>
+
+
 							</div>
 						</div>
 
