@@ -10,7 +10,6 @@ import { SplitScreenReal } from "@/components/landing/SplitScreenReal";
 import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
 import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
 import { BrowseAndFeatured } from "@/components/landing/BrowseAndFeatured";
-import { FeatureBreakdown } from "@/components/landing/FeatureBreakdown";
 
 export default function LandingPage() {
 	const jsonLd = {
@@ -39,40 +38,28 @@ export default function LandingPage() {
 			{/* Hero Section - 3-line layout with CTA on right */}
 			<section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-24">
 				<div className="mx-auto max-w-7xl">
-					<div className="max-w-3xl mx-auto">
-						{/* Title - flexbox layout */}
-						<div className="flex items-center justify-between mb-8">
-							<div>
-								<h1 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
-									Wikipedia
-								</h1>
-							</div>
-							<div className="px-4">
-								<h2 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
-									×
-								</h2>
-							</div>
-							<div>
-								<h3 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
-									Notion
-								</h3>
-							</div>
+					<div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
+						<div className="max-w-3xl">
+							<h1 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
+								Wikipedia
+							</h1>
+							<h2 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
+								×
+							</h2>
+							<h3 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9] mb-6">
+								Notion
+							</h3>
+							<p className="text-base text-muted-foreground leading-relaxed max-w-lg">
+								1,200+ guides for life's biggest decisions
+							</p>
 						</div>
-
-						{/* Features - below left and right */}
-						<div className="flex justify-between">
-							<div className="text-sm space-y-2">
-								<div className="text-muted-foreground">Guides</div>
-								<div className="text-muted-foreground">Readings</div>
-								<div className="text-muted-foreground">Questions</div>
-							</div>
-							<div className="text-sm space-y-2 text-right">
-								<div className="text-muted-foreground">Todos</div>
-								<div className="text-muted-foreground">Calendar</div>
-								<div className="text-muted-foreground">Journal</div>
-								<div className="text-muted-foreground">Kanban</div>
-								<div className="text-muted-foreground">Notes</div>
-							</div>
+						<div>
+							<Button size="lg" asChild className="font-medium">
+								<Link href="/guides">
+									Browse Guides
+									<ArrowRight className="h-4 w-4" />
+								</Link>
+							</Button>
 						</div>
 					</div>
 				</div>
