@@ -13,12 +13,12 @@ export function AnalyticsDocs() {
             During major life changes, it's hard to gauge progress objectively. You might feel stuck while actually making steady progress, or feel busy without moving forward. Analytics provides data-driven clarity about where you're actually spending energy and what's actually getting done.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Analytics help you:</strong></p>
-            <p className="text-xs text-muted-foreground">→ Measure progress objectively when emotions make it hard to see</p>
-            <p className="text-xs text-muted-foreground">→ Identify which guides get consistent attention vs. which ones stall</p>
-            <p className="text-xs text-muted-foreground">→ Spot patterns in when you're most productive or engaged</p>
-            <p className="text-xs text-muted-foreground">→ Celebrate wins with concrete data</p>
-            <p className="text-xs text-muted-foreground">→ Adjust your approach based on what's actually working</p>
+            <p className="text-sm"><strong>Analytics help you:</strong></p>
+            <p className="text-sm">→ Measure progress objectively when emotions make it hard to see</p>
+            <p className="text-sm">→ Identify which guides get consistent attention vs. which ones stall</p>
+            <p className="text-sm">→ Spot patterns in when you're most productive or engaged</p>
+            <p className="text-sm">→ Celebrate wins with concrete data</p>
+            <p className="text-sm">→ Adjust your approach based on what's actually working</p>
           </div>
         </div>
 
@@ -29,42 +29,42 @@ export function AnalyticsDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Completion Metrics</p>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">→ Overall completion percentage across all guides</p>
-                <p className="text-xs text-muted-foreground">→ Completion rate per guide</p>
-                <p className="text-xs text-muted-foreground">→ Readings completed vs. remaining</p>
-                <p className="text-xs text-muted-foreground">→ Tasks completed vs. pending</p>
-                <p className="text-xs text-muted-foreground">→ Completion velocity (items per day/week)</p>
+                <p className="text-sm">→ Overall completion percentage across all guides</p>
+                <p className="text-sm">→ Completion rate per guide</p>
+                <p className="text-sm">→ Readings completed vs. remaining</p>
+                <p className="text-sm">→ Tasks completed vs. pending</p>
+                <p className="text-sm">→ Completion velocity (items per day/week)</p>
               </div>
             </div>
 
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Engagement Metrics</p>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">→ Active days (days with any activity)</p>
-                <p className="text-xs text-muted-foreground">→ Streak tracking (consecutive days of work)</p>
-                <p className="text-xs text-muted-foreground">→ Time spent per guide</p>
-                <p className="text-xs text-muted-foreground">→ Journal entries written</p>
-                <p className="text-xs text-muted-foreground">→ Daily notes created</p>
+                <p className="text-sm">→ Active days (days with any activity)</p>
+                <p className="text-sm">→ Streak tracking (consecutive days of work)</p>
+                <p className="text-sm">→ Time spent per guide</p>
+                <p className="text-sm">→ Journal entries written</p>
+                <p className="text-sm">→ Daily notes created</p>
               </div>
             </div>
 
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Focus Metrics</p>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">→ Which guides receive most attention</p>
-                <p className="text-xs text-muted-foreground">→ Task-to-completion ratio (follow-through rate)</p>
-                <p className="text-xs text-muted-foreground">→ Time from task creation to completion</p>
-                <p className="text-xs text-muted-foreground">→ Reading response depth (word count, time spent)</p>
+                <p className="text-sm">→ Which guides receive most attention</p>
+                <p className="text-sm">→ Task-to-completion ratio (follow-through rate)</p>
+                <p className="text-sm">→ Time from task creation to completion</p>
+                <p className="text-sm">→ Reading response depth (word count, time spent)</p>
               </div>
             </div>
 
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Trend Metrics</p>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">→ Progress over time (weekly/monthly charts)</p>
-                <p className="text-xs text-muted-foreground">→ Momentum changes (speeding up vs. slowing down)</p>
-                <p className="text-xs text-muted-foreground">→ Seasonal patterns in engagement</p>
-                <p className="text-xs text-muted-foreground">→ Correlation between different activities</p>
+                <p className="text-sm">→ Progress over time (weekly/monthly charts)</p>
+                <p className="text-sm">→ Momentum changes (speeding up vs. slowing down)</p>
+                <p className="text-sm">→ Seasonal patterns in engagement</p>
+                <p className="text-sm">→ Correlation between different activities</p>
               </div>
             </div>
           </div>

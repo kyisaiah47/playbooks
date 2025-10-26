@@ -13,11 +13,11 @@ export function TasksDocs() {
             Life transitions require both internal work (reflection, planning) and external action (applications, conversations, changes). Tasks bridge this gap by turning "I should..." into "I will..." with specific deadlines and accountability.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Example: Career transition tasks:</strong></p>
-            <p className="text-xs text-muted-foreground">→ "Update resume with new skills"</p>
-            <p className="text-xs text-muted-foreground">→ "Reach out to 3 people in target industry"</p>
-            <p className="text-xs text-muted-foreground">→ "Complete online portfolio"</p>
-            <p className="text-xs text-muted-foreground">→ "Practice interview answers for behavioral questions"</p>
+            <p className="text-sm"><strong>Example: Career transition tasks:</strong></p>
+            <p className="text-sm">→ "Update resume with new skills"</p>
+            <p className="text-sm">→ "Reach out to 3 people in target industry"</p>
+            <p className="text-sm">→ "Complete online portfolio"</p>
+            <p className="text-sm">→ "Practice interview answers for behavioral questions"</p>
           </div>
         </div>
 
@@ -54,13 +54,13 @@ export function TasksDocs() {
           <h3 className="text-base font-medium mb-2">Task Details</h3>
           <p className="text-sm text-muted-foreground mb-3">Each task can include:</p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Title:</strong> Clear, action-oriented description (start with a verb)</p>
-            <p className="text-xs text-muted-foreground"><strong>Due Date:</strong> When it needs to be done (optional but recommended)</p>
-            <p className="text-xs text-muted-foreground"><strong>Priority:</strong> High, medium, or low to help with daily planning</p>
-            <p className="text-xs text-muted-foreground"><strong>Guide Association:</strong> Link to one or more guides for context and filtering</p>
-            <p className="text-xs text-muted-foreground"><strong>Description:</strong> Additional notes, context, or resources needed</p>
-            <p className="text-xs text-muted-foreground"><strong>Subtasks:</strong> Break complex tasks into smaller steps</p>
-            <p className="text-xs text-muted-foreground"><strong>Tags:</strong> Custom labels for flexible organization beyond guides</p>
+            <p className="text-sm"><strong>Title:</strong> Clear, action-oriented description (start with a verb)</p>
+            <p className="text-sm"><strong>Due Date:</strong> When it needs to be done (optional but recommended)</p>
+            <p className="text-sm"><strong>Priority:</strong> High, medium, or low to help with daily planning</p>
+            <p className="text-sm"><strong>Guide Association:</strong> Link to one or more guides for context and filtering</p>
+            <p className="text-sm"><strong>Description:</strong> Additional notes, context, or resources needed</p>
+            <p className="text-sm"><strong>Subtasks:</strong> Break complex tasks into smaller steps</p>
+            <p className="text-sm"><strong>Tags:</strong> Custom labels for flexible organization beyond guides</p>
           </div>
         </div>
 
@@ -137,11 +137,11 @@ export function TasksDocs() {
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
             <p className="text-sm font-medium mb-2">Example: "Find a new job"</p>
             <div className="space-y-1">
-              <p className="text-xs text-muted-foreground">→ Subtask: Identify 10 target companies</p>
-              <p className="text-xs text-muted-foreground">→ Subtask: Update resume</p>
-              <p className="text-xs text-muted-foreground">→ Subtask: Write cover letter draft</p>
-              <p className="text-xs text-muted-foreground">→ Subtask: Set up job search tracker</p>
-              <p className="text-xs text-muted-foreground">→ Subtask: Apply to 5 positions this week</p>
+              <p className="text-sm">→ Subtask: Identify 10 target companies</p>
+              <p className="text-sm">→ Subtask: Update resume</p>
+              <p className="text-sm">→ Subtask: Write cover letter draft</p>
+              <p className="text-sm">→ Subtask: Set up job search tracker</p>
+              <p className="text-sm">→ Subtask: Apply to 5 positions this week</p>
             </div>
             <p className="text-xs text-muted-foreground mt-3 italic">
               Each subtask becomes manageable and builds toward the larger goal.

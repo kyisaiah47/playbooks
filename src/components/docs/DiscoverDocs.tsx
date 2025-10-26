@@ -15,16 +15,16 @@ export function DiscoverDocs() {
             reflection questions, and actionable frameworks to support you through specific transitions.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs font-medium mb-2">Available Categories:</p>
+            <p className="text-sm font-medium mb-2">Available Categories:</p>
             <div className="grid grid-cols-2 gap-2">
-              <p className="text-xs text-muted-foreground">→ Career & Work</p>
-              <p className="text-xs text-muted-foreground">→ Relationships & Family</p>
-              <p className="text-xs text-muted-foreground">→ Health & Wellness</p>
-              <p className="text-xs text-muted-foreground">→ Personal Growth</p>
-              <p className="text-xs text-muted-foreground">→ Finance & Money</p>
-              <p className="text-xs text-muted-foreground">→ Life Events</p>
-              <p className="text-xs text-muted-foreground">→ Education & Learning</p>
-              <p className="text-xs text-muted-foreground">→ Creativity & Purpose</p>
+              <p className="text-sm">→ Career & Work</p>
+              <p className="text-sm">→ Relationships & Family</p>
+              <p className="text-sm">→ Health & Wellness</p>
+              <p className="text-sm">→ Personal Growth</p>
+              <p className="text-sm">→ Finance & Money</p>
+              <p className="text-sm">→ Life Events</p>
+              <p className="text-sm">→ Education & Learning</p>
+              <p className="text-sm">→ Creativity & Purpose</p>
             </div>
           </div>
         </div>
@@ -67,10 +67,10 @@ export function DiscoverDocs() {
             Before committing to a guide, you can preview its structure and content:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Guide Overview:</strong> See the description, estimated time commitment, and what you'll learn</p>
-            <p className="text-xs text-muted-foreground"><strong>Table of Contents:</strong> Browse all readings included in the guide</p>
-            <p className="text-xs text-muted-foreground"><strong>Sample Reading:</strong> Many guides include a free preview reading so you can experience the style and depth</p>
-            <p className="text-xs text-muted-foreground"><strong>User Reviews:</strong> Read what others have said about their experience with the guide</p>
+            <p className="text-sm"><strong>Guide Overview:</strong> See the description, estimated time commitment, and what you'll learn</p>
+            <p className="text-sm"><strong>Table of Contents:</strong> Browse all readings included in the guide</p>
+            <p className="text-sm"><strong>Sample Reading:</strong> Many guides include a free preview reading so you can experience the style and depth</p>
+            <p className="text-sm"><strong>User Reviews:</strong> Read what others have said about their experience with the guide</p>
           </div>
         </div>
 

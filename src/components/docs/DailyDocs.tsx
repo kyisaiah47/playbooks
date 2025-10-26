@@ -13,12 +13,12 @@ export function DailyDocs() {
             Major life transitions happen one day at a time. While guides provide structure and journal captures deep reflection, daily notes live in the middle—helping you navigate each day with intention and awareness.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs font-medium mb-2">Daily notes help you:</p>
-            <p className="text-xs text-muted-foreground">→ Start each day with clarity about priorities</p>
-            <p className="text-xs text-muted-foreground">→ Track what actually happens vs. what you planned</p>
-            <p className="text-xs text-muted-foreground">→ Notice patterns in energy, mood, and productivity</p>
-            <p className="text-xs text-muted-foreground">→ Bridge the gap between long-term goals and daily action</p>
-            <p className="text-xs text-muted-foreground">→ Capture fleeting thoughts before they're lost</p>
+            <p className="text-sm font-medium mb-2">Daily notes help you:</p>
+            <p className="text-sm">→ Start each day with clarity about priorities</p>
+            <p className="text-sm">→ Track what actually happens vs. what you planned</p>
+            <p className="text-sm">→ Notice patterns in energy, mood, and productivity</p>
+            <p className="text-sm">→ Bridge the gap between long-term goals and daily action</p>
+            <p className="text-sm">→ Capture fleeting thoughts before they're lost</p>
           </div>
         </div>
 
@@ -93,10 +93,10 @@ export function DailyDocs() {
             Throughout your day, you can quickly add to today's daily note from anywhere in Templata:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Quick Add Button:</strong> Always visible in the app to capture thoughts instantly</p>
-            <p className="text-xs text-muted-foreground"><strong>From Readings:</strong> Save quotes or insights directly to today's note</p>
-            <p className="text-xs text-muted-foreground"><strong>From Tasks:</strong> Log task completion with notes about how it went</p>
-            <p className="text-xs text-muted-foreground"><strong>Voice to Text:</strong> Speak your notes when typing isn't convenient</p>
+            <p className="text-sm"><strong>Quick Add Button:</strong> Always visible in the app to capture thoughts instantly</p>
+            <p className="text-sm"><strong>From Readings:</strong> Save quotes or insights directly to today's note</p>
+            <p className="text-sm"><strong>From Tasks:</strong> Log task completion with notes about how it went</p>
+            <p className="text-sm"><strong>Voice to Text:</strong> Speak your notes when typing isn't convenient</p>
           </div>
         </div>
 
@@ -163,17 +163,17 @@ export function DailyDocs() {
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
             <p className="text-sm font-medium mb-2">Use Daily Notes for:</p>
             <div className="space-y-1 mb-3">
-              <p className="text-xs text-muted-foreground">→ Planning and tracking each specific day</p>
-              <p className="text-xs text-muted-foreground">→ Quick captures and running logs</p>
-              <p className="text-xs text-muted-foreground">→ Structured daily routines</p>
-              <p className="text-xs text-muted-foreground">→ Task and calendar integration</p>
+              <p className="text-sm">→ Planning and tracking each specific day</p>
+              <p className="text-sm">→ Quick captures and running logs</p>
+              <p className="text-sm">→ Structured daily routines</p>
+              <p className="text-sm">→ Task and calendar integration</p>
             </div>
             <p className="text-sm font-medium mb-2">Use Journal for:</p>
             <div className="space-y-1">
-              <p className="text-xs text-muted-foreground">→ Deeper emotional processing</p>
-              <p className="text-xs text-muted-foreground">→ Not-daily reflections (whenever you need to write)</p>
-              <p className="text-xs text-muted-foreground">→ Topic-based entries that span multiple days</p>
-              <p className="text-xs text-muted-foreground">→ Private thoughts you want separate from daily planning</p>
+              <p className="text-sm">→ Deeper emotional processing</p>
+              <p className="text-sm">→ Not-daily reflections (whenever you need to write)</p>
+              <p className="text-sm">→ Topic-based entries that span multiple days</p>
+              <p className="text-sm">→ Private thoughts you want separate from daily planning</p>
             </div>
             <p className="text-xs text-muted-foreground mt-3 italic">
               Many people use both: Daily for structure and planning, Journal for processing and exploration.

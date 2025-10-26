@@ -16,11 +16,11 @@ export function NotesDocs() {
             action items to help you apply what you're learning.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4">
-            <p className="text-xs text-muted-foreground mb-2"><strong>Example: A "Career Transition" guide might include readings like:</strong></p>
-            <p className="text-xs text-muted-foreground">→ "Identifying Your Core Values"</p>
-            <p className="text-xs text-muted-foreground">→ "Understanding Your Transferable Skills"</p>
-            <p className="text-xs text-muted-foreground">→ "Crafting Your Career Narrative"</p>
-            <p className="text-xs text-muted-foreground">→ "Building Your Network Strategically"</p>
+            <p className="text-sm mb-2"><strong>Example: A "Career Transition" guide might include readings like:</strong></p>
+            <p className="text-sm">→ "Identifying Your Core Values"</p>
+            <p className="text-sm">→ "Understanding Your Transferable Skills"</p>
+            <p className="text-sm">→ "Crafting Your Career Narrative"</p>
+            <p className="text-sm">→ "Building Your Network Strategically"</p>
           </div>
         </div>
 
@@ -128,10 +128,10 @@ export function NotesDocs() {
           <h3 className="text-base font-medium mb-2">Organizing Your Guides</h3>
           <p className="text-sm text-muted-foreground mb-3">The sidebar shows all your active guides. You can:</p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Filter by category</strong> - Focus on guides in a specific life domain</p>
-            <p className="text-xs text-muted-foreground"><strong>Sort by progress</strong> - See which guides you're actively working on</p>
-            <p className="text-xs text-muted-foreground"><strong>Archive completed guides</strong> - Move finished guides to Archive to declutter your sidebar</p>
-            <p className="text-xs text-muted-foreground"><strong>Star priority guides</strong> - Pin your most important guides to the top</p>
+            <p className="text-sm"><strong>Filter by category</strong> - Focus on guides in a specific life domain</p>
+            <p className="text-sm"><strong>Sort by progress</strong> - See which guides you're actively working on</p>
+            <p className="text-sm"><strong>Archive completed guides</strong> - Move finished guides to Archive to declutter your sidebar</p>
+            <p className="text-sm"><strong>Star priority guides</strong> - Pin your most important guides to the top</p>
           </div>
         </div>
 

@@ -13,13 +13,13 @@ export function TimelineDocs() {
             During major transitions, it's easy to lose sight of progress. You're focused on what's next, what's hard, what's uncertain. The Timeline helps you zoom out and see the full arc of your journey—how far you've come, where you are now, and where you're headed.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Timeline automatically captures:</strong></p>
-            <p className="text-xs text-muted-foreground">→ When you added each guide to your workspace</p>
-            <p className="text-xs text-muted-foreground">→ Readings you've completed and when</p>
-            <p className="text-xs text-muted-foreground">→ Tasks you've finished</p>
-            <p className="text-xs text-muted-foreground">→ Calendar events (past and future)</p>
-            <p className="text-xs text-muted-foreground">→ Journal entries</p>
-            <p className="text-xs text-muted-foreground">→ Milestones you've marked</p>
+            <p className="text-sm"><strong>Timeline automatically captures:</strong></p>
+            <p className="text-sm">→ When you added each guide to your workspace</p>
+            <p className="text-sm">→ Readings you've completed and when</p>
+            <p className="text-sm">→ Tasks you've finished</p>
+            <p className="text-sm">→ Calendar events (past and future)</p>
+            <p className="text-sm">→ Journal entries</p>
+            <p className="text-sm">→ Milestones you've marked</p>
           </div>
         </div>
 

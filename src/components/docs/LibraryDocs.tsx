@@ -13,10 +13,10 @@ export function LibraryDocs() {
             While the Notes view is organized by guides, the Library is organized by readings. This makes it ideal for:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Cross-guide searching:</strong> Find readings on a specific topic across multiple guides</p>
-            <p className="text-xs text-muted-foreground"><strong>Quick reference:</strong> Jump directly to a reading you remember without navigating through guide structure</p>
-            <p className="text-xs text-muted-foreground"><strong>Reading browsing:</strong> Explore all available content without committing to a specific guide first</p>
-            <p className="text-xs text-muted-foreground"><strong>Completion tracking:</strong> See all incomplete readings across your workspace at once</p>
+            <p className="text-sm"><strong>Cross-guide searching:</strong> Find readings on a specific topic across multiple guides</p>
+            <p className="text-sm"><strong>Quick reference:</strong> Jump directly to a reading you remember without navigating through guide structure</p>
+            <p className="text-sm"><strong>Reading browsing:</strong> Explore all available content without committing to a specific guide first</p>
+            <p className="text-sm"><strong>Completion tracking:</strong> See all incomplete readings across your workspace at once</p>
           </div>
         </div>
 
@@ -62,10 +62,10 @@ export function LibraryDocs() {
             Click any reading to open it in the Library view. You'll see the same content and reflection questions as in the Notes view, but with additional context:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Parent Guide Context:</strong> See which guide this reading belongs to</p>
-            <p className="text-xs text-muted-foreground"><strong>Related Readings:</strong> Discover other readings that reference similar themes</p>
-            <p className="text-xs text-muted-foreground"><strong>Quick Navigation:</strong> Jump to the next or previous reading in the filtered list</p>
-            <p className="text-xs text-muted-foreground"><strong>Return to Guide:</strong> One-click access to view this reading in its full guide context</p>
+            <p className="text-sm"><strong>Parent Guide Context:</strong> See which guide this reading belongs to</p>
+            <p className="text-sm"><strong>Related Readings:</strong> Discover other readings that reference similar themes</p>
+            <p className="text-sm"><strong>Quick Navigation:</strong> Jump to the next or previous reading in the filtered list</p>
+            <p className="text-sm"><strong>Return to Guide:</strong> One-click access to view this reading in its full guide context</p>
           </div>
         </div>
 
@@ -132,16 +132,16 @@ export function LibraryDocs() {
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
             <p className="text-sm font-medium mb-2">Use Notes when:</p>
             <div className="space-y-1 mb-3">
-              <p className="text-xs text-muted-foreground">→ Working through a guide sequentially</p>
-              <p className="text-xs text-muted-foreground">→ You want context of how readings relate within a guide</p>
-              <p className="text-xs text-muted-foreground">→ Following a structured learning path</p>
+              <p className="text-sm">→ Working through a guide sequentially</p>
+              <p className="text-sm">→ You want context of how readings relate within a guide</p>
+              <p className="text-sm">→ Following a structured learning path</p>
             </div>
             <p className="text-sm font-medium mb-2">Use Library when:</p>
             <div className="space-y-1">
-              <p className="text-xs text-muted-foreground">→ Searching across multiple guides</p>
-              <p className="text-xs text-muted-foreground">→ Looking for a specific reading you remember</p>
-              <p className="text-xs text-muted-foreground">→ Reviewing previously completed content</p>
-              <p className="text-xs text-muted-foreground">→ Getting an overview of all available content</p>
+              <p className="text-sm">→ Searching across multiple guides</p>
+              <p className="text-sm">→ Looking for a specific reading you remember</p>
+              <p className="text-sm">→ Reviewing previously completed content</p>
+              <p className="text-sm">→ Getting an overview of all available content</p>
             </div>
           </div>
         </div>

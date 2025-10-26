@@ -13,12 +13,12 @@ export function JournalDocs() {
             Life transitions stir up complex emotions, difficult questions, and moments of uncertainty. Journaling provides a safe container to:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground">→ Process emotions you can't share elsewhere</p>
-            <p className="text-xs text-muted-foreground">→ Work through decisions without external pressure</p>
-            <p className="text-xs text-muted-foreground">→ Explore thoughts that feel messy or unformed</p>
-            <p className="text-xs text-muted-foreground">→ Track how you're changing over time</p>
-            <p className="text-xs text-muted-foreground">→ Celebrate victories, big and small</p>
-            <p className="text-xs text-muted-foreground">→ Release anxiety, fear, or overwhelm</p>
+            <p className="text-sm">→ Process emotions you can't share elsewhere</p>
+            <p className="text-sm">→ Work through decisions without external pressure</p>
+            <p className="text-sm">→ Explore thoughts that feel messy or unformed</p>
+            <p className="text-sm">→ Track how you're changing over time</p>
+            <p className="text-sm">→ Celebrate victories, big and small</p>
+            <p className="text-sm">→ Release anxiety, fear, or overwhelm</p>
           </div>
         </div>
 
@@ -153,10 +153,10 @@ export function JournalDocs() {
             Your journal archive becomes a record of your emotional journey. Ways to use it:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Pattern Recognition:</strong> Read entries from the past month to notice recurring themes or emotions</p>
-            <p className="text-xs text-muted-foreground"><strong>Progress Proof:</strong> Compare early entries to recent ones—see how your thinking and feelings have evolved</p>
-            <p className="text-xs text-muted-foreground"><strong>Decision Review:</strong> Revisit entries where you worked through past decisions to learn your patterns</p>
-            <p className="text-xs text-muted-foreground"><strong>Wisdom Harvesting:</strong> Find insights you wrote months ago that feel even more relevant now</p>
+            <p className="text-sm"><strong>Pattern Recognition:</strong> Read entries from the past month to notice recurring themes or emotions</p>
+            <p className="text-sm"><strong>Progress Proof:</strong> Compare early entries to recent ones—see how your thinking and feelings have evolved</p>
+            <p className="text-sm"><strong>Decision Review:</strong> Revisit entries where you worked through past decisions to learn your patterns</p>
+            <p className="text-sm"><strong>Wisdom Harvesting:</strong> Find insights you wrote months ago that feel even more relevant now</p>
           </div>
         </div>
 

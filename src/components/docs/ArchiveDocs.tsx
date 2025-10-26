@@ -13,12 +13,12 @@ export function ArchiveDocs() {
             Life transitions end. Some guides become completed successes. Others become experiments you abandon. A few lose relevance as your situation changes. The Archive lets you acknowledge these shifts without deleting your work—preserving your progress, reflections, and lessons learned.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>The Archive helps you:</strong></p>
-            <p className="text-xs text-muted-foreground">→ Keep your active workspace focused on current transitions</p>
-            <p className="text-xs text-muted-foreground">→ Celebrate completed guides without cluttering your workspace</p>
-            <p className="text-xs text-muted-foreground">→ Pause guides you might return to later</p>
-            <p className="text-xs text-muted-foreground">→ Preserve your history and progress for future reflection</p>
-            <p className="text-xs text-muted-foreground">→ Maintain a record of everything you've worked through</p>
+            <p className="text-sm"><strong>The Archive helps you:</strong></p>
+            <p className="text-sm">→ Keep your active workspace focused on current transitions</p>
+            <p className="text-sm">→ Celebrate completed guides without cluttering your workspace</p>
+            <p className="text-sm">→ Pause guides you might return to later</p>
+            <p className="text-sm">→ Preserve your history and progress for future reflection</p>
+            <p className="text-sm">→ Maintain a record of everything you've worked through</p>
           </div>
         </div>
 
@@ -129,10 +129,10 @@ export function ArchiveDocs() {
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
             <p className="text-sm font-medium mb-2">How to Restore</p>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">1. Go to Archive view</p>
-              <p className="text-xs text-muted-foreground">2. Find the guide you want to restore</p>
-              <p className="text-xs text-muted-foreground">3. Click "Restore to Workspace"</p>
-              <p className="text-xs text-muted-foreground">4. The guide returns to your active sidebar, fully editable</p>
+              <p className="text-sm">. Go to Archive view</p>
+              <p className="text-sm">. Find the guide you want to restore</p>
+              <p className="text-sm">. Click "Restore to Workspace"</p>
+              <p className="text-sm">. The guide returns to your active sidebar, fully editable</p>
             </div>
             <p className="text-xs text-muted-foreground mt-3 italic">
               All your previous progress, responses, and linked items are exactly as you left them.
@@ -146,21 +146,21 @@ export function ArchiveDocs() {
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Archive When:</p>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">→ You've completed a guide and want to preserve your work</p>
-                <p className="text-xs text-muted-foreground">→ A guide is no longer active but might be relevant later</p>
-                <p className="text-xs text-muted-foreground">→ You want to pause work temporarily without losing progress</p>
-                <p className="text-xs text-muted-foreground">→ You've invested significant effort and want a record</p>
-                <p className="text-xs text-muted-foreground">→ You're unsure if you're truly done (archive is safer than delete)</p>
+                <p className="text-sm">→ You've completed a guide and want to preserve your work</p>
+                <p className="text-sm">→ A guide is no longer active but might be relevant later</p>
+                <p className="text-sm">→ You want to pause work temporarily without losing progress</p>
+                <p className="text-sm">→ You've invested significant effort and want a record</p>
+                <p className="text-sm">→ You're unsure if you're truly done (archive is safer than delete)</p>
               </div>
             </div>
 
             <div className="bg-muted/30 border border-border rounded-lg p-3">
               <p className="text-sm font-medium mb-1">Delete When:</p>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">→ You added a guide by mistake</p>
-                <p className="text-xs text-muted-foreground">→ You have no meaningful progress to preserve</p>
-                <p className="text-xs text-muted-foreground">→ The guide is genuinely not valuable to keep as a record</p>
-                <p className="text-xs text-muted-foreground">→ You're certain you'll never reference it again</p>
+                <p className="text-sm">→ You added a guide by mistake</p>
+                <p className="text-sm">→ You have no meaningful progress to preserve</p>
+                <p className="text-sm">→ The guide is genuinely not valuable to keep as a record</p>
+                <p className="text-sm">→ You're certain you'll never reference it again</p>
               </div>
               <p className="text-xs text-muted-foreground mt-2 italic">
                 Deletion is permanent. When in doubt, archive instead—you can always delete from archive later.

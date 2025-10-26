@@ -13,12 +13,12 @@ export function GraphDocs() {
             Life transitions are complex and interconnected. The career decision connects to your identity questions, which connect to relationship changes, which influence your daily energy levels. The Graph makes these hidden connections visible, revealing insights that list-based views can't show.
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>The Graph helps you:</strong></p>
-            <p className="text-xs text-muted-foreground">→ See which guides and themes are most central to your transition</p>
-            <p className="text-xs text-muted-foreground">→ Discover unexpected connections between different areas of work</p>
-            <p className="text-xs text-muted-foreground">→ Identify isolated items that might need more integration</p>
-            <p className="text-xs text-muted-foreground">→ Understand how completing one reading or task influences others</p>
-            <p className="text-xs text-muted-foreground">→ Find related content you might have forgotten about</p>
+            <p className="text-sm"><strong>The Graph helps you:</strong></p>
+            <p className="text-sm">→ See which guides and themes are most central to your transition</p>
+            <p className="text-sm">→ Discover unexpected connections between different areas of work</p>
+            <p className="text-sm">→ Identify isolated items that might need more integration</p>
+            <p className="text-sm">→ Understand how completing one reading or task influences others</p>
+            <p className="text-sm">→ Find related content you might have forgotten about</p>
           </div>
         </div>
 

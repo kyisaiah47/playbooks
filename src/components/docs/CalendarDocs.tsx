@@ -13,12 +13,12 @@ export function CalendarDocs() {
             Major life transitions aren't just about reflection—they involve real-world actions, appointments, and deadlines. The Calendar connects your inner work (readings and reflections) with outer events (meetings, deadlines, milestones).
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Example: Career transition calendar might include:</strong></p>
-            <p className="text-xs text-muted-foreground">→ Networking coffee chats</p>
-            <p className="text-xs text-muted-foreground">→ Application deadlines</p>
-            <p className="text-xs text-muted-foreground">→ Interview dates</p>
-            <p className="text-xs text-muted-foreground">→ Follow-up reminders</p>
-            <p className="text-xs text-muted-foreground">→ Skill-building course dates</p>
+            <p className="text-sm"><strong>Example: Career transition calendar might include:</strong></p>
+            <p className="text-sm">→ Networking coffee chats</p>
+            <p className="text-sm">→ Application deadlines</p>
+            <p className="text-sm">→ Interview dates</p>
+            <p className="text-sm">→ Follow-up reminders</p>
+            <p className="text-sm">→ Skill-building course dates</p>
           </div>
         </div>
 
@@ -120,10 +120,10 @@ export function CalendarDocs() {
             The sidebar shows all your guides. Select guides to filter the calendar view:
           </p>
           <div className="bg-muted/30 border border-border rounded-lg p-4 space-y-2">
-            <p className="text-xs text-muted-foreground"><strong>Single guide:</strong> See only events related to one transition (e.g., just "Career Change" events)</p>
-            <p className="text-xs text-muted-foreground"><strong>Multiple guides:</strong> Select multiple to see how different transitions overlap</p>
-            <p className="text-xs text-muted-foreground"><strong>All guides:</strong> Deselect filters to see your complete schedule</p>
-            <p className="text-xs text-muted-foreground"><strong>Color coding:</strong> Each guide has a distinct color, making it easy to visually distinguish event types</p>
+            <p className="text-sm"><strong>Single guide:</strong> See only events related to one transition (e.g., just "Career Change" events)</p>
+            <p className="text-sm"><strong>Multiple guides:</strong> Select multiple to see how different transitions overlap</p>
+            <p className="text-sm"><strong>All guides:</strong> Deselect filters to see your complete schedule</p>
+            <p className="text-sm"><strong>Color coding:</strong> Each guide has a distinct color, making it easy to visually distinguish event types</p>
           </div>
         </div>
 
