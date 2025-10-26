@@ -1038,7 +1038,17 @@ export default function WorkspaceLayout({ children, demoMode = false }: Workspac
           </div>
         </div>
       </div>
-      <Toaster position={demoMode ? "top-center" : "bottom-right"} />
+      {demoMode && (
+        <style jsx global>{`
+          [data-sonner-toaster] {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+          }
+        `}</style>
+      )}
+      <Toaster position="top-center" />
     </DemoProvider>
   );
 }

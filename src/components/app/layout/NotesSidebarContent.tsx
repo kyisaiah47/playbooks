@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
+import { toast } from 'sonner';
 
 interface UserGuide {
   id: string;
@@ -153,19 +154,23 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
       </div>
 
       {/* New Note Button */}
-      {!demoMode && (
-        <div className="p-2 border-t border-border/40">
-          <motion.button
-            onClick={onNewNote}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded transition-colors"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Plus className="h-4 w-4" />
-            <span className="text-sm font-medium">New Note</span>
-          </motion.button>
-        </div>
-      )}
+      <div className="p-2 border-t border-border/40">
+        <motion.button
+          onClick={() => {
+            if (demoMode) {
+              toast.info('Not available in demo mode');
+              return;
+            }
+            onNewNote();
+          }}
+          className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded transition-colors"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Plus className="h-4 w-4" />
+          <span className="text-sm font-medium">New Note</span>
+        </motion.button>
+      </div>
     </div>
   );
 }
