@@ -142,37 +142,36 @@ export function FeatureCarousel() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-8">
       <div className="w-full max-w-md">
-        {/* Browser Chrome */}
-        <div className="bg-muted/30 rounded-2xl overflow-hidden shadow-2xl">
-          <div className="h-8 bg-muted/60 border-b border-border/60 flex items-center px-3 gap-2">
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#28CA42]" />
-            </div>
-            <div className="flex-1 flex justify-center -ml-12">
-              <div className="px-2.5 py-0.5 bg-background/50 rounded text-[8px] text-muted-foreground border border-border/40 max-w-[150px] truncate">
-                templata.org
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            {/* Browser Chrome */}
+            <div className="bg-muted/30 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="h-8 bg-muted/60 border-b border-border/60 flex items-center px-3 gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#28CA42]" />
+                </div>
+                <div className="flex-1 flex justify-center -ml-12">
+                  <div className="px-2.5 py-0.5 bg-background/50 rounded text-[8px] text-muted-foreground border border-border/40 max-w-[150px] truncate">
+                    templata.org
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature Content */}
+              <div className="h-[320px] overflow-hidden relative">
+                {features[currentIndex].component}
               </div>
             </div>
-          </div>
-
-          {/* Feature Content */}
-          <div className="h-[320px] overflow-hidden relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="h-full"
-              >
-                {features[currentIndex].component}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
 
         {/* Feature Title & Indicators */}
         <div className="mt-6 text-center">
