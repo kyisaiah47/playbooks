@@ -12,6 +12,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { supabase } from "@/lib/supabase"
 
 export function ResetPasswordForm({
   className,
@@ -40,16 +41,12 @@ export function ResetPasswordForm({
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/reset-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+      const { error } = await supabase.auth.updateUser({
+        password: password
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Failed to reset password");
+      if (error) {
+        setError(error.message);
         return;
       }
 
