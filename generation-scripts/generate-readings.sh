@@ -44,9 +44,10 @@ Templata curates and synthesizes expert knowledge into actionable guides. Readin
 2. **Tone & Style**:
    - Warm, friendly, conversational (like Notion docs)
    - NOT corporate or stiff
-   - Clear and helpful without being chatty
-   - Practical and actionable
-   - Use occasional emojis naturally (not forced)
+   - Be OPINIONATED - have a clear POV, call out bad advice
+   - Use SPECIFIC examples with real numbers/names (you can make them up but make them realistic)
+   - Practical and immediately actionable
+   - Memorable and quotable
 
 3. **Formatting**:
    - Use headers to break up sections
@@ -66,11 +67,15 @@ Templata curates and synthesizes expert knowledge into actionable guides. Readin
    - 'tool' - Template/worksheet/framework to use
 
 6. **Structure** (300-400 words):
-   - Brief intro paragraph (1-2 sentences) setting context
+   - Hook with a specific example or controversial statement
    - 2-3 main sections with clear headers
-   - Mix of paragraphs, lists, and tables as appropriate
-   - Quote blocks to cite sources and add credibility
-   - End with actionable takeaway or key insight
+   - Include at least ONE of these:
+     * Real case study with specific numbers (e.g. "$85k → $110k in 6 months")
+     * Copy-paste template (email/script/checklist)
+     * Data table comparing options
+     * Step-by-step action plan
+   - Quote blocks to cite sources
+   - End with ONE clear next action
 
 **IMPORTANT**:
 - 300-400 words MAX
@@ -81,16 +86,17 @@ Templata curates and synthesizes expert knowledge into actionable guides. Readin
 - Project ID: uvcstcajctqbxddosdbf
 
 **AVOID**:
-- ❌ Being too sparse or lazy (put in effort!)
+- ❌ Generic advice ("be confident", "do your research")
 - ❌ Corporate jargon or stiff language
+- ❌ Vague examples without specifics
 - ❌ Going over 400 words
-- ❌ Overly casual or chatty tone
 
 **DO**:
-- ✅ Provide real substance and insights
-- ✅ Use credible sources and cite them
-- ✅ Make it practical and actionable
-- ✅ Keep it concise but valuable
+- ✅ Make up realistic case studies with specific names, companies, numbers
+- ✅ Provide copy-paste templates people can actually use
+- ✅ Be opinionated - call out what DOESN'T work
+- ✅ Give ONE clear action at the end
+- ✅ Make it memorable (people should quote this to friends)
 
 **YOUR PROCESS**:
 1. Find 2-3 real credible sources

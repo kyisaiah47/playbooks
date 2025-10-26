@@ -62,7 +62,8 @@
       "Bash(./enhance-readings-test.sh)",
       "mcp__supabase__list_tables",
       "mcp__supabase__get_logs",
-      "Bash(./generate-readings.sh:*)"
+      "Bash(./generate-readings.sh:*)",
+      "Bash(npm run db:execute:*)"
     ],
     "deny": [],
     "ask": []

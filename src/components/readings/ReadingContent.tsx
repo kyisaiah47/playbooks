@@ -104,8 +104,8 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
               return highlighted;
             };
 
-            // Combined regex for bold text, links, highlights, underlines, percentages, and dollar amounts
-            const combinedRegex = /(\*\*(.*?)\*\*|\[([^\]]+)\]\(([^)]+)\)|==(.*?)==|__(.*?)__|\$[\d,]+(?:\.\d{2})?(?:-\$[\d,]+(?:\.\d{2})?)?|\d+(?:\.\d+)?(?:-\d+(?:\.\d+)?)?%)/g;
+            // Combined regex for bold text, links, highlights, and underlines (removed percentages and dollar amounts)
+            const combinedRegex = /(\*\*(.*?)\*\*|\[([^\]]+)\]\(([^)]+)\)|==(.*?)==|__(.*?)__)/g;
             let match;
 
             while ((match = combinedRegex.exec(text)) !== null) {
@@ -159,36 +159,6 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
                   >
                     {underlinedText}
                   </Highlighter>
-                );
-              } else if (match[0].startsWith('$')) {
-                // Dollar amounts - emerald for single, purple for ranges
-                const isDollarRange = match[0].includes('-');
-                parts.push(
-                  <span
-                    key={match.index}
-                    className={`inline-flex items-center px-2 py-1 rounded-full text-sm font-medium mx-1 ${
-                      isDollarRange
-                        ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300'
-                        : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-300'
-                    }`}
-                  >
-                    {match[0]}
-                  </span>
-                );
-              } else if (match[0].includes('%')) {
-                // Percentages - green for single, purple for ranges
-                const isPercentRange = match[0].includes('-');
-                parts.push(
-                  <span
-                    key={match.index}
-                    className={`inline-flex items-center px-2 py-1 rounded-full text-sm font-medium mx-1 ${
-                      isPercentRange
-                        ? 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300'
-                        : 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300'
-                    }`}
-                  >
-                    {match[0]}
-                  </span>
                 );
               }
 
