@@ -224,79 +224,85 @@ export default function LibraryPage() {
         <div className="px-6 lg:px-12 py-8">
           {selectedGuideData ? (
             <>
-              {/* Header */}
-              <div className="mb-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <BookOpen className="h-4 w-4 text-primary" />
-                  <h2 className="text-xl font-semibold tracking-tight">{selectedGuideData.guide_name}</h2>
+              {loadingReadings ? (
+                <div className="text-center py-12 text-muted-foreground text-sm">
+                  Loading readings...
                 </div>
-                <p className="text-[12px] text-muted-foreground mb-4">
-                  {selectedGuideData.reading_count} curated {selectedGuideData.reading_count === 1 ? 'reading' : 'readings'}
-                </p>
-
-                {/* Search */}
-                <div className="relative max-w-xs">
-                  <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
-                  <input
-                    type="text"
-                    placeholder="Search readings..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Readings List */}
-              <div>
-                <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
-                  <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
-                    {loadingReadings ? 'Loading...' : `${readings.length} readings`}
-                  </span>
-                </div>
-
-                {loadingReadings ? (
-                  <div className="text-center py-12 text-muted-foreground text-sm">
-                    Loading readings...
+              ) : selectedReading ? (
+                <div className="max-w-3xl">
+                  <button
+                    onClick={() => {
+                      setSelectedReading(null);
+                      const params = new URLSearchParams(searchParams);
+                      params.delete('reading');
+                      router.push(`/library?${params.toString()}`);
+                    }}
+                    className="text-sm text-muted-foreground hover:text-foreground mb-6 flex items-center gap-1"
+                  >
+                    ← Back to readings
+                  </button>
+                  <h1 className="text-3xl font-semibold mb-3">{selectedReading.title}</h1>
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
+                    <span>{selectedReading.author}</span>
+                    <span>•</span>
+                    <span>{selectedReading.read_time}</span>
                   </div>
-                ) : selectedReading ? (
-                  <div className="max-w-3xl">
-                    <button
-                      onClick={() => {
-                        setSelectedReading(null);
-                        const params = new URLSearchParams(searchParams);
-                        params.delete('reading');
-                        router.push(`/library?${params.toString()}`);
-                      }}
-                      className="text-sm text-muted-foreground hover:text-foreground mb-6 flex items-center gap-1"
-                    >
-                      ← Back to readings
-                    </button>
-                    <h1 className="text-3xl font-semibold mb-3">{selectedReading.title}</h1>
-                    <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
-                      <span>{selectedReading.author}</span>
-                      <span>•</span>
-                      <span>{selectedReading.read_time}</span>
+                  {selectedReading.influences && selectedReading.influences.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-2 mb-8">
+                      <span className="text-xs text-muted-foreground">Curated from:</span>
+                      {selectedReading.influences.map((influence, idx) => (
+                        <Badge
+                          key={idx}
+                          variant="secondary"
+                          className="text-xs px-2 py-0.5"
+                        >
+                          {influence}
+                        </Badge>
+                      ))}
                     </div>
-                    {selectedReading.influences && selectedReading.influences.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-8">
-                        <span className="text-xs text-muted-foreground">Influenced by:</span>
-                        {selectedReading.influences.map((influence, idx) => (
-                          <Badge
-                            key={idx}
-                            variant="secondary"
-                            className="text-xs px-2 py-0.5"
-                          >
-                            {influence}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-                    <ReadingContent content={selectedReading.content} />
+                  )}
+                  <ReadingContent content={selectedReading.content} />
+                </div>
+              ) : (
+                <>
+                  {/* Header */}
+                  <div className="mb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <BookOpen className="h-4 w-4 text-primary" />
+                      <h2 className="text-xl font-semibold tracking-tight">{selectedGuideData.guide_name}</h2>
+                    </div>
+                    <p className="text-[12px] text-muted-foreground mb-4">
+                      {selectedGuideData.reading_count} curated {selectedGuideData.reading_count === 1 ? 'reading' : 'readings'}
+                    </p>
+
+                    {/* Search */}
+                    <div className="relative max-w-xs">
+                      <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
+                      <input
+                        type="text"
+                        placeholder="Search readings..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
+                      />
+                    </div>
                   </div>
-                ) : (
-                  <div className="space-y-0">
-                    {readings.map((reading) => (
+
+                  {/* Readings List */}
+                  <div>
+                    <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
+                      <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
+                        {readings.length} readings
+                      </span>
+                    </div>
+
+                  </div>
+                </>
+              )}
+
+              {!loadingReadings && !selectedReading && readings.length > 0 && (
+                <div className="space-y-0">
+                  {readings.map((reading) => (
                       <div
                         key={reading.id}
                         onClick={() => {
@@ -344,11 +350,10 @@ export default function LibraryPage() {
                             {reading.type}
                           </Badge>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </>
           ) : (
             <div className="text-center py-12 text-muted-foreground">
