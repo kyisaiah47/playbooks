@@ -22,6 +22,21 @@ interface Guide {
   tags: string[];
 }
 
+interface Question {
+  id: string;
+  question: string;
+  category: string;
+  question_number: number;
+}
+
+interface Reading {
+  id: string;
+  title: string;
+  excerpt: string;
+  read_time: string;
+  author: string;
+}
+
 const categoryIconComponents: Record<string, any> = {
   'career-work': Briefcase,
   'relationships': Heart,
@@ -48,6 +63,9 @@ export default function GuidesPage() {
   const [loadingGuides, setLoadingGuides] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [readings, setReadings] = useState<Reading[]>([]);
+  const [loadingContent, setLoadingContent] = useState(false);
 
   // Fetch categories on mount
   useEffect(() => {
@@ -96,6 +114,37 @@ export default function GuidesPage() {
 
     fetchGuides();
   }, [selectedCategory, searchQuery]);
+
+  // Fetch questions and readings when a guide is selected
+  useEffect(() => {
+    async function fetchGuideContent() {
+      if (!selectedGuide) {
+        setQuestions([]);
+        setReadings([]);
+        return;
+      }
+
+      try {
+        setLoadingContent(true);
+        const [questionsRes, readingsRes] = await Promise.all([
+          fetch(`/api/guides/${selectedGuide.id}/questions`),
+          fetch(`/api/guides/${selectedGuide.id}/readings`)
+        ]);
+
+        const questionsData = await questionsRes.json();
+        const readingsData = await readingsRes.json();
+
+        setQuestions(questionsData.questions || []);
+        setReadings(readingsData.readings || []);
+      } catch (error) {
+        console.error('Error fetching guide content:', error);
+      } finally {
+        setLoadingContent(false);
+      }
+    }
+
+    fetchGuideContent();
+  }, [selectedGuide]);
 
   const totalGuides = categories.reduce((sum, cat) => sum + cat.count, 0);
   const selectedCategoryData = categories.find(cat => cat.id === selectedCategory);
@@ -162,9 +211,72 @@ export default function GuidesPage() {
                         ))}
                       </div>
                     )}
-                    <div className="prose dark:prose-invert max-w-none">
-                      <p className="text-sm text-muted-foreground">Guide content would go here...</p>
-                    </div>
+
+                    {loadingContent ? (
+                      <div className="text-center py-12 text-muted-foreground text-sm">
+                        Loading content...
+                      </div>
+                    ) : (
+                      <>
+                        {/* Questions Section */}
+                        {questions.length > 0 && (
+                          <div className="mb-12">
+                            <h2 className="text-xl font-semibold mb-4">Guided Questions</h2>
+                            <p className="text-sm text-muted-foreground mb-6">
+                              Work through these questions to gain clarity and develop your action plan.
+                            </p>
+                            <div className="space-y-4">
+                              {questions.map((q, idx) => (
+                                <div key={q.id} className="border border-border rounded-lg p-4 hover:bg-muted/20 transition-colors">
+                                  <div className="flex gap-3">
+                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-medium">
+                                      {idx + 1}
+                                    </span>
+                                    <div className="flex-1">
+                                      <p className="text-sm">{q.question}</p>
+                                      {q.category && (
+                                        <span className="inline-block mt-2 text-xs px-2 py-0.5 bg-muted rounded">
+                                          {q.category}
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Readings Section */}
+                        {readings.length > 0 && (
+                          <div>
+                            <h2 className="text-xl font-semibold mb-4">Curated Readings</h2>
+                            <p className="text-sm text-muted-foreground mb-6">
+                              Essential reading to deepen your understanding and inform your decisions.
+                            </p>
+                            <div className="space-y-4">
+                              {readings.map((reading) => (
+                                <div key={reading.id} className="border border-border rounded-lg p-4 hover:bg-muted/20 transition-colors">
+                                  <h3 className="font-medium mb-2">{reading.title}</h3>
+                                  <p className="text-sm text-muted-foreground mb-3">{reading.excerpt}</p>
+                                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                                    <span>{reading.author}</span>
+                                    <span>•</span>
+                                    <span>{reading.read_time}</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {questions.length === 0 && readings.length === 0 && (
+                          <div className="text-center py-12 text-muted-foreground text-sm">
+                            No content available for this guide yet.
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
                 ) : (
                   <>
