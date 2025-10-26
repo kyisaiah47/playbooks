@@ -1,16 +1,16 @@
 # Templata
 
-**Wikipedia × Notion for life planning**
+**Wikipedia × Notion for life**
 
-Browse 1,200+ guides for major life decisions. Each guide gives you questions to think through and a workspace to plan.
+Browse 1,200+ guides for life situations, transitions, and learning. Each guide gives you questions to think through and a workspace to organize your thinking.
 
 ---
 
 ## What is Templata?
 
-Templata is a planning tool for major life decisions.
+Templata is a structured thinking tool for navigating life.
 
-Pick a guide (career change, buying a home, planning a wedding, etc.), work through curated questions, and take notes in a split-screen workspace. Everything saves automatically.
+Pick a guide (career change, learning piano, managing anxiety, planning a wedding, etc.), work through curated questions, and take notes in a split-screen workspace. Everything saves automatically.
 
 ## How it works
 
@@ -21,33 +21,31 @@ Pick a guide (career change, buying a home, planning a wedding, etc.), work thro
 
 ## Key features
 
-- **1,200+ guides** - Comprehensive coverage of major life situations
+- **1,200+ guides** - Comprehensive coverage across life situations
 - **Guided questions** - Structured questions to guide your thinking
 - **Split-screen workspace** - Write notes while viewing questions
-- **Curated readings** - Expert-selected articles for each guide
-- **Auto-save** - Your work saves automatically
-- **Multiple workspaces** - Organize different life areas
+- **Curated readings** - Hand-selected articles, books, and resources for each guide
+- **Auto-save** - Your work saves automatically in your browser
+- **Multiple workspaces** - Organize different projects and areas of life
 
-## What you can plan
+## What Templata covers
 
-- Career transitions and job searches
-- Weddings and major life events
-- Home buying and moving
-- Starting businesses
-- Parenthood and family planning
-- Financial decisions
-- Health and wellness goals
-- Skill development
-- Relationship decisions
-- And 1,200+ more scenarios
+- **Life transitions** - Career changes, moving, divorce, retirement, becoming a parent
+- **Relationship challenges** - Dating, marriage, family conflicts, friendships, breakups
+- **Health & wellness** - Managing chronic illness, mental health, recovery, fitness
+- **Financial planning** - Debt payoff, saving, investing, major purchases
+- **Skill development** - Learning instruments, creative hobbies, professional skills
+- **Crisis navigation** - Job loss, legal issues, health emergencies, natural disasters
+- **Personal growth** - Habit formation, productivity, digital wellness, spirituality
+- **And 1,200+ more situations** - From everyday challenges to life-changing decisions
 
 ## Philosophy
 
 **Wikipedia × Notion**
 
-Like Wikipedia provides comprehensive knowledge and Notion provides flexible workspaces, Templata combines both for life planning.
+Like Wikipedia provides comprehensive coverage and Notion provides flexible workspaces, Templata combines both for navigating life.
 
-Instead of googling scattered advice, you get systematic guides with structured questions and a workspace to plan.
+Instead of googling scattered advice across Reddit threads and blog posts, you get structured guides with curated questions and a workspace to organize your thinking.
 
 ---
 
