@@ -84,7 +84,7 @@ export default function LandingPage() {
 						</div>
 						{/* App Content */}
 						<div
-							className="h-[600px] overflow-hidden"
+							className="h-[600px] overflow-hidden pointer-events-none"
 							onClick={(e) => {
 								e.preventDefault();
 								e.stopPropagation();
@@ -94,7 +94,9 @@ export default function LandingPage() {
 								e.stopPropagation();
 							}}
 						>
-							<WorkspaceLayout demoMode={true} />
+							<div className="h-full w-full pointer-events-auto">
+								<WorkspaceLayout demoMode={true} />
+							</div>
 						</div>
 					</div>
 				</div>
