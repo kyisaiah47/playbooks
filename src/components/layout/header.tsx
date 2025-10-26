@@ -273,34 +273,46 @@ export function Header() {
 									</div>
 								</div>
 
-								{/* Right side - Get Started */}
+								{/* Right side - Learn More */}
 								<div className="border-l pl-8 w-[240px]">
 									<div className="mb-6">
-										<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Get Started</h3>
+										<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Learn More</h3>
 									</div>
 									<div className="space-y-4">
 										<Link
-											href="/signup"
-											className="block group"
-											onClick={() => setShowFeaturesDropdown(false)}
-										>
-											<div className="text-[15px] font-medium mb-0.5 text-foreground group-hover:text-primary transition-colors">
-												Create account
-											</div>
-											<p className="text-xs text-muted-foreground leading-relaxed">
-												Access all guides and save your work
-											</p>
-										</Link>
-										<Link
 											href="/docs"
-											className="block group"
+											className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
 											onClick={() => setShowFeaturesDropdown(false)}
 										>
-											<div className="text-[15px] font-medium mb-0.5 text-foreground group-hover:text-primary transition-colors">
+											<div className="text-[15px] font-medium mb-0.5 text-foreground ">
 												Documentation
 											</div>
 											<p className="text-xs text-muted-foreground leading-relaxed">
 												Learn how to use Templata
+											</p>
+										</Link>
+										<Link
+											href="/guides"
+											className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground ">
+												Guides
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Life planning guides
+											</p>
+										</Link>
+										<Link
+											href="/readings"
+											className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground ">
+												Readings
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Curated readings library
 											</p>
 										</Link>
 									</div>

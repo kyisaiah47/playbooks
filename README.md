@@ -2,7 +2,7 @@
 
 **Wikipedia × Notion for life**
 
-Browse 1,200+ guides for life situations, transitions, and learning. Each guide gives you questions to think through and a workspace to organize your thinking.
+Browse guides for life situations, transitions, and learning. Each guide gives you questions to think through and a workspace to organize your thinking.
 
 ---
 
@@ -14,14 +14,14 @@ Pick a guide (career change, learning piano, managing anxiety, planning a weddin
 
 ## How it works
 
-1. **Browse guides** - 1,200+ guides across 6 categories (Career, Relationships, Health, Personal Growth, Finance, Life Events)
+1. **Browse guides** - Guides across 6 categories (Career, Relationships, Health, Personal Growth, Finance, Life Events)
 2. **Work in split-screen** - Questions on the left, your notes on the right
 3. **Read curated content** - Each guide has expert-selected readings
 4. **Track progress** - Use workspaces to organize multiple projects
 
 ## Key features
 
-- **1,200+ guides** - Comprehensive coverage across life situations
+- **Comprehensive guides** - Coverage across life situations
 - **Guided questions** - Structured questions to guide your thinking
 - **Split-screen workspace** - Write notes while viewing questions
 - **Curated readings** - Hand-selected articles, books, and resources for each guide
@@ -37,7 +37,7 @@ Pick a guide (career change, learning piano, managing anxiety, planning a weddin
 - **Skill development** - Learning instruments, creative hobbies, professional skills
 - **Crisis navigation** - Job loss, legal issues, health emergencies, natural disasters
 - **Personal growth** - Habit formation, productivity, digital wellness, spirituality
-- **And 1,200+ more situations** - From everyday challenges to life-changing decisions
+- **And much more** - From everyday challenges to life-changing decisions
 
 ## Philosophy
 

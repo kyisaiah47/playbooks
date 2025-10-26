@@ -16,12 +16,12 @@ export default function LandingPage() {
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareApplication',
 		name: 'Templata',
-		description: 'Wikipedia × Notion for life planning. 1,200+ guides for life\'s biggest decisions.',
+		description: 'Wikipedia × Notion for life planning. Comprehensive guides for life\'s biggest decisions.',
 		url: 'https://templata.org',
 		applicationCategory: 'ProductivityApplication',
 		operatingSystem: 'Web',
 		featureList: [
-			'1,200+ Life Planning Guides',
+			'Life Planning Guides',
 			'Guided Questions',
 			'Curated Reading',
 			'Split-Screen Workspace',
@@ -111,7 +111,7 @@ export default function LandingPage() {
 
 					<div className="grid md:grid-cols-2 gap-12">
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Browse 1,200+ guides</h3>
+							<h3 className="text-base font-medium">Browse guides</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
 								Curated for major life decisions
 							</p>
