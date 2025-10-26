@@ -136,91 +136,93 @@ export default function GuidesPage() {
           <div className="px-6 lg:px-12 py-8">
             {selectedCategoryData ? (
               <>
-                {/* Header */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    {(() => {
-                      const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
-                      const colors = categoryColors[selectedCategoryData.id] || categoryColors['career-work'];
-                      return <Icon className={cn("h-4 w-4", colors.icon)} />;
-                    })()}
-                    <h2 className="text-xl font-semibold tracking-tight">{selectedCategoryData.name}</h2>
+                {loadingGuides ? (
+                  <div className="text-center py-12 text-muted-foreground text-sm">
+                    Loading guides...
                   </div>
-                  <p className="text-[12px] text-muted-foreground mb-4">
-                    {selectedCategoryData.description}
-                  </p>
-
-                  {/* Search */}
-                  <div className="relative max-w-xs">
-                    <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
-                    <input
-                      type="text"
-                      placeholder="Search guides..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
-                    />
-                  </div>
-                </div>
-
-                {/* Guides List */}
-                <div>
-                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
-                    <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
-                      {loadingGuides ? 'Loading...' : `${guides.length} guides`}
-                    </span>
-                  </div>
-
-                  {loadingGuides ? (
-                    <div className="text-center py-12 text-muted-foreground text-sm">
-                      Loading guides...
+                ) : selectedGuide ? (
+                  <div className="max-w-3xl">
+                    <button
+                      onClick={() => setSelectedGuide(null)}
+                      className="text-sm text-muted-foreground hover:text-foreground mb-6 flex items-center gap-1"
+                    >
+                      ← Back to guides
+                    </button>
+                    <h1 className="text-3xl font-semibold mb-3">{selectedGuide.name}</h1>
+                    <p className="text-base text-muted-foreground mb-6">{selectedGuide.description}</p>
+                    {selectedGuide.tags && selectedGuide.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-8">
+                        {selectedGuide.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className="text-xs px-2 py-1 bg-muted rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <div className="prose dark:prose-invert max-w-none">
+                      <p className="text-sm text-muted-foreground">Guide content would go here...</p>
                     </div>
-                  ) : selectedGuide ? (
-                    <div className="max-w-3xl">
-                      <button
-                        onClick={() => setSelectedGuide(null)}
-                        className="text-sm text-muted-foreground hover:text-foreground mb-6 flex items-center gap-1"
-                      >
-                        ← Back to guides
-                      </button>
-                      <h1 className="text-3xl font-semibold mb-3">{selectedGuide.name}</h1>
-                      <p className="text-base text-muted-foreground mb-6">{selectedGuide.description}</p>
-                      {selectedGuide.tags && selectedGuide.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-8">
-                          {selectedGuide.tags.map((tag, idx) => (
-                            <span
-                              key={idx}
-                              className="text-xs px-2 py-1 bg-muted rounded"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      <div className="prose dark:prose-invert max-w-none">
-                        <p className="text-sm text-muted-foreground">Guide content would go here...</p>
+                  </div>
+                ) : (
+                  <>
+                    {/* Header */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-2">
+                        {(() => {
+                          const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
+                          const colors = categoryColors[selectedCategoryData.id] || categoryColors['career-work'];
+                          return <Icon className={cn("h-4 w-4", colors.icon)} />;
+                        })()}
+                        <h2 className="text-xl font-semibold tracking-tight">{selectedCategoryData.name}</h2>
+                      </div>
+                      <p className="text-[12px] text-muted-foreground mb-4">
+                        {selectedCategoryData.description}
+                      </p>
+
+                      {/* Search */}
+                      <div className="relative max-w-xs">
+                        <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
+                        <input
+                          type="text"
+                          placeholder="Search guides..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
+                        />
                       </div>
                     </div>
-                  ) : (
-                    <div className="space-y-0">
-                      {guides.map((guide) => {
-                        const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
-                        return (
-                          <button
-                            key={guide.id}
-                            onClick={() => setSelectedGuide(guide)}
-                            className="flex items-center gap-3 py-2.5 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group w-full text-left"
-                          >
-                            <Icon className="h-3.5 w-3.5 text-muted-foreground/60" />
-                            <span className="text-[13px] font-medium group-hover:text-primary transition-colors">
-                              {guide.name}
-                            </span>
-                          </button>
-                        );
-                      })}
+
+                    {/* Guides List */}
+                    <div>
+                      <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
+                        <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
+                          {guides.length} guides
+                        </span>
+                      </div>
+
+                      <div className="space-y-0">
+                        {guides.map((guide) => {
+                          const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
+                          return (
+                            <button
+                              key={guide.id}
+                              onClick={() => setSelectedGuide(guide)}
+                              className="flex items-center gap-3 py-2.5 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group w-full text-left"
+                            >
+                              <Icon className="h-3.5 w-3.5 text-muted-foreground/60" />
+                              <span className="text-[13px] font-medium group-hover:text-primary transition-colors">
+                                {guide.name}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
-                  )}
-                </div>
+                  </>
+                )}
               </>
             ) : (
               <div className="text-center py-12 text-muted-foreground">
