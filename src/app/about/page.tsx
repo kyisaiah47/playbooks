@@ -1,201 +1,387 @@
 "use client"
 
-import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { PageLayout } from "@/components/layout"
-import { StatsVisualization } from "@/components/about/StatsVisualization"
-import { ArrowRight } from "lucide-react"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+import { ArrowRight, Github, Linkedin, Mail, Sparkles, Code, Heart, Lightbulb } from "lucide-react"
+import { motion } from "framer-motion"
+import { BlankPageGraphic } from "@/components/about/BlankPageGraphic"
+import { JourneyGraphic } from "@/components/about/JourneyGraphic"
+import { TerminalGraphic } from "@/components/about/TerminalGraphic"
+import { FutureGraphic } from "@/components/about/FutureGraphic"
 
 export default function AboutPage() {
   return (
     <PageLayout includeHeaderPadding={false}>
-      {/* Hero - Linear style */}
-      <section className="relative px-6 pt-40 pb-32 md:pt-56 md:pb-40">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl font-semibold tracking-tight md:text-7xl mb-8">
-            Wikipedia × Notion
-            <br />
-            <span className="text-muted-foreground">for life planning</span>
-          </h1>
-
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            1,200+ guides with questions and workspaces for major life decisions.
-          </p>
+      {/* Hero */}
+      <section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-24">
+        <div className="mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9] mb-8">
+              Wikipedia × Notion
+              <br />
+              <span className="text-muted-foreground">for life</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              Comprehensive guides meet flexible workspaces. Because life's biggest decisions shouldn't start with a blank page.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Stats Visualization */}
-      <section className="px-6 pb-40">
+      {/* Blank Page Graphic */}
+      <section className="px-6 py-32">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <BlankPageGraphic />
+        </motion.div>
+      </section>
+
+      {/* The Problem & Solution - Side by side cards */}
+      <section className="px-6 py-24 border-t border-border/40">
         <div className="mx-auto max-w-6xl">
-          <StatsVisualization />
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-muted/30 rounded-2xl p-8 md:p-10"
+            >
+              <div className="mb-6">
+                <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6 text-red-500" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+                  The problem
+                </h2>
+              </div>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                Career changes, wedding planning, buying a home—millions have done these. But the knowledge is scattered across Reddit threads, blog posts, and paywalled content.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                You Google, bookmark dozens of articles you'll never read, and still end up staring at a blank page, overwhelmed.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-muted/30 rounded-2xl p-8 md:p-10"
+            >
+              <div className="mb-6">
+                <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+                  <Lightbulb className="w-6 h-6 text-green-500" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+                  The solution
+                </h2>
+              </div>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                Templata gives you structured questions to think through your decision systematically. Work in a split-screen workspace with questions on the left, your notes on the right.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Every guide includes curated readings. No prescriptive advice—just frameworks and questions to help you think it through yourself.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="px-6 py-48 border-t border-border/40">
+      {/* Founder Section - Full width with image */}
+      <section className="px-6 py-24 border-t border-border/40">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
-              Why we exist
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16"
+          >
+            <div className="flex flex-col md:flex-row items-start gap-8 mb-12">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Image
+                  src="/team/isaiah-kim.jpg"
+                  alt="Isaiah Kim"
+                  width={120}
+                  height={120}
+                  className="rounded-2xl grayscale"
+                />
+              </motion.div>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-3">
+                  Built by Isaiah Kim
+                </h2>
+                <p className="text-lg text-muted-foreground mb-4">
+                  Developer, builder, tinkerer
+                </p>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://linkedin.com/in/kyisaiah47" target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://github.com/kyisaiah47" target="_blank" rel="noopener noreferrer">
+                      <Github className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="mailto:kyisaiah47@gmail.com">
+                      <Mail className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Journey Graphic */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <JourneyGraphic />
+          </motion.div>
+
+          {/* Story in cards */}
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-muted/20 rounded-xl p-6 md:p-8"
+            >
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                <Code className="w-5 h-5" />
+                The journey
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                I've been building apps for over 7 years. Currently a Senior Developer at SS&C Technologies, where I've spent 2.5 years leading greenfield and brownfield projects. That experience completely changed how I think about building software.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Working with a team that had robust infrastructure and coding practices elevated my standards. I learned more in those years than in my entire career up to that point. It reignited the passion I had in college when I was constantly tinkering with projects.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-muted/20 rounded-xl p-6 md:p-8"
+            >
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                <Sparkles className="w-5 h-5" />
+                The evolution
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                I started doing hackathons on DevPost, experimenting with new tech and ideas. Templata emerged from that period. I wanted a long-term passion project that brought together everything I was learning.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                The idea evolved over months—from "life shouldn't start with a blank page" to "the encyclopedia for life" to finally "Wikipedia × Notion." That last one clicked. It simplified the concept and made it immediately digestible.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                I've tried 30+ app ideas over the past 6 months. This is the only one that stuck. I've deleted the repo and started from scratch multiple times. It was a battle, but I believe this idea has legs.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-muted/20 rounded-xl p-6 md:p-8"
+            >
+              <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                <Heart className="w-5 h-5" />
+                The passion
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                I spent the past decade wandering, trying to figure out where I fit in. I was passionate about building in college, but the 9-5 grind, the pandemic, and life left me disillusioned. I should've tapped back into that passion sooner.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                Now I'm based in NYC, working my day job, but dedicating nights and weekends to building. Instead of going out, I'm keeping up with trends, especially AI tooling, and bringing ideas to life.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                One thing I know for sure: I'm put on earth to build apps. Idea generation, tinkering, branding, aesthetics, being adventurous with technology—that's what drives me. Templata is the culmination of that journey so far.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy - Grid */}
+      <section className="px-6 py-24 border-t border-border/40">
+        <div className="mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+              How it works
             </h2>
-            <p className="text-base text-muted-foreground max-w-2xl">
-              Most people face major life decisions with Google searches and blank pages.
+            <p className="text-base text-muted-foreground">
+              The principles behind Templata
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">The problem</h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Career changes, wedding planning, buying a home—these aren't new problems. Millions have done them. But the knowledge is scattered across Reddit threads, blog posts, and paywalled content.
-              </p>
-            </div>
+          {/* Terminal Graphic */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <TerminalGraphic />
+          </motion.div>
 
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Our solution</h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Wikipedia × Notion for life planning. 1,200+ guides with structured questions and a split-screen workspace to plan. Each guide has curated readings to help you make better decisions.
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="border border-border/40 rounded-xl p-6 hover:border-border transition-colors"
+            >
+              <h3 className="text-lg font-semibold mb-3">AI-assisted, human-curated</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                I use AI to help generate and structure content, but every guide is reviewed and refined by hand. AI gives me scale, human judgment ensures quality.
               </p>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="border border-border/40 rounded-xl p-6 hover:border-border transition-colors"
+            >
+              <h3 className="text-lg font-semibold mb-3">Structured, not prescriptive</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Frameworks and questions, not answers. Your decisions are yours—I just help you think through them systematically.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="border border-border/40 rounded-xl p-6 hover:border-border transition-colors"
+            >
+              <h3 className="text-lg font-semibold mb-3">Comprehensive, not overwhelming</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Broad coverage across life situations, but each guide is focused and actionable. No endless scrolling—just the framework you need.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="border border-border/40 rounded-xl p-6 hover:border-border transition-colors"
+            >
+              <h3 className="text-lg font-semibold mb-3">Free to use</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Templata is free. I want to explore monetization eventually, but the core experience will always be accessible to everyone.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Principles */}
-      <section className="px-6 py-48 border-t border-border/40">
+      {/* What's Next - Centered card */}
+      <section className="px-6 py-24 border-t border-border/40">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
-              How we work
+          {/* Future Graphic */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <FutureGraphic />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 md:p-12 border border-primary/20 max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6">
+              What's next
             </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Human-curated, not AI-generated</h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Every guide is built by someone who's navigated that exact situation. We believe in human knowledge, not algorithm-generated advice.
+            <div className="space-y-4 text-base text-muted-foreground leading-relaxed mb-8">
+              <p>
+                Right now, Templata is a side project. I'm working full-time as a senior dev, but dedicating nights and weekends to building this.
+              </p>
+              <p>
+                My immediate goal is to get Templata in front of users, gather feedback, and iterate. I want to understand what resonates and how to make it genuinely useful.
+              </p>
+              <p>
+                Long-term, I'd love to turn this into a company and generate revenue. I believe there's real value here, and I want to explore how to make it sustainable.
+              </p>
+              <p className="font-medium text-foreground">
+                If you're using Templata, I want to hear from you. What's working? What's not? What's missing?
               </p>
             </div>
-
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Structured, not prescriptive</h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                We provide frameworks and questions, not answers. Your decisions are yours—we just help you think through them systematically.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Comprehensive, not overwhelming</h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Coverage across 1,200+ topics, but each guide is focused and actionable. No endless scrolling—just the framework you need.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Free forever, not freemium</h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                No paywalls, no premium tiers, no feature gates. Everyone deserves access to good frameworks for life's biggest decisions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="px-6 py-48 border-t border-border/40">
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-4">
-              Team
-            </h2>
-            <p className="text-base text-muted-foreground max-w-2xl">
-              Small team obsessed with helping people make better decisions.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-4">
-              <HoverCard>
-                <HoverCardTrigger asChild>
-                  <div className="cursor-pointer inline-block">
-                    <Image
-                      src="/team/isaiah-kim.jpg"
-                      alt="Isaiah Kim"
-                      width={80}
-                      height={80}
-                      className="rounded-lg grayscale mb-4"
-                    />
-                  </div>
-                </HoverCardTrigger>
-                <HoverCardContent className="w-64 bg-card/95 backdrop-blur p-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Image
-                        src="/team/isaiah-kim.jpg"
-                        alt="Isaiah Kim"
-                        width={36}
-                        height={36}
-                        className="rounded-full grayscale"
-                      />
-                      <div>
-                        <h4 className="text-sm font-semibold">Isaiah Kim</h4>
-                        <p className="text-xs text-muted-foreground">Founder</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-1">
-                      <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
-                        <a href="https://github.com/isaiahkimdev" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                        </a>
-                      </Button>
-                      <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
-                        <a href="https://linkedin.com/in/isaiah-kim" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
-              <h3 className="text-2xl font-semibold">Isaiah Kim</h3>
-              <p className="text-base text-muted-foreground">Founder</p>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Previously built tools at startups and worked on knowledge systems. Started Templata after watching too many people reinvent the wheel for decisions that already have frameworks.
-              </p>
-            </div>
-          </div>
+            <Button size="lg" asChild>
+              <a href="mailto:kyisaiah47@gmail.com">
+                <Mail className="h-4 w-4" />
+                Get in touch
+              </a>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-48 border-t border-border/40">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-8">
-            Get in touch
+      <section className="px-6 py-24 border-t border-border/40">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-2xl text-center"
+        >
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6">
+            Try Templata
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            Questions, feedback, or want to contribute a guide?
+          <p className="text-base text-muted-foreground mb-8 leading-relaxed">
+            Start planning your next big decision with structured guides and a flexible workspace.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button size="lg" asChild>
-              <a href="mailto:templata.app@gmail.com">
-                Email us
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/app">Try Templata</Link>
-            </Button>
-          </div>
-        </div>
+          <Button size="lg" asChild>
+            <Link href="/app">
+              Open Templata
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </motion.div>
       </section>
     </PageLayout>
   )
