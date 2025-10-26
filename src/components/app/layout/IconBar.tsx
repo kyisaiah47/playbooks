@@ -107,11 +107,7 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
         );
       })}
 
-      {/* Spacer to push logout to bottom */}
-      <div className="flex-1" />
-
       {/* Logout Button */}
-      <div className="w-8 h-px bg-border mb-1" />
       <motion.button
         type="button"
         onClick={handleLogout}
