@@ -580,7 +580,7 @@ export function HeroWorkspace() {
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/40" />
                     <input
                       type="text"
-                      placeholder="Search 1,200+ guides..."
+                      placeholder="Search  guides..."
                       className="w-full h-11 pl-10 pr-4 bg-muted/20 border border-border/60 rounded-lg outline-none focus:border-primary/50 transition-colors text-[13px]"
                     />
                   </div>
@@ -995,7 +995,7 @@ export function HeroWorkspace() {
               <div className="max-w-4xl">
                 <div className="mb-6">
                   <h2 className="text-sm font-semibold mb-0.5">Discover Guides</h2>
-                  <p className="text-[10px] text-muted-foreground">1,200+ guides across 6 categories</p>
+                  <p className="text-[10px] text-muted-foreground"> guides across 6 categories</p>
                 </div>
 
                 {/* Search */}

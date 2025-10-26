@@ -40,7 +40,7 @@ export function BrowseGuides() {
             <span className="text-sm text-muted-foreground">Search guides...</span>
           </div>
         </div>
-        <p className="text-xs text-muted-foreground mt-2">1,200+ guides across 6 categories</p>
+        <p className="text-xs text-muted-foreground mt-2"> guides across 6 categories</p>
       </div>
 
       {/* Guides Grid */}

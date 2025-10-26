@@ -23,7 +23,7 @@ export function BrowseGuidesReal() {
         {/* Header */}
         <div className="mb-6">
           <h2 className="text-lg font-semibold mb-2">Discover Guides</h2>
-          <p className="text-xs text-muted-foreground">1,200+ expert-curated guides for life's biggest decisions</p>
+          <p className="text-xs text-muted-foreground"> expert-curated guides for life's biggest decisions</p>
         </div>
 
         {/* Search */}

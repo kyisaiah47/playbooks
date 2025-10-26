@@ -34,7 +34,7 @@ export default function HowItWorksPage() {
                 </div>
                 <h2 className="text-3xl font-semibold mb-4">1. Find a guide</h2>
                 <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                  Browse 1,200+ guides organized by category: Career, Relationships, Health, Personal Growth, Finance, and Life Events.
+                  Browse  guides organized by category: Career, Relationships, Health, Personal Growth, Finance, and Life Events.
                 </p>
                 <p className="text-sm text-muted-foreground italic">
                   Example: "Career Change," "Setting Boundaries," "Moving to a New City"
@@ -389,7 +389,7 @@ export default function HowItWorksPage() {
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold mb-6">Ready to get started?</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Browse 1,200+ guides or try the demo
+            Browse  guides or try the demo
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" asChild>

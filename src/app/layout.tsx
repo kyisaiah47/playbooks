@@ -17,7 +17,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: 'Templata | Wikipedia × Notion for Life Planning',
-  description: 'Expert-curated guides for life\'s biggest decisions. Get the framework — not a blank page. 1,200+ guides with guided questions and curated reading.',
+  description: 'Expert-curated guides for life\'s biggest decisions. Get the framework — not a blank page.  guides with guided questions and curated reading.',
   keywords: 'life planning guides, decision framework, guided questions, curated reading, career change, relationships, health, personal growth, expert guidance',
   authors: [{ name: 'Templata Team' }],
   icons: {
@@ -104,7 +104,7 @@ export default function RootLayout({
                 "name": "Templata - Free Forever",
                 "price": "0",
                 "priceCurrency": "USD",
-                "description": "Full access to 1,200+ guides with guided questions and curated reading. Completely free, no paywalls."
+                "description": "Full access to  guides with guided questions and curated reading. Completely free, no paywalls."
               }
             })
           }}
