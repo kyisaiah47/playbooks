@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { BookOpen, Search, ExternalLink, ChevronDown, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { ReadingContent } from '@/app/readings/[slug]/reading-content';
 
 interface GuideWithReadings {
   guide_id: string;
@@ -23,6 +25,8 @@ interface Reading {
 }
 
 export default function LibraryPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [guideSearchQuery, setGuideSearchQuery] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [guides, setGuides] = useState<GuideWithReadings[]>([]);
@@ -30,9 +34,10 @@ export default function LibraryPage() {
   const [loadingGuides, setLoadingGuides] = useState(true);
   const [loadingReadings, setLoadingReadings] = useState(false);
   const [selectedGuide, setSelectedGuide] = useState<string | null>(null);
+  const [selectedReading, setSelectedReading] = useState<Reading | null>(null);
   const [expandedSections, setExpandedSections] = useState<string[]>([]);
 
-  // Fetch guides on mount
+  // Fetch guides on mount and set selected guide from URL
   useEffect(() => {
     async function fetchGuides() {
       try {
@@ -41,9 +46,14 @@ export default function LibraryPage() {
         const data = await res.json();
         setGuides(data.guides || []);
 
-        // Auto-select first guide
-        if (data.guides && data.guides.length > 0) {
+        // Set selected guide from URL param or auto-select first guide
+        const guideParam = searchParams.get('guide');
+        if (guideParam) {
+          setSelectedGuide(guideParam);
+        } else if (data.guides && data.guides.length > 0) {
           setSelectedGuide(data.guides[0].guide_id);
+          // Update URL with first guide
+          router.replace(`/library?guide=${data.guides[0].guide_id}`);
         }
       } catch (error) {
         console.error('Error fetching guides:', error);
@@ -53,7 +63,7 @@ export default function LibraryPage() {
     }
 
     fetchGuides();
-  }, []);
+  }, [searchParams, router]);
 
   // Fetch readings when guide changes or search query changes
   useEffect(() => {
@@ -79,6 +89,19 @@ export default function LibraryPage() {
 
     fetchReadings();
   }, [selectedGuide, searchQuery]);
+
+  // Sync selected reading from URL
+  useEffect(() => {
+    const readingParam = searchParams.get('reading');
+    if (readingParam && readings.length > 0) {
+      const reading = readings.find((r) => r.id === readingParam);
+      if (reading) {
+        setSelectedReading(reading);
+      }
+    } else {
+      setSelectedReading(null);
+    }
+  }, [searchParams, readings]);
 
   const toggleSection = (section: string) => {
     setExpandedSections(prev =>
@@ -134,7 +157,7 @@ export default function LibraryPage() {
   return (
     <div className="flex h-[calc(100vh-3.5rem)] overflow-hidden">
       {/* Sidebar Navigation */}
-      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border overflow-y-auto bg-background">
+      <aside className="hidden lg:block w-80 flex-shrink-0 border-r border-border overflow-y-auto bg-background">
         <div className="py-6 px-4 space-y-4">
           {/* Search guides */}
           <div className="relative">
@@ -170,7 +193,10 @@ export default function LibraryPage() {
                       return (
                         <button
                           key={guide.guide_id}
-                          onClick={() => setSelectedGuide(guide.guide_id)}
+                          onClick={() => {
+                            setSelectedGuide(guide.guide_id);
+                            router.push(`/library?guide=${guide.guide_id}`);
+                          }}
                           className={cn(
                             "flex items-center gap-2 w-full text-left text-sm py-1.5 px-2 rounded transition-colors",
                             isSelected
@@ -180,7 +206,6 @@ export default function LibraryPage() {
                         >
                           <BookOpen className="h-3.5 w-3.5" />
                           <span className="truncate flex-1">{guide.guide_name}</span>
-                          <span className="text-xs opacity-60">{guide.reading_count}</span>
                         </button>
                       );
                     })}
@@ -232,22 +257,59 @@ export default function LibraryPage() {
                   <div className="text-center py-12 text-muted-foreground text-sm">
                     Loading readings...
                   </div>
+                ) : selectedReading ? (
+                  <div className="max-w-3xl">
+                    <button
+                      onClick={() => {
+                        setSelectedReading(null);
+                        const params = new URLSearchParams(searchParams);
+                        params.delete('reading');
+                        router.push(`/library?${params.toString()}`);
+                      }}
+                      className="text-sm text-muted-foreground hover:text-foreground mb-6 flex items-center gap-1"
+                    >
+                      ← Back to readings
+                    </button>
+                    <h1 className="text-3xl font-semibold mb-3">{selectedReading.title}</h1>
+                    <div className="flex items-center gap-3 text-sm text-muted-foreground mb-8">
+                      <span>{selectedReading.author}</span>
+                      <span>•</span>
+                      <span>{selectedReading.read_time}</span>
+                      {selectedReading.source_url && (
+                        <>
+                          <span>•</span>
+                          <a
+                            href={selectedReading.source_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:underline flex items-center gap-1"
+                          >
+                            View source <ExternalLink className="h-3 w-3" />
+                          </a>
+                        </>
+                      )}
+                    </div>
+                    <ReadingContent content={selectedReading.content} />
+                  </div>
                 ) : (
                   <div className="space-y-0">
                     {readings.map((reading) => (
                       <div
                         key={reading.id}
-                        className="py-3 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group"
+                        onClick={() => {
+                          setSelectedReading(reading);
+                          const params = new URLSearchParams(searchParams);
+                          params.set('reading', reading.id);
+                          router.push(`/library?${params.toString()}`);
+                        }}
+                        className="py-3 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group cursor-pointer"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <Link
-                                href={`/readings/${reading.id}`}
-                                className="text-[13px] font-medium group-hover:text-primary transition-colors truncate"
-                              >
+                              <span className="text-[13px] font-medium group-hover:text-primary transition-colors truncate">
                                 {reading.title}
-                              </Link>
+                              </span>
                               {reading.source_url && (
                                 <a
                                   href={reading.source_url}
