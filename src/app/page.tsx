@@ -10,14 +10,13 @@ import { SplitScreenReal } from "@/components/landing/SplitScreenReal";
 import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
 import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
 import { BrowseAndFeatured } from "@/components/landing/BrowseAndFeatured";
-import { motion } from "framer-motion";
 
 export default function LandingPage() {
 	const jsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareApplication',
 		name: 'Templata',
-		description: 'Wikipedia × Notion for life planning. Expert-curated guides for life\'s biggest decisions.',
+		description: 'Wikipedia × Notion for life planning. 1,200+ guides for life\'s biggest decisions.',
 		url: 'https://templata.org',
 		applicationCategory: 'ProductivityApplication',
 		operatingSystem: 'Web',
@@ -41,51 +40,27 @@ export default function LandingPage() {
 				<div className="mx-auto max-w-7xl">
 					<div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
 						<div className="max-w-3xl">
-							<motion.h1
-								className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5, delay: 0 }}
-							>
+							<h1 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
 								Wikipedia
-							</motion.h1>
-							<motion.h2
-								className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]"
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5, delay: 0.1 }}
-							>
+							</h1>
+							<h2 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
 								×
-							</motion.h2>
-							<motion.h3
-								className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9] mb-6"
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5, delay: 0.2 }}
-							>
+							</h2>
+							<h3 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9] mb-6">
 								Notion
-							</motion.h3>
-							<motion.p
-								className="text-base text-muted-foreground leading-relaxed max-w-lg"
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.5, delay: 0.25 }}
-							>
-								Expert-curated guides for life's biggest decisions
-							</motion.p>
+							</h3>
+							<p className="text-base text-muted-foreground leading-relaxed max-w-lg">
+								1,200+ guides for life's biggest decisions
+							</p>
 						</div>
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: 0.3 }}
-						>
+						<div>
 							<Button size="lg" asChild className="font-medium">
 								<Link href="/guides">
 									Browse Guides
 									<ArrowRight className="h-4 w-4" />
 								</Link>
 							</Button>
-						</motion.div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -102,7 +77,7 @@ export default function LandingPage() {
 				<div className="mx-auto max-w-5xl">
 					<div className="mb-16">
 						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.01em] mb-4 leading-tight">
-							How it works
+							How It Works
 						</h2>
 					</div>
 
@@ -110,7 +85,7 @@ export default function LandingPage() {
 						<div className="space-y-3">
 							<h3 className="text-base font-medium">Browse 1,200+ guides</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
-								Expert-curated for major decisions
+								Curated for major life decisions
 							</p>
 							<BrowseGuidesReal />
 						</div>
@@ -124,17 +99,17 @@ export default function LandingPage() {
 						</div>
 
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Read curated readings</h3>
+							<h3 className="text-base font-medium">Curated readings</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
-								Expert-selected for each guide
+								Selected readings for each guide
 							</p>
 							<ReadingsLibrary />
 						</div>
 
 						<div className="space-y-3">
-							<h3 className="text-base font-medium">Track across workspaces</h3>
+							<h3 className="text-base font-medium">Track progress</h3>
 							<p className="text-sm text-muted-foreground leading-relaxed">
-								Calendar, tasks, journal, timeline
+								Organize multiple projects in one workspace
 							</p>
 							<WorkspaceDashboard />
 						</div>
@@ -146,16 +121,6 @@ export default function LandingPage() {
 			<section className="px-6 py-24 border-t border-border/40">
 				<div className="mx-auto max-w-6xl">
 					<BrowseAndFeatured />
-				</div>
-			</section>
-
-			{/* Simple footer */}
-			<section className="px-6 py-20 border-t border-border/40">
-				<div className="mx-auto max-w-6xl">
-					<Link href="/guides" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/60 hover:text-foreground transition-colors">
-						Browse all guides
-						<ArrowRight className="h-3.5 w-3.5" />
-					</Link>
 				</div>
 			</section>
 		</PageLayout>

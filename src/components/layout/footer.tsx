@@ -21,8 +21,7 @@ export function Footer() {
 							<span className="font-bold text-xl">Templata</span>
 						</div>
 						<p className="text-muted-foreground">
-							Skip the blank page. Start with proven guides for life&apos;s
-							biggest moments.
+							Wikipedia × Notion for life planning. 1,200+ guides for major decisions.
 						</p>
 					</div>
 
@@ -65,7 +64,7 @@ export function Footer() {
 				<div className="flex flex-col lg:flex-row items-center justify-between gap-4">
 					<div className="flex flex-col lg:flex-row items-center gap-4 text-center lg:text-left">
 						<p className="text-sm text-muted-foreground">
-							© 2025 Templata. Organize your life with guides.
+							© 2025 Templata. Wikipedia × Notion for life planning.
 						</p>
 						<div className="flex items-center gap-1 text-sm text-muted-foreground bg-muted/30 px-3 py-1 rounded-full">
 							<span className="w-2 h-2 bg-green-500 rounded-full"></span>

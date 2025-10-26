@@ -58,7 +58,8 @@
       "Bash(xargs perl:*)",
       "Bash(cat:*)",
       "Bash(echo:*)",
-      "mcp__supabase__list_projects"
+      "mcp__supabase__list_projects",
+      "Bash(./enhance-readings-test.sh)"
     ],
     "deny": [],
     "ask": []

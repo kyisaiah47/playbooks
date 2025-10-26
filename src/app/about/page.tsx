@@ -20,13 +20,13 @@ export default function AboutPage() {
       <section className="relative px-6 pt-40 pb-32 md:pt-56 md:pb-40">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="text-5xl font-semibold tracking-tight md:text-7xl mb-8">
-            Bringing structure to
+            Wikipedia × Notion
             <br />
-            <span className="text-muted-foreground">life's biggest moments</span>
+            <span className="text-muted-foreground">for life planning</span>
           </h1>
 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            Every major decision deserves a framework—not a blank page.
+            1,200+ guides with questions and workspaces for major life decisions.
           </p>
         </div>
       </section>
@@ -46,7 +46,7 @@ export default function AboutPage() {
               Why we exist
             </h2>
             <p className="text-base text-muted-foreground max-w-2xl">
-              When people face life's biggest decisions, they're handed blank pages and told to "figure it out."
+              Most people face major life decisions with Google searches and blank pages.
             </p>
           </div>
 
@@ -54,14 +54,14 @@ export default function AboutPage() {
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold">The problem</h3>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Career changes, wedding planning, health decisions, relationship changes—these aren't problems that need invention. Millions have walked these paths. But the knowledge is scattered across Reddit threads, blog posts, and closed communities.
+                Career changes, wedding planning, buying a home—these aren't new problems. Millions have done them. But the knowledge is scattered across Reddit threads, blog posts, and paywalled content.
               </p>
             </div>
 
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold">Our solution</h3>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Like Wikipedia organized human knowledge and Notion structured team workflows, Templata provides expert-curated frameworks for life's biggest moments. 1,200+ guides with guided questions and curated reading.
+                Wikipedia × Notion for life planning. 1,200+ guides with structured questions and a split-screen workspace to plan. Each guide has curated readings to help you make better decisions.
               </p>
             </div>
           </div>
@@ -79,9 +79,9 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-4">
-              <h3 className="text-2xl font-semibold">Expert-curated, not AI-generated</h3>
+              <h3 className="text-2xl font-semibold">Human-curated, not AI-generated</h3>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Every framework is built by someone who's navigated that exact situation. We believe in human expertise, not algorithm-generated advice.
+                Every guide is built by someone who's navigated that exact situation. We believe in human knowledge, not algorithm-generated advice.
               </p>
             </div>
 

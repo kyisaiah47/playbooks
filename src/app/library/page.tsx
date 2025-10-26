@@ -1,0 +1,292 @@
+"use client"
+
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { BookOpen, Search, ExternalLink, ChevronDown, ChevronRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+
+interface GuideWithReadings {
+  guide_id: string;
+  guide_name: string;
+  reading_count: number;
+}
+
+interface Reading {
+  id: string;
+  title: string;
+  author: string;
+  excerpt: string;
+  type: string;
+  source_url: string | null;
+  updated_at: string;
+}
+
+export default function LibraryPage() {
+  const [guideSearchQuery, setGuideSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [guides, setGuides] = useState<GuideWithReadings[]>([]);
+  const [readings, setReadings] = useState<Reading[]>([]);
+  const [loadingGuides, setLoadingGuides] = useState(true);
+  const [loadingReadings, setLoadingReadings] = useState(false);
+  const [selectedGuide, setSelectedGuide] = useState<string | null>(null);
+  const [expandedSections, setExpandedSections] = useState<string[]>([]);
+
+  // Fetch guides on mount
+  useEffect(() => {
+    async function fetchGuides() {
+      try {
+        setLoadingGuides(true);
+        const res = await fetch('/api/library');
+        const data = await res.json();
+        setGuides(data.guides || []);
+
+        // Auto-select first guide
+        if (data.guides && data.guides.length > 0) {
+          setSelectedGuide(data.guides[0].guide_id);
+        }
+      } catch (error) {
+        console.error('Error fetching guides:', error);
+      } finally {
+        setLoadingGuides(false);
+      }
+    }
+
+    fetchGuides();
+  }, []);
+
+  // Fetch readings when guide changes or search query changes
+  useEffect(() => {
+    async function fetchReadings() {
+      if (!selectedGuide) return;
+
+      try {
+        setLoadingReadings(true);
+        const params = new URLSearchParams({ guide: selectedGuide });
+        if (searchQuery.trim()) {
+          params.append('search', searchQuery.trim());
+        }
+
+        const res = await fetch(`/api/library?${params}`);
+        const data = await res.json();
+        setReadings(data.readings || []);
+      } catch (error) {
+        console.error('Error fetching readings:', error);
+      } finally {
+        setLoadingReadings(false);
+      }
+    }
+
+    fetchReadings();
+  }, [selectedGuide, searchQuery]);
+
+  const toggleSection = (section: string) => {
+    setExpandedSections(prev =>
+      prev.includes(section)
+        ? prev.filter(s => s !== section)
+        : [...prev, section]
+    );
+  };
+
+  // Filter guides by search query
+  const filteredGuides = guideSearchQuery.trim()
+    ? guides.filter(guide =>
+        guide.guide_name.toLowerCase().includes(guideSearchQuery.toLowerCase())
+      )
+    : guides;
+
+  // Group guides by first letter
+  const groupGuidesByLetter = () => {
+    const grouped: Record<string, GuideWithReadings[]> = {};
+
+    filteredGuides.forEach(guide => {
+      const firstLetter = guide.guide_name.charAt(0).toUpperCase();
+      if (!grouped[firstLetter]) {
+        grouped[firstLetter] = [];
+      }
+      grouped[firstLetter].push(guide);
+    });
+
+    return Object.entries(grouped)
+      .map(([letter, guides]) => ({
+        id: letter,
+        letter,
+        guides: guides.sort((a, b) => a.guide_name.localeCompare(b.guide_name))
+      }))
+      .sort((a, b) => a.letter.localeCompare(b.letter));
+  };
+
+  const totalReadings = guides.reduce((sum, guide) => sum + guide.reading_count, 0);
+  const selectedGuideData = guides.find(g => g.guide_id === selectedGuide);
+  const groupedGuides = groupGuidesByLetter();
+
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'book': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400';
+      case 'article': return 'bg-green-500/10 text-green-600 dark:text-green-400';
+      case 'youtube': return 'bg-red-500/10 text-red-600 dark:text-red-400';
+      case 'podcast': return 'bg-purple-500/10 text-purple-600 dark:text-purple-400';
+      case 'publication': return 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400';
+      default: return 'bg-muted text-muted-foreground';
+    }
+  };
+
+  return (
+    <div className="flex h-[calc(100vh-3.5rem)] overflow-hidden">
+      {/* Sidebar Navigation */}
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border overflow-y-auto bg-background">
+        <div className="py-6 px-4 space-y-4">
+          {/* Search guides */}
+          <div className="relative">
+            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
+            <input
+              type="text"
+              placeholder="Search guides..."
+              value={guideSearchQuery}
+              onChange={(e) => setGuideSearchQuery(e.target.value)}
+              className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
+            />
+          </div>
+
+          <nav className="space-y-1">
+            {groupedGuides.map((section) => (
+              <div key={section.id}>
+                <button
+                  onClick={() => toggleSection(section.id)}
+                  className="flex items-center justify-between w-full text-sm font-medium py-1.5 px-2 hover:bg-muted/50 rounded transition-colors text-left"
+                >
+                  <span className="text-sm">{section.letter}</span>
+                  {expandedSections.includes(section.id) ? (
+                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                  ) : (
+                    <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+                  )}
+                </button>
+
+                {expandedSections.includes(section.id) && (
+                  <div className="ml-3 mt-1 space-y-0.5 border-l border-border pl-3">
+                    {section.guides.map((guide) => {
+                      const isSelected = selectedGuide === guide.guide_id;
+                      return (
+                        <button
+                          key={guide.guide_id}
+                          onClick={() => setSelectedGuide(guide.guide_id)}
+                          className={cn(
+                            "flex items-center gap-2 w-full text-left text-sm py-1.5 px-2 rounded transition-colors",
+                            isSelected
+                              ? 'text-foreground bg-muted/50'
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                          )}
+                        >
+                          <BookOpen className="h-3.5 w-3.5" />
+                          <span className="truncate flex-1">{guide.guide_name}</span>
+                          <span className="text-xs opacity-60">{guide.reading_count}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="px-6 lg:px-12 py-8">
+          {selectedGuideData ? (
+            <>
+              {/* Header */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <BookOpen className="h-4 w-4 text-primary" />
+                  <h2 className="text-xl font-semibold tracking-tight">{selectedGuideData.guide_name}</h2>
+                </div>
+                <p className="text-[12px] text-muted-foreground mb-4">
+                  {selectedGuideData.reading_count} curated {selectedGuideData.reading_count === 1 ? 'reading' : 'readings'}
+                </p>
+
+                {/* Search */}
+                <div className="relative max-w-xs">
+                  <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
+                  <input
+                    type="text"
+                    placeholder="Search readings..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Readings List */}
+              <div>
+                <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
+                  <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
+                    {loadingReadings ? 'Loading...' : `${readings.length} readings`}
+                  </span>
+                </div>
+
+                {loadingReadings ? (
+                  <div className="text-center py-12 text-muted-foreground text-sm">
+                    Loading readings...
+                  </div>
+                ) : (
+                  <div className="space-y-0">
+                    {readings.map((reading) => (
+                      <div
+                        key={reading.id}
+                        className="py-3 border-b border-border/40 hover:bg-muted/20 -mx-3 px-3 transition-colors group"
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Link
+                                href={`/readings/${reading.id}`}
+                                className="text-[13px] font-medium group-hover:text-primary transition-colors truncate"
+                              >
+                                {reading.title}
+                              </Link>
+                              {reading.source_url && (
+                                <a
+                                  href={reading.source_url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-muted-foreground hover:text-primary transition-colors"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <ExternalLink className="h-3 w-3" />
+                                </a>
+                              )}
+                            </div>
+                            <p className="text-[11px] text-muted-foreground mb-1">
+                              {reading.author}
+                            </p>
+                            <p className="text-[11px] text-muted-foreground/80 line-clamp-2">
+                              {reading.excerpt}
+                            </p>
+                          </div>
+                          <Badge
+                            variant="secondary"
+                            className={cn("text-[10px] px-1.5 py-0.5 font-medium", getTypeColor(reading.type))}
+                          >
+                            {reading.type}
+                          </Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-12 text-muted-foreground">
+              {loadingGuides ? 'Loading guides...' : 'Select a guide to view readings'}
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}

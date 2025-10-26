@@ -17,7 +17,7 @@ export default function HowItWorksPage() {
             How Templata Works
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            Four simple steps to navigate life's biggest decisions with structure and clarity.
+            Browse guides, answer questions, read curated content, and export your work.
           </p>
         </div>
       </section>
@@ -168,12 +168,12 @@ export default function HowItWorksPage() {
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-6">
                   <FileText className="h-6 w-6 text-primary" />
                 </div>
-                <h2 className="text-3xl font-semibold mb-4">3. Read curated readings</h2>
+                <h2 className="text-3xl font-semibold mb-4">3. Read curated content</h2>
                 <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                  Access expert readings and resources for deeper context. Each guide includes hand-picked readings to inform your decisions.
+                  Each guide includes curated readings—no need to Google scattered advice.
                 </p>
                 <p className="text-sm text-muted-foreground italic">
-                  No need to Google—we've done the research for you.
+                  Curated from quality sources across the web.
                 </p>
               </div>
               <div className="border border-border rounded-lg overflow-hidden bg-muted/30 shadow-lg">

@@ -101,47 +101,39 @@ export default function GuidesPage() {
   const selectedCategoryData = categories.find(cat => cat.id === selectedCategory);
 
   return (
-    <div className="flex h-[calc(100vh-56px)]">
+    <div className="flex h-[calc(100vh-3.5rem)] overflow-hidden">
       {/* Sidebar Navigation */}
-      <aside className="w-56 flex-shrink-0 border-r border-border/40 bg-muted/20 overflow-y-auto">
-        <div className="p-3">
-            <div className="px-2 py-1 text-[11px] font-medium text-muted-foreground uppercase tracking-wider mb-2">
-              Categories
-            </div>
-            <nav className="space-y-0.5">
-              {categories.map((category) => {
-                const colors = categoryColors[category.id] || categoryColors['career-work'];
-                const Icon = categoryIconComponents[category.id] || Briefcase;
-                const isSelected = selectedCategory === category.id;
+      <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-border overflow-y-auto bg-background">
+        <div className="py-6 px-4">
+          <nav className="space-y-0.5">
+            {categories.map((category) => {
+              const Icon = categoryIconComponents[category.id] || Briefcase;
+              const isSelected = selectedCategory === category.id;
 
-                return (
-                  <button
-                    key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={cn(
-                      "w-full px-2 py-1.5 rounded text-[13px] transition-colors text-left",
-                      isSelected
-                        ? `${colors.bg} font-medium ${colors.text}`
-                        : 'text-muted-foreground hover:bg-muted/50'
-                    )}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Icon className={cn("h-3.5 w-3.5", isSelected && colors.icon)} />
-                        <span>{category.name}</span>
-                      </div>
-                      <span className="text-[11px] opacity-60">{category.count}</span>
-                    </div>
-                  </button>
-                );
-              })}
-            </nav>
-          </div>
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={cn(
+                    "flex items-center gap-2 w-full text-left text-sm py-1.5 px-2 rounded transition-colors",
+                    isSelected
+                      ? 'text-foreground bg-muted/50'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  )}
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                  <span className="flex-1">{category.name}</span>
+                  <span className="text-xs opacity-60">{category.count}</span>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
       </aside>
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
-          <div className="p-6">
+          <div className="px-6 lg:px-12 py-8">
             {selectedCategoryData ? (
               <>
                 {/* Header */}

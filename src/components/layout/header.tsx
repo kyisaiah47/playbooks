@@ -303,7 +303,7 @@ export function Header() {
 												Create account
 											</div>
 											<p className="text-xs text-muted-foreground leading-relaxed">
-												Start organizing your work today
+												Access all guides and save your work
 											</p>
 										</Link>
 										<Link
@@ -327,7 +327,7 @@ export function Header() {
 												How it works
 											</div>
 											<p className="text-xs text-muted-foreground leading-relaxed">
-												Learn how Templata works
+												See how to use guides and workspaces
 											</p>
 										</Link>
 									</div>

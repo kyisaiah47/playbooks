@@ -20,7 +20,8 @@ export function DocsHeader() {
 	const { isLoggedIn, user, logout } = useAuth()
 	const pathname = usePathname()
 
-	const pageLabel = pathname?.startsWith('/guides') ? 'Guides' : 'Docs'
+	const pageLabel = pathname?.startsWith('/guides') ? 'Guides' :
+	                 pathname?.startsWith('/library') ? 'Library' : 'Docs'
 
 	return (
 		<header className="fixed z-50 w-full border-b border-border bg-background">
@@ -55,6 +56,11 @@ export function DocsHeader() {
 								<DropdownMenuItem asChild>
 									<Link href="/guides" className="w-full cursor-pointer">
 										Guides
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem asChild>
+									<Link href="/library" className="w-full cursor-pointer">
+										Library
 									</Link>
 								</DropdownMenuItem>
 							</DropdownMenuContent>

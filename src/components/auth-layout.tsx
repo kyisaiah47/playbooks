@@ -53,7 +53,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
         {/* Tagline in bottom corner */}
         <div className="absolute bottom-6 left-6">
           <p className="text-white/90 text-xs">
-            Life's biggest moments deserve more than a blank page
+            Wikipedia × Notion for life planning
             <br />
             <span className="text-white/60">— Templata</span>
           </p>
