@@ -50,7 +50,7 @@ export default function LandingPage() {
 								Notion
 							</h3>
 							<p className="text-base text-muted-foreground leading-relaxed max-w-lg">
-								1,200+ guides for life's biggest decisions
+								Comprehensive guides meet flexible workspaces
 							</p>
 						</div>
 						<div>
