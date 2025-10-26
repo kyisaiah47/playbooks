@@ -3,7 +3,7 @@
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { DemoProvider } from '@/contexts/demo-context';
+import { DemoProvider, useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID, DEMO_USER_ID } from '@/lib/demo-constants';
 import OverviewPage from './page';
 import NotesPage from './notes/page';
@@ -451,18 +451,23 @@ export default function WorkspaceLayout({ children, demoMode = false }: Workspac
     }
   }, [searchParams, activeView]);
 
+  // Get demo context for category selection
+  const { setSelectedCategory: setDemoCategory } = useDemo();
+
   // Update URL when category changes
   const handleCategorySelect = useCallback((categoryId: string) => {
-    setSelectedCategory(categoryId);
-
-    if (!demoMode) {
-      // Update URL with category param
+    if (demoMode) {
+      // In demo mode, update context instead of URL
+      setDemoCategory(categoryId);
+    } else {
+      // In normal mode, update both state and URL
+      setSelectedCategory(categoryId);
       const params = new URLSearchParams(searchParams.toString());
       params.set('category', categoryId);
       const queryString = params.toString();
       router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
     }
-  }, [searchParams, router, demoMode]);
+  }, [searchParams, router, demoMode, setDemoCategory]);
 
   // Sync tabs to URL and navigate to the correct route
   const syncTabsToURL = useCallback((newTabs: Tab[], newActiveTabId: string | null, navigate: boolean = true) => {
