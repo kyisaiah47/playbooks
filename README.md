@@ -2,50 +2,50 @@
 
 **Wikipedia × Notion for life**
 
-Browse 1,200+ guides for life situations, transitions, and learning. Each guide gives you questions to think through and a workspace to organize your thinking.
+Every guide is a structured workspace. Every workspace has the tools you need to plan, track, and execute.
 
 ---
 
 ## What is Templata?
 
-Templata is a structured thinking tool for navigating life.
+Templata combines comprehensive guides (like Wikipedia) with a flexible productivity system (like Notion) for navigating life.
 
-Pick a guide (career change, learning piano, managing anxiety, planning a wedding, etc.), work through curated questions, and take notes in a split-screen workspace. Everything saves automatically.
+Instead of googling scattered advice across Reddit threads and blog posts, you get AI-generated guides with structured questions, curated readings, and a full productivity workspace to plan and track your progress.
+
+## The Wikipedia Side: Comprehensive Guides
+
+Every guide includes:
+- **Structured questions** - Key questions to work through your situation
+- **Curated readings** - AI-selected articles and resources for deeper understanding
+- **Split-screen workspace** - Questions on the left, your notes on the right
+
+Covering life situations across Career, Relationships, Health, Personal Growth, Finance, and Life Events.
+
+## The Notion Side: Productivity Tools
+
+Each guide you work on becomes a living workspace with:
+- **Todos** - Task lists that sync across all your guides
+- **Calendar** - Important dates and deadlines (e.g., wedding planning timeline)
+- **Journal** - Daily reflections and progress notes
+- **Notes** - Rich text editor for capturing thoughts
+
+Add a todo in your "Planning a Wedding" guide, and it appears in your unified todo view. Add an important date, and it shows up in your calendar. Everything syncs together.
 
 ## How it works
 
-1. **Browse guides** - 1,200+ guides across 6 categories (Career, Relationships, Health, Personal Growth, Finance, Life Events)
-2. **Work in split-screen** - Questions on the left, your notes on the right
-3. **Read curated content** - Each guide has expert-selected readings
-4. **Track progress** - Use workspaces to organize multiple projects
-
-## Key features
-
-- **1,200+ guides** - Comprehensive coverage across life situations
-- **Guided questions** - Structured questions to guide your thinking
-- **Split-screen workspace** - Write notes while viewing questions
-- **Curated readings** - Hand-selected articles, books, and resources for each guide
-- **Auto-save** - Your work saves automatically in your browser
-- **Multiple workspaces** - Organize different projects and areas of life
-
-## What Templata covers
-
-- **Life transitions** - Career changes, moving, divorce, retirement, becoming a parent
-- **Relationship challenges** - Dating, marriage, family conflicts, friendships, breakups
-- **Health & wellness** - Managing chronic illness, mental health, recovery, fitness
-- **Financial planning** - Debt payoff, saving, investing, major purchases
-- **Skill development** - Learning instruments, creative hobbies, professional skills
-- **Crisis navigation** - Job loss, legal issues, health emergencies, natural disasters
-- **Personal growth** - Habit formation, productivity, digital wellness, spirituality
-- **And 1,200+ more situations** - From everyday challenges to life-changing decisions
+1. **Choose a guide** - Career change, wedding planning, learning an instrument, managing anxiety, etc.
+2. **Work through questions** - Structured prompts guide your thinking
+3. **Read and research** - Access curated readings for each topic
+4. **Plan and track** - Use todos, dates, and journal entries to organize your progress
+5. **Everything syncs** - Your todos, dates, and notes connect across all guides
 
 ## Philosophy
 
 **Wikipedia × Notion**
 
-Like Wikipedia provides comprehensive coverage and Notion provides flexible workspaces, Templata combines both for navigating life.
+Wikipedia provides comprehensive, structured knowledge. Notion provides flexible workspaces for planning and execution. Templata combines both specifically for life situations.
 
-Instead of googling scattered advice across Reddit threads and blog posts, you get structured guides with curated questions and a workspace to organize your thinking.
+The difference: instead of blank pages, you start with structured guides. Instead of scattered bookmarks, you get curated readings. Instead of isolated notes, you get an integrated system that helps you think through and execute on what matters.
 
 ---
 
