@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { supabase } from "@/lib/supabase"
+import { toast } from "sonner"
 
 export function LoginForm({
   className,
@@ -21,12 +22,10 @@ export function LoginForm({
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
 
     try {
@@ -37,7 +36,7 @@ export function LoginForm({
       });
 
       if (signInError) {
-        setError(signInError.message);
+        toast.error(signInError.message);
         return;
       }
 
@@ -116,7 +115,7 @@ export function LoginForm({
       router.push("/app");
       router.refresh();
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -131,9 +130,6 @@ export function LoginForm({
             Enter your email below to login to your account
           </p>
         </div>
-        {error && (
-          <div className="text-sm text-destructive text-center">{error}</div>
-        )}
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
           <Input

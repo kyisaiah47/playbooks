@@ -12,20 +12,17 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { supabase } from "@/lib/supabase"
+import { toast } from "sonner"
 
 export function ForgotPasswordForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-    setSuccess(false);
     setLoading(true);
 
     try {
@@ -34,13 +31,14 @@ export function ForgotPasswordForm({
       });
 
       if (error) {
-        setError(error.message);
+        toast.error(error.message);
         return;
       }
 
-      setSuccess(true);
+      toast.success("Check your email! We've sent you a password reset link.");
+      setEmail(""); // Clear the email field
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -55,14 +53,6 @@ export function ForgotPasswordForm({
             Enter your email address and we&apos;ll send you a link to reset your password
           </p>
         </div>
-        {error && (
-          <div className="text-sm text-destructive text-center">{error}</div>
-        )}
-        {success && (
-          <div className="text-sm text-green-600 dark:text-green-400 text-center p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md">
-            Check your email! We&apos;ve sent you a password reset link.
-          </div>
-        )}
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
           <Input
@@ -75,8 +65,8 @@ export function ForgotPasswordForm({
           />
         </Field>
         <Field>
-          <Button type="submit" disabled={loading || success}>
-            {loading ? "Sending..." : success ? "Email sent" : "Send reset link"}
+          <Button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Send reset link"}
           </Button>
           <FieldDescription className="text-center">
             Remember your password?{" "}

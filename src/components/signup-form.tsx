@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { supabase } from "@/lib/supabase"
+import { toast } from "sonner"
 
 export function SignupForm({
   className,
@@ -21,12 +22,10 @@ export function SignupForm({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
 
     try {
@@ -42,12 +41,12 @@ export function SignupForm({
       });
 
       if (signUpError) {
-        setError(signUpError.message);
+        toast.error(signUpError.message);
         return;
       }
 
       if (!authData.user) {
-        setError("Failed to create account");
+        toast.error("Failed to create account");
         return;
       }
 
@@ -141,7 +140,7 @@ export function SignupForm({
       router.push("/app");
       router.refresh();
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -156,9 +155,6 @@ export function SignupForm({
             Enter your information below to create your account
           </p>
         </div>
-        {error && (
-          <div className="text-sm text-destructive text-center">{error}</div>
-        )}
         <Field>
           <FieldLabel htmlFor="name">Name</FieldLabel>
           <Input

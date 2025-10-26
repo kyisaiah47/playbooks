@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { supabase } from "@/lib/supabase"
+import { toast } from "sonner"
 
 export function ResetPasswordForm({
   className,
@@ -21,20 +22,18 @@ export function ResetPasswordForm({
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters");
+      toast.error("Password must be at least 6 characters");
       return;
     }
 
@@ -46,14 +45,17 @@ export function ResetPasswordForm({
       });
 
       if (error) {
-        setError(error.message);
+        toast.error(error.message);
         return;
       }
 
+      toast.success("Password reset successfully!");
       // Redirect to login after successful password reset
-      router.push("/login?reset=success");
+      setTimeout(() => {
+        router.push("/login");
+      }, 1000);
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -68,9 +70,6 @@ export function ResetPasswordForm({
             Enter your new password below
           </p>
         </div>
-        {error && (
-          <div className="text-sm text-destructive text-center">{error}</div>
-        )}
         <Field>
           <FieldLabel htmlFor="password">New Password</FieldLabel>
           <Input
