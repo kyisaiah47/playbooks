@@ -923,7 +923,7 @@ export default function WorkspaceLayout({ children, demoMode = false }: Workspac
 
   return (
     <DemoProvider demoMode={demoMode}>
-      <div className="h-screen w-screen flex overflow-hidden bg-background">
+      <div className={demoMode ? "h-full w-full flex overflow-hidden bg-background" : "h-screen w-screen flex overflow-hidden bg-background"}>
         {/* IconBar - 36px wide */}
         <IconBar activeView={activeView} onViewClick={handleViewClick} />
 
