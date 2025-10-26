@@ -11,6 +11,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { supabase } from "@/lib/supabase"
 
 export function SignupForm({
   className,
@@ -29,17 +30,40 @@ export function SignupForm({
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, name }),
+      // Use Supabase Auth to sign up
+      const { data: authData, error: signUpError } = await supabase.auth.signUp({
+        email: email.toLowerCase(),
+        password,
+        options: {
+          data: {
+            name: name,
+          }
+        }
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Signup failed");
+      if (signUpError) {
+        setError(signUpError.message);
         return;
+      }
+
+      if (!authData.user) {
+        setError("Failed to create account");
+        return;
+      }
+
+      // Create user profile
+      const { error: profileError } = await supabase
+        .from('user_profiles')
+        .insert({
+          id: authData.user.id,
+          user_id: authData.user.id,
+          email: email.toLowerCase(),
+          name: name,
+        });
+
+      if (profileError) {
+        console.error('Error creating profile:', profileError);
+        // Continue anyway - profile can be created later
       }
 
       // Migrate localStorage data to database
