@@ -10,7 +10,7 @@ import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
 import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
 import { BrowseAndFeatured } from "@/components/landing/BrowseAndFeatured";
 import WorkspaceLayout from "@/app/app/[workspaceId]/layout";
-import NotesPage from "@/app/app/[workspaceId]/notes/page";
+import OverviewPage from "@/app/app/[workspaceId]/page";
 
 export default function LandingPage() {
 	const jsonLd = {
@@ -86,7 +86,7 @@ export default function LandingPage() {
 						{/* App Content */}
 						<div className="h-[600px] overflow-hidden">
 							<WorkspaceLayout demoMode={true}>
-								<NotesPage />
+								<OverviewPage />
 							</WorkspaceLayout>
 						</div>
 					</div>

@@ -3,6 +3,7 @@
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { DemoProvider } from '@/contexts/demo-context';
 import { IconBar } from '@/components/app/layout/IconBar';
 import { Sidebar } from '@/components/app/layout/Sidebar';
 import { TabBar } from '@/components/app/layout/TabBar';
@@ -796,7 +797,7 @@ export default function WorkspaceLayout({ children, demoMode = false }: Workspac
   }
 
   return (
-    <>
+    <DemoProvider demoMode={demoMode}>
       <div className="h-screen w-screen flex overflow-hidden bg-background">
         {/* IconBar - 36px wide */}
         <IconBar activeView={activeView} onViewClick={handleViewClick} />
@@ -911,6 +912,6 @@ export default function WorkspaceLayout({ children, demoMode = false }: Workspac
           </div>
         </div>
       </div>
-    </>
+    </DemoProvider>
   );
 }

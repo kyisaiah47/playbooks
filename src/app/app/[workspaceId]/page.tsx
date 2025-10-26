@@ -5,6 +5,7 @@ import { useParams, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { LayoutDashboard, ListTodo, Calendar, CheckCircle2, Circle, Loader2, Clock, AlertCircle } from 'lucide-react';
 import { format, isToday, isTomorrow, isPast, isFuture, parseISO, startOfDay } from 'date-fns';
+import { useDemo } from '@/contexts/demo-context';
 
 interface UserGuide {
   id: string;
@@ -39,6 +40,7 @@ export default function OverviewPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const workspaceId = params.workspaceId as string;
+  const { demoMode } = useDemo();
 
   const [allUserGuides, setAllUserGuides] = useState<UserGuide[]>([]);
   const [allTasks, setAllTasks] = useState<Task[]>([]);
@@ -62,6 +64,15 @@ export default function OverviewPage() {
     : [];
 
   useEffect(() => {
+    if (demoMode) {
+      // Use mock data for demo
+      setAllUserGuides([]);
+      setAllTasks([]);
+      setAllEvents([]);
+      setLoading(false);
+      return;
+    }
+
     async function fetchData() {
       try {
         setLoading(true);
@@ -93,7 +104,7 @@ export default function OverviewPage() {
     }
 
     fetchData();
-  }, [workspaceId]);
+  }, [workspaceId, demoMode]);
 
   return (
     <motion.div
