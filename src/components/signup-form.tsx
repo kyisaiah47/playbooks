@@ -149,21 +149,23 @@ export function SignupForm({
   return (
     <form className={cn("flex flex-col gap-6", className)} onSubmit={handleSubmit} {...props}>
       <FieldGroup>
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Create an account</h1>
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="text-2xl font-bold tracking-tight">Start your journey</h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Enter your information below to create your account
+            Create your account to begin planning
           </p>
         </div>
         <Field>
-          <FieldLabel htmlFor="name">Name</FieldLabel>
+          <FieldLabel htmlFor="name">Full name</FieldLabel>
           <Input
             id="name"
             type="text"
-            placeholder="John Doe"
+            placeholder="Alex Morgan"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
+            autoComplete="name"
+            className="h-11"
           />
         </Field>
         <Field>
@@ -171,10 +173,12 @@ export function SignupForm({
           <Input
             id="email"
             type="email"
-            placeholder="m@example.com"
+            placeholder="your@email.com"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            className="h-11"
           />
         </Field>
         <Field>
@@ -182,19 +186,25 @@ export function SignupForm({
           <Input
             id="password"
             type="password"
+            placeholder="Create a strong password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
+            className="h-11"
           />
+          <p className="text-xs text-muted-foreground mt-1">
+            Must be at least 6 characters
+          </p>
         </Field>
         <Field>
-          <Button type="submit" disabled={loading}>
-            {loading ? "Creating account..." : "Sign up"}
+          <Button type="submit" disabled={loading} className="h-11 font-medium">
+            {loading ? "Creating account..." : "Create account"}
           </Button>
-          <FieldDescription className="text-center">
+          <FieldDescription className="text-center text-sm">
             Already have an account?{" "}
-            <a href="/login" className="underline underline-offset-4">
-              Login
+            <a href="/login" className="font-medium underline underline-offset-4 hover:text-foreground transition-colors">
+              Sign in
             </a>
           </FieldDescription>
         </Field>

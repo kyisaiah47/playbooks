@@ -64,42 +64,46 @@ export function ResetPasswordForm({
   return (
     <form className={cn("flex flex-col gap-6", className)} onSubmit={handleSubmit} {...props}>
       <FieldGroup>
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Set new password</h1>
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="text-2xl font-bold tracking-tight">Create new password</h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Enter your new password below
+            Choose a strong password for your account
           </p>
         </div>
         <Field>
-          <FieldLabel htmlFor="password">New Password</FieldLabel>
+          <FieldLabel htmlFor="password">New password</FieldLabel>
           <Input
             id="password"
             type="password"
-            placeholder="Enter new password"
+            placeholder="Create a strong password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
+            className="h-11"
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
+          <FieldLabel htmlFor="confirm-password">Confirm password</FieldLabel>
           <Input
             id="confirm-password"
             type="password"
-            placeholder="Confirm new password"
+            placeholder="Re-enter your password"
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="new-password"
+            className="h-11"
           />
         </Field>
         <Field>
-          <Button type="submit" disabled={loading}>
-            {loading ? "Resetting..." : "Reset password"}
+          <Button type="submit" disabled={loading} className="h-11 font-medium">
+            {loading ? "Updating password..." : "Update password"}
           </Button>
-          <FieldDescription className="text-center">
+          <FieldDescription className="text-center text-sm">
             Remember your password?{" "}
-            <Link href="/login" className="underline underline-offset-4">
-              Back to login
+            <Link href="/login" className="font-medium underline underline-offset-4 hover:text-foreground transition-colors">
+              Sign in
             </Link>
           </FieldDescription>
         </Field>

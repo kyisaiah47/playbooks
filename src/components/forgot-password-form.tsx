@@ -47,10 +47,10 @@ export function ForgotPasswordForm({
   return (
     <form className={cn("flex flex-col gap-6", className)} onSubmit={handleSubmit} {...props}>
       <FieldGroup>
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Reset your password</h1>
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="text-2xl font-bold tracking-tight">Reset password</h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Enter your email address and we&apos;ll send you a link to reset your password
+            Enter your email and we&apos;ll send you a reset link
           </p>
         </div>
         <Field>
@@ -58,20 +58,22 @@ export function ForgotPasswordForm({
           <Input
             id="email"
             type="email"
-            placeholder="m@example.com"
+            placeholder="your@email.com"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            className="h-11"
           />
         </Field>
         <Field>
-          <Button type="submit" disabled={loading}>
-            {loading ? "Sending..." : "Send reset link"}
+          <Button type="submit" disabled={loading} className="h-11 font-medium">
+            {loading ? "Sending link..." : "Send reset link"}
           </Button>
-          <FieldDescription className="text-center">
+          <FieldDescription className="text-center text-sm">
             Remember your password?{" "}
-            <Link href="/login" className="underline underline-offset-4">
-              Back to login
+            <Link href="/login" className="font-medium underline underline-offset-4 hover:text-foreground transition-colors">
+              Sign in
             </Link>
           </FieldDescription>
         </Field>
