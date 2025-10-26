@@ -61,7 +61,8 @@
       "mcp__supabase__list_projects",
       "Bash(./enhance-readings-test.sh)",
       "mcp__supabase__list_tables",
-      "mcp__supabase__get_logs"
+      "mcp__supabase__get_logs",
+      "Bash(./generate-readings.sh:*)"
     ],
     "deny": [],
     "ask": []

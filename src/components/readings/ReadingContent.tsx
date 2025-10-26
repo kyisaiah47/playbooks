@@ -31,12 +31,23 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
     <div className="max-w-none">
       {cleanedContent.map((paragraph, index) => {
 
+        // H1 headings (main title)
+        if (paragraph.startsWith('# ') && !paragraph.startsWith('## ')) {
+          const headingText = paragraph.replace('# ', '');
+          const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+          return (
+            <h1 key={index} id={id} className="text-2xl font-bold mt-4 mb-6 text-foreground">
+              {headingText}
+            </h1>
+          );
+        }
+
         // Main headings with IDs for navigation
         if (paragraph.startsWith('## ')) {
           const headingText = paragraph.replace('## ', '');
           const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return (
-            <h2 key={index} id={id} className="text-xl font-semibold mt-8 mb-4 text-foreground">
+            <h2 key={index} id={id} className="text-xl font-semibold mt-10 mb-4 text-foreground border-b border-border/40 pb-2">
               {headingText}
             </h2>
           );
@@ -192,12 +203,17 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
             return parts.length > 0 ? parts : text;
           };
 
-          // Pull quotes (text starting with >)
+          // Pull quotes (text starting with >) - styled as Notion callouts
           if (paragraph.startsWith('> ')) {
+            const quoteText = paragraph.replace('> ', '');
+            // Detect if it has an emoji at the start
+            const emojiMatch = quoteText.match(/^([\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}])\s*/u);
+            const hasEmoji = emojiMatch !== null;
+
             return (
-              <blockquote key={index} className="bg-muted/50 border-l-2 border-primary/30 pl-4 py-3 my-4">
-                <p className="text-sm italic text-foreground/80">
-                  {renderText(paragraph.replace('> ', ''))}
+              <blockquote key={index} className="bg-blue-50/50 dark:bg-blue-950/20 border-l-4 border-blue-500/40 pl-4 py-3 my-6 rounded-r">
+                <p className="text-sm text-foreground/90 leading-relaxed">
+                  {renderText(quoteText)}
                 </p>
               </blockquote>
             );
@@ -214,11 +230,11 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
 
               return (
                 <div key={index} className="my-8 overflow-x-auto">
-                  <table className="w-full border-collapse border border-border rounded-lg">
+                  <table className="w-full border-collapse border border-border/60 rounded-lg overflow-hidden shadow-sm">
                     <thead>
-                      <tr className="bg-muted/50">
+                      <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30">
                         {headers.map((header, headerIndex) => (
-                          <th key={headerIndex} className="border border-border px-4 py-3 text-left text-sm font-semibold">
+                          <th key={headerIndex} className="border-b-2 border-border px-4 py-3 text-left text-sm font-semibold text-foreground">
                             {header}
                           </th>
                         ))}
@@ -228,9 +244,9 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
                       {dataRows.map((row, rowIndex) => {
                         const cells = row.split('|').map(c => c.trim()).filter(c => c);
                         return (
-                          <tr key={rowIndex} className="hover:bg-muted/30">
+                          <tr key={rowIndex} className="hover:bg-muted/40 transition-colors border-b border-border/30 last:border-0">
                             {cells.map((cell, cellIndex) => (
-                              <td key={cellIndex} className="border border-border px-4 py-3 text-sm">
+                              <td key={cellIndex} className="px-4 py-3 text-sm">
                                 {renderText(cell)}
                               </td>
                             ))}

@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
     // Fetch readings for a specific guide
     let query = supabase
       .from('readings')
-      .select('id, title, author, excerpt, content, read_time, type, influences, updated_at')
+      .select('id, title, author, excerpt, content, read_time, type, sources, updated_at')
       .eq('guide', guide)
       .order('updated_at', { ascending: false });
 

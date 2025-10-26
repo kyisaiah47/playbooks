@@ -22,7 +22,7 @@ interface Reading {
   content: string;
   read_time: string;
   type: string;
-  influences: string[];
+  sources: string[];
   updated_at: string;
 }
 
@@ -247,16 +247,16 @@ export default function LibraryPage() {
                     <span>•</span>
                     <span>{selectedReading.read_time}</span>
                   </div>
-                  {selectedReading.influences && selectedReading.influences.length > 0 && (
+                  {selectedReading.sources && selectedReading.sources.length > 0 && (
                     <div className="flex flex-wrap items-center gap-2 mb-8">
                       <span className="text-xs text-muted-foreground">Curated from:</span>
-                      {selectedReading.influences.map((influence, idx) => (
+                      {selectedReading.sources.map((source, idx) => (
                         <Badge
                           key={idx}
                           variant="secondary"
                           className="text-xs px-2 py-0.5"
                         >
-                          {influence}
+                          {source}
                         </Badge>
                       ))}
                     </div>
@@ -323,19 +323,19 @@ export default function LibraryPage() {
                             <p className="text-xs text-muted-foreground mb-2">
                               {reading.author}
                             </p>
-                            {reading.influences && reading.influences.length > 0 && (
+                            {reading.sources && reading.sources.length > 0 && (
                               <div className="flex flex-wrap gap-1 mb-2">
-                                {reading.influences.slice(0, 3).map((influence, idx) => (
+                                {reading.sources.slice(0, 3).map((source, idx) => (
                                   <Badge
                                     key={idx}
                                     variant="outline"
                                     className="text-[10px] px-1.5 py-0.5"
                                   >
-                                    {influence}
+                                    {source}
                                   </Badge>
                                 ))}
-                                {reading.influences.length > 3 && (
-                                  <span className="text-[10px] text-muted-foreground">+{reading.influences.length - 3} more</span>
+                                {reading.sources.length > 3 && (
+                                  <span className="text-[10px] text-muted-foreground">+{reading.sources.length - 3} more</span>
                                 )}
                               </div>
                             )}
