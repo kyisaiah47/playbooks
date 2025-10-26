@@ -58,6 +58,7 @@ import {
   BookOpen,
   Settings
 } from 'lucide-react';
+import { Toaster } from '@/components/ui/sonner';
 
 interface WorkspaceLayoutProps {
   children?: React.ReactNode;
@@ -1037,6 +1038,7 @@ export default function WorkspaceLayout({ children, demoMode = false }: Workspac
           </div>
         </div>
       </div>
+      <Toaster position={demoMode ? "top-center" : "bottom-right"} />
     </DemoProvider>
   );
 }

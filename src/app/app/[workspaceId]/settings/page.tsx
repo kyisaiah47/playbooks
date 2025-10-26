@@ -5,10 +5,13 @@ import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useDemo } from '@/contexts/demo-context';
+import { toast } from 'sonner';
 
 type SettingsSection = 'profile' | 'privacy' | 'data' | 'notifications' | 'appearance' | 'workspace';
 
 export default function SettingsPage() {
+  const { demoMode } = useDemo();
   const searchParams = useSearchParams();
   const [activeSection, setActiveSection] = useState<SettingsSection>('profile');
   const [name, setName] = useState('');
@@ -198,7 +201,19 @@ export default function SettingsPage() {
                       />
                     </div>
                     <div className="pt-2">
-                      <Button size="sm" className="h-8 px-4 text-xs">Save Changes</Button>
+                      <Button
+                        size="sm"
+                        className="h-8 px-4 text-xs"
+                        onClick={() => {
+                          if (demoMode) {
+                            toast.info('Not available in demo mode');
+                            return;
+                          }
+                          // Save logic here
+                        }}
+                      >
+                        Save Changes
+                      </Button>
                     </div>
                   </>
                 )}
@@ -379,7 +394,19 @@ export default function SettingsPage() {
                   </p>
                 </div>
                 <div className="pt-2">
-                  <Button size="sm" className="h-8 px-4 text-xs">Save Changes</Button>
+                  <Button
+                    size="sm"
+                    className="h-8 px-4 text-xs"
+                    onClick={() => {
+                      if (demoMode) {
+                        toast.info('Not available in demo mode');
+                        return;
+                      }
+                      // Save logic here
+                    }}
+                  >
+                    Save Changes
+                  </Button>
                 </div>
 
                 <div className="pt-6 border-t border-border/40">
