@@ -19,7 +19,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src="/brand/templata-logo.svg" alt="Templata" className="h-8 w-8 brightness-0 invert" />
+            <img src="/brand/templata-logo.svg" alt="Templata" className="h-8 w-8 dark:invert" />
             <span className="font-bold text-xl tracking-tight">Templata</span>
           </Link>
         </motion.div>
