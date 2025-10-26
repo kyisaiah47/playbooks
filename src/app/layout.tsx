@@ -16,10 +16,10 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Templata | Wikipedia × Notion for Life Planning',
-  description: 'Expert-curated guides for life\'s biggest decisions. Get the framework — not a blank page.  guides with guided questions and curated reading.',
-  keywords: 'life planning guides, decision framework, guided questions, curated reading, career change, relationships, health, personal growth, expert guidance',
-  authors: [{ name: 'Templata Team' }],
+  title: 'Templata | Wikipedia × Notion',
+  description: 'Comprehensive guides meet flexible workspaces. Navigate major life decisions with expert-curated guides, guided questions, and split-screen note-taking.',
+  keywords: 'life planning, decision making, guided questions, note taking, career change, personal development, life guides, workspace, planning tools',
+  authors: [{ name: 'Templata' }],
   icons: {
     icon: "/brand/favicon-white.svg",
   },
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     maximumScale: 5,
   },
   openGraph: {
-    title: 'Templata | Wikipedia × Notion for Life Planning',
-    description: 'Expert-curated guides for life\'s biggest decisions. Get the framework — not a blank page.',
+    title: 'Templata | Wikipedia × Notion',
+    description: 'Comprehensive guides meet flexible workspaces. Navigate major life decisions with expert-curated guides and split-screen note-taking.',
     url: 'https://templata.org',
     siteName: 'Templata',
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Templata - Organize Life\'s Biggest Moments',
+        alt: 'Templata - Wikipedia × Notion',
       },
     ],
     locale: 'en_US',
@@ -47,10 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Templata | Wikipedia × Notion for Life Planning',
-    description: 'Expert-curated guides for life\'s biggest decisions. Get the framework — not a blank page.',
+    title: 'Templata | Wikipedia × Notion',
+    description: 'Comprehensive guides meet flexible workspaces. Navigate major life decisions with expert-curated guides.',
     images: ['https://templata.org/og-image.png'],
-    creator: '@templata',
   },
   robots: {
     index: true,
@@ -62,9 +61,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
   alternates: {
     canonical: 'https://templata.org',
@@ -85,26 +81,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "WebApplication",
               "name": "Templata",
-              "description": "Expert-curated guides for life's biggest decisions",
+              "description": "Wikipedia × Notion - Comprehensive guides meet flexible workspaces",
               "url": "https://templata.org",
-              "logo": "https://templata.org/logo.png",
-              "sameAs": [
-                "https://twitter.com/templata",
-                "https://linkedin.com/company/templata"
-              ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "email": "templata.app@gmail.com"
-              },
+              "applicationCategory": "ProductivityApplication",
+              "operatingSystem": "Web",
               "offers": {
                 "@type": "Offer",
-                "name": "Templata - Free Forever",
                 "price": "0",
-                "priceCurrency": "USD",
-                "description": "Full access to  guides with guided questions and curated reading. Completely free, no paywalls."
+                "priceCurrency": "USD"
               }
             })
           }}

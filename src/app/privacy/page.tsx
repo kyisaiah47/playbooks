@@ -3,7 +3,28 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Templata',
-  description: 'Privacy policy for Templata - How we collect, use, and protect your data.',
+  description: 'Privacy policy for Templata. Learn how we collect, use, and protect your data. Your information stays private.',
+  keywords: 'privacy policy, data protection, privacy, user data, security',
+  openGraph: {
+    title: 'Privacy Policy | Templata',
+    description: 'Learn how we collect, use, and protect your data.',
+    url: 'https://templata.org/privacy',
+    siteName: 'Templata',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Privacy Policy | Templata',
+    description: 'Learn how we collect, use, and protect your data.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://templata.org/privacy',
+  },
 };
 
 export default function PrivacyPage() {

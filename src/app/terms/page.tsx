@@ -3,14 +3,20 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Templata',
-  description: 'Terms of service for Templata - Rules and guidelines for using our life planning platform. User agreements, content policies, and service terms.',
+  description: 'Terms of service for Templata. Rules and guidelines for using our platform. User agreements and service terms.',
+  keywords: 'terms of service, user agreement, terms and conditions, legal, service terms',
   openGraph: {
     title: 'Terms of Service | Templata',
-    description: 'Terms of service for Templata - Rules and guidelines for using our life planning platform.',
+    description: 'Terms of service for Templata. Rules and guidelines for using our platform.',
     url: 'https://templata.org/terms',
     siteName: 'Templata',
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Terms of Service | Templata',
+    description: 'Terms of service for Templata.',
   },
   robots: {
     index: true,

@@ -10,6 +10,7 @@ import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
 import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
 import { BrowseAndFeatured } from "@/components/landing/BrowseAndFeatured";
 import WorkspaceLayout from "@/app/app/[workspaceId]/layout";
+import Head from "next/head";
 
 export default function LandingPage() {
 	const jsonLd = {

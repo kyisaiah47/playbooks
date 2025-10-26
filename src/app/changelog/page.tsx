@@ -3,18 +3,37 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Changelog | Templata',
-  description: 'Latest updates, features, and improvements to Templata - Track our product evolution and new releases.',
+  description: 'Latest updates, features, and improvements to Templata. Track product evolution and new releases.',
+  keywords: 'product updates, changelog, new features, improvements, release notes',
   openGraph: {
     title: 'Changelog | Templata',
     description: 'Latest updates, features, and improvements to Templata.',
     url: 'https://templata.org/changelog',
     siteName: 'Templata',
+    images: [
+      {
+        url: 'https://templata.org/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Changelog',
+      },
+    ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Changelog | Templata',
+    description: 'Latest updates, features, and improvements to Templata.',
+    images: ['https://templata.org/og-image.png'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   alternates: {
     canonical: 'https://templata.org/changelog',
