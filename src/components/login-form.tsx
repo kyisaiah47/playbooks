@@ -12,6 +12,7 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { supabase } from "@/lib/supabase"
 
 export function LoginForm({
   className,
@@ -29,16 +30,14 @@ export function LoginForm({
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      // Use Supabase Auth to sign in
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email: email.toLowerCase(),
+        password,
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Login failed");
+      if (signInError) {
+        setError(signInError.message);
         return;
       }
 
