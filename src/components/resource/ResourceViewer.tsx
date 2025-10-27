@@ -15,14 +15,6 @@ interface ResourceViewerProps {
   onClose: () => void;
 }
 
-const getDifficultyColor = (difficulty: string) => {
-  switch (difficulty) {
-    case 'beginner': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
-    case 'intermediate': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300';
-    case 'expert': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300';
-    default: return 'bg-muted text-muted-foreground';
-  }
-};
 
 export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
   const [selectedText, setSelectedText] = useState('');
@@ -159,9 +151,6 @@ export function ResourceViewer({ resource, onClose }: ResourceViewerProps) {
             </div>
             <Badge variant="outline" className="text-xs bg-background/50 backdrop-blur">
               {resource.type}
-            </Badge>
-            <Badge className={`text-xs ${getDifficultyColor(resource.difficulty)} backdrop-blur`}>
-              {resource.difficulty}
             </Badge>
             <div className="flex items-center gap-1 text-xs text-muted-foreground ml-auto bg-background/30 backdrop-blur px-2 py-1 rounded-full">
               <Clock className="w-3 h-3" />

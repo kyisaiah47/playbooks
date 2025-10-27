@@ -148,14 +148,6 @@ export function TemplataContentSidebar({
     }
   }
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'beginner': return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
-      case 'intermediate': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'
-      case 'expert': return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
-      default: return 'bg-muted text-muted-foreground'
-    }
-  }
 
 
   return (
@@ -435,9 +427,6 @@ export function TemplataContentSidebar({
                     <div className="flex w-full items-center gap-2">
                       <Badge variant="outline" className="text-xs">
                         {resource.type}
-                      </Badge>
-                      <Badge className={`text-xs ${getDifficultyColor(resource.difficulty)}`}>
-                        {resource.difficulty}
                       </Badge>
                       <span className="ml-auto text-xs text-muted-foreground">{resource.readTime}</span>
                     </div>

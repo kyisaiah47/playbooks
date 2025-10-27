@@ -25,10 +25,8 @@ export async function getReadingById(id: string) {
     publishedAt: data.published_at,
     updatedAt: data.updated_at,
     readTime: data.read_time,
-    tags: data.tags,
     slug: data.slug,
     type: data.type,
-    difficulty: data.difficulty,
     seo: {
       metaTitle: data.meta_title,
       metaDescription: data.meta_description
@@ -56,10 +54,8 @@ export async function getReadingBySlug(slug: string) {
     publishedAt: data.published_at,
     updatedAt: data.updated_at,
     readTime: data.read_time,
-    tags: data.tags,
     slug: data.slug,
     type: data.type,
-    difficulty: data.difficulty,
     seo: {
       metaTitle: data.meta_title,
       metaDescription: data.meta_description
@@ -139,10 +135,8 @@ export async function getReadings(page = 1, pageSize = 50) {
     readTime: reading.read_time,
     category: reading.category,
     featured: reading.featured,
-    tags: reading.tags,
     slug: reading.slug,
     type: reading.type,
-    difficulty: reading.difficulty,
     seo: {
       metaTitle: reading.meta_title,
       metaDescription: reading.meta_description,

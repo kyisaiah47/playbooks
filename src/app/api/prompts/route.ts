@@ -37,7 +37,7 @@ export async function GET(request: Request) {
     const formattedQuestions = (questions || []).map(q => ({
       id: q.id,
       question: q.question,
-      categoryName: q.question_group_category || 'Uncategorized',
+      categoryName: q.category || 'Uncategorized',
       category: q.category
     }));
 

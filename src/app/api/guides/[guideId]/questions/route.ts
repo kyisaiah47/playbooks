@@ -8,10 +8,10 @@ const supabase = createClient(
 
 export async function GET(
   request: Request,
-  { params }: { params: { guideId: string } }
+  { params }: { params: Promise<{ guideId: string }> }
 ) {
   try {
-    const { guideId } = params;
+    const { guideId } = await params;
 
     const { data: questions, error } = await supabase
       .from('questions')

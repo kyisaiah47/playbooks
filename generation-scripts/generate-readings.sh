@@ -24,16 +24,56 @@ if [ -z "$GUIDE_ID" ]; then
     exit 1
 fi
 
-log_colored "$BLUE" "🚀 Generating 5-7 readings for guide: $GUIDE_ID"
+log_colored "$BLUE" "🚀 Generating readings for guide: $GUIDE_ID"
 
 # Create the prompt with heredoc
 read -r -d '' PROMPT <<'HEREDOC' || true
-Generate 1 TEST reading for the GUIDE_ID_PLACEHOLDER guide to verify quality.
+Generate a comprehensive set of readings for the GUIDE_ID_PLACEHOLDER guide.
 
 **CONTEXT: Wikipedia × Notion for Life Planning**
 Templata curates and synthesizes expert knowledge into actionable guides. Readings save users from reading 5 books - we apply expert knowledge to their specific situation.
 
-**YOUR TASK**: Create 1 test reading to verify quality before generating more
+**YOUR TASK**: Create readings that comprehensively cover this guide topic
+
+**STEP 0: GET GUIDE CONTEXT**
+
+First, query the database to understand the guide:
+SELECT id, title, description, category FROM guides WHERE id = 'GUIDE_ID_PLACEHOLDER'
+
+Use this context to inform your reading generation.
+
+**STEP 1: GENERATE TITLES**
+
+Create reading titles that comprehensively cover this guide.
+
+Your titles must:
+- Cover ALL major aspects of this guide comprehensively
+- Have ZERO overlap between readings
+- Each reading should serve a distinct purpose
+- Ensure someone who reads all of them has complete knowledge of the topic
+
+Quality over quantity - don't create filler content. Generate as many or as few as needed for complete coverage.
+
+Examples of good title sets:
+
+For "asking-for-raise":
+1. "The 5-Minute Conversation Worth $1.5 Million" (psychology/motivation)
+2. "Salary Research: Tools That Actually Work" (research tactics)
+3. "Building Your Case: The Metrics That Matter" (evidence building)
+4. "The Script: Exact Words That Get Results" (conversation templates)
+5. "Timing Strategy: When They Say Yes vs No" (timing/strategy)
+
+For "getting-divorced":
+1. "The First 30 Days: Legal Steps You Can't Skip"
+2. "How to Split Retirement Accounts Without Losing Half"
+3. "Co-Parenting Schedules That Actually Work"
+4. "Your Financial Reset: Budgeting After Divorce"
+5. "Telling Your Kids: What Child Psychologists Recommend"
+6. "The Emotional Timeline: What to Expect Month by Month"
+
+**STEP 2: GENERATE CONTENT FOR EACH TITLE**
+
+For each title, create 300-400 word content following these requirements:
 
 **CRITICAL REQUIREMENTS**:
 
@@ -90,6 +130,7 @@ Templata curates and synthesizes expert knowledge into actionable guides. Readin
 - ❌ Corporate jargon or stiff language
 - ❌ Vague examples without specifics
 - ❌ Going over 400 words
+- ❌ OVERLAPPING with existing readings - check the database first!
 
 **DO**:
 - ✅ Make up realistic case studies with specific names, companies, numbers
@@ -97,13 +138,17 @@ Templata curates and synthesizes expert knowledge into actionable guides. Readin
 - ✅ Be opinionated - call out what DOESN'T work
 - ✅ Give ONE clear action at the end
 - ✅ Make it memorable (people should quote this to friends)
+- ✅ Cover a completely different angle than existing readings
 
 **YOUR PROCESS**:
-1. Find 2-3 real credible sources
-2. Generate SHORT content (300-400 words) with quote blocks
-3. Insert to database using mcp__supabase__execute_sql:
+1. Analyze the guide topic to understand what comprehensive coverage looks like
+2. Generate 4-8 titles that cover all major aspects with zero overlap
+3. For each title:
+   - Find 2-3 real credible sources
+   - Generate SHORT content (300-400 words) with quote blocks
+   - Insert to database using mcp__supabase__execute_sql
 
-INSERT INTO readings (id, title, excerpt, content, author, read_time, type, difficulty, guide, slug, tags, published_at, sources)
+INSERT INTO readings (id, title, excerpt, content, author, read_time, type, guide, slug, published_at, sources)
 VALUES (
   'reading-{guide-id}-{unique-slug}',
   '{title}',
@@ -112,21 +157,19 @@ VALUES (
   'Templata',
   '{X} min read',
   '{type}',
-  '{difficulty}',
   'GUIDE_ID_PLACEHOLDER',
   '{slug}',
-  ARRAY['{tag1}', '{tag2}', '{tag3}'],
   '2025-01-15',
   ARRAY['{Source 1}', '{Source 2}', '{Source 3}']
 );
 
-When done, OUTPUT THE FULL CONTENT so I can verify:
-- Word count
-- Tone (casual vs corporate)
-- Quote blocks visible
-- Length appropriate
+When done, OUTPUT A SUMMARY:
+- Total number of readings created
+- List of all titles (to verify comprehensive coverage)
+- Confirmation that there is ZERO overlap between readings
+- Word count for each reading
 
-Respond with: TEST COMPLETE and show the full content
+Respond with: GENERATION COMPLETE and show the summary
 HEREDOC
 
 # Replace placeholder with actual guide ID
