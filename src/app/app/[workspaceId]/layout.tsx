@@ -374,74 +374,110 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
   }, [searchParams, activeView, selectedReadingId]);
 
-  // Sync calendar note selection from URL
+  // Sync calendar note selection between state and URL
   useEffect(() => {
     if (activeView === 'calendar') {
       const calendarNotesParam = searchParams.get('calendarNotes');
       if (calendarNotesParam) {
+        // URL has values - sync to state
         const noteIds = new Set(calendarNotesParam.split(','));
         setSelectedCalendarNoteIds(noteIds);
-      } else {
-        setSelectedCalendarNoteIds(new Set());
+      } else if (selectedCalendarNoteIds.size > 0 && !demoMode) {
+        // No URL param but state has values (from localStorage) - sync to URL
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('calendarNotes', Array.from(selectedCalendarNoteIds).join(','));
+        const queryString = params.toString();
+        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView]);
+  }, [searchParams, activeView, selectedCalendarNoteIds, router, demoMode]);
 
-  // Sync tasks note selection from URL
+  // Sync tasks note selection between state and URL
   useEffect(() => {
     if (activeView === 'tasks') {
       const tasksNotesParam = searchParams.get('tasksNotes');
       if (tasksNotesParam) {
+        // URL has values - sync to state
         const noteIds = new Set(tasksNotesParam.split(','));
         setSelectedTasksNoteIds(noteIds);
-      } else {
-        setSelectedTasksNoteIds(new Set());
+      } else if (selectedTasksNoteIds.size > 0 && !demoMode) {
+        // No URL param but state has values (from localStorage) - sync to URL
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('tasksNotes', Array.from(selectedTasksNoteIds).join(','));
+        const queryString = params.toString();
+        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView]);
+  }, [searchParams, activeView, selectedTasksNoteIds, router, demoMode]);
 
-  // Sync timeline note selection from URL
+  // Sync timeline note selection between state and URL
   useEffect(() => {
     if (activeView === 'timeline') {
       const timelineNotesParam = searchParams.get('timelineNotes');
       if (timelineNotesParam) {
+        // URL has values - sync to state
         const noteIds = new Set(timelineNotesParam.split(','));
         setSelectedTimelineNoteIds(noteIds);
-      } else {
-        setSelectedTimelineNoteIds(new Set());
+      } else if (selectedTimelineNoteIds.size > 0 && !demoMode) {
+        // No URL param but state has values (from localStorage) - sync to URL
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('timelineNotes', Array.from(selectedTimelineNoteIds).join(','));
+        const queryString = params.toString();
+        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView]);
+  }, [searchParams, activeView, selectedTimelineNoteIds, router, demoMode]);
 
-  // Sync graph guide selection from URL
+  // Sync graph guide selection between state and URL
   useEffect(() => {
     if (activeView === 'graph') {
       const graphGuidesParam = searchParams.get('graphGuides');
       if (graphGuidesParam) {
+        // URL has values - sync to state
         const guideIds = new Set(graphGuidesParam.split(','));
         setSelectedGraphGuideIds(guideIds);
+      } else if (selectedGraphGuideIds.size > 0 && !demoMode) {
+        // No URL param but state has values (from localStorage) - sync to URL
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('graphGuides', Array.from(selectedGraphGuideIds).join(','));
+        const queryString = params.toString();
+        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView]);
+  }, [searchParams, activeView, selectedGraphGuideIds, router, demoMode]);
 
-  // Sync overview guide selection from URL
+  // Sync overview and analytics guide selection between state and URL
   useEffect(() => {
     if (activeView === 'overview') {
       const overviewGuidesParam = searchParams.get('overviewGuides');
       if (overviewGuidesParam) {
+        // URL has values - sync to state
         const guideIds = new Set(overviewGuidesParam.split(','));
         setSelectedOverviewGuideIds(guideIds);
+      } else if (selectedOverviewGuideIds.size > 0 && !demoMode) {
+        // No URL param but state has values (from localStorage) - sync to URL
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('overviewGuides', Array.from(selectedOverviewGuideIds).join(','));
+        const queryString = params.toString();
+        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
 
     if (activeView === 'analytics') {
       const analyticsGuidesParam = searchParams.get('analyticsGuides');
       if (analyticsGuidesParam) {
+        // URL has values - sync to state
         const guideIds = new Set(analyticsGuidesParam.split(','));
         setSelectedAnalyticsGuideIds(guideIds);
+      } else if (selectedAnalyticsGuideIds.size > 0 && !demoMode) {
+        // No URL param but state has values (from localStorage) - sync to URL
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('analyticsGuides', Array.from(selectedAnalyticsGuideIds).join(','));
+        const queryString = params.toString();
+        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView]);
+  }, [searchParams, activeView, selectedOverviewGuideIds, selectedAnalyticsGuideIds, router, demoMode]);
 
   // Sync settings section from URL
   useEffect(() => {
