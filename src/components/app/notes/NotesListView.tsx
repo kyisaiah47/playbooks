@@ -6,6 +6,7 @@ import { FileText, Plus, Search, Loader2, Calendar, BookOpen, PenLine } from 'lu
 import { cn } from '@/lib/utils';
 import { formatDistanceToNow } from 'date-fns';
 import { useDemo } from '@/contexts/demo-context';
+import { toast } from 'sonner';
 import {
   Dialog,
   DialogContent,
@@ -79,6 +80,10 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
   };
 
   const handleCreateNote = () => {
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
     setShowCreateDialog(true);
   };
 
