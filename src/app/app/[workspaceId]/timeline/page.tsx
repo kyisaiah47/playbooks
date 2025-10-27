@@ -23,14 +23,14 @@ export default function TimelinePage() {
   // Get selected note IDs from URL
   const selectedNoteIds = searchParams.get('timelineNotes')?.split(',').filter(Boolean) || [];
 
-  // Filter events and tasks by selected notes - show none if nothing selected
-  const events = selectedNoteIds.length > 0
-    ? allItems.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
+  // Filter items by selected notes, then separate events (has date) from tasks (has due_date)
+  const filteredItems = selectedNoteIds.length > 0
+    ? allItems.filter(item => item.user_guide_id && selectedNoteIds.includes(item.user_guide_id))
     : [];
 
-  const tasks = selectedNoteIds.length > 0
-    ? allItems.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
-    : [];
+  // Separate events (items with date) from tasks (items with due_date but no date)
+  const events = filteredItems.filter(item => item.date);
+  const tasks = filteredItems.filter(item => item.due_date && !item.date);
 
   // Fetch data
   const fetchData = useCallback(async () => {
