@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -133,10 +134,9 @@ export function WeekView({
 
           {/* Time slots */}
           {hours.map((hour) => (
-            <>
+            <React.Fragment key={`hour-${hour}`}>
               {/* Time label */}
               <div
-                key={`time-${hour}`}
                 className="border-r border-b border-border/40 p-2 text-xs text-muted-foreground bg-muted/10"
               >
                 {format(new Date().setHours(hour, 0, 0, 0), 'h:mm a')}
@@ -208,7 +208,7 @@ export function WeekView({
                   </button>
                 );
               })}
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>
