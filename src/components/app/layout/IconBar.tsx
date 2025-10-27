@@ -60,8 +60,8 @@ export function IconBar({ activeView, onViewClick }: IconBarProps) {
         const Icon = view.icon;
         const isActive = activeView === view.type;
 
-        // Add dividers - archive at 11, community at 12, docs at 13
-        const showDivider = index === 3 || index === 7 || index === 10 || index === 12;
+        // Add dividers after: Library (3), Timeline (6), Graph (7), Archive (9), Docs (11)
+        const showDivider = index === 3 || index === 6 || index === 7 || index === 9 || index === 11;
         const divider = showDivider && !lastWasDivider ? (
           <div key={`divider-${index}`} className="w-8 h-px bg-border my-1" />
         ) : null;
