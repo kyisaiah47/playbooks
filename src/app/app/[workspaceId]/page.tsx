@@ -167,11 +167,11 @@ export default function OverviewPage() {
       >
         <div className="flex items-center gap-3">
           <motion.div
-            className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"
+            className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <CalendarDays className="w-4 h-4 text-primary" />
+            <CalendarDays className="w-4 h-4 text-amber-500" />
           </motion.div>
           <div>
             <h1 className="text-xl font-semibold">Daily</h1>
