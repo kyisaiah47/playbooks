@@ -7,6 +7,7 @@ import { format, startOfWeek, endOfWeek, eachDayOfInterval, isWithinInterval, pa
 import { motion } from 'framer-motion';
 import { useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
+import { Item } from '@/types/workspace';
 
 interface UserGuide {
   id: string;
@@ -275,7 +276,7 @@ export default function AnalyticsPage() {
                 </div>
                 <div className="text-2xl font-bold">{totalTasks}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  {items.filter(t => t.status !== 'completed').length} pending
+                  {items.filter(t => t.status !== 'done').length} pending
                 </div>
               </motion.div>
 
@@ -315,22 +316,22 @@ export default function AnalyticsPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="flex-1 h-8 bg-muted rounded overflow-hidden flex">
-                        {month.itemsCreated > 0 && (
+                        {month.tasksCreated > 0 && (
                           <div
                             className="bg-blue-500/60 flex items-center justify-center text-[10px] font-medium text-white"
-                            style={{ width: `${(month.itemsCreated / month.total) * 100}%` }}
-                            title={`${month.itemsCreated} tasks created`}
+                            style={{ width: `${(month.tasksCreated / month.total) * 100}%` }}
+                            title={`${month.tasksCreated} tasks created`}
                           >
-                            {month.itemsCreated > 2 && month.itemsCreated}
+                            {month.tasksCreated > 2 && month.tasksCreated}
                           </div>
                         )}
-                        {month.itemsCompleted > 0 && (
+                        {month.tasksCompleted > 0 && (
                           <div
                             className="bg-green-500/60 flex items-center justify-center text-[10px] font-medium text-white"
-                            style={{ width: `${(month.itemsCompleted / month.total) * 100}%` }}
-                            title={`${month.itemsCompleted} tasks completed`}
+                            style={{ width: `${(month.tasksCompleted / month.total) * 100}%` }}
+                            title={`${month.tasksCompleted} tasks completed`}
                           >
-                            {month.itemsCompleted > 2 && month.itemsCompleted}
+                            {month.tasksCompleted > 2 && month.tasksCompleted}
                           </div>
                         )}
                         {month.notesCreated > 0 && (
@@ -347,11 +348,11 @@ export default function AnalyticsPage() {
                     <div className="flex items-center gap-3 mt-1 text-[10px] text-muted-foreground">
                       <span className="flex items-center gap-1">
                         <div className="w-2 h-2 rounded-full bg-blue-500/60" />
-                        {month.itemsCreated} created
+                        {month.tasksCreated} created
                       </span>
                       <span className="flex items-center gap-1">
                         <div className="w-2 h-2 rounded-full bg-green-500/60" />
-                        {month.itemsCompleted} completed
+                        {month.tasksCompleted} completed
                       </span>
                       <span className="flex items-center gap-1">
                         <div className="w-2 h-2 rounded-full bg-purple-500/60" />
@@ -403,7 +404,7 @@ export default function AnalyticsPage() {
                   const displayName = guide.custom_name || guide.guides.name;
                   const guideTasks = items.filter(t => t.user_guide_id === guide.id && !t.start_time);
                   const guideEvents = items.filter(e => e.user_guide_id === guide.id && e.start_time);
-                  const guideCompletedTasks = guideTasks.filter(t => t.status === 'completed').length;
+                  const guideCompletedTasks = guideTasks.filter(t => t.status === 'done').length;
 
                   return (
                     <div key={guide.id} className="p-3 rounded-lg border border-border/40 bg-muted/20">

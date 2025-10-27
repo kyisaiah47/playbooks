@@ -80,9 +80,9 @@ export function MonthView({
   return (
     <div className="flex flex-col h-full">
       {/* Header with Navigation */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-4">
-          <h2 className="text-2xl font-bold">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+          <h2 className="text-lg sm:text-2xl font-bold">
             {format(currentDate, 'MMMM yyyy')}
           </h2>
           <div className="flex gap-1">

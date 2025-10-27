@@ -76,9 +76,9 @@ export function WeekView({
   return (
     <div className="flex flex-col h-full">
       {/* Header with Navigation */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-4">
-          <h2 className="text-2xl font-bold">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+          <h2 className="text-lg sm:text-2xl font-bold">
             {format(weekStart, 'MMM d')} - {format(weekEnd, 'MMM d, yyyy')}
           </h2>
           <div className="flex gap-1">
@@ -107,7 +107,7 @@ export function WeekView({
 
       {/* Week Grid */}
       <div className="flex-1 border border-border/40 rounded-lg overflow-auto bg-background">
-        <div className="grid grid-cols-8 min-w-[800px]">
+        <div className="grid grid-cols-8 min-w-[600px] md:min-w-[800px]">
           {/* Time column header */}
           <div className="sticky top-0 bg-muted/30 border-b border-r border-border/40 p-2 text-xs font-medium text-muted-foreground z-10">
             Time

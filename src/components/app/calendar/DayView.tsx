@@ -59,9 +59,9 @@ export function DayView({
   return (
     <div className="flex flex-col h-full">
       {/* Header with Navigation */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-4">
-          <h2 className="text-2xl font-bold">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+          <h2 className="text-base sm:text-xl md:text-2xl font-bold">
             {format(currentDate, 'EEEE, MMMM d, yyyy')}
           </h2>
           <div className="flex gap-1">
@@ -90,7 +90,7 @@ export function DayView({
 
       {/* Day Schedule */}
       <div className="flex-1 border border-border/40 rounded-lg overflow-auto bg-background">
-        <div className="min-w-[600px]">
+        <div className="min-w-[400px] md:min-w-[600px]">
           {/* All-day section */}
           <div className="border-b border-border/40 bg-muted/10">
             <div className="flex">
