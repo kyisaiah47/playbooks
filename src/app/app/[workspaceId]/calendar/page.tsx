@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { Calendar as CalendarIcon, Plus, Loader2, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MonthView } from '@/components/app/calendar/MonthView';
+import { WeekView } from '@/components/app/calendar/WeekView';
+import { DayView } from '@/components/app/calendar/DayView';
 import { EventList } from '@/components/app/calendar/EventList';
 import { EventCreateForm } from '@/components/app/calendar/EventCreateForm';
 import { CalendarEvent, Task } from '@/types/workspace';
@@ -13,6 +15,9 @@ import { startOfMonth, endOfMonth, format } from 'date-fns';
 import { useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
 import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
+
+type CalendarView = 'month' | 'week' | 'day';
 
 export default function CalendarPage() {
   const params = useParams();
@@ -21,6 +26,7 @@ export default function CalendarPage() {
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [view, setView] = useState<CalendarView>('month');
   const [allItems, setAllItems] = useState<CalendarEvent[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
@@ -127,10 +133,48 @@ export default function CalendarPage() {
               <p className="text-xs text-muted-foreground">View and manage your events</p>
             </div>
           </div>
-          <Button onClick={handleCreateEvent} size="sm">
-            <Plus className="w-4 h-4" />
-            Add Event
-          </Button>
+          <div className="flex items-center gap-2">
+            {/* View Toggle */}
+            <div className="flex border border-border/40 rounded-lg overflow-hidden">
+              <button
+                onClick={() => setView('month')}
+                className={cn(
+                  'px-3 py-1.5 text-xs font-medium transition-colors',
+                  view === 'month'
+                    ? 'bg-primary text-white'
+                    : 'bg-transparent text-foreground hover:bg-muted/50'
+                )}
+              >
+                Month
+              </button>
+              <button
+                onClick={() => setView('week')}
+                className={cn(
+                  'px-3 py-1.5 text-xs font-medium transition-colors border-x border-border/40',
+                  view === 'week'
+                    ? 'bg-primary text-white'
+                    : 'bg-transparent text-foreground hover:bg-muted/50'
+                )}
+              >
+                Week
+              </button>
+              <button
+                onClick={() => setView('day')}
+                className={cn(
+                  'px-3 py-1.5 text-xs font-medium transition-colors',
+                  view === 'day'
+                    ? 'bg-primary text-white'
+                    : 'bg-transparent text-foreground hover:bg-muted/50'
+                )}
+              >
+                Day
+              </button>
+            </div>
+            <Button onClick={handleCreateEvent} size="sm">
+              <Plus className="w-4 h-4" />
+              Add Event
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -162,14 +206,36 @@ export default function CalendarPage() {
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-hidden p-6">
           {/* Calendar View - Takes 2 columns on large screens */}
           <div className="lg:col-span-2 flex flex-col min-h-0">
-            <MonthView
-              currentDate={currentDate}
-              onDateChange={setCurrentDate}
-              events={events}
-              tasks={tasks}
-              onDateClick={handleDateClick}
-              onEventClick={handleEventClick}
-            />
+            {view === 'month' && (
+              <MonthView
+                currentDate={currentDate}
+                onDateChange={setCurrentDate}
+                events={events}
+                tasks={tasks}
+                onDateClick={handleDateClick}
+                onEventClick={handleEventClick}
+              />
+            )}
+            {view === 'week' && (
+              <WeekView
+                currentDate={currentDate}
+                onDateChange={setCurrentDate}
+                events={events}
+                tasks={tasks}
+                onDateClick={handleDateClick}
+                onEventClick={handleEventClick}
+              />
+            )}
+            {view === 'day' && (
+              <DayView
+                currentDate={currentDate}
+                onDateChange={setCurrentDate}
+                events={events}
+                tasks={tasks}
+                onDateClick={handleDateClick}
+                onEventClick={handleEventClick}
+              />
+            )}
           </div>
 
           {/* Upcoming Events Sidebar - Takes 1 column */}
