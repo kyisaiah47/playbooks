@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     const due_date = searchParams.get('due_date');
 
     let query = supabase
-      .from('tasks')
+      .from('items')
       .select('*')
       .eq('user_id', user.userId);
 
@@ -41,14 +41,14 @@ export async function GET(request: NextRequest) {
 
     query = query.order('created_at', { ascending: false });
 
-    const { data: tasks, error } = await query;
+    const { data: items, error } = await query;
 
     if (error) {
-      console.error('Error fetching tasks:', error);
-      return errorResponse('Failed to fetch tasks');
+      console.error('Error fetching items:', error);
+      return errorResponse('Failed to fetch items');
     }
 
-    return successResponse({ tasks: tasks || [] });
+    return successResponse({ items: items || [] });
   } catch (error) {
     console.error('Error in GET /api/tasks:', error);
     return errorResponse('Internal server error');
@@ -97,27 +97,26 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const { data: task, error } = await supabase
-      .from('tasks')
+    const { data: item, error } = await supabase
+      .from('items')
       .insert({
         user_id: user.userId,
         title: title.trim(),
         description: description || null,
         status: status || 'todo',
-        priority: priority || 'medium',
         due_date: due_date || null,
         user_guide_id: user_guide_id || null,
-        page_id: page_id || null,
+        all_day: false,
       })
       .select()
       .single();
 
     if (error) {
-      console.error('Error creating task:', error);
-      return errorResponse('Failed to create task');
+      console.error('Error creating item:', error);
+      return errorResponse('Failed to create item');
     }
 
-    return successResponse({ task }, 201);
+    return successResponse({ item }, 201);
   } catch (error) {
     console.error('Error in POST /api/tasks:', error);
     return errorResponse('Internal server error');

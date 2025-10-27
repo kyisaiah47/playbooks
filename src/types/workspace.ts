@@ -34,7 +34,8 @@ export interface UserGuide {
   updated_at: string;
 }
 
-export interface Task {
+// Unified Item type (replaces Task and CalendarEvent)
+export interface Item {
   id: string;
   user_id: string;
   user_guide_id: string | null;
@@ -42,53 +43,17 @@ export interface Task {
   description: string | null;
   status: 'todo' | 'in_progress' | 'done';
   due_date: string | null;
+  start_time: string | null;
+  end_time: string | null;
+  all_day: boolean;
   created_at: string;
   updated_at: string;
 }
 
-export interface CalendarEvent {
-  id: string;
-  user_id: string;
-  title: string;
-  description: string | null;
-  date: string;
-  start_time: string;
-  end_time?: string | null;
-  all_day?: boolean;
-  location?: string | null;
-  user_guide_id: string | null;
-  created_at: string;
-  updated_at: string;
-}
+// Legacy type aliases for backwards compatibility
+export type Task = Item;
+export type CalendarEvent = Item;
 
-export interface JournalEntry {
-  id: string;
-  user_id: string;
-  title: string | null;
-  content: string;
-  tags: string[] | null;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface DailyNote {
-  id: string;
-  user_id: string;
-  date: string;
-  content: string | null;
-  agenda: any;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface UserReadingProgress {
-  id: string;
-  user_id: string;
-  reading_id: string;
-  completed: boolean;
-  completed_at: string | null;
-  created_at: string;
-}
 
 export type TabType =
   | 'overview'

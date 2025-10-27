@@ -30,20 +30,10 @@ export async function PATCH(
       updateData.description = description;
     }
     if (status !== undefined) {
-      if (!['todo', 'in_progress', 'completed'].includes(status)) {
+      if (!['todo', 'in_progress', 'done'].includes(status)) {
         return errorResponse('Invalid status value', 400);
       }
       updateData.status = status;
-      // Auto-set completed_at when marking as completed
-      if (status === 'completed' && completed_at === undefined) {
-        updateData.completed_at = new Date().toISOString();
-      }
-    }
-    if (priority !== undefined) {
-      if (!['low', 'medium', 'high'].includes(priority)) {
-        return errorResponse('Invalid priority value', 400);
-      }
-      updateData.priority = priority;
     }
     if (due_date !== undefined) {
       updateData.due_date = due_date;
@@ -56,8 +46,8 @@ export async function PATCH(
       return errorResponse('No valid fields to update', 400);
     }
 
-    const { data: task, error } = await supabase
-      .from('tasks')
+    const { data: item, error } = await supabase
+      .from('items')
       .update(updateData)
       .eq('id', id)
       .eq('user_id', user.userId)
@@ -66,13 +56,13 @@ export async function PATCH(
 
     if (error) {
       if (error.code === 'PGRST116') {
-        return errorResponse('Task not found', 404);
+        return errorResponse('Item not found', 404);
       }
-      console.error('Error updating task:', error);
-      return errorResponse('Failed to update task');
+      console.error('Error updating item:', error);
+      return errorResponse('Failed to update item');
     }
 
-    return successResponse({ task });
+    return successResponse({ item });
   } catch (error) {
     console.error('Error in PATCH /api/tasks/[id]:', error);
     return errorResponse('Internal server error');
@@ -92,17 +82,17 @@ export async function DELETE(
     const { id } = await params;
 
     const { error } = await supabase
-      .from('tasks')
+      .from('items')
       .delete()
       .eq('id', id)
       .eq('user_id', user.userId);
 
     if (error) {
-      console.error('Error deleting task:', error);
-      return errorResponse('Failed to delete task');
+      console.error('Error deleting item:', error);
+      return errorResponse('Failed to delete item');
     }
 
-    return successResponse({ message: 'Task deleted successfully' });
+    return successResponse({ message: 'Item deleted successfully' });
   } catch (error) {
     console.error('Error in DELETE /api/tasks/[id]:', error);
     return errorResponse('Internal server error');
