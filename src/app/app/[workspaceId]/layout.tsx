@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { DemoProvider, useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID, DEMO_USER_ID } from '@/lib/demo-constants';
@@ -136,6 +136,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
   const [docsSection, setDocsSection] = useState<'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support'>('getting-started');
   const [newNoteDialogOpen, setNewNoteDialogOpen] = useState(false);
+
+  // Track if we've done the initial localStorage → URL sync to prevent infinite loops
+  const hasInitialSyncedRef = useRef(false);
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -374,110 +377,105 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
   }, [searchParams, activeView, selectedReadingId]);
 
-  // Sync calendar note selection between state and URL
+  // Initial sync: Push localStorage values to URL on first mount (one-time only)
+  useEffect(() => {
+    if (hasInitialSyncedRef.current || demoMode) return;
+
+    const params = new URLSearchParams(searchParams.toString());
+    let hasChanges = false;
+
+    // Sync each selection type if localStorage has values but URL doesn't
+    if (!searchParams.get('calendarNotes') && selectedCalendarNoteIds.size > 0) {
+      params.set('calendarNotes', Array.from(selectedCalendarNoteIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('tasksNotes') && selectedTasksNoteIds.size > 0) {
+      params.set('tasksNotes', Array.from(selectedTasksNoteIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('timelineNotes') && selectedTimelineNoteIds.size > 0) {
+      params.set('timelineNotes', Array.from(selectedTimelineNoteIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('graphGuides') && selectedGraphGuideIds.size > 0) {
+      params.set('graphGuides', Array.from(selectedGraphGuideIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('overviewGuides') && selectedOverviewGuideIds.size > 0) {
+      params.set('overviewGuides', Array.from(selectedOverviewGuideIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('analyticsGuides') && selectedAnalyticsGuideIds.size > 0) {
+      params.set('analyticsGuides', Array.from(selectedAnalyticsGuideIds).join(','));
+      hasChanges = true;
+    }
+
+    if (hasChanges) {
+      const queryString = params.toString();
+      router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+    }
+
+    hasInitialSyncedRef.current = true;
+  }, []); // Empty deps - only run once on mount
+
+  // Sync FROM URL to state (only when URL has params)
   useEffect(() => {
     if (activeView === 'calendar') {
       const calendarNotesParam = searchParams.get('calendarNotes');
       if (calendarNotesParam) {
-        // URL has values - sync to state
         const noteIds = new Set(calendarNotesParam.split(','));
         setSelectedCalendarNoteIds(noteIds);
-      } else if (selectedCalendarNoteIds.size > 0 && !demoMode) {
-        // No URL param but state has values (from localStorage) - sync to URL
-        const params = new URLSearchParams(searchParams.toString());
-        params.set('calendarNotes', Array.from(selectedCalendarNoteIds).join(','));
-        const queryString = params.toString();
-        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView, selectedCalendarNoteIds, router, demoMode]);
+  }, [searchParams, activeView]);
 
-  // Sync tasks note selection between state and URL
   useEffect(() => {
     if (activeView === 'tasks') {
       const tasksNotesParam = searchParams.get('tasksNotes');
       if (tasksNotesParam) {
-        // URL has values - sync to state
         const noteIds = new Set(tasksNotesParam.split(','));
         setSelectedTasksNoteIds(noteIds);
-      } else if (selectedTasksNoteIds.size > 0 && !demoMode) {
-        // No URL param but state has values (from localStorage) - sync to URL
-        const params = new URLSearchParams(searchParams.toString());
-        params.set('tasksNotes', Array.from(selectedTasksNoteIds).join(','));
-        const queryString = params.toString();
-        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView, selectedTasksNoteIds, router, demoMode]);
+  }, [searchParams, activeView]);
 
-  // Sync timeline note selection between state and URL
   useEffect(() => {
     if (activeView === 'timeline') {
       const timelineNotesParam = searchParams.get('timelineNotes');
       if (timelineNotesParam) {
-        // URL has values - sync to state
         const noteIds = new Set(timelineNotesParam.split(','));
         setSelectedTimelineNoteIds(noteIds);
-      } else if (selectedTimelineNoteIds.size > 0 && !demoMode) {
-        // No URL param but state has values (from localStorage) - sync to URL
-        const params = new URLSearchParams(searchParams.toString());
-        params.set('timelineNotes', Array.from(selectedTimelineNoteIds).join(','));
-        const queryString = params.toString();
-        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView, selectedTimelineNoteIds, router, demoMode]);
+  }, [searchParams, activeView]);
 
-  // Sync graph guide selection between state and URL
   useEffect(() => {
     if (activeView === 'graph') {
       const graphGuidesParam = searchParams.get('graphGuides');
       if (graphGuidesParam) {
-        // URL has values - sync to state
         const guideIds = new Set(graphGuidesParam.split(','));
         setSelectedGraphGuideIds(guideIds);
-      } else if (selectedGraphGuideIds.size > 0 && !demoMode) {
-        // No URL param but state has values (from localStorage) - sync to URL
-        const params = new URLSearchParams(searchParams.toString());
-        params.set('graphGuides', Array.from(selectedGraphGuideIds).join(','));
-        const queryString = params.toString();
-        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView, selectedGraphGuideIds, router, demoMode]);
+  }, [searchParams, activeView]);
 
-  // Sync overview and analytics guide selection between state and URL
   useEffect(() => {
     if (activeView === 'overview') {
       const overviewGuidesParam = searchParams.get('overviewGuides');
       if (overviewGuidesParam) {
-        // URL has values - sync to state
         const guideIds = new Set(overviewGuidesParam.split(','));
         setSelectedOverviewGuideIds(guideIds);
-      } else if (selectedOverviewGuideIds.size > 0 && !demoMode) {
-        // No URL param but state has values (from localStorage) - sync to URL
-        const params = new URLSearchParams(searchParams.toString());
-        params.set('overviewGuides', Array.from(selectedOverviewGuideIds).join(','));
-        const queryString = params.toString();
-        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
 
     if (activeView === 'analytics') {
       const analyticsGuidesParam = searchParams.get('analyticsGuides');
       if (analyticsGuidesParam) {
-        // URL has values - sync to state
         const guideIds = new Set(analyticsGuidesParam.split(','));
         setSelectedAnalyticsGuideIds(guideIds);
-      } else if (selectedAnalyticsGuideIds.size > 0 && !demoMode) {
-        // No URL param but state has values (from localStorage) - sync to URL
-        const params = new URLSearchParams(searchParams.toString());
-        params.set('analyticsGuides', Array.from(selectedAnalyticsGuideIds).join(','));
-        const queryString = params.toString();
-        router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
       }
     }
-  }, [searchParams, activeView, selectedOverviewGuideIds, selectedAnalyticsGuideIds, router, demoMode]);
+  }, [searchParams, activeView]);
 
   // Sync settings section from URL
   useEffect(() => {
