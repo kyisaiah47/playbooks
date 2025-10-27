@@ -178,7 +178,8 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
         },
       });
     }
-  }, [questions, readings, setActions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questions, readings]);
 
   // Check authentication status
   useEffect(() => {
