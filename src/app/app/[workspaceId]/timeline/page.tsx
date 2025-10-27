@@ -39,17 +39,11 @@ export default function TimelinePage() {
       setLoading(true);
       setError(null);
 
-      // Fetch events
-      const eventsResponse = await fetch('/api/items');
-      if (!eventsResponse.ok) throw new Error('Failed to fetch events');
-      const itemsData = await eventsResponse.json();
-      setAllEvents(itemsData.events || []);
-
-      // Fetch tasks
-      const tasksResponse = await fetch('/api/items');
-      if (!tasksResponse.ok) throw new Error('Failed to fetch tasks');
-      const itemsData = await tasksResponse.json();
-      setAllTasks(itemsData.items || []);
+      // Fetch items
+      const itemsResponse = await fetch('/api/items');
+      if (!itemsResponse.ok) throw new Error('Failed to fetch items');
+      const itemsData = await itemsResponse.json();
+      setAllItems(itemsData.items || []);
     } catch (err) {
       console.error('Error fetching timeline data:', err);
       setError('Failed to load timeline data');

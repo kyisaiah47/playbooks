@@ -68,25 +68,22 @@ export default function AnalyticsPage() {
       try {
         setLoading(true);
 
-        const [guidesRes, tasksRes, eventsRes] = await Promise.all([
+        const [guidesRes, itemsRes] = await Promise.all([
           fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`),
-          fetch(`/api/items`),
           fetch(`/api/items`)
         ]);
 
-        if (!guidesRes.ok || !tasksRes.ok || !eventsRes.ok) {
+        if (!guidesRes.ok || !itemsRes.ok) {
           throw new Error('Failed to fetch data');
         }
 
-        const [guidesData, itemsData, itemsData] = await Promise.all([
+        const [guidesData, itemsData] = await Promise.all([
           guidesRes.json(),
-          tasksRes.json(),
-          eventsRes.json()
+          itemsRes.json()
         ]);
 
         setAllUserGuides(guidesData.userGuides || []);
-        setAllTasks(itemsData.items || []);
-        setAllEvents(itemsData.events || []);
+        setAllItems(itemsData.items || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -98,8 +95,8 @@ export default function AnalyticsPage() {
   }, [workspaceId]);
 
   // Calculate stats
-  const totalTasks = tasks.length;
-  const completedTasks = tasks.filter(t => t.status === 'completed').length;
+  const totalTasks = items.length;
+  const completedTasks = items.filter(t => t.status === 'done').length;
   const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
   const avgProgress = userGuides.length > 0
     ? Math.round(userGuides.reduce((acc, g) => acc + g.progress, 0) / userGuides.length)

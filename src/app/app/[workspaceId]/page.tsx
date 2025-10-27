@@ -107,9 +107,8 @@ export default function OverviewPage() {
         try {
           setLoading(true);
 
-          const [guidesRes, tasksRes, eventsRes] = await Promise.all([
+          const [guidesRes, itemsRes] = await Promise.all([
             fetch(`/api/user-guides?workspace_id=${DEMO_WORKSPACE_ID}&archived=false`),
-            fetch(`/api/items?workspace_id=${DEMO_WORKSPACE_ID}`),
             fetch(`/api/items?workspace_id=${DEMO_WORKSPACE_ID}`)
           ]);
 
@@ -118,14 +117,9 @@ export default function OverviewPage() {
             setAllUserGuides(guidesData.userGuides || []);
           }
 
-          if (tasksRes.ok) {
-            const itemsData = await tasksRes.json();
-            setAllTasks(itemsData.items || []);
-          }
-
-          if (eventsRes.ok) {
-            const itemsData = await eventsRes.json();
-            setAllEvents(itemsData.events || []);
+          if (itemsRes.ok) {
+            const itemsData = await itemsRes.json();
+            setAllItems(itemsData.items || []);
           }
         } catch (error) {
           console.error('Error fetching demo data:', error);
@@ -142,25 +136,22 @@ export default function OverviewPage() {
       try {
         setLoading(true);
 
-        const [guidesRes, tasksRes, eventsRes] = await Promise.all([
+        const [guidesRes, itemsRes] = await Promise.all([
           fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`),
-          fetch(`/api/items`),
           fetch(`/api/items`)
         ]);
 
-        if (!guidesRes.ok || !tasksRes.ok || !eventsRes.ok) {
+        if (!guidesRes.ok || !itemsRes.ok) {
           throw new Error('Failed to fetch data');
         }
 
-        const [guidesData, itemsData, itemsData] = await Promise.all([
+        const [guidesData, itemsData] = await Promise.all([
           guidesRes.json(),
-          tasksRes.json(),
-          eventsRes.json()
+          itemsRes.json()
         ]);
 
         setAllUserGuides(guidesData.userGuides || []);
-        setAllTasks(itemsData.items || []);
-        setAllEvents(itemsData.events || []);
+        setAllItems(itemsData.items || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

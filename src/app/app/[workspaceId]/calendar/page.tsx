@@ -43,32 +43,17 @@ export default function CalendarPage() {
       setLoading(true);
       setError(null);
 
-      // Get start and end dates for the current month view
-      const monthStart = startOfMonth(currentDate);
-      const monthEnd = endOfMonth(currentDate);
+      // Fetch all items (both events and tasks)
+      const itemsResponse = await fetch('/api/items');
 
-      // Fetch events
-      const eventsResponse = await fetch(
-        `/api/items?start_date=${format(monthStart, 'yyyy-MM-dd')}&end_date=${format(monthEnd, 'yyyy-MM-dd')}`
-      );
-
-      if (!eventsResponse.ok) {
-        const errorData = await eventsResponse.json();
-        console.error('Calendar API error:', errorData);
-        throw new Error(errorData.error || 'Failed to fetch events');
+      if (!itemsResponse.ok) {
+        const errorData = await itemsResponse.json();
+        console.error('Items API error:', errorData);
+        throw new Error(errorData.error || 'Failed to fetch items');
       }
 
-      const itemsData = await eventsResponse.json();
-      setAllEvents(itemsData.events || []);
-
-      // Fetch tasks with due dates
-      const tasksResponse = await fetch('/api/items');
-
-      if (!tasksResponse.ok) {
-        throw new Error('Failed to fetch tasks');
-      }
-
-      const itemsData = await tasksResponse.json();
+      const itemsData = await itemsResponse.json();
+      setAllItems(itemsData.items || []);
       setTasks(itemsData.items || []);
     } catch (err) {
       console.error('Error fetching calendar data:', err);
