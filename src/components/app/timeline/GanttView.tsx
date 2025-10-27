@@ -169,9 +169,9 @@ export function GanttView({ events, tasks }: GanttViewProps) {
           </div>
 
           {/* Items */}
-          <div className="relative">
+          <div className="relative" style={{ width: '100%' }}>
             {timelineData.items.map((item, index) => (
-              <div key={`${item.type}-${item.id}`} className="relative h-8 flex items-center">
+              <div key={`${item.type}-${item.id}`} className="relative h-8 flex items-center" style={{ width: '100%' }}>
                 <button
                   className="absolute flex items-center group z-20"
                   style={{
