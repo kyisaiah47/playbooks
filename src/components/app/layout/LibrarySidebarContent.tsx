@@ -16,12 +16,6 @@ interface Reading {
   reading_time: number;
 }
 
-interface ReadingProgress {
-  id: string;
-  guide_section_id: string;
-  completed_at: string;
-}
-
 interface LibrarySidebarContentProps {
   selectedReadingId: string | null;
   onReadingClick: (readingId: string) => void;
@@ -33,7 +27,6 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [readings, setReadings] = useState<Reading[]>([]);
-  const [progress, setProgress] = useState<ReadingProgress[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -46,11 +39,6 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
         const readingsResponse = await fetch(`/api/readings?workspace_id=${workspaceId}`);
         const readingsData = await readingsResponse.json();
         setReadings(readingsData.readings || []);
-
-        // Fetch progress
-        const progressResponse = await fetch('/api/reading-progress');
-        const progressData = await progressResponse.json();
-        setProgress(progressData.progress || []);
       } catch (error) {
         console.error('Error fetching library data:', error);
       } finally {
@@ -60,8 +48,6 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
 
     fetchData();
   }, [workspaceId]);
-
-  const progressMap = new Map(progress.map((p) => [p.guide_section_id, p]));
 
   const filteredReadings = readings.filter(reading =>
     reading.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -159,9 +145,6 @@ export function LibrarySidebarContent({ selectedReadingId, onReadingClick }: Lib
                     >
                       <BookOpen className="h-4 w-4 flex-shrink-0" />
                       <span className="flex-1 truncate text-sm font-medium">{reading.title}</span>
-                      {progressMap.has(reading.id) && (
-                        <div className="h-1.5 w-1.5 rounded-full bg-green-500 flex-shrink-0" />
-                      )}
                     </motion.button>
                   ))}
                 </div>

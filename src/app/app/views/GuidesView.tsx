@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -99,7 +99,17 @@ interface GuidesViewProps {
 }
 
 export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId, defaultGuideId }: GuidesViewProps) {
+  console.log('[GuidesView] Props:', { defaultGuideId, workspaceId, userGuideId });
   const [selectedGuide, setSelectedGuide] = useState(defaultGuideId || 'wedding-planning');
+  console.log('[GuidesView] Initial selectedGuide:', selectedGuide);
+
+  // Update selectedGuide when defaultGuideId changes
+  useEffect(() => {
+    if (defaultGuideId && defaultGuideId !== selectedGuide) {
+      console.log('[GuidesView] Updating selectedGuide from', selectedGuide, 'to', defaultGuideId);
+      setSelectedGuide(defaultGuideId);
+    }
+  }, [defaultGuideId, selectedGuide]);
   const [guides, setGuides] = useState<Guide[]>([]);
   const [displayedGuides, setDisplayedGuides] = useState<Guide[]>([]);
   const [guideInfo, setGuideInfo] = useState<{ id: string; name: string } | null>(null);
@@ -128,6 +138,20 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [mobileDrawerTab, setMobileDrawerTab] = useState<'questions' | 'readings'>('questions');
   const [isMobile, setIsMobile] = useState(false);
+
+  // Define handleReadingClick early so it can be used in setActions
+  const handleReadingClick = useCallback(async (readingId: string) => {
+    try {
+      setLoadingReading(true);
+      const res = await fetch(`/api/readings?id=${readingId}`);
+      const data = await res.json();
+      setSelectedReading(data.reading);
+    } catch (error) {
+      console.error('Error fetching reading:', error);
+    } finally {
+      setLoadingReading(false);
+    }
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -176,7 +200,8 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
         },
       });
     }
-  }, [questions, readings, setActions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questions, readings, handleReadingClick]);
 
   // Check authentication status
   useEffect(() => {
@@ -382,7 +407,13 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
   // Fetch questions and readings when guide changes
   useEffect(() => {
     async function fetchData() {
+      if (!selectedGuide) {
+        setLoading(false);
+        return;
+      }
+
       try {
+        console.log('[GuidesView] Fetching data for guide:', selectedGuide);
         setLoading(true);
 
         const guide = guides.find(g => g.id === selectedGuide);
@@ -390,8 +421,11 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           setGuideInfo({ id: guide.id, name: guide.name });
         }
 
-        const questionsRes = await fetch(`/api/questions?guideId=${selectedGuide}`);
+        const questionsUrl = `/api/guides/${selectedGuide}/questions`;
+        console.log('[GuidesView] Fetching questions from:', questionsUrl);
+        const questionsRes = await fetch(questionsUrl);
         const questionsData = await questionsRes.json();
+        console.log('[GuidesView] Questions response:', questionsData);
         const fetchedQuestions = questionsData.questions || [];
         setQuestions(fetchedQuestions);
 
@@ -407,8 +441,11 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
         const allCategories = Object.keys(groupedQuestions);
         setCollapsedCategories(new Set(allCategories));
 
-        const readingsRes = await fetch(`/api/readings?guide=${selectedGuide}&pageSize=50`);
+        const readingsUrl = `/api/guides/${selectedGuide}/readings`;
+        console.log('[GuidesView] Fetching readings from:', readingsUrl);
+        const readingsRes = await fetch(readingsUrl);
         const readingsData = await readingsRes.json();
+        console.log('[GuidesView] Readings response:', readingsData);
         setReadings(readingsData.readings || []);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -417,9 +454,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
       }
     }
 
-    if (guides.length > 0) {
-      fetchData();
-    }
+    fetchData();
   }, [selectedGuide, guides]);
 
   // Check which questions have been answered
@@ -488,20 +523,6 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
     setQuestionResponse('');
     setSearchQuery('');
     setOpen(false);
-  };
-
-  const handleReadingClick = async (readingId: string) => {
-    try {
-      setLoadingReading(true);
-      const res = await fetch(`/api/readings?id=${readingId}`);
-      const data = await res.json();
-
-      setSelectedReading(data.reading);
-    } catch (error) {
-      console.error('Error fetching reading:', error);
-    } finally {
-      setLoadingReading(false);
-    }
   };
 
   const handleCloseReading = () => {
@@ -1048,8 +1069,8 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                 <Input
                   type="text"
                   placeholder="Filter questions..."
-                  value={promptSearchQuery}
-                  onChange={(e) => setPromptSearchQuery(e.target.value)}
+                  value={questionSearchQuery}
+                  onChange={(e) => setQuestionSearchQuery(e.target.value)}
                   className="h-8 text-sm -mt-2"
                 />
                 <p className="text-xs text-muted-foreground -mt-2">

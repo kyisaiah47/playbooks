@@ -167,11 +167,11 @@ export default function OverviewPage() {
       >
         <div className="flex items-center gap-3">
           <motion.div
-            className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"
+            className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <CalendarDays className="w-4 h-4 text-primary" />
+            <CalendarDays className="w-4 h-4 text-amber-500" />
           </motion.div>
           <div>
             <h1 className="text-xl font-semibold">Daily</h1>
@@ -215,11 +215,6 @@ export default function OverviewPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.25 }}
             >
-              <div className="mb-4">
-                <h2 className="text-lg font-semibold mb-1">Today's Agenda</h2>
-                <p className="text-xs text-muted-foreground">Tasks due on the selected date</p>
-              </div>
-
               {/* Date Navigation */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">

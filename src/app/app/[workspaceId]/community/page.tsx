@@ -110,72 +110,18 @@ export default function CommunityPage() {
       </motion.div>
 
       {/* Content */}
-      <div className="flex-1 overflow-auto p-6">
+      <div className="flex-1 overflow-auto p-6 flex items-center justify-center">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
+          className="text-center"
         >
-          {/* Content based on active tab */}
-          {activeTab === 'discussions' && (
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold">Recent Discussions</h2>
-              <div className="space-y-2">
-                {discussions.map((discussion) => (
-                  <div
-                    key={discussion.id}
-                    className="border-b border-border py-3 hover:bg-muted/30 -mx-4 px-4 transition-colors cursor-pointer"
-                  >
-                    <div className="flex items-start gap-3">
-                      {/* Upvote column */}
-                      <div className="flex flex-col items-center gap-0.5 min-w-[40px] pt-1">
-                        <button className="p-0.5 hover:bg-muted rounded">
-                          <TrendingUp className="h-4 w-4 text-muted-foreground" />
-                        </button>
-                        <span className="text-xs font-medium text-muted-foreground">{discussion.upvotes}</span>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-semibold mb-1 hover:text-primary transition-colors">
-                          {discussion.title}
-                        </h3>
-                        <p className="text-xs text-muted-foreground mb-2 line-clamp-1">
-                          {discussion.preview}
-                        </p>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <User className="h-3 w-3" />
-                            {discussion.author}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <MessageSquare className="h-3 w-3" />
-                            {discussion.comments}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            {discussion.lastActivity}
-                          </span>
-                          <span className="text-primary font-medium">
-                            {discussion.guide}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {activeTab !== 'discussions' && (
-            <div className="border border-border rounded-lg p-8 text-center">
-              <div className="text-muted-foreground">
-                <p className="text-sm mb-2">Coming soon</p>
-                <p className="text-xs">This feature is currently under development</p>
-              </div>
-            </div>
-          )}
+          <Users className="w-16 h-16 mx-auto mb-4 text-muted-foreground/20" />
+          <h2 className="text-lg font-semibold mb-2">Coming Soon</h2>
+          <p className="text-sm text-muted-foreground max-w-md">
+            The Community feature is currently under development. Soon you'll be able to share experiences and learn from others.
+          </p>
         </motion.div>
       </div>
     </motion.div>

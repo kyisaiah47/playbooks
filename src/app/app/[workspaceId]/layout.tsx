@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { DemoProvider, useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID, DEMO_USER_ID } from '@/lib/demo-constants';
@@ -55,6 +55,9 @@ import {
   Settings
 } from 'lucide-react';
 import { Toaster } from '@/components/ui/sonner';
+import { toast } from 'sonner';
+import { getIconComponent } from '@/lib/icon-utils';
+import { NewNoteDialog } from '@/components/app/dialogs/NewNoteDialog';
 
 interface WorkspaceLayoutProps {
   children?: React.ReactNode;
@@ -99,15 +102,43 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedReadingId, setSelectedReadingId] = useState<string | null>(null);
-  const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(new Set());
-  const [selectedTasksNoteIds, setSelectedTasksNoteIds] = useState<Set<string>>(new Set());
-  const [selectedTimelineNoteIds, setSelectedTimelineNoteIds] = useState<Set<string>>(new Set());
-  const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(new Set());
-  const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(new Set());
-  const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(new Set());
+  const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedCalendarNoteIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedTasksNoteIds, setSelectedTasksNoteIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedTasksNoteIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedTimelineNoteIds, setSelectedTimelineNoteIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedTimelineNoteIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedGraphGuideIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedOverviewGuideIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedAnalyticsGuideIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
   const [settingsSection, setSettingsSection] = useState<'profile' | 'privacy' | 'data' | 'notifications' | 'appearance'>('profile');
   const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
   const [docsSection, setDocsSection] = useState<'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support'>('getting-started');
+  const [newNoteDialogOpen, setNewNoteDialogOpen] = useState(false);
+
+  // Track if we've done the initial localStorage → URL sync to prevent infinite loops
+  const hasInitialSyncedRef = useRef(false);
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -134,9 +165,20 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     if (tabsParam) {
       try {
         const parsedTabs = JSON.parse(decodeURIComponent(tabsParam));
-        // Don't set icons from URL - they'll be added when needed
-        setTabs(parsedTabs);
-        setActiveTabId(activeParam || parsedTabs[0]?.id || null);
+
+        // Restore icons for tabs using iconName
+        const tabsWithIcons = parsedTabs.map((tab: Tab) => {
+          if (tab.iconName) {
+            return {
+              ...tab,
+              icon: getIconComponent(tab.iconName)
+            };
+          }
+          return tab;
+        });
+
+        setTabs(tabsWithIcons);
+        setActiveTabId(activeParam || tabsWithIcons[0]?.id || null);
       } catch (error) {
         console.error('Error parsing tabs from URL:', error);
         // Default to overview tab
@@ -335,46 +377,78 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
   }, [searchParams, activeView, selectedReadingId]);
 
-  // Sync calendar note selection from URL
+  // Initial sync: Push localStorage values to URL on first mount (one-time only)
+  useEffect(() => {
+    if (hasInitialSyncedRef.current || demoMode) return;
+
+    const params = new URLSearchParams(searchParams.toString());
+    let hasChanges = false;
+
+    // Sync each selection type if localStorage has values but URL doesn't
+    if (!searchParams.get('calendarNotes') && selectedCalendarNoteIds.size > 0) {
+      params.set('calendarNotes', Array.from(selectedCalendarNoteIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('tasksNotes') && selectedTasksNoteIds.size > 0) {
+      params.set('tasksNotes', Array.from(selectedTasksNoteIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('timelineNotes') && selectedTimelineNoteIds.size > 0) {
+      params.set('timelineNotes', Array.from(selectedTimelineNoteIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('graphGuides') && selectedGraphGuideIds.size > 0) {
+      params.set('graphGuides', Array.from(selectedGraphGuideIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('overviewGuides') && selectedOverviewGuideIds.size > 0) {
+      params.set('overviewGuides', Array.from(selectedOverviewGuideIds).join(','));
+      hasChanges = true;
+    }
+    if (!searchParams.get('analyticsGuides') && selectedAnalyticsGuideIds.size > 0) {
+      params.set('analyticsGuides', Array.from(selectedAnalyticsGuideIds).join(','));
+      hasChanges = true;
+    }
+
+    if (hasChanges) {
+      const queryString = params.toString();
+      router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
+    }
+
+    hasInitialSyncedRef.current = true;
+  }, []); // Empty deps - only run once on mount
+
+  // Sync FROM URL to state (only when URL has params)
   useEffect(() => {
     if (activeView === 'calendar') {
       const calendarNotesParam = searchParams.get('calendarNotes');
       if (calendarNotesParam) {
         const noteIds = new Set(calendarNotesParam.split(','));
         setSelectedCalendarNoteIds(noteIds);
-      } else {
-        setSelectedCalendarNoteIds(new Set());
       }
     }
   }, [searchParams, activeView]);
 
-  // Sync tasks note selection from URL
   useEffect(() => {
     if (activeView === 'tasks') {
       const tasksNotesParam = searchParams.get('tasksNotes');
       if (tasksNotesParam) {
         const noteIds = new Set(tasksNotesParam.split(','));
         setSelectedTasksNoteIds(noteIds);
-      } else {
-        setSelectedTasksNoteIds(new Set());
       }
     }
   }, [searchParams, activeView]);
 
-  // Sync timeline note selection from URL
   useEffect(() => {
     if (activeView === 'timeline') {
       const timelineNotesParam = searchParams.get('timelineNotes');
       if (timelineNotesParam) {
         const noteIds = new Set(timelineNotesParam.split(','));
         setSelectedTimelineNoteIds(noteIds);
-      } else {
-        setSelectedTimelineNoteIds(new Set());
       }
     }
   }, [searchParams, activeView]);
 
-  // Sync graph guide selection from URL
   useEffect(() => {
     if (activeView === 'graph') {
       const graphGuidesParam = searchParams.get('graphGuides');
@@ -385,7 +459,6 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
   }, [searchParams, activeView]);
 
-  // Sync overview guide selection from URL
   useEffect(() => {
     if (activeView === 'overview') {
       const overviewGuidesParam = searchParams.get('overviewGuides');
@@ -611,16 +684,19 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   }, [pages, addTab]);
 
   // Handle note click from Notes Sidebar
-  const handleNoteClick = useCallback((guideId: string) => {
+  const handleNoteClick = useCallback((guideId: string, guideName?: string, guideIcon?: string | null) => {
     if (demoMode) {
       // In demo mode, just set the selected guide ID in context
       setDemoGuideId(guideId);
     } else {
+      const IconComponent = getIconComponent(guideIcon);
+
       const newTab: Tab = {
         id: `note-${guideId}`,
         type: 'notes',
-        label: 'Note', // Will be updated when guide data loads
-        icon: FileText,
+        label: guideName || 'Note',
+        icon: IconComponent,
+        iconName: guideIcon || undefined,
         guideId: guideId,
       };
 
@@ -630,8 +706,59 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
   // Handle new note button click from Notes Sidebar
   const handleNewNote = useCallback(() => {
-    handleViewClick('discover');
-  }, [handleViewClick]);
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
+    setNewNoteDialogOpen(true);
+  }, [demoMode]);
+
+  // Handle creating a new note from the dialog
+  const handleCreateNote = useCallback(async (guideId: string | null) => {
+    try {
+      const response = await fetch('/api/user-guides', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          guide_id: guideId,
+          workspace_id: workspaceId,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create note');
+      }
+
+      const data = await response.json();
+      const userGuide = data.userGuide;
+
+      // Show success toast
+      toast.success(guideId ? 'Note created from guide' : 'Blank note created');
+
+      // Open the new note in a tab
+      if (userGuide.guides) {
+        handleNoteClick(userGuide.guide_id, userGuide.guides.name, userGuide.guides.icon);
+      } else {
+        // For blank notes, create a tab with generic title
+        const newTab: Tab = {
+          id: `note-${userGuide.id}`,
+          type: 'notes',
+          label: 'Untitled Note',
+          icon: FileText,
+          iconName: 'file-text',
+          guideId: null,
+          guideName: null,
+          guideIcon: null,
+        };
+        addTab(newTab);
+      }
+    } catch (error) {
+      console.error('Error creating note:', error);
+      toast.error('Failed to create note');
+    }
+  }, [workspaceId, addTab, handleNoteClick]);
 
   // Handle reading click from Library Sidebar
   const handleReadingClick = useCallback((readingId: string) => {
@@ -660,6 +787,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
     setSelectedCalendarNoteIds(newSet);
 
+    // Cache in localStorage
+    localStorage.setItem('selectedCalendarNoteIds', JSON.stringify(Array.from(newSet)));
+
     if (!demoMode) {
       // Update URL with selected note IDs
       const params = new URLSearchParams(searchParams.toString());
@@ -683,6 +813,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
 
     setSelectedTasksNoteIds(newSet);
+
+    // Cache in localStorage
+    localStorage.setItem('selectedTasksNoteIds', JSON.stringify(Array.from(newSet)));
 
     if (!demoMode) {
       // Update URL with selected note IDs
@@ -708,6 +841,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
     setSelectedTimelineNoteIds(newSet);
 
+    // Cache in localStorage
+    localStorage.setItem('selectedTimelineNoteIds', JSON.stringify(Array.from(newSet)));
+
     if (!demoMode) {
       // Update URL with selected note IDs
       const params = new URLSearchParams(searchParams.toString());
@@ -731,6 +867,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
 
     setSelectedGraphGuideIds(newSet);
+
+    // Cache in localStorage
+    localStorage.setItem('selectedGraphGuideIds', JSON.stringify(Array.from(newSet)));
 
     if (!demoMode) {
       // Update URL with selected guide IDs
@@ -756,6 +895,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
     setSelectedOverviewGuideIds(newSet);
 
+    // Cache in localStorage
+    localStorage.setItem('selectedOverviewGuideIds', JSON.stringify(Array.from(newSet)));
+
     if (!demoMode) {
       // Update URL with selected guide IDs
       const params = new URLSearchParams(searchParams.toString());
@@ -779,6 +921,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
 
     setSelectedAnalyticsGuideIds(newSet);
+
+    // Cache in localStorage
+    localStorage.setItem('selectedAnalyticsGuideIds', JSON.stringify(Array.from(newSet)));
 
     if (!demoMode) {
       // Update URL with selected guide IDs
@@ -976,6 +1121,12 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
           `}</style>
         )}
         <Toaster position="top-center" />
+        <NewNoteDialog
+          open={newNoteDialogOpen}
+          onOpenChange={setNewNoteDialogOpen}
+          onCreateNote={handleCreateNote}
+          workspaceId={workspaceId}
+        />
       </div>
   );
 }

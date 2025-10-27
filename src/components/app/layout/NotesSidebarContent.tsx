@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
 import { toast } from 'sonner';
+import { getIconComponent } from '@/lib/icon-utils';
 
 interface UserGuide {
   id: string;
@@ -26,7 +27,7 @@ interface UserGuide {
 
 interface NotesSidebarContentProps {
   activeGuideId: string | null;
-  onNoteClick: (guideId: string) => void;
+  onNoteClick: (guideId: string, guideName?: string, guideIcon?: string | null) => void;
   onNewNote: () => void;
 }
 
@@ -113,42 +114,45 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
             initial="hidden"
             animate="show"
           >
-            {filteredNotes.map((note) => (
-              <motion.button
-                key={note.id}
-                onClick={() => onNoteClick(note.guide_id)}
-                className={cn(
-                  "w-full flex items-center gap-2 px-2 py-2 rounded transition-colors group",
-                  activeGuideId === note.guide_id
-                    ? "bg-primary/10 text-primary"
-                    : "hover:bg-muted/50 text-foreground"
-                )}
-                variants={{
-                  hidden: { opacity: 0, x: -10 },
-                  show: { opacity: 1, x: 0 }
-                }}
-                whileHover={{ x: 4 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FileText className="h-4 w-4 flex-shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="font-medium truncate text-sm">
-                    {note.guides?.name || 'Untitled Note'}
-                  </div>
-                  {note.progress > 0 && (
-                    <div className="flex items-center gap-1 mt-0.5">
-                      <div className="h-1 flex-1 bg-muted-foreground/20 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-primary transition-all"
-                          style={{ width: `${note.progress}%` }}
-                        />
-                      </div>
-                      <span className="text-xs text-muted-foreground">{Math.round(note.progress)}%</span>
-                    </div>
+            {filteredNotes.map((note) => {
+              const IconComponent = getIconComponent(note.guides?.icon);
+              return (
+                <motion.button
+                  key={note.id}
+                  onClick={() => onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon)}
+                  className={cn(
+                    "w-full flex items-center gap-2 px-2 py-2 rounded transition-colors group",
+                    activeGuideId === note.guide_id
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-muted/50 text-foreground"
                   )}
-                </div>
-              </motion.button>
-            ))}
+                  variants={{
+                    hidden: { opacity: 0, x: -10 },
+                    show: { opacity: 1, x: 0 }
+                  }}
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <IconComponent className="h-4 w-4 flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium truncate text-sm">
+                      {note.guides?.name || 'Untitled Note'}
+                    </div>
+                    {note.progress > 0 && (
+                      <div className="flex items-center gap-1 mt-0.5">
+                        <div className="h-1 flex-1 bg-muted-foreground/20 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-primary transition-all"
+                            style={{ width: `${note.progress}%` }}
+                          />
+                        </div>
+                        <span className="text-xs text-muted-foreground">{Math.round(note.progress)}%</span>
+                      </div>
+                    )}
+                  </div>
+                </motion.button>
+              );
+            })}
           </motion.div>
         )}
       </div>

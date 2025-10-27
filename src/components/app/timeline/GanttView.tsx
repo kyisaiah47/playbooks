@@ -13,20 +13,22 @@ interface GanttViewProps {
 export function GanttView({ events, tasks }: GanttViewProps) {
   const timelineData = useMemo(() => {
     const allItems = [
-      ...events.map(e => ({ ...e, type: 'event' as const, date: new Date(e.date) })),
-      ...items.filter(t => t.due_date).map(t => ({ ...t, type: 'task' as const, date: new Date(t.due_date!) }))
+      ...events.filter(e => e.start_time).map(e => ({ ...e, type: 'event' as const, date: new Date(e.start_time!) })),
+      ...tasks.filter(t => t.due_date).map(t => ({ ...t, type: 'task' as const, date: new Date(t.due_date!) }))
     ];
 
     if (allItems.length === 0) {
       return { items: [], startDate: new Date(), endDate: new Date(), totalDays: 0, months: [], days: [] };
     }
 
-    // Find date range
-    const dates = allItems.map(item => item.date);
+    // Find date range including today
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dates = [...allItems.map(item => item.date), today];
     let startDate = new Date(Math.min(...dates.map(d => d.getTime())));
     let endDate = new Date(Math.max(...dates.map(d => d.getTime())));
 
-    // Add minimal padding - just 7 days before and after
+    // Add padding - 7 days before and after
     startDate = new Date(startDate);
     startDate.setDate(startDate.getDate() - 7);
     endDate = new Date(endDate);
@@ -101,7 +103,7 @@ export function GanttView({ events, tasks }: GanttViewProps) {
 
       {/* Gantt Chart */}
       <div className="border border-border/40 rounded-lg overflow-x-auto bg-background">
-        <div style={{ minWidth: `${timelineData.totalDays * 40}px` }}>
+        <div style={{ width: `${timelineData.totalDays * 40}px` }}>
           {/* Month Headers Row */}
           <div className="relative h-8 bg-muted/30 border-b border-border/40">
             <div className="absolute inset-0 flex">
@@ -169,9 +171,9 @@ export function GanttView({ events, tasks }: GanttViewProps) {
           </div>
 
           {/* Items */}
-          <div className="relative">
+          <div className="relative" style={{ width: '100%' }}>
             {timelineData.items.map((item, index) => (
-              <div key={`${item.type}-${item.id}`} className="relative h-8 flex items-center">
+              <div key={`${item.type}-${item.id}`} className="relative h-8 flex items-center" style={{ width: '100%' }}>
                 <button
                   className="absolute flex items-center group z-20"
                   style={{

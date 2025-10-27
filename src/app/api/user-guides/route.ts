@@ -105,20 +105,19 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { guide_id, workspace_id } = body;
 
-    if (!guide_id) {
-      return errorResponse('guide_id is required', 400);
-    }
+    // guide_id is now optional - if not provided, creates a blank note
+    if (guide_id) {
+      // Verify guide exists if guide_id is provided
+      const { data: guide, error: guideError } = await supabase
+        .from('guides')
+        .select('id')
+        .eq('id', guide_id)
+        .single();
 
-    // Verify guide exists
-    const { data: guide, error: guideError } = await supabase
-      .from('guides')
-      .select('id')
-      .eq('id', guide_id)
-      .single();
-
-    if (guideError || !guide) {
-      console.error('Guide not found for guide_id:', guide_id, 'Error:', guideError);
-      return errorResponse(`Guide not found: ${guide_id}`, 404);
+      if (guideError || !guide) {
+        console.error('Guide not found for guide_id:', guide_id, 'Error:', guideError);
+        return errorResponse(`Guide not found: ${guide_id}`, 404);
+      }
     }
 
     // If workspace_id is provided, verify it belongs to the user
@@ -139,7 +138,7 @@ export async function POST(request: NextRequest) {
       .from('notes')
       .insert({
         user_id: user.userId,
-        guide_id,
+        guide_id: guide_id || null,
         workspace_id: workspace_id || null,
         progress: 0,
         archived: false,

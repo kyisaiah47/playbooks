@@ -27,8 +27,14 @@ export async function GET(
       );
     }
 
+    // Map category to categoryName for frontend compatibility
+    const mappedQuestions = (questions || []).map(q => ({
+      ...q,
+      categoryName: q.category
+    }));
+
     return NextResponse.json({
-      questions: questions || []
+      questions: mappedQuestions
     });
   } catch (error) {
     console.error('Error in /api/guides/[guideId]/questions:', error);

@@ -40,7 +40,9 @@ export async function GET(request: NextRequest) {
         excerpt,
         read_time,
         guide,
-        tags
+        tags,
+        author,
+        type
       `)
       .eq('type', 'guide');
 
@@ -82,6 +84,8 @@ export async function GET(request: NextRequest) {
         reading_time: parseInt(reading.read_time) || 5,
         guide_id: reading.guide,
         guide_name: guideMap.get(reading.guide) || 'Unknown Guide',
+        author: reading.author || null,
+        type: reading.type || 'guide',
       }));
 
     return successResponse({ readings: transformedReadings });

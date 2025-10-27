@@ -1,14 +1,13 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ReadingCard } from './ReadingCard';
 import { Skeleton } from '@/components/ui/skeleton';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, User, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import { ReadingContent } from '@/components/readings/ReadingContent';
 import { useDemo } from '@/contexts/demo-context';
 
 interface Reading {
@@ -19,12 +18,8 @@ interface Reading {
   guide_id: string;
   guide_name: string;
   reading_time: number;
-}
-
-interface ReadingProgress {
-  id: string;
-  guide_section_id: string;
-  completed_at: string;
+  author?: string | null;
+  type?: string;
 }
 
 interface ReadingListProps {
@@ -35,7 +30,6 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
   const searchParams = useSearchParams();
   const { demoMode, selectedReadingId: demoReadingId } = useDemo();
   const selectedReadingId = demoMode ? demoReadingId : searchParams.get('readingId');
-  const queryClient = useQueryClient();
 
   // Fetch user's active guides first
   const { data: userGuidesData, isLoading: userGuidesLoading } = useQuery({
@@ -58,51 +52,12 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
     enabled: !!userGuidesData, // Only fetch readings after we have user guides
   });
 
-  // Fetch reading progress
-  const { data: progressData, isLoading: progressLoading } = useQuery({
-    queryKey: ['reading-progress'],
-    queryFn: async () => {
-      const response = await fetch('/api/reading-progress');
-      if (!response.ok) throw new Error('Failed to fetch reading progress');
-      return response.json();
-    },
-  });
-
-  // Toggle read/unread status
-  const toggleReadMutation = useMutation({
-    mutationFn: async ({ id, isRead }: { id: string; isRead: boolean }) => {
-      if (isRead) {
-        // Mark as read
-        const response = await fetch('/api/reading-progress', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ guide_section_id: id }),
-        });
-        if (!response.ok) throw new Error('Failed to mark as read');
-        return response.json();
-      } else {
-        // Mark as unread (delete progress)
-        const response = await fetch(`/api/reading-progress?guide_section_id=${id}`, {
-          method: 'DELETE',
-        });
-        if (!response.ok) throw new Error('Failed to mark as unread');
-        return response.json();
-      }
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['reading-progress'] });
-    },
-  });
-
   const userGuides = userGuidesData?.userGuides || [];
 
   // Readings are already filtered by the API
   const readings: Reading[] = readingsData?.readings || [];
 
-  const progress: ReadingProgress[] = progressData?.progress || [];
-  const progressMap = new Map(progress.map((p) => [p.guide_section_id, p]));
-
-  const isLoading = readingsLoading || progressLoading || userGuidesLoading;
+  const isLoading = readingsLoading || userGuidesLoading;
 
   const selectedReading = readings.find(r => r.id === selectedReadingId);
 
@@ -141,45 +96,35 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
           >
             <div className="text-xs text-muted-foreground mb-2">{selectedReading.guide_name}</div>
             <h1 className="text-3xl font-bold mb-2">{selectedReading.title}</h1>
-            <div className="flex items-center gap-3 mt-4">
+            <div className="flex items-center gap-4 mt-4">
               <span className="text-xs text-muted-foreground">{selectedReading.reading_time} min read</span>
-              <motion.button
-                onClick={() => toggleReadMutation.mutate({
-                  id: selectedReading.id,
-                  isRead: !progressMap.has(selectedReading.id)
-                })}
-                className={`text-xs px-3 py-1 rounded-full transition-colors ${
-                  progressMap.has(selectedReading.id)
-                    ? 'bg-green-500/10 text-green-600 hover:bg-green-500/20'
-                    : 'bg-muted hover:bg-muted/80'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {progressMap.has(selectedReading.id) ? 'Mark as Unread' : 'Mark as Read'}
-              </motion.button>
+              {selectedReading.author && (
+                <>
+                  <span className="text-xs text-muted-foreground">•</span>
+                  <div className="flex items-center gap-1.5">
+                    <User className="w-3 h-3 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground">{selectedReading.author}</span>
+                  </div>
+                </>
+              )}
+              {selectedReading.type && (
+                <>
+                  <span className="text-xs text-muted-foreground">•</span>
+                  <div className="flex items-center gap-1.5">
+                    <FileText className="w-3 h-3 text-muted-foreground" />
+                    <span className="text-xs text-muted-foreground capitalize">{selectedReading.type}</span>
+                  </div>
+                </>
+              )}
             </div>
           </motion.div>
           <motion.div
-            className="w-full prose dark:prose-invert max-w-none"
+            className="w-full max-w-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h1: ({ node, ...props }) => <h1 className="text-2xl font-semibold mt-12 mb-6 tracking-normal" {...props} />,
-                h2: ({ node, ...props }) => <h2 className="text-xl font-semibold mt-10 mb-5 tracking-normal" {...props} />,
-                h3: ({ node, ...props }) => <h3 className="text-lg font-semibold mt-8 mb-4 tracking-normal" {...props} />,
-                p: ({ node, ...props }) => <p className="text-sm leading-loose my-3 tracking-normal" {...props} />,
-                ul: ({ node, ...props }) => <ul className="text-sm leading-loose my-3 tracking-normal" {...props} />,
-                ol: ({ node, ...props }) => <ol className="text-sm leading-loose my-3 tracking-normal" {...props} />,
-                li: ({ node, ...props }) => <li className="text-sm leading-loose my-1 tracking-normal" {...props} />,
-              }}
-            >
-              {selectedReading.content}
-            </ReactMarkdown>
+            <ReadingContent content={selectedReading.content} />
           </motion.div>
         </motion.div>
       ) : (

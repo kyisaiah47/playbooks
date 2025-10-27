@@ -54,14 +54,14 @@ export default function AnalyticsPage() {
   // Get selected guide IDs from URL
   const selectedGuideIds = searchParams.get('analyticsGuides')?.split(',').filter(Boolean) || [];
 
-  // Filter by selected guides - in demo mode, show all if nothing selected
+  // Filter by selected guides - show none if nothing selected
   const userGuides = selectedGuideIds.length > 0
     ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
-    : (demoMode ? allUserGuides : []);
+    : [];
 
   const items = selectedGuideIds.length > 0
     ? allItems.filter(item => item.user_guide_id && selectedGuideIds.includes(item.user_guide_id))
-    : (demoMode ? allItems : []);
+    : [];
 
   useEffect(() => {
     async function fetchData() {
@@ -112,12 +112,12 @@ export default function AnalyticsPage() {
       const monthEnd = endOfMonth(subMonths(today, i));
       const monthStr = format(monthStart, 'MMM yyyy');
 
-      const tasksCreatedInMonth = tasks.filter(t => {
+      const tasksCreatedInMonth = items.filter(t => {
         const date = parseISO(t.created_at);
         return date >= monthStart && date <= monthEnd;
       }).length;
 
-      const tasksCompletedInMonth = tasks.filter(t => {
+      const tasksCompletedInMonth = items.filter(t => {
         if (!t.completed_at) return false;
         const date = parseISO(t.completed_at);
         return date >= monthStart && date <= monthEnd;
@@ -148,7 +148,7 @@ export default function AnalyticsPage() {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const pattern = daysOfWeek.map(day => ({ day, count: 0 }));
 
-    tasks.forEach(t => {
+    items.forEach(t => {
       const dayIndex = new Date(t.created_at).getDay();
       pattern[dayIndex].count++;
     });
@@ -275,7 +275,7 @@ export default function AnalyticsPage() {
                 </div>
                 <div className="text-2xl font-bold">{totalTasks}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  {tasks.filter(t => t.status !== 'completed').length} pending
+                  {items.filter(t => t.status !== 'completed').length} pending
                 </div>
               </motion.div>
 
@@ -291,7 +291,7 @@ export default function AnalyticsPage() {
                   <Calendar className="w-5 h-5 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">Events</span>
                 </div>
-                <div className="text-2xl font-bold">{events.length}</div>
+                <div className="text-2xl font-bold">{items.filter(item => item.start_time).length}</div>
                 <div className="text-xs text-muted-foreground mt-1">
                   Total scheduled
                 </div>
@@ -401,8 +401,8 @@ export default function AnalyticsPage() {
               <div className="space-y-3">
                 {userGuides.map((guide) => {
                   const displayName = guide.custom_name || guide.guides.name;
-                  const guideTasks = tasks.filter(t => t.user_guide_id === guide.id);
-                  const guideEvents = events.filter(e => e.user_guide_id === guide.id);
+                  const guideTasks = items.filter(t => t.user_guide_id === guide.id && !t.start_time);
+                  const guideEvents = items.filter(e => e.user_guide_id === guide.id && e.start_time);
                   const guideCompletedTasks = guideTasks.filter(t => t.status === 'completed').length;
 
                   return (

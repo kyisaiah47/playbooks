@@ -81,7 +81,7 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
       <AnimatePresence mode="popLayout">
         {tabs.map((tab) => {
           const isActive = tab.id === activeTabId;
-          const IconComponent = iconMap[tab.type] || FileText;
+          const IconComponent = tab.icon || iconMap[tab.type] || FileText;
 
           return (
             <motion.div
@@ -106,7 +106,9 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
               >
                 <IconComponent className={cn(
                   "w-3.5 h-3.5 transition-colors",
-                  isActive ? "text-primary" : "text-muted-foreground"
+                  tab.type === 'overview'
+                    ? (isActive ? "text-amber-500" : "text-amber-500/70")
+                    : (isActive ? "text-primary" : "text-muted-foreground")
                 )} />
               </motion.div>
               <span className={cn(

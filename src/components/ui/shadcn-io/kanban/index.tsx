@@ -26,6 +26,7 @@ import {
   type ReactNode,
   useContext,
   useState,
+  useEffect,
 } from 'react';
 import { createPortal } from 'react-dom';
 import tunnel from 'tunnel-rat';
@@ -161,14 +162,29 @@ export const KanbanCards = <T extends KanbanItemProps = KanbanItemProps>({
   const filteredData = data.filter((item) => item.column === props.id);
   const items = filteredData.map((item) => item.id);
 
+  // Make the column itself droppable
+  const { setNodeRef, isOver } = useDroppable({
+    id: props.id,
+  });
+
   return (
     <ScrollArea className="overflow-hidden">
       <SortableContext items={items}>
         <div
-          className={cn('flex flex-grow flex-col gap-2 p-2', className)}
+          ref={setNodeRef}
+          className={cn(
+            'flex flex-grow flex-col gap-2 p-2 min-h-[200px] transition-colors',
+            isOver && filteredData.length === 0 && 'bg-primary/5 ring-2 ring-primary/20 ring-inset rounded',
+            className
+          )}
           {...props}
         >
           {filteredData.map(children)}
+          {filteredData.length === 0 && (
+            <div className="flex-1 flex items-center justify-center text-muted-foreground/40 text-xs">
+              Drop tasks here
+            </div>
+          )}
         </div>
       </SortableContext>
       <ScrollBar orientation="vertical" />
@@ -211,15 +227,30 @@ export const KanbanProvider = <
   ...props
 }: KanbanProviderProps<T, C>) => {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const [localData, setLocalData] = useState<T[]>(data);
+
+  // Sync localData when data prop changes (from parent)
+  useEffect(() => {
+    setLocalData(data);
+  }, [data]);
 
   const sensors = useSensors(
-    useSensor(MouseSensor),
-    useSensor(TouchSensor),
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        distance: 8, // Require 8px of movement before drag starts
+      },
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250, // 250ms hold before drag starts on touch
+        tolerance: 5,
+      },
+    }),
     useSensor(KeyboardSensor)
   );
 
   const handleDragStart = (event: DragStartEvent) => {
-    const card = data.find((item) => item.id === event.active.id);
+    const card = localData.find((item) => item.id === event.active.id);
     if (card) {
       setActiveCardId(event.active.id as string);
     }
@@ -233,8 +264,8 @@ export const KanbanProvider = <
       return;
     }
 
-    const activeItem = data.find((item) => item.id === active.id);
-    const overItem = data.find((item) => item.id === over.id);
+    const activeItem = localData.find((item) => item.id === active.id);
+    const overItem = localData.find((item) => item.id === over.id);
 
     if (!(activeItem)) {
       return;
@@ -247,14 +278,20 @@ export const KanbanProvider = <
       columns[0]?.id;
 
     if (activeColumn !== overColumn) {
-      let newData = [...data];
+      let newData = [...localData];
       const activeIndex = newData.findIndex((item) => item.id === active.id);
       const overIndex = newData.findIndex((item) => item.id === over.id);
 
       newData[activeIndex].column = overColumn;
-      newData = arrayMove(newData, activeIndex, overIndex);
 
-      onDataChange?.(newData);
+      // Only use arrayMove if dropping on another item (overIndex !== -1)
+      // For empty columns, just update the column property
+      if (overIndex !== -1) {
+        newData = arrayMove(newData, activeIndex, overIndex);
+      }
+
+      // Only update local state during drag, don't call onDataChange yet
+      setLocalData(newData);
     }
 
     onDragOver?.(event);
@@ -271,43 +308,45 @@ export const KanbanProvider = <
       return;
     }
 
-    let newData = [...data];
+    let newData = [...localData];
 
     const oldIndex = newData.findIndex((item) => item.id === active.id);
     const newIndex = newData.findIndex((item) => item.id === over.id);
 
     newData = arrayMove(newData, oldIndex, newIndex);
 
+    setLocalData(newData);
+    // Only call onDataChange once at the end
     onDataChange?.(newData);
   };
 
   const announcements: Announcements = {
     onDragStart({ active }) {
-      const { name, column } = data.find((item) => item.id === active.id) ?? {};
+      const { name, column } = localData.find((item) => item.id === active.id) ?? {};
 
       return `Picked up the card "${name}" from the "${column}" column`;
     },
     onDragOver({ active, over }) {
-      const { name } = data.find((item) => item.id === active.id) ?? {};
+      const { name } = localData.find((item) => item.id === active.id) ?? {};
       const newColumn = columns.find((column) => column.id === over?.id)?.name;
 
       return `Dragged the card "${name}" over the "${newColumn}" column`;
     },
     onDragEnd({ active, over }) {
-      const { name } = data.find((item) => item.id === active.id) ?? {};
+      const { name } = localData.find((item) => item.id === active.id) ?? {};
       const newColumn = columns.find((column) => column.id === over?.id)?.name;
 
       return `Dropped the card "${name}" into the "${newColumn}" column`;
     },
     onDragCancel({ active }) {
-      const { name } = data.find((item) => item.id === active.id) ?? {};
+      const { name } = localData.find((item) => item.id === active.id) ?? {};
 
       return `Cancelled dragging the card "${name}"`;
     },
   };
 
   return (
-    <KanbanContext.Provider value={{ columns, data, activeCardId }}>
+    <KanbanContext.Provider value={{ columns, data: localData, activeCardId }}>
       <DndContext
         accessibility={{ announcements }}
         collisionDetection={closestCenter}

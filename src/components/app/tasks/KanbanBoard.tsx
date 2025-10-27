@@ -77,6 +77,7 @@ export function KanbanBoard({
       const originalTask = tasks.find((t) => t.id === newItem.id);
       if (originalTask && originalTask.status !== newItem.column) {
         // Status changed - update via API
+        console.log(`Task ${newItem.id} moved from ${originalTask.status} to ${newItem.column}`);
         onUpdateTaskStatus(
           newItem.id,
           newItem.column as 'todo' | 'in_progress' | 'done'

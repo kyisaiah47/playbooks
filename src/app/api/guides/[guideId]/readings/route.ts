@@ -27,8 +27,14 @@ export async function GET(
       );
     }
 
+    // Map read_time to readTime for frontend compatibility
+    const mappedReadings = (readings || []).map(r => ({
+      ...r,
+      readTime: r.read_time
+    }));
+
     return NextResponse.json({
-      readings: readings || []
+      readings: mappedReadings
     });
   } catch (error) {
     console.error('Error in /api/guides/[guideId]/readings:', error);

@@ -75,6 +75,7 @@ export interface Tab {
   type: TabType;
   label: string;
   icon?: any; // Can be string (emoji) or Lucide icon component
+  iconName?: string; // Store icon name for serialization
   pageId?: string;
   guideId?: string;
 }

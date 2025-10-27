@@ -29,7 +29,7 @@ export function AgendaList({ tasks, date, onTaskClick }: AgendaListProps) {
     low: 'secondary',
   };
 
-  const displayDate = format(new Date(date), 'EEEE, MMMM d');
+  const displayDate = format(new Date(date + 'T00:00:00'), 'EEEE, MMMM d');
 
   return (
     <Card>

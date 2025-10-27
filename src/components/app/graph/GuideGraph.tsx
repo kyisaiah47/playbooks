@@ -187,8 +187,8 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             animated: true,
             style: {
               stroke: color,
-              strokeWidth: 2,
-              opacity: 0.4,
+              strokeWidth: 3,
+              opacity: 0.7,
             },
             markerEnd: {
               type: MarkerType.Arrow,
@@ -204,7 +204,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
         const keywords2 = extractKeywords(guide2.guides.name + ' ' + guide2.guides.description);
         const commonKeywords = keywords1.filter((k) => keywords2.includes(k));
 
-        if (commonKeywords.length > 0) {
+        if (commonKeywords.length > 0 && category1 !== category2) {
           edges.push({
             id: `${guide1.id}-${guide2.id}-keywords`,
             source: guide1.id,
@@ -213,9 +213,9 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             animated: false,
             style: {
               stroke: 'var(--primary)',
-              strokeWidth: 1,
+              strokeWidth: 2,
               strokeDasharray: '5,5',
-              opacity: 0.3,
+              opacity: 0.5,
             },
           });
         }
