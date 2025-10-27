@@ -70,24 +70,41 @@ export default function DiscoverPage() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [guides, setGuides] = useState<Guide[]>([]);
   const [loadingGuides, setLoadingGuides] = useState(false);
+  const [loadingCategories, setLoadingCategories] = useState(true);
   const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [readings, setReadings] = useState<Reading[]>([]);
   const [loadingContent, setLoadingContent] = useState(false);
 
   // Get selected category from context in demo mode, or from URL in normal mode
-  const { selectedCategory: demoCategory } = useDemo();
+  const { selectedCategory: demoCategory, setSelectedCategory: setDemoCategory } = useDemo();
   const selectedCategory = demoMode ? demoCategory : searchParams.get('category');
 
-  // Fetch categories to display category info
+  // Fetch categories and select first one by default if none selected
   useEffect(() => {
     async function fetchCategories() {
       try {
+        setLoadingCategories(true);
         const res = await fetch('/api/guides');
         const data = await res.json();
-        setCategories(data.categories || []);
+        const cats = data.categories || [];
+        setCategories(cats);
+
+        // If no category is selected and we have categories, select the first one
+        if (!selectedCategory && cats.length > 0) {
+          if (demoMode && setDemoCategory) {
+            setDemoCategory(cats[0].id);
+          } else {
+            // Update URL with first category
+            const newParams = new URLSearchParams(searchParams.toString());
+            newParams.set('category', cats[0].id);
+            router.replace(`?${newParams.toString()}`, { scroll: false });
+          }
+        }
       } catch (error) {
         console.error('Error fetching categories:', error);
+      } finally {
+        setLoadingCategories(false);
       }
     }
 
@@ -162,6 +179,19 @@ export default function DiscoverPage() {
   };
 
   const selectedCategoryData = categories.find(cat => cat.id === selectedCategory);
+
+  // Show loader while categories are loading
+  if (loadingCategories) {
+    return (
+      <motion.div
+        className="h-full flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <div className="text-muted-foreground text-sm">Loading...</div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
@@ -350,15 +380,7 @@ export default function DiscoverPage() {
               </div>
             )}
           </>
-        ) : (
-          <motion.div
-            className="text-center py-12 text-muted-foreground"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            Select a category to view guides
-          </motion.div>
-        )}
+        ) : null}
       </div>
     </motion.div>
   );
