@@ -30,16 +30,20 @@ log_colored "$BLUE" "🚀 Generating readings for guide: $GUIDE_ID"
 read -r -d '' PROMPT <<'HEREDOC' || true
 Generate a comprehensive set of readings for the GUIDE_ID_PLACEHOLDER guide.
 
-**CONTEXT: Creating a New Category - Structured Knowledge Workspaces**
+**CONTEXT: Creating a New Category - Guided Productivity**
+
+Just like Uber created "ride-sharing" and Airbnb created "home-sharing," we're defining a new category: **Guided Productivity**.
 
 Most products make people choose: either get information (Wikipedia, articles, books) OR get structure (templates, worksheets). But when facing major life decisions, people need BOTH simultaneously.
+
+Guided Productivity = Expert guidance (Wikipedia-depth knowledge) + Productivity workspace (Notion-style planning)
 
 This is a new category where:
 - Questions force systematic thinking about YOUR specific situation (not generic advice)
 - Readings provide comprehensive, well-researched knowledge (not shallow templates)
 - Together = informed decisions about YOUR life with expert-level backing
 
-Your job: Create readings that give Wikipedia-depth knowledge in a warm, conversational tone. Someone working through this guide should feel like they have an expert friend who did all the research for them.
+Your job: Create readings that DEFINE this new category. Give Wikipedia-depth knowledge in a warm, conversational tone. Someone working through this guide should feel like they have an expert friend who did all the research for them.
 
 **THE QUALITY BAR - What Makes Content Category-Defining:**
 

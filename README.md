@@ -1,8 +1,12 @@
 # Templata
 
-**A new category: Structured Knowledge Workspaces**
+**Defining a new category: Guided Productivity**
+
+Just like Uber created "ride-sharing" and Airbnb created "home-sharing," Templata is creating **Guided Productivity**.
 
 Most products make you choose - either get information (Wikipedia, articles, books) OR get structure (templates, worksheets). Templata gives you both.
+
+Guided Productivity = Expert guidance (Wikipedia-depth knowledge) + Productivity workspace (Notion-style planning)
 
 When facing major life decisions, you need to think systematically about YOUR situation AND access comprehensive knowledge. Not generic advice. Not shallow templates. Both, together.
 
@@ -43,13 +47,13 @@ Pick a guide (career change, buying a home, managing divorce, etc.), work throug
 
 ## Philosophy
 
-**Defining a New Category**
+**Defining a New Category: Guided Productivity**
 
-Templata isn't just another tool - it's creating a new category: **Structured Knowledge Workspaces**.
+Just like Uber created "ride-sharing" and Airbnb created "home-sharing," Templata is defining **Guided Productivity**.
 
 The problem: When facing major life decisions (career change, divorce, home buying), you need to both THINK through YOUR specific situation AND ACCESS comprehensive knowledge. No existing product gives you both.
 
-The solution: Combine systematic questions (forcing you to think through YOUR situation) with Wikipedia-depth readings (giving you expert knowledge). Not generic advice. Not shallow templates. Informed decision-making.
+The solution: Guided Productivity = Expert guidance (Wikipedia-depth knowledge) + Productivity workspace (Notion-style planning). Combine systematic questions (forcing you to think through YOUR situation) with comprehensive readings (giving you expert knowledge). Not generic advice. Not shallow templates. Informed decision-making.
 
 This is what makes Templata different: you're not just reading about career change or filling out a worksheet. You're WORKING THROUGH your career change with comprehensive knowledge backing every decision.
 
