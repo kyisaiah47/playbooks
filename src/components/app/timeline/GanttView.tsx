@@ -103,9 +103,9 @@ export function GanttView({ events, tasks }: GanttViewProps) {
 
       {/* Gantt Chart */}
       <div className="border border-border/40 rounded-lg overflow-x-auto bg-background">
-        <div style={{ width: `${timelineData.totalDays * 40}px` }}>
+        <div style={{ width: `${timelineData.totalDays * 40}px`, minWidth: '100%' }}>
           {/* Month Headers Row */}
-          <div className="relative h-8 bg-muted/30 border-b border-border/40">
+          <div className="sticky top-0 z-20 relative h-8 bg-muted/30 border-b border-border/40">
             <div className="absolute inset-0 flex">
               {timelineData.months.map((month, index) => (
                 <div
@@ -113,14 +113,14 @@ export function GanttView({ events, tasks }: GanttViewProps) {
                   className="relative border-r border-border/40 last:border-r-0 flex items-center justify-center"
                   style={{ width: `${month.width}%` }}
                 >
-                  <span className="text-[10px] font-semibold text-foreground">{month.label}</span>
+                  <span className="text-[10px] sm:text-xs font-semibold text-foreground">{month.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Day Headers Row */}
-          <div className="relative h-8 bg-muted/20 border-b border-border/40">
+          <div className="sticky top-8 z-20 relative h-8 bg-muted/20 border-b border-border/40">
             <div className="absolute inset-0 flex">
               {timelineData.days.map((day, index) => (
                 <div
@@ -160,12 +160,12 @@ export function GanttView({ events, tasks }: GanttViewProps) {
 
           {/* Today Marker */}
           <div
-            className="absolute top-0 bottom-0 w-0.5 bg-primary z-50 pointer-events-none"
+            className="absolute top-0 bottom-0 w-0.5 bg-primary/80 z-30 pointer-events-none"
             style={{
               left: `${((new Date().getTime() - timelineData.startDate.getTime()) / (1000 * 60 * 60 * 24) / timelineData.totalDays) * 100}%`,
             }}
           >
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-1.5 py-0.5 bg-primary text-white text-[9px] font-medium rounded whitespace-nowrap shadow-lg z-50">
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-1.5 py-0.5 bg-primary text-white text-[9px] sm:text-[10px] font-medium rounded whitespace-nowrap shadow-lg">
               Today
             </div>
           </div>
@@ -173,16 +173,17 @@ export function GanttView({ events, tasks }: GanttViewProps) {
           {/* Items */}
           <div className="relative" style={{ width: '100%' }}>
             {timelineData.items.map((item, index) => (
-              <div key={`${item.type}-${item.id}`} className="relative h-8 flex items-center" style={{ width: '100%' }}>
-                <button
+              <div key={`${item.type}-${item.id}`} className="relative h-8 flex items-center border-b border-border/10 hover:bg-muted/20 transition-colors" style={{ width: '100%' }}>
+                <div
                   className="absolute flex items-center group z-20"
                   style={{
                     left: `${item.offset}%`,
                     transform: 'translateX(-50%)'
                   }}
+                  title={`${item.title}${item.description ? `\n${item.description}` : ''}`}
                 >
                   <div className={`
-                    px-2.5 py-1 rounded border flex items-center gap-1.5 shadow-sm
+                    px-2 sm:px-2.5 py-1 rounded border flex items-center gap-1 sm:gap-1.5 shadow-sm
                     transition-all hover:shadow-md hover:scale-105 cursor-pointer
                     ${item.type === 'event'
                       ? 'bg-primary border-primary text-white hover:bg-[#5558e3]'
@@ -194,13 +195,13 @@ export function GanttView({ events, tasks }: GanttViewProps) {
                     }
                   `}>
                     {item.type === 'event' ? (
-                      <Calendar className="w-3 h-3 flex-shrink-0" />
+                      <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
                     ) : (
-                      <CheckSquare className="w-3 h-3 flex-shrink-0" />
+                      <CheckSquare className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
                     )}
-                    <span className="text-[11px] font-medium whitespace-nowrap">{item.title}</span>
+                    <span className="text-[10px] sm:text-[11px] font-medium whitespace-nowrap max-w-[120px] sm:max-w-none truncate">{item.title}</span>
                   </div>
-                </button>
+                </div>
               </div>
             ))}
           </div>
