@@ -29,6 +29,7 @@ interface UserGuide {
     name: string;
     description: string;
     icon: string;
+    category: string;
   };
   progress: number;
   created_at: string;
@@ -207,8 +208,6 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
         const x = 400 + radius * Math.cos(angle);
         const y = 400 + radius * Math.sin(angle);
 
-        const category = determineCategory(ug.guides.name, ug.guides.description);
-
         return {
           id: ug.id,
           type: 'guideNode',
@@ -217,11 +216,11 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             label: ug.guides.name,
             icon: ug.guides.icon || '📚',
             progress: ug.progress,
-            category,
-          guideId: ug.guides.id,
-        },
-      };
-    });
+            category: ug.guides.category,
+            guideId: ug.guides.id,
+          },
+        };
+      });
 
     // Calculate edges based on relationships
     const edges: Edge[] = [];
@@ -234,8 +233,8 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
         const guide1 = validGuides[i];
         const guide2 = validGuides[j];
 
-        const category1 = determineCategory(guide1.guides.name, guide1.guides.description);
-        const category2 = determineCategory(guide2.guides.name, guide2.guides.description);
+        const category1 = guide1.guides.category;
+        const category2 = guide2.guides.category;
 
         console.log(`[GuideGraph] Comparing "${guide1.guides.name}" (${category1}) with "${guide2.guides.name}" (${category2})`);
 
@@ -388,28 +387,6 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
 }
 
 // Helper functions
-function determineCategory(name: string, description: string): string {
-  const text = (name + ' ' + description).toLowerCase();
-
-  if (text.includes('career') || text.includes('work') || text.includes('job') || text.includes('interview')) {
-    return 'Career & Work';
-  }
-  if (text.includes('relationship') || text.includes('wedding') || text.includes('marriage') || text.includes('family')) {
-    return 'Relationships';
-  }
-  if (text.includes('health') || text.includes('fitness') || text.includes('wellness') || text.includes('exercise')) {
-    return 'Health & Wellness';
-  }
-  if (text.includes('move') || text.includes('transition') || text.includes('change') || text.includes('home')) {
-    return 'Life Transitions';
-  }
-  if (text.includes('money') || text.includes('financial') || text.includes('budget') || text.includes('invest')) {
-    return 'Financial';
-  }
-
-  return 'Personal Development';
-}
-
 function getCategoryColorForEdge(category: string): string {
   const colors: Record<string, string> = {
     'Career & Work': '#a855f7',
