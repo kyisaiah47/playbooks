@@ -149,76 +149,24 @@ export default function GraphPage() {
           </motion.div>
         )}
 
-        {/* Legend and Help */}
+        {/* Legend */}
         <motion.div
-          className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"
+          className="mt-4 p-3 rounded-lg bg-muted/20 border border-border/20"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
         >
-          {/* Category Legend */}
-          <div className="p-4 rounded-lg bg-muted/20 border border-border/20">
-            <h3 className="text-sm font-semibold mb-3">Categories</h3>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-purple-500" />
-                <span className="text-muted-foreground">Career & Work</span>
+          <div className="text-xs text-muted-foreground space-y-2">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1.5">
+                <div className="w-3 h-0.5 bg-primary" />
+                <span>Same category</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-blue-500" />
-                <span className="text-muted-foreground">Personal Dev</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-pink-500" />
-                <span className="text-muted-foreground">Relationships</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-green-500" />
-                <span className="text-muted-foreground">Health</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-amber-500" />
-                <span className="text-muted-foreground">Life Transitions</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-emerald-500" />
-                <span className="text-muted-foreground">Financial</span>
+              <div className="flex items-center gap-1.5">
+                <div className="w-3 h-0.5 border-t border-dashed border-primary" />
+                <span>Shared keywords</span>
               </div>
             </div>
-          </div>
-
-          {/* How to Use */}
-          <div className="p-4 rounded-lg bg-muted/20 border border-border/20">
-            <h3 className="text-sm font-semibold mb-3">How to use the Graph</h3>
-            <ul className="text-xs text-muted-foreground space-y-1">
-              <li>• Each node represents an active guide</li>
-              <li>• The ring shows completion progress</li>
-              <li>• Click on any node to open that guide</li>
-              <li>• Drag nodes to rearrange the layout</li>
-              <li>• Zoom and pan to explore connections</li>
-              <li>• Lines show relationships between guides</li>
-            </ul>
-          </div>
-        </motion.div>
-
-        {/* Additional Info */}
-        <motion.div
-          className="mt-4 p-4 rounded-lg bg-primary/5 border border-primary/20"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-        >
-          <h3 className="text-sm font-semibold mb-2 text-primary">Understanding Connections</h3>
-          <div className="text-xs text-muted-foreground space-y-1">
-            <p>
-              <strong>Solid lines:</strong> Guides in the same category - these may have similar goals or approaches
-            </p>
-            <p>
-              <strong>Dashed lines:</strong> Guides with shared keywords - indicating thematic overlap or complementary content
-            </p>
-            <p className="mt-2 italic">
-              The graph helps you discover synergies between your guides and identify areas where your learning connects.
-            </p>
           </div>
         </motion.div>
       </div>
