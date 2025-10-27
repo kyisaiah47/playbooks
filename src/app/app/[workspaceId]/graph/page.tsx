@@ -149,23 +149,38 @@ export default function GraphPage() {
           </motion.div>
         )}
 
-        {/* Legend */}
+        {/* Category Legend */}
         <motion.div
-          className="mt-4 p-3 rounded-lg bg-muted/20 border border-border/20"
+          className="mt-4 p-4 rounded-lg bg-muted/20 border border-border/20"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
         >
-          <div className="text-xs text-muted-foreground space-y-2">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1.5">
-                <div className="w-3 h-0.5 bg-primary" />
-                <span>Same category</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-3 h-0.5 border-t border-dashed border-primary" />
-                <span>Shared keywords</span>
-              </div>
+          <h3 className="text-sm font-semibold mb-3">Categories</h3>
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-purple-500" />
+              <span className="text-muted-foreground">Career & Work</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-blue-500" />
+              <span className="text-muted-foreground">Personal Dev</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-pink-500" />
+              <span className="text-muted-foreground">Relationships</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-green-500" />
+              <span className="text-muted-foreground">Health</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-amber-500" />
+              <span className="text-muted-foreground">Life Transitions</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-emerald-500" />
+              <span className="text-muted-foreground">Financial</span>
             </div>
           </div>
         </motion.div>
