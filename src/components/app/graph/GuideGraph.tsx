@@ -11,6 +11,9 @@ import ReactFlow, {
   useEdgesState,
   MarkerType,
   Panel,
+  BaseEdge,
+  EdgeProps,
+  getStraightPath,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { motion } from 'framer-motion';
@@ -128,8 +131,50 @@ const GuideNode = memo(function GuideNode({ data }: { data: any }) {
   );
 });
 
+// Custom Edge Components
+const CustomSolidEdge = memo(function CustomSolidEdge({
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  style,
+}: EdgeProps) {
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+
+  return <BaseEdge id={id} path={edgePath} style={style} />;
+});
+
+const CustomDashedEdge = memo(function CustomDashedEdge({
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  style,
+}: EdgeProps) {
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+
+  return <BaseEdge id={id} path={edgePath} style={style} />;
+});
+
 const nodeTypes = {
   guideNode: GuideNode,
+};
+
+const edgeTypes = {
+  solid: CustomSolidEdge,
+  dashed: CustomDashedEdge,
 };
 
 export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
@@ -189,7 +234,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             id: `${guide1.id}-${guide2.id}`,
             source: guide1.id,
             target: guide2.id,
-            type: 'straight',
+            type: 'solid',
             animated: false,
             style: {
               stroke: color,
@@ -209,7 +254,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             id: `${guide1.id}-${guide2.id}-keywords`,
             source: guide1.id,
             target: guide2.id,
-            type: 'straight',
+            type: 'dashed',
             animated: false,
             style: {
               stroke: '#6366f1',
@@ -253,14 +298,14 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
   }
 
   return (
-    <div className="w-full h-[500px] rounded-lg border border-border/40 bg-background overflow-hidden">
+    <div className="w-full h-full rounded-lg border border-border/40 bg-background overflow-hidden">
       <ReactFlow
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onNodeClick={onNodeClick}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         fitView
         fitViewOptions={{ padding: 0.2 }}
         minZoom={0.5}
@@ -281,7 +326,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
         />
 
         <Panel position="top-left" className="bg-background/95 backdrop-blur-sm border border-border/40 rounded-lg p-3 m-4">
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="text-sm font-semibold">Knowledge Graph</div>
             <div className="text-xs text-muted-foreground space-y-1">
               <div className="flex items-center gap-2">
@@ -291,6 +336,35 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
               <div className="flex items-center gap-2">
                 <div className="w-2 h-0.5 border-t border-dashed border-primary" />
                 <span>Dashed lines: Shared keywords</span>
+              </div>
+            </div>
+            <div className="pt-2 border-t border-border/40">
+              <div className="text-xs font-semibold mb-2">Categories</div>
+              <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-purple-500" />
+                  <span className="text-[10px]">Career</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-blue-500" />
+                  <span className="text-[10px]">Personal</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-pink-500" />
+                  <span className="text-[10px]">Relations</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <span className="text-[10px]">Health</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-amber-500" />
+                  <span className="text-[10px]">Transitions</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="text-[10px]">Financial</span>
+                </div>
               </div>
             </div>
           </div>
