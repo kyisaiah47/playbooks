@@ -1,12 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { LayoutDashboard, ListTodo, Calendar, CheckCircle2, Circle, Loader2, Clock, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { LayoutDashboard, ListTodo, Calendar, CheckCircle2, Circle, Loader2, Clock, AlertCircle, CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react';
 import { format, isToday, isTomorrow, isPast, isFuture, parseISO, startOfDay } from 'date-fns';
 import { useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
+import { Button } from '@/components/ui/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar as CalendarPicker } from '@/components/ui/calendar';
+import { DailyNote } from '@/components/app/daily/DailyNote';
+import { AgendaList } from '@/components/app/daily/AgendaList';
+import { toast } from 'sonner';
 
 interface UserGuide {
   id: string;
@@ -37,6 +43,14 @@ interface CalendarEvent {
   user_guide_id: string | null;
 }
 
+interface DailyNoteData {
+  id?: string;
+  date: string;
+  content: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
 export default function OverviewPage() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -47,6 +61,11 @@ export default function OverviewPage() {
   const [allTasks, setAllTasks] = useState<Task[]>([]);
   const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Daily view state
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [dailyNote, setDailyNote] = useState<DailyNoteData | null>(null);
+  const [dailyNoteLoading, setDailyNoteLoading] = useState(false);
 
   // Get selected note IDs from URL
   const selectedNoteIds = searchParams.get('overviewGuides')?.split(',').filter(Boolean) || [];
@@ -64,6 +83,84 @@ export default function OverviewPage() {
   const events = selectedNoteIds.length > 0
     ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
     : (demoMode ? allEvents : []);
+
+  // Get tasks for selected date
+  const formatDateForAPI = (date: Date) => format(date, 'yyyy-MM-dd');
+  const todayTasks = allTasks.filter(task =>
+    task.due_date && formatDateForAPI(parseISO(task.due_date)) === formatDateForAPI(selectedDate)
+  );
+  const todayFilteredTasks = selectedNoteIds.length > 0
+    ? todayTasks.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
+    : (demoMode ? todayTasks : []);
+
+  // Fetch daily note for selected date
+  const fetchDailyNote = useCallback(async (date: Date) => {
+    try {
+      setDailyNoteLoading(true);
+      const dateStr = formatDateForAPI(date);
+      const response = await fetch(`/api/daily-notes?date=${dateStr}`);
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch daily note');
+      }
+
+      const data = await response.json();
+      setDailyNote(data.note || { date: dateStr, content: '' });
+    } catch (error) {
+      console.error('Error fetching daily note:', error);
+      toast.error('Failed to load daily note');
+      setDailyNote({ date: formatDateForAPI(date), content: '' });
+    } finally {
+      setDailyNoteLoading(false);
+    }
+  }, []);
+
+  // Save daily note
+  const handleSaveDailyNote = async (content: string) => {
+    try {
+      const dateStr = formatDateForAPI(selectedDate);
+      const response = await fetch('/api/daily-notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date: dateStr,
+          content: content.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save daily note');
+      }
+
+      const data = await response.json();
+      setDailyNote(data.note);
+    } catch (error) {
+      console.error('Error saving daily note:', error);
+      toast.error('Failed to save daily note');
+    }
+  };
+
+  // Date navigation functions
+  const goToPreviousDay = () => {
+    const prevDay = new Date(selectedDate);
+    prevDay.setDate(prevDay.getDate() - 1);
+    setSelectedDate(prevDay);
+  };
+
+  const goToNextDay = () => {
+    const nextDay = new Date(selectedDate);
+    nextDay.setDate(nextDay.getDate() + 1);
+    setSelectedDate(nextDay);
+  };
+
+  const goToToday = () => {
+    setSelectedDate(new Date());
+  };
+
+  // Fetch daily note when date changes
+  useEffect(() => {
+    fetchDailyNote(selectedDate);
+  }, [selectedDate, fetchDailyNote]);
 
   useEffect(() => {
     if (demoMode) {
@@ -138,6 +235,9 @@ export default function OverviewPage() {
     fetchData();
   }, [workspaceId, demoMode]);
 
+  const isTodaySelected = formatDateForAPI(selectedDate) === formatDateForAPI(new Date());
+  const isFutureDate = selectedDate > new Date();
+
   return (
     <motion.div
       className="h-full w-full flex flex-col overflow-hidden"
@@ -192,11 +292,128 @@ export default function OverviewPage() {
           </motion.div>
         ) : (
           <motion.div
-            className="space-y-4"
+            className="space-y-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
+            {/* Today's Focus Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.25 }}
+            >
+              <div className="mb-4">
+                <h2 className="text-lg font-semibold mb-1">Today's Focus</h2>
+                <p className="text-xs text-muted-foreground">Your daily snapshot and reflection</p>
+              </div>
+
+              {/* Date Navigation */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant="outline"
+                      size="icon-sm"
+                      onClick={goToPreviousDay}
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
+
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button variant="outline" className="w-[240px]">
+                          <CalendarDays className="w-4 h-4" />
+                          {format(selectedDate, 'MMMM d, yyyy')}
+                        </Button>
+                      </motion.div>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <CalendarPicker
+                        mode="single"
+                        selected={selectedDate}
+                        onSelect={(date) => date && setSelectedDate(date)}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      variant="outline"
+                      size="icon-sm"
+                      onClick={goToNextDay}
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
+                </div>
+
+                <AnimatePresence>
+                  {!isTodaySelected && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Button variant="secondary" onClick={goToToday}>
+                        Today
+                      </Button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Daily Content Grid */}
+              {dailyNoteLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                  {/* Daily Note - 2 columns */}
+                  <div className="lg:col-span-2">
+                    <DailyNote
+                      date={formatDateForAPI(selectedDate)}
+                      initialContent={dailyNote?.content || ''}
+                      onSave={handleSaveDailyNote}
+                    />
+                  </div>
+
+                  {/* Today's Agenda - 1 column */}
+                  <div className="lg:col-span-1">
+                    <AgendaList
+                      tasks={todayFilteredTasks}
+                      date={formatDateForAPI(selectedDate)}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* Future Date Notice */}
+              <AnimatePresence>
+                {isFutureDate && (
+                  <motion.div
+                    className="mt-4 p-3 bg-muted/50 rounded-lg border border-border/60 text-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="text-xs text-muted-foreground">
+                      You&apos;re viewing a future date. Start planning ahead!
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+
+            {/* Divider */}
+            <div className="border-t border-border/40" />
+
             {/* Stats Grid */}
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"

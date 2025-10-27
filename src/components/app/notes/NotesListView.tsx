@@ -2,10 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FileText, Plus, Search, Loader2, Calendar } from 'lucide-react';
+import { FileText, Plus, Search, Loader2, Calendar, BookOpen, PenLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatDistanceToNow } from 'date-fns';
 import { useDemo } from '@/contexts/demo-context';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 interface UserGuide {
   id: string;
@@ -33,6 +40,7 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [gettingStartedPageId, setGettingStartedPageId] = useState<string | null>(null);
+  const [showCreateDialog, setShowCreateDialog] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -71,10 +79,22 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
   };
 
   const handleCreateNote = () => {
+    setShowCreateDialog(true);
+  };
+
+  const handleCreateFromGuide = () => {
+    setShowCreateDialog(false);
     // Navigate to Getting Started page to select a guide
     if (gettingStartedPageId) {
       router.push(`/app/${workspaceId}/notes?pageId=${gettingStartedPageId}`);
     }
+  };
+
+  const handleCreateBlankNote = () => {
+    setShowCreateDialog(false);
+    // TODO: Create blank note (freeform journaling)
+    // This will need a new API endpoint and UI for freeform notes
+    console.log('Create blank note - to be implemented');
   };
 
   if (loading) {
@@ -195,6 +215,49 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
           </div>
         )}
       </div>
+
+      {/* Create Note Dialog */}
+      <Dialog open={showCreateDialog} onOpenChange={setShowCreateDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Create New Note</DialogTitle>
+            <DialogDescription>
+              Choose how you'd like to create your note
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-3 py-4">
+            <button
+              onClick={handleCreateFromGuide}
+              className="group flex items-start gap-4 p-4 border border-border/60 rounded-lg hover:border-primary/40 hover:bg-muted/20 transition-all text-left"
+            >
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <BookOpen className="w-5 h-5 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-sm mb-1">From Guide</h3>
+                <p className="text-xs text-muted-foreground">
+                  Start with a structured guide template with questions, readings, and tasks
+                </p>
+              </div>
+            </button>
+
+            <button
+              onClick={handleCreateBlankNote}
+              className="group flex items-start gap-4 p-4 border border-border/60 rounded-lg hover:border-primary/40 hover:bg-muted/20 transition-all text-left"
+            >
+              <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                <PenLine className="w-5 h-5 text-foreground" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-sm mb-1">Blank Note</h3>
+                <p className="text-xs text-muted-foreground">
+                  Create a freeform note for journaling or personal reflection
+                </p>
+              </div>
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
