@@ -390,7 +390,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           setGuideInfo({ id: guide.id, name: guide.name });
         }
 
-        const questionsRes = await fetch(`/api/questions?guideId=${selectedGuide}`);
+        const questionsRes = await fetch(`/api/guides/${selectedGuide}/questions`);
         const questionsData = await questionsRes.json();
         const fetchedQuestions = questionsData.questions || [];
         setQuestions(fetchedQuestions);
@@ -407,7 +407,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
         const allCategories = Object.keys(groupedQuestions);
         setCollapsedCategories(new Set(allCategories));
 
-        const readingsRes = await fetch(`/api/readings?guide=${selectedGuide}&pageSize=50`);
+        const readingsRes = await fetch(`/api/guides/${selectedGuide}/readings`);
         const readingsData = await readingsRes.json();
         setReadings(readingsData.readings || []);
       } catch (error) {
