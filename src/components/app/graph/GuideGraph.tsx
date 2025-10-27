@@ -14,6 +14,8 @@ import ReactFlow, {
   BaseEdge,
   EdgeProps,
   getStraightPath,
+  Handle,
+  Position,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { motion } from 'framer-motion';
@@ -74,6 +76,16 @@ const GuideNode = memo(function GuideNode({ data }: { data: any }) {
       whileHover={{ scale: 1.1 }}
       className="relative"
     >
+      {/* Invisible Handles for connections */}
+      <Handle type="source" position={Position.Top} style={{ opacity: 0 }} />
+      <Handle type="source" position={Position.Right} style={{ opacity: 0 }} />
+      <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} />
+      <Handle type="source" position={Position.Left} style={{ opacity: 0 }} />
+      <Handle type="target" position={Position.Top} style={{ opacity: 0 }} />
+      <Handle type="target" position={Position.Right} style={{ opacity: 0 }} />
+      <Handle type="target" position={Position.Bottom} style={{ opacity: 0 }} />
+      <Handle type="target" position={Position.Left} style={{ opacity: 0 }} />
+
       {/* Progress Ring */}
       <svg className="absolute -top-2 -left-2 w-24 h-24" style={{ transform: 'rotate(-90deg)' }}>
         <circle
@@ -168,6 +180,7 @@ const CustomDashedEdge = memo(function CustomDashedEdge({
   return <BaseEdge id={id} path={edgePath} style={style} />;
 });
 
+// Define outside component to prevent recreation on each render
 const nodeTypes = {
   guideNode: GuideNode,
 };
@@ -238,7 +251,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             animated: false,
             style: {
               stroke: color,
-              strokeWidth: 4,
+              strokeWidth: 8,
             },
           });
         }
@@ -258,8 +271,8 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             animated: false,
             style: {
               stroke: '#6366f1',
-              strokeWidth: 2,
-              strokeDasharray: '5,5',
+              strokeWidth: 4,
+              strokeDasharray: '8,8',
             },
           });
         }
