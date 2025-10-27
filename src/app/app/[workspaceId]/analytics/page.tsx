@@ -148,7 +148,7 @@ export default function AnalyticsPage() {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const pattern = daysOfWeek.map(day => ({ day, count: 0 }));
 
-    tasks.forEach(t => {
+    items.forEach(t => {
       const dayIndex = new Date(t.created_at).getDay();
       pattern[dayIndex].count++;
     });
