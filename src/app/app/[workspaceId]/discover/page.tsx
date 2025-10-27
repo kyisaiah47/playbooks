@@ -94,6 +94,12 @@ export default function DiscoverPage() {
     fetchCategories();
   }, []);
 
+  // Reset selected guide and search when category changes
+  useEffect(() => {
+    setSelectedGuide(null);
+    setSearchQuery('');
+  }, [selectedCategory]);
+
   // Fetch guides when category changes or search query changes
   useEffect(() => {
     async function fetchGuides() {
@@ -287,7 +293,7 @@ export default function DiscoverPage() {
                 )}
               </div>
             ) : (
-              <div>
+              <div key={selectedCategory}>
                 <div className="flex items-center justify-between mb-3 pb-2 border-b border-border/40">
                   <span className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">
                     {loadingGuides ? 'Loading...' : `${guides.length} guides`}
@@ -304,6 +310,7 @@ export default function DiscoverPage() {
                   </motion.div>
                 ) : (
                   <motion.div
+                    key={`guides-${selectedCategory}`}
                     className="space-y-0"
                     variants={{
                       hidden: { opacity: 0 },
