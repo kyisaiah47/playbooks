@@ -7,12 +7,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useDemo } from '@/contexts/demo-context';
 import { toast } from 'sonner';
+import { useTheme } from 'next-themes';
 
 type SettingsSection = 'profile' | 'privacy' | 'data' | 'notifications' | 'appearance' | 'workspace';
 
 export default function SettingsPage() {
   const { demoMode } = useDemo();
   const searchParams = useSearchParams();
+  const { theme, setTheme } = useTheme();
   const [activeSection, setActiveSection] = useState<SettingsSection>('profile');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -232,17 +234,38 @@ export default function SettingsPage() {
                 <div>
                   <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-4">Theme</p>
                   <div className="grid grid-cols-3 gap-3 max-w-md">
-                    <button className="group p-3 border border-border/40 rounded-md hover:border-foreground/40 transition-colors">
+                    <button
+                      onClick={() => setTheme('light')}
+                      className={`group p-3 rounded-md transition-colors ${
+                        theme === 'light'
+                          ? 'border-2 border-foreground'
+                          : 'border border-border/40 hover:border-foreground/40'
+                      }`}
+                    >
                       <div className="w-full h-16 bg-gradient-to-br from-white to-gray-100 rounded mb-2 border border-border/40" />
-                      <p className="text-xs text-foreground">Light</p>
+                      <p className={`text-xs ${theme === 'light' ? 'text-foreground font-medium' : 'text-foreground'}`}>Light</p>
                     </button>
-                    <button className="group p-3 border-2 border-foreground rounded-md">
+                    <button
+                      onClick={() => setTheme('dark')}
+                      className={`group p-3 rounded-md transition-colors ${
+                        theme === 'dark'
+                          ? 'border-2 border-foreground'
+                          : 'border border-border/40 hover:border-foreground/40'
+                      }`}
+                    >
                       <div className="w-full h-16 bg-gradient-to-br from-gray-800 to-gray-950 rounded mb-2" />
-                      <p className="text-xs text-foreground font-medium">Dark</p>
+                      <p className={`text-xs ${theme === 'dark' ? 'text-foreground font-medium' : 'text-foreground'}`}>Dark</p>
                     </button>
-                    <button className="group p-3 border border-border/40 rounded-md hover:border-foreground/40 transition-colors">
+                    <button
+                      onClick={() => setTheme('system')}
+                      className={`group p-3 rounded-md transition-colors ${
+                        theme === 'system'
+                          ? 'border-2 border-foreground'
+                          : 'border border-border/40 hover:border-foreground/40'
+                      }`}
+                    >
                       <div className="w-full h-16 bg-gradient-to-br from-white via-gray-500 to-gray-900 rounded mb-2" />
-                      <p className="text-xs text-foreground">System</p>
+                      <p className={`text-xs ${theme === 'system' ? 'text-foreground font-medium' : 'text-foreground'}`}>System</p>
                     </button>
                   </div>
                 </div>
