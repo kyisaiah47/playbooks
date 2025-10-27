@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
 
     return successResponse({ items: items || [] });
   } catch (error) {
-    console.error('Error in GET /api/tasks:', error);
+    console.error('Error in GET /api/items:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
 
     return successResponse({ item }, 201);
   } catch (error) {
-    console.error('Error in POST /api/tasks:', error);
+    console.error('Error in POST /api/items:', error);
     return errorResponse('Internal server error');
   }
 }

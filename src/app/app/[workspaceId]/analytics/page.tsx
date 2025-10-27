@@ -75,8 +75,8 @@ export default function AnalyticsPage() {
 
         const [guidesRes, tasksRes, eventsRes] = await Promise.all([
           fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`),
-          fetch(`/api/tasks`),
-          fetch(`/api/calendar`)
+          fetch(`/api/items`),
+          fetch(`/api/items`)
         ]);
 
         if (!guidesRes.ok || !tasksRes.ok || !eventsRes.ok) {
@@ -90,7 +90,7 @@ export default function AnalyticsPage() {
         ]);
 
         setAllUserGuides(guidesData.userGuides || []);
-        setAllTasks(tasksData.tasks || []);
+        setAllTasks(tasksData.items || []);
         setAllEvents(eventsData.events || []);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -323,22 +323,22 @@ export default function AnalyticsPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="flex-1 h-8 bg-muted rounded overflow-hidden flex">
-                        {month.tasksCreated > 0 && (
+                        {month.itemsCreated > 0 && (
                           <div
                             className="bg-blue-500/60 flex items-center justify-center text-[10px] font-medium text-white"
-                            style={{ width: `${(month.tasksCreated / month.total) * 100}%` }}
-                            title={`${month.tasksCreated} tasks created`}
+                            style={{ width: `${(month.itemsCreated / month.total) * 100}%` }}
+                            title={`${month.itemsCreated} tasks created`}
                           >
-                            {month.tasksCreated > 2 && month.tasksCreated}
+                            {month.itemsCreated > 2 && month.itemsCreated}
                           </div>
                         )}
-                        {month.tasksCompleted > 0 && (
+                        {month.itemsCompleted > 0 && (
                           <div
                             className="bg-green-500/60 flex items-center justify-center text-[10px] font-medium text-white"
-                            style={{ width: `${(month.tasksCompleted / month.total) * 100}%` }}
-                            title={`${month.tasksCompleted} tasks completed`}
+                            style={{ width: `${(month.itemsCompleted / month.total) * 100}%` }}
+                            title={`${month.itemsCompleted} tasks completed`}
                           >
-                            {month.tasksCompleted > 2 && month.tasksCompleted}
+                            {month.itemsCompleted > 2 && month.itemsCompleted}
                           </div>
                         )}
                         {month.notesCreated > 0 && (
@@ -355,11 +355,11 @@ export default function AnalyticsPage() {
                     <div className="flex items-center gap-3 mt-1 text-[10px] text-muted-foreground">
                       <span className="flex items-center gap-1">
                         <div className="w-2 h-2 rounded-full bg-blue-500/60" />
-                        {month.tasksCreated} created
+                        {month.itemsCreated} created
                       </span>
                       <span className="flex items-center gap-1">
                         <div className="w-2 h-2 rounded-full bg-green-500/60" />
-                        {month.tasksCompleted} completed
+                        {month.itemsCompleted} completed
                       </span>
                       <span className="flex items-center gap-1">
                         <div className="w-2 h-2 rounded-full bg-purple-500/60" />

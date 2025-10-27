@@ -62,7 +62,7 @@ export function EventCreateForm({
         ? `${date}T00:00:00`
         : `${date}T${time}:00`;
 
-      const response = await fetch('/api/calendar', {
+      const response = await fetch('/api/items', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

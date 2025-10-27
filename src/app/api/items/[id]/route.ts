@@ -64,7 +64,7 @@ export async function PATCH(
 
     return successResponse({ item });
   } catch (error) {
-    console.error('Error in PATCH /api/tasks/[id]:', error);
+    console.error('Error in PATCH /api/items/[id]:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -94,7 +94,7 @@ export async function DELETE(
 
     return successResponse({ message: 'Item deleted successfully' });
   } catch (error) {
-    console.error('Error in DELETE /api/tasks/[id]:', error);
+    console.error('Error in DELETE /api/items/[id]:', error);
     return errorResponse('Internal server error');
   }
 }

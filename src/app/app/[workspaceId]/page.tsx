@@ -109,8 +109,8 @@ export default function OverviewPage() {
 
           const [guidesRes, tasksRes, eventsRes] = await Promise.all([
             fetch(`/api/user-guides?workspace_id=${DEMO_WORKSPACE_ID}&archived=false`),
-            fetch(`/api/tasks?workspace_id=${DEMO_WORKSPACE_ID}`),
-            fetch(`/api/calendar?workspace_id=${DEMO_WORKSPACE_ID}`)
+            fetch(`/api/items?workspace_id=${DEMO_WORKSPACE_ID}`),
+            fetch(`/api/items?workspace_id=${DEMO_WORKSPACE_ID}`)
           ]);
 
           if (guidesRes.ok) {
@@ -120,7 +120,7 @@ export default function OverviewPage() {
 
           if (tasksRes.ok) {
             const tasksData = await tasksRes.json();
-            setAllTasks(tasksData.tasks || []);
+            setAllTasks(tasksData.items || []);
           }
 
           if (eventsRes.ok) {
@@ -144,8 +144,8 @@ export default function OverviewPage() {
 
         const [guidesRes, tasksRes, eventsRes] = await Promise.all([
           fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`),
-          fetch(`/api/tasks`),
-          fetch(`/api/calendar`)
+          fetch(`/api/items`),
+          fetch(`/api/items`)
         ]);
 
         if (!guidesRes.ok || !tasksRes.ok || !eventsRes.ok) {
@@ -159,7 +159,7 @@ export default function OverviewPage() {
         ]);
 
         setAllUserGuides(guidesData.userGuides || []);
-        setAllTasks(tasksData.tasks || []);
+        setAllTasks(tasksData.items || []);
         setAllEvents(eventsData.events || []);
       } catch (error) {
         console.error('Error fetching data:', error);

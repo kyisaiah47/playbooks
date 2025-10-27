@@ -34,10 +34,10 @@ export default function TasksPage() {
   const { data: allTasks, isLoading, error } = useQuery({
     queryKey: ['tasks'],
     queryFn: async () => {
-      const res = await fetch('/api/tasks');
+      const res = await fetch('/api/items');
       if (!res.ok) throw new Error('Failed to fetch tasks');
       const data = await res.json();
-      return data.tasks as ExtendedTask[];
+      return data.items as ExtendedTask[];
     },
   });
 
@@ -55,7 +55,7 @@ export default function TasksPage() {
       due_date: string | null;
       user_guide_id: string | null;
     }) => {
-      const res = await fetch('/api/tasks', {
+      const res = await fetch('/api/items', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task),
@@ -106,7 +106,7 @@ export default function TasksPage() {
   // Delete task mutation
   const deleteTaskMutation = useMutation({
     mutationFn: async (taskId: string) => {
-      const res = await fetch(`/api/tasks/${taskId}`, {
+      const res = await fetch(`/api/items/${taskId}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error('Failed to delete task');
@@ -146,7 +146,7 @@ export default function TasksPage() {
       taskId: string;
       status: 'todo' | 'in_progress' | 'done';
     }) => {
-      const res = await fetch(`/api/tasks/${taskId}`, {
+      const res = await fetch(`/api/items/${taskId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status }),
@@ -193,7 +193,7 @@ export default function TasksPage() {
         due_date: string | null;
       };
     }) => {
-      const res = await fetch(`/api/tasks/${taskId}`, {
+      const res = await fetch(`/api/items/${taskId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates),

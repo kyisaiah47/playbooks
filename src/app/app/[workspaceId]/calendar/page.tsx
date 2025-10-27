@@ -49,7 +49,7 @@ export default function CalendarPage() {
 
       // Fetch events
       const eventsResponse = await fetch(
-        `/api/calendar?start_date=${format(monthStart, 'yyyy-MM-dd')}&end_date=${format(monthEnd, 'yyyy-MM-dd')}`
+        `/api/items?start_date=${format(monthStart, 'yyyy-MM-dd')}&end_date=${format(monthEnd, 'yyyy-MM-dd')}`
       );
 
       if (!eventsResponse.ok) {
@@ -62,14 +62,14 @@ export default function CalendarPage() {
       setAllEvents(eventsData.events || []);
 
       // Fetch tasks with due dates
-      const tasksResponse = await fetch('/api/tasks');
+      const tasksResponse = await fetch('/api/items');
 
       if (!tasksResponse.ok) {
         throw new Error('Failed to fetch tasks');
       }
 
       const tasksData = await tasksResponse.json();
-      setTasks(tasksData.tasks || []);
+      setTasks(tasksData.items || []);
     } catch (err) {
       console.error('Error fetching calendar data:', err);
       setError(err instanceof Error ? err.message : 'Failed to load calendar');
@@ -108,7 +108,7 @@ export default function CalendarPage() {
 
   const handleDeleteEvent = async (eventId: string) => {
     try {
-      const response = await fetch(`/api/calendar/${eventId}`, {
+      const response = await fetch(`/api/items/${eventId}`, {
         method: 'DELETE',
       });
 
