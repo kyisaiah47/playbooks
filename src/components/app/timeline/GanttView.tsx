@@ -8,9 +8,10 @@ import { format, startOfMonth, endOfMonth, addMonths, subMonths, isSameDay } fro
 interface GanttViewProps {
   events: CalendarEvent[];
   tasks: Task[];
+  onItemClick?: (item: CalendarEvent | Task, type: 'event' | 'task') => void;
 }
 
-export const GanttView = memo(function GanttView({ events, tasks }: GanttViewProps) {
+export const GanttView = memo(function GanttView({ events, tasks, onItemClick }: GanttViewProps) {
   const timelineData = useMemo(() => {
     const allItems = [
       ...events.filter(e => e.start_time).map(e => ({ ...e, type: 'event' as const, date: new Date(e.start_time!) })),
@@ -182,18 +183,21 @@ export const GanttView = memo(function GanttView({ events, tasks }: GanttViewPro
                   }}
                   title={`${item.title}${item.description ? `\n${item.description}` : ''}`}
                 >
-                  <div className={`
-                    px-2 sm:px-2.5 py-1 rounded border flex items-center gap-1 sm:gap-1.5 shadow-sm
-                    transition-all hover:shadow-md hover:scale-105 cursor-pointer
-                    ${item.type === 'event'
-                      ? 'bg-primary border-primary text-white hover:bg-[#5558e3]'
-                      : item.status === 'done'
-                        ? 'bg-green-600 border-green-600 text-white hover:bg-green-700'
-                        : item.status === 'in_progress'
-                          ? 'bg-blue-600 border-blue-600 text-white hover:bg-blue-700'
-                          : 'bg-orange-500 border-orange-500 text-white hover:bg-orange-600'
-                    }
-                  `}>
+                  <div
+                    className={`
+                      px-2 sm:px-2.5 py-1 rounded border flex items-center gap-1 sm:gap-1.5 shadow-sm
+                      transition-all hover:shadow-md hover:scale-105 cursor-pointer
+                      ${item.type === 'event'
+                        ? 'bg-primary border-primary text-white hover:bg-[#5558e3]'
+                        : item.status === 'done'
+                          ? 'bg-green-600 border-green-600 text-white hover:bg-green-700'
+                          : item.status === 'in_progress'
+                            ? 'bg-blue-600 border-blue-600 text-white hover:bg-blue-700'
+                            : 'bg-orange-500 border-orange-500 text-white hover:bg-orange-600'
+                      }
+                    `}
+                    onClick={() => onItemClick?.(item, item.type)}
+                  >
                     {item.type === 'event' ? (
                       <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 flex-shrink-0" />
                     ) : (

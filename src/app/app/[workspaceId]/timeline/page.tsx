@@ -2,13 +2,14 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
-import { BarChart3, Loader2 } from 'lucide-react';
+import { BarChart3, Loader2, Calendar, CheckSquare, Trash2 } from 'lucide-react';
 import { GanttView } from '@/components/app/timeline/GanttView';
-import { Item } from '@/types/workspace';
+import { Item, CalendarEvent, Task } from '@/types/workspace';
 import { startOfMonth, endOfMonth, format } from 'date-fns';
 import { motion } from 'framer-motion';
 import { useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
+import { toast } from 'sonner';
 
 export default function TimelinePage() {
   const params = useParams();
@@ -19,6 +20,7 @@ export default function TimelinePage() {
   const [allItems, setAllItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedItem, setSelectedItem] = useState<{ item: CalendarEvent | Task; type: 'event' | 'task' } | null>(null);
 
   // Get selected note IDs from URL, fallback to localStorage if URL is empty
   const urlIds = searchParams.get('timelineNotes')?.split(',').filter(Boolean);
@@ -58,6 +60,34 @@ export default function TimelinePage() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  const handleItemClick = (item: CalendarEvent | Task, type: 'event' | 'task') => {
+    setSelectedItem({ item, type });
+  };
+
+  const handleDeleteItem = async (itemId: string) => {
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/items/${itemId}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete item');
+      }
+
+      toast.success('Item deleted successfully');
+      setSelectedItem(null);
+      fetchData();
+    } catch (err) {
+      console.error('Error deleting item:', err);
+      toast.error('Failed to delete item');
+    }
+  };
 
   return (
     <motion.div
@@ -99,14 +129,126 @@ export default function TimelinePage() {
           >
             <p>{error}</p>
           </motion.div>
-        ) : (
+        ) : selectedNoteIds.length === 0 && !demoMode ? (
           <motion.div
+            className="flex flex-col items-center justify-center h-96 text-muted-foreground"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            transition={{ duration: 0.3 }}
           >
-            <GanttView events={events} tasks={tasks} />
+            <BarChart3 className="w-16 h-16 mb-4 opacity-20" />
+            <p className="text-lg font-medium">No notes selected</p>
+            <p className="text-sm">Select notes from the sidebar to see your timeline</p>
           </motion.div>
+        ) : filteredItems.length === 0 && selectedNoteIds.length > 0 ? (
+          <motion.div
+            className="flex flex-col items-center justify-center h-96 text-muted-foreground"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <BarChart3 className="w-16 h-16 mb-4 opacity-20" />
+            <p className="text-lg font-medium">No data found</p>
+            <p className="text-sm">The selected notes don't have any timeline data yet</p>
+          </motion.div>
+        ) : (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
+              <GanttView events={events} tasks={tasks} onItemClick={handleItemClick} />
+            </motion.div>
+
+            {/* Selected Item Details */}
+            {selectedItem && (
+              <motion.div
+                className="mt-6 rounded-lg border border-border/40 bg-background overflow-hidden"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="px-4 py-3 border-b border-border/40 flex items-center justify-between">
+                  <h3 className="text-sm font-semibold">
+                    {selectedItem.type === 'event' ? 'Event Details' : 'Task Details'}
+                  </h3>
+                  <button
+                    onClick={() => setSelectedItem(null)}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="p-4 space-y-4">
+                  <div>
+                    <h4 className="text-base font-semibold mb-2">{selectedItem.item.title}</h4>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      {selectedItem.type === 'event' ? (
+                        <>
+                          <Calendar className="w-4 h-4" />
+                          <span>
+                            {selectedItem.item.start_time
+                              ? format(new Date(selectedItem.item.start_time), 'EEEE, MMMM d, yyyy')
+                              : 'No date set'}
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <CheckSquare className="w-4 h-4" />
+                          <span>
+                            Due: {selectedItem.item.due_date
+                              ? format(new Date(selectedItem.item.due_date), 'EEEE, MMMM d, yyyy')
+                              : 'No due date'}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  {selectedItem.item.description && (
+                    <div>
+                      <p className="text-sm text-foreground/80 leading-relaxed">
+                        {selectedItem.item.description}
+                      </p>
+                    </div>
+                  )}
+
+                  {selectedItem.type === 'task' && 'status' in selectedItem.item && (
+                    <div>
+                      <span className="text-xs font-medium text-muted-foreground">Status: </span>
+                      <span className={`text-xs font-medium ${
+                        selectedItem.item.status === 'done'
+                          ? 'text-green-600'
+                          : selectedItem.item.status === 'in_progress'
+                            ? 'text-blue-600'
+                            : 'text-orange-500'
+                      }`}>
+                        {selectedItem.item.status === 'done'
+                          ? 'Done'
+                          : selectedItem.item.status === 'in_progress'
+                            ? 'In Progress'
+                            : 'To Do'}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="pt-2">
+                    <button
+                      onClick={() => handleDeleteItem(selectedItem.item.id)}
+                      className="text-sm text-destructive hover:text-destructive/80 transition-colors flex items-center gap-2"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                      Delete {selectedItem.type === 'event' ? 'Event' : 'Task'}
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </>
         )}
       </div>
     </motion.div>
