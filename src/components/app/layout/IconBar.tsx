@@ -30,7 +30,7 @@ interface IconBarProps {
 }
 
 const ICON_VIEWS: { type: TabType; icon: any; label: string }[] = [
-  { type: 'overview', icon: LayoutDashboard, label: 'Overview' },
+  { type: 'overview', icon: CalendarDays, label: 'Daily' },
   { type: 'notes', icon: FileText, label: 'Notes' },
   { type: 'discover', icon: Compass, label: 'Discover' },
   { type: 'library', icon: Library, label: 'Library' },

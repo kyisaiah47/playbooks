@@ -259,11 +259,11 @@ export default function OverviewPage() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <LayoutDashboard className="w-4 h-4 text-primary" />
+            <CalendarDays className="w-4 h-4 text-primary" />
           </motion.div>
           <div>
-            <h1 className="text-xl font-semibold">Overview</h1>
-            <p className="text-xs text-muted-foreground">Your workspace dashboard</p>
+            <h1 className="text-xl font-semibold">Daily</h1>
+            <p className="text-xs text-muted-foreground">Your daily reflection and agenda</p>
           </div>
         </div>
       </motion.div>
@@ -286,9 +286,9 @@ export default function OverviewPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
-            <LayoutDashboard className="w-16 h-16 mb-4 opacity-20" />
+            <CalendarDays className="w-16 h-16 mb-4 opacity-20" />
             <p className="text-lg font-medium">No notes selected</p>
-            <p className="text-sm">Select notes from the sidebar to see your overview</p>
+            <p className="text-sm">Select notes from the sidebar to see your daily view</p>
           </motion.div>
         ) : (
           <motion.div
@@ -410,221 +410,6 @@ export default function OverviewPage() {
                 )}
               </AnimatePresence>
             </motion.div>
-
-            {/* Divider */}
-            <div className="border-t border-border/40" />
-
-            {/* Stats Grid */}
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-              variants={{
-                hidden: { opacity: 0 },
-                show: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <ListTodo className="w-5 h-5 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">Total Tasks</span>
-                </div>
-                <div className="text-2xl font-bold">{tasks.length}</div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  {tasks.filter(t => t.status === 'completed').length} completed
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <AlertCircle className="w-5 h-5 text-amber-500" />
-                  <span className="text-sm text-muted-foreground">Overdue Tasks</span>
-                </div>
-                <div className="text-2xl font-bold text-amber-500">
-                  {tasks.filter(t => t.status !== 'completed' && t.due_date && isPast(parseISO(t.due_date)) && !isToday(parseISO(t.due_date))).length}
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  Need attention
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <Clock className="w-5 h-5 text-blue-500" />
-                  <span className="text-sm text-muted-foreground">Due Today</span>
-                </div>
-                <div className="text-2xl font-bold text-blue-500">
-                  {tasks.filter(t => t.status !== 'completed' && t.due_date && isToday(parseISO(t.due_date))).length}
-                </div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  Tasks for today
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-5 h-5 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">Events</span>
-                </div>
-                <div className="text-2xl font-bold">{events.length}</div>
-                <div className="text-xs text-muted-foreground mt-1">
-                  Total events
-                </div>
-              </motion.div>
-            </motion.div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {/* Upcoming Tasks */}
-              <div className="rounded-lg border border-border/40 bg-background p-4">
-                <h3 className="text-sm font-semibold mb-3">Upcoming Tasks</h3>
-                <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {tasks
-                    .filter(t => t.status !== 'completed' && t.due_date)
-                    .sort((a, b) => new Date(a.due_date!).getTime() - new Date(b.due_date!).getTime())
-                    .slice(0, 10)
-                    .map(task => {
-                      const dueDate = parseISO(task.due_date!);
-                      const isOverdue = isPast(dueDate) && !isToday(dueDate);
-                      const isDueToday = isToday(dueDate);
-                      const isDueTomorrow = isTomorrow(dueDate);
-
-                      return (
-                        <div key={task.id} className="flex items-start gap-2 p-2 rounded hover:bg-muted/50 transition-colors">
-                          <Circle className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium break-words">{task.title}</div>
-                            <div className={`text-xs mt-0.5 ${
-                              isOverdue ? 'text-amber-500' :
-                              isDueToday ? 'text-blue-500' :
-                              'text-muted-foreground'
-                            }`}>
-                              {isOverdue ? 'Overdue' :
-                               isDueToday ? 'Today' :
-                               isDueTomorrow ? 'Tomorrow' :
-                               format(dueDate, 'MMM d, yyyy')}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  {tasks.filter(t => t.status !== 'completed' && t.due_date).length === 0 && (
-                    <div className="text-sm text-muted-foreground text-center py-8">
-                      No upcoming tasks
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Upcoming Events */}
-              <div className="rounded-lg border border-border/40 bg-background p-4">
-                <h3 className="text-sm font-semibold mb-3">Upcoming Events</h3>
-                <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {events
-                    .filter(e => isFuture(parseISO(e.date)) || isToday(parseISO(e.date)))
-                    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-                    .slice(0, 10)
-                    .map(event => {
-                      const eventDate = parseISO(event.date);
-                      const isDueToday = isToday(eventDate);
-                      const isDueTomorrow = isTomorrow(eventDate);
-
-                      return (
-                        <div key={event.id} className="flex items-start gap-2 p-2 rounded hover:bg-muted/50 transition-colors">
-                          <Calendar className="w-4 h-4 mt-0.5 text-muted-foreground flex-shrink-0" />
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium break-words">{event.title}</div>
-                            <div className={`text-xs mt-0.5 ${isDueToday ? 'text-blue-500' : 'text-muted-foreground'}`}>
-                              {isDueToday ? 'Today' :
-                               isDueTomorrow ? 'Tomorrow' :
-                               format(eventDate, 'MMM d, yyyy')}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  {events.filter(e => isFuture(parseISO(e.date)) || isToday(parseISO(e.date))).length === 0 && (
-                    <div className="text-sm text-muted-foreground text-center py-8">
-                      No upcoming events
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Note Progress */}
-            <div className="rounded-lg border border-border/40 bg-background p-4">
-              <h3 className="text-sm font-semibold mb-3">Note Progress</h3>
-              <div className="space-y-3">
-                {userGuides.map((guide) => {
-                  const displayName = guide.custom_name || guide.guides.name;
-                  const noteTasks = tasks.filter(t => t.user_guide_id === guide.id);
-                  const completedTasks = noteTasks.filter(t => t.status === 'completed').length;
-                  const noteEvents = events.filter(e => e.user_guide_id === guide.id);
-
-                  return (
-                    <div key={guide.id} className="p-3 rounded-lg border border-border/40 bg-muted/20">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="font-medium text-sm">{displayName}</div>
-                        <div className="text-sm font-semibold text-primary">{guide.progress}%</div>
-                      </div>
-                      <div className="w-full h-2 bg-muted rounded-full overflow-hidden mb-2">
-                        <div
-                          className="h-full bg-primary transition-all"
-                          style={{ width: `${guide.progress}%` }}
-                        />
-                      </div>
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <ListTodo className="w-3 h-3" />
-                          <span>{completedTasks}/{noteTasks.length} tasks</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          <span>{noteEvents.length} events</span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </motion.div>
         )}
       </div>
