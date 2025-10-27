@@ -181,7 +181,7 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
             const hasEmoji = emojiMatch !== null;
 
             return (
-              <blockquote key={index} className="bg-blue-50/50 dark:bg-blue-950/20 border-l-4 border-blue-500/40 pl-4 py-3 my-6 rounded-r">
+              <blockquote key={index} className="bg-primary/5 dark:bg-primary/10 border-l-4 border-primary/30 pl-4 py-3 my-6 rounded-r">
                 <p className="text-sm text-foreground/90 leading-relaxed">
                   {renderText(quoteText)}
                 </p>
@@ -202,7 +202,7 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
                 <div key={index} className="my-8 overflow-x-auto">
                   <table className="w-full border-collapse border border-border/60 rounded-lg overflow-hidden shadow-sm">
                     <thead>
-                      <tr className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30">
+                      <tr className="bg-muted/50">
                         {headers.map((header, headerIndex) => (
                           <th key={headerIndex} className="border-b-2 border-border px-4 py-3 text-left text-sm font-semibold text-foreground">
                             {header}

@@ -147,11 +147,10 @@ export default function LibraryPage() {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'book': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400';
+      case 'guide': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400';
       case 'article': return 'bg-green-500/10 text-green-600 dark:text-green-400';
-      case 'youtube': return 'bg-red-500/10 text-red-600 dark:text-red-400';
-      case 'podcast': return 'bg-purple-500/10 text-purple-600 dark:text-purple-400';
-      case 'publication': return 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400';
+      case 'checklist': return 'bg-purple-500/10 text-purple-600 dark:text-purple-400';
+      case 'tool': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400';
       default: return 'bg-muted text-muted-foreground';
     }
   };
@@ -244,6 +243,8 @@ export default function LibraryPage() {
                   <h1 className="text-3xl font-semibold mb-3">{selectedReading.title}</h1>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
                     <span>{selectedReading.author}</span>
+                    <span>•</span>
+                    <span className="capitalize">{selectedReading.type}</span>
                     <span>•</span>
                     <span>{selectedReading.read_time}</span>
                   </div>
@@ -345,7 +346,7 @@ export default function LibraryPage() {
                           </div>
                           <Badge
                             variant="secondary"
-                            className={cn("text-[10px] px-2 py-1 font-medium", getTypeColor(reading.type))}
+                            className={cn("text-xs px-2 py-1 font-medium capitalize", getTypeColor(reading.type))}
                           >
                             {reading.type}
                           </Badge>

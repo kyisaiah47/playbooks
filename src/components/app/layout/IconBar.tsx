@@ -30,15 +30,13 @@ interface IconBarProps {
 }
 
 const ICON_VIEWS: { type: TabType; icon: any; label: string }[] = [
+  { type: 'overview', icon: LayoutDashboard, label: 'Overview' },
   { type: 'notes', icon: FileText, label: 'Notes' },
   { type: 'discover', icon: Compass, label: 'Discover' },
   { type: 'library', icon: Library, label: 'Library' },
-  { type: 'overview', icon: LayoutDashboard, label: 'Overview' },
   { type: 'calendar', icon: Calendar, label: 'Calendar' },
   { type: 'tasks', icon: ListTodo, label: 'Tasks' },
   { type: 'timeline', icon: BarChart3, label: 'Timeline' },
-  { type: 'daily', icon: CalendarDays, label: 'Daily' },
-  { type: 'journal', icon: PenLine, label: 'Journal' },
   { type: 'graph', icon: Network, label: 'Graph' },
   { type: 'analytics', icon: TrendingUp, label: 'Analytics' },
   { type: 'archive', icon: Archive, label: 'Archive' },
