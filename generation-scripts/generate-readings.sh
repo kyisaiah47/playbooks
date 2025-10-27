@@ -48,10 +48,22 @@ Your job: Create readings that DEFINE this new category. Give Wikipedia-depth kn
 **THE QUALITY BAR - What Makes Content Category-Defining:**
 
 This is NOT just good content. This defines a new category. Every reading must be:
-- Gives knowledge you'd get from reading 3-5 books + consulting an expert
-- Comprehensive yet actionable (not just "here's what X is" but "here's how to use X")
-- You can't find this synthesized anywhere else in one place
-- Saves hours of research while giving deeper insight than blog posts
+
+**"3-5 books + consulting an expert" means:**
+- Synthesizes insights from multiple authoritative sources (not just one perspective)
+- Includes frameworks/mental models experts use (not just facts)
+- Addresses nuance and edge cases (not just happy path)
+- Gives specific numbers, timelines, costs where relevant (what consultants charge for)
+
+**"Wikipedia-depth in 400 words" means:**
+- Cover 3-5 key concepts/frameworks (not just one tip)
+- Include cause-and-effect relationships (why things work, not just what to do)
+- Address common misconceptions or mistakes
+- Provide decision-making frameworks, not just information
+
+**Enforcement:**
+- If content goes over 400 words, CUT IT. No exceptions.
+- If you can't fit comprehensive coverage in 400 words, your title is too broad.
 
 **HOW THIS IS DIFFERENT:**
 
@@ -114,28 +126,49 @@ For "career-change":
 3. "Building Credibility in a New Industry" (transition tactics)
 4. "The Financial Reality of Career Change" (practical planning)
 
-**WHAT NOT TO CREATE:**
+**TITLE EXAMPLES - What NOT to Create vs What TO Create:**
 
-❌ BAD (Blog post): "5 Tips for Career Change" (surface-level list)
+❌ BAD (Blog post): "5 Tips for Career Change"
+❌ TRYING but fails (Too comprehensive): "Everything You Need to Know About Changing Careers: A Complete Guide"
 ✅ GOOD (Category-defining): "Skills Transfer Framework: What Actually Carries Over vs What You Need to Build"
 
-❌ BAD (Wikipedia): "Career change is when you switch careers..." (just definition)
-✅ GOOD (Category-defining): "The Hidden Costs of Career Change: A Financial Model for Decision-Making"
+❌ BAD (Generic): "How to Research a New Industry"
+❌ TRYING but fails (Vague promise): "The Ultimate Guide to Industry Research"
+✅ GOOD (Category-defining): "Exploring New Fields: The 3-Interview Method Recruiters Use"
 
-❌ BAD (Generic advice): "Research your target industry" (tells you what, not how)
-✅ GOOD (Category-defining): "Exploring New Fields: Research That Actually Helps" (gives you the framework)
+❌ BAD (Surface-level): "Budgeting for Your Career Change"
+❌ TRYING but fails (Too narrow): "How Much Money You Need Saved"
+✅ GOOD (Category-defining): "The Hidden Costs of Career Change: A 24-Month Financial Model"
+
+**WHY THE GOOD EXAMPLES WORK:**
+- Specific framework/method (not generic advice)
+- Promises depth in narrow scope (not surface-level coverage of everything)
+- Implies expertise (what recruiters use, a financial model)
+- Gives you decision-making tools, not just information
 
 **STEP 3: GENERATE CONTENT FOR EACH TITLE**
 
 For each title, create 300-400 word content following these requirements:
 
+**HOW TO ACHIEVE CATEGORY-DEFINING DEPTH:**
+
+1. **Synthesize multiple perspectives**: Don't just cite one source - combine insights from 3-5 books/experts
+2. **Include frameworks**: Give people mental models (e.g., "The 3-Layer Skill Stack", "The Credibility Timeline")
+3. **Specific numbers**: Not "save money" but "$8,000 for 3 months + $2,000 buffer"
+4. **Address edge cases**: "If you're over 40..." "In tech vs healthcare..." "Remote vs in-person..."
+5. **Call out bad advice**: "Most articles say X, but that fails because..."
+6. **Give decision frameworks**: Not just info, but "Here's how to decide if..."
+
 **CRITICAL REQUIREMENTS**:
 
 1. **EXCERPT** (1-2 sentences):
-   The hook that makes someone want to read. Should convey:
-   - What specific problem this solves
-   - Why it's different from generic advice
-   - Example: "Most people research careers by Googling job titles. Here's the framework recruiters actually use to evaluate transferable skills."
+   The hook that makes someone want to read. Must be SPECIFIC and promise depth.
+
+   ❌ BAD: "Learn how to research a new career effectively."
+   ❌ TRYING but fails: "This guide will teach you everything you need to know about researching careers."
+   ✅ GOOD: "Most people research careers by Googling job titles. Here's the 3-interview method recruiters use to evaluate transferable skills."
+
+   Why it works: Calls out what doesn't work + promises specific expert framework
 
 2. **LENGTH**: 300-400 words MAX - KEEP IT SHORT
    - NOT 600-800 words
@@ -157,16 +190,40 @@ For each title, create 300-400 word content following these requirements:
    - Mix of prose and structured content (not just bullets)
 
 5. **Real Sources**: 2-3 credible sources THAT ACTUALLY EXIST
-   - Books, articles, podcasts, videos
-   - IMPORTANT: After selecting sources, verify they exist. If you cannot verify a source is real, find a different one.
-   - Example: "Patrick McKenzie - Salary Negotiation (kalzumeus.com)" - verify this article exists before citing
-   - Store in sources array: ARRAY['Source 1', 'Source 2']
+
+   **Source Verification Process**:
+   a) Select sources that would be credible (well-known books, established websites, experts)
+   b) Verify they actually exist - if uncertain, choose a different source
+   c) Prefer well-known sources you're confident exist (e.g., "Never Split the Difference by Chris Voss" vs obscure blog)
+
+   **Good source examples**:
+   ✅ "Salary Negotiation by Patrick McKenzie (kalzumeus.com)"
+   ✅ "Never Split the Difference by Chris Voss"
+   ✅ "Harvard Business Review - The Science of Salary Negotiation"
+
+   **Store format**: ARRAY['Source 1', 'Source 2', 'Source 3']
 
 6. **Type** (pick ONE based on content - do not invent new types):
-   - 'guide' - Educational overview/framework (use for: explaining concepts, providing mental models)
-   - 'article' - Insight/analysis piece (use for: thought-provoking perspectives, research-backed insights)
-   - 'checklist' - Step-by-step list (use for: actionable processes, verification steps)
-   - 'tool' - Template/worksheet/framework to use (use for: copy-paste scripts, calculators, templates)
+
+   - **'guide'** - Educational overview/framework
+     Example: "Skills Transfer Framework: What Actually Carries Over vs What You Need to Build"
+     Contains: Frameworks, mental models, cause-and-effect, decision trees
+     NOT: Step-by-step instructions or templates
+
+   - **'article'** - Insight/analysis piece
+     Example: "Why Most Career Change Advice Fails: The Credibility Gap Problem"
+     Contains: Research-backed insights, controversial takes, data analysis
+     NOT: How-to instructions or frameworks
+
+   - **'checklist'** - Step-by-step process
+     Example: "The 30-Day Pre-Ask Checklist: What to Do Before Asking for a Raise"
+     Contains: Sequential steps, verification points, action items
+     NOT: Conceptual explanations
+
+   - **'tool'** - Template/worksheet you can copy
+     Example: "Salary Negotiation Email Scripts: Word-for-Word Templates"
+     Contains: Copy-paste scripts, fill-in-the-blank templates, calculators
+     NOT: Explanations of why or how things work
 
 7. **Slug**: URL-friendly version of title
    - Format: lowercase-with-hyphens
@@ -184,6 +241,42 @@ For each title, create 300-400 word content following these requirements:
    - Quote blocks to cite sources
    - End with ONE clear next action
 
+**CONTENT EXAMPLES - What Category-Defining Looks Like:**
+
+❌ BAD (Generic blog advice):
+"Research is important when changing careers. You should talk to people in your target industry and learn about different roles. This will help you make an informed decision."
+
+❌ TRYING but fails (Info dump):
+"Career research involves informational interviews, industry analysis, skill gap assessment, networking, job shadowing, online courses, certification programs, and market research. Each of these has different benefits and challenges..."
+
+✅ GOOD (Category-defining):
+"Most career changers waste months on LinkedIn research and coffee chats that go nowhere. Here's what actually works: The 3-Interview Method.
+
+**The Framework**
+Interview three people, in this exact order:
+1. **The Escaped** - Someone who LEFT your target industry (finds red flags)
+2. **The Lifer** - 10+ years in the role (reveals unwritten rules)
+3. **The Recent Switcher** - Changed careers 1-2 years ago (shows the actual path)
+
+**Why This Works**
+> "People who stayed in an industry can't see its problems. You need the escaped to see what's broken." - Chris Voss, Never Split the Difference
+
+The Escaped tells you what LinkedIn won't: "Everyone burns out by year 5" or "You need an MBA to get promoted." The Lifer reveals culture codes. The Switcher gives you the playbook they wish they'd had.
+
+**Your Next Step**
+List 5 target companies. Find one person in each category on LinkedIn. Send this exact message: "I'm researching [industry] and would value 15 minutes of your perspective on [specific question]."
+
+Why it works: Specific timeframe, specific ask, shows you've done research."
+
+**Why this is category-defining:**
+- Gives a specific framework (3-Interview Method) not generic advice
+- Calls out what doesn't work ("LinkedIn research and coffee chats that go nowhere")
+- Includes expert insight with quote
+- Provides copy-paste template
+- Explains WHY it works (cause and effect)
+- Covers edge cases (what each type reveals)
+- Under 400 words but feels comprehensive
+
 **IMPORTANT**:
 - 300-400 words MAX
 - Include quote blocks from your sources (use > for blockquotes)
@@ -193,18 +286,23 @@ For each title, create 300-400 word content following these requirements:
 - Project ID: uvcstcajctqbxddosdbf
 
 **AVOID**:
-- ❌ Generic advice ("be confident", "do your research")
-- ❌ Corporate jargon or stiff language
-- ❌ Vague examples without specifics
-- ❌ Going over 400 words
+- ❌ Generic advice without frameworks: "be confident", "do your research", "network more"
+- ❌ Corporate jargon: "leverage synergies", "touch base", "circle back"
+- ❌ Vague examples: "someone I know" instead of "Sarah Chen, $85k → $110k at Microsoft"
+- ❌ Going over 400 words - NO EXCEPTIONS. If you can't fit it, your scope is too broad
 - ❌ OVERLAPPING with existing readings - check the database first!
+- ❌ Surface-level lists: "5 tips for..." "10 ways to..."
+- ❌ Just information with no decision framework
 
 **DO**:
-- ✅ Make up realistic case studies with specific names, companies, numbers
-- ✅ Provide copy-paste templates people can actually use
-- ✅ Be opinionated - call out what DOESN'T work
-- ✅ Give ONE clear action at the end
-- ✅ Make it memorable (people should quote this to friends)
+- ✅ Give specific frameworks with names: "The 3-Interview Method", "The Credibility Timeline"
+- ✅ Make up realistic case studies: "Marcus left consulting for tech - here's his 6-month budget"
+- ✅ Provide copy-paste templates: exact email scripts, specific questions to ask
+- ✅ Be opinionated: "Most advice says X, but that fails because..."
+- ✅ Include specific numbers: "$8,000 not $10,000", "3 interviews not 10", "6 months not 1 year"
+- ✅ Address edge cases: "If you're over 40...", "In tech vs healthcare..."
+- ✅ Give ONE clear next action at the end
+- ✅ Make it quotable: "You need the escaped to see what's broken"
 - ✅ Cover a completely different angle than existing readings
 
 **YOUR PROCESS**:

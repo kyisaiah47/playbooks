@@ -100,16 +100,47 @@ Quality over quantity - don't create filler questions.
 **EXAMPLES - What TO Create vs What NOT to Create:**
 
 ❌ BAD (Generic, Googleable): "What are your career goals?"
-✅ GOOD (Category-defining): "List 5 moments in the past year where you felt energized at work. What specific activities were you doing in each?"
+❌ TRYING but fails (Too comprehensive): "Document every skill you have and create a comprehensive transfer matrix with all possible career paths"
+✅ GOOD (Category-defining): "Write about 3 times in the past year when you lost track of time at work. What were you doing? Who were you with? What made those moments different from your usual workday?"
 
 ❌ BAD (Surface-level): "How much do you spend per month?"
-✅ GOOD (Forces deep thinking): "List your current monthly expenses by category and identify which are fixed vs variable."
+❌ TRYING but fails (Overwhelming): "Create a complete financial audit of every transaction for the past 12 months"
+✅ GOOD (Actionable depth): "List your last 10 purchases over $50. For each, note: Was it planned or impulse? Do you still value it? What does this pattern tell you?"
 
 ❌ BAD (Yes/no answer): "Do you want to change careers?"
-✅ GOOD (Requires reflection): "Reflect on your last major life transition: what helped you adapt and what made it harder?"
+❌ TRYING but fails (Too abstract): "Reflect deeply on your entire life purpose and how your career aligns with your authentic self"
+✅ GOOD (Specific excavation): "Think about Sunday nights. What specific thought or feeling comes up about Monday? When did this pattern start?"
 
-❌ BAD (Too broad): "Research neighborhoods."
-✅ GOOD (Specific framework): "Research three neighborhoods you're considering and note schools, commute times, and recent sale prices."
+**HOW TO CREATE "I'VE NEVER THOUGHT ABOUT IT THIS WAY" QUESTIONS:**
+
+1. **Ask about patterns, not facts**: Not "What do you want?" but "When have you felt it before?"
+2. **Require excavation**: Make them DIG into memory/experience, not just answer from surface knowledge
+3. **Make answers personal**: Someone else's answer would reveal THEIR life, not generic wisdom
+4. **Use specific time frames**: "Past year" not "ever" - forces recent, vivid memory
+5. **Ask for micro-moments**: Not "your career" but "3 times you lost track of time"
+
+**QUESTION STRUCTURE & PROGRESSION:**
+
+Generate questions in this order:
+1. **Foundation (20-30%)**: Self-discovery questions about patterns, past experiences, values
+2. **Research (20-25%)**: Specific data-gathering with clear frameworks
+3. **Planning (25-30%)**: Strategic thinking based on foundation + research
+4. **Action (20-25%)**: Concrete next steps and decision-making
+
+Ensure BALANCE - don't create 40 reflection questions and 5 action questions.
+
+**COMPLEXITY GUIDELINES:**
+
+- Simple guide (15-20 questions): Single domain, straightforward decision (e.g., budgeting)
+- Medium guide (30-40 questions): Multiple domains, moderate stakes (e.g., asking for raise)
+- Complex guide (50-70 questions): Life-changing, multiple domains, high stakes (e.g., divorce, career change)
+
+**USER CONTEXT:**
+
+Consider if user is:
+- **In crisis**: More action-oriented questions, shorter timeframes, practical focus
+- **Planning ahead**: More reflection, longer timeframes, strategic thinking
+- Adjust question tone accordingly (crisis = supportive + action-focused, planning = exploratory)
 
 **Example question counts by complexity:**
 - Simple guide (e.g., 'create-budget'): ~15-20 questions
