@@ -30,19 +30,31 @@ log_colored "$BLUE" "🚀 Generating questions for guide: $GUIDE_ID"
 read -r -d '' PROMPT <<'HEREDOC' || true
 Generate comprehensive, high-quality questions for the GUIDE_ID_PLACEHOLDER guide.
 
-**CONTEXT: Wikipedia × Notion for Life Planning**
-Templata curates and synthesizes expert knowledge into actionable guides. Questions help users think through their situation systematically.
+**CONTEXT: Templata = Notion-style Planning App + Wikipedia-depth Content**
+- Templata is a note-taking/planning workspace (like Notion)
+- Users work through structured questions to plan major life situations
+- Questions help users think systematically through their specific situation
+- Readings provide comprehensive background knowledge
 
 **YOUR TASK**: Create questions that comprehensively cover this guide topic
 
-**STEP 0: GET GUIDE CONTEXT**
+**STEP 0: CHECK FOR EXISTING QUESTIONS**
 
-First, query the database to understand the guide:
+First, check if questions already exist for this guide:
+SELECT id, question FROM questions WHERE template_id = 'GUIDE_ID_PLACEHOLDER'
+
+If questions exist:
+- DELETE FROM questions WHERE template_id = 'GUIDE_ID_PLACEHOLDER'
+- Then proceed with generation
+
+**STEP 1: GET GUIDE CONTEXT**
+
+Query the database to understand the guide:
 SELECT id, title, description, category FROM guides WHERE id = 'GUIDE_ID_PLACEHOLDER'
 
 Use this context to inform your question generation.
 
-**STEP 1: GENERATE QUESTIONS**
+**STEP 2: GENERATE QUESTIONS**
 
 Generate questions that comprehensively cover the topic:
 - Generate as many questions as needed for COMPLETE coverage
@@ -71,7 +83,7 @@ Quality over quantity - don't create filler questions.
 - Medium guide (e.g., 'asking-for-raise'): ~30-40 questions
 - Complex guide (e.g., 'getting-divorced'): ~50-70 questions
 
-**STEP 2: INSERT TO DATABASE**
+**STEP 3: INSERT TO DATABASE**
 
 Insert the questions directly into the questions table using mcp__supabase__execute_sql:
 

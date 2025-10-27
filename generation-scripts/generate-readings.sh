@@ -30,19 +30,31 @@ log_colored "$BLUE" "🚀 Generating readings for guide: $GUIDE_ID"
 read -r -d '' PROMPT <<'HEREDOC' || true
 Generate a comprehensive set of readings for the GUIDE_ID_PLACEHOLDER guide.
 
-**CONTEXT: Wikipedia × Notion for Life Planning**
-Templata curates and synthesizes expert knowledge into actionable guides. Readings save users from reading 5 books - we apply expert knowledge to their specific situation.
+**CONTEXT: Templata = Notion-style Planning App + Wikipedia-depth Content**
+- Templata is a note-taking/planning workspace (like Notion)
+- Users work through structured questions to plan major life situations
+- Readings provide comprehensive, well-researched content (Wikipedia-depth)
+- Tone is warm and conversational (Notion-style), NOT dry academic writing
 
 **YOUR TASK**: Create readings that comprehensively cover this guide topic
 
-**STEP 0: GET GUIDE CONTEXT**
+**STEP 0: CHECK FOR EXISTING CONTENT**
 
-First, query the database to understand the guide:
+First, check if readings already exist for this guide:
+SELECT id, title FROM readings WHERE guide = 'GUIDE_ID_PLACEHOLDER'
+
+If readings exist:
+- DELETE FROM readings WHERE guide = 'GUIDE_ID_PLACEHOLDER'
+- Then proceed with generation
+
+**STEP 1: GET GUIDE CONTEXT**
+
+Query the database to understand the guide:
 SELECT id, title, description, category FROM guides WHERE id = 'GUIDE_ID_PLACEHOLDER'
 
 Use this context to inform your reading generation.
 
-**STEP 1: GENERATE TITLES**
+**STEP 2: GENERATE TITLES**
 
 Create reading titles that comprehensively cover this guide.
 
@@ -71,7 +83,7 @@ For "getting-divorced":
 5. "Telling Your Kids: What Child Psychologists Recommend"
 6. "The Emotional Timeline: What to Expect Month by Month"
 
-**STEP 2: GENERATE CONTENT FOR EACH TITLE**
+**STEP 3: GENERATE CONTENT FOR EACH TITLE**
 
 For each title, create 300-400 word content following these requirements:
 
@@ -96,17 +108,24 @@ For each title, create 300-400 word content following these requirements:
    - Quote blocks to highlight important insights from sources
    - Mix of prose and structured content (not just bullets)
 
-4. **Real Sources**: 2-3 credible sources
+4. **Real Sources**: 2-3 credible sources THAT ACTUALLY EXIST
    - Books, articles, podcasts, videos
+   - IMPORTANT: After selecting sources, verify they exist. If you cannot verify a source is real, find a different one.
+   - Example: "Patrick McKenzie - Salary Negotiation (kalzumeus.com)" - verify this article exists before citing
    - Store in sources array: ARRAY['Source 1', 'Source 2']
 
-5. **Type** (pick ONE - do not invent new types):
-   - 'guide' - Educational overview/framework
-   - 'article' - Insight/analysis piece
-   - 'checklist' - Step-by-step list
-   - 'tool' - Template/worksheet/framework to use
+5. **Type** (pick ONE based on content - do not invent new types):
+   - 'guide' - Educational overview/framework (use for: explaining concepts, providing mental models)
+   - 'article' - Insight/analysis piece (use for: thought-provoking perspectives, research-backed insights)
+   - 'checklist' - Step-by-step list (use for: actionable processes, verification steps)
+   - 'tool' - Template/worksheet/framework to use (use for: copy-paste scripts, calculators, templates)
 
-6. **Structure** (300-400 words):
+6. **Slug**: URL-friendly version of title
+   - Format: lowercase-with-hyphens
+   - Example: "The 5-Minute Conversation Worth $1.5M" → slug: "the-5-minute-conversation-worth-1-5m"
+   - Remove special characters, use hyphens for spaces
+
+7. **Structure** (300-400 words):
    - Hook with a specific example or controversial statement
    - 2-3 main sections with clear headers
    - Include at least ONE of these:
