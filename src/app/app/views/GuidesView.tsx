@@ -407,6 +407,11 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
   // Fetch questions and readings when guide changes
   useEffect(() => {
     async function fetchData() {
+      if (!selectedGuide) {
+        setLoading(false);
+        return;
+      }
+
       try {
         console.log('[GuidesView] Fetching data for guide:', selectedGuide);
         setLoading(true);
@@ -449,9 +454,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
       }
     }
 
-    if (guides.length > 0) {
-      fetchData();
-    }
+    fetchData();
   }, [selectedGuide, guides]);
 
   // Check which questions have been answered
