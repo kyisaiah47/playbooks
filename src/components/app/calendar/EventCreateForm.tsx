@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import { format } from 'date-fns';
 import { CalendarIcon, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,18 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
+import { useDemo } from '@/contexts/demo-context';
+import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
+
+interface UserGuide {
+  id: string;
+  guide_id: string;
+  custom_name: string | null;
+  guides: {
+    id: string;
+    name: string;
+  };
+}
 
 interface EventCreateFormProps {
   open: boolean;
@@ -28,6 +41,10 @@ export function EventCreateForm({
   selectedDate,
   onEventCreated,
 }: EventCreateFormProps) {
+  const params = useParams();
+  const { demoMode } = useDemo();
+  const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(
@@ -35,15 +52,36 @@ export function EventCreateForm({
   );
   const [time, setTime] = useState('09:00');
   const [allDay, setAllDay] = useState(false);
+  const [selectedNoteId, setSelectedNoteId] = useState<string>('');
+  const [notes, setNotes] = useState<UserGuide[]>([]);
+  const [loadingNotes, setLoadingNotes] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Fetch notes when dialog opens
+  useEffect(() => {
+    if (open && workspaceId) {
+      setLoadingNotes(true);
+      fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`)
+        .then(res => res.json())
+        .then(data => {
+          setNotes(data.userGuides || []);
+        })
+        .catch(err => {
+          console.error('Error fetching notes:', err);
+        })
+        .finally(() => {
+          setLoadingNotes(false);
+        });
+    }
+  }, [open, workspaceId]);
+
   // Update date when selectedDate changes
-  useState(() => {
+  useEffect(() => {
     if (selectedDate) {
       setDate(format(selectedDate, 'yyyy-MM-dd'));
     }
-  });
+  }, [selectedDate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,6 +110,7 @@ export function EventCreateForm({
           description: description.trim() || null,
           start_time: startDateTime,
           all_day: allDay,
+          user_guide_id: selectedNoteId || null,
         }),
       });
 
@@ -86,6 +125,7 @@ export function EventCreateForm({
       setDescription('');
       setTime('09:00');
       setAllDay(false);
+      setSelectedNoteId('');
       onOpenChange(false);
 
       // Trigger refresh
@@ -142,6 +182,40 @@ export function EventCreateForm({
                 'disabled:cursor-not-allowed disabled:opacity-50'
               )}
             />
+          </div>
+
+          {/* Link to Note */}
+          <div className="space-y-2">
+            <label htmlFor="note" className="text-sm font-medium">
+              Link to Note <span className="text-xs text-muted-foreground">(optional)</span>
+            </label>
+            {loadingNotes ? (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Loader2 className="w-3 h-3 animate-spin" />
+                Loading notes...
+              </div>
+            ) : (
+              <select
+                id="note"
+                value={selectedNoteId}
+                onChange={(e) => setSelectedNoteId(e.target.value)}
+                className={cn(
+                  'w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  'disabled:cursor-not-allowed disabled:opacity-50'
+                )}
+              >
+                <option value="">No note (standalone event)</option>
+                {notes.map((note) => (
+                  <option key={note.id} value={note.id}>
+                    {note.custom_name || note.guides?.name || 'Untitled Note'}
+                  </option>
+                ))}
+              </select>
+            )}
+            <p className="text-xs text-muted-foreground">
+              Link this event to a note to filter it in the calendar sidebar
+            </p>
           </div>
 
           {/* Date */}
