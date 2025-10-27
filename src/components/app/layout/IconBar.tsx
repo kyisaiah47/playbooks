@@ -23,6 +23,8 @@ import { cn } from '@/lib/utils';
 import { TabType } from '@/types/workspace';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
+import { useDemo } from '@/contexts/demo-context';
+import { toast } from 'sonner';
 
 interface IconBarProps {
   activeView: TabType;
@@ -47,9 +49,14 @@ const ICON_VIEWS: { type: TabType; icon: any; label: string }[] = [
 
 export function IconBar({ activeView, onViewClick }: IconBarProps) {
   const router = useRouter();
+  const { demoMode } = useDemo();
   let lastWasDivider = false;
 
   const handleLogout = async () => {
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
     await supabase.auth.signOut();
     router.push('/');
   };
