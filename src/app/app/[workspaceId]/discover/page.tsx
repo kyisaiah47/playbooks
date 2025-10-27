@@ -109,6 +109,7 @@ export default function DiscoverPage() {
     }
 
     fetchCategories();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Reset selected guide and search when category changes
@@ -204,43 +205,45 @@ export default function DiscoverPage() {
       <div className="p-6">
         {selectedCategoryData ? (
           <>
-            {/* Header */}
-            <motion.div
-              className="mb-6"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                {(() => {
-                  const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
-                  const colors = categoryColors[selectedCategoryData.id] || categoryColors['career-work'];
-                  return <Icon className={cn("h-4 w-4", colors.icon)} />;
-                })()}
-                <h2 className="text-xl font-semibold tracking-tight">{selectedCategoryData.name}</h2>
-              </div>
-              <p className="text-[12px] text-muted-foreground mb-4">
-                {selectedCategoryData.description}
-              </p>
-
-              {/* Search */}
+            {/* Header - only show when not viewing a guide */}
+            {!selectedGuide && (
               <motion.div
-                className="relative max-w-xs"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 }}
+                className="mb-6"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
-                <motion.input
-                  type="text"
-                  placeholder="Search guides..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
-                  whileFocus={{ scale: 1.02 }}
-                />
+                <div className="flex items-center gap-2 mb-2">
+                  {(() => {
+                    const Icon = categoryIconComponents[selectedCategoryData.id] || Briefcase;
+                    const colors = categoryColors[selectedCategoryData.id] || categoryColors['career-work'];
+                    return <Icon className={cn("h-4 w-4", colors.icon)} />;
+                  })()}
+                  <h2 className="text-xl font-semibold tracking-tight">{selectedCategoryData.name}</h2>
+                </div>
+                <p className="text-[12px] text-muted-foreground mb-4">
+                  {selectedCategoryData.description}
+                </p>
+
+                {/* Search */}
+                <motion.div
+                  className="relative max-w-xs"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground/40" />
+                  <motion.input
+                    type="text"
+                    placeholder="Search guides..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full h-8 pl-8 pr-3 bg-transparent border-b border-border/60 focus:border-foreground/40 outline-none text-[13px] transition-colors"
+                    whileFocus={{ scale: 1.02 }}
+                  />
+                </motion.div>
               </motion.div>
-            </motion.div>
+            )}
 
             {/* Guides List or Detail View */}
             {selectedGuide ? (
