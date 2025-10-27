@@ -26,6 +26,7 @@ import {
   type ReactNode,
   useContext,
   useState,
+  useEffect,
 } from 'react';
 import { createPortal } from 'react-dom';
 import tunnel from 'tunnel-rat';
@@ -226,6 +227,12 @@ export const KanbanProvider = <
   ...props
 }: KanbanProviderProps<T, C>) => {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const [localData, setLocalData] = useState<T[]>(data);
+
+  // Sync localData when data prop changes (from parent)
+  useEffect(() => {
+    setLocalData(data);
+  }, [data]);
 
   const sensors = useSensors(
     useSensor(MouseSensor, {
@@ -243,7 +250,7 @@ export const KanbanProvider = <
   );
 
   const handleDragStart = (event: DragStartEvent) => {
-    const card = data.find((item) => item.id === event.active.id);
+    const card = localData.find((item) => item.id === event.active.id);
     if (card) {
       setActiveCardId(event.active.id as string);
     }
@@ -257,8 +264,8 @@ export const KanbanProvider = <
       return;
     }
 
-    const activeItem = data.find((item) => item.id === active.id);
-    const overItem = data.find((item) => item.id === over.id);
+    const activeItem = localData.find((item) => item.id === active.id);
+    const overItem = localData.find((item) => item.id === over.id);
 
     if (!(activeItem)) {
       return;
@@ -271,7 +278,7 @@ export const KanbanProvider = <
       columns[0]?.id;
 
     if (activeColumn !== overColumn) {
-      let newData = [...data];
+      let newData = [...localData];
       const activeIndex = newData.findIndex((item) => item.id === active.id);
       const overIndex = newData.findIndex((item) => item.id === over.id);
 
@@ -283,7 +290,8 @@ export const KanbanProvider = <
         newData = arrayMove(newData, activeIndex, overIndex);
       }
 
-      onDataChange?.(newData);
+      // Only update local state during drag, don't call onDataChange yet
+      setLocalData(newData);
     }
 
     onDragOver?.(event);
@@ -300,43 +308,45 @@ export const KanbanProvider = <
       return;
     }
 
-    let newData = [...data];
+    let newData = [...localData];
 
     const oldIndex = newData.findIndex((item) => item.id === active.id);
     const newIndex = newData.findIndex((item) => item.id === over.id);
 
     newData = arrayMove(newData, oldIndex, newIndex);
 
+    setLocalData(newData);
+    // Only call onDataChange once at the end
     onDataChange?.(newData);
   };
 
   const announcements: Announcements = {
     onDragStart({ active }) {
-      const { name, column } = data.find((item) => item.id === active.id) ?? {};
+      const { name, column } = localData.find((item) => item.id === active.id) ?? {};
 
       return `Picked up the card "${name}" from the "${column}" column`;
     },
     onDragOver({ active, over }) {
-      const { name } = data.find((item) => item.id === active.id) ?? {};
+      const { name } = localData.find((item) => item.id === active.id) ?? {};
       const newColumn = columns.find((column) => column.id === over?.id)?.name;
 
       return `Dragged the card "${name}" over the "${newColumn}" column`;
     },
     onDragEnd({ active, over }) {
-      const { name } = data.find((item) => item.id === active.id) ?? {};
+      const { name } = localData.find((item) => item.id === active.id) ?? {};
       const newColumn = columns.find((column) => column.id === over?.id)?.name;
 
       return `Dropped the card "${name}" into the "${newColumn}" column`;
     },
     onDragCancel({ active }) {
-      const { name } = data.find((item) => item.id === active.id) ?? {};
+      const { name } = localData.find((item) => item.id === active.id) ?? {};
 
       return `Cancelled dragging the card "${name}"`;
     },
   };
 
   return (
-    <KanbanContext.Provider value={{ columns, data, activeCardId }}>
+    <KanbanContext.Provider value={{ columns, data: localData, activeCardId }}>
       <DndContext
         accessibility={{ announcements }}
         collisionDetection={closestCenter}
