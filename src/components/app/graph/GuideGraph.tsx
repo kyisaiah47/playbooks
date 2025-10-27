@@ -140,11 +140,12 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
     }
 
     // Create nodes - filter out guides with null data
-    const nodes: Node[] = userGuides
-      .filter(ug => ug.guides && ug.guides.name)
+    const validGuides = userGuides.filter(ug => ug.guides && ug.guides.name);
+
+    const nodes: Node[] = validGuides
       .map((ug, index) => {
-        const angle = (index * 2 * Math.PI) / userGuides.length;
-        const radius = Math.min(300, 150 + userGuides.length * 20);
+        const angle = (index * 2 * Math.PI) / validGuides.length;
+        const radius = Math.min(300, 150 + validGuides.length * 20);
         const x = 400 + radius * Math.cos(angle);
         const y = 400 + radius * Math.sin(angle);
 
@@ -167,34 +168,32 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
     // Calculate edges based on relationships
     const edges: Edge[] = [];
 
-    // Create connections between guides
-    for (let i = 0; i < userGuides.length; i++) {
-      for (let j = i + 1; j < userGuides.length; j++) {
-        const guide1 = userGuides[i];
-        const guide2 = userGuides[j];
+    console.log('[GuideGraph] Creating edges for', validGuides.length, 'guides');
+
+    // Create connections between guides - use validGuides not userGuides!
+    for (let i = 0; i < validGuides.length; i++) {
+      for (let j = i + 1; j < validGuides.length; j++) {
+        const guide1 = validGuides[i];
+        const guide2 = validGuides[j];
 
         const category1 = determineCategory(guide1.guides.name, guide1.guides.description);
         const category2 = determineCategory(guide2.guides.name, guide2.guides.description);
 
+        console.log(`[GuideGraph] Comparing "${guide1.guides.name}" (${category1}) with "${guide2.guides.name}" (${category2})`);
+
         // Connect guides in the same category
         if (category1 === category2) {
           const color = getCategoryColorForEdge(category1);
+          console.log('[GuideGraph] Same category - creating edge with color:', color);
           edges.push({
             id: `${guide1.id}-${guide2.id}`,
             source: guide1.id,
             target: guide2.id,
-            type: 'smoothstep',
-            animated: true,
+            type: 'straight',
+            animated: false,
             style: {
               stroke: color,
-              strokeWidth: 3,
-              opacity: 0.7,
-            },
-            markerEnd: {
-              type: MarkerType.Arrow,
-              color: color,
-              width: 20,
-              height: 20,
+              strokeWidth: 4,
             },
           });
         }
@@ -205,22 +204,24 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
         const commonKeywords = keywords1.filter((k) => keywords2.includes(k));
 
         if (commonKeywords.length > 0 && category1 !== category2) {
+          console.log('[GuideGraph] Shared keywords - creating dashed edge. Keywords:', commonKeywords);
           edges.push({
             id: `${guide1.id}-${guide2.id}-keywords`,
             source: guide1.id,
             target: guide2.id,
-            type: 'smoothstep',
+            type: 'straight',
             animated: false,
             style: {
-              stroke: 'var(--primary)',
+              stroke: '#6366f1',
               strokeWidth: 2,
               strokeDasharray: '5,5',
-              opacity: 0.5,
             },
           });
         }
       }
     }
+
+    console.log('[GuideGraph] Created', edges.length, 'edges');
 
     return { nodes, edges };
   }, [userGuides]);
