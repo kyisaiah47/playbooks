@@ -48,8 +48,7 @@ export default function AnalyticsPage() {
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [allUserGuides, setAllUserGuides] = useState<UserGuide[]>([]);
-  const [allItems, setAllTasks] = useState<Task[]>([]);
-  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allItems, setAllItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Get selected guide IDs from URL
@@ -60,12 +59,8 @@ export default function AnalyticsPage() {
     ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
     : (demoMode ? allUserGuides : []);
 
-  const tasks = selectedGuideIds.length > 0
-    ? allItems.filter(task => task.user_guide_id && selectedGuideIds.includes(task.user_guide_id))
-    : (demoMode ? allItems : []);
-
-  const events = selectedGuideIds.length > 0
-    ? allItems.filter(event => event.user_guide_id && selectedGuideIds.includes(event.user_guide_id))
+  const items = selectedGuideIds.length > 0
+    ? allItems.filter(item => item.user_guide_id && selectedGuideIds.includes(item.user_guide_id))
     : (demoMode ? allItems : []);
 
   useEffect(() => {
