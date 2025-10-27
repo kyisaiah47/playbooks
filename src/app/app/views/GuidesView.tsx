@@ -99,7 +99,9 @@ interface GuidesViewProps {
 }
 
 export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId, defaultGuideId }: GuidesViewProps) {
+  console.log('[GuidesView] Props:', { defaultGuideId, workspaceId, userGuideId });
   const [selectedGuide, setSelectedGuide] = useState(defaultGuideId || 'wedding-planning');
+  console.log('[GuidesView] Initial selectedGuide:', selectedGuide);
   const [guides, setGuides] = useState<Guide[]>([]);
   const [displayedGuides, setDisplayedGuides] = useState<Guide[]>([]);
   const [guideInfo, setGuideInfo] = useState<{ id: string; name: string } | null>(null);
@@ -383,6 +385,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
   useEffect(() => {
     async function fetchData() {
       try {
+        console.log('[GuidesView] Fetching data for guide:', selectedGuide);
         setLoading(true);
 
         const guide = guides.find(g => g.id === selectedGuide);
@@ -390,8 +393,11 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           setGuideInfo({ id: guide.id, name: guide.name });
         }
 
-        const questionsRes = await fetch(`/api/guides/${selectedGuide}/questions`);
+        const questionsUrl = `/api/guides/${selectedGuide}/questions`;
+        console.log('[GuidesView] Fetching questions from:', questionsUrl);
+        const questionsRes = await fetch(questionsUrl);
         const questionsData = await questionsRes.json();
+        console.log('[GuidesView] Questions response:', questionsData);
         const fetchedQuestions = questionsData.questions || [];
         setQuestions(fetchedQuestions);
 
@@ -407,8 +413,11 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
         const allCategories = Object.keys(groupedQuestions);
         setCollapsedCategories(new Set(allCategories));
 
-        const readingsRes = await fetch(`/api/guides/${selectedGuide}/readings`);
+        const readingsUrl = `/api/guides/${selectedGuide}/readings`;
+        console.log('[GuidesView] Fetching readings from:', readingsUrl);
+        const readingsRes = await fetch(readingsUrl);
         const readingsData = await readingsRes.json();
+        console.log('[GuidesView] Readings response:', readingsData);
         setReadings(readingsData.readings || []);
       } catch (error) {
         console.error('Error fetching data:', error);
