@@ -32,10 +32,10 @@ export default function CalendarPage() {
   // Get selected note IDs from URL
   const selectedNoteIds = searchParams.get('calendarNotes')?.split(',').filter(Boolean) || [];
 
-  // Filter events by selected notes - in demo mode, show all events if nothing selected
+  // Filter events by selected notes - show all events if nothing selected
   const events = selectedNoteIds.length > 0
     ? allItems.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
-    : (demoMode ? allItems : []);
+    : allItems;
 
   // Fetch calendar events
   const fetchEvents = useCallback(async () => {
