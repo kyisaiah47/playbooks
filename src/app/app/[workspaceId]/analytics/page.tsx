@@ -112,12 +112,12 @@ export default function AnalyticsPage() {
       const monthEnd = endOfMonth(subMonths(today, i));
       const monthStr = format(monthStart, 'MMM yyyy');
 
-      const tasksCreatedInMonth = tasks.filter(t => {
+      const tasksCreatedInMonth = items.filter(t => {
         const date = parseISO(t.created_at);
         return date >= monthStart && date <= monthEnd;
       }).length;
 
-      const tasksCompletedInMonth = tasks.filter(t => {
+      const tasksCompletedInMonth = items.filter(t => {
         if (!t.completed_at) return false;
         const date = parseISO(t.completed_at);
         return date >= monthStart && date <= monthEnd;
