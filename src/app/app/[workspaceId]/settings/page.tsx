@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +11,8 @@ import { useTheme } from 'next-themes';
 import { Settings } from 'lucide-react';
 
 export default function SettingsPage() {
+  const searchParams = useSearchParams();
+  const section = (searchParams.get('section') as 'profile' | 'appearance' | 'notifications' | 'privacy' | 'data') || 'profile';
   const { demoMode } = useDemo();
   const { theme, setTheme } = useTheme();
   const [name, setName] = useState('');
@@ -59,11 +62,12 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      {/* Content - All settings in one scrollable page */}
+      {/* Content - Show only selected section */}
       <div className="flex-1 overflow-y-auto">
-        <div className="px-6 py-8 space-y-12">
+        <div className="px-6 py-8">
 
           {/* Profile Section */}
+          {section === 'profile' && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -129,13 +133,14 @@ export default function SettingsPage() {
               </div>
             )}
           </motion.div>
+          )}
 
           {/* Appearance Section */}
+          {section === 'appearance' && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-            className="pt-8 border-t border-border/40"
+            transition={{ duration: 0.3 }}
           >
             <h2 className="text-base font-semibold mb-6">Appearance</h2>
             <div>
@@ -177,13 +182,14 @@ export default function SettingsPage() {
               </div>
             </div>
           </motion.div>
+          )}
 
           {/* Notifications Section */}
+          {section === 'notifications' && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-            className="pt-8 border-t border-border/40"
+            transition={{ duration: 0.3 }}
           >
             <h2 className="text-base font-semibold mb-6">Notifications</h2>
             <div className="space-y-0">
@@ -216,15 +222,16 @@ export default function SettingsPage() {
               </div>
             </div>
           </motion.div>
+          )}
 
-          {/* Security Section */}
+          {/* Privacy/Security Section */}
+          {section === 'privacy' && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.4 }}
-            className="pt-8 border-t border-border/40"
+            transition={{ duration: 0.3 }}
           >
-            <h2 className="text-base font-semibold mb-6">Security</h2>
+            <h2 className="text-base font-semibold mb-6">Privacy & Security</h2>
             <div className="space-y-8">
               <div>
                 <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-4">Password</p>
@@ -258,67 +265,14 @@ export default function SettingsPage() {
               </div>
             </div>
           </motion.div>
-
-          {/* Workspace Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
-            className="pt-8 border-t border-border/40"
-          >
-            <h2 className="text-base font-semibold mb-6">Workspace</h2>
-            <div className="space-y-6">
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                  Workspace Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Workspace name"
-                  value={workspaceName}
-                  onChange={(e) => setWorkspaceName(e.target.value)}
-                  className="w-full px-3 py-2 border-0 border-b border-border bg-transparent text-foreground text-sm focus:outline-none focus:border-foreground transition-colors"
-                />
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                  Icon (Lucide Icon Name)
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g., Briefcase, Home, Folder"
-                  value={workspaceIcon}
-                  onChange={(e) => setWorkspaceIcon(e.target.value)}
-                  className="w-full px-3 py-2 border-0 border-b border-border bg-transparent text-foreground text-sm focus:outline-none focus:border-foreground transition-colors"
-                />
-                <p className="text-xs text-muted-foreground pt-1">
-                  Enter a Lucide icon name like "Briefcase", "Home", or "Folder"
-                </p>
-              </div>
-              <div className="pt-2">
-                <Button
-                  size="sm"
-                  className="h-8 px-4 text-xs"
-                  onClick={() => {
-                    if (demoMode) {
-                      toast.info('Not available in demo mode');
-                      return;
-                    }
-                    // Save logic here
-                  }}
-                >
-                  Save Changes
-                </Button>
-              </div>
-            </div>
-          </motion.div>
+          )}
 
           {/* Data & Danger Zone */}
+          {section === 'data' && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.6 }}
-            className="pt-8 border-t border-border/40"
+            transition={{ duration: 0.3 }}
           >
             <h2 className="text-base font-semibold mb-6">Data & Account</h2>
             <div className="space-y-6">
@@ -347,6 +301,7 @@ export default function SettingsPage() {
               </div>
             </div>
           </motion.div>
+          )}
 
         </div>
       </div>
