@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import { BarChart3, Loader2 } from 'lucide-react';
 import { GanttView } from '@/components/app/timeline/GanttView';
-import { CalendarEvent, Task } from '@/types/workspace';
+import { Item } from '@/types/workspace';
 import { startOfMonth, endOfMonth, format } from 'date-fns';
 import { motion } from 'framer-motion';
 import { useDemo } from '@/contexts/demo-context';
@@ -16,8 +16,7 @@ export default function TimelinePage() {
   const { demoMode } = useDemo();
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
-  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
-  const [allItems, setAllTasks] = useState<Task[]>([]);
+  const [allItems, setAllItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

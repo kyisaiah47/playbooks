@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar as CalendarPicker } from '@/components/ui/calendar';
 import { AgendaList } from '@/components/app/daily/AgendaList';
+import { Item } from '@/types/workspace';
 
 interface UserGuide {
   id: string;
@@ -26,21 +27,6 @@ interface UserGuide {
   };
 }
 
-interface Task {
-  id: string;
-  title: string;
-  status: string;
-  due_date: string | null;
-  user_guide_id: string | null;
-}
-
-interface CalendarEvent {
-  id: string;
-  title: string;
-  date: string;
-  user_guide_id: string | null;
-}
-
 export default function OverviewPage() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -48,8 +34,7 @@ export default function OverviewPage() {
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [allUserGuides, setAllUserGuides] = useState<UserGuide[]>([]);
-  const [allItems, setAllTasks] = useState<Task[]>([]);
-  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allItems, setAllItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Daily view state
