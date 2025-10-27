@@ -102,6 +102,14 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
   console.log('[GuidesView] Props:', { defaultGuideId, workspaceId, userGuideId });
   const [selectedGuide, setSelectedGuide] = useState(defaultGuideId || 'wedding-planning');
   console.log('[GuidesView] Initial selectedGuide:', selectedGuide);
+
+  // Update selectedGuide when defaultGuideId changes
+  useEffect(() => {
+    if (defaultGuideId && defaultGuideId !== selectedGuide) {
+      console.log('[GuidesView] Updating selectedGuide from', selectedGuide, 'to', defaultGuideId);
+      setSelectedGuide(defaultGuideId);
+    }
+  }, [defaultGuideId, selectedGuide]);
   const [guides, setGuides] = useState<Guide[]>([]);
   const [displayedGuides, setDisplayedGuides] = useState<Guide[]>([]);
   const [guideInfo, setGuideInfo] = useState<{ id: string; name: string } | null>(null);
