@@ -102,12 +102,36 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedReadingId, setSelectedReadingId] = useState<string | null>(null);
-  const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(new Set());
-  const [selectedTasksNoteIds, setSelectedTasksNoteIds] = useState<Set<string>>(new Set());
-  const [selectedTimelineNoteIds, setSelectedTimelineNoteIds] = useState<Set<string>>(new Set());
-  const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(new Set());
-  const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(new Set());
-  const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(new Set());
+  const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedCalendarNoteIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedTasksNoteIds, setSelectedTasksNoteIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedTasksNoteIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedTimelineNoteIds, setSelectedTimelineNoteIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedTimelineNoteIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedGraphGuideIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedOverviewGuideIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
+  const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set();
+    const cached = localStorage.getItem('selectedAnalyticsGuideIds');
+    return cached ? new Set(JSON.parse(cached)) : new Set();
+  });
   const [settingsSection, setSettingsSection] = useState<'profile' | 'privacy' | 'data' | 'notifications' | 'appearance'>('profile');
   const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
   const [docsSection, setDocsSection] = useState<'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support'>('getting-started');
@@ -729,6 +753,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
     setSelectedCalendarNoteIds(newSet);
 
+    // Cache in localStorage
+    localStorage.setItem('selectedCalendarNoteIds', JSON.stringify(Array.from(newSet)));
+
     if (!demoMode) {
       // Update URL with selected note IDs
       const params = new URLSearchParams(searchParams.toString());
@@ -752,6 +779,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
 
     setSelectedTasksNoteIds(newSet);
+
+    // Cache in localStorage
+    localStorage.setItem('selectedTasksNoteIds', JSON.stringify(Array.from(newSet)));
 
     if (!demoMode) {
       // Update URL with selected note IDs
@@ -777,6 +807,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
     setSelectedTimelineNoteIds(newSet);
 
+    // Cache in localStorage
+    localStorage.setItem('selectedTimelineNoteIds', JSON.stringify(Array.from(newSet)));
+
     if (!demoMode) {
       // Update URL with selected note IDs
       const params = new URLSearchParams(searchParams.toString());
@@ -800,6 +833,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
 
     setSelectedGraphGuideIds(newSet);
+
+    // Cache in localStorage
+    localStorage.setItem('selectedGraphGuideIds', JSON.stringify(Array.from(newSet)));
 
     if (!demoMode) {
       // Update URL with selected guide IDs
@@ -825,6 +861,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
     setSelectedOverviewGuideIds(newSet);
 
+    // Cache in localStorage
+    localStorage.setItem('selectedOverviewGuideIds', JSON.stringify(Array.from(newSet)));
+
     if (!demoMode) {
       // Update URL with selected guide IDs
       const params = new URLSearchParams(searchParams.toString());
@@ -848,6 +887,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
 
     setSelectedAnalyticsGuideIds(newSet);
+
+    // Cache in localStorage
+    localStorage.setItem('selectedAnalyticsGuideIds', JSON.stringify(Array.from(newSet)));
 
     if (!demoMode) {
       // Update URL with selected guide IDs
