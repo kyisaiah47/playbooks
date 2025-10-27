@@ -291,7 +291,7 @@ export default function AnalyticsPage() {
                   <Calendar className="w-5 h-5 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">Events</span>
                 </div>
-                <div className="text-2xl font-bold">{events.length}</div>
+                <div className="text-2xl font-bold">{items.filter(item => item.start_time).length}</div>
                 <div className="text-xs text-muted-foreground mt-1">
                   Total scheduled
                 </div>
@@ -401,8 +401,8 @@ export default function AnalyticsPage() {
               <div className="space-y-3">
                 {userGuides.map((guide) => {
                   const displayName = guide.custom_name || guide.guides.name;
-                  const guideTasks = items.filter(t => t.user_guide_id === guide.id);
-                  const guideEvents = items.filter(e => e.user_guide_id === guide.id);
+                  const guideTasks = items.filter(t => t.user_guide_id === guide.id && !t.start_time);
+                  const guideEvents = items.filter(e => e.user_guide_id === guide.id && e.start_time);
                   const guideCompletedTasks = guideTasks.filter(t => t.status === 'completed').length;
 
                   return (
