@@ -161,14 +161,29 @@ export const KanbanCards = <T extends KanbanItemProps = KanbanItemProps>({
   const filteredData = data.filter((item) => item.column === props.id);
   const items = filteredData.map((item) => item.id);
 
+  // Make the column itself droppable
+  const { setNodeRef, isOver } = useDroppable({
+    id: props.id,
+  });
+
   return (
     <ScrollArea className="overflow-hidden">
       <SortableContext items={items}>
         <div
-          className={cn('flex flex-grow flex-col gap-2 p-2', className)}
+          ref={setNodeRef}
+          className={cn(
+            'flex flex-grow flex-col gap-2 p-2 min-h-[200px] transition-colors',
+            isOver && filteredData.length === 0 && 'bg-primary/5 ring-2 ring-primary/20 ring-inset rounded',
+            className
+          )}
           {...props}
         >
           {filteredData.map(children)}
+          {filteredData.length === 0 && (
+            <div className="flex-1 flex items-center justify-center text-muted-foreground/40 text-xs">
+              Drop tasks here
+            </div>
+          )}
         </div>
       </SortableContext>
       <ScrollBar orientation="vertical" />
