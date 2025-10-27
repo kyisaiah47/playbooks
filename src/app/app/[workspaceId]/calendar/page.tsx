@@ -21,7 +21,7 @@ export default function CalendarPage() {
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allItems, setAllItems] = useState<CalendarEvent[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
