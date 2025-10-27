@@ -97,8 +97,6 @@ export type TabType =
   | 'calendar'
   | 'tasks'
   | 'timeline'
-  | 'daily'
-  | 'journal'
   | 'graph'
   | 'library'
   | 'analytics'

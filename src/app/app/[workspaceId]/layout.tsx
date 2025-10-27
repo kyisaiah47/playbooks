@@ -12,8 +12,6 @@ import LibraryPage from './library/page';
 import CalendarPage from './calendar/page';
 import TasksPage from './tasks/page';
 import TimelinePage from './timeline/page';
-import DailyPage from './daily/page';
-import JournalPage from './journal/page';
 import GraphPage from './graph/page';
 import AnalyticsPage from './analytics/page';
 import ArchivePage from './archive/page';
@@ -30,8 +28,6 @@ import { LibrarySidebarContent } from '@/components/app/layout/LibrarySidebarCon
 import { CalendarSidebarContent } from '@/components/app/layout/CalendarSidebarContent';
 import { TasksSidebarContent } from '@/components/app/layout/TasksSidebarContent';
 import { TimelineSidebarContent } from '@/components/app/layout/TimelineSidebarContent';
-import { DailySidebarContent } from '@/components/app/layout/DailySidebarContent';
-import { JournalSidebarContent } from '@/components/app/layout/JournalSidebarContent';
 import { GraphSidebarContent } from '@/components/app/layout/GraphSidebarContent';
 import { OverviewSidebarContent } from '@/components/app/layout/OverviewSidebarContent';
 import { AnalyticsSidebarContent } from '@/components/app/layout/AnalyticsSidebarContent';
@@ -106,14 +102,12 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   const [selectedCalendarNoteIds, setSelectedCalendarNoteIds] = useState<Set<string>>(new Set());
   const [selectedTasksNoteIds, setSelectedTasksNoteIds] = useState<Set<string>>(new Set());
   const [selectedTimelineNoteIds, setSelectedTimelineNoteIds] = useState<Set<string>>(new Set());
-  const [selectedDailyNoteIds, setSelectedDailyNoteIds] = useState<Set<string>>(new Set());
-  const [selectedJournalEntryId, setSelectedJournalEntryId] = useState<string | null>(null);
   const [selectedGraphGuideIds, setSelectedGraphGuideIds] = useState<Set<string>>(new Set());
   const [selectedOverviewGuideIds, setSelectedOverviewGuideIds] = useState<Set<string>>(new Set());
   const [selectedAnalyticsGuideIds, setSelectedAnalyticsGuideIds] = useState<Set<string>>(new Set());
   const [settingsSection, setSettingsSection] = useState<'profile' | 'privacy' | 'data' | 'notifications' | 'appearance'>('profile');
   const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
-  const [docsSection, setDocsSection] = useState<'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'daily' | 'journal' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support'>('getting-started');
+  const [docsSection, setDocsSection] = useState<'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support'>('getting-started');
 
   // Icon component mapping for converting emoji strings to components
   const iconComponentMap: Record<TabType, any> = {
@@ -124,8 +118,6 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     calendar: Calendar,
     tasks: ListTodo,
     timeline: BarChart3,
-    daily: CalendarDays,
-    journal: PenLine,
     graph: Network,
     analytics: TrendingUp,
     archive: Archive,
@@ -379,27 +371,6 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
       } else {
         setSelectedTimelineNoteIds(new Set());
       }
-    }
-  }, [searchParams, activeView]);
-
-  // Sync daily note selection from URL
-  useEffect(() => {
-    if (activeView === 'daily') {
-      const dailyNotesParam = searchParams.get('dailyNotes');
-      if (dailyNotesParam) {
-        const noteIds = new Set(dailyNotesParam.split(','));
-        setSelectedDailyNoteIds(noteIds);
-      } else {
-        setSelectedDailyNoteIds(new Set());
-      }
-    }
-  }, [searchParams, activeView]);
-
-  // Sync journal entry selection from URL
-  useEffect(() => {
-    if (activeView === 'journal') {
-      const entryParam = searchParams.get('entryId');
-      setSelectedJournalEntryId(entryParam);
     }
   }, [searchParams, activeView]);
 
@@ -750,47 +721,6 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
   }, [selectedTimelineNoteIds, searchParams, router, demoMode]);
 
-  // Handle daily note toggle
-  const handleDailyNoteToggle = useCallback((noteId: string) => {
-    const newSet = new Set(selectedDailyNoteIds);
-    if (newSet.has(noteId)) {
-      newSet.delete(noteId);
-    } else {
-      newSet.add(noteId);
-    }
-
-    setSelectedDailyNoteIds(newSet);
-
-    if (!demoMode) {
-      // Update URL with selected note IDs
-      const params = new URLSearchParams(searchParams.toString());
-      if (newSet.size > 0) {
-        params.set('dailyNotes', Array.from(newSet).join(','));
-      } else {
-        params.delete('dailyNotes');
-      }
-      const queryString = params.toString();
-      router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
-    }
-  }, [selectedDailyNoteIds, searchParams, router, demoMode]);
-
-  // Handle journal entry selection
-  const handleJournalEntrySelect = useCallback((entryId: string | null) => {
-    setSelectedJournalEntryId(entryId);
-
-    if (!demoMode) {
-      // Update URL with selected entry ID
-      const params = new URLSearchParams(searchParams.toString());
-      if (entryId) {
-        params.set('entryId', entryId);
-      } else {
-        params.delete('entryId');
-      }
-      const queryString = params.toString();
-      router.replace(`${window.location.pathname}?${queryString}`, { scroll: false });
-    }
-  }, [searchParams, router, demoMode]);
-
   // Handle graph guide toggle
   const handleGraphGuideToggle = useCallback((guideId: string) => {
     const newSet = new Set(selectedGraphGuideIds);
@@ -877,7 +807,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   }, [searchParams, router, demoMode]);
 
   // Handle docs section change
-  const handleDocsSectionChange = useCallback((section: 'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'daily' | 'journal' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support') => {
+  const handleDocsSectionChange = useCallback((section: 'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support') => {
     setDocsSection(section);
 
     if (!demoMode) {
@@ -906,10 +836,6 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
         return <TasksPage />;
       case 'timeline':
         return <TimelinePage />;
-      case 'daily':
-        return <DailyPage />;
-      case 'journal':
-        return <JournalPage />;
       case 'graph':
         return <GraphPage />;
       case 'analytics':
@@ -983,16 +909,6 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
             <TimelineSidebarContent
               selectedNoteIds={selectedTimelineNoteIds}
               onNoteToggle={handleTimelineNoteToggle}
-            />
-          ) : activeView === 'daily' ? (
-            <DailySidebarContent
-              selectedNoteIds={selectedDailyNoteIds}
-              onNoteToggle={handleDailyNoteToggle}
-            />
-          ) : activeView === 'journal' ? (
-            <JournalSidebarContent
-              selectedEntryId={selectedJournalEntryId}
-              onEntrySelect={handleJournalEntrySelect}
             />
           ) : activeView === 'graph' ? (
             <GraphSidebarContent
