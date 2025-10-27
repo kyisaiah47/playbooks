@@ -275,7 +275,7 @@ export default function AnalyticsPage() {
                 </div>
                 <div className="text-2xl font-bold">{totalTasks}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  {tasks.filter(t => t.status !== 'completed').length} pending
+                  {items.filter(t => t.status !== 'completed').length} pending
                 </div>
               </motion.div>
 
@@ -401,8 +401,8 @@ export default function AnalyticsPage() {
               <div className="space-y-3">
                 {userGuides.map((guide) => {
                   const displayName = guide.custom_name || guide.guides.name;
-                  const guideTasks = tasks.filter(t => t.user_guide_id === guide.id);
-                  const guideEvents = events.filter(e => e.user_guide_id === guide.id);
+                  const guideTasks = items.filter(t => t.user_guide_id === guide.id);
+                  const guideEvents = items.filter(e => e.user_guide_id === guide.id);
                   const guideCompletedTasks = guideTasks.filter(t => t.status === 'completed').length;
 
                   return (
