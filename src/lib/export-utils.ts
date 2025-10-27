@@ -7,14 +7,14 @@
  * - JSON (structured data export)
  */
 
-import { TemplateSession, ReflectionEntry } from '@/stores/workspace-store';
+import { GuideSession, ReflectionEntry } from '@/stores/workspace-store';
 import { InsightDashboard } from '@/types/insight';
 
 /**
  * Generate Markdown summary
  */
 export function generateMarkdownSummary(
-  templates: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -27,7 +27,7 @@ export function generateMarkdownSummary(
   // Summary Stats
   if (insights) {
     markdown += `## Summary\n\n`;
-    markdown += `- **Total Templates:** ${insights.summary.totalTemplates}\n`;
+    markdown += `- **Total Guides:** ${insights.summary.totalTemplates}\n`;
     markdown += `- **Total Reflections:** ${insights.summary.totalReflections}\n`;
     markdown += `- **Active Days:** ${insights.summary.activeDays}\n`;
     markdown += `- **Current Streak:** ${insights.summary.currentStreak} days\n`;
@@ -35,19 +35,19 @@ export function generateMarkdownSummary(
     markdown += `---\n\n`;
   }
 
-  // Templates
-  if (templates.length > 0) {
-    markdown += `## Templates (${templates.length})\n\n`;
-    templates.forEach((template, index) => {
-      markdown += `### ${index + 1}. ${template.templateId}\n\n`;
-      markdown += `- **Status:** ${template.completion === 100 ? 'Completed' : 'In Progress'} (${template.completion}%)\n`;
-      markdown += `- **Tags:** ${template.tags.join(', ')}\n`;
-      markdown += `- **Started:** ${template.startedAt.toLocaleDateString()}\n`;
-      markdown += `- **Last Updated:** ${template.updatedAt.toLocaleDateString()}\n\n`;
+  // Guides
+  if (guides.length > 0) {
+    markdown += `## Guides (${guides.length})\n\n`;
+    guides.forEach((guide, index) => {
+      markdown += `### ${index + 1}. ${guide.guideId}\n\n`;
+      markdown += `- **Status:** ${guide.completion === 100 ? 'Completed' : 'In Progress'} (${guide.completion}%)\n`;
+      markdown += `- **Tags:** ${guide.tags.join(', ')}\n`;
+      markdown += `- **Started:** ${guide.startedAt.toLocaleDateString()}\n`;
+      markdown += `- **Last Updated:** ${guide.updatedAt.toLocaleDateString()}\n\n`;
 
-      if (Object.keys(template.answers).length > 0) {
+      if (Object.keys(guide.answers).length > 0) {
         markdown += `**Responses:**\n\n`;
-        Object.entries(template.answers).forEach(([question, answer]) => {
+        Object.entries(guide.answers).forEach(([question, answer]) => {
           markdown += `- ${question}: ${answer}\n`;
         });
         markdown += `\n`;
@@ -96,7 +96,7 @@ export function generateMarkdownSummary(
  * Generate JSON export
  */
 export function generateJSONExport(
-  templates: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -104,7 +104,7 @@ export function generateJSONExport(
     exportDate: new Date().toISOString(),
     version: '1.0',
     data: {
-      templates,
+      guides,
       reflections,
       insights: insights || null,
     },
@@ -117,7 +117,7 @@ export function generateJSONExport(
  * Generate HTML for PDF conversion
  */
 export function generateHTMLForPDF(
-  templates: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ): string {
@@ -155,7 +155,7 @@ export function generateHTMLForPDF(
     }
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-guide-columns: repeat(2, 1fr);
       gap: 20px;
       margin: 20px 0;
     }
@@ -231,7 +231,7 @@ export function generateHTMLForPDF(
   <h2>Summary</h2>
   <div class="summary-grid">
     <div class="summary-card">
-      <h4>Total Templates</h4>
+      <h4>Total Guides</h4>
       <p>${insights.summary.totalTemplates}</p>
     </div>
     <div class="summary-card">
@@ -251,26 +251,26 @@ export function generateHTMLForPDF(
 `;
   }
 
-  // Templates
-  if (templates.length > 0) {
-    html += `<h2>Templates (${templates.length})</h2>`;
-    templates.forEach((template, index) => {
+  // Guides
+  if (guides.length > 0) {
+    html += `<h2>Guides (${guides.length})</h2>`;
+    guides.forEach((guide, index) => {
       html += `
-  <h3>${index + 1}. ${template.templateId}</h3>
+  <h3>${index + 1}. ${guide.guideId}</h3>
   <p class="meta">
-    Started: ${template.startedAt.toLocaleDateString()} |
-    Last Updated: ${template.updatedAt.toLocaleDateString()}
+    Started: ${guide.startedAt.toLocaleDateString()} |
+    Last Updated: ${guide.updatedAt.toLocaleDateString()}
   </p>
   <div class="progress-bar">
-    <div class="progress-fill" style="width: ${template.completion}%">
-      ${template.completion}%
+    <div class="progress-fill" style="width: ${guide.completion}%">
+      ${guide.completion}%
     </div>
   </div>
-  <p><strong>Tags:</strong> ${template.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
+  <p><strong>Tags:</strong> ${guide.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</p>
 `;
-      if (Object.keys(template.answers).length > 0) {
+      if (Object.keys(guide.answers).length > 0) {
         html += `<p><strong>Responses:</strong></p><ul>`;
-        Object.entries(template.answers).forEach(([question, answer]) => {
+        Object.entries(guide.answers).forEach(([question, answer]) => {
           html += `<li><strong>${question}:</strong> ${answer}</li>`;
         });
         html += `</ul>`;
@@ -324,11 +324,11 @@ export function downloadFile(content: string, filename: string, mimeType: string
  * Export as Markdown
  */
 export function exportAsMarkdown(
-  templates: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
-  const markdown = generateMarkdownSummary(templates, reflections, insights);
+  const markdown = generateMarkdownSummary(guides, reflections, insights);
   const filename = `lifeos-export-${new Date().toISOString().split('T')[0]}.md`;
   downloadFile(markdown, filename, 'text/markdown');
 }
@@ -337,11 +337,11 @@ export function exportAsMarkdown(
  * Export as JSON
  */
 export function exportAsJSON(
-  templates: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
-  const json = generateJSONExport(templates, reflections, insights);
+  const json = generateJSONExport(guides, reflections, insights);
   const filename = `lifeos-export-${new Date().toISOString().split('T')[0]}.json`;
   downloadFile(json, filename, 'application/json');
 }
@@ -350,11 +350,11 @@ export function exportAsJSON(
  * Export as HTML (for PDF printing)
  */
 export function exportAsHTML(
-  templates: TemplateSession[],
+  guides: GuideSession[],
   reflections: ReflectionEntry[],
   insights?: InsightDashboard
 ) {
-  const html = generateHTMLForPDF(templates, reflections, insights);
+  const html = generateHTMLForPDF(guides, reflections, insights);
   const filename = `lifeos-export-${new Date().toISOString().split('T')[0]}.html`;
   downloadFile(html, filename, 'text/html');
 

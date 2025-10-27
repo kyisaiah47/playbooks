@@ -1,38 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { useAuth } from "@/contexts/auth-context";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Announcement, AnnouncementTag, AnnouncementTitle } from "@/components/ui/announcement";
-import {
-	ArrowRight,
-	Layout,
-	FileText,
-	Globe,
-	CheckCircle2,
-	BookOpen,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { Typewriter } from "@/components/ui/typewriter";
+import { BrowseGuidesReal } from "@/components/landing/BrowseGuidesReal";
+import { SplitScreenReal } from "@/components/landing/SplitScreenReal";
+import { ReadingsLibrary } from "@/components/landing/ReadingsLibrary";
+import { WorkspaceDashboard } from "@/components/landing/WorkspaceDashboard";
+import { BrowseAndFeatured } from "@/components/landing/BrowseAndFeatured";
+import WorkspaceLayout from "@/app/app/[workspaceId]/layout";
+import Head from "next/head";
 
 export default function LandingPage() {
-	const { isLoggedIn } = useAuth();
-
 	const jsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareApplication',
 		name: 'Templata',
-		description: 'The first encyclopedia for living. 1,298 guided workspaces with 26,000+ articles and 104,000+ prompts for life\'s biggest decisions.',
+		description: 'Wikipedia × Notion for life planning. Comprehensive guides for life\'s biggest decisions.',
 		url: 'https://templata.org',
 		applicationCategory: 'ProductivityApplication',
 		operatingSystem: 'Web',
 		featureList: [
-			'1,298 Guided Workspaces',
-			'104,000+ Action Prompts',
-			'26,000+ Expert Articles',
-			'Split-Screen Interface',
+			'Life Planning Guides',
+			'Guided Questions',
+			'Curated Reading',
+			'Split-Screen Workspace',
 		],
 	};
 
@@ -43,202 +36,122 @@ export default function LandingPage() {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
 
-			{/* Hero Section */}
-			<section className="h-screen flex items-center justify-center relative overflow-hidden">
-				{/* Background Image */}
-				<div
-					className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-					style={{
-						backgroundImage: 'url(/geometric-monuments.webp)',
-						filter: 'brightness(0.4)',
-					}}
-				/>
-
-				<div className="container mx-auto max-w-7xl px-4 relative z-10">
-					<div className="text-center space-y-8">
-						<Announcement className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
-							<AnnouncementTag>Beta</AnnouncementTag>
-							<AnnouncementTitle>The first encyclopedia for living<span className="hidden sm:inline">—</span><br className="sm:hidden" />now in public beta</AnnouncementTitle>
-						</Announcement>
-
-						<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
-							Organize life&apos;s
-							<br />
-							<span className="text-white">
-								biggest{" "}
-								<Typewriter
-									text={[
-										"moments",
-										"weddings",
-										"careers",
-										"moves",
-										"launches",
-									]}
-									speed={70}
-									waitTime={1500}
-									deleteSpeed={40}
-									cursorChar={"_"}
-								/>
-							</span>
-						</h1>
-
-						<p className="mx-auto max-w-2xl text-lg md:text-xl text-white/90">
-							1,298 guided workspaces with 26,000+ articles and 104,000+ prompts.
-							<br />
-							Never start with a blank page.
-						</p>
+			{/* Hero Section - 3-line layout with CTA on right */}
+			<section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-24">
+				<div className="mx-auto max-w-7xl">
+					<div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
+						<div className="max-w-3xl">
+							<h1 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
+								Wikipedia
+							</h1>
+							<h2 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9]">
+								×
+							</h2>
+							<h3 className="text-[3.5rem] font-medium tracking-[-0.02em] md:text-[6rem] leading-[0.9] mb-6">
+								Notion
+							</h3>
+							<p className="text-base text-muted-foreground leading-relaxed max-w-lg">
+								Comprehensive guides meet flexible workspaces
+							</p>
+						</div>
+						<div>
+							<Button size="lg" asChild className="font-medium">
+								<Link href="/guides">
+									Browse Guides
+									<ArrowRight className="h-4 w-4" />
+								</Link>
+							</Button>
+						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* What It Is - Split-Screen Workspace */}
-			<motion.section
-				className="py-24 md:py-32"
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.8 }}
-			>
-				<div className="container mx-auto max-w-7xl px-4">
-					<div className="text-center space-y-4 mb-16">
-						<h2 className="text-3xl md:text-5xl font-bold">
-							Wikipedia meets Notion for life planning
+			{/* Hero Screenshot - Wider layout */}
+			<section className="px-6 pb-32">
+				<div className="mx-auto max-w-[1400px]">
+					<div className="w-full bg-background rounded-xl overflow-auto shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] ring-1 ring-black/5 dark:ring-white/10">
+						{/* Browser Chrome */}
+						<div className="h-7 bg-muted/60 border-b border-border/60 flex items-center px-2 gap-2">
+							<div className="flex gap-1.5">
+								<div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+								<div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+								<div className="w-2.5 h-2.5 rounded-full bg-[#28CA42]" />
+							</div>
+							<div className="flex-1 flex justify-center -ml-12">
+								<div className="px-3 py-0.5 bg-background/50 rounded text-[9px] text-muted-foreground border border-border/40 max-w-[200px] truncate">
+									templata.org
+								</div>
+							</div>
+						</div>
+						{/* App Content */}
+						<div
+							className="h-[600px] overflow-auto"
+							onClick={(e) => {
+								e.preventDefault();
+								e.stopPropagation();
+							}}
+							onSubmit={(e) => {
+								e.preventDefault();
+								e.stopPropagation();
+							}}
+						>
+							<WorkspaceLayout demoMode={true} />
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* How It Works - 2x2 grid */}
+			<section className="px-6 py-24 border-t border-border/40">
+				<div className="mx-auto max-w-5xl">
+					<div className="mb-16">
+						<h2 className="text-3xl md:text-4xl font-medium tracking-[-0.01em] mb-4 leading-tight">
+							How It Works
 						</h2>
-						<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-							Our split-screen interface combines guided prompts, a structured workspace, and an encyclopedia of knowledge.
-						</p>
 					</div>
 
-					{/* Split-Screen Visual */}
-					<Card className="p-4 sm:p-8 max-w-6xl mx-auto">
-						<div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-							{/* Prompts Column */}
-							<div className="space-y-3">
-								<div className="flex items-center gap-2 font-semibold mb-4">
-									<FileText className="h-5 w-5 text-primary" />
-									<span>Guided Prompts</span>
-								</div>
-								<div className="space-y-2">
-									<div className="p-3 bg-muted rounded text-sm">What's your venue budget?</div>
-									<div className="p-3 bg-muted rounded text-sm">Expected guest count?</div>
-									<div className="p-3 bg-primary/10 rounded text-primary border border-primary/20 text-sm">→ Who are must-have vendors?</div>
-								</div>
-							</div>
-
-							{/* Workspace Column */}
-							<div className="space-y-3">
-								<div className="flex items-center gap-2 font-semibold mb-4">
-									<BookOpen className="h-5 w-5 text-primary" />
-									<span>Your Workspace</span>
-								</div>
-								<div className="p-4 bg-background rounded border min-h-[160px] text-sm text-muted-foreground">
-									<div className="space-y-2">
-										<p>Photographer - top priority</p>
-										<p>Videographer - nice to have</p>
-										<p>Florist - DIY option possible</p>
-									</div>
-								</div>
-							</div>
-
-							{/* Articles Column */}
-							<div className="space-y-3">
-								<div className="flex items-center gap-2 font-semibold mb-4">
-									<Globe className="h-5 w-5 text-primary" />
-									<span>Knowledge Base</span>
-								</div>
-								<div className="space-y-2">
-									<div className="p-3 bg-primary/5 rounded cursor-pointer hover:bg-primary/10 transition-colors text-sm">
-										<div className="font-medium mb-1">Vendor Cost Breakdown</div>
-										<div className="text-xs text-muted-foreground">Average costs by category...</div>
-									</div>
-									<div className="p-3 bg-primary/5 rounded cursor-pointer hover:bg-primary/10 transition-colors text-sm">
-										<div className="font-medium mb-1">Contract Checklist</div>
-										<div className="text-xs text-muted-foreground">What to look for...</div>
-									</div>
-								</div>
-							</div>
+					<div className="grid md:grid-cols-2 gap-12">
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Browse guides</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
+								Curated for major life decisions
+							</p>
+							<BrowseGuidesReal />
 						</div>
 
-						<div className="border-t mt-8 pt-6 space-y-3">
-							<div className="flex items-center gap-2 text-sm text-muted-foreground">
-								<CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-								<span>104,000+ categorized prompts ensure you consider everything</span>
-							</div>
-							<div className="flex items-center gap-2 text-sm text-muted-foreground">
-								<CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-								<span>26,000+ articles like Wikipedia for life decisions</span>
-							</div>
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Work in split-screen</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
+								Questions on left, notes on right
+							</p>
+							<SplitScreenReal />
 						</div>
-					</Card>
-				</div>
-			</motion.section>
 
-			{/* Numbers */}
-			<motion.section
-				className="py-24 md:py-32 bg-muted/30"
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.8 }}
-			>
-				<div className="container mx-auto max-w-5xl px-4">
-					<div className="text-center mb-16">
-						<h2 className="text-3xl md:text-4xl font-bold mb-4">Built for every life moment</h2>
-						<p className="text-lg text-muted-foreground">Comprehensive, structured, and completely free</p>
-					</div>
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Curated readings</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
+								Selected readings for each guide
+							</p>
+							<ReadingsLibrary />
+						</div>
 
-					<div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">1,298</div>
-							<p className="text-muted-foreground">Guided Workspaces</p>
-						</div>
-						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">104K+</div>
-							<p className="text-muted-foreground">Action Prompts</p>
-						</div>
-						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">26k+</div>
-							<p className="text-muted-foreground">Expert Articles</p>
-						</div>
-						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">Free</div>
-							<p className="text-muted-foreground">No Paywalls</p>
+						<div className="space-y-3">
+							<h3 className="text-base font-medium">Track progress</h3>
+							<p className="text-sm text-muted-foreground leading-relaxed">
+								Organize multiple projects in one workspace
+							</p>
+							<WorkspaceDashboard />
 						</div>
 					</div>
 				</div>
-			</motion.section>
+			</section>
 
-			{/* Final CTA */}
-			<motion.section
-				className="py-24 md:py-32"
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.8 }}
-			>
-				<div className="container mx-auto max-w-3xl px-4 text-center space-y-8">
-					<h2 className="text-3xl md:text-5xl font-bold">
-						Ready to organize your next big moment?
-					</h2>
-					<p className="text-xl text-muted-foreground">
-						Start with a guided workspace. Everything is free—no credit card required.
-					</p>
-					<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-						<Button size="lg" className="h-12 px-8 text-base" asChild>
-							<Link href="/app">
-								Browse All Workspaces
-								<ArrowRight className="ml-2 h-5 w-5" />
-							</Link>
-						</Button>
-						{!isLoggedIn && (
-							<Button variant="outline" size="lg" className="h-12 px-8 text-base" asChild>
-								<Link href="/login">Get Started Free</Link>
-							</Button>
-						)}
-					</div>
+			{/* Browse and Featured */}
+			<section className="px-6 py-24 border-t border-border/40">
+				<div className="mx-auto max-w-6xl">
+					<BrowseAndFeatured />
 				</div>
-			</motion.section>
-
+			</section>
 		</PageLayout>
 	);
 }

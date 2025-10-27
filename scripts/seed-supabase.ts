@@ -14,9 +14,9 @@ const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function seedArticles() {
-  console.log('Seeding articles...');
+  console.log('Seeding readings...');
 
-  const manifestPath = join(process.cwd(), 'src/data/articles/manifest.json');
+  const manifestPath = join(process.cwd(), 'src/data/readings/manifest.json');
   const manifest = await import(manifestPath);
 
   let count = 0;
@@ -25,31 +25,31 @@ async function seedArticles() {
 
   for (const item of manifest.default) {
     try {
-      const modulePath = `../src/data/articles/${item.filename}`;
+      const modulePath = `../src/data/readings/${item.filename}`;
       const module = await import(modulePath);
 
-      if (module.articles && module.articles.length > 0) {
-        for (const article of module.articles) {
+      if (module.readings && module.readings.length > 0) {
+        for (const reading of module.readings) {
           batch.push({
-            id: article.id,
-            title: article.title,
-            excerpt: article.excerpt,
-            content: article.content,
-            author: article.author,
-            published_at: article.publishedAt,
-            updated_at: article.updatedAt,
-            read_time: article.readTime,
-            category: article.category,
-            featured: article.featured || false,
-            tags: article.tags,
-            slug: article.slug,
-            type: article.type,
-            difficulty: article.difficulty,
-            meta_title: article.seo?.metaTitle,
-            meta_description: article.seo?.metaDescription,
-            og_image: article.seo?.ogImage,
-            related_templates: article.relatedTemplates || [],
-            related_posts: article.relatedPosts || []
+            id: reading.id,
+            title: reading.title,
+            excerpt: reading.excerpt,
+            content: reading.content,
+            author: reading.author,
+            published_at: reading.publishedAt,
+            updated_at: reading.updatedAt,
+            read_time: reading.readTime,
+            category: reading.category,
+            featured: reading.featured || false,
+            tags: reading.tags,
+            slug: reading.slug,
+            type: reading.type,
+            difficulty: reading.difficulty,
+            meta_title: reading.seo?.metaTitle,
+            meta_description: reading.seo?.metaDescription,
+            og_image: reading.seo?.ogImage,
+            related_templates: reading.relatedGuides || [],
+            related_posts: reading.relatedPosts || []
           });
 
           count++;
@@ -62,7 +62,7 @@ async function seedArticles() {
             if (error) {
               console.error('Error inserting batch:', error);
             } else {
-              console.log(`  Inserted ${count} articles...`);
+              console.log(`  Inserted ${count} readings...`);
             }
 
             batch = [];
@@ -85,14 +85,14 @@ async function seedArticles() {
     }
   }
 
-  console.log(`✓ Seeded ${count} articles`);
+  console.log(`✓ Seeded ${count} readings`);
   return count;
 }
 
 async function seedPrompts() {
-  console.log('Seeding prompts...');
+  console.log('Seeding questions...');
 
-  const manifestPath = join(process.cwd(), 'src/data/prompts/manifest.json');
+  const manifestPath = join(process.cwd(), 'src/data/questions/manifest.json');
   const manifest = await import(manifestPath);
 
   let count = 0;
@@ -101,17 +101,17 @@ async function seedPrompts() {
 
   for (const item of manifest.default) {
     try {
-      const modulePath = `../src/data/prompts/${item.filename}`;
+      const modulePath = `../src/data/questions/${item.filename}`;
       const module = await import(modulePath);
 
-      if (module.prompts && module.prompts.length > 0) {
-        for (const prompt of module.prompts) {
+      if (module.questions && module.questions.length > 0) {
+        for (const question of module.questions) {
           batch.push({
-            id: prompt.id,
-            prompt: prompt.prompt,
-            category: prompt.category,
-            type: prompt.type,
-            template_id: item.template
+            id: question.id,
+            question: question.question,
+            category: question.category,
+            type: question.type,
+            template_id: item.guide
           });
 
           count++;
@@ -124,7 +124,7 @@ async function seedPrompts() {
             if (error) {
               console.error('Error inserting batch:', error);
             } else {
-              console.log(`  Inserted ${count} prompts...`);
+              console.log(`  Inserted ${count} questions...`);
             }
 
             batch = [];
@@ -147,7 +147,7 @@ async function seedPrompts() {
     }
   }
 
-  console.log(`✓ Seeded ${count} prompts`);
+  console.log(`✓ Seeded ${count} questions`);
   return count;
 }
 
@@ -173,12 +173,12 @@ async function main() {
     process.exit(1);
   }
 
-  const articles = await seedArticles();
-  const prompts = await seedPrompts();
+  const readings = await seedArticles();
+  const questions = await seedPrompts();
 
   console.log('');
   console.log('='.repeat(60));
-  console.log(`Summary: ${articles + prompts} total items seeded`);
+  console.log(`Summary: ${readings + questions} total items seeded`);
   console.log('='.repeat(60));
 }
 

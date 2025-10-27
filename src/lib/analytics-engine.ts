@@ -1,7 +1,7 @@
 /**
  * Analytics Engine
  *
- * Computes insights from user templates and reflections.
+ * Computes insights from user guides and reflections.
  * Analyzes patterns, trends, and provides actionable intelligence.
  */
 
@@ -17,17 +17,17 @@ import {
   InsightConfig,
   InsightDashboard,
 } from '@/types/insight';
-import { TemplateSession, ReflectionEntry } from '@/stores/workspace-store';
+import { GuideSession, ReflectionEntry } from '@/stores/workspace-store';
 
 /**
  * Main Analytics Engine class
  */
 export class AnalyticsEngine {
-  private templates: TemplateSession[];
+  private guides: GuideSession[];
   private reflections: ReflectionEntry[];
 
-  constructor(templates: TemplateSession[], reflections: ReflectionEntry[]) {
-    this.templates = templates;
+  constructor(guides: GuideSession[], reflections: ReflectionEntry[]) {
+    this.guides = guides;
     this.reflections = reflections;
   }
 
@@ -80,18 +80,18 @@ export class AnalyticsEngine {
    * Analyze category usage patterns
    */
   private analyzeCategoryUsage(period: InsightPeriod): CategoryUsageInsight | null {
-    const filteredTemplates = this.filterByPeriod(this.templates, period);
+    const filteredGuides = this.filterByPeriod(this.guides, period);
 
-    if (filteredTemplates.length === 0) return null;
+    if (filteredGuides.length === 0) return null;
 
-    // Count templates by category
+    // Count guides by category
     const categoryCounts: Record<string, number> = {};
-    filteredTemplates.forEach((template) => {
-      const category = this.extractCategory(template.tags);
+    filteredGuides.forEach((guide) => {
+      const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
 
-    const total = filteredTemplates.length;
+    const total = filteredGuides.length;
     const categories = Object.entries(categoryCounts).map(([name, count]) => ({
       name,
       count,
@@ -176,15 +176,15 @@ export class AnalyticsEngine {
   }
 
   /**
-   * Analyze template completion rates
+   * Analyze guide completion rates
    */
   private analyzeCompletionRate(period: InsightPeriod): CompletionRateInsight | null {
-    const filteredTemplates = this.filterByPeriod(this.templates, period);
+    const filteredGuides = this.filterByPeriod(this.guides, period);
 
-    if (filteredTemplates.length === 0) return null;
+    if (filteredGuides.length === 0) return null;
 
-    const completed = filteredTemplates.filter((t) => t.completion === 100);
-    const completionRate = (completed.length / filteredTemplates.length) * 100;
+    const completed = filteredGuides.filter((t) => t.completion === 100);
+    const completionRate = (completed.length / filteredGuides.length) * 100;
 
     // Calculate average completion time (mock for now)
     const completionTimes = completed.map((t) => {
@@ -199,13 +199,13 @@ export class AnalyticsEngine {
 
     // By category
     const byCategory: Record<string, { started: number; completed: number; rate: number }> = {};
-    filteredTemplates.forEach((template) => {
-      const category = this.extractCategory(template.tags);
+    filteredGuides.forEach((guide) => {
+      const category = this.extractCategory(guide.tags);
       if (!byCategory[category]) {
         byCategory[category] = { started: 0, completed: 0, rate: 0 };
       }
       byCategory[category].started += 1;
-      if (template.completion === 100) {
+      if (guide.completion === 100) {
         byCategory[category].completed += 1;
       }
     });
@@ -219,12 +219,12 @@ export class AnalyticsEngine {
       id: `completion-rate-${Date.now()}`,
       type: 'completion-rate',
       title: 'Completion Rate',
-      description: `You're completing ${completionRate.toFixed(0)}% of started templates`,
+      description: `You're completing ${completionRate.toFixed(0)}% of started guides`,
       severity: completionRate >= 70 ? 'success' : completionRate >= 50 ? 'info' : 'warning',
       generatedAt: new Date(),
       period,
       data: {
-        totalStarted: filteredTemplates.length,
+        totalStarted: filteredGuides.length,
         totalCompleted: completed.length,
         completionRate,
         averageCompletionTime: avgTime,
@@ -346,10 +346,10 @@ export class AnalyticsEngine {
         }
         wordCounts[word].count += 1;
         wordCounts[word].lastSeen = reflection.createdAt;
-        reflection.linkedTemplateIds.forEach((id) => {
-          const template = this.templates.find((t) => t.id === id);
-          if (template) {
-            const category = this.extractCategory(template.tags);
+        reflection.linkedGuideIds.forEach((id) => {
+          const guide = this.guides.find((t) => t.id === id);
+          if (guide) {
+            const category = this.extractCategory(guide.tags);
             wordCounts[word].categories.add(category);
           }
         });
@@ -432,8 +432,8 @@ export class AnalyticsEngine {
    */
   private generateSummary() {
     const categoryCounts: Record<string, number> = {};
-    this.templates.forEach((template) => {
-      const category = this.extractCategory(template.tags);
+    this.guides.forEach((guide) => {
+      const category = this.extractCategory(guide.tags);
       categoryCounts[category] = (categoryCounts[category] || 0) + 1;
     });
 
@@ -441,14 +441,14 @@ export class AnalyticsEngine {
       .sort(([, a], [, b]) => b - a)[0]?.[0] || 'None';
 
     const activeDays = new Set(
-      [...this.templates.map((t) => t.startedAt.toDateString()),
+      [...this.guides.map((t) => t.startedAt.toDateString()),
        ...this.reflections.map((r) => r.createdAt.toDateString())]
     ).size;
 
     const streak = this.calculateReflectionStreak(this.reflections);
 
     return {
-      totalTemplates: this.templates.length,
+      totalTemplates: this.guides.length,
       totalReflections: this.reflections.length,
       activeDays,
       mostActiveCategory,
@@ -587,6 +587,6 @@ export class AnalyticsEngine {
 /**
  * Create analytics engine instance from store data
  */
-export function createAnalyticsEngine(templates: TemplateSession[], reflections: ReflectionEntry[]): AnalyticsEngine {
-  return new AnalyticsEngine(templates, reflections);
+export function createAnalyticsEngine(guides: GuideSession[], reflections: ReflectionEntry[]): AnalyticsEngine {
+  return new AnalyticsEngine(guides, reflections);
 }

@@ -25,13 +25,15 @@ interface PageLayoutProps {
 	includeHeader?: boolean;
 	includeFooter?: boolean;
 	includeHeaderPadding?: boolean;
+	className?: string;
 }
 
 export function PageLayout({
 	children,
 	includeHeader = true,
 	includeFooter = true,
-	includeHeaderPadding = true
+	includeHeaderPadding = true,
+	className
 }: PageLayoutProps) {
 	const { isLoggedIn } = useAuth();
 	const pathname = usePathname();
@@ -72,7 +74,7 @@ export function PageLayout({
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-transparent">
+		<div className={cn("min-h-screen", className)}>
 			{includeHeader && <Header />}
 
 			{includeHeader && includeHeaderPadding && (
@@ -86,20 +88,22 @@ export function PageLayout({
 			{/* Recently Used Footer - shows as sticky footer */}
 			<RecentlyUsedFooter />
 
-			{/* Floating Demo Button - Hidden on mobile */}
-			<div className={cn("fixed bottom-8 right-8 z-50", isMobile && "hidden")}>
-				<Button
-					size="lg"
-					variant="outline"
-					asChild
-					className="bg-background hover:bg-background/80 flex items-center gap-2"
-				>
-					<a href="/app">
-						<Play className="h-5 w-5" />
-						<span className="hidden sm:inline">{isLoggedIn ? "Open App" : "Try Demo"}</span>
-					</a>
-				</Button>
-			</div>
+			{/* Floating Demo Button - Hidden on mobile and homepage */}
+			{!isHomePage && (
+				<div className={cn("fixed bottom-8 right-8 z-50", isMobile && "hidden")}>
+					<Button
+						size="lg"
+						variant="outline"
+						asChild
+						className="bg-background hover:bg-background/80 flex items-center gap-2"
+					>
+						<a href="/app">
+							<Play className="h-5 w-5" />
+							<span className="hidden sm:inline">{isLoggedIn ? "Open App" : "Try Demo"}</span>
+						</a>
+					</Button>
+				</div>
+			)}
 
 			{/* Mobile Split FAB */}
 			{isMobile && (
@@ -130,18 +134,18 @@ export function PageLayout({
 						</DrawerHeader>
 						<div className="flex flex-col gap-1 px-4 pb-4">
 							<Link
-								href="/templates"
+								href="/guides"
 								className="px-3 py-3 text-base font-medium hover:bg-accent rounded-md transition-colors"
 								onClick={() => setMobileMenuOpen(false)}
 							>
-								Templates
+								Guides
 							</Link>
 							<Link
-								href="/articles"
+								href="/readings"
 								className="px-3 py-3 text-base font-medium hover:bg-accent rounded-md transition-colors"
 								onClick={() => setMobileMenuOpen(false)}
 							>
-								Articles
+								Readings
 							</Link>
 							<Link
 								href="/how-it-works"

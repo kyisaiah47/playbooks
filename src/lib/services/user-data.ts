@@ -1,10 +1,10 @@
 import { prisma } from '../prisma';
-import type { User, TemplateSession, UserResponse, SavedResource } from '../../generated/prisma';
+import type { User, GuideSession, UserResponse, SavedResource } from '../../generated/prisma';
 
 // Types for user data operations
 export interface CreateTemplateSessionData {
   userId: string;
-  templateId: string;
+  guideId: string;
   title: string;
 }
 
@@ -19,16 +19,16 @@ export interface UpdateTemplateSessionData {
 export interface CreateUserResponseData {
   userId: string;
   sessionId: string;
-  templateId: string;
+  guideId: string;
   sectionId: string;
-  promptId: string;
+  questionId: string;
   response: string;
   metadata?: Record<string, unknown>;
 }
 
 export interface SaveResourceData {
   userId: string;
-  templateId: string;
+  guideId: string;
   resourceId: string;
   title: string;
   userNotes?: string;
@@ -36,19 +36,19 @@ export interface SaveResourceData {
 
 // User Data Service
 export class UserDataService {
-  // Template Sessions
-  static async createTemplateSession(data: CreateTemplateSessionData): Promise<TemplateSession> {
-    return await prisma.templateSession.create({
+  // Guide Sessions
+  static async createTemplateSession(data: CreateTemplateSessionData): Promise<GuideSession> {
+    return await prisma.guideSession.create({
       data: {
         userId: data.userId,
-        templateId: data.templateId,
+        guideId: data.guideId,
         title: data.title,
       },
     });
   }
 
-  static async getTemplateSession(sessionId: string): Promise<TemplateSession | null> {
-    return await prisma.templateSession.findUnique({
+  static async getTemplateSession(sessionId: string): Promise<GuideSession | null> {
+    return await prisma.guideSession.findUnique({
       where: { id: sessionId },
       include: {
         responses: true,
@@ -57,8 +57,8 @@ export class UserDataService {
     });
   }
 
-  static async getUserTemplateSessions(userId: string): Promise<TemplateSession[]> {
-    return await prisma.templateSession.findMany({
+  static async getUserTemplateSessions(userId: string): Promise<GuideSession[]> {
+    return await prisma.guideSession.findMany({
       where: { userId },
       orderBy: { updatedAt: 'desc' },
       include: {
@@ -67,14 +67,14 @@ export class UserDataService {
     });
   }
 
-  static async updateTemplateSession(data: UpdateTemplateSessionData): Promise<TemplateSession> {
+  static async updateTemplateSession(data: UpdateTemplateSessionData): Promise<GuideSession> {
     const updateData: any = {};
     if (data.progress !== undefined) updateData.progress = data.progress;
     if (data.currentSection !== undefined) updateData.currentSection = data.currentSection;
     if (data.isCompleted !== undefined) updateData.isCompleted = data.isCompleted;
     if (data.metadata !== undefined) updateData.metadata = data.metadata;
     
-    return await prisma.templateSession.update({
+    return await prisma.guideSession.update({
       where: { id: data.sessionId },
       data: {
         ...updateData,
@@ -87,17 +87,17 @@ export class UserDataService {
   static async createUserResponse(data: CreateUserResponseData): Promise<UserResponse> {
     return await prisma.userResponse.upsert({
       where: {
-        sessionId_promptId: {
+        sessionId_questionId: {
           sessionId: data.sessionId,
-          promptId: data.promptId,
+          questionId: data.questionId,
         },
       },
       create: {
         userId: data.userId,
         sessionId: data.sessionId,
-        templateId: data.templateId,
+        guideId: data.guideId,
         sectionId: data.sectionId,
-        promptId: data.promptId,
+        questionId: data.questionId,
         response: data.response,
         metadata: data.metadata,
       },
@@ -116,11 +116,11 @@ export class UserDataService {
     });
   }
 
-  static async getUserResponsesForTemplate(userId: string, templateId: string): Promise<UserResponse[]> {
+  static async getUserResponsesForTemplate(userId: string, guideId: string): Promise<UserResponse[]> {
     return await prisma.userResponse.findMany({
       where: {
         userId,
-        templateId,
+        guideId,
       },
       orderBy: { createdAt: 'asc' },
       include: {
@@ -140,7 +140,7 @@ export class UserDataService {
       },
       create: {
         userId: data.userId,
-        templateId: data.templateId,
+        guideId: data.guideId,
         resourceId: data.resourceId,
         title: data.title,
         userNotes: data.userNotes,
@@ -177,8 +177,8 @@ export class UserDataService {
       totalResponses,
       savedResourcesCount,
     ] = await Promise.all([
-      prisma.templateSession.count({ where: { userId } }),
-      prisma.templateSession.count({ where: { userId, isCompleted: true } }),
+      prisma.guideSession.count({ where: { userId } }),
+      prisma.guideSession.count({ where: { userId, isCompleted: true } }),
       prisma.userResponse.count({ where: { userId } }),
       prisma.savedResource.count({ where: { userId } }),
     ]);
@@ -192,17 +192,17 @@ export class UserDataService {
     };
   }
 
-  // Template Analytics (for admin/insights)
-  static async getTemplateStats(templateId: string) {
+  // Guide Analytics (for admin/insights)
+  static async getTemplateStats(guideId: string) {
     const [
       totalSessions,
       completedSessions,
       averageProgress,
     ] = await Promise.all([
-      prisma.templateSession.count({ where: { templateId } }),
-      prisma.templateSession.count({ where: { templateId, isCompleted: true } }),
-      prisma.templateSession.aggregate({
-        where: { templateId },
+      prisma.guideSession.count({ where: { guideId } }),
+      prisma.guideSession.count({ where: { guideId, isCompleted: true } }),
+      prisma.guideSession.aggregate({
+        where: { guideId },
         _avg: { progress: true },
       }),
     ]);

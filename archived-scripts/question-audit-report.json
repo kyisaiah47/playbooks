@@ -1,0 +1,291 @@
+{
+  "audit_date": "2025-10-24T20:45:07.230Z",
+  "total_questions": 103820,
+  "total_issues": 33,
+  "issues_by_type": [
+    {
+      "type": "missing_punctuation",
+      "count": 19,
+      "severity_breakdown": {
+        "high": 0,
+        "medium": 0,
+        "low": 19
+      }
+    },
+    {
+      "type": "vague_prompt",
+      "count": 14,
+      "severity_breakdown": {
+        "high": 0,
+        "medium": 14,
+        "low": 0
+      }
+    }
+  ],
+  "issues": [
+    {
+      "id": "bicycle-maintenance-skills-3-6",
+      "template_id": "bicycle-maintenance-skills",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Document your personal system for systematically checking a bicycle when a rider reports \"something doesn't feel right.\""
+    },
+    {
+      "id": "book-writing-4-7",
+      "template_id": "book-writing",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Reflect on what you hope readers will think about or feel differently after reading your book."
+    },
+    {
+      "id": "bulimia-recovery-planning-6-7",
+      "template_id": "bulimia-recovery-planning",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Document your evolving relationship with perfectionism and note specific areas where you're learning to embrace \"good enough.\""
+    },
+    {
+      "id": "codependency-recovery-2-5",
+      "template_id": "codependency-recovery",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Explore how perfectionism shows up in your daily life and what triggers your need to be \"good enough.\""
+    },
+    {
+      "id": "codependency-recovery-6-8",
+      "template_id": "codependency-recovery",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Reflect on how birth order, family crises, or significant losses shaped your role as the \"helper,\" \"peacekeeper,\" or \"problem-solver.\""
+    },
+    {
+      "id": "computer-support-specialist-5-9",
+      "template_id": "computer-support-specialist",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Reflect on how you prioritize multiple performance issues when a user reports their computer is \"running slow.\""
+    },
+    {
+      "id": "digital-declutter-process-5-7",
+      "template_id": "digital-declutter-process",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Reflect on the difference between content you actively reference versus content you're just hoarding \"just in case.\""
+    },
+    {
+      "id": "digital-minimalism-implementation-7-7",
+      "template_id": "digital-minimalism-implementation",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Document your answers to the question: \"What would I do with my time if I had no digital distractions for an entire week?\""
+    },
+    {
+      "id": "domestic-violence-escape-planning-7-5",
+      "template_id": "domestic-violence-escape-planning",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Write down trusted people who could help in a crisis and think about how to contact them if your usual methods aren't available."
+    },
+    {
+      "id": "dual-diagnosis-recovery-6-8",
+      "template_id": "dual-diagnosis-recovery",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Write about the differences you notice between \"good mental health days\" and \"challenging mental health days.\""
+    },
+    {
+      "id": "emotional-intelligence-development-1-5",
+      "template_id": "emotional-intelligence-development",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Study the concept of emotional granularity and practice naming your emotions with more specific vocabulary than \"good\" or \"bad.\""
+    },
+    {
+      "id": "financial-therapy-1-9",
+      "template_id": "financial-therapy",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Note any physical sensations or emotions that arise when you think about your current financial situation."
+    },
+    {
+      "id": "financial-therapy-6-10",
+      "template_id": "financial-therapy",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Document one financial concept you recently learned that changed how you think about money."
+    },
+    {
+      "id": "grandparent-transition-2-3",
+      "template_id": "grandparent-transition",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "List the new safety considerations you need to think about when grandchildren visit your home."
+    },
+    {
+      "id": "hobby-project-3-6",
+      "template_id": "hobby-project",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Research and document the science or theory behind techniques you use, understanding the \"why\" behind the \"how.\""
+    },
+    {
+      "id": "legal-document-understanding-8-8",
+      "template_id": "legal-document-understanding",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Research the precise legal meanings of commonly misunderstood terms like \"shall,\" \"may,\" \"covenant,\" and \"warranty.\""
+    },
+    {
+      "id": "motivation-maintenance-system-8-5",
+      "template_id": "motivation-maintenance-system",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Research how successful people in your field think about setbacks and compile their approaches to resilience."
+    },
+    {
+      "id": "neighbor-dispute-resolution-6-3",
+      "template_id": "neighbor-dispute-resolution",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Reflect on which emotions (anger, fear, frustration, sadness) are most prominent when you think about this dispute."
+    },
+    {
+      "id": "non-binary-identity-navigation-3-3",
+      "template_id": "non-binary-identity-navigation",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Collect examples of inclusive language alternatives to gendered terms like \"ladies and gentlemen\" or \"boyfriend/girlfriend.\""
+    },
+    {
+      "id": "online-account-security-audit-1-9",
+      "template_id": "online-account-security-audit",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Note which accounts are connected to social media platforms or use social login features like \"Sign in with Google\" or \"Sign in with Facebook.\""
+    },
+    {
+      "id": "perfectionism-recovery-1-9",
+      "template_id": "perfectionism-recovery",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Reflect on the earliest memories you have of feeling like your efforts weren't \"good enough.\""
+    },
+    {
+      "id": "poverty-to-wealth-transition-1-2",
+      "template_id": "poverty-to-wealth-transition",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Research and note the key differences between how wealthy people and poor people think about money according to financial psychology studies."
+    },
+    {
+      "id": "procrastination-elimination-guide-8-6",
+      "template_id": "procrastination-elimination-guide",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Document the difference between how you think about tasks when you're motivated versus when you're procrastinating."
+    },
+    {
+      "id": "property-division-process-2-9",
+      "template_id": "property-division-process",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Reflect on your understanding of legal terms like \"equitable distribution,\" \"community property,\" and \"separate property.\""
+    },
+    {
+      "id": "relationship-breakup-1-10",
+      "template_id": "relationship-breakup",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Note any recurring thoughts or worries that surface when you think about the future."
+    },
+    {
+      "id": "religious-deconstruction-7-2",
+      "template_id": "religious-deconstruction",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Research the historical origins and cultural contexts of spiritual practices you were taught were \"timeless\" or \"universal.\""
+    },
+    {
+      "id": "shopping-addiction-recovery-2-9",
+      "template_id": "shopping-addiction-recovery",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Analyze your bank statements from the past three months and categorize purchases into \"needs,\" \"wants,\" and \"impulse buys.\""
+    },
+    {
+      "id": "skin-picking-disorder-1-7",
+      "template_id": "skin-picking-disorder",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Explore the connection between perfectionism and skin picking by noting when you feel things must be \"just right.\""
+    },
+    {
+      "id": "social-skills-development-1-6",
+      "template_id": "social-skills-development",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Think about a time when you misunderstood someone's tone and write down what you learned from that experience."
+    },
+    {
+      "id": "vocabulary-building-system-6-8",
+      "template_id": "vocabulary-building-system",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Reflect on how learning new vocabulary has changed the way you think about concepts or express ideas."
+    },
+    {
+      "id": "will-writing-guidance-2-9",
+      "template_id": "will-writing-guidance",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "Think about and document any specific items or heirlooms you want particular people to receive and why."
+    },
+    {
+      "id": "wine-tasting-expertise-3-7",
+      "template_id": "wine-tasting-expertise",
+      "issue_type": "missing_punctuation",
+      "severity": "low",
+      "details": "Missing ending punctuation",
+      "prompt": "Practice describing wine textures and mouthfeel sensations, creating your own vocabulary list for terms like \"silky,\" \"tannic,\" or \"creamy.\""
+    },
+    {
+      "id": "workaholism-recovery-1-4",
+      "template_id": "workaholism-recovery",
+      "issue_type": "vague_prompt",
+      "severity": "medium",
+      "details": "Contains vague phrase: \"think about\"",
+      "prompt": "List and describe the physical sensations you experience in your body when you think about taking a complete break from work."
+    }
+  ]
+}

@@ -5,23 +5,23 @@ import { WorkspaceMode } from '@/types/workspace';
  * Stage State Machine
  *
  * Events:
- * - COMPLETE_STEP → stays in Template
- * - FINISH_TEMPLATE → GO_REFLECT
+ * - COMPLETE_STEP → stays in Guide
+ * - FINISH_GUIDE → GO_REFLECT
  * - SAVE_REFLECTION → GO_LIFEOS (optional modal)
  * - SET_STAGE → direct navigation
- * - OPEN_TEMPLATE / OPEN_REFLECTION → deep link from Life OS
+ * - OPEN_GUIDE / OPEN_REFLECTION → deep link from Life OS
  *
  * Guards:
- * - Unsaved changes → prompt "Save & continue?"
+ * - Unsaved changes → show "Save & continue?" dialog
  *
  * Effects:
  * - On enter Reflection → set dim theme, focus editor
  * - On enter Life OS → compute aggregates, fetch graph
  */
 
-export interface TemplateSession {
+export interface GuideSession {
   id: string;
-  templateId: string;
+  guideId: string;
   answers: Record<string, string>;
   completion: number;
   tags: string[];
@@ -35,7 +35,7 @@ export interface ReflectionEntry {
   text: string;
   mood?: 'happy' | 'neutral' | 'sad';
   tags: string[];
-  linkedTemplateIds: string[];
+  linkedGuideIds: string[];
   createdAt: Date;
   sentiment?: number; // -1 to 1
 }
@@ -45,7 +45,7 @@ interface WorkspaceState {
   stage: WorkspaceMode;
 
   // Active sessions
-  currentTemplateSession: TemplateSession | null;
+  currentGuideSession: GuideSession | null;
   currentReflectionEntry: ReflectionEntry | null;
 
   // UI state
@@ -57,9 +57,9 @@ interface WorkspaceState {
   // Actions (Events)
   setStage: (stage: WorkspaceMode) => void;
   completeStep: () => void;
-  finishTemplate: () => void;
+  finishGuide: () => void;
   saveReflection: () => void;
-  openTemplate: (templateId: string) => void;
+  openGuide: (guideId: string) => void;
   openReflection: (entryId: string) => void;
 
   // Setters
@@ -71,8 +71,8 @@ interface WorkspaceState {
 
 export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
   // Initial state
-  stage: 'template',
-  currentTemplateSession: null,
+  stage: 'guide',
+  currentGuideSession: null,
   currentReflectionEntry: null,
   hasUnsavedChanges: false,
   soundEnabled: true,
@@ -89,14 +89,14 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
       if (!confirmed) return;
     }
 
-    // Apply transition effects (Template → Reflection blur/desaturate)
-    if (!reducedMotion && currentStage === 'template' && stage === 'reflect') {
+    // Apply transition effects (Guide → Reflection blur/desaturate)
+    if (!reducedMotion && currentStage === 'guide' && stage === 'reflect') {
       document.body.classList.add('transitioning-to-reflection');
 
       // Wait for blur/desaturate, then switch stage
       setTimeout(() => {
         document.body.classList.remove('transitioning-to-reflection');
-        document.body.classList.add('transitioning-from-template');
+        document.body.classList.add('transitioning-from-guide');
 
         // Effect: stage-specific setup
         document.body.classList.add('reflection-mode');
@@ -105,7 +105,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
 
         // Remove transition class after animation completes
         setTimeout(() => {
-          document.body.classList.remove('transitioning-from-template');
+          document.body.classList.remove('transitioning-from-guide');
         }, 340); // --dur-slow
       }, 340); // --dur-slow
     } else {
@@ -127,30 +127,30 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
     }
   },
 
-  // Event: COMPLETE_STEP (stays in Template)
+  // Event: COMPLETE_STEP (stays in Guide)
   completeStep: () => {
     // Update current session's lastStep
-    const { currentTemplateSession } = get();
-    if (currentTemplateSession) {
+    const { currentGuideSession } = get();
+    if (currentGuideSession) {
       set({
-        currentTemplateSession: {
-          ...currentTemplateSession,
-          lastStep: currentTemplateSession.lastStep + 1,
+        currentGuideSession: {
+          ...currentGuideSession,
+          lastStep: currentGuideSession.lastStep + 1,
           updatedAt: new Date(),
         },
       });
     }
   },
 
-  // Event: FINISH_TEMPLATE → GO_REFLECT
-  finishTemplate: () => {
-    const { currentTemplateSession } = get();
+  // Event: FINISH_GUIDE → GO_REFLECT
+  finishGuide: () => {
+    const { currentGuideSession } = get();
 
-    if (currentTemplateSession) {
-      // Mark template as complete
+    if (currentGuideSession) {
+      // Mark guide as complete
       set({
-        currentTemplateSession: {
-          ...currentTemplateSession,
+        currentGuideSession: {
+          ...currentGuideSession,
           completion: 100,
           updatedAt: new Date(),
         },
@@ -187,13 +187,13 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
     }
   },
 
-  // Deep link: OPEN_TEMPLATE
-  openTemplate: (templateId) => {
-    // Load template session (future: fetch from DB)
+  // Deep link: OPEN_GUIDE
+  openGuide: (guideId) => {
+    // Load guide session (future: fetch from DB)
     set({
-      currentTemplateSession: {
+      currentGuideSession: {
         id: 'mock-session',
-        templateId,
+        guideId,
         answers: {},
         completion: 0,
         tags: [],
@@ -201,7 +201,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
         startedAt: new Date(),
         updatedAt: new Date(),
       },
-      stage: 'template',
+      stage: 'guide',
     });
   },
 
@@ -213,7 +213,7 @@ export const useWorkspaceStore = create<WorkspaceState>((set, get) => ({
         id: entryId,
         text: '',
         tags: [],
-        linkedTemplateIds: [],
+        linkedGuideIds: [],
         createdAt: new Date(),
       },
       stage: 'reflect',

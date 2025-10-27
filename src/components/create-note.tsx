@@ -19,7 +19,7 @@ const noteTemplates = [
   },
   {
     id: 'wedding-planning',
-    name: 'Wedding Planning Template',
+    name: 'Wedding Planning Guide',
     description: 'Basic structure for wedding planning notes',
     icon: Lightbulb,
     blocks: [

@@ -5,12 +5,12 @@ import { PinList, type PinListItem } from '@/components/ui/shadcn-io/pin-list';
 import { IconFileText, IconCheckbox } from '@tabler/icons-react';
 
 interface ChecklistViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function ChecklistView({ templateId }: ChecklistViewProps) {
-  // Mock prompts data - will be replaced with real data
-  const [prompts] = useState<PinListItem[]>([
+export function ChecklistView({ guideId }: ChecklistViewProps) {
+  // Mock questions data - will be replaced with real data
+  const [questions] = useState<PinListItem[]>([
     {
       id: 1,
       name: 'Define your wedding vision',
@@ -48,14 +48,14 @@ export function ChecklistView({ templateId }: ChecklistViewProps) {
     },
   ]);
 
-  if (!templateId) {
+  if (!guideId) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
           <IconCheckbox className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-semibold mb-2">No Template Selected</h3>
+          <h3 className="text-lg font-semibold mb-2">No Guide Selected</h3>
           <p className="text-sm text-muted-foreground">
-            Select a template from the dock to view prompts
+            Select a guide from the dock to view questions
           </p>
         </div>
       </div>
@@ -68,15 +68,15 @@ export function ChecklistView({ templateId }: ChecklistViewProps) {
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">Checklist View</h2>
           <p className="text-sm text-muted-foreground">
-            Pin important prompts to keep them at the top. Click any prompt to toggle its pinned status.
+            Pin important questions to keep them at the top. Click any question to toggle its pinned status.
           </p>
         </div>
 
         <PinList
-          items={prompts}
+          items={questions}
           labels={{
-            pinned: 'Pinned Prompts',
-            unpinned: 'All Prompts',
+            pinned: 'Pinned Questions',
+            unpinned: 'All Questions',
           }}
         />
       </div>

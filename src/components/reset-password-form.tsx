@@ -12,6 +12,8 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { supabase } from "@/lib/supabase"
+import { toast } from "sonner"
 
 export function ResetPasswordForm({
   className,
@@ -20,43 +22,40 @@ export function ResetPasswordForm({
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters");
+      toast.error("Password must be at least 6 characters");
       return;
     }
 
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/reset-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+      const { error } = await supabase.auth.updateUser({
+        password: password
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Failed to reset password");
+      if (error) {
+        toast.error(error.message);
         return;
       }
 
+      toast.success("Password reset successfully!");
       // Redirect to login after successful password reset
-      router.push("/login?reset=success");
+      setTimeout(() => {
+        router.push("/login");
+      }, 1000);
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -65,45 +64,46 @@ export function ResetPasswordForm({
   return (
     <form className={cn("flex flex-col gap-6", className)} onSubmit={handleSubmit} {...props}>
       <FieldGroup>
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Set new password</h1>
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="text-2xl font-bold tracking-tight">Create new password</h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Enter your new password below
+            Choose a strong password for your account
           </p>
         </div>
-        {error && (
-          <div className="text-sm text-destructive text-center">{error}</div>
-        )}
         <Field>
-          <FieldLabel htmlFor="password">New Password</FieldLabel>
+          <FieldLabel htmlFor="password">New password</FieldLabel>
           <Input
             id="password"
             type="password"
-            placeholder="Enter new password"
+            placeholder="Create a strong password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
+            className="h-11"
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
+          <FieldLabel htmlFor="confirm-password">Confirm password</FieldLabel>
           <Input
             id="confirm-password"
             type="password"
-            placeholder="Confirm new password"
+            placeholder="Re-enter your password"
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="new-password"
+            className="h-11"
           />
         </Field>
         <Field>
-          <Button type="submit" disabled={loading}>
-            {loading ? "Resetting..." : "Reset password"}
+          <Button type="submit" disabled={loading} className="h-11 font-medium">
+            {loading ? "Updating password..." : "Update password"}
           </Button>
-          <FieldDescription className="text-center">
+          <FieldDescription className="text-center text-sm">
             Remember your password?{" "}
-            <Link href="/login" className="underline underline-offset-4">
-              Back to login
+            <Link href="/login" className="font-medium underline underline-offset-4 hover:text-foreground transition-colors">
+              Sign in
             </Link>
           </FieldDescription>
         </Field>

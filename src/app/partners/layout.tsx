@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Partner Program Coming Soon | Templata',
   description: 'Join Templata\'s upcoming partner program for professionals who want to share their expertise. Be the first to know when we launch our collaboration platform for domain experts.',
-  keywords: 'templata partners, partner program, expert collaboration, template creation, professional network, domain expert platform, coming soon',
+  keywords: 'templata partners, partner program, expert collaboration, guide creation, professional network, domain expert platform, coming soon',
   openGraph: {
     title: 'Partner Program Coming Soon | Templata',
     description: 'Join Templata\'s upcoming partner program for professionals who want to share their expertise.',
@@ -57,7 +57,7 @@ export default function PartnersLayout({
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "Templata Partner Program - Coming Soon",
-            "description": "Join our upcoming partner program for professionals who want to share their expertise through expert-crafted templates",
+            "description": "Join our upcoming partner program for professionals who want to share their expertise through expert-crafted guides",
             "url": "https://templata.org/partners",
             "isPartOf": {
               "@type": "WebSite",
@@ -67,7 +67,7 @@ export default function PartnersLayout({
             "about": {
               "@type": "Program",
               "name": "Templata Partner Program",
-              "description": "A collaboration platform for domain experts to create and share professional templates",
+              "description": "A collaboration platform for domain experts to create and share professional guides",
               "provider": {
                 "@type": "Organization",
                 "name": "Templata"

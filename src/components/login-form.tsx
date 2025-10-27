@@ -12,6 +12,8 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { supabase } from "@/lib/supabase"
+import { toast } from "sonner"
 
 export function LoginForm({
   className,
@@ -20,25 +22,21 @@ export function LoginForm({
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      // Use Supabase Auth to sign in
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email: email.toLowerCase(),
+        password,
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Login failed");
+      if (signInError) {
+        toast.error(signInError.message);
         return;
       }
 
@@ -57,8 +55,8 @@ export function LoginForm({
                 const parts = key.split('_');
                 if (parts.length >= 3) {
                   workspaceData.push({
-                    templateId: parts[1],
-                    promptId: parts[2],
+                    guideId: parts[1],
+                    questionId: parts[2],
                     response: data.response,
                   });
                 }
@@ -73,7 +71,7 @@ export function LoginForm({
                 const data = JSON.parse(stored);
                 reflectionData.push({
                   date: data.date,
-                  prompt: data.prompt,
+                  question: data.question,
                   content: data.content,
                   mood: data.mood,
                   tags: data.tags,
@@ -117,7 +115,7 @@ export function LoginForm({
       router.push("/app");
       router.refresh();
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -126,24 +124,23 @@ export function LoginForm({
   return (
     <form className={cn("flex flex-col gap-6", className)} onSubmit={handleSubmit} {...props}>
       <FieldGroup>
-        <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Login to your account</h1>
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="text-2xl font-bold tracking-tight">Welcome back</h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Enter your email below to login to your account
+            Sign in to continue your journey
           </p>
         </div>
-        {error && (
-          <div className="text-sm text-destructive text-center">{error}</div>
-        )}
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
           <Input
             id="email"
             type="email"
-            placeholder="m@example.com"
+            placeholder="your@email.com"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            className="h-11"
           />
         </Field>
         <Field>
@@ -151,40 +148,34 @@ export function LoginForm({
             <FieldLabel htmlFor="password">Password</FieldLabel>
             <a
               href="/forgot-password"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
+              className="ml-auto text-xs text-muted-foreground underline-offset-4 hover:underline hover:text-foreground transition-colors"
             >
-              Forgot your password?
+              Forgot password?
             </a>
           </div>
           <Input
             id="password"
             type="password"
+            placeholder="Enter your password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+            className="h-11"
           />
         </Field>
         <Field>
-          <Button type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
+          <Button type="submit" disabled={loading} className="h-11 font-medium">
+            {loading ? "Signing in..." : "Sign in"}
           </Button>
-          <FieldDescription className="text-center">
+          <FieldDescription className="text-center text-sm">
             Don&apos;t have an account?{" "}
-            <a href="/signup" className="underline underline-offset-4">
+            <a href="/signup" className="font-medium underline underline-offset-4 hover:text-foreground transition-colors">
               Sign up
             </a>
           </FieldDescription>
         </Field>
       </FieldGroup>
-
-      {/* Demo Credentials */}
-      <div className="bg-muted/30 border border-border rounded-lg p-4 text-center">
-        <p className="text-sm font-medium text-muted-foreground mb-2">Try the demo account</p>
-        <div className="flex flex-col gap-1 text-xs text-muted-foreground">
-          <p>demo@templata.org</p>
-          <p>demo123</p>
-        </div>
-      </div>
     </form>
   )
 }

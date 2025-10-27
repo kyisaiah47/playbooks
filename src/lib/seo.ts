@@ -5,7 +5,7 @@ export interface SEOConfig {
   description: string;
   canonical?: string;
   robots?: string;
-  type?: 'website' | 'article' | 'profile';
+  type?: 'website' | 'reading' | 'profile'; // OpenGraph standard type
   image?: string;
   noIndex?: boolean;
   keywords?: string[];
@@ -38,7 +38,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
   };
 }
 
-export function generateStructuredData(type: 'CollectionPage' | 'Article' | 'WebPage', data: any) {
+export function generateStructuredData(type: 'CollectionPage' | 'Reading' | 'WebPage', data: any) {
   const baseStructure = {
     '@context': 'https://schema.org',
     '@type': type,
@@ -55,7 +55,7 @@ export function generateStructuredData(type: 'CollectionPage' | 'Article' | 'Web
           '@type': 'ItemList',
           numberOfItems: data.numberOfItems,
           itemListElement: data.items?.map((item: any, index: number) => ({
-            '@type': 'Article',
+            '@type': 'Reading',
             position: index + 1,
             name: item.title,
             description: item.excerpt,
@@ -70,10 +70,10 @@ export function generateStructuredData(type: 'CollectionPage' | 'Article' | 'Web
         }
       };
 
-    case 'Article':
+    case 'Reading':
       return {
         ...baseStructure,
-        '@type': 'Article',
+        '@type': 'Reading',
         headline: data.title,
         author: {
           '@type': 'Organization',

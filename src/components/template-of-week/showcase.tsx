@@ -19,18 +19,18 @@ import {
   getTemplateOfWeekDetails,
   getTemplateOfWeekBadgeText,
   getWeeksRemaining
-} from "@/lib/template-of-week"
+} from "@/lib/guide-of-week"
 import { cn } from "@/lib/utils"
 
-interface TemplateOfWeekShowcaseProps {
+interface GuideOfWeekShowcaseProps {
   variant?: "full" | "compact" | "banner"
   className?: string
 }
 
-export function TemplateOfWeekShowcase({
+export function GuideOfWeekShowcase({
   variant = "full",
   className
-}: TemplateOfWeekShowcaseProps) {
+}: GuideOfWeekShowcaseProps) {
   const templateOfWeek = getCurrentTemplateOfWeek()
   const templateDetails = templateOfWeek ? getTemplateOfWeekDetails(templateOfWeek) : null
   const badgeText = getTemplateOfWeekBadgeText()
@@ -57,7 +57,7 @@ export function TemplateOfWeekShowcase({
             <div className="mb-2 flex items-center gap-2">
               <Badge className="bg-yellow-500/90 hover:bg-yellow-500 text-white">
                 <Trophy className="mr-1 h-3 w-3" />
-                Template of the Week
+                Guide of the Week
               </Badge>
               <Badge variant="outline" className="text-xs">
                 <Clock className="mr-1 h-3 w-3" />
@@ -106,7 +106,7 @@ export function TemplateOfWeekShowcase({
           <div className="mb-4 flex items-center justify-between">
             <Badge className="bg-yellow-500/90 hover:bg-yellow-500 text-white">
               <Trophy className="mr-1 h-3 w-3" />
-              Template of the Week
+              Guide of the Week
             </Badge>
             <Badge variant="outline" className="text-xs">
               {badgeText}
@@ -150,7 +150,7 @@ export function TemplateOfWeekShowcase({
             </div>
             <div>
               <Badge className="mb-1 bg-yellow-500/90 hover:bg-yellow-500 text-white">
-                Template of the Week
+                Guide of the Week
               </Badge>
               <div className="text-xs text-muted-foreground">{badgeText}</div>
             </div>
@@ -206,7 +206,7 @@ export function TemplateOfWeekShowcase({
           )}
 
           <div className="mb-6">
-            <h4 className="mb-3 font-semibold">Why This Template Stands Out:</h4>
+            <h4 className="mb-3 font-semibold">Why This Guide Stands Out:</h4>
             <div className="grid gap-2">
               {templateOfWeek.reasons.map((reason, index) => (
                 <div key={index} className="flex items-start gap-2 text-sm">

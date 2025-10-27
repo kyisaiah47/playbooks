@@ -170,9 +170,9 @@ export function ChartAreaInteractive() {
         <CardTitle>Activity Overview</CardTitle>
         <CardDescription>
           <span className="hidden @[540px]/card:block">
-            Template usage over time
+            Guide usage over time
           </span>
-          <span className="@[540px]/card:hidden">Template usage</span>
+          <span className="@[540px]/card:hidden">Guide usage</span>
         </CardDescription>
         <CardAction>
           <ToggleGroup

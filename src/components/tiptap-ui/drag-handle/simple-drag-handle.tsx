@@ -18,7 +18,7 @@ export function SimpleDragHandle({ editor }: SimpleDragHandleProps) {
       const target = e.target as Element
 
       // Check if hovering over a block
-      if (target.matches('p, h1, h2, h3, h4, h5, h6, [data-type="prompt-node"], blockquote, pre, li')) {
+      if (target.matches('p, h1, h2, h3, h4, h5, h6, [data-type="question-node"], blockquote, pre, li')) {
         const rect = target.getBoundingClientRect()
         setDragHandlePos({
           top: rect.top,

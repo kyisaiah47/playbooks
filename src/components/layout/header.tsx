@@ -4,20 +4,20 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-	navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
 import { ThemeSelector } from "@/components/theme-selector"
 import { useAuth } from "@/contexts/auth-context"
 import {
 	LogOut,
 	User,
+	FileText,
+	BookOpen,
+	Calendar,
+	CheckSquare,
+	Clock,
+	BookMarked,
+	Network,
+	BarChart3,
+	ChevronDown,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
@@ -31,8 +31,10 @@ import {
 export function Header() {
 	const [scrollY, setScrollY] = React.useState(0)
 	const [isMobile, setIsMobile] = React.useState(false)
+	const [showFeaturesDropdown, setShowFeaturesDropdown] = React.useState(false)
 	const pathname = usePathname()
 	const { isLoggedIn, user, logout } = useAuth()
+	const timeoutRef = React.useRef<NodeJS.Timeout>()
 
 	React.useEffect(() => {
 		const handleScroll = () => {
@@ -55,91 +57,118 @@ export function Header() {
 
 	const scrollProgress = Math.min(scrollY / 100, 1)
 	const isScrolled = scrollY > 10
-	// Disable shrinking effect on mobile
-	const headerWidth = isMobile ? 100 : (100 - (scrollProgress * 30)) // Goes from 100% to 70%
-	const borderRadius = isMobile ? 0 : (scrollProgress * 16) // Goes from 0 to 16px
-	const backgroundOpacity = scrollProgress * 0.8
 	const isHomePage = pathname === "/"
 
+	const handleMouseEnter = () => {
+		if (timeoutRef.current) {
+			clearTimeout(timeoutRef.current)
+		}
+		setShowFeaturesDropdown(true)
+	}
+
+	const handleMouseLeave = () => {
+		timeoutRef.current = setTimeout(() => {
+			setShowFeaturesDropdown(false)
+		}, 150)
+	}
+
+	const features = [
+		{
+			href: "/docs?section=notes",
+			icon: FileText,
+			title: "Notes",
+			description: "Capture thoughts and insights"
+		},
+		{
+			href: "/docs?section=library",
+			icon: BookOpen,
+			title: "Library",
+			description: "Saved resources and readings"
+		},
+		{
+			href: "/docs?section=calendar",
+			icon: Calendar,
+			title: "Calendar",
+			description: "Plan and schedule events"
+		},
+		{
+			href: "/docs?section=tasks",
+			icon: CheckSquare,
+			title: "Tasks",
+			description: "Track what needs doing"
+		},
+		{
+			href: "/docs?section=timeline",
+			icon: Clock,
+			title: "Timeline",
+			description: "View everything chronologically"
+		},
+		{
+			href: "/docs?section=daily",
+			icon: Calendar,
+			title: "Daily",
+			description: "Daily notes and logging"
+		},
+		{
+			href: "/docs?section=journal",
+			icon: BookMarked,
+			title: "Journal",
+			description: "Private writing space"
+		},
+		{
+			href: "/docs?section=graph",
+			icon: Network,
+			title: "Graph",
+			description: "Visualize connections"
+		},
+		{
+			href: "/docs?section=analytics",
+			icon: BarChart3,
+			title: "Analytics",
+			description: "Track progress and patterns"
+		},
+	]
+
 	return (
-		<header>
-			<nav className="fixed z-50 w-full px-4">
-				<div
-					className={cn(
-						"mx-auto mt-4 transition-all duration-300 ease-out",
-						isScrolled && isHomePage ? "border backdrop-blur-lg" : "border-transparent"
-					)}
-					style={{
-						width: isHomePage ? `${headerWidth}%` : '100%',
-						borderRadius: isHomePage ? `${borderRadius}px` : '0px',
-						backgroundColor: isScrolled && isHomePage ? `rgba(var(--background-rgb), ${backgroundOpacity})` : 'transparent',
-						paddingTop: '16px',
-						paddingBottom: '16px',
-						paddingLeft: isHomePage ? `${24 - scrollProgress * 8}px` : '24px',
-						paddingRight: isHomePage ? `${24 - scrollProgress * 8}px` : '24px'
-					}}
-				>
+		<>
+			<header className={cn(
+				"fixed top-0 z-50 w-full transition-colors duration-300",
+				isScrolled ? "bg-background border-b" : "border-b border-transparent",
+				showFeaturesDropdown && "border-transparent"
+			)}>
+				<nav className="container mx-auto px-4 py-4">
 					<div className="flex items-center justify-between relative">
-						{/* Left side - Logo and Theme */}
+						{/* Left side - Logo with Dropdown and Theme */}
 						<div className="flex items-center space-x-2 md:space-x-4">
-							<Link href="/" className="flex items-center space-x-2">
-								<Image
-									src="/brand/templata-logo.svg"
-									alt="Templata"
-									width={28}
-									height={28}
-									className="dark:invert"
-								/>
-								<div className="flex items-center gap-2 md:gap-3">
-									<span className="font-bold text-xl md:text-2xl">Templata</span>
-									<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
-										Beta
-									</span>
-								</div>
-							</Link>
+							<div
+								onMouseEnter={handleMouseEnter}
+								onMouseLeave={handleMouseLeave}
+								className="relative"
+							>
+								<Link href="/" className="flex items-center space-x-2">
+									<Image
+										src="/brand/templata-logo.svg"
+										alt="Templata"
+										width={28}
+										height={28}
+										className="dark:invert"
+									/>
+									<div className="flex items-center gap-2 md:gap-3">
+										<span className="font-bold text-xl md:text-2xl">Templata</span>
+										<span className="px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
+											Beta
+										</span>
+									</div>
+								</Link>
+							</div>
 
 							<div className="hidden md:block">
 								<ThemeSelector />
 							</div>
 						</div>
 
-						{/* Center - Desktop Navigation */}
-						<div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
-							<NavigationMenu className="pointer-events-auto" viewport={false}>
-								<NavigationMenuList className="space-x-2">
-									{/* Templates */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/templates">
-												Templates
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-
-									{/* Articles */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/articles">
-												Articles
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-
-									{/* How It Works */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/how-it-works">
-												How It Works
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-								</NavigationMenuList>
-							</NavigationMenu>
-						</div>
-
 						{/* Right side - Actions */}
 						<div className="flex items-center space-x-2 md:space-x-3">
-
 							{/* Desktop User Actions */}
 							<div className="hidden md:flex items-center space-x-3">
 								{isLoggedIn ? (
@@ -182,8 +211,95 @@ export function Header() {
 							)}
 						</div>
 					</div>
+				</nav>
+			</header>
+
+			{/* Full-Width Features Dropdown */}
+			<div
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
+				className={cn(
+					"fixed top-[57px] left-0 right-0 z-40 transition-all duration-200",
+					showFeaturesDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+				)}
+			>
+				<div className="bg-background border-b shadow-sm">
+					<div className="container mx-auto px-8 py-8">
+						<div className="max-w-5xl mx-auto">
+							<div className="grid grid-cols-[1fr_auto] gap-12">
+								{/* Left side - Features */}
+								<div>
+									<div className="mb-6">
+										<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Features</h3>
+									</div>
+									<div className="grid grid-cols-3 gap-x-12 gap-y-1">
+										{features.map((feature) => (
+											<Link
+												key={feature.href}
+												href={feature.href}
+												className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
+												onClick={() => setShowFeaturesDropdown(false)}
+											>
+												<div className="text-[15px] font-medium mb-0.5 text-foreground">
+													{feature.title}
+												</div>
+												<p className="text-xs text-muted-foreground leading-relaxed">
+													{feature.description}
+												</p>
+											</Link>
+										))}
+									</div>
+								</div>
+
+								{/* Right side - Learn More */}
+								<div className="border-l pl-8 w-[240px]">
+									<div className="mb-6">
+										<h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4">Learn More</h3>
+									</div>
+									<div className="space-y-1">
+										<Link
+											href="/docs"
+											className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground ">
+												Documentation
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Learn how to use Templata
+											</p>
+										</Link>
+										<Link
+											href="/guides"
+											className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground ">
+												Guides
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Life planning guides
+											</p>
+										</Link>
+										<Link
+											href="/readings"
+											className="group block py-2 hover:bg-accent/30 px-2 -mx-2 rounded transition-colors"
+											onClick={() => setShowFeaturesDropdown(false)}
+										>
+											<div className="text-[15px] font-medium mb-0.5 text-foreground ">
+												Readings
+											</div>
+											<p className="text-xs text-muted-foreground leading-relaxed">
+												Curated readings library
+											</p>
+										</Link>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</nav>
-		</header>
+			</div>
+		</>
 	)
 }

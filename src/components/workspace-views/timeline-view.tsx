@@ -19,7 +19,7 @@ import { IconTimeline } from '@tabler/icons-react';
 import { addDays } from 'date-fns';
 
 interface TimelineViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
 const statuses: GanttStatus[] = [
@@ -28,10 +28,10 @@ const statuses: GanttStatus[] = [
   { id: '3', name: 'Completed', color: '#34d399' },
 ];
 
-export function TimelineView({ templateId }: TimelineViewProps) {
+export function TimelineView({ guideId }: TimelineViewProps) {
   const today = new Date();
 
-  // Mock prompts with timeline data
+  // Mock questions with timeline data
   const [features] = useState<GanttFeature[]>([
     {
       id: '1',
@@ -82,14 +82,14 @@ export function TimelineView({ templateId }: TimelineViewProps) {
     // Handle feature move
   };
 
-  if (!templateId) {
+  if (!guideId) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
           <IconTimeline className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-semibold mb-2">No Template Selected</h3>
+          <h3 className="text-lg font-semibold mb-2">No Guide Selected</h3>
           <p className="text-sm text-muted-foreground">
-            Select a template from the dock to view timeline
+            Select a guide from the dock to view timeline
           </p>
         </div>
       </div>
@@ -102,7 +102,7 @@ export function TimelineView({ templateId }: TimelineViewProps) {
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">Timeline View</h2>
           <p className="text-sm text-muted-foreground">
-            Visualize prompts on a timeline. Drag to adjust dates.
+            Visualize questions on a timeline. Drag to adjust dates.
           </p>
         </div>
 

@@ -3,14 +3,20 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Templata',
-  description: 'Terms of service for Templata - Rules and guidelines for using our life planning platform. User agreements, content policies, and service terms.',
+  description: 'Terms of service for Templata. Rules and guidelines for using our platform. User agreements and service terms.',
+  keywords: 'terms of service, user agreement, terms and conditions, legal, service terms',
   openGraph: {
     title: 'Terms of Service | Templata',
-    description: 'Terms of service for Templata - Rules and guidelines for using our life planning platform.',
+    description: 'Terms of service for Templata. Rules and guidelines for using our platform.',
     url: 'https://templata.org/terms',
     siteName: 'Templata',
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Terms of Service | Templata',
+    description: 'Terms of service for Templata.',
   },
   robots: {
     index: true,
@@ -41,14 +47,14 @@ export default function TermsPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Description of Service</h2>
             <p className="mb-4">
-              Templata provides a platform for creating, managing, and using templates for various life events and
+              Templata provides a platform for creating, managing, and using guides for various life events and
               projects. Our service includes:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Access to a library of pre-made templates</li>
-              <li>Tools to customize and personalize templates</li>
-              <li>Workspace for organizing your template-based projects</li>
-              <li>Educational articles and resources</li>
+              <li>Access to a library of pre-made guides</li>
+              <li>Tools to customize and personalize guides</li>
+              <li>Workspace for organizing your guide-based projects</li>
+              <li>Educational readings and resources</li>
             </ul>
           </section>
 
@@ -98,12 +104,12 @@ export default function TermsPage() {
 
             <h3 className="text-xl font-semibold mb-3">Our Content</h3>
             <p className="mb-4">
-              All templates, articles, designs, text, graphics, and other materials provided by Templata are owned by
+              All guides, readings, designs, text, graphics, and other materials provided by Templata are owned by
               us or our licensors and are protected by copyright and other intellectual property laws. You may use
               our content in accordance with these terms, but you may not:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2">
-              <li>Resell or redistribute our templates</li>
+              <li>Resell or redistribute our guides</li>
               <li>Claim our content as your own</li>
               <li>Use our content in a way that suggests endorsement by Templata</li>
             </ul>

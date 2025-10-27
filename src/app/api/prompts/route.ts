@@ -9,46 +9,46 @@ const supabase = createClient(
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const templateId = searchParams.get('templateId');
+    const guideId = searchParams.get('guideId');
 
-    if (!templateId) {
+    if (!guideId) {
       return NextResponse.json(
-        { error: 'templateId is required' },
+        { error: 'guideId is required' },
         { status: 400 }
       );
     }
 
-    // Query prompts from database
-    const { data: prompts, error } = await supabase
-      .from('templata_prompts')
+    // Query questions from database
+    const { data: questions, error } = await supabase
+      .from('questions')
       .select('*')
-      .eq('template_id', templateId)
-      .order('prompt_number', { ascending: true });
+      .eq('guide_id', guideId)
+      .order('question_number', { ascending: true });
 
     if (error) {
-      console.error('Error fetching prompts from DB:', error);
+      console.error('Error fetching questions from DB:', error);
       return NextResponse.json(
-        { error: 'Failed to fetch prompts', prompts: [] },
+        { error: 'Failed to fetch questions', questions: [] },
         { status: 500 }
       );
     }
 
     // Transform DB format to match expected API format
-    const formattedPrompts = (prompts || []).map(p => ({
-      id: p.id,
-      prompt: p.prompt,
-      categoryName: p.prompt_group_category || 'Uncategorized',
-      category: p.category
+    const formattedQuestions = (questions || []).map(q => ({
+      id: q.id,
+      question: q.question,
+      categoryName: q.question_group_category || 'Uncategorized',
+      category: q.category
     }));
 
     return NextResponse.json({
-      prompts: formattedPrompts,
-      count: formattedPrompts.length
+      questions: formattedQuestions,
+      count: formattedQuestions.length
     });
   } catch (error) {
-    console.error('Error fetching prompts:', error);
+    console.error('Error fetching questions:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch prompts', prompts: [] },
+      { error: 'Failed to fetch questions', questions: [] },
       { status: 500 }
     );
   }

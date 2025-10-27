@@ -1,293 +1,85 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { TemplatesView } from './views/TemplatesView';
-import { ReflectionView } from './views/ReflectionView';
-import { OverviewView } from './views/OverviewView';
-import { Button } from '@/components/ui/button';
-import { LogOut, Settings, User, X } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { ThemeSelector } from '@/components/theme-selector';
+import { useRouter } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 
-type View = 'templates' | 'reflection' | 'overview';
-
-export default function StudioPage() {
-  const [currentView, setCurrentView] = useState<View>('templates');
-  const [viewKeys, setViewKeys] = useState({
-    templates: 0,
-    reflection: 0,
-    overview: 0,
-  });
-  const [userEmail, setUserEmail] = useState('');
-  const [showOnboarding, setShowOnboarding] = useState(false);
-
-  // Callbacks for interactive banner
-  const [templatesActions, setTemplatesActions] = useState<{
-    openTemplateDropdown?: () => void;
-    selectFirstPrompt?: () => void;
-    openFirstArticle?: () => void;
-  }>({});
+export default function AppPage() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    loadUser();
-    checkOnboarding();
+    initializeWorkspace();
 
-    async function loadUser() {
+    async function initializeWorkspace() {
       try {
-        const res = await fetch('/api/auth/me');
-        const data = await res.json();
+        // Check if user is authenticated
+        const authRes = await fetch('/api/auth/me');
+        const authData = await authRes.json();
 
-        if (data.user) {
-          setUserEmail(data.user.email || '');
+        if (!authData.user) {
+          // Redirect to login if not authenticated
+          router.push('/login');
+          return;
         }
-        // Allow anonymous users - don't redirect
+
+        // Check if user has workspaces
+        const workspacesRes = await fetch('/api/workspaces');
+        const workspacesData = await workspacesRes.json();
+
+        if (workspacesData.workspaces && workspacesData.workspaces.length > 0) {
+          // User has workspaces, redirect to the first one
+          const firstWorkspace = workspacesData.workspaces[0];
+          router.push(`/app/${firstWorkspace.id}`);
+        } else {
+          // No workspaces, create default workspace
+          const createRes = await fetch('/api/workspaces/init', {
+            method: 'POST',
+          });
+
+          if (!createRes.ok) {
+            throw new Error('Failed to create default workspace');
+          }
+
+          const createData = await createRes.json();
+
+          if (createData.workspace) {
+            // Redirect to newly created workspace
+            router.push(`/app/${createData.workspace.id}`);
+          } else {
+            throw new Error('No workspace returned from initialization');
+          }
+        }
       } catch (error) {
-        console.error('Error loading user:', error);
-        // Allow anonymous users - don't redirect
+        console.error('Error initializing workspace:', error);
+        setError('Failed to initialize workspace. Please try again.');
+        setIsLoading(false);
       }
     }
+  }, [router]);
 
-    function checkOnboarding() {
-      const hasSeenOnboarding = localStorage.getItem('templata-onboarding-seen');
-      if (!hasSeenOnboarding) {
-        setShowOnboarding(true);
-      }
-    }
-  }, []);
-
-  const handleCloseOnboarding = () => {
-    localStorage.setItem('templata-onboarding-seen', 'true');
-    setShowOnboarding(false);
-  };
-
-  const handleViewChange = (newView: View) => {
-    setCurrentView(newView);
-    // Increment the key for the new view to retrigger animations
-    setViewKeys(prev => ({
-      ...prev,
-      [newView]: prev[newView] + 1,
-    }));
-  };
-
-  const handleLogout = async () => {
-    try {
-      await fetch('/api/auth/logout', { method: 'POST' });
-      window.location.href = '/';
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
-  };
+  if (error) {
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-4">
+          <p className="text-destructive font-medium">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="h-screen flex flex-col bg-background">
-      {/* Top Nav */}
-      <div className="border-b bg-background">
-        <div className="container mx-auto max-w-7xl px-4 py-3">
-          <div className="flex items-center gap-2 w-full relative">
-            {/* Left side - Templata Logo */}
-            <div className="flex items-center gap-4">
-              <Link href="/" className="flex items-center gap-2">
-                <Image
-                  src="/brand/favicon-white.svg"
-                  alt="Templata"
-                  width={20}
-                  height={20}
-                  className="hover:opacity-80 transition-opacity cursor-pointer"
-                />
-                <span className="hidden md:block font-semibold text-lg">Templata</span>
-              </Link>
-            </div>
-
-            {/* View Switcher - Centered */}
-            <div className="flex items-center gap-1 md:gap-2 absolute left-1/2 -translate-x-1/2">
-              <Button
-                variant={currentView === 'templates' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => handleViewChange('templates')}
-                className="text-xs md:text-sm px-2 md:px-4"
-              >
-                Templates
-              </Button>
-              <Button
-                variant={currentView === 'reflection' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => handleViewChange('reflection')}
-                className="text-xs md:text-sm px-2 md:px-4"
-              >
-                Reflection
-              </Button>
-              <Button
-                variant={currentView === 'overview' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => handleViewChange('overview')}
-                className="text-xs md:text-sm px-2 md:px-4"
-              >
-                Overview
-              </Button>
-            </div>
-
-            {/* Theme Selector & User Dropdown */}
-            <div className="flex items-center gap-1 md:gap-2 ml-auto">
-              <ThemeSelector iconOnly />
-
-              {userEmail && (
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm">
-                      <User className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuLabel className="font-normal">
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-sm text-muted-foreground">{userEmail}</p>
-                      </div>
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <Link href="/app/settings">
-                      <DropdownMenuItem>
-                        <Settings className="h-4 w-4 mr-2" />
-                        Settings
-                      </DropdownMenuItem>
-                    </Link>
-                    <DropdownMenuItem onClick={handleLogout}>
-                      <LogOut className="h-4 w-4 mr-2" />
-                      Logout
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Info Banner */}
-      <div className="border-b bg-primary/5 border-primary/20">
-        <div className="container mx-auto max-w-7xl px-4 py-3">
-          <p className="text-sm text-foreground text-center">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">1</span>
-              Pick a{' '}
-              <button
-                onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
-                  setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
-                }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                template
-              </button>{' '}
-              that fits your goal
-            </span>
-            {' → '}
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">2</span>
-              Answer thoughtful{' '}
-              <button
-                onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
-                  setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
-                }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                prompts
-              </button>
-            </span>
-            {' → '}
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
-              Read curated{' '}
-              <button
-                onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
-                  setTimeout(() => templatesActions.openFirstArticle?.(), 100);
-                }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                articles
-              </button>{' '}
-              for help
-            </span>
-            {' → '}
-            <span className="inline-flex items-center gap-1.5">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
-              See everything you've written in{' '}
-              <button
-                onClick={() => {
-                  sessionStorage.setItem('overview-tab', 'responses');
-                  handleViewChange('overview');
-                }}
-                className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-              >
-                Overview
-              </button>
-            </span>.
-          </p>
-        </div>
-      </div>
-
-      {/* View Viewport with transitions */}
-      <div className={`flex-1 relative bg-background ${currentView === 'overview' ? 'overflow-y-auto' : 'overflow-hidden'}`}>
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={{
-            opacity: currentView === 'templates' ? 1 : 0,
-            y: currentView === 'templates' ? 0 : 20,
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute inset-0"
-          style={{
-            pointerEvents: currentView === 'templates' ? 'auto' : 'none',
-            zIndex: currentView === 'templates' ? 10 : 0
-          }}
-        >
-          <TemplatesView
-            key={`templates-${viewKeys.templates}`}
-            onViewChange={handleViewChange}
-            setActions={setTemplatesActions}
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: currentView === 'reflection' ? 1 : 0,
-            y: currentView === 'reflection' ? 0 : 20,
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute inset-0"
-          style={{
-            pointerEvents: currentView === 'reflection' ? 'auto' : 'none',
-            zIndex: currentView === 'reflection' ? 10 : 0
-          }}
-        >
-          <ReflectionView key={`reflection-${viewKeys.reflection}`} onViewChange={handleViewChange} />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: currentView === 'overview' ? 1 : 0,
-            y: currentView === 'overview' ? 0 : 20,
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute inset-0"
-          style={{
-            pointerEvents: currentView === 'overview' ? 'auto' : 'none',
-            zIndex: currentView === 'overview' ? 10 : 0
-          }}
-        >
-          <OverviewView key={`overview-${viewKeys.overview}`} />
-        </motion.div>
+    <div className="h-screen w-screen flex items-center justify-center bg-background">
+      <div className="flex flex-col items-center gap-4">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        <p className="text-muted-foreground">Setting up your workspace...</p>
       </div>
     </div>
   );

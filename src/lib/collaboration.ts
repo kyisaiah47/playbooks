@@ -3,7 +3,7 @@
 // Lightweight collaboration system
 export interface ShareableTemplate {
   id: string
-  templateId: string
+  guideId: string
   title: string
   description: string
   createdBy: string
@@ -34,7 +34,7 @@ export interface Collaborator {
 export interface Comment {
   id: string
   sectionId: string
-  promptId?: string
+  questionId?: string
   text: string
   author: Collaborator
   createdAt: string
@@ -42,15 +42,15 @@ export interface Comment {
   replies: Comment[]
 }
 
-// Generate shareable link for a template
-export function generateShareableLink(templateId: string, shareId: string): string {
+// Generate shareable link for a guide
+export function generateShareableLink(guideId: string, shareId: string): string {
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://templata.org"
-  return `${baseUrl}/shared/${templateId}/${shareId}`
+  return `${baseUrl}/shared/${guideId}/${shareId}`
 }
 
-// Create a shareable template (mock implementation)
+// Create a shareable guide (mock implementation)
 export function createShareableTemplate(
-  templateId: string,
+  guideId: string,
   title: string,
   responses: Record<string, string>,
   permissions: Partial<SharePermissions> = {}
@@ -66,9 +66,9 @@ export function createShareableTemplate(
 
   return {
     id: shareId,
-    templateId,
-    title: title || `Shared Template - ${new Date().toLocaleDateString()}`,
-    description: "Shared template with responses and collaboration",
+    guideId,
+    title: title || `Shared Guide - ${new Date().toLocaleDateString()}`,
+    description: "Shared guide with responses and collaboration",
     createdBy: "current-user", // In real app, get from auth
     createdAt: new Date().toISOString(),
     responses,
@@ -92,7 +92,7 @@ export async function shareTemplate(
   shareableTemplate: ShareableTemplate,
   method: "link" | "email" | "social"
 ): Promise<{ success: boolean; shareUrl?: string; message?: string }> {
-  const shareUrl = generateShareableLink(shareableTemplate.templateId, shareableTemplate.id)
+  const shareUrl = generateShareableLink(shareableTemplate.guideId, shareableTemplate.id)
 
   try {
     switch (method) {
@@ -107,9 +107,9 @@ export async function shareTemplate(
 
       case "email":
         // Generate email URL
-        const subject = encodeURIComponent(`Check out my ${shareableTemplate.title} template`)
+        const subject = encodeURIComponent(`Check out my ${shareableTemplate.title} guide`)
         const body = encodeURIComponent(
-          `I'd like to share my ${shareableTemplate.title} template with you.\n\n` +
+          `I'd like to share my ${shareableTemplate.title} guide with you.\n\n` +
           `You can view and collaborate on it here: ${shareUrl}\n\n` +
           `Made with Templata - Life doesn't have to start with a blank page`
         )
@@ -125,13 +125,13 @@ export async function shareTemplate(
         if (typeof navigator !== "undefined" && navigator.share) {
           await navigator.share({
             title: shareableTemplate.title,
-            text: `Check out my ${shareableTemplate.title} template on Templata`,
+            text: `Check out my ${shareableTemplate.title} guide on Templata`,
             url: shareUrl
           })
           return { success: true, shareUrl, message: "Shared successfully!" }
         } else {
           // Fallback to Twitter
-          const text = encodeURIComponent(`Check out my ${shareableTemplate.title} template on Templata`)
+          const text = encodeURIComponent(`Check out my ${shareableTemplate.title} guide on Templata`)
           const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(shareUrl)}`
 
           if (typeof window !== "undefined") {
@@ -149,25 +149,25 @@ export async function shareTemplate(
   }
 }
 
-// Add comment to template
+// Add comment to guide
 export function addComment(
-  template: ShareableTemplate,
+  guide: ShareableTemplate,
   sectionId: string,
   text: string,
-  promptId?: string
+  questionId?: string
 ): Comment {
   const comment: Comment = {
     id: Math.random().toString(36).substr(2, 9),
     sectionId,
-    promptId,
+    questionId,
     text,
-    author: template.collaborators[0], // Current user
+    author: guide.collaborators[0], // Current user
     createdAt: new Date().toISOString(),
     resolved: false,
     replies: []
   }
 
-  template.comments.push(comment)
+  guide.comments.push(comment)
   return comment
 }
 
@@ -195,9 +195,9 @@ export function getRecentCollaborations(userId: string, limit: number = 5): Shar
   const mockCollaborations: ShareableTemplate[] = [
     {
       id: "share-1",
-      templateId: "wedding-planning",
+      guideId: "wedding-planning",
       title: "Sarah & Mike's Wedding Plan",
-      description: "Wedding planning template with budget and vendor details",
+      description: "Wedding planning guide with budget and vendor details",
       createdBy: userId,
       createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
       responses: {},
@@ -227,17 +227,17 @@ export function getRecentCollaborations(userId: string, limit: number = 5): Shar
 }
 
 // Permission helpers
-export function canEdit(template: ShareableTemplate, userId: string): boolean {
-  const collaborator = template.collaborators.find(c => c.id === userId)
-  return collaborator?.role === "owner" || collaborator?.role === "editor" || template.permissions.edit
+export function canEdit(guide: ShareableTemplate, userId: string): boolean {
+  const collaborator = guide.collaborators.find(c => c.id === userId)
+  return collaborator?.role === "owner" || collaborator?.role === "editor" || guide.permissions.edit
 }
 
-export function canComment(template: ShareableTemplate, userId: string): boolean {
-  const collaborator = template.collaborators.find(c => c.id === userId)
-  return collaborator !== undefined || template.permissions.comment
+export function canComment(guide: ShareableTemplate, userId: string): boolean {
+  const collaborator = guide.collaborators.find(c => c.id === userId)
+  return collaborator !== undefined || guide.permissions.comment
 }
 
-export function canShare(template: ShareableTemplate, userId: string): boolean {
-  const collaborator = template.collaborators.find(c => c.id === userId)
-  return collaborator?.role === "owner" || template.permissions.share
+export function canShare(guide: ShareableTemplate, userId: string): boolean {
+  const collaborator = guide.collaborators.find(c => c.id === userId)
+  return collaborator?.role === "owner" || guide.permissions.share
 }

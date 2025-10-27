@@ -19,7 +19,7 @@ import {
   KanbanCard,
 } from "@/components/ui/shadcn-io/kanban"
 
-interface PromptCard {
+interface QuestionCard {
   id: string;
   name: string; // Required by KanbanCard
   text: string;
@@ -29,11 +29,11 @@ interface PromptCard {
 }
 
 interface BoardViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function BoardView({ templateId }: BoardViewProps) {
-  const [prompts, setPrompts] = useState<PromptCard[]>([
+export function BoardView({ guideId }: BoardViewProps) {
+  const [questions, setQuestions] = useState<QuestionCard[]>([
     {
       id: '1',
       name: 'Main Goals',
@@ -65,20 +65,20 @@ export function BoardView({ templateId }: BoardViewProps) {
     { id: 'done' as const, name: 'Done' },
   ];
 
-  const [editingPrompt, setEditingPrompt] = useState<PromptCard | null>(null);
+  const [editingPrompt, setEditingPrompt] = useState<QuestionCard | null>(null);
   const [editNotes, setEditNotes] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleEditPrompt = (prompt: PromptCard) => {
-    setEditingPrompt(prompt);
-    setEditNotes(prompt.notes || '');
+  const handleEditQuestion = (question: QuestionCard) => {
+    setEditingPrompt(question);
+    setEditNotes(question.notes || '');
     setDialogOpen(true);
   };
 
   const handleSaveNotes = () => {
     if (!editingPrompt) return;
 
-    setPrompts(prompts.map(p =>
+    setQuestions(questions.map(p =>
       p.id === editingPrompt.id
         ? { ...p, notes: editNotes }
         : p
@@ -88,9 +88,9 @@ export function BoardView({ templateId }: BoardViewProps) {
     setDialogOpen(false);
   };
 
-  const movePrompt = (promptId: string, newColumn: PromptCard['column']) => {
-    setPrompts(prompts.map(p =>
-      p.id === promptId ? { ...p, column: newColumn } : p
+  const movePrompt = (questionId: string, newColumn: QuestionCard['column']) => {
+    setQuestions(questions.map(p =>
+      p.id === questionId ? { ...p, column: newColumn } : p
     ));
   };
 
@@ -98,8 +98,8 @@ export function BoardView({ templateId }: BoardViewProps) {
     <div className="h-full p-4">
       <KanbanProvider
         columns={columns}
-        data={prompts}
-        onDataChange={setPrompts}
+        data={questions}
+        onDataChange={setQuestions}
         className="h-full"
       >
         {(column) => (
@@ -108,16 +108,16 @@ export function BoardView({ templateId }: BoardViewProps) {
               <div className="flex items-center justify-between">
                 <span>{column.name}</span>
                 <Badge variant="secondary" className="ml-2">
-                  {prompts.filter(p => p.column === column.id).length}
+                  {questions.filter(p => p.column === column.id).length}
                 </Badge>
               </div>
             </KanbanHeader>
             <KanbanCards id={column.id}>
-              {(item: PromptCard) => (
+              {(item: QuestionCard) => (
                 <KanbanCard key={item.id} {...item}>
                   <div
                     className="cursor-pointer"
-                    onClick={() => handleEditPrompt(item)}
+                    onClick={() => handleEditQuestion(item)}
                   >
                     <Badge variant="outline" className="mb-2 text-xs">
                       {item.category}

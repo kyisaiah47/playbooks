@@ -27,7 +27,7 @@ import {
 // --- Tiptap Node ---
 import { ImageUploadNode } from "@/components/tiptap-node/image-upload-node/image-upload-node-extension"
 import { HorizontalRule } from "@/components/tiptap-node/horizontal-rule-node/horizontal-rule-node-extension"
-import { PromptNode } from "@/components/tiptap-node/prompt-node/prompt-node-extension"
+import { QuestionNode } from "@/components/tiptap-node/question-node/question-node-extension"
 import "@/components/tiptap-node/blockquote-node/blockquote-node.scss"
 import "@/components/tiptap-node/code-block-node/code-block-node.scss"
 import "@/components/tiptap-node/horizontal-rule-node/horizontal-rule-node.scss"
@@ -35,7 +35,7 @@ import "@/components/tiptap-node/list-node/list-node.scss"
 import "@/components/tiptap-node/image-node/image-node.scss"
 import "@/components/tiptap-node/heading-node/heading-node.scss"
 import "@/components/tiptap-node/paragraph-node/paragraph-node.scss"
-import "@/components/tiptap-node/prompt-node/prompt-node.scss"
+import "@/components/tiptap-node/question-node/question-node.scss"
 
 // --- Tiptap UI ---
 import { HeadingDropdownMenu } from "@/components/tiptap-ui/heading-dropdown-menu"
@@ -75,13 +75,13 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility"
 
 // --- Lib ---
 import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils"
-import { getPromptsByTemplate } from "@/registry/prompts"
+import { getPromptsByTemplate } from "@/registry/questions"
 
 // --- Styles ---
-import "@/components/tiptap-templates/simple/simple-editor.scss"
+import "@/components/tiptap-guides/simple/simple-editor.scss"
 import "@/components/tiptap-ui/drag-handle/drag-handle.scss"
 
-// import content from "@/components/tiptap-templates/simple/data/content.json"
+// import content from "@/components/tiptap-guides/simple/data/content.json"
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -92,7 +92,7 @@ const MainToolbarContent = ({
   onHighlighterClick: () => void
   onLinkClick: () => void
   isMobile: boolean
-  onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void
+  onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void
 }) => {
   return (
     <>
@@ -193,11 +193,11 @@ const MobileToolbarContent = ({
 interface SimpleEditorProps {
   content?: string | object;
   onUpdate?: (content: string) => void;
-  onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void;
-  templateId?: string;
+  onSwitchMode?: (mode: 'guide' | 'reflection' | 'master') => void;
+  guideId?: string;
 }
 
-export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId }: SimpleEditorProps = {}) {
+export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: SimpleEditorProps = {}) {
   const isMobile = useIsMobile()
   const { height } = useWindowSize()
   const [mobileView, setMobileView] = React.useState<
@@ -242,9 +242,9 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
         upload: handleImageUpload,
         onError: (error) => console.error("Upload failed:", error),
       }),
-      PromptNode.configure({
+      QuestionNode.configure({
         HTMLAttributes: {
-          class: 'template-prompt-node',
+          class: 'guide-question-node',
         },
       }),
     ],
@@ -265,19 +265,19 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
     }
   }, [isMobile, mobileView])
 
-  // Get prompts for slash command
-  const prompts = React.useMemo(() => {
-    if (!templateId) return []
-    const templatePrompts = getPromptsByTemplate(templateId)
+  // Get questions for slash command
+  const questions = React.useMemo(() => {
+    if (!guideId) return []
+    const templatePrompts = getPromptsByTemplate(guideId)
     return templatePrompts.map(p => ({
       id: p.id,
-      prompt: p.prompt,
+      question: p.question,
       category: p.category,
       helpText: p.helpText
     }))
-  }, [templateId])
+  }, [guideId])
 
-  // Expose editor globally for prompt insertion
+  // Expose editor globally for question insertion
   React.useEffect(() => {
     if (editor) {
       (window as any).templateEditor = editor
@@ -326,7 +326,7 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
         {editor && (
           <SlashCommand
             editor={editor}
-            prompts={prompts}
+            questions={questions}
           />
         )}
 

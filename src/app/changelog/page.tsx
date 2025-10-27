@@ -3,18 +3,37 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Changelog | Templata',
-  description: 'Latest updates, features, and improvements to Templata - Track our product evolution and new releases.',
+  description: 'Latest updates, features, and improvements to Templata. Track product evolution and new releases.',
+  keywords: 'product updates, changelog, new features, improvements, release notes',
   openGraph: {
     title: 'Changelog | Templata',
     description: 'Latest updates, features, and improvements to Templata.',
     url: 'https://templata.org/changelog',
     siteName: 'Templata',
+    images: [
+      {
+        url: 'https://templata.org/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Templata Changelog',
+      },
+    ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Changelog | Templata',
+    description: 'Latest updates, features, and improvements to Templata.',
+    images: ['https://templata.org/og-image.png'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   alternates: {
     canonical: 'https://templata.org/changelog',
@@ -63,8 +82,8 @@ export default function ChangelogPage() {
                     <li>Added How It Works page to help new users understand the app</li>
                     <li>Added PDF export for your responses and reflections</li>
                     <li>Added Responses and Reflections tabs to Overview to view everything in one place</li>
-                    <li>Added search in articles to find specific information</li>
-                    <li>Organized featured templates into 3 sections: General, Gen Z, and Health & Wellness</li>
+                    <li>Added search in readings to find specific information</li>
+                    <li>Organized featured guides into 3 sections: General, Gen Z, and Health & Wellness</li>
                   </ul>
                 </div>
                 <div>
@@ -82,7 +101,7 @@ export default function ChangelogPage() {
                 <span className="text-sm text-muted-foreground">October 18, 2025</span>
               </div>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Featured templates section added for quick access to popular templates in your workspace</li>
+                <li>Featured guides section added for quick access to popular guides in your workspace</li>
               </ul>
             </section>
 
@@ -97,14 +116,14 @@ export default function ChangelogPage() {
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Public Beta Launch</h3>
                   <p className="mb-4">
-                    Templata is now live in public beta with a comprehensive template library for life planning.
+                    Templata is now live in public beta with a comprehensive guide library for life planning.
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>1,298 templates across all life categories</li>
-                    <li>104K+ AI-generated prompts</li>
-                    <li>25,936 articles providing expert knowledge</li>
+                    <li>1,298 guides across all life categories</li>
+                    <li>104K+ AI-generated questions</li>
+                    <li>25,936 readings providing expert knowledge</li>
                     <li>User authentication and workspace management</li>
-                    <li>3 view model: Templates, Reflection, and Overview for comprehensive life planning</li>
+                    <li>3 view model: Guides, Reflection, and Overview for comprehensive life planning</li>
                     <li>Demo mode for unauthenticated users</li>
                   </ul>
                 </div>

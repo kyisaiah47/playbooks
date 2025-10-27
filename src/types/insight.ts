@@ -2,7 +2,7 @@
  * Insight Types for Life OS Analytics
  *
  * Provides data structures for computing and displaying insights
- * about user progress, patterns, and growth across templates and reflections.
+ * about user progress, patterns, and growth across guides and reflections.
  */
 
 export type InsightType =
@@ -137,7 +137,7 @@ export interface StreakInsight extends Insight {
   data: {
     currentStreak: number;
     longestStreak: number;
-    streakType: 'daily-reflection' | 'template-completion' | 'both';
+    streakType: 'daily-reflection' | 'guide-completion' | 'both';
     streakStart: Date;
     streakEnd?: Date;
     milestones: Array<{

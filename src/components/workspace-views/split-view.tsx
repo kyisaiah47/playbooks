@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
-interface Prompt {
+interface Question {
   id: string;
   text: string;
   category: string;
@@ -16,31 +16,31 @@ interface Prompt {
 
 interface Category {
   name: string;
-  prompts: Prompt[];
+  questions: Question[];
 }
 
 interface SplitViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function SplitView({ templateId }: SplitViewProps) {
-  const [selectedPrompt, setSelectedPrompt] = useState<Prompt | null>(null);
+export function SplitView({ guideId }: SplitViewProps) {
+  const [selectedPrompt, setSelectedPrompt] = useState<Question | null>(null);
   const [responses, setResponses] = useState<Record<string, string>>({});
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['Getting Started']));
 
-  // Mock data - replace with real prompts
+  // Mock data - replace with real questions
   const categories: Category[] = [
     {
       name: 'Getting Started',
-      prompts: [
+      questions: [
         { id: '1', text: 'What are your main goals for the next year?', category: 'Getting Started' },
         { id: '2', text: 'What challenges do you anticipate?', category: 'Getting Started' },
       ]
     },
     {
       name: 'Planning',
-      prompts: [
+      questions: [
         { id: '3', text: 'What steps will you take to achieve your goals?', category: 'Planning' },
         { id: '4', text: 'What resources do you need?', category: 'Planning' },
       ]
@@ -59,14 +59,14 @@ export function SplitView({ templateId }: SplitViewProps) {
 
   return (
     <div className="flex h-full">
-      {/* Left Panel - Prompts List */}
+      {/* Left Panel - Questions List */}
       <div className="w-[350px] border-r flex flex-col">
         {/* Search */}
         <div className="p-4 border-b">
           <div className="relative">
             <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search prompts..."
+              placeholder="Search questions..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
@@ -74,7 +74,7 @@ export function SplitView({ templateId }: SplitViewProps) {
           </div>
         </div>
 
-        {/* Categories & Prompts */}
+        {/* Categories & Questions */}
         <div className="flex-1 overflow-y-auto p-2">
           {categories.map((category) => (
             <div key={category.name} className="mb-2">
@@ -90,20 +90,20 @@ export function SplitView({ templateId }: SplitViewProps) {
                 />
                 {category.name}
                 <Badge variant="secondary" className="ml-auto">
-                  {category.prompts.length}
+                  {category.questions.length}
                 </Badge>
               </Button>
 
               {expandedCategories.has(category.name) && (
                 <div className="ml-6 space-y-1 mt-1">
-                  {category.prompts.map((prompt) => (
+                  {category.questions.map((question) => (
                     <Button
-                      key={prompt.id}
-                      variant={selectedPrompt?.id === prompt.id ? "secondary" : "ghost"}
+                      key={question.id}
+                      variant={selectedPrompt?.id === question.id ? "secondary" : "ghost"}
                       className="w-full justify-start text-left h-auto py-2 px-3"
-                      onClick={() => setSelectedPrompt(prompt)}
+                      onClick={() => setSelectedPrompt(question)}
                     >
-                      <span className="line-clamp-2 text-sm">{prompt.text}</span>
+                      <span className="line-clamp-2 text-sm">{question.text}</span>
                     </Button>
                   ))}
                 </div>
@@ -117,7 +117,7 @@ export function SplitView({ templateId }: SplitViewProps) {
       <div className="flex-1 flex flex-col">
         {selectedPrompt ? (
           <>
-            {/* Selected Prompt Header */}
+            {/* Selected Question Header */}
             <div className="p-4 border-b bg-muted/30">
               <Badge variant="outline" className="mb-2">
                 {selectedPrompt.category}
@@ -151,8 +151,8 @@ export function SplitView({ templateId }: SplitViewProps) {
         ) : (
           <div className="flex-1 flex items-center justify-center text-muted-foreground">
             <div className="text-center">
-              <p className="text-lg font-medium mb-2">No prompt selected</p>
-              <p className="text-sm">Select a prompt from the left to start writing</p>
+              <p className="text-lg font-medium mb-2">No question selected</p>
+              <p className="text-sm">Select a question from the left to start writing</p>
             </div>
           </div>
         )}

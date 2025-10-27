@@ -32,15 +32,21 @@ export async function GET(request: NextRequest) {
   }
 
   const { searchParams } = new URL(request.url);
-  const templateId = searchParams.get('templateId');
+  const guideId = searchParams.get('guideId');
+  const userGuideId = searchParams.get('userGuideId');
 
   let query = supabase
-    .from('workspace_responses')
+    .from('responses')
     .select('*')
     .eq('user_id', userId);
 
-  if (templateId) {
-    query = query.eq('template_id', templateId);
+  if (guideId) {
+    query = query.eq('guide_id', guideId);
+  }
+
+  // Filter by user_guide_id if provided
+  if (userGuideId) {
+    query = query.eq('user_guide_id', userGuideId);
   }
 
   const { data, error } = await query;
@@ -60,30 +66,40 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { templateId, promptId, response } = await request.json();
+  const { guideId, questionId, response, userGuideId } = await request.json();
 
-  if (!templateId || !promptId) {
+  if (!guideId || !questionId) {
     return NextResponse.json(
-      { error: 'templateId and promptId are required' },
+      { error: 'guideId and questionId are required' },
       { status: 400 }
     );
   }
 
+  // Prepare the upsert data
+  const upsertData: any = {
+    user_id: userId,
+    guide_id: guideId,
+    question_id: questionId,
+    response: response || '',
+    updated_at: new Date().toISOString(),
+  };
+
+  // Include user_guide_id if provided
+  if (userGuideId) {
+    upsertData.user_guide_id = userGuideId;
+  }
+
   // Upsert (insert or update)
+  // The unique constraint depends on whether we have a user_guide_id or not
+  const conflictColumns = userGuideId
+    ? 'user_id,user_guide_id,question_id'
+    : 'user_id,guide_id,question_id';
+
   const { data, error } = await supabase
-    .from('workspace_responses')
-    .upsert(
-      {
-        user_id: userId,
-        template_id: templateId,
-        prompt_id: promptId,
-        response: response || '',
-        updated_at: new Date().toISOString(),
-      },
-      {
-        onConflict: 'user_id,template_id,prompt_id',
-      }
-    )
+    .from('responses')
+    .upsert(upsertData, {
+      onConflict: conflictColumns,
+    })
     .select()
     .single();
 

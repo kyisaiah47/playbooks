@@ -32,9 +32,9 @@ import {
 
 interface SlashCommandProps {
   editor: Editor
-  prompts: Array<{
+  questions: Array<{
     id: string
-    prompt: string
+    question: string
     category: string
     helpText?: string
   }>
@@ -123,7 +123,7 @@ const SLASH_COMMANDS = [
   }
 ]
 
-export function SlashCommand({ editor, prompts = [] }: SlashCommandProps) {
+export function SlashCommand({ editor, questions = [] }: SlashCommandProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState('')
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -182,9 +182,9 @@ export function SlashCommand({ editor, prompts = [] }: SlashCommandProps) {
     cmd.description.toLowerCase().includes(search.toLowerCase())
   )
 
-  const filteredPrompts = prompts.filter(prompt =>
-    prompt.prompt.toLowerCase().includes(search.toLowerCase()) ||
-    prompt.category.toLowerCase().includes(search.toLowerCase())
+  const filteredQuestions = questions.filter(question =>
+    question.question.toLowerCase().includes(search.toLowerCase()) ||
+    question.category.toLowerCase().includes(search.toLowerCase())
   )
 
   if (!isOpen) return null
@@ -222,19 +222,19 @@ export function SlashCommand({ editor, prompts = [] }: SlashCommandProps) {
             </CommandGroup>
           )}
 
-          {filteredPrompts.length > 0 && (
-            <CommandGroup heading="Prompts">
-              {filteredPrompts.slice(0, 5).map((prompt) => (
+          {filteredQuestions.length > 0 && (
+            <CommandGroup heading="Questions">
+              {filteredQuestions.slice(0, 5).map((question) => (
                 <CommandItem
-                  key={prompt.id}
+                  key={question.id}
                   onSelect={() => executeCommand((editor) => {
                     editor.chain()
                       .focus()
-                      .insertPrompt({
-                        id: prompt.id,
-                        text: prompt.prompt,
-                        category: prompt.category,
-                        helpText: prompt.helpText,
+                      .insertQuestion({
+                        id: question.id,
+                        text: question.question,
+                        category: question.category,
+                        helpText: question.helpText,
                       })
                       .run()
                   }, true)}
@@ -242,8 +242,8 @@ export function SlashCommand({ editor, prompts = [] }: SlashCommandProps) {
                 >
                   <MessageSquare className="w-4 h-4 mt-0.5 text-muted-foreground" />
                   <div className="flex-1">
-                    <div className="text-sm font-medium line-clamp-1">{prompt.prompt}</div>
-                    <div className="text-xs text-muted-foreground">{prompt.category}</div>
+                    <div className="text-sm font-medium line-clamp-1">{question.question}</div>
+                    <div className="text-xs text-muted-foreground">{question.category}</div>
                   </div>
                 </CommandItem>
               ))}
