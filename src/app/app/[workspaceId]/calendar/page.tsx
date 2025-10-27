@@ -21,7 +21,7 @@ export default function CalendarPage() {
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,8 +34,8 @@ export default function CalendarPage() {
 
   // Filter events by selected notes - in demo mode, show all events if nothing selected
   const events = selectedNoteIds.length > 0
-    ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
-    : (demoMode ? allEvents : []);
+    ? allItems.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
+    : (demoMode ? allItems : []);
 
   // Fetch calendar events
   const fetchEvents = useCallback(async () => {
@@ -58,8 +58,8 @@ export default function CalendarPage() {
         throw new Error(errorData.error || 'Failed to fetch events');
       }
 
-      const eventsData = await eventsResponse.json();
-      setAllEvents(eventsData.events || []);
+      const itemsData = await eventsResponse.json();
+      setAllEvents(itemsData.events || []);
 
       // Fetch tasks with due dates
       const tasksResponse = await fetch('/api/items');
@@ -68,8 +68,8 @@ export default function CalendarPage() {
         throw new Error('Failed to fetch tasks');
       }
 
-      const tasksData = await tasksResponse.json();
-      setTasks(tasksData.items || []);
+      const itemsData = await tasksResponse.json();
+      setTasks(itemsData.items || []);
     } catch (err) {
       console.error('Error fetching calendar data:', err);
       setError(err instanceof Error ? err.message : 'Failed to load calendar');

@@ -16,8 +16,8 @@ export default function TimelinePage() {
   const { demoMode } = useDemo();
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
-  const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
-  const [allTasks, setAllTasks] = useState<Task[]>([]);
+  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allItems, setAllTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,12 +26,12 @@ export default function TimelinePage() {
 
   // Filter events and tasks by selected notes - in demo mode, show all if nothing selected
   const events = selectedNoteIds.length > 0
-    ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
-    : (demoMode ? allEvents : []);
+    ? allItems.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
+    : (demoMode ? allItems : []);
 
   const tasks = selectedNoteIds.length > 0
-    ? allTasks.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
-    : (demoMode ? allTasks : []);
+    ? allItems.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
+    : (demoMode ? allItems : []);
 
   // Fetch data
   const fetchData = useCallback(async () => {
@@ -42,14 +42,14 @@ export default function TimelinePage() {
       // Fetch events
       const eventsResponse = await fetch('/api/items');
       if (!eventsResponse.ok) throw new Error('Failed to fetch events');
-      const eventsData = await eventsResponse.json();
-      setAllEvents(eventsData.events || []);
+      const itemsData = await eventsResponse.json();
+      setAllEvents(itemsData.events || []);
 
       // Fetch tasks
       const tasksResponse = await fetch('/api/items');
       if (!tasksResponse.ok) throw new Error('Failed to fetch tasks');
-      const tasksData = await tasksResponse.json();
-      setAllTasks(tasksData.items || []);
+      const itemsData = await tasksResponse.json();
+      setAllTasks(itemsData.items || []);
     } catch (err) {
       console.error('Error fetching timeline data:', err);
       setError('Failed to load timeline data');

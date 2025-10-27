@@ -48,8 +48,8 @@ export default function AnalyticsPage() {
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [allUserGuides, setAllUserGuides] = useState<UserGuide[]>([]);
-  const [allTasks, setAllTasks] = useState<Task[]>([]);
-  const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allItems, setAllTasks] = useState<Task[]>([]);
+  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Get selected guide IDs from URL
@@ -61,12 +61,12 @@ export default function AnalyticsPage() {
     : (demoMode ? allUserGuides : []);
 
   const tasks = selectedGuideIds.length > 0
-    ? allTasks.filter(task => task.user_guide_id && selectedGuideIds.includes(task.user_guide_id))
-    : (demoMode ? allTasks : []);
+    ? allItems.filter(task => task.user_guide_id && selectedGuideIds.includes(task.user_guide_id))
+    : (demoMode ? allItems : []);
 
   const events = selectedGuideIds.length > 0
-    ? allEvents.filter(event => event.user_guide_id && selectedGuideIds.includes(event.user_guide_id))
-    : (demoMode ? allEvents : []);
+    ? allItems.filter(event => event.user_guide_id && selectedGuideIds.includes(event.user_guide_id))
+    : (demoMode ? allItems : []);
 
   useEffect(() => {
     async function fetchData() {
@@ -83,15 +83,15 @@ export default function AnalyticsPage() {
           throw new Error('Failed to fetch data');
         }
 
-        const [guidesData, tasksData, eventsData] = await Promise.all([
+        const [guidesData, itemsData, itemsData] = await Promise.all([
           guidesRes.json(),
           tasksRes.json(),
           eventsRes.json()
         ]);
 
         setAllUserGuides(guidesData.userGuides || []);
-        setAllTasks(tasksData.items || []);
-        setAllEvents(eventsData.events || []);
+        setAllTasks(itemsData.items || []);
+        setAllEvents(itemsData.events || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

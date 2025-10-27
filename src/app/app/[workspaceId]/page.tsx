@@ -48,8 +48,8 @@ export default function OverviewPage() {
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [allUserGuides, setAllUserGuides] = useState<UserGuide[]>([]);
-  const [allTasks, setAllTasks] = useState<Task[]>([]);
-  const [allEvents, setAllEvents] = useState<CalendarEvent[]>([]);
+  const [allItems, setAllTasks] = useState<Task[]>([]);
+  const [allItems, setAllEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Daily view state
@@ -65,16 +65,16 @@ export default function OverviewPage() {
     : (demoMode ? allUserGuides : []);
 
   const tasks = selectedNoteIds.length > 0
-    ? allTasks.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
-    : (demoMode ? allTasks : []);
+    ? allItems.filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
+    : (demoMode ? allItems : []);
 
   const events = selectedNoteIds.length > 0
-    ? allEvents.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
-    : (demoMode ? allEvents : []);
+    ? allItems.filter(event => event.user_guide_id && selectedNoteIds.includes(event.user_guide_id))
+    : (demoMode ? allItems : []);
 
   // Get tasks for selected date
   const formatDateForAPI = (date: Date) => format(date, 'yyyy-MM-dd');
-  const todayTasks = allTasks.filter(task =>
+  const todayTasks = allItems.filter(task =>
     task.due_date && formatDateForAPI(parseISO(task.due_date)) === formatDateForAPI(selectedDate)
   );
   const todayFilteredTasks = selectedNoteIds.length > 0
@@ -119,13 +119,13 @@ export default function OverviewPage() {
           }
 
           if (tasksRes.ok) {
-            const tasksData = await tasksRes.json();
-            setAllTasks(tasksData.items || []);
+            const itemsData = await tasksRes.json();
+            setAllTasks(itemsData.items || []);
           }
 
           if (eventsRes.ok) {
-            const eventsData = await eventsRes.json();
-            setAllEvents(eventsData.events || []);
+            const itemsData = await eventsRes.json();
+            setAllEvents(itemsData.events || []);
           }
         } catch (error) {
           console.error('Error fetching demo data:', error);
@@ -152,15 +152,15 @@ export default function OverviewPage() {
           throw new Error('Failed to fetch data');
         }
 
-        const [guidesData, tasksData, eventsData] = await Promise.all([
+        const [guidesData, itemsData, itemsData] = await Promise.all([
           guidesRes.json(),
           tasksRes.json(),
           eventsRes.json()
         ]);
 
         setAllUserGuides(guidesData.userGuides || []);
-        setAllTasks(tasksData.items || []);
-        setAllEvents(eventsData.events || []);
+        setAllTasks(itemsData.items || []);
+        setAllEvents(itemsData.events || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

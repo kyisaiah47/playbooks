@@ -31,8 +31,8 @@ export default function TasksPage() {
   const selectedNoteIds = searchParams.get('tasksNotes')?.split(',').filter(Boolean) || [];
 
   // Fetch tasks
-  const { data: allTasks, isLoading, error } = useQuery({
-    queryKey: ['tasks'],
+  const { data: allItems, isLoading, error } = useQuery({
+    queryKey: ['items'],
     queryFn: async () => {
       const res = await fetch('/api/items');
       if (!res.ok) throw new Error('Failed to fetch tasks');
@@ -43,8 +43,8 @@ export default function TasksPage() {
 
   // Filter tasks by selected notes - in demo mode, show all tasks if nothing selected
   const data = selectedNoteIds.length > 0
-    ? (allTasks || []).filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
-    : (demoMode ? (allTasks || []) : []);
+    ? (allItems || []).filter(task => task.user_guide_id && selectedNoteIds.includes(task.user_guide_id))
+    : (demoMode ? (allItems || []) : []);
 
   // Create task mutation
   const createTaskMutation = useMutation({
@@ -65,7 +65,7 @@ export default function TasksPage() {
     },
     onMutate: async (newTask) => {
       // Cancel outgoing refetches
-      await queryClient.cancelQueries({ queryKey: ['tasks'] });
+      await queryClient.cancelQueries({ queryKey: ['items'] });
 
       // Snapshot the previous value
       const previousTasks = queryClient.getQueryData<ExtendedTask[]>(['tasks']);
@@ -99,7 +99,7 @@ export default function TasksPage() {
       toast.success('Task created successfully');
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      queryClient.invalidateQueries({ queryKey: ['items'] });
     },
   });
 
@@ -113,7 +113,7 @@ export default function TasksPage() {
       return res.json();
     },
     onMutate: async (taskId) => {
-      await queryClient.cancelQueries({ queryKey: ['tasks'] });
+      await queryClient.cancelQueries({ queryKey: ['items'] });
 
       const previousTasks = queryClient.getQueryData<ExtendedTask[]>(['tasks']);
 
@@ -133,7 +133,7 @@ export default function TasksPage() {
       toast.success('Task deleted successfully');
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      queryClient.invalidateQueries({ queryKey: ['items'] });
     },
   });
 
@@ -155,7 +155,7 @@ export default function TasksPage() {
       return res.json();
     },
     onMutate: async ({ taskId, status }) => {
-      await queryClient.cancelQueries({ queryKey: ['tasks'] });
+      await queryClient.cancelQueries({ queryKey: ['items'] });
 
       const previousTasks = queryClient.getQueryData<ExtendedTask[]>(['tasks']);
 
@@ -176,7 +176,7 @@ export default function TasksPage() {
       toast.error('Failed to update task status');
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      queryClient.invalidateQueries({ queryKey: ['items'] });
     },
   });
 
@@ -202,7 +202,7 @@ export default function TasksPage() {
       return res.json();
     },
     onMutate: async ({ taskId, updates }) => {
-      await queryClient.cancelQueries({ queryKey: ['tasks'] });
+      await queryClient.cancelQueries({ queryKey: ['items'] });
 
       const previousTasks = queryClient.getQueryData<ExtendedTask[]>(['tasks']);
 
@@ -226,7 +226,7 @@ export default function TasksPage() {
       toast.success('Task updated successfully');
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] });
+      queryClient.invalidateQueries({ queryKey: ['items'] });
     },
   });
 
