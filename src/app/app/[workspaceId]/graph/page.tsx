@@ -149,39 +149,54 @@ export default function GraphPage() {
           </motion.div>
         )}
 
-        {/* Category Legend */}
+        {/* Legend and Help */}
         <motion.div
-          className="mt-4 p-4 rounded-lg bg-muted/20 border border-border/20"
+          className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
         >
-          <h3 className="text-sm font-semibold mb-3">Categories</h3>
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-purple-500" />
-              <span className="text-muted-foreground">Career & Work</span>
+          {/* Category Legend */}
+          <div className="p-4 rounded-lg bg-muted/20 border border-border/20">
+            <h3 className="text-sm font-semibold mb-3">Categories</h3>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-purple-500" />
+                <span className="text-muted-foreground">Career & Work</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-500" />
+                <span className="text-muted-foreground">Personal Dev</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-pink-500" />
+                <span className="text-muted-foreground">Relationships</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+                <span className="text-muted-foreground">Health</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-amber-500" />
+                <span className="text-muted-foreground">Life Transitions</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                <span className="text-muted-foreground">Financial</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-blue-500" />
-              <span className="text-muted-foreground">Personal Dev</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-pink-500" />
-              <span className="text-muted-foreground">Relationships</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="text-muted-foreground">Health</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-amber-500" />
-              <span className="text-muted-foreground">Life Transitions</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-emerald-500" />
-              <span className="text-muted-foreground">Financial</span>
-            </div>
+          </div>
+
+          {/* How to Use */}
+          <div className="p-4 rounded-lg bg-muted/20 border border-border/20">
+            <h3 className="text-sm font-semibold mb-3">How to use the Graph</h3>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Each node represents an active guide</li>
+              <li>• The ring shows completion progress</li>
+              <li>• Click on any node to open that guide</li>
+              <li>• Drag nodes to rearrange the layout</li>
+              <li>• Zoom and pan to explore connections</li>
+            </ul>
           </div>
         </motion.div>
       </div>
