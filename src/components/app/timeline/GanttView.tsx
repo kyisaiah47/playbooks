@@ -101,7 +101,7 @@ export function GanttView({ events, tasks }: GanttViewProps) {
 
       {/* Gantt Chart */}
       <div className="border border-border/40 rounded-lg overflow-x-auto bg-background">
-        <div style={{ minWidth: `${timelineData.totalDays * 40}px` }}>
+        <div style={{ width: `${timelineData.totalDays * 40}px` }}>
           {/* Month Headers Row */}
           <div className="relative h-8 bg-muted/30 border-b border-border/40">
             <div className="absolute inset-0 flex">
