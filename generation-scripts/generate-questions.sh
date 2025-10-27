@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Generate high-quality Notion-style questions for MVP guides using Claude
+# Generate high-quality Notion-style questions for a guide using Claude
 set -e
 
 # Colors
@@ -9,52 +9,94 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-echo -e "${BLUE}🚀 Generating questions for 90 MVP guides using Claude + Supabase MCP${NC}"
-echo ""
+log_colored() {
+    local color=$1
+    local message=$2
+    echo -e "${color}$message${NC}"
+}
 
-# Use Claude Code to generate questions via Supabase MCP
-claude --dangerously-skip-permissions -p "Generate comprehensive, high-quality questions for each of the 90 guides in the database.
+# Guide to generate for (pass as argument)
+GUIDE_ID=${1:-""}
 
-Connect to Supabase via MCP and:
+if [ -z "$GUIDE_ID" ]; then
+    echo "Usage: $0 <guide-id>"
+    echo "Example: $0 asking-for-raise"
+    exit 1
+fi
 
-1. Get all 90 guides from the guides table (id, title, category, description)
+log_colored "$BLUE" "🚀 Generating questions for guide: $GUIDE_ID"
 
-2. For each guide, generate questions that comprehensively cover the topic:
-   - Generate as many questions as needed for COMPLETE coverage
-   - Cover ALL major aspects someone needs to work through
-   - Have ZERO overlap between questions
-   - Each question should serve a distinct purpose
-   - Someone who answers all questions should be fully prepared for their situation
+# Create the prompt with heredoc
+read -r -d '' PROMPT <<'HEREDOC' || true
+Generate comprehensive, high-quality questions for the GUIDE_ID_PLACEHOLDER guide.
 
-   Quality over quantity - don't create filler questions.
+**CONTEXT: Wikipedia × Notion for Life Planning**
+Templata curates and synthesizes expert knowledge into actionable guides. Questions help users think through their situation systematically.
 
-3. Question requirements:
-   - Action-oriented (start with verbs like 'Write down', 'Document', 'Create notes on', 'Research', 'Reflect on')
-   - Specific to that guide's topic
-   - Practical and useful for someone working through that situation
-   - Mix of types: planning, reflection, research, action
+**YOUR TASK**: Create questions that comprehensively cover this guide topic
 
-4. Insert the questions directly into the questions table using this format:
-   - id: '{guide-id}-{number}' (e.g., 'divorce-1', 'divorce-2')
-   - question: The actual question text
-   - category: one of 'planning', 'reflection', 'research', 'action'
-   - type: same as category
-   - template_id: the guide id
-   - question_number: sequential numbering
+**STEP 0: GET GUIDE CONTEXT**
 
-EXAMPLES OF GOOD NOTION-STYLE QUESTIONS:
+First, query the database to understand the guide:
+SELECT id, title, description, category FROM guides WHERE id = 'GUIDE_ID_PLACEHOLDER'
+
+Use this context to inform your question generation.
+
+**STEP 1: GENERATE QUESTIONS**
+
+Generate questions that comprehensively cover the topic:
+- Generate as many questions as needed for COMPLETE coverage
+- Cover ALL major aspects someone needs to work through
+- Have ZERO overlap between questions
+- Each question should serve a distinct purpose
+- Someone who answers all questions should be fully prepared for their situation
+
+Quality over quantity - don't create filler questions.
+
+**Question requirements:**
+- Action-oriented (start with verbs like 'Write down', 'Document', 'Create notes on', 'Research', 'Reflect on')
+- Specific to that guide's topic
+- Practical and useful for someone working through that situation
+- Mix of types: planning, reflection, research, action
+
+**EXAMPLES OF GOOD NOTION-STYLE QUESTIONS:**
 - 'Write down the key security frameworks and compliance standards that apply to your current environment.'
 - 'Document feedback you've received from supervisors and identify recurring themes.'
 - 'Create a list of continuing education courses that align with your career goals and their associated costs.'
 - 'Research salary ranges for different positions in your region and note factors that influence compensation.'
 - 'Reflect on your communication style with different types of people and identify techniques that have been most effective.'
 
-Example question counts by complexity:
+**Example question counts by complexity:**
 - Simple guide (e.g., 'create-budget'): ~15-20 questions
 - Medium guide (e.g., 'asking-for-raise'): ~30-40 questions
 - Complex guide (e.g., 'getting-divorced'): ~50-70 questions
 
-Work through the guides in batches and show progress as you go."
+**STEP 2: INSERT TO DATABASE**
 
-echo ""
-echo -e "${GREEN}✅ Question generation complete!${NC}"
+Insert the questions directly into the questions table using mcp__supabase__execute_sql:
+
+INSERT INTO questions (id, question, category, type, template_id, question_number)
+VALUES (
+  '{guide-id}-{number}',
+  '{question text}',
+  '{planning|reflection|research|action}',
+  '{same as category}',
+  'GUIDE_ID_PLACEHOLDER',
+  {sequential number}
+);
+
+When done, OUTPUT A SUMMARY:
+- Total number of questions created
+- Breakdown by type (planning, reflection, research, action)
+- Confirmation that there is ZERO overlap between questions
+
+Respond with: GENERATION COMPLETE and show the summary
+HEREDOC
+
+# Replace placeholder with actual guide ID
+PROMPT="${PROMPT//GUIDE_ID_PLACEHOLDER/$GUIDE_ID}"
+
+# Run claude with the prompt
+claude --dangerously-skip-permissions -p "$PROMPT"
+
+log_colored "$GREEN" "✅ Generation complete for $GUIDE_ID"
