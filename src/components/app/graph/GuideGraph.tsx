@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useEffect } from 'react';
+import { useCallback, useMemo, useEffect, memo } from 'react';
 import ReactFlow, {
   Node,
   Edge,
@@ -35,8 +35,8 @@ interface GuideGraphProps {
   onGuideClick: (guideId: string) => void;
 }
 
-// Custom node component
-function GuideNode({ data }: { data: any }) {
+// Custom node component - memoized to prevent unnecessary re-renders
+const GuideNode = memo(function GuideNode({ data }: { data: any }) {
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
       'Career & Work': '#a855f7',
@@ -126,7 +126,7 @@ function GuideNode({ data }: { data: any }) {
       </div>
     </motion.div>
   );
-}
+});
 
 const nodeTypes = {
   guideNode: GuideNode,

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 import { Calendar, CheckSquare } from 'lucide-react';
 import { CalendarEvent, Task } from '@/types/workspace';
 import { format, startOfMonth, endOfMonth, addMonths, subMonths, isSameDay } from 'date-fns';
@@ -10,7 +10,7 @@ interface GanttViewProps {
   tasks: Task[];
 }
 
-export function GanttView({ events, tasks }: GanttViewProps) {
+export const GanttView = memo(function GanttView({ events, tasks }: GanttViewProps) {
   const timelineData = useMemo(() => {
     const allItems = [
       ...events.filter(e => e.start_time).map(e => ({ ...e, type: 'event' as const, date: new Date(e.start_time!) })),
@@ -210,4 +210,4 @@ export function GanttView({ events, tasks }: GanttViewProps) {
       </div>
     </div>
   );
-}
+});

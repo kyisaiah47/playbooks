@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { format, isSameMonth, isToday } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { CalendarEvent, Task } from '@/types/workspace';
@@ -14,7 +15,7 @@ interface MonthGridProps {
   onEventClick?: (event: CalendarEvent) => void;
 }
 
-export function MonthGrid({
+export const MonthGrid = memo(function MonthGrid({
   calendarDays,
   currentDate,
   weekDays,
@@ -115,4 +116,4 @@ export function MonthGrid({
       </div>
     </div>
   );
-}
+});
