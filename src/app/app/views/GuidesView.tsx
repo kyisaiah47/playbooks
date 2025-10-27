@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -131,6 +131,20 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
   const [mobileDrawerTab, setMobileDrawerTab] = useState<'questions' | 'readings'>('questions');
   const [isMobile, setIsMobile] = useState(false);
 
+  // Define handleReadingClick early so it can be used in setActions
+  const handleReadingClick = useCallback(async (readingId: string) => {
+    try {
+      setLoadingReading(true);
+      const res = await fetch(`/api/readings?id=${readingId}`);
+      const data = await res.json();
+      setSelectedReading(data.reading);
+    } catch (error) {
+      console.error('Error fetching reading:', error);
+    } finally {
+      setLoadingReading(false);
+    }
+  }, []);
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -179,7 +193,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [questions, readings]);
+  }, [questions, readings, handleReadingClick]);
 
   // Check authentication status
   useEffect(() => {
@@ -498,20 +512,6 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
     setQuestionResponse('');
     setSearchQuery('');
     setOpen(false);
-  };
-
-  const handleReadingClick = async (readingId: string) => {
-    try {
-      setLoadingReading(true);
-      const res = await fetch(`/api/readings?id=${readingId}`);
-      const data = await res.json();
-
-      setSelectedReading(data.reading);
-    } catch (error) {
-      console.error('Error fetching reading:', error);
-    } finally {
-      setLoadingReading(false);
-    }
   };
 
   const handleCloseReading = () => {
