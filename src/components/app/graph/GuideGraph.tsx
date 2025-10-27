@@ -251,7 +251,7 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             animated: false,
             style: {
               stroke: color,
-              strokeWidth: 8,
+              strokeWidth: 2,
             },
           });
         }
@@ -271,8 +271,8 @@ export function GuideGraph({ userGuides, onGuideClick }: GuideGraphProps) {
             animated: false,
             style: {
               stroke: '#6366f1',
-              strokeWidth: 4,
-              strokeDasharray: '8,8',
+              strokeWidth: 1.5,
+              strokeDasharray: '5,5',
             },
           });
         }
