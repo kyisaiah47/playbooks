@@ -40,7 +40,7 @@ export function EventList({ events, tasks, onEventClick }: EventListProps) {
         description: event.description,
         data: event,
       })),
-    ...items
+    ...tasks
       .filter(task => {
         if (!task.due_date || task.status === 'done') return false;
         const taskDate = new Date(task.due_date);
