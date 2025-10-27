@@ -21,12 +21,14 @@ export function GanttView({ events, tasks }: GanttViewProps) {
       return { items: [], startDate: new Date(), endDate: new Date(), totalDays: 0, months: [], days: [] };
     }
 
-    // Find date range
-    const dates = allItems.map(item => item.date);
+    // Find date range including today
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dates = [...allItems.map(item => item.date), today];
     let startDate = new Date(Math.min(...dates.map(d => d.getTime())));
     let endDate = new Date(Math.max(...dates.map(d => d.getTime())));
 
-    // Add minimal padding - just 7 days before and after
+    // Add padding - 7 days before and after
     startDate = new Date(startDate);
     startDate.setDate(startDate.getDate() - 7);
     endDate = new Date(endDate);
