@@ -651,7 +651,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           guideIcon={userGuide.custom_icon || userGuide.guides?.icon}
           coverImage={userGuide.custom_cover_image}
           progress={userGuide.progress || 0}
-          guideName={guideInfo?.name}
+          baseGuideName={guideInfo?.name}
           onNameChange={async (newName) => {
             try {
               const res = await fetch(`/api/notes/${userGuideId}`, {

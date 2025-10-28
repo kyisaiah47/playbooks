@@ -36,8 +36,8 @@ export function BlankNoteEditor({ noteId, workspaceId }: BlankNoteEditorProps) {
         const data = await response.json();
         setContent(data.userGuide?.content || '');
         setTitle(data.userGuide?.custom_name || 'Untitled Note');
-        setIcon(data.userGuide?.icon || null);
-        setCoverImage(data.userGuide?.cover_image || null);
+        setIcon(data.userGuide?.custom_icon || null);
+        setCoverImage(data.userGuide?.custom_cover_image || null);
       } catch (error) {
         console.error('Error fetching note:', error);
         toast.error('Failed to load note');
@@ -51,7 +51,7 @@ export function BlankNoteEditor({ noteId, workspaceId }: BlankNoteEditorProps) {
 
   // Debounced save function
   const saveNote = useCallback(
-    debounce(async (updates: { content?: string; name?: string }) => {
+    debounce(async (updates: { content?: string; name?: string; icon?: string; cover_image?: string }) => {
       try {
         setSaving(true);
         const response = await fetch(`/api/notes/${noteId}`, {

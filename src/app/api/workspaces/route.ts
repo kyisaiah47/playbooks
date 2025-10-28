@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { getAuthenticatedUser, unauthorizedResponse, errorResponse, successResponse } from '@/lib/auth-utils';
+import { DEMO_USER_ID } from '@/lib/demo-constants';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -9,15 +10,29 @@ const supabase = createClient(
 
 export async function GET(request: NextRequest) {
   try {
-    const user = await getAuthenticatedUser();
-    if (!user) {
-      return unauthorizedResponse();
+    const { searchParams } = new URL(request.url);
+    const requestedUserId = searchParams.get('user_id');
+
+    // Check if this is a demo request
+    const isDemoRequest = requestedUserId === DEMO_USER_ID;
+
+    let userId: string;
+    if (isDemoRequest) {
+      // Allow unauthenticated access to demo workspace
+      userId = DEMO_USER_ID;
+    } else {
+      // Require authentication for non-demo requests
+      const user = await getAuthenticatedUser();
+      if (!user) {
+        return unauthorizedResponse();
+      }
+      userId = user.userId;
     }
 
     const { data: workspaces, error } = await supabase
       .from('workspaces')
       .select('*')
-      .eq('user_id', user.userId)
+      .eq('user_id', userId)
       .order('created_at', { ascending: false });
 
     if (error) {

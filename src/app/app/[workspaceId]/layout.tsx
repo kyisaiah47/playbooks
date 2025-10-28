@@ -290,7 +290,11 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
       async function fetchDemoPages() {
         try {
           const response = await fetch(`/api/workspaces/${DEMO_WORKSPACE_ID}/pages`);
-          if (!response.ok) throw new Error('Failed to fetch demo pages');
+          if (!response.ok) {
+            console.log('Demo pages not available, continuing without pages');
+            setPages([]);
+            return;
+          }
           const data = await response.json();
 
           // Transform flat pages into hierarchical structure
@@ -311,11 +315,13 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
           setPages(rootPages);
         } catch (error) {
-          console.error('Error fetching demo pages:', error);
+          console.log('Demo pages error, continuing without pages');
+          setPages([]);
         }
       }
 
       fetchDemoPages();
+      setLoading(false);
       return;
     }
 
@@ -622,7 +628,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   }, [tabs, syncTabsToURL, demoMode]);
 
   // Handle note click from Notes Sidebar
-  const handleNoteClick = useCallback((guideId: string, guideName?: string, guideIcon?: string | null) => {
+  const handleNoteClick = useCallback((guideId: string, guideName?: string, guideIcon?: string | null, userGuideId?: string) => {
     if (demoMode) {
       // In demo mode, just set the selected guide ID in context
       setDemoGuideId(guideId);
@@ -636,6 +642,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
         icon: IconComponent,
         iconName: guideIcon || undefined,
         guideId: guideId,
+        userGuideId: userGuideId, // Pass userGuideId so GuidesView can show header
       };
 
       addTab(newTab);
@@ -643,17 +650,20 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   }, [addTab, demoMode, setDemoGuideId]);
 
   // Handle blank note click from Notes Sidebar
-  const handleBlankNoteClick = useCallback((noteId: string, noteName?: string) => {
+  const handleBlankNoteClick = useCallback((noteId: string, noteName?: string, noteIcon?: string | null) => {
     if (demoMode) {
       toast.info('Not available in demo mode');
       return;
     }
 
+    const IconComponent = noteIcon ? getIconComponent(noteIcon) : FileText;
+
     const newTab: Tab = {
       id: `blank-note-${noteId}`,
       type: 'note',
       label: noteName || 'Untitled Note',
-      icon: FileText,
+      icon: IconComponent,
+      iconName: noteIcon || undefined,
       noteId: noteId,
     };
 
@@ -676,7 +686,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
             handleNoteClick(firstNote.guide_id, firstNote.guides?.name, firstNote.guides?.icon);
           } else {
             // It's a blank note
-            handleBlankNoteClick(firstNote.id, firstNote.custom_name || 'Untitled Note');
+            handleBlankNoteClick(firstNote.id, firstNote.custom_name || 'Untitled Note', firstNote.custom_icon);
           }
           return;
         }

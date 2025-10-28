@@ -25,6 +25,7 @@ interface UserGuide {
   created_at: string;
   updated_at: string;
   custom_name?: string;
+  custom_icon?: string | null;
   guides: {
     id: string;
     name: string;
@@ -35,8 +36,8 @@ interface UserGuide {
 
 interface NotesSidebarContentProps {
   activeGuideId: string | null;
-  onNoteClick: (guideId: string, guideName?: string, guideIcon?: string | null) => void;
-  onBlankNoteClick?: (noteId: string, noteName?: string) => void;
+  onNoteClick: (guideId: string, guideName?: string, guideIcon?: string | null, userGuideId?: string) => void;
+  onBlankNoteClick?: (noteId: string, noteName?: string, noteIcon?: string | null) => void;
   onCreateBlankNote: () => void;
   onCreateGuidedNote: () => void;
   onNoteDragStart?: (noteId: string) => void;
@@ -157,8 +158,8 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onBlankNoteCli
             animate="show"
           >
             {filteredNotes.map((note) => {
-              const IconComponent = getIconComponent(note.guides?.icon);
               const isBlankNote = !note.guide_id;
+              const IconComponent = getIconComponent(isBlankNote ? note.custom_icon : note.guides?.icon);
               return (
                 <ContextMenu key={note.id}>
                   <ContextMenuTrigger asChild>
@@ -170,10 +171,11 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onBlankNoteCli
                       }}
                       onClick={() => {
                         if (isBlankNote) {
-                          // For blank notes, call onBlankNoteClick
-                          onBlankNoteClick?.(note.id, note.custom_name || 'Untitled Note');
+                          // For blank notes, call onBlankNoteClick with custom_icon
+                          onBlankNoteClick?.(note.id, note.custom_name || 'Untitled Note', note.custom_icon);
                         } else {
-                          onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon);
+                          // For guided notes, pass note.id as userGuideId
+                          onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon, note.id);
                         }
                       }}
                       className={cn(

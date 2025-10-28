@@ -79,6 +79,7 @@ export interface Tab {
   pageId?: string;
   guideId?: string;
   noteId?: string; // For blank notes
+  userGuideId?: string; // For guided notes - the notes table ID
 }
 
 export interface PageWithSubPages extends Page {

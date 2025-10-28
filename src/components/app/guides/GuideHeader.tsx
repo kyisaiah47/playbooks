@@ -383,7 +383,7 @@ export function GuideHeader({
           <Button
             variant="secondary"
             size="sm"
-            className="absolute bottom-2 right-2 text-xs h-6 px-2"
+            className="absolute bottom-2 right-4 text-xs h-6 px-2"
           >
             <ImageIcon className="h-3 w-3 mr-1" />
             Change Cover
@@ -407,7 +407,7 @@ export function GuideHeader({
                   {IconComponent ? (
                     <IconComponent className="h-6 w-6 text-foreground" />
                   ) : (
-                    <span className="text-2xl">{guideIcon || '📚'}</span>
+                    <BookOpen className="h-6 w-6 text-foreground" />
                   )}
                 </button>
               </PopoverTrigger>
