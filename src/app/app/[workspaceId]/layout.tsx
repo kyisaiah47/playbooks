@@ -58,6 +58,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { toast } from 'sonner';
 import { getIconComponent } from '@/lib/icon-utils';
 import { NewNoteDialog } from '@/components/app/dialogs/NewNoteDialog';
+import { cn } from '@/lib/utils';
 
 interface WorkspaceLayoutProps {
   children?: React.ReactNode;
@@ -136,6 +137,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   const [communityTab, setCommunityTab] = useState<'discussions' | 'requests' | 'feedback' | 'bugs' | 'features' | 'experts'>('discussions');
   const [docsSection, setDocsSection] = useState<'getting-started' | 'notes' | 'discover' | 'library' | 'calendar' | 'tasks' | 'timeline' | 'graph' | 'analytics' | 'archive' | 'faq' | 'support'>('getting-started');
   const [newNoteDialogOpen, setNewNoteDialogOpen] = useState(false);
+  const [noteScopedMode, setNoteScopedMode] = useState<{ enabled: boolean; noteId: string | null }>({ enabled: false, noteId: null });
 
   // Track if we've done the initial localStorage → URL sync to prevent infinite loops
   const hasInitialSyncedRef = useRef(false);
@@ -1135,10 +1137,15 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
             onTabClose={removeTab}
             sidebarOpen={sidebarOpen}
             onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+            noteScopedMode={noteScopedMode}
+            onToggleNoteScope={() => setNoteScopedMode(prev => ({ ...prev, enabled: !prev.enabled }))}
           />
 
           {/* Content Area */}
-          <div className="flex-1 overflow-auto">
+          <div className={cn(
+            "flex-1 overflow-auto transition-colors duration-300",
+            noteScopedMode.enabled && "bg-primary/5"
+          )}>
             <AnimatePresence mode="wait">
               {demoMode ? renderDemoView() : children}
             </AnimatePresence>

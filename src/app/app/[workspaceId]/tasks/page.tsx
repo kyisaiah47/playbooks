@@ -28,11 +28,15 @@ export default function TasksPage() {
   const queryClient = useQueryClient();
 
   // Get selected note IDs from URL, fallback to localStorage if URL is empty
+  // If note-scoped mode is active, only show data for that single note
+  const scopedNoteId = searchParams.get('scopedNoteId');
   const urlIds = searchParams.get('tasksNotes')?.split(',').filter(Boolean);
   const localStorageIds = typeof window !== 'undefined'
     ? JSON.parse(localStorage.getItem('selectedTasksNoteIds') || '[]')
     : [];
-  const selectedNoteIds = urlIds && urlIds.length > 0 ? urlIds : localStorageIds;
+  const selectedNoteIds = scopedNoteId
+    ? [scopedNoteId]
+    : (urlIds && urlIds.length > 0 ? urlIds : localStorageIds);
 
   // Fetch tasks
   const { data: allItems, isLoading, error } = useQuery({

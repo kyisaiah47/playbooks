@@ -30,11 +30,15 @@ export default function TimelinePage() {
   const [selectedItem, setSelectedItem] = useState<{ item: CalendarEvent | Task; type: 'event' | 'task' } | null>(null);
 
   // Get selected note IDs from URL, fallback to localStorage if URL is empty
+  // If note-scoped mode is active, only show data for that single note
+  const scopedNoteId = searchParams.get('scopedNoteId');
   const urlIds = searchParams.get('timelineNotes')?.split(',').filter(Boolean);
   const localStorageIds = typeof window !== 'undefined'
     ? JSON.parse(localStorage.getItem('selectedTimelineNoteIds') || '[]')
     : [];
-  const selectedNoteIds = urlIds && urlIds.length > 0 ? urlIds : localStorageIds;
+  const selectedNoteIds = scopedNoteId
+    ? [scopedNoteId]
+    : (urlIds && urlIds.length > 0 ? urlIds : localStorageIds);
 
   // Filter items by selected notes, or show all in demo mode
   const filteredItems = selectedNoteIds.length > 0

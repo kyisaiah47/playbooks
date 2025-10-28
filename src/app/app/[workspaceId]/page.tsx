@@ -41,11 +41,15 @@ export default function OverviewPage() {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   // Get selected note IDs from URL, fallback to localStorage if URL is empty
+  // If note-scoped mode is active, only show data for that single note
+  const scopedNoteId = searchParams.get('scopedNoteId');
   const urlIds = searchParams.get('overviewGuides')?.split(',').filter(Boolean);
   const localStorageIds = typeof window !== 'undefined'
     ? JSON.parse(localStorage.getItem('selectedOverviewGuideIds') || '[]')
     : [];
-  const selectedNoteIds = urlIds && urlIds.length > 0 ? urlIds : localStorageIds;
+  const selectedNoteIds = scopedNoteId
+    ? [scopedNoteId]
+    : (urlIds && urlIds.length > 0 ? urlIds : localStorageIds);
   console.log('[Daily View] selectedNoteIds:', selectedNoteIds);
   console.log('[Daily View] allUserGuides:', allUserGuides.map(g => ({ id: g.id, name: g.guides?.name || 'Blank Note' })));
 

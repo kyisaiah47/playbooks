@@ -53,11 +53,15 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
 
   // Get selected guide IDs from URL, fallback to localStorage if URL is empty
+  // If note-scoped mode is active, only show data for that single note
+  const scopedNoteId = searchParams.get('scopedNoteId');
   const urlIds = searchParams.get('analyticsGuides')?.split(',').filter(Boolean);
   const localStorageIds = typeof window !== 'undefined'
     ? JSON.parse(localStorage.getItem('selectedAnalyticsGuideIds') || '[]')
     : [];
-  const selectedGuideIds = urlIds && urlIds.length > 0 ? urlIds : localStorageIds;
+  const selectedGuideIds = scopedNoteId
+    ? [scopedNoteId]
+    : (urlIds && urlIds.length > 0 ? urlIds : localStorageIds);
 
   // Filter by selected guides - show none if nothing selected, or all in demo mode
   const userGuides = selectedGuideIds.length > 0

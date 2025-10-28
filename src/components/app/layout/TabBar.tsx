@@ -18,7 +18,8 @@ import {
   Archive,
   Users,
   BookOpen,
-  Settings
+  Settings,
+  Focus
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -31,9 +32,11 @@ interface TabBarProps {
   onTabClose: (tabId: string) => void;
   sidebarOpen: boolean;
   onToggleSidebar: () => void;
+  noteScopedMode?: { enabled: boolean; noteId: string | null };
+  onToggleNoteScope?: () => void;
 }
 
-export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen, onToggleSidebar }: TabBarProps) {
+export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen, onToggleSidebar, noteScopedMode, onToggleNoteScope }: TabBarProps) {
   // Map tab types to icon components
   const iconMap: Record<string, any> = {
     overview: CalendarDays,
@@ -132,6 +135,29 @@ export function TabBar({ tabs, activeTabId, onTabClick, onTabClose, sidebarOpen,
           );
         })}
       </AnimatePresence>
+
+      {/* Note-Scoped Mode Toggle - Right Side */}
+      {noteScopedMode && onToggleNoteScope && (
+        <motion.button
+          onClick={onToggleNoteScope}
+          className={cn(
+            "ml-auto h-full px-3 border-l border-border/40 transition-colors shrink-0 flex items-center gap-2",
+            noteScopedMode.enabled
+              ? "bg-primary/10 hover:bg-primary/20"
+              : "hover:bg-muted/30"
+          )}
+          title={noteScopedMode.enabled ? "Exit Note-Scoped Mode" : "Enable Note-Scoped Mode"}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Focus className={cn(
+            "w-4 h-4",
+            noteScopedMode.enabled ? "text-primary" : "text-muted-foreground"
+          )} />
+          {noteScopedMode.enabled && (
+            <span className="text-xs font-medium text-primary">Note Scoped</span>
+          )}
+        </motion.button>
+      )}
     </div>
   );
 }

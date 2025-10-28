@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
-import { FileText, Plus, Search, Loader2 } from 'lucide-react';
+import { FileText, Plus, Search, Loader2, Archive } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { useDemo } from '@/contexts/demo-context';
@@ -10,6 +10,12 @@ import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
 import { toast } from 'sonner';
 import { getIconComponent } from '@/lib/icon-utils';
 import { NewNotePopover } from '@/components/app/dialogs/NewNotePopover';
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from '@/components/ui/context-menu';
 
 interface UserGuide {
   id: string;
@@ -18,6 +24,7 @@ interface UserGuide {
   archived: boolean;
   created_at: string;
   updated_at: string;
+  custom_name?: string;
   guides: {
     id: string;
     name: string;
@@ -31,9 +38,10 @@ interface NotesSidebarContentProps {
   onNoteClick: (guideId: string, guideName?: string, guideIcon?: string | null) => void;
   onCreateBlankNote: () => void;
   onCreateGuidedNote: () => void;
+  onNoteDragStart?: (noteId: string) => void;
 }
 
-export function NotesSidebarContent({ activeGuideId, onNoteClick, onCreateBlankNote, onCreateGuidedNote }: NotesSidebarContentProps) {
+export function NotesSidebarContent({ activeGuideId, onNoteClick, onCreateBlankNote, onCreateGuidedNote, onNoteDragStart }: NotesSidebarContentProps) {
   const params = useParams();
   const router = useRouter();
   const { demoMode } = useDemo();
@@ -63,6 +71,36 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onCreateBlankN
   const filteredNotes = notes.filter(note =>
     (note.guides?.name || '').toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleArchiveNote = async (noteId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/notes/${noteId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ archived: true }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to archive note');
+      }
+
+      toast.success('Note archived');
+
+      // Remove from current list
+      setNotes(prev => prev.filter(n => n.id !== noteId));
+    } catch (error) {
+      console.error('Error archiving note:', error);
+      toast.error('Failed to archive note');
+    }
+  };
 
 
   return (
@@ -121,49 +159,65 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onCreateBlankN
               const IconComponent = getIconComponent(note.guides?.icon);
               const isBlankNote = !note.guide_id;
               return (
-                <motion.button
-                  key={note.id}
-                  onClick={() => {
-                    if (isBlankNote) {
-                      // For blank notes, navigate using noteId
-                      router.push(`/app/${workspaceId}/notes?noteId=${note.id}`);
-                    } else {
-                      onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon);
-                    }
-                  }}
-                  className={cn(
-                    "w-full flex items-center gap-2 px-2 py-2 rounded transition-colors group",
-                    activeGuideId === note.guide_id
-                      ? "bg-primary/10 text-primary"
-                      : "hover:bg-muted/50 text-foreground"
-                  )}
-                  variants={{
-                    hidden: { opacity: 0, x: -10 },
-                    show: { opacity: 1, x: 0 }
-                  }}
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <IconComponent className="h-4 w-4 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <div className="font-medium truncate text-sm">
-                      {isBlankNote
-                        ? (note.custom_name || 'Untitled Note')
-                        : (note.guides?.name || 'Untitled Note')}
-                    </div>
-                    {note.progress > 0 && (
-                      <div className="flex items-center gap-1 mt-0.5">
-                        <div className="h-1 flex-1 bg-muted-foreground/20 rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-primary transition-all"
-                            style={{ width: `${note.progress}%` }}
-                          />
+                <ContextMenu key={note.id}>
+                  <ContextMenuTrigger asChild>
+                    <motion.button
+                      draggable
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData('noteId', note.id);
+                        onNoteDragStart?.(note.id);
+                      }}
+                      onClick={() => {
+                        if (isBlankNote) {
+                          // For blank notes, navigate using noteId
+                          router.push(`/app/${workspaceId}/notes?noteId=${note.id}`);
+                        } else {
+                          onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon);
+                        }
+                      }}
+                      className={cn(
+                        "w-full flex items-center gap-2 px-2 py-2 rounded transition-colors group cursor-grab active:cursor-grabbing",
+                        activeGuideId === note.guide_id
+                          ? "bg-primary/10 text-primary"
+                          : "hover:bg-muted/50 text-foreground"
+                      )}
+                      variants={{
+                        hidden: { opacity: 0, x: -10 },
+                        show: { opacity: 1, x: 0 }
+                      }}
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <IconComponent className="h-4 w-4 flex-shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium truncate text-sm">
+                          {isBlankNote
+                            ? (note.custom_name || 'Untitled Note')
+                            : (note.guides?.name || 'Untitled Note')}
                         </div>
-                        <span className="text-xs text-muted-foreground">{Math.round(note.progress)}%</span>
+                        {note.progress > 0 && (
+                          <div className="flex items-center gap-1 mt-0.5">
+                            <div className="h-1 flex-1 bg-muted-foreground/20 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-primary transition-all"
+                                style={{ width: `${note.progress}%` }}
+                              />
+                            </div>
+                            <span className="text-xs text-muted-foreground">{Math.round(note.progress)}%</span>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                </motion.button>
+                    </motion.button>
+                  </ContextMenuTrigger>
+                  <ContextMenuContent className="w-48">
+                    <ContextMenuItem
+                      onClick={(e) => handleArchiveNote(note.id, e)}
+                    >
+                      <Archive className="w-4 h-4" />
+                      Archive Note
+                    </ContextMenuItem>
+                  </ContextMenuContent>
+                </ContextMenu>
               );
             })}
           </motion.div>

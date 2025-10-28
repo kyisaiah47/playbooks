@@ -2,10 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { Search, Loader2 } from 'lucide-react';
+import { Search, Loader2, ArchiveRestore } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useDemo } from '@/contexts/demo-context';
 import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
+import { toast } from 'sonner';
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from '@/components/ui/context-menu';
 
 interface ArchivedGuide {
   id: string;
@@ -57,6 +64,36 @@ export function ArchiveSidebarContent() {
   const filteredGuides = guides.filter(guide =>
     (guide.custom_name || guide.guides?.name || '').toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleUnarchiveNote = async (noteId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/notes/${noteId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ archived: false }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to unarchive note');
+      }
+
+      toast.success('Note restored');
+
+      // Remove from archived list
+      setGuides(prev => prev.filter(g => g.id !== noteId));
+    } catch (error) {
+      console.error('Error unarchiving note:', error);
+      toast.error('Failed to restore note');
+    }
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -122,30 +159,41 @@ export function ArchiveSidebarContent() {
               const displayName = guide.custom_name || guide.guides?.name || 'Untitled Guide';
 
               return (
-                <motion.button
-                  key={guide.id}
-                  onClick={() => {
-                    const params = new URLSearchParams(searchParams.toString());
-                    params.set('noteId', guide.id);
-                    router.replace(`${window.location.pathname}?${params.toString()}`, { scroll: false });
-                  }}
-                  className="w-full flex items-center gap-2 px-2 py-2 rounded text-sm transition-colors hover:bg-muted/50"
-                  variants={{
-                    hidden: { opacity: 0, x: -10 },
-                    show: { opacity: 1, x: 0 }
-                  }}
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="flex-1 min-w-0 text-left">
-                    <div className="font-medium text-foreground break-words text-sm">
-                      {displayName}
-                    </div>
-                    <div className="text-xs text-muted-foreground/70">
-                      {guide.progress}% complete • Archived {new Date(guide.archived_at).toLocaleDateString()}
-                    </div>
-                  </div>
-                </motion.button>
+                <ContextMenu key={guide.id}>
+                  <ContextMenuTrigger asChild>
+                    <motion.button
+                      onClick={() => {
+                        const params = new URLSearchParams(searchParams.toString());
+                        params.set('noteId', guide.id);
+                        router.replace(`${window.location.pathname}?${params.toString()}`, { scroll: false });
+                      }}
+                      className="w-full flex items-center gap-2 px-2 py-2 rounded text-sm transition-colors hover:bg-muted/50"
+                      variants={{
+                        hidden: { opacity: 0, x: -10 },
+                        show: { opacity: 1, x: 0 }
+                      }}
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex-1 min-w-0 text-left">
+                        <div className="font-medium text-foreground break-words text-sm">
+                          {displayName}
+                        </div>
+                        <div className="text-xs text-muted-foreground/70">
+                          {guide.progress}% complete • Archived {new Date(guide.archived_at).toLocaleDateString()}
+                        </div>
+                      </div>
+                    </motion.button>
+                  </ContextMenuTrigger>
+                  <ContextMenuContent className="w-48">
+                    <ContextMenuItem
+                      onClick={(e) => handleUnarchiveNote(guide.id, e)}
+                    >
+                      <ArchiveRestore className="w-4 h-4" />
+                      Restore Note
+                    </ContextMenuItem>
+                  </ContextMenuContent>
+                </ContextMenu>
               );
             })}
           </motion.div>
