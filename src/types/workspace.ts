@@ -57,7 +57,6 @@ export type CalendarEvent = Item;
 
 export type TabType =
   | 'overview'
-  | 'notes'
   | 'note'
   | 'discover'
   | 'calendar'

@@ -361,7 +361,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
   // Sync category selection to URL
   useEffect(() => {
-    if (activeView === 'discover' || activeView === 'notes') {
+    if (activeView === 'discover' || activeView === 'note') {
       const categoryParam = searchParams.get('category');
       if (categoryParam && categoryParam !== selectedCategory) {
         setSelectedCategory(categoryParam);
@@ -546,12 +546,12 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
           params.set('pageId', activeTab.pageId);
         }
 
-        // Add guideId to query params if it exists (as 'id' for backwards compatibility)
+        // Add guideId to query params for guided notes
         if (activeTab.guideId) {
-          params.set('id', activeTab.guideId);
+          params.set('guideId', activeTab.guideId);
         }
 
-        // Add noteId to query params for blank notes
+        // Add noteId to query params for blank notes (as 'id')
         if (activeTab.noteId) {
           params.set('id', activeTab.noteId);
         }
@@ -631,7 +631,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
       const newTab: Tab = {
         id: `note-${guideId}`,
-        type: 'notes',
+        type: 'note',
         label: guideName || 'Note',
         icon: IconComponent,
         iconName: guideIcon || undefined,
@@ -662,8 +662,8 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
   // Handle view click from IconBar
   const handleViewClick = useCallback(async (viewType: TabType) => {
-    // Special handling for notes - open first note
-    if (viewType === 'notes') {
+    // Special handling for note - open first note
+    if (viewType === 'note') {
       try {
         const response = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`);
         const data = await response.json();
@@ -686,15 +686,14 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
 
     // In demo mode, still allow view switching but don't update URL
-    // Clear selected guide ID when switching away from notes view
-    if (demoMode && viewType !== 'notes') {
+    // Clear selected guide ID when switching away from note view
+    if (demoMode && viewType !== 'note') {
       setDemoGuideId(null);
     }
 
     const viewLabels: Record<TabType, string> = {
       overview: 'Daily',
-      notes: 'Notes',
-      note: 'Note',
+      note: 'Notes',
       discover: 'Discover',
       library: 'Library',
       calendar: 'Calendar',
@@ -712,7 +711,6 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
 
     const viewIcons: Record<TabType, any> = {
       overview: CalendarDays,
-      notes: FileText,
       note: FileText,
       discover: Compass,
       library: Library,
@@ -1126,7 +1124,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
               selectedCategory={selectedCategory}
               onCategorySelect={handleCategorySelect}
             />
-          ) : activeView === 'notes' || activeView === 'note' ? (
+          ) : activeView === 'note' ? (
             <NotesSidebarContent
               activeGuideId={activeGuideId}
               onNoteClick={handleNoteClick}
