@@ -123,25 +123,31 @@ export default function NotesPage() {
 
       async function loadDefaultNote() {
         try {
-          // Try to get last selected from localStorage
-          const lastNoteId = localStorage.getItem('lastSelectedNoteId');
-          const lastGuideId = localStorage.getItem('lastSelectedGuideId');
-
-          if (lastNoteId) {
-            // Check if it's a blank note or guided note
-            if (lastGuideId) {
-              router.push(`/app/${workspaceId}/notes?id=${lastGuideId}`);
-            } else {
-              router.push(`/app/${workspaceId}/notes?noteId=${lastNoteId}`);
-            }
-            return;
-          }
-
-          // Fallback: fetch first note
+          // Fetch all notes to find a valid one
           const response = await fetch(`/api/notes?workspace_id=${workspaceId}`);
           if (response.ok) {
             const data = await response.json();
             if (data.notes && data.notes.length > 0) {
+              // Try to get last selected from localStorage
+              const lastGuideId = localStorage.getItem('lastSelectedGuideId');
+
+              // First try to find the last selected guided note
+              if (lastGuideId) {
+                const lastNote = data.notes.find((n: any) => n.guide_id === lastGuideId);
+                if (lastNote) {
+                  router.push(`/app/${workspaceId}/notes?id=${lastGuideId}`);
+                  return;
+                }
+              }
+
+              // Fallback: use first guided note (skip blank notes for now)
+              const firstGuidedNote = data.notes.find((n: any) => n.guide_id);
+              if (firstGuidedNote) {
+                router.push(`/app/${workspaceId}/notes?id=${firstGuidedNote.guide_id}`);
+                return;
+              }
+
+              // Last resort: use first note even if blank
               const firstNote = data.notes[0];
               if (firstNote.guide_id) {
                 router.push(`/app/${workspaceId}/notes?id=${firstNote.guide_id}`);
