@@ -92,17 +92,40 @@ SELECT id, title, description, category FROM guides WHERE id = 'GUIDE_ID_PLACEHO
 
 Use this context to inform your reading generation.
 
-**STEP 2: GENERATE TITLES**
+**STEP 2: DEFINE COMPLETE COVERAGE**
 
-Create reading titles that comprehensively cover this guide.
+Before generating titles, identify what "complete coverage" means for this guide:
+
+**Coverage Framework:**
+1. **List all major decision points** - What decisions does someone facing this situation need to make?
+   Example (asking-for-raise): Should I ask? When to ask? How much to ask for? What to say? How to handle objections? What if they say no?
+
+2. **List all knowledge domains** - What areas of knowledge do they need?
+   Example (asking-for-raise): Market research, negotiation tactics, company dynamics, timing strategy, communication skills
+
+3. **Map each domain to ONE reading** - Each reading addresses ONE decision point or knowledge domain
+   - If you have 5 major decision points → minimum 5 readings
+   - If you have 8 knowledge domains → maximum 8 readings
+   - Overlap between decision points and knowledge domains is OK (they inform each other)
+
+4. **Verify completeness** - Can someone make ALL the decisions they need with just these readings?
+   - If YES → you have complete coverage
+   - If NO → identify the gaps and add readings
+
+**Complexity guideline:**
+- Simple guide (straightforward decision, one domain): 3-5 readings
+- Medium guide (multiple decisions, 2-3 domains): 5-7 readings
+- Complex guide (life-changing, 4+ domains): 8-12 readings
+
+**STEP 3: GENERATE TITLES**
+
+Now generate titles based on your coverage analysis above.
 
 Your titles must:
-- Cover ALL major aspects of this guide comprehensively
+- Cover ALL decision points and knowledge domains identified
 - Have ZERO overlap between readings
-- Each reading should serve a distinct purpose
-- Ensure someone who reads all of them has complete knowledge of the topic
-
-Quality over quantity - don't create filler content. Generate as many or as few as needed for complete coverage.
+- Each reading serves ONE distinct purpose
+- Someone who reads all of them can make ALL necessary decisions
 
 Examples of good title sets:
 
@@ -146,7 +169,7 @@ For "career-change":
 - Implies expertise (what recruiters use, a financial model)
 - Gives you decision-making tools, not just information
 
-**STEP 3: GENERATE CONTENT FOR EACH TITLE**
+**STEP 4: GENERATE CONTENT FOR EACH TITLE**
 
 For each title, create 300-400 word content following these requirements:
 
@@ -305,11 +328,41 @@ VALUES (
   ARRAY['{Source 1}', '{Source 2}', '{Source 3}']
 );
 
-When done, OUTPUT A SUMMARY:
+**STEP 5: VERIFY QUALITY BEFORE FINALIZING**
+
+Before considering yourself done, run this self-check rubric:
+
+**Coverage Check:**
+□ Did I identify all major decision points someone faces?
+□ Did I identify all knowledge domains needed?
+□ Does each reading map to ONE distinct decision point or domain?
+□ If I removed any reading, would there be a critical gap?
+□ Can someone make ALL necessary decisions with just these readings?
+
+**Quality Check (for EACH reading):**
+□ Is it 300-400 words? (NOT 500+)
+□ Does it have a named framework or method? ("The 3-Interview Method", not "how to interview")
+□ Does it include specific numbers or examples?
+□ Does it call out what DOESN'T work?
+□ Would someone quote this to a friend?
+□ Does title + excerpt make it category-defining (not blog-post level)?
+
+**Overlap Check:**
+□ Each reading covers a DIFFERENT aspect
+□ No two readings answer the same question
+□ No two readings give the same type of advice
+
+**If ANY checkbox is unchecked, FIX IT before proceeding.**
+
+**STEP 6: OUTPUT SUMMARY**
+
+After verification, OUTPUT A SUMMARY:
 - Total number of readings created
-- List of all titles (to verify comprehensive coverage)
-- Confirmation that there is ZERO overlap between readings
-- Word count for each reading
+- List of all decision points covered
+- List of all knowledge domains covered
+- List of all titles
+- Word count for each reading (verify all are 300-400)
+- Confirmation that ALL quality checks passed
 
 Respond with: GENERATION COMPLETE and show the summary
 HEREDOC

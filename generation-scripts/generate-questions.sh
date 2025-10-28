@@ -80,16 +80,48 @@ SELECT id, title, description, category FROM guides WHERE id = 'GUIDE_ID_PLACEHO
 
 Use this context to inform your question generation.
 
-**STEP 2: GENERATE QUESTIONS**
+**STEP 2: DEFINE COMPLETE COVERAGE & CALCULATE COUNTS**
 
-Generate questions that comprehensively cover the topic:
-- Generate as many questions as needed for COMPLETE coverage
-- Cover ALL major aspects someone needs to work through
-- Have ZERO overlap between questions
-- Each question should serve a distinct purpose
-- Someone who answers all questions should be fully prepared for their situation
+Before generating questions, identify what "complete coverage" means for this guide:
 
-Quality over quantity - don't create filler questions.
+**Coverage Framework:**
+1. **Identify complexity level:**
+   - Simple (straightforward decision, single domain): 15-20 questions total
+   - Medium (multiple decisions, 2-3 domains): 30-40 questions total
+   - Complex (life-changing, 4+ domains, high stakes): 50-70 questions total
+
+2. **List all areas someone needs to think through:**
+   Example (asking-for-raise): Current value, market research, timing, company context, conversation prep, objection handling, next steps
+   Example (career-change): Self-assessment, target exploration, skill gaps, financial planning, transition strategy, job search
+
+3. **Determine total question count** based on complexity and areas to cover
+
+4. **Calculate exact breakdown by type:**
+   - Foundation (20-30%): Self-discovery, patterns, past experiences, values
+   - Research (20-25%): Data-gathering with frameworks
+   - Planning (25-30%): Strategic thinking
+   - Action (20-25%): Concrete next steps
+
+   Example: If 40 questions total →
+   - Foundation: 10 questions (25%)
+   - Research: 9 questions (22%)
+   - Planning: 11 questions (27%)
+   - Action: 10 questions (25%)
+
+**STEP 3: GENERATE QUESTIONS IN ROUNDS**
+
+Use this generation strategy to ensure proper balance:
+
+**GENERATION STRATEGY:**
+1. Generate in 4 ROUNDS (not sequentially):
+   - Round 1: Generate ALL foundation questions (exact count from above)
+   - Round 2: Generate ALL research questions (exact count from above)
+   - Round 3: Generate ALL planning questions (exact count from above)
+   - Round 4: Generate ALL action questions (exact count from above)
+
+2. After EACH round, verify count matches target
+
+3. Ensure coverage across all areas identified in Step 2
 
 **Question requirements:**
 - Action-oriented (start with verbs like 'Write down', 'Document', 'Create notes on', 'Research', 'Reflect on')
@@ -129,12 +161,6 @@ Generate questions in this order:
 
 Ensure BALANCE - don't create 40 reflection questions and 5 action questions.
 
-**COMPLEXITY GUIDELINES:**
-
-- Simple guide (15-20 questions): Single domain, straightforward decision (e.g., budgeting)
-- Medium guide (30-40 questions): Multiple domains, moderate stakes (e.g., asking for raise)
-- Complex guide (50-70 questions): Life-changing, multiple domains, high stakes (e.g., divorce, career change)
-
 **USER CONTEXT:**
 
 Consider if user is:
@@ -142,12 +168,7 @@ Consider if user is:
 - **Planning ahead**: More reflection, longer timeframes, strategic thinking
 - Adjust question tone accordingly (crisis = supportive + action-focused, planning = exploratory)
 
-**Example question counts by complexity:**
-- Simple guide (e.g., 'create-budget'): ~15-20 questions
-- Medium guide (e.g., 'asking-for-raise'): ~30-40 questions
-- Complex guide (e.g., 'getting-divorced'): ~50-70 questions
-
-**STEP 3: INSERT TO DATABASE**
+**STEP 4: INSERT TO DATABASE**
 
 Insert the questions directly into the questions table using mcp__supabase__execute_sql:
 
@@ -160,10 +181,51 @@ VALUES (
   {sequential number}
 );
 
-When done, OUTPUT A SUMMARY:
+**STEP 5: VERIFY QUALITY BEFORE FINALIZING**
+
+Before considering yourself done, run this self-check rubric:
+
+**Coverage Check:**
+□ Did I identify all areas someone needs to think through?
+□ Does the total question count match the complexity level?
+□ Did I cover ALL identified areas across the questions?
+□ If I removed any question, would there be a critical gap?
+□ Can someone fully prepare for their situation by answering these questions?
+
+**Progression Check:**
+□ Foundation questions: Are they 20-30% of total? (Self-discovery, patterns, past experiences)
+□ Research questions: Are they 20-25% of total? (Data-gathering with frameworks)
+□ Planning questions: Are they 25-30% of total? (Strategic thinking)
+□ Action questions: Are they 20-25% of total? (Concrete next steps)
+□ Do the percentages add up properly?
+
+**Quality Check (for EACH question):**
+□ Starts with action verb? (Write, Document, Research, Reflect, etc.)
+□ Requires excavation of memory/experience? (Not googleable)
+□ Would different people have completely different answers?
+□ Uses specific time frames? ("past year" not "ever")
+□ Asks about patterns/micro-moments? (Not surface-level facts)
+□ Makes someone think "I've never thought about it this way"?
+
+**Overlap Check:**
+□ Each question explores a DIFFERENT aspect
+□ No two questions ask for the same information
+□ Someone answering wouldn't feel they're repeating themselves
+
+**If ANY checkbox is unchecked, FIX IT before proceeding.**
+
+**STEP 6: OUTPUT SUMMARY**
+
+After verification, OUTPUT A SUMMARY:
 - Total number of questions created
-- Breakdown by type (planning, reflection, research, action)
-- Confirmation that there is ZERO overlap between questions
+- Breakdown by category with counts and percentages:
+  * Foundation: X questions (Y%)
+  * Research: X questions (Y%)
+  * Planning: X questions (Y%)
+  * Action: X questions (Y%)
+- List of all areas covered
+- Confirmation that ALL quality checks passed
+- Confirmation percentages match target ranges
 
 Respond with: GENERATION COMPLETE and show the summary
 HEREDOC
