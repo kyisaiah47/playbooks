@@ -21,8 +21,9 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command';
-import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu, Search } from 'lucide-react';
+import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu, Search, List } from 'lucide-react';
 import { ReadingContent } from '@/components/readings/ReadingContent';
+import { TableOfContents } from '@/components/readings/TableOfContents';
 import Link from 'next/link';
 import { GuideHeader } from '@/components/app/guides/GuideHeader';
 import {
@@ -913,8 +914,8 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                       </header>
 
                       {selectedReading.sources && selectedReading.sources.length > 0 && (
-                        <Card className="p-4 bg-muted/30 border-border">
-                          <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                        <Card className="p-4 bg-muted/30 border-border flex flex-col gap-2">
+                          <h3 className="text-sm font-semibold flex items-center gap-2">
                             <BookOpen className="h-4 w-4" />
                             Sources
                           </h3>
@@ -925,6 +926,14 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                           </ul>
                         </Card>
                       )}
+
+                      <Card className="p-4 bg-muted/30 border-border flex flex-col gap-2">
+                        <h3 className="text-sm font-semibold flex items-center gap-2">
+                          <List className="h-4 w-4" />
+                          Table of Contents
+                        </h3>
+                        <TableOfContents content={selectedReading.content} />
+                      </Card>
 
                       <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
                     </div>
@@ -984,7 +993,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                               {reading.excerpt}
                             </p>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span>{reading.readTime} min read</span>
+                              <span>{reading.readTime}</span>
                               <ChevronRight className="h-3 w-3 ml-auto" />
                             </div>
                           </Card>
@@ -1039,8 +1048,8 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
               ) : (
                 <>
                   {selectedReading.sources && selectedReading.sources.length > 0 && (
-                    <Card className="p-4 bg-muted/30 border-border">
-                      <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                    <Card className="p-4 bg-muted/30 border-border flex flex-col gap-2">
+                      <h3 className="text-sm font-semibold flex items-center gap-2">
                         <BookOpen className="h-4 w-4" />
                         Sources
                       </h3>
@@ -1051,6 +1060,15 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                       </ul>
                     </Card>
                   )}
+
+                  <Card className="p-4 bg-muted/30 border-border flex flex-col gap-2">
+                    <h3 className="text-sm font-semibold flex items-center gap-2">
+                      <List className="h-4 w-4" />
+                      Table of Contents
+                    </h3>
+                    <TableOfContents content={selectedReading.content} />
+                  </Card>
+
                   <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
                 </>
               )}

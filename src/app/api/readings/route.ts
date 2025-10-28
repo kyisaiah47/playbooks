@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
           title: reading.title,
           content: reading.content,
           excerpt: reading.excerpt || '',
-          readTime: reading.read_time,
+          readTime: reading.read_time?.replace(/ min read$/i, '').replace(/min read$/i, '') || '5',
           author: reading.author || 'Templata',
           publishedAt: new Date().toISOString(),
           sources: reading.sources || [], // Use the sources field, not tags
@@ -128,7 +128,7 @@ export async function GET(request: NextRequest) {
         title: reading.title,
         content: reading.content,
         description: reading.excerpt || '',
-        reading_time: parseInt(reading.read_time) || 5,
+        reading_time: parseInt(reading.read_time?.replace(/ min read$/i, '').replace(/min read$/i, '') || '5'),
         guide_id: reading.guide,
         guide_name: guideMap.get(reading.guide) || 'Unknown Guide',
         author: reading.author || null,
