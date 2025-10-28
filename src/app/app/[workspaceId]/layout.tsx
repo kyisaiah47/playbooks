@@ -1126,7 +1126,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
               selectedCategory={selectedCategory}
               onCategorySelect={handleCategorySelect}
             />
-          ) : activeView === 'notes' ? (
+          ) : activeView === 'notes' || activeView === 'note' ? (
             <NotesSidebarContent
               activeGuideId={activeGuideId}
               onNoteClick={handleNoteClick}
