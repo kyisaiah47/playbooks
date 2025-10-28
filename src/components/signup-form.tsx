@@ -136,9 +136,8 @@ export function SignupForm({
       }
       keysToRemove.forEach(key => localStorage.removeItem(key));
 
-      // Redirect to app after successful signup
-      router.push("/app");
-      router.refresh();
+      // Use window.location to ensure proper redirect after auth
+      window.location.href = "/app";
     } catch (err) {
       toast.error("An error occurred. Please try again.");
     } finally {
