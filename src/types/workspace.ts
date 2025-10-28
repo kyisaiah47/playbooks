@@ -58,6 +58,7 @@ export type CalendarEvent = Item;
 export type TabType =
   | 'overview'
   | 'notes'
+  | 'note'
   | 'discover'
   | 'calendar'
   | 'tasks'
@@ -78,6 +79,7 @@ export interface Tab {
   iconName?: string; // Store icon name for serialization
   pageId?: string;
   guideId?: string;
+  noteId?: string; // For blank notes
 }
 
 export interface PageWithSubPages extends Page {

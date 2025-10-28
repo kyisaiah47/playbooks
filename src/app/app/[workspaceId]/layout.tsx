@@ -551,6 +551,11 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
           params.set('id', activeTab.guideId);
         }
 
+        // Add noteId to query params for blank notes
+        if (activeTab.noteId) {
+          params.set('id', activeTab.noteId);
+        }
+
         const queryString = params.toString();
         router.push(`/app/${workspaceId}${viewPath}${queryString ? `?${queryString}` : ''}`, { scroll: false });
       }
@@ -616,8 +621,70 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     }
   }, [tabs, syncTabsToURL, demoMode]);
 
+  // Handle note click from Notes Sidebar
+  const handleNoteClick = useCallback((guideId: string, guideName?: string, guideIcon?: string | null) => {
+    if (demoMode) {
+      // In demo mode, just set the selected guide ID in context
+      setDemoGuideId(guideId);
+    } else {
+      const IconComponent = getIconComponent(guideIcon);
+
+      const newTab: Tab = {
+        id: `note-${guideId}`,
+        type: 'notes',
+        label: guideName || 'Note',
+        icon: IconComponent,
+        iconName: guideIcon || undefined,
+        guideId: guideId,
+      };
+
+      addTab(newTab);
+    }
+  }, [addTab, demoMode, setDemoGuideId]);
+
+  // Handle blank note click from Notes Sidebar
+  const handleBlankNoteClick = useCallback((noteId: string, noteName?: string) => {
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
+
+    const newTab: Tab = {
+      id: `blank-note-${noteId}`,
+      type: 'note',
+      label: noteName || 'Untitled Note',
+      icon: FileText,
+      noteId: noteId,
+    };
+
+    addTab(newTab);
+  }, [addTab, demoMode]);
+
   // Handle view click from IconBar
-  const handleViewClick = useCallback((viewType: TabType) => {
+  const handleViewClick = useCallback(async (viewType: TabType) => {
+    // Special handling for notes - open first note
+    if (viewType === 'notes') {
+      try {
+        const response = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`);
+        const data = await response.json();
+        const notes = data.notes || [];
+
+        if (notes.length > 0) {
+          const firstNote = notes[0];
+          if (firstNote.guide_id) {
+            // It's a guided note
+            handleNoteClick(firstNote.guide_id, firstNote.guides?.name, firstNote.guides?.icon);
+          } else {
+            // It's a blank note
+            handleBlankNoteClick(firstNote.id, firstNote.custom_name || 'Untitled Note');
+          }
+          return;
+        }
+      } catch (error) {
+        console.error('Error loading notes:', error);
+      }
+    }
+
     // In demo mode, still allow view switching but don't update URL
     // Clear selected guide ID when switching away from notes view
     if (demoMode && viewType !== 'notes') {
@@ -627,6 +694,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     const viewLabels: Record<TabType, string> = {
       overview: 'Daily',
       notes: 'Notes',
+      note: 'Note',
       discover: 'Discover',
       library: 'Library',
       calendar: 'Calendar',
@@ -645,6 +713,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     const viewIcons: Record<TabType, any> = {
       overview: CalendarDays,
       notes: FileText,
+      note: FileText,
       discover: Compass,
       library: Library,
       calendar: Calendar,
@@ -668,7 +737,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     };
 
     addTab(newTab);
-  }, [addTab, demoMode, setDemoGuideId]);
+  }, [addTab, demoMode, setDemoGuideId, workspaceId, handleNoteClick, handleBlankNoteClick]);
 
   // Handle page click from Sidebar
   const handlePageClick = useCallback((pageId: string) => {
@@ -686,29 +755,13 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     addTab(newTab);
   }, [pages, addTab]);
 
-  // Handle note click from Notes Sidebar
-  const handleNoteClick = useCallback((guideId: string, guideName?: string, guideIcon?: string | null) => {
-    if (demoMode) {
-      // In demo mode, just set the selected guide ID in context
-      setDemoGuideId(guideId);
-    } else {
-      const IconComponent = getIconComponent(guideIcon);
-
-      const newTab: Tab = {
-        id: `note-${guideId}`,
-        type: 'notes',
-        label: guideName || 'Note',
-        icon: IconComponent,
-        iconName: guideIcon || undefined,
-        guideId: guideId,
-      };
-
-      addTab(newTab);
-    }
-  }, [addTab, demoMode, setDemoGuideId]);
-
   // Handle creating a blank note
   const handleCreateBlankNote = useCallback(async () => {
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
+
     try {
       const response = await fetch('/api/notes', {
         method: 'POST',
@@ -734,13 +787,22 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
         throw new Error('No note returned from API');
       }
 
+      // Create a tab for the blank note
+      const newTab: Tab = {
+        id: `blank-note-${note.id}`,
+        type: 'note',
+        label: note.custom_name || 'Untitled Note',
+        icon: FileText,
+        noteId: note.id,
+      };
+
       toast.success('Blank note created');
-      router.push(`/app/${workspaceId}/notes?noteId=${note.id}`);
+      addTab(newTab);
     } catch (error) {
       console.error('Error creating blank note:', error);
       toast.error('Failed to create blank note');
     }
-  }, [workspaceId, router]);
+  }, [workspaceId, demoMode, addTab]);
 
   // Handle creating a guided note (open dialog for guide selection)
   const handleCreateGuidedNote = useCallback(() => {
@@ -1004,8 +1066,8 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
     switch (activeView) {
       case 'overview':
         return <OverviewPage />;
-      case 'notes':
-        return <NotesPage />;
+      case 'note':
+        return children;
       case 'discover':
         return <DiscoverPage />;
       case 'library':
@@ -1068,6 +1130,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
             <NotesSidebarContent
               activeGuideId={activeGuideId}
               onNoteClick={handleNoteClick}
+              onBlankNoteClick={handleBlankNoteClick}
               onCreateBlankNote={handleCreateBlankNote}
               onCreateGuidedNote={handleCreateGuidedNote}
             />

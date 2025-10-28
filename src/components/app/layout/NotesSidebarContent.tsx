@@ -36,12 +36,13 @@ interface UserGuide {
 interface NotesSidebarContentProps {
   activeGuideId: string | null;
   onNoteClick: (guideId: string, guideName?: string, guideIcon?: string | null) => void;
+  onBlankNoteClick?: (noteId: string, noteName?: string) => void;
   onCreateBlankNote: () => void;
   onCreateGuidedNote: () => void;
   onNoteDragStart?: (noteId: string) => void;
 }
 
-export function NotesSidebarContent({ activeGuideId, onNoteClick, onCreateBlankNote, onCreateGuidedNote, onNoteDragStart }: NotesSidebarContentProps) {
+export function NotesSidebarContent({ activeGuideId, onNoteClick, onBlankNoteClick, onCreateBlankNote, onCreateGuidedNote, onNoteDragStart }: NotesSidebarContentProps) {
   const params = useParams();
   const router = useRouter();
   const { demoMode } = useDemo();
@@ -169,8 +170,8 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onCreateBlankN
                       }}
                       onClick={() => {
                         if (isBlankNote) {
-                          // For blank notes, navigate using noteId
-                          router.push(`/app/${workspaceId}/notes?noteId=${note.id}`);
+                          // For blank notes, call onBlankNoteClick
+                          onBlankNoteClick?.(note.id, note.custom_name || 'Untitled Note');
                         } else {
                           onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon);
                         }

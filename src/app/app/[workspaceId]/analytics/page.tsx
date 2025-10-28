@@ -169,12 +169,7 @@ export default function AnalyticsPage() {
   const maxWeeklyActivity = Math.max(...weeklyPattern.map(d => d.count), 1);
 
   return (
-    <motion.div
-      className="h-full w-full flex flex-col overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="h-full w-full flex flex-col overflow-hidden">
       {/* Header */}
       <div className="border-b border-border/40 px-6 py-4">
         <div className="flex items-center gap-3">
@@ -185,8 +180,8 @@ export default function AnalyticsPage() {
             <h1 className="text-xl font-semibold">Analytics</h1>
             <p className="text-xs text-muted-foreground">
               {selectedGuideIds.length > 0
-                ? `Showing analytics for ${selectedGuideIds.length} selected note${selectedGuideIds.length > 1 ? 's' : ''}`
-                : 'Select notes from sidebar to view analytics'}
+                ? `${selectedGuideIds.length} note${selectedGuideIds.length > 1 ? 's' : ''} selected`
+                : 'Select notes to view analytics'}
             </p>
           </div>
         </div>
@@ -195,229 +190,73 @@ export default function AnalyticsPage() {
       {/* Content */}
       <div className="flex-1 overflow-auto p-6">
         {loading ? (
-          <motion.div
-            className="flex items-center justify-center h-96"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          <div className="flex items-center justify-center h-96">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
-          </motion.div>
+          </div>
         ) : selectedGuideIds.length === 0 && !demoMode ? (
-          <motion.div
-            className="flex flex-col items-center justify-center h-96 text-muted-foreground"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          <div className="flex flex-col items-center justify-center h-96 text-muted-foreground">
             <TrendingUp className="w-16 h-16 mb-4 opacity-20" />
             <p className="text-lg font-medium">No notes selected</p>
             <p className="text-sm">Select notes from the sidebar to view analytics</p>
-          </motion.div>
+          </div>
         ) : userGuides.length === 0 && selectedGuideIds.length > 0 ? (
-          <motion.div
-            className="flex flex-col items-center justify-center h-96 text-muted-foreground"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          <div className="flex flex-col items-center justify-center h-96 text-muted-foreground">
             <TrendingUp className="w-16 h-16 mb-4 opacity-20" />
             <p className="text-lg font-medium">No data found</p>
             <p className="text-sm">The selected notes don't have any data yet</p>
-          </motion.div>
+          </div>
         ) : (
-          <motion.div
-            className="space-y-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-          >
+          <div className="space-y-6">
             {/* Stats Grid */}
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-              variants={{
-                hidden: { opacity: 0 },
-                show: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.08 }
-                }
-              }}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-              >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="rounded-lg border border-border/40 bg-background p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Activity className="w-5 h-5 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">Active Notes</span>
+                  <Activity className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground">Active Notes</span>
                 </div>
-                <div className="text-2xl font-bold">{userGuides.length}</div>
+                <div className="text-3xl font-bold">{userGuides.length}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  {avgProgress}% avg progress
+                  {avgProgress}% average progress
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-              >
+              <div className="rounded-lg border border-border/40 bg-background p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span className="text-sm text-muted-foreground">Completion Rate</span>
+                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  <span className="text-xs text-muted-foreground">Tasks Completed</span>
                 </div>
-                <div className="text-2xl font-bold text-green-500">{completionRate}%</div>
+                <div className="text-3xl font-bold text-green-500">{completionRate}%</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  {completedTasks}/{totalTasks} tasks done
+                  {completedTasks} of {totalTasks} tasks
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-              >
+              <div className="rounded-lg border border-border/40 bg-background p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Clock className="w-5 h-5 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">Total Tasks</span>
+                  <Clock className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground">Total Tasks</span>
                 </div>
-                <div className="text-2xl font-bold">{totalTasks}</div>
+                <div className="text-3xl font-bold">{totalTasks}</div>
                 <div className="text-xs text-muted-foreground mt-1">
                   {items.filter(t => t.status !== 'done').length} pending
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="rounded-lg border border-border/40 bg-background p-4"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 }
-                }}
-                whileHover={{ scale: 1.02 }}
-              >
+              <div className="rounded-lg border border-border/40 bg-background p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-5 h-5 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">Events</span>
+                  <Calendar className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground">Events</span>
                 </div>
-                <div className="text-2xl font-bold">{items.filter(item => item.start_time).length}</div>
+                <div className="text-3xl font-bold">{items.filter(item => item.start_time).length}</div>
                 <div className="text-xs text-muted-foreground mt-1">
                   Total scheduled
                 </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Monthly Trends - Last 6 Months */}
-            <motion.div
-              className="rounded-lg border border-border/40 bg-background p-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-            >
-              <h3 className="text-sm font-semibold mb-4">Monthly Trends (Last 6 Months)</h3>
-              <div className="space-y-3">
-                {monthlyTrends.map((month) => (
-                  <div key={month.month}>
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="text-xs font-medium">{month.month}</div>
-                      <div className="text-xs text-muted-foreground">{month.total} activities</div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-8 bg-muted rounded overflow-hidden flex">
-                        {month.tasksCreated > 0 && (
-                          <div
-                            className="bg-blue-500/60 flex items-center justify-center text-[10px] font-medium text-white"
-                            style={{ width: `${(month.tasksCreated / month.total) * 100}%` }}
-                            title={`${month.tasksCreated} tasks created`}
-                          >
-                            {month.tasksCreated > 2 && month.tasksCreated}
-                          </div>
-                        )}
-                        {month.tasksCompleted > 0 && (
-                          <div
-                            className="bg-green-500/60 flex items-center justify-center text-[10px] font-medium text-white"
-                            style={{ width: `${(month.tasksCompleted / month.total) * 100}%` }}
-                            title={`${month.tasksCompleted} tasks completed`}
-                          >
-                            {month.tasksCompleted > 2 && month.tasksCompleted}
-                          </div>
-                        )}
-                        {month.notesCreated > 0 && (
-                          <div
-                            className="bg-purple-500/60 flex items-center justify-center text-[10px] font-medium text-white"
-                            style={{ width: `${(month.notesCreated / month.total) * 100}%` }}
-                            title={`${month.notesCreated} notes created`}
-                          >
-                            {month.notesCreated > 2 && month.notesCreated}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 mt-1 text-[10px] text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <div className="w-2 h-2 rounded-full bg-blue-500/60" />
-                        {month.tasksCreated} created
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <div className="w-2 h-2 rounded-full bg-green-500/60" />
-                        {month.tasksCompleted} completed
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <div className="w-2 h-2 rounded-full bg-purple-500/60" />
-                        {month.notesCreated} notes
-                      </span>
-                    </div>
-                  </div>
-                ))}
               </div>
-            </motion.div>
+            </div>
 
-            {/* Weekly Activity Pattern */}
-            <motion.div
-              className="rounded-lg border border-border/40 bg-background p-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-            >
-              <h3 className="text-sm font-semibold mb-4">Activity by Day of Week</h3>
-              <div className="space-y-2">
-                {weeklyPattern.map((day) => (
-                  <div key={day.day} className="flex items-center gap-2">
-                    <div className="text-xs text-muted-foreground w-10 flex-shrink-0">
-                      {day.day}
-                    </div>
-                    <div className="flex-1 flex items-center gap-1">
-                      <div
-                        className="h-6 bg-primary/20 rounded flex items-center justify-center text-[10px] font-medium"
-                        style={{ width: `${(day.count / maxWeeklyActivity) * 100}%`, minWidth: day.count > 0 ? '20px' : '0' }}
-                      >
-                        {day.count > 0 && day.count}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Note Statistics */}
-            <motion.div
-              className="rounded-lg border border-border/40 bg-background p-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
-            >
-              <h3 className="text-sm font-semibold mb-4">Note Statistics</h3>
+            {/* Note Progress List */}
+            <div className="rounded-lg border border-border/40 bg-background p-4">
+              <h3 className="text-sm font-semibold mb-4">Note Progress</h3>
               <div className="space-y-3">
                 {userGuides.map((guide) => {
                   const displayName = guide.custom_name || guide.guides.name;
@@ -426,14 +265,14 @@ export default function AnalyticsPage() {
                   const guideCompletedTasks = guideTasks.filter(t => t.status === 'done').length;
 
                   return (
-                    <div key={guide.id} className="p-3 rounded-lg border border-border/40 bg-muted/20">
+                    <div key={guide.id} className="p-3 rounded border border-border/40 bg-muted/20">
                       <div className="flex items-center justify-between mb-2">
                         <div className="font-medium text-sm">{displayName}</div>
                         <div className="text-sm font-semibold text-primary">{guide.progress}%</div>
                       </div>
                       <div className="w-full h-2 bg-muted rounded-full overflow-hidden mb-2">
                         <div
-                          className="h-full bg-primary transition-all"
+                          className="h-full bg-primary"
                           style={{ width: `${guide.progress}%` }}
                         />
                       </div>
@@ -448,22 +287,94 @@ export default function AnalyticsPage() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
-                          <span>Created {format(parseISO(guide.created_at), 'MMM d, yyyy')}</span>
+                          <span>{format(parseISO(guide.created_at), 'MMM d')}</span>
                         </div>
                       </div>
                     </div>
                   );
                 })}
-                {userGuides.length === 0 && (
-                  <div className="text-sm text-muted-foreground text-center py-8">
-                    No notes to display
-                  </div>
-                )}
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+
+            {/* Activity Stats */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {/* Monthly Trends */}
+              <div className="rounded-lg border border-border/40 bg-background p-4">
+                <h3 className="text-sm font-semibold mb-4">Monthly Activity</h3>
+                <div className="space-y-2">
+                  {monthlyTrends.map((month) => (
+                    <div key={month.month} className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs font-medium">{month.month}</div>
+                        <div className="text-xs text-muted-foreground">{month.total}</div>
+                      </div>
+                      <div className="h-6 bg-muted rounded overflow-hidden flex">
+                        {month.tasksCreated > 0 && (
+                          <div
+                            className="bg-blue-500/60"
+                            style={{ width: `${(month.tasksCreated / month.total) * 100}%` }}
+                            title={`${month.tasksCreated} created`}
+                          />
+                        )}
+                        {month.tasksCompleted > 0 && (
+                          <div
+                            className="bg-green-500/60"
+                            style={{ width: `${(month.tasksCompleted / month.total) * 100}%` }}
+                            title={`${month.tasksCompleted} completed`}
+                          />
+                        )}
+                        {month.notesCreated > 0 && (
+                          <div
+                            className="bg-purple-500/60"
+                            style={{ width: `${(month.notesCreated / month.total) * 100}%` }}
+                            title={`${month.notesCreated} notes`}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4 mt-4 text-[10px] text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-full bg-blue-500/60" />
+                    Created
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-full bg-green-500/60" />
+                    Completed
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-full bg-purple-500/60" />
+                    Notes
+                  </span>
+                </div>
+              </div>
+
+              {/* Weekly Pattern */}
+              <div className="rounded-lg border border-border/40 bg-background p-4">
+                <h3 className="text-sm font-semibold mb-4">Weekly Pattern</h3>
+                <div className="space-y-2">
+                  {weeklyPattern.map((day) => (
+                    <div key={day.day} className="flex items-center gap-2">
+                      <div className="text-xs text-muted-foreground w-10 flex-shrink-0">
+                        {day.day}
+                      </div>
+                      <div className="flex-1">
+                        <div
+                          className="h-6 bg-primary/20 rounded flex items-center justify-center text-[10px] font-medium"
+                          style={{ width: `${(day.count / maxWeeklyActivity) * 100}%`, minWidth: day.count > 0 ? '30px' : '0' }}
+                        >
+                          {day.count > 0 && day.count}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
