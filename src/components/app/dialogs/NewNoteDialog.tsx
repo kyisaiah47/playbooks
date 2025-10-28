@@ -56,7 +56,7 @@ const categoryColors: Record<string, { bg: string; text: string; icon: string }>
 };
 
 export function NewNoteDialog({ open, onOpenChange, onCreateNote, workspaceId }: NewNoteDialogProps) {
-  const [step, setStep] = useState<'choice' | 'category' | 'guide'>('choice');
+  const [step, setStep] = useState<'choice' | 'category' | 'guide'>('category');
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [guides, setGuides] = useState<Guide[]>([]);

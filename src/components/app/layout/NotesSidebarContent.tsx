@@ -147,7 +147,9 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onCreateBlankN
                   <IconComponent className="h-4 w-4 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="font-medium truncate text-sm">
-                      {note.guides?.name || 'Untitled Note'}
+                      {isBlankNote
+                        ? (note.custom_name || 'Untitled Note')
+                        : (note.guides?.name || 'Untitled Note')}
                     </div>
                     {note.progress > 0 && (
                       <div className="flex items-center gap-1 mt-0.5">

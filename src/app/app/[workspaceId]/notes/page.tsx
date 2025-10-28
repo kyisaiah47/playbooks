@@ -25,9 +25,21 @@ export default function NotesPage() {
   const [loading, setLoading] = useState(true);
   const [pageName, setPageName] = useState<string>('');
 
-  // Debug logging
+  // Debug logging and save last selected to localStorage
   useEffect(() => {
     console.log('[NotesPage] Params:', { noteId, guideId, pageId, workspaceId });
+
+    // Save last selected note
+    if (noteId) {
+      localStorage.setItem('lastSelectedNoteId', noteId);
+      if (guideId) {
+        localStorage.setItem('lastSelectedGuideId', guideId);
+      } else {
+        localStorage.removeItem('lastSelectedGuideId');
+      }
+    } else if (guideId) {
+      localStorage.setItem('lastSelectedGuideId', guideId);
+    }
   }, [noteId, guideId, pageId, workspaceId]);
 
   // Fetch or create user_guide instance for this guide
@@ -172,9 +184,60 @@ export default function NotesPage() {
     return <BlankNoteEditor noteId={noteId} workspaceId={workspaceId} />;
   }
 
-  if (!guideId && !pageId) {
-    console.log('[NotesPage] Rendering notes list view (no guideId, no pageId)');
-    return <NotesListView workspaceId={workspaceId} />;
+  // Load default note if no params
+  useEffect(() => {
+    if (!guideId && !pageId && !noteId) {
+      console.log('[NotesPage] No params - redirecting to last/first note');
+
+      async function loadDefaultNote() {
+        try {
+          // Try to get last selected from localStorage
+          const lastNoteId = localStorage.getItem('lastSelectedNoteId');
+          const lastGuideId = localStorage.getItem('lastSelectedGuideId');
+
+          if (lastNoteId) {
+            // Check if it's a blank note or guided note
+            if (lastGuideId) {
+              router.push(`/app/${workspaceId}/notes?id=${lastGuideId}`);
+            } else {
+              router.push(`/app/${workspaceId}/notes?noteId=${lastNoteId}`);
+            }
+            return;
+          }
+
+          // Fallback: fetch first note
+          const response = await fetch(`/api/notes?workspace_id=${workspaceId}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.notes && data.notes.length > 0) {
+              const firstNote = data.notes[0];
+              if (firstNote.guide_id) {
+                router.push(`/app/${workspaceId}/notes?id=${firstNote.guide_id}`);
+              } else {
+                router.push(`/app/${workspaceId}/notes?noteId=${firstNote.id}`);
+              }
+              return;
+            }
+          }
+
+          // No notes at all - show empty state
+          console.log('[NotesPage] No notes found');
+        } catch (error) {
+          console.error('Error loading default note:', error);
+        }
+      }
+
+      loadDefaultNote();
+    }
+  }, [guideId, pageId, noteId, workspaceId, router]);
+
+  // If no params, show loading
+  if (!guideId && !pageId && !noteId) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
   }
 
   console.log('[NotesPage] Rendering GuidesView with guideId:', guideId);
