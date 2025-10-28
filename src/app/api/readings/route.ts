@@ -41,10 +41,8 @@ export async function GET(request: NextRequest) {
         read_time,
         guide,
         tags,
-        author,
-        type
-      `)
-      .eq('type', 'guide');
+        author
+      `);
 
     // Filter by user's guides if we have them
     if (userGuideIds.length > 0) {
@@ -85,7 +83,6 @@ export async function GET(request: NextRequest) {
         guide_id: reading.guide,
         guide_name: guideMap.get(reading.guide) || 'Unknown Guide',
         author: reading.author || null,
-        type: reading.type || 'guide',
       }));
 
     return successResponse({ readings: transformedReadings });

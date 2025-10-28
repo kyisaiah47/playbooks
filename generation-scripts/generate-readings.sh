@@ -203,34 +203,12 @@ For each title, create 300-400 word content following these requirements:
 
    **Store format**: ARRAY['Source 1', 'Source 2', 'Source 3']
 
-6. **Type** (pick ONE based on content - do not invent new types):
-
-   - **'guide'** - Educational overview/framework
-     Example: "Skills Transfer Framework: What Actually Carries Over vs What You Need to Build"
-     Contains: Frameworks, mental models, cause-and-effect, decision trees
-     NOT: Step-by-step instructions or templates
-
-   - **'article'** - Insight/analysis piece
-     Example: "Why Most Career Change Advice Fails: The Credibility Gap Problem"
-     Contains: Research-backed insights, controversial takes, data analysis
-     NOT: How-to instructions or frameworks
-
-   - **'checklist'** - Step-by-step process
-     Example: "The 30-Day Pre-Ask Checklist: What to Do Before Asking for a Raise"
-     Contains: Sequential steps, verification points, action items
-     NOT: Conceptual explanations
-
-   - **'tool'** - Template/worksheet you can copy
-     Example: "Salary Negotiation Email Scripts: Word-for-Word Templates"
-     Contains: Copy-paste scripts, fill-in-the-blank templates, calculators
-     NOT: Explanations of why or how things work
-
-7. **Slug**: URL-friendly version of title
+6. **Slug**: URL-friendly version of title
    - Format: lowercase-with-hyphens
    - Example: "The 5-Minute Conversation Worth $1.5M" → slug: "the-5-minute-conversation-worth-1-5m"
    - Remove special characters, use hyphens for spaces
 
-8. **Structure** (300-400 words):
+7. **Structure** (300-400 words):
    - Hook with a specific example or controversial statement
    - 2-3 main sections with clear headers
    - Include at least ONE of these:
@@ -313,7 +291,7 @@ Why it works: Specific timeframe, specific ask, shows you've done research."
    - Generate SHORT content (300-400 words) with quote blocks
    - Insert to database using mcp__supabase__execute_sql
 
-INSERT INTO readings (id, title, excerpt, content, author, read_time, type, guide, slug, published_at, sources)
+INSERT INTO readings (id, title, excerpt, content, author, read_time, guide, slug, published_at, sources)
 VALUES (
   'reading-{guide-id}-{unique-slug}',
   '{title}',
@@ -321,7 +299,6 @@ VALUES (
   '{content}',
   'Templata',
   '{X} min read',
-  '{type}',
   'GUIDE_ID_PLACEHOLDER',
   '{slug}',
   '2025-01-15',

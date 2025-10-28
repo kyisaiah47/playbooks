@@ -145,15 +145,6 @@ export default function LibraryPage() {
   const selectedGuideData = guides.find(g => g.guide_id === selectedGuide);
   const groupedGuides = groupGuidesByLetter();
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'guide': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400';
-      case 'article': return 'bg-green-500/10 text-green-600 dark:text-green-400';
-      case 'checklist': return 'bg-purple-500/10 text-purple-600 dark:text-purple-400';
-      case 'tool': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400';
-      default: return 'bg-muted text-muted-foreground';
-    }
-  };
 
   return (
     <div className="flex h-[calc(100vh-3.5rem)] overflow-hidden">
@@ -344,12 +335,6 @@ export default function LibraryPage() {
                               {reading.excerpt}
                             </p>
                           </div>
-                          <Badge
-                            variant="secondary"
-                            className={cn("text-xs px-2 py-1 font-medium capitalize", getTypeColor(reading.type))}
-                          >
-                            {reading.type}
-                          </Badge>
                         </div>
                     </div>
                   ))}

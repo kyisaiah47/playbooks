@@ -26,7 +26,6 @@ export async function getReadingById(id: string) {
     updatedAt: data.updated_at,
     readTime: data.read_time,
     slug: data.slug,
-    type: data.type,
     seo: {
       metaTitle: data.meta_title,
       metaDescription: data.meta_description
@@ -55,7 +54,6 @@ export async function getReadingBySlug(slug: string) {
     updatedAt: data.updated_at,
     readTime: data.read_time,
     slug: data.slug,
-    type: data.type,
     seo: {
       metaTitle: data.meta_title,
       metaDescription: data.meta_description
@@ -136,7 +134,6 @@ export async function getReadings(page = 1, pageSize = 50) {
     category: reading.category,
     featured: reading.featured,
     slug: reading.slug,
-    type: reading.type,
     seo: {
       metaTitle: reading.meta_title,
       metaDescription: reading.meta_description,

@@ -151,12 +151,11 @@ Consider if user is:
 
 Insert the questions directly into the questions table using mcp__supabase__execute_sql:
 
-INSERT INTO questions (id, question, category, type, template_id, question_number)
+INSERT INTO questions (id, question, category, template_id, question_number)
 VALUES (
   '{guide-id}-{number}',
   '{question text}',
   '{planning|reflection|research|action}',
-  '{same as category}',
   'GUIDE_ID_PLACEHOLDER',
   {sequential number}
 );
