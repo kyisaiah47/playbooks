@@ -40,7 +40,7 @@ export function ArchivedGuideList({ workspaceId }: ArchivedGuideListProps) {
   const { data, isLoading } = useQuery({
     queryKey: ['archived-guides', workspaceId],
     queryFn: async () => {
-      const response = await fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=true`);
+      const response = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=true`);
       if (!response.ok) throw new Error('Failed to fetch archived guides');
       return response.json();
     },
@@ -49,7 +49,7 @@ export function ArchivedGuideList({ workspaceId }: ArchivedGuideListProps) {
   // Restore guide mutation
   const restoreMutation = useMutation({
     mutationFn: async (userGuideId: string) => {
-      const response = await fetch(`/api/user-guides/${userGuideId}`, {
+      const response = await fetch(`/api/notes/${userGuideId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ archived: false }),
@@ -70,7 +70,7 @@ export function ArchivedGuideList({ workspaceId }: ArchivedGuideListProps) {
   // Delete guide mutation
   const deleteMutation = useMutation({
     mutationFn: async (userGuideId: string) => {
-      const response = await fetch(`/api/user-guides/${userGuideId}`, {
+      const response = await fetch(`/api/notes/${userGuideId}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete guide');
@@ -85,7 +85,7 @@ export function ArchivedGuideList({ workspaceId }: ArchivedGuideListProps) {
     },
   });
 
-  const archivedGuides: ArchivedGuide[] = data?.userGuides || [];
+  const archivedGuides: ArchivedGuide[] = data?.notes || [];
 
   if (isLoading) {
     return (

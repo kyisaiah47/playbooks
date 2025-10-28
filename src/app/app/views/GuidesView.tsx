@@ -225,7 +225,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
       if (!userGuideId || !isAuthenticated) return;
 
       try {
-        const res = await fetch(`/api/user-guides/${userGuideId}`);
+        const res = await fetch(`/api/notes/${userGuideId}`);
 
         if (!res.ok) {
           console.error('Failed to fetch user guide:', res.status);
@@ -654,7 +654,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           guideName={guideInfo?.name}
           onNameChange={async (newName) => {
             try {
-              const res = await fetch(`/api/user-guides/${userGuideId}`, {
+              const res = await fetch(`/api/notes/${userGuideId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: newName }),
@@ -670,7 +670,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           onIconChange={async (newIcon) => {
             try {
               console.log('Updating icon to:', newIcon);
-              const res = await fetch(`/api/user-guides/${userGuideId}`, {
+              const res = await fetch(`/api/notes/${userGuideId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ icon: newIcon }),
@@ -690,7 +690,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
           }}
           onCoverChange={async (coverUrl) => {
             try {
-              const res = await fetch(`/api/user-guides/${userGuideId}`, {
+              const res = await fetch(`/api/notes/${userGuideId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ cover_image: coverUrl }),

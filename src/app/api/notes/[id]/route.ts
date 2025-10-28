@@ -36,7 +36,7 @@ export async function GET(
 
     return successResponse({ userGuide });
   } catch (error) {
-    console.error('Error in GET /api/user-guides/[id]:', error);
+    console.error('Error in GET /api/notes/[id]:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -116,7 +116,7 @@ export async function PATCH(
 
     return successResponse({ userGuide });
   } catch (error) {
-    console.error('Error in PATCH /api/user-guides/[id]:', error);
+    console.error('Error in PATCH /api/notes/[id]:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -146,7 +146,7 @@ export async function DELETE(
 
     return successResponse({ message: 'User guide deleted successfully' });
   } catch (error) {
-    console.error('Error in DELETE /api/user-guides/[id]:', error);
+    console.error('Error in DELETE /api/notes/[id]:', error);
     return errorResponse('Internal server error');
   }
 }

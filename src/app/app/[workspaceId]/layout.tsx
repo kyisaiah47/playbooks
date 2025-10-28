@@ -717,7 +717,7 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
   // Handle creating a new note from the dialog
   const handleCreateNote = useCallback(async (guideId: string | null) => {
     try {
-      const response = await fetch('/api/user-guides', {
+      const response = await fetch('/api/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -733,18 +733,22 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
       }
 
       const data = await response.json();
-      const userGuide = data.userGuide;
+      const note = data.note;
+
+      if (!note) {
+        throw new Error('No note returned from API');
+      }
 
       // Show success toast
       toast.success(guideId ? 'Note created from guide' : 'Blank note created');
 
       // Open the new note in a tab
-      if (userGuide.guides) {
-        handleNoteClick(userGuide.guide_id, userGuide.guides.name, userGuide.guides.icon);
+      if (note.guides) {
+        handleNoteClick(note.guide_id, note.guides.name, note.guides.icon);
       } else {
         // For blank notes, create a tab with generic title
         const newTab: Tab = {
-          id: `note-${userGuide.id}`,
+          id: `note-${note.id}`,
           type: 'notes',
           label: 'Untitled Note',
           icon: FileText,

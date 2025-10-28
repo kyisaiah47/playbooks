@@ -49,9 +49,9 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
         setLoading(true);
 
         // Fetch notes
-        const notesResponse = await fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`);
+        const notesResponse = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`);
         const notesData = await notesResponse.json();
-        setNotes(notesData.userGuides || []);
+        setNotes(notesData.notes || []);
 
         // Fetch pages to find Getting Started pageId
         const pagesResponse = await fetch(`/api/workspaces/${workspaceId}/pages`);

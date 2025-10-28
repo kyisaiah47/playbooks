@@ -56,9 +56,9 @@ export function TaskCreateForm({ status, onSubmit, onCancel, workspaceId }: Task
   useEffect(() => {
     async function fetchUserGuides() {
       try {
-        const res = await fetch(`/api/user-guides?workspace_id=${workspaceId}`);
+        const res = await fetch(`/api/notes?workspace_id=${workspaceId}`);
         const data = await res.json();
-        setUserGuides(data.userGuides || []);
+        setUserGuides(data.notes || []);
       } catch (error) {
         console.error('Error fetching user guides:', error);
       }

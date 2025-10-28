@@ -74,7 +74,7 @@ export default function AnalyticsPage() {
         setLoading(true);
 
         const [guidesRes, itemsRes] = await Promise.all([
-          fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`),
+          fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`),
           fetch(`/api/items`)
         ]);
 
@@ -87,7 +87,7 @@ export default function AnalyticsPage() {
           itemsRes.json()
         ]);
 
-        setAllUserGuides(guidesData.userGuides || []);
+        setAllUserGuides(guidesData.notes || []);
         setAllItems(itemsData.items || []);
       } catch (error) {
         console.error('Error fetching data:', error);

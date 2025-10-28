@@ -62,10 +62,10 @@ export function EventCreateForm({
   useEffect(() => {
     if (open && workspaceId) {
       setLoadingNotes(true);
-      fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`)
+      fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`)
         .then(res => res.json())
         .then(data => {
-          setNotes(data.userGuides || []);
+          setNotes(data.notes || []);
         })
         .catch(err => {
           console.error('Error fetching notes:', err);

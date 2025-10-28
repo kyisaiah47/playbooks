@@ -33,7 +33,7 @@ export default function NotesPage() {
 
       try {
         // Check if user already has this guide in workspace
-        const response = await fetch(`/api/user-guides?workspace_id=${workspaceId}&guide_id=${guideId}`);
+        const response = await fetch(`/api/notes?workspace_id=${workspaceId}&guide_id=${guideId}`);
 
         if (!response.ok) {
           console.error('Failed to fetch user guides:', response.status);
@@ -43,12 +43,12 @@ export default function NotesPage() {
 
         const data = await response.json();
 
-        if (data.userGuides && data.userGuides.length > 0) {
+        if (data.notes && data.notes.length > 0) {
           // Use existing user_guide
-          setUserGuideId(data.userGuides[0].id);
+          setUserGuideId(data.notes[0].id);
         } else if (!demoMode) {
           // Create new user_guide instance (only if not in demo mode)
-          const createResponse = await fetch('/api/user-guides', {
+          const createResponse = await fetch('/api/notes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

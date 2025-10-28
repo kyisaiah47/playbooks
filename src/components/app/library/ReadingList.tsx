@@ -35,7 +35,7 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
   const { data: userGuidesData, isLoading: userGuidesLoading } = useQuery({
     queryKey: ['user-guides', workspaceId],
     queryFn: async () => {
-      const response = await fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`);
+      const response = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`);
       if (!response.ok) throw new Error('Failed to fetch user guides');
       return response.json();
     },
@@ -52,7 +52,7 @@ export function ReadingList({ workspaceId }: ReadingListProps) {
     enabled: !!userGuidesData, // Only fetch readings after we have user guides
   });
 
-  const userGuides = userGuidesData?.userGuides || [];
+  const userGuides = userGuidesData?.notes || [];
 
   // Readings are already filtered by the API
   const readings: Reading[] = readingsData?.readings || [];

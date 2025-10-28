@@ -49,7 +49,7 @@ export default function GraphPage() {
       try {
         setLoading(true);
         const response = await fetch(
-          `/api/user-guides?workspace_id=${workspaceId}&archived=false`
+          `/api/notes?workspace_id=${workspaceId}&archived=false`
         );
 
         if (!response.ok) {
@@ -57,7 +57,7 @@ export default function GraphPage() {
         }
 
         const data = await response.json();
-        setAllUserGuides(data.userGuides || []);
+        setAllUserGuides(data.notes || []);
       } catch (err) {
         console.error('Error fetching user guides:', err);
         setError('Failed to load guides');

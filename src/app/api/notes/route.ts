@@ -58,11 +58,11 @@ export async function GET(request: NextRequest) {
 
     if (notesError) {
       console.error('Error fetching notes:', notesError);
-      return errorResponse('Failed to fetch user guides');
+      return errorResponse('Failed to fetch notes');
     }
 
     if (!notes || notes.length === 0) {
-      return successResponse({ userGuides: [] });
+      return successResponse({ notes: [] });
     }
 
     // Get unique guide IDs
@@ -83,14 +83,14 @@ export async function GET(request: NextRequest) {
     const guidesMap = new Map((guides || []).map(g => [g.id, g]));
 
     // Manually join notes with guides
-    const userGuides = notes.map(note => ({
+    const notesWithGuides = notes.map(note => ({
       ...note,
       guides: guidesMap.get(note.guide_id) || null
     }));
 
-    return successResponse({ userGuides });
+    return successResponse({ notes: notesWithGuides });
   } catch (error) {
-    console.error('Error in GET /api/user-guides:', error);
+    console.error('Error in GET /api/notes:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const { data: userGuide, error } = await supabase
+    const { data: note, error } = await supabase
       .from('notes')
       .insert({
         user_id: user.userId,
@@ -147,13 +147,13 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
-      console.error('Error creating user guide:', error);
-      return errorResponse('Failed to create user guide');
+      console.error('Error creating note:', error);
+      return errorResponse('Failed to create note');
     }
 
-    return successResponse({ userGuide }, 201);
+    return successResponse({ note }, 201);
   } catch (error) {
-    console.error('Error in POST /api/user-guides:', error);
+    console.error('Error in POST /api/notes:', error);
     return errorResponse('Internal server error');
   }
 }

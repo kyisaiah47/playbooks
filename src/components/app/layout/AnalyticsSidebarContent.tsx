@@ -42,9 +42,9 @@ export function AnalyticsSidebarContent({ selectedGuideIds, onGuideToggle }: Ana
     async function fetchGuides() {
       try {
         setLoading(true);
-        const guidesResponse = await fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`);
+        const guidesResponse = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`);
         const guidesData = await guidesResponse.json();
-        setGuides(guidesData.userGuides || []);
+        setGuides(guidesData.notes || []);
       } catch (error) {
         console.error('Error fetching guides:', error);
       } finally {

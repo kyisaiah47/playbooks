@@ -100,13 +100,13 @@ export default function OverviewPage() {
           setLoading(true);
 
           const [guidesRes, itemsRes] = await Promise.all([
-            fetch(`/api/user-guides?workspace_id=${DEMO_WORKSPACE_ID}&archived=false`),
+            fetch(`/api/notes?workspace_id=${DEMO_WORKSPACE_ID}&archived=false`),
             fetch(`/api/items?workspace_id=${DEMO_WORKSPACE_ID}`)
           ]);
 
           if (guidesRes.ok) {
             const guidesData = await guidesRes.json();
-            setAllUserGuides(guidesData.userGuides || []);
+            setAllUserGuides(guidesData.notes || []);
           }
 
           if (itemsRes.ok) {
@@ -129,7 +129,7 @@ export default function OverviewPage() {
         setLoading(true);
 
         const [guidesRes, itemsRes] = await Promise.all([
-          fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`),
+          fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`),
           fetch(`/api/items`)
         ]);
 
@@ -142,7 +142,7 @@ export default function OverviewPage() {
           itemsRes.json()
         ]);
 
-        setAllUserGuides(guidesData.userGuides || []);
+        setAllUserGuides(guidesData.notes || []);
         setAllItems(itemsData.items || []);
       } catch (error) {
         console.error('Error fetching data:', error);

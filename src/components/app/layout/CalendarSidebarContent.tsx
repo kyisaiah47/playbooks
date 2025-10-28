@@ -42,9 +42,9 @@ export function CalendarSidebarContent({ selectedNoteIds, onNoteToggle }: Calend
     async function fetchNotes() {
       try {
         setLoading(true);
-        const notesResponse = await fetch(`/api/user-guides?workspace_id=${workspaceId}&archived=false`);
+        const notesResponse = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`);
         const notesData = await notesResponse.json();
-        setNotes(notesData.userGuides || []);
+        setNotes(notesData.notes || []);
       } catch (error) {
         console.error('Error fetching notes:', error);
       } finally {
