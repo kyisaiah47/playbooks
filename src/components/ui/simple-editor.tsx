@@ -32,10 +32,10 @@ export function SimpleEditor({ content = '', onUpdate, placeholder, className }:
   }
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full min-h-[600px]">
       <EditorContent
         editor={editor}
-        className="w-full h-full [&_.ProseMirror]:min-h-full [&_.ProseMirror]:p-4 [&_.ProseMirror]:outline-none [&_.ProseMirror]:border-0"
+        className="w-full min-h-[600px] [&_.ProseMirror]:min-h-[600px] [&_.ProseMirror]:outline-none [&_.ProseMirror]:border-0 [&_.ProseMirror]:focus:outline-none [&_.ProseMirror]:p-0"
         placeholder={placeholder}
       />
     </div>

@@ -98,29 +98,20 @@ export function BlankNoteEditor({ noteId, workspaceId }: BlankNoteEditorProps) {
   }
 
   return (
-    <motion.div
-      className="h-full w-full flex flex-col"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3 }}
-    >
-      {/* Title Editor */}
-      <div className="border-b border-border/40 px-6 py-4">
-        <div className="max-w-4xl mx-auto">
+    <div className="h-full w-full flex flex-col overflow-hidden bg-background">
+      {/* Header Bar */}
+      <div className="flex-shrink-0 border-b border-border/40 bg-muted/20">
+        <div className="max-w-5xl mx-auto px-8 py-4">
+          {/* Title Input */}
           <input
             type="text"
             value={title}
             onChange={(e) => handleTitleUpdate(e.target.value)}
             placeholder="Untitled Note"
-            className="w-full text-3xl font-bold bg-transparent border-none outline-none placeholder:text-muted-foreground/40"
+            className="w-full text-4xl font-bold bg-transparent border-none outline-none placeholder:text-muted-foreground/30 mb-2"
           />
-        </div>
-      </div>
 
-      {/* Save Indicator */}
-      <div className="border-b border-border/40 px-6 py-2">
-        <div className="max-w-4xl mx-auto flex items-center justify-end">
+          {/* Save Indicator */}
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             {saving ? (
               <>
@@ -132,22 +123,24 @@ export function BlankNoteEditor({ noteId, workspaceId }: BlankNoteEditorProps) {
                 <Check className="w-3 h-3 text-green-500" />
                 <span>Saved {lastSaved.toLocaleTimeString()}</span>
               </>
-            ) : null}
+            ) : (
+              <span>Start typing...</span>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Editor */}
+      {/* Editor Area */}
       <div className="flex-1 overflow-auto">
-        <div className="max-w-4xl mx-auto py-8">
+        <div className="h-full max-w-5xl mx-auto px-8 py-8">
           <SimpleEditor
             content={content}
             onUpdate={handleContentUpdate}
-            placeholder="Start writing..."
-            className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl dark:prose-invert focus:outline-none max-w-none"
+            placeholder="Write your thoughts here..."
+            className="prose prose-base lg:prose-lg dark:prose-invert focus:outline-none max-w-none"
           />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
