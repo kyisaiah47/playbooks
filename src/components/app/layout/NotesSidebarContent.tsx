@@ -33,6 +33,7 @@ interface NotesSidebarContentProps {
 
 export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: NotesSidebarContentProps) {
   const params = useParams();
+  const router = useRouter();
   const { demoMode } = useDemo();
   const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
@@ -116,10 +117,18 @@ export function NotesSidebarContent({ activeGuideId, onNoteClick, onNewNote }: N
           >
             {filteredNotes.map((note) => {
               const IconComponent = getIconComponent(note.guides?.icon);
+              const isBlankNote = !note.guide_id;
               return (
                 <motion.button
                   key={note.id}
-                  onClick={() => onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon)}
+                  onClick={() => {
+                    if (isBlankNote) {
+                      // For blank notes, navigate using noteId
+                      router.push(`/app/${workspaceId}/notes?noteId=${note.id}`);
+                    } else {
+                      onNoteClick(note.guide_id, note.guides?.name, note.guides?.icon);
+                    }
+                  }}
                   className={cn(
                     "w-full flex items-center gap-2 px-2 py-2 rounded transition-colors group",
                     activeGuideId === note.guide_id

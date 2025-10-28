@@ -729,7 +729,9 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
       });
 
       if (!response.ok) {
-        throw new Error('Failed to create note');
+        const errorData = await response.json();
+        console.error('API Error Response:', errorData);
+        throw new Error(`Failed to create note: ${errorData.error || response.statusText}`);
       }
 
       const data = await response.json();
@@ -746,18 +748,8 @@ function WorkspaceLayoutInner({ children, demoMode = false }: WorkspaceLayoutPro
       if (note.guides) {
         handleNoteClick(note.guide_id, note.guides.name, note.guides.icon);
       } else {
-        // For blank notes, create a tab with generic title
-        const newTab: Tab = {
-          id: `note-${note.id}`,
-          type: 'notes',
-          label: 'Untitled Note',
-          icon: FileText,
-          iconName: 'file-text',
-          guideId: null,
-          guideName: null,
-          guideIcon: null,
-        };
-        addTab(newTab);
+        // For blank notes, navigate to the note using its ID
+        router.push(`/app/${workspaceId}/notes?noteId=${note.id}`);
       }
     } catch (error) {
       console.error('Error creating note:', error);
