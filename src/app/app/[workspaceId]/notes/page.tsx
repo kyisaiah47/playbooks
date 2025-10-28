@@ -25,21 +25,9 @@ export default function NotesPage() {
   const [loading, setLoading] = useState(true);
   const [pageName, setPageName] = useState<string>('');
 
-  // Debug logging and save last selected to localStorage
+  // Debug logging
   useEffect(() => {
     console.log('[NotesPage] Params:', { noteId, guideId, pageId, workspaceId });
-
-    // Save last selected note
-    if (noteId) {
-      localStorage.setItem('lastSelectedNoteId', noteId);
-      if (guideId) {
-        localStorage.setItem('lastSelectedGuideId', guideId);
-      } else {
-        localStorage.removeItem('lastSelectedGuideId');
-      }
-    } else if (guideId) {
-      localStorage.setItem('lastSelectedGuideId', guideId);
-    }
   }, [noteId, guideId, pageId, workspaceId]);
 
   // Fetch or create user_guide instance for this guide
@@ -116,56 +104,11 @@ export default function NotesPage() {
     fetchPage();
   }, [pageId, workspaceId]);
 
-  // Load default note if no params
+  // Load default note if no params - redirect to overview instead
   useEffect(() => {
     if (!guideId && !pageId && !noteId) {
-      console.log('[NotesPage] No params - redirecting to last/first note');
-
-      async function loadDefaultNote() {
-        try {
-          // Fetch all notes to find a valid one
-          const response = await fetch(`/api/notes?workspace_id=${workspaceId}`);
-          if (response.ok) {
-            const data = await response.json();
-            if (data.notes && data.notes.length > 0) {
-              // Try to get last selected from localStorage
-              const lastGuideId = localStorage.getItem('lastSelectedGuideId');
-
-              // First try to find the last selected guided note
-              if (lastGuideId) {
-                const lastNote = data.notes.find((n: any) => n.guide_id === lastGuideId);
-                if (lastNote) {
-                  router.push(`/app/${workspaceId}/notes?id=${lastGuideId}`);
-                  return;
-                }
-              }
-
-              // Fallback: use first guided note (skip blank notes for now)
-              const firstGuidedNote = data.notes.find((n: any) => n.guide_id);
-              if (firstGuidedNote) {
-                router.push(`/app/${workspaceId}/notes?id=${firstGuidedNote.guide_id}`);
-                return;
-              }
-
-              // Last resort: use first note even if blank
-              const firstNote = data.notes[0];
-              if (firstNote.guide_id) {
-                router.push(`/app/${workspaceId}/notes?id=${firstNote.guide_id}`);
-              } else {
-                router.push(`/app/${workspaceId}/notes?noteId=${firstNote.id}`);
-              }
-              return;
-            }
-          }
-
-          // No notes at all - show empty state
-          console.log('[NotesPage] No notes found');
-        } catch (error) {
-          console.error('Error loading default note:', error);
-        }
-      }
-
-      loadDefaultNote();
+      console.log('[NotesPage] No params - redirecting to overview');
+      router.replace(`/app/${workspaceId}`);
     }
   }, [guideId, pageId, noteId, workspaceId, router]);
 
