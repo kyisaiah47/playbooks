@@ -30,6 +30,7 @@ export async function GET(request: NextRequest) {
           read_time,
           guide,
           tags,
+          sources,
           author
         `)
         .eq('id', reading_id)
@@ -57,9 +58,10 @@ export async function GET(request: NextRequest) {
           title: reading.title,
           content: reading.content,
           excerpt: reading.excerpt || '',
-          readTime: `${reading.read_time} min read`,
+          readTime: reading.read_time,
           author: reading.author || 'Templata',
           publishedAt: new Date().toISOString(),
+          sources: reading.sources || [], // Use the sources field, not tags
         }
       });
     }

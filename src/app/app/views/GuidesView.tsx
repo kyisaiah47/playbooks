@@ -52,6 +52,7 @@ interface ReadingDetail extends Reading {
   content: string;
   author: string;
   publishedAt: string;
+  sources?: string[];
 }
 
 interface Guide {
@@ -905,11 +906,25 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
                           <span>{selectedReading.author}</span>
                           <span>•</span>
-                          <span>{selectedReading.readTime}</span>
+                          <span>{selectedReading.readTime} min read</span>
                           <span>•</span>
                           <span>{new Date(selectedReading.publishedAt).toLocaleDateString()}</span>
                         </div>
                       </header>
+
+                      {selectedReading.sources && selectedReading.sources.length > 0 && (
+                        <Card className="p-4 bg-muted/30 border-border">
+                          <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                            <BookOpen className="h-4 w-4" />
+                            Sources
+                          </h3>
+                          <ul className="text-sm space-y-1 text-muted-foreground">
+                            {selectedReading.sources.map((source, i) => (
+                              <li key={i}>• {source}</li>
+                            ))}
+                          </ul>
+                        </Card>
+                      )}
 
                       <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
                     </div>
@@ -969,7 +984,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                               {reading.excerpt}
                             </p>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span>{reading.readTime}</span>
+                              <span>{reading.readTime} min read</span>
                               <ChevronRight className="h-3 w-3 ml-auto" />
                             </div>
                           </Card>
@@ -1002,7 +1017,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
               <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                 <span>{selectedReading.author}</span>
                 <span>•</span>
-                <span>{selectedReading.readTime}</span>
+                <span>{selectedReading.readTime} min read</span>
               </div>
               {/* Search bar for mobile */}
               <div className="relative">
@@ -1016,13 +1031,28 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                 />
               </div>
             </DrawerHeader>
-            <div className="flex-1 overflow-y-auto px-4 pb-4">
+            <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-4">
               {loadingReading ? (
                 <div className="py-8 text-center">
                   <p className="text-muted-foreground">Loading reading...</p>
                 </div>
               ) : (
-                <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
+                <>
+                  {selectedReading.sources && selectedReading.sources.length > 0 && (
+                    <Card className="p-4 bg-muted/30 border-border">
+                      <h3 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                        <BookOpen className="h-4 w-4" />
+                        Sources
+                      </h3>
+                      <ul className="text-sm space-y-1 text-muted-foreground">
+                        {selectedReading.sources.map((source, i) => (
+                          <li key={i}>• {source}</li>
+                        ))}
+                      </ul>
+                    </Card>
+                  )}
+                  <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
+                </>
               )}
             </div>
           </DrawerContent>
@@ -1162,7 +1192,7 @@ export function GuidesView({ onViewChange, setActions, workspaceId, userGuideId,
                           {reading.excerpt}
                         </p>
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <span>{reading.readTime}</span>
+                          <span>{reading.readTime} min read</span>
                           <ChevronRight className="h-3 w-3 ml-auto" />
                         </div>
                       </Card>
