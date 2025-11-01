@@ -7,9 +7,6 @@ import {
   FileText,
   Calendar,
   CheckSquare,
-  Clock,
-  BookMarked,
-  Network,
   BarChart3,
   Archive,
   HelpCircle,
@@ -25,10 +22,6 @@ import { DiscoverDocs } from '@/components/docs/DiscoverDocs';
 import { LibraryDocs } from '@/components/docs/LibraryDocs';
 import { CalendarDocs } from '@/components/docs/CalendarDocs';
 import { TasksDocs } from '@/components/docs/TasksDocs';
-import { TimelineDocs } from '@/components/docs/TimelineDocs';
-import { DailyDocs } from '@/components/docs/DailyDocs';
-import { JournalDocs } from '@/components/docs/JournalDocs';
-import { GraphDocs } from '@/components/docs/GraphDocs';
 import { AnalyticsDocs } from '@/components/docs/AnalyticsDocs';
 import { ArchiveDocs } from '@/components/docs/ArchiveDocs';
 import { FaqDocs } from '@/components/docs/FaqDocs';
@@ -41,10 +34,6 @@ type DocSection =
   | 'library'
   | 'calendar'
   | 'tasks'
-  | 'timeline'
-  | 'daily'
-  | 'journal'
-  | 'graph'
   | 'analytics'
   | 'archive'
   | 'faq'
@@ -94,10 +83,6 @@ export default function DocsPage() {
         { id: 'library' as DocSection, title: 'Library', icon: Library },
         { id: 'calendar' as DocSection, title: 'Calendar', icon: Calendar },
         { id: 'tasks' as DocSection, title: 'Tasks', icon: CheckSquare },
-        { id: 'timeline' as DocSection, title: 'Timeline', icon: Clock },
-        { id: 'daily' as DocSection, title: 'Daily', icon: Calendar },
-        { id: 'journal' as DocSection, title: 'Journal', icon: BookMarked },
-        { id: 'graph' as DocSection, title: 'Graph', icon: Network },
         { id: 'analytics' as DocSection, title: 'Analytics', icon: BarChart3 },
         { id: 'archive' as DocSection, title: 'Archive', icon: Archive },
       ]
@@ -120,10 +105,6 @@ export default function DocsPage() {
       case 'library': return <LibraryDocs />;
       case 'calendar': return <CalendarDocs />;
       case 'tasks': return <TasksDocs />;
-      case 'timeline': return <TimelineDocs />;
-      case 'daily': return <DailyDocs />;
-      case 'journal': return <JournalDocs />;
-      case 'graph': return <GraphDocs />;
       case 'analytics': return <AnalyticsDocs />;
       case 'archive': return <ArchiveDocs />;
       case 'faq': return <FaqDocs />;
