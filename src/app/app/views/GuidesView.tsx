@@ -259,7 +259,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
           if (data.answers) {
             const response = data.answers.find(
               (r: any) =>
-                r.prompt_id === selectedQuestionId
+                r.question_id === selectedQuestionId
             );
 
             if (response) {
@@ -412,7 +412,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         setPrompts(fetchedQuestions);
 
         // Collapse all categories by default
-        const groupedQuestions = fetchedQuestions.reduce((acc: Record<string, Prompt[]>, prompt: Prompt) => {
+        const groupedQuestions = fetchedQuestions.reduce((acc: Record<string, Question[]>, question: Question) => {
           const category = prompt.categoryName || 'General';
           if (!acc[category]) {
             acc[category] = [];
@@ -454,7 +454,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
           if (data.answers) {
             data.answers.forEach((r: any) => {
               if (r.answer && r.answer.trim().length > 0) {
-                answered.add(r.prompt_id);
+                answered.add(r.question_id);
               }
             });
           }
@@ -506,7 +506,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
 
       setSelectedArticle(data);
     } catch (error) {
-      console.error('Error fetching article:', error);
+      console.error('Error fetching reading:', error);
     } finally {
       setLoadingArticle(false);
     }
@@ -563,7 +563,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
   // Filter questions based on search query
   const filteredQuestions = questionSearchQuery.trim()
     ? questions.filter(p =>
-        p.prompt.toLowerCase().includes(questionSearchQuery.toLowerCase()) ||
+        p.question.toLowerCase().includes(questionSearchQuery.toLowerCase()) ||
         (p.categoryName && p.categoryName.toLowerCase().includes(questionSearchQuery.toLowerCase()))
       )
     : questions;
@@ -668,7 +668,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                 className="h-8 text-sm mb-2"
               />
               <p className="text-xs text-muted-foreground">
-                Select a prompt, write your answer, and see a checkmark appear
+                Select a question, write your answer, and see a checkmark appear
               </p>
             </div>
 
@@ -750,7 +750,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                       {selectedQuestion.categoryName}
                     </Badge>
                     <h2 className="text-lg md:text-xl font-bold text-foreground mb-2">
-                      {selectedQuestion.prompt}
+                      {selectedQuestion.question}
                     </h2>
                     <p className="text-xs md:text-sm text-muted-foreground hidden md:block">
                       {autoSave
@@ -781,10 +781,10 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                   <div className="text-center space-y-2">
                     <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-foreground">
-                      Select a prompt to begin
+                      Select a question to begin
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-md">
-                      Choose a prompt from the left sidebar to start working on your template
+                      Choose a question from the left sidebar to start working on your guide
                     </p>
                   </div>
                 </motion.div>
@@ -803,7 +803,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
             <AnimatePresence mode="wait">
               {selectedReading ? (
                 <motion.div
-                  key="article-detail"
+                  key="reading-detail"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
@@ -827,7 +827,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
                       <Input
                         type="text"
-                        placeholder="Search in article..."
+                        placeholder="Search in reading..."
                         value={readingContentSearchQuery}
                         onChange={(e) => setArticleContentSearchQuery(e.target.value)}
                         className="h-9 text-sm pl-9"
@@ -837,7 +837,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
 
                   {loadingReading ? (
                     <div className="py-8 text-center">
-                      <p className="text-muted-foreground">Loading article...</p>
+                      <p className="text-muted-foreground">Loading reading...</p>
                     </div>
                   ) : (
                     <div className="space-y-6">
@@ -860,7 +860,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                 </motion.div>
               ) : (
                 <motion.div
-                  key="article-list"
+                  key="reading-list"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -952,7 +952,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
                 <Input
                   type="text"
-                  placeholder="Search in article..."
+                  placeholder="Search in reading..."
                   value={readingContentSearchQuery}
                   onChange={(e) => setArticleContentSearchQuery(e.target.value)}
                   className="h-9 text-sm pl-9"
@@ -962,7 +962,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
             <div className="flex-1 overflow-y-auto px-4 pb-4">
               {loadingReading ? (
                 <div className="py-8 text-center">
-                  <p className="text-muted-foreground">Loading article...</p>
+                  <p className="text-muted-foreground">Loading reading...</p>
                 </div>
               ) : (
                 <ArticleContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
@@ -1010,7 +1010,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                   className="h-8 text-sm -mt-2"
                 />
                 <p className="text-xs text-muted-foreground -mt-2">
-                  Select a prompt, write your answer, and see a checkmark appear
+                  Select a question, write your answer, and see a checkmark appear
                 </p>
                 {loading ? (
                   <p className="text-sm text-muted-foreground">Loading questions...</p>
