@@ -85,7 +85,7 @@ const FEATURED_HEALTH_IDS = [
 
 const FEATURED_TEMPLATE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS, ...FEATURED_HEALTH_IDS];
 
-interface TemplatesViewProps {
+interface GuidesViewProps {
   onViewChange?: (view: 'templates' | 'reflection' | 'overview') => void;
   setActions?: (actions: {
     openTemplateDropdown?: () => void;
@@ -94,7 +94,7 @@ interface TemplatesViewProps {
   }) => void;
 }
 
-export function TemplatesView({ onViewChange, setActions }: TemplatesViewProps) {
+export function GuidesView({ onViewChange, setActions }: GuidesViewProps) {
   const [selectedTemplate, setSelectedTemplate] = useState('wedding-planning');
   const [templates, setTemplates] = useState<Template[]>([]);
   const [displayedTemplates, setDisplayedTemplates] = useState<Template[]>([]);
