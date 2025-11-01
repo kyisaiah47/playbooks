@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Axiom Engine | AI-Powered Decision Making Framework',
     description: 'Make better decisions faster with our AI-powered framework that provides structured guidance based on proven principles.',
-    url: 'https://templata.org/axiom-engine',
+    url: 'https://templata.com/axiom-engine',
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.org/og-image-axiom-engine.png',
+        url: 'https://templata.com/og-image-axiom-engine.png',
         width: 1200,
         height: 630,
         alt: 'Axiom Engine - AI-Powered Decision Making Framework',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Axiom Engine | AI-Powered Decision Making Framework',
     description: 'Make better decisions faster with our AI-powered framework.',
-    images: ['https://templata.org/og-image-axiom-engine.png'],
+    images: ['https://templata.com/og-image-axiom-engine.png'],
     creator: '@templata',
   },
   robots: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://templata.org/axiom-engine',
+    canonical: 'https://templata.com/axiom-engine',
   },
 };
 
@@ -59,7 +59,7 @@ export default function AxiomEngineLayout({
             "@type": "SoftwareApplication",
             "name": "Axiom Engine",
             "description": "AI-powered decision making framework for complex life decisions",
-            "url": "https://templata.org/axiom-engine",
+            "url": "https://templata.com/axiom-engine",
             "applicationCategory": "Productivity",
             "operatingSystem": "Web",
             "offers": {
@@ -82,7 +82,7 @@ export default function AxiomEngineLayout({
             "author": {
               "@type": "Organization",
               "name": "Templata",
-              "url": "https://templata.org"
+              "url": "https://templata.com"
             },
             "about": {
               "@type": "Thing",

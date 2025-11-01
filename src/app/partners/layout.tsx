@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Partner Program Coming Soon | Templata',
     description: 'Join Templata\'s upcoming partner program for professionals who want to share their expertise.',
-    url: 'https://templata.org/partners',
+    url: 'https://templata.com/partners',
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.org/og-image-partners.png',
+        url: 'https://templata.com/og-image-partners.png',
         width: 1200,
         height: 630,
         alt: 'Templata Partner Program - Coming Soon',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Partner Program Coming Soon | Templata',
     description: 'Join Templata\'s upcoming partner program for professionals who want to share their expertise.',
-    images: ['https://templata.org/og-image-partners.png'],
+    images: ['https://templata.com/og-image-partners.png'],
   },
   robots: {
     index: false,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://templata.org/partners',
+    canonical: 'https://templata.com/partners',
   },
 };
 
@@ -58,11 +58,11 @@ export default function PartnersLayout({
             "@type": "WebPage",
             "name": "Templata Partner Program - Coming Soon",
             "description": "Join our upcoming partner program for professionals who want to share their expertise through expert-crafted templates",
-            "url": "https://templata.org/partners",
+            "url": "https://templata.com/partners",
             "isPartOf": {
               "@type": "WebSite",
               "name": "Templata",
-              "url": "https://templata.org"
+              "url": "https://templata.com"
             },
             "about": {
               "@type": "Program",
@@ -81,7 +81,7 @@ export default function PartnersLayout({
               "@type": "RegisterAction",
               "name": "Join Waitlist",
               "description": "Get notified when the partner program launches",
-              "target": "https://templata.org/partners"
+              "target": "https://templata.com/partners"
             }
           })
         }}

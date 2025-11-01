@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'FAQ | Frequently Asked Questions About Templata',
     description: 'Get answers to common questions about Templata\'s life planning templates, pricing, features, and intelligent frameworks.',
-    url: 'https://templata.org/faq',
+    url: 'https://templata.com/faq',
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.org/og-image-faq.png',
+        url: 'https://templata.com/og-image-faq.png',
         width: 1200,
         height: 630,
         alt: 'Templata FAQ - Get Your Questions Answered',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'FAQ | Frequently Asked Questions About Templata',
     description: 'Get answers to common questions about Templata\'s life planning templates and intelligent frameworks.',
-    images: ['https://templata.org/og-image-faq.png'],
+    images: ['https://templata.com/og-image-faq.png'],
   },
   robots: {
     index: true,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://templata.org/faq',
+    canonical: 'https://templata.com/faq',
   },
 };
 
@@ -58,7 +58,7 @@ export default function FAQLayout({
             "@type": "FAQPage",
             "name": "Templata Frequently Asked Questions",
             "description": "Common questions and answers about Templata's life planning templates and services",
-            "url": "https://templata.org/faq",
+            "url": "https://templata.com/faq",
             "mainEntity": [
               {
                 "@type": "Question",

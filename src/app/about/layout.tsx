@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Templata | Life Shouldn\'t Start with a Blank Page',
     description: 'Learn how Templata is revolutionizing life organization by providing expert-crafted templates for major life moments.',
-    url: 'https://templata.org/about',
+    url: 'https://templata.com/about',
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.org/og-image-about.png',
+        url: 'https://templata.com/og-image-about.png',
         width: 1200,
         height: 630,
         alt: 'About Templata - Expert-Crafted Life Organization',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About Templata | Life Shouldn\'t Start with a Blank Page',
     description: 'Learn how Templata is revolutionizing life organization by providing expert-crafted templates for major life moments.',
-    images: ['https://templata.org/og-image-about.png'],
+    images: ['https://templata.com/og-image-about.png'],
   },
   robots: {
     index: true,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://templata.org/about',
+    canonical: 'https://templata.com/about',
   },
 };
 
@@ -58,7 +58,7 @@ export default function AboutLayout({
             "@type": "AboutPage",
             "name": "About Templata",
             "description": "Learn about Templata's mission to revolutionize life organization through expert-crafted templates",
-            "url": "https://templata.org/about",
+            "url": "https://templata.com/about",
             "mainEntity": {
               "@type": "Organization",
               "name": "Templata",
