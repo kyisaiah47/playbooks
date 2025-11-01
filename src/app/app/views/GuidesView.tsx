@@ -195,14 +195,14 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         },
         selectFirstPrompt: () => {
           if (questions.length > 0) {
-            const groupedQuestions = questions.reduce((acc, prompt) => {
-              const category = prompt.categoryName || 'General';
+            const groupedQuestions = questions.reduce((acc, question) => {
+              const category = question.categoryName || 'General';
               if (!acc[category]) {
                 acc[category] = [];
               }
-              acc[category].push(prompt);
+              acc[category].push(question);
               return acc;
-            }, {} as Record<string, Prompt[]>);
+            }, {} as Record<string, Question[]>);
             const firstCategory = Object.keys(groupedQuestions).sort()[0];
             // Expand first category
             setCollapsedCategories((prev) => {
@@ -408,16 +408,16 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
 
         const questionsRes = await fetch(`/api/guides/${selectedGuide}/questions`);
         const questionsData = await questionsRes.json();
-        const fetchedPrompts = questionsData.questions || [];
-        setPrompts(fetchedPrompts);
+        const fetchedQuestions = questionsData.questions || [];
+        setPrompts(fetchedQuestions);
 
         // Collapse all categories by default
-        const groupedQuestions = fetchedPrompts.reduce((acc: Record<string, Prompt[]>, prompt: Prompt) => {
+        const groupedQuestions = fetchedQuestions.reduce((acc: Record<string, Prompt[]>, prompt: Prompt) => {
           const category = prompt.categoryName || 'General';
           if (!acc[category]) {
             acc[category] = [];
           }
-          acc[category].push(prompt);
+          acc[category].push(question);
           return acc;
         }, {});
         const allCategories = Object.keys(groupedQuestions);
@@ -463,14 +463,14 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         }
       } else {
         // Check localStorage
-        questions.forEach((prompt) => {
-          const key = `workspace_${selectedGuide}_${prompt.id}`;
+        questions.forEach((question) => {
+          const key = `workspace_${selectedGuide}_${question.id}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {
               const data = JSON.parse(saved);
               if (data.answer && data.answer.trim().length > 0) {
-                answered.add(prompt.id);
+                answered.add(question.id);
               }
             } catch (e) {
               // Ignore parse errors
@@ -498,10 +498,10 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
     setOpen(false);
   };
 
-  const handleReadingClick = async (articleId: string) => {
+  const handleReadingClick = async (readingId: string) => {
     try {
       setLoadingArticle(true);
-      const res = await fetch(`/api/readings/${articleId}`);
+      const res = await fetch(`/api/readings/${readingId}`);
       const data = await res.json();
 
       setSelectedArticle(data);
@@ -561,24 +561,24 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
   };
 
   // Filter questions based on search query
-  const filteredPrompts = questionSearchQuery.trim()
+  const filteredQuestions = questionSearchQuery.trim()
     ? questions.filter(p =>
         p.prompt.toLowerCase().includes(questionSearchQuery.toLowerCase()) ||
         (p.categoryName && p.categoryName.toLowerCase().includes(questionSearchQuery.toLowerCase()))
       )
     : questions;
 
-  const groupedQuestions = filteredPrompts.reduce((acc, prompt) => {
+  const groupedQuestions = filteredQuestions.reduce((acc, prompt) => {
     const category = prompt.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
     }
-    acc[category].push(prompt);
+    acc[category].push(question);
     return acc;
-  }, {} as Record<string, Prompt[]>);
+  }, {} as Record<string, Question[]>);
 
   const categories = Object.keys(groupedQuestions).sort();
-  const selectedPrompt = questions.find(p => p.id === selectedQuestionId);
+  const selectedQuestion = questions.find(p => p.id === selectedQuestionId);
 
   // Auto-expand all categories when filtering
   useEffect(() => {
@@ -703,9 +703,9 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                           transition={{ duration: 0.2 }}
                           className="space-y-1 overflow-hidden"
                         >
-                          {groupedQuestions[category].map((prompt, index) => (
+                          {groupedQuestions[category].map((question, index) => (
                             <motion.button
-                              key={prompt.id}
+                              key={question.id}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ duration: 0.2, delay: index * 0.03 }}
@@ -716,10 +716,10 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                                   : 'bg-muted/50 text-foreground hover:bg-muted'
                               }`}
                             >
-                              {answeredQuestions.has(prompt.id) && (
+                              {answeredQuestions.has(question.id) && (
                                 <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
                               )}
-                              <span className="flex-1">{prompt.prompt}</span>
+                              <span className="flex-1">{question.question}</span>
                             </motion.button>
                           ))}
                         </motion.div>
@@ -736,7 +736,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         <div className="flex-1 overflow-y-auto bg-background">
           <div className="container mx-auto max-w-4xl px-4 md:px-8 py-4 md:py-8 h-full">
             <AnimatePresence mode="wait">
-              {selectedPrompt ? (
+              {selectedQuestion ? (
                 <motion.div
                   key={selectedQuestionId}
                   initial={{ opacity: 0, y: 20 }}
@@ -747,10 +747,10 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                 >
                   <div>
                     <Badge variant="outline" className="mb-2 md:mb-3 text-xs">
-                      {selectedPrompt.categoryName}
+                      {selectedQuestion.categoryName}
                     </Badge>
                     <h2 className="text-lg md:text-xl font-bold text-foreground mb-2">
-                      {selectedPrompt.prompt}
+                      {selectedQuestion.prompt}
                     </h2>
                     <p className="text-xs md:text-sm text-muted-foreground hidden md:block">
                       {autoSave
@@ -894,25 +894,25 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                     </p>
                   ) : (
                     <div className="space-y-3">
-                      {filteredReadings.map((article, index) => (
+                      {filteredReadings.map((reading, index) => (
                         <motion.div
-                          key={article.id}
+                          key={reading.id}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: index * 0.05 }}
                         >
                           <Card
                             className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
-                            onClick={() => handleReadingClick(article.id)}
+                            onClick={() => handleReadingClick(reading.id)}
                           >
                             <h3 className="text-sm font-medium text-foreground mb-1">
-                              {article.title}
+                              {reading.title}
                             </h3>
                             <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
-                              {article.excerpt}
+                              {reading.excerpt}
                             </p>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span>{article.readTime} min read</span>
+                              <span>{reading.readTime} min read</span>
                               <ChevronRight className="h-3 w-3 ml-auto" />
                             </div>
                           </Card>
@@ -1043,9 +1043,9 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                               transition={{ duration: 0.2 }}
                               className="space-y-1 overflow-hidden"
                             >
-                              {groupedQuestions[category].map((prompt) => (
+                              {groupedQuestions[category].map((question) => (
                                 <button
-                                  key={prompt.id}
+                                  key={question.id}
                                   onClick={() => {
                                     setSelectedPromptId(prompt.id);
                                     setMobileDrawerOpen(false);
@@ -1056,10 +1056,10 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                                       : 'bg-muted/50 text-foreground hover:bg-muted'
                                   }`}
                                 >
-                                  {answeredQuestions.has(prompt.id) && (
+                                  {answeredQuestions.has(question.id) && (
                                     <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
                                   )}
-                                  <span className="flex-1">{prompt.prompt}</span>
+                                  <span className="flex-1">{question.question}</span>
                                 </button>
                               ))}
                             </motion.div>
@@ -1089,23 +1089,23 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                   </p>
                 ) : (
                   <div className="space-y-2">
-                    {filteredReadings.map((article) => (
+                    {filteredReadings.map((reading) => (
                       <Card
-                        key={article.id}
+                        key={reading.id}
                         className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
                         onClick={() => {
-                          handleReadingClick(article.id);
+                          handleReadingClick(reading.id);
                           setMobileDrawerOpen(false);
                         }}
                       >
                         <h3 className="text-sm font-medium text-foreground mb-1">
-                          {article.title}
+                          {reading.title}
                         </h3>
                         <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
-                          {article.excerpt}
+                          {reading.excerpt}
                         </p>
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <span>{article.readTime} min read</span>
+                          <span>{reading.readTime} min read</span>
                           <ChevronRight className="h-3 w-3 ml-auto" />
                         </div>
                       </Card>
