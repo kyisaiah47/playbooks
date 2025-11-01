@@ -32,9 +32,9 @@ export function TextEditorView({ templateId }: TextEditorViewProps) {
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
           <IconFileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-semibold mb-2">No Template Selected</h3>
+          <h3 className="text-lg font-semibold mb-2">No Guide Selected</h3>
           <p className="text-sm text-muted-foreground">
-            Select a template from the dock to start writing
+            Select a guide from the dock to start writing
           </p>
         </div>
       </div>
