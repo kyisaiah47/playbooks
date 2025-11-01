@@ -25,9 +25,9 @@ import { ArchiveView } from './ArchiveView';
 
 interface TemplateProgress {
   guideId: string;
-  templateName: string;
+  guideName: string;
   questionsCompleted: number;
-  totalPrompts: number;
+  totalQuestions: number;
   lastWorked: string;
 }
 
@@ -44,7 +44,7 @@ interface ReflectionDetail {
   content: string;
   mood: string;
   tags: string[];
-  prompt?: string;
+  question?: string;
 }
 
 interface ActivityDay {
@@ -55,23 +55,23 @@ interface ActivityDay {
 
 interface Response {
   question_id: string;
-  prompt: string;
+  question: string;
   response: string;
   category: string;
   updated_at: string;
 }
 
-interface TemplateResponses {
+interface GuideResponses {
   guideId: string;
-  templateName: string;
+  guideName: string;
   answers: Response[];
-  totalPrompts: number;
+  totalQuestions: number;
 }
 
 export function OverviewView() {
   const [view, setView] = useState<'board' | 'timeline' | 'insights' | 'answers' | 'analytics' | 'archive'>('board');
-  const [templateResponses, setTemplateResponses] = useState<TemplateResponses[]>([]);
-  const [guides, setTemplates] = useState<TemplateProgress[]>([]);
+  const [guideResponses, setGuideResponses] = useState<GuideResponses[]>([]);
+  const [guides, setGuides] = useState<TemplateProgress[]>([]);
   const [reflections, setReflections] = useState<ReflectionSummary[]>([]);
   const [reflectionDetails, setReflectionDetails] = useState<ReflectionDetail[]>([]);
   const [activityData, setActivityData] = useState<ActivityDay[]>([]);
@@ -113,8 +113,8 @@ export function OverviewView() {
 
   const loadResponses = async () => {
     try {
-      const answersMap = new Map<string, TemplateResponses>();
-      const templatePromptsCache = new Map<string, any[]>();
+      const answersMap = new Map<string, GuideResponses>();
+      const guideQuestionsCache = new Map<string, any[]>();
 
       if (isLoggedIn) {
         // Fetch all answers from API
@@ -122,38 +122,38 @@ export function OverviewView() {
         const data = await res.json();
 
         if (data.answers) {
-          // For each response, fetch the prompt details
+          // For each response, fetch the question details
           for (const response of data.answers) {
             if (!response.response || !response.response.trim()) continue;
 
             const guideId = response.guide_id;
 
-            // Fetch questions for this template if not already fetched
-            if (!templatePromptsCache.has(guideId)) {
+            // Fetch questions for this guide if not already fetched
+            if (!guideQuestionsCache.has(guideId)) {
               const questionsRes = await fetch(`/api/questions?guideId=${guideId}`);
               const questionsData = await questionsRes.json();
-              templatePromptsCache.set(guideId, questionsData.questions || []);
+              guideQuestionsCache.set(guideId, questionsData.questions || []);
             }
 
-            const questions = templatePromptsCache.get(guideId)!;
-            const prompt = questions.find((p: any) => p.id === response.question_id);
+            const questions = guideQuestionsCache.get(guideId)!;
+            const question = questions.find((q: any) => q.id === response.question_id);
 
-            if (!prompt) continue;
+            if (!question) continue;
 
             if (!answersMap.has(guideId)) {
               answersMap.set(guideId, {
                 guideId,
-                templateName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                guideName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
                 answers: [],
-                totalPrompts: questions.length,
+                totalQuestions: questions.length,
               });
             }
 
             answersMap.get(guideId)!.answers.push({
               question_id: response.question_id,
-              prompt: prompt.prompt,
+              question: question.question,
               response: response.response,
-              category: prompt.categoryName || 'General',
+              category: question.categoryName || 'General',
               updated_at: response.updated_at,
             });
           }
@@ -182,24 +182,24 @@ export function OverviewView() {
                   }
 
                   const questions = templatePromptsCache.get(guideId)!;
-                  const prompt = questions.find((p: any) => p.id === questionId);
+                  const question = questions.find((q: any) => q.id === questionId);
 
-                  if (!prompt) continue;
+                  if (!question) continue;
 
                   if (!answersMap.has(guideId)) {
                     answersMap.set(guideId, {
                       guideId,
-                      templateName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                      guideName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
                       answers: [],
-                      totalPrompts: questions.length,
+                      totalQuestions: questions.length,
                     });
                   }
 
                   answersMap.get(guideId)!.answers.push({
                     question_id: questionId,
-                    prompt: prompt.prompt,
+                    question: question.question,
                     response: data.response,
-                    category: prompt.categoryName || 'General',
+                    category: question.categoryName || 'General',
                     updated_at: data.savedAt,
                   });
                 }
@@ -220,7 +220,7 @@ export function OverviewView() {
         }),
       }));
 
-      setTemplateResponses(sorted);
+      setGuideResponses(sorted);
 
       // Set first template as selected by default
       if (sorted.length > 0 && !selectedTemplateId) {
@@ -249,9 +249,9 @@ export function OverviewView() {
             if (!templateMap.has(guideId)) {
               templateMap.set(guideId, {
                 guideId,
-                templateName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                guideName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
                 questionsCompleted: 0,
-                totalPrompts: 0,
+                totalQuestions: 0,
                 lastWorked: '',
               });
             }
@@ -261,7 +261,7 @@ export function OverviewView() {
             if (response.response && response.response.trim()) {
               template.questionsCompleted++;
             }
-            template.totalPrompts++;
+            template.totalQuestions++;
 
             if (response.updated_at && (!template.lastWorked || response.updated_at > template.lastWorked)) {
               template.lastWorked = response.updated_at;
@@ -286,15 +286,15 @@ export function OverviewView() {
                   if (!templateMap.has(guideId)) {
                     templateMap.set(guideId, {
                       guideId,
-                      templateName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                      guideName: guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
                       questionsCompleted: 0,
-                      totalPrompts: 0,
+                      totalQuestions: 0,
                       lastWorked: '',
                     });
                   }
 
                   const template = templateMap.get(guideId)!;
-                  template.totalPrompts++;
+                  template.totalQuestions++;
 
                   if (data.response && data.response.trim()) {
                     template.questionsCompleted++;
@@ -333,7 +333,7 @@ export function OverviewView() {
                     content: reflection.content,
                     mood: reflection.mood || '',
                     tags: reflection.tags || [],
-                    prompt: reflection.prompt,
+                    question: reflection.question,
                   });
                 }
               } catch (e) {
@@ -345,7 +345,7 @@ export function OverviewView() {
         setReflectionDetails(details.sort((a, b) => b.date.localeCompare(a.date)));
       }
 
-      setTemplates(Array.from(templateMap.values()).filter(t => t.questionsCompleted > 0));
+      setGuides(Array.from(templateMap.values()).filter(t => t.questionsCompleted > 0));
       setReflections(reflectionsList.sort((a, b) => b.date.localeCompare(a.date)));
 
       // Generate activity data (last 30 days)
@@ -382,7 +382,7 @@ export function OverviewView() {
   // Filter guides based on boardFilter
   const filteredTemplates = guides.filter(t => {
     if (boardFilter === 'all') return true;
-    const isCompleted = t.questionsCompleted === t.totalPrompts;
+    const isCompleted = t.questionsCompleted === t.totalQuestions;
     if (boardFilter === 'completed') return isCompleted;
     if (boardFilter === 'in-progress') return !isCompleted;
     return true;
@@ -421,12 +421,12 @@ export function OverviewView() {
   })();
 
   // Export functions
-  const exportResponsesAsText = (template: TemplateResponses) => {
-    let content = `${template.templateName}\n`;
-    content += `${'='.repeat(template.templateName.length)}\n\n`;
+  const exportResponsesAsText = (template: GuideResponses) => {
+    let content = `${template.guideName}\n`;
+    content += `${'='.repeat(template.guideName.length)}\n\n`;
 
     template.answers.forEach((response, index) => {
-      content += `${index + 1}. ${response.prompt}\n\n`;
+      content += `${index + 1}. ${response.question}\n\n`;
       content += `${response.response}\n\n`;
       content += `---\n\n`;
     });
@@ -479,7 +479,7 @@ export function OverviewView() {
     doc.setFontSize(20);
     doc.setTextColor(0, 0, 0);
     doc.setFont('helvetica', 'bold');
-    const titleLines = doc.splitTextToSize(template.templateName, maxWidth);
+    const titleLines = doc.splitTextToSize(template.guideName, maxWidth);
     doc.text(titleLines, margin, yPosition);
     yPosition += titleLines.length * 8 + 5;
 
@@ -520,7 +520,7 @@ export function OverviewView() {
       doc.setFontSize(12);
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(0, 0, 0);
-      const questionLines = doc.splitTextToSize(response.prompt, maxWidth);
+      const questionLines = doc.splitTextToSize(response.question, maxWidth);
       doc.text(questionLines, margin, yPosition);
       yPosition += questionLines.length * 6 + 5;
 
@@ -556,8 +556,8 @@ export function OverviewView() {
         year: 'numeric',
       });
       content += `${date}${reflection.mood ? ' ' + reflection.mood : ''}\n\n`;
-      if (reflection.prompt) {
-        content += `"${reflection.prompt}"\n\n`;
+      if (reflection.question) {
+        content += `"${reflection.question}"\n\n`;
       }
       content += `${reflection.content}\n\n`;
       if (reflection.tags.length > 0) {
@@ -679,14 +679,14 @@ export function OverviewView() {
       doc.text(`${date}${moodText}`, margin, yPosition);
       yPosition += 10;
 
-      // Prompt
-      if (reflection.prompt) {
+      // Question
+      if (reflection.question) {
         doc.setFontSize(10);
         doc.setFont('helvetica', 'italic');
         doc.setTextColor(100, 100, 100);
-        const promptLines = doc.splitTextToSize(`"${reflection.prompt}"`, maxWidth);
-        doc.text(promptLines, margin, yPosition);
-        yPosition += promptLines.length * 5 + 5;
+        const questionLines = doc.splitTextToSize(`"${reflection.question}"`, maxWidth);
+        doc.text(questionLines, margin, yPosition);
+        yPosition += questionLines.length * 5 + 5;
       }
 
       // Content
@@ -830,19 +830,19 @@ export function OverviewView() {
                           transition={{ duration: 0.2, delay: index * 0.05 }}
                         >
                           <Card className="p-4 hover:bg-muted/50 transition-colors cursor-pointer h-full">
-                            <h4 className="font-medium text-foreground mb-2">{template.templateName}</h4>
+                            <h4 className="font-medium text-foreground mb-2">{template.guideName}</h4>
                             <div className="space-y-2">
                               <div className="flex items-center justify-between text-sm">
                                 <span className="text-muted-foreground">Progress</span>
                                 <span className="text-foreground font-medium">
-                                  {template.questionsCompleted}/{template.totalPrompts}
+                                  {template.questionsCompleted}/{template.totalQuestions}
                                 </span>
                               </div>
                               <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
                                 <motion.div
                                   className="bg-primary h-2 rounded-full"
                                   initial={{ width: 0 }}
-                                  animate={{ width: `${(template.questionsCompleted / template.totalPrompts) * 100}%` }}
+                                  animate={{ width: `${(template.questionsCompleted / template.totalQuestions) * 100}%` }}
                                   transition={{ duration: 0.5, delay: index * 0.05 + 0.2 }}
                                 />
                               </div>
@@ -1179,7 +1179,7 @@ export function OverviewView() {
                 transition={{ duration: 0.3 }}
                 className="space-y-6"
               >
-                {templateResponses.length === 0 ? (
+                {guideResponses.length === 0 ? (
                   <Card className="p-8">
                     <p className="text-center text-muted-foreground">
                       No answers yet. Go to Templates to start answering questions!
@@ -1190,14 +1190,14 @@ export function OverviewView() {
                     {/* Template Filter Tabs and Export */}
                     <div className="flex items-center justify-between gap-4 flex-wrap">
                       <div className="flex gap-2 flex-wrap">
-                        {templateResponses.map((template) => (
+                        {guideResponses.map((template) => (
                           <Button
                             key={template.guideId}
                             variant={selectedTemplateId === template.guideId ? 'default' : 'outline'}
                             size="sm"
                             onClick={() => setSelectedTemplateId(template.guideId)}
                           >
-                            {template.templateName}
+                            {template.guideName}
                           </Button>
                         ))}
                       </div>
@@ -1212,7 +1212,7 @@ export function OverviewView() {
                           <DropdownMenuContent>
                             <DropdownMenuItem
                               onClick={() => {
-                                const template = templateResponses.find(t => t.guideId === selectedTemplateId);
+                                const template = guideResponses.find(t => t.guideId === selectedTemplateId);
                                 if (template) exportResponsesAsText(template);
                               }}
                             >
@@ -1220,7 +1220,7 @@ export function OverviewView() {
                             </DropdownMenuItem>
                             <DropdownMenuItem
                               onClick={() => {
-                                const template = templateResponses.find(t => t.guideId === selectedTemplateId);
+                                const template = guideResponses.find(t => t.guideId === selectedTemplateId);
                                 if (template) exportResponsesAsPDF(template);
                               }}
                             >
@@ -1232,7 +1232,7 @@ export function OverviewView() {
                     </div>
 
                     {/* Selected Template Content */}
-                    {selectedTemplateId && templateResponses.find(t => t.guideId === selectedTemplateId) && (
+                    {selectedTemplateId && guideResponses.find(t => t.guideId === selectedTemplateId) && (
                       <motion.div
                         key={selectedTemplateId}
                         initial={{ opacity: 0, y: 10 }}
@@ -1241,14 +1241,14 @@ export function OverviewView() {
                       >
                         <Card className="p-6">
                           <h3 className="text-xl font-bold text-foreground mb-1">
-                            {templateResponses.find(t => t.guideId === selectedTemplateId)!.templateName}
+                            {guideResponses.find(t => t.guideId === selectedTemplateId)!.guideName}
                           </h3>
                           <p className="text-sm text-muted-foreground mb-6">
-                            {templateResponses.find(t => t.guideId === selectedTemplateId)!.answers.length}{' '}
-                            {templateResponses.find(t => t.guideId === selectedTemplateId)!.answers.length === 1 ? 'response' : 'answers'}
+                            {guideResponses.find(t => t.guideId === selectedTemplateId)!.answers.length}{' '}
+                            {guideResponses.find(t => t.guideId === selectedTemplateId)!.answers.length === 1 ? 'response' : 'answers'}
                           </p>
                           <div className="space-y-6">
-                            {templateResponses
+                            {guideResponses
                               .find(t => t.guideId === selectedTemplateId)!
                               .answers.map((response, responseIndex) => (
                                 <motion.div
@@ -1260,7 +1260,7 @@ export function OverviewView() {
                                 >
                                   <div className="mb-2">
                                     <Badge variant="outline" className="text-xs mb-2">{response.category}</Badge>
-                                    <h4 className="font-semibold text-foreground mb-1">{response.prompt}</h4>
+                                    <h4 className="font-semibold text-foreground mb-1">{response.question}</h4>
                                     <p className="text-xs text-muted-foreground">
                                       Last updated: {new Date(response.updated_at).toLocaleDateString()}
                                     </p>
