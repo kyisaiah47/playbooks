@@ -15,35 +15,35 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
-interface NavPromptsListProps {
-  templateId: string | null;
-  onPromptSelect?: (prompt: any) => void;
+interface NavQuestionsListProps {
+  guideId: string | null;
+  onQuestionSelect?: (question: any) => void;
 }
 
-export function NavPromptsList({ templateId, onPromptSelect }: NavPromptsListProps) {
-  const [prompts, setPrompts] = useState<any[]>([]);
+export function NavQuestionsList({ guideId, onQuestionSelect }: NavQuestionsListProps) {
+  const [questions, setQuestions] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (templateId) {
+    if (guideId) {
       setLoading(true);
-      setPrompts([]); // Clear old prompts first
-      fetch(`/api/prompts?templateId=${templateId}`)
+      setQuestions([]); // Clear old questions first
+      fetch(`/api/guides/${guideId}/questions`)
         .then(res => res.json())
         .then(data => {
-          setPrompts(data.prompts || []);
+          setQuestions(data.questions || []);
           setLoading(false);
         })
         .catch(() => {
-          setPrompts([]);
+          setQuestions([]);
           setLoading(false);
         });
     } else {
-      setPrompts([]);
+      setQuestions([]);
     }
-  }, [templateId]);
+  }, [guideId]);
 
-  if (!templateId) {
+  if (!guideId) {
     return null;
   }
 
@@ -52,7 +52,7 @@ export function NavPromptsList({ templateId, onPromptSelect }: NavPromptsListPro
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
           <SidebarMenuButton>
-            Prompts{" "}
+            Questions{" "}
             <IconPlus className="ml-auto group-data-[state=open]/collapsible:hidden" />
             <IconMinus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
           </SidebarMenuButton>
@@ -61,15 +61,15 @@ export function NavPromptsList({ templateId, onPromptSelect }: NavPromptsListPro
           <SidebarMenuSub className="max-h-[200px] overflow-y-auto">
             {loading ? (
               <div className="text-xs text-muted-foreground p-2">Loading...</div>
-            ) : prompts.length === 0 ? (
-              <div className="text-xs text-muted-foreground p-2">No prompts</div>
+            ) : questions.length === 0 ? (
+              <div className="text-xs text-muted-foreground p-2">No questions</div>
             ) : (
-              prompts.map((prompt: any) => (
-                <SidebarMenuSubItem key={prompt.id}>
+              questions.map((question: any) => (
+                <SidebarMenuSubItem key={question.id}>
                   <SidebarMenuSubButton
-                    onClick={() => onPromptSelect?.(prompt)}
+                    onClick={() => onQuestionSelect?.(question)}
                   >
-                    <span>{prompt.prompt}</span>
+                    <span>{question.question}</span>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
               ))

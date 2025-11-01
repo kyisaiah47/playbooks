@@ -19,7 +19,7 @@ import {
   KanbanCard,
 } from "@/components/ui/shadcn-io/kanban"
 
-interface PromptCard {
+interface QuestionCard {
   id: string;
   name: string; // Required by KanbanCard
   text: string;
@@ -29,11 +29,11 @@ interface PromptCard {
 }
 
 interface BoardViewProps {
-  templateId: string | null;
+  guideId: string | null;
 }
 
-export function BoardView({ templateId }: BoardViewProps) {
-  const [prompts, setPrompts] = useState<PromptCard[]>([
+export function BoardView({ guideId }: BoardViewProps) {
+  const [questions, setQuestions] = useState<QuestionCard[]>([
     {
       id: '1',
       name: 'Main Goals',
@@ -65,32 +65,32 @@ export function BoardView({ templateId }: BoardViewProps) {
     { id: 'done' as const, name: 'Done' },
   ];
 
-  const [editingPrompt, setEditingPrompt] = useState<PromptCard | null>(null);
+  const [editingQuestion, setEditingQuestion] = useState<QuestionCard | null>(null);
   const [editNotes, setEditNotes] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleEditPrompt = (prompt: PromptCard) => {
-    setEditingPrompt(prompt);
-    setEditNotes(prompt.notes || '');
+  const handleEditQuestion = (question: QuestionCard) => {
+    setEditingQuestion(question);
+    setEditNotes(question.notes || '');
     setDialogOpen(true);
   };
 
   const handleSaveNotes = () => {
-    if (!editingPrompt) return;
+    if (!editingQuestion) return;
 
-    setPrompts(prompts.map(p =>
-      p.id === editingPrompt.id
-        ? { ...p, notes: editNotes }
-        : p
+    setQuestions(questions.map(question =>
+      question.id === editingQuestion.id
+        ? { ...question, notes: editNotes }
+        : question
     ));
-    setEditingPrompt(null);
+    setEditingQuestion(null);
     setEditNotes('');
     setDialogOpen(false);
   };
 
-  const movePrompt = (promptId: string, newColumn: PromptCard['column']) => {
-    setPrompts(prompts.map(p =>
-      p.id === promptId ? { ...p, column: newColumn } : p
+  const moveQuestion = (questionId: string, newColumn: QuestionCard['column']) => {
+    setQuestions(questions.map(question =>
+      question.id === questionId ? { ...question, column: newColumn } : question
     ));
   };
 
@@ -98,8 +98,8 @@ export function BoardView({ templateId }: BoardViewProps) {
     <div className="h-full p-4">
       <KanbanProvider
         columns={columns}
-        data={prompts}
-        onDataChange={setPrompts}
+        data={questions}
+        onDataChange={setQuestions}
         className="h-full"
       >
         {(column) => (
@@ -108,16 +108,16 @@ export function BoardView({ templateId }: BoardViewProps) {
               <div className="flex items-center justify-between">
                 <span>{column.name}</span>
                 <Badge variant="secondary" className="ml-2">
-                  {prompts.filter(p => p.column === column.id).length}
+                  {questions.filter(question => question.column === column.id).length}
                 </Badge>
               </div>
             </KanbanHeader>
             <KanbanCards id={column.id}>
-              {(item: PromptCard) => (
+              {(item: QuestionCard) => (
                 <KanbanCard key={item.id} {...item}>
                   <div
                     className="cursor-pointer"
-                    onClick={() => handleEditPrompt(item)}
+                    onClick={() => handleEditQuestion(item)}
                   >
                     <Badge variant="outline" className="mb-2 text-xs">
                       {item.category}
@@ -137,14 +137,14 @@ export function BoardView({ templateId }: BoardViewProps) {
       </KanbanProvider>
 
       {/* Edit Dialog */}
-      {editingPrompt && (
+      {editingQuestion && (
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogContent className="max-w-2xl">
             <DialogHeader>
               <Badge variant="outline" className="w-fit mb-2">
-                {editingPrompt.category}
+                {editingQuestion.category}
               </Badge>
-              <DialogTitle>{editingPrompt.text}</DialogTitle>
+              <DialogTitle>{editingQuestion.text}</DialogTitle>
             </DialogHeader>
 
             <div className="space-y-4">
@@ -155,9 +155,9 @@ export function BoardView({ templateId }: BoardViewProps) {
                   {columns.map((col) => (
                     <Button
                       key={col.id}
-                      variant={editingPrompt.column === col.id ? "default" : "outline"}
+                      variant={editingQuestion.column === col.id ? "default" : "outline"}
                       size="sm"
-                      onClick={() => movePrompt(editingPrompt.id, col.id)}
+                      onClick={() => moveQuestion(editingQuestion.id, col.id)}
                     >
                       {col.name}
                     </Button>
