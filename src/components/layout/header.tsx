@@ -107,31 +107,104 @@ export function Header() {
 						<div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none">
 							<NavigationMenu className="pointer-events-auto" viewport={false}>
 								<NavigationMenuList className="space-x-2">
-									{/* Templates */}
+									{/* Company dropdown */}
+									<NavigationMenuItem>
+										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Company</NavigationMenuTrigger>
+										<NavigationMenuContent>
+											<ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+												<li className="row-span-4">
+													<NavigationMenuLink asChild>
+														<Link
+															href="/manifesto"
+															className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+														>
+															<div className="mb-2 mt-4 text-lg font-medium">
+																Our Manifesto
+															</div>
+															<p className="text-sm leading-tight text-muted-foreground">
+																The blank page is dead. Here's our blueprint for the first encyclopedia of living — and why you'll never stare at an empty screen again.
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/about">
+															<div className="text-sm font-medium leading-none">About</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+																Our mission and team
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/faq">
+															<div className="text-sm font-medium leading-none">FAQ</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+																Common questions and answers
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/partners">
+															<div className="text-sm font-medium leading-none">Partners</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+																Collaboration and partnerships
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/axiom-engine">
+															<div className="text-sm font-medium leading-none">Axiom Engine</div>
+															<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+																Our AI system for life guidance
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+											</ul>
+										</NavigationMenuContent>
+									</NavigationMenuItem>
+
+									{/* Preview - standalone */}
 									<NavigationMenuItem>
 										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/templates">
-												Templates
+											<Link href="/preview">
+												Preview
 											</Link>
 										</NavigationMenuLink>
 									</NavigationMenuItem>
 
-									{/* Articles */}
+									{/* Browse dropdown */}
 									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/articles">
-												Articles
-											</Link>
-										</NavigationMenuLink>
-									</NavigationMenuItem>
-
-									{/* How It Works */}
-									<NavigationMenuItem>
-										<NavigationMenuLink asChild className="!bg-transparent hover:!bg-transparent focus:!bg-transparent hover:text-foreground px-4 py-2 text-sm font-medium">
-											<Link href="/how-it-works">
-												How It Works
-											</Link>
-										</NavigationMenuLink>
+										<NavigationMenuTrigger className="!bg-transparent hover:!bg-transparent focus:!bg-transparent data-[state=open]:!bg-transparent hover:text-foreground">Browse</NavigationMenuTrigger>
+										<NavigationMenuContent>
+											<ul className="grid w-[200px] gap-4">
+												<li>
+													<NavigationMenuLink asChild>
+														<Link href="/templates">
+															<div className="text-sm leading-none font-medium">Templates</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																1,298 templates for life's moments
+															</p>
+														</Link>
+													</NavigationMenuLink>
+													<NavigationMenuLink asChild>
+														<Link href="/articles">
+															<div className="text-sm leading-none font-medium">Articles</div>
+															<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+																In-depth guidance and insights
+															</p>
+														</Link>
+													</NavigationMenuLink>
+												</li>
+											</ul>
+										</NavigationMenuContent>
 									</NavigationMenuItem>
 								</NavigationMenuList>
 							</NavigationMenu>
