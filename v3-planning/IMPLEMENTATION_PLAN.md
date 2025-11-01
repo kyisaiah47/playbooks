@@ -207,182 +207,165 @@ src/registry/templates.ts → src/registry/guides.ts
 
 ---
 
-## Phase 3: Port v2 Productivity Features
+## Phase 3: Port v2 Productivity Features as View Components
 
 ### Goal
-Integrate calendar, tasks, and analytics from v2 without icon sidebar or cutesy UX.
+Port calendar, tasks, analytics, and archive from v2 as new view components (like TemplatesView/OverviewView pattern).
+
+### Architecture (SIMPLE - Keep v1's Pattern)
+**v1 uses component-based views that switch:**
+```tsx
+// Current v1 pattern
+{currentView === 'templates' && <TemplatesView />}
+{currentView === 'overview' && <OverviewView />}
+{currentView === 'reflection' && <ReflectionView />}
+```
+
+**v3 extends this with more views:**
+```tsx
+{currentView === 'guides' && <GuidesView />}      // renamed from TemplatesView
+{currentView === 'overview' && <OverviewView />}  // keep as-is
+{currentView === 'calendar' && <CalendarView />}  // NEW from v2
+{currentView === 'tasks' && <TasksView />}        // NEW from v2
+{currentView === 'analytics' && <AnalyticsView />} // NEW from v2
+{currentView === 'archive' && <ArchiveView />}    // NEW from v2
+// Delete ReflectionView completely
+```
+
+**NO routing changes. NO workspace ID paths. Just add more view components.**
 
 ### Tasks
 
-#### 3.1 Port Workspace System (Simplified)
-**From v2:**
+#### 3.1 Rename TemplatesView → GuidesView
+**Files to update:**
 ```
-src/app/app/[workspaceId]/
+src/app/app/views/TemplatesView.tsx → GuidesView.tsx
 ```
-
-**Keep:**
-- Workspace routing structure
-- Single workspace per user (for now)
-- Workspace context/state management
-
-**Cut:**
-- Multiple workspace support (defer)
-- Workspace switcher UI
-- Workspace icons/customization
 
 **Implementation:**
-1. Copy workspace routing structure from v2
-2. Simplify to single workspace
-3. Auto-create workspace on signup
-4. Remove workspace switching UI
-
-**Files to port/adapt:**
-```
-src/app/app/[workspaceId]/layout.tsx (simplified)
-src/contexts/workspace-context.tsx (simplified)
-```
+1. Rename file
+2. Keep EXACT same 3-panel layout
+3. Update internal variable names (templates → guides, prompts → questions, articles → readings)
+4. No structural changes
 
 **Verification:**
-- [ ] Workspace routing works
-- [ ] Single workspace per user
-- [ ] No workspace switcher in UI
+- [ ] GuidesView renders with 3-panel layout
+- [ ] Can select guides
+- [ ] Can answer questions
+- [ ] Can read readings
+- [ ] All functionality preserved
 
-#### 3.2 Port Calendar Feature
-**From v2:**
+#### 3.2 Create CalendarView Component
+**Port from v2, adapt as view component:**
+
+**Create new file:** `src/app/app/views/CalendarView.tsx`
+
+**Port these components from v2:**
 ```
-src/app/app/[workspaceId]/calendar/page.tsx
 src/components/app/calendar/MonthView.tsx
 src/components/app/calendar/WeekView.tsx
-src/components/app/calendar/DayView.tsx
 src/components/app/calendar/EventList.tsx
 src/components/app/calendar/EventCreateForm.tsx
 ```
 
-**Adapt for v3:**
-1. Update styling to match v1 aesthetic (clean, professional)
-2. Remove cutesy icons/colors
-3. Add per-guide filtering dropdown
-4. Simplify to Month/Week views (cut Day view if redundant)
-5. Integrate with guide system
+**Implementation:**
+1. Create CalendarView.tsx as main container (like TemplatesView pattern)
+2. Port v2's calendar components
+3. Update styling to match v1 aesthetic (clean, professional, remove cutesy elements)
+4. Add per-guide filtering dropdown
+5. Integrate with guide system (events tagged to guides)
 
-**New component structure:**
-```
-src/components/app/calendar/
-  ├── CalendarView.tsx (main container)
-  ├── MonthView.tsx (adapted from v2)
-  ├── WeekView.tsx (adapted from v2)
-  ├── EventList.tsx (adapted from v2)
-  ├── EventForm.tsx (adapted from v2)
-  └── GuideFilter.tsx (NEW - filter by guide)
-```
-
-**Features to include:**
+**Features:**
 - View events across all guides
 - Filter by specific guide
-- Create events tagged to guides
+- Create/edit/delete events
 - Month/Week toggle
-- Clean, minimal design
+- Clean v1 styling
 
 **Verification:**
-- [ ] Calendar renders without errors
+- [ ] CalendarView renders
 - [ ] Can create/edit/delete events
-- [ ] Per-guide filtering works
-- [ ] Styling matches v1 aesthetic
-- [ ] Mobile responsive
-
-#### 3.3 Port Tasks Feature
-**From v2:**
-```
-src/app/app/[workspaceId]/tasks/page.tsx
-src/components/app/tasks/ (various components)
-```
-
-**Adapt for v3:**
-1. Simplify to list or kanban view
-2. Add per-guide filtering
-3. Update styling to match v1
-4. Remove excessive animations/transitions
-
-**New component structure:**
-```
-src/components/app/tasks/
-  ├── TasksView.tsx (main container)
-  ├── TaskList.tsx (simple list view)
-  ├── TaskCard.tsx (individual task)
-  ├── TaskForm.tsx (create/edit form)
-  └── GuideFilter.tsx (filter by guide)
-```
-
-**Features to include:**
-- View tasks across all guides
-- Filter by guide
-- Create tasks tagged to guides
-- Mark complete/incomplete
-- Due dates integration with calendar
-- Simple, clean interface
-
-**Verification:**
-- [ ] Tasks view renders correctly
-- [ ] Can create/edit/delete tasks
 - [ ] Per-guide filtering works
 - [ ] Styling matches v1
 - [ ] Mobile responsive
 
-#### 3.4 Port Analytics Feature (Simplified)
-**From v2:**
+#### 3.3 Create TasksView Component
+**Port from v2, adapt as view component:**
+
+**Create new file:** `src/app/app/views/TasksView.tsx`
+
+**Port these components from v2:**
 ```
-src/app/app/[workspaceId]/analytics/page.tsx
-src/components/app/analytics/ActivityChart.tsx
+src/components/app/tasks/KanbanBoard.tsx
+src/components/app/tasks/TaskCard.tsx
+src/components/app/tasks/TaskCreateForm.tsx
+```
+
+**Implementation:**
+1. Create TasksView.tsx as main container
+2. Port v2's task components
+3. Update styling to match v1
+4. Add per-guide filtering
+5. Remove excessive animations
+
+**Features:**
+- View tasks across all guides
+- Filter by guide
+- Create/edit/delete tasks
+- Kanban or list view
+- Due dates
+
+**Verification:**
+- [ ] TasksView renders
+- [ ] Can create/edit/delete tasks
+- [ ] Per-guide filtering works
+- [ ] Styling matches v1
+
+#### 3.4 Create AnalyticsView Component (Simplified)
+**Port from v2, simplify:**
+
+**Create new file:** `src/app/app/views/AnalyticsView.tsx`
+
+**Port these components from v2:**
+```
 src/components/app/analytics/StatsCards.tsx
 src/components/app/analytics/GuideProgressList.tsx
 ```
 
-**Simplify for v3:**
-- Keep progress tracking per guide
-- Remove complex charts
-- Focus on: % complete, questions answered, readings read
-- Simple dashboard with key metrics
+**Implementation:**
+1. Create AnalyticsView.tsx
+2. Port simple stats cards (remove complex charts)
+3. Focus on: % complete, questions answered, readings read
+4. Per-guide progress list
 
-**New component structure:**
-```
-src/components/app/analytics/
-  ├── AnalyticsView.tsx (main container)
-  ├── ProgressCards.tsx (simple stats cards)
-  └── GuideProgressList.tsx (adapted from v2)
-```
-
-**Metrics to show:**
-- Per guide: % complete, questions answered, readings read
-- Overall: active guides, total progress, streak (optional)
-- Clean, minimal design
+**Features:**
+- Per-guide progress stats
+- Overall completion metrics
+- Simple, clean dashboard
 
 **Verification:**
-- [ ] Analytics view renders correctly
-- [ ] Metrics calculate accurately
-- [ ] Per-guide breakdown works
+- [ ] AnalyticsView renders
+- [ ] Metrics calculate correctly
 - [ ] Styling matches v1
 
-#### 3.5 Port Archive Feature
-**From v2:**
+#### 3.5 Create ArchiveView Component
+**Port from v2:**
+
+**Create new file:** `src/app/app/views/ArchiveView.tsx`
+
+**Port from v2:**
 ```
-src/app/app/[workspaceId]/archive/page.tsx
 src/components/app/archive/ArchivedGuideList.tsx
 ```
 
-**Adapt for v3:**
-1. Simple list of archived guides
-2. Can unarchive
-3. Matches v1 styling
-
-**New component structure:**
-```
-src/components/app/archive/
-  ├── ArchiveView.tsx (main container)
-  └── ArchivedGuideList.tsx (adapted from v2)
-```
+**Implementation:**
+1. Create ArchiveView.tsx
+2. Port archived guide list component
+3. Add archive/unarchive functionality
+4. Match v1 styling
 
 **Verification:**
-- [ ] Archive view works
+- [ ] ArchiveView renders
 - [ ] Can archive/unarchive guides
 - [ ] Styling matches v1
 
@@ -393,310 +376,185 @@ src/components/app/archive/
 
 ---
 
-## Phase 4: Navigation & Routing Integration
+## Phase 4: Update Navigation (Header Links)
 
 ### Goal
-Integrate new views into v1's header-based navigation (no icon sidebar).
+Update header to add links for new views. Keep v1's simple view-switching pattern.
 
 ### Tasks
 
-#### 4.1 Update Header Navigation
+#### 4.1 Update App Main Page to Handle View Switching
+**File:** `src/app/app/page.tsx`
+
+**Current v1 pattern (approximately):**
+```tsx
+const [currentView, setCurrentView] = useState('templates');
+
+{currentView === 'templates' && <TemplatesView />}
+{currentView === 'overview' && <OverviewView />}
+{currentView === 'reflection' && <ReflectionView />}
+```
+
+**Update to v3 pattern:**
+```tsx
+const [currentView, setCurrentView] = useState('guides');
+
+{currentView === 'guides' && <GuidesView />}
+{currentView === 'overview' && <OverviewView />}
+{currentView === 'calendar' && <CalendarView />}
+{currentView === 'tasks' && <TasksView />}
+{currentView === 'analytics' && <AnalyticsView />}
+{currentView === 'archive' && <ArchiveView />}
+// Delete ReflectionView
+```
+
+**Verification:**
+- [ ] View switching works
+- [ ] All views render correctly
+
+#### 4.2 Update Header Navigation
 **File:** `src/components/layout/header.tsx`
 
-**Add app navigation items:**
+**Add navigation links for new views:**
 ```tsx
-// When logged in and in app
-[My Guides ▾]  |  Discover  |  Library  |  Notes  Calendar  Tasks  Analytics  |  [Settings]
+// When in app (/app route)
+[My Guides ▾] | Overview | Calendar | Tasks | Analytics | Archive | [Settings]
 ```
 
 **Implementation:**
-1. Add conditional rendering (public vs app header)
-2. Add "My Guides" dropdown (lists user's active guides)
-3. Add main view links: Notes, Calendar, Tasks, Analytics
-4. Keep clean, horizontal layout (no sidebar)
-5. Responsive mobile menu
+1. Add links that call `setCurrentView('calendar')`, etc.
+2. Add "My Guides" dropdown (lists user's guides, click to switch)
+3. Keep clean, horizontal layout
+4. Highlight active view
 
 **Verification:**
-- [ ] Header adapts based on route (public vs app)
+- [ ] Header shows correct links when in app
+- [ ] Clicking links switches views
+- [ ] Active view is highlighted
 - [ ] My Guides dropdown works
-- [ ] All view links navigate correctly
-- [ ] Mobile menu works
+- [ ] Mobile responsive
 
-#### 4.2 Update Routing Structure
-**Current v1 structure:**
-```
-/app/page.tsx (main app view)
-/app/settings/page.tsx
-```
+#### 4.3 Delete ReflectionView
+**File to delete:** `src/app/app/views/ReflectionView.tsx`
 
-**New v3 structure:**
-```
-/app/[workspaceId]/page.tsx (redirects to active guide or discover)
-/app/[workspaceId]/guide/[guideId]/page.tsx (3-panel guide view)
-/app/[workspaceId]/discover/page.tsx (browse guides)
-/app/[workspaceId]/library/page.tsx (browse readings)
-/app/[workspaceId]/calendar/page.tsx
-/app/[workspaceId]/tasks/page.tsx
-/app/[workspaceId]/analytics/page.tsx
-/app/[workspaceId]/archive/page.tsx
-/app/[workspaceId]/settings/page.tsx
-/app/[workspaceId]/note/[noteId]/page.tsx (blank note)
-```
-
-**Implementation:**
-1. Create new route structure
-2. Migrate v1's guide view to new path
-3. Add new productivity routes
-4. Set up proper redirects
+**Update:** Remove all references to ReflectionView
 
 **Verification:**
-- [ ] All routes work
-- [ ] Redirects function correctly
-- [ ] Deep linking works
-
-#### 4.3 "My Guides" Dropdown Logic
-**Component:** `src/components/app/layout/MyGuidesDropdown.tsx` (NEW)
-
-**Functionality:**
-- Lists user's active guides (max 10, then "View all")
-- Quick switch between guides
-- "+ New Guide" button at bottom
-- Shows guide icon/emoji
-- Highlights current guide
-
-**Verification:**
-- [ ] Dropdown renders correctly
-- [ ] Can switch between guides
-- [ ] "+ New Guide" opens creation flow
-- [ ] Current guide is highlighted
+- [ ] ReflectionView deleted
+- [ ] No broken references
+- [ ] App still works
 
 #### 4.4 Test & Commit
-- [ ] Test navigation flow
-- [ ] Verify all routes accessible
-- [ ] Test My Guides dropdown
-- [ ] Commit: "Phase 4: Integrate navigation and routing"
+- [ ] Test view switching
+- [ ] Test all navigation links
+- [ ] Commit: "Phase 4: Update navigation for new views"
 
 ---
 
-## Phase 5: Guide View (3-Panel Core Experience)
+## Phase 5: Polish & Per-Guide Features
 
 ### Goal
-Preserve v1's 3-panel interface while integrating v2's per-guide calendar/tasks.
+Add per-guide filtering to CalendarView and TasksView so users can see all events/tasks or filter by specific guide.
 
 ### Tasks
 
-#### 5.1 Maintain v1's 3-Panel Layout
-**File:** `src/app/app/[workspaceId]/guide/[guideId]/page.tsx`
-
-**Layout structure:**
-```
-┌────────────────────────────────────────────────────────────────┐
-│ Header with: [My Guides ▾] Discover Library  Notes Calendar... │
-├───────────┬────────────────────┬─────────────────────────────────┤
-│ Questions │   Answers          │   Readings                      │
-│ (left)    │   (center)         │   (right)                       │
-├───────────┴────────────────────┴─────────────────────────────────┤
-│ Per-Guide Tabs: Overview | Calendar | Tasks | Notes             │
-└────────────────────────────────────────────────────────────────┘
-```
-
-**Key requirements:**
-- Keep v1's 3-panel layout for Questions/Answers/Readings
-- Add tabbed interface below for per-guide views
-- Clean, professional styling
-- Responsive (stack panels on mobile)
+#### 5.1 Add Guide Filtering to CalendarView
+**File:** `src/app/app/views/CalendarView.tsx`
 
 **Implementation:**
-1. Keep v1's guide view component
-2. Add tab navigation below main panels
-3. Tab options: Overview (3-panel), Calendar, Tasks, Notes
-4. Preserve v1's visual style
+1. Add dropdown: "All Guides" or select specific guide
+2. Filter events based on selection
+3. Clean UI that matches v1 styling
 
 **Verification:**
-- [ ] 3-panel layout works
-- [ ] Tabs switch correctly
-- [ ] Styling matches v1
-- [ ] Responsive on mobile
+- [ ] Can view all events across guides
+- [ ] Can filter to specific guide
+- [ ] Filtering works correctly
 
-#### 5.2 Per-Guide Calendar Tab
-**Component:** `src/components/app/guide/GuideCalendar.tsx` (NEW)
+#### 5.2 Add Guide Filtering to TasksView
+**File:** `src/app/app/views/TasksView.tsx`
 
-**Functionality:**
-- Shows only events tagged to current guide
-- Can create new events for this guide
-- Month/Week toggle
-- Simpler than global calendar view
+**Implementation:**
+1. Add dropdown: "All Guides" or select specific guide
+2. Filter tasks based on selection
+3. Clean UI that matches v1 styling
 
 **Verification:**
-- [ ] Shows only current guide's events
-- [ ] Can create/edit events
-- [ ] Integrates with global calendar
+- [ ] Can view all tasks across guides
+- [ ] Can filter to specific guide
+- [ ] Filtering works correctly
 
-#### 5.3 Per-Guide Tasks Tab
-**Component:** `src/components/app/guide/GuideTasks.tsx` (NEW)
+#### 5.3 Ensure GuidesView 3-Panel Layout is Perfect
+**File:** `src/app/app/views/GuidesView.tsx`
 
-**Functionality:**
-- Shows only tasks tagged to current guide
-- Can create new tasks for this guide
-- Simple list view
-- Integrates with global tasks view
+**Verify:**
+- [ ] 3-panel layout (guide picker | questions/answers | readings) works perfectly
+- [ ] Responsive on mobile (panels stack)
+- [ ] Styling matches v1 aesthetic
+- [ ] All functionality preserved from TemplatesView
 
-**Verification:**
-- [ ] Shows only current guide's tasks
-- [ ] Can create/edit tasks
-- [ ] Integrates with global tasks
-
-#### 5.4 Per-Guide Notes Tab
-**Component:** `src/components/app/guide/GuideNotes.tsx` (NEW)
-
-**Functionality:**
-- Blank note space for freeform planning
-- Per guide (each guide has its own note space)
-- Rich text editor (keep v1's editor if it exists)
-
-**Verification:**
-- [ ] Note editor works
-- [ ] Content saves per guide
-- [ ] Formatting works
-
-#### 5.5 Test & Commit
-- [ ] Test 3-panel layout
-- [ ] Test all tabs within guide view
-- [ ] Verify per-guide filtering works
-- [ ] Commit: "Phase 5: Enhance guide view with per-guide tabs"
+#### 5.4 Test & Commit
+- [ ] Test guide filtering in calendar
+- [ ] Test guide filtering in tasks
+- [ ] Test GuidesView 3-panel
+- [ ] Commit: "Phase 5: Add per-guide filtering and polish"
 
 ---
 
-## Phase 6: Discovery & Library Views
+## Phase 6: Public Browse Pages (Optional - Can Defer)
 
 ### Goal
-Create browse experiences for guides and readings.
+Add public guide and reading browsers (if not already exist in v1).
 
 ### Tasks
 
-#### 6.1 Discover View (Guide Browser)
-**File:** `src/app/app/[workspaceId]/discover/page.tsx`
-
-**Adapt from:**
-- v1's template browser (if exists)
-- v2's discover view
+#### 6.1 Public Guides Page
+**File:** `src/app/guides/page.tsx`
 
 **Features:**
 - Browse all available guides
 - Category filtering
 - Search functionality
-- Add to "My Guides" button
-- Clean card layout
+- CTA to sign up
+- Clean card layout matching v1 style
 
 **Verification:**
-- [ ] All guides display
-- [ ] Categories filter correctly
-- [ ] Search works
-- [ ] Can add guides to workspace
+- [ ] Guides page works
+- [ ] Filtering works
+- [ ] CTA buttons work
 
-#### 6.2 Library View (Reading Browser)
-**File:** `src/app/app/[workspaceId]/library/page.tsx`
+#### 6.2 Public Library/Readings Page
+**File:** `src/app/library/page.tsx`
 
 **Features:**
 - Browse all available readings
-- Category/topic filtering
+- Category filtering
 - Search functionality
-- Can open reading in panel
-- Clean list/card layout
+- Can preview reading
+- CTA to sign up
 
 **Verification:**
-- [ ] All readings display
+- [ ] Library page works
 - [ ] Filtering works
-- [ ] Search works
-- [ ] Can open readings
+- [ ] Preview works
 
-#### 6.3 Public Browse Pages
-**Files:**
-```
-src/app/guides/page.tsx (public guide browser)
-src/app/library/page.tsx (public reading browser)
-```
+**Note:** This phase can be deferred if these pages already exist in v1 or aren't needed yet.
 
-**Features:**
-- Similar to discover/library but public-facing
-- Show preview of content
-- CTA to sign up to access full guide
-
-**Verification:**
-- [ ] Public pages work
-- [ ] Preview content displays
-- [ ] CTA buttons work
-
-#### 6.4 Test & Commit
-- [ ] Test all browse views
-- [ ] Verify search and filtering
-- [ ] Commit: "Phase 6: Add discovery and library views"
+#### 6.3 Test & Commit (If Implemented)
+- [ ] Test public browse pages
+- [ ] Verify SEO/meta tags
+- [ ] Commit: "Phase 6: Add public browse pages"
 
 ---
 
-## Phase 7: Blank Notes Feature
-
-### Goal
-Add freeform note-taking capability (not tied to guides).
-
-### Tasks
-
-#### 7.1 Blank Note View
-**File:** `src/app/app/[workspaceId]/note/[noteId]/page.tsx`
-
-**Features:**
-- Rich text editor
-- Note title
-- Last edited timestamp
-- Clean, distraction-free interface
-- Matches v1 styling
-
-**Implementation:**
-1. Port v2's blank note if exists, or create new
-2. Use v1's text editor component
-3. Simple layout (just title + editor)
-
-**Verification:**
-- [ ] Can create blank notes
-- [ ] Can edit and save
-- [ ] Notes persist
-- [ ] Clean UI
-
-#### 7.2 Note List/Navigation
-**Component:** `src/components/app/notes/NotesList.tsx` (NEW)
-
-**Functionality:**
-- Shows list of blank notes
-- Can create new
-- Can delete
-- Search/filter notes
-
-**Where to show:**
-- In header nav? "Notes" link?
-- In My Guides dropdown? Separate section?
-
-**Decision needed:** How to surface blank notes in navigation?
-
-**Verification:**
-- [ ] Note list renders
-- [ ] Can navigate between notes
-- [ ] Can create/delete notes
-
-#### 7.3 Test & Commit
-- [ ] Test note creation/editing
-- [ ] Test navigation to notes
-- [ ] Commit: "Phase 7: Add blank notes feature"
-
----
-
-## Phase 8: Settings & User Management
+## Phase 7: Settings & User Management
 
 ### Goal
 Comprehensive settings page for user preferences and account management.
 
 ### Tasks
 
-#### 8.1 Settings View
+#### 7.1 Settings View
 **File:** `src/app/app/[workspaceId]/settings/page.tsx`
 
 **Sections:**
@@ -712,13 +570,13 @@ Comprehensive settings page for user preferences and account management.
 - [ ] Can update preferences
 - [ ] Account management works
 
-#### 8.2 Test & Commit
+#### 7.2 Test & Commit
 - [ ] Test all settings
-- [ ] Commit: "Phase 8: Add settings and user management"
+- [ ] Commit: "Phase 7: Add settings and user management"
 
 ---
 
-## Phase 9: Polish & Refinement
+## Phase 8: Polish & Refinement
 
 ### Goal
 Final polish pass to ensure consistency and quality.
@@ -762,14 +620,14 @@ Final polish pass to ensure consistency and quality.
 - [ ] Clear CTAs
 - [ ] Helpful empty states
 
-#### 9.7 Test & Commit
+#### 8.7 Test & Commit
 - [ ] Full app test
 - [ ] Mobile test
-- [ ] Commit: "Phase 9: Polish and refinement"
+- [ ] Commit: "Phase 8: Polish and refinement"
 
 ---
 
-## Phase 10: Testing & Launch Prep
+## Phase 9: Testing & Launch Prep
 
 ### Goal
 Comprehensive testing before launch.
@@ -827,12 +685,12 @@ Test these key flows:
 - [ ] Document new features
 - [ ] Update any API docs
 
-#### 10.8 Final Commit
-- [ ] Commit: "Phase 10: Launch prep and final testing"
+#### 9.8 Final Commit
+- [ ] Commit: "Phase 9: Launch prep and final testing"
 
 ---
 
-## Phase 11: Deployment
+## Phase 10: Deployment
 
 ### Goal
 Deploy v3 to production.
@@ -940,19 +798,18 @@ Deploy v3 to production.
 |-------|-------|----------------|
 | 1. Foundation Setup | Port v0.5 pages, update header | 2-3 days |
 | 2. Database Migration | Schema changes, type updates | 2-3 days |
-| 3. Port Productivity Features | Calendar, tasks, analytics, archive | 5-7 days |
-| 4. Navigation & Routing | Header nav, routing structure | 2-3 days |
-| 5. Guide View | 3-panel + per-guide tabs | 3-4 days |
-| 6. Discovery & Library | Browse views | 2-3 days |
-| 7. Blank Notes | Note editor and navigation | 1-2 days |
-| 8. Settings | Settings page | 1-2 days |
-| 9. Polish | Visual consistency, responsive, a11y | 3-4 days |
-| 10. Testing | User flows, cross-browser, security | 3-4 days |
-| 11. Deployment | Staging, production deploy | 1-2 days |
+| 3. Port Productivity Features | Rename TemplatesView, create CalendarView, TasksView, AnalyticsView, ArchiveView | 4-6 days |
+| 4. Navigation | Update header links, wire view switching, delete ReflectionView | 1-2 days |
+| 5. Per-Guide Features | Add guide filtering to calendar/tasks | 1-2 days |
+| 6. Public Browse Pages | Public guides/library pages (optional, can defer) | 1-2 days |
+| 7. Settings | Settings view (if not already exists) | 1 day |
+| 8. Polish | Visual consistency, responsive, a11y | 2-3 days |
+| 9. Testing | User flows, cross-browser, security | 2-3 days |
+| 10. Deployment | Staging, production deploy | 1-2 days |
 
-**Total Estimate: 25-35 days (5-7 weeks)**
+**Total Estimate: 17-27 days (3.5-5.5 weeks)**
 
-Note: This assumes one developer working full-time. With multiple developers or part-time work, adjust accordingly.
+Note: This assumes one developer working full-time. Significantly simpler than original plan since we're keeping v1's architecture and just adding view components.
 
 ---
 
