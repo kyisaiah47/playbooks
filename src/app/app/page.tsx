@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { TemplatesView } from './views/TemplatesView';
-import { ReflectionView } from './views/ReflectionView';
+import { GuidesView } from './views/GuidesView';
 import { OverviewView } from './views/OverviewView';
+import { CalendarView } from './views/CalendarView';
+import { TasksView } from './views/TasksView';
+import { AnalyticsView } from './views/AnalyticsView';
+import { ArchiveView } from './views/ArchiveView';
 import { Button } from '@/components/ui/button';
 import { LogOut, Settings, User, X } from 'lucide-react';
 import Link from 'next/link';
@@ -19,14 +22,17 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ThemeSelector } from '@/components/theme-selector';
 
-type View = 'templates' | 'reflection' | 'overview';
+type View = 'guides' | 'overview' | 'calendar' | 'tasks' | 'analytics' | 'archive';
 
 export default function StudioPage() {
-  const [currentView, setCurrentView] = useState<View>('templates');
+  const [currentView, setCurrentView] = useState<View>('guides');
   const [viewKeys, setViewKeys] = useState({
-    templates: 0,
-    reflection: 0,
+    guides: 0,
     overview: 0,
+    calendar: 0,
+    tasks: 0,
+    analytics: 0,
+    archive: 0,
   });
   const [userEmail, setUserEmail] = useState('');
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -111,20 +117,44 @@ export default function StudioPage() {
             {/* View Switcher - Centered */}
             <div className="flex items-center gap-1 md:gap-2 absolute left-1/2 -translate-x-1/2">
               <Button
-                variant={currentView === 'templates' ? 'default' : 'ghost'}
+                variant={currentView === 'guides' ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => handleViewChange('templates')}
+                onClick={() => handleViewChange('guides')}
                 className="text-xs md:text-sm px-2 md:px-4"
               >
-                Templates
+                Guides
               </Button>
               <Button
-                variant={currentView === 'reflection' ? 'default' : 'ghost'}
+                variant={currentView === 'calendar' ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => handleViewChange('reflection')}
+                onClick={() => handleViewChange('calendar')}
                 className="text-xs md:text-sm px-2 md:px-4"
               >
-                Reflection
+                Calendar
+              </Button>
+              <Button
+                variant={currentView === 'tasks' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => handleViewChange('tasks')}
+                className="text-xs md:text-sm px-2 md:px-4"
+              >
+                Tasks
+              </Button>
+              <Button
+                variant={currentView === 'analytics' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => handleViewChange('analytics')}
+                className="text-xs md:text-sm px-2 md:px-4"
+              >
+                Analytics
+              </Button>
+              <Button
+                variant={currentView === 'archive' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => handleViewChange('archive')}
+                className="text-xs md:text-sm px-2 md:px-4"
+              >
+                Archive
               </Button>
               <Button
                 variant={currentView === 'overview' ? 'default' : 'ghost'}
@@ -181,12 +211,12 @@ export default function StudioPage() {
               Pick a{' '}
               <button
                 onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
+                  if (currentView !== 'guides') handleViewChange('guides');
                   setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
                 }}
                 className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
               >
-                template
+                guide
               </button>{' '}
               that fits your goal
             </span>
@@ -196,12 +226,12 @@ export default function StudioPage() {
               Answer thoughtful{' '}
               <button
                 onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
+                  if (currentView !== 'guides') handleViewChange('guides');
                   setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
                 }}
                 className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
               >
-                prompts
+                questions
               </button>
             </span>
             {' → '}
@@ -210,12 +240,12 @@ export default function StudioPage() {
               Read curated{' '}
               <button
                 onClick={() => {
-                  if (currentView !== 'templates') handleViewChange('templates');
+                  if (currentView !== 'guides') handleViewChange('guides');
                   setTimeout(() => templatesActions.openFirstArticle?.(), 100);
                 }}
                 className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
               >
-                articles
+                readings
               </button>{' '}
               for help
             </span>
@@ -242,18 +272,18 @@ export default function StudioPage() {
         <motion.div
           initial={{ opacity: 1, y: 0 }}
           animate={{
-            opacity: currentView === 'templates' ? 1 : 0,
-            y: currentView === 'templates' ? 0 : 20,
+            opacity: currentView === 'guides' ? 1 : 0,
+            y: currentView === 'guides' ? 0 : 20,
           }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="absolute inset-0"
           style={{
-            pointerEvents: currentView === 'templates' ? 'auto' : 'none',
-            zIndex: currentView === 'templates' ? 10 : 0
+            pointerEvents: currentView === 'guides' ? 'auto' : 'none',
+            zIndex: currentView === 'guides' ? 10 : 0
           }}
         >
-          <TemplatesView
-            key={`templates-${viewKeys.templates}`}
+          <GuidesView
+            key={`guides-${viewKeys.guides}`}
             onViewChange={handleViewChange}
             setActions={setTemplatesActions}
           />
@@ -261,17 +291,62 @@ export default function StudioPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{
-            opacity: currentView === 'reflection' ? 1 : 0,
-            y: currentView === 'reflection' ? 0 : 20,
+            opacity: currentView === 'calendar' ? 1 : 0,
+            y: currentView === 'calendar' ? 0 : 20,
           }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="absolute inset-0"
           style={{
-            pointerEvents: currentView === 'reflection' ? 'auto' : 'none',
-            zIndex: currentView === 'reflection' ? 10 : 0
+            pointerEvents: currentView === 'calendar' ? 'auto' : 'none',
+            zIndex: currentView === 'calendar' ? 10 : 0
           }}
         >
-          <ReflectionView key={`reflection-${viewKeys.reflection}`} onViewChange={handleViewChange} />
+          <CalendarView key={`calendar-${viewKeys.calendar}`} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            opacity: currentView === 'tasks' ? 1 : 0,
+            y: currentView === 'tasks' ? 0 : 20,
+          }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="absolute inset-0"
+          style={{
+            pointerEvents: currentView === 'tasks' ? 'auto' : 'none',
+            zIndex: currentView === 'tasks' ? 10 : 0
+          }}
+        >
+          <TasksView key={`tasks-${viewKeys.tasks}`} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            opacity: currentView === 'analytics' ? 1 : 0,
+            y: currentView === 'analytics' ? 0 : 20,
+          }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="absolute inset-0"
+          style={{
+            pointerEvents: currentView === 'analytics' ? 'auto' : 'none',
+            zIndex: currentView === 'analytics' ? 10 : 0
+          }}
+        >
+          <AnalyticsView key={`analytics-${viewKeys.analytics}`} />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            opacity: currentView === 'archive' ? 1 : 0,
+            y: currentView === 'archive' ? 0 : 20,
+          }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="absolute inset-0"
+          style={{
+            pointerEvents: currentView === 'archive' ? 'auto' : 'none',
+            zIndex: currentView === 'archive' ? 10 : 0
+          }}
+        >
+          <ArchiveView key={`archive-${viewKeys.archive}`} />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
