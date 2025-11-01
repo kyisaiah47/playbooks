@@ -59,7 +59,14 @@ export function CalendarView() {
       const itemsResponse = await fetch('/api/items');
 
       if (!itemsResponse.ok) {
-        const errorData = await itemsResponse.json();
+        // If unauthorized, just show empty state
+        if (itemsResponse.status === 401) {
+          setAllItems([]);
+          setTasks([]);
+          setLoading(false);
+          return;
+        }
+        const errorData = await itemsResponse.json().catch(() => ({}));
         console.error('Items API error:', errorData);
         throw new Error(errorData.error || 'Failed to fetch items');
       }

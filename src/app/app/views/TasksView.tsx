@@ -37,7 +37,13 @@ export function TasksView() {
     queryKey: ['items'],
     queryFn: async () => {
       const res = await fetch('/api/items');
-      if (!res.ok) throw new Error('Failed to fetch tasks');
+      if (!res.ok) {
+        // If unauthorized, return empty array instead of throwing
+        if (res.status === 401) {
+          return [];
+        }
+        throw new Error('Failed to fetch tasks');
+      }
       const data = await res.json();
       return data.items as ExtendedTask[];
     },
