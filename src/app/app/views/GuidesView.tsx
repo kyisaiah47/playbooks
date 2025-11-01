@@ -501,10 +501,10 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
   const handleArticleClick = async (articleId: string) => {
     try {
       setLoadingArticle(true);
-      const res = await fetch(`/api/readings?id=${articleId}`);
+      const res = await fetch(`/api/readings/${articleId}`);
       const data = await res.json();
 
-      setSelectedArticle(data.article);
+      setSelectedArticle(data);
     } catch (error) {
       console.error('Error fetching article:', error);
     } finally {
@@ -848,7 +848,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
                           <span>{selectedArticle.author}</span>
                           <span>•</span>
-                          <span>{selectedArticle.readTime}</span>
+                          <span>{selectedArticle.readTime} min read</span>
                           <span>•</span>
                           <span>{new Date(selectedArticle.publishedAt).toLocaleDateString()}</span>
                         </div>
@@ -912,7 +912,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                               {article.excerpt}
                             </p>
                             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span>{article.readTime}</span>
+                              <span>{article.readTime} min read</span>
                               <ChevronRight className="h-3 w-3 ml-auto" />
                             </div>
                           </Card>
@@ -945,7 +945,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
               <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                 <span>{selectedArticle.author}</span>
                 <span>•</span>
-                <span>{selectedArticle.readTime}</span>
+                <span>{selectedArticle.readTime} min read</span>
               </div>
               {/* Search bar for mobile */}
               <div className="relative">
@@ -1105,7 +1105,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                           {article.excerpt}
                         </p>
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <span>{article.readTime}</span>
+                          <span>{article.readTime} min read</span>
                           <ChevronRight className="h-3 w-3 ml-auto" />
                         </div>
                       </Card>

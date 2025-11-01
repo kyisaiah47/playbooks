@@ -27,9 +27,10 @@ export async function GET(
       );
     }
 
-    // Map category to categoryName for frontend compatibility
+    // Map fields for frontend compatibility
     const mappedQuestions = (questions || []).map(q => ({
       ...q,
+      prompt: q.question,
       categoryName: q.category
     }));
 
