@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Calendar as CalendarIcon, Plus, Loader2, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,17 +11,22 @@ import { DayView } from '@/components/app/calendar/DayView';
 import { EventList } from '@/components/app/calendar/EventList';
 import { EventCreateForm } from '@/components/app/calendar/EventCreateForm';
 import { CalendarEvent, Task } from '@/types/workspace';
-import { format } from 'date-fns';
+import { startOfMonth, endOfMonth, format } from 'date-fns';
+import { useDemo } from '@/contexts/demo-context';
+import { DEMO_WORKSPACE_ID } from '@/lib/demo-constants';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
-type CalendarViewType = 'month' | 'week' | 'day';
+type CalendarView = 'month' | 'week' | 'day';
 
-export function CalendarView() {
+export default function CalendarPage() {
+  const params = useParams();
   const searchParams = useSearchParams();
+  const { demoMode } = useDemo();
+  const workspaceId = demoMode ? DEMO_WORKSPACE_ID : (params.workspaceId as string);
 
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [view, setView] = useState<CalendarViewType>('month');
+  const [view, setView] = useState<CalendarView>('month');
   const [allItems, setAllItems] = useState<CalendarEvent[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,6 +36,7 @@ export function CalendarView() {
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
   // Get selected note IDs from URL, fallback to localStorage if URL is empty
+  // If note-scoped mode is active, only show data for that single note
   const scopedNoteId = searchParams.get('scopedNoteId');
   const urlIds = searchParams.get('calendarNotes')?.split(',').filter(Boolean);
   const localStorageIds = typeof window !== 'undefined'
@@ -40,10 +46,10 @@ export function CalendarView() {
     ? [scopedNoteId]
     : (urlIds && urlIds.length > 0 ? urlIds : localStorageIds);
 
-  // Filter items by selected notes, or show all
+  // Filter items by selected notes, or show all in demo mode
   const filteredItems = selectedNoteIds.length > 0
     ? allItems.filter(item => item.user_guide_id && selectedNoteIds.includes(item.user_guide_id))
-    : allItems;
+    : (demoMode ? allItems : []);
 
   // Separate events (items with start_time) from tasks (items with due_date but no start_time)
   const events = filteredItems.filter(item => item.start_time);
@@ -86,6 +92,10 @@ export function CalendarView() {
   };
 
   const handleCreateEvent = () => {
+    if (demoMode) {
+      toast.info('Not available in demo mode');
+      return;
+    }
     setSelectedDate(undefined);
     setCreateDialogOpen(true);
   };
