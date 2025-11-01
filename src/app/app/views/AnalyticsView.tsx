@@ -53,19 +53,19 @@ export function AnalyticsView() {
   const urlIds = searchParams.get('analyticsGuides')?.split(',').filter(Boolean);
   const localStorageIds = typeof window !== 'undefined'
     ? JSON.parse(localStorage.getItem('selectedAnalyticsGuideIds') || '[]')
-   ;
+    : [];
   const selectedGuideIds = scopedNoteId
     ? [scopedNoteId]
     : (urlIds && urlIds.length > 0 ? urlIds : localStorageIds);
 
-  // Filter by selected guides - show none if nothing selected, or all in demo mode
+  // Filter by selected guides
   const userGuides = selectedGuideIds.length > 0
     ? allUserGuides.filter(guide => selectedGuideIds.includes(guide.id))
-    : allUserGuides);
+    : allUserGuides;
 
   const items = selectedGuideIds.length > 0
     ? allItems.filter(item => item.user_guide_id && selectedGuideIds.includes(item.user_guide_id))
-    : allItems);
+    : allItems;
 
   useEffect(() => {
     async function fetchData() {
@@ -73,8 +73,8 @@ export function AnalyticsView() {
         setLoading(true);
 
         const [guidesRes, itemsRes] = await Promise.all([
-          fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`),
-          fetch(`/api/items`)
+          fetch('/api/notes?archived=false'),
+          fetch('/api/items')
         ]);
 
         if (!guidesRes.ok || !itemsRes.ok) {
@@ -96,7 +96,7 @@ export function AnalyticsView() {
     }
 
     fetchData();
-  }, [workspaceId]);
+  }, []);
 
   // Calculate stats
   const totalTasks = items.length;
