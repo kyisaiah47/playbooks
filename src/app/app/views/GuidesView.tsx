@@ -34,20 +34,20 @@ import {
 } from '@/components/ui/drawer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-interface Prompt {
+interface Question {
   id: string;
-  prompt: string;
+  question: string;
   categoryName: string;
 }
 
-interface Article {
+interface Reading {
   id: string;
   title: string;
   excerpt: string;
   readTime: string;
 }
 
-interface ArticleDetail extends Article {
+interface ReadingDetail extends Reading {
   content: string;
   author: string;
   publishedAt: string;
@@ -109,29 +109,29 @@ interface GuidesViewProps {
 }
 
 export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProps) {
-  const [selectedTemplate, setSelectedTemplate] = useState('wedding-planning');
-  const [guides, setTemplates] = useState<Template[]>([]);
-  const [displayedTemplates, setDisplayedTemplates] = useState<Template[]>([]);
-  const [templateInfo, setTemplateInfo] = useState<{ id: string; name: string } | null>(null);
-  const [questions, setPrompts] = useState<Prompt[]>([]);
-  const [readings, setArticles] = useState<Article[]>([]);
-  const [selectedPromptId, setSelectedPromptId] = useState<string | null>(null);
-  const [promptResponse, setPromptResponse] = useState('');
+  const [selectedGuide, setSelectedGuide] = useState('wedding-planning');
+  const [guides, setGuides] = useState<Template[]>([]);
+  const [displayedGuides, setDisplayedGuides] = useState<Template[]>([]);
+  const [guideInfo, setGuideInfo] = useState<{ id: string; name: string } | null>(null);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [readings, setReadings] = useState<Reading[]>([]);
+  const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(null);
+  const [questionResponse, setQuestionResponse] = useState('');
   const [loading, setLoading] = useState(true);
   const [autoSave, setAutoSave] = useState(true);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const [selectedArticle, setSelectedArticle] = useState<ArticleDetail | null>(null);
-  const [loadingArticle, setLoadingArticle] = useState(false);
+  const [selectedReading, setSelectedReading] = useState<ReadingDetail | null>(null);
+  const [loadingReading, setLoadingReading] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
   const [open, setOpen] = useState(false);
-  const [hasMoreTemplates, setHasMoreTemplates] = useState(true);
+  const [hasMoreGuides, setHasMoreGuides] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [promptSearchQuery, setPromptSearchQuery] = useState('');
-  const [articleSearchQuery, setArticleSearchQuery] = useState('');
-  const [articleContentSearchQuery, setArticleContentSearchQuery] = useState('');
+  const [questionSearchQuery, setQuestionSearchQuery] = useState('');
+  const [readingSearchQuery, setReadingSearchQuery] = useState('');
+  const [readingContentSearchQuery, setReadingContentSearchQuery] = useState('');
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const [answeredPrompts, setAnsweredPrompts] = useState<Set<string>>(new Set());
+  const [answeredQuestions, setAnsweredQuestions] = useState<Set<string>>(new Set());
 
   // Mobile drawer state
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -171,7 +171,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
 
         if (foundTrack) {
           setTrack(foundTrack);
-          // Update selectedTemplate to the guide_id from the track
+          // Update selectedGuide to the guide_id from the track
           if (foundTrack.guide_id) {
             setSelectedTemplate(foundTrack.guide_id);
           }
@@ -195,7 +195,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         },
         selectFirstPrompt: () => {
           if (questions.length > 0) {
-            const groupedPrompts = questions.reduce((acc, prompt) => {
+            const groupedQuestions = questions.reduce((acc, prompt) => {
               const category = prompt.categoryName || 'General';
               if (!acc[category]) {
                 acc[category] = [];
@@ -203,7 +203,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
               acc[category].push(prompt);
               return acc;
             }, {} as Record<string, Prompt[]>);
-            const firstCategory = Object.keys(groupedPrompts).sort()[0];
+            const firstCategory = Object.keys(groupedQuestions).sort()[0];
             // Expand first category
             setCollapsedCategories((prev) => {
               const newSet = new Set(prev);
@@ -211,7 +211,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
               return newSet;
             });
             // Select first prompt
-            const firstPrompt = groupedPrompts[firstCategory][0];
+            const firstPrompt = groupedQuestions[firstCategory][0];
             if (firstPrompt) {
               setSelectedPromptId(firstPrompt.id);
             }
@@ -219,7 +219,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         },
         openFirstArticle: () => {
           if (readings.length > 0) {
-            handleArticleClick(readings[0].id);
+            handleReadingClick(readings[0].id);
           }
         },
       });
@@ -242,7 +242,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
 
   // Load data from Supabase (auth) or localStorage (anonymous)
   useEffect(() => {
-    if (selectedPromptId && selectedTemplate && isAuthenticated !== null) {
+    if (selectedQuestionId && selectedGuide && isAuthenticated !== null) {
       loadResponse();
     }
 
@@ -252,14 +252,14 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
           // Load from Supabase
           const url = trackId
             ? `/api/answers?trackId=${trackId}`
-            : `/api/answers?guideId=${selectedTemplate}`;
+            : `/api/answers?guideId=${selectedGuide}`;
           const res = await fetch(url);
           const data = await res.json();
 
           if (data.answers) {
             const response = data.answers.find(
               (r: any) =>
-                r.prompt_id === selectedPromptId
+                r.prompt_id === selectedQuestionId
             );
 
             if (response) {
@@ -272,7 +272,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
           }
         } else {
           // Load from localStorage
-          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {
@@ -295,11 +295,11 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         setLastSaved(null);
       }
     }
-  }, [selectedPromptId, selectedTemplate, isAuthenticated]);
+  }, [selectedQuestionId, selectedGuide, isAuthenticated]);
 
   // Autosave functionality - save to Supabase or localStorage
   useEffect(() => {
-    if (!autoSave || !selectedPromptId || !selectedTemplate || isAuthenticated === null) return;
+    if (!autoSave || !selectedQuestionId || !selectedGuide || isAuthenticated === null) return;
 
     const timeoutId = setTimeout(async () => {
       try {
@@ -309,17 +309,17 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              guideId: selectedTemplate,
-              questionId: selectedPromptId,
-              answer: promptResponse,
+              guideId: selectedGuide,
+              questionId: selectedQuestionId,
+              answer: questionResponse,
             }),
           });
           setLastSaved(new Date());
         } else {
           // Save to localStorage
-          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const data = {
-            answer: promptResponse,
+            answer: questionResponse,
             savedAt: new Date().toISOString(),
           };
           localStorage.setItem(key, JSON.stringify(data));
@@ -331,18 +331,18 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
     }, 2000);
 
     return () => clearTimeout(timeoutId);
-  }, [promptResponse, autoSave, selectedPromptId, selectedTemplate, isAuthenticated]);
+  }, [questionResponse, autoSave, selectedQuestionId, selectedGuide, isAuthenticated]);
 
   // Fetch guides list
   useEffect(() => {
-    async function fetchTemplates() {
+    async function fetchGuides() {
       try {
         const res = await fetch('/api/guides');
         const data = await res.json();
         const allTemplates = (data.guides || []).sort((a: Template, b: Template) =>
           a.name.localeCompare(b.name)
         );
-        setTemplates(allTemplates);
+        setGuides(allTemplates);
 
         // Initially load first batch
         setDisplayedTemplates(allTemplates.slice(0, TEMPLATES_PER_LOAD));
@@ -351,14 +351,14 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         console.error('Error fetching guides:', error);
       }
     }
-    fetchTemplates();
+    fetchGuides();
   }, []);
 
   // Load more guides
-  const loadMoreTemplates = () => {
-    if (!hasMoreTemplates) return;
+  const loadMoreGuides = () => {
+    if (!hasMoreGuides) return;
 
-    const currentLength = displayedTemplates.length;
+    const currentLength = displayedGuides.length;
     const nextBatch = guides.slice(currentLength, currentLength + TEMPLATES_PER_LOAD);
 
     if (nextBatch.length > 0) {
@@ -368,12 +368,12 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
   };
 
   // Filter guides based on search
-  const filteredTemplates = searchQuery.trim()
+  const filteredGuides = searchQuery.trim()
     ? guides.filter(t =>
         t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         t.category.toLowerCase().includes(searchQuery.toLowerCase())
       )
-    : displayedTemplates;
+    : displayedGuides;
 
   // Split into featured and regular guides (only when no search)
   // Always pull featured from full guides array to ensure they're included
@@ -388,8 +388,8 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
     ? guides.filter(t => FEATURED_HEALTH_IDS.includes(t.id))
     : [];
   const regularTemplates = showFeatured
-    ? filteredTemplates.filter(t => !FEATURED_TEMPLATE_IDS.includes(t.id))
-    : filteredTemplates;
+    ? filteredGuides.filter(t => !FEATURED_TEMPLATE_IDS.includes(t.id))
+    : filteredGuides;
 
   // Fetch questions and readings when template changes
   useEffect(() => {
@@ -400,19 +400,19 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         // Use track guide info if in track mode, otherwise find in guides array
         const template = track?.guides
           ? { id: track.guides.id, name: track.guides.name }
-          : guides.find(t => t.id === selectedTemplate);
+          : guides.find(t => t.id === selectedGuide);
 
         if (template) {
           setTemplateInfo({ id: template.id, name: template.name });
         }
 
-        const questionsRes = await fetch(`/api/guides/${selectedTemplate}/questions`);
+        const questionsRes = await fetch(`/api/guides/${selectedGuide}/questions`);
         const questionsData = await questionsRes.json();
         const fetchedPrompts = questionsData.questions || [];
         setPrompts(fetchedPrompts);
 
         // Collapse all categories by default
-        const groupedPrompts = fetchedPrompts.reduce((acc: Record<string, Prompt[]>, prompt: Prompt) => {
+        const groupedQuestions = fetchedPrompts.reduce((acc: Record<string, Prompt[]>, prompt: Prompt) => {
           const category = prompt.categoryName || 'General';
           if (!acc[category]) {
             acc[category] = [];
@@ -420,10 +420,10 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
           acc[category].push(prompt);
           return acc;
         }, {});
-        const allCategories = Object.keys(groupedPrompts);
+        const allCategories = Object.keys(groupedQuestions);
         setCollapsedCategories(new Set(allCategories));
 
-        const readingsRes = await fetch(`/api/guides/${selectedTemplate}/readings`);
+        const readingsRes = await fetch(`/api/guides/${selectedGuide}/readings`);
         const readingsData = await readingsRes.json();
         setArticles(readingsData.readings || []);
       } catch (error) {
@@ -437,11 +437,11 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
     if (guides.length > 0 || track) {
       fetchData();
     }
-  }, [selectedTemplate, guides, track]);
+  }, [selectedGuide, guides, track]);
 
   // Check which questions have been answered
   useEffect(() => {
-    async function checkAnsweredPrompts() {
+    async function checkAnsweredQuestions() {
       if (isAuthenticated === null || questions.length === 0) return;
 
       const answered = new Set<string>();
@@ -449,7 +449,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
       if (isAuthenticated) {
         // Check API answers
         try {
-          const res = await fetch(`/api/answers?guideId=${selectedTemplate}`);
+          const res = await fetch(`/api/answers?guideId=${selectedGuide}`);
           const data = await res.json();
           if (data.answers) {
             data.answers.forEach((r: any) => {
@@ -464,7 +464,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
       } else {
         // Check localStorage
         questions.forEach((prompt) => {
-          const key = `workspace_${selectedTemplate}_${prompt.id}`;
+          const key = `workspace_${selectedGuide}_${prompt.id}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {
@@ -480,15 +480,15 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
       }
 
       // Optimistically show checkmark for current prompt if it has content
-      if (selectedPromptId && promptResponse.trim().length > 0) {
-        answered.add(selectedPromptId);
+      if (selectedQuestionId && questionResponse.trim().length > 0) {
+        answered.add(selectedQuestionId);
       }
 
       setAnsweredPrompts(answered);
     }
 
-    checkAnsweredPrompts();
-  }, [selectedTemplate, questions, isAuthenticated, lastSaved, selectedPromptId, promptResponse]);
+    checkAnsweredQuestions();
+  }, [selectedGuide, questions, isAuthenticated, lastSaved, selectedQuestionId, questionResponse]);
 
   const handleTemplateChange = (newTemplateId: string) => {
     setSelectedTemplate(newTemplateId);
@@ -498,7 +498,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
     setOpen(false);
   };
 
-  const handleArticleClick = async (articleId: string) => {
+  const handleReadingClick = async (articleId: string) => {
     try {
       setLoadingArticle(true);
       const res = await fetch(`/api/readings/${articleId}`);
@@ -512,7 +512,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
     }
   };
 
-  const handleCloseArticle = () => {
+  const handleCloseReading = () => {
     setSelectedArticle(null);
     setArticleContentSearchQuery(''); // Clear search when closing article
   };
@@ -530,7 +530,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
   };
 
   const handleManualSave = async () => {
-    if (selectedPromptId && selectedTemplate) {
+    if (selectedQuestionId && selectedGuide) {
       try {
         if (isAuthenticated) {
           // Save to Supabase
@@ -538,17 +538,17 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              guideId: selectedTemplate,
-              questionId: selectedPromptId,
-              answer: promptResponse,
+              guideId: selectedGuide,
+              questionId: selectedQuestionId,
+              answer: questionResponse,
             }),
           });
           setLastSaved(new Date());
         } else {
           // Save to localStorage
-          const key = `workspace_${selectedTemplate}_${selectedPromptId}`;
+          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
           const data = {
-            answer: promptResponse,
+            answer: questionResponse,
             savedAt: new Date().toISOString(),
           };
           localStorage.setItem(key, JSON.stringify(data));
@@ -561,14 +561,14 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
   };
 
   // Filter questions based on search query
-  const filteredPrompts = promptSearchQuery.trim()
+  const filteredPrompts = questionSearchQuery.trim()
     ? questions.filter(p =>
-        p.prompt.toLowerCase().includes(promptSearchQuery.toLowerCase()) ||
-        (p.categoryName && p.categoryName.toLowerCase().includes(promptSearchQuery.toLowerCase()))
+        p.prompt.toLowerCase().includes(questionSearchQuery.toLowerCase()) ||
+        (p.categoryName && p.categoryName.toLowerCase().includes(questionSearchQuery.toLowerCase()))
       )
     : questions;
 
-  const groupedPrompts = filteredPrompts.reduce((acc, prompt) => {
+  const groupedQuestions = filteredPrompts.reduce((acc, prompt) => {
     const category = prompt.categoryName || 'General';
     if (!acc[category]) {
       acc[category] = [];
@@ -577,12 +577,12 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
     return acc;
   }, {} as Record<string, Prompt[]>);
 
-  const categories = Object.keys(groupedPrompts).sort();
-  const selectedPrompt = questions.find(p => p.id === selectedPromptId);
+  const categories = Object.keys(groupedQuestions).sort();
+  const selectedPrompt = questions.find(p => p.id === selectedQuestionId);
 
   // Auto-expand all categories when filtering
   useEffect(() => {
-    if (promptSearchQuery.trim()) {
+    if (questionSearchQuery.trim()) {
       // Expand all categories when searching
       setCollapsedCategories(new Set());
     } else {
@@ -594,13 +594,13 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
       }, {} as Record<string, boolean>));
       setCollapsedCategories(new Set(allCategories));
     }
-  }, [promptSearchQuery, questions]);
+  }, [questionSearchQuery, questions]);
 
   // Filter readings based on search query
-  const filteredArticles = articleSearchQuery.trim()
+  const filteredReadings = readingSearchQuery.trim()
     ? readings.filter(a =>
-        a.title.toLowerCase().includes(articleSearchQuery.toLowerCase()) ||
-        a.excerpt.toLowerCase().includes(articleSearchQuery.toLowerCase())
+        a.title.toLowerCase().includes(readingSearchQuery.toLowerCase()) ||
+        a.excerpt.toLowerCase().includes(readingSearchQuery.toLowerCase())
       )
     : readings;
 
@@ -663,7 +663,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
               <Input
                 type="text"
                 placeholder="Filter questions..."
-                value={promptSearchQuery}
+                value={questionSearchQuery}
                 onChange={(e) => setPromptSearchQuery(e.target.value)}
                 className="h-8 text-sm mb-2"
               />
@@ -676,7 +676,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
               <p className="text-sm text-muted-foreground">Loading questions...</p>
             ) : categories.length === 0 ? (
               <p className="text-sm text-muted-foreground">
-                {promptSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
+                {questionSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
               </p>
             ) : (
               <div className="space-y-4">
@@ -703,7 +703,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                           transition={{ duration: 0.2 }}
                           className="space-y-1 overflow-hidden"
                         >
-                          {groupedPrompts[category].map((prompt, index) => (
+                          {groupedQuestions[category].map((prompt, index) => (
                             <motion.button
                               key={prompt.id}
                               initial={{ opacity: 0, x: -20 }}
@@ -711,12 +711,12 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                               transition={{ duration: 0.2, delay: index * 0.03 }}
                               onClick={() => setSelectedPromptId(prompt.id)}
                               className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
-                                selectedPromptId === prompt.id
+                                selectedQuestionId === prompt.id
                                   ? 'bg-primary/10 text-primary border border-primary/20'
                                   : 'bg-muted/50 text-foreground hover:bg-muted'
                               }`}
                             >
-                              {answeredPrompts.has(prompt.id) && (
+                              {answeredQuestions.has(prompt.id) && (
                                 <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
                               )}
                               <span className="flex-1">{prompt.prompt}</span>
@@ -738,7 +738,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
             <AnimatePresence mode="wait">
               {selectedPrompt ? (
                 <motion.div
-                  key={selectedPromptId}
+                  key={selectedQuestionId}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -763,7 +763,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                     <textarea
                       className="w-full h-full bg-transparent border-none outline-none resize-none text-foreground text-[15px] leading-relaxed font-normal placeholder:text-muted-foreground/60"
                       placeholder="Start writing your response here..."
-                      value={promptResponse}
+                      value={questionResponse}
                       onChange={(e) => setPromptResponse(e.target.value)}
                       style={{ fontFamily: 'inherit' }}
                     />
@@ -796,12 +796,12 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
         {/* Right Sidebar - Articles or Article Content (Desktop only) */}
         <motion.div
           className="hidden md:block border-l bg-background overflow-y-auto"
-          animate={{ width: selectedArticle ? 600 : 320 }}
+          animate={{ width: selectedReading ? 600 : 320 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <div className="p-6 space-y-4">
             <AnimatePresence mode="wait">
-              {selectedArticle ? (
+              {selectedReading ? (
                 <motion.div
                   key="article-detail"
                   initial={{ opacity: 0, x: 20 }}
@@ -814,7 +814,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={handleCloseArticle}
+                        onClick={handleCloseReading}
                         className="text-muted-foreground hover:text-foreground"
                       >
                         <ArrowLeft className="h-4 w-4 mr-2" />
@@ -828,14 +828,14 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                       <Input
                         type="text"
                         placeholder="Search in article..."
-                        value={articleContentSearchQuery}
+                        value={readingContentSearchQuery}
                         onChange={(e) => setArticleContentSearchQuery(e.target.value)}
                         className="h-9 text-sm pl-9"
                       />
                     </div>
                   </div>
 
-                  {loadingArticle ? (
+                  {loadingReading ? (
                     <div className="py-8 text-center">
                       <p className="text-muted-foreground">Loading article...</p>
                     </div>
@@ -843,18 +843,18 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                     <div className="space-y-6">
                       <header>
                         <h2 className="text-2xl font-bold text-foreground mb-4">
-                          {selectedArticle.title}
+                          {selectedReading.title}
                         </h2>
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span>{selectedArticle.author}</span>
+                          <span>{selectedReading.author}</span>
                           <span>•</span>
-                          <span>{selectedArticle.readTime} min read</span>
+                          <span>{selectedReading.readTime} min read</span>
                           <span>•</span>
-                          <span>{new Date(selectedArticle.publishedAt).toLocaleDateString()}</span>
+                          <span>{new Date(selectedReading.publishedAt).toLocaleDateString()}</span>
                         </div>
                       </header>
 
-                      <ArticleContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
+                      <ArticleContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
                     </div>
                   )}
                 </motion.div>
@@ -877,7 +877,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                     <Input
                       type="text"
                       placeholder="Filter readings..."
-                      value={articleSearchQuery}
+                      value={readingSearchQuery}
                       onChange={(e) => setArticleSearchQuery(e.target.value)}
                       className="h-8 text-sm mb-2"
                     />
@@ -888,13 +888,13 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
 
                   {loading ? (
                     <p className="text-sm text-muted-foreground">Loading readings...</p>
-                  ) : filteredArticles.length === 0 ? (
+                  ) : filteredReadings.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
-                      {articleSearchQuery.trim() ? 'No readings match your search' : 'No readings available'}
+                      {readingSearchQuery.trim() ? 'No readings match your search' : 'No readings available'}
                     </p>
                   ) : (
                     <div className="space-y-3">
-                      {filteredArticles.map((article, index) => (
+                      {filteredReadings.map((article, index) => (
                         <motion.div
                           key={article.id}
                           initial={{ opacity: 0, y: 20 }}
@@ -903,7 +903,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                         >
                           <Card
                             className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
-                            onClick={() => handleArticleClick(article.id)}
+                            onClick={() => handleReadingClick(article.id)}
                           >
                             <h3 className="text-sm font-medium text-foreground mb-1">
                               {article.title}
@@ -928,24 +928,24 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
       </div>
 
       {/* Mobile Article Viewer */}
-      {isMobile && selectedArticle && (
-        <Drawer open={!!selectedArticle} onOpenChange={(open) => !open && handleCloseArticle()}>
+      {isMobile && selectedReading && (
+        <Drawer open={!!selectedReading} onOpenChange={(open) => !open && handleCloseReading()}>
           <DrawerContent className="max-h-[90vh]">
             <DrawerHeader>
               <div className="flex items-center justify-between mb-3">
-                <DrawerTitle className="text-left">{selectedArticle.title}</DrawerTitle>
+                <DrawerTitle className="text-left">{selectedReading.title}</DrawerTitle>
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={handleCloseArticle}
+                  onClick={handleCloseReading}
                 >
                   <X className="h-4 w-4" />
                 </Button>
               </div>
               <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-                <span>{selectedArticle.author}</span>
+                <span>{selectedReading.author}</span>
                 <span>•</span>
-                <span>{selectedArticle.readTime} min read</span>
+                <span>{selectedReading.readTime} min read</span>
               </div>
               {/* Search bar for mobile */}
               <div className="relative">
@@ -953,19 +953,19 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                 <Input
                   type="text"
                   placeholder="Search in article..."
-                  value={articleContentSearchQuery}
+                  value={readingContentSearchQuery}
                   onChange={(e) => setArticleContentSearchQuery(e.target.value)}
                   className="h-9 text-sm pl-9"
                 />
               </div>
             </DrawerHeader>
             <div className="flex-1 overflow-y-auto px-4 pb-4">
-              {loadingArticle ? (
+              {loadingReading ? (
                 <div className="py-8 text-center">
                   <p className="text-muted-foreground">Loading article...</p>
                 </div>
               ) : (
-                <ArticleContent content={selectedArticle.content} searchQuery={articleContentSearchQuery} />
+                <ArticleContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
               )}
             </div>
           </DrawerContent>
@@ -1005,7 +1005,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                 <Input
                   type="text"
                   placeholder="Filter questions..."
-                  value={promptSearchQuery}
+                  value={questionSearchQuery}
                   onChange={(e) => setPromptSearchQuery(e.target.value)}
                   className="h-8 text-sm -mt-2"
                 />
@@ -1016,7 +1016,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                   <p className="text-sm text-muted-foreground">Loading questions...</p>
                 ) : categories.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    {promptSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
+                    {questionSearchQuery.trim() ? 'No questions match your search' : 'No questions available'}
                   </p>
                 ) : (
                   <div className="space-y-4">
@@ -1043,7 +1043,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                               transition={{ duration: 0.2 }}
                               className="space-y-1 overflow-hidden"
                             >
-                              {groupedPrompts[category].map((prompt) => (
+                              {groupedQuestions[category].map((prompt) => (
                                 <button
                                   key={prompt.id}
                                   onClick={() => {
@@ -1051,12 +1051,12 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                                     setMobileDrawerOpen(false);
                                   }}
                                   className={`w-full text-left p-3 rounded-lg transition-colors text-sm flex items-start gap-2 ${
-                                    selectedPromptId === prompt.id
+                                    selectedQuestionId === prompt.id
                                       ? 'bg-primary/10 text-primary border border-primary/20'
                                       : 'bg-muted/50 text-foreground hover:bg-muted'
                                   }`}
                                 >
-                                  {answeredPrompts.has(prompt.id) && (
+                                  {answeredQuestions.has(prompt.id) && (
                                     <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
                                   )}
                                   <span className="flex-1">{prompt.prompt}</span>
@@ -1077,24 +1077,24 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                 <Input
                   type="text"
                   placeholder="Filter readings..."
-                  value={articleSearchQuery}
+                  value={readingSearchQuery}
                   onChange={(e) => setArticleSearchQuery(e.target.value)}
                   className="h-8 text-sm -mt-2"
                 />
                 {loading ? (
                   <p className="text-sm text-muted-foreground">Loading readings...</p>
-                ) : filteredArticles.length === 0 ? (
+                ) : filteredReadings.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    {articleSearchQuery.trim() ? 'No readings match your search' : 'No readings available for this template yet.'}
+                    {readingSearchQuery.trim() ? 'No readings match your search' : 'No readings available for this template yet.'}
                   </p>
                 ) : (
                   <div className="space-y-2">
-                    {filteredArticles.map((article) => (
+                    {filteredReadings.map((article) => (
                       <Card
                         key={article.id}
                         className="p-4 cursor-pointer hover:bg-muted/50 transition-colors border-border"
                         onClick={() => {
-                          handleArticleClick(article.id);
+                          handleReadingClick(article.id);
                           setMobileDrawerOpen(false);
                         }}
                       >
