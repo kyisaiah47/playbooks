@@ -77,7 +77,14 @@ export function AnalyticsView() {
           fetch('/api/items')
         ]);
 
+        // If unauthorized, just show empty state
         if (!guidesRes.ok || !itemsRes.ok) {
+          if (guidesRes.status === 401 || itemsRes.status === 401) {
+            setAllUserGuides([]);
+            setAllItems([]);
+            setLoading(false);
+            return;
+          }
           throw new Error('Failed to fetch data');
         }
 
