@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, User, Heart, Home, Briefcase, Target, Lightbulb } from "lucide-react";
+import { Calendar, Clock, User, Heart, Home, Briefcase, Target } from "lucide-react";
 import { Marquee } from "@/components/ui/marquee";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Highlighter } from "@/components/ui/highlighter";
@@ -11,8 +11,7 @@ import { PageLayout } from "@/components/layout";
 import { getArticleBySlug, getRelatedArticles, getArticlesByCategory, articleRegistry } from "@/registry/readings";
 import { TemplateImage } from "@/components/ui/template-image";
 import { use } from "react";
-import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { templateRegistry } from "@/registry/guides";
+import React, { useState, useEffect, useCallback } from "react";
 
 // Category icon mapping
 const getCategoryIcon = (category: string) => {
@@ -57,50 +56,6 @@ export default function ArticleClient({ params }: ArticleClientProps) {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
-
-  // Get connected concepts and templates
-  const connectedConcepts = useMemo(() => {
-    if (!post || kgLoading) return [];
-
-    const concepts = [];
-
-    // Extract key concepts from title and content
-    const titleConcepts = post.title.toLowerCase().split(' ').filter(word => word.length > 3);
-    const categoryConcepts = [post.category.toLowerCase()];
-
-    const allConcepts = [...titleConcepts, ...categoryConcepts];
-
-    for (const conceptName of allConcepts) {
-      const connected = getConnectedConcepts(conceptName);
-      concepts.push(...connected);
-    }
-
-    return concepts.slice(0, 10); // Limit to 10 concepts
-  }, [post, getConnectedConcepts, kgLoading]);
-
-  const relatedTemplates = useMemo(() => {
-    if (!post || kgLoading) return [];
-
-    const templates = [];
-
-    // Get templates related to the article's category
-    const categoryTemplates = getRelatedTemplates(post.category.toLowerCase());
-    templates.push(...categoryTemplates);
-
-    // Get templates from connected concepts
-    for (const concept of connectedConcepts.slice(0, 3)) {
-      const conceptTemplates = getRelatedTemplates(concept.name);
-      templates.push(...conceptTemplates);
-    }
-
-    // Remove duplicates and limit
-    const uniqueTemplates = Array.from(new Set(templates.map(t => t.id)))
-      .map(id => templates.find(t => t.id === id))
-      .filter(Boolean)
-      .slice(0, 6);
-
-    return uniqueTemplates;
-  }, [post, connectedConcepts, getRelatedTemplates, kgLoading]);
 
   if (!post) {
     return (
@@ -239,55 +194,6 @@ export default function ArticleClient({ params }: ArticleClientProps) {
                 className="prose prose-lg max-w-none"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
-            )}
-
-            {/* Connected Concepts */}
-            {connectedConcepts.length > 0 && (
-              <section className="mt-12 p-6 bg-muted/50 rounded-lg">
-                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <Lightbulb className="w-5 h-5" />
-                  Related Concepts
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {connectedConcepts.map((concept, index) => (
-                    <Badge key={index} variant="secondary">
-                      {concept.name}
-                    </Badge>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Related Templates */}
-            {relatedTemplates.length > 0 && (
-              <section className="mt-12">
-                <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
-                  <Target className="w-5 h-5" />
-                  Templates That Can Help
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {relatedTemplates.map((template) => (
-                    <div key={template.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-                      <h4 className="font-medium mb-2">
-                        <Link
-                          href={`/${template.id}/template`}
-                          className="hover:text-primary transition-colors"
-                        >
-                          {template.name}
-                        </Link>
-                      </h4>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        {template.description}
-                      </p>
-                      <Button asChild size="sm" variant="outline">
-                        <Link href={`/${template.id}/template`}>
-                          Use Template
-                        </Link>
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              </section>
             )}
 
             {/* Tags */}
