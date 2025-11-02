@@ -56,7 +56,6 @@ import {
 import { MarkButton } from "@/components/tiptap-ui/mark-button"
 import { TextAlignButton } from "@/components/tiptap-ui/text-align-button"
 import { UndoRedoButton } from "@/components/tiptap-ui/undo-redo-button"
-import { SlashCommand } from "@/components/tiptap-ui/slash-command/slash-command"
 import { SimpleDragHandle } from "@/components/tiptap-ui/drag-handle/simple-drag-handle"
 import { FloatingToolbar } from "@/components/tiptap-ui/floating-toolbar/floating-toolbar"
 import { BlockWrapper } from "@/components/tiptap-ui/block-wrapper/block-wrapper"
@@ -75,7 +74,6 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility"
 
 // --- Lib ---
 import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils"
-import { getQuestionsByGuide } from "@/registry/questions"
 
 // --- Styles ---
 import "@/components/tiptap-guides/simple/simple-editor.scss"
@@ -194,10 +192,9 @@ interface SimpleEditorProps {
   content?: string | object;
   onUpdate?: (content: string) => void;
   onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void;
-  guideId?: string;
 }
 
-export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: SimpleEditorProps = {}) {
+export function SimpleEditor({ content = "", onUpdate, onSwitchMode }: SimpleEditorProps = {}) {
   const isMobile = useIsMobile()
   const { height } = useWindowSize()
   const [mobileView, setMobileView] = React.useState<
@@ -265,27 +262,6 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: 
     }
   }, [isMobile, mobileView])
 
-  // Get questions for slash command
-  const [questions, setQuestions] = React.useState<any[]>([])
-
-  React.useEffect(() => {
-    if (!guideId) {
-      setQuestions([])
-      return
-    }
-
-    getQuestionsByGuide(guideId).then(setQuestions)
-  }, [guideId])
-
-  // Expose editor globally for prompt insertion
-  React.useEffect(() => {
-    if (editor) {
-      (window as any).templateEditor = editor
-    }
-    return () => {
-      (window as any).templateEditor = null
-    }
-  }, [editor])
 
   return (
     <div className="simple-editor-wrapper">
@@ -321,14 +297,6 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: 
           role="presentation"
           className="simple-editor-content"
         />
-
-        {/* Slash Command Menu */}
-        {editor && (
-          <SlashCommand
-            editor={editor}
-            prompts={questions}
-          />
-        )}
 
         {/* Drag Handle - Disabled for now */}
         {/* {editor && (
