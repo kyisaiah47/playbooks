@@ -122,52 +122,6 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Header */}
-      <div className="border-b border-border/40 px-6 py-3">
-        <div className="flex items-center justify-end gap-2">
-            {/* View Toggle */}
-            <div className="flex border border-border/40 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setView('month')}
-                className={cn(
-                  'px-3 py-1.5 text-xs font-medium transition-colors',
-                  view === 'month'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-transparent text-foreground hover:bg-muted/50'
-                )}
-              >
-                Month
-              </button>
-              <button
-                onClick={() => setView('week')}
-                className={cn(
-                  'px-3 py-1.5 text-xs font-medium transition-colors border-x border-border/40',
-                  view === 'week'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-transparent text-foreground hover:bg-muted/50'
-                )}
-              >
-                Week
-              </button>
-              <button
-                onClick={() => setView('day')}
-                className={cn(
-                  'px-3 py-1.5 text-xs font-medium transition-colors',
-                  view === 'day'
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-transparent text-foreground hover:bg-muted/50'
-                )}
-              >
-                Day
-              </button>
-            </div>
-            <Button onClick={handleCreateEvent} size="sm">
-              <Plus className="w-4 h-4" />
-              Add Event
-            </Button>
-        </div>
-      </div>
-
       {/* Error State */}
       {error && (
         <div className="mx-6 mt-4 rounded-lg border border-destructive/50 bg-destructive/10 p-4">
@@ -204,6 +158,9 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
                 tasks={filteredTasks}
                 onDateClick={handleDateClick}
                 onEventClick={handleEventClick}
+                view={view}
+                onViewChange={setView}
+                onCreateEvent={handleCreateEvent}
               />
             )}
             {view === 'week' && (
@@ -214,6 +171,9 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
                 tasks={filteredTasks}
                 onDateClick={handleDateClick}
                 onEventClick={handleEventClick}
+                view={view}
+                onViewChange={setView}
+                onCreateEvent={handleCreateEvent}
               />
             )}
             {view === 'day' && (
@@ -224,6 +184,9 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
                 tasks={filteredTasks}
                 onDateClick={handleDateClick}
                 onEventClick={handleEventClick}
+                view={view}
+                onViewChange={setView}
+                onCreateEvent={handleCreateEvent}
               />
             )}
           </div>

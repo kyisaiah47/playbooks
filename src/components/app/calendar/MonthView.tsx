@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   startOfMonth,
@@ -18,6 +18,7 @@ import {
 } from 'date-fns';
 import { CalendarEvent, Task } from '@/types/workspace';
 import { MonthGrid } from './MonthGrid';
+import { cn } from '@/lib/utils';
 
 interface MonthViewProps {
   currentDate: Date;
@@ -26,6 +27,9 @@ interface MonthViewProps {
   tasks: Task[];
   onDateClick: (date: Date) => void;
   onEventClick?: (event: CalendarEvent) => void;
+  view: 'month' | 'week' | 'day';
+  onViewChange: (view: 'month' | 'week' | 'day') => void;
+  onCreateEvent: () => void;
 }
 
 export function MonthView({
@@ -35,6 +39,9 @@ export function MonthView({
   tasks,
   onDateClick,
   onEventClick,
+  view,
+  onViewChange,
+  onCreateEvent,
 }: MonthViewProps) {
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(currentDate);
@@ -102,11 +109,52 @@ export function MonthView({
             >
               <ChevronRight className="w-4 h-4" />
             </Button>
+            <Button variant="outline" size="sm" onClick={handleToday}>
+              Today
+            </Button>
           </div>
         </div>
-        <Button variant="outline" size="sm" onClick={handleToday}>
-          Today
-        </Button>
+        <div className="flex items-center gap-2">
+          <div className="flex border border-border/40 rounded-lg overflow-hidden">
+            <button
+              onClick={() => onViewChange('month')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors',
+                view === 'month'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Month
+            </button>
+            <button
+              onClick={() => onViewChange('week')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors border-x border-border/40',
+                view === 'week'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Week
+            </button>
+            <button
+              onClick={() => onViewChange('day')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors',
+                view === 'day'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Day
+            </button>
+          </div>
+          <Button onClick={onCreateEvent} size="sm">
+            <Plus className="w-4 h-4" />
+            Add Event
+          </Button>
+        </div>
       </div>
 
       {/* Calendar Grid */}
