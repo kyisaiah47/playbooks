@@ -127,12 +127,16 @@ export function GuidesViewWrapper({
 
     return (
       <Tabs defaultValue={tracks[0].id} className="h-full flex flex-col">
-        <div className="border-b bg-background px-4">
-          <TabsList className="h-12">
+        <div className="px-6 pt-3 pb-1">
+          <TabsList className="h-8 bg-transparent p-0 gap-1">
             {tracks.map((track) => {
               const displayName = track.custom_name || track.guides.name;
               return (
-                <TabsTrigger key={track.id} value={track.id} className="text-sm">
+                <TabsTrigger
+                  key={track.id}
+                  value={track.id}
+                  className="text-xs px-3 py-1 data-[state=active]:bg-muted data-[state=inactive]:bg-transparent"
+                >
                   {displayName}
                 </TabsTrigger>
               );
