@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { GuidanceTemplate, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/template';
+import { Guide, Resource, ReflectionPrompt, FreeformNote, Workspace } from '@/types/guide';
 import { TemplataContentSidebar } from '@/components/templata-sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/template-sidebar';
 import { ThemeSelector } from '@/components/theme-selector';
@@ -29,7 +29,7 @@ import {
 const SimpleEditor = lazy(() => import('@/components/tiptap-templates/simple/simple-editor').then(mod => ({ default: mod.SimpleEditor })));
 
 interface TemplateViewProps {
-  template: GuidanceTemplate;
+  template: Guide;
   onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void;
 }
 

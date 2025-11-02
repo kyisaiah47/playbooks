@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GuidanceSection, ReflectionPrompt, FreeformNote } from '@/types/template';
+import { GuidanceSection, ReflectionPrompt, FreeformNote } from '@/types/guide';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GuidanceTemplate, DailyReflectionPrompt } from '@/types/template';
+import { Guide, DailyReflectionPrompt } from '@/types/guide';
 import { SimpleEditor } from '@/components/tiptap-templates/simple/simple-editor';
 import { WorkspaceSwitcher } from '@/components/tiptap-templates/simple/workspace-switcher';
 import { ThemeSelector } from '@/components/theme-selector';
@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/tooltip";
 
 interface ReflectionViewProps {
-  template: GuidanceTemplate;
+  template: Guide;
   onSwitchMode: (mode: 'template' | 'reflection' | 'master') => void;
 }
 

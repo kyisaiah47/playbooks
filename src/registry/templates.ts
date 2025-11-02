@@ -1,4 +1,4 @@
-import { GuidanceTemplate } from '@/types/template';
+import { Guide } from '@/types/guide';
 
 export interface TemplateRegistryEntry {
   id: string;
@@ -9,7 +9,7 @@ export interface TemplateRegistryEntry {
   url: string;
   color: string;
   iconColor: string;
-  template: GuidanceTemplate;
+  template: Guide;
 }
 
 // Helper function to get colors based on category

@@ -8,7 +8,7 @@ import { Typography } from '@tiptap/extension-typography'
 import { PromptNode } from '@/components/tiptap-node/prompt-node/prompt-node-extension'
 import '@/components/tiptap-node/prompt-node/prompt-node.scss'
 
-import { ReflectionPrompt } from '@/types/template'
+import { ReflectionPrompt } from '@/types/guide'
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 import { Plus, Target } from 'lucide-react'
 

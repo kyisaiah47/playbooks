@@ -7,7 +7,7 @@ import { Heart, FileText, Users, Plus, DollarSign, MapPin, UserCheck, Briefcase,
 import { GuidanceTemplate, ReflectionPrompt, Resource } from "@/types/template"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { RelatedTemplates } from "@/components/template/related-templates"
+import { RelatedGuides } from "@/components/guide/related-guides"
 import { ThemeSelector } from "@/components/theme-selector"
 import {
   Sidebar,
@@ -454,7 +454,7 @@ export function TemplataContentSidebar({
 
               {activeTab === 'related' && (
                 <div className="p-4">
-                  <RelatedTemplates templateId={template.id} />
+                  <RelatedGuides templateId={template.id} />
                 </div>
               )}
             </SidebarGroupContent>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Resource } from '@/types/template';
+import { Resource } from '@/types/guide';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { X, Clock, BookOpen, ExternalLink, Plus, CheckCircle, ArrowLeft, Circle, Lightbulb, DollarSign, Calendar, Users, Camera } from 'lucide-react';
