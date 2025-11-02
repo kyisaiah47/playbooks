@@ -76,8 +76,30 @@ export function GuidesViewWrapper({
     );
   }
 
+  // Show loading state while fetching tracks
+  if (loading) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <p className="text-muted-foreground">Loading tracks...</p>
+      </div>
+    );
+  }
+
+  // No tracks found after loading
+  if (tracks.length === 0) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <div className="text-center text-muted-foreground">
+          <FolderOpen className="w-16 h-16 mx-auto mb-4 opacity-20" />
+          <p className="text-lg font-medium">No tracks found</p>
+          <p className="text-sm">The selected tracks may have been deleted</p>
+        </div>
+      </div>
+    );
+  }
+
   // Single track selected
-  if (selectedTrackIds.length === 1 && tracks.length === 1) {
+  if (tracks.length === 1) {
     const track = tracks[0];
     return (
       <GuidesView
@@ -89,59 +111,30 @@ export function GuidesViewWrapper({
   }
 
   // Multiple tracks selected - tabbed interface
-  if (selectedTrackIds.length > 1) {
-    if (loading) {
-      return (
-        <div className="h-full flex items-center justify-center">
-          <p className="text-muted-foreground">Loading tracks...</p>
-        </div>
-      );
-    }
-
-    if (tracks.length === 0) {
-      return (
-        <div className="h-full flex items-center justify-center">
-          <div className="text-center text-muted-foreground">
-            <FolderOpen className="w-16 h-16 mx-auto mb-4 opacity-20" />
-            <p className="text-lg font-medium">No tracks found</p>
-            <p className="text-sm">The selected tracks may have been deleted</p>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <Tabs defaultValue={tracks[0].id} className="h-full flex flex-col">
-        <div className="border-b bg-background px-4">
-          <TabsList className="h-12">
-            {tracks.map((track) => {
-              const displayName = track.custom_name || track.guides.name;
-              return (
-                <TabsTrigger key={track.id} value={track.id} className="text-sm">
-                  {displayName}
-                </TabsTrigger>
-              );
-            })}
-          </TabsList>
-        </div>
-
-        {tracks.map((track) => (
-          <TabsContent key={track.id} value={track.id} className="flex-1 overflow-hidden mt-0">
-            <GuidesView
-              trackId={track.id}
-              onViewChange={onViewChange}
-              setActions={setActions}
-            />
-          </TabsContent>
-        ))}
-      </Tabs>
-    );
-  }
-
-  // Loading state while tracks are being fetched
   return (
-    <div className="h-full flex items-center justify-center">
-      <p className="text-muted-foreground">Loading...</p>
-    </div>
+    <Tabs defaultValue={tracks[0].id} className="h-full flex flex-col">
+      <div className="border-b bg-background px-4">
+        <TabsList className="h-12">
+          {tracks.map((track) => {
+            const displayName = track.custom_name || track.guides.name;
+            return (
+              <TabsTrigger key={track.id} value={track.id} className="text-sm">
+                {displayName}
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
+      </div>
+
+      {tracks.map((track) => (
+        <TabsContent key={track.id} value={track.id} className="flex-1 overflow-hidden mt-0">
+          <GuidesView
+            trackId={track.id}
+            onViewChange={onViewChange}
+            setActions={setActions}
+          />
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 }
