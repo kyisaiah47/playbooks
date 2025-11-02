@@ -1,21 +1,27 @@
-import { Metadata } from 'next';
-import { DocsHeader } from '@/components/layout/docs-header';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Library | Templata',
-  description: 'Curated readings and resources for major life decisions. Expert-selected articles, books, and guides organized by topic.',
-  keywords: 'curated readings, life planning resources, expert articles, career resources, relationship advice, personal development',
+  title: 'Browse 25,936 Articles | Expert Knowledge Base for Life | Templata',
+  description: 'Explore 25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying, health decisions & more. Like Wikipedia for life guidance.',
+  keywords: 'life planning articles, expert guides, how-to articles, wedding planning tips, career change advice, business launch guides, home buying guidance, life decisions, knowledge base, templata articles',
+  authors: [{ name: 'Templata Team' }],
+  creator: 'Templata',
+  publisher: 'Templata',
+  metadataBase: new URL('https://templata.org'),
+  alternates: {
+    canonical: '/articles',
+  },
   openGraph: {
-    title: 'Library | Templata',
-    description: 'Curated readings and resources for major life decisions. Expert-selected articles and guides.',
-    url: 'https://templata.org/library',
+    title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
+    description: '25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying & more. Like Wikipedia for life guidance.',
+    url: 'https://templata.org/articles',
     siteName: 'Templata',
     images: [
       {
         url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Templata Library',
+        alt: 'Templata Articles - 25,936 Expert Articles',
       },
     ],
     locale: 'en_US',
@@ -23,9 +29,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Library | Templata',
-    description: 'Curated readings and resources for major life decisions.',
+    title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
+    description: '25,936 expert articles for every life situation. Wedding planning, career changes, business launches & more. Completely free.',
     images: ['https://templata.org/og-image.png'],
+    creator: '@templata',
+    site: '@templata',
   },
   robots: {
     index: true,
@@ -33,24 +41,17 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
-  },
-  alternates: {
-    canonical: 'https://templata.org/library',
   },
 };
 
-export default function LibraryLayout({
+export default function ArticlesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <DocsHeader />
-      <div className="pt-14">
-        {children}
-      </div>
-    </>
-  );
+  return <>{children}</>;
 }

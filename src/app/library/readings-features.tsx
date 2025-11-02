@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Target, Sparkles, BookMarked } from 'lucide-react';
 
-export function ArticlesFeatures() {
+export function ReadingsFeatures() {
   const features = [
     {
       icon: Target,
-      title: "Template-Matched",
-      description: "Each article is connected to specific templates, giving you relevant insights exactly when you need them."
+      title: "Guide-Matched",
+      description: "Each reading is connected to specific guides, giving you relevant insights exactly when you need them."
     },
     {
       icon: Sparkles,
@@ -35,7 +35,7 @@ export function ArticlesFeatures() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Knowledge when you need it</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Articles that don't just inform—they guide you through the specific challenges you're facing.
+            Readings that don't just inform—they guide you through the specific challenges you're facing.
           </p>
         </div>
 

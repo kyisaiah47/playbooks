@@ -9,9 +9,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
-const ARTICLES_PER_PAGE = 100;
+const READINGS_PER_PAGE = 100;
 
-interface Article {
+interface Reading {
   id: string;
   title: string;
   excerpt: string;
@@ -28,24 +28,24 @@ interface Article {
   relatedTemplates?: string[];
 }
 
-interface ArticlesListProps {
-  initialArticles: Article[];
+interface ReadingsListProps {
+  initialReadings: Reading[];
   initialTotal: number;
 }
 
-export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProps) {
+export function ReadingsList({ initialReadings, initialTotal }: ReadingsListProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   // State
-  const [articles, setArticles] = useState<Article[]>(initialArticles);
+  const [readings, setReadings] = useState<Reading[]>(initialReadings);
   const [total, setTotal] = useState(initialTotal);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState('all');
 
   const currentPage = parseInt(searchParams.get('page') || '1');
-  const totalPages = Math.ceil(total / ARTICLES_PER_PAGE);
+  const totalPages = Math.ceil(total / READINGS_PER_PAGE);
 
   // Sync state with URL params on mount
   useEffect(() => {
@@ -54,31 +54,74 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     setSelectedDifficulty(searchParams.get('difficulty') || 'all');
   }, []);
 
-  // Fetch articles from API when URL params change
+  // Fetch readings from API when URL params change
   useEffect(() => {
-    const fetchArticles = async () => {
-      const params = new URLSearchParams();
-      const urlQuery = searchParams.get('q') || '';
-      const urlType = searchParams.get('type') || 'all';
-      const urlDifficulty = searchParams.get('difficulty') || 'all';
-
-      if (urlQuery) params.set('q', urlQuery);
-      if (urlType !== 'all') params.set('type', urlType);
-      if (urlDifficulty !== 'all') params.set('difficulty', urlDifficulty);
-      params.set('page', currentPage.toString());
-      params.set('pageSize', ARTICLES_PER_PAGE.toString());
-
+    const fetchReadings = async () => {
       try {
-        const response = await fetch(`/api/articles?${params.toString()}`);
-        const data = await response.json();
-        setArticles(data.articles || []);
-        setTotal(data.total || 0);
+        // First get all guides
+        const guidesResponse = await fetch('/api/library');
+        const guidesData = await guidesResponse.json();
+        const guides = guidesData.guides || [];
+
+        // Fetch readings for each guide
+        const allReadings: any[] = [];
+        for (const guide of guides) {
+          const readingsResponse = await fetch(`/api/library?guide=${guide.guide_id}`);
+          const readingsData = await readingsResponse.json();
+          const readings = readingsData.readings || [];
+
+          // Transform readings to reading format
+          readings.forEach((reading: any) => {
+            allReadings.push({
+              id: reading.id,
+              title: reading.title,
+              excerpt: reading.excerpt,
+              content: reading.content,
+              author: reading.author,
+              publishedAt: reading.updated_at,
+              readTime: reading.read_time,
+              category: guide.guide_name,
+              featured: false,
+              tags: reading.sources || [],
+              slug: reading.id,
+              type: 'reading',
+              difficulty: 'intermediate',
+              relatedTemplates: [guide.guide_id]
+            });
+          });
+        }
+
+        // Apply filters
+        let filtered = allReadings;
+        const urlQuery = searchParams.get('q') || '';
+        const urlType = searchParams.get('type') || 'all';
+        const urlDifficulty = searchParams.get('difficulty') || 'all';
+
+        if (urlQuery) {
+          filtered = filtered.filter(r =>
+            r.title.toLowerCase().includes(urlQuery.toLowerCase()) ||
+            r.excerpt.toLowerCase().includes(urlQuery.toLowerCase())
+          );
+        }
+        if (urlType !== 'all') {
+          filtered = filtered.filter(r => r.type === urlType);
+        }
+        if (urlDifficulty !== 'all') {
+          filtered = filtered.filter(r => r.difficulty === urlDifficulty);
+        }
+
+        setTotal(filtered.length);
+
+        // Apply pagination
+        const start = (currentPage - 1) * READINGS_PER_PAGE;
+        const end = start + READINGS_PER_PAGE;
+        setReadings(filtered.slice(start, end));
       } catch (error) {
-        console.error('Failed to fetch articles:', error);
+        console.error('Failed to fetch readings:', error);
       }
     };
 
-    fetchArticles();
+    fetchReadings();
   }, [searchParams, currentPage]);
 
   // Debounced search
@@ -90,7 +133,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
       else params.delete('q');
       params.delete('page'); // Reset to page 1
 
-      const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+      const newUrl = params.toString() ? `/library?${params.toString()}` : '/library';
       router.push(newUrl, { scroll: false });
     }, 300);
 
@@ -111,7 +154,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     }
     params.delete('page'); // Reset to page 1
 
-    const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+    const newUrl = params.toString() ? `/library?${params.toString()}` : '/library';
     router.push(newUrl, { scroll: false });
   };
 
@@ -120,7 +163,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     if (page === 1) params.delete('page');
     else params.set('page', page.toString());
 
-    const newUrl = params.toString() ? `/articles?${params.toString()}` : '/articles';
+    const newUrl = params.toString() ? `/library?${params.toString()}` : '/library';
     router.push(newUrl, { scroll: false });
   };
 
@@ -128,7 +171,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
     <div className="container mx-auto px-4 max-w-6xl relative">
       {/* Browse Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">Browse All Articles</h2>
+        <h2 className="text-2xl font-bold mb-6">Browse All Readings</h2>
 
         {/* Search and Filters */}
         <div className="flex flex-col md:flex-row gap-4 mb-6">
@@ -136,7 +179,7 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
             <Input
               type="text"
-              placeholder="Search articles..."
+              placeholder="Search readings..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-12 h-12 text-base"
@@ -179,32 +222,32 @@ export function ArticlesList({ initialArticles, initialTotal }: ArticlesListProp
 
         {/* Results count */}
         <div className="text-sm text-muted-foreground">
-          {total.toLocaleString()} article{total !== 1 ? 's' : ''} {searchQuery || selectedType !== 'all' || selectedDifficulty !== 'all' ? 'found' : 'total'}
+          {total.toLocaleString()} reading{total !== 1 ? 's' : ''} {searchQuery || selectedType !== 'all' || selectedDifficulty !== 'all' ? 'found' : 'total'}
         </div>
       </section>
 
-      {/* Articles List */}
+      {/* Readings List */}
       <section className="mb-12">
         <div className="space-y-0 divide-y divide-border">
-          {articles.map((article: any) => {
-            // Get template name from relatedTemplates or fallback to category
-            const templateName = article.relatedTemplates?.[0] || article.category;
+          {readings.map((reading: any) => {
+            // Get guide name from relatedTemplates or fallback to category
+            const guideName = reading.relatedTemplates?.[0] || reading.category;
 
             return (
               <Link
-                key={article.id}
-                href={`/articles/${article.slug}`}
+                key={reading.id}
+                href={`/library/${reading.slug}`}
                 className="group block py-3 hover:text-primary transition-colors"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
                   <h3 className="text-base font-medium group-hover:text-primary transition-colors">
-                    {article.title}
+                    {reading.title}
                   </h3>
                   <div className="flex items-center gap-3 text-xs text-muted-foreground whitespace-nowrap">
-                    {templateName && (
-                      <span className="hidden sm:inline">{templateName}</span>
+                    {guideName && (
+                      <span className="hidden sm:inline">{guideName}</span>
                     )}
-                    <span>{article.readTime}</span>
+                    <span>{reading.readTime}</span>
                   </div>
                 </div>
               </Link>
