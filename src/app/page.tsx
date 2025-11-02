@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAuth } from "@/contexts/auth-context";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Announcement, AnnouncementTag, AnnouncementTitle } from "@/components/ui/announcement";
 import {
 	ArrowRight,
@@ -13,6 +13,10 @@ import {
 	Globe,
 	CheckCircle2,
 	BookOpen,
+	Target,
+	Library,
+	Calendar,
+	Sparkles,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout";
 import { Typewriter } from "@/components/ui/typewriter";
@@ -83,157 +87,151 @@ export default function LandingPage() {
 						</h1>
 
 						<p className="mx-auto max-w-2xl text-lg md:text-xl text-white/90">
-							Comprehensive questions, expert readings, and integrated planning.
-							<br />
-							Never start with a blank page.
+							Comprehensive questions covering 90%+ of what you need to consider.<br />
+							Expert readings to guide your decisions. Integrated planning to execute.
 						</p>
+
+						<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+							<Button size="lg" className="h-12 px-8 text-base" asChild>
+								<Link href="/guides">
+									Browse Guides
+									<ArrowRight className="ml-2 h-5 w-5" />
+								</Link>
+							</Button>
+							{!isLoggedIn && (
+								<Button variant="outline" size="lg" className="h-12 px-8 text-base bg-white hover:bg-white/90 text-foreground" asChild>
+									<Link href="/signup">Get Started Free</Link>
+								</Button>
+							)}
+						</div>
 					</div>
 				</div>
 			</section>
 
-			{/* What It Is - Split-Screen Workspace */}
-			<motion.section
-				className="py-24 md:py-32"
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.8 }}
-			>
+			{/* How It Works */}
+			<section className="py-24 border-t">
 				<div className="container mx-auto max-w-7xl px-4">
 					<div className="text-center space-y-4 mb-16">
-						<h2 className="text-3xl md:text-5xl font-bold">
-							Wikipedia meets Notion for life planning
+						<h2 className="text-3xl md:text-4xl font-bold">
+							The comprehensive guide + planning tool<br />for life's biggest moments
 						</h2>
 						<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-							Our split-screen interface combines comprehensive questions, a structured workspace, and expert readings.
+							Not another blank page. A complete system designed for major life decisions.
 						</p>
 					</div>
 
-					{/* Split-Screen Visual */}
-					<Card className="p-4 sm:p-8 max-w-6xl mx-auto">
-						<div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-							{/* Questions Column */}
-							<div className="space-y-3">
-								<div className="flex items-center gap-2 font-semibold mb-4">
-									<FileText className="h-5 w-5 text-primary" />
-									<span>Questions</span>
+					<div className="grid md:grid-cols-3 gap-8">
+						<Card className="border-0 shadow-none bg-background/50 text-center">
+							<CardHeader>
+								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+									<FileText className="h-8 w-8 text-primary" />
 								</div>
-								<div className="space-y-2">
-									<div className="p-3 bg-muted rounded text-sm">What's your venue budget?</div>
-									<div className="p-3 bg-muted rounded text-sm">Expected guest count?</div>
-									<div className="p-3 bg-primary/10 rounded text-primary border border-primary/20 text-sm">→ Who are must-have vendors?</div>
-								</div>
-							</div>
+								<CardTitle className="text-xl">Comprehensive Questions</CardTitle>
+								<CardDescription className="text-base">
+									90%+ coverage guarantee. AI-refined over months to ensure nothing important is missed.
+								</CardDescription>
+							</CardHeader>
+						</Card>
 
-							{/* Workspace Column */}
-							<div className="space-y-3">
-								<div className="flex items-center gap-2 font-semibold mb-4">
-									<BookOpen className="h-5 w-5 text-primary" />
-									<span>Your Workspace</span>
+						<Card className="border-0 shadow-none bg-background/50 text-center">
+							<CardHeader>
+								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+									<BookOpen className="h-8 w-8 text-primary" />
 								</div>
-								<div className="p-4 bg-background rounded border min-h-[160px] text-sm text-muted-foreground">
-									<div className="space-y-2">
-										<p>Photographer - top priority</p>
-										<p>Videographer - nice to have</p>
-										<p>Florist - DIY option possible</p>
-									</div>
+								<CardTitle className="text-xl">Expert Readings</CardTitle>
+								<CardDescription className="text-base">
+									Curated knowledge saves you hundreds of hours of research. Wikipedia for life planning.
+								</CardDescription>
+							</CardHeader>
+						</Card>
+
+						<Card className="border-0 shadow-none bg-background/50 text-center">
+							<CardHeader>
+								<div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+									<Calendar className="h-8 w-8 text-primary" />
 								</div>
-							</div>
-
-							{/* Readings Column */}
-							<div className="space-y-3">
-								<div className="flex items-center gap-2 font-semibold mb-4">
-									<Globe className="h-5 w-5 text-primary" />
-									<span>Readings</span>
-								</div>
-								<div className="space-y-2">
-									<div className="p-3 bg-primary/5 rounded cursor-pointer hover:bg-primary/10 transition-colors text-sm">
-										<div className="font-medium mb-1">Vendor Cost Breakdown</div>
-										<div className="text-xs text-muted-foreground">Average costs by category...</div>
-									</div>
-									<div className="p-3 bg-primary/5 rounded cursor-pointer hover:bg-primary/10 transition-colors text-sm">
-										<div className="font-medium mb-1">Contract Checklist</div>
-										<div className="text-xs text-muted-foreground">What to look for...</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div className="border-t mt-8 pt-6 space-y-3">
-							<div className="flex items-center gap-2 text-sm text-muted-foreground">
-								<CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-								<span>Comprehensive questions ensure you consider everything</span>
-							</div>
-							<div className="flex items-center gap-2 text-sm text-muted-foreground">
-								<CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-								<span>Expert readings like Wikipedia for life decisions</span>
-							</div>
-						</div>
-					</Card>
-				</div>
-			</motion.section>
-
-			{/* Numbers */}
-			<motion.section
-				className="py-24 md:py-32 bg-muted/30"
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.8 }}
-			>
-				<div className="container mx-auto max-w-5xl px-4">
-					<div className="text-center mb-16">
-						<h2 className="text-3xl md:text-4xl font-bold mb-4">Built for every life moment</h2>
-						<p className="text-lg text-muted-foreground">Comprehensive, structured, and completely free</p>
-					</div>
-
-					<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-						<div className="text-center">
-							<div className="text-3xl font-bold mb-2">Life Event Guides</div>
-							<p className="text-muted-foreground">For every major moment</p>
-						</div>
-						<div className="text-center">
-							<div className="text-3xl font-bold mb-2">Expert Readings</div>
-							<p className="text-muted-foreground">Curated knowledge</p>
-						</div>
-						<div className="text-center">
-							<div className="text-3xl font-bold mb-2">Completely Free</div>
-							<p className="text-muted-foreground">No paywalls</p>
-						</div>
+								<CardTitle className="text-xl">Integrated Planning</CardTitle>
+								<CardDescription className="text-base">
+									Calendar and tasks tied to specific life events—not a generic task manager.
+								</CardDescription>
+							</CardHeader>
+						</Card>
 					</div>
 				</div>
-			</motion.section>
+			</section>
 
-			{/* Final CTA */}
-			<motion.section
-				className="py-24 md:py-32"
-				initial={{ opacity: 0, y: 40 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.8 }}
-			>
-				<div className="container mx-auto max-w-3xl px-4 text-center space-y-8">
-					<h2 className="text-3xl md:text-5xl font-bold">
-						Ready to organize your next big moment?
-					</h2>
-					<p className="text-xl text-muted-foreground">
-						Start with a guide. Everything is free—no credit card required.
-					</p>
-					<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-						<Button size="lg" className="h-12 px-8 text-base" asChild>
-							<Link href="/app">
-								Browse All Guides
-								<ArrowRight className="ml-2 h-5 w-5" />
-							</Link>
-						</Button>
-						{!isLoggedIn && (
-							<Button variant="outline" size="lg" className="h-12 px-8 text-base" asChild>
-								<Link href="/login">Get Started Free</Link>
-							</Button>
-						)}
+			{/* Why Templata */}
+			<section className="py-24 bg-muted/30 border-y">
+				<div className="container mx-auto max-w-7xl px-4">
+					<div className="grid md:grid-cols-2 gap-16 items-center">
+						<div className="space-y-6">
+							<h2 className="text-3xl md:text-4xl font-bold leading-tight">
+								Major life decisions deserve better than blank pages
+							</h2>
+							<div className="space-y-4 text-muted-foreground">
+								<p className="text-lg">
+									Planning a wedding, buying a home, or changing careers means hundreds of decisions with no roadmap.
+									You're left with scattered notes, forgotten tasks, and constant anxiety about what you're missing.
+								</p>
+								<p className="text-lg">
+									Traditional tools give you empty documents. Competitors give you generic advice.
+									Templata gives you comprehensive coverage backed by months of AI refinement.
+								</p>
+							</div>
+						</div>
+
+						<div className="grid grid-cols-2 gap-4">
+							<Card className="p-6 border-dashed">
+								<div className="space-y-3">
+									<FileText className="h-8 w-8 text-muted-foreground" />
+									<div className="font-semibold text-muted-foreground">
+										Blank Documents
+									</div>
+									<div className="text-sm text-muted-foreground">
+										Where do I even start?
+									</div>
+								</div>
+							</Card>
+
+							<Card className="p-6 border-dashed">
+								<div className="space-y-3">
+									<Layout className="h-8 w-8 text-muted-foreground" />
+									<div className="font-semibold text-muted-foreground">
+										Scattered Research
+									</div>
+									<div className="text-sm text-muted-foreground">
+										Hours on Google, nothing organized
+									</div>
+								</div>
+							</Card>
+
+							<Card className="p-6 border-dashed">
+								<div className="space-y-3">
+									<CheckCircle2 className="h-8 w-8 text-muted-foreground" />
+									<div className="font-semibold text-muted-foreground">
+										Forgotten Details
+									</div>
+									<div className="text-sm text-muted-foreground">
+										Constant fear of missing something
+									</div>
+								</div>
+							</Card>
+
+							<Card className="p-6 border-dashed">
+								<div className="space-y-3">
+									<Target className="h-8 w-8 text-muted-foreground" />
+									<div className="font-semibold text-muted-foreground">
+										Generic Advice
+									</div>
+									<div className="text-sm text-muted-foreground">
+										One-size-fits-all doesn't fit you
+									</div>
+								</div>
+							</Card>
+						</div>
 					</div>
 				</div>
-			</motion.section>
+			</section>
 
 		</PageLayout>
 	);
