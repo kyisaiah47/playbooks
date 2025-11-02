@@ -1,6 +1,7 @@
 'use client';
 
 import { memo } from 'react';
+import { motion } from 'framer-motion';
 import { format, isSameMonth, isToday } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { CalendarEvent, Task } from '@/types/workspace';
@@ -48,7 +49,11 @@ export const MonthGrid = memo(function MonthGrid({
           const isDayToday = isToday(day);
 
           return (
-            <div
+            <motion.div
+              layout
+              initial={{ opacity: 0.8 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
               key={day.toISOString()}
               className={cn(
                 'relative border-r border-b border-border/40 p-1 sm:p-2 cursor-pointer transition-colors hover:bg-muted/30',
@@ -110,7 +115,7 @@ export const MonthGrid = memo(function MonthGrid({
                   </div>
                 )}
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

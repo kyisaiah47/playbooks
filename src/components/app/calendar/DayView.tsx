@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -61,15 +61,20 @@ export function DayView({
     <div className="flex flex-col h-full">
       {/* Header with Navigation */}
       <div className="flex items-center gap-2 sm:gap-4 flex-wrap mb-6">
-        <motion.h2
-          key={format(currentDate, 'EEEE, MMMM d, yyyy')}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.2 }}
-          className="text-base sm:text-xl md:text-2xl font-bold"
-        >
-          {format(currentDate, 'EEEE, MMMM d, yyyy')}
-        </motion.h2>
+        <h2 className="text-base sm:text-xl md:text-2xl font-bold">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={format(currentDate, 'EEEE, MMMM d, yyyy')}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              className="inline-block"
+            >
+              {format(currentDate, 'EEEE, MMMM d, yyyy')}
+            </motion.span>
+          </AnimatePresence>
+        </h2>
         <div className="flex gap-1">
           <Button
             variant="outline"
