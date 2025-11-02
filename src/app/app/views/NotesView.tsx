@@ -191,11 +191,11 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
           ) : (
             <div className="p-2 space-y-1">
               {notes.map((note) => (
-                <div
+                <button
                   key={note.id}
                   onClick={() => setSelectedNote(note)}
                   className={cn(
-                    'w-full text-left p-2 rounded-md text-sm transition-colors group cursor-pointer',
+                    'w-full text-left p-2 rounded-md text-sm transition-colors group',
                     selectedNote?.id === note.id
                       ? 'bg-muted'
                       : 'hover:bg-muted/50'
@@ -218,7 +218,7 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
                       <Trash2 className="h-3 w-3 text-destructive" />
                     </button>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           )}
