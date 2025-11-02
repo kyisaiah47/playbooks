@@ -127,7 +127,7 @@ export function GuidesViewWrapper({
 
     return (
       <Tabs defaultValue={tracks[0].id} className="h-full flex flex-col">
-        <div className="px-6 pt-3 pb-1 border-b">
+        <div className="border-b flex items-center justify-center py-2">
           <TabsList className="h-8 bg-transparent p-0 gap-1">
             {tracks.map((track) => {
               const displayName = track.custom_name || track.guides.name;
