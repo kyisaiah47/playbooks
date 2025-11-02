@@ -94,21 +94,8 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
   return (
     <div className="h-full flex flex-col bg-background">
       {/* Header */}
-      <div className="border-b border-border/40 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-              <FileText className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <h1 className="text-xl font-semibold">Freeform Notes</h1>
-              <p className="text-xs text-muted-foreground">
-                {trackName || 'Write anything you want about this track'}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
+      <div className="border-b border-border/40 px-6 py-3">
+        <div className="flex items-center justify-end gap-3">
             <Button
               onClick={handleManualSave}
               disabled={!content}
@@ -124,7 +111,6 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
                 Saved {lastSaved.toLocaleTimeString()}
               </span>
             )}
-          </div>
         </div>
       </div>
 

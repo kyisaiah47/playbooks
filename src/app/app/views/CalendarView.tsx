@@ -123,18 +123,8 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
       transition={{ duration: 0.3 }}
     >
       {/* Header */}
-      <div className="border-b border-border/40 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-              <CalendarIcon className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <h1 className="text-xl font-semibold">Calendar</h1>
-              <p className="text-xs text-muted-foreground">View and manage your events</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
+      <div className="border-b border-border/40 px-6 py-3">
+        <div className="flex items-center justify-end gap-2">
             {/* View Toggle */}
             <div className="flex border border-border/40 rounded-lg overflow-hidden">
               <button
@@ -175,7 +165,6 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
               <Plus className="w-4 h-4" />
               Add Event
             </Button>
-          </div>
         </div>
       </div>
 
