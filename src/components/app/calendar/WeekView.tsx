@@ -25,6 +25,9 @@ interface WeekViewProps {
   tasks: Task[];
   onDateClick: (date: Date) => void;
   onEventClick?: (event: CalendarEvent) => void;
+  view: 'month' | 'week' | 'day';
+  onViewChange: (view: 'month' | 'week' | 'day') => void;
+  onCreateEvent: () => void;
 }
 
 export function WeekView({
@@ -34,6 +37,9 @@ export function WeekView({
   tasks,
   onDateClick,
   onEventClick,
+  view,
+  onViewChange,
+  onCreateEvent,
 }: WeekViewProps) {
   const weekStart = startOfWeek(currentDate, { weekStartsOn: 0 });
   const weekEnd = endOfWeek(currentDate, { weekStartsOn: 0 });
@@ -77,40 +83,83 @@ export function WeekView({
   return (
     <div className="flex flex-col h-full">
       {/* Header with Navigation */}
-      <div className="flex items-center gap-2 sm:gap-4 flex-wrap mb-6">
-        <h2 className="text-lg sm:text-2xl font-bold">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={`${format(weekStart, 'MMM d')}-${format(weekEnd, 'MMM d, yyyy')}`}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.15 }}
-              className="inline-block"
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+          <h2 className="text-lg sm:text-2xl font-bold">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={`${format(weekStart, 'MMM d')}-${format(weekEnd, 'MMM d, yyyy')}`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                className="inline-block"
+              >
+                {format(weekStart, 'MMM d')} - {format(weekEnd, 'MMM d, yyyy')}
+              </motion.span>
+            </AnimatePresence>
+          </h2>
+          <div className="flex gap-1">
+            <Button
+              variant="outline"
+              size="icon-sm"
+              onClick={handlePreviousWeek}
+              title="Previous week"
             >
-              {format(weekStart, 'MMM d')} - {format(weekEnd, 'MMM d, yyyy')}
-            </motion.span>
-          </AnimatePresence>
-        </h2>
-        <div className="flex gap-1">
-          <Button
-            variant="outline"
-            size="icon-sm"
-            onClick={handlePreviousWeek}
-            title="Previous week"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </Button>
-          <Button
-            variant="outline"
-            size="icon-sm"
-            onClick={handleNextWeek}
-            title="Next week"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </Button>
-          <Button variant="outline" size="sm" onClick={handleToday}>
-            Today
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon-sm"
+              onClick={handleNextWeek}
+              title="Next week"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+            <Button variant="outline" size="sm" onClick={handleToday}>
+              Today
+            </Button>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="flex border border-border/40 rounded-lg overflow-hidden">
+            <button
+              onClick={() => onViewChange('month')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors',
+                view === 'month'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Month
+            </button>
+            <button
+              onClick={() => onViewChange('week')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors border-x border-border/40',
+                view === 'week'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Week
+            </button>
+            <button
+              onClick={() => onViewChange('day')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors',
+                view === 'day'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Day
+            </button>
+          </div>
+          <Button onClick={onCreateEvent} size="sm">
+            <Plus className="w-4 h-4" />
+            Add Event
           </Button>
         </div>
       </div>
