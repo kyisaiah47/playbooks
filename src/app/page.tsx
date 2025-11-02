@@ -24,14 +24,14 @@ export default function LandingPage() {
 		'@context': 'https://schema.org',
 		'@type': 'SoftwareApplication',
 		name: 'Templata',
-		description: 'The first encyclopedia for living. 1,298 guided workspaces with 26,000+ articles and 104,000+ prompts for life\'s biggest decisions.',
+		description: 'The first encyclopedia for living. Comprehensive questions, expert readings, and integrated planning for life\'s biggest decisions.',
 		url: 'https://templata.org',
 		applicationCategory: 'ProductivityApplication',
 		operatingSystem: 'Web',
 		featureList: [
-			'1,298 Guided Workspaces',
-			'104,000+ Action Prompts',
-			'26,000+ Expert Articles',
+			'Life Event Guides',
+			'Comprehensive Questions',
+			'Expert Readings',
 			'Split-Screen Interface',
 		],
 	};
@@ -83,7 +83,7 @@ export default function LandingPage() {
 						</h1>
 
 						<p className="mx-auto max-w-2xl text-lg md:text-xl text-white/90">
-							1,298 guided workspaces with 26,000+ articles and 104,000+ prompts.
+							Comprehensive questions, expert readings, and integrated planning.
 							<br />
 							Never start with a blank page.
 						</p>
@@ -105,18 +105,18 @@ export default function LandingPage() {
 							Wikipedia meets Notion for life planning
 						</h2>
 						<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-							Our split-screen interface combines guided prompts, a structured workspace, and an encyclopedia of knowledge.
+							Our split-screen interface combines comprehensive questions, a structured workspace, and expert readings.
 						</p>
 					</div>
 
 					{/* Split-Screen Visual */}
 					<Card className="p-4 sm:p-8 max-w-6xl mx-auto">
 						<div className="grid md:grid-cols-3 gap-6 sm:gap-8">
-							{/* Prompts Column */}
+							{/* Questions Column */}
 							<div className="space-y-3">
 								<div className="flex items-center gap-2 font-semibold mb-4">
 									<FileText className="h-5 w-5 text-primary" />
-									<span>Guided Prompts</span>
+									<span>Questions</span>
 								</div>
 								<div className="space-y-2">
 									<div className="p-3 bg-muted rounded text-sm">What's your venue budget?</div>
@@ -140,11 +140,11 @@ export default function LandingPage() {
 								</div>
 							</div>
 
-							{/* Articles Column */}
+							{/* Readings Column */}
 							<div className="space-y-3">
 								<div className="flex items-center gap-2 font-semibold mb-4">
 									<Globe className="h-5 w-5 text-primary" />
-									<span>Knowledge Base</span>
+									<span>Readings</span>
 								</div>
 								<div className="space-y-2">
 									<div className="p-3 bg-primary/5 rounded cursor-pointer hover:bg-primary/10 transition-colors text-sm">
@@ -162,11 +162,11 @@ export default function LandingPage() {
 						<div className="border-t mt-8 pt-6 space-y-3">
 							<div className="flex items-center gap-2 text-sm text-muted-foreground">
 								<CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-								<span>104,000+ categorized prompts ensure you consider everything</span>
+								<span>Comprehensive questions ensure you consider everything</span>
 							</div>
 							<div className="flex items-center gap-2 text-sm text-muted-foreground">
 								<CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
-								<span>26,000+ articles like Wikipedia for life decisions</span>
+								<span>Expert readings like Wikipedia for life decisions</span>
 							</div>
 						</div>
 					</Card>
@@ -187,22 +187,18 @@ export default function LandingPage() {
 						<p className="text-lg text-muted-foreground">Comprehensive, structured, and completely free</p>
 					</div>
 
-					<div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+					<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">1,298</div>
-							<p className="text-muted-foreground">Guided Workspaces</p>
+							<div className="text-3xl font-bold mb-2">Life Event Guides</div>
+							<p className="text-muted-foreground">For every major moment</p>
 						</div>
 						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">104K+</div>
-							<p className="text-muted-foreground">Action Prompts</p>
+							<div className="text-3xl font-bold mb-2">Expert Readings</div>
+							<p className="text-muted-foreground">Curated knowledge</p>
 						</div>
 						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">26k+</div>
-							<p className="text-muted-foreground">Expert Articles</p>
-						</div>
-						<div className="text-center">
-							<div className="text-5xl font-bold mb-2">Free</div>
-							<p className="text-muted-foreground">No Paywalls</p>
+							<div className="text-3xl font-bold mb-2">Completely Free</div>
+							<p className="text-muted-foreground">No paywalls</p>
 						</div>
 					</div>
 				</div>
@@ -221,12 +217,12 @@ export default function LandingPage() {
 						Ready to organize your next big moment?
 					</h2>
 					<p className="text-xl text-muted-foreground">
-						Start with a guided workspace. Everything is free—no credit card required.
+						Start with a guide. Everything is free—no credit card required.
 					</p>
 					<div className="flex flex-col sm:flex-row items-center justify-center gap-4">
 						<Button size="lg" className="h-12 px-8 text-base" asChild>
 							<Link href="/app">
-								Browse All Workspaces
+								Browse All Guides
 								<ArrowRight className="ml-2 h-5 w-5" />
 							</Link>
 						</Button>
