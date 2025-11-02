@@ -22,7 +22,7 @@ import {
   CommandSeparator,
 } from '@/components/ui/command';
 import { FileText, BookOpen, ChevronRight, ChevronDown, Save, ArrowLeft, X, AlertCircle, ChevronsUpDown, Check, CheckCircle, Star, Menu, Search } from 'lucide-react';
-import { ArticleContent } from '@/app/library/[slug]/article-content';
+import { ReadingContent } from '@/app/library/[slug]/reading-content';
 import Link from 'next/link';
 import {
   Drawer,
@@ -854,7 +854,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                         </div>
                       </header>
 
-                      <ArticleContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
+                      <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
                     </div>
                   )}
                 </motion.div>
@@ -965,7 +965,7 @@ export function GuidesView({ trackId, onViewChange, setActions }: GuidesViewProp
                   <p className="text-muted-foreground">Loading reading...</p>
                 </div>
               ) : (
-                <ArticleContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
+                <ReadingContent content={selectedReading.content} searchQuery={readingContentSearchQuery} />
               )}
             </div>
           </DrawerContent>
