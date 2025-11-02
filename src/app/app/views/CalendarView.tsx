@@ -132,7 +132,7 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
                 className={cn(
                   'px-3 py-1.5 text-xs font-medium transition-colors',
                   view === 'month'
-                    ? 'bg-primary text-white'
+                    ? 'bg-primary text-primary-foreground'
                     : 'bg-transparent text-foreground hover:bg-muted/50'
                 )}
               >
@@ -143,7 +143,7 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
                 className={cn(
                   'px-3 py-1.5 text-xs font-medium transition-colors border-x border-border/40',
                   view === 'week'
-                    ? 'bg-primary text-white'
+                    ? 'bg-primary text-primary-foreground'
                     : 'bg-transparent text-foreground hover:bg-muted/50'
                 )}
               >
@@ -154,7 +154,7 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
                 className={cn(
                   'px-3 py-1.5 text-xs font-medium transition-colors',
                   view === 'day'
-                    ? 'bg-primary text-white'
+                    ? 'bg-primary text-primary-foreground'
                     : 'bg-transparent text-foreground hover:bg-muted/50'
                 )}
               >
