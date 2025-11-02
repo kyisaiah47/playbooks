@@ -68,7 +68,7 @@ export const MonthGrid = memo(function MonthGrid({
                   className={cn(
                     'text-xs sm:text-sm font-medium',
                     !isCurrentMonth && 'text-muted-foreground/50',
-                    isDayToday && 'w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-white flex items-center justify-center text-[10px] sm:text-xs'
+                    isDayToday && 'w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[10px] sm:text-xs'
                   )}
                 >
                   {format(day, 'd')}

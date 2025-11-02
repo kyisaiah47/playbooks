@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   startOfWeek,
@@ -24,6 +24,9 @@ interface WeekViewProps {
   tasks: Task[];
   onDateClick: (date: Date) => void;
   onEventClick?: (event: CalendarEvent) => void;
+  view: 'month' | 'week' | 'day';
+  onViewChange: (view: 'month' | 'week' | 'day') => void;
+  onCreateEvent: () => void;
 }
 
 export function WeekView({
@@ -33,6 +36,9 @@ export function WeekView({
   tasks,
   onDateClick,
   onEventClick,
+  view,
+  onViewChange,
+  onCreateEvent,
 }: WeekViewProps) {
   const weekStart = startOfWeek(currentDate, { weekStartsOn: 0 });
   const weekEnd = endOfWeek(currentDate, { weekStartsOn: 0 });
@@ -98,11 +104,52 @@ export function WeekView({
             >
               <ChevronRight className="w-4 h-4" />
             </Button>
+            <Button variant="outline" size="sm" onClick={handleToday}>
+              Today
+            </Button>
           </div>
         </div>
-        <Button variant="outline" size="sm" onClick={handleToday}>
-          Today
-        </Button>
+        <div className="flex items-center gap-2">
+          <div className="flex border border-border/40 rounded-lg overflow-hidden">
+            <button
+              onClick={() => onViewChange('month')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors',
+                view === 'month'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Month
+            </button>
+            <button
+              onClick={() => onViewChange('week')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors border-x border-border/40',
+                view === 'week'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Week
+            </button>
+            <button
+              onClick={() => onViewChange('day')}
+              className={cn(
+                'px-3 py-1.5 text-xs font-medium transition-colors',
+                view === 'day'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-transparent text-foreground hover:bg-muted/50'
+              )}
+            >
+              Day
+            </button>
+          </div>
+          <Button onClick={onCreateEvent} size="sm">
+            <Plus className="w-4 h-4" />
+            Add Event
+          </Button>
+        </div>
       </div>
 
       {/* Week Grid */}
@@ -171,7 +218,7 @@ export function WeekView({
                               e.stopPropagation();
                               onEventClick?.(event);
                             }}
-                            className="w-full text-left px-1.5 py-0.5 bg-primary text-white rounded text-xs truncate hover:bg-primary/90 transition-colors"
+                            className="w-full text-left px-1.5 py-0.5 bg-primary text-primary-foreground rounded text-xs truncate hover:bg-primary/90 transition-colors"
                           >
                             {event.title}
                           </button>
@@ -182,9 +229,9 @@ export function WeekView({
                             key={task.id}
                             className={cn(
                               'px-1.5 py-0.5 rounded text-xs truncate',
-                              task.status === 'done' && 'bg-green-600 text-white',
-                              task.status === 'in_progress' && 'bg-blue-600 text-white',
-                              task.status === 'todo' && 'bg-orange-500 text-white'
+                              task.status === 'done' && 'bg-green-600 text-primary-foreground',
+                              task.status === 'in_progress' && 'bg-blue-600 text-primary-foreground',
+                              task.status === 'todo' && 'bg-orange-500 text-primary-foreground'
                             )}
                           >
                             {task.title}
@@ -200,7 +247,7 @@ export function WeekView({
                           e.stopPropagation();
                           onEventClick?.(event);
                         }}
-                        className="w-full text-left px-1.5 py-0.5 bg-primary text-white rounded text-xs truncate hover:bg-primary/90 transition-colors mb-1"
+                        className="w-full text-left px-1.5 py-0.5 bg-primary text-primary-foreground rounded text-xs truncate hover:bg-primary/90 transition-colors mb-1"
                       >
                         {event.title}
                       </button>
