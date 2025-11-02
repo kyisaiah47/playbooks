@@ -12,7 +12,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 
-const Feature105 = () => {
+const FeaturesTabbedHero = () => {
   return (
     <section className="py-32">
       <div className="container">
@@ -160,4 +160,4 @@ const Feature105 = () => {
   );
 };
 
-export { Feature105 };
+export { FeaturesTabbedHero };

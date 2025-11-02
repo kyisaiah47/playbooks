@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
+import { Navbar18 } from "@/components/navbar18";
 import { Button } from "@/components/ui/button";
 import { Play, Menu } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
@@ -73,11 +74,7 @@ export function PageLayout({
 
 	return (
 		<div className="min-h-screen bg-transparent">
-			{/* {includeHeader && <Header />}
-
-			{includeHeader && includeHeaderPadding && (
-				<div className="pt-24" />
-			)} */}
+			{includeHeader && <Navbar18 />}
 
 			{children}
 
