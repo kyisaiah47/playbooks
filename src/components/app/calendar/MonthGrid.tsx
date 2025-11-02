@@ -84,22 +84,19 @@ export const MonthGrid = memo(function MonthGrid({
               <div className="space-y-0.5 sm:space-y-1 relative z-10">
                 {/* Display up to 2 events */}
                 {dayEvents.slice(0, 2).map((event) => (
-                  <button
+                  <div
                     key={event.id}
-                    type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      e.preventDefault();
-                      console.log('Event clicked:', event.title, 'Handler exists:', !!onEventClick);
                       if (onEventClick) {
                         onEventClick(event);
                       }
                     }}
-                    className="w-full text-left px-1 sm:px-1.5 py-0.5 rounded text-[10px] sm:text-xs truncate bg-primary/10 text-primary hover:bg-primary/20 transition-colors relative z-10"
+                    className="w-full text-left px-1 sm:px-1.5 py-0.5 rounded text-[10px] sm:text-xs truncate bg-primary/10 text-primary hover:bg-primary/20 transition-colors cursor-pointer relative z-10"
                     title={event.title}
                   >
                     {event.title}
-                  </button>
+                  </div>
                 ))}
 
                 {/* Display up to 1 task (if room) */}
