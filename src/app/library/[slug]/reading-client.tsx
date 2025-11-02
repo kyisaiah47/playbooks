@@ -12,7 +12,6 @@ import { getArticleBySlug, getRelatedArticles, getArticlesByCategory, articleReg
 import { TemplateImage } from "@/components/ui/template-image";
 import { use } from "react";
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { useKnowledgeGraph } from "@/hooks/use-knowledge-graph";
 import { templateRegistry } from "@/registry/guides";
 
 // Category icon mapping
@@ -38,13 +37,6 @@ export default function ArticleClient({ params }: ArticleClientProps) {
   const post = getArticleBySlug(slug);
   const [activeSection, setActiveSection] = useState('');
 
-  // Knowledge graph integration
-  const {
-    getConnectedConcepts,
-    getRelatedTemplates,
-    getConceptByName,
-    isLoading: kgLoading
-  } = useKnowledgeGraph();
 
   const handleScroll = useCallback(() => {
     const sections = document.querySelectorAll('h2[id], h3[id]');
