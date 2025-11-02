@@ -1,7 +1,6 @@
 'use client';
 
 import { memo } from 'react';
-import { motion } from 'framer-motion';
 import { format, isSameMonth, isToday } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { CalendarEvent, Task } from '@/types/workspace';
@@ -49,26 +48,33 @@ export const MonthGrid = memo(function MonthGrid({
           const isDayToday = isToday(day);
 
           return (
-            <motion.div
-              layout
-              initial={{ opacity: 0.8 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
+            <div
               key={day.toISOString()}
               className={cn(
-                'relative border-r border-b border-border/40 p-1 sm:p-2 cursor-pointer transition-colors hover:bg-muted/30',
+                'relative border-r border-b border-border/40 p-1 sm:p-2 transition-colors hover:bg-muted/30',
                 !isCurrentMonth && 'bg-muted/10',
                 isDayToday && 'bg-primary/5',
                 'last-in-row:border-r-0'
               )}
-              onClick={() => onDateClick(day)}
+              onClick={(e) => {
+                // Only trigger if clicking the background, not events
+                if (e.target === e.currentTarget) {
+                  onDateClick(day);
+                }
+              }}
               style={{
                 borderRight: (index + 1) % 7 === 0 ? 'none' : undefined,
                 borderBottom: index >= calendarDays.length - 7 ? 'none' : undefined,
               }}
             >
               {/* Date Number */}
-              <div className="flex items-start justify-between mb-0.5 sm:mb-1">
+              <div
+                className="flex items-start justify-between mb-0.5 sm:mb-1 cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDateClick(day);
+                }}
+              >
                 <span
                   className={cn(
                     'text-xs sm:text-sm font-medium',
@@ -84,21 +90,19 @@ export const MonthGrid = memo(function MonthGrid({
               <div className="space-y-0.5 sm:space-y-1 relative z-10">
                 {/* Display up to 2 events */}
                 {dayEvents.slice(0, 2).map((event) => (
-                  <div
+                  <button
                     key={event.id}
+                    type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      alert('CLICKED EVENT: ' + event.title);
-                      if (onEventClick) {
-                        onEventClick(event);
-                      }
+                      console.log('EVENT CLICKED:', event.title);
+                      onEventClick?.(event);
                     }}
-                    className="w-full text-left px-2 py-1 rounded text-xs font-bold bg-red-500 text-white hover:bg-red-700 transition-colors cursor-pointer relative z-[9999] border-4 border-yellow-400"
-                    style={{ pointerEvents: 'auto' }}
+                    className="w-full text-left px-1 sm:px-1.5 py-0.5 rounded text-[10px] sm:text-xs truncate bg-red-600 text-white hover:bg-red-800 transition-colors cursor-pointer font-bold"
                     title={event.title}
                   >
-                    🔴 CLICK ME 🔴 {event.title}
-                  </div>
+                    TESTING: {event.title}
+                  </button>
                 ))}
 
                 {/* Display up to 1 task (if room) */}
@@ -119,7 +123,7 @@ export const MonthGrid = memo(function MonthGrid({
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>
