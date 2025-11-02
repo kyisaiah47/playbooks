@@ -31,10 +31,13 @@ export function GuidesViewWrapper({
 }: GuidesViewWrapperProps) {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
     if (selectedTrackIds.length > 0) {
       fetchTracks();
+    } else {
+      setInitialLoad(false);
     }
   }, [selectedTrackIds]);
 
@@ -46,6 +49,7 @@ export function GuidesViewWrapper({
       if (!res.ok) {
         if (res.status === 401) {
           setTracks([]);
+          setInitialLoad(false);
           return;
         }
         throw new Error('Failed to fetch tracks');
@@ -59,11 +63,22 @@ export function GuidesViewWrapper({
         selectedTrackIds.includes(t.id)
       );
       setTracks(selectedTracks);
+      setInitialLoad(false);
     } catch (error) {
       console.error('Error fetching tracks:', error);
+      setInitialLoad(false);
     } finally {
       setLoading(false);
     }
+  }
+
+  // Show loading on initial page load while fetching tracks from localStorage
+  if (initialLoad && selectedTrackIds.length > 0) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <p className="text-muted-foreground">Loading tracks...</p>
+      </div>
+    );
   }
 
   // Browse mode - no tracks selected
