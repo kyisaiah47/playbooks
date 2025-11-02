@@ -312,9 +312,38 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
                 <div className="p-4 space-y-4">
                   <div>
                     <h4 className="text-base font-semibold mb-2">{selectedEvent.title}</h4>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CalendarIcon className="w-4 h-4" />
-                      <span>{format(new Date(selectedEvent.date), 'EEEE, MMMM d, yyyy')}</span>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <CalendarIcon className="w-4 h-4" />
+                        <span>
+                          {selectedEvent.start_time
+                            ? format(new Date(selectedEvent.start_time), 'EEEE, MMMM d, yyyy')
+                            : selectedEvent.due_date
+                            ? format(new Date(selectedEvent.due_date), 'EEEE, MMMM d, yyyy')
+                            : 'No date'}
+                        </span>
+                      </div>
+                      {selectedEvent.start_time && !selectedEvent.all_day && (
+                        <div className="text-sm text-muted-foreground pl-6">
+                          {format(new Date(selectedEvent.start_time), 'h:mm a')}
+                          {selectedEvent.end_time && ` - ${format(new Date(selectedEvent.end_time), 'h:mm a')}`}
+                        </div>
+                      )}
+                      {selectedEvent.all_day && (
+                        <div className="text-xs text-muted-foreground pl-6">All day</div>
+                      )}
+                      <div className="flex items-center gap-2">
+                        <span className={cn(
+                          'inline-flex items-center px-2 py-1 rounded-full text-xs font-medium',
+                          selectedEvent.status === 'done' && 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
+                          selectedEvent.status === 'in_progress' && 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
+                          selectedEvent.status === 'todo' && 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400'
+                        )}>
+                          {selectedEvent.status === 'done' && 'Completed'}
+                          {selectedEvent.status === 'in_progress' && 'In Progress'}
+                          {selectedEvent.status === 'todo' && 'To Do'}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
