@@ -75,7 +75,7 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility"
 
 // --- Lib ---
 import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils"
-import { getPromptsByTemplate } from "@/registry/prompts"
+import { getQuestionsByGuide } from "@/registry/questions"
 
 // --- Styles ---
 import "@/components/tiptap-guides/simple/simple-editor.scss"
@@ -194,10 +194,10 @@ interface SimpleEditorProps {
   content?: string | object;
   onUpdate?: (content: string) => void;
   onSwitchMode?: (mode: 'template' | 'reflection' | 'master') => void;
-  templateId?: string;
+  guideId?: string;
 }
 
-export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId }: SimpleEditorProps = {}) {
+export function SimpleEditor({ content = "", onUpdate, onSwitchMode, guideId }: SimpleEditorProps = {}) {
   const isMobile = useIsMobile()
   const { height } = useWindowSize()
   const [mobileView, setMobileView] = React.useState<
@@ -265,17 +265,17 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
     }
   }, [isMobile, mobileView])
 
-  // Get prompts for slash command
-  const prompts = React.useMemo(() => {
-    if (!templateId) return []
-    const templatePrompts = getPromptsByTemplate(templateId)
-    return templatePrompts.map(p => ({
-      id: p.id,
-      prompt: p.prompt,
-      category: p.category,
-      helpText: p.helpText
-    }))
-  }, [templateId])
+  // Get questions for slash command
+  const [questions, setQuestions] = React.useState<any[]>([])
+
+  React.useEffect(() => {
+    if (!guideId) {
+      setQuestions([])
+      return
+    }
+
+    getQuestionsByGuide(guideId).then(setQuestions)
+  }, [guideId])
 
   // Expose editor globally for prompt insertion
   React.useEffect(() => {
@@ -326,7 +326,7 @@ export function SimpleEditor({ content = "", onUpdate, onSwitchMode, templateId 
         {editor && (
           <SlashCommand
             editor={editor}
-            prompts={prompts}
+            prompts={questions}
           />
         )}
 

@@ -6,7 +6,7 @@ import type { TemplateRegistryEntry } from '@/registry/guides';
 
 // TypeScript interfaces
 export interface TemplateConnection {
-  templateId: string;
+  guideId: string;
   strength: number;
   strength_level: 'critical' | 'strong' | 'medium';
   reasoning: string;
@@ -23,7 +23,7 @@ export interface ConflictConnection {
 }
 
 export interface TemplateRelationships {
-  templateId: string;
+  guideId: string;
   semantic_cluster: {
     name: string;
     reasoning: string;
@@ -63,7 +63,7 @@ export interface CrossConnection {
 }
 
 export interface UserRecommendation {
-  templateId: string;
+  guideId: string;
   priority: 'high' | 'sequence' | 'medium';
   reason: string;
   life_stage?: string;
@@ -137,25 +137,25 @@ class BrowserKnowledgeGraph {
     // No data to load
   }
 
-  findSemanticCluster(_templateId: string) {
+  findSemanticCluster(_guideId: string) {
     return null;
   }
 
-  findMicroCluster(_templateId: string) {
+  findMicroCluster(_guideId: string) {
     return null;
   }
 
-  getWeightedConnections(_templateId: string): TemplateConnection[] {
+  getWeightedConnections(_guideId: string): TemplateConnection[] {
     return [];
   }
 
-  getNegativeConnections(_templateId: string): ConflictConnection[] {
+  getNegativeConnections(_guideId: string): ConflictConnection[] {
     return [];
   }
 
-  getTemplateRelationships(templateId: string): TemplateRelationships {
+  getTemplateRelationships(guideId: string): TemplateRelationships {
     return {
-      templateId,
+      guideId,
       semantic_cluster: null,
       micro_cluster: null,
       weighted_connections: [],
@@ -172,9 +172,9 @@ class BrowserKnowledgeGraph {
     return [];
   }
 
-  generateAnalysisReport(templateId: string): AnalysisReport {
+  generateAnalysisReport(guideId: string): AnalysisReport {
     return {
-      template_id: templateId,
+      template_id: guideId,
       cluster_membership: {
         semantic: {},
         micro: {}
@@ -204,7 +204,7 @@ class BrowserKnowledgeGraph {
 export const knowledgeGraph = new BrowserKnowledgeGraph();
 
 // Utility functions for common use cases
-export const getRelatedTemplates = (_templateId: string, _limit = 5) => {
+export const getRelatedTemplates = (_guideId: string, _limit = 5) => {
   return [];
 };
 
@@ -226,7 +226,7 @@ export const getRelatedArticles = (_articleId: string, _limit: number = 4): Arti
   return [];
 };
 
-export const getArticlesForTemplate = (_templateId: string, _limit: number = 4): ArticleConnection[] => {
+export const getArticlesForTemplate = (_guideId: string, _limit: number = 4): ArticleConnection[] => {
   return [];
 };
 
@@ -235,7 +235,7 @@ export const getRelatedPrompts = (_promptId: string, _limit: number = 4): Prompt
   return [];
 };
 
-export const getPromptsForTemplate = (_templateId: string, _limit: number = 4): PromptConnection[] => {
+export const getPromptsForTemplate = (_guideId: string, _limit: number = 4): PromptConnection[] => {
   return [];
 };
 

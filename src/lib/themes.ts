@@ -1520,7 +1520,7 @@ export const applyTheme = (theme: ThemeColors) => {
   })
 }
 
-export const getThemeForTemplate = (_templateId: string): ThemeColors => {
+export const getThemeForTemplate = (_guideId: string): ThemeColors => {
   // Always return the default light theme - users can change it manually if they want
   return templataThemeLight
 }

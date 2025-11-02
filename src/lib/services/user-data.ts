@@ -4,7 +4,7 @@ import type { User, TemplateSession, UserResponse, SavedResource } from '../../g
 // Types for user data operations
 export interface CreateTemplateSessionData {
   userId: string;
-  templateId: string;
+  guideId: string;
   title: string;
 }
 
@@ -19,7 +19,7 @@ export interface UpdateTemplateSessionData {
 export interface CreateUserResponseData {
   userId: string;
   sessionId: string;
-  templateId: string;
+  guideId: string;
   sectionId: string;
   promptId: string;
   response: string;
@@ -28,7 +28,7 @@ export interface CreateUserResponseData {
 
 export interface SaveResourceData {
   userId: string;
-  templateId: string;
+  guideId: string;
   resourceId: string;
   title: string;
   userNotes?: string;
@@ -41,7 +41,7 @@ export class UserDataService {
     return await prisma.templateSession.create({
       data: {
         userId: data.userId,
-        templateId: data.templateId,
+        guideId: data.guideId,
         title: data.title,
       },
     });
@@ -95,7 +95,7 @@ export class UserDataService {
       create: {
         userId: data.userId,
         sessionId: data.sessionId,
-        templateId: data.templateId,
+        guideId: data.guideId,
         sectionId: data.sectionId,
         promptId: data.promptId,
         response: data.response,
@@ -116,11 +116,11 @@ export class UserDataService {
     });
   }
 
-  static async getUserResponsesForTemplate(userId: string, templateId: string): Promise<UserResponse[]> {
+  static async getUserResponsesForTemplate(userId: string, guideId: string): Promise<UserResponse[]> {
     return await prisma.userResponse.findMany({
       where: {
         userId,
-        templateId,
+        guideId,
       },
       orderBy: { createdAt: 'asc' },
       include: {
@@ -140,7 +140,7 @@ export class UserDataService {
       },
       create: {
         userId: data.userId,
-        templateId: data.templateId,
+        guideId: data.guideId,
         resourceId: data.resourceId,
         title: data.title,
         userNotes: data.userNotes,
@@ -193,14 +193,14 @@ export class UserDataService {
   }
 
   // Template Analytics (for admin/insights)
-  static async getTemplateStats(templateId: string) {
+  static async getTemplateStats(guideId: string) {
     const [
       totalSessions,
       completedSessions,
       averageProgress,
     ] = await Promise.all([
       prisma.templateSession.count({ where: { templateId } }),
-      prisma.templateSession.count({ where: { templateId, isCompleted: true } }),
+      prisma.templateSession.count({ where: { guideId, isCompleted: true } }),
       prisma.templateSession.aggregate({
         where: { templateId },
         _avg: { progress: true },

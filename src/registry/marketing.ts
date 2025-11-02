@@ -13,5 +13,5 @@ export const getMarketingPageData = (slug: string) => {
 
 // Helper function to get all available marketing page slugs
 export const getMarketingPageSlugs = (): string[] => {
-  return marketingRegistry.map((marketing: any) => marketing.templateId);
+  return marketingRegistry.map((marketing: any) => marketing.guideId);
 };

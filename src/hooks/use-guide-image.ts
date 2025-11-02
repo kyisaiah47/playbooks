@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { UnsplashImage, getTemplateHeroImage } from '@/lib/unsplash';
-import { getCachedImageForTemplate } from '@/lib/cached-images';
+import { UnsplashImage, getCachedImageForGuide, getGuideHeroImage } from '@/lib/cached-images';
 
-export function useTemplateImage(templateName: string) {
+export function useGuideImage(guideName: string) {
   const [image, setImage] = useState<UnsplashImage | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +15,7 @@ export function useTemplateImage(templateName: string) {
         setError(null);
 
         // First check for cached image in blog post metadata
-        const cachedImage = await getCachedImageForTemplate(templateName);
+        const cachedImage = await getCachedImageForGuide(guideName);
 
         if (cachedImage && mounted) {
           setImage(cachedImage);
@@ -25,7 +24,7 @@ export function useTemplateImage(templateName: string) {
         }
 
         // Fallback to Unsplash API if no cached image
-        const result = await getTemplateHeroImage(templateName);
+        const result = await getGuideHeroImage(guideName);
 
         if (mounted) {
           setImage(result);
@@ -46,7 +45,7 @@ export function useTemplateImage(templateName: string) {
     return () => {
       mounted = false;
     };
-  }, [templateName]);
+  }, [guideName]);
 
   return { image, loading, error };
 }

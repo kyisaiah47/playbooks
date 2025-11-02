@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useTemplateImage } from '@/hooks/use-template-image';
+import { useGuideImage } from '@/hooks/use-guide-image';
 import { formatImageUrl, getImageAttribution, getImageAttributionUrl } from '@/lib/unsplash';
 
 interface TemplateImageProps {
@@ -26,7 +26,7 @@ export function TemplateImage({
   quality = 95,
   fallbackSrc
 }: TemplateImageProps) {
-  const { image, loading, error } = useTemplateImage(templateName);
+  const { image, loading, error } = useGuideImage(templateName);
 
   // Show loading state
   if (loading) {

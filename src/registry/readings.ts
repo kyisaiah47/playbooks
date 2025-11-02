@@ -92,11 +92,11 @@ export async function getRelatedArticles(articleId: string, count = 3) {
 }
 
 // Helper function to get articles by template (for component compatibility)
-export async function getArticlesByTemplate(templateId: string) {
+export async function getArticlesByTemplate(guideId: string) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('*')
-    .eq('template', templateId);
+    .eq('template', guideId);
 
   if (error || !data) return [];
   return data;

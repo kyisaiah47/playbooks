@@ -1,18 +1,39 @@
 import { articleRegistry } from '@/registry/readings';
-import { UnsplashImage } from './unsplash';
+
+export interface UnsplashImage {
+  id: string;
+  alt_description: string;
+  urls: {
+    raw: string;
+    full: string;
+    regular: string;
+    small: string;
+    thumb: string;
+  };
+  user: {
+    id: string;
+    username: string;
+    name: string;
+    links: {
+      html: string;
+    };
+  };
+  width: number;
+  height: number;
+}
 
 /**
- * Get cached image for a template from blog post metadata
+ * Get cached image for a guide from blog post metadata
  */
-export async function getCachedImageForTemplate(templateName: string): Promise<UnsplashImage | null> {
-  // Find blog posts for this template
-  const templatePosts = articleRegistry.filter(post =>
-    post.relatedTemplates?.includes(templateName) ||
-    (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
+export async function getCachedImageForGuide(guideName: string): Promise<UnsplashImage | null> {
+  // Find blog posts for this guide
+  const guidePosts = articleRegistry.filter(post =>
+    post.relatedTemplates?.includes(guideName) ||
+    (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
 
   // Find the first post with a cached hero image
-  for (const post of templatePosts) {
+  for (const post of guidePosts) {
     if (post.heroImage?.cached) {
       // Convert cached image data to UnsplashImage format
       return {
@@ -43,40 +64,40 @@ export async function getCachedImageForTemplate(templateName: string): Promise<U
 }
 
 /**
- * Check if a template has cached images
+ * Check if a guide has cached images
  */
-export function templateHasCachedImages(templateName: string): boolean {
-  const templatePosts = articleRegistry.filter(post =>
-    post.relatedTemplates?.includes(templateName) ||
-    (post.slug && post.slug.includes(templateName.replace(/[^a-z0-9]/g, '-')))
+export function guideHasCachedImages(guideName: string): boolean {
+  const guidePosts = articleRegistry.filter(post =>
+    post.relatedTemplates?.includes(guideName) ||
+    (post.slug && post.slug.includes(guideName.replace(/[^a-z0-9]/g, '-')))
   );
 
-  return templatePosts.some(post => post.heroImage?.cached);
+  return guidePosts.some(post => post.heroImage?.cached);
 }
 
 /**
- * Get all templates that have cached images
+ * Get all guides that have cached images
  */
-export function getTemplatesWithCachedImages(): string[] {
-  const templatesWithImages = new Set<string>();
+export function getGuidesWithCachedImages(): string[] {
+  const guidesWithImages = new Set<string>();
 
   articleRegistry.forEach(post => {
     if (post.heroImage?.cached) {
-      // Extract template name from slug or relatedTemplates
+      // Extract guide name from slug or relatedTemplates
       if (post.relatedTemplates) {
-        post.relatedTemplates.forEach(template => templatesWithImages.add(template));
+        post.relatedTemplates.forEach(guide => guidesWithImages.add(guide));
       }
 
       // Also try to extract from slug
       const slugParts = post.slug.split('-');
       if (slugParts.length >= 2) {
-        const potentialTemplate = slugParts.slice(0, -2).join('-');
-        templatesWithImages.add(potentialTemplate);
+        const potentialGuide = slugParts.slice(0, -2).join('-');
+        guidesWithImages.add(potentialGuide);
       }
     }
   });
 
-  return Array.from(templatesWithImages);
+  return Array.from(guidesWithImages);
 }
 
 /**
@@ -85,12 +106,23 @@ export function getTemplatesWithCachedImages(): string[] {
 export function getCachedImageStats() {
   const totalPosts = articleRegistry.length;
   const postsWithImages = articleRegistry.filter(post => post.heroImage?.cached).length;
-  const templatesWithImages = getTemplatesWithCachedImages().length;
+  const guidesWithImages = getGuidesWithCachedImages().length;
 
   return {
     totalPosts,
     postsWithImages,
-    templatesWithImages,
+    guidesWithImages,
     cachePercentage: Math.round((postsWithImages / totalPosts) * 100),
   };
 }
+
+// Dummy function for unsplash fallback (if needed)
+export async function getGuideHeroImage(guideName: string): Promise<UnsplashImage | null> {
+  // Placeholder - replace with actual Unsplash API call if needed
+  return null;
+}
+
+// Legacy exports for compatibility
+export const getCachedImageForTemplate = getCachedImageForGuide;
+export const templateHasCachedImages = guideHasCachedImages;
+export const getTemplatesWithCachedImages = getGuidesWithCachedImages;
