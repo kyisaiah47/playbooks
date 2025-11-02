@@ -105,7 +105,7 @@ const NAV_ITEMS = [
 
 const Navbar18 = () => {
   return (
-    <section className="bg-muted relative mx-auto flex max-w-full items-center justify-between border border-t-0 px-6 py-3 md:w-fit md:rounded-b-2xl lg:gap-4">
+    <section className="bg-muted fixed top-0 left-1/2 -translate-x-1/2 z-50 mx-auto flex max-w-full items-center justify-between border border-t-0 px-6 py-3 md:w-fit md:rounded-b-2xl lg:gap-4">
       <a href={NAV_LOGO.url} className="flex items-center gap-1">
         <img src={NAV_LOGO.src} className="max-h-5" alt={NAV_LOGO.alt} />
       </a>
