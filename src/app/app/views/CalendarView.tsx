@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar as CalendarIcon, Plus, Loader2, Trash2 } from 'lucide-react';
+import { Calendar as CalendarIcon, Plus, Loader2, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MonthView } from '@/components/app/calendar/MonthView';
 import { WeekView } from '@/components/app/calendar/WeekView';
@@ -11,7 +11,7 @@ import { DayView } from '@/components/app/calendar/DayView';
 import { EventList } from '@/components/app/calendar/EventList';
 import { EventCreateForm } from '@/components/app/calendar/EventCreateForm';
 import { CalendarEvent, Task } from '@/types/workspace';
-import { format } from 'date-fns';
+import { format, addMonths, subMonths, addDays, subDays, addWeeks, subWeeks, startOfWeek, endOfWeek } from 'date-fns';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
@@ -150,74 +150,140 @@ export function CalendarView({ selectedTrackIds }: CalendarViewProps) {
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-hidden p-6">
           {/* Calendar View - Takes 2 columns on large screens */}
           <div className="lg:col-span-2 flex flex-col min-h-0">
-            <AnimatePresence mode="wait">
+            {/* Static controls that never remount */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+              <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                <h2 className="text-lg sm:text-2xl font-bold">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={`${view}-${format(currentDate, view === 'month' ? 'MMMM yyyy' : view === 'week' ? 'MMM d yyyy' : 'EEEE MMMM d yyyy')}`}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="inline-block"
+                    >
+                      {view === 'month' && format(currentDate, 'MMMM yyyy')}
+                      {view === 'week' && `${format(startOfWeek(currentDate, { weekStartsOn: 0 }), 'MMM d')} - ${format(endOfWeek(currentDate, { weekStartsOn: 0 }), 'MMM d, yyyy')}`}
+                      {view === 'day' && format(currentDate, 'EEEE, MMMM d, yyyy')}
+                    </motion.span>
+                  </AnimatePresence>
+                </h2>
+                <div className="flex gap-1">
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
+                    onClick={() => {
+                      if (view === 'month') setCurrentDate(subMonths(currentDate, 1));
+                      else if (view === 'week') setCurrentDate(subWeeks(currentDate, 1));
+                      else setCurrentDate(subDays(currentDate, 1));
+                    }}
+                    title={`Previous ${view}`}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
+                    onClick={() => {
+                      if (view === 'month') setCurrentDate(addMonths(currentDate, 1));
+                      else if (view === 'week') setCurrentDate(addWeeks(currentDate, 1));
+                      else setCurrentDate(addDays(currentDate, 1));
+                    }}
+                    title={`Next ${view}`}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => setCurrentDate(new Date())}>
+                    Today
+                  </Button>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex border border-border/40 rounded-lg overflow-hidden">
+                  <button
+                    onClick={() => setView('month')}
+                    className={cn(
+                      'px-3 py-1.5 text-xs font-medium transition-colors',
+                      view === 'month'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-transparent text-foreground hover:bg-muted/50'
+                    )}
+                  >
+                    Month
+                  </button>
+                  <button
+                    onClick={() => setView('week')}
+                    className={cn(
+                      'px-3 py-1.5 text-xs font-medium transition-colors border-x border-border/40',
+                      view === 'week'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-transparent text-foreground hover:bg-muted/50'
+                    )}
+                  >
+                    Week
+                  </button>
+                  <button
+                    onClick={() => setView('day')}
+                    className={cn(
+                      'px-3 py-1.5 text-xs font-medium transition-colors',
+                      view === 'day'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-transparent text-foreground hover:bg-muted/50'
+                    )}
+                  >
+                    Day
+                  </button>
+                </div>
+                <Button onClick={handleCreateEvent} size="sm">
+                  <Plus className="w-4 h-4" />
+                  Add Event
+                </Button>
+              </div>
+            </div>
+
+            {/* Calendar grid - only this changes */}
+            <div className="flex-1 min-h-0">
               {view === 'month' && (
-                <motion.div
-                  key="month"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="flex flex-col h-full"
-                >
-                  <MonthView
-                    currentDate={currentDate}
-                    onDateChange={setCurrentDate}
-                    events={events}
-                    tasks={filteredTasks}
-                    onDateClick={handleDateClick}
-                    onEventClick={handleEventClick}
-                    view={view}
-                    onViewChange={setView}
-                    onCreateEvent={handleCreateEvent}
-                  />
-                </motion.div>
+                <MonthView
+                  currentDate={currentDate}
+                  onDateChange={setCurrentDate}
+                  events={events}
+                  tasks={filteredTasks}
+                  onDateClick={handleDateClick}
+                  onEventClick={handleEventClick}
+                  view={view}
+                  onViewChange={setView}
+                  onCreateEvent={handleCreateEvent}
+                />
               )}
               {view === 'week' && (
-                <motion.div
-                  key="week"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="flex flex-col h-full"
-                >
-                  <WeekView
-                    currentDate={currentDate}
-                    onDateChange={setCurrentDate}
-                    events={events}
-                    tasks={filteredTasks}
-                    onDateClick={handleDateClick}
-                    onEventClick={handleEventClick}
-                    view={view}
-                    onViewChange={setView}
-                    onCreateEvent={handleCreateEvent}
-                  />
-                </motion.div>
+                <WeekView
+                  currentDate={currentDate}
+                  onDateChange={setCurrentDate}
+                  events={events}
+                  tasks={filteredTasks}
+                  onDateClick={handleDateClick}
+                  onEventClick={handleEventClick}
+                  view={view}
+                  onViewChange={setView}
+                  onCreateEvent={handleCreateEvent}
+                />
               )}
               {view === 'day' && (
-                <motion.div
-                  key="day"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="flex flex-col h-full"
-                >
-                  <DayView
-                    currentDate={currentDate}
-                    onDateChange={setCurrentDate}
-                    events={events}
-                    tasks={filteredTasks}
-                    onDateClick={handleDateClick}
-                    onEventClick={handleEventClick}
-                    view={view}
-                    onViewChange={setView}
-                    onCreateEvent={handleCreateEvent}
-                  />
-                </motion.div>
+                <DayView
+                  currentDate={currentDate}
+                  onDateChange={setCurrentDate}
+                  events={events}
+                  tasks={filteredTasks}
+                  onDateClick={handleDateClick}
+                  onEventClick={handleEventClick}
+                  view={view}
+                  onViewChange={setView}
+                  onCreateEvent={handleCreateEvent}
+                />
               )}
-            </AnimatePresence>
+            </div>
           </div>
 
           {/* Upcoming Events Sidebar - Takes 1 column */}
