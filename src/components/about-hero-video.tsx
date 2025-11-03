@@ -24,7 +24,7 @@ const AboutHeroVideo = () => {
   return (
     <section className="bg-muted bg-[url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/dot-pattern-2.svg')] bg-[length:3.125rem_3.125rem] bg-repeat pt-48 pb-24 relative">
       <Particles
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 dark:invert"
         quantity={500}
         ease={80}
         color="#000000"
