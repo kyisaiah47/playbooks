@@ -2,6 +2,7 @@
 
 import { HeroAnimatedText } from "@/components/hero-animated-text";
 import { AboutCompanyStory } from "@/components/about-company-story";
+import { Feature65 } from "@/components/feature65";
 import { FeaturesTabbedHero } from "@/components/features-tabbed-hero";
 import { TestimonialsWithFeatures } from "@/components/testimonials-with-features";
 import { StatsRadar } from "@/components/stats-radar";
@@ -14,6 +15,7 @@ export default function BlocksDemoPage() {
 		<PageLayout>
 			<HeroAnimatedText />
 			<AboutCompanyStory />
+			<Feature65 />
 			<FeaturesTabbedHero />
 			<TestimonialsWithFeatures />
 			<StatsRadar />
