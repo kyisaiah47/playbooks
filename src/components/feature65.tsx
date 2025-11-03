@@ -7,13 +7,27 @@ import {
   FileText,
   BookOpen,
   Calendar,
-  BarChart3,
+  Library,
 } from "lucide-react";
 import { useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 
 const integrations = [
+  {
+    title: "Choose a Guide",
+    description:
+      "Browse 1,000+ comprehensive guides covering every major life event and decision.",
+    image: <Library className="h-8 w-8" />,
+    color: "bg-indigo-500",
+    tags: [
+      "1,000+ Guides",
+      "6 Life Categories",
+      "Searchable Library",
+      "Category Filtering",
+      "Track Multiple",
+    ],
+  },
   {
     title: "Questions",
     description:
@@ -56,20 +70,6 @@ const integrations = [
       "Track Filtering",
     ],
   },
-  {
-    title: "Analytics",
-    description:
-      "Premium progress visualizations that transform tracking into an experience.",
-    image: <BarChart3 className="h-8 w-8" />,
-    color: "bg-orange-500",
-    tags: [
-      "Timeline Charts",
-      "Radial Progress",
-      "Radar Visualizations",
-      "Category Insights",
-      "Luxury Design",
-    ],
-  },
 ];
 
 const Feature65 = () => {
@@ -77,7 +77,7 @@ const Feature65 = () => {
 
   return (
     <section className="py-16">
-      <div className="container">
+      <div className="container max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
