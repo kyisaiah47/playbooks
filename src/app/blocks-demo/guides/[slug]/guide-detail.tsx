@@ -104,7 +104,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
     );
   }
 
-  if (!template?.template) {
+  if (!template) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-32 text-center">
@@ -118,7 +118,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
     );
   }
 
-  const templateData = template.template;
+  const templateData = template;
 
   const toggleCategory = (category: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -137,11 +137,11 @@ export default function GuideDetail({ params }: GuideDetailProps) {
         <div className="container mx-auto max-w-5xl px-4">
           <div className="text-center space-y-6">
             <Badge variant="outline" className="px-4 py-2">
-              {templateData.category}
+              {templateData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              {templateData.title}
+              {templateData.name}
             </h1>
 
             <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
@@ -332,7 +332,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
                   <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
                     <CardHeader>
                       <Badge variant="outline" className="text-xs mb-2 w-fit">
-                        {relatedTemplate.category}
+                        {relatedTemplate.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
                       </Badge>
                       <CardTitle className="text-lg group-hover:text-primary transition-colors">
                         {relatedTemplate.name}
@@ -353,7 +353,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
       <section className="py-24">
         <div className="container mx-auto max-w-3xl px-4 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">
-            Transform your {templateData.title.toLowerCase()} from overwhelming to exhilarating
+            Transform your {templateData.name.toLowerCase()} from overwhelming to exhilarating
           </h2>
           <p className="text-lg text-muted-foreground">
             Start with comprehensive questions, expert guidance, and premium analytics.
