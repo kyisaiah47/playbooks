@@ -19,17 +19,17 @@ interface GuideDetailProps {
   params: Promise<{ slug: string }>;
 }
 
-interface Prompt {
+interface Question {
   id: string;
-  prompt: string;
-  categoryName: string;
+  question: string;
+  category_name: string;
 }
 
-interface Article {
+interface Reading {
   id: string;
   title: string;
   excerpt: string;
-  readTime: string;
+  read_time: string;
   slug: string;
   type: string;
 }
@@ -39,8 +39,8 @@ export default function GuideDetail({ params }: GuideDetailProps) {
 
   const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
   const [relatedTemplates, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
-  const [prompts, setPrompts] = useState<Prompt[]>([]);
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [readings, setReadings] = useState<Reading[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
 
@@ -49,29 +49,29 @@ export default function GuideDetail({ params }: GuideDetailProps) {
       try {
         setLoading(true);
 
-        // Fetch all templates
-        const templatesRes = await fetch('/api/templates');
-        const templatesData = await templatesRes.json();
-        const foundTemplate = templatesData.templates?.find((t: TemplateRegistryEntry) => t.id === slug);
+        // Fetch all guides
+        const guidesRes = await fetch('/api/guides');
+        const guidesData = await guidesRes.json();
+        const foundTemplate = guidesData.guides?.find((t: TemplateRegistryEntry) => t.id === slug);
         setTemplate(foundTemplate || null);
 
-        // Set related templates (same category, different id)
+        // Set related guides (same category, different id)
         if (foundTemplate) {
-          const related = templatesData.templates?.filter(
+          const related = guidesData.guides?.filter(
             (t: TemplateRegistryEntry) => t.category === foundTemplate.category && t.id !== slug
           ) || [];
           setRelatedTemplates(related.slice(0, 3));
         }
 
-        // Fetch prompts
-        const promptsRes = await fetch(`/api/prompts?templateId=${slug}`);
-        const promptsData = await promptsRes.json();
-        setPrompts(promptsData.prompts || []);
+        // Fetch questions
+        const questionsRes = await fetch(`/api/questions?guideId=${slug}`);
+        const questionsData = await questionsRes.json();
+        setQuestions(questionsData.questions || []);
 
-        // Fetch articles for this template
-        const articlesRes = await fetch(`/api/articles?template=${slug}&pageSize=1000`);
-        const articlesData = await articlesRes.json();
-        setArticles(articlesData.articles || []);
+        // Fetch readings for this guide
+        const readingsRes = await fetch(`/api/readings?guide=${slug}`);
+        const readingsData = await readingsRes.json();
+        setReadings(readingsData.readings || []);
       } catch (error) {
         console.error('Error fetching guide data:', error);
       } finally {
@@ -82,17 +82,17 @@ export default function GuideDetail({ params }: GuideDetailProps) {
     fetchData();
   }, [slug]);
 
-  // Group prompts by category
-  const groupedPrompts = prompts.reduce((acc, prompt) => {
-    const category = prompt.categoryName || 'General';
+  // Group questions by category
+  const groupedQuestions = questions.reduce((acc, question) => {
+    const category = question.category_name || 'General';
     if (!acc[category]) {
       acc[category] = [];
     }
-    acc[category].push(prompt);
+    acc[category].push(question);
     return acc;
-  }, {} as Record<string, Prompt[]>);
+  }, {} as Record<string, Question[]>);
 
-  const promptCategories = Object.keys(groupedPrompts).sort();
+  const questionCategories = Object.keys(groupedQuestions).sort();
 
   if (loading) {
     return (
@@ -150,15 +150,15 @@ export default function GuideDetail({ params }: GuideDetailProps) {
 
             <div className="flex flex-wrap items-center justify-center gap-8 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold">{prompts.length}</div>
+                <div className="text-3xl font-bold">{questions.length}</div>
                 <p className="text-sm text-muted-foreground">Questions</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold">{articles.length}</div>
+                <div className="text-3xl font-bold">{readings.length}</div>
                 <p className="text-sm text-muted-foreground">Readings</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold">{promptCategories.length}</div>
+                <div className="text-3xl font-bold">{questionCategories.length}</div>
                 <p className="text-sm text-muted-foreground">Categories</p>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
               </div>
               <h3 className="font-semibold">Comprehensive Questions</h3>
               <p className="text-sm text-muted-foreground">
-                {prompts.length} AI-refined questions covering 90%+ of what you need to consider, organized across {promptCategories.length} categories.
+                {questions.length} AI-refined questions covering 90%+ of what you need to consider, organized across {questionCategories.length} categories.
               </p>
             </div>
 
@@ -196,7 +196,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
               </div>
               <h3 className="font-semibold">Expert Readings</h3>
               <p className="text-sm text-muted-foreground">
-                {articles.length} curated articles saving you hundreds of hours of research, integrated directly into your workflow.
+                {readings.length} curated articles saving you hundreds of hours of research, integrated directly into your workflow.
               </p>
             </div>
 
@@ -219,14 +219,14 @@ export default function GuideDetail({ params }: GuideDetailProps) {
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-2">Questions</h2>
             <p className="text-sm text-muted-foreground">
-              {prompts.length} questions across {promptCategories.length} categories
+              {questions.length} questions across {questionCategories.length} categories
             </p>
           </div>
 
           <div className="space-y-2">
-            {promptCategories.slice(0, 5).map(category => {
+            {questionCategories.slice(0, 5).map(category => {
               const isExpanded = expandedCategories.has(category);
-              const categoryPrompts = groupedPrompts[category];
+              const categoryQuestions = groupedQuestions[category];
 
               return (
                 <div key={category} className="border rounded-lg">
@@ -241,23 +241,23 @@ export default function GuideDetail({ params }: GuideDetailProps) {
                       <h3 className="font-medium">{category}</h3>
                     </div>
                     <Badge variant="outline" className="text-xs">
-                      {categoryPrompts.length}
+                      {categoryQuestions.length}
                     </Badge>
                   </button>
 
                   {isExpanded && (
                     <div className="px-4 pb-4 space-y-2">
-                      {categoryPrompts.slice(0, 5).map((prompt) => (
+                      {categoryQuestions.slice(0, 5).map((question) => (
                         <div
-                          key={prompt.id}
+                          key={question.id}
                           className="pl-7 py-2 text-sm text-muted-foreground"
                         >
-                          {prompt.prompt}
+                          {question.question}
                         </div>
                       ))}
-                      {categoryPrompts.length > 5 && (
+                      {categoryQuestions.length > 5 && (
                         <div className="pl-7 py-2 text-sm text-muted-foreground italic">
-                          + {categoryPrompts.length - 5} more questions
+                          + {categoryQuestions.length - 5} more questions
                         </div>
                       )}
                     </div>
@@ -265,9 +265,9 @@ export default function GuideDetail({ params }: GuideDetailProps) {
                 </div>
               );
             })}
-            {promptCategories.length > 5 && (
+            {questionCategories.length > 5 && (
               <p className="text-sm text-muted-foreground text-center pt-4">
-                + {promptCategories.length - 5} more categories
+                + {questionCategories.length - 5} more categories
               </p>
             )}
           </div>
@@ -280,32 +280,32 @@ export default function GuideDetail({ params }: GuideDetailProps) {
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-2">Expert Readings</h2>
             <p className="text-sm text-muted-foreground">
-              {articles.length} curated articles
+              {readings.length} curated articles
             </p>
           </div>
 
           <div className="grid gap-4">
-            {articles.slice(0, 6).map((article) => (
+            {readings.slice(0, 6).map((reading) => (
               <div
-                key={article.id}
+                key={reading.id}
                 className="p-4 bg-background rounded-lg border hover:border-primary/50 transition-colors"
               >
-                <h3 className="font-medium mb-1">{article.title}</h3>
-                {article.excerpt && (
+                <h3 className="font-medium mb-1">{reading.title}</h3>
+                {reading.excerpt && (
                   <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
-                    {article.excerpt}
+                    {reading.excerpt}
                   </p>
                 )}
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <BookOpen className="h-3 w-3" />
-                  <span>{article.readTime}</span>
+                  <span>{reading.read_time}</span>
                 </div>
               </div>
             ))}
           </div>
-          {articles.length > 6 && (
+          {readings.length > 6 && (
             <p className="text-sm text-muted-foreground text-center pt-4">
-              + {articles.length - 6} more readings
+              + {readings.length - 6} more readings
             </p>
           )}
         </div>
