@@ -38,10 +38,13 @@ export function DockCalendarSelector({
     async function fetchEvents() {
       try {
         setLoading(true);
+        console.log('Fetching events from /api/items...');
         const res = await fetch('/api/items');
+        console.log('Response status:', res.status);
 
         // Handle unauthorized users (show empty state)
         if (res.status === 401) {
+          console.log('Unauthorized - showing empty state');
           setEvents([]);
           setLoading(false);
           return;
@@ -49,12 +52,15 @@ export function DockCalendarSelector({
 
         if (res.ok) {
           const data = await res.json();
+          console.log('Raw data from API:', data);
+          console.log('All items:', data.items);
+
           // Filter only items with start_time (calendar events)
           const calendarEvents = (data.items || []).filter((item: CalendarEvent) => item.start_time);
-          console.log('Fetched calendar events:', calendarEvents);
+          console.log('Filtered calendar events (with start_time):', calendarEvents);
           setEvents(calendarEvents);
         } else {
-          console.error('Failed to fetch items:', res.status);
+          console.error('Failed to fetch items:', res.status, res.statusText);
           setEvents([]);
         }
       } catch (error) {
