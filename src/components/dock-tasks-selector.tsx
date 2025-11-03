@@ -223,7 +223,7 @@ export function DockTasksSelector({
   if (!isOpen) return null;
 
   return (
-    <div className="w-[900px] py-4">
+    <div className="w-[400px] py-4">
       <div className="px-4 pb-4 flex items-center justify-between border-b">
         <h3 className="text-sm font-semibold">Tasks</h3>
         <Button
@@ -241,7 +241,7 @@ export function DockTasksSelector({
         </Button>
       </div>
 
-      <div className="px-4 pt-4 flex gap-4">
+      <div className="px-4 pt-4 flex flex-col gap-4">
         {loading ? (
           <div className="text-muted-foreground text-xs text-center py-8">
             Loading tasks...
@@ -249,8 +249,8 @@ export function DockTasksSelector({
         ) : (
           <>
             {/* To Do Column */}
-            <div className="flex-1 flex flex-col gap-2">
-              <div className="flex items-center justify-between px-2">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
                 <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   To Do
                 </h4>
@@ -258,9 +258,9 @@ export function DockTasksSelector({
                   {tasksByStatus.todo.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto pr-2">
+              <div className="flex flex-col gap-2 max-h-[200px] overflow-y-auto">
                 {tasksByStatus.todo.length === 0 ? (
-                  <div className="text-xs text-muted-foreground text-center py-4 border border-dashed rounded-md">
+                  <div className="text-xs text-muted-foreground text-center py-3 border border-dashed rounded-md">
                     No tasks
                   </div>
                 ) : (
@@ -268,9 +268,9 @@ export function DockTasksSelector({
                     <div
                       key={task.id}
                       onClick={() => handleTaskClick(task)}
-                      className="bg-muted hover:bg-muted/80 relative rounded-md p-3 text-sm cursor-pointer transition-colors border border-border/50"
+                      className="bg-muted hover:bg-muted/80 relative rounded-md p-2 text-sm cursor-pointer transition-colors border border-border/50"
                     >
-                      <div className="font-medium mb-1">{task.title}</div>
+                      <div className="font-medium mb-0.5 text-sm">{task.title}</div>
                       {task.due_date && (
                         <div className="text-xs text-muted-foreground">
                           Due {format(new Date(task.due_date), 'MMM d')}
@@ -283,8 +283,8 @@ export function DockTasksSelector({
             </div>
 
             {/* In Progress Column */}
-            <div className="flex-1 flex flex-col gap-2">
-              <div className="flex items-center justify-between px-2">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
                 <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   In Progress
                 </h4>
@@ -292,9 +292,9 @@ export function DockTasksSelector({
                   {tasksByStatus.in_progress.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto pr-2">
+              <div className="flex flex-col gap-2 max-h-[200px] overflow-y-auto">
                 {tasksByStatus.in_progress.length === 0 ? (
-                  <div className="text-xs text-muted-foreground text-center py-4 border border-dashed rounded-md">
+                  <div className="text-xs text-muted-foreground text-center py-3 border border-dashed rounded-md">
                     No tasks
                   </div>
                 ) : (
@@ -302,9 +302,9 @@ export function DockTasksSelector({
                     <div
                       key={task.id}
                       onClick={() => handleTaskClick(task)}
-                      className="bg-blue-500/10 hover:bg-blue-500/20 relative rounded-md p-3 text-sm cursor-pointer transition-colors border border-blue-500/20"
+                      className="bg-blue-500/10 hover:bg-blue-500/20 relative rounded-md p-2 text-sm cursor-pointer transition-colors border border-blue-500/20"
                     >
-                      <div className="font-medium mb-1">{task.title}</div>
+                      <div className="font-medium mb-0.5 text-sm">{task.title}</div>
                       {task.due_date && (
                         <div className="text-xs text-muted-foreground">
                           Due {format(new Date(task.due_date), 'MMM d')}
@@ -317,8 +317,8 @@ export function DockTasksSelector({
             </div>
 
             {/* Done Column */}
-            <div className="flex-1 flex flex-col gap-2">
-              <div className="flex items-center justify-between px-2">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
                 <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Done
                 </h4>
@@ -326,9 +326,9 @@ export function DockTasksSelector({
                   {tasksByStatus.done.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto pr-2">
+              <div className="flex flex-col gap-2 max-h-[200px] overflow-y-auto">
                 {tasksByStatus.done.length === 0 ? (
-                  <div className="text-xs text-muted-foreground text-center py-4 border border-dashed rounded-md">
+                  <div className="text-xs text-muted-foreground text-center py-3 border border-dashed rounded-md">
                     No tasks
                   </div>
                 ) : (
@@ -336,9 +336,9 @@ export function DockTasksSelector({
                     <div
                       key={task.id}
                       onClick={() => handleTaskClick(task)}
-                      className="bg-green-500/10 hover:bg-green-500/20 relative rounded-md p-3 text-sm cursor-pointer transition-colors border border-green-500/20 opacity-60"
+                      className="bg-green-500/10 hover:bg-green-500/20 relative rounded-md p-2 text-sm cursor-pointer transition-colors border border-green-500/20 opacity-60"
                     >
-                      <div className="font-medium mb-1 line-through">{task.title}</div>
+                      <div className="font-medium mb-0.5 text-sm line-through">{task.title}</div>
                       {task.due_date && (
                         <div className="text-xs text-muted-foreground">
                           Due {format(new Date(task.due_date), 'MMM d')}
