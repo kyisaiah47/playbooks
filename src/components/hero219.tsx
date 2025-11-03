@@ -3,16 +3,12 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles, Calendar } from "lucide-react";
-import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
 
 import { Particles } from "@/components/magicui/particles";
 
 const Hero219 = () => {
-  const { resolvedTheme } = useTheme();
-  const particleColor = resolvedTheme === "dark" ? "#ffffff" : "#000000";
-
   return (
     <section className="relative py-32 pt-56">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
@@ -61,7 +57,6 @@ const Hero219 = () => {
           className="absolute inset-0 z-0"
           quantity={500}
           ease={80}
-          color={particleColor}
           refresh
         />
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 import React, {
   ComponentPropsWithoutRef,
   useEffect,
@@ -83,11 +84,15 @@ export const Particles: React.FC<ParticlesProps> = ({
   ease = 50,
   size = 0.4,
   refresh = false,
-  color = "#ffffff",
+  color,
   vx = 0,
   vy = 0,
   ...props
 }) => {
+  const { resolvedTheme } = useTheme();
+  const themeColor = resolvedTheme === "dark" ? "#ffffff" : "#000000";
+  const particleColor = color || themeColor;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const context = useRef<CanvasRenderingContext2D | null>(null);
@@ -126,7 +131,7 @@ export const Particles: React.FC<ParticlesProps> = ({
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [color]);
+  }, [particleColor, resolvedTheme]);
 
   useEffect(() => {
     onMouseMove();
@@ -200,7 +205,7 @@ export const Particles: React.FC<ParticlesProps> = ({
     };
   };
 
-  const rgb = hexToRgb(color);
+  const rgb = hexToRgb(particleColor);
 
   const drawCircle = (circle: Circle, update = false) => {
     if (context.current) {

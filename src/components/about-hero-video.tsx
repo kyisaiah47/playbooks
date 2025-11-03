@@ -24,10 +24,9 @@ const AboutHeroVideo = () => {
   return (
     <section className="pt-48 pb-24 relative">
       <Particles
-        className="absolute inset-0 z-0 dark:invert"
+        className="absolute inset-0 z-0"
         quantity={500}
         ease={80}
-        color="#000000"
         refresh
       />
       <div className="container max-w-5xl relative z-10">

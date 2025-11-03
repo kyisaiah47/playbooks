@@ -2,31 +2,12 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { Particles } from "@/components/magicui/particles";
 import { Button } from "@/components/ui/button";
 
 const HeroAnimatedText = () => {
-  const [particleColor, setParticleColor] = useState("#000000");
-
-  useEffect(() => {
-    const updateParticleColor = () => {
-      const isDark = document.documentElement.classList.contains("dark");
-      setParticleColor(isDark ? "#ffffff" : "#000000");
-    };
-
-    updateParticleColor();
-
-    const observer = new MutationObserver(updateParticleColor);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section className="pt-56 pb-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
@@ -76,7 +57,6 @@ const HeroAnimatedText = () => {
           className="absolute inset-0 z-0"
           quantity={500}
           ease={80}
-          color={particleColor}
           refresh
         />
 
