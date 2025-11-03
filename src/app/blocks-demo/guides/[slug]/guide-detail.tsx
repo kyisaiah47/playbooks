@@ -151,7 +151,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative py-32 pt-56">
+      <section className="relative py-32 pt-40">
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
           <Badge variant="outline" className="px-4 py-2">
             {templateData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
