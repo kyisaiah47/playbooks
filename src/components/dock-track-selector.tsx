@@ -51,30 +51,34 @@ export function DockTrackSelector({
   refreshKey = 0
 }: DockTrackSelectorProps) {
   const { tracks: cachedTracks, fetchTracks } = useDataCache();
-  const [tracks, setTracks] = useState<Track[]>(cachedTracks || []);
   const [loading, setLoading] = useState(false);
 
+  // Only fetch once on mount if no cache
   useEffect(() => {
-    // Load from cache immediately if available
-    if (cachedTracks) {
-      setTracks(cachedTracks);
+    if (!cachedTracks || cachedTracks.length === 0) {
+      loadTracks();
     }
+  }, []); // Empty deps - only run on mount
 
-    // Fetch fresh data (will use cache if fresh enough)
-    loadTracks();
+  // Fetch when refreshKey changes
+  useEffect(() => {
+    if (refreshKey > 0) {
+      loadTracks();
+    }
   }, [refreshKey]);
 
   async function loadTracks() {
     setLoading(true);
     try {
-      const freshTracks = await fetchTracks(refreshKey > 0);
-      setTracks(freshTracks);
+      await fetchTracks(true);
     } catch (error) {
       console.error('Error fetching tracks:', error);
     } finally {
       setLoading(false);
     }
   }
+
+  const tracks = cachedTracks || [];
 
 
   const handleToggleTrack = (trackId: string) => {

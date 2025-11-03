@@ -36,26 +36,27 @@ interface CreateTrackDialogProps {
 
 export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: CreateTrackDialogProps) {
   const { guides: cachedGuides, fetchGuides, invalidateTracks } = useDataCache();
-  const [guides, setGuides] = useState<Guide[]>(cachedGuides || []);
   const [creating, setCreating] = useState(false);
   const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
   const [customName, setCustomName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Only fetch guides when dialog opens if we don't have them
   useEffect(() => {
-    if (open) {
+    if (open && (!cachedGuides || cachedGuides.length === 0)) {
       loadGuides();
     }
   }, [open]);
 
   async function loadGuides() {
     try {
-      const freshGuides = await fetchGuides();
-      setGuides(freshGuides);
+      await fetchGuides(false); // Don't force, let cache decide
     } catch (error) {
       console.error('Error fetching guides:', error);
     }
   }
+
+  const guides = cachedGuides || [];
 
   async function createTrack() {
     if (!selectedGuide) return;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
 
 interface Guide {
   id: string;
@@ -76,6 +76,12 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
     };
   });
 
+  // Use ref to access latest cache without causing re-renders
+  const cacheRef = useRef(cache);
+  useEffect(() => {
+    cacheRef.current = cache;
+  }, [cache]);
+
   // Save to sessionStorage whenever cache changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -88,11 +94,13 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
   }, [cache]);
 
   const fetchTracks = useCallback(async (force = false): Promise<Track[]> => {
+    const currentCache = cacheRef.current;
+
     // Return cached data if available and not forcing refresh
-    if (!force && cache.tracks && cache.lastFetch.tracks) {
-      const age = Date.now() - cache.lastFetch.tracks;
+    if (!force && currentCache.tracks && currentCache.lastFetch.tracks) {
+      const age = Date.now() - currentCache.lastFetch.tracks;
       if (age < CACHE_DURATION) {
-        return cache.tracks;
+        return currentCache.tracks;
       }
     }
 
@@ -114,16 +122,18 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Error fetching tracks:', error);
       // Return cached data if fetch fails
-      return cache.tracks || [];
+      return currentCache.tracks || [];
     }
-  }, [cache.tracks, cache.lastFetch.tracks]);
+  }, []); // No dependencies - stable function
 
   const fetchGuides = useCallback(async (force = false): Promise<Guide[]> => {
+    const currentCache = cacheRef.current;
+
     // Return cached data if available and not forcing refresh
-    if (!force && cache.guides && cache.lastFetch.guides) {
-      const age = Date.now() - cache.lastFetch.guides;
+    if (!force && currentCache.guides && currentCache.lastFetch.guides) {
+      const age = Date.now() - currentCache.lastFetch.guides;
       if (age < CACHE_DURATION) {
-        return cache.guides;
+        return currentCache.guides;
       }
     }
 
@@ -145,9 +155,9 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Error fetching guides:', error);
       // Return cached data if fetch fails
-      return cache.guides || [];
+      return currentCache.guides || [];
     }
-  }, [cache.guides, cache.lastFetch.guides]);
+  }, []); // No dependencies - stable function
 
   const invalidateTracks = useCallback(() => {
     setCache(prev => ({
