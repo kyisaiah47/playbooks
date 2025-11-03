@@ -25,6 +25,7 @@
       "headers": {
         "Authorization": "Bearer ${SHADCNBLOCKS_API_KEY}"
       }
-    }
+    },
+    "@svgl": "https://svgl.app/r/{name}.json"
   }
 }
