@@ -38,7 +38,6 @@ const Navbar22 = () => {
     { name: "Library", href: "/library" },
     { name: "Guides", href: "/guides" },
     { name: "About", href: "/about" },
-    { name: "App", href: "/app" },
   ];
 
   return (
