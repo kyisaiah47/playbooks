@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
 import React, {
   ComponentPropsWithoutRef,
   useEffect,
@@ -89,9 +88,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   vy = 0,
   ...props
 }) => {
-  const { resolvedTheme } = useTheme();
-  const themeColor = resolvedTheme === "dark" ? "#ffffff" : "#000000";
-  const particleColor = color || themeColor;
+  const [particleColor, setParticleColor] = useState("#000000");
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
@@ -103,6 +100,27 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
   const rafID = useRef<number | null>(null);
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const updateParticleColor = () => {
+      if (color) {
+        setParticleColor(color);
+      } else {
+        const isDark = document.documentElement.classList.contains("dark");
+        setParticleColor(isDark ? "#ffffff" : "#000000");
+      }
+    };
+
+    updateParticleColor();
+
+    const observer = new MutationObserver(updateParticleColor);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, [color]);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -131,7 +149,7 @@ export const Particles: React.FC<ParticlesProps> = ({
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [particleColor, resolvedTheme]);
+  }, [particleColor]);
 
   useEffect(() => {
     onMouseMove();
