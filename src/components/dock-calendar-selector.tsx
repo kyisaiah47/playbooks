@@ -2,11 +2,22 @@
 
 import * as React from "react"
 import { formatDateRange } from "little-date"
+import { format } from "date-fns"
 import { PlusIcon } from "lucide-react"
 import { isSameDay } from "date-fns"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 
 interface CalendarEvent {
   id: string;
@@ -30,6 +41,12 @@ export function DockCalendarSelector({
   const [date, setDate] = React.useState<Date | undefined>(new Date())
   const [events, setEvents] = React.useState<CalendarEvent[]>([])
   const [loading, setLoading] = React.useState(true)
+  const [createDialogOpen, setCreateDialogOpen] = React.useState(false)
+  const [eventTitle, setEventTitle] = React.useState('')
+  const [eventDescription, setEventDescription] = React.useState('')
+  const [eventTime, setEventTime] = React.useState('09:00')
+  const [allDay, setAllDay] = React.useState(false)
+  const [creating, setCreating] = React.useState(false)
 
   // Fetch events from the API
   React.useEffect(() => {
@@ -93,6 +110,49 @@ export function DockCalendarSelector({
     return filtered;
   }, [date, events])
 
+  const handleCreateEvent = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!eventTitle.trim() || !date) return;
+
+    setCreating(true);
+    try {
+      const startDateTime = allDay
+        ? `${format(date, 'yyyy-MM-dd')}T00:00:00`
+        : `${format(date, 'yyyy-MM-dd')}T${eventTime}:00`;
+
+      const res = await fetch('/api/items', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: eventTitle.trim(),
+          description: eventDescription.trim() || null,
+          start_time: startDateTime,
+          all_day: allDay,
+        }),
+      });
+
+      if (res.ok) {
+        // Reset form
+        setEventTitle('');
+        setEventDescription('');
+        setEventTime('09:00');
+        setAllDay(false);
+        setCreateDialogOpen(false);
+
+        // Refresh events
+        const refreshRes = await fetch('/api/items');
+        if (refreshRes.ok) {
+          const data = await refreshRes.json();
+          setEvents(data.items || []);
+        }
+      }
+    } catch (error) {
+      console.error('Error creating event:', error);
+    } finally {
+      setCreating(false);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -120,6 +180,7 @@ export function DockCalendarSelector({
             size="icon"
             className="size-6"
             title="Add Event"
+            onClick={() => setCreateDialogOpen(true)}
           >
             <PlusIcon />
             <span className="sr-only">Add Event</span>
@@ -149,6 +210,69 @@ export function DockCalendarSelector({
           )}
         </div>
       </div>
+
+      {/* Create Event Dialog */}
+      <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Create Event</DialogTitle>
+            <DialogDescription>
+              Add a new event for {date?.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleCreateEvent}>
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="event-title">Title</Label>
+                <Input
+                  id="event-title"
+                  value={eventTitle}
+                  onChange={(e) => setEventTitle(e.target.value)}
+                  placeholder="Event title"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="event-description">Description</Label>
+                <Input
+                  id="event-description"
+                  value={eventDescription}
+                  onChange={(e) => setEventDescription(e.target.value)}
+                  placeholder="Event description (optional)"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="event-time">Time</Label>
+                <Input
+                  id="event-time"
+                  type="time"
+                  value={eventTime}
+                  onChange={(e) => setEventTime(e.target.value)}
+                  disabled={allDay}
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="all-day"
+                  checked={allDay}
+                  onChange={(e) => setAllDay(e.target.checked)}
+                  className="cursor-pointer"
+                />
+                <Label htmlFor="all-day" className="cursor-pointer">All day event</Label>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={() => setCreateDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={creating || !eventTitle.trim()}>
+                {creating ? "Creating..." : "Create Event"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
