@@ -3,7 +3,7 @@
 import * as React from "react"
 import { formatDateRange } from "little-date"
 import { format } from "date-fns"
-import { PlusIcon } from "lucide-react"
+import { PlusIcon, ChevronDownIcon } from "lucide-react"
 import { isSameDay } from "date-fns"
 
 import { Button } from "@/components/ui/button"
@@ -18,6 +18,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 interface CalendarEvent {
   id: string;
@@ -44,7 +49,12 @@ export function DockCalendarSelector({
   const [createDialogOpen, setCreateDialogOpen] = React.useState(false)
   const [eventTitle, setEventTitle] = React.useState('')
   const [eventDescription, setEventDescription] = React.useState('')
-  const [eventTime, setEventTime] = React.useState('09:00')
+  const [startDate, setStartDate] = React.useState<Date | undefined>()
+  const [endDate, setEndDate] = React.useState<Date | undefined>()
+  const [startTime, setStartTime] = React.useState('09:00')
+  const [endTime, setEndTime] = React.useState('10:00')
+  const [startDateOpen, setStartDateOpen] = React.useState(false)
+  const [endDateOpen, setEndDateOpen] = React.useState(false)
   const [allDay, setAllDay] = React.useState(false)
   const [creating, setCreating] = React.useState(false)
   const [selectedEvent, setSelectedEvent] = React.useState<CalendarEvent | null>(null)
@@ -122,15 +132,33 @@ export function DockCalendarSelector({
     }
   }, []);
 
+  const resetForm = React.useCallback(() => {
+    setEventTitle('');
+    setEventDescription('');
+    setStartDate(undefined);
+    setEndDate(undefined);
+    setStartTime('09:00');
+    setEndTime('10:00');
+    setAllDay(false);
+    setSelectedEvent(null);
+  }, []);
+
   const handleCreateEvent = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!eventTitle.trim() || !date) return;
+    if (!eventTitle.trim() || !startDate) return;
 
     setCreating(true);
     try {
+      const effectiveStartDate = startDate;
+      const effectiveEndDate = endDate || startDate;
+
       const startDateTime = allDay
-        ? `${format(date, 'yyyy-MM-dd')}T00:00:00`
-        : `${format(date, 'yyyy-MM-dd')}T${eventTime}:00`;
+        ? `${format(effectiveStartDate, 'yyyy-MM-dd')}T00:00:00`
+        : `${format(effectiveStartDate, 'yyyy-MM-dd')}T${startTime}:00`;
+
+      const endDateTime = allDay
+        ? `${format(effectiveEndDate, 'yyyy-MM-dd')}T23:59:59`
+        : `${format(effectiveEndDate, 'yyyy-MM-dd')}T${endTime}:00`;
 
       const res = await fetch('/api/items', {
         method: 'POST',
@@ -139,19 +167,14 @@ export function DockCalendarSelector({
           title: eventTitle.trim(),
           description: eventDescription.trim() || null,
           start_time: startDateTime,
+          end_time: endDateTime,
           all_day: allDay,
         }),
       });
 
       if (res.ok) {
-        // Reset form
-        setEventTitle('');
-        setEventDescription('');
-        setEventTime('09:00');
-        setAllDay(false);
+        resetForm();
         setCreateDialogOpen(false);
-
-        // Refresh events
         await refreshEvents();
       }
     } catch (error) {
@@ -166,13 +189,26 @@ export function DockCalendarSelector({
     setEventTitle(event.title);
     setEventDescription(event.description || '');
 
-    // Extract time if event has start_time
+    // Extract dates and times if event has start_time
     if (event.start_time) {
-      const eventDate = new Date(event.start_time);
-      setEventTime(format(eventDate, 'HH:mm'));
+      const eventStartDate = new Date(event.start_time);
+      setStartDate(eventStartDate);
+      setStartTime(format(eventStartDate, 'HH:mm'));
       setAllDay(event.all_day || false);
+
+      if (event.end_time) {
+        const eventEndDate = new Date(event.end_time);
+        setEndDate(eventEndDate);
+        setEndTime(format(eventEndDate, 'HH:mm'));
+      } else {
+        setEndDate(eventStartDate);
+        setEndTime(format(eventStartDate, 'HH:mm'));
+      }
     } else {
-      setEventTime('09:00');
+      setStartDate(date || new Date());
+      setEndDate(date || new Date());
+      setStartTime('09:00');
+      setEndTime('10:00');
       setAllDay(true);
     }
 
@@ -181,19 +217,20 @@ export function DockCalendarSelector({
 
   const handleUpdateEvent = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedEvent || !eventTitle.trim()) return;
+    if (!selectedEvent || !eventTitle.trim() || !startDate) return;
 
     setEditing(true);
     try {
-      const eventDate = selectedEvent.start_time
-        ? new Date(selectedEvent.start_time)
-        : selectedEvent.due_date
-        ? new Date(selectedEvent.due_date)
-        : date || new Date();
+      const effectiveStartDate = startDate;
+      const effectiveEndDate = endDate || startDate;
 
       const startDateTime = allDay
-        ? `${format(eventDate, 'yyyy-MM-dd')}T00:00:00`
-        : `${format(eventDate, 'yyyy-MM-dd')}T${eventTime}:00`;
+        ? `${format(effectiveStartDate, 'yyyy-MM-dd')}T00:00:00`
+        : `${format(effectiveStartDate, 'yyyy-MM-dd')}T${startTime}:00`;
+
+      const endDateTime = allDay
+        ? `${format(effectiveEndDate, 'yyyy-MM-dd')}T23:59:59`
+        : `${format(effectiveEndDate, 'yyyy-MM-dd')}T${endTime}:00`;
 
       const res = await fetch(`/api/items/${selectedEvent.id}`, {
         method: 'PATCH',
@@ -202,13 +239,14 @@ export function DockCalendarSelector({
           title: eventTitle.trim(),
           description: eventDescription.trim() || null,
           start_time: startDateTime,
+          end_time: endDateTime,
           all_day: allDay,
         }),
       });
 
       if (res.ok) {
+        resetForm();
         setDetailsDialogOpen(false);
-        setSelectedEvent(null);
         await refreshEvents();
       }
     } catch (error) {
@@ -266,7 +304,12 @@ export function DockCalendarSelector({
             size="icon"
             className="size-6"
             title="Add Event"
-            onClick={() => setCreateDialogOpen(true)}
+            onClick={() => {
+              resetForm();
+              setStartDate(date);
+              setEndDate(date);
+              setCreateDialogOpen(true);
+            }}
           >
             <PlusIcon />
             <span className="sr-only">Add Event</span>
@@ -312,7 +355,7 @@ export function DockCalendarSelector({
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleCreateEvent}>
-            <div className="grid gap-4 py-4">
+            <div className="grid gap-4 py-4 max-h-[60vh] overflow-y-auto">
               <div className="grid gap-2">
                 <Label htmlFor="event-title">Title</Label>
                 <Input
@@ -332,16 +375,6 @@ export function DockCalendarSelector({
                   placeholder="Event description (optional)"
                 />
               </div>
-              <div className="grid gap-2">
-                <Label htmlFor="event-time">Time</Label>
-                <Input
-                  id="event-time"
-                  type="time"
-                  value={eventTime}
-                  onChange={(e) => setEventTime(e.target.value)}
-                  disabled={allDay}
-                />
-              </div>
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -352,12 +385,74 @@ export function DockCalendarSelector({
                 />
                 <Label htmlFor="all-day" className="cursor-pointer">All day event</Label>
               </div>
+              <div className="grid gap-2">
+                <Label>From</Label>
+                <div className="flex gap-2">
+                  <Popover open={startDateOpen} onOpenChange={setStartDateOpen}>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="flex-1 justify-between font-normal">
+                        {startDate ? format(startDate, 'MMM d, yyyy') : "Select date"}
+                        <ChevronDownIcon className="h-4 w-4 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto overflow-hidden p-0 z-[300]" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={startDate}
+                        onSelect={(date) => {
+                          setStartDate(date);
+                          setStartDateOpen(false);
+                        }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <Input
+                    type="time"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    disabled={allDay}
+                    className="w-32"
+                  />
+                </div>
+              </div>
+              <div className="grid gap-2">
+                <Label>To</Label>
+                <div className="flex gap-2">
+                  <Popover open={endDateOpen} onOpenChange={setEndDateOpen}>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="flex-1 justify-between font-normal">
+                        {endDate ? format(endDate, 'MMM d, yyyy') : "Select date"}
+                        <ChevronDownIcon className="h-4 w-4 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto overflow-hidden p-0 z-[300]" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={endDate}
+                        onSelect={(date) => {
+                          setEndDate(date);
+                          setEndDateOpen(false);
+                        }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <Input
+                    type="time"
+                    value={endTime}
+                    onChange={(e) => setEndTime(e.target.value)}
+                    disabled={allDay}
+                    className="w-32"
+                  />
+                </div>
+              </div>
             </div>
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setCreateDialogOpen(false)}>
                 Cancel
               </Button>
-              <Button type="submit" disabled={creating || !eventTitle.trim()}>
+              <Button type="submit" disabled={creating || !eventTitle.trim() || !startDate}>
                 {creating ? "Creating..." : "Create Event"}
               </Button>
             </DialogFooter>
@@ -375,7 +470,7 @@ export function DockCalendarSelector({
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleUpdateEvent}>
-            <div className="grid gap-4 py-4">
+            <div className="grid gap-4 py-4 max-h-[60vh] overflow-y-auto">
               <div className="grid gap-2">
                 <Label htmlFor="edit-title">Title</Label>
                 <Input
@@ -395,16 +490,6 @@ export function DockCalendarSelector({
                   placeholder="Event description (optional)"
                 />
               </div>
-              <div className="grid gap-2">
-                <Label htmlFor="edit-time">Time</Label>
-                <Input
-                  id="edit-time"
-                  type="time"
-                  value={eventTime}
-                  onChange={(e) => setEventTime(e.target.value)}
-                  disabled={allDay}
-                />
-              </div>
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -414,6 +499,68 @@ export function DockCalendarSelector({
                   className="cursor-pointer"
                 />
                 <Label htmlFor="edit-all-day" className="cursor-pointer">All day event</Label>
+              </div>
+              <div className="grid gap-2">
+                <Label>From</Label>
+                <div className="flex gap-2">
+                  <Popover open={startDateOpen} onOpenChange={setStartDateOpen}>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="flex-1 justify-between font-normal">
+                        {startDate ? format(startDate, 'MMM d, yyyy') : "Select date"}
+                        <ChevronDownIcon className="h-4 w-4 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto overflow-hidden p-0 z-[300]" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={startDate}
+                        onSelect={(date) => {
+                          setStartDate(date);
+                          setStartDateOpen(false);
+                        }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <Input
+                    type="time"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    disabled={allDay}
+                    className="w-32"
+                  />
+                </div>
+              </div>
+              <div className="grid gap-2">
+                <Label>To</Label>
+                <div className="flex gap-2">
+                  <Popover open={endDateOpen} onOpenChange={setEndDateOpen}>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="flex-1 justify-between font-normal">
+                        {endDate ? format(endDate, 'MMM d, yyyy') : "Select date"}
+                        <ChevronDownIcon className="h-4 w-4 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto overflow-hidden p-0 z-[300]" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={endDate}
+                        onSelect={(date) => {
+                          setEndDate(date);
+                          setEndDateOpen(false);
+                        }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <Input
+                    type="time"
+                    value={endTime}
+                    onChange={(e) => setEndTime(e.target.value)}
+                    disabled={allDay}
+                    className="w-32"
+                  />
+                </div>
               </div>
             </div>
             <DialogFooter className="flex-col gap-2 sm:flex-row">
@@ -430,7 +577,7 @@ export function DockCalendarSelector({
                 <Button type="button" variant="outline" onClick={() => setDetailsDialogOpen(false)}>
                   Cancel
                 </Button>
-                <Button type="submit" disabled={editing || deleting || !eventTitle.trim()}>
+                <Button type="submit" disabled={editing || deleting || !eventTitle.trim() || !startDate}>
                   {editing ? "Saving..." : "Save Changes"}
                 </Button>
               </div>
