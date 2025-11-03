@@ -232,7 +232,7 @@ const FaqHero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[#F2F2F2] py-32 dark:bg-[#24242B]">
+    <section className="min-h-screen bg-background py-32">
       <div className="container max-w-4xl">
         <div className="text-center">
           <h1 className="text-center text-4xl font-medium tracking-tight sm:text-5xl">
@@ -279,8 +279,8 @@ const FaqHero = () => {
                   className={cn(
                     `rounded-xl`,
                     activeCategory === category
-                      ? "bg-background"
-                      : "bg-background/40",
+                      ? "bg-[#F2F2F2] dark:bg-[#24242B]"
+                      : "bg-[#F2F2F2]/40 dark:bg-[#24242B]/40",
                     "px-6",
                   )}
                   style={{

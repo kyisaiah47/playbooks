@@ -7,16 +7,16 @@ import { Particles } from "@/components/magicui/particles";
 
 const stats = [
   {
-    number: "52%",
-    text: "boost in user retention",
+    number: "90%+",
+    text: "coverage from day one",
   },
   {
-    number: "40%",
-    text: "decrease in development time",
+    number: "1000+",
+    text: "guides planned",
   },
   {
-    number: "2.5x",
-    text: "increase in feature adoption",
+    number: "3",
+    text: "core features",
   },
 ];
 
@@ -34,18 +34,18 @@ const AboutHeroVideo = () => {
         {/* Main Content */}
         <div className="mb-16 text-center">
           <Badge variant="secondary" className="mb-6 px-4 py-2">
-            ⚡ Supercharge Your Workflow
+            The Comprehensive Guide + Planning Tool
           </Badge>
-          <h2 className="leading-tighter mb-6 text-5xl font-semibold tracking-tight lg:text-6xl">
-            Ship Beautiful UIs
-            <span className="text-primary block">In Record Time</span>
+          <h2 className="leading-tighter mb-6 text-5xl font-medium tracking-tight lg:text-6xl">
+            Major life events
+            <span className="text-primary block">deserve better</span>
           </h2>
-          <p className="text-muted-foreground mx-auto mb-8 max-w-3xl text-xl font-medium leading-relaxed">
-            Transform your development process with pre-built components that
-            adapt to your design system and accelerate your time-to-market.
+          <p className="text-muted-foreground mx-auto mb-8 max-w-3xl text-xl leading-relaxed">
+            Comprehensive questions covering 90%+ of what you need to consider.
+            Expert guidance to make informed decisions. Integrated planning to keep everything organized.
           </p>
           <Button size="lg" className="px-8 py-6 text-lg">
-            Start Building
+            Get Started
             <ArrowRight />
           </Button>
         </div>
@@ -59,22 +59,6 @@ const AboutHeroVideo = () => {
               className="block size-full object-cover object-center"
             />
           </AspectRatio>
-        </div>
-
-        {/* Stats */}
-        <div className="bg-card rounded-2xl p-8">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-            {stats.map((item, i) => (
-              <div className="text-center" key={`stats-${i}`}>
-                <div className="text-primary mb-2 text-4xl font-bold">
-                  {item.number}
-                </div>
-                <div className="text-muted-foreground text-sm font-medium">
-                  {item.text}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

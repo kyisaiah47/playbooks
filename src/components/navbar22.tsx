@@ -33,10 +33,10 @@ const Navbar22 = () => {
   }, []);
 
   const navLinks = [
-    { name: "Guides", href: "#guides" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "About", href: "#about" },
+    { name: "Features", href: "/blocks-demo/features" },
+    { name: "FAQ", href: "/blocks-demo/faq" },
+    { name: "About", href: "/blocks-demo/about" },
+    { name: "App", href: "/blocks-demo/app" },
   ];
 
   return (
@@ -57,7 +57,7 @@ const Navbar22 = () => {
               </div>
 
               <div className="absolute left-1/2 hidden -translate-x-1/2 transform md:block">
-                <a href="/" className="flex items-center gap-2">
+                <a href="/blocks-demo" className="flex items-center gap-2">
                   <img
                     src="/favicon.svg"
                     className="h-8 w-8 dark:invert-0 invert"
@@ -109,7 +109,7 @@ const Navbar22 = () => {
                     <div className="m-4 flex flex-col space-y-6">
                       <div className="ml-3">
                         <a
-                          href="/"
+                          href="/blocks-demo"
                           className="text-foreground flex items-center justify-start gap-2 text-2xl font-bold tracking-tighter"
                           onClick={() => setIsOpen(false)}
                         >

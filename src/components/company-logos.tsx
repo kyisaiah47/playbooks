@@ -72,7 +72,7 @@ const CompanyLogos = () => {
     <section className="py-32">
       <div className="container space-y-10 lg:space-y-16">
         <div className="text-center">
-          <h2 className="mb-4 text-balance text-xl font-bold md:text-2xl lg:text-3xl">
+          <h2 className="mb-4 text-balance text-2xl font-medium tracking-tight md:text-3xl lg:text-4xl">
             Powering the world's best product teams.
             <br className="max-md:hidden" />
             <span className="text-muted-foreground">
