@@ -132,9 +132,7 @@ export default async function ReadingPage({ params }: { params: Promise<{ slug: 
 
             {/* Main Content */}
             <div className="lg:col-span-3">
-              <div className="prose prose-lg max-w-none">
-                <ReadingContent content={reading.content} />
-              </div>
+              <ReadingContent content={reading.content} />
             </div>
           </div>
         </div>

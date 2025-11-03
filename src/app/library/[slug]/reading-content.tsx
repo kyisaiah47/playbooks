@@ -53,9 +53,33 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
           );
         }
 
-        // Sub headings with IDs
+        // Sub headings with IDs - check if heading has bullets after it
         if (paragraph.startsWith('### ')) {
-          const headingText = paragraph.replace('### ', '');
+          const content = paragraph.replace('### ', '');
+          const lines = content.split('\n');
+          const headingText = lines[0];
+          const bulletLines = lines.slice(1).filter(line => line.trim().startsWith('- '));
+
+          // If heading has bullets after it, render as heading + list
+          if (bulletLines.length > 0) {
+            const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+            return (
+              <div key={index} className="my-6">
+                <h3 id={id} className="text-lg font-semibold mb-3 text-foreground">
+                  {headingText}
+                </h3>
+                <ul className="space-y-1.5 ml-5 list-disc">
+                  {bulletLines.map((line, itemIndex) => (
+                    <li key={itemIndex} className="text-sm text-foreground/90">
+                      {line.replace(/^[-•]\s*/, '').trim()}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          }
+
+          // Regular heading without bullets
           const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return (
             <h3 key={index} id={id} className="text-lg font-semibold mt-6 mb-3 text-foreground">
@@ -132,10 +156,10 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
                   );
                 }
               } else if (match[0].startsWith('==') && match[0].endsWith('==')) {
-                // Highlighted text - yellow highlight (not blue)
+                // Highlighted text - yellow/orange highlight
                 const highlightedText = match[0].slice(2, -2);
                 parts.push(
-                  <mark key={match.index} className="bg-yellow-200/60 dark:bg-yellow-500/30 text-foreground px-1 rounded">
+                  <mark key={match.index} className="bg-yellow-300 dark:bg-yellow-600 text-black dark:text-white px-1 rounded">
                     {highlightedText}
                   </mark>
                 );
@@ -282,7 +306,51 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
             );
           }
 
-          // Bullet points
+          // Check for inline pattern: "Header - item - item - item"
+          const dashSeparatorCount = (paragraph.match(/ - /g) || []).length;
+          if (dashSeparatorCount >= 2) {
+            const firstDashIndex = paragraph.indexOf(' - ');
+            const header = paragraph.substring(0, firstDashIndex).trim();
+            const bulletContent = paragraph.substring(firstDashIndex + 3);
+            const items = bulletContent.split(' - ').map(item => item.trim()).filter(item => item.length > 0);
+
+            return (
+              <div key={index} className="my-4">
+                <p className="text-sm font-semibold text-foreground mb-2">{renderText(header)}</p>
+                <ul className="space-y-1.5 ml-5 list-disc">
+                  {items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="text-sm text-foreground/90">
+                      {renderText(item)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          }
+
+          // Check for pattern: "**Header:**\n- item\n- item" or "Header:\n- item"
+          const lines = paragraph.split('\n');
+          const firstLine = lines[0];
+          const hasColonHeader = firstLine.includes(':');
+          const restOfLines = lines.slice(1);
+          const bulletLines = restOfLines.filter(line => line.trim().startsWith('- '));
+
+          if (hasColonHeader && bulletLines.length > 0) {
+            return (
+              <div key={index} className="my-4">
+                <p className="text-sm font-semibold text-foreground mb-2">{renderText(firstLine)}</p>
+                <ul className="space-y-1.5 ml-5 list-disc">
+                  {bulletLines.map((line, itemIndex) => (
+                    <li key={itemIndex} className="text-sm text-foreground/90">
+                      {renderText(line.replace(/^[-•]\s*/, '').trim())}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          }
+
+          // Bullet points that start with - or •
           if (paragraph.startsWith('- ') || paragraph.startsWith('• ')) {
             const items = paragraph.split('\n').filter(line => line.trim().startsWith('-') || line.trim().startsWith('•'));
             return (
