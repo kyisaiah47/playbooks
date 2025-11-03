@@ -55,7 +55,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
         return;
       }
 
-      router.push("/blocks-demo/app");
+      router.push("/app");
       router.refresh();
       onOpenChange(false);
     } catch (err) {
@@ -154,7 +154,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
       }
       keysToRemove.forEach(key => localStorage.removeItem(key));
 
-      router.push("/blocks-demo/app");
+      router.push("/app");
       router.refresh();
       onOpenChange(false);
     } catch (err) {

@@ -114,7 +114,7 @@ export function SignupForm({
       keysToRemove.forEach(key => localStorage.removeItem(key));
 
       // Redirect to app after successful signup
-      router.push("/blocks-demo/app");
+      router.push("/app");
       router.refresh();
     } catch (err) {
       setError("An error occurred. Please try again.");

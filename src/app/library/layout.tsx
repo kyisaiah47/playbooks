@@ -1,54 +1,46 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Browse 25,936 Articles | Expert Knowledge Base for Life | Templata',
-  description: 'Explore 25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying, health decisions & more. Like Wikipedia for life guidance.',
-  keywords: 'life planning articles, expert guides, how-to articles, wedding planning tips, career change advice, business launch guides, home buying guidance, life decisions, knowledge base, templata articles',
-  authors: [{ name: 'Templata Team' }],
-  creator: 'Templata',
-  publisher: 'Templata',
-  metadataBase: new URL('https://templata.org'),
-  alternates: {
-    canonical: '/articles',
-  },
+  title: "Guide Library - Templata",
+  description:
+    "Browse 1,000+ comprehensive guides covering every major life event. From wedding planning to career pivots, home buying to business launches—each guide refined through months of AI testing to ensure 90%+ coverage.",
+  keywords: [
+    "life guides library",
+    "comprehensive guides",
+    "wedding planning guide",
+    "home buying guide",
+    "career change guide",
+    "life event guides",
+    "planning resources",
+    "templata library",
+  ],
   openGraph: {
-    title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
-    description: '25,936 expert articles covering every life situation. Wedding planning, career changes, business launches, home buying & more. Like Wikipedia for life guidance.',
-    url: 'https://templata.org/articles',
-    siteName: 'Templata',
+    title: "Guide Library - Templata",
+    description:
+      "Browse 1,000+ comprehensive guides covering every major life event, each refined to ensure 90%+ coverage.",
+    url: "https://templata.org/library",
+    siteName: "Templata",
+    locale: "en_US",
+    type: "website",
     images: [
       {
-        url: 'https://templata.org/og-image.png',
+        url: "https://templata.org/og-image.png",
         width: 1200,
         height: 630,
-        alt: 'Templata Articles - 25,936 Expert Articles',
+        alt: "Templata Guide Library",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Browse 25,936 Articles | Expert Knowledge Base for Life',
-    description: '25,936 expert articles for every life situation. Wedding planning, career changes, business launches & more. Completely free.',
-    images: ['https://templata.org/og-image.png'],
-    creator: '@templata',
-    site: '@templata',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+    card: "summary_large_image",
+    title: "Guide Library - Templata",
+    description:
+      "Browse 1,000+ comprehensive guides covering every major life event, each refined to ensure 90%+ coverage.",
+    images: ["https://templata.org/og-image.png"],
   },
 };
 
-export default function ArticlesLayout({
+export default function LibraryLayout({
   children,
 }: {
   children: React.ReactNode;

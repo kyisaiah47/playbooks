@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTemplateById } from '@/registry/guides';
-import GuideDetail from './guide-detail';
+import GuideBrowse from './guide-browse';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -8,8 +8,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!template?.template) {
     return {
-      title: 'Guide Not Found - Templata',
-      description: 'The requested guide could not be found.',
+      title: 'Template Not Found | Templata',
+      description: 'The requested template could not be found.',
       robots: {
         index: false,
         follow: false,
@@ -18,38 +18,31 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const templateData = template.template;
-  const title = `${templateData.title} - Comprehensive Guide | Templata`;
-  const description = `${templateData.description} Comprehensive guide with AI-refined questions covering 90%+ of what you need to consider, curated expert readings, and integrated planning. Transform your ${templateData.title.toLowerCase()} from overwhelming to exhilarating.`;
+  const title = `${templateData.title} Template | Templata`;
+  const description = `${templateData.description} Complete template with prompts, articles, and guided steps. Save 80+ hours with our AI-powered ${templateData.title.toLowerCase()} template.`;
 
   return {
     title,
     description,
-    keywords: [
-      templateData.title.toLowerCase(),
-      `${templateData.title.toLowerCase()} guide`,
-      `${templateData.title.toLowerCase()} planning`,
-      `${templateData.category.toLowerCase()} guide`,
-      'comprehensive planning',
-      'ai-refined questions',
-      'expert readings',
-      'templata',
-      'luxury planning',
-      'life guides',
-    ],
-    authors: [{ name: 'Templata' }],
+    keywords: `${templateData.title.toLowerCase()} template, ${templateData.category.toLowerCase()}, life planning template, structured planning, templata`,
+    authors: [{ name: 'Templata Team' }],
     creator: 'Templata',
     publisher: 'Templata',
+    metadataBase: new URL('https://templata.org'),
+    alternates: {
+      canonical: `/templates/${slug}`,
+    },
     openGraph: {
       title,
       description,
-      url: `https://templata.org/guides/${slug}`,
+      url: `https://templata.org/templates/${slug}`,
       siteName: 'Templata',
       images: [
         {
-          url: '/og-image.png',
+          url: `/templates/${slug}-preview.jpg`,
           width: 1200,
           height: 630,
-          alt: `${templateData.title} Guide`,
+          alt: `${templateData.title} Template Preview`,
         },
       ],
       locale: 'en_US',
@@ -59,7 +52,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title,
       description,
-      images: ['/og-image.png'],
+      images: [`/templates/${slug}-twitter.jpg`],
+      creator: '@templata',
+      site: '@templata',
     },
     robots: {
       index: true,
@@ -76,5 +71,5 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export default function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
-  return <GuideDetail params={params} />;
+  return <GuideBrowse params={params} />;
 }
