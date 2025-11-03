@@ -28,6 +28,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { DockTrackSelector } from "@/components/dock-track-selector";
 import { DockCalendarSelector } from "@/components/dock-calendar-selector";
+import { DockTasksSelector } from "@/components/dock-tasks-selector";
 import { SettingsDialog } from "@/components/settings-dialog";
 import {
   Popover,
@@ -49,6 +50,7 @@ interface FloatingDockNavProps {
 const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, selectedTrackIds, onTrackSelectionChange }: FloatingDockNavProps) => {
   const [trackSelectorOpen, setTrackSelectorOpen] = useState(false);
   const [calendarSelectorOpen, setCalendarSelectorOpen] = useState(false);
+  const [tasksSelectorOpen, setTasksSelectorOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   const tabs = [
@@ -81,8 +83,9 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
     {
       title: "Tasks",
       icon: <CheckSquare />,
-      onClick: () => onViewChange('tasks'),
-      isActive: currentView === 'tasks',
+      onClick: () => setTasksSelectorOpen(!tasksSelectorOpen),
+      isActive: false,
+      isTasksSelector: true,
     },
     {
       title: "Overview",
@@ -114,6 +117,8 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
           setTrackSelectorOpen={setTrackSelectorOpen}
           calendarSelectorOpen={calendarSelectorOpen}
           setCalendarSelectorOpen={setCalendarSelectorOpen}
+          tasksSelectorOpen={tasksSelectorOpen}
+          setTasksSelectorOpen={setTasksSelectorOpen}
           selectedTrackIds={selectedTrackIds}
           onTrackSelectionChange={onTrackSelectionChange}
         />
@@ -137,16 +142,20 @@ const FloatingDock = ({
   setTrackSelectorOpen,
   calendarSelectorOpen,
   setCalendarSelectorOpen,
+  tasksSelectorOpen,
+  setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
 }: {
-  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean }[];
+  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean; isTasksSelector?: boolean }[];
   desktopClassName?: string;
   mobileClassName?: string;
   trackSelectorOpen: boolean;
   setTrackSelectorOpen: (open: boolean) => void;
   calendarSelectorOpen: boolean;
   setCalendarSelectorOpen: (open: boolean) => void;
+  tasksSelectorOpen: boolean;
+  setTasksSelectorOpen: (open: boolean) => void;
   selectedTrackIds: string[];
   onTrackSelectionChange: (trackIds: string[]) => void;
 }) => {
@@ -159,6 +168,8 @@ const FloatingDock = ({
         setTrackSelectorOpen={setTrackSelectorOpen}
         calendarSelectorOpen={calendarSelectorOpen}
         setCalendarSelectorOpen={setCalendarSelectorOpen}
+        tasksSelectorOpen={tasksSelectorOpen}
+        setTasksSelectorOpen={setTasksSelectorOpen}
         selectedTrackIds={selectedTrackIds}
         onTrackSelectionChange={onTrackSelectionChange}
       />
@@ -169,6 +180,8 @@ const FloatingDock = ({
         setTrackSelectorOpen={setTrackSelectorOpen}
         calendarSelectorOpen={calendarSelectorOpen}
         setCalendarSelectorOpen={setCalendarSelectorOpen}
+        tasksSelectorOpen={tasksSelectorOpen}
+        setTasksSelectorOpen={setTasksSelectorOpen}
         selectedTrackIds={selectedTrackIds}
         onTrackSelectionChange={onTrackSelectionChange}
       />
@@ -183,15 +196,19 @@ const FloatingDockMobile = ({
   setTrackSelectorOpen,
   calendarSelectorOpen,
   setCalendarSelectorOpen,
+  tasksSelectorOpen,
+  setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
 }: {
-  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean }[];
+  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean; isTasksSelector?: boolean }[];
   className?: string;
   trackSelectorOpen: boolean;
   setTrackSelectorOpen: (open: boolean) => void;
   calendarSelectorOpen: boolean;
   setCalendarSelectorOpen: (open: boolean) => void;
+  tasksSelectorOpen: boolean;
+  setTasksSelectorOpen: (open: boolean) => void;
   selectedTrackIds: string[];
   onTrackSelectionChange: (trackIds: string[]) => void;
 }) => {
@@ -289,6 +306,46 @@ const FloatingDockMobile = ({
                 );
               }
 
+              if (item.isTasksSelector) {
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 10,
+                      transition: {
+                        delay: idx * 0.05,
+                      },
+                    }}
+                    transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+                  >
+                    <Popover open={tasksSelectorOpen} onOpenChange={setTasksSelectorOpen}>
+                      <PopoverTrigger asChild>
+                        <button
+                          className={cn(
+                            "bg-background border flex h-10 w-10 items-center justify-center rounded-xl",
+                            "border-border"
+                          )}
+                        >
+                          <div>{item.icon}</div>
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-[400px] p-0 z-[100]" align="center" side="top" sideOffset={16}>
+                        <DockTasksSelector
+                          isOpen={true}
+                          onClose={() => setTasksSelectorOpen(false)}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </motion.div>
+                );
+              }
+
               return (
                 <motion.div
                   key={item.title}
@@ -342,15 +399,19 @@ const FloatingDockDesktop = ({
   setTrackSelectorOpen,
   calendarSelectorOpen,
   setCalendarSelectorOpen,
+  tasksSelectorOpen,
+  setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
 }: {
-  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean }[];
+  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean; isTasksSelector?: boolean }[];
   className?: string;
   trackSelectorOpen: boolean;
   setTrackSelectorOpen: (open: boolean) => void;
   calendarSelectorOpen: boolean;
   setCalendarSelectorOpen: (open: boolean) => void;
+  tasksSelectorOpen: boolean;
+  setTasksSelectorOpen: (open: boolean) => void;
   selectedTrackIds: string[];
   onTrackSelectionChange: (trackIds: string[]) => void;
 }) => {
@@ -359,7 +420,7 @@ const FloatingDockDesktop = ({
     <div className="relative">
       <motion.div
         onMouseMove={(e) => {
-          if (!trackSelectorOpen && !calendarSelectorOpen) {
+          if (!trackSelectorOpen && !calendarSelectorOpen && !tasksSelectorOpen) {
             mouseX.set(e.pageX);
           }
         }}
@@ -378,6 +439,8 @@ const FloatingDockDesktop = ({
             setTrackSelectorOpen={setTrackSelectorOpen}
             calendarSelectorOpen={calendarSelectorOpen}
             setCalendarSelectorOpen={setCalendarSelectorOpen}
+            tasksSelectorOpen={tasksSelectorOpen}
+            setTasksSelectorOpen={setTasksSelectorOpen}
             selectedTrackIds={selectedTrackIds}
             onTrackSelectionChange={onTrackSelectionChange}
           />
@@ -395,10 +458,13 @@ function IconContainer({
   isActive,
   isTrackSelector,
   isCalendarSelector,
+  isTasksSelector,
   trackSelectorOpen,
   setTrackSelectorOpen,
   calendarSelectorOpen,
   setCalendarSelectorOpen,
+  tasksSelectorOpen,
+  setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
 }: {
@@ -409,10 +475,13 @@ function IconContainer({
   isActive: boolean;
   isTrackSelector?: boolean;
   isCalendarSelector?: boolean;
+  isTasksSelector?: boolean;
   trackSelectorOpen?: boolean;
   setTrackSelectorOpen?: (open: boolean) => void;
   calendarSelectorOpen?: boolean;
   setCalendarSelectorOpen?: (open: boolean) => void;
+  tasksSelectorOpen?: boolean;
+  setTasksSelectorOpen?: (open: boolean) => void;
   selectedTrackIds?: string[];
   onTrackSelectionChange?: (trackIds: string[]) => void;
 }) {
@@ -540,6 +609,24 @@ function IconContainer({
             isOpen={true}
             onClose={() => setCalendarSelectorOpen(false)}
             noWrapper={true}
+          />
+        </PopoverContent>
+      </Popover>
+    );
+  }
+
+  if (isTasksSelector && tasksSelectorOpen !== undefined && setTasksSelectorOpen) {
+    return (
+      <Popover open={tasksSelectorOpen} onOpenChange={setTasksSelectorOpen}>
+        <PopoverTrigger asChild>
+          <button>
+            {buttonContent}
+          </button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[400px] p-0 z-[100]" align="start" side="top" sideOffset={16}>
+          <DockTasksSelector
+            isOpen={true}
+            onClose={() => setTasksSelectorOpen(false)}
           />
         </PopoverContent>
       </Popover>
