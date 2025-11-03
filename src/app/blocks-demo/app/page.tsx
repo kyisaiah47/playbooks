@@ -22,6 +22,7 @@ export default function AppPage() {
 	});
 	const [selectedTrackIds, setSelectedTrackIds] = useState<string[]>([]);
 	const [isDark, setIsDark] = useState(false);
+	const [userEmail, setUserEmail] = useState('');
 
 	// Callbacks for interactive banner
 	const [templatesActions, setTemplatesActions] = useState<{
@@ -31,8 +32,24 @@ export default function AppPage() {
 	}>({});
 
 	useEffect(() => {
+		loadUser();
 		loadSelectedTracks();
 		checkTheme();
+
+		async function loadUser() {
+			try {
+				const res = await fetch('/api/auth/me');
+				const data = await res.json();
+
+				if (data.user) {
+					setUserEmail(data.user.email || '');
+				}
+				// Allow anonymous users - don't redirect
+			} catch (error) {
+				console.error('Error loading user:', error);
+				// Allow anonymous users - don't redirect
+			}
+		}
 
 		function loadSelectedTracks() {
 			const saved = localStorage.getItem('selectedTrackIds');
