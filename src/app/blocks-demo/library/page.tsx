@@ -1,12 +1,12 @@
 "use client";
 
-import { FaqHero } from "@/components/faq-hero";
+import { Hero219 } from "@/components/hero219";
 import { PageLayout } from "@/components/layout";
 
-export default function FaqPage() {
+export default function LibraryPage() {
 	return (
 		<PageLayout>
-			<FaqHero />
+			<Hero219 />
 			{/* More blocks will be added here */}
 		</PageLayout>
 	);

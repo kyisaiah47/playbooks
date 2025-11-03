@@ -35,8 +35,8 @@ const Navbar22 = () => {
   }, []);
 
   const navLinks = [
-    { name: "Features", href: "/blocks-demo/features" },
-    { name: "FAQ", href: "/blocks-demo/faq" },
+    { name: "Library", href: "/blocks-demo/library" },
+    { name: "Guides", href: "/blocks-demo/guides" },
     { name: "About", href: "/blocks-demo/about" },
     { name: "App", href: "/blocks-demo/app" },
   ];
