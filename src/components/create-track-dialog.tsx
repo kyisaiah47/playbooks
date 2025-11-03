@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { useDataCache } from '@/contexts/DataCacheContext';
 import {
   Command,
   CommandGroup,
@@ -34,7 +35,8 @@ interface CreateTrackDialogProps {
 }
 
 export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: CreateTrackDialogProps) {
-  const [guides, setGuides] = useState<Guide[]>([]);
+  const { guides: cachedGuides, fetchGuides, invalidateTracks } = useDataCache();
+  const [guides, setGuides] = useState<Guide[]>(cachedGuides || []);
   const [creating, setCreating] = useState(false);
   const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
   const [customName, setCustomName] = useState('');
@@ -42,15 +44,14 @@ export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: Create
 
   useEffect(() => {
     if (open) {
-      fetchGuides();
+      loadGuides();
     }
   }, [open]);
 
-  async function fetchGuides() {
+  async function loadGuides() {
     try {
-      const res = await fetch('/api/guides?all=true');
-      const data = await res.json();
-      setGuides(data.guides || []);
+      const freshGuides = await fetchGuides();
+      setGuides(freshGuides);
     } catch (error) {
       console.error('Error fetching guides:', error);
     }
@@ -73,6 +74,9 @@ export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: Create
       if (!res.ok) {
         throw new Error('Failed to create track');
       }
+
+      // Invalidate tracks cache so next fetch gets fresh data
+      invalidateTracks();
 
       setSelectedGuide(null);
       setCustomName('');

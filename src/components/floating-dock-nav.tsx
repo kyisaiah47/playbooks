@@ -31,6 +31,7 @@ import { DockCalendarSelector } from "@/components/dock-calendar-selector";
 import { DockTasksSelector } from "@/components/dock-tasks-selector";
 import { SettingsDialog } from "@/components/settings-dialog";
 import { CreateTrackDialog } from "@/components/create-track-dialog";
+import { useDataCache } from "@/contexts/DataCacheContext";
 import {
   Popover,
   PopoverContent,
@@ -59,6 +60,7 @@ interface FloatingDockNavProps {
 }
 
 const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, selectedTrackIds, onTrackSelectionChange }: FloatingDockNavProps) => {
+  const { invalidateAll } = useDataCache();
   const [trackSelectorOpen, setTrackSelectorOpen] = useState(false);
   const [calendarSelectorOpen, setCalendarSelectorOpen] = useState(false);
   const [tasksSelectorOpen, setTasksSelectorOpen] = useState(false);
@@ -69,6 +71,8 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
 
   const handleLogout = async () => {
     try {
+      // Clear all cached data
+      invalidateAll();
       await fetch('/api/auth/logout', { method: 'POST' });
       window.location.href = '/';
     } catch (error) {

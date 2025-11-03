@@ -8,6 +8,7 @@ import { NotesViewWrapper } from '@/app/app/views/NotesViewWrapper';
 import { OverviewView } from '@/app/app/views/OverviewView';
 import { CalendarView } from '@/app/app/views/CalendarView';
 import { TasksView } from '@/app/app/views/TasksView';
+import { DataCacheProvider } from '@/contexts/DataCacheContext';
 
 type View = 'guides' | 'notes' | 'overview' | 'calendar' | 'tasks';
 
@@ -96,6 +97,7 @@ export default function AppPage() {
 	};
 
 	return (
+		<DataCacheProvider>
 		<div className="h-screen flex flex-col bg-background">
 			{/* Info Banner */}
 			<div className="border-b bg-primary/5 border-primary/20 overflow-hidden">
@@ -391,5 +393,6 @@ export default function AppPage() {
 				onTrackSelectionChange={setSelectedTrackIds}
 			/>
 		</div>
+		</DataCacheProvider>
 	);
 }

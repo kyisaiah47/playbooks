@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useDataCache } from '@/contexts/DataCacheContext';
 import {
   Command,
   CommandGroup,
@@ -49,29 +50,25 @@ export function DockTrackSelector({
   onOpenCreateDialog,
   refreshKey = 0
 }: DockTrackSelectorProps) {
-  const [tracks, setTracks] = useState<Track[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { tracks: cachedTracks, fetchTracks } = useDataCache();
+  const [tracks, setTracks] = useState<Track[]>(cachedTracks || []);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchTracks();
+    // Load from cache immediately if available
+    if (cachedTracks) {
+      setTracks(cachedTracks);
+    }
+
+    // Fetch fresh data (will use cache if fresh enough)
+    loadTracks();
   }, [refreshKey]);
 
-  async function fetchTracks() {
+  async function loadTracks() {
+    setLoading(true);
     try {
-      setLoading(true);
-      const res = await fetch('/api/tracks?archived=false');
-
-      if (!res.ok) {
-        if (res.status === 401) {
-          setTracks([]);
-          setLoading(false);
-          return;
-        }
-        throw new Error('Failed to fetch tracks');
-      }
-
-      const data = await res.json();
-      setTracks(data.tracks || []);
+      const freshTracks = await fetchTracks(refreshKey > 0);
+      setTracks(freshTracks);
     } catch (error) {
       console.error('Error fetching tracks:', error);
     } finally {
