@@ -1,362 +1,205 @@
-# MVP v3 Strategy: The Comprehensive Guide for Life's Biggest Moments
+# Templata: The Comprehensive Guide
 
-## Executive Summary
+## What Templata Is
 
-**The Problem:** When people face major life events (wedding, home buying, career change), they spend months researching, still worried they missed something critical. Traditional tools give them blank pages. Competitors give them generic advice.
+**Templata is the comprehensive guide + planning tool for life's biggest moments.**
 
-**Our Solution:** Comprehensive questions (90%+ coverage guarantee) + expert readings + integrated planning. Wikipedia × Notion for life events.
+Think Wikipedia × Notion for major life events.
 
-**v3 Goal:** Combine the best of v0.5 (landing pages/positioning), v1 (clean UX/3-panel interface), and v2 (productivity features) into a focused, differentiated product.
+### The Problem
 
----
+When people plan a wedding, buy a home, or change careers, they spend months researching on Google, asking around, maybe even hiring experts—and they're still worried they missed something critical. They end up with scattered notes, inconsistent information, and no clear path forward.
 
-## Strategic Positioning
+### The Solution
 
-### What We Are
-**"Your expert guide through life's biggest moments"**
+Templata provides three things in one unified system:
 
-We are THE comprehensive guide + planning tool for major life events. Not another productivity app. Not another note-taking tool. We're the solution when you need to make sure you haven't missed anything important.
+1. **Comprehensive Questions** - AI-generated questions covering 90%+ of everything you need to consider for any major life event
+2. **Expert Readings** - Curated knowledge and advice to help you make informed decisions
+3. **Integrated Planning** - Calendar, tasks, and notes organized per-guide (wedding tasks separate from home buying tasks)
 
-### What Makes Us Unique
-
-1. **Comprehensiveness Guarantee**: "90%+ of everything you need" - our AI-refined questions have been tested for months to ensure nothing important is missed
-2. **Structured Knowledge**: Not just articles, but QUESTIONS that guide your thinking systematically
-3. **Per-Guide Organization**: Calendar/todos tied to specific life events (not just a generic task manager)
-4. **Curated Quality**: Months of prompt refinement, not on-the-fly AI generation
-
-### The Winning Pitch (2 sentences)
-
-"Planning a wedding, buying a home, or changing careers? Templata gives you comprehensive questions covering 90%+ of what you need to consider, expert readings to guide your decisions, and integrated planning tools to execute—all in one place."
-
-Or simpler:
-**"The comprehensive guide + planning tool for life's biggest moments."**
-
----
-
-## What to Keep from Each Version
-
-### From v0.5: Landing Pages & Positioning ✅
-**KEEP ALL OF THESE:**
-- `/about` - Mission and team (builds trust)
-- `/manifesto` - Your north star (shows conviction)
-- `/faq` - Answer objections upfront
-- `/partners` - Social proof (if applicable)
-- `/axiom-engine` - Explain your AI methodology (builds credibility)
-- `/preview` - Show the product before signup
-
-**Why:** These pages establish you as serious, thoughtful, and differentiated. They explain WHY your AI-generated content is trustworthy (months of refinement via Axiom Engine).
-
-### From v1: Core UX & Visual Style ✅
-**KEEP THIS UX PHILOSOPHY:**
-- Clean, professional aesthetic (NOT cutesy v2 style)
-- 3-panel split screen for guide view (PERFECT for question → answer → reading flow)
-- Header-based navigation (NOT icon sidebar)
-- Simple color palette and Geist fonts
-- Clear information hierarchy
-
-**Why:** This UX screams "professional tool for serious decisions" not "fun productivity toy." The 3-panel layout is PERFECT for your core loop.
-
-### From v2: Productivity Features ✅
-**KEEP THESE FEATURES:**
-- Workspace system (multiple guides at once)
-- Per-guide calendar integration
-- Per-guide task management
-- Analytics/progress tracking
-- Archive for completed guides
-- Blank notes (freeform planning space)
-- Discovery/library browsing
-
-**CUT THESE:**
-- Knowledge graph (too abstract, not core value)
-- Timeline view (redundant with calendar)
-- Community features (not core, defer to later)
-- Journal system (not differentiated)
-- Icon sidebar navigation
-- Tab bar
-- Excessive view transitions
-
-**Why:** Calendar/tasks integrated PER GUIDE is brilliant differentiation. Analytics shows progress on multi-month projects. But graph/timeline/community dilute focus.
-
----
-
-## Terminology & Naming
-
-Based on your manifesto and positioning:
-
-### Final Terminology
-- **Guides** (not templates) - You're being GUIDED through a life event
-- **Questions** (not prompts) - More human, less AI-y, clearer purpose
-- **Readings** (not articles) - Feels educational and curated
-- **App name: Templata** - Keep it, it's your brand
-
-### Why This Works
-- "Template" implies fill-in-the-blank → passive
-- "Guide" implies expert leading you → active, supportive
-- "Questions" are what you need to think about (comprehensive)
-- "Readings" are how you learn to answer them (expert knowledge)
-
----
-
-## The Core Loop (Must Be Crystal Clear)
+### The Core Experience
 
 ```
-1. Choose a life event → Wedding Planning, Home Buying, Career Change
-2. Answer comprehensive questions → Know what to think about
-3. Read expert guidance → Know how to decide
-4. Plan with integrated calendar/tasks → Execute on it
-5. Track progress → Stay on course
+Pick a Guide (Wedding, Home Buying, Career Change, etc.)
+    ↓
+Answer Comprehensive Questions (know what to think about)
+    ↓
+Read Expert Guidance (know how to decide)
+    ↓
+Plan with Calendar/Tasks (execute on it)
+    ↓
+Track Progress (stay on course)
 ```
 
-This loop should be obvious within 30 seconds of using the app.
+### Key Differentiator
+
+**Per-guide organization.** When planning a wedding, you only see wedding tasks and events. Switch to home buying, you see a different set. This isn't another productivity app—it's THE comprehensive solution for major life events.
 
 ---
 
-## Feature Prioritization for v3
+## Core Terminology
 
-### TIER 1: Core Loop (Non-negotiable)
-- ✅ Guide browser/discovery (from v1/v2)
-- ✅ Questions panel with persistent answers (v1's 3-panel, keep it)
-- ✅ Readings panel (v1's 3-panel, keep it)
-- ✅ Per-guide todos (v2's killer feature)
-- ✅ Per-guide calendar (v2's killer feature)
-- ✅ Blank notes (for freeform planning)
-- ✅ Guide progress tracking (simplified from v2 analytics)
-
-### TIER 2: Essential Productivity (Keep but Simplify)
-- ✅ Calendar view - Cross-guide view with per-guide filtering
-- ✅ Tasks view - Simple kanban or list view, filterable by guide
-- ✅ Analytics - Show: % complete, questions answered, readings read (simple dashboard)
-- ✅ Archive - For completed guides (clear workspace)
-- ✅ Settings - User preferences, account management
-
-### TIER 3: Nice to Have (Defer/Cut for Now)
-- ❌ Knowledge graph - Too abstract, not aligned with "expert guide" positioning
-- ❌ Timeline view - Redundant with calendar
-- ❌ Community features - Not core differentiation, can add later if traction
-- ❌ Journal system - Not unique, Notion has this
-- ❌ Multiple workspaces - Keep single workspace for now, add if users request
+- **Guides** - Comprehensive frameworks for specific life events (not templates)
+- **Questions** - Systematically organized prompts covering everything you need to consider
+- **Readings** - Curated expert knowledge and advice
+- **Notes** - Your workspace for answers and planning
+- **Axiom Engine** - Our AI refinement system that ensures 90%+ coverage through months of testing
 
 ---
 
-## Navigation Architecture
+## The Axiom Engine
 
-### Public Site (Header)
-```
-[LOGO] Templata
+**What it is:** Our question and reading refinement system powered by months of AI testing and iteration.
 
-Company ▾          Product ▾        Browse ▾         [Get Started]
-- Manifesto        - How It Works   - Guides
-- About            - Preview        - Readings
-- FAQ
-- Partners
-- Axiom Engine
-```
+**Why it matters:** This isn't generic ChatGPT output. Every guide has been refined through extensive prompting and testing to ensure comprehensive coverage. The Axiom Engine is our methodology for guaranteeing 90%+ of what you need to consider is included.
 
-### In-App (Header-based, NOT sidebar)
-```
-[LOGO] Templata
-
-[My Guides ▾]     |  Discover  |  Library  |     Notes  Calendar  Tasks  Analytics     |  [Settings ⚙]
-  Wedding
-  Home Buying
-  Career Change
-  + New Guide
-```
-
-**Key Navigation Principles:**
-1. **My Guides dropdown** - Quick switch between active guides
-2. **4 main views** - Notes (default), Calendar, Tasks, Analytics
-3. **Discover/Library** - Browse available guides and readings
-4. **Context matters** - When in a guide, you see 3-panel layout. When in Calendar/Tasks, you see cross-guide view with filtering.
-
-### The 3-Panel Guide View (Core Experience)
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [Wedding Planning ▾]  Notes  Calendar  Tasks  Analytics      │
-├───────────┬────────────────────┬───────────────────────────────┤
-│           │                    │                               │
-│ Questions │   Answers          │   Readings                    │
-│           │                    │                               │
-│ □ Budget  │   [Text editor]    │   "Setting a Realistic        │
-│ □ Venue   │                    │    Wedding Budget"            │
-│ ✓ Guest   │   We want max      │                               │
-│   List    │   150 guests...    │   [Reading content...]        │
-│ □ Catering│                    │                               │
-│ ...       │                    │                               │
-│           │   [Save button]    │   [Related readings list]     │
-└───────────┴────────────────────┴───────────────────────────────┘
-```
-
-When user clicks "Calendar" or "Tasks":
-- View switches to calendar/task view
-- Can filter: "All guides" or specific guide
-- Can add todos/events and tag them to guides
+**Brand message:** "Months of AI refinement, compressed into one comprehensive guide."
 
 ---
 
-## UX/Visual Design Principles
+## App Structure
 
-### Keep from v1 ✅
-- Clean, professional aesthetic (think Stripe, Linear, Superhuman)
-- Generous whitespace
-- 3-panel split screen for guide view
-- Header navigation (no icon sidebar)
-- Simple color palette (1-2 accent colors max)
-- Geist fonts (modern, readable)
-- Sharp, intentional UI (not playful)
+### Note Types
 
-### Avoid from v2 ❌
-- Icon sidebar (makes you look generic)
-- Excessive rounded corners (too playful)
-- Cutesy/Notion-like design language
-- Too many view transitions/animations
-- Tab bar navigation
-- Overly colorful/expressive icons
+1. **Guide Notes** - Access to questions + readings for a specific life event
+2. **Blank Notes** - Standard note-taking space for freeform planning
 
-### The "Feel" We're Going For
-- **Should feel like:** A professional consultant/guide you hired
-- **Should NOT feel like:** A fun productivity toy
-- **Reference:** Superhuman (email), Linear (project management), Stripe (payments) - serious tools for serious work
+### Core Views (Left Sidebar)
 
-### Color & Branding
-- **Primary:** Professional blue or neutral (trust, expertise)
-- **Accent:** Subtle, purposeful
-- **Avoid:** Pastels, playful colors, too much color variety
-- **Typography:** Geist Sans (body), Geist Mono (code/data)
+- **Notes** - Your workspace (guide notes + blank notes)
+- **Discover** - Browse available guides
+- **Library** - Browse all available readings
+- **Calendar** - See all events across guides, filterable by guide
+- **Tasks** - Kanban/list view of todos, filterable by guide
+- **Analytics** - Progress tracking per guide
+- **Settings** - User preferences and account
 
----
+### The 3-Panel Guide View
 
-## Page Structure for v3
+```
+┌────────────────────────────────────────────────────────────┐
+│ [Wedding Planning ▾]  Notes  Calendar  Tasks  Analytics   │
+├──────────┬─────────────────────┬───────────────────────────┤
+│          │                     │                           │
+│Questions │   Your Answers      │   Readings                │
+│          │                     │                           │
+│ □ Budget │   [Text editor]     │   "Setting a Realistic    │
+│ □ Venue  │                     │    Wedding Budget"        │
+│ ✓ Guest  │   We want max       │                           │
+│   List   │   150 guests...     │   [Reading content...]    │
+│ □ Cater  │                     │                           │
+│ ...      │                     │                           │
+│          │   [Auto-saves]      │   [Related readings]      │
+└──────────┴─────────────────────┴───────────────────────────┘
+```
 
-### Landing Pages (from v0.5)
-- `/` - Home/hero
-- `/manifesto` - Your north star philosophy
-- `/about` - Mission, team, story
-- `/faq` - Common questions
-- `/partners` - Partner integrations/collaborations (if any)
-- `/axiom-engine` - Explain your AI methodology
-- `/how-it-works` - Product walkthrough (from v1)
-- `/preview` - Interactive demo/preview
-- `/privacy` - Privacy policy (from v1)
-- `/terms` - Terms of service (from v1)
-
-### Browse Pages
-- `/guides` - Browse all available guides
-- `/library` - Browse all available readings
-
-### App Pages
-- `/app` - Main app dashboard, redirects to active guide or discovery
-- `/app/[workspaceId]/guide/[guideId]` - Individual guide (3-panel view)
-- `/app/[workspaceId]/discover` - Discover new guides
-- `/app/[workspaceId]/library` - Browse readings library
-- `/app/[workspaceId]/calendar` - Calendar view (cross-guide)
-- `/app/[workspaceId]/tasks` - Tasks view (cross-guide)
-- `/app/[workspaceId]/analytics` - Progress analytics
-- `/app/[workspaceId]/archive` - Archived guides
-- `/app/[workspaceId]/settings` - Settings
-- `/app/[workspaceId]/note/[noteId]` - Blank note view
+**How it works:**
+- Left: Questions organized by category
+- Center: Your answers (auto-save per question)
+- Right: Expert readings related to the current topic
+- Split-screen allows learning + planning simultaneously
 
 ---
 
-## Integration Strategy: How to Build v3
+## Brand Voice Framework
 
-### Phase 1: Foundation (v1 base + v0.5 pages)
-**Goal:** Get v1 UX working with all v0.5 landing pages
+### Core Positioning
+**The Confident Guide for Life's Big Moments**
 
-**Steps:**
-1. Start with v1 codebase (mvp-v1 branch)
-2. Port over all landing pages from v0.5:
-   - `/about`, `/manifesto`, `/faq`, `/partners`, `/axiom-engine`, `/preview`
-3. Keep v1's header navigation
-4. Keep v1's 3-panel guide view
-5. Keep v1's visual style (Geist fonts, clean aesthetic)
+Templata sits at the intersection of accessible expertise and personal agency. You're not a typical productivity tool or knowledge repository—you're the structured playbook that saves months of research.
 
-**Output:** v1 app experience with complete landing page set
+### Voice Pillars
 
-### Phase 2: Integrate v2 Productivity Features
-**Goal:** Add calendar/tasks/analytics without destroying v1 UX
+**1. Reassuringly Knowledgeable**
+You know your stuff, but you're not intimidating about it.
 
-**Steps:**
-1. Keep workspace system from v2 (but simplify)
-2. Add Calendar, Tasks, Analytics as header nav items (NOT sidebar)
-3. Port per-guide calendar/task functionality
-4. Add simple progress analytics (%, questions answered, readings read)
-5. Add archive functionality
-6. Ensure all productivity views can filter by guide
+Sounds like:
+- "We've thought through the details so you don't have to"
+- "Everything you need, nothing you don't"
 
-**Output:** v1 UX + v2 productivity features
+Avoid:
+- Academic jargon or condescension
+- Overpromising ("We have ALL the answers!")
+- Anxiety-inducing language ("Don't miss these critical steps!")
 
-### Phase 3: Polish & Terminology
-**Goal:** Consistent naming and refined experience
+**2. Quietly Confident**
+Your value is self-evident. No need to oversell or use hype.
 
-**Steps:**
-1. Database migration: templates → guides, prompts → questions
-2. Update all UI copy to reflect new terminology
-3. Refine guide discovery/browse experience
-4. Polish 3-panel layout (responsive, smooth)
-5. Add blank notes functionality
-6. Optimize onboarding flow
+Sounds like:
+- "90%+ of what you need, organized from day one"
+- "Months of research, compressed into one comprehensive guide"
 
-**Output:** Polished v3 ready for users
+Avoid:
+- Exclamation points everywhere!!!
+- Superlatives (revolutionary! game-changing! incredible!)
+- Comparing yourself negatively to competitors
+
+**3. Practically Empathetic**
+You understand the overwhelm of tackling something new, but you focus on solutions, not stress.
+
+Sounds like:
+- "Planning a wedding? You're not starting from zero anymore"
+- "The questions you didn't know to ask, already answered"
+
+Avoid:
+- Dwelling on pain points without offering relief
+- Being overly casual about serious life events
+- Corporate wellness-speak ("your journey," "empower yourself")
+
+**4. Elegantly Efficient**
+Your design philosophy extends to your words—minimal, intentional, functional.
+
+Sounds like:
+- "Learn. Plan. Done."
+- "Questions on the left, answers on the right, clarity in between"
+
+Avoid:
+- Flowery or philosophical language
+- Long-winded explanations
+- Cutesy or overly clever copy
+
+### Voice Characteristics
+
+**Tone Spectrum:**
+- Informational content: 70% authoritative, 30% warm
+- Onboarding/tutorials: 60% encouraging, 40% instructional
+- Marketing/landing pages: 50% confident, 50% relatable
+- Error states: 80% helpful, 20% apologetic
+
+**Sentence Structure:**
+- Lean toward shorter, punchier sentences
+- Use fragments strategically for emphasis
+- Front-load the value in every sentence
+
+**POV:**
+- Default to "you" (user-focused)
+- Use "we" sparingly, mainly for product capabilities
+- Avoid "I" entirely
 
 ---
 
-## Why This Wins
+## Sample Voice Applications
 
-### 1. Clear Positioning
-You're not "another productivity app" competing with Notion/Obsidian. You're THE solution for major life events. Specific, defensible positioning.
+### Homepage Hero
+❌ "Plan life's biggest moments with confidence and ease using our revolutionary AI-powered platform!"
 
-### 2. Focused UX
-Core loop is obvious within 30 seconds:
-- Pick guide → Answer questions → Read expert content → Plan with calendar/tasks
+✅ "Wedding planning. Home buying. Career pivots. Get a comprehensive playbook for any major life event—no months of research required."
 
-Everything else supports this loop.
+### Feature Description
+❌ "Our amazing split-screen view lets you seamlessly access both questions and readings simultaneously!"
 
-### 3. True Differentiation
-**Nobody else has:**
-- Comprehensive questions (90%+ guarantee)
-- AI-refined over months (not generic GPT output)
-- Per-guide calendar/task integration
-- Questions + Readings in one seamless experience
+✅ "Questions on one side. Expert readings on the other. Everything you need to make informed decisions, in one view."
 
-### 4. Built-in Trust
-Landing pages (especially Manifesto + Axiom Engine) explain your methodology and build credibility. Users understand WHY your AI content is trustworthy.
+### Empty State
+❌ "Oops! Looks like you haven't started any guides yet. Why not explore our library and begin your journey?"
 
-### 5. Scalable Model
-Works for ANY major life event:
-- Personal: Wedding, home buying, parenting, divorce, career change
-- Professional: Starting business, launching product, fundraising
-- Health: Chronic illness management, surgery recovery
-- Financial: Retirement planning, investing, debt payoff
+✅ "No guides yet. Browse the library to find your starting point."
 
-Huge TAM, clear path to 1000+ guides.
+### Axiom Engine Explanation
+❌ "Our incredible AI technology uses revolutionary machine learning to generate the most comprehensive questions ever created!"
 
-### 6. Premium Feel
-Professional aesthetic + comprehensive content = premium positioning. You can charge more because you're saving people months of research and anxiety.
-
----
-
-## Critical Success Factors
-
-### 1. Guide Quality (Your Moat)
-The questions MUST be comprehensive. If users find major gaps, your core value prop collapses. Invest heavily in question quality and refinement.
-
-### 2. Reading Quality
-Must feel like expert advice, not generic AI content. Curate heavily. Better to have 10 amazing readings than 100 mediocre ones.
-
-### 3. Simple Onboarding
-New user should:
-- Pick a guide (30 seconds)
-- See comprehensive questions (immediate value)
-- Understand the system (30 seconds)
-
-Total time to "aha moment": 60 seconds.
-
-### 4. Per-Guide Organization
-This is your key differentiator from Notion. When I'm planning a wedding, I want to see ONLY wedding tasks/events. When I switch to home buying, different set. Don't mess this up.
-
-### 5. Professional Aesthetic
-Can't look like a consumer app. These are serious life decisions (buying a home = $500k+, wedding = $30k+). Premium look = premium trust.
+✅ "Months of AI refinement to ensure 90%+ coverage. Every question tested, every gap addressed."
 
 ---
 
@@ -374,29 +217,160 @@ Can't look like a consumer app. These are serious life decisions (buying a home 
 - **Consultant:** $150-500/hr, limited availability
 - **Templata:** $9-15/month, always available, 90%+ comprehensive
 
-### vs. Wedding Planner Apps / Event-specific Tools
+### vs. Event-Specific Tools
 - **Specific tools:** One-off, disconnected, limited scope
 - **Templata:** Unified system for ALL life events, integrated planning
 
-You're "Superhuman for life's biggest moments" - premium, focused, exceptional at one thing.
+**Positioning statement:** "Superhuman for life's biggest moments"—premium, focused, exceptional at one thing.
 
 ---
 
-## The One-Sentence Vision
+## Design Principles
 
-**"Templata ensures you never have to worry about missing something important during life's biggest moments."**
+### Visual Style
+- Clean, professional aesthetic (think Stripe, Linear, Superhuman)
+- Generous whitespace
+- 3-panel split screen for guide view
+- Simple color palette (1-2 accent colors max)
+- Sharp, intentional UI (not playful)
 
-That's the north star. Every feature, every design decision, every piece of copy should reinforce this promise.
+### What to Avoid
+- Icon-only navigation without context
+- Excessive rounded corners (too playful)
+- Cutesy/consumer-app design language
+- Too many view transitions/animations
+- Overly colorful/expressive icons
+
+### The "Feel"
+- **Should feel like:** A professional consultant you hired
+- **Should NOT feel like:** A fun productivity toy
+- **References:** Superhuman (email), Linear (project management), Stripe (payments)
 
 ---
 
-## Next Steps
+## Key Features
 
-1. **Review this strategy doc** - Does it align with your vision? Any adjustments needed?
-2. **Finalize terminology** - Confirm: guides, questions, readings
-3. **Create v3 implementation plan** - Specific file-by-file migration strategy
-4. **Design key screens** - Landing page, guide view (3-panel), calendar view, tasks view
-5. **Database migration plan** - Rename schema from templates/prompts to guides/questions
-6. **Content audit** - Ensure guide quality matches "90%+ comprehensive" promise
+### Core Loop Features
+- Guide browser/discovery
+- 3-panel guide view (Questions | Answers | Readings)
+- Per-guide calendar events
+- Per-guide tasks/todos
+- Blank notes for freeform planning
+- Guide progress tracking
 
-Once we have your signoff on this strategy, we can create the detailed implementation plan.
+### Productivity Features
+- Calendar view (cross-guide, filterable)
+- Tasks view (kanban/list, filterable)
+- Analytics dashboard (% complete, questions answered, readings read)
+- Archive for completed guides
+- Settings and preferences
+
+### Content Features
+- Discover page (browse available guides)
+- Library page (browse all readings)
+- Search (find questions/readings across guides)
+- Categories (organize guides by type: Life Events, Career, Financial, Health)
+
+---
+
+## The Value Proposition
+
+**One-sentence vision:**
+"Templata ensures you never have to worry about missing something important during life's biggest moments."
+
+**Two-sentence pitch:**
+"Planning a wedding, buying a home, or changing careers? Templata gives you comprehensive questions covering 90%+ of what you need to consider, expert readings to guide your decisions, and integrated planning tools to execute—all in one place."
+
+---
+
+## Voice Don'ts (Critical)
+
+1. Never sound desperate for attention (no "Wait!" "Stop!" "You won't believe...")
+2. Never infantilize users (no "Let's make planning fun!")
+3. Never apologize for AI (it's a feature, not a limitation—lean into the curation and testing)
+4. Never claim to replace human expertise entirely (you're the 90%, not the 100%)
+5. Never use motivation-speak (no "You got this!" "Crush your goals!")
+6. Never emphasize "first time" language (limits use case - anyone can use this)
+
+---
+
+## The Litmus Test
+
+Before any copy goes live, ask:
+
+1. Would someone who's overwhelmed find this calming rather than adding to the noise?
+2. Does this sound like earned confidence rather than marketing hype?
+3. Could this sentence be shorter without losing meaning?
+4. Does this respect the user's intelligence while acknowledging they need comprehensive guidance?
+
+If yes to all four, you're on-brand.
+
+---
+
+## Use Cases (Scalable Model)
+
+Templata works for ANY major life event:
+
+**Personal Life:**
+- Wedding planning
+- Home buying
+- Parenting
+- Divorce
+- Career change
+- Moving/relocation
+
+**Professional:**
+- Starting a business
+- Launching a product
+- Fundraising
+- Team building
+
+**Health:**
+- Chronic illness management
+- Surgery recovery
+- Mental health support
+
+**Financial:**
+- Retirement planning
+- Investment strategy
+- Debt payoff
+- Major purchases
+
+**Target:** 1000+ guides covering the full spectrum of life's biggest decisions.
+
+---
+
+## Why This Wins
+
+### 1. Clear Positioning
+Not "another productivity app" competing with Notion/Obsidian. THE solution for major life events. Specific, defensible positioning.
+
+### 2. Focused UX
+Core loop is obvious within 30 seconds: Pick guide → Answer questions → Read expert content → Plan with calendar/tasks.
+
+### 3. True Differentiation
+Nobody else has:
+- Comprehensive questions (90%+ guarantee)
+- AI-refined over months (Axiom Engine, not generic GPT)
+- Per-guide calendar/task integration
+- Questions + Readings in one seamless experience
+
+### 4. Built-in Trust
+The Axiom Engine explains your methodology and builds credibility. Users understand WHY your AI content is trustworthy.
+
+### 5. Premium Feel
+Professional aesthetic + comprehensive content = premium positioning. You can charge more because you're saving people months of research and anxiety.
+
+---
+
+## This Document's Purpose
+
+This is the definitive reference for what Templata is, how it works, and how to communicate about it. Use this when:
+
+- Writing marketing copy
+- Designing new features
+- Making product decisions
+- Creating user-facing content
+- Explaining the product to others
+
+Everything should align with the vision, voice, and principles outlined here.
