@@ -4,27 +4,26 @@ const sections = [
   {
     title: "Product",
     links: [
-      { name: "Overview", href: "#" },
-      { name: "Pricing", href: "#" },
-      { name: "Marketplace", href: "#" },
-      { name: "Features", href: "#" },
+      { name: "Guides", href: "#guides" },
+      { name: "How It Works", href: "#how-it-works" },
+      { name: "Pricing", href: "#pricing" },
+      { name: "Axiom Engine", href: "#axiom" },
     ],
   },
   {
     title: "Company",
     links: [
-      { name: "About", href: "#" },
-      { name: "Team", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
+      { name: "About", href: "#about" },
+      { name: "Blog", href: "#blog" },
+      { name: "Contact", href: "#contact" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { name: "Help", href: "#" },
-      { name: "Sales", href: "#" },
-      { name: "Advertise", href: "#" },
+      { name: "Help Center", href: "#help" },
+      { name: "FAQ", href: "#faq" },
+      { name: "Changelog", href: "#changelog" },
     ],
   },
 ];
@@ -39,10 +38,10 @@ interface Footer23Props {
 }
 const FooterCta = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
-    alt: "logo",
-    title: "Shadcnblocks.com",
+    url: "https://templata.org",
+    src: "/favicon.svg",
+    alt: "Templata",
+    title: "Templata",
   },
 }: Footer23Props) => {
   return (
@@ -53,22 +52,21 @@ const FooterCta = ({
           <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
             <div className="lg:max-w-md">
               <div className="flex items-center justify-start gap-2">
-                <a href="https://shadcnblocks.com">
+                <a href="/">
                   <img
                     src={logo.src}
                     alt={logo.alt}
                     title={logo.title}
-                    className="h-10"
+                    className="h-8 w-8 dark:invert-0 invert"
                   />
                 </a>
-                <h2 className="text-xl font-semibold tracking-tight">
+                <h2 className="text-xl font-semibold tracking-tighter">
                   {logo.title}
                 </h2>
               </div>
               <p className="text-muted-foreground mt-4 text-left text-sm">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Reprehenderit consequuntur, corporis at recusandae nisi iste
-                quaerat maxime nihil. Iusto iure consequatur
+                The comprehensive guide + planning tool for life's biggest moments.
+                Comprehensive questions, expert readings, and integrated planning—all in one place.
               </p>
             </div>
             <div className="mt-8 flex w-full flex-wrap justify-between gap-12 lg:mt-0 lg:w-fit">

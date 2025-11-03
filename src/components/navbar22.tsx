@@ -32,10 +32,10 @@ const Navbar22 = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
+    { name: "Guides", href: "#guides" },
+    { name: "How It Works", href: "#how-it-works" },
     { name: "Pricing", href: "#pricing" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "#about" },
   ];
 
   return (
@@ -46,32 +46,29 @@ const Navbar22 = () => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center gap-2 md:hidden">
                 <img
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
-                  className="max-h-8"
-                  alt="shadcnblocks.com"
+                  src="/favicon.svg"
+                  className="h-8 w-8 dark:invert-0 invert"
+                  alt="Templata"
                 />
                 <span className="text-lg font-semibold tracking-tighter">
-                  Shadcnblocks.com
+                  Templata
                 </span>
               </div>
 
               <div className="absolute left-1/2 hidden -translate-x-1/2 transform md:block">
                 <a href="/" className="flex items-center gap-2">
                   <img
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
-                    className="max-h-8"
-                    alt="shadcnblocks.com"
+                    src="/favicon.svg"
+                    className="h-8 w-8 dark:invert-0 invert"
+                    alt="Templata"
                   />
                   <span className="text-lg font-semibold tracking-tighter">
-                    Shadcnblocks.com
+                    Templata
                   </span>
                 </a>
               </div>
               <div className="text-muted-foreground hidden items-center space-x-2 text-sm md:flex">
-                <span className="font-medium">Brisbane</span>
-                <span className="text-muted-foreground">{"//"}</span>
-
-                <span className="font-medium">{currentTime}</span>
+                <span className="font-medium">Beta</span>
               </div>
 
               <div className="hidden items-center space-x-8 md:flex">
@@ -110,13 +107,13 @@ const Navbar22 = () => {
                       <div className="ml-3">
                         <a
                           href="/"
-                          className="text-foreground flex items-center justify-start gap-2 text-2xl font-bold"
+                          className="text-foreground flex items-center justify-start gap-2 text-2xl font-bold tracking-tighter"
                           onClick={() => setIsOpen(false)}
                         >
                           <img
-                            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
-                            className="max-h-8"
-                            alt="shadcnblocks.com"
+                            src="/favicon.svg"
+                            className="h-8 w-8 dark:invert-0 invert"
+                            alt="Templata"
                           />
                         </a>
                       </div>
@@ -134,8 +131,7 @@ const Navbar22 = () => {
                       </div>
                       <div className="border-border border-t pt-6">
                         <div className="text-muted-foreground text-center text-sm">
-                          <div className="font-medium">Brisbane</div>
-                          <div className="mt-1">{currentTime}</div>
+                          <div className="font-medium">Beta</div>
                         </div>
                       </div>
                     </div>
