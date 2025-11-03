@@ -16,7 +16,6 @@ const LibraryHero = () => {
           Expert Readings for Informed Decisions
         </p>
         <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
-          Explore Expert{" "}
           <span
             className="overflow-hidden"
             style={{
@@ -24,7 +23,7 @@ const LibraryHero = () => {
               perspective: "600px",
             }}
           >
-            {"Knowledge".split(" ").map((word, i) => (
+            {"Explore Curated Expert Readings".split(" ").map((word, i) => (
               <motion.span
                 className="relative inline-block px-[6px] leading-[none]"
                 key={i}
@@ -44,7 +43,11 @@ const LibraryHero = () => {
                   ease: [0.215, 0.61, 0.355, 1],
                 }}
               >
-                <span className="font-playfair">{word}</span>
+                {word === "Readings" ? (
+                  <span className="font-playfair italic">{word}</span>
+                ) : (
+                  word
+                )}
               </motion.span>
             ))}
           </span>
