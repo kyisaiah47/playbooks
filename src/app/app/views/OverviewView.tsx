@@ -92,9 +92,9 @@ export function OverviewView() {
         const totalQuestions = questionsData.questions?.length || 0;
 
         // Fetch answers for this track
-        const answersRes = await fetch(`/api/answers?track_id=${track.id}`);
+        const answersRes = await fetch(`/api/answers?trackId=${track.id}`);
         const answersData = await answersRes.json();
-        const questionsAnswered = answersData.answers?.filter((a: any) => a.response?.trim()).length || 0;
+        const questionsAnswered = answersData.answers?.filter((a: any) => a.answer?.trim()).length || 0;
 
         // Fetch readings for this guide
         const readingsRes = await fetch(`/api/guides/${track.guide_id}/readings`);
@@ -210,7 +210,7 @@ export function OverviewView() {
   }));
 
   console.log('Chart data:', { timelineChartData, radialChartData, radarChartData });
-  console.log('Category progress breakdown:', categoryProgress);
+  console.log('Radial chart data detail:', radialChartData);
   console.log('DisplayedTracks with categories:', displayedTracks.map(t => ({
     name: t.track.custom_name || t.track.guides?.name,
     category: t.track.guides?.category,
