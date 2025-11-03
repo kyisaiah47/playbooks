@@ -16,6 +16,7 @@ const GuidesHero = () => {
           Comprehensive Frameworks for Life Events
         </p>
         <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+          Navigate Life's Biggest{" "}
           <span
             className="overflow-hidden"
             style={{
@@ -23,7 +24,7 @@ const GuidesHero = () => {
               perspective: "600px",
             }}
           >
-            {"Navigate Life's Biggest Decisions".split(" ").map((word, i) => (
+            {"Decisions".split(" ").map((word, i) => (
               <motion.span
                 className="relative inline-block px-[6px] leading-[none]"
                 key={i}
@@ -43,11 +44,7 @@ const GuidesHero = () => {
                   ease: [0.215, 0.61, 0.355, 1],
                 }}
               >
-                {word === "Decisions" ? (
-                  <span className="font-playfair italic">{word}</span>
-                ) : (
-                  word
-                )}
+                <span className="font-playfair">{word}</span>
               </motion.span>
             ))}
           </span>
