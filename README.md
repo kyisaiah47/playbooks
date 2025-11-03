@@ -1,104 +1,119 @@
 # Templata
 
-> **The encyclopedia for living**
+> **The luxury guide for life's biggest moments**
 >
-> Systematically organized templates, prompts, and articles for life's biggest decisions—built with abundance over curation.
+> Transform life's most overwhelming decisions from chaotic to exhilarating with comprehensive guidance, expert insights, and integrated planning.
 
 ## Overview
 
-**Templata** is a comprehensive life guidance platform that provides structured templates, tactical prompts, and curated articles for every major life situation. From wedding planning to career transitions, home buying to business launches—we've systematically created guidance for life's biggest moments.
+**Templata** is the comprehensive guide + planning tool for major life events. Think Superhuman (premium email with obsessive attention to detail) meets Co-Star (hyper-personalized insights with sophisticated design) for life's biggest moments.
 
-### What Makes Us Different
+### The Problem
 
-- **📚 Systematic Coverage** - 1,298 templates covering every conceivable life situation
-- **🎯 Actionable Guidance** - 104,000+ tactical prompts to guide your thinking
-- **📰 Deep Insights** - 25,936 curated articles for research and learning
-- **🔍 Built for Abundance** - Wikipedia philosophy: if it exists, we've covered it
+When planning a wedding, buying a home, or changing careers, people spend months researching on Google, asking around, maybe hiring experts—and they're still worried they missed something critical. They end up with scattered notes, inconsistent information, and no clear path forward.
+
+### The Solution
+
+Templata provides three things in one unified system:
+
+1. **Comprehensive Questions** - AI-refined questions covering 90%+ of everything you need to consider
+2. **Expert Readings** - Curated knowledge and advice to help you make informed decisions
+3. **Integrated Planning** - Calendar, tasks, notes, and premium analytics organized per-guide
+
+### The Core Experience
+
+```
+Pick a Guide (Wedding, Home Buying, Career Change, etc.)
+    ↓
+Answer Comprehensive Questions (know what to think about)
+    ↓
+Read Expert Guidance (know how to decide)
+    ↓
+Plan with Calendar/Tasks (execute on it)
+    ↓
+Track Progress with Premium Analytics (visualize your journey)
+```
+
+## What Makes Us Different
+
+- **🎯 90%+ Coverage** - Our Axiom Engine refines every guide through months of AI testing
+- **✨ Luxury Experience** - Premium design with obsessive attention to detail
+- **📊 Per-Guide Organization** - Wedding tasks stay separate from home buying—total clarity
+- **🔮 Premium Analytics** - Sophisticated progress visualizations across all tracks
+- **📚 Expert Curation** - Curated readings to inform every major decision
 
 ## Core Features
 
-### 📚 **1,298 Life Templates**
-Systematically organized templates covering every life situation:
+### 📚 **Comprehensive Guides**
+Systematically organized frameworks for life's biggest moments:
 - **Personal Milestones** - Weddings, parenthood, retirement
 - **Career & Business** - Job search, career pivots, entrepreneurship
 - **Home & Finance** - Home buying, financial planning, major purchases
 - **Health & Wellness** - Fitness, medical decisions, mental health
 - **Relationships** - Dating, marriage, family dynamics
 - **Education** - College planning, skill development, certifications
-- **Creative Projects** - Learning instruments, artistic pursuits, hobbies
 - And many more...
 
-### 🎯 **Tactical Prompts**
-Each template includes carefully curated prompts to guide your thinking:
-- Tactical action items
-- Contextual considerations
-- Reflection questions
-- Decision frameworks
-- Research areas
-- Planning guides
+### 🎯 **AI-Refined Questions**
+Each guide includes comprehensive questions refined by our Axiom Engine:
+- 90%+ coverage guarantee through extensive testing
+- Organized by category for clarity
+- Tactical prompts to guide your thinking
+- Research areas and decision frameworks
 
-### 📰 **25,936 Curated Articles**
-Comprehensive article library providing:
+### 📰 **Expert Readings**
+Curated knowledge library providing:
 - Expert insights and guidance
 - Step-by-step how-tos
 - Research-backed strategies
 - Real-world examples
 - Best practices
 
-### ⚡ **3-Stage Workflow**
-The `/app` experience progresses through three focused stages:
-
-1. **Workspace Stage** - Create and work on your template
-   - Select from 1,298 templates
-   - Work through tactical prompts
-   - Take notes and plan
-   - Auto-save to Supabase
-
-2. **Reflection Stage** - Daily journaling and introspection
-   - Daily rotating prompts (7 unique prompts)
-   - Mood tracking
-   - Tag-based organization
-   - Past reflections sidebar
-   - Auto-save with local/cloud sync
-
-3. **Life OS Stage** - Dashboard to manage everything
-   - Overview of active templates
-   - Track progress across projects
-   - Unified view of your work
+### 📋 **Integrated Planning**
+Complete workspace organized per-guide:
+- **Calendar** - All events, filterable by track
+- **Tasks** - Kanban board with per-guide organization
+- **Notes** - Rich text workspace for thoughts and planning
+- **Overview** - Premium progress visualizations
+- Auto-save to Supabase
 
 ### 🔒 **Authentication & Data**
 - **Supabase Auth** - Secure email/password authentication
-- **Auto-save** - Authenticated users save to cloud, anonymous users use localStorage
+- **Auto-save** - Authenticated users save to cloud
 - **Privacy** - Your data is private and never sold
 - **Password Reset** - Email-based password recovery
 
 ### 🎨 **Modern UI/UX**
 - **Responsive Design** - Works beautifully on all devices
 - **Dark/Light Mode** - System preference + manual toggle
-- **Clean Interface** - Built with shadcn/ui components
+- **Premium Components** - Built with shadcn/ui
 - **Smooth Animations** - Framer Motion transitions
-- **Accessibility** - WCAG compliant with Radix UI
+- **Floating Dock Navigation** - Inspired by macOS, refined for Templata
 
 ## Pages & Routes
 
 ### Main Pages
-- `/` - Landing page introducing Templata
-- `/templates` - Browse all 1,298 templates by category
-- `/templates/[slug]` - Individual template workspace
-- `/templates/[slug]/marketing` - SEO-optimized marketing page for each template
-- `/articles` - Browse all 25,936 articles
-- `/articles/[slug]` - Individual article reader
-- `/app` - Main 3-stage app experience
-- `/app/settings` - User settings and preferences
-- `/privacy` - Privacy policy
-- `/terms` - Terms of service
+- `/` - Landing page with luxury hero and feature showcase
+- `/guides` - Browse all comprehensive guides
+- `/guides/[slug]` - Individual guide detail with questions, readings, and planning
+- `/library` - Browse all expert readings
+- `/library/[slug]` - Individual article reader
+- `/about` - Our story and the Axiom Engine
+- `/app` - Main app experience with floating dock navigation
+
+### App Views
+- **Guides** - Browse and manage your active tracks
+- **Notes** - Freeform workspace for thoughts and planning
+- **Overview** - Premium progress visualizations
+- **Calendar** - All events across guides, filterable by track
+- **Tasks** - Kanban view of todos, filterable by track
+- **Analytics** - Premium insights and progress tracking
+- **Archive** - Completed guides and historical data
 
 ### Auth Pages
 - `/login` - Sign in
 - `/signup` - Create account
-- `/forgot-password` - Request password reset
-- `/reset-password` - Reset password with token
-- `/login/verify` - Email verification
+- Email verification flow
 
 ## Tech Stack
 
@@ -109,14 +124,15 @@ The `/app` experience progresses through three focused stages:
 - **Tailwind CSS** - Utility-first styling
 
 ### UI & Design
-- **shadcn/ui** - Component design system
+- **shadcn/ui** - Premium component design system
 - **Radix UI** - Accessible primitives
 - **Framer Motion** - Smooth animations
 - **Lucide Icons** - Beautiful icon library
+- **Magic UI** - Premium components (particles, animated text)
 
 ### Backend & Data
 - **Supabase** - PostgreSQL database and authentication
-- **API Routes** - RESTful endpoints for templates, articles, reflections
+- **API Routes** - RESTful endpoints for guides, readings, tracks
 - **Server Components** - Next.js 15 server-side rendering
 
 ### Deployment
@@ -129,43 +145,45 @@ The `/app` experience progresses through three focused stages:
 templata/
 ├── src/
 │   ├── app/                    # Next.js app router pages
-│   │   ├── app/               # Main 3-stage app
-│   │   │   ├── page.tsx      # App entry (redirects based on auth)
-│   │   │   ├── settings/     # User settings
-│   │   │   └── stages/       # Workspace, Reflection, Life OS stages
-│   │   ├── articles/          # Article browsing and reading
-│   │   │   ├── page.tsx      # Articles list
-│   │   │   └── [slug]/       # Individual article
-│   │   ├── templates/         # Template directory
-│   │   │   ├── page.tsx      # Templates list
-│   │   │   └── [slug]/       # Template workspace & marketing
-│   │   ├── login/            # Authentication pages
-│   │   ├── signup/
-│   │   ├── forgot-password/
-│   │   ├── reset-password/
-│   │   ├── privacy/          # Privacy policy
-│   │   ├── terms/            # Terms of service
+│   │   ├── (marketing)/       # Marketing pages (home, about, etc.)
+│   │   ├── guides/            # Guide browsing and detail
+│   │   │   ├── page.tsx      # Guides list
+│   │   │   └── [slug]/       # Individual guide detail
+│   │   ├── library/           # Reading library
+│   │   │   ├── page.tsx      # Readings list
+│   │   │   └── [slug]/       # Individual reading
+│   │   ├── app/               # Main app experience
+│   │   │   ├── page.tsx      # App with floating dock
+│   │   │   ├── views/        # All app views (Guides, Notes, etc.)
+│   │   │   └── settings/     # User settings
 │   │   ├── api/              # API routes
-│   │   │   ├── auth/         # Auth endpoints
-│   │   │   ├── templates/    # Template data
-│   │   │   ├── articles/     # Article data
-│   │   │   └── reflections/  # Reflection CRUD
+│   │   │   ├── guides/       # Guide data
+│   │   │   ├── readings/     # Reading data
+│   │   │   ├── tracks/       # User tracks
+│   │   │   └── auth/         # Auth endpoints
 │   │   └── page.tsx          # Landing page
 │   ├── components/            # React components
 │   │   ├── ui/               # shadcn/ui components
-│   │   ├── landing/          # Landing page sections
+│   │   ├── magicui/          # Magic UI components
 │   │   ├── layout/           # Header, footer, sidebar
-│   │   └── template/         # Template-specific components
-│   ├── contexts/             # React contexts (auth, UI)
+│   │   ├── hero-animated-text.tsx
+│   │   ├── guides-hero.tsx
+│   │   ├── library-hero.tsx
+│   │   └── floating-dock-nav.tsx
+│   ├── contexts/             # React contexts
+│   │   ├── auth-context.tsx
+│   │   └── DataCacheContext.tsx
 │   ├── hooks/                # Custom React hooks
 │   ├── lib/                  # Utilities and configs
 │   │   ├── supabase.ts      # Supabase client setup
 │   │   └── utils.ts         # Helper functions
 │   ├── registry/             # Content registries
-│   │   ├── templates.ts     # Template metadata
-│   │   └── articles.ts      # Article metadata
+│   │   ├── guides.ts        # Guide metadata
+│   │   └── schema.ts        # TypeScript types
 │   └── types/               # TypeScript definitions
-├── generation-scripts/       # Data generation and migration
+├── v3-planning/             # Product planning docs
+│   └── MVP_V3_APP.md       # Comprehensive brand guide
+├── generation-scripts/      # Data generation and migration
 └── public/                  # Static assets
     └── brand/              # Logos and branding
 ```
@@ -204,64 +222,15 @@ SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
 
 # App
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 ```
 
-4. Set up Supabase database:
-
-Create the following tables in your Supabase project:
-
-**templata_templates:**
-```sql
-CREATE TABLE templata_templates (
-  id TEXT PRIMARY KEY,
-  name TEXT NOT NULL,
-  category TEXT NOT NULL,
-  description TEXT,
-  created_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-**templata_articles:**
-```sql
-CREATE TABLE templata_articles (
-  id TEXT PRIMARY KEY,
-  title TEXT NOT NULL,
-  slug TEXT NOT NULL,
-  content TEXT,
-  excerpt TEXT,
-  author TEXT,
-  published_at TIMESTAMP,
-  read_time INTEGER,
-  type TEXT,
-  difficulty TEXT,
-  tags TEXT[],
-  template TEXT,
-  created_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-**templata_reflections:**
-```sql
-CREATE TABLE templata_reflections (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID REFERENCES auth.users(id),
-  date DATE NOT NULL,
-  prompt TEXT,
-  content TEXT,
-  mood TEXT,
-  tags TEXT[],
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW(),
-  UNIQUE(user_id, date)
-);
-```
-
-5. Run the development server:
+4. Run the development server:
 ```bash
 npm run dev
 ```
 
-6. Open [http://localhost:3000](http://localhost:3000)
+5. Open [http://localhost:3000](http://localhost:3000)
 
 ### Available Scripts
 
@@ -272,57 +241,61 @@ npm run start        # Start production server
 npm run lint         # Run ESLint
 ```
 
-## Data Architecture
+## Core Terminology
 
-### Database Schema
+- **Guides** - Comprehensive frameworks for specific life events (not templates)
+- **Questions** - Systematically organized prompts covering 90%+ of what you need to consider
+- **Readings** - Curated expert knowledge and advice
+- **Notes** - Your workspace for answers and planning
+- **Tracks** - Your active guides with progress tracking
+- **Axiom Engine** - Our AI refinement system ensuring 90%+ coverage through months of testing
 
-**Templates (templata_templates)**
-- 1,298 templates stored in Supabase
-- Organized by category
-- Each has ID, name, category, description
+## The Axiom Engine
 
-**Articles (templata_articles)**
-- 25,936 articles in database
-- Linked to templates
-- Includes metadata: author, read time, difficulty, tags
-- Full-text content for reading
+**What it is:** Our question and reading refinement system powered by months of AI testing and iteration.
 
-**Reflections (templata_reflections)**
-- User-specific daily reflections
-- Stores prompt, content, mood, tags
-- One reflection per user per day
-- Auto-saves every 2 seconds
+**Why it matters:** This isn't generic ChatGPT output. Every guide has been refined through extensive prompting and testing to ensure comprehensive coverage. The Axiom Engine is our methodology for guaranteeing 90%+ of what you need to consider is included.
 
-### Authentication Flow
-1. User signs up with email/password
-2. Supabase creates auth user
-3. JWT session stored client-side
-4. Protected routes check session
-5. User data synced to cloud or localStorage
+**Brand message:** "Months of AI refinement, compressed into one comprehensive guide."
 
-## Key Features in Detail
+## Brand Voice
 
-### Template System
-- **1,298 templates** systematically covering all life situations
-- **Dynamic routing** - Each template at `/templates/[slug]`
-- **Marketing pages** - SEO-optimized landing pages at `/templates/[slug]/marketing`
-- **Auto-save** - Work persists to Supabase or localStorage
-- **Category browsing** - Organized by life area
+### Core Positioning
+**The Luxury Guide for Life's Big Moments**
 
-### Reflection System
-- **Daily prompts** - 7 unique prompts rotating based on day of year
-- **Mood tracking** - Emoji-based mood selection
-- **Tag system** - Organize reflections with custom tags
-- **Past entries** - Sidebar to browse previous reflections
-- **Auto-save** - Saves every 2 seconds while typing
-- **Date navigation** - View and edit any past date
+Templata sits at the intersection of premium tools and human empowerment. Think Superhuman × Co-Star for life's biggest decisions.
 
-### Article Library
-- **25,936 articles** providing deep insights
-- **Search & filter** - Find articles by topic, template, difficulty
-- **Rich content** - Full markdown rendering
-- **Read time** - Estimated reading duration
-- **Author attribution** - Expert-written content
+### Voice Pillars
+
+**1. Luxuriously Confident**
+Premium by design, not by accident. Every detail matters.
+
+Examples:
+- "Your life's biggest moments deserve better than Google and a spreadsheet"
+- "Premium insights, sophisticated design, zero overwhelm"
+- "Transform overwhelming to exhilarating"
+
+**2. Systematically Comprehensive**
+We've thought of everything so you don't have to.
+
+Examples:
+- "90%+ of what you need to consider—guaranteed"
+- "Months of refinement, one comprehensive guide"
+- "The Axiom Engine ensures nothing is missed"
+
+**3. Warmly Empowering**
+Life's big moments should feel exciting, not stressful.
+
+Examples:
+- "Navigate with confidence"
+- "From chaos to clarity"
+- "Make decisions you'll feel good about"
+
+## Philosophy
+
+**Premium meets comprehensive.** We believe life's biggest moments deserve the same level of sophisticated design as your favorite apps—combined with truly comprehensive guidance that leaves no stone unturned.
+
+Like Superhuman elevated email and Co-Star brought luxury to astrology, Templata brings premium experiences to life planning.
 
 ## Contributing
 
@@ -341,12 +314,6 @@ We welcome contributions! Please see our contributing guidelines.
 - Component-first architecture
 - Functional components with hooks
 
-## Philosophy
-
-**Abundance over curation.** Instead of handpicking 20 "best" templates, we give you access to everything—systematically organized, searchable, and ready when you need it. If a life situation exists, we've covered it.
-
-Like Wikipedia for knowledge, Templata is the comprehensive resource for life guidance.
-
 ## License
 
 Proprietary - All rights reserved
@@ -358,4 +325,4 @@ Proprietary - All rights reserved
 
 ---
 
-*The encyclopedia for living.*
+*Transform overwhelming to exhilarating.*
