@@ -100,7 +100,7 @@ const ResourcesLibrary = () => {
             {readings.map((reading) => (
               <a
                 key={reading.id}
-                href={`/library/${reading.id}`}
+                href={`/blocks-demo/library/${reading.id}`}
                 className="border-border flex flex-col justify-between gap-4 border-b py-6 md:flex-row"
               >
                 <h3 className="font-medium md:line-clamp-1">{reading.title}</h3>
