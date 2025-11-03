@@ -31,6 +31,17 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
     <div className="max-w-none">
       {cleanedContent.map((paragraph, index) => {
 
+        // Title headings (single #)
+        if (paragraph.startsWith('# ') && !paragraph.startsWith('## ')) {
+          const headingText = paragraph.replace('# ', '');
+          const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+          return (
+            <h1 key={index} id={id} className="text-3xl font-bold mt-0 mb-6 text-foreground">
+              {headingText}
+            </h1>
+          );
+        }
+
         // Main headings with IDs for navigation
         if (paragraph.startsWith('## ')) {
           const headingText = paragraph.replace('## ', '');
@@ -121,18 +132,12 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
                   );
                 }
               } else if (match[0].startsWith('==') && match[0].endsWith('==')) {
-                // Highlighted text - blue highlight
+                // Highlighted text - yellow highlight (not blue)
                 const highlightedText = match[0].slice(2, -2);
                 parts.push(
-                  <Highlighter
-                    key={match.index}
-                    action="highlight"
-                    color="#3b82f6"
-                    isView={true}
-                    animationDuration={800}
-                  >
+                  <mark key={match.index} className="bg-yellow-200/60 dark:bg-yellow-500/30 text-foreground px-1 rounded">
                     {highlightedText}
-                  </Highlighter>
+                  </mark>
                 );
               } else if (match[0].startsWith('__') && match[0].endsWith('__')) {
                 // Underlined text - purple underline
