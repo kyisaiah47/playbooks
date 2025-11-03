@@ -3,6 +3,7 @@
 import { AboutHeroVideo } from "@/components/about-hero-video";
 import { AboutHero } from "@/components/about-hero";
 import { CompanyLogos } from "@/components/company-logos";
+import { FaqHero } from "@/components/faq-hero";
 import { PageLayout } from "@/components/layout";
 
 export default function AboutPage() {
@@ -11,7 +12,7 @@ export default function AboutPage() {
 			<AboutHeroVideo />
 			<CompanyLogos />
 			<AboutHero />
-			{/* More blocks will be added here */}
+			<FaqHero />
 		</PageLayout>
 	);
 }

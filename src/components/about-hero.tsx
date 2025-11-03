@@ -1,18 +1,5 @@
 "use client";
 
-import {
-  BookOpen,
-  Code,
-  Droplet,
-  Layout,
-  Map,
-  Palette,
-  Pen,
-  Smartphone,
-  TestTube,
-  Users,
-} from "lucide-react";
-
 const AboutHero = () => {
 
   const stats = [
@@ -30,33 +17,6 @@ const AboutHero = () => {
       icon: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg",
       title: "Integrated Planning",
       description: "Organized by life event",
-    },
-  ];
-
-  const relatedGuides = [
-    {
-      icon: Users,
-      title: "Wedding Planning",
-      description: "Comprehensive guide for planning your wedding",
-      link: "#",
-    },
-    {
-      icon: Layout,
-      title: "Home Buying",
-      description: "Expert guidance for first-time homebuyers",
-      link: "#",
-    },
-    {
-      icon: BookOpen,
-      title: "Career Change",
-      description: "Navigate your career transition with confidence",
-      link: "#",
-    },
-    {
-      icon: Map,
-      title: "Starting a Business",
-      description: "Build your business foundation step-by-step",
-      link: "#",
     },
   ];
 
@@ -173,41 +133,6 @@ const AboutHero = () => {
             out what you need to consider, sourcing the expert knowledge,
             and organizing it all in one place.
           </p>
-        </div>
-
-        {/* Related Guides */}
-        <div>
-          <div className="mb-8">
-            <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
-              Popular Guides
-            </h2>
-            <p className="text-muted-foreground mt-2 text-lg leading-relaxed">
-              Explore our comprehensive guides for life's biggest moments
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {relatedGuides.map((guide, index) => {
-              const Icon = guide.icon;
-              return (
-                <div key={index} className="group">
-                  <a
-                    href={guide.link}
-                    className="hover:bg-muted/50 block space-y-3 rounded-lg border p-6 transition-colors"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Icon className="text-muted-foreground group-hover:text-primary h-5 w-5" />
-                      <div className="group-hover:text-primary font-medium">
-                        {guide.title}
-                      </div>
-                    </div>
-                    <div className="text-muted-foreground text-sm leading-relaxed">
-                      {guide.description}
-                    </div>
-                  </a>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </div>
     </section>
