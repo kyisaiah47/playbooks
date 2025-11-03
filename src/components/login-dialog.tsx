@@ -11,8 +11,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 
 interface LoginDialogProps {
   open: boolean;
@@ -174,94 +179,112 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
             <TabsTrigger value="signup">Sign Up</TabsTrigger>
           </TabsList>
           <TabsContent value="login">
-            <form className="space-y-4" onSubmit={handleLogin}>
-              {loginError && (
-                <div className="text-sm text-destructive text-center">{loginError}</div>
-              )}
-              <div className="space-y-2">
-                <Label htmlFor="login-email">Email</Label>
-                <Input
-                  id="login-email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                />
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="login-password">Password</Label>
-                  <a
-                    href="#"
-                    className="text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
-                <Input
-                  id="login-password"
-                  type="password"
-                  required
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                />
-              </div>
-              <div className="space-y-2 pt-4">
-                <Button type="submit" className="w-full" disabled={loginLoading}>
-                  {loginLoading ? "Logging in..." : "Login"}
-                </Button>
-                <Button variant="outline" className="w-full" type="button">
-                  Login with Google
-                </Button>
-              </div>
+            <form onSubmit={handleLogin}>
+              <FieldGroup>
+                {loginError && (
+                  <div className="text-sm text-destructive text-center">{loginError}</div>
+                )}
+                <Field>
+                  <FieldLabel htmlFor="login-email">Email</FieldLabel>
+                  <Input
+                    id="login-email"
+                    type="email"
+                    placeholder="m@example.com"
+                    required
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                  />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="login-password">Password</FieldLabel>
+                  <Input
+                    id="login-password"
+                    type="password"
+                    required
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                  />
+                  <FieldDescription>
+                    <a href="#" className="underline-offset-4 hover:underline">
+                      Forgot password?
+                    </a>
+                  </FieldDescription>
+                </Field>
+                <FieldGroup>
+                  <Field>
+                    <Button type="submit" disabled={loginLoading}>
+                      {loginLoading ? "Logging in..." : "Login"}
+                    </Button>
+                    <Button variant="outline" type="button">
+                      Login with Google
+                    </Button>
+                  </Field>
+                </FieldGroup>
+              </FieldGroup>
             </form>
           </TabsContent>
           <TabsContent value="signup">
-            <form className="space-y-4" onSubmit={handleSignup}>
-              {signupError && (
-                <div className="text-sm text-destructive text-center">{signupError}</div>
-              )}
-              <div className="space-y-2">
-                <Label htmlFor="signup-name">Name</Label>
-                <Input
-                  id="signup-name"
-                  type="text"
-                  placeholder="John Doe"
-                  required
-                  value={signupName}
-                  onChange={(e) => setSignupName(e.target.value)}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="signup-email">Email</Label>
-                <Input
-                  id="signup-email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                  value={signupEmail}
-                  onChange={(e) => setSignupEmail(e.target.value)}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="signup-password">Password</Label>
-                <Input
-                  id="signup-password"
-                  type="password"
-                  required
-                  value={signupPassword}
-                  onChange={(e) => setSignupPassword(e.target.value)}
-                />
-              </div>
-              <div className="space-y-2 pt-4">
-                <Button type="submit" className="w-full" disabled={signupLoading}>
-                  {signupLoading ? "Creating account..." : "Sign up"}
-                </Button>
-                <Button variant="outline" className="w-full" type="button">
-                  Sign up with Google
-                </Button>
-              </div>
+            <form onSubmit={handleSignup}>
+              <FieldGroup>
+                {signupError && (
+                  <div className="text-sm text-destructive text-center">{signupError}</div>
+                )}
+                <Field>
+                  <FieldLabel htmlFor="signup-name">Full Name</FieldLabel>
+                  <Input
+                    id="signup-name"
+                    type="text"
+                    placeholder="John Doe"
+                    required
+                    value={signupName}
+                    onChange={(e) => setSignupName(e.target.value)}
+                  />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="signup-email">Email</FieldLabel>
+                  <Input
+                    id="signup-email"
+                    type="email"
+                    placeholder="m@example.com"
+                    required
+                    value={signupEmail}
+                    onChange={(e) => setSignupEmail(e.target.value)}
+                  />
+                  <FieldDescription>
+                    We'll use this to contact you. We will not share your email with anyone else.
+                  </FieldDescription>
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="signup-password">Password</FieldLabel>
+                  <Input
+                    id="signup-password"
+                    type="password"
+                    required
+                    value={signupPassword}
+                    onChange={(e) => setSignupPassword(e.target.value)}
+                  />
+                  <FieldDescription>
+                    Must be at least 8 characters long.
+                  </FieldDescription>
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="signup-confirm-password">
+                    Confirm Password
+                  </FieldLabel>
+                  <Input id="signup-confirm-password" type="password" required />
+                  <FieldDescription>Please confirm your password.</FieldDescription>
+                </Field>
+                <FieldGroup>
+                  <Field>
+                    <Button type="submit" disabled={signupLoading}>
+                      {signupLoading ? "Creating account..." : "Create Account"}
+                    </Button>
+                    <Button variant="outline" type="button">
+                      Sign up with Google
+                    </Button>
+                  </Field>
+                </FieldGroup>
+              </FieldGroup>
             </form>
           </TabsContent>
         </Tabs>
