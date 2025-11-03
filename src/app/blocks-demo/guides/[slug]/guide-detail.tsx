@@ -64,12 +64,12 @@ export default function GuideDetail({ params }: GuideDetailProps) {
         }
 
         // Fetch questions
-        const questionsRes = await fetch(`/api/questions?guideId=${slug}`);
+        const questionsRes = await fetch(`/api/guides/${slug}/questions`);
         const questionsData = await questionsRes.json();
         setQuestions(questionsData.questions || []);
 
         // Fetch readings for this guide
-        const readingsRes = await fetch(`/api/readings?guide=${slug}`);
+        const readingsRes = await fetch(`/api/guides/${slug}/readings`);
         const readingsData = await readingsRes.json();
         setReadings(readingsData.readings || []);
       } catch (error) {
