@@ -4,7 +4,6 @@
 @import "../styles/animations.css";
 @import '../styles/_variables.scss';
 @import '../styles/_keyframe-animations.scss';
-@import '../styles/stage-themes.css';
 
 @custom-variant dark (&:is(.dark *));
 
