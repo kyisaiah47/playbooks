@@ -16,7 +16,7 @@ const LibraryHero = () => {
           Expert Readings for Informed Decisions
         </p>
         <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
-          Browse Curated Knowledge{" "}
+          Explore Expert{" "}
           <span
             className="overflow-hidden"
             style={{
@@ -24,7 +24,7 @@ const LibraryHero = () => {
               perspective: "600px",
             }}
           >
-            {"Effortlessly".split(" ").map((word, i) => (
+            {"Knowledge".split(" ").map((word, i) => (
               <motion.span
                 className="relative inline-block px-[6px] leading-[none]"
                 key={i}
