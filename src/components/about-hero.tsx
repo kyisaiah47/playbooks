@@ -1,25 +1,9 @@
 "use client";
 
+import { Card, CardContent } from "@/components/ui/card";
+import { ManifestoAudio } from "@/components/manifesto-audio";
+
 const AboutHero = () => {
-
-  const stats = [
-    {
-      icon: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
-      title: "Comprehensive Questions",
-      description: "90%+ coverage",
-    },
-    {
-      icon: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg",
-      title: "Expert Readings",
-      description: "Curated guidance",
-    },
-    {
-      icon: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg",
-      title: "Integrated Planning",
-      description: "Organized by life event",
-    },
-  ];
-
   return (
     <section className="py-16">
       <div className="container max-w-4xl">
@@ -39,99 +23,133 @@ const AboutHero = () => {
             <h1 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
               Our Story
             </h1>
-            <p className="text-muted-foreground max-w-3xl text-xl leading-relaxed">
-              Planning life's biggest moments shouldn't mean months of scattered research.
-              Wedding planning. Home buying. Career changes. Each one is hundreds of decisions
-              with no clear roadmap, no comprehensive checklist, no way to know if you're missing something critical.
-            </p>
           </div>
         </div>
 
-        {/* Expertise Section */}
-        <div className="mb-16">
-          <div className="mb-8">
-            <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
-              Three Core Features
-            </h2>
-            <p className="text-muted-foreground mt-2 text-lg leading-relaxed">
-              Everything you need for life's biggest moments
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3 rounded-lg border p-4"
-              >
-                <div className="flex h-10 w-10 items-center justify-center">
-                  <img
-                    src={stat.icon}
-                    alt={stat.title}
-                    className="h-6 w-6 object-contain"
-                  />
-                </div>
-                <div>
-                  <div className="text-sm font-medium">{stat.title}</div>
-                  <div className="text-muted-foreground text-xs">
-                    {stat.description}
-                  </div>
-                </div>
+        {/* Main Narrative */}
+        <div className="space-y-8 text-lg leading-relaxed text-muted-foreground">
+          <p>
+            Templata started from a simple observation: life's biggest moments
+            shouldn't start with a blank page.
+          </p>
+
+          <p>
+            We were inspired by tools that democratized complexity—<strong>Notion</strong>,
+            which turned scattered thoughts into organized knowledge, and <strong>Canva</strong>,
+            which made professional design accessible to everyone. Both proved that the
+            right structure and guidance could unlock capability for millions of people.
+          </p>
+
+          <p>
+            But when you're planning a wedding, buying a home, or changing careers?
+            You're handed a blank document and told to figure it out. Months of Google
+            searches. Scattered notes. Forgotten tasks. The constant worry that you're
+            missing something critical.
+          </p>
+
+          <p>
+            So we set out to build what Notion did for notes and Canva did for design—but
+            for life's biggest moments.
+          </p>
+
+          <p className="text-2xl font-medium text-foreground pt-8">
+            The Evolution
+          </p>
+
+          <p>
+            Our first vision was simple: <em>"Life shouldn't start with a blank page."</em>
+            We built comprehensive templates—1,300+ of them eventually—covering everything
+            from wedding planning to career changes. We generated 104,000+ prompts (now called
+            questions) to help people think through every angle of their decisions.
+          </p>
+
+          <p>
+            Then we evolved into something bigger: <strong>Notion × Wikipedia</strong>.
+            Not just templates, but "the encyclopedia for living"—a comprehensive knowledge
+            system for life's biggest decisions. We added expert readings, curated guidance,
+            and integrated planning tools.
+          </p>
+
+          <p>
+            For a brief period, we explored positioning ourselves as a new category:
+            "guided productivity." But that felt too narrow. What we were building was
+            more expansive—a synthesis of everything we'd learned through months of
+            iteration and refinement.
+          </p>
+
+          {/* Manifesto Callout */}
+          <Card className="border-2 border-primary/20 bg-primary/5 my-12 relative">
+            <ManifestoAudio />
+            <CardContent className="p-8 md:p-12">
+              <div className="space-y-6 text-lg leading-relaxed">
+                <p className="text-foreground font-medium">Our original manifesto still holds true:</p>
+
+                <p>Life shouldn't start with a blank page.</p>
+
+                <p>But for too long, that's all we've been given.<br />
+                A white screen. An empty checklist.<br />
+                A cursor blinking like a dare: 'figure it out.'</p>
+
+                <p>Notion. Docs. Task apps.<br />
+                They all hand you the same void.<br />
+                And they call it productivity.</p>
+
+                <p>But a blank page has never guided a wedding.<br />
+                A blank page has never bought a home.<br />
+                A blank page has never changed a life.</p>
+
+                <p className="text-foreground font-medium">Templata is the end of the blank page era.</p>
+
+                <p>Not emptiness — abundance.<br />
+                Not silence — guidance.<br />
+                Not guessing — clarity.</p>
               </div>
-            ))}
-          </div>
-        </div>
+            </CardContent>
+          </Card>
 
-        {/* Main Content */}
-        <div className="mb-16 space-y-6">
-          <h2 className="text-2xl font-medium tracking-tight md:text-3xl">Notion gives you blank pages. Google gives you scattered information.</h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            We built Templata because major life decisions deserve better.
-            Comprehensive questions refined through months of AI testing.
-            Expert readings that save you hundreds of hours. Integrated planning
-            that keeps everything organized by life event. Nothing generic,
-            nothing missed. Just 90%+ coverage from day one.
+          <p className="text-2xl font-medium text-foreground pt-8">
+            Where We Are Now
           </p>
 
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Our guides combine three essential elements: comprehensive questions
-            to ensure you're thinking about everything, curated expert readings
-            to give you the knowledge you need, and integrated planning tools
-            to keep you organized. Whether you're planning a wedding, buying
-            your first home, or changing careers, we've done the research so
-            you don't have to.
+          <p>
+            Today, Templata is the synthesis of every iteration—comprehensive guides
+            powered by our <strong>Axiom Engine</strong> (months of AI refinement ensuring
+            90%+ coverage), expert readings that save you hundreds of hours, and integrated
+            planning tools organized per-guide.
           </p>
 
-          <h2 className="text-2xl font-medium tracking-tight md:text-3xl mt-8">Built with Axiom Engine</h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Every guide is powered by our Axiom Engine—months of AI refinement
-            testing question sets for comprehensiveness and clarity. We don't
-            just throw together generic checklists. Each question has been
-            validated to ensure it covers the critical considerations for that
-            specific life event.
+          <p>
+            But we've also evolved our design philosophy. We realized that life's biggest
+            moments deserve more than just functional tools—they deserve <em>exceptional
+            experiences</em>. Premium analytics that visualize your progress. Category-based
+            color coding that makes organization intuitive. Sophisticated interactions that
+            feel delightful.
           </p>
 
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            The result? Guides that feel like they were made specifically for
-            your situation, because they capture what actually matters when
-            you're making these decisions. No fluff, no obvious advice—just
-            the thoughtful questions and expert guidance you need.
+          <p>
+            Think <strong>Superhuman</strong> (premium email with obsessive attention to
+            detail) meets <strong>Co-Star</strong> (luxury data visualizations that inspire).
+            We're building features that aren't strictly "necessary"—radial progress charts,
+            radar visualizations, timeline graphs—but complete the luxury experience.
+            Because transforming life's biggest moments from overwhelming to exhilarating
+            requires both comprehensive content <em>and</em> sophisticated design.
           </p>
 
-          <h2 className="text-2xl font-medium tracking-tight md:text-3xl mt-8">1000+ Guides Planned</h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            We're building the comprehensive library of life event guides.
-            From major milestones like weddings and home purchases to career
-            transitions and personal development, we're creating guides for
-            every significant moment in your life. Each one backed by expert
-            research and AI-refined questions.
+          <p>
+            Our guides now include comprehensive questions covering 90%+ of what you need
+            to consider, curated expert readings, per-guide calendar and task organization,
+            and premium progress tracking that makes your journey feel like an experience,
+            not just a checklist.
           </p>
 
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Our goal is simple: when you face a major life decision, you
-            shouldn't have to start from scratch. You should have a
-            comprehensive guide that's already done the hard work of figuring
-            out what you need to consider, sourcing the expert knowledge,
-            and organizing it all in one place.
+          <p>
+            We're building toward 1,000+ guides—each one refined through our Axiom Engine,
+            each one wrapped in the same premium UX, each one designed to save you months
+            of research and transform how you approach life's biggest moments.
+          </p>
+
+          <p className="text-foreground font-medium text-xl pt-8">
+            The blank page is dead. And life's biggest moments have never looked better.
           </p>
         </div>
       </div>
