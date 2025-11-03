@@ -10,16 +10,16 @@ export const AboutCompanyStory = () => {
   return (
     <section className="py-32">
       {/* Hero Section */}
-      <section className="lg:py-15 container relative max-w-5xl py-10 md:py-12">
+      <section className="lg:py-15 container relative max-w-6xl py-10 md:py-12">
         <div className="">
           <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
-            A different
+            Major life events
             <br />
-            kind of bank.
+            deserve better.
           </h1>
           <p className="text-muted-foreground mt-4 max-w-2xl text-2xl md:text-3xl">
-            We&apos;re on a mission to transform financial services by
-            harnessing vast amounts of untapped financial data.
+            Comprehensive questions covering 90%+ of what you need to consider.
+            Expert guidance to make informed decisions.
           </p>
         </div>
         {/* Background decoration */}
@@ -35,63 +35,60 @@ export const AboutCompanyStory = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="container max-w-5xl border-y py-5">
+      <section className="container max-w-6xl border-y py-5">
         <h2 className="text-accent-foreground font-mono text-sm font-semibold tracking-widest">
           By the numbers
         </h2>
         <div className="mt-6 grid grid-cols-2 gap-8 md:grid-cols-4">
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
-              $150M
+              3
             </h3>
-            <p className="text-muted-foreground mt-1 font-medium">Raised</p>
+            <p className="text-muted-foreground mt-1 font-medium">Core features</p>
           </div>
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
-              20K
+              90%+
             </h3>
-            <p className="text-muted-foreground mt-1 font-medium">Companies</p>
+            <p className="text-muted-foreground mt-1 font-medium">Coverage</p>
           </div>
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
-              1.3B
+              Months
             </h3>
             <p className="text-muted-foreground mt-1 font-medium">
-              Monthly transactions
+              AI refinement
             </p>
           </div>
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
-              1.5K
+              1000+
             </h3>
             <p className="text-muted-foreground mt-1 font-medium">
-              Connections per minute
+              Guides planned
             </p>
           </div>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="lg:py-15 container max-w-5xl py-10 md:py-12">
+      <section className="lg:py-15 container max-w-6xl py-10 md:py-12">
         <div className="max-w-2xl space-y-5 md:space-y-8 lg:space-y-10">
           <p className="text-lg">
-            Financial services have changed, are changing, and will continue to
-            change — for the better. Now is the time for finance to be
-            developer-first and API-driven. But in order to do this — it needs a
-            new foundation.
+            Planning life's biggest moments shouldn't mean months of scattered research.
+            Wedding planning. Home buying. Career changes. Each one is hundreds of decisions
+            with no clear roadmap, no comprehensive checklist, no way to know if you're missing something critical.
           </p>
 
           <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
-            We were always told that banks can&apos;t be platforms.
+            Notion gives you blank pages. Google gives you scattered information.
           </h2>
           <p className="text-lg">
-            Everyone tried fixing the problem by layering APIs on legacy
-            systems, creating abstractions and inefficiencies. We have spent
-            years building and scaling companies like Plaid, Stripe, and Affirm,
-            confronting these limitations firsthand. The current solutions
-            aren&apos;t good enough. We believe that banking infrastructure must
-            be reimagined as an API platform. But we had to start from ground
-            zero.
+            We built Templata because major life decisions deserve better.
+            Comprehensive questions refined through months of AI testing.
+            Expert readings that save you hundreds of hours. Integrated planning
+            that keeps everything organized by life event. Nothing generic,
+            nothing missed. Just 90%+ coverage from day one.
           </p>
         </div>
       </section>

@@ -24,18 +24,17 @@ const IntegrationsNetwork = () => {
       <div className="container">
         <div className="mb-16 flex flex-col items-center md:mb-6">
           <Badge variant="secondary" className="bg-muted mb-6">
-            Get started today
+            Complete System
           </Badge>
           <h1 className="mb-3 max-w-md text-center text-2xl font-medium md:text-4xl">
-            Lorem ipsum dolor sit, amet consectetur
+            Every Feature You Need
           </h1>
           <p className="mb-3 max-w-80 text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
-            illum!
+            Questions, readings, calendar, tasks, and more—all organized by life event.
           </p>
           <Button variant="link" asChild className="text-blue-700">
             <a href="#">
-              View Integrations <ArrowRight className="size-4" />
+              Explore Guides <ArrowRight className="size-4" />
             </a>
           </Button>
         </div>
@@ -43,31 +42,31 @@ const IntegrationsNetwork = () => {
           <div className="flex justify-around md:mb-[-30px]">
             <IconElem
               image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-              title="Revenue Recognition"
+              title="Questions"
             />
             <IconElem
               image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-2.svg"
-              title="Fraud Prevention"
+              title="Readings"
             />
           </div>
           <div className="flex justify-center md:mb-[-30px]">
             <IconElem
               image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-3.svg"
-              title="Risk Assessment"
+              title="Guides"
             />
           </div>
           <div className="flex justify-evenly md:mb-[-30px]">
-            <IconElem image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg" title="Compliance" />
-            <IconElem image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-5.svg" title="Cash Flow" />
+            <IconElem image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-4.svg" title="Calendar" />
+            <IconElem image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-5.svg" title="Tasks" />
           </div>
           <div className="flex justify-between">
             <IconElem
               image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-6.svg"
-              title="Investment Analysis"
+              title="Library"
             />
             <IconElem
               image="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-              title="Expense Tracking"
+              title="Analytics"
             />
           </div>
 

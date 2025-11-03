@@ -5,36 +5,35 @@ import { LinkPreview } from "@/components/aceternity/link-preview";
 const TechStackPreview = () => {
   return (
     <section className="overflow-hidden py-32">
-      <div className="container w-full">
+      <div className="container w-full max-w-6xl">
         <h1 className="text-muted-foreground/40 mt-10 text-center text-3xl font-semibold tracking-tight md:text-4xl">
-          Build faster with
-          <LinkPreview url="https://shadcnblocks.com" className="px-1">
-            Shadcnblocks
-          </LinkPreview>{" "}
-          designed for real-world apps. Whether you're using{" "}
-          <LinkPreview url="https://tailwindcss.com" className="px-1">
-            TailwindCSS
+          Comprehensive coverage for life's biggest moments. Whether you're planning a{" "}
+          <LinkPreview url="#" className="px-1">
+            wedding
           </LinkPreview>
-          ,{" "}
-          <LinkPreview url="https://www.typescriptlang.org" className="px-1">
-            TypeScript
+          , buying a{" "}
+          <LinkPreview url="#" className="px-1">
+            home
           </LinkPreview>
-          , or integrating{" "}
-          <LinkPreview url="https://www.framer.com/motion" className="px-1">
-            Framer Motion
+          , or changing{" "}
+          <LinkPreview url="#" className="px-1">
+            careers
           </LinkPreview>
           <br />
           <br />
-          Every block is customizable, responsive, and optimized for frameworks
-          like{" "}
-          <LinkPreview url="https://nextjs.org" className="px-1">
-            Next.js
-          </LinkPreview>{" "}
-          and{" "}
-          <LinkPreview url="https://ui.shadcn.com" className="px-1">
-            shadcn/ui
-          </LinkPreview>{" "}
-          — giving you a powerful UI toolkit that scales with your project.
+          Every guide includes comprehensive{" "}
+          <LinkPreview url="#" className="px-1">
+            questions
+          </LinkPreview>
+          , expert{" "}
+          <LinkPreview url="#" className="px-1">
+            readings
+          </LinkPreview>
+          , and integrated{" "}
+          <LinkPreview url="#" className="px-1">
+            planning
+          </LinkPreview>
+          {" "}— giving you 90%+ coverage from day one.
         </h1>
       </div>
     </section>

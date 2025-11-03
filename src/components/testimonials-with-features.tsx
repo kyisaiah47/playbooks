@@ -7,18 +7,14 @@ import { CardStack } from "@/components/aceternity/card-stack";
 
 const TestimonialsWithFeatures = () => {
   const features = [
-    "Instant Implementation",
-    "One-Time Payment",
-    "Developer Friendly",
-    "Fully Responsive",
-    "Production Ready",
-    "Premium Support",
-    "Regular Updates",
-    "Customizable Design",
-    "Performance Optimized",
-    "Accessibility Compliant",
-    "Cross-Browser ",
-    "Documentation Included",
+    "90%+ Coverage",
+    "AI-Refined Questions",
+    "Expert Readings",
+    "Per-Guide Planning",
+    "Calendar Integration",
+    "Task Management",
+    "Progress Tracking",
+    "Split-Screen View",
   ];
 
   return (
@@ -26,7 +22,7 @@ const TestimonialsWithFeatures = () => {
       <div className="container flex w-full max-w-6xl flex-col items-center justify-between lg:flex-row">
         <div className="gap-15 relative flex h-full flex-col items-center justify-center text-center lg:items-start lg:text-left">
           <h1 className="w-full max-w-md text-5xl font-medium font-semibold tracking-tighter lg:text-6xl">
-            What our Users say Proudly
+            Questions. Answers. One View.
           </h1>
 
           <div className="flex w-full max-w-lg items-center gap-4 px-5">
@@ -77,40 +73,39 @@ export const Highlight = ({
 const CARDS = [
   {
     id: 0,
-    name: "Sarah Chen",
-    designation: "Product Manager",
+    name: "Budget Planning",
+    designation: "What's your total budget range?",
     content: (
       <p>
-        The implementation was incredibly smooth.{" "}
-        <Highlight>We deployed in under 2 hours</Highlight> and the team loves
-        how intuitive the interface is. The responsive design works perfectly
-        across all devices.
+        We're comfortable spending <Highlight>$40,000-$50,000 total</Highlight>.
+        Parents contributing $15k, we have $30k saved, and keeping $5k buffer.
+        Priority order: venue/catering (50%), photography (15%), everything else flexible.
       </p>
     ),
   },
   {
     id: 1,
-    name: "Marcus Rodriguez",
-    designation: "Frontend Developer",
+    name: "Guest List",
+    designation: "Who are your must-invite guests?",
     content: (
       <p>
-        As a developer, I appreciate the clean code structure.{" "}
-        <Highlight>Easy to customize</Highlight> and the documentation is
-        comprehensive. The performance optimizations are noticeable in
-        production.
+        <Highlight>Core list is 80 people</Highlight>—immediate family (24),
+        wedding party + spouses (16), close friend groups (40).
+        Second tier adds 50 more (extended family, work friends).
+        Max capacity 150, ideal is 120-130.
       </p>
     ),
   },
   {
     id: 2,
-    name: "Emily Watson",
-    designation: "UX Designer",
+    name: "Venue Requirements",
+    designation: "What are your venue non-negotiables?",
     content: (
       <p>
-        The accessibility features are outstanding.{" "}
-        <Highlight>WCAG compliant out of the box</Highlight> and the design
-        system is consistent. Our users with disabilities have given us
-        excellent feedback.
+        Must have: <Highlight>indoor + outdoor options</Highlight>, seats 150,
+        within 30min of downtown, available Sep-Oct 2026.
+        Nice-to-have: in-house catering, getting ready rooms, backup rain plan.
+        Deal-breakers: no AC, cash-bar only, difficult parking.
       </p>
     ),
   },

@@ -12,7 +12,7 @@ const HeroAnimatedText = () => {
     <section className="pt-56 pb-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
         <p className="text-muted-foreground">
-          Bridging Developers, Building the Future
+          The Comprehensive Guide + Planning Tool
         </p>
         <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
           <span
@@ -22,7 +22,7 @@ const HeroAnimatedText = () => {
               perspective: "600px",
             }}
           >
-            {"The only app you Need to Stay Productive"
+            {"Life's Biggest Moments Organized"
               .split(" ")
               .map((word, i) => (
                 <motion.span
@@ -44,7 +44,7 @@ const HeroAnimatedText = () => {
                     ease: [0.215, 0.61, 0.355, 1],
                   }}
                 >
-                  {word === "Productive" ? (
+                  {word === "Organized" ? (
                     <span className="font-playfair italic">{word}</span>
                   ) : (
                     word
@@ -82,7 +82,7 @@ const HeroAnimatedText = () => {
           variant="secondary"
           className="text-md -mt-15 group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
         >
-          Contact Us now
+          Get Started
           <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
         </Button>
       </div>
