@@ -64,7 +64,8 @@
       "mcp__shadcn__view_items_in_registries",
       "mcp__shadcn__get_item_examples_from_registries",
       "Bash(pnpm dlx:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(Templata\"\n- Descriptions emphasize 90%+ coverage and transformation narrative\n- Full OpenGraph and Twitter Card support\n\nguide-detail.tsx:\n- Hero with guide title, description, and stats (questions/readings/categories)\n- What''''s Included section showcasing 3 pillars (Questions, Readings, Planning)\n- Questions preview with first 5 categories (collapsible, shows first 5 per category)\n- Readings preview with first 6 articles\n- Related guides section (same category, max 3)\n- CTA: \"Transform your {guide} from overwhelming to exhilarating\"\n\nAll aligned with luxury brand voice:\n- 90%+ coverage guarantee\n- Premium analytics mentioned\n- Transform/exhilarating language\n- Sophisticated design with proper spacing\n- No instructional \"save 80 hours\" language\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []
