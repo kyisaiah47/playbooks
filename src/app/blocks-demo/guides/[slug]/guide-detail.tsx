@@ -6,12 +6,12 @@ import type { TemplateRegistryEntry } from '@/registry/guides';
 import { PageLayout } from '@/components/layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { motion } from 'framer-motion';
+import { Particles } from '@/components/magicui/particles';
+import * as LucideIcons from 'lucide-react';
+import { cn } from '@/lib/utils';
 import {
-  FileText,
-  ChevronRight,
-  BookOpen,
-  Calendar,
   ArrowRight,
 } from 'lucide-react';
 
@@ -130,241 +130,165 @@ export default function GuideDetail({ params }: GuideDetailProps) {
     setExpandedCategories(newExpanded);
   };
 
+  const IconComponent = templateData.icon && (LucideIcons as any)[templateData.icon];
+
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="py-32">
-        <div className="container mx-auto max-w-5xl px-4">
-          <div className="text-center space-y-6">
-            <Badge variant="outline" className="px-4 py-2">
-              {templateData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-            </Badge>
+      <section className="relative py-32 pt-56">
+        <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
+          <Badge variant="outline" className="px-4 py-2">
+            {templateData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+          </Badge>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              {templateData.name}
-            </h1>
-
-            <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-              {templateData.description}
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-8 pt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold">{questions.length}</div>
-                <p className="text-sm text-muted-foreground">Questions</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold">{readings.length}</div>
-                <p className="text-sm text-muted-foreground">Readings</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold">{questionCategories.length}</div>
-                <p className="text-sm text-muted-foreground">Categories</p>
-              </div>
-            </div>
-
-            <div className="pt-8">
-              <Button asChild size="lg">
-                <Link href={`/app?guide=${slug}`}>
-                  Start Guide <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What's Included */}
-      <section className="py-16 bg-muted/30 border-y">
-        <div className="container mx-auto max-w-5xl px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">What's Included</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-3 text-center">
-              <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mx-auto">
-                <FileText className="h-6 w-6 text-blue-500" />
-              </div>
-              <h3 className="font-semibold">Comprehensive Questions</h3>
-              <p className="text-sm text-muted-foreground">
-                {questions.length} AI-refined questions covering 90%+ of what you need to consider, organized across {questionCategories.length} categories.
-              </p>
-            </div>
-
-            <div className="space-y-3 text-center">
-              <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mx-auto">
-                <BookOpen className="h-6 w-6 text-purple-500" />
-              </div>
-              <h3 className="font-semibold">Expert Readings</h3>
-              <p className="text-sm text-muted-foreground">
-                {readings.length} curated articles saving you hundreds of hours of research, integrated directly into your workflow.
-              </p>
-            </div>
-
-            <div className="space-y-3 text-center">
-              <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mx-auto">
-                <Calendar className="h-6 w-6 text-green-500" />
-              </div>
-              <h3 className="font-semibold">Integrated Planning</h3>
-              <p className="text-sm text-muted-foreground">
-                Calendar events and tasks organized specifically for this guide—not a generic task manager.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Questions Preview */}
-      <section className="py-16">
-        <div className="container mx-auto max-w-4xl px-4">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-2">Questions</h2>
-            <p className="text-sm text-muted-foreground">
-              {questions.length} questions across {questionCategories.length} categories
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            {questionCategories.slice(0, 5).map(category => {
-              const isExpanded = expandedCategories.has(category);
-              const categoryQuestions = groupedQuestions[category];
-
-              return (
-                <div key={category} className="border rounded-lg">
-                  <button
-                    onClick={() => toggleCategory(category)}
-                    className="w-full flex items-center justify-between p-4 hover:bg-muted/50 transition-colors rounded-lg"
-                  >
-                    <div className="flex items-center gap-3">
-                      <ChevronRight
-                        className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
-                      />
-                      <h3 className="font-medium">{category}</h3>
-                    </div>
-                    <Badge variant="outline" className="text-xs">
-                      {categoryQuestions.length}
-                    </Badge>
-                  </button>
-
-                  {isExpanded && (
-                    <div className="px-4 pb-4 space-y-2">
-                      {categoryQuestions.slice(0, 5).map((question) => (
-                        <div
-                          key={question.id}
-                          className="pl-7 py-2 text-sm text-muted-foreground"
-                        >
-                          {question.question}
-                        </div>
-                      ))}
-                      {categoryQuestions.length > 5 && (
-                        <div className="pl-7 py-2 text-sm text-muted-foreground italic">
-                          + {categoryQuestions.length - 5} more questions
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-            {questionCategories.length > 5 && (
-              <p className="text-sm text-muted-foreground text-center pt-4">
-                + {questionCategories.length - 5} more categories
-              </p>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Readings Preview */}
-      <section className="py-16 bg-muted/30 border-y">
-        <div className="container mx-auto max-w-4xl px-4">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-2">Expert Readings</h2>
-            <p className="text-sm text-muted-foreground">
-              {readings.length} curated articles
-            </p>
-          </div>
-
-          <div className="grid gap-4">
-            {readings.slice(0, 6).map((reading) => (
-              <div
-                key={reading.id}
-                className="p-4 bg-background rounded-lg border hover:border-primary/50 transition-colors"
-              >
-                <h3 className="font-medium mb-1">{reading.title}</h3>
-                {reading.excerpt && (
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
-                    {reading.excerpt}
-                  </p>
-                )}
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <BookOpen className="h-3 w-3" />
-                  <span>{reading.read_time}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          {readings.length > 6 && (
-            <p className="text-sm text-muted-foreground text-center pt-4">
-              + {readings.length - 6} more readings
-            </p>
-          )}
-        </div>
-      </section>
-
-      {/* Related Guides */}
-      {relatedTemplates.length > 0 && (
-        <section className="py-16">
-          <div className="container mx-auto max-w-5xl px-4">
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-2">Related Guides</h2>
-              <p className="text-sm text-muted-foreground">
-                More {templateData.category} guides
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {relatedTemplates.map((relatedTemplate) => (
-                <Link
-                  key={relatedTemplate.id}
-                  href={`/blocks-demo/guides/${relatedTemplate.id}`}
-                  className="group"
+          <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+            <span
+              className="overflow-hidden"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "600px",
+              }}
+            >
+              {templateData.name.split(" ").map((word, i) => (
+                <motion.span
+                  className="relative inline-block px-[6px] leading-[none]"
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    y: "70%",
+                    rotateX: "-28deg",
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: "0%",
+                    rotateX: "0deg",
+                  }}
+                  transition={{
+                    delay: i * 0.08 + 0.1,
+                    duration: 0.8,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  }}
                 >
-                  <Card className="h-full hover:shadow-lg transition-all hover:border-primary/50">
-                    <CardHeader>
-                      <Badge variant="outline" className="text-xs mb-2 w-fit">
-                        {relatedTemplate.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-                      </Badge>
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                        {relatedTemplate.name}
-                      </CardTitle>
-                      <CardDescription className="line-clamp-2">
-                        {relatedTemplate.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                </Link>
+                  {word}
+                </motion.span>
               ))}
+            </span>
+          </h1>
+
+          <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
+            {templateData.description}
+          </p>
+
+          <Particles
+            className="absolute inset-0 z-0"
+            quantity={500}
+            ease={80}
+            refresh
+          />
+
+          {IconComponent && (
+            <motion.div
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 1 }}
+              className="relative z-20 mt-10"
+            >
+              <div
+                className={cn(
+                  "border-muted relative flex size-32 items-center justify-center overflow-hidden rounded-3xl border p-4",
+                  "from-muted/50 to-background bg-gradient-to-b",
+                  "dark:bg-transparent dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+                )}
+              >
+                <IconComponent className="size-16" />
+              </div>
+            </motion.div>
+          )}
+
+          <div className="relative z-20 mt-8 flex flex-wrap items-center justify-center gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold">{questions.length}</div>
+              <p className="text-sm text-muted-foreground">Questions</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold">{readings.length}</div>
+              <p className="text-sm text-muted-foreground">Readings</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold">{questionCategories.length}</div>
+              <p className="text-sm text-muted-foreground">Categories</p>
             </div>
           </div>
-        </section>
-      )}
 
-      {/* CTA */}
-      <section className="py-24">
-        <div className="container mx-auto max-w-3xl px-4 text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Transform your {templateData.name.toLowerCase()} from overwhelming to exhilarating
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Start with comprehensive questions, expert guidance, and premium analytics.
-          </p>
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="relative z-20 mt-6">
             <Link href={`/app?guide=${slug}`}>
               Start Guide <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
+
+          <div className="h-92 bg-background absolute bottom-20 left-0 right-0 w-full blur-xl" />
         </div>
       </section>
+
+      {/* Questions */}
+      <section className="py-32">
+        <div className="container">
+          <div className="flex flex-col gap-7">
+            <h2 className="text-xl">/ QUESTIONS</h2>
+            <div>
+              {questionCategories.map((category) => {
+                const categoryQuestions = groupedQuestions[category];
+                return (
+                  <div key={category}>
+                    <Separator />
+                    <div className="my-2.5 grid gap-2.5 text-sm sm:grid-cols-3">
+                      <div className="text-muted-foreground flex items-center gap-2">
+                        {category}
+                      </div>
+                      <p className="font-medium">{categoryQuestions.length} questions</p>
+                      <div className="text-muted-foreground">
+                        {categoryQuestions.slice(0, 3).map((q, idx) => (
+                          <div key={q.id}>
+                            {idx > 0 && ', '}
+                            {q.question}
+                          </div>
+                        ))}
+                        {categoryQuestions.length > 3 && ` +${categoryQuestions.length - 3} more`}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Readings */}
+      <section className="py-32">
+        <div className="container">
+          <div className="flex flex-col gap-7">
+            <h2 className="text-xl">/ READINGS</h2>
+            <div>
+              {readings.map((reading, idx) => (
+                <div key={reading.id}>
+                  <Separator />
+                  <div className="my-2.5 grid gap-2.5 text-sm sm:grid-cols-3">
+                    <div className="text-muted-foreground flex items-center gap-2">
+                      {reading.read_time}
+                    </div>
+                    <p className="font-medium">{reading.title}</p>
+                    <p className="text-muted-foreground">
+                      {reading.excerpt}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
     </PageLayout>
   );
 }
