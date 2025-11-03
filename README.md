@@ -6,7 +6,7 @@
 
 ## Overview
 
-**Templata** is the comprehensive guide + planning tool for major life events. Think Superhuman (premium email with obsessive attention to detail) meets Co-Star (hyper-personalized insights with sophisticated design) for life's biggest moments.
+**Templata** is the comprehensive guide + planning tool for major life events. Think Superhuman (premium email with obsessive attention to detail) meets Co-Star (premium astrology with sophisticated design) for life's biggest moments.
 
 ### The Problem
 
