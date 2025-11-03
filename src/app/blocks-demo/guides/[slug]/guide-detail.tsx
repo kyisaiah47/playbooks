@@ -50,7 +50,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
         setLoading(true);
 
         // Fetch all guides
-        const guidesRes = await fetch('/api/guides');
+        const guidesRes = await fetch('/api/guides?all=true');
         const guidesData = await guidesRes.json();
         const foundTemplate = guidesData.guides?.find((t: TemplateRegistryEntry) => t.id === slug);
         setTemplate(foundTemplate || null);
