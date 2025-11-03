@@ -26,7 +26,7 @@ import { useRef, useState } from "react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { TrackSelector } from "@/components/track-selector";
+import { DockTrackSelector } from "@/components/dock-track-selector";
 import {
   Popover,
   PopoverContent,
@@ -220,12 +220,11 @@ const FloatingDockMobile = ({
         )}
       </AnimatePresence>
       <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2">
-        <TrackSelector
+        <DockTrackSelector
           selectedTrackIds={selectedTrackIds}
           onSelectionChange={onTrackSelectionChange}
-          open={trackSelectorOpen}
-          onOpenChange={setTrackSelectorOpen}
-          hideTrigger={true}
+          isOpen={trackSelectorOpen}
+          onClose={() => setTrackSelectorOpen(false)}
         />
       </div>
       <button
@@ -257,12 +256,11 @@ const FloatingDockDesktop = ({
   return (
     <div className="relative">
       <div className="absolute bottom-full mb-4 left-0">
-        <TrackSelector
+        <DockTrackSelector
           selectedTrackIds={selectedTrackIds}
           onSelectionChange={onTrackSelectionChange}
-          open={trackSelectorOpen}
-          onOpenChange={setTrackSelectorOpen}
-          hideTrigger={true}
+          isOpen={trackSelectorOpen}
+          onClose={() => setTrackSelectorOpen(false)}
         />
       </div>
       <motion.div
