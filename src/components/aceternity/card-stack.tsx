@@ -55,7 +55,7 @@ export const CardStack = ({
               zIndex: cards.length - index, //  decrease z-index for the cards that are behind
             }}
           >
-            <div>
+            <div className="space-y-3">
               <p className="text-neutral-400 font-normal dark:text-neutral-200">
                 {card.name}
               </p>
