@@ -103,7 +103,7 @@ Embrace:
 - References to premium brands (Superhuman, Co-Star, Linear)
 
 **2. Innovatively Thoughtful**
-You include features that aren't "necessary" but complete the experience—like Co-Star's beautiful data visualizations or Superhuman's keyboard shortcuts.
+You include features that aren't "necessary" but complete the experience—like Co-Star's hyper-personalized insights or Superhuman's keyboard shortcuts.
 
 Sounds like:
 - "Progress visualizations that make tracking feel like an experience"
@@ -235,7 +235,7 @@ Embrace:
 - **Should NOT feel like:** A basic todo app with a guide attached
 - **References:**
   - **Superhuman** (premium email with sophisticated shortcuts)
-  - **Co-Star** (luxury astrology with beautiful data viz)
+  - **Co-Star** (hyper-personalized astrology with sophisticated, minimalist design)
   - **Linear** (project management as art)
   - **Arc** (browser that reimagines browsing)
 

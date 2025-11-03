@@ -128,7 +128,7 @@ const AboutHero = () => {
 
           <p>
             Think <strong>Superhuman</strong> (premium email with obsessive attention to
-            detail) meets <strong>Co-Star</strong> (luxury data visualizations that inspire).
+            detail) meets <strong>Co-Star</strong> (hyper-personalized insights with sophisticated design).
             We're building features that aren't strictly "necessary"—radial progress charts,
             radar visualizations, timeline graphs—but complete the luxury experience.
             Because transforming life's biggest moments from overwhelming to exhilarating
