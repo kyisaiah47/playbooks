@@ -2,9 +2,9 @@
 
 ## What Templata Is
 
-**Templata is the comprehensive guide + planning tool for life's biggest moments.**
+**Templata is the luxury guide + planning tool for life's biggest moments.**
 
-Think Wikipedia × Notion for major life events.
+Think Wikipedia × Notion × Superhuman for major life events.
 
 ### The Problem
 
@@ -16,7 +16,7 @@ Templata provides three things in one unified system:
 
 1. **Comprehensive Questions** - AI-generated questions covering 90%+ of everything you need to consider for any major life event
 2. **Expert Readings** - Curated knowledge and advice to help you make informed decisions
-3. **Integrated Planning** - Calendar, tasks, and notes organized per-guide (wedding tasks separate from home buying tasks)
+3. **Integrated Planning** - Calendar, tasks, notes, and premium analytics organized per-guide (wedding tasks separate from home buying tasks)
 
 ### The Core Experience
 
@@ -29,12 +29,12 @@ Read Expert Guidance (know how to decide)
     ↓
 Plan with Calendar/Tasks (execute on it)
     ↓
-Track Progress (stay on course)
+Track Progress with Premium Analytics (visualize your journey)
 ```
 
 ### Key Differentiator
 
-**Per-guide organization.** When planning a wedding, you only see wedding tasks and events. Switch to home buying, you see a different set. This isn't another productivity app—it's THE comprehensive solution for major life events.
+**Per-guide organization with luxury UX.** When planning a wedding, you only see wedding tasks and events. Switch to home buying, you see a different set. This isn't another productivity app—it's THE comprehensive solution for major life events, designed with the same premium attention to detail as Superhuman and Co-Star.
 
 ---
 
@@ -44,6 +44,7 @@ Track Progress (stay on course)
 - **Questions** - Systematically organized prompts covering everything you need to consider
 - **Readings** - Curated expert knowledge and advice
 - **Notes** - Your workspace for answers and planning
+- **Tracks** - Your active guides with progress tracking
 - **Axiom Engine** - Our AI refinement system that ensures 90%+ coverage through months of testing
 
 ---
@@ -60,317 +61,353 @@ Track Progress (stay on course)
 
 ## App Structure
 
-### Note Types
+### Core Views (Floating Dock Navigation)
 
-1. **Guide Notes** - Access to questions + readings for a specific life event
-2. **Blank Notes** - Standard note-taking space for freeform planning
+- **Guides** - Browse and manage your active tracks, access questions and readings
+- **Notes** - Freeform workspace for thoughts and planning
+- **Overview** - Premium progress visualizations across all tracks
+- **Calendar** - See all events across guides, filterable by track
+- **Tasks** - Kanban view of todos, filterable by track
 
-### Core Views (Left Sidebar)
+### The Guide Experience
 
-- **Notes** - Your workspace (guide notes + blank notes)
-- **Discover** - Browse available guides
-- **Library** - Browse all available readings
-- **Calendar** - See all events across guides, filterable by guide
-- **Tasks** - Kanban/list view of todos, filterable by guide
-- **Analytics** - Progress tracking per guide
-- **Settings** - User preferences and account
-
-### The 3-Panel Guide View
-
-```
-┌────────────────────────────────────────────────────────────┐
-│ [Wedding Planning ▾]  Notes  Calendar  Tasks  Analytics   │
-├──────────┬─────────────────────┬───────────────────────────┤
-│          │                     │                           │
-│Questions │   Your Answers      │   Readings                │
-│          │                     │                           │
-│ □ Budget │   [Text editor]     │   "Setting a Realistic    │
-│ □ Venue  │                     │    Wedding Budget"        │
-│ ✓ Guest  │   We want max       │                           │
-│   List   │   150 guests...     │   [Reading content...]    │
-│ □ Cater  │                     │                           │
-│ ...      │                     │                           │
-│          │   [Auto-saves]      │   [Related readings]      │
-└──────────┴─────────────────────┴───────────────────────────┘
-```
-
-**How it works:**
-- Left: Questions organized by category
-- Center: Your answers (auto-save per question)
-- Right: Expert readings related to the current topic
-- Split-screen allows learning + planning simultaneously
+The guide view provides an integrated workspace where you can:
+- Browse comprehensive questions organized by category
+- Answer questions with rich text editing
+- Read curated expert content
+- Create tasks and calendar events
+- Track your progress
 
 ---
 
 ## Brand Voice Framework
 
 ### Core Positioning
-**The Confident Guide for Life's Big Moments**
+**The Luxury Guide for Life's Big Moments**
 
-Templata sits at the intersection of accessible expertise and personal agency. You're not a typical productivity tool or knowledge repository—you're the structured playbook that saves months of research.
+Templata sits at the intersection of premium tools and human empowerment. You're not a typical productivity app—you're the sophisticated companion that makes complex life events feel manageable and even enjoyable.
 
 ### Voice Pillars
 
-**1. Reassuringly Knowledgeable**
-You know your stuff, but you're not intimidating about it.
+**1. Luxuriously Confident**
+You're premium by design, not by accident. Every detail matters.
 
 Sounds like:
-- "We've thought through the details so you don't have to"
-- "Everything you need, nothing you don't"
+- "Your life's biggest moments deserve better than Google and a spreadsheet"
+- "Premium insights, sophisticated design, zero overwhelm"
+- "We've obsessed over the details so you don't have to"
 
-Avoid:
-- Academic jargon or condescension
-- Overpromising ("We have ALL the answers!")
-- Anxiety-inducing language ("Don't miss these critical steps!")
+Embrace:
+- Premium positioning and luxury language
+- Confidence in the product's sophistication
+- References to premium brands (Superhuman, Co-Star, Linear)
 
-**2. Quietly Confident**
-Your value is self-evident. No need to oversell or use hype.
-
-Sounds like:
-- "90%+ of what you need, organized from day one"
-- "Months of research, compressed into one comprehensive guide"
-
-Avoid:
-- Exclamation points everywhere!!!
-- Superlatives (revolutionary! game-changing! incredible!)
-- Comparing yourself negatively to competitors
-
-**3. Practically Empathetic**
-You understand the overwhelm of tackling something new, but you focus on solutions, not stress.
+**2. Innovatively Thoughtful**
+You include features that aren't "necessary" but complete the experience—like Co-Star's beautiful data visualizations or Superhuman's keyboard shortcuts.
 
 Sounds like:
-- "Planning a wedding? You're not starting from zero anymore"
-- "The questions you didn't know to ask, already answered"
+- "Progress visualizations that make tracking feel like an experience"
+- "Category-coded tracks because aesthetics matter"
+- "Premium charts that turn your journey into art"
 
-Avoid:
-- Dwelling on pain points without offering relief
-- Being overly casual about serious life events
-- Corporate wellness-speak ("your journey," "empower yourself")
+Embrace:
+- Beautiful for the sake of beautiful
+- Innovative UX flourishes
+- Features that delight, not just function
 
-**4. Elegantly Efficient**
-Your design philosophy extends to your words—minimal, intentional, functional.
+**3. Sophisticatedly Empathetic**
+You understand the weight of big decisions, but you elevate the experience rather than dwelling on stress.
 
 Sounds like:
-- "Learn. Plan. Done."
-- "Questions on the left, answers on the right, clarity in between"
+- "Planning a wedding? Transform months of research into weeks of clarity"
+- "Career change complexity, simplified with sophistication"
 
-Avoid:
-- Flowery or philosophical language
-- Long-winded explanations
-- Cutesy or overly clever copy
+Embrace:
+- Elegant solutions to complex problems
+- Premium language that respects intelligence
+- Transformation narratives
+
+**4. Obsessively Detailed**
+Your refinement shows in every interaction—from the AI-curated questions to the color-coded progress rings.
+
+Sounds like:
+- "Every question tested through months of AI refinement"
+- "Six life categories, six progress dimensions, infinite clarity"
+- "Questions on one side, expert insights on the other, perfection in between"
+
+Embrace:
+- Attention to craft and detail
+- Design philosophy as product philosophy
+- Premium positioning through quality
 
 ### Voice Characteristics
 
 **Tone Spectrum:**
-- Informational content: 70% authoritative, 30% warm
-- Onboarding/tutorials: 60% encouraging, 40% instructional
-- Marketing/landing pages: 50% confident, 50% relatable
-- Error states: 80% helpful, 20% apologetic
+- Marketing/landing pages: 70% aspirational, 30% informative
+- Product experience: 60% sophisticated, 40% helpful
+- Onboarding: 50% exciting, 50% guiding
+- Analytics/overview: 80% premium, 20% factual
 
 **Sentence Structure:**
-- Lean toward shorter, punchier sentences
-- Use fragments strategically for emphasis
-- Front-load the value in every sentence
+- Mix punchy statements with flowing descriptions
+- Use sophisticated vocabulary without being pretentious
+- Create rhythm and flow in copy
+- Front-load value but allow for elegance
 
 **POV:**
-- Default to "you" (user-focused)
-- Use "we" sparingly, mainly for product capabilities
-- Avoid "I" entirely
+- "You" for aspiration and guidance
+- "Your" for ownership and empowerment
+- "We" for craft and sophistication
 
 ---
 
 ## Sample Voice Applications
 
 ### Homepage Hero
-❌ "Plan life's biggest moments with confidence and ease using our revolutionary AI-powered platform!"
+❌ "Plan life's biggest moments with our simple, easy-to-use tool"
 
-✅ "Wedding planning. Home buying. Career pivots. Get a comprehensive playbook for any major life event—no months of research required."
+✅ "Wedding planning. Career pivots. Home buying. Transform life's biggest moments from overwhelming to exhilarating with comprehensive guides, premium analytics, and sophisticated design."
 
 ### Feature Description
-❌ "Our amazing split-screen view lets you seamlessly access both questions and readings simultaneously!"
+❌ "See your progress in a simple dashboard"
 
-✅ "Questions on one side. Expert readings on the other. Everything you need to make informed decisions, in one view."
+✅ "Premium progress visualizations transform your journey into art. Radial rings show completion per track. Radar charts reveal category focus. Timeline graphs trace your activity over time."
 
 ### Empty State
-❌ "Oops! Looks like you haven't started any guides yet. Why not explore our library and begin your journey?"
+❌ "No guides yet. Start by browsing the library."
 
-✅ "No guides yet. Browse the library to find your starting point."
+✅ "Your dashboard awaits its first guide. Explore sophisticated frameworks for life's biggest moments."
 
-### Axiom Engine Explanation
-❌ "Our incredible AI technology uses revolutionary machine learning to generate the most comprehensive questions ever created!"
+### Overview Analytics
+❌ "Track your progress with charts"
 
-✅ "Months of AI refinement to ensure 90%+ coverage. Every question tested, every gap addressed."
+✅ "Six categories. Three visualizations. One sophisticated view of your entire journey. Watch your progress unfold through premium analytics designed to inspire, not just inform."
 
 ---
 
 ## Competitive Positioning
 
 ### vs. Notion
-- **Notion:** Blank pages, you figure it out
-- **Templata:** Comprehensive questions, expert readings, nothing missed
+- **Notion:** Blank pages, endless possibilities, overwhelming choices
+- **Templata:** Curated questions, expert readings, premium experience out of the box
+
+### vs. Basic Productivity Apps
+- **Other apps:** Generic task lists and calendars
+- **Templata:** Per-guide organization with luxury analytics and sophisticated design
 
 ### vs. Google/Research
-- **Google:** Scattered info, you synthesize
-- **Templata:** Pre-synthesized expert knowledge, organized by what you need to decide
+- **Google:** Scattered information, DIY synthesis, endless tabs
+- **Templata:** Pre-synthesized expert knowledge with premium UX
 
 ### vs. Hiring a Consultant
-- **Consultant:** $150-500/hr, limited availability
-- **Templata:** $9-15/month, always available, 90%+ comprehensive
+- **Consultant:** $150-500/hr, limited availability, generic advice
+- **Templata:** $15-30/month, always available, 90%+ comprehensive, beautifully designed
 
-### vs. Event-Specific Tools
-- **Specific tools:** One-off, disconnected, limited scope
-- **Templata:** Unified system for ALL life events, integrated planning
-
-**Positioning statement:** "Superhuman for life's biggest moments"—premium, focused, exceptional at one thing.
+**Positioning statement:** "Superhuman meets Co-Star for life's biggest moments"—premium, innovative, exceptional at making complexity beautiful.
 
 ---
 
 ## Design Principles
 
 ### Visual Style
-- Clean, professional aesthetic (think Stripe, Linear, Superhuman)
-- Generous whitespace
-- 3-panel split screen for guide view
-- Simple color palette (1-2 accent colors max)
-- Sharp, intentional UI (not playful)
+- **Premium aesthetic** (think Superhuman, Co-Star, Linear, Arc browser)
+- Generous whitespace with intentional density
+- Floating dock navigation (inspired by macOS)
+- Rich color coding by category (6 distinct colors for life domains)
+- Sophisticated data visualizations (charts that inspire)
+- Premium interactions and micro-animations
+
+### What to Embrace
+- **Beautiful data visualizations** (radial progress, radar charts, timeline graphs)
+- **Category color coding** (blue for career, green for finance, orange for wellness, etc.)
+- **Luxury micro-interactions** (smooth transitions, delightful hover states)
+- **Premium typography** (hierarchy that guides and delights)
+- **Innovative UX patterns** (floating docks, split views, track filtering)
 
 ### What to Avoid
-- Icon-only navigation without context
-- Excessive rounded corners (too playful)
-- Cutesy/consumer-app design language
-- Too many view transitions/animations
-- Overly colorful/expressive icons
+- Generic productivity tool aesthetics
+- Overly playful/childish design language
+- Bare-minimum functionality without polish
+- Ignoring the "unnecessary" premium touches that complete the experience
 
 ### The "Feel"
-- **Should feel like:** A professional consultant you hired
-- **Should NOT feel like:** A fun productivity toy
-- **References:** Superhuman (email), Linear (project management), Stripe (payments)
+- **Should feel like:** Superhuman if it planned your wedding
+- **Should NOT feel like:** A basic todo app with a guide attached
+- **References:**
+  - **Superhuman** (premium email with sophisticated shortcuts)
+  - **Co-Star** (luxury astrology with beautiful data viz)
+  - **Linear** (project management as art)
+  - **Arc** (browser that reimagines browsing)
 
 ---
 
 ## Key Features
 
 ### Core Loop Features
-- Guide browser/discovery
-- 3-panel guide view (Questions | Answers | Readings)
-- Per-guide calendar events
-- Per-guide tasks/todos
-- Blank notes for freeform planning
-- Guide progress tracking
+- Guide browser/discovery with category filtering
+- Questions organized by category with progress tracking
+- Rich text editor for answers (auto-save)
+- Curated expert readings integrated per topic
+- Per-guide calendar events with color coding
+- Per-guide kanban tasks
+- Freeform notes for additional planning
+
+### Premium Analytics Features
+- **Overview Dashboard** with three visualization modes:
+  - **Timeline Chart**: Activity over time per track
+  - **By Track Chart**: Radial progress rings showing completion % per track
+  - **By Category Chart**: Radar showing track distribution across 6 life categories
+- Category-based color coding throughout the app
+- Progress percentages and completion tracking
+- Archive system for completed guides
 
 ### Productivity Features
-- Calendar view (cross-guide, filterable)
-- Tasks view (kanban/list, filterable)
-- Analytics dashboard (% complete, questions answered, readings read)
-- Archive for completed guides
-- Settings and preferences
+- Calendar view (cross-guide, filterable by track)
+- Tasks view (kanban, filterable by track)
+- Track selector with visual progress badges
+- Quick actions and keyboard shortcuts
+- Dark/light theme toggle
 
 ### Content Features
-- Discover page (browse available guides)
-- Library page (browse all readings)
-- Search (find questions/readings across guides)
-- Categories (organize guides by type: Life Events, Career, Financial, Health)
+- Comprehensive guide library
+- Category-organized browsing
+- Search across questions and readings
+- Curated readings with 1-minute and full-length options
+- Expert-written content refined by AI
 
 ---
 
 ## The Value Proposition
 
 **One-sentence vision:**
-"Templata ensures you never have to worry about missing something important during life's biggest moments."
+"Templata transforms life's biggest moments from overwhelming to exhilarating through comprehensive guides, premium analytics, and sophisticated design."
 
 **Two-sentence pitch:**
-"Planning a wedding, buying a home, or changing careers? Templata gives you comprehensive questions covering 90%+ of what you need to consider, expert readings to guide your decisions, and integrated planning tools to execute—all in one place."
+"Planning a wedding, buying a home, or changing careers? Templata gives you AI-refined questions covering 90%+ of what you need to consider, expert readings to guide decisions, and premium analytics that make progress feel like an experience—all wrapped in luxury UX."
 
 ---
 
-## Voice Don'ts (Critical)
+## Voice Don'ts (Updated)
 
-1. Never sound desperate for attention (no "Wait!" "Stop!" "You won't believe...")
-2. Never infantilize users (no "Let's make planning fun!")
-3. Never apologize for AI (it's a feature, not a limitation—lean into the curation and testing)
+1. Never sound generic or basic (you're premium, not budget)
+2. Never apologize for sophisticated design (it's your differentiator)
+3. Never downplay the "unnecessary" features (they complete the luxury experience)
 4. Never claim to replace human expertise entirely (you're the 90%, not the 100%)
-5. Never use motivation-speak (no "You got this!" "Crush your goals!")
-6. Never emphasize "first time" language (limits use case - anyone can use this)
+5. Never use motivation-speak from basic productivity apps (no "You got this!")
+6. Never compromise on design quality for speed (craft matters)
+
+---
+
+## Voice Do's (Critical)
+
+1. Embrace premium positioning and luxury language
+2. Celebrate the sophisticated design and innovative features
+3. Highlight the "unnecessary" premium touches (they're the brand)
+4. Reference premium products (Superhuman, Co-Star) to set expectations
+5. Use aspirational language that elevates the user experience
+6. Own the sophistication—you're not a basic productivity tool
 
 ---
 
 ## The Litmus Test
 
-Before any copy goes live, ask:
+Before any feature or copy goes live, ask:
 
-1. Would someone who's overwhelmed find this calming rather than adding to the noise?
-2. Does this sound like earned confidence rather than marketing hype?
-3. Could this sentence be shorter without losing meaning?
-4. Does this respect the user's intelligence while acknowledging they need comprehensive guidance?
+1. Does this feel premium and sophisticated, or generic and basic?
+2. Would someone compare this experience to Superhuman or Co-Star?
+3. Are we including thoughtful details that aren't "necessary" but complete the experience?
+4. Does this elevate life's big moments rather than just track them?
 
 If yes to all four, you're on-brand.
 
 ---
 
-## Use Cases (Scalable Model)
+## Premium Features (The "Unnecessary" Essentials)
 
-Templata works for ANY major life event:
+These features aren't strictly necessary for functionality, but they complete the luxury experience:
+
+### Already Built
+- **Premium progress visualizations** (radial rings, radar charts, timeline graphs)
+- **Category color coding** (6 distinct colors for life domains)
+- **Floating dock navigation** (macOS-inspired, sophisticated)
+- **Smooth view transitions** (framer-motion animations)
+- **Track filtering everywhere** (consistent UX pattern)
+
+### Future Considerations
+- **Keyboard shortcuts** (Superhuman-style command palette)
+- **Premium data exports** (beautiful PDFs of your journey)
+- **Shareable progress views** (visual summaries for collaborators)
+- **Advanced analytics** (insights and patterns in your planning)
+- **Premium themes** (beyond light/dark)
+
+---
+
+## Use Cases (Scalable Premium Model)
+
+Templata works for ANY major life event, delivered with luxury UX:
 
 **Personal Life:**
 - Wedding planning
 - Home buying
 - Parenting
-- Divorce
-- Career change
-- Moving/relocation
+- Divorce navigation
+- Career pivots
+- Major relocations
 
 **Professional:**
 - Starting a business
-- Launching a product
-- Fundraising
+- Product launches
+- Fundraising rounds
 - Team building
 
-**Health:**
+**Health & Wellness:**
 - Chronic illness management
 - Surgery recovery
-- Mental health support
+- Mental health journeys
+- Fitness transformations
 
 **Financial:**
 - Retirement planning
 - Investment strategy
-- Debt payoff
+- Debt payoff plans
 - Major purchases
 
-**Target:** 1000+ guides covering the full spectrum of life's biggest decisions.
+**Target:** 1000+ guides, each with the same premium experience and comprehensive coverage.
 
 ---
 
 ## Why This Wins
 
-### 1. Clear Positioning
-Not "another productivity app" competing with Notion/Obsidian. THE solution for major life events. Specific, defensible positioning.
+### 1. Premium Positioning
+Not "another guide app" but THE luxury solution for life's biggest moments. Positioned alongside Superhuman and Co-Star as premium-but-accessible.
 
-### 2. Focused UX
-Core loop is obvious within 30 seconds: Pick guide → Answer questions → Read expert content → Plan with calendar/tasks.
+### 2. Sophisticated UX
+The floating dock, progress visualizations, and category color coding aren't just functional—they're beautiful. The experience matches the premium pricing.
 
 ### 3. True Differentiation
 Nobody else has:
-- Comprehensive questions (90%+ guarantee)
-- AI-refined over months (Axiom Engine, not generic GPT)
-- Per-guide calendar/task integration
-- Questions + Readings in one seamless experience
+- Comprehensive questions (90%+ guarantee via Axiom Engine)
+- Premium analytics with multiple visualization modes
+- Per-guide organization with luxury UX
+- Category-based color coding throughout
+- Questions + Readings + Planning in one sophisticated experience
 
-### 4. Built-in Trust
-The Axiom Engine explains your methodology and builds credibility. Users understand WHY your AI content is trustworthy.
+### 4. Built-in Trust Through Craft
+The attention to design detail signals the attention to content quality. Users trust the Axiom Engine because they experience the craft everywhere.
 
-### 5. Premium Feel
-Professional aesthetic + comprehensive content = premium positioning. You can charge more because you're saving people months of research and anxiety.
+### 5. Premium Feel = Premium Pricing
+Sophisticated aesthetic + comprehensive content + innovative features = premium positioning. You can charge $15-30/month because you're not just saving research time—you're elevating the entire experience.
 
 ---
 
 ## This Document's Purpose
 
-This is the definitive reference for what Templata is, how it works, and how to communicate about it. Use this when:
+This is the definitive reference for Templata's premium positioning, luxury design philosophy, and brand voice. Use this when:
 
 - Writing marketing copy
 - Designing new features
 - Making product decisions
 - Creating user-facing content
-- Explaining the product to others
+- Evaluating if something is "on-brand"
 
-Everything should align with the vision, voice, and principles outlined here.
+Everything should align with the premium, sophisticated, innovative vision outlined here. When in doubt, ask: "Would Superhuman or Co-Star do this?"
