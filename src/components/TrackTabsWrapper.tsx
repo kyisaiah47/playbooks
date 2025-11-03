@@ -3,6 +3,7 @@
 import { useState, useEffect, ReactNode } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { FolderOpen } from 'lucide-react';
+import { useDataCache } from '@/contexts/DataCacheContext';
 
 interface Track {
   id: string;
@@ -30,57 +31,40 @@ export function TrackTabsWrapper({
   renderView,
   renderBrowseMode,
 }: TrackTabsWrapperProps) {
+  const { tracks: cachedTracks, fetchTracks } = useDataCache();
   const [tracks, setTracks] = useState<Track[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
-    if (selectedTrackIds.length > 0) {
-      fetchTracks();
-    } else {
-      setInitialLoad(false);
-    }
-  }, [selectedTrackIds]);
-
-  async function fetchTracks() {
-    try {
-      setLoading(true);
-      const res = await fetch('/api/tracks?archived=false');
-
-      if (!res.ok) {
-        if (res.status === 401) {
-          setTracks([]);
-          setInitialLoad(false);
-          return;
-        }
-        throw new Error('Failed to fetch tracks');
+    async function loadTracks() {
+      if (selectedTrackIds.length === 0) {
+        setTracks([]);
+        return;
       }
 
-      const data = await res.json();
-      const allTracks = data.tracks || [];
+      // Try cached tracks first
+      if (cachedTracks && cachedTracks.length > 0) {
+        const selectedTracks = cachedTracks.filter((t: Track) =>
+          selectedTrackIds.includes(t.id)
+        );
+        setTracks(selectedTracks);
+        return;
+      }
 
-      // Filter to only selected tracks
-      const selectedTracks = allTracks.filter((t: Track) =>
-        selectedTrackIds.includes(t.id)
-      );
-      setTracks(selectedTracks);
-      setInitialLoad(false);
-    } catch (error) {
-      console.error('Error fetching tracks:', error);
-      setInitialLoad(false);
-    } finally {
-      setLoading(false);
+      // Only fetch if not in cache
+      try {
+        const allTracks = await fetchTracks(false);
+        const selectedTracks = allTracks.filter((t: Track) =>
+          selectedTrackIds.includes(t.id)
+        );
+        setTracks(selectedTracks);
+      } catch (error) {
+        console.error('Error loading tracks:', error);
+        setTracks([]);
+      }
     }
-  }
 
-  // Show loading on initial page load while fetching tracks from localStorage
-  if (initialLoad && selectedTrackIds.length > 0) {
-    return (
-      <div className="h-full flex items-center justify-center">
-        <p className="text-muted-foreground">Loading tracks...</p>
-      </div>
-    );
-  }
+    loadTracks();
+  }, [selectedTrackIds, cachedTracks]);
 
   // Browse mode - no tracks selected
   if (selectedTrackIds.length === 0) {
