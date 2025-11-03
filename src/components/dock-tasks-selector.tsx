@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { format } from "date-fns"
-import { PlusIcon, ChevronDownIcon } from "lucide-react"
+import { PlusIcon, ChevronDownIcon, PencilIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -51,6 +51,7 @@ export function DockTasksSelector({
   const [detailsDialogOpen, setDetailsDialogOpen] = React.useState(false)
   const [editing, setEditing] = React.useState(false)
   const [deleting, setDeleting] = React.useState(false)
+  const [draggedTask, setDraggedTask] = React.useState<Task | null>(null)
 
   // Fetch tasks from the API
   React.useEffect(() => {
@@ -220,28 +221,45 @@ export function DockTasksSelector({
     }
   };
 
+  const handleDragStart = (task: Task) => {
+    setDraggedTask(task);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = async (newStatus: Task['status']) => {
+    if (!draggedTask) return;
+
+    if (draggedTask.status !== newStatus) {
+      await handleStatusChange(draggedTask.id, newStatus);
+    }
+    setDraggedTask(null);
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div className="w-[320px] py-4">
-      <div className="px-4 pb-4 flex items-center justify-between border-b">
-        <h3 className="text-sm font-semibold">Tasks</h3>
+    <div className="w-[280px] py-3">
+      <div className="px-3 pb-3 flex items-center justify-between border-b">
+        <h3 className="text-xs font-semibold">Tasks</h3>
         <Button
           variant="ghost"
           size="icon"
-          className="size-6"
+          className="size-5"
           title="Add Task"
           onClick={() => {
             resetForm();
             setCreateDialogOpen(true);
           }}
         >
-          <PlusIcon />
+          <PlusIcon className="h-3.5 w-3.5" />
           <span className="sr-only">Add Task</span>
         </Button>
       </div>
 
-      <div className="px-4 pt-4 flex flex-col gap-4">
+      <div className="px-3 pt-3 flex flex-col gap-3">
         {loading ? (
           <div className="text-muted-foreground text-xs text-center py-8">
             Loading tasks...
@@ -249,33 +267,49 @@ export function DockTasksSelector({
         ) : (
           <>
             {/* To Do Column */}
-            <div className="flex flex-col gap-2">
+            <div
+              className="flex flex-col gap-1.5"
+              onDragOver={handleDragOver}
+              onDrop={() => handleDrop('todo')}
+            >
               <div className="flex items-center justify-between">
-                <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                <h4 className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide">
                   To Do
                 </h4>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-[10px] text-muted-foreground">
                   {tasksByStatus.todo.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2 max-h-[200px] overflow-y-auto">
+              <div className="flex flex-col gap-1.5 max-h-[180px] overflow-y-auto">
                 {tasksByStatus.todo.length === 0 ? (
-                  <div className="text-xs text-muted-foreground text-center py-3 border border-dashed rounded-md">
+                  <div className="text-[10px] text-muted-foreground text-center py-2 border border-dashed rounded-md">
                     No tasks
                   </div>
                 ) : (
                   tasksByStatus.todo.map((task) => (
                     <div
                       key={task.id}
-                      onClick={() => handleTaskClick(task)}
-                      className="bg-muted hover:bg-muted/80 relative rounded-md p-2 text-sm cursor-pointer transition-colors border border-border/50"
+                      draggable
+                      onDragStart={() => handleDragStart(task)}
+                      className="bg-muted hover:bg-muted/80 relative rounded-md p-2 text-xs cursor-move transition-colors border border-border/50 flex items-start justify-between gap-1.5"
                     >
-                      <div className="font-medium mb-0.5 text-sm">{task.title}</div>
-                      {task.due_date && (
-                        <div className="text-xs text-muted-foreground">
-                          Due {format(new Date(task.due_date), 'MMM d')}
-                        </div>
-                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium mb-0.5 text-xs truncate">{task.title}</div>
+                        {task.due_date && (
+                          <div className="text-[10px] text-muted-foreground">
+                            Due {format(new Date(task.due_date), 'MMM d')}
+                          </div>
+                        )}
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleTaskClick(task);
+                        }}
+                        className="flex-shrink-0 p-0.5 hover:bg-background rounded transition-colors"
+                      >
+                        <PencilIcon className="h-3 w-3 text-muted-foreground" />
+                      </button>
                     </div>
                   ))
                 )}
@@ -283,33 +317,49 @@ export function DockTasksSelector({
             </div>
 
             {/* In Progress Column */}
-            <div className="flex flex-col gap-2">
+            <div
+              className="flex flex-col gap-1.5"
+              onDragOver={handleDragOver}
+              onDrop={() => handleDrop('in_progress')}
+            >
               <div className="flex items-center justify-between">
-                <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                <h4 className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide">
                   In Progress
                 </h4>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-[10px] text-muted-foreground">
                   {tasksByStatus.in_progress.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2 max-h-[200px] overflow-y-auto">
+              <div className="flex flex-col gap-1.5 max-h-[180px] overflow-y-auto">
                 {tasksByStatus.in_progress.length === 0 ? (
-                  <div className="text-xs text-muted-foreground text-center py-3 border border-dashed rounded-md">
+                  <div className="text-[10px] text-muted-foreground text-center py-2 border border-dashed rounded-md">
                     No tasks
                   </div>
                 ) : (
                   tasksByStatus.in_progress.map((task) => (
                     <div
                       key={task.id}
-                      onClick={() => handleTaskClick(task)}
-                      className="bg-blue-500/10 hover:bg-blue-500/20 relative rounded-md p-2 text-sm cursor-pointer transition-colors border border-blue-500/20"
+                      draggable
+                      onDragStart={() => handleDragStart(task)}
+                      className="bg-blue-500/10 hover:bg-blue-500/20 relative rounded-md p-2 text-xs cursor-move transition-colors border border-blue-500/20 flex items-start justify-between gap-1.5"
                     >
-                      <div className="font-medium mb-0.5 text-sm">{task.title}</div>
-                      {task.due_date && (
-                        <div className="text-xs text-muted-foreground">
-                          Due {format(new Date(task.due_date), 'MMM d')}
-                        </div>
-                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium mb-0.5 text-xs truncate">{task.title}</div>
+                        {task.due_date && (
+                          <div className="text-[10px] text-muted-foreground">
+                            Due {format(new Date(task.due_date), 'MMM d')}
+                          </div>
+                        )}
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleTaskClick(task);
+                        }}
+                        className="flex-shrink-0 p-0.5 hover:bg-background/50 rounded transition-colors"
+                      >
+                        <PencilIcon className="h-3 w-3 text-muted-foreground" />
+                      </button>
                     </div>
                   ))
                 )}
@@ -317,33 +367,49 @@ export function DockTasksSelector({
             </div>
 
             {/* Done Column */}
-            <div className="flex flex-col gap-2">
+            <div
+              className="flex flex-col gap-1.5"
+              onDragOver={handleDragOver}
+              onDrop={() => handleDrop('done')}
+            >
               <div className="flex items-center justify-between">
-                <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                <h4 className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide">
                   Done
                 </h4>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-[10px] text-muted-foreground">
                   {tasksByStatus.done.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2 max-h-[200px] overflow-y-auto">
+              <div className="flex flex-col gap-1.5 max-h-[180px] overflow-y-auto">
                 {tasksByStatus.done.length === 0 ? (
-                  <div className="text-xs text-muted-foreground text-center py-3 border border-dashed rounded-md">
+                  <div className="text-[10px] text-muted-foreground text-center py-2 border border-dashed rounded-md">
                     No tasks
                   </div>
                 ) : (
                   tasksByStatus.done.map((task) => (
                     <div
                       key={task.id}
-                      onClick={() => handleTaskClick(task)}
-                      className="bg-green-500/10 hover:bg-green-500/20 relative rounded-md p-2 text-sm cursor-pointer transition-colors border border-green-500/20 opacity-60"
+                      draggable
+                      onDragStart={() => handleDragStart(task)}
+                      className="bg-green-500/10 hover:bg-green-500/20 relative rounded-md p-2 text-xs cursor-move transition-colors border border-green-500/20 opacity-60 flex items-start justify-between gap-1.5"
                     >
-                      <div className="font-medium mb-0.5 text-sm line-through">{task.title}</div>
-                      {task.due_date && (
-                        <div className="text-xs text-muted-foreground">
-                          Due {format(new Date(task.due_date), 'MMM d')}
-                        </div>
-                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium mb-0.5 text-xs line-through truncate">{task.title}</div>
+                        {task.due_date && (
+                          <div className="text-[10px] text-muted-foreground">
+                            Due {format(new Date(task.due_date), 'MMM d')}
+                          </div>
+                        )}
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleTaskClick(task);
+                        }}
+                        className="flex-shrink-0 p-0.5 hover:bg-background/50 rounded transition-colors"
+                      >
+                        <PencilIcon className="h-3 w-3 text-muted-foreground" />
+                      </button>
                     </div>
                   ))
                 )}

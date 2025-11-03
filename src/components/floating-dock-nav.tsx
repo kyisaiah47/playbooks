@@ -335,7 +335,7 @@ const FloatingDockMobile = ({
                           <div>{item.icon}</div>
                         </button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-[320px] p-0 z-[100]" align="center" side="top" sideOffset={16}>
+                      <PopoverContent className="w-[280px] p-0 z-[100]" align="center" side="top" sideOffset={16}>
                         <DockTasksSelector
                           isOpen={true}
                           onClose={() => setTasksSelectorOpen(false)}
@@ -623,7 +623,7 @@ function IconContainer({
             {buttonContent}
           </button>
         </PopoverTrigger>
-        <PopoverContent className="w-[320px] p-0 z-[100]" align="start" side="top" sideOffset={16}>
+        <PopoverContent className="w-[280px] p-0 z-[100]" align="start" side="top" sideOffset={16}>
           <DockTasksSelector
             isOpen={true}
             onClose={() => setTasksSelectorOpen(false)}
