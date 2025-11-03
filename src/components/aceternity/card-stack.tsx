@@ -45,7 +45,7 @@ export const CardStack = ({
         return (
           <motion.div
             key={card.id}
-            className="absolute dark:bg-black bg-white h-60 w-96 p-4 border border-neutral-200 dark:border-white/[0.1] flex flex-col justify-between"
+            className="absolute dark:bg-black bg-white w-96 p-4 border border-neutral-200 dark:border-white/[0.1] flex flex-col gap-4"
             style={{
               transformOrigin: "top center",
             }}
@@ -55,7 +55,7 @@ export const CardStack = ({
               zIndex: cards.length - index, //  decrease z-index for the cards that are behind
             }}
           >
-            <div className="space-y-3">
+            <div className="space-y-1">
               <p className="text-neutral-400 font-normal dark:text-neutral-200">
                 {card.name}
               </p>
