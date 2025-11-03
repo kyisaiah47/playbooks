@@ -223,7 +223,7 @@ export function DockTasksSelector({
   if (!isOpen) return null;
 
   return (
-    <div className="w-[400px] py-4">
+    <div className="w-[900px] py-4">
       <div className="px-4 pb-4 flex items-center justify-between border-b">
         <h3 className="text-sm font-semibold">Tasks</h3>
         <Button
@@ -241,7 +241,7 @@ export function DockTasksSelector({
         </Button>
       </div>
 
-      <div className="px-4 pt-4 flex flex-col gap-4">
+      <div className="px-4 pt-4 flex gap-4">
         {loading ? (
           <div className="text-muted-foreground text-xs text-center py-8">
             Loading tasks...
@@ -249,8 +249,8 @@ export function DockTasksSelector({
         ) : (
           <>
             {/* To Do Column */}
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
+            <div className="flex-1 flex flex-col gap-2">
+              <div className="flex items-center justify-between px-2">
                 <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   To Do
                 </h4>
@@ -258,7 +258,7 @@ export function DockTasksSelector({
                   {tasksByStatus.todo.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto pr-2">
                 {tasksByStatus.todo.length === 0 ? (
                   <div className="text-xs text-muted-foreground text-center py-4 border border-dashed rounded-md">
                     No tasks
@@ -283,8 +283,8 @@ export function DockTasksSelector({
             </div>
 
             {/* In Progress Column */}
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
+            <div className="flex-1 flex flex-col gap-2">
+              <div className="flex items-center justify-between px-2">
                 <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   In Progress
                 </h4>
@@ -292,7 +292,7 @@ export function DockTasksSelector({
                   {tasksByStatus.in_progress.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto pr-2">
                 {tasksByStatus.in_progress.length === 0 ? (
                   <div className="text-xs text-muted-foreground text-center py-4 border border-dashed rounded-md">
                     No tasks
@@ -317,8 +317,8 @@ export function DockTasksSelector({
             </div>
 
             {/* Done Column */}
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
+            <div className="flex-1 flex flex-col gap-2">
+              <div className="flex items-center justify-between px-2">
                 <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Done
                 </h4>
@@ -326,7 +326,7 @@ export function DockTasksSelector({
                   {tasksByStatus.done.length}
                 </span>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto pr-2">
                 {tasksByStatus.done.length === 0 ? (
                   <div className="text-xs text-muted-foreground text-center py-4 border border-dashed rounded-md">
                     No tasks
