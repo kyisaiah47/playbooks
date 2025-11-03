@@ -1,134 +1,107 @@
-import React from "react";
+"use client";
 
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import * as LucideIcons from "lucide-react";
 
-const experiences = [
-  {
-    year: "2019 - PRESENT",
-    role: "SENIOR SOFTWARE ENGINEER",
-    company: "TECHNOLOGY INNOVATIONS CORP",
-  },
-  {
-    year: "2018 - 2020",
-    role: "FULL-STACK DEVELOPER",
-    company: "DIGITAL SOLUTIONS & STARTUP COLLABORATIONS",
-  },
-  {
-    year: "2017 - 2018",
-    role: "FRONTEND DEVELOPER",
-    company: "WEB CRAFT STUDIO",
-  },
-  {
-    year: "2015 - 2016",
-    role: "JUNIOR DEVELOPER",
-    company: "CODE FORGE LABS",
-  },
-  {
-    year: "2014 - 2015",
-    role: "INTERN DEVELOPER",
-    company: "INNOVATION TECH",
-  },
-];
+interface Guide {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  icon: string;
+  tags: string[];
+}
 
-const awards = [
-  {
-    year: "2015",
-    title: "BEST NEWCOMER DEVELOPER",
-    organization: "TECH EXCELLENCE AWARDS",
-  },
-  {
-    year: "2015",
-    title: "INNOVATION IN WEB DEVELOPMENT",
-    organization: "DIGITAL CREATORS UK",
-  },
-  {
-    year: "2016",
-    title: "OUTSTANDING CODE QUALITY",
-    organization: "BRITISH SOFTWARE ASSOCIATION",
-  },
-  {
-    year: "2017",
-    title: "RISING STAR IN TECH",
-    organization: "GLOBAL DEVELOPER AWARDS",
-  },
-  {
-    year: "2018",
-    title: "DEVELOPER OF THE YEAR",
-    organization: "CODE EXCELLENCE AWARDS",
-  },
-  {
-    year: "2019",
-    title: "BEST TECH TEAM LEADER",
-    organization: "UK SOFTWARE GUILD",
-  },
-  {
-    year: "2020",
-    title: "INNOVATION IN SOFTWARE ARCHITECTURE",
-    organization: "DIGITAL INNOVATION AWARDS",
-  },
-  {
-    year: "2021",
-    title: "EMERGING TECH LEADER",
-    organization: "LONDON TECH COUNCIL",
-  },
-  {
-    year: "2022",
-    title: "EXCELLENCE IN FULL-STACK DEVELOPMENT",
-    organization: "DEVELOPER WEEKLY",
-  },
-  {
-    year: "2023",
-    title: "BEST SOFTWARE ENGINEER",
-    organization: "EUROPEAN TECH & MEDIA",
-  },
-];
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  display_order: number;
+  count: number;
+}
 
 const List3 = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [guidesByCategory, setGuidesByCategory] = useState<Record<string, Guide[]>>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Fetch categories
+        const categoriesRes = await fetch('/api/guides');
+        const categoriesData = await categoriesRes.json();
+        const cats = categoriesData.categories || [];
+        setCategories(cats);
+
+        // Fetch guides for each category
+        const guidesData: Record<string, Guide[]> = {};
+        await Promise.all(
+          cats.map(async (cat: Category) => {
+            const guidesRes = await fetch(`/api/guides?category=${cat.id}`);
+            const data = await guidesRes.json();
+            guidesData[cat.id] = data.guides || [];
+          })
+        );
+        setGuidesByCategory(guidesData);
+      } catch (error) {
+        console.error('Error fetching guides:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-32">
+        <div className="container">
+          <div className="text-center">Loading...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-32">
       <div className="container">
         <div className="flex flex-col gap-12">
-          <div className="flex flex-col gap-5">
-            <span className="text-muted-foreground text-sm">/ CAREER PATH</span>
-            <h1 className="text-4xl md:text-6xl">
-              BUILDING SOLUTIONS,
-              <br /> SHAPING THE FUTURE
-            </h1>
-          </div>
-          <div className="flex flex-col gap-7">
-            <h2 className="text-xl">/ EXPERIENCE</h2>
-            <div>
-              {experiences.map((experience, idx) => (
-                <React.Fragment key={idx}>
-                  <Separator />
-                  <div className="my-2.5 grid gap-2.5 text-sm sm:grid-cols-3">
-                    <p className="text-muted-foreground">{experience.year}</p>
-                    <p>{experience.role}</p>
-                    <p className="text-muted-foreground">
-                      {experience.company}
-                    </p>
-                  </div>
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-col gap-7">
-            <h2 className="text-xl">/ ACHIEVEMENTS</h2>
-            <div>
-              {awards.map((award, idx) => (
-                <React.Fragment key={idx}>
-                  <Separator />
-                  <div className="my-2.5 grid gap-2.5 text-sm sm:grid-cols-3">
-                    <p className="text-muted-foreground">{award.year}</p>
-                    <p>{award.title}</p>
-                    <p className="text-muted-foreground">
-                      {award.organization}
-                    </p>
-                  </div>
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
+          {categories.map((category) => {
+            const guides = guidesByCategory[category.id] || [];
+            if (guides.length === 0) return null;
+
+            return (
+              <div key={category.id} className="flex flex-col gap-7">
+                <h2 className="text-xl">/ {category.name.toUpperCase()}</h2>
+                <div>
+                  {guides.map((guide, idx) => {
+                    // Get the icon component dynamically
+                    const IconComponent = guide.icon && (LucideIcons as any)[guide.icon];
+
+                    return (
+                      <React.Fragment key={guide.id}>
+                        <Separator />
+                        <Link href={`/guides/${guide.id}`}>
+                          <div className="my-2.5 grid gap-2.5 text-sm sm:grid-cols-3 hover:text-primary transition-colors cursor-pointer">
+                            <div className="text-muted-foreground flex items-center gap-2">
+                              {IconComponent && <IconComponent className="w-4 h-4" />}
+                            </div>
+                            <p className="font-medium">{guide.name}</p>
+                            <p className="text-muted-foreground">
+                              {guide.description}
+                            </p>
+                          </div>
+                        </Link>
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

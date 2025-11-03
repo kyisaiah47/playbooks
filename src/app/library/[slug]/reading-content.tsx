@@ -328,26 +328,59 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
             );
           }
 
-          // Check for pattern: "**Header:**\n- item\n- item" or "Header:\n- item"
+          // Check for bullets after a colon header
           const lines = paragraph.split('\n');
           const firstLine = lines[0];
-          const hasColonHeader = firstLine.includes(':');
-          const restOfLines = lines.slice(1);
-          const bulletLines = restOfLines.filter(line => line.trim().startsWith('- '));
 
-          if (hasColonHeader && bulletLines.length > 0) {
-            return (
-              <div key={index} className="my-4">
-                <p className="text-sm font-semibold text-foreground mb-2">{renderText(firstLine)}</p>
-                <ul className="space-y-1.5 ml-5 list-disc">
-                  {bulletLines.map((line, itemIndex) => (
-                    <li key={itemIndex} className="text-sm text-foreground/90">
-                      {renderText(line.replace(/^[-•]\s*/, '').trim())}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
+          // Look for pattern ": - " in first line (the ** for bold are BEFORE the text, not after the colon!)
+          const colonDashPattern = /:\s+-\s+/;
+          const hasInlineBulletsOnFirstLine = colonDashPattern.test(firstLine);
+
+          if (firstLine.includes(':') && (hasInlineBulletsOnFirstLine || lines.length > 1)) {
+            let allItems: string[] = [];
+            let header = '';
+
+            if (hasInlineBulletsOnFirstLine) {
+              // Split at FIRST occurrence of ": - " or ":** - " or ":* - "
+              const match = firstLine.match(colonDashPattern);
+              if (match) {
+                const splitIndex = firstLine.indexOf(match[0]);
+                header = firstLine.substring(0, splitIndex + 1); // Keep up to and including the colon
+                const bulletsText = firstLine.substring(splitIndex + match[0].length);
+                const inlineBullets = bulletsText.split(' - ').map(item => item.trim()).filter(item => item.length > 0);
+                allItems.push(...inlineBullets);
+              }
+            } else {
+              header = firstLine;
+            }
+
+            // Get ALL non-empty lines from following lines
+            const restOfLines = lines.slice(1);
+            for (const line of restOfLines) {
+              const trimmed = line.trim();
+              if (trimmed.length === 0) continue;
+
+              // Add ALL lines as bullets - strip leading "- " if present
+              const bulletContent = trimmed.replace(/^[-•]\s+/, '');
+              if (bulletContent.length > 0) {
+                allItems.push(bulletContent);
+              }
+            }
+
+            if (allItems.length > 0) {
+              return (
+                <div key={index} className="my-4">
+                  <p className="text-sm font-semibold text-foreground mb-2">{renderText(header)}</p>
+                  <ul className="space-y-1.5 ml-5 list-disc">
+                    {allItems.map((item, itemIndex) => (
+                      <li key={itemIndex} className="text-sm text-foreground/90">
+                        {renderText(item)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            }
           }
 
           // Bullet points that start with - or •

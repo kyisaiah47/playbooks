@@ -1,13 +1,13 @@
 "use client";
 
-import { Hero219 } from "@/components/hero219";
+import { GuidesHero } from "@/components/guides-hero";
 import { List3 } from "@/components/list3";
 import { PageLayout } from "@/components/layout";
 
 export default function GuidesPage() {
 	return (
 		<PageLayout>
-			<Hero219 />
+			<GuidesHero />
 			<List3 />
 		</PageLayout>
 	);
