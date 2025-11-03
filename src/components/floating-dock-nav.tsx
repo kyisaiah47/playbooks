@@ -30,11 +30,22 @@ import { DockTrackSelector } from "@/components/dock-track-selector";
 import { DockCalendarSelector } from "@/components/dock-calendar-selector";
 import { DockTasksSelector } from "@/components/dock-tasks-selector";
 import { SettingsDialog } from "@/components/settings-dialog";
+import { CreateTrackDialog } from "@/components/create-track-dialog";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 type View = 'guides' | 'notes' | 'overview' | 'calendar' | 'tasks';
 
@@ -52,6 +63,18 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
   const [calendarSelectorOpen, setCalendarSelectorOpen] = useState(false);
   const [tasksSelectorOpen, setTasksSelectorOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
+  const [createTrackDialogOpen, setCreateTrackDialogOpen] = useState(false);
+  const [trackRefreshKey, setTrackRefreshKey] = useState(0);
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   const tabs = [
     {
@@ -105,6 +128,12 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
       onClick: () => setSettingsOpen(true),
       isActive: false,
     },
+    {
+      title: "Logout",
+      icon: <LogOut />,
+      onClick: () => setLogoutDialogOpen(true),
+      isActive: false,
+    },
   ];
   return (
     <section>
@@ -121,9 +150,35 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
           setTasksSelectorOpen={setTasksSelectorOpen}
           selectedTrackIds={selectedTrackIds}
           onTrackSelectionChange={onTrackSelectionChange}
+          onOpenCreateDialog={() => {
+            setCreateTrackDialogOpen(true);
+            setTrackSelectorOpen(false);
+          }}
+          trackRefreshKey={trackRefreshKey}
         />
       </div>
       <SettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
+      <CreateTrackDialog
+        open={createTrackDialogOpen}
+        onOpenChange={setCreateTrackDialogOpen}
+        onTrackCreated={() => {
+          setTrackRefreshKey(prev => prev + 1);
+        }}
+      />
+      <AlertDialog open={logoutDialogOpen} onOpenChange={setLogoutDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure you want to logout?</AlertDialogTitle>
+            <AlertDialogDescription>
+              You'll need to sign in again to access your tracks and data.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleLogout}>Logout</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </section>
   );
 };
@@ -146,6 +201,8 @@ const FloatingDock = ({
   setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
+  onOpenCreateDialog,
+  trackRefreshKey,
 }: {
   items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean; isTasksSelector?: boolean }[];
   desktopClassName?: string;
@@ -158,6 +215,8 @@ const FloatingDock = ({
   setTasksSelectorOpen: (open: boolean) => void;
   selectedTrackIds: string[];
   onTrackSelectionChange: (trackIds: string[]) => void;
+  onOpenCreateDialog: () => void;
+  trackRefreshKey: number;
 }) => {
   return (
     <>
@@ -172,6 +231,8 @@ const FloatingDock = ({
         setTasksSelectorOpen={setTasksSelectorOpen}
         selectedTrackIds={selectedTrackIds}
         onTrackSelectionChange={onTrackSelectionChange}
+        onOpenCreateDialog={onOpenCreateDialog}
+        trackRefreshKey={trackRefreshKey}
       />
       <FloatingDockMobile
         items={items}
@@ -184,6 +245,8 @@ const FloatingDock = ({
         setTasksSelectorOpen={setTasksSelectorOpen}
         selectedTrackIds={selectedTrackIds}
         onTrackSelectionChange={onTrackSelectionChange}
+        onOpenCreateDialog={onOpenCreateDialog}
+        trackRefreshKey={trackRefreshKey}
       />
     </>
   );
@@ -200,6 +263,8 @@ const FloatingDockMobile = ({
   setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
+  onOpenCreateDialog,
+  trackRefreshKey,
 }: {
   items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean; isTasksSelector?: boolean }[];
   className?: string;
@@ -211,6 +276,8 @@ const FloatingDockMobile = ({
   setTasksSelectorOpen: (open: boolean) => void;
   selectedTrackIds: string[];
   onTrackSelectionChange: (trackIds: string[]) => void;
+  onOpenCreateDialog: () => void;
+  trackRefreshKey: number;
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -258,6 +325,8 @@ const FloatingDockMobile = ({
                           isOpen={true}
                           onClose={() => setTrackSelectorOpen(false)}
                           noWrapper={true}
+                          onOpenCreateDialog={onOpenCreateDialog}
+                          refreshKey={trackRefreshKey}
                         />
                       </PopoverContent>
                     </Popover>
@@ -403,6 +472,8 @@ const FloatingDockDesktop = ({
   setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
+  onOpenCreateDialog,
+  trackRefreshKey,
 }: {
   items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean; isTrackSelector?: boolean; isCalendarSelector?: boolean; isTasksSelector?: boolean }[];
   className?: string;
@@ -414,6 +485,8 @@ const FloatingDockDesktop = ({
   setTasksSelectorOpen: (open: boolean) => void;
   selectedTrackIds: string[];
   onTrackSelectionChange: (trackIds: string[]) => void;
+  onOpenCreateDialog: () => void;
+  trackRefreshKey: number;
 }) => {
   const mouseX = useMotionValue(Infinity);
   return (
@@ -443,6 +516,8 @@ const FloatingDockDesktop = ({
             setTasksSelectorOpen={setTasksSelectorOpen}
             selectedTrackIds={selectedTrackIds}
             onTrackSelectionChange={onTrackSelectionChange}
+            onOpenCreateDialog={onOpenCreateDialog}
+            trackRefreshKey={trackRefreshKey}
           />
         ))}
       </motion.div>
@@ -467,6 +542,8 @@ function IconContainer({
   setTasksSelectorOpen,
   selectedTrackIds,
   onTrackSelectionChange,
+  onOpenCreateDialog,
+  trackRefreshKey,
 }: {
   mouseX: MotionValue;
   title: string;
@@ -484,6 +561,8 @@ function IconContainer({
   setTasksSelectorOpen?: (open: boolean) => void;
   selectedTrackIds?: string[];
   onTrackSelectionChange?: (trackIds: string[]) => void;
+  onOpenCreateDialog?: () => void;
+  trackRefreshKey?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -590,6 +669,8 @@ function IconContainer({
             isOpen={true}
             onClose={() => setTrackSelectorOpen(false)}
             noWrapper={true}
+            onOpenCreateDialog={onOpenCreateDialog}
+            refreshKey={trackRefreshKey}
           />
         </PopoverContent>
       </Popover>
