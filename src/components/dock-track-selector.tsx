@@ -46,13 +46,15 @@ interface DockTrackSelectorProps {
   onSelectionChange: (trackIds: string[]) => void;
   isOpen: boolean;
   onClose: () => void;
+  noWrapper?: boolean;
 }
 
 export function DockTrackSelector({
   selectedTrackIds,
   onSelectionChange,
   isOpen,
-  onClose
+  onClose,
+  noWrapper = false
 }: DockTrackSelectorProps) {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(true);
@@ -161,74 +163,82 @@ export function DockTrackSelector({
 
   if (!isOpen) return null;
 
-  return (
-    <>
-      <div className="w-[280px] bg-background border border-border rounded-xl shadow-lg overflow-hidden">
-        <Command>
-          <CommandInput placeholder="Search tracks..." />
-          <CommandList>
-            {loading ? (
-              <div className="py-6 text-center text-sm">
-                <Loader2 className="w-4 h-4 animate-spin mx-auto" />
-              </div>
-            ) : (
+  const commandContent = (
+    <Command>
+      <CommandInput placeholder="Search tracks..." />
+      <CommandList>
+        {loading ? (
+          <div className="py-6 text-center text-sm">
+            <Loader2 className="w-4 h-4 animate-spin mx-auto" />
+          </div>
+        ) : (
+          <>
+            {tracks.length > 0 && (
               <>
-                {tracks.length > 0 && (
-                  <>
-                    <CommandGroup>
-                      {tracks.map((track) => {
-                        const displayName = track.custom_name || track.guides.name;
-                        const isSelected = selectedTrackIds.includes(track.id);
-
-                        return (
-                          <CommandItem
-                            key={track.id}
-                            onSelect={() => handleToggleTrack(track.id)}
-                          >
-                            <Checkbox
-                              checked={isSelected}
-                              className="mr-2"
-                            />
-                            <div className="flex-1 min-w-0">
-                              <div className="truncate text-sm">{displayName}</div>
-                              {track.custom_name && track.guides && (
-                                <div className="text-xs text-muted-foreground truncate">
-                                  {track.guides.name}
-                                </div>
-                              )}
-                            </div>
-                            <Badge variant="outline" className="ml-2 text-xs">
-                              {track.progress}%
-                            </Badge>
-                          </CommandItem>
-                        );
-                      })}
-                    </CommandGroup>
-                    <CommandSeparator />
-                  </>
-                )}
                 <CommandGroup>
-                  <CommandItem
-                    onSelect={() => {
-                      onClose();
-                      fetchGuides();
-                      setCreateDialogOpen(true);
-                    }}
-                  >
-                    <Plus className="mr-2 h-4 w-4" />
-                    <span>New Track</span>
-                  </CommandItem>
+                  {tracks.map((track) => {
+                    const displayName = track.custom_name || track.guides.name;
+                    const isSelected = selectedTrackIds.includes(track.id);
+
+                    return (
+                      <CommandItem
+                        key={track.id}
+                        onSelect={() => handleToggleTrack(track.id)}
+                      >
+                        <Checkbox
+                          checked={isSelected}
+                          className="mr-2"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="truncate text-sm">{displayName}</div>
+                          {track.custom_name && track.guides && (
+                            <div className="text-xs text-muted-foreground truncate">
+                              {track.guides.name}
+                            </div>
+                          )}
+                        </div>
+                        <Badge variant="outline" className="ml-2 text-xs">
+                          {track.progress}%
+                        </Badge>
+                      </CommandItem>
+                    );
+                  })}
                 </CommandGroup>
-                {tracks.length === 0 && (
-                  <div className="py-2 px-2 text-center text-xs text-muted-foreground">
-                    No tracks yet. Create your first one!
-                  </div>
-                )}
+                <CommandSeparator />
               </>
             )}
-          </CommandList>
-        </Command>
-      </div>
+            <CommandGroup>
+              <CommandItem
+                onSelect={() => {
+                  onClose();
+                  fetchGuides();
+                  setCreateDialogOpen(true);
+                }}
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                <span>New Track</span>
+              </CommandItem>
+            </CommandGroup>
+            {tracks.length === 0 && (
+              <div className="py-2 px-2 text-center text-xs text-muted-foreground">
+                No tracks yet. Create your first one!
+              </div>
+            )}
+          </>
+        )}
+      </CommandList>
+    </Command>
+  );
+
+  return (
+    <>
+      {noWrapper ? (
+        commandContent
+      ) : (
+        <div className="w-[280px] bg-background border border-border rounded-xl shadow-lg overflow-hidden">
+          {commandContent}
+        </div>
+      )}
 
       {/* Create Track Dialog */}
       <Dialog open={createDialogOpen} onOpenChange={(open) => {

@@ -214,12 +214,13 @@ const FloatingDockMobile = ({
                           <div>{item.icon}</div>
                         </button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-[280px] p-0" align="center" side="top">
+                      <PopoverContent className="w-[280px] p-0 z-[100]" align="center" side="top">
                         <DockTrackSelector
                           selectedTrackIds={selectedTrackIds}
                           onSelectionChange={onTrackSelectionChange}
                           isOpen={true}
                           onClose={() => setTrackSelectorOpen(false)}
+                          noWrapper={true}
                         />
                       </PopoverContent>
                     </Popover>
@@ -436,12 +437,13 @@ function IconContainer({
             {buttonContent}
           </button>
         </PopoverTrigger>
-        <PopoverContent className="w-[280px] p-0" align="start" side="top">
+        <PopoverContent className="w-[280px] p-0 z-[100]" align="start" side="top">
           <DockTrackSelector
             selectedTrackIds={selectedTrackIds}
             onSelectionChange={onTrackSelectionChange}
             isOpen={true}
             onClose={() => setTrackSelectorOpen(false)}
+            noWrapper={true}
           />
         </PopoverContent>
       </Popover>
