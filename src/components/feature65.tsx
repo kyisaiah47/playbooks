@@ -112,7 +112,7 @@ const Feature65 = () => {
                 </div>
               </div>
               <div
-                className={` ${activeTabId === index ? "flex" : "hidden"} bg-muted-foreground/5 h-full flex-col items-start justify-between gap-8 rounded-xl p-4 transition-all duration-300 lg:flex`}
+                className={` ${activeTabId === index ? "flex" : "hidden"} bg-muted-foreground/5 h-full flex-col items-start justify-between gap-64 rounded-xl p-4 transition-all duration-300 lg:flex`}
               >
                 <div className="text-muted-foreground/90 text-sm font-medium">
                   {item.description}

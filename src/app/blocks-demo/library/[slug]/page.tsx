@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageLayout } from "@/components/layout";
 import { ReadingContent } from "@/app/library/[slug]/reading-content";
+import type { Metadata } from "next";
 
 async function getReading(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/readings/${id}`, {
@@ -12,6 +13,66 @@ async function getReading(id: string) {
   }
 
   return res.json();
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const reading = await getReading(slug);
+
+  if (!reading) {
+    return {
+      title: "Reading Not Found - Templata",
+      description: "The reading you're looking for doesn't exist.",
+    };
+  }
+
+  const guideName = reading.guide
+    ? reading.guide.split('-').map((word: string) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ')
+    : 'Library';
+
+  const description = reading.excerpt ||
+    `Expert curated content on ${reading.title}. Save hundreds of hours of research with comprehensive guidance for life's biggest decisions.`;
+
+  return {
+    title: `${reading.title} - Templata`,
+    description,
+    keywords: [
+      reading.title.toLowerCase(),
+      guideName.toLowerCase(),
+      "expert guidance",
+      "life planning",
+      "curated content",
+      "templata reading",
+    ],
+    authors: reading.author ? [{ name: reading.author }] : undefined,
+    openGraph: {
+      title: `${reading.title} - Templata`,
+      description,
+      url: `https://templata.org/library/${slug}`,
+      siteName: "Templata",
+      locale: "en_US",
+      type: "article",
+      publishedTime: reading.created_at,
+      modifiedTime: reading.updated_at,
+      authors: reading.author ? [reading.author] : undefined,
+      images: [
+        {
+          url: "https://templata.org/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: reading.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${reading.title} - Templata`,
+      description,
+      images: ["https://templata.org/og-image.png"],
+    },
+  };
 }
 
 async function getRelatedReadings(guide: string, currentId: string) {
