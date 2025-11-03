@@ -219,12 +219,13 @@ const FloatingDockMobile = ({
           </motion.div>
         )}
       </AnimatePresence>
-      <div className={trackSelectorOpen ? "absolute bottom-full mb-2 left-1/2 -translate-x-1/2" : "hidden"}>
+      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2">
         <TrackSelector
           selectedTrackIds={selectedTrackIds}
           onSelectionChange={onTrackSelectionChange}
           open={trackSelectorOpen}
           onOpenChange={setTrackSelectorOpen}
+          hideTrigger={true}
         />
       </div>
       <button
@@ -255,12 +256,13 @@ const FloatingDockDesktop = ({
   const mouseX = useMotionValue(Infinity);
   return (
     <div className="relative">
-      <div className={trackSelectorOpen ? "absolute bottom-full mb-4 left-0" : "hidden"}>
+      <div className="absolute bottom-full mb-4 left-0">
         <TrackSelector
           selectedTrackIds={selectedTrackIds}
           onSelectionChange={onTrackSelectionChange}
           open={trackSelectorOpen}
           onOpenChange={setTrackSelectorOpen}
+          hideTrigger={true}
         />
       </div>
       <motion.div

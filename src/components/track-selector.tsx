@@ -51,9 +51,10 @@ interface TrackSelectorProps {
   onSelectionChange: (trackIds: string[]) => void;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  hideTrigger?: boolean;
 }
 
-export function TrackSelector({ selectedTrackIds, onSelectionChange, open: controlledOpen, onOpenChange }: TrackSelectorProps) {
+export function TrackSelector({ selectedTrackIds, onSelectionChange, open: controlledOpen, onOpenChange, hideTrigger = false }: TrackSelectorProps) {
   const [internalOpen, setInternalOpen] = useState(false);
 
   // Use controlled state if provided, otherwise use internal state
@@ -166,95 +167,107 @@ export function TrackSelector({ selectedTrackIds, onSelectionChange, open: contr
       )
     : guides;
 
+  const commandContent = (
+    <Command>
+      <CommandInput placeholder="Search tracks..." />
+      <CommandList>
+        {loading ? (
+          <div className="py-6 text-center text-sm">
+            <Loader2 className="w-4 h-4 animate-spin mx-auto" />
+          </div>
+        ) : (
+          <>
+            {tracks.length > 0 && (
+              <>
+                <CommandGroup>
+                  {tracks.map((track) => {
+                    const displayName = track.custom_name || track.guides.name;
+                    const isSelected = selectedTrackIds.includes(track.id);
+
+                    return (
+                      <CommandItem
+                        key={track.id}
+                        onSelect={() => handleToggleTrack(track.id)}
+                      >
+                        <Checkbox
+                          checked={isSelected}
+                          className="mr-2"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="truncate text-sm">{displayName}</div>
+                          {track.custom_name && track.guides && (
+                            <div className="text-xs text-muted-foreground truncate">
+                              {track.guides.name}
+                            </div>
+                          )}
+                        </div>
+                        <Badge variant="outline" className="ml-2 text-xs">
+                          {track.progress}%
+                        </Badge>
+                      </CommandItem>
+                    );
+                  })}
+                </CommandGroup>
+                <CommandSeparator />
+              </>
+            )}
+            <CommandGroup>
+              <CommandItem
+                onSelect={() => {
+                  setOpen(false);
+                  fetchGuides();
+                  setCreateDialogOpen(true);
+                }}
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                <span>New Track</span>
+              </CommandItem>
+            </CommandGroup>
+            {tracks.length === 0 && (
+              <div className="py-2 px-2 text-center text-xs text-muted-foreground">
+                No tracks yet. Create your first one!
+              </div>
+            )}
+          </>
+        )}
+      </CommandList>
+    </Command>
+  );
+
   return (
     <>
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={open}
-            className="w-full md:w-[280px] justify-between"
-          >
-            {selectedTracks.length === 0 ? (
-              <span className="text-muted-foreground">Select tracks...</span>
-            ) : selectedTracks.length === 1 ? (
-              <span className="truncate">
-                {selectedTracks[0].custom_name || selectedTracks[0].guides.name}
-              </span>
-            ) : (
-              <span>{selectedTracks.length} tracks selected</span>
-            )}
-            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[280px] p-0" align="start">
-          <Command>
-            <CommandInput placeholder="Search tracks..." />
-            <CommandList>
-              {loading ? (
-                <div className="py-6 text-center text-sm">
-                  <Loader2 className="w-4 h-4 animate-spin mx-auto" />
-                </div>
+      {hideTrigger ? (
+        open && (
+          <div className="w-[280px] p-0 bg-background border border-border rounded-xl shadow-lg">
+            {commandContent}
+          </div>
+        )
+      ) : (
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={open}
+              className="w-full md:w-[280px] justify-between"
+            >
+              {selectedTracks.length === 0 ? (
+                <span className="text-muted-foreground">Select tracks...</span>
+              ) : selectedTracks.length === 1 ? (
+                <span className="truncate">
+                  {selectedTracks[0].custom_name || selectedTracks[0].guides.name}
+                </span>
               ) : (
-                <>
-                  {tracks.length > 0 && (
-                    <>
-                      <CommandGroup>
-                        {tracks.map((track) => {
-                          const displayName = track.custom_name || track.guides.name;
-                          const isSelected = selectedTrackIds.includes(track.id);
-
-                          return (
-                            <CommandItem
-                              key={track.id}
-                              onSelect={() => handleToggleTrack(track.id)}
-                            >
-                              <Checkbox
-                                checked={isSelected}
-                                className="mr-2"
-                              />
-                              <div className="flex-1 min-w-0">
-                                <div className="truncate text-sm">{displayName}</div>
-                                {track.custom_name && track.guides && (
-                                  <div className="text-xs text-muted-foreground truncate">
-                                    {track.guides.name}
-                                  </div>
-                                )}
-                              </div>
-                              <Badge variant="outline" className="ml-2 text-xs">
-                                {track.progress}%
-                              </Badge>
-                            </CommandItem>
-                          );
-                        })}
-                      </CommandGroup>
-                      <CommandSeparator />
-                    </>
-                  )}
-                  <CommandGroup>
-                    <CommandItem
-                      onSelect={() => {
-                        setOpen(false);
-                        fetchGuides();
-                        setCreateDialogOpen(true);
-                      }}
-                    >
-                      <Plus className="mr-2 h-4 w-4" />
-                      <span>New Track</span>
-                    </CommandItem>
-                  </CommandGroup>
-                  {tracks.length === 0 && (
-                    <div className="py-2 px-2 text-center text-xs text-muted-foreground">
-                      No tracks yet. Create your first one!
-                    </div>
-                  )}
-                </>
+                <span>{selectedTracks.length} tracks selected</span>
               )}
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-[280px] p-0" align="start">
+            {commandContent}
+          </PopoverContent>
+        </Popover>
+      )}
 
       {/* Create Track Dialog */}
       <Dialog open={createDialogOpen} onOpenChange={(open) => {
