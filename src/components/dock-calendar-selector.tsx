@@ -47,6 +47,10 @@ export function DockCalendarSelector({
   const [eventTime, setEventTime] = React.useState('09:00')
   const [allDay, setAllDay] = React.useState(false)
   const [creating, setCreating] = React.useState(false)
+  const [selectedEvent, setSelectedEvent] = React.useState<CalendarEvent | null>(null)
+  const [detailsDialogOpen, setDetailsDialogOpen] = React.useState(false)
+  const [editing, setEditing] = React.useState(false)
+  const [deleting, setDeleting] = React.useState(false)
 
   // Fetch events from the API
   React.useEffect(() => {
@@ -110,6 +114,14 @@ export function DockCalendarSelector({
     return filtered;
   }, [date, events])
 
+  const refreshEvents = React.useCallback(async () => {
+    const refreshRes = await fetch('/api/items');
+    if (refreshRes.ok) {
+      const data = await refreshRes.json();
+      setEvents(data.items || []);
+    }
+  }, []);
+
   const handleCreateEvent = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!eventTitle.trim() || !date) return;
@@ -140,16 +152,90 @@ export function DockCalendarSelector({
         setCreateDialogOpen(false);
 
         // Refresh events
-        const refreshRes = await fetch('/api/items');
-        if (refreshRes.ok) {
-          const data = await refreshRes.json();
-          setEvents(data.items || []);
-        }
+        await refreshEvents();
       }
     } catch (error) {
       console.error('Error creating event:', error);
     } finally {
       setCreating(false);
+    }
+  };
+
+  const handleEventClick = (event: CalendarEvent) => {
+    setSelectedEvent(event);
+    setEventTitle(event.title);
+    setEventDescription(event.description || '');
+
+    // Extract time if event has start_time
+    if (event.start_time) {
+      const eventDate = new Date(event.start_time);
+      setEventTime(format(eventDate, 'HH:mm'));
+      setAllDay(event.all_day || false);
+    } else {
+      setEventTime('09:00');
+      setAllDay(true);
+    }
+
+    setDetailsDialogOpen(true);
+  };
+
+  const handleUpdateEvent = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedEvent || !eventTitle.trim()) return;
+
+    setEditing(true);
+    try {
+      const eventDate = selectedEvent.start_time
+        ? new Date(selectedEvent.start_time)
+        : selectedEvent.due_date
+        ? new Date(selectedEvent.due_date)
+        : date || new Date();
+
+      const startDateTime = allDay
+        ? `${format(eventDate, 'yyyy-MM-dd')}T00:00:00`
+        : `${format(eventDate, 'yyyy-MM-dd')}T${eventTime}:00`;
+
+      const res = await fetch(`/api/items/${selectedEvent.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: eventTitle.trim(),
+          description: eventDescription.trim() || null,
+          start_time: startDateTime,
+          all_day: allDay,
+        }),
+      });
+
+      if (res.ok) {
+        setDetailsDialogOpen(false);
+        setSelectedEvent(null);
+        await refreshEvents();
+      }
+    } catch (error) {
+      console.error('Error updating event:', error);
+    } finally {
+      setEditing(false);
+    }
+  };
+
+  const handleDeleteEvent = async () => {
+    if (!selectedEvent) return;
+
+    setDeleting(true);
+    try {
+      const res = await fetch(`/api/items/${selectedEvent.id}`, {
+        method: 'DELETE',
+      });
+
+      if (res.ok) {
+        setDetailsDialogOpen(false);
+        setSelectedEvent(null);
+        await refreshEvents();
+      }
+    } catch (error) {
+      console.error('Error deleting event:', error);
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -199,11 +285,16 @@ export function DockCalendarSelector({
             eventsForSelectedDate.map((event) => (
               <div
                 key={event.id}
-                className="bg-muted after:bg-primary/70 relative rounded-md p-2 pl-6 text-sm after:absolute after:inset-y-2 after:left-2 after:w-1 after:rounded-full"
+                onClick={() => handleEventClick(event)}
+                className="bg-muted after:bg-primary/70 relative rounded-md p-2 pl-6 text-sm after:absolute after:inset-y-2 after:left-2 after:w-1 after:rounded-full cursor-pointer hover:bg-muted/80 transition-colors"
               >
                 <div className="font-medium">{event.title}</div>
                 <div className="text-muted-foreground text-xs">
-                  {formatDateRange(new Date(event.start_time), new Date(event.end_time))}
+                  {event.start_time && event.end_time
+                    ? formatDateRange(new Date(event.start_time), new Date(event.end_time))
+                    : event.start_time
+                    ? format(new Date(event.start_time), 'h:mm a')
+                    : 'All day'}
                 </div>
               </div>
             ))
@@ -213,7 +304,7 @@ export function DockCalendarSelector({
 
       {/* Create Event Dialog */}
       <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] z-[200]">
           <DialogHeader>
             <DialogTitle>Create Event</DialogTitle>
             <DialogDescription>
@@ -269,6 +360,80 @@ export function DockCalendarSelector({
               <Button type="submit" disabled={creating || !eventTitle.trim()}>
                 {creating ? "Creating..." : "Create Event"}
               </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Event Details/Edit Dialog */}
+      <Dialog open={detailsDialogOpen} onOpenChange={setDetailsDialogOpen}>
+        <DialogContent className="sm:max-w-[425px] z-[200]">
+          <DialogHeader>
+            <DialogTitle>Event Details</DialogTitle>
+            <DialogDescription>
+              View or edit event details
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleUpdateEvent}>
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="edit-title">Title</Label>
+                <Input
+                  id="edit-title"
+                  value={eventTitle}
+                  onChange={(e) => setEventTitle(e.target.value)}
+                  placeholder="Event title"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="edit-description">Description</Label>
+                <Input
+                  id="edit-description"
+                  value={eventDescription}
+                  onChange={(e) => setEventDescription(e.target.value)}
+                  placeholder="Event description (optional)"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="edit-time">Time</Label>
+                <Input
+                  id="edit-time"
+                  type="time"
+                  value={eventTime}
+                  onChange={(e) => setEventTime(e.target.value)}
+                  disabled={allDay}
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="edit-all-day"
+                  checked={allDay}
+                  onChange={(e) => setAllDay(e.target.checked)}
+                  className="cursor-pointer"
+                />
+                <Label htmlFor="edit-all-day" className="cursor-pointer">All day event</Label>
+              </div>
+            </div>
+            <DialogFooter className="flex-col gap-2 sm:flex-row">
+              <Button
+                type="button"
+                variant="destructive"
+                onClick={handleDeleteEvent}
+                disabled={deleting || editing}
+                className="sm:mr-auto"
+              >
+                {deleting ? "Deleting..." : "Delete"}
+              </Button>
+              <div className="flex gap-2">
+                <Button type="button" variant="outline" onClick={() => setDetailsDialogOpen(false)}>
+                  Cancel
+                </Button>
+                <Button type="submit" disabled={editing || deleting || !eventTitle.trim()}>
+                  {editing ? "Saving..." : "Save Changes"}
+                </Button>
+              </div>
             </DialogFooter>
           </form>
         </DialogContent>
