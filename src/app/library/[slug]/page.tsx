@@ -1,109 +1,144 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { Clock } from "lucide-react";
 import { PageLayout } from "@/components/layout";
-import { getArticleBySlug, getRelatedArticles, getArticlesByCategory } from "@/registry/readings";
-import { getTemplateById } from "@/registry/guides";
 import { ReadingContent } from "./reading-content";
 
-// Metadata is handled in layout.tsx
+async function getReading(id: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/readings/${id}`, {
+    cache: 'no-store'
+  });
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const blogPost = await getArticleBySlug(slug);
-
-  // Get template name if article has a template
-  const templateInfo = blogPost?.template ? await getTemplateById(blogPost.template) : null;
-
-  // Get related posts with multiple fallback strategies
-  let relatedPosts = [];
-  if (blogPost) {
-    // First try: official related posts
-    const officialRelated = await getRelatedArticles(blogPost.id, 6);
-    if (officialRelated.length > 0) {
-      relatedPosts = officialRelated;
-    } else {
-      // Second try: same category posts
-      const categoryPosts = await getArticlesByCategory(blogPost.category);
-      relatedPosts = categoryPosts.filter(post => post.id !== blogPost.id).slice(0, 6);
-    }
+  if (!res.ok) {
+    return null;
   }
 
-  if (!blogPost) {
+  return res.json();
+}
+
+async function getRelatedReadings(guide: string, currentId: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/library?guide=${guide}`, {
+    cache: 'no-store'
+  });
+
+  if (!res.ok) {
+    return [];
+  }
+
+  const data = await res.json();
+  return (data.readings || []).filter((r: any) => r.id !== currentId).slice(0, 6);
+}
+
+export default async function ReadingPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const reading = await getReading(slug);
+
+  let relatedReadings = [];
+  if (reading?.guide) {
+    relatedReadings = await getRelatedReadings(reading.guide, reading.id);
+  }
+
+  if (!reading) {
     return (
       <PageLayout>
         <div className="py-24 md:py-32 text-center">
-          <h1 className="text-4xl font-bold mb-4">Article Not Found</h1>
-          <p className="text-muted-foreground">The article you&apos;re looking for doesn&apos;t exist.</p>
+          <h1 className="text-4xl font-bold mb-4">Reading Not Found</h1>
+          <p className="text-muted-foreground">The reading you&apos;re looking for doesn&apos;t exist.</p>
         </div>
       </PageLayout>
     );
   }
 
+  const guideName = reading.guide
+    ? reading.guide.split('-').map((word: string) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ')
+    : 'Library';
+
   return (
     <PageLayout>
-      {/* Hero Section - Clean minimal style like templates page */}
-      <section className="py-16 border-b">
-        <div className="container mx-auto max-w-6xl px-4">
-          <div className="space-y-4">
-            {/* Metadata */}
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              {templateInfo && (
-                <>
-                  <Link href={`/templates/${blogPost.template}`} className="hover:text-primary transition-colors">
-                    {templateInfo.template.title}
-                  </Link>
-                  <span>·</span>
-                </>
-              )}
-              <Badge variant="outline">{blogPost.type}</Badge>
-              <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3" />
-                {blogPost.readTime}
-              </span>
+      <div className="py-16">
+        <div className="container max-w-7xl">
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-4">
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="space-y-8 lg:sticky lg:top-8">
+                {/* Reading Info */}
+                <div>
+                  <p className="text-muted-foreground mb-4 text-xs font-semibold uppercase tracking-widest">
+                    {guideName}
+                  </p>
+                  <h1 className="mb-4 text-4xl font-bold">{reading.title}</h1>
+                  {reading.excerpt && (
+                    <p className="text-muted-foreground leading-relaxed">
+                      {reading.excerpt}
+                    </p>
+                  )}
+                </div>
+
+                {/* Metadata */}
+                <div className="space-y-6 border-t pt-8">
+                  {reading.author && (
+                    <div>
+                      <p className="text-muted-foreground mb-1 text-xs font-semibold uppercase tracking-wider">
+                        Author
+                      </p>
+                      <p className="font-medium">{reading.author}</p>
+                    </div>
+                  )}
+                  {reading.read_time && (
+                    <div>
+                      <p className="text-muted-foreground mb-1 text-xs font-semibold uppercase tracking-wider">
+                        Read Time
+                      </p>
+                      <p className="font-medium">{reading.read_time}</p>
+                    </div>
+                  )}
+                  {reading.updated_at && (
+                    <div>
+                      <p className="text-muted-foreground mb-1 text-xs font-semibold uppercase tracking-wider">
+                        Last Updated
+                      </p>
+                      <p className="font-medium">
+                        {new Date(reading.updated_at).toLocaleDateString('en-US', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric'
+                        })}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Related Readings Navigation */}
+                {relatedReadings.length > 0 && (
+                  <nav className="border-t pt-8">
+                    <p className="text-muted-foreground mb-4 text-xs font-semibold uppercase tracking-wider">
+                      Related Readings
+                    </p>
+                    <div className="space-y-2">
+                      {relatedReadings.map((post: any) => (
+                        <Link
+                          key={post.id}
+                          href={`/library/${post.id}`}
+                          className="hover:text-primary block text-sm transition-colors"
+                        >
+                          {post.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </nav>
+                )}
+              </div>
             </div>
 
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-              {blogPost.title}
-            </h1>
+            {/* Main Content */}
+            <div className="lg:col-span-3">
+              <div className="prose prose-lg max-w-none">
+                <ReadingContent content={reading.content} />
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* Content */}
-      <div className="container mx-auto max-w-6xl px-4 py-12">
-        <ReadingContent content={blogPost.content} />
       </div>
-
-      {/* Related Articles - Simple list like templates page */}
-      {relatedPosts.length > 0 && (
-        <section className="border-t py-12">
-          <div className="container mx-auto max-w-6xl px-4">
-            <h2 className="text-xs font-semibold text-muted-foreground mb-6 tracking-wider uppercase">
-              Related Articles
-            </h2>
-            <div className="space-y-0 divide-y divide-border">
-              {relatedPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/articles/${post.slug}`}
-                  className="group block py-3 hover:text-primary transition-colors"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-sm font-medium group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <span className="text-xs text-muted-foreground whitespace-nowrap">
-                      {post.readTime}
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </PageLayout>
   );
 }
