@@ -11,10 +11,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { LoginDialog } from "@/components/login-dialog";
 
 const Navbar22 = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -88,9 +90,15 @@ const Navbar22 = () => {
                   </a>
                 ))}
                 <ModeToggle />
+                <Button onClick={() => setLoginDialogOpen(true)}>
+                  Login
+                </Button>
               </div>
 
               <div className="flex items-center gap-2 md:hidden">
+                <Button onClick={() => setLoginDialogOpen(true)} size="sm">
+                  Login
+                </Button>
                 <ModeToggle />
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
                   <SheetTrigger asChild>
@@ -146,6 +154,10 @@ const Navbar22 = () => {
           </div>
         </nav>
       </div>
+      <LoginDialog
+        open={loginDialogOpen}
+        onOpenChange={setLoginDialogOpen}
+      />
     </section>
   );
 };

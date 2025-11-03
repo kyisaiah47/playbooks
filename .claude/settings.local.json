@@ -57,7 +57,8 @@
       "Bash(tree:*)",
       "mcp__playwright__browser_navigate",
       "Bash(printf:*)",
-      "Bash(yes:*)"
+      "Bash(yes:*)",
+      "Bash(npx shadcn@latest add:*)"
     ],
     "deny": [],
     "ask": []
