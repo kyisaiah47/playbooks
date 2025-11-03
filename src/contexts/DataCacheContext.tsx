@@ -41,7 +41,7 @@ interface DataCacheContextType {
 const DataCacheContext = createContext<DataCacheContextType | undefined>(undefined);
 
 const CACHE_KEY = 'templata_data_cache';
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = Infinity; // Cache for entire session (cleared on tab close or logout)
 
 export function DataCacheProvider({ children }: { children: React.ReactNode }) {
   const [cache, setCache] = useState<CacheState>(() => {
