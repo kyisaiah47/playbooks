@@ -49,10 +49,16 @@ interface Track {
 interface TrackSelectorProps {
   selectedTrackIds: string[];
   onSelectionChange: (trackIds: string[]) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export function TrackSelector({ selectedTrackIds, onSelectionChange }: TrackSelectorProps) {
-  const [open, setOpen] = useState(false);
+export function TrackSelector({ selectedTrackIds, onSelectionChange, open: controlledOpen, onOpenChange }: TrackSelectorProps) {
+  const [internalOpen, setInternalOpen] = useState(false);
+
+  // Use controlled state if provided, otherwise use internal state
+  const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
+  const setOpen = onOpenChange || setInternalOpen;
   const [tracks, setTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');

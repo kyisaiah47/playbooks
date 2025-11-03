@@ -219,16 +219,14 @@ const FloatingDockMobile = ({
           </motion.div>
         )}
       </AnimatePresence>
-      {trackSelectorOpen && (
-        <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2">
-          <div className="bg-background border border-border rounded-xl p-2 shadow-lg">
-            <TrackSelector
-              selectedTrackIds={selectedTrackIds}
-              onSelectionChange={onTrackSelectionChange}
-            />
-          </div>
-        </div>
-      )}
+      <div className={trackSelectorOpen ? "absolute bottom-full mb-2 left-1/2 -translate-x-1/2" : "hidden"}>
+        <TrackSelector
+          selectedTrackIds={selectedTrackIds}
+          onSelectionChange={onTrackSelectionChange}
+          open={trackSelectorOpen}
+          onOpenChange={setTrackSelectorOpen}
+        />
+      </div>
       <button
         onClick={() => setOpen(!open)}
         className="bg-background border border-border flex h-10 w-10 items-center justify-center rounded-xl"
@@ -257,16 +255,14 @@ const FloatingDockDesktop = ({
   const mouseX = useMotionValue(Infinity);
   return (
     <div className="relative">
-      {trackSelectorOpen && (
-        <div className="absolute bottom-full mb-4 left-0">
-          <div className="bg-background border border-border rounded-xl p-2 shadow-lg">
-            <TrackSelector
-              selectedTrackIds={selectedTrackIds}
-              onSelectionChange={onTrackSelectionChange}
-            />
-          </div>
-        </div>
-      )}
+      <div className={trackSelectorOpen ? "absolute bottom-full mb-4 left-0" : "hidden"}>
+        <TrackSelector
+          selectedTrackIds={selectedTrackIds}
+          onSelectionChange={onTrackSelectionChange}
+          open={trackSelectorOpen}
+          onOpenChange={setTrackSelectorOpen}
+        />
+      </div>
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
