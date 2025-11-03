@@ -133,57 +133,42 @@ export default function GuideDetail({ params }: GuideDetailProps) {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
-          <img
-            alt="background"
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/square-alt-grid.svg"
-            className="opacity-90 [mask-image:radial-gradient(75%_75%_at_center,white,transparent)]"
-          />
-        </div>
-        <div className="container relative z-10 mx-auto max-w-5xl px-4">
-          <div className="flex flex-col items-center">
-            <div className="flex flex-col items-center gap-6 text-center">
-              <Badge variant="outline" className="px-4 py-2">
-                {templateData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-              </Badge>
+      <section className="py-32">
+        <div className="container mx-auto max-w-5xl px-4">
+          <div className="text-center space-y-6">
+            <Badge variant="outline" className="px-4 py-2">
+              {templateData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+            </Badge>
 
-              <div>
-                <h1 className="mb-6 text-pretty text-2xl font-bold tracking-tight lg:text-5xl">
-                  {templateData.name}
-                </h1>
-                <p className="text-muted-foreground mx-auto max-w-3xl lg:text-xl">
-                  {templateData.description}
-                </p>
-              </div>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+              {templateData.name}
+            </h1>
 
-              <div className="mt-6 flex justify-center gap-3">
-                <Button asChild className="shadow-sm transition-shadow hover:shadow">
-                  <Link href={`/app?guide=${slug}`}>
-                    Start Guide <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
+            <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
+              {templateData.description}
+            </p>
 
-              <div className="mt-20 flex flex-col items-center gap-5">
-                <p className="text-muted-foreground font-medium">
-                  What's Included
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-8">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">{questions.length}</div>
-                    <p className="text-sm text-muted-foreground">Questions</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">{readings.length}</div>
-                    <p className="text-sm text-muted-foreground">Readings</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold">{questionCategories.length}</div>
-                    <p className="text-sm text-muted-foreground">Categories</p>
-                  </div>
-                </div>
+            <div className="flex flex-wrap items-center justify-center gap-8 pt-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold">{questions.length}</div>
+                <p className="text-sm text-muted-foreground">Questions</p>
               </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold">{readings.length}</div>
+                <p className="text-sm text-muted-foreground">Readings</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold">{questionCategories.length}</div>
+                <p className="text-sm text-muted-foreground">Categories</p>
+              </div>
+            </div>
+
+            <div className="pt-8">
+              <Button asChild size="lg">
+                <Link href={`/app?guide=${slug}`}>
+                  Start Guide <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
