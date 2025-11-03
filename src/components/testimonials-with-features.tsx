@@ -61,7 +61,7 @@ export const Highlight = ({
   return (
     <span
       className={cn(
-        "bg-primary/10 px-1 py-0.5 font-bold text-primary",
+        "bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500",
         className,
       )}
     >
