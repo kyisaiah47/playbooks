@@ -290,7 +290,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
                     <div className="text-muted-foreground flex items-center gap-2">
                       {question.category_name}
                     </div>
-                    <p className="font-medium col-span-2">{question.question}</p>
+                    <p className="font-medium col-span-3">{question.question}</p>
                   </div>
                 </div>
               ))}
