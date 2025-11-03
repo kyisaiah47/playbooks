@@ -1,14 +1,17 @@
 "use client";
 
 import {
-  Bell,
-  Heart,
-  Home,
+  BookOpen,
+  Calendar,
+  CheckSquare,
+  FileText,
   LogOut,
+  Moon,
   PanelBottomOpen,
   Settings,
-  ShoppingCart,
+  Sun,
   User,
+  LayoutDashboard,
 } from "lucide-react";
 import {
   AnimatePresence,
@@ -23,50 +26,65 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const FloatingDockNav = () => {
+type View = 'guides' | 'notes' | 'overview' | 'calendar' | 'tasks';
+
+interface FloatingDockNavProps {
+  currentView: View;
+  onViewChange: (view: View) => void;
+  onThemeToggle: () => void;
+  isDark: boolean;
+}
+
+const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark }: FloatingDockNavProps) => {
   const tabs = [
     {
-      title: "Home",
-      icon: <Home />,
-      href: "#home",
+      title: "Guides",
+      icon: <BookOpen />,
+      onClick: () => onViewChange('guides'),
+      isActive: currentView === 'guides',
     },
     {
-      title: "Notifications",
-      icon: <Bell />,
-      href: "#notifications",
+      title: "Notes",
+      icon: <FileText />,
+      onClick: () => onViewChange('notes'),
+      isActive: currentView === 'notes',
     },
     {
-      title: "Profile",
-      icon: <User />,
-      href: "#profile",
+      title: "Calendar",
+      icon: <Calendar />,
+      onClick: () => onViewChange('calendar'),
+      isActive: currentView === 'calendar',
+    },
+    {
+      title: "Tasks",
+      icon: <CheckSquare />,
+      onClick: () => onViewChange('tasks'),
+      isActive: currentView === 'tasks',
+    },
+    {
+      title: "Overview",
+      icon: <LayoutDashboard />,
+      onClick: () => onViewChange('overview'),
+      isActive: currentView === 'overview',
+    },
+    {
+      title: isDark ? "Light Mode" : "Dark Mode",
+      icon: isDark ? <Sun /> : <Moon />,
+      onClick: onThemeToggle,
+      isActive: false,
     },
     {
       title: "Settings",
       icon: <Settings />,
-      href: "#settings",
-    },
-    {
-      title: "Favorites",
-      icon: <Heart />,
-      href: "#favorites",
-    },
-    {
-      title: "Cart",
-      icon: <ShoppingCart />,
-      href: "#cart",
-    },
-    {
-      title: "Logout",
-      icon: <LogOut />,
-      href: "#logout",
+      onClick: () => {},
+      isActive: false,
     },
   ];
   return (
     <section>
       <div className="container flex justify-center">
         <FloatingDock
-          desktopClassName="
-        fixed bottom-4 left-1/2 -translate-x-1/2  "
+          desktopClassName="fixed bottom-4 left-1/2 -translate-x-1/2"
           mobileClassName="fixed right-6 bottom-6"
           items={tabs}
         />
@@ -86,7 +104,7 @@ const FloatingDock = ({
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean }[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
@@ -102,7 +120,7 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean }[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -131,13 +149,19 @@ const FloatingDockMobile = ({
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
               >
-                <a
-                  href={item.href}
+                <button
+                  onClick={() => {
+                    item.onClick();
+                    setOpen(false);
+                  }}
                   key={item.title}
-                  className="bg-background border border-border flex h-10 w-10 items-center justify-center rounded-xl"
+                  className={cn(
+                    "bg-background border flex h-10 w-10 items-center justify-center rounded-xl",
+                    item.isActive ? "border-primary bg-primary/10" : "border-border"
+                  )}
                 >
                   <div>{item.icon}</div>
-                </a>
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -157,7 +181,7 @@ const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: { title: string; icon: React.ReactNode; onClick: () => void; isActive: boolean }[];
   className?: string;
 }) => {
   const mouseX = useMotionValue(Infinity);
@@ -181,12 +205,14 @@ function IconContainer({
   mouseX,
   title,
   icon,
-  href,
+  onClick,
+  isActive,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
-  href: string;
+  onClick: () => void;
+  isActive: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -244,13 +270,16 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a href={href}>
+    <button onClick={onClick}>
       <motion.div
         ref={ref}
         style={{ width, height, borderRadius: rounded }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="bg-muted/50 relative flex aspect-square items-center justify-center"
+        className={cn(
+          "relative flex aspect-square items-center justify-center",
+          isActive ? "bg-primary/20" : "bg-muted/50"
+        )}
       >
         <AnimatePresence>
           {hovered && (
@@ -266,11 +295,14 @@ function IconContainer({
         </AnimatePresence>
         <motion.div
           style={{ width: widthIcon, height: heightIcon }}
-          className="text-foreground flex items-center justify-center"
+          className={cn(
+            "flex items-center justify-center",
+            isActive ? "text-primary" : "text-foreground"
+          )}
         >
           {icon}
         </motion.div>
       </motion.div>
-    </a>
+    </button>
   );
 }
