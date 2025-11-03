@@ -27,6 +27,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { DockTrackSelector } from "@/components/dock-track-selector";
+import { SettingsDialog } from "@/components/settings-dialog";
 import {
   Popover,
   PopoverContent,
@@ -46,6 +47,7 @@ interface FloatingDockNavProps {
 
 const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, selectedTrackIds, onTrackSelectionChange }: FloatingDockNavProps) => {
   const [trackSelectorOpen, setTrackSelectorOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const tabs = [
     {
@@ -94,7 +96,7 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
     {
       title: "Settings",
       icon: <Settings />,
-      onClick: () => {},
+      onClick: () => setSettingsOpen(true),
       isActive: false,
     },
   ];
@@ -111,6 +113,7 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
           onTrackSelectionChange={onTrackSelectionChange}
         />
       </div>
+      <SettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
     </section>
   );
 };
