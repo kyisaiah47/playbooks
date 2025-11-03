@@ -214,7 +214,7 @@ const FloatingDockMobile = ({
                           <div>{item.icon}</div>
                         </button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-[280px] p-0 z-[100]" align="center" side="top" sideOffset={8}>
+                      <PopoverContent className="w-[280px] p-0 z-[100]" align="center" side="top" sideOffset={16}>
                         <DockTrackSelector
                           selectedTrackIds={selectedTrackIds}
                           onSelectionChange={onTrackSelectionChange}
@@ -293,7 +293,11 @@ const FloatingDockDesktop = ({
   return (
     <div className="relative">
       <motion.div
-        onMouseMove={(e) => mouseX.set(e.pageX)}
+        onMouseMove={(e) => {
+          if (!trackSelectorOpen) {
+            mouseX.set(e.pageX);
+          }
+        }}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
           "bg-background border border-border shadow-lg z-99 mx-auto hidden h-16 items-end items-center justify-center gap-2 rounded-3xl px-5 md:flex",
@@ -437,7 +441,7 @@ function IconContainer({
             {buttonContent}
           </button>
         </PopoverTrigger>
-        <PopoverContent className="w-[280px] p-0 z-[100]" align="start" side="top" sideOffset={8}>
+        <PopoverContent className="w-[280px] p-0 z-[100]" align="start" side="top" sideOffset={16}>
           <DockTrackSelector
             selectedTrackIds={selectedTrackIds}
             onSelectionChange={onTrackSelectionChange}
