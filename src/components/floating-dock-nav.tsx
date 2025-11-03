@@ -184,49 +184,85 @@ const FloatingDockMobile = ({
             layoutId="nav"
             className="z-99 absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
           >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                <button
-                  onClick={() => {
-                    item.onClick();
-                    if (!item.isTrackSelector) setOpen(false);
-                  }}
+            {items.map((item, idx) => {
+              if (item.isTrackSelector) {
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 10,
+                      transition: {
+                        delay: idx * 0.05,
+                      },
+                    }}
+                    transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+                  >
+                    <Popover open={trackSelectorOpen} onOpenChange={setTrackSelectorOpen}>
+                      <PopoverTrigger asChild>
+                        <button
+                          className={cn(
+                            "bg-background border flex h-10 w-10 items-center justify-center rounded-xl",
+                            "border-border"
+                          )}
+                        >
+                          <div>{item.icon}</div>
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-[280px] p-0" align="center" side="top">
+                        <DockTrackSelector
+                          selectedTrackIds={selectedTrackIds}
+                          onSelectionChange={onTrackSelectionChange}
+                          isOpen={true}
+                          onClose={() => setTrackSelectorOpen(false)}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </motion.div>
+                );
+              }
+
+              return (
+                <motion.div
                   key={item.title}
-                  className={cn(
-                    "bg-background border flex h-10 w-10 items-center justify-center rounded-xl",
-                    item.isActive ? "border-primary bg-primary/10" : "border-border"
-                  )}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: 10,
+                    transition: {
+                      delay: idx * 0.05,
+                    },
+                  }}
+                  transition={{ delay: (items.length - 1 - idx) * 0.05 }}
                 >
-                  <div>{item.icon}</div>
-                </button>
-              </motion.div>
-            ))}
+                  <button
+                    onClick={() => {
+                      item.onClick();
+                      setOpen(false);
+                    }}
+                    key={item.title}
+                    className={cn(
+                      "bg-background border flex h-10 w-10 items-center justify-center rounded-xl",
+                      item.isActive ? "border-primary bg-primary/10" : "border-border"
+                    )}
+                  >
+                    <div>{item.icon}</div>
+                  </button>
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2">
-        <DockTrackSelector
-          selectedTrackIds={selectedTrackIds}
-          onSelectionChange={onTrackSelectionChange}
-          isOpen={trackSelectorOpen}
-          onClose={() => setTrackSelectorOpen(false)}
-        />
-      </div>
       <button
         onClick={() => setOpen(!open)}
         className="bg-background border border-border flex h-10 w-10 items-center justify-center rounded-xl"
@@ -255,14 +291,6 @@ const FloatingDockDesktop = ({
   const mouseX = useMotionValue(Infinity);
   return (
     <div className="relative">
-      <div className="absolute bottom-full mb-4 left-0">
-        <DockTrackSelector
-          selectedTrackIds={selectedTrackIds}
-          onSelectionChange={onTrackSelectionChange}
-          isOpen={trackSelectorOpen}
-          onClose={() => setTrackSelectorOpen(false)}
-        />
-      </div>
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
@@ -272,7 +300,15 @@ const FloatingDockDesktop = ({
         )}
       >
         {items.map((item) => (
-          <IconContainer mouseX={mouseX} key={item.title} {...item} />
+          <IconContainer
+            mouseX={mouseX}
+            key={item.title}
+            {...item}
+            trackSelectorOpen={trackSelectorOpen}
+            setTrackSelectorOpen={setTrackSelectorOpen}
+            selectedTrackIds={selectedTrackIds}
+            onTrackSelectionChange={onTrackSelectionChange}
+          />
         ))}
       </motion.div>
     </div>
@@ -285,12 +321,22 @@ function IconContainer({
   icon,
   onClick,
   isActive,
+  isTrackSelector,
+  trackSelectorOpen,
+  setTrackSelectorOpen,
+  selectedTrackIds,
+  onTrackSelectionChange,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   onClick: () => void;
   isActive: boolean;
+  isTrackSelector?: boolean;
+  trackSelectorOpen?: boolean;
+  setTrackSelectorOpen?: (open: boolean) => void;
+  selectedTrackIds?: string[];
+  onTrackSelectionChange?: (trackIds: string[]) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -347,40 +393,64 @@ function IconContainer({
 
   const [hovered, setHovered] = useState(false);
 
-  return (
-    <button onClick={onClick}>
+  const buttonContent = (
+    <motion.div
+      ref={ref}
+      style={{ width, height, borderRadius: rounded }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={cn(
+        "relative flex aspect-square items-center justify-center",
+        isActive ? "bg-primary/20" : "bg-muted/50"
+      )}
+    >
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: 2, x: "-50%" }}
+            className="bg-muted absolute -top-8 left-1/2 w-fit whitespace-pre rounded-full px-4 py-0.5 text-xs"
+          >
+            {title}
+          </motion.div>
+        )}
+      </AnimatePresence>
       <motion.div
-        ref={ref}
-        style={{ width, height, borderRadius: rounded }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        style={{ width: widthIcon, height: heightIcon }}
         className={cn(
-          "relative flex aspect-square items-center justify-center",
-          isActive ? "bg-primary/20" : "bg-muted/50"
+          "flex items-center justify-center",
+          isActive ? "text-primary" : "text-foreground"
         )}
       >
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              initial={{ opacity: 0, y: 10, x: "-50%" }}
-              animate={{ opacity: 1, y: 0, x: "-50%" }}
-              exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="bg-muted absolute -top-8 left-1/2 w-fit whitespace-pre rounded-full px-4 py-0.5 text-xs"
-            >
-              {title}
-            </motion.div>
-          )}
-        </AnimatePresence>
-        <motion.div
-          style={{ width: widthIcon, height: heightIcon }}
-          className={cn(
-            "flex items-center justify-center",
-            isActive ? "text-primary" : "text-foreground"
-          )}
-        >
-          {icon}
-        </motion.div>
+        {icon}
       </motion.div>
+    </motion.div>
+  );
+
+  if (isTrackSelector && trackSelectorOpen !== undefined && setTrackSelectorOpen && selectedTrackIds && onTrackSelectionChange) {
+    return (
+      <Popover open={trackSelectorOpen} onOpenChange={setTrackSelectorOpen}>
+        <PopoverTrigger asChild>
+          <button>
+            {buttonContent}
+          </button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[280px] p-0" align="start" side="top">
+          <DockTrackSelector
+            selectedTrackIds={selectedTrackIds}
+            onSelectionChange={onTrackSelectionChange}
+            isOpen={true}
+            onClose={() => setTrackSelectorOpen(false)}
+          />
+        </PopoverContent>
+      </Popover>
+    );
+  }
+
+  return (
+    <button onClick={onClick}>
+      {buttonContent}
     </button>
   );
 }
