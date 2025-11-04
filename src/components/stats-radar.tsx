@@ -69,17 +69,17 @@ const StatsRadar = () => {
 };
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { category: "Personal", guides: 5 },
+  { category: "Professional", guides: 8 },
+  { category: "Financial", guides: 6 },
+  { category: "Health", guides: 7 },
+  { category: "Relationships", guides: 4 },
+  { category: "Education", guides: 3 },
 ];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  guides: {
+    label: "Guides",
     color: "var(--chart-1)",
   },
 } satisfies ChartConfig;
@@ -92,11 +92,11 @@ const ChartRadarDots = () => {
     >
       <RadarChart data={chartData}>
         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-        <PolarAngleAxis dataKey="month" />
+        <PolarAngleAxis dataKey="category" />
         <PolarGrid />
         <Radar
-          dataKey="desktop"
-          fill="var(--color-desktop)"
+          dataKey="guides"
+          fill="var(--color-guides)"
           fillOpacity={0.6}
           dot={{
             r: 4,

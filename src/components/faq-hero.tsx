@@ -83,19 +83,7 @@ const faqItems: FAQItem[] = [
     category: "Pricing",
     question: "How much does Templata cost?",
     answer:
-      "Pricing starts at $9-15/month depending on the plan. Compared to hiring a consultant at $150-500/hour or spending months on scattered research, Templata provides comprehensive guidance at a fraction of the cost and time.",
-  },
-  {
-    category: "Pricing",
-    question: "Is there a free trial?",
-    answer:
-      "Yes. You can explore guides and see the question structure before committing. The trial gives you access to core features so you can evaluate if Templata fits your planning needs.",
-  },
-  {
-    category: "Pricing",
-    question: "What happens to my data if I cancel?",
-    answer:
-      "You can export your notes, answers, and planning data before canceling. We don't hold your information hostage. Download what you need, cancel when you're done.",
+      "Templata is completely free to use. Access all guides, questions, expert readings, and planning tools at no cost.",
   },
   // Technical Questions
   {
