@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { createBrowserClient } from '@supabase/ssr';
 
 interface User {
   id: string;
@@ -21,36 +22,43 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(false); // Start as false - assume logged out
+  const [loading, setLoading] = useState(true);
 
-  // Load auth state from session API on mount
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+
   useEffect(() => {
-    async function loadSession() {
-      try {
-        console.log('AUTH: Loading session from API...');
-        setLoading(true);
-        const res = await fetch('/api/auth/me', {
-          credentials: 'include',
-          cache: 'no-store'
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setIsLoggedIn(true);
+        setUser({
+          id: session.user.id,
+          email: session.user.email!,
+          name: session.user.user_metadata?.name,
         });
-        const data = await res.json();
-        console.log('AUTH: API response:', data);
-
-        if (data.user) {
-          console.log('AUTH: User found, logging in:', data.user);
-          setIsLoggedIn(true);
-          setUser(data.user);
-        } else {
-          console.log('AUTH: No user in response');
-        }
-      } catch (error) {
-        console.error('Error loading session:', error);
-      } finally {
-        setLoading(false);
       }
-    }
+      setLoading(false);
+    });
 
-    loadSession();
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setIsLoggedIn(true);
+        setUser({
+          id: session.user.id,
+          email: session.user.email!,
+          name: session.user.user_metadata?.name,
+        });
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const login = (userData: User) => {
@@ -59,11 +67,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = async () => {
-    try {
-      await fetch('/api/auth/logout', { method: 'POST' });
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
+    await supabase.auth.signOut();
     setIsLoggedIn(false);
     setUser(null);
   };
