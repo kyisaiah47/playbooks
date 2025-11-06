@@ -31,7 +31,7 @@ const IntegrationsNetwork = () => {
             Questions, readings, calendar, tasks, and more—all organized by life event.
           </p>
           <Button variant="link" asChild className="text-blue-700">
-            <a href="#">
+            <a href="/guides">
               Explore Guides <ArrowRight className="size-4" />
             </a>
           </Button>

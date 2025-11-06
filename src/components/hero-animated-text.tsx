@@ -2,13 +2,18 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 import { Particles } from "@/components/magicui/particles";
 import { Button } from "@/components/ui/button";
+import { LoginDialog } from "@/components/login-dialog";
 
 const HeroAnimatedText = () => {
+  const [loginOpen, setLoginOpen] = useState(false);
+
   return (
+    <>
+      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
     <section className="pt-56 pb-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
         <p className="text-muted-foreground">
@@ -80,12 +85,14 @@ const HeroAnimatedText = () => {
         <Button
           variant="secondary"
           className="text-md -mt-15 group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
+          onClick={() => setLoginOpen(true)}
         >
           Get Started
           <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
         </Button>
       </div>
     </section>
+    </>
   );
 };
 
