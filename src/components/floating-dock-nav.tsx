@@ -48,7 +48,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-type View = 'guides' | 'notes' | 'overview' | 'calendar' | 'tasks';
+type View = 'guides' | 'notes' | 'overview';
 
 interface FloatingDockNavProps {
   currentView: View;
@@ -57,13 +57,16 @@ interface FloatingDockNavProps {
   isDark: boolean;
   selectedTrackIds: string[];
   onTrackSelectionChange: (trackIds: string[]) => void;
+  trackSelectorOpen: boolean;
+  setTrackSelectorOpen: (open: boolean) => void;
+  calendarSelectorOpen: boolean;
+  setCalendarSelectorOpen: (open: boolean) => void;
+  tasksSelectorOpen: boolean;
+  setTasksSelectorOpen: (open: boolean) => void;
 }
 
-const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, selectedTrackIds, onTrackSelectionChange }: FloatingDockNavProps) => {
+const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, selectedTrackIds, onTrackSelectionChange, trackSelectorOpen, setTrackSelectorOpen, calendarSelectorOpen, setCalendarSelectorOpen, tasksSelectorOpen, setTasksSelectorOpen }: FloatingDockNavProps) => {
   const { invalidateAll } = useDataCache();
-  const [trackSelectorOpen, setTrackSelectorOpen] = useState(false);
-  const [calendarSelectorOpen, setCalendarSelectorOpen] = useState(false);
-  const [tasksSelectorOpen, setTasksSelectorOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
   const [createTrackDialogOpen, setCreateTrackDialogOpen] = useState(false);

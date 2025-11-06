@@ -215,9 +215,6 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                     <Button type="submit" disabled={loginLoading}>
                       {loginLoading ? "Logging in..." : "Login"}
                     </Button>
-                    <Button variant="outline" type="button">
-                      Login with Google
-                    </Button>
                   </Field>
                 </FieldGroup>
               </FieldGroup>
@@ -278,9 +275,6 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                   <Field>
                     <Button type="submit" disabled={signupLoading}>
                       {signupLoading ? "Creating account..." : "Create Account"}
-                    </Button>
-                    <Button variant="outline" type="button">
-                      Sign up with Google
                     </Button>
                   </Field>
                 </FieldGroup>

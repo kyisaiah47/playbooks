@@ -6,17 +6,18 @@ import { FloatingDockNav } from "@/components/floating-dock-nav";
 import { GuidesViewWrapper } from '@/app/app/views/GuidesViewWrapper';
 import { NotesViewWrapper } from '@/app/app/views/NotesViewWrapper';
 import { OverviewView } from '@/app/app/views/OverviewView';
-import { CalendarView } from '@/app/app/views/CalendarView';
-import { TasksView } from '@/app/app/views/TasksView';
 import { DataCacheProvider } from '@/contexts/DataCacheContext';
 
-type View = 'guides' | 'notes' | 'overview' | 'calendar' | 'tasks';
+type View = 'guides' | 'notes' | 'overview';
 
 export default function AppPage() {
 	const [currentView, setCurrentView] = useState<View>('guides');
 	const [selectedTrackIds, setSelectedTrackIds] = useState<string[]>([]);
 	const [isDark, setIsDark] = useState(false);
 	const [userEmail, setUserEmail] = useState('');
+	const [trackSelectorOpen, setTrackSelectorOpen] = useState(false);
+	const [calendarSelectorOpen, setCalendarSelectorOpen] = useState(false);
+	const [tasksSelectorOpen, setTasksSelectorOpen] = useState(false);
 
 	// Callbacks for interactive banner
 	const [templatesActions, setTemplatesActions] = useState<{
@@ -140,14 +141,14 @@ export default function AppPage() {
 								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
 								Create todos/events in{' '}
 								<button
-									onClick={() => handleViewChange('tasks')}
+									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
 									Tasks
 								</button>
 								/
 								<button
-									onClick={() => handleViewChange('calendar')}
+									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
 									Calendar
@@ -226,14 +227,14 @@ export default function AppPage() {
 								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
 								Create todos/events in{' '}
 								<button
-									onClick={() => handleViewChange('tasks')}
+									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
 									Tasks
 								</button>
 								/
 								<button
-									onClick={() => handleViewChange('calendar')}
+									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
 									Calendar
@@ -319,40 +320,6 @@ export default function AppPage() {
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{
-						opacity: currentView === 'calendar' ? 1 : 0,
-						y: currentView === 'calendar' ? 0 : 20,
-					}}
-					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className="absolute inset-0"
-					style={{
-						pointerEvents: currentView === 'calendar' ? 'auto' : 'none',
-						zIndex: currentView === 'calendar' ? 10 : 0
-					}}
-				>
-					<CalendarView
-						selectedTrackIds={selectedTrackIds}
-					/>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{
-						opacity: currentView === 'tasks' ? 1 : 0,
-						y: currentView === 'tasks' ? 0 : 20,
-					}}
-					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className="absolute inset-0"
-					style={{
-						pointerEvents: currentView === 'tasks' ? 'auto' : 'none',
-						zIndex: currentView === 'tasks' ? 10 : 0
-					}}
-				>
-					<TasksView
-						selectedTrackIds={selectedTrackIds}
-					/>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{
 						opacity: currentView === 'overview' ? 1 : 0,
 						y: currentView === 'overview' ? 0 : 20,
 					}}
@@ -375,6 +342,12 @@ export default function AppPage() {
 				isDark={isDark}
 				selectedTrackIds={selectedTrackIds}
 				onTrackSelectionChange={setSelectedTrackIds}
+				trackSelectorOpen={trackSelectorOpen}
+				setTrackSelectorOpen={setTrackSelectorOpen}
+				calendarSelectorOpen={calendarSelectorOpen}
+				setCalendarSelectorOpen={setCalendarSelectorOpen}
+				tasksSelectorOpen={tasksSelectorOpen}
+				setTasksSelectorOpen={setTasksSelectorOpen}
 			/>
 		</div>
 		</DataCacheProvider>

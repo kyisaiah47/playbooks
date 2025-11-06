@@ -33,14 +33,15 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
   return (
     <div className="max-w-none">
       {cleanedContent.map((paragraph, index) => {
+        const trimmedParagraph = paragraph.trim();
 
-        // Title headings (single #) - skip the first one since it's in the hero
-        if (paragraph.startsWith('# ') && !paragraph.startsWith('## ')) {
+        // Title headings (single #) - skip the first one since it's in the header
+        if (trimmedParagraph.startsWith('# ') && !trimmedParagraph.startsWith('## ')) {
           if (!hasSeenTitle) {
             hasSeenTitle = true;
             return null; // Skip the first title
           }
-          const headingText = paragraph.replace('# ', '');
+          const headingText = trimmedParagraph.replace('# ', '');
           const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return (
             <h1 key={index} id={id} className="text-3xl font-bold mt-0 mb-6 text-foreground">
@@ -50,8 +51,8 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
         }
 
         // Main headings with IDs for navigation
-        if (paragraph.startsWith('## ')) {
-          const headingText = paragraph.replace('## ', '');
+        if (trimmedParagraph.startsWith('## ')) {
+          const headingText = trimmedParagraph.replace('## ', '');
           const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return (
             <h2 key={index} id={id} className="text-xl font-semibold mt-8 mb-4 text-foreground">
@@ -61,8 +62,8 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
         }
 
         // Sub headings with IDs - check if heading has bullets after it
-        if (paragraph.startsWith('### ')) {
-          const content = paragraph.replace('### ', '');
+        if (trimmedParagraph.startsWith('### ')) {
+          const content = trimmedParagraph.replace('### ', '');
           const lines = content.split('\n');
           const headingText = lines[0];
           const bulletLines = lines.slice(1).filter(line => line.trim().startsWith('- '));
