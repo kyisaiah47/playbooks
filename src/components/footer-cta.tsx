@@ -4,26 +4,22 @@ const sections = [
   {
     title: "Product",
     links: [
-      { name: "Guides", href: "#guides" },
-      { name: "How It Works", href: "#how-it-works" },
-      { name: "Pricing", href: "#pricing" },
-      { name: "Axiom Engine", href: "#axiom" },
+      { name: "Guides", href: "/guides" },
+      { name: "Library", href: "/library" },
     ],
   },
   {
     title: "Company",
     links: [
-      { name: "About", href: "#about" },
-      { name: "Blog", href: "#blog" },
-      { name: "Contact", href: "#contact" },
+      { name: "About", href: "/about" },
     ],
   },
   {
-    title: "Resources",
+    title: "Legal",
     links: [
-      { name: "Help Center", href: "#help" },
-      { name: "FAQ", href: "#faq" },
-      { name: "Changelog", href: "#changelog" },
+      { name: "Privacy", href: "/privacy" },
+      { name: "Terms", href: "/terms" },
+      { name: "Changelog", href: "/changelog" },
     ],
   },
 ];
@@ -64,6 +60,9 @@ const FooterCta = ({
                   {logo.title}
                 </h2>
               </div>
+              <p className="text-muted-foreground mt-2 text-left text-sm italic">
+                Notion meets a life coach
+              </p>
               <p className="text-muted-foreground mt-4 text-left text-sm">
                 The comprehensive guide + planning tool for life's biggest moments.
                 Comprehensive questions, expert readings, and integrated planning—all in one place.

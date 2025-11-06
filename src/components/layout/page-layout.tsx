@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "./header";
-import { Footer } from "./footer";
 import { RecentlyUsedStrip, RecentlyUsedFooter } from "@/components/recently-used-strip";
 import { Navbar22 } from "@/components/navbar22";
 import { FooterCta } from "@/components/footer-cta";
