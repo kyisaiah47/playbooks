@@ -95,69 +95,25 @@ export default function AppPage() {
 						<div className="inline-flex items-center gap-3 text-sm text-foreground px-6">
 							<span className="inline-flex items-center gap-1.5">
 								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">1</span>
-								Pick a{' '}
+								Choose a{' '}
 								<button
-									onClick={() => {
-										if (currentView !== 'guides') handleViewChange('guides');
-										setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
-									}}
+									onClick={() => setTrackSelectorOpen(!trackSelectorOpen)}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
-									guide
-								</button>{' '}
-								that fits your goal
+									Track
+								</button>
 							</span>
 							<span className="text-muted-foreground">→</span>
 							<span className="inline-flex items-center gap-1.5">
 								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">2</span>
-								Answer thoughtful{' '}
+								Explore{' '}
 								<button
-									onClick={() => {
-										if (currentView !== 'guides') handleViewChange('guides');
-										setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
-									}}
+									onClick={() => handleViewChange('guides')}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
-									questions
+									Guides
 								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
-								Read curated{' '}
-								<button
-									onClick={() => {
-										if (currentView !== 'guides') handleViewChange('guides');
-										setTimeout(() => templatesActions.openFirstArticle?.(), 100);
-									}}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									readings
-								</button>{' '}
-								for help
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
-								Create todos/events in{' '}
-								<button
-									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Tasks
-								</button>
-								/
-								<button
-									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Calendar
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">5</span>
-								Add freeform notes in{' '}
+								{' '}and capture{' '}
 								<button
 									onClick={() => handleViewChange('notes')}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
@@ -167,8 +123,26 @@ export default function AppPage() {
 							</span>
 							<span className="text-muted-foreground">→</span>
 							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">6</span>
-								See everything in one place in{' '}
+								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
+								Schedule with{' '}
+								<button
+									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
+									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+								>
+									Tasks
+								</button>
+								{' '}and{' '}
+								<button
+									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
+									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+								>
+									Calendar
+								</button>
+							</span>
+							<span className="text-muted-foreground">→</span>
+							<span className="inline-flex items-center gap-1.5">
+								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
+								Review in{' '}
 								<button
 									onClick={() => handleViewChange('overview')}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
@@ -181,69 +155,25 @@ export default function AppPage() {
 						<div className="inline-flex items-center gap-3 text-sm text-foreground px-6">
 							<span className="inline-flex items-center gap-1.5">
 								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">1</span>
-								Pick a{' '}
+								Choose a{' '}
 								<button
-									onClick={() => {
-										if (currentView !== 'guides') handleViewChange('guides');
-										setTimeout(() => templatesActions.openTemplateDropdown?.(), 100);
-									}}
+									onClick={() => setTrackSelectorOpen(!trackSelectorOpen)}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
-									guide
-								</button>{' '}
-								that fits your goal
+									Track
+								</button>
 							</span>
 							<span className="text-muted-foreground">→</span>
 							<span className="inline-flex items-center gap-1.5">
 								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">2</span>
-								Answer thoughtful{' '}
+								Explore{' '}
 								<button
-									onClick={() => {
-										if (currentView !== 'guides') handleViewChange('guides');
-										setTimeout(() => templatesActions.selectFirstPrompt?.(), 100);
-									}}
+									onClick={() => handleViewChange('guides')}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
 								>
-									questions
+									Guides
 								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
-								Read curated{' '}
-								<button
-									onClick={() => {
-										if (currentView !== 'guides') handleViewChange('guides');
-										setTimeout(() => templatesActions.openFirstArticle?.(), 100);
-									}}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									readings
-								</button>{' '}
-								for help
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
-								Create todos/events in{' '}
-								<button
-									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Tasks
-								</button>
-								/
-								<button
-									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Calendar
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">5</span>
-								Add freeform notes in{' '}
+								{' '}and capture{' '}
 								<button
 									onClick={() => handleViewChange('notes')}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
@@ -253,8 +183,26 @@ export default function AppPage() {
 							</span>
 							<span className="text-muted-foreground">→</span>
 							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">6</span>
-								See everything in one place in{' '}
+								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
+								Schedule with{' '}
+								<button
+									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
+									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+								>
+									Tasks
+								</button>
+								{' '}and{' '}
+								<button
+									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
+									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
+								>
+									Calendar
+								</button>
+							</span>
+							<span className="text-muted-foreground">→</span>
+							<span className="inline-flex items-center gap-1.5">
+								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
+								Review in{' '}
 								<button
 									onClick={() => handleViewChange('overview')}
 									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
