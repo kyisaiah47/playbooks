@@ -18,7 +18,6 @@ export async function GET(request: Request) {
       const { data: guides, error } = await supabase
         .from('guides')
         .select('id, name, description, category, icon, tags')
-        .eq('active', true)
         .order('name', { ascending: true });
 
       if (error) {
