@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { createBrowserClient } from '@supabase/ssr';
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -36,22 +37,24 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
   const [loginLoading, setLoginLoading] = useState(false);
   const [signupLoading, setSignupLoading] = useState(false);
 
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError("");
     setLoginLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+      const { error } = await supabase.auth.signInWithPassword({
+        email: loginEmail,
+        password: loginPassword,
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setLoginError(data.error || "Login failed");
+      if (error) {
+        setLoginError(error.message);
         return;
       }
 
@@ -71,16 +74,18 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
     setSignupLoading(true);
 
     try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: signupEmail, password: signupPassword, name: signupName }),
+      const { data, error } = await supabase.auth.signUp({
+        email: signupEmail,
+        password: signupPassword,
+        options: {
+          data: {
+            name: signupName,
+          },
+        },
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setSignupError(data.error || "Signup failed");
+      if (error) {
+        setSignupError(error.message);
         return;
       }
 
@@ -95,13 +100,13 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
             const stored = localStorage.getItem(key);
             if (stored) {
               try {
-                const data = JSON.parse(stored);
+                const parsedData = JSON.parse(stored);
                 const parts = key.split('_');
                 if (parts.length >= 3) {
                   workspaceData.push({
                     templateId: parts[1],
                     promptId: parts[2],
-                    response: data.response,
+                    response: parsedData.response,
                   });
                 }
               } catch (e) {
@@ -112,13 +117,13 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
             const stored = localStorage.getItem(key);
             if (stored) {
               try {
-                const data = JSON.parse(stored);
+                const parsedData = JSON.parse(stored);
                 reflectionData.push({
-                  date: data.date,
-                  prompt: data.prompt,
-                  content: data.content,
-                  mood: data.mood,
-                  tags: data.tags,
+                  date: parsedData.date,
+                  prompt: parsedData.prompt,
+                  content: parsedData.content,
+                  mood: parsedData.mood,
+                  tags: parsedData.tags,
                 });
               } catch (e) {
                 console.error('Error parsing reflection data:', e);
