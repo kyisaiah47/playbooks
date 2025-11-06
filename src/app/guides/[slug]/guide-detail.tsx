@@ -120,12 +120,19 @@ export default function GuideDetail({ params }: GuideDetailProps) {
     );
   }
 
-  if (!template) {
+  // Check if guide exists and has content (both readings and questions)
+  const hasContent = template && questions.length > 0 && readings.length > 0;
+
+  if (!template || !hasContent) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-32 text-center">
           <h1 className="text-4xl font-bold mb-4">Guide Not Found</h1>
-          <p className="text-muted-foreground mb-8">The guide you're looking for doesn't exist.</p>
+          <p className="text-muted-foreground mb-8">
+            {!template
+              ? "The guide you're looking for doesn't exist."
+              : "This guide is currently in the works. Coming soon!"}
+          </p>
           <Button asChild>
             <Link href="/guides">Browse Guides</Link>
           </Button>
