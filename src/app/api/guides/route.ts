@@ -91,9 +91,32 @@ export async function GET(request: Request) {
       );
     }
 
+    // Get counts of readings and questions for each guide
+    const guidesWithCounts = await Promise.all(
+      (guides || []).map(async (guide) => {
+        const [readingsResult, questionsResult] = await Promise.all([
+          supabase
+            .from('readings')
+            .select('*', { count: 'exact', head: true })
+            .eq('guide', guide.id),
+          supabase
+            .from('questions')
+            .select('*', { count: 'exact', head: true })
+            .eq('guide_id', guide.id)
+        ]);
+
+        return {
+          ...guide,
+          readingsCount: readingsResult.count || 0,
+          questionsCount: questionsResult.count || 0,
+          hasContent: (readingsResult.count || 0) > 0 && (questionsResult.count || 0) > 0
+        };
+      })
+    );
+
     return NextResponse.json({
-      guides: guides || [],
-      total: guides?.length || 0
+      guides: guidesWithCounts || [],
+      total: guidesWithCounts?.length || 0
     });
   } catch (error) {
     console.error('Error in /api/guides:', error);

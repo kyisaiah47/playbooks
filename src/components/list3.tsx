@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import * as LucideIcons from "lucide-react";
 
 interface Guide {
@@ -12,6 +13,9 @@ interface Guide {
   category: string;
   icon: string;
   tags: string[];
+  hasContent?: boolean;
+  readingsCount?: number;
+  questionsCount?: number;
 }
 
 interface Category {
@@ -80,21 +84,43 @@ const List3 = () => {
                   {guides.map((guide, idx) => {
                     // Get the icon component dynamically
                     const IconComponent = guide.icon && (LucideIcons as any)[guide.icon];
+                    const hasContent = guide.hasContent !== false;
+
+                    const guideContent = (
+                      <div className={`my-2.5 grid gap-2.5 text-sm sm:grid-cols-3 transition-colors ${
+                        hasContent
+                          ? 'hover:text-primary cursor-pointer'
+                          : 'opacity-40 cursor-not-allowed'
+                      }`}>
+                        <div className="text-muted-foreground flex items-center gap-2">
+                          {IconComponent && <IconComponent className="w-4 h-4" />}
+                        </div>
+                        <p className="font-medium">{guide.name}</p>
+                        <p className="text-muted-foreground">
+                          {guide.description}
+                        </p>
+                      </div>
+                    );
 
                     return (
                       <React.Fragment key={guide.id}>
                         <Separator />
-                        <Link href={`/guides/${guide.id}`}>
-                          <div className="my-2.5 grid gap-2.5 text-sm sm:grid-cols-3 hover:text-primary transition-colors cursor-pointer">
-                            <div className="text-muted-foreground flex items-center gap-2">
-                              {IconComponent && <IconComponent className="w-4 h-4" />}
-                            </div>
-                            <p className="font-medium">{guide.name}</p>
-                            <p className="text-muted-foreground">
-                              {guide.description}
-                            </p>
-                          </div>
-                        </Link>
+                        {hasContent ? (
+                          <Link href={`/guides/${guide.id}`}>
+                            {guideContent}
+                          </Link>
+                        ) : (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div>
+                                {guideContent}
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Coming soon - In the works</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        )}
                       </React.Fragment>
                     );
                   })}
