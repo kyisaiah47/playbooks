@@ -27,12 +27,19 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
       return true;
     });
 
+  // Track if we've seen the first h1 title (to skip it since it's in the hero)
+  let hasSeenTitle = false;
+
   return (
     <div className="max-w-none">
       {cleanedContent.map((paragraph, index) => {
 
-        // Title headings (single #)
+        // Title headings (single #) - skip the first one since it's in the hero
         if (paragraph.startsWith('# ') && !paragraph.startsWith('## ')) {
+          if (!hasSeenTitle) {
+            hasSeenTitle = true;
+            return null; // Skip the first title
+          }
           const headingText = paragraph.replace('# ', '');
           const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return (

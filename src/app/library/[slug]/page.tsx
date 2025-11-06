@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { PageLayout } from "@/components/layout";
 import { ReadingContent } from "@/app/library/[slug]/reading-content";
-import type { Metadata } from "next";
+import { motion } from "framer-motion";
+import { Particles } from "@/components/magicui/particles";
+import { useState, useEffect } from "react";
 
 async function getReading(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/readings/${id}`, {
@@ -15,65 +19,6 @@ async function getReading(id: string) {
   return res.json();
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const reading = await getReading(slug);
-
-  if (!reading) {
-    return {
-      title: "Reading Not Found - Templata",
-      description: "The reading you're looking for doesn't exist.",
-    };
-  }
-
-  const guideName = reading.guide
-    ? reading.guide.split('-').map((word: string) =>
-        word.charAt(0).toUpperCase() + word.slice(1)
-      ).join(' ')
-    : 'Library';
-
-  const description = reading.excerpt ||
-    `Expert curated content on ${reading.title}. Save hundreds of hours of research with comprehensive guidance for life's biggest decisions.`;
-
-  return {
-    title: `${reading.title} - Templata`,
-    description,
-    keywords: [
-      reading.title.toLowerCase(),
-      guideName.toLowerCase(),
-      "expert guidance",
-      "life planning",
-      "curated content",
-      "templata reading",
-    ],
-    authors: reading.author ? [{ name: reading.author }] : undefined,
-    openGraph: {
-      title: `${reading.title} - Templata`,
-      description,
-      url: `https://templata.org/library/${slug}`,
-      siteName: "Templata",
-      locale: "en_US",
-      type: "article",
-      publishedTime: reading.created_at,
-      modifiedTime: reading.updated_at,
-      authors: reading.author ? [reading.author] : undefined,
-      images: [
-        {
-          url: "https://templata.org/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: reading.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${reading.title} - Templata`,
-      description,
-      images: ["https://templata.org/og-image.png"],
-    },
-  };
-}
 
 async function getRelatedReadings(guide: string, currentId: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/library?guide=${guide}`, {
@@ -88,13 +33,34 @@ async function getRelatedReadings(guide: string, currentId: string) {
   return (data.readings || []).filter((r: any) => r.id !== currentId).slice(0, 6);
 }
 
-export default async function ReadingPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const reading = await getReading(slug);
+export default function ReadingPage({ params }: { params: Promise<{ slug: string }> }) {
+  const [reading, setReading] = useState<any>(null);
+  const [relatedReadings, setRelatedReadings] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  let relatedReadings = [];
-  if (reading?.guide) {
-    relatedReadings = await getRelatedReadings(reading.guide, reading.id);
+  useEffect(() => {
+    async function fetchData() {
+      const { slug } = await params;
+      const readingData = await getReading(slug);
+      setReading(readingData);
+
+      if (readingData?.guide) {
+        const related = await getRelatedReadings(readingData.guide, readingData.id);
+        setRelatedReadings(related);
+      }
+      setLoading(false);
+    }
+    fetchData();
+  }, [params]);
+
+  if (loading) {
+    return (
+      <PageLayout>
+        <div className="py-24 md:py-32 text-center">
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </PageLayout>
+    );
   }
 
   if (!reading) {
@@ -116,24 +82,69 @@ export default async function ReadingPage({ params }: { params: Promise<{ slug: 
 
   return (
     <PageLayout>
-      <div className="pt-52 pb-16">
+      {/* Hero Section */}
+      <section className="relative pt-56 pb-32">
+        <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
+          <p className="text-muted-foreground">
+            {guideName}
+          </p>
+          <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+            <span
+              className="overflow-hidden"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "600px",
+              }}
+            >
+              {reading.title.split(" ").map((word: string, i: number) => (
+                <motion.span
+                  className="relative inline-block px-[6px] leading-[none]"
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    y: "70%",
+                    rotateX: "-28deg",
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: "0%",
+                    rotateX: "0deg",
+                  }}
+                  transition={{
+                    delay: i * 0.08 + 0.1,
+                    duration: 0.8,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </span>
+          </h1>
+          <Particles
+            className="absolute inset-0 z-0"
+            quantity={500}
+            ease={80}
+            refresh
+          />
+          <div className="h-92 bg-background absolute bottom-20 left-0 right-0 w-full blur-xl" />
+        </div>
+      </section>
+
+      <div className="pb-16">
         <div className="container max-w-7xl">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-4">
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="space-y-8 lg:sticky lg:top-8">
                 {/* Reading Info */}
-                <div>
-                  <p className="text-muted-foreground mb-4 text-xs font-semibold uppercase tracking-widest">
-                    {guideName}
-                  </p>
-                  <h1 className="mb-4 text-4xl font-bold">{reading.title}</h1>
-                  {reading.excerpt && (
+                {reading.excerpt && (
+                  <div>
                     <p className="text-muted-foreground leading-relaxed">
                       {reading.excerpt}
                     </p>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {/* Metadata */}
                 <div className="space-y-6 border-t pt-8">
