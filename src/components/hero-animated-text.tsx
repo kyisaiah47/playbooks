@@ -3,13 +3,17 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Particles } from "@/components/magicui/particles";
 import { Button } from "@/components/ui/button";
 import { LoginDialog } from "@/components/login-dialog";
+import { useAuth } from "@/contexts/auth-context";
 
 const HeroAnimatedText = () => {
   const [loginOpen, setLoginOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
 
   return (
     <>
@@ -85,9 +89,15 @@ const HeroAnimatedText = () => {
         <Button
           variant="secondary"
           className="text-md -mt-15 group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
-          onClick={() => setLoginOpen(true)}
+          onClick={() => {
+            if (isLoggedIn) {
+              router.push('/app');
+            } else {
+              setLoginOpen(true);
+            }
+          }}
         >
-          Get Started
+          {isLoggedIn ? "Go to App" : "Get Started"}
           <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
         </Button>
       </div>

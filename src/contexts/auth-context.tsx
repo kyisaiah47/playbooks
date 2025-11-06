@@ -23,27 +23,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false); // Start as false - assume logged out
 
-  // Load auth state from session API on mount (only if needed)
+  // Load auth state from session API on mount
   useEffect(() => {
-    // Check if there's a session cookie before making API call
-    const hasSessionCookie = document.cookie.includes('session=');
-    if (!hasSessionCookie) {
-      setLoading(false);
-      return;
-    }
-
     async function loadSession() {
       try {
+        console.log('AUTH: Loading session from API...');
         setLoading(true);
         const res = await fetch('/api/auth/me', {
           credentials: 'include',
           cache: 'no-store'
         });
         const data = await res.json();
+        console.log('AUTH: API response:', data);
 
         if (data.user) {
+          console.log('AUTH: User found, logging in:', data.user);
           setIsLoggedIn(true);
           setUser(data.user);
+        } else {
+          console.log('AUTH: No user in response');
         }
       } catch (error) {
         console.error('Error loading session:', error);

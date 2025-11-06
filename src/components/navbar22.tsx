@@ -2,6 +2,7 @@
 
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
@@ -12,11 +13,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { LoginDialog } from "@/components/login-dialog";
+import { useAuth } from "@/contexts/auth-context";
 
 const Navbar22 = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const updateTime = () => {
@@ -89,14 +93,26 @@ const Navbar22 = () => {
                   </a>
                 ))}
                 <ModeToggle />
-                <Button onClick={() => setLoginDialogOpen(true)}>
-                  Login
+                <Button onClick={() => {
+                  if (isLoggedIn) {
+                    router.push('/app');
+                  } else {
+                    setLoginDialogOpen(true);
+                  }
+                }}>
+                  {isLoggedIn ? "Go to App" : "Login"}
                 </Button>
               </div>
 
               <div className="flex items-center gap-2 md:hidden">
-                <Button onClick={() => setLoginDialogOpen(true)} size="sm">
-                  Login
+                <Button onClick={() => {
+                  if (isLoggedIn) {
+                    router.push('/app');
+                  } else {
+                    setLoginDialogOpen(true);
+                  }
+                }} size="sm">
+                  {isLoggedIn ? "Go to App" : "Login"}
                 </Button>
                 <ModeToggle />
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
