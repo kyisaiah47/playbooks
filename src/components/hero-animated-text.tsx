@@ -12,7 +12,7 @@ const HeroAnimatedText = () => {
     <section className="pt-56 pb-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
         <p className="text-muted-foreground">
-          The Comprehensive Guide + Planning Tool
+          Notion meets a life coach
         </p>
         <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
           <span

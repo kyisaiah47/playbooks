@@ -77,6 +77,13 @@ const AboutHero = () => {
             iteration and refinement.
           </p>
 
+          <p>
+            Today, we've found the clearest expression of what we are: <strong>Notion
+            meets a life coach</strong>. The organizational power of Notion combined with
+            the expert guidance and emotional support of a life coach—for life's biggest
+            moments.
+          </p>
+
           {/* Manifesto Callout */}
           <Card className="border-2 border-primary/20 bg-primary/5 my-12 relative">
             <ManifestoAudio />

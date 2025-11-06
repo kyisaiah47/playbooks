@@ -36,7 +36,7 @@ const AboutHeroVideo = () => {
         {/* Main Content */}
         <div className="mb-16 text-center">
           <Badge variant="secondary" className="mb-6 px-4 py-2">
-            The Comprehensive Guide + Planning Tool
+            Notion meets a life coach
           </Badge>
           <h2 className="leading-tighter mb-6 text-5xl font-medium tracking-tight lg:text-6xl">
             <span

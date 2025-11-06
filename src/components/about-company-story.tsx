@@ -42,9 +42,9 @@ export const AboutCompanyStory = () => {
         <div className="mt-6 grid grid-cols-2 gap-8 md:grid-cols-4">
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
-              3
+              48+
             </h3>
-            <p className="text-muted-foreground mt-1 font-medium">Core features</p>
+            <p className="text-muted-foreground mt-1 font-medium">Questions per guide</p>
           </div>
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
@@ -81,14 +81,14 @@ export const AboutCompanyStory = () => {
           </p>
 
           <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
-            Notion gives you blank pages. Google gives you scattered information.
+            Think Notion meets a life coach—for life's biggest moments.
           </h2>
           <p className="text-lg">
-            We built Templata because major life decisions deserve better.
-            Comprehensive questions refined through months of AI testing.
-            Expert readings that save you hundreds of hours. Integrated planning
-            that keeps everything organized by life event. Nothing generic,
-            nothing missed. Just 90%+ coverage from day one.
+            The organizational power of Notion combined with expert guidance and
+            emotional support of a life coach. Comprehensive questions refined through
+            months of AI testing. Expert readings that save you hundreds of hours.
+            Integrated planning that keeps everything organized by life event.
+            Nothing generic, nothing missed. Just 90%+ coverage from day one.
           </p>
         </div>
       </section>
