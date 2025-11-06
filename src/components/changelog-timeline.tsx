@@ -19,6 +19,48 @@ const ChangelogTimeline = () => {
         <div className="border-border mx-auto mt-20 max-w-2xl space-y-10 border-l border-dashed pl-6">
           <div>
             <p className="text-muted-foreground relative font-mono text-sm">
+              <time className="absolute -left-6 top-1 h-3 w-3 -translate-x-1/2 rounded-full bg-primary"></time>
+              November 6, 2025
+            </p>
+            <div className="my-4">
+              <h2 className="mb-2 text-2xl font-semibold">Version 0.2.0 - MVP v2</h2>
+              <p className="mb-4 text-muted-foreground">
+                Complete product overhaul with luxury positioning and refined user experience.
+              </p>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Brand Evolution</h3>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Repositioned as luxury product inspired by Co-Star and Superhuman</li>
+                    <li>New tagline: "Notion meets a life coach"</li>
+                    <li>Refined visual identity and elevated design language</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Content Refinement</h3>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Distilled guides down to highest-quality, most impactful templates</li>
+                    <li>Enhanced questions with better AI refinement and categorization</li>
+                    <li>Improved readings with more expert-curated content</li>
+                    <li>Added content availability indicators - guides without complete content are clearly marked</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Complete UI/UX Overhaul</h3>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Redesigned /app with streamlined workflow and modern interface</li>
+                    <li>New planning and analytics features for comprehensive life organization</li>
+                    <li>Simplified navigation with improved information architecture</li>
+                    <li>Enhanced reading experience with animated hero sections</li>
+                    <li>Improved mobile responsiveness and accessibility</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-muted-foreground relative font-mono text-sm">
               <time className="absolute -left-6 top-1 h-3 w-3 -translate-x-1/2 rounded-full bg-emerald-400"></time>
               October 21, 2025
             </p>
