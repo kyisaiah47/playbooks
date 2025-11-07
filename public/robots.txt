@@ -3,10 +3,12 @@
 
 User-agent: *
 Allow: /
-Allow: /templates
-Allow: /templates/*
-Allow: /articles
-Allow: /articles/*
+Allow: /guides
+Allow: /guides/*
+Allow: /library
+Allow: /library/*
+Allow: /about
+Allow: /changelog
 Allow: /privacy
 Allow: /terms
 

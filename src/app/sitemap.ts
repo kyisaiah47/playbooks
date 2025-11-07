@@ -16,16 +16,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/templates`,
+      url: `${baseUrl}/guides`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/articles`,
+      url: `${baseUrl}/library`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/changelog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/privacy`,
@@ -44,52 +56,44 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch all templates to get categories dynamically
-    const { data: templates } = await supabase
-      .from('templata_templates')
+    // Fetch all guides (templates)
+    const { data: guides } = await supabase
+      .from('guides')
       .select('id, category, created_at')
       .order('created_at', { ascending: false });
 
     // Get unique categories and generate category pages dynamically
-    const uniqueCategories = [...new Set((templates || []).map(t => t.category))];
+    const uniqueCategories = [...new Set((guides || []).map(t => t.category))];
     const categoryPages: MetadataRoute.Sitemap = uniqueCategories.map((category) => ({
-      url: `${baseUrl}/templates/categories/${category.toLowerCase().replace(/\s+&?\s*/g, '-')}`,
+      url: `${baseUrl}/guides/categories/${category.toLowerCase().replace(/\s+&?\s*/g, '-')}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.85,
     }));
 
-    // Fetch all article slugs
-    const { data: articles } = await supabase
-      .from('templata_articles')
+    // Fetch all readings (articles)
+    const { data: readings } = await supabase
+      .from('readings')
       .select('slug, created_at')
       .order('created_at', { ascending: false });
 
-    // Generate template pages
-    const templatePages: MetadataRoute.Sitemap = (templates || []).flatMap((template) => [
-      {
-        url: `${baseUrl}/templates/${template.id}`,
-        lastModified: new Date(template.created_at),
-        changeFrequency: 'weekly' as const,
-        priority: 0.8,
-      },
-      {
-        url: `${baseUrl}/templates/${template.id}/marketing`,
-        lastModified: new Date(template.created_at),
-        changeFrequency: 'weekly' as const,
-        priority: 0.7,
-      },
-    ]);
+    // Generate guide pages
+    const guidePages: MetadataRoute.Sitemap = (guides || []).map((guide) => ({
+      url: `${baseUrl}/guides/${guide.id}`,
+      lastModified: new Date(guide.created_at),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    }));
 
-    // Generate article pages
-    const articlePages: MetadataRoute.Sitemap = (articles || []).map((article) => ({
-      url: `${baseUrl}/articles/${article.slug}`,
-      lastModified: new Date(article.created_at),
+    // Generate reading/library pages
+    const readingPages: MetadataRoute.Sitemap = (readings || []).map((reading) => ({
+      url: `${baseUrl}/library/${reading.slug}`,
+      lastModified: new Date(reading.created_at),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     }));
 
-    return [...staticPages, ...categoryPages, ...templatePages, ...articlePages];
+    return [...staticPages, ...categoryPages, ...guidePages, ...readingPages];
   } catch (error) {
     console.error('Error generating sitemap:', error);
     // Return just static pages if database fetch fails
