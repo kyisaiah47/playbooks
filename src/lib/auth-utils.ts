@@ -1,11 +1,6 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { createServerClient } from '@supabase/ssr';
 
 export interface AuthSession {
   userId: string;
@@ -17,18 +12,33 @@ export interface AuthSession {
 export async function getAuthenticatedUser(): Promise<AuthSession | null> {
   try {
     const cookieStore = await cookies();
-    const accessToken = cookieStore.get('sb-access-token');
 
-    if (!accessToken) {
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+          set(name: string, value: string, options: any) {
+            cookieStore.set({ name, value, ...options });
+          },
+          remove(name: string, options: any) {
+            cookieStore.set({ name, value: '', ...options });
+          },
+        },
+      }
+    );
+
+    // Get the current session using Supabase's method
+    const { data: { session }, error } = await supabase.auth.getSession();
+
+    if (error || !session?.user) {
       return null;
     }
 
-    // Verify the token with Supabase
-    const { data: { user }, error } = await supabase.auth.getUser(accessToken.value);
-
-    if (error || !user) {
-      return null;
-    }
+    const user = session.user;
 
     // Get user profile - we need the users.id, not auth.users.id for foreign keys
     const { data: profile } = await supabase
