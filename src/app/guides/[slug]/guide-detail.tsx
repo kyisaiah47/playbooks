@@ -33,6 +33,9 @@ import {
 
 interface GuideDetailProps {
   params: Promise<{ slug: string }>;
+  initialTemplate?: TemplateRegistryEntry | null;
+  initialQuestions?: Question[];
+  initialReadings?: Reading[];
 }
 
 interface Question {
@@ -50,17 +53,38 @@ interface Reading {
   type: string;
 }
 
-export default function GuideDetail({ params }: GuideDetailProps) {
+export default function GuideDetail({ params, initialTemplate, initialQuestions, initialReadings }: GuideDetailProps) {
   const { slug } = use(params);
 
-  const [template, setTemplate] = useState<TemplateRegistryEntry | null>(null);
+  const [template, setTemplate] = useState<TemplateRegistryEntry | null>(initialTemplate || null);
   const [relatedTemplates, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [readings, setReadings] = useState<Reading[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [questions, setQuestions] = useState<Question[]>(initialQuestions || []);
+  const [readings, setReadings] = useState<Reading[]>(initialReadings || []);
+  const [loading, setLoading] = useState(!initialTemplate);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
 
   useEffect(() => {
+    // Skip fetching if we already have initial data
+    if (initialTemplate && initialQuestions && initialReadings) {
+      // Still fetch related templates
+      async function fetchRelated() {
+        try {
+          const guidesRes = await fetch('/api/guides?all=true');
+          const guidesData = await guidesRes.json();
+          if (initialTemplate) {
+            const related = guidesData.guides?.filter(
+              (t: TemplateRegistryEntry) => t.category === initialTemplate.category && t.id !== slug
+            ) || [];
+            setRelatedTemplates(related.slice(0, 3));
+          }
+        } catch (error) {
+          console.error('Error fetching related guides:', error);
+        }
+      }
+      fetchRelated();
+      return;
+    }
+
     async function fetchData() {
       try {
         setLoading(true);
@@ -96,7 +120,7 @@ export default function GuideDetail({ params }: GuideDetailProps) {
     }
 
     fetchData();
-  }, [slug]);
+  }, [slug, initialTemplate, initialQuestions, initialReadings]);
 
   // Group questions by category
   const groupedQuestions = questions.reduce((acc, question) => {

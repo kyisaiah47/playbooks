@@ -1,8 +1,19 @@
 import type { Metadata } from 'next';
-import { getTemplateById } from '@/registry/guides';
 import GuideDetail from './guide-detail';
 import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
+
+async function getGuide(slug: string) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) return null;
+    return res.json();
+  } catch {
+    return null;
+  }
+}
 
 async function getGuideData(slug: string) {
   try {
@@ -19,19 +30,19 @@ async function getGuideData(slug: string) {
     const readingsData = await readingsRes.json();
 
     return {
-      questionCount: questionsData.questions?.length || 0,
+      questions: questionsData.questions || [],
       readings: readingsData.readings || []
     };
   } catch {
-    return { questionCount: 0, readings: [] };
+    return { questions: [], readings: [] };
   }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const template = await getTemplateById(slug);
+  const guide = await getGuide(slug);
 
-  if (!template?.template) {
+  if (!guide) {
     return {
       title: 'Guide Not Found - Templata',
       description: 'The requested guide could not be found.',
@@ -42,37 +53,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const templateData = template.template;
-  const { questionCount } = await getGuideData(slug);
+  const { questions } = await getGuideData(slug);
 
   // Use meta_title if exists in DB, otherwise generate
-  const title = templateData.meta_title || `${templateData.title} Template & Planning Guide | Templata`;
+  const title = guide.meta_title || `${guide.title} Template & Planning Guide | Templata`;
 
   // Use meta_description if exists in DB, otherwise generate
-  const description = templateData.meta_description || `Complete ${templateData.title.toLowerCase()} planning guide. ${templateData.description} Expert framework with ${questionCount > 0 ? `${questionCount}` : ''} planning questions, curated expert readings, and proven strategies. Start planning today.`;
+  const description = guide.meta_description || `Complete ${guide.title.toLowerCase()} planning guide. ${guide.description} Expert framework with ${questions.length > 0 ? `${questions.length}` : ''} planning questions, curated expert readings, and proven strategies. Start planning today.`;
 
   // Generate comprehensive SEO keywords
   const baseKeywords = [
-    templateData.title.toLowerCase(),
-    `${templateData.title.toLowerCase()} template`,
-    `${templateData.title.toLowerCase()} guide`,
-    `${templateData.title.toLowerCase()} planning`,
-    `how to plan ${templateData.title.toLowerCase()}`,
-    `${templateData.title.toLowerCase()} step by step`,
-    `${templateData.title.toLowerCase()} tips`,
-    `${templateData.title.toLowerCase()} mistakes to avoid`,
-    `best ${templateData.title.toLowerCase()} guide`,
-    `${templateData.title.toLowerCase()} planning template`,
-    `${templateData.category.toLowerCase()} planning`,
-    `${templateData.category.toLowerCase()} guide`,
+    guide.title.toLowerCase(),
+    `${guide.title.toLowerCase()} template`,
+    `${guide.title.toLowerCase()} guide`,
+    `${guide.title.toLowerCase()} planning`,
+    `how to plan ${guide.title.toLowerCase()}`,
+    `${guide.title.toLowerCase()} step by step`,
+    `${guide.title.toLowerCase()} tips`,
+    `${guide.title.toLowerCase()} mistakes to avoid`,
+    `best ${guide.title.toLowerCase()} guide`,
+    `${guide.title.toLowerCase()} planning template`,
+    `${guide.category.toLowerCase()} planning`,
+    `${guide.category.toLowerCase()} guide`,
     'planning template',
     'step-by-step guide',
     'expert planning guide',
   ];
 
   // Add SEO keywords from database if available
-  if (templateData.seo_keywords && Array.isArray(templateData.seo_keywords)) {
-    baseKeywords.push(...templateData.seo_keywords.map((keyword: string) => keyword.toLowerCase()));
+  if (guide.seo_keywords && Array.isArray(guide.seo_keywords)) {
+    baseKeywords.push(...guide.seo_keywords.map((keyword: string) => keyword.toLowerCase()));
   }
 
   return {
@@ -92,7 +102,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: '/og-image.svg',
           width: 1200,
           height: 630,
-          alt: `${templateData.title} Guide`,
+          alt: `${guide.title} Guide`,
         },
       ],
       locale: 'en_US',
@@ -123,23 +133,35 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const template = await getTemplateById(slug);
+  const guide = await getGuide(slug);
 
-  if (!template?.template) {
+  if (!guide) {
     return <GuideDetail params={params} />;
   }
 
-  const templateData = template.template;
-  const { readings } = await getGuideData(slug);
+  const { questions, readings } = await getGuideData(slug);
+
+  // Convert guide data to template format for GuideDetail component
+  const template = {
+    id: guide.id,
+    name: guide.title,
+    description: guide.description,
+    category: guide.category,
+    icon: guide.icon || '',
+    url: `/guides/${guide.id}`,
+    color: '',
+    iconColor: '',
+    template: guide
+  };
 
   // JSON-LD structured data for better SEO and rich results
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `${templateData.title} Template & Guide`,
-    description: templateData.description,
+    name: `${guide.title} Template & Guide`,
+    description: guide.description,
     image: 'https://templata.org/og-image.svg',
-    totalTime: templateData.estimated_time || 'PT2H',
+    totalTime: guide.estimated_time || 'PT2H',
     estimatedCost: {
       '@type': 'MonetaryAmount',
       currency: 'USD',
@@ -157,12 +179,12 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       {
         '@type': 'HowToStep',
         name: 'Answer Planning Questions',
-        text: `Complete AI-refined questions to systematically think through your ${templateData.title.toLowerCase()}.`,
+        text: `Complete AI-refined questions to systematically think through your ${guide.title.toLowerCase()}.`,
       },
       {
         '@type': 'HowToStep',
         name: 'Read Expert Guides',
-        text: `Access curated expert readings covering all aspects of ${templateData.title.toLowerCase()}.`,
+        text: `Access curated expert readings covering all aspects of ${guide.title.toLowerCase()}.`,
       },
       {
         '@type': 'HowToStep',
@@ -172,7 +194,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     ],
     about: {
       '@type': 'Thing',
-      name: templateData.title,
+      name: guide.title,
     },
   };
 
@@ -202,7 +224,12 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <GuideDetail params={params} />
+      <GuideDetail
+        params={params}
+        initialTemplate={template}
+        initialQuestions={questions}
+        initialReadings={readings}
+      />
 
       {/* Hidden SEO content - full reading content for search engines */}
       <div className="sr-only" aria-hidden="true">
