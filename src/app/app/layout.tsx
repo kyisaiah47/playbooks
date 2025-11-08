@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "App - Templata",
   description:
-    "Experience the luxury guide + planning tool for life's biggest moments. Browse 1,000+ comprehensive guides, answer AI-refined questions, read expert content, and track progress with premium analytics—all in one sophisticated interface.",
+    "Experience the premium planning platform for life's biggest moments. Browse comprehensive guides, answer structured questions, read expert content, and track progress with premium analytics—all in one sophisticated interface.",
   keywords: [
     "templata app",
     "life planning app",
@@ -13,12 +13,12 @@ export const metadata: Metadata = {
     "life event tracker",
     "comprehensive questions",
     "expert readings",
-    "luxury productivity",
+    "premium productivity",
   ],
   openGraph: {
     title: "App - Templata",
     description:
-      "Experience the luxury guide + planning tool for life's biggest moments. 1,000+ guides with premium analytics.",
+      "Experience the premium planning platform for life's biggest moments. Comprehensive guides with premium analytics.",
     url: "https://templata.org/app",
     siteName: "Templata",
     locale: "en_US",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "App - Templata",
     description:
-      "Experience the luxury guide + planning tool for life's biggest moments. 1,000+ guides with premium analytics.",
+      "Experience the premium planning platform for life's biggest moments. Comprehensive guides with premium analytics.",
     images: ["https://templata.org/og-image.svg"],
   },
   robots: {

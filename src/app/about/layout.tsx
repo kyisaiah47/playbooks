@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "axiom engine",
     "life planning tool",
     "comprehensive guides",
-    "luxury productivity",
+    "premium productivity",
     "notion alternative",
     "life event planning",
   ],
