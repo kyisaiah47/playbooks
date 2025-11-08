@@ -130,12 +130,11 @@ const ChangelogTimeline = () => {
                 Templata is now live in public beta with a comprehensive guide library for life planning.
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>1,298 guides across all life categories</li>
-                <li>104K+ AI-generated questions</li>
-                <li>25,936 readings providing expert knowledge</li>
-                <li>User authentication and workspace management</li>
+                <li>Comprehensive guide library across all life categories</li>
+                <li>AI-refined questions for thorough planning</li>
+                <li>Expert-curated readings providing guidance</li>
+                <li>User authentication and track management</li>
                 <li>Multiple view modes for comprehensive life planning</li>
-                <li>Demo mode for unauthenticated users</li>
               </ul>
             </div>
           </div>

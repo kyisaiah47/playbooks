@@ -15,7 +15,17 @@
       "Bash(npm install)",
       "Bash(./node_modules/.bin/tsc:*)",
       "Bash(xargs basename:*)",
-      "mcp__supabase__list_tables"
+      "mcp__supabase__list_tables",
+      "Bash(src/components/ui/svgs/raycastWordmarkDark.tsx )",
+      "Bash(src/components/ui/svgs/raycastWordmarkLight.tsx )",
+      "Bash(src/components/ui/svgs/shadcnUiDark.tsx )",
+      "Bash(src/components/ui/svgs/vercelDark.tsx )",
+      "Bash(src/components/ui/svgs/vercelWordmark.tsx )",
+      "Bash(src/components/ui/svgs/vercelWordmarkDark.tsx )",
+      "Bash(src/components/forgot-password-form.tsx )",
+      "Bash(src/components/login-form.tsx )",
+      "Bash(src/components/reset-password-form.tsx )",
+      "Bash(src/components/signup-form.tsx)"
     ],
     "deny": [],
     "ask": []

@@ -58,9 +58,9 @@ const AboutHero = () => {
 
           <p>
             Our first vision was simple: <em>"Life shouldn't start with a blank page."</em>
-            We built comprehensive guides—1,300+ of them eventually—covering everything
-            from wedding planning to career changes. We generated 104,000+ questions (previously called prompts,
-            questions) to help people think through every angle of their decisions.
+            We built comprehensive guides covering everything from wedding planning to career
+            changes, with AI-refined questions to help people think through every angle of
+            their decisions.
           </p>
 
           <p>

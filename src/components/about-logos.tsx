@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Notion } from "@/components/ui/svgs/notion";
 import { Raycast } from "@/components/ui/svgs/raycast";
 import { Linear } from "@/components/ui/svgs/linear";
@@ -12,6 +13,22 @@ const AboutLogos = () => {
       width: 32,
       height: 32,
       href: "https://notion.so",
+    },
+    {
+      name: "Superhuman",
+      type: "image" as const,
+      src: "/superhuman.png",
+      width: 32,
+      height: 32,
+      href: "https://superhuman.com",
+    },
+    {
+      name: "Co-Star",
+      type: "image" as const,
+      src: "/co-star.png",
+      width: 32,
+      height: 32,
+      href: "https://costarastrology.com",
     },
     {
       name: "Raycast",
@@ -60,17 +77,33 @@ const AboutLogos = () => {
         </div>
 
         <div className="flex w-full flex-col items-center gap-8">
-          {/* Top row - 2 logos */}
-          <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-8 max-md:w-full sm:grid-cols-2 md:gap-x-20 lg:gap-x-28">
+          {/* Top row - 4 logos */}
+          <div className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-8 max-md:w-full sm:grid-cols-4 md:gap-x-20 lg:gap-x-28">
             {topRowCompanies.map((company, index) => {
-              const Component = company.component;
               return (
                 <a href={company.href} target="_blank" key={index} className="flex items-center gap-3 opacity-60 grayscale transition-opacity hover:opacity-80">
-                  <Component
-                    width={company.width}
-                    height={company.height}
-                    className="object-contain invert-0 dark:invert"
-                  />
+                  {company.type === "image" ? (
+                    <Image
+                      src={company.src!}
+                      alt={company.name}
+                      width={company.width}
+                      height={company.height}
+                      className="object-contain invert-0 dark:invert"
+                    />
+                  ) : (
+                    <>
+                      {company.component && (() => {
+                        const Component = company.component;
+                        return (
+                          <Component
+                            width={company.width}
+                            height={company.height}
+                            className="object-contain invert-0 dark:invert"
+                          />
+                        );
+                      })()}
+                    </>
+                  )}
                   <span className="text-base font-medium">{company.name}</span>
                 </a>
               );

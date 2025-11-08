@@ -43,7 +43,7 @@ async function fetchTemplates(): Promise<TemplateRegistryEntry[]> {
     if (!res.ok) return [];
 
     const data = await res.json();
-    return (data.templates || []).map((t: any) => ({
+    return (data.templates || []).map((t: Guide) => ({
       ...t,
       ...getCategoryColors(t.category)
     }));
@@ -87,7 +87,3 @@ export const getAllTemplates = async (): Promise<TemplateRegistryEntry[]> => {
 
 // Legacy export for compatibility
 export const templateRegistry = [] as TemplateRegistryEntry[];
-
-export const getArticles = () => {
-  return [];
-};
