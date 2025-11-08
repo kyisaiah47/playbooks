@@ -13,7 +13,8 @@
       "mcp__vercel__deploy_to_vercel",
       "Bash(npx tsc:*)",
       "Bash(npm install)",
-      "Bash(./node_modules/.bin/tsc:*)"
+      "Bash(./node_modules/.bin/tsc:*)",
+      "Bash(xargs basename:*)"
     ],
     "deny": [],
     "ask": []

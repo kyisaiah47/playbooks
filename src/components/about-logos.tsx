@@ -4,7 +4,7 @@ import { Linear } from "@/components/ui/svgs/linear";
 import { Vercel } from "@/components/ui/svgs/vercel";
 import { ShadcnUi } from "@/components/ui/svgs/shadcnUi";
 
-const CompanyLogos = () => {
+const AboutLogos = () => {
   const topRowCompanies = [
     {
       name: "Notion",
@@ -99,4 +99,4 @@ const CompanyLogos = () => {
   );
 };
 
-export { CompanyLogos };
+export { AboutLogos };

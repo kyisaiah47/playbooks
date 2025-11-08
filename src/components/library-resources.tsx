@@ -20,7 +20,7 @@ interface Reading {
   updated_at: string;
 }
 
-const ResourcesLibrary = () => {
+const LibraryResources = () => {
   const [guides, setGuides] = useState<Guide[]>([]);
   const [selectedGuide, setSelectedGuide] = useState<string>("");
   const [readings, setReadings] = useState<Reading[]>([]);
@@ -128,4 +128,4 @@ const ResourcesLibrary = () => {
   );
 };
 
-export { ResourcesLibrary };
+export { LibraryResources };

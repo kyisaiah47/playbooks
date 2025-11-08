@@ -116,7 +116,7 @@ const categories: Category[] = [
 
 const TOP_PADDING = 300;
 
-const FaqHero = () => {
+const AboutFaq = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("General");
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isScrollingRef = useRef(false);
@@ -306,4 +306,4 @@ const FaqHero = () => {
   );
 };
 
-export { FaqHero };
+export { AboutFaq };

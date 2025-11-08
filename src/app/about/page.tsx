@@ -2,17 +2,17 @@
 
 import { AboutHeroVideo } from "@/components/about-hero-video";
 import { AboutHero } from "@/components/about-hero";
-import { CompanyLogos } from "@/components/company-logos";
-import { FaqHero } from "@/components/faq-hero";
+import { AboutLogos } from "@/components/about-logos";
+import { AboutFaq } from "@/components/about-faq";
 import { PageLayout } from "@/components/layout";
 
 export default function AboutPage() {
 	return (
 		<PageLayout>
 			<AboutHeroVideo />
-			<CompanyLogos />
+			<AboutLogos />
 			<AboutHero />
-			<FaqHero />
+			<AboutFaq />
 		</PageLayout>
 	);
 }
