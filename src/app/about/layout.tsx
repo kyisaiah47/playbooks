@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Story - Templata",
+  title: "About Templata - Our Story & Mission",
   description:
-    "From democratizing complexity to transforming life's biggest moments. Learn how Templata evolved into a luxury guide + planning tool powered by the Axiom Engine, delivering comprehensive coverage with Superhuman × Co-Star sophistication.",
+    "Learn how Templata evolved into a premium planning platform for life's biggest moments. Comprehensive guides powered by the Axiom Engine, expert readings, and integrated planning tools with thoughtful design.",
   keywords: [
     "about templata",
     "templata story",
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     "life event planning",
   ],
   openGraph: {
-    title: "Our Story - Templata",
+    title: "About Templata - Our Story & Mission",
     description:
-      "From democratizing complexity to transforming life's biggest moments. Learn how Templata evolved into a luxury guide + planning tool.",
+      "Learn how Templata evolved into a premium planning platform for life's biggest moments. Comprehensive guides, expert readings, and integrated planning tools.",
     url: "https://templata.org/about",
     siteName: "Templata",
     locale: "en_US",
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Story - Templata",
+    title: "About Templata - Our Story & Mission",
     description:
-      "From democratizing complexity to transforming life's biggest moments. Learn how Templata evolved into a luxury guide + planning tool.",
+      "Learn how Templata evolved into a premium planning platform for life's biggest moments. Comprehensive guides, expert readings, integrated tools.",
     images: ["https://templata.org/og-image.svg"],
   },
 };
