@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import ReadingPageClient from './reading-page-client';
+import Script from 'next/script';
 
 async function getReading(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/readings/${id}`, {
@@ -34,8 +35,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ).join(' ')
     : 'Library';
 
-  const title = `${reading.title} | ${guideName} Guide - Templata`;
-  const description = reading.excerpt || `${reading.title}. Expert insights for ${guideName.toLowerCase()}. ${reading.read_time || 'Essential reading'} to help you succeed.`;
+  // Use meta_title if exists, otherwise generate
+  const title = reading.meta_title || `${reading.title} | ${guideName} Guide - Templata`;
+
+  // Use meta_description if exists, otherwise generate
+  const description = reading.meta_description || reading.excerpt || `${reading.title}. Expert insights for ${guideName.toLowerCase()}. ${reading.read_time || 'Essential reading'} to help you succeed.`;
 
   // Extract keyword patterns from title
   const titleLower = reading.title.toLowerCase();
@@ -136,6 +140,63 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default function ReadingPage({ params }: { params: Promise<{ slug: string }> }) {
-  return <ReadingPageClient params={params} />;
+export default async function ReadingPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const reading = await getReading(slug);
+
+  if (!reading) {
+    return <ReadingPageClient params={params} />;
+  }
+
+  const guideName = reading.guide
+    ? reading.guide.split('-').map((word: string) =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ')
+    : 'Library';
+
+  // JSON-LD structured data for Article
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: reading.title,
+    description: reading.excerpt || reading.title,
+    image: 'https://templata.org/og-image.svg',
+    author: {
+      '@type': 'Organization',
+      name: reading.author || 'Templata',
+      url: 'https://templata.org',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Templata',
+      url: 'https://templata.org',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://templata.org/brand/templata-logo.png',
+      },
+    },
+    datePublished: reading.published_at || reading.created_at,
+    dateModified: reading.updated_at || reading.created_at,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://templata.org/library/${slug}`,
+    },
+    keywords: reading.tags ? reading.tags.join(', ') : guideName.toLowerCase(),
+    articleSection: guideName,
+    about: {
+      '@type': 'Thing',
+      name: guideName,
+    },
+  };
+
+  return (
+    <>
+      <Script
+        id="reading-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ReadingPageClient params={params} />
+    </>
+  );
 }

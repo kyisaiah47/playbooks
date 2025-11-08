@@ -59,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Fetch all guides (templates)
     const { data: guides } = await supabase
       .from('guides')
-      .select('id, category, created_at')
+      .select('id, category, created_at, last_updated')
       .order('created_at', { ascending: false });
 
     // Get unique categories and generate category pages dynamically
@@ -74,23 +74,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Fetch all readings (articles)
     const { data: readings } = await supabase
       .from('readings')
-      .select('slug, created_at')
-      .order('created_at', { ascending: false });
+      .select('id, slug, created_at, updated_at')
+      .order('created_at', { ascending: false});
 
     // Generate guide pages
     const guidePages: MetadataRoute.Sitemap = (guides || []).map((guide) => ({
       url: `${baseUrl}/guides/${guide.id}`,
-      lastModified: new Date(guide.created_at),
+      lastModified: guide.last_updated ? new Date(guide.last_updated) : new Date(guide.created_at),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     }));
 
-    // Generate reading/library pages
+    // Generate reading/library pages - use id instead of slug for URL
     const readingPages: MetadataRoute.Sitemap = (readings || []).map((reading) => ({
-      url: `${baseUrl}/library/${reading.slug}`,
-      lastModified: new Date(reading.created_at),
+      url: `${baseUrl}/library/${reading.id}`,
+      lastModified: reading.updated_at ? new Date(reading.updated_at) : new Date(reading.created_at),
       changeFrequency: 'monthly' as const,
-      priority: 0.6,
+      priority: 0.7, // Increased from 0.6 - these are valuable SEO pages
     }));
 
     return [...staticPages, ...categoryPages, ...guidePages, ...readingPages];

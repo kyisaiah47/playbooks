@@ -228,6 +228,35 @@ For each title, create 800-1200 word content following these requirements:
 
    **Store format**: ARRAY['Source 1', 'Source 2', 'Source 3']
 
+6. **SEO Metadata** (CRITICAL FOR DISCOVERY):
+
+   **meta_title** (50-60 characters):
+   - Format: "{Main Keyword} | {Secondary Keyword} - Templata"
+   - Example: "Wedding Mistakes to Avoid | Top 10 Planning Errors - Templata"
+   - Front-load the most important keyword
+   - Include "Templata" at the end for branding
+   - Must be 50-60 characters (Google truncates longer titles)
+
+   **meta_description** (150-160 characters):
+   - Include primary keyword in first 10 words
+   - Promise specific value (numbers, frameworks, outcomes)
+   - Include a call-to-action
+   - Must be 150-160 characters exactly (Google truncates)
+   - Example: "Avoid the top 10 wedding planning mistakes that cost couples $5,000+. Expert guide with real examples, budget templates, and proven frameworks. Start planning smarter today."
+
+   **tags** (5-10 relevant keywords):
+   - Extract from title and content
+   - Mix broad and specific terms
+   - Include the guide name (e.g., "wedding-planning")
+   - Include the topic (e.g., "mistakes", "budgeting", "timeline")
+   - Add related search terms (e.g., "wedding-tips", "planning-guide")
+   - Example: ARRAY['wedding-planning', 'wedding-mistakes', 'planning-errors', 'wedding-budget', 'wedding-tips', 'avoid-mistakes']
+
+   **WHY THIS MATTERS**:
+   - meta_title appears in Google search results - must be compelling
+   - meta_description is the snippet text - drives click-through rate
+   - tags help categorize content and improve internal search + related content
+
 6. **Slug**: URL-friendly version of title
    - Format: lowercase-with-hyphens
    - Example: "The 5-Minute Conversation Worth $1.5M" → slug: "the-5-minute-conversation-worth-1-5m"
@@ -314,9 +343,10 @@ Why it works: Specific timeframe, specific ask, shows you've done research."
 3. For each title:
    - Find 2-3 real credible sources
    - Generate comprehensive content (800-1200 words) with quote blocks
+   - Generate SEO metadata (meta_title, meta_description, tags)
    - Insert to database using mcp__supabase__execute_sql
 
-INSERT INTO readings (id, title, excerpt, content, author, read_time, guide, slug, published_at, sources)
+INSERT INTO readings (id, title, excerpt, content, author, read_time, guide, slug, published_at, sources, meta_title, meta_description, tags)
 VALUES (
   'reading-{guide-id}-{unique-slug}',
   '{title}',
@@ -327,7 +357,10 @@ VALUES (
   'GUIDE_ID_PLACEHOLDER',
   '{slug}',
   '2025-01-15',
-  ARRAY['{Source 1}', '{Source 2}', '{Source 3}']
+  ARRAY['{Source 1}', '{Source 2}', '{Source 3}'],
+  '{meta_title}',
+  '{meta_description}',
+  ARRAY['{tag1}', '{tag2}', '{tag3}', '{tag4}', '{tag5}']
 );
 
 **STEP 5: VERIFY QUALITY BEFORE FINALIZING**
@@ -348,6 +381,15 @@ Before considering yourself done, run this self-check rubric:
 □ Does it call out what DOESN'T work?
 □ Would someone quote this to a friend?
 □ Does title + excerpt make it category-defining (not blog-post level)?
+
+**SEO Check (for EACH reading):**
+□ Is meta_title 50-60 characters?
+□ Does meta_title front-load the main keyword?
+□ Is meta_description 150-160 characters?
+□ Does meta_description include primary keyword in first 10 words?
+□ Does meta_description have a clear call-to-action?
+□ Are there 5-10 relevant tags?
+□ Do tags include guide name + topic + related search terms?
 
 **Overlap Check:**
 □ Each reading covers a DIFFERENT aspect
