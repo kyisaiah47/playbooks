@@ -211,10 +211,24 @@ For each title, create 800-1200 word content following these requirements:
    - Use headers to break up sections
    - Tables when comparing options/data
    - Bulleted lists for steps or key points
-   - Quote blocks to highlight important insights
+   - Quote blocks to highlight important insights from sources
    - Mix of prose and structured content (not just bullets)
 
-5. **SEO Metadata** (CRITICAL FOR DISCOVERY):
+5. **Real Sources**: 2-3 credible sources THAT ACTUALLY EXIST
+
+   **Source Verification Process**:
+   a) Select sources that would be credible (well-known books, established websites, experts)
+   b) Verify they actually exist - if uncertain, choose a different source
+   c) Prefer well-known sources you're confident exist (e.g., "Never Split the Difference by Chris Voss" vs obscure blog)
+
+   **Good source examples**:
+   ✅ "Salary Negotiation by Patrick McKenzie (kalzumeus.com)"
+   ✅ "Never Split the Difference by Chris Voss"
+   ✅ "Harvard Business Review - The Science of Salary Negotiation"
+
+   **IMPORTANT**: Use these sources in quote blocks within your content for credibility. Do NOT store them in a separate database column.
+
+6. **SEO Metadata** (CRITICAL FOR DISCOVERY):
 
    **meta_title** (50-60 characters):
    - Format: "{Main Keyword} | {Secondary Keyword} - Templata"
@@ -277,6 +291,8 @@ Interview three people, in this exact order:
 3. **The Recent Switcher** - Changed careers 1-2 years ago (shows the actual path)
 
 **Why This Works**
+> "People who stayed in an industry can't see its problems. You need the escaped to see what's broken." - Chris Voss, Never Split the Difference
+
 The Escaped tells you what LinkedIn won't: "Everyone burns out by year 5" or "You need an MBA to get promoted." The Lifer reveals culture codes. The Switcher gives you the playbook they wish they'd had.
 
 **Your Next Step**
@@ -287,6 +303,7 @@ Why it works: Specific timeframe, specific ask, shows you've done research."
 **Why this is category-defining:**
 - Gives a specific framework (3-Interview Method) not generic advice
 - Calls out what doesn't work ("LinkedIn research and coffee chats that go nowhere")
+- Includes expert insight with quote
 - Provides copy-paste template
 - Explains WHY it works (cause and effect)
 - Covers edge cases (what each type reveals)
@@ -294,6 +311,7 @@ Why it works: Specific timeframe, specific ask, shows you've done research."
 
 **IMPORTANT**:
 - 800-1200 words for comprehensive coverage
+- Include quote blocks from your sources (use > for blockquotes)
 - Tables when comparing data/options makes sense
 - Notion-style tone: warm, helpful, not corporate
 - Use proper SQL escaping ('') for apostrophes
@@ -323,7 +341,8 @@ Why it works: Specific timeframe, specific ask, shows you've done research."
 1. Analyze the guide topic to understand what comprehensive coverage looks like
 2. Generate titles that cover all major aspects with zero overlap (as many or few as needed)
 3. For each title:
-   - Generate comprehensive content (800-1200 words)
+   - Find 2-3 real credible sources (to cite in content via quote blocks)
+   - Generate comprehensive content (800-1200 words) with quote blocks citing sources
    - Generate SEO metadata (meta_title, meta_description, tags)
    - Insert to database using mcp__supabase__execute_sql
 
@@ -332,7 +351,7 @@ VALUES (
   'reading-{guide-id}-{unique-slug}',
   '{title}',
   '{excerpt}',
-  '{content}',
+  '{content with quote blocks citing sources}',
   'Templata',
   '{X} min read',
   'GUIDE_ID_PLACEHOLDER',
