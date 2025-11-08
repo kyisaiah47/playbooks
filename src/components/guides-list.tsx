@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import * as LucideIcons from "lucide-react";
+import { ErrorLogger } from "@/lib/error-logger";
 
 interface Guide {
   id: string;
@@ -51,6 +52,10 @@ const GuidesList = () => {
         );
         setGuidesByCategory(guidesData);
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'GuidesList',
+          action: 'fetchData'
+        });
       } finally {
         setLoading(false);
       }

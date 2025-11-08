@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { Particles } from '@/components/magicui/particles';
 import * as LucideIcons from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ErrorLogger } from '@/lib/error-logger';
 import {
   ArrowRight,
   Heart,
@@ -78,6 +79,11 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
             setRelatedGuides(related.slice(0, 3));
           }
         } catch (error) {
+          ErrorLogger.logError(error, {
+            component: 'GuideDetail',
+            action: 'fetchRelated',
+            metadata: { slug }
+          });
         }
       }
       fetchRelated();
@@ -112,6 +118,11 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
         const readingsData = await readingsRes.json();
         setReadings(readingsData.readings || []);
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'GuideDetail',
+          action: 'fetchData',
+          metadata: { slug }
+        });
       } finally {
         setLoading(false);
       }

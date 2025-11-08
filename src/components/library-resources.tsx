@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ErrorLogger } from "@/lib/error-logger";
 
 interface Guide {
   guide_id: string;
@@ -37,6 +38,10 @@ const LibraryResources = () => {
           setSelectedGuide(data.guides[0].guide_id);
         }
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'LibraryResources',
+          action: 'fetchGuides'
+        });
       } finally {
         setLoading(false);
       }
@@ -54,6 +59,11 @@ const LibraryResources = () => {
         const data = await res.json();
         setReadings(data.readings || []);
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'LibraryResources',
+          action: 'fetchReadings',
+          metadata: { guideId: selectedGuide }
+        });
       }
     }
     fetchReadings();
