@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Guide Library - Templata",
+  title: "Reading Library - Expert Insights & Guides | Templata",
   description:
-    "Browse 1,000+ comprehensive guides covering every major life event. From wedding planning to career pivots, home buying to business launches—each guide refined through months of AI testing to ensure 90%+ coverage.",
+    "Browse curated expert readings covering major life events. From wedding planning tips to career change strategies, home buying advice to business insights—practical, actionable knowledge from domain experts.",
   keywords: [
-    "life guides library",
-    "comprehensive guides",
-    "wedding planning guide",
+    "expert readings",
+    "life planning advice",
+    "wedding planning tips",
     "home buying guide",
-    "career change guide",
-    "life event guides",
+    "career change advice",
+    "expert insights",
     "planning resources",
     "templata library",
   ],
   openGraph: {
-    title: "Guide Library - Templata",
+    title: "Reading Library - Expert Insights & Guides | Templata",
     description:
-      "Browse 1,000+ comprehensive guides covering every major life event, each refined to ensure 90%+ coverage.",
+      "Browse curated expert readings covering major life events. Practical, actionable knowledge from domain experts.",
     url: "https://templata.org/library",
     siteName: "Templata",
     locale: "en_US",
@@ -27,15 +27,15 @@ export const metadata: Metadata = {
         url: "https://templata.org/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "Templata Guide Library",
+        alt: "Templata Reading Library",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Guide Library - Templata",
+    title: "Reading Library - Expert Insights & Guides | Templata",
     description:
-      "Browse 1,000+ comprehensive guides covering every major life event, each refined to ensure 90%+ coverage.",
+      "Browse curated expert readings covering major life events. Practical, actionable knowledge from domain experts.",
     images: ["https://templata.org/og-image.svg"],
   },
 };

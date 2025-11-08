@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Guides - Templata",
+  title: "Planning Guides & Templates - Templata",
   description:
-    "Explore comprehensive guides for life's biggest moments. Each guide includes AI-refined questions covering 90%+ of what you need to consider, curated expert readings, and integrated planning tools.",
+    "Explore comprehensive planning guides for life's biggest moments. Each guide includes structured questions, curated expert readings, and integrated planning tools to help you think through every important decision.",
   keywords: [
     "life guides",
     "comprehensive planning",
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     "major life decisions",
   ],
   openGraph: {
-    title: "Guides - Templata",
+    title: "Planning Guides & Templates - Templata",
     description:
-      "Explore comprehensive guides for life's biggest moments with AI-refined questions and expert readings.",
+      "Explore comprehensive planning guides for life's biggest moments. Structured questions, curated expert readings, and integrated planning tools.",
     url: "https://templata.org/guides",
     siteName: "Templata",
     locale: "en_US",
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Guides - Templata",
+    title: "Planning Guides & Templates - Templata",
     description:
-      "Explore comprehensive guides for life's biggest moments with AI-refined questions and expert readings.",
+      "Explore comprehensive planning guides for life's biggest moments. Structured questions, curated expert readings, and integrated tools.",
     images: ["https://templata.org/og-image.svg"],
   },
 };

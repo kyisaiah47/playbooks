@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Story - Templata",
   description:
-    "From democratizing complexity to transforming life's biggest moments. Learn how Templata evolved from 1,300+ templates to a luxury guide + planning tool powered by the Axiom Engine, delivering 90%+ coverage with Superhuman × Co-Star sophistication.",
+    "From democratizing complexity to transforming life's biggest moments. Learn how Templata evolved into a luxury guide + planning tool powered by the Axiom Engine, delivering comprehensive coverage with Superhuman × Co-Star sophistication.",
   keywords: [
     "about templata",
     "templata story",
