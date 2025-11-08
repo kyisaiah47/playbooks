@@ -141,8 +141,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
 
   const { questions, readings } = await getGuideData(slug);
 
-  // Convert guide data to template format for GuideDetail component
-  const template = {
+  // Convert guide data for GuideDetail component
+  const guideEntry = {
     id: guide.id,
     name: guide.title,
     description: guide.description,
@@ -151,7 +151,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     url: `/guides/${guide.id}`,
     color: '',
     iconColor: '',
-    template: guide
+    guide: guide
   };
 
   // JSON-LD structured data for better SEO and rich results
@@ -226,7 +226,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       />
       <GuideDetail
         params={params}
-        initialTemplate={template}
+        initialTemplate={guideEntry}
         initialQuestions={questions}
         initialReadings={readings}
       />

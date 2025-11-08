@@ -56,8 +56,8 @@ interface Reading {
 export default function GuideDetail({ params, initialTemplate, initialQuestions, initialReadings }: GuideDetailProps) {
   const { slug } = use(params);
 
-  const [template, setTemplate] = useState<TemplateRegistryEntry | null>(initialTemplate || null);
-  const [relatedTemplates, setRelatedTemplates] = useState<TemplateRegistryEntry[]>([]);
+  const [guide, setGuide] = useState<TemplateRegistryEntry | null>(initialTemplate || null);
+  const [relatedGuides, setRelatedGuides] = useState<TemplateRegistryEntry[]>([]);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions || []);
   const [readings, setReadings] = useState<Reading[]>(initialReadings || []);
   const [loading, setLoading] = useState(!initialTemplate);
@@ -75,7 +75,7 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
             const related = guidesData.guides?.filter(
               (t: TemplateRegistryEntry) => t.category === initialTemplate.category && t.id !== slug
             ) || [];
-            setRelatedTemplates(related.slice(0, 3));
+            setRelatedGuides(related.slice(0, 3));
           }
         } catch (error) {
           console.error('Error fetching related guides:', error);
@@ -93,14 +93,14 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
         const guidesRes = await fetch('/api/guides?all=true');
         const guidesData = await guidesRes.json();
         const foundTemplate = guidesData.guides?.find((t: TemplateRegistryEntry) => t.id === slug);
-        setTemplate(foundTemplate || null);
+        setGuide(foundTemplate || null);
 
         // Set related guides (same category, different id)
         if (foundTemplate) {
           const related = guidesData.guides?.filter(
             (t: TemplateRegistryEntry) => t.category === foundTemplate.category && t.id !== slug
           ) || [];
-          setRelatedTemplates(related.slice(0, 3));
+          setRelatedGuides(related.slice(0, 3));
         }
 
         // Fetch questions
@@ -145,15 +145,15 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
   }
 
   // Check if guide exists and has content (both readings and questions)
-  const hasContent = template && questions.length > 0 && readings.length > 0;
+  const hasContent = guide && questions.length > 0 && readings.length > 0;
 
-  if (!template || !hasContent) {
+  if (!guide || !hasContent) {
     return (
       <PageLayout>
         <div className="container mx-auto px-4 py-32 text-center">
           <h1 className="text-4xl font-bold mb-4">Guide Not Found</h1>
           <p className="text-muted-foreground mb-8">
-            {!template
+            {!guide
               ? "The guide you're looking for doesn't exist."
               : "This guide is currently in the works. Coming soon!"}
           </p>
@@ -165,7 +165,7 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
     );
   }
 
-  const templateData = template;
+  const guideData = guide;
 
   const toggleCategory = (category: string) => {
     const newExpanded = new Set(expandedCategories);
@@ -177,7 +177,7 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
     setExpandedCategories(newExpanded);
   };
 
-  const IconComponent = templateData.icon && (LucideIcons as any)[templateData.icon];
+  const IconComponent = guideData.icon && (LucideIcons as any)[guideData.icon];
 
   return (
     <PageLayout>
@@ -185,7 +185,7 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
       <section className="relative py-32 pt-40">
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
           <Badge variant="outline" className="px-4 py-2">
-            {templateData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+            {guideData.category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
           </Badge>
 
           <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
@@ -196,7 +196,7 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
                 perspective: "600px",
               }}
             >
-              {templateData.name.split(" ").map((word, i) => (
+              {guideData.name.split(" ").map((word, i) => (
                 <motion.span
                   className="relative inline-block px-[6px] leading-[none]"
                   key={i}
@@ -223,7 +223,7 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
           </h1>
 
           <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            {templateData.description}
+            {guideData.description}
           </p>
 
           <Particles

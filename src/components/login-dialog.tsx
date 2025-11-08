@@ -89,15 +89,8 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
         return;
       }
 
-      // Clear old localStorage keys
-      const keysToRemove: string[] = [];
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key === 'templata-onboarding-seen') {
-          keysToRemove.push(key);
-        }
-      }
-      keysToRemove.forEach(key => localStorage.removeItem(key));
+      // Clear onboarding flag for new user
+      localStorage.removeItem('templata-onboarding-seen');
 
       router.push("/app");
       router.refresh();

@@ -96,13 +96,12 @@ export const MonthGrid = memo(function MonthGrid({
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      console.log('EVENT CLICKED:', event.title);
                       onEventClick?.(event);
                     }}
                     className="w-full text-left px-1 sm:px-1.5 py-0.5 rounded text-[10px] sm:text-xs truncate bg-red-600 text-white hover:bg-red-800 transition-colors cursor-pointer font-bold"
                     title={event.title}
                   >
-                    TESTING: {event.title}
+                    {event.title}
                   </button>
                 ))}
 
