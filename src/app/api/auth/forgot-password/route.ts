@@ -1,16 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { forgotPasswordSchema } from '@/lib/validations/auth';
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
+    const body = await request.json();
 
-    if (!email) {
+    // Validate input with Zod
+    const validationResult = forgotPasswordSchema.safeParse(body);
+
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Email is required' },
+        { error: validationResult.error.issues[0].message },
         { status: 400 }
       );
     }
+
+    const { email } = validationResult.data;
 
     const supabase = await createClient();
 

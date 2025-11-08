@@ -1,25 +1,47 @@
-import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { updateUserSchema } from '@/lib/validations/auth';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    // Get session from cookies
+    const accessToken = request.cookies.get('sb-access-token')?.value;
 
-    if (!session?.user?.email) {
+    if (!accessToken) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
       );
     }
 
-    const { name, email } = await request.json();
+    // Verify session with Supabase
+    const { data: { user }, error: authError } = await supabase.auth.getUser(accessToken);
+
+    if (authError || !user?.email) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
+    const body = await request.json();
+
+    // Validate input with Zod
+    const validationResult = updateUserSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        { error: validationResult.error.issues[0].message },
+        { status: 400 }
+      );
+    }
+
+    const { name, email } = validationResult.data;
 
     // Update user in database
     const { error } = await supabase
@@ -29,7 +51,7 @@ export async function POST(request: Request) {
         email,
         updated_at: new Date().toISOString()
       })
-      .eq('email', session.user.email);
+      .eq('email', user.email);
 
     if (error) {
       return NextResponse.json(

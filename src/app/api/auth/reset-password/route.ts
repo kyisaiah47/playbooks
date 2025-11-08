@@ -1,23 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { resetPasswordSchema } from '@/lib/validations/auth';
 
 export async function POST(request: NextRequest) {
   try {
-    const { password } = await request.json();
+    const body = await request.json();
 
-    if (!password) {
+    // Validate input with Zod
+    const validationResult = resetPasswordSchema.safeParse(body);
+
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Password is required' },
+        { error: validationResult.error.issues[0].message },
         { status: 400 }
       );
     }
 
-    if (password.length < 6) {
-      return NextResponse.json(
-        { error: 'Password must be at least 6 characters' },
-        { status: 400 }
-      );
-    }
+    const { password } = validationResult.data;
 
     const supabase = await createClient();
 

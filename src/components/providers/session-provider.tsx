@@ -1,8 +1,8 @@
 "use client";
 
-import { SessionProvider as NextAuthSessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
+// Simple pass-through wrapper (next-auth removed - using Supabase Auth instead)
 export function SessionProvider({ children }: { children: ReactNode }) {
-  return <NextAuthSessionProvider>{children}</NextAuthSessionProvider>;
+  return <>{children}</>;
 }

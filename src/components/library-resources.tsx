@@ -63,7 +63,30 @@ const LibraryResources = () => {
     return (
       <section className="py-32">
         <div className="container">
-          <div className="text-center">Loading...</div>
+          <h2 className="mb-6 text-2xl font-medium md:text-3xl">
+            Latest updates
+          </h2>
+          <div className="space-y-4 animate-pulse">
+            <div className="h-10 bg-muted rounded w-full" />
+            <div className="h-20 bg-muted rounded w-full" />
+            <div className="h-20 bg-muted rounded w-full" />
+            <div className="h-20 bg-muted rounded w-full" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (guides.length === 0) {
+    return (
+      <section className="py-32">
+        <div className="container">
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-medium mb-2">No guides available</h3>
+            <p className="text-muted-foreground">
+              Check back later for new reading materials.
+            </p>
+          </div>
         </div>
       </section>
     );
@@ -95,7 +118,14 @@ const LibraryResources = () => {
             </TabsList>
           </Tabs>
           <div className="mt-4">
-            {readings.map((reading) => (
+            {readings.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">
+                  No readings available for this guide yet.
+                </p>
+              </div>
+            ) : (
+              readings.map((reading) => (
               <a
                 key={reading.id}
                 href={`/library/${reading.id}`}
@@ -118,7 +148,8 @@ const LibraryResources = () => {
                   </div>
                 </div>
               </a>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>

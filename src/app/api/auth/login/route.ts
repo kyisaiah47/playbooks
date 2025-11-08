@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { loginSchema } from '@/lib/validations/auth';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,18 +9,23 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, password } = await request.json();
+    const body = await request.json();
 
-    if (!email || !password) {
+    // Validate input with Zod
+    const validationResult = loginSchema.safeParse(body);
+
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: 'Email and password are required' },
+        { error: validationResult.error.issues[0].message },
         { status: 400 }
       );
     }
 
+    const { email, password } = validationResult.data;
+
     // Use Supabase Auth to sign in
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: email.toLowerCase(),
+      email,
       password,
     });
 
