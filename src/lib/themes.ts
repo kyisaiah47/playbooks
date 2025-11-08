@@ -118,7 +118,7 @@ export const templataThemeLight: ThemeColors = {
   sidebarRing: 'oklch(0 0 0)'
 }
 
-// Wedding template theme - romantic rose/pink (light)
+// Wedding guide theme - romantic rose/pink (light)
 export const weddingThemeLight: ThemeColors = {
   background: 'oklch(0.9777 0.0041 301.4256)',
   foreground: 'oklch(0.3651 0.0325 287.0807)',
@@ -154,7 +154,7 @@ export const weddingThemeLight: ThemeColors = {
   sidebarRing: 'oklch(0.6104 0.0767 299.7335)'
 }
 
-// Wedding template theme - romantic rose/pink (dark)
+// Wedding guide theme - romantic rose/pink (dark)
 export const weddingThemeDark: ThemeColors = {
   background: 'oklch(0.2166 0.0215 292.8474)',
   foreground: 'oklch(0.9053 0.0245 293.5570)',

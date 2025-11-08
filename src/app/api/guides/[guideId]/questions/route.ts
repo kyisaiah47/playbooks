@@ -30,7 +30,6 @@ export async function GET(
     // Map fields for frontend compatibility
     const mappedQuestions = (questions || []).map(q => ({
       ...q,
-      prompt: q.question,
       categoryName: q.category
     }));
 

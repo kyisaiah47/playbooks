@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 
-// Hook for managing user template sessions
-export function useTemplateSessions() {
+// Hook for managing user guide sessions
+export function useGuideSessions() {
   const { data: session } = useSession();
   const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,16 +31,16 @@ export function useTemplateSessions() {
     }
   };
 
-  const createSession = async (templateId: string, title: string) => {
+  const createSession = async (guideId: string, title: string) => {
     if (!session?.user?.id) return null;
-    
+
     try {
       const response = await fetch('/api/user-data/sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ templateId, title }),
+        body: JSON.stringify({ guideId, title }),
       });
       
       if (!response.ok) {
@@ -100,15 +100,15 @@ export function useTemplateSessions() {
   };
 }
 
-// Hook for managing user responses to prompts
+// Hook for managing user responses to questions
 export function useUserResponses() {
   const { data: session } = useSession();
-  
+
   const saveResponse = async (responseData: {
     sessionId: string;
-    templateId: string;
+    guideId: string;
     sectionId: string;
-    promptId: string;
+    questionId: string;
     response: string;
     metadata?: Record<string, unknown>;
   }) => {
@@ -162,7 +162,7 @@ export function useSavedResources() {
   };
 
   const saveResource = async (resourceData: {
-    templateId: string;
+    guideId: string;
     resourceId: string;
     title: string;
     userNotes?: string;

@@ -1,13 +1,13 @@
 import { supabase } from '@/lib/supabase';
 
-// Article registry - empty by default, will be populated from Supabase
-export const articleRegistry: any[] = [];
+// Reading registry - empty by default, will be populated from Supabase
+export const readingRegistry: any[] = [];
 
-// Export all articles as array for backward compatibility
-export const articles = articleRegistry;
+// Export all readings as array for backward compatibility
+export const readings = readingRegistry;
 
-// Helper function to get article by ID
-export async function getArticleById(id: string) {
+// Helper function to get reading by ID
+export async function getReadingById(id: string) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('*')
@@ -37,8 +37,8 @@ export async function getArticleById(id: string) {
   };
 }
 
-// Helper function to get article by slug
-export async function getArticleBySlug(slug: string) {
+// Helper function to get reading by slug
+export async function getReadingBySlug(slug: string) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('*')
@@ -68,8 +68,8 @@ export async function getArticleBySlug(slug: string) {
   };
 }
 
-// Helper function to get articles by category
-export async function getArticlesByCategory(category: string) {
+// Helper function to get readings by category
+export async function getReadingsByCategory(category: string) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('*')
@@ -79,20 +79,20 @@ export async function getArticlesByCategory(category: string) {
   return data;
 }
 
-// Helper function to get related articles
-export async function getRelatedArticles(articleId: string, count = 3) {
+// Helper function to get related readings
+export async function getRelatedReadings(readingId: string, count = 3) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('*')
-    .neq('id', articleId)
+    .neq('id', readingId)
     .limit(count);
 
   if (error || !data) return [];
   return data;
 }
 
-// Helper function to get articles by template (for component compatibility)
-export async function getArticlesByTemplate(guideId: string) {
+// Helper function to get readings by guide (for component compatibility)
+export async function getReadingsByGuide(guideId: string) {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('*')
@@ -102,18 +102,18 @@ export async function getArticlesByTemplate(guideId: string) {
   return data;
 }
 
-// Helper function to get all available article IDs
-export async function getArticleIds(): Promise<string[]> {
+// Helper function to get all available reading IDs
+export async function getReadingIds(): Promise<string[]> {
   const { data, error } = await supabase
     .from('templata_articles')
     .select('id');
 
   if (error || !data) return [];
-  return data.map((article: any) => article.id);
+  return data.map((reading: any) => reading.id);
 }
 
-// Helper function to get paginated articles
-export async function getArticles(page = 1, pageSize = 50) {
+// Helper function to get paginated readings
+export async function getReadings(page = 1, pageSize = 50) {
   const from = (page - 1) * pageSize;
   const to = from + pageSize - 1;
 
@@ -124,33 +124,33 @@ export async function getArticles(page = 1, pageSize = 50) {
     .range(from, to);
 
   if (error || !data) {
-    console.error('[getArticles] Supabase error:', error);
-    return { articles: [], total: 0 };
+    console.error('[getReadings] Supabase error:', error);
+    return { readings: [], total: 0 };
   }
 
-  const articles = data.map((article: any) => ({
-    id: article.id,
-    title: article.title,
-    excerpt: article.excerpt,
-    content: article.content,
-    author: article.author,
-    publishedAt: article.published_at,
-    updatedAt: article.updated_at,
-    readTime: article.read_time,
-    category: article.category,
-    featured: article.featured,
-    tags: article.tags,
-    slug: article.slug,
-    type: article.type,
-    difficulty: article.difficulty,
+  const readings = data.map((reading: any) => ({
+    id: reading.id,
+    title: reading.title,
+    excerpt: reading.excerpt,
+    content: reading.content,
+    author: reading.author,
+    publishedAt: reading.published_at,
+    updatedAt: reading.updated_at,
+    readTime: reading.read_time,
+    category: reading.category,
+    featured: reading.featured,
+    tags: reading.tags,
+    slug: reading.slug,
+    type: reading.type,
+    difficulty: reading.difficulty,
     seo: {
-      metaTitle: article.meta_title,
-      metaDescription: article.meta_description,
-      ogImage: article.og_image
+      metaTitle: reading.meta_title,
+      metaDescription: reading.meta_description,
+      ogImage: reading.og_image
     },
-    template: article.template,
-    relatedPosts: article.related_posts
+    template: reading.template,
+    relatedPosts: reading.related_posts
   }));
 
-  return { articles, total: count || 0 };
+  return { readings, total: count || 0 };
 }

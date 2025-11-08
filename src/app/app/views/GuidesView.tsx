@@ -62,7 +62,7 @@ interface ReadingDetail extends Reading {
   publishedAt: string;
 }
 
-interface Template {
+interface GuideListItem {
   id: string;
   name: string;
   category: string;
@@ -81,7 +81,7 @@ interface Track {
   } | null;
 }
 
-const TEMPLATES_PER_LOAD = 50;
+const GUIDES_PER_LOAD = 50;
 
 // Featured guides for demo mode
 const FEATURED_GENERAL_IDS = [
@@ -105,7 +105,7 @@ const FEATURED_HEALTH_IDS = [
   'health-wellness',
 ];
 
-const FEATURED_TEMPLATE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS, ...FEATURED_HEALTH_IDS];
+const FEATURED_GUIDE_IDS = [...FEATURED_GENERAL_IDS, ...FEATURED_GENZ_IDS, ...FEATURED_HEALTH_IDS];
 
 interface GuidesViewProps {
   trackId?: string;
@@ -119,8 +119,8 @@ interface GuidesViewProps {
 export function GuidesView({ trackId, setActions }: GuidesViewProps) {
   const { tracks: cachedTracks, fetchTracks, fetchQuestions, fetchReadings } = useDataCache();
   const [selectedGuide, setSelectedGuide] = useState('wedding-planning');
-  const [guides, setGuides] = useState<Template[]>([]);
-  const [displayedGuides, setDisplayedGuides] = useState<Template[]>([]);
+  const [guides, setGuides] = useState<GuideListItem[]>([]);
+  const [displayedGuides, setDisplayedGuides] = useState<GuideListItem[]>([]);
   const [guideInfo, setGuideInfo] = useState<{ id: string; name: string } | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [readings, setReadings] = useState<Reading[]>([]);
@@ -353,14 +353,14 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
       try {
         const res = await fetch('/api/guides');
         const data = await res.json();
-        const allGuides = (data.guides || []).sort((a: Template, b: Template) =>
+        const allGuides = (data.guides || []).sort((a: GuideListItem, b: GuideListItem) =>
           a.name.localeCompare(b.name)
         );
         setGuides(allGuides);
 
         // Initially load first batch
-        setDisplayedGuides(allGuides.slice(0, TEMPLATES_PER_LOAD));
-        setHasMoreGuides(allGuides.length > TEMPLATES_PER_LOAD);
+        setDisplayedGuides(allGuides.slice(0, GUIDES_PER_LOAD));
+        setHasMoreGuides(allGuides.length > GUIDES_PER_LOAD);
       } catch (error) {
         console.error('Error fetching guides:', error);
       }
@@ -373,7 +373,7 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
     if (!hasMoreGuides) return;
 
     const currentLength = displayedGuides.length;
-    const nextBatch = guides.slice(currentLength, currentLength + TEMPLATES_PER_LOAD);
+    const nextBatch = guides.slice(currentLength, currentLength + GUIDES_PER_LOAD);
 
     if (nextBatch.length > 0) {
       setDisplayedGuides(prev => [...prev, ...nextBatch]);
@@ -402,10 +402,10 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
     ? guides.filter(t => FEATURED_HEALTH_IDS.includes(t.id))
     : [];
   const regularGuides = showFeatured
-    ? filteredGuides.filter(t => !FEATURED_TEMPLATE_IDS.includes(t.id))
+    ? filteredGuides.filter(t => !FEATURED_GUIDE_IDS.includes(t.id))
     : filteredGuides;
 
-  // Fetch questions and readings when template changes
+  // Fetch questions and readings when guide changes
   useEffect(() => {
     async function fetchData() {
       try {
