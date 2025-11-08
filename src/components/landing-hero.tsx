@@ -23,7 +23,7 @@ const LandingHero = () => {
         <p className="text-muted-foreground">
           Notion meets a life coach
         </p>
-        <h1 className="realtive z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+        <h1 className="realtive z-15 max-w-3xl text-center text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
           <span
             className="overflow-hidden"
             style={{

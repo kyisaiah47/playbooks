@@ -83,12 +83,12 @@ const LibraryResources = () => {
             className="border-border border-b"
             onValueChange={setSelectedGuide}
           >
-            <TabsList className="bg-background flex h-auto gap-2 p-0">
+            <TabsList className="bg-background flex h-auto gap-2 p-0 overflow-x-auto scrollbar-thin scrollbar-thumb-muted-foreground/20">
               {guides.map((guide) => (
                 <TabsTrigger
                   key={guide.guide_id}
                   value={guide.guide_id}
-                  className="group relative py-2.5 uppercase data-[state=active]:shadow-none"
+                  className="group relative py-2.5 uppercase data-[state=active]:shadow-none text-xs sm:text-sm whitespace-nowrap"
                 >
                   {guide.guide_name} ({guide.reading_count})
                   <span className="group-data-[state=active]:bg-primary absolute -bottom-px group-data-[state=active]:h-px group-data-[state=active]:w-full" />
@@ -104,18 +104,18 @@ const LibraryResources = () => {
                 className="border-border flex flex-col justify-between gap-4 border-b py-6 md:flex-row"
               >
                 <h3 className="font-medium md:line-clamp-1">{reading.title}</h3>
-                <div className="flex w-full shrink-0 grid-cols-3 justify-between gap-2 md:grid md:max-w-80">
-                  <p className="text-muted-foreground text-sm">
+                <div className="flex flex-col gap-2 sm:grid sm:grid-cols-2 md:grid-cols-3 md:max-w-80 w-full shrink-0">
+                  <p className="text-muted-foreground text-sm truncate">
                     {reading.author}
                   </p>
-                  <time className="text-muted-foreground text-sm">
+                  <time className="text-muted-foreground text-sm truncate">
                     {new Date(reading.updated_at).toLocaleDateString('en-US', {
                       month: 'short',
                       day: 'numeric',
                       year: 'numeric'
                     })}
                   </time>
-                  <div className="text-muted-foreground text-sm text-right">
+                  <div className="text-muted-foreground text-sm sm:text-right truncate">
                     {reading.read_time}
                   </div>
                 </div>

@@ -104,7 +104,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="w-[calc(100%-2rem)] sm:max-w-[400px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Welcome</DialogTitle>
           <DialogDescription>
@@ -128,6 +128,9 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                     id="login-email"
                     type="email"
                     placeholder="m@example.com"
+                    autoComplete="email"
+                    inputMode="email"
+                    autoCapitalize="none"
                     required
                     value={loginEmail}
                     onChange={(e) => setLoginEmail(e.target.value)}
@@ -138,6 +141,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                   <Input
                     id="login-password"
                     type="password"
+                    autoComplete="current-password"
                     required
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
@@ -170,6 +174,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                     id="signup-name"
                     type="text"
                     placeholder="John Doe"
+                    autoComplete="name"
                     required
                     value={signupName}
                     onChange={(e) => setSignupName(e.target.value)}
@@ -181,6 +186,9 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                     id="signup-email"
                     type="email"
                     placeholder="m@example.com"
+                    autoComplete="email"
+                    inputMode="email"
+                    autoCapitalize="none"
                     required
                     value={signupEmail}
                     onChange={(e) => setSignupEmail(e.target.value)}
@@ -194,6 +202,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                   <Input
                     id="signup-password"
                     type="password"
+                    autoComplete="new-password"
                     required
                     value={signupPassword}
                     onChange={(e) => setSignupPassword(e.target.value)}
@@ -206,7 +215,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
                   <FieldLabel htmlFor="signup-confirm-password">
                     Confirm Password
                   </FieldLabel>
-                  <Input id="signup-confirm-password" type="password" required />
+                  <Input id="signup-confirm-password" type="password" autoComplete="new-password" required />
                   <FieldDescription>Please confirm your password.</FieldDescription>
                 </Field>
                 <FieldGroup>
