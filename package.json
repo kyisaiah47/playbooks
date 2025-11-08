@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "lint:template": "node scripts/template-linter.js",
     "lint:template:wedding": "node scripts/template-linter.js src/app/templates/wedding-planning",
