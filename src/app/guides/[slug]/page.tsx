@@ -2,14 +2,23 @@ import type { Metadata } from 'next';
 import GuideDetail from './guide-detail';
 import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 async function getGuide(slug: string) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}`, {
-      cache: 'no-store'
-    });
-    if (!res.ok) return null;
-    return res.json();
+    const { data, error } = await supabase
+      .from('guides')
+      .select('*')
+      .eq('id', slug)
+      .single();
+
+    if (error) return null;
+    return data;
   } catch {
     return null;
   }
@@ -17,21 +26,22 @@ async function getGuide(slug: string) {
 
 async function getGuideData(slug: string) {
   try {
-    const [questionsRes, readingsRes] = await Promise.all([
-      fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}/questions`, {
-        cache: 'no-store'
-      }),
-      fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}/readings`, {
-        cache: 'no-store'
-      })
+    const [questionsResult, readingsResult] = await Promise.all([
+      supabase
+        .from('questions')
+        .select('id, question, category_name')
+        .eq('guide', slug)
+        .order('created_at', { ascending: true }),
+      supabase
+        .from('readings')
+        .select('id, title, excerpt, content, read_time, author, slug')
+        .eq('guide', slug)
+        .order('created_at', { ascending: true })
     ]);
 
-    const questionsData = await questionsRes.json();
-    const readingsData = await readingsRes.json();
-
     return {
-      questions: questionsData.questions || [],
-      readings: readingsData.readings || []
+      questions: questionsResult.data || [],
+      readings: readingsResult.data || []
     };
   } catch {
     return { questions: [], readings: [] };
