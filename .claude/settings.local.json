@@ -26,8 +26,7 @@
       "Bash(src/components/login-form.tsx )",
       "Bash(src/components/reset-password-form.tsx )",
       "Bash(src/components/signup-form.tsx)",
-      "Bash(npx vercel --prod)",
-      "Bash(open http://localhost:3000/guides/planning-wedding)"
+      "Bash(npx vercel --prod)"
     ],
     "deny": [],
     "ask": []

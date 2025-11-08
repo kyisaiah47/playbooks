@@ -2,26 +2,17 @@ import type { Metadata } from 'next';
 import ReadingPageClient from './reading-page-client';
 import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
-import { createClient } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
 
 async function getReading(id: string) {
-  try {
-    const { data, error } = await supabase
-      .from('readings')
-      .select('*')
-      .eq('id', id)
-      .single();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/readings/${id}`, {
+    cache: 'no-store'
+  });
 
-    if (error) return null;
-    return data;
-  } catch {
+  if (!res.ok) {
     return null;
   }
+
+  return res.json();
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
