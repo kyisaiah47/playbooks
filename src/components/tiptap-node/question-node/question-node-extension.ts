@@ -119,7 +119,7 @@ export const PromptNode = Node.create<PromptNodeOptions>({
         {
           "data-type": "prompt-node",
         },
-        this.options.HTMLAttributes,
+        this.options.HTMLAttributes || {},
         HTMLAttributes
       ),
     ]
@@ -145,7 +145,7 @@ export const PromptNode = Node.create<PromptNodeOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(PromptNodeComponent, {
+    return ReactNodeViewRenderer(PromptNodeComponent as any, {
       as: "div",
     })
   },

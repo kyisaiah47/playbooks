@@ -82,7 +82,7 @@ export function OverviewView() {
           ...track,
           guides: {
             ...track.guides,
-            category: guideInfo?.category || 'uncategorized',
+            category: (guideInfo as any)?.category || 'uncategorized',
           },
         };
 

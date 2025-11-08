@@ -1,6 +1,6 @@
 import React from "react";
 
-const TechStackPreview = () => {
+const LandingTechStack = () => {
   return (
     <section className="overflow-hidden py-32">
       <div className="container w-full max-w-6xl">
@@ -21,4 +21,4 @@ const TechStackPreview = () => {
   );
 };
 
-export { TechStackPreview };
+export { LandingTechStack };

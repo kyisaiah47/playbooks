@@ -11,7 +11,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 
-const FeaturesTabbedHero = () => {
+const LandingFeatures = () => {
   return (
     <section className="pb-32">
       <div className="container">
@@ -191,4 +191,4 @@ const FeaturesTabbedHero = () => {
   );
 };
 
-export { FeaturesTabbedHero };
+export { LandingFeatures };

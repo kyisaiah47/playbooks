@@ -6,7 +6,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-export const AboutCompanyStory = () => {
+export const LandingAbout = () => {
   return (
     <section className="py-32">
       {/* Hero Section */}

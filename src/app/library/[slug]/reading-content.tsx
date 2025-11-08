@@ -142,7 +142,12 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
 
             while ((match = combinedRegex.exec(text)) !== null) {
               if (match.index > currentIndex) {
-                parts.push(...(Array.isArray(highlightSearchQuery(text.slice(currentIndex, match.index), `p${index}-${currentIndex}`)) ? highlightSearchQuery(text.slice(currentIndex, match.index), `p${index}-${currentIndex}`) as (string | React.JSX.Element)[] : [highlightSearchQuery(text.slice(currentIndex, match.index), `p${index}-${currentIndex}`)]));
+                const result = highlightSearchQuery(text.slice(currentIndex, match.index), `p${index}-${currentIndex}`);
+                if (Array.isArray(result)) {
+                  parts.push(...result);
+                } else {
+                  parts.push(result);
+                }
               }
 
               if (match[0].startsWith('**')) {
@@ -223,7 +228,12 @@ export function ReadingContent({ content, searchQuery = '' }: ReadingContentProp
 
             if (currentIndex < text.length) {
               const remaining = text.slice(currentIndex);
-              parts.push(...(Array.isArray(highlightSearchQuery(remaining, `end-${currentIndex}`)) ? highlightSearchQuery(remaining, `end-${currentIndex}`) as (string | React.JSX.Element)[] : [highlightSearchQuery(remaining, `end-${currentIndex}`)]));
+              const result = highlightSearchQuery(remaining, `end-${currentIndex}`);
+              if (Array.isArray(result)) {
+                parts.push(...result);
+              } else {
+                parts.push(result);
+              }
             }
 
             return parts.length > 0 ? parts : text;

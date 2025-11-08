@@ -6,6 +6,7 @@ import { format } from "date-fns"
 import { PlusIcon, ChevronDownIcon } from "lucide-react"
 import { isSameDay } from "date-fns"
 import { useDataCache } from "@/contexts/DataCacheContext"
+import { CalendarEvent } from "@/types/workspace"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -31,14 +32,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-
-interface CalendarEvent {
-  id: string;
-  title: string;
-  start_time: string;
-  end_time: string;
-  due_date?: string;
-}
 
 interface DockCalendarSelectorProps {
   isOpen: boolean;
@@ -127,8 +120,8 @@ export function DockCalendarSelector({
       // Check if item has start_time (calendar event) or due_date (task)
       if (event.start_time) {
         return isSameDay(new Date(event.start_time), date);
-      } else if (event.due_date) {
-        return isSameDay(new Date(event.due_date), date);
+      } else if ((event as any).due_date) {
+        return isSameDay(new Date((event as any).due_date), date);
       }
       return false;
     });

@@ -32,7 +32,7 @@ interface Footer23Props {
     title: string;
   };
 }
-const FooterCta = ({
+const MarketingFooter = ({
   logo = {
     url: "https://templata.org",
     src: "/favicon.svg",
@@ -91,4 +91,4 @@ const FooterCta = ({
   );
 };
 
-export { FooterCta };
+export { MarketingFooter };

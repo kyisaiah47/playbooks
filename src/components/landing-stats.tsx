@@ -17,32 +17,32 @@ interface StatItem {
 
 const statsData: StatItem[] = [
   {
-    title: "100%",
-    description: "Pre-Optimised for SEO",
+    title: "Wedding",
+    description: "Most active guide",
   },
   {
-    title: "750+",
-    description: "Pre Built Blocks",
+    title: "Home Buying",
+    description: "Second most active",
   },
   {
-    title: "85k+",
-    description: "Developers Trust",
+    title: "Career",
+    description: "Recently started",
   },
 ];
 
-const Stats18 = () => {
+const LandingStats = () => {
   return (
     <section className="overflow-hidden py-32">
       <div className="container flex w-full flex-col items-center justify-center px-4">
         <p className="bg-muted mb-4 rounded-full px-2 py-1 text-xs uppercase">
-          STATS
+          ANALYTICS
         </p>
         <h2 className="relative py-2 text-center font-sans text-4xl font-semibold tracking-tighter lg:text-5xl">
-          Stats That Show the Difference
+          Track Your Progress Over Time
         </h2>
         <p className="text-muted-foreground mx-auto max-w-xl px-5 text-center text-sm lg:text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut
+          See which guides you've been working on most. Track trends across months.
+          Understand your progress at a glance.
         </p>
 
         <div className="my-10 h-[40vh] w-full max-w-xl">
@@ -69,17 +69,17 @@ const Stats18 = () => {
 };
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 273 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { category: "Personal", guides: 5 },
+  { category: "Professional", guides: 8 },
+  { category: "Financial", guides: 6 },
+  { category: "Health", guides: 7 },
+  { category: "Relationships", guides: 4 },
+  { category: "Education", guides: 3 },
 ];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  guides: {
+    label: "Guides",
     color: "var(--chart-1)",
   },
 } satisfies ChartConfig;
@@ -92,11 +92,11 @@ const ChartRadarDots = () => {
     >
       <RadarChart data={chartData}>
         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-        <PolarAngleAxis dataKey="month" />
+        <PolarAngleAxis dataKey="category" />
         <PolarGrid />
         <Radar
-          dataKey="desktop"
-          fill="var(--color-desktop)"
+          dataKey="guides"
+          fill="var(--color-guides)"
           fillOpacity={0.6}
           dot={{
             r: 4,
@@ -108,4 +108,4 @@ const ChartRadarDots = () => {
   );
 };
 
-export { Stats18 };
+export { LandingStats };

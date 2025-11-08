@@ -15,7 +15,7 @@ import {
 import { LoginDialog } from "@/components/login-dialog";
 import { useAuth } from "@/contexts/auth-context";
 
-const Navbar22 = () => {
+const MarketingHeader = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
@@ -184,4 +184,4 @@ const Navbar22 = () => {
   );
 };
 
-export { Navbar22 };
+export { MarketingHeader };

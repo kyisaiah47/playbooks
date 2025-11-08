@@ -4,6 +4,7 @@ import * as React from "react"
 import { format } from "date-fns"
 import { PlusIcon, ChevronDownIcon, PencilIcon } from "lucide-react"
 import { useDataCache } from "@/contexts/DataCacheContext"
+import { Task } from "@/types/workspace"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -29,14 +30,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-
-interface Task {
-  id: string;
-  title: string;
-  description?: string;
-  due_date?: string;
-  status: 'todo' | 'in_progress' | 'done';
-}
 
 interface DockTasksSelectorProps {
   isOpen: boolean;

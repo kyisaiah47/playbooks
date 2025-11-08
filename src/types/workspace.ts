@@ -1,13 +1,13 @@
 export interface Task {
   id: string;
   title: string;
-  description?: string;
+  description?: string | null;
   status: 'todo' | 'in_progress' | 'done';
   user_id: string;
-  track_id?: string;
-  due_date?: string;
-  priority?: 'low' | 'medium' | 'high';
-  completed?: boolean;
+  track_id?: string | null;
+  due_date?: string | null;
+  priority?: 'low' | 'medium' | 'high' | null;
+  completed?: boolean | null;
   created_at?: string;
   updated_at?: string;
 }
@@ -15,12 +15,12 @@ export interface Task {
 export interface CalendarEvent {
   id: string;
   title: string;
-  description?: string;
-  all_day?: boolean;
+  description?: string | null;
+  all_day?: boolean | null;
   start_time: string;
-  end_time?: string;
+  end_time?: string | null;
   user_id: string;
-  track_id?: string;
+  track_id?: string | null;
   created_at?: string;
   updated_at?: string;
 }

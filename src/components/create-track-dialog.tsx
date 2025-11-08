@@ -159,8 +159,8 @@ export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: Create
                               <div className="opacity-50 cursor-not-allowed">
                                 <CommandItem
                                   disabled
-                                  onSelect={(e) => {
-                                    e.preventDefault();
+                                  onSelect={() => {
+                                    // Disabled item
                                   }}
                                 >
                                   <div className="flex-1">

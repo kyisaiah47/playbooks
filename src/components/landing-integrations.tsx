@@ -5,7 +5,7 @@ import { ArrowRight, HelpCircle, BookOpen, Map, Calendar, ListTodo, Library, Bar
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-const IntegrationsNetwork = () => {
+const LandingIntegrations = () => {
   const IconElem = ({ icon: Icon, title }: { icon: LucideIcon; title: string }) => (
     <div className="flex flex-col items-center">
       <div className="bg-muted mb-3 hidden h-14 w-14 rounded-lg p-2 shadow-[rgba(50,50,105,0.15)_0px_2px_5px_0px,rgba(0,0,0,0.05)_0px_1px_1px_0px] md:flex items-center justify-center">
@@ -90,4 +90,4 @@ const IntegrationsNetwork = () => {
   );
 };
 
-export { IntegrationsNetwork };
+export { LandingIntegrations };

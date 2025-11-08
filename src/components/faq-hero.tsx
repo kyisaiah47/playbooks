@@ -117,15 +117,15 @@ const categories: Category[] = [
 const TOP_PADDING = 300;
 
 const FaqHero = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>("Support");
+  const [activeCategory, setActiveCategory] = useState<Category>("General");
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isScrollingRef = useRef(false);
   const categoryRefs = useRef<Record<Category, HTMLDivElement | null>>({
-    Support: null,
-    Account: null,
+    General: null,
+    Guides: null,
     Features: null,
-    Security: null,
-    Other: null,
+    Pricing: null,
+    Technical: null,
   });
 
   const setupObserver = useCallback(() => {

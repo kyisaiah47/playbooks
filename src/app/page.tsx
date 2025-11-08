@@ -1,24 +1,24 @@
 "use client";
 
-import { HeroAnimatedText } from "@/components/hero-animated-text";
-import { AboutCompanyStory } from "@/components/about-company-story";
-import { FeaturesTabbedHero } from "@/components/features-tabbed-hero";
+import { LandingHero } from "@/components/landing-hero";
+import { LandingAbout } from "@/components/landing-about";
+import { LandingFeatures } from "@/components/landing-features";
 import { TestimonialsWithFeatures } from "@/components/testimonials-with-features";
-import { StatsRadar } from "@/components/stats-radar";
-import { TechStackPreview } from "@/components/tech-stack-preview";
-import { IntegrationsNetwork } from "@/components/integrations-network";
+import { LandingStats } from "@/components/landing-stats";
+import { LandingTechStack } from "@/components/landing-tech-stack";
+import { LandingIntegrations } from "@/components/landing-integrations";
 import { PageLayout } from "@/components/layout";
 
 export default function HomePage() {
 	return (
 		<PageLayout>
-			<HeroAnimatedText />
-			<AboutCompanyStory />
-			<FeaturesTabbedHero />
+			<LandingHero />
+			<LandingAbout />
+			<LandingFeatures />
 			<TestimonialsWithFeatures />
-			<StatsRadar />
-			<TechStackPreview />
-			<IntegrationsNetwork />
+			<LandingStats />
+			<LandingTechStack />
+			<LandingIntegrations />
 
 			{/* More blocks will be added here */}
 		</PageLayout>

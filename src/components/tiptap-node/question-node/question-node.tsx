@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
 
-interface PromptNodeProps {
+export interface PromptNodeProps {
   node: {
     attrs: {
       id: string
@@ -17,6 +17,7 @@ interface PromptNodeProps {
   }
   deleteNode?: () => void
   selected?: boolean
+  [key: string]: any
 }
 
 export const PromptNode: React.FC<PromptNodeProps> = ({

@@ -26,7 +26,7 @@ interface Category {
   count: number;
 }
 
-const List3 = () => {
+const GuidesList = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [guidesByCategory, setGuidesByCategory] = useState<Record<string, Guide[]>>({});
   const [loading, setLoading] = useState(true);
@@ -134,4 +134,4 @@ const List3 = () => {
   );
 };
 
-export { List3 };
+export { GuidesList };

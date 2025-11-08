@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { LoginDialog } from "@/components/login-dialog";
 import { useAuth } from "@/contexts/auth-context";
 
-const HeroAnimatedText = () => {
+const LandingHero = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   const { isLoggedIn, loading } = useAuth();
   const router = useRouter();
@@ -107,4 +107,4 @@ const HeroAnimatedText = () => {
   );
 };
 
-export { HeroAnimatedText };
+export { LandingHero };
