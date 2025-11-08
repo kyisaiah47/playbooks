@@ -153,11 +153,8 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           if (foundTrack.guide_id) {
             setSelectedGuide(foundTrack.guide_id);
           }
-        } else {
-          console.error('Track not found:', trackId);
         }
       } catch (error) {
-        console.error('Error loading track:', error);
       }
     }
 
@@ -258,7 +255,6 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
               setQuestionResponse(data.answer || '');
               setLastSaved(data.savedAt ? new Date(data.savedAt) : null);
             } catch (e) {
-              console.error('Error loading from localStorage:', e);
               setQuestionResponse('');
               setLastSaved(null);
             }
@@ -268,7 +264,6 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           }
         }
       } catch (e) {
-        console.error('Error loading saved data:', e);
         setQuestionResponse('');
         setLastSaved(null);
       }
@@ -304,7 +299,6 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           setLastSaved(new Date());
         }
       } catch (e) {
-        console.error('Error auto-saving:', e);
       }
     }, 2000);
 
@@ -344,7 +338,6 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           setLoading(false);
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
         setLoading(false);
       }
     }
@@ -375,7 +368,6 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
             });
           }
         } catch (e) {
-          console.error('Error checking answered questions:', e);
         }
       } else {
         // Check localStorage
@@ -421,7 +413,6 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
 
       setSelectedReading(data);
     } catch (error) {
-      console.error('Error fetching reading:', error);
     } finally {
       setLoadingReading(false);
     }
@@ -470,7 +461,6 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           setLastSaved(new Date());
         }
       } catch (e) {
-        console.error('Error saving:', e);
       }
     }
   };

@@ -25,7 +25,6 @@ export function useFavorites() {
         setFavorites(items)
       }
     } catch (error) {
-      console.error("Failed to load favorites:", error)
     }
   }, [])
 
@@ -55,7 +54,6 @@ export function useFavorites() {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
       } catch (error) {
-        console.error("Failed to save favorites:", error)
       }
 
       return updated
@@ -69,7 +67,6 @@ export function useFavorites() {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
       } catch (error) {
-        console.error("Failed to update favorites:", error)
       }
       return updated
     })
@@ -81,7 +78,6 @@ export function useFavorites() {
     try {
       localStorage.removeItem(STORAGE_KEY)
     } catch (error) {
-      console.error("Failed to clear favorites:", error)
     }
   }
 

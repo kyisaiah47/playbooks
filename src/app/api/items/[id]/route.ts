@@ -58,13 +58,11 @@ export async function PATCH(
       if (error.code === 'PGRST116') {
         return errorResponse('Item not found', 404);
       }
-      console.error('Error updating item:', error);
       return errorResponse('Failed to update item');
     }
 
     return successResponse({ item });
   } catch (error) {
-    console.error('Error in PATCH /api/items/[id]:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -88,13 +86,11 @@ export async function DELETE(
       .eq('user_id', user.userId);
 
     if (error) {
-      console.error('Error deleting item:', error);
       return errorResponse('Failed to delete item');
     }
 
     return successResponse({ message: 'Item deleted successfully' });
   } catch (error) {
-    console.error('Error in DELETE /api/items/[id]:', error);
     return errorResponse('Internal server error');
   }
 }

@@ -29,7 +29,6 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
           setLoading(false);
         }
       } catch (error) {
-        console.error('Error loading notes:', error);
         setContent('');
         setLoading(false);
       }
@@ -57,7 +56,6 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
         });
         setLastSaved(new Date());
       } catch (error) {
-        console.error('Error auto-saving notes:', error);
       }
     }, 2000);
 

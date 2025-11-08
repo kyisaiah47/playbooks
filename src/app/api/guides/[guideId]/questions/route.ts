@@ -20,7 +20,6 @@ export async function GET(
       .order('question_number', { ascending: true });
 
     if (error) {
-      console.error('Error fetching questions:', error);
       return NextResponse.json(
         { error: 'Failed to fetch questions' },
         { status: 500 }
@@ -37,7 +36,6 @@ export async function GET(
       questions: mappedQuestions
     });
   } catch (error) {
-    console.error('Error in /api/guides/[guideId]/questions:', error);
     return NextResponse.json(
       { error: 'Failed to fetch questions' },
       { status: 500 }

@@ -28,7 +28,6 @@ export default function SettingsPage() {
           setEmail(data.user.email || '');
         }
       } catch (error) {
-        console.error('Error loading user data:', error);
       } finally {
         setLoading(false);
       }

@@ -59,7 +59,6 @@ export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: Create
     try {
       await fetchGuides(true); // Force refresh to get hasContent
     } catch (error) {
-      console.error('Error fetching guides:', error);
     }
   }
 
@@ -98,7 +97,6 @@ export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: Create
         onTrackCreated(trackId);
       }
     } catch (error) {
-      console.error('Error creating track:', error);
     } finally {
       setCreating(false);
     }

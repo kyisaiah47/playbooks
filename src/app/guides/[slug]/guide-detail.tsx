@@ -78,7 +78,6 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
             setRelatedGuides(related.slice(0, 3));
           }
         } catch (error) {
-          console.error('Error fetching related guides:', error);
         }
       }
       fetchRelated();
@@ -113,7 +112,6 @@ export default function GuideDetail({ params, initialTemplate, initialQuestions,
         const readingsData = await readingsRes.json();
         setReadings(readingsData.readings || []);
       } catch (error) {
-        console.error('Error fetching guide data:', error);
       } finally {
         setLoading(false);
       }

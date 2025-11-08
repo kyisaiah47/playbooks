@@ -20,7 +20,6 @@ export async function GET(
       .single();
 
     if (error) {
-      console.error('Error fetching guide:', error);
       return NextResponse.json(
         { error: 'Failed to fetch guide' },
         { status: 500 }
@@ -36,7 +35,6 @@ export async function GET(
 
     return NextResponse.json(guide);
   } catch (error) {
-    console.error('Error in /api/guides/[guideId]:', error);
     return NextResponse.json(
       { error: 'Failed to fetch guide' },
       { status: 500 }

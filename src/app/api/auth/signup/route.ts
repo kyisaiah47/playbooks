@@ -28,7 +28,6 @@ export async function POST(request: NextRequest) {
     });
 
     if (authError || !authData.user) {
-      console.error('Signup error:', authError);
       return NextResponse.json(
         { error: authError?.message || 'Failed to create user' },
         { status: 400 }
@@ -45,7 +44,6 @@ export async function POST(request: NextRequest) {
       });
 
     if (profileError) {
-      console.error('Profile creation error:', profileError);
       // Don't fail the signup if profile creation fails, user can complete it later
     }
 
@@ -90,7 +88,6 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error('Signup error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

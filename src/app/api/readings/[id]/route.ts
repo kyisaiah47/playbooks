@@ -20,7 +20,6 @@ export async function GET(
       .single();
 
     if (error) {
-      console.error('Error fetching reading:', error);
       return NextResponse.json(
         { error: 'Failed to fetch reading' },
         { status: 500 }
@@ -43,7 +42,6 @@ export async function GET(
 
     return NextResponse.json(mappedReading);
   } catch (error) {
-    console.error('Error in /api/readings/[id]:', error);
     return NextResponse.json(
       { error: 'Failed to fetch reading' },
       { status: 500 }

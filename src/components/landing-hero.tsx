@@ -82,7 +82,7 @@ const LandingHero = () => {
             <img
               src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/green-shape.svg"
               className="h-215 -translate-y-90 -rotate-76 w-full"
-              alt=""
+              alt="Abstract flowing green shape illustration"
             />
           </motion.div>
         </div>

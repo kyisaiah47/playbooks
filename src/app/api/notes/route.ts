@@ -46,13 +46,11 @@ export async function GET(request: NextRequest) {
     }
 
     if (noteError) {
-      console.error('Error fetching note:', noteError);
       return errorResponse('Failed to fetch note');
     }
 
     return successResponse({ content: note?.content || '' });
   } catch (error) {
-    console.error('Error in GET /api/notes:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -98,7 +96,6 @@ export async function POST(request: NextRequest) {
         .eq('id', existingNote.id);
 
       if (updateError) {
-        console.error('Error updating note:', updateError);
         return errorResponse('Failed to update note');
       }
     } else {
@@ -111,14 +108,12 @@ export async function POST(request: NextRequest) {
         });
 
       if (insertError) {
-        console.error('Error creating note:', insertError);
         return errorResponse('Failed to create note');
       }
     }
 
     return successResponse({ success: true });
   } catch (error) {
-    console.error('Error in POST /api/notes:', error);
     return errorResponse('Internal server error');
   }
 }

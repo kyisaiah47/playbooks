@@ -24,7 +24,6 @@ export async function POST(request: NextRequest) {
     });
 
     if (error || !data.session) {
-      console.error('Login error:', error);
       return NextResponse.json(
         { error: 'Invalid email or password' },
         { status: 401 }
@@ -47,12 +46,12 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Set session cookies with Supabase session - never expire (365 days)
+    // Set session cookies with Supabase session - 30 day expiry
     response.cookies.set('sb-access-token', data.session.access_token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 365, // 365 days
+      maxAge: 60 * 60 * 24 * 30, // 30 days
       path: '/',
     });
 
@@ -60,13 +59,12 @@ export async function POST(request: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 365, // 365 days
+      maxAge: 60 * 60 * 24 * 30, // 30 days
       path: '/',
     });
 
     return response;
   } catch (error) {
-    console.error('Login error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

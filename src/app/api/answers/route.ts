@@ -102,7 +102,6 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (error) {
-    console.error('Error upserting answer:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 

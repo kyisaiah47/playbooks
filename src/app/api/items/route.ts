@@ -44,13 +44,11 @@ export async function GET(request: NextRequest) {
     const { data: items, error } = await query;
 
     if (error) {
-      console.error('Error fetching items:', error);
       return errorResponse('Failed to fetch items');
     }
 
     return successResponse({ items: items || [] });
   } catch (error) {
-    console.error('Error in GET /api/items:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -112,13 +110,11 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
-      console.error('Error creating item:', error);
       return errorResponse('Failed to create item');
     }
 
     return successResponse({ item }, 201);
   } catch (error) {
-    console.error('Error in POST /api/items:', error);
     return errorResponse('Internal server error');
   }
 }

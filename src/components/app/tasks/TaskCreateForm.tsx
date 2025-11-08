@@ -59,7 +59,6 @@ export function TaskCreateForm({ status, onSubmit, onCancel }: TaskCreateFormPro
         const data = await res.json();
         setUserGuides(data.notes || []);
       } catch (error) {
-        console.error('Error fetching user guides:', error);
       }
     }
     fetchUserGuides();

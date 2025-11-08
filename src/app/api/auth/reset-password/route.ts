@@ -27,7 +27,6 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error('Password update error:', error);
       return NextResponse.json(
         { error: error.message },
         { status: 400 }
@@ -38,7 +37,6 @@ export async function POST(request: NextRequest) {
       message: 'Password updated successfully'
     });
   } catch (error) {
-    console.error('Reset password error:', error);
     return NextResponse.json(
       { error: 'An error occurred while resetting your password' },
       { status: 500 }

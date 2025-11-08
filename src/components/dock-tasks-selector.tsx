@@ -99,7 +99,6 @@ export function DockTasksSelector({
           : allTasks;
         setTasks(filteredTasks);
       } catch (error) {
-        console.error('Error loading tasks:', error);
         setTasks([]);
       } finally {
         setLoading(false);
@@ -165,7 +164,6 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
-      console.error('Error creating task:', error);
     } finally {
       setCreating(false);
     }
@@ -205,7 +203,6 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
-      console.error('Error updating task:', error);
     } finally {
       setEditing(false);
     }
@@ -226,7 +223,6 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
-      console.error('Error deleting task:', error);
     } finally {
       setDeleting(false);
     }
@@ -244,7 +240,6 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
-      console.error('Error updating task status:', error);
     }
   };
 

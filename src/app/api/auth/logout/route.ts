@@ -30,7 +30,6 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json({ success: true });
     return response;
   } catch (error) {
-    console.error('Logout error:', error);
     return NextResponse.json(
       { error: 'Failed to logout' },
       { status: 500 }

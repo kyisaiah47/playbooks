@@ -42,13 +42,11 @@ export async function PATCH(
       .eq('id', id);
 
     if (updateError) {
-      console.error('Error updating track:', updateError);
       return errorResponse('Failed to update track');
     }
 
     return successResponse({ success: true });
   } catch (error) {
-    console.error('Error in PATCH /api/tracks/[id]:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -84,13 +82,11 @@ export async function DELETE(
       .eq('id', id);
 
     if (deleteError) {
-      console.error('Error deleting track:', deleteError);
       return errorResponse('Failed to delete track');
     }
 
     return successResponse({ success: true });
   } catch (error) {
-    console.error('Error in DELETE /api/tracks/[id]:', error);
     return errorResponse('Internal server error');
   }
 }

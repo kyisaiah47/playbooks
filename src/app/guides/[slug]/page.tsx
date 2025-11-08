@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import GuideDetail from './guide-detail';
 import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
+import DOMPurify from 'isomorphic-dompurify';
 
 async function getGuide(slug: string) {
   try {
@@ -236,7 +237,12 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         {readings.map((reading: any) => (
           <article key={`seo-${reading.id}`}>
             <h2>{reading.title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: reading.content?.replace(/\n/g, '<br />') || '' }} />
+            <div dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(reading.content?.replace(/\n/g, '<br />') || '', {
+                ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'blockquote', 'code', 'pre'],
+                ALLOWED_ATTR: ['href', 'target', 'rel']
+              })
+            }} />
           </article>
         ))}
       </div>

@@ -70,7 +70,6 @@ export function OverviewView() {
       for (const track of allTracks) {
         // Skip tracks with no guide_id
         if (!track.guide_id) {
-          console.warn('Track has no guide_id:', track);
           continue;
         }
 
@@ -115,7 +114,6 @@ export function OverviewView() {
 
       setTrackProgress(progressData);
     } catch (error) {
-      console.error('Error loading progress:', error);
     } finally {
       setLoading(false);
     }

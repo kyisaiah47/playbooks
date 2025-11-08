@@ -53,7 +53,6 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
         setEmail(data.user.email || '');
       }
     } catch (error) {
-      console.error('Error loading user data:', error);
     } finally {
       setLoading(false);
     }
@@ -70,11 +69,8 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
 
       if (res.ok) {
         onOpenChange(false);
-      } else {
-        console.error('Failed to update account');
       }
     } catch (error) {
-      console.error('Error updating account:', error);
     } finally {
       setSaving(false);
     }

@@ -37,7 +37,6 @@ const LibraryResources = () => {
           setSelectedGuide(data.guides[0].guide_id);
         }
       } catch (error) {
-        console.error('Error fetching guides:', error);
       } finally {
         setLoading(false);
       }
@@ -55,7 +54,6 @@ const LibraryResources = () => {
         const data = await res.json();
         setReadings(data.readings || []);
       } catch (error) {
-        console.error('Error fetching readings:', error);
       }
     }
     fetchReadings();

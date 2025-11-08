@@ -41,7 +41,6 @@ export async function GET(request: NextRequest) {
     const { data: tracks, error: tracksError } = await tracksQuery;
 
     if (tracksError) {
-      console.error('Error fetching tracks:', tracksError);
       return errorResponse('Failed to fetch tracks');
     }
 
@@ -59,7 +58,6 @@ export async function GET(request: NextRequest) {
       .in('id', guideIds);
 
     if (guidesError) {
-      console.error('Error fetching guides:', guidesError);
       return errorResponse('Failed to fetch guides');
     }
 
@@ -74,7 +72,6 @@ export async function GET(request: NextRequest) {
 
     return successResponse({ tracks: tracksWithGuides });
   } catch (error) {
-    console.error('Error in GET /api/tracks:', error);
     return errorResponse('Internal server error');
   }
 }
@@ -102,7 +99,6 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (guideError || !guide) {
-      console.error('Guide not found for guide_id:', guide_id, 'Error:', guideError);
       return errorResponse(`Guide not found: ${guide_id}`, 404);
     }
 
@@ -121,7 +117,6 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
-      console.error('Error creating track:', error);
       return errorResponse('Failed to create track');
     }
 
@@ -138,7 +133,6 @@ export async function POST(request: NextRequest) {
 
     return successResponse({ track }, 201);
   } catch (error) {
-    console.error('Error in POST /api/tracks:', error);
     return errorResponse('Internal server error');
   }
 }

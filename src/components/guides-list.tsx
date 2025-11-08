@@ -51,7 +51,6 @@ const GuidesList = () => {
         );
         setGuidesByCategory(guidesData);
       } catch (error) {
-        console.error('Error fetching guides:', error);
       } finally {
         setLoading(false);
       }

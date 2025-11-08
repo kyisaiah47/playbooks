@@ -72,7 +72,6 @@ export function DockTrackSelector({
     try {
       await fetchTracks(true);
     } catch (error) {
-      console.error('Error fetching tracks:', error);
     } finally {
       setLoading(false);
     }

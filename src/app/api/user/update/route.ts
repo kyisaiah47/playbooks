@@ -32,7 +32,6 @@ export async function POST(request: Request) {
       .eq('email', session.user.email);
 
     if (error) {
-      console.error('Error updating user:', error);
       return NextResponse.json(
         { error: 'Failed to update user' },
         { status: 500 }
@@ -41,7 +40,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error in /api/user/update:', error);
     return NextResponse.json(
       { error: 'Failed to update user' },
       { status: 500 }

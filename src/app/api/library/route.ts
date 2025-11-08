@@ -17,7 +17,6 @@ export async function GET(request: NextRequest) {
       const { data, error } = await supabase.rpc('get_library_guides');
 
       if (error) {
-        console.error('Error fetching guides:', error);
         // Fallback to direct query if RPC doesn't exist
         const result = await supabase
           .from('readings')
@@ -75,13 +74,11 @@ export async function GET(request: NextRequest) {
     const { data: readings, error } = await query;
 
     if (error) {
-      console.error('Error fetching readings:', error);
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
     return NextResponse.json({ readings });
   } catch (error) {
-    console.error('Unexpected error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

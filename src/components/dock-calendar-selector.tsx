@@ -102,7 +102,6 @@ export function DockCalendarSelector({
           : items;
         setEvents(filteredItems as any);
       } catch (error) {
-        console.error('Error loading events:', error);
         setEvents([]);
       } finally {
         setLoading(false);
@@ -189,7 +188,6 @@ export function DockCalendarSelector({
         await refreshEvents();
       }
     } catch (error) {
-      console.error('Error creating event:', error);
     } finally {
       setCreating(false);
     }
@@ -261,7 +259,6 @@ export function DockCalendarSelector({
         await refreshEvents();
       }
     } catch (error) {
-      console.error('Error updating event:', error);
     } finally {
       setEditing(false);
     }
@@ -282,7 +279,6 @@ export function DockCalendarSelector({
         await refreshEvents();
       }
     } catch (error) {
-      console.error('Error deleting event:', error);
     } finally {
       setDeleting(false);
     }

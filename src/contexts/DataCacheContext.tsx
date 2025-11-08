@@ -119,7 +119,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
           };
         }
       } catch (e) {
-        console.error('Failed to load cache from sessionStorage:', e);
       }
     }
     return {
@@ -152,7 +151,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
       try {
         sessionStorage.setItem(CACHE_KEY, JSON.stringify(cache));
       } catch (e) {
-        console.error('Failed to save cache to sessionStorage:', e);
       }
     }
   }, [cache]);
@@ -184,7 +182,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
 
       return tracks;
     } catch (error) {
-      console.error('Error fetching tracks:', error);
       // Return cached data if fetch fails
       return currentCache.tracks || [];
     }
@@ -217,7 +214,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
 
       return guides;
     } catch (error) {
-      console.error('Error fetching guides:', error);
       // Return cached data if fetch fails
       return currentCache.guides || [];
     }
@@ -254,7 +250,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
 
       return items;
     } catch (error) {
-      console.error('Error fetching items:', error);
       // Return cached data if fetch fails
       return currentCache.items || [];
     }
@@ -314,7 +309,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
 
       return questions;
     } catch (error) {
-      console.error('Error fetching questions:', error);
       return currentCache.questionsByGuide[guideId] || [];
     }
   }, []);
@@ -349,7 +343,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
 
       return readings;
     } catch (error) {
-      console.error('Error fetching readings:', error);
       return currentCache.readingsByGuide[guideId] || [];
     }
   }, []);
@@ -384,7 +377,6 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
 
       return content;
     } catch (error) {
-      console.error('Error fetching notes:', error);
       return currentCache.notesByTrack?.[trackId] || '';
     }
   }, []);

@@ -56,7 +56,6 @@ export async function getAuthenticatedUser(): Promise<AuthSession | null> {
       createdAt: new Date(user.created_at).getTime(),
     };
   } catch (error) {
-    console.error('Session error:', error);
     return null;
   }
 }

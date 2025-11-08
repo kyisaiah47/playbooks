@@ -20,7 +20,6 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error('Password reset error:', error);
       return NextResponse.json(
         { error: error.message },
         { status: 400 }
@@ -31,7 +30,6 @@ export async function POST(request: NextRequest) {
       message: 'Password reset email sent successfully'
     });
   } catch (error) {
-    console.error('Forgot password error:', error);
     return NextResponse.json(
       { error: 'An error occurred while processing your request' },
       { status: 500 }

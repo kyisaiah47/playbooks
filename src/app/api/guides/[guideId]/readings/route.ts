@@ -20,7 +20,6 @@ export async function GET(
       .order('created_at', { ascending: true });
 
     if (error) {
-      console.error('Error fetching readings:', error);
       return NextResponse.json(
         { error: 'Failed to fetch readings' },
         { status: 500 }
@@ -37,7 +36,6 @@ export async function GET(
       readings: mappedReadings
     });
   } catch (error) {
-    console.error('Error in /api/guides/[guideId]/readings:', error);
     return NextResponse.json(
       { error: 'Failed to fetch readings' },
       { status: 500 }

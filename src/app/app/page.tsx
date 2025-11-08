@@ -41,7 +41,6 @@ export default function AppPage() {
 				}
 				// Allow anonymous users - don't redirect
 			} catch (error) {
-				console.error('Error loading user:', error);
 				// Allow anonymous users - don't redirect
 			}
 		}
@@ -52,7 +51,6 @@ export default function AppPage() {
 				try {
 					setSelectedTrackIds(JSON.parse(saved));
 				} catch (e) {
-					console.error('Error loading selected tracks:', e);
 				}
 			}
 		}

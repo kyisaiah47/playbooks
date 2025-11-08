@@ -58,7 +58,6 @@ export function TrackTabsWrapper({
         );
         setTracks(selectedTracks);
       } catch (error) {
-        console.error('Error loading tracks:', error);
         setTracks([]);
       }
     }
