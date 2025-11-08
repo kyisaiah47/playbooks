@@ -9,10 +9,9 @@ import { toast } from 'sonner';
 
 interface BlankNoteEditorProps {
   noteId: string;
-  workspaceId: string;
 }
 
-export function BlankNoteEditor({ noteId, workspaceId }: BlankNoteEditorProps) {
+export function BlankNoteEditor({ noteId }: BlankNoteEditorProps) {
   const [content, setContent] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [icon, setIcon] = useState<string | null>(null);

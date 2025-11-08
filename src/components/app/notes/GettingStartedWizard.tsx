@@ -23,7 +23,6 @@ interface Guide {
 }
 
 interface GettingStartedWizardProps {
-  workspaceId: string;
   onSelectGuide: (guideId: string) => void;
 }
 
@@ -46,7 +45,6 @@ const categoryColors: Record<string, { bg: string; text: string; icon: string }>
 };
 
 export function GettingStartedWizard({
-  workspaceId,
   onSelectGuide,
 }: GettingStartedWizardProps) {
   const [searchQuery, setSearchQuery] = useState('');

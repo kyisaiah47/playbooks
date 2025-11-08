@@ -29,18 +29,14 @@ interface ArchivedGuide {
   };
 }
 
-interface ArchivedGuideListProps {
-  workspaceId: string;
-}
-
-export function ArchivedGuideList({ workspaceId }: ArchivedGuideListProps) {
+export function ArchivedGuideList() {
   const queryClient = useQueryClient();
 
   // Fetch archived guides
   const { data, isLoading } = useQuery({
-    queryKey: ['archived-guides', workspaceId],
+    queryKey: ['archived-guides'],
     queryFn: async () => {
-      const response = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=true`);
+      const response = await fetch(`/api/notes?archived=true`);
       if (!response.ok) throw new Error('Failed to fetch archived guides');
       return response.json();
     },
@@ -58,8 +54,8 @@ export function ArchivedGuideList({ workspaceId }: ArchivedGuideListProps) {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['archived-guides', workspaceId] });
-      queryClient.invalidateQueries({ queryKey: ['user-guides', workspaceId] });
+      queryClient.invalidateQueries({ queryKey: ['archived-guides'] });
+      queryClient.invalidateQueries({ queryKey: ['user-guides'] });
       toast.success('Guide restored successfully');
     },
     onError: () => {
@@ -77,7 +73,7 @@ export function ArchivedGuideList({ workspaceId }: ArchivedGuideListProps) {
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['archived-guides', workspaceId] });
+      queryClient.invalidateQueries({ queryKey: ['archived-guides'] });
       toast.success('Guide deleted permanently');
     },
     onError: () => {

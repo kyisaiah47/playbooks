@@ -35,7 +35,7 @@ export function GuideProgressList({ guides, isLoading = false }: GuideProgressLi
         <BookOpen className="w-12 h-12 text-muted-foreground mb-4" />
         <h3 className="text-lg font-semibold mb-2">No active guides</h3>
         <p className="text-sm text-muted-foreground">
-          Start by adding guides to your workspace to track your progress.
+          Start by adding guides to track your progress.
         </p>
       </div>
     );

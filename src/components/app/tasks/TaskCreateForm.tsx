@@ -41,10 +41,9 @@ interface TaskCreateFormProps {
     user_guide_id: string | null;
   }) => void;
   onCancel: () => void;
-  workspaceId: string;
 }
 
-export function TaskCreateForm({ status, onSubmit, onCancel, workspaceId }: TaskCreateFormProps) {
+export function TaskCreateForm({ status, onSubmit, onCancel }: TaskCreateFormProps) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState<Date | undefined>();
@@ -52,11 +51,11 @@ export function TaskCreateForm({ status, onSubmit, onCancel, workspaceId }: Task
   const [userGuides, setUserGuides] = useState<UserGuide[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetch user guides for the workspace
+  // Fetch user guides
   useEffect(() => {
     async function fetchUserGuides() {
       try {
-        const res = await fetch(`/api/notes?workspace_id=${workspaceId}`);
+        const res = await fetch(`/api/notes`);
         const data = await res.json();
         setUserGuides(data.notes || []);
       } catch (error) {
@@ -64,7 +63,7 @@ export function TaskCreateForm({ status, onSubmit, onCancel, workspaceId }: Task
       }
     }
     fetchUserGuides();
-  }, [workspaceId]);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

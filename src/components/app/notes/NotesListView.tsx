@@ -28,11 +28,7 @@ interface UserGuide {
   };
 }
 
-interface NotesListViewProps {
-  workspaceId: string;
-}
-
-export function NotesListView({ workspaceId }: NotesListViewProps) {
+export function NotesListView() {
   const router = useRouter();
   const [notes, setNotes] = useState<UserGuide[]>([]);
   const [loading, setLoading] = useState(true);
@@ -46,12 +42,12 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
         setLoading(true);
 
         // Fetch notes
-        const notesResponse = await fetch(`/api/notes?workspace_id=${workspaceId}&archived=false`);
+        const notesResponse = await fetch(`/api/notes?archived=false`);
         const notesData = await notesResponse.json();
         setNotes(notesData.notes || []);
 
         // Fetch pages to find Getting Started pageId
-        const pagesResponse = await fetch(`/api/workspaces/${workspaceId}/pages`);
+        const pagesResponse = await fetch(`/api/pages`);
         const pagesData = await pagesResponse.json();
         const gettingStartedPage = pagesData.pages?.find((p: any) => p.name === 'Getting Started');
         if (gettingStartedPage) {
@@ -65,7 +61,7 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
     }
 
     fetchData();
-  }, [workspaceId]);
+  }, []);
 
   const filteredNotes = notes.filter(note =>
     (note.guides?.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -73,7 +69,7 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
   );
 
   const handleNoteClick = (guideId: string) => {
-    router.push(`/app/${workspaceId}/notes?id=${guideId}`);
+    router.push(`/app/notes?id=${guideId}`);
   };
 
   const handleCreateNote = () => {
@@ -84,7 +80,7 @@ export function NotesListView({ workspaceId }: NotesListViewProps) {
     setShowCreateDialog(false);
     // Navigate to Getting Started page to select a guide
     if (gettingStartedPageId) {
-      router.push(`/app/${workspaceId}/notes?pageId=${gettingStartedPageId}`);
+      router.push(`/app/notes?pageId=${gettingStartedPageId}`);
     }
   };
 

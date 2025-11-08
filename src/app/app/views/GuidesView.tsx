@@ -286,7 +286,7 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           }
         } else {
           // Load from localStorage
-          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
+          const key = `guide_${selectedGuide}_${selectedQuestionId}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {
@@ -331,7 +331,7 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           setLastSaved(new Date());
         } else {
           // Save to localStorage
-          const key = `workspace_${selectedGuide}_${selectedQuestionId}`;
+          const key = `guide_${selectedGuide}_${selectedQuestionId}`;
           const data = {
             answer: questionResponse,
             savedAt: new Date().toISOString(),
@@ -478,7 +478,7 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
       } else {
         // Check localStorage
         questions.forEach((question) => {
-          const key = `workspace_${selectedGuide}_${question.id}`;
+          const key = `guide_${selectedGuide}_${question.id}`;
           const saved = localStorage.getItem(key);
           if (saved) {
             try {

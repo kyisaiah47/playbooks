@@ -28,7 +28,6 @@ interface KanbanColumnProps {
     user_guide_id: string | null;
   }) => void;
   onDeleteTask: (taskId: string) => void;
-  workspaceId: string;
   children: React.ReactNode;
 }
 
@@ -56,7 +55,6 @@ export function KanbanColumn({
   tasks,
   onCreateTask,
   onDeleteTask,
-  workspaceId,
   children,
 }: KanbanColumnProps) {
   const [showForm, setShowForm] = useState(false);
@@ -101,7 +99,6 @@ export function KanbanColumn({
             status={status}
             onSubmit={handleCreateTask}
             onCancel={() => setShowForm(false)}
-            workspaceId={workspaceId}
           />
         )}
 
