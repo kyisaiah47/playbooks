@@ -3,7 +3,7 @@
 import { LandingHero } from "@/components/landing-hero";
 import { LandingAbout } from "@/components/landing-about";
 import { LandingFeatures } from "@/components/landing-features";
-import { TestimonialsWithFeatures } from "@/components/testimonials-with-features";
+import { LandingTestimonials } from "@/components/landing-testimonials";
 import { LandingStats } from "@/components/landing-stats";
 import { LandingTechStack } from "@/components/landing-tech-stack";
 import { LandingIntegrations } from "@/components/landing-integrations";
@@ -15,7 +15,7 @@ export default function HomePage() {
 			<LandingHero />
 			<LandingAbout />
 			<LandingFeatures />
-			<TestimonialsWithFeatures />
+			<LandingTestimonials />
 			<LandingStats />
 			<LandingTechStack />
 			<LandingIntegrations />

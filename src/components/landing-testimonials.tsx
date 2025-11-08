@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 import { CardStack } from "@/components/aceternity/card-stack";
 
-const TestimonialsWithFeatures = () => {
+const LandingTestimonials = () => {
   const features = [
     "90%+ Coverage",
     "AI-Refined Questions",
@@ -49,7 +49,7 @@ const TestimonialsWithFeatures = () => {
   );
 };
 
-export { TestimonialsWithFeatures };
+export { LandingTestimonials };
 
 export const Highlight = ({
   children,
