@@ -87,12 +87,12 @@ export async function POST(request: NextRequest) {
     if (page_id) {
       const { data: page, error: pageError } = await supabase
         .from('pages')
-        .select('id, workspace_id, workspaces!inner(user_id)')
+        .select('id, user_id')
         .eq('id', page_id)
+        .eq('user_id', user.userId)
         .single();
 
-      // @ts-ignore - workspaces is joined
-      if (pageError || !page || page.workspaces.user_id !== user.userId) {
+      if (pageError || !page) {
         return errorResponse('Page not found', 404);
       }
     }

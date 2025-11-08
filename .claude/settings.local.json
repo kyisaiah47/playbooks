@@ -14,7 +14,8 @@
       "Bash(npx tsc:*)",
       "Bash(npm install)",
       "Bash(./node_modules/.bin/tsc:*)",
-      "Bash(xargs basename:*)"
+      "Bash(xargs basename:*)",
+      "mcp__supabase__list_tables"
     ],
     "deny": [],
     "ask": []

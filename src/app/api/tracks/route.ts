@@ -10,7 +10,6 @@ const supabase = createClient(
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const workspace_id = searchParams.get('workspace_id');
     const guide_id = searchParams.get('guide_id');
     const archived = searchParams.get('archived');
 
@@ -26,11 +25,6 @@ export async function GET(request: NextRequest) {
       .from('tracks')
       .select('*')
       .eq('user_id', userId);
-
-    // Filter by workspace if provided
-    if (workspace_id) {
-      tracksQuery = tracksQuery.eq('workspace_id', workspace_id);
-    }
 
     // Filter by guide_id if provided
     if (guide_id) {
@@ -93,7 +87,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { guide_id, workspace_id, custom_name } = body;
+    const { guide_id, custom_name } = body;
 
     // guide_id is required for tracks
     if (!guide_id) {
@@ -112,37 +106,9 @@ export async function POST(request: NextRequest) {
       return errorResponse(`Guide not found: ${guide_id}`, 404);
     }
 
-    // Get or create a workspace for user (workspace_id is required in DB but not used in UI)
-    let finalWorkspaceId = workspace_id;
-
-    if (!finalWorkspaceId) {
-      const { data: existingWorkspace } = await supabase
-        .from('workspaces')
-        .select('id')
-        .eq('user_id', user.userId)
-        .limit(1)
-        .single();
-
-      if (existingWorkspace) {
-        finalWorkspaceId = existingWorkspace.id;
-      } else {
-        const { data: newWorkspace } = await supabase
-          .from('workspaces')
-          .insert({ user_id: user.userId, name: 'My Workspace' })
-          .select('id')
-          .single();
-
-        if (!newWorkspace) {
-          return errorResponse('Failed to create workspace');
-        }
-        finalWorkspaceId = newWorkspace.id;
-      }
-    }
-
     const insertData = {
       user_id: user.userId,
       guide_id: guide_id,
-      workspace_id: finalWorkspaceId,
       custom_name: custom_name || null,
       progress: 0,
       archived: false,
