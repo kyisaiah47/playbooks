@@ -45,7 +45,6 @@ interface Reading {
   id: string;
   title: string;
   excerpt: string;
-  content: string;
   read_time: string;
   slug: string;
   type: string;
@@ -333,16 +332,6 @@ export default function GuideDetail({ params }: GuideDetailProps) {
           </div>
         </div>
       </section>
-
-      {/* Hidden SEO content - full reading content for search engines */}
-      <div className="sr-only" aria-hidden="true">
-        {readings.map((reading) => (
-          <article key={`seo-${reading.id}`}>
-            <h2>{reading.title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: reading.content?.replace(/\n/g, '<br />') || '' }} />
-          </article>
-        ))}
-      </div>
 
     </PageLayout>
   );

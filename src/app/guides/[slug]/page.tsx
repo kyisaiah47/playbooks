@@ -4,17 +4,26 @@ import GuideDetail from './guide-detail';
 import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
 
-async function getGuideStats(slug: string) {
+async function getGuideData(slug: string) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}/questions`, {
-      cache: 'no-store'
-    });
-    const data = await res.json();
+    const [questionsRes, readingsRes] = await Promise.all([
+      fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}/questions`, {
+        cache: 'no-store'
+      }),
+      fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}/readings`, {
+        cache: 'no-store'
+      })
+    ]);
+
+    const questionsData = await questionsRes.json();
+    const readingsData = await readingsRes.json();
+
     return {
-      questionCount: data.questions?.length || 0
+      questionCount: questionsData.questions?.length || 0,
+      readings: readingsData.readings || []
     };
   } catch {
-    return { questionCount: 0 };
+    return { questionCount: 0, readings: [] };
   }
 }
 
@@ -34,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const templateData = template.template;
-  const { questionCount } = await getGuideStats(slug);
+  const { questionCount } = await getGuideData(slug);
 
   // Use meta_title if exists in DB, otherwise generate
   const title = templateData.meta_title || `${templateData.title} Template & Planning Guide | Templata`;
@@ -121,6 +130,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   }
 
   const templateData = template.template;
+  const { readings } = await getGuideData(slug);
 
   // JSON-LD structured data for better SEO and rich results
   const jsonLd = {
@@ -193,6 +203,16 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <GuideDetail params={params} />
+
+      {/* Hidden SEO content - full reading content for search engines */}
+      <div className="sr-only" aria-hidden="true">
+        {readings.map((reading: any) => (
+          <article key={`seo-${reading.id}`}>
+            <h2>{reading.title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: reading.content?.replace(/\n/g, '<br />') || '' }} />
+          </article>
+        ))}
+      </div>
     </>
   );
 }
