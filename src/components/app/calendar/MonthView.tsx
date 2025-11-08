@@ -17,7 +17,8 @@ import {
   isSameDay,
   isToday,
 } from 'date-fns';
-import { CalendarEvent, Task } from '@/types/workspace';
+import { CalendarEvent } from '@/types/calendar';
+import { Task } from '@/types/task';
 import { MonthGrid } from './MonthGrid';
 import { cn } from '@/lib/utils';
 

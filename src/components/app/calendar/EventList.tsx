@@ -3,7 +3,8 @@
 import { format, isSameDay, isToday, isTomorrow, addDays } from 'date-fns';
 import { Calendar, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { CalendarEvent, Task } from '@/types/workspace';
+import { CalendarEvent } from '@/types/calendar';
+import { Task } from '@/types/task';
 
 interface EventListProps {
   events: CalendarEvent[];

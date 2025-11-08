@@ -39,7 +39,7 @@ const ChangelogTimeline = () => {
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Content Refinement</h3>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>Distilled guides down to highest-quality, most impactful templates</li>
+                    <li>Distilled guides down to highest-quality, most impactful content</li>
                     <li>Enhanced questions with better AI refinement and categorization</li>
                     <li>Improved readings with more expert-curated content</li>
                     <li>Added content availability indicators - guides without complete content are clearly marked</li>
@@ -93,8 +93,8 @@ const ChangelogTimeline = () => {
                   <li>Added How It Works page to help new users understand the app</li>
                   <li>Added PDF export for your responses</li>
                   <li>Added Responses tab to Overview to view everything in one place</li>
-                  <li>Added search in articles to find specific information</li>
-                  <li>Organized featured templates into 3 sections: General, Gen Z, and Health & Wellness</li>
+                  <li>Added search in readings to find specific information</li>
+                  <li>Organized featured guides into 3 sections: General, Gen Z, and Health & Wellness</li>
                 </ul>
               </div>
               <div>
@@ -114,7 +114,7 @@ const ChangelogTimeline = () => {
             </p>
             <div className="my-4">
               <ul className="list-disc pl-6 space-y-2">
-                <li>Featured templates section added for quick access to popular templates in your workspace</li>
+                <li>Featured guides section added for quick access to popular guides in your workspace</li>
               </ul>
             </div>
           </div>
@@ -127,12 +127,12 @@ const ChangelogTimeline = () => {
             <div className="my-4">
               <h2 className="mb-2 text-2xl font-semibold">Version 0.1.0 - Public Beta Launch</h2>
               <p className="mb-4 text-muted-foreground">
-                Templata is now live in public beta with a comprehensive template library for life planning.
+                Templata is now live in public beta with a comprehensive guide library for life planning.
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>1,298 templates across all life categories</li>
-                <li>104K+ AI-generated prompts</li>
-                <li>25,936 articles providing expert knowledge</li>
+                <li>1,298 guides across all life categories</li>
+                <li>104K+ AI-generated questions</li>
+                <li>25,936 readings providing expert knowledge</li>
                 <li>User authentication and workspace management</li>
                 <li>Multiple view modes for comprehensive life planning</li>
                 <li>Demo mode for unauthenticated users</li>

@@ -3,7 +3,8 @@
 import { memo } from 'react';
 import { format, isSameMonth, isToday } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { CalendarEvent, Task } from '@/types/workspace';
+import { CalendarEvent } from '@/types/calendar';
+import { Task } from '@/types/task';
 
 interface MonthGridProps {
   calendarDays: Date[];

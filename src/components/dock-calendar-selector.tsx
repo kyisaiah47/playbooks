@@ -6,7 +6,7 @@ import { format } from "date-fns"
 import { PlusIcon, ChevronDownIcon } from "lucide-react"
 import { isSameDay } from "date-fns"
 import { useDataCache } from "@/contexts/DataCacheContext"
-import { CalendarEvent } from "@/types/workspace"
+import { CalendarEvent } from "@/types/calendar"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"

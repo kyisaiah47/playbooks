@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Task } from '@/types/workspace';
+import { Task } from '@/types/task';
 import {
   Dialog,
   DialogContent,

@@ -58,14 +58,14 @@ const AboutHero = () => {
 
           <p>
             Our first vision was simple: <em>"Life shouldn't start with a blank page."</em>
-            We built comprehensive templates—1,300+ of them eventually—covering everything
-            from wedding planning to career changes. We generated 104,000+ prompts (now called
+            We built comprehensive guides—1,300+ of them eventually—covering everything
+            from wedding planning to career changes. We generated 104,000+ questions (previously called prompts,
             questions) to help people think through every angle of their decisions.
           </p>
 
           <p>
             Then we evolved into something bigger: <strong>Notion × Wikipedia</strong>.
-            Not just templates, but "the encyclopedia for living"—a comprehensive knowledge
+            Not just guides, but "the encyclopedia for living"—a comprehensive knowledge
             system for life's biggest decisions. We added expert readings, curated guidance,
             and integrated planning tools.
           </p>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Task } from '@/types/workspace';
+import { Task } from '@/types/task';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { TaskCard } from './TaskCard';
