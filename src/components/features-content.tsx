@@ -295,7 +295,7 @@ export const FeaturesContent: React.FC = () => {
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-8">
               <p className="text-lg leading-relaxed">
-                We're building features that aren't strictly "necessary"—radial progress charts, radar visualizations, timeline graphs—but complete a premium experience. Because transforming life's biggest moments from overwhelming to exhilarating requires both comprehensive content <em>and</em> sophisticated design.
+                Comprehensive planning deserves thoughtful design. We're building radial progress charts, radar visualizations, timeline graphs, and other sophisticated features because transforming life's biggest moments from overwhelming to exhilarating requires both expert content <em>and</em> a premium experience.
               </p>
             </CardContent>
           </Card>
