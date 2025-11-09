@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
+import { ErrorLogger } from '@/lib/error-logger';
 
 interface Guide {
   id: string;
@@ -119,6 +120,10 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
           };
         }
       } catch (e) {
+        ErrorLogger.logError(e, {
+          component: 'DataCacheContext',
+          action: 'loadFromSessionStorage'
+        });
       }
     }
     return {
@@ -151,6 +156,10 @@ export function DataCacheProvider({ children }: { children: React.ReactNode }) {
       try {
         sessionStorage.setItem(CACHE_KEY, JSON.stringify(cache));
       } catch (e) {
+        ErrorLogger.logError(e, {
+          component: 'DataCacheContext',
+          action: 'saveToSessionStorage'
+        });
       }
     }
   }, [cache]);

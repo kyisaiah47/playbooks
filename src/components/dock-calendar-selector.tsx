@@ -7,6 +7,7 @@ import { PlusIcon, ChevronDownIcon } from "lucide-react"
 import { isSameDay } from "date-fns"
 import { useDataCache } from "@/contexts/DataCacheContext"
 import { CalendarEvent } from "@/types/calendar"
+import { ErrorLogger } from "@/lib/error-logger"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -102,6 +103,10 @@ export function DockCalendarSelector({
           : items;
         setEvents(filteredItems as any);
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'DockCalendarSelector',
+          action: 'loadEvents'
+        });
         setEvents([]);
       } finally {
         setLoading(false);
@@ -188,6 +193,10 @@ export function DockCalendarSelector({
         await refreshEvents();
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'DockCalendarSelector',
+        action: 'handleCreateEvent'
+      });
     } finally {
       setCreating(false);
     }
@@ -259,6 +268,11 @@ export function DockCalendarSelector({
         await refreshEvents();
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'DockCalendarSelector',
+        action: 'handleUpdateEvent',
+        metadata: { eventId: selectedEvent.id }
+      });
     } finally {
       setEditing(false);
     }
@@ -279,6 +293,11 @@ export function DockCalendarSelector({
         await refreshEvents();
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'DockCalendarSelector',
+        action: 'handleDeleteEvent',
+        metadata: { eventId: selectedEvent.id }
+      });
     } finally {
       setDeleting(false);
     }

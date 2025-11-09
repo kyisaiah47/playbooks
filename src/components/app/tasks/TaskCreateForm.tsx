@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Calendar } from '@/components/ui/calendar';
+import { ErrorLogger } from '@/lib/error-logger';
 import {
   Select,
   SelectContent,
@@ -59,6 +60,10 @@ export function TaskCreateForm({ status, onSubmit, onCancel }: TaskCreateFormPro
         const data = await res.json();
         setUserGuides(data.notes || []);
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'TaskCreateForm',
+          action: 'fetchUserGuides'
+        });
       }
     }
     fetchUserGuides();

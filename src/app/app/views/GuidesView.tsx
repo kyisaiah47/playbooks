@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { useDataCache } from '@/contexts/DataCacheContext';
+import { ErrorLogger } from '@/lib/error-logger';
 import {
   Popover,
   PopoverContent,
@@ -155,6 +156,11 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           }
         }
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'GuidesView',
+          action: 'loadTrack',
+          metadata: { trackId }
+        });
       }
     }
 
@@ -299,6 +305,11 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           setLastSaved(new Date());
         }
       } catch (e) {
+        ErrorLogger.logError(e, {
+          component: 'GuidesView',
+          action: 'autosaveAnswer',
+          metadata: { guideId: selectedGuide, questionId: selectedQuestionId }
+        });
       }
     }, 2000);
 
@@ -338,6 +349,11 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           setLoading(false);
         }
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'GuidesView',
+          action: 'fetchData',
+          metadata: { guideId: selectedGuide }
+        });
         setLoading(false);
       }
     }
@@ -368,6 +384,11 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
             });
           }
         } catch (e) {
+          ErrorLogger.logError(e, {
+            component: 'GuidesView',
+            action: 'checkAnsweredQuestions',
+            metadata: { guideId: selectedGuide }
+          });
         }
       } else {
         // Check localStorage
@@ -381,7 +402,12 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
                 answered.add(question.id);
               }
             } catch (e) {
-              // Ignore parse errors
+              // Ignore parse errors but log for debugging
+              ErrorLogger.logError(e, {
+                component: 'GuidesView',
+                action: 'parseLocalStorageAnswer',
+                metadata: { questionId: question.id }
+              });
             }
           }
         });
@@ -413,6 +439,11 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
 
       setSelectedReading(data);
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'GuidesView',
+        action: 'handleReadingClick',
+        metadata: { readingId }
+      });
     } finally {
       setLoadingReading(false);
     }
@@ -461,6 +492,11 @@ export function GuidesView({ trackId, setActions }: GuidesViewProps) {
           setLastSaved(new Date());
         }
       } catch (e) {
+        ErrorLogger.logError(e, {
+          component: 'GuidesView',
+          action: 'handleManualSave',
+          metadata: { guideId: selectedGuide, questionId: selectedQuestionId }
+        });
       }
     }
   };

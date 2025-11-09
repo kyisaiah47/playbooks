@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { FileText } from 'lucide-react';
 import { useDataCache } from '@/contexts/DataCacheContext';
+import { ErrorLogger } from '@/lib/error-logger';
 
 interface NotesViewProps {
   trackId: string;
@@ -29,6 +30,11 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
           setLoading(false);
         }
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'NotesView',
+          action: 'loadNotes',
+          metadata: { trackId }
+        });
         setContent('');
         setLoading(false);
       }
@@ -56,6 +62,11 @@ export function NotesView({ trackId, trackName }: NotesViewProps) {
         });
         setLastSaved(new Date());
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'NotesView',
+          action: 'autosave',
+          metadata: { trackId }
+        });
       }
     }, 2000);
 

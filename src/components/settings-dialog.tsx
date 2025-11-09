@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ErrorLogger } from "@/lib/error-logger";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -53,6 +54,10 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
         setEmail(data.user.email || '');
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'SettingsDialog',
+        action: 'loadUserData'
+      });
     } finally {
       setLoading(false);
     }
@@ -71,6 +76,10 @@ export function SettingsDialog({ open, onOpenChange }: SettingsDialogProps) {
         onOpenChange(false);
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'SettingsDialog',
+        action: 'handleSaveAccount'
+      });
     } finally {
       setSaving(false);
     }

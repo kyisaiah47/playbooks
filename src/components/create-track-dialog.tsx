@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useDataCache } from '@/contexts/DataCacheContext';
+import { ErrorLogger } from '@/lib/error-logger';
 import {
   Command,
   CommandGroup,
@@ -59,6 +60,10 @@ export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: Create
     try {
       await fetchGuides(true); // Force refresh to get hasContent
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'CreateTrackDialog',
+        action: 'loadGuides'
+      });
     }
   }
 
@@ -97,6 +102,11 @@ export function CreateTrackDialog({ open, onOpenChange, onTrackCreated }: Create
         onTrackCreated(trackId);
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'CreateTrackDialog',
+        action: 'createTrack',
+        metadata: { guideId: selectedGuide.id }
+      });
     } finally {
       setCreating(false);
     }

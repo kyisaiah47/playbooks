@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { BookOpen, CheckCircle, FileText, Archive as ArchiveIcon, TrendingUp, Activity, Target } from 'lucide-react';
 import { useDataCache } from '@/contexts/DataCacheContext';
+import { ErrorLogger } from '@/lib/error-logger';
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 import { RadialBar, RadialBarChart } from "recharts";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
@@ -114,6 +115,10 @@ export function OverviewView() {
 
       setTrackProgress(progressData);
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'OverviewView',
+        action: 'loadProgress'
+      });
     } finally {
       setLoading(false);
     }

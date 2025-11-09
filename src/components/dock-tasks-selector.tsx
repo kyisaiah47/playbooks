@@ -5,6 +5,7 @@ import { format } from "date-fns"
 import { PlusIcon, ChevronDownIcon, PencilIcon } from "lucide-react"
 import { useDataCache } from "@/contexts/DataCacheContext"
 import { Task } from "@/types/task"
+import { ErrorLogger } from "@/lib/error-logger"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -99,6 +100,10 @@ export function DockTasksSelector({
           : allTasks;
         setTasks(filteredTasks);
       } catch (error) {
+        ErrorLogger.logError(error, {
+          component: 'DockTasksSelector',
+          action: 'loadTasks'
+        });
         setTasks([]);
       } finally {
         setLoading(false);
@@ -164,6 +169,10 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'DockTasksSelector',
+        action: 'handleCreateTask'
+      });
     } finally {
       setCreating(false);
     }
@@ -203,6 +212,11 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'DockTasksSelector',
+        action: 'handleUpdateTask',
+        metadata: { taskId: selectedTask.id }
+      });
     } finally {
       setEditing(false);
     }
@@ -223,6 +237,11 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'DockTasksSelector',
+        action: 'handleDeleteTask',
+        metadata: { taskId: selectedTask.id }
+      });
     } finally {
       setDeleting(false);
     }
@@ -240,6 +259,11 @@ export function DockTasksSelector({
         await refreshTasks();
       }
     } catch (error) {
+      ErrorLogger.logError(error, {
+        component: 'DockTasksSelector',
+        action: 'handleStatusChange',
+        metadata: { taskId, newStatus }
+      });
     }
   };
 
