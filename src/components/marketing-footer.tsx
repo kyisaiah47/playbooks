@@ -9,6 +9,9 @@ const sections = [
       { name: "Guides", href: "/guides" },
       { name: "Library", href: "/library" },
       { name: "Questions", href: "/questions" },
+      { name: "Features", href: "/features" },
+      { name: "Use Cases", href: "/use-cases" },
+      { name: "Pricing", href: "/pricing" },
     ],
   },
   {
@@ -18,6 +21,7 @@ const sections = [
       { name: "Collections", href: "/collections" },
       { name: "Glossary", href: "/glossary" },
       { name: "Sitemap", href: "/sitemap" },
+      { name: "FAQ", href: "/faq" },
     ],
   },
   {
@@ -25,6 +29,14 @@ const sections = [
     links: [
       { name: "About", href: "/about" },
       { name: "How to Use", href: "/how-to-use" },
+    ],
+  },
+  {
+    title: "Compare",
+    links: [
+      { name: "vs Notion", href: "/vs/notion" },
+      { name: "vs Google Docs", href: "/vs/google-docs" },
+      { name: "vs Trello", href: "/vs/trello" },
     ],
   },
   {
