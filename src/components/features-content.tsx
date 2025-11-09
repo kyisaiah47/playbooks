@@ -2,115 +2,36 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Brain,
-  BookOpen,
-  BarChart3,
-  Calendar,
-  CheckCircle2,
-  Sparkles,
-  Search,
-  Zap,
-  Lock,
-  Palette,
-  FileText,
-  TrendingUp,
-  Target,
-  Lightbulb,
-  Heart,
-  Briefcase,
-  Home,
-  DollarSign
-} from "lucide-react";
+import { Sparkles, Brain, Target, Zap, Calendar, FileText, Search, Database, Lock, Download, Smartphone, Moon, Shield, CheckCircle2, BookOpen, TrendingUp, Layout, BarChart } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export const FeaturesContent: React.FC = () => {
   const coreFeatures = [
-    {
-      icon: Brain,
-      title: "Axiom Engine",
-      description: "90%+ comprehensive coverage through months of AI-assisted testing and expert validation",
-      highlights: ["AI-refined questions", "Expert validation", "Edge case testing", "Continuous improvement"]
-    },
-    {
-      icon: Target,
-      title: "AI-Refined Questions",
-      description: "Hundreds of systematically organized questions per guide, refined to cover all critical considerations",
-      highlights: ["200-500+ questions per guide", "Organized by topic", "Skip or save for later", "Auto-save progress"]
-    },
-    {
-      icon: BookOpen,
-      title: "Expert Curated Readings",
-      description: "Hand-selected articles and resources from trusted sources, no random blog posts",
-      highlights: ["Vetted for quality", "Domain experts", "Evidence-based", "Contextual placement"]
-    },
-    {
-      icon: Calendar,
-      title: "Per-Guide Organization",
-      description: "Dedicated workspace for each life event with separate calendars, tasks, and notes",
-      highlights: ["Focused context", "Separate calendars", "Organized tasks", "Clean workspace"]
-    }
+    { icon: Brain, title: "Axiom Engine", description: "90%+ coverage validation ensures you consider everything that matters" },
+    { icon: Sparkles, title: "AI-Refined Questions", description: "200-500+ thoughtfully crafted questions per guide" },
+    { icon: BookOpen, title: "Expert Readings", description: "Curated content from trusted sources, integrated with planning" },
+    { icon: Target, title: "Per-Guide Organization", description: "Separate workspaces for each life event with integrated tools" },
   ];
 
-  const premiumFeatures = [
-    {
-      icon: BarChart3,
-      title: "Premium Analytics",
-      description: "Sophisticated visualizations including radial progress charts, timeline graphs, and radar visualizations"
-    },
-    {
-      icon: Palette,
-      title: "Category Color Coding",
-      description: "Intuitive visual organization with category-specific colors for effortless navigation"
-    },
-    {
-      icon: TrendingUp,
-      title: "Progress Tracking",
-      description: "See completion percentages, identify gaps, and celebrate milestones as you progress"
-    },
-    {
-      icon: Sparkles,
-      title: "Premium Design",
-      description: "Sophisticated, delightful interface that makes planning feel like an experience"
-    }
+  const planningFeatures = [
+    { icon: CheckCircle2, title: "Question Bank", description: "Answer questions at your own pace, track completion" },
+    { icon: FileText, title: "Notes & Documentation", description: "Rich text notes, attachments, and organization" },
+    { icon: TrendingUp, title: "Progress Tracking", description: "Visual dashboards showing completion and milestones" },
   ];
 
   const toolingFeatures = [
-    {
-      icon: FileText,
-      title: "Notes & Documentation",
-      description: "Capture thoughts alongside questions, searchable and exportable"
-    },
-    {
-      icon: CheckCircle2,
-      title: "Task Management",
-      description: "Create action items organized by guide with priorities and completion tracking"
-    },
-    {
-      icon: Search,
-      title: "Powerful Search",
-      description: "Find relevant content instantly across all guides, questions, and readings"
-    },
-    {
-      icon: Zap,
-      title: "Auto-Save",
-      description: "Never lose work with automatic progress saving across all devices"
-    },
-    {
-      icon: Lock,
-      title: "Secure & Private",
-      description: "Industry-standard encryption with your data always remaining private"
-    },
-    {
-      icon: Lightbulb,
-      title: "Smart Recommendations",
-      description: "Discover related guides and content to plan comprehensively"
-    }
+    { icon: Calendar, title: "Calendars", description: "Per-guide calendars with timeline planning" },
+    { icon: Layout, title: "Task Management", description: "Organize tasks by guide with priorities and deadlines" },
+    { icon: Search, title: "Powerful Search", description: "Find anything across all guides instantly" },
+    { icon: Database, title: "Auto-Save", description: "Cloud sync ensures you never lose progress" },
+    { icon: Lock, title: "Secure Storage", description: "Enterprise-grade security for your planning data" },
+    { icon: Download, title: "Export", description: "Download your plans in multiple formats" },
+    { icon: Smartphone, title: "Mobile Responsive", description: "Plan on any device, anywhere" },
+    { icon: Moon, title: "Dark Mode", description: "Easy on the eyes for long planning sessions" },
+    { icon: Shield, title: "Privacy First", description: "No ads, no data selling, no tracking" },
   ];
 
   return (
@@ -120,10 +41,10 @@ export const FeaturesContent: React.FC = () => {
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
           <Badge variant="secondary" className="flex items-center gap-2">
             <Sparkles className="w-3 h-3" />
-            Comprehensive + Beautiful
+            Comprehensive Features
           </Badge>
 
-          <h1 className="relative z-15 max-w-4xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+          <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
             <span
               className="overflow-hidden"
               style={{
@@ -131,7 +52,7 @@ export const FeaturesContent: React.FC = () => {
                 perspective: "600px",
               }}
             >
-              {"Features That Transform Planning".split(" ").map((word, i) => (
+              {"Everything You Need to Plan".split(" ").map((word, i) => (
                 <motion.span
                   className="relative inline-block px-[6px] leading-[none]"
                   key={i}
@@ -158,7 +79,7 @@ export const FeaturesContent: React.FC = () => {
           </h1>
 
           <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            Not just functional—exceptional. Templata combines comprehensive expert content with sophisticated design to make life's biggest moments feel less overwhelming and more exhilarating.
+            Expert frameworks, AI-refined questions, curated readings, and integrated planning tools—all free forever
           </p>
 
           <Particles
@@ -178,26 +99,26 @@ export const FeaturesContent: React.FC = () => {
               showCard={1}
               className=""
               reverse={true}
-              icons={[Heart, Home, Briefcase, DollarSign]}
+              icons={[Brain, Sparkles, BookOpen, Target]}
               dimmed
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
-              icons={[Brain, Target, BookOpen, Calendar]}
+              icons={[CheckCircle2, FileText, TrendingUp, BarChart]}
               highlighted
             />
             <SkiperUiMarquee
               showCard={3}
               reverse={true}
               className=""
-              icons={[BarChart3, TrendingUp, Sparkles, Palette]}
-              highlighted
+              icons={[Calendar, Layout, Search, Database]}
+              dimmed
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
-              icons={[Search, Zap, Lock, CheckCircle2]}
+              icons={[Lock, Download, Smartphone, Moon]}
               dimmed
             />
           </motion.div>
@@ -211,8 +132,8 @@ export const FeaturesContent: React.FC = () => {
         <div className="container max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-semibold mb-3">Core Features</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              The foundation of Templata's comprehensive planning experience
+            <p className="text-muted-foreground text-lg">
+              The foundation of comprehensive life planning
             </p>
           </div>
 
@@ -227,61 +148,17 @@ export const FeaturesContent: React.FC = () => {
               >
                 <Card className="h-full">
                   <CardHeader>
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className="bg-primary text-primary-foreground rounded-lg p-3">
+                    <div className="flex items-start gap-3">
+                      <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
                         <feature.icon className="w-6 h-6" />
                       </div>
-                      <CardTitle>{feature.title}</CardTitle>
+                      <div>
+                        <CardTitle className="text-xl mb-2">{feature.title}</CardTitle>
+                        <CardDescription className="text-base">
+                          {feature.description}
+                        </CardDescription>
+                      </div>
                     </div>
-                    <CardDescription className="text-base">
-                      {feature.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {feature.highlights.map((highlight) => (
-                        <li key={highlight} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Premium Experience */}
-      <section className="py-16 border-t border-border bg-muted/30">
-        <div className="container max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-3">Premium Experience</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Sophisticated design and analytics that complete the luxury planning experience
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {premiumFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="h-full">
-                  <CardHeader>
-                    <div className="bg-primary/10 text-primary rounded-lg p-3 w-fit mb-3">
-                      <feature.icon className="w-6 h-6" />
-                    </div>
-                    <CardTitle className="text-lg">{feature.title}</CardTitle>
-                    <CardDescription>
-                      {feature.description}
-                    </CardDescription>
                   </CardHeader>
                 </Card>
               </motion.div>
@@ -291,12 +168,52 @@ export const FeaturesContent: React.FC = () => {
       </section>
 
       {/* Planning Tools */}
+      <section className="py-16 border-t border-border bg-muted/30">
+        <div className="container max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-semibold mb-3">Planning Tools</h2>
+            <p className="text-muted-foreground text-lg">
+              Answer questions, track progress, and organize your thinking
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {planningFeatures.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full">
+                  <CardHeader>
+                    <div className="flex items-start gap-3">
+                      <div className="bg-muted rounded-lg p-2 flex-shrink-0">
+                        <feature.icon className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-base mb-1">{feature.title}</CardTitle>
+                        <CardDescription className="text-sm">
+                          {feature.description}
+                        </CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Infrastructure */}
       <section className="py-16 border-t border-border">
         <div className="container max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-3">Planning & Organization Tools</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Everything you need to organize and execute your plans
+            <h2 className="text-3xl font-semibold mb-3">Infrastructure & Quality of Life</h2>
+            <p className="text-muted-foreground text-lg">
+              Professional tools and polish for a premium experience
             </p>
           </div>
 
@@ -336,7 +253,7 @@ export const FeaturesContent: React.FC = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-semibold mb-3">Why Templata Is Different</h2>
             <p className="text-muted-foreground text-lg">
-              Not blank pages. Not scattered checklists. Comprehensive expert frameworks + sophisticated design.
+              Not blank pages. Not scattered checklists. Comprehensive expert frameworks with a premium experience.
             </p>
           </div>
 
@@ -358,33 +275,10 @@ export const FeaturesContent: React.FC = () => {
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-8">
               <p className="text-lg leading-relaxed">
-                <strong>Think Superhuman meets Co-Star.</strong> We're building features that aren't strictly "necessary"—radial progress charts, radar visualizations, timeline graphs—but complete the luxury experience. Because transforming life's biggest moments from overwhelming to exhilarating requires both comprehensive content <em>and</em> sophisticated design.
+                We're building features that aren't strictly "necessary"—radial progress charts, radar visualizations, timeline graphs—but complete a premium experience. Because transforming life's biggest moments from overwhelming to exhilarating requires both comprehensive content <em>and</em> sophisticated design.
               </p>
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 border-t border-border">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold mb-4">Experience the Difference</h2>
-          <p className="text-muted-foreground text-lg mb-8">
-            Try Templata free and see how comprehensive planning should feel
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/guides">
-              <Button size="lg" className="group">
-                Explore Guides
-                <Sparkles className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/pricing">
-              <Button size="lg" variant="outline">
-                View Pricing
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
     </div>

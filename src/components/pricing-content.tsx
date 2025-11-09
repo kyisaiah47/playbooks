@@ -2,12 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Check, Sparkles, Zap, Shield, Infinity } from "lucide-react";
+import { Check, Sparkles, Zap, Shield, Infinity, Heart, DollarSign, Target, TrendingUp } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
+import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export const PricingContent: React.FC = () => {
   const features = [
@@ -19,32 +18,92 @@ export const PricingContent: React.FC = () => {
 
   return (
     <div>
+      {/* Hero Section */}
       <section className="relative py-32 pt-56">
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
           <Badge variant="secondary" className="flex items-center gap-2">
             <Infinity className="w-3 h-3" />
             Free Forever
           </Badge>
+
           <h1 className="relative z-15 max-w-4xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
-            <span className="overflow-hidden" style={{ transformStyle: "preserve-3d", perspective: "600px" }}>
+            <span
+              className="overflow-hidden"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "600px",
+              }}
+            >
               {"Comprehensive Planning Free Forever".split(" ").map((word, i) => (
-                <motion.span className="relative inline-block px-[6px] leading-[none]" key={i}
-                  initial={{ opacity: 0, y: "70%", rotateX: "-28deg" }}
-                  animate={{ opacity: 1, y: "0%", rotateX: "0deg" }}
-                  transition={{ delay: i * 0.08 + 0.1, duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}>
+                <motion.span
+                  className="relative inline-block px-[6px] leading-[none]"
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    y: "70%",
+                    rotateX: "-28deg",
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: "0%",
+                    rotateX: "0deg",
+                  }}
+                  transition={{
+                    delay: i * 0.08 + 0.1,
+                    duration: 0.8,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  }}
+                >
                   {word}
                 </motion.span>
               ))}
             </span>
           </h1>
+
           <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
             No credit card required. No hidden fees. No paywalls. All features free, forever.
           </p>
-          <Particles className="absolute inset-0 z-0" quantity={500} ease={80} refresh />
+
+          <Particles
+            className="absolute inset-0 z-0"
+            quantity={500}
+            ease={80}
+            refresh
+          />
+
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 1 }}
+            className="relative z-20 mt-10 flex items-center justify-center gap-4"
+          >
+            <SkiperUiMarquee
+              showCard={1}
+              className=""
+              reverse={true}
+              icons={[Infinity, Shield, Zap, Sparkles]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[Heart, DollarSign, Target, TrendingUp]}
+              highlighted
+            />
+            <SkiperUiMarquee
+              showCard={3}
+              reverse={true}
+              className=""
+              icons={[Check, Infinity, Shield, Sparkles]}
+              dimmed
+            />
+          </motion.div>
+
           <div className="h-92 bg-background absolute bottom-20 left-0 right-0 w-full blur-xl" />
         </div>
       </section>
 
+      {/* Pricing Card */}
       <section className="py-16 border-t border-border">
         <div className="container max-w-4xl">
           <Card className="overflow-hidden border-2 border-primary">
@@ -70,8 +129,7 @@ export const PricingContent: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <Link href="/guides"><Button size="lg" className="w-full">Start Planning Free</Button></Link>
-              <p className="text-center text-sm text-muted-foreground mt-4">No credit card required • Beta access</p>
+              <p className="text-center text-sm text-muted-foreground">No credit card required • Beta access</p>
             </CardContent>
           </Card>
 
@@ -118,16 +176,6 @@ export const PricingContent: React.FC = () => {
               </CardContent>
             </Card>
           </div>
-        </div>
-      </section>
-
-      <section className="py-16 border-t border-border bg-muted/30">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold mb-4">Beta Access • No Payment Required</h2>
-          <p className="text-muted-foreground text-lg mb-8">
-            We're currently in beta, focused on building the best planning experience possible. All features are free with no restrictions.
-          </p>
-          <Link href="/guides"><Button size="lg">Get Started Free</Button></Link>
         </div>
       </section>
     </div>
