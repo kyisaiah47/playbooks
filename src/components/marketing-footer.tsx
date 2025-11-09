@@ -14,6 +14,8 @@ const sections = [
   {
     title: "Resources",
     links: [
+      { name: "Tags", href: "/tags" },
+      { name: "Collections", href: "/collections" },
       { name: "Glossary", href: "/glossary" },
       { name: "Sitemap", href: "/sitemap" },
     ],
