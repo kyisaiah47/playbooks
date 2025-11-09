@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 	title: 'Expert Planning Guides & Templates | Templata',
 	description: 'Browse expert-crafted planning guides for life\'s biggest moments. Wedding planning, career changes, home buying, business planning, and more. Free forever.',
 	keywords: 'planning guides, life templates, wedding planning guide, career change guide, home buying guide, business planning template, expert planning frameworks, free planning guides',
+	authors: [{ name: 'Templata' }],
+	creator: 'Templata',
+	publisher: 'Templata',
 	openGraph: {
 		title: 'Expert Planning Guides & Templates | Templata',
 		description: 'Browse expert-crafted planning guides for life\'s biggest moments. Free forever.',
@@ -35,7 +38,22 @@ export const metadata: Metadata = {
 		card: 'summary_large_image',
 		title: 'Expert Planning Guides & Templates | Templata',
 		description: 'Browse expert-crafted planning guides for life\'s biggest moments.',
-		images: ['https://templata.org/og-image.svg'],
+		images: ['https://templata.org/og-image.png'],
+		creator: '@templata',
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			'max-video-preview': -1,
+			'max-image-preview': 'large',
+			'max-snippet': -1,
+		},
+	},
+	alternates: {
+		canonical: 'https://templata.org/guides',
 	},
 };
 
@@ -118,6 +136,26 @@ export default async function GuidesPage() {
 		})),
 	};
 
+	// Breadcrumb schema
+	const breadcrumbSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{
+				'@type': 'ListItem',
+				position: 1,
+				name: 'Home',
+				item: 'https://templata.org',
+			},
+			{
+				'@type': 'ListItem',
+				position: 2,
+				name: 'Guides',
+				item: 'https://templata.org/guides',
+			},
+		],
+	};
+
 	return (
 		<>
 			<Script
@@ -129,6 +167,11 @@ export default async function GuidesPage() {
 				id="guides-itemlist-jsonld"
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+			/>
+			<Script
+				id="guides-breadcrumb-jsonld"
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
 			/>
 
 			<PageLayout>

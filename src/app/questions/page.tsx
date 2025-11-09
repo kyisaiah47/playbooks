@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: 'Planning Questions Database | Expert Life Planning Questions | Templata',
   description: 'Browse hundreds of AI-refined planning questions across all life categories. Get structured guidance for career, finance, relationships, health, and major life events.',
   keywords: 'planning questions, life planning questions, career planning questions, financial planning questions, wedding planning questions, home buying questions, life event questions, structured planning',
+  authors: [{ name: 'Templata' }],
+  creator: 'Templata',
+  publisher: 'Templata',
   openGraph: {
     title: 'Planning Questions Database | Templata',
     description: 'Browse hundreds of expert planning questions for life\'s biggest moments.',
@@ -35,6 +38,21 @@ export const metadata: Metadata = {
     title: 'Planning Questions Database | Templata',
     description: 'Browse hundreds of expert planning questions for life\'s biggest moments.',
     images: ['https://templata.org/og-image.png'],
+    creator: '@templata',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://templata.org/questions',
   },
 };
 
@@ -102,6 +120,15 @@ export default async function QuestionsPage() {
     return acc;
   }, {});
 
+  // WebPage schema
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Planning Questions Database',
+    description: 'Comprehensive database of AI-refined planning questions for life\'s biggest moments',
+    url: 'https://templata.org/questions',
+  };
+
   // FAQ schema with actual questions
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -147,6 +174,11 @@ export default async function QuestionsPage() {
 
   return (
     <>
+      <Script
+        id="questions-webpage-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
       <Script
         id="questions-faq-jsonld"
         type="application/ld+json"

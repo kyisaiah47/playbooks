@@ -306,6 +306,9 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
     title: meta.metaTitle,
     description: meta.description,
     keywords: meta.keywords,
+    authors: [{ name: 'Templata' }],
+    creator: 'Templata',
+    publisher: 'Templata',
     openGraph: {
       title: meta.metaTitle,
       description: meta.description,
@@ -327,6 +330,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
       title: meta.metaTitle,
       description: meta.description,
       images: ['https://templata.org/og-image.png'],
+      creator: '@templata',
     },
     robots: {
       index: true,
