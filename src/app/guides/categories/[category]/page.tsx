@@ -4,6 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 import { PageLayout } from '@/components/layout';
 import { CategoryGuidesList } from '@/components/category-guides-list';
 import { notFound } from 'next/navigation';
+import { TEMPLATA_FAQ } from '@/lib/seo';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -235,6 +236,50 @@ async function getCategories() {
   }
 }
 
+async function getAllCategoryReadingsWithContent(categoryId: string) {
+  try {
+    const { data: guides } = await supabase
+      .from('guides')
+      .select('id')
+      .eq('category', categoryId);
+
+    if (!guides || guides.length === 0) return [];
+
+    const { data: readings, error } = await supabase
+      .from('readings')
+      .select('id, title, content, excerpt, author, read_time')
+      .in('guide', guides.map(g => g.id))
+      .order('created_at', { ascending: false });
+
+    if (error) return [];
+    return readings || [];
+  } catch {
+    return [];
+  }
+}
+
+async function getAllCategoryQuestions(categoryId: string) {
+  try {
+    const { data: guides } = await supabase
+      .from('guides')
+      .select('id')
+      .eq('category', categoryId);
+
+    if (!guides || guides.length === 0) return [];
+
+    const { data: questions, error } = await supabase
+      .from('questions')
+      .select('id, question, question_number')
+      .in('guide_id', guides.map(g => g.id))
+      .order('question_number');
+
+    if (error) return [];
+    return questions || [];
+  } catch {
+    return [];
+  }
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
   const { category: categorySlug } = await params;
   const category = await getCategory(categorySlug);
@@ -308,11 +353,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     notFound();
   }
 
-  const [guides, questionsGrouped, readingsGrouped, allCategories] = await Promise.all([
+  const [guides, questionsGrouped, readingsGrouped, allCategories, allReadings, allQuestions] = await Promise.all([
     getGuidesInCategory(categorySlug),
     getCategoryQuestionsGrouped(categorySlug),
     getCategoryReadingsGrouped(categorySlug),
     getCategories(),
+    getAllCategoryReadingsWithContent(categorySlug),
+    getAllCategoryQuestions(categorySlug),
   ]);
 
   const relatedCategories = allCategories.filter(c => c.id !== categorySlug);
@@ -379,6 +426,20 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     ],
   };
 
+  // FAQ schema for rich snippets
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: TEMPLATA_FAQ.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <>
       <Script
@@ -396,6 +457,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <Script
+        id="category-faq-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <PageLayout>
         <CategoryGuidesList
@@ -408,6 +474,44 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           totalReadingsCount={totalReadingsCount}
         />
       </PageLayout>
+
+      {/* Hidden SEO content - all category readings and questions for search engines */}
+      <div className="sr-only" aria-hidden="true">
+        <h2>Complete {category.name} Planning Resources</h2>
+        <p>
+          Comprehensive collection of {totalReadingsCount} expert readings and {totalQuestionsCount} planning questions across {guides.length} guides for {category.name.toLowerCase()}.
+        </p>
+
+        <h3>All {category.name} Planning Questions</h3>
+        <ul>
+          {allQuestions.map((q: any) => (
+            <li key={q.id}>{q.question}</li>
+          ))}
+        </ul>
+
+        <h3>All {category.name} Expert Readings</h3>
+        {allReadings.map((reading: any) => (
+          <article key={`seo-${reading.id}`}>
+            <h4>{reading.title}</h4>
+            <p>By {reading.author} • {reading.read_time}</p>
+            <div>
+              {reading.content?.replace(/\n/g, ' ') || reading.excerpt || ''}
+            </div>
+          </article>
+        ))}
+
+        <h3>{category.name} Planning Guides</h3>
+        <ul>
+          {guides.map((guide: any) => (
+            <li key={guide.id}>
+              <h4>{guide.name}</h4>
+              <p>{guide.description}</p>
+              <p>Difficulty: {guide.difficulty || 'All levels'}</p>
+              <p>Contains {guide.questionsCount} questions and {guide.readingsCount} expert readings</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
