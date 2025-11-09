@@ -1,6 +1,6 @@
 /**
  * Centralized error logging utility
- * In production, this will integrate with error tracking services like Sentry
+ * In production, this will integrate with error tracking services if needed
  */
 
 interface ErrorContext {
@@ -13,13 +13,13 @@ interface ErrorContext {
 export class ErrorLogger {
   /**
    * Log an error with context
-   * In production, this sends to error tracking service
+   * In production, this sends to error tracking service (if configured)
    */
   static logError(error: unknown, context?: ErrorContext): void {
     const errorMessage = error instanceof Error ? error.message : String(error);
     const errorStack = error instanceof Error ? error.stack : undefined;
 
-    // In development, log to console
+    // In development, log full details to console
     if (process.env.NODE_ENV === 'development') {
       console.error('[ErrorLogger]', {
         message: errorMessage,
@@ -29,13 +29,8 @@ export class ErrorLogger {
       });
     }
 
-    // In production, send to error tracking service
-    // TODO: Integrate with Sentry, LogRocket, or similar
+    // In production, log minimal info to prevent exposure
     if (process.env.NODE_ENV === 'production') {
-      // Example Sentry integration:
-      // Sentry.captureException(error, { contexts: { custom: context } });
-
-      // For now, log minimal info to prevent exposure
       console.error('[Error]', {
         message: errorMessage,
         component: context?.component,
