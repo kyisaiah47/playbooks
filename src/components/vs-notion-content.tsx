@@ -2,23 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Check, X, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles } from "lucide-react";
+import { CheckCircle2, CircleMinus, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export const VsNotionContent: React.FC = () => {
-  const comparisons = [
-    { feature: "Planning Guidance", templata: "Expert frameworks with 90%+ coverage", notion: "Blank pages, DIY structure" },
-    { feature: "AI-Refined Questions", templata: "200-500+ per guide", notion: "None - create your own" },
-    { feature: "Expert Readings", templata: "Curated, vetted content", notion: "DIY research" },
-    { feature: "Setup Time", templata: "Start in minutes", notion: "Hours of customization" },
-    { feature: "Pricing", templata: "Free forever", notion: "$10/month for meaningful features" },
-    { feature: "Per-Guide Organization", templata: "Built-in, automatic", notion: "Manual setup required" },
-    { feature: "Coverage Validation", templata: "Axiom Engine ensures 90%+", notion: "No validation" },
-  ];
-
   return (
     <div>
       {/* Hero Section */}
@@ -103,7 +94,7 @@ export const VsNotionContent: React.FC = () => {
             <SkiperUiMarquee
               showCard={2}
               className=""
-              icons={[DollarSign, PiggyBank, Wallet, Check]}
+              icons={[DollarSign, PiggyBank, Wallet, CheckCircle2]}
               highlighted
             />
             <SkiperUiMarquee
@@ -132,33 +123,119 @@ export const VsNotionContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="py-16 border-t border-border">
-        <div className="container max-w-5xl">
-          <div className="space-y-3">
-            {comparisons.map((comp, idx) => (
-              <Card key={idx}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{comp.feature}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <strong>Templata:</strong> {comp.templata}
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <X className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-                      <div>
-                        <strong>Notion:</strong> {comp.notion}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+      {/* Comparison Body */}
+      <section className="bg-muted/50 py-32">
+        <div className="container">
+          <div className="text-center">
+            <p className="text-muted-foreground mx-auto max-w-4xl md:text-xl">
+              Templata isn&apos;t just an alternative to Notion. While Notion gives you blank pages and DIY structure, Templata provides expert frameworks with 90%+ validated coverage, AI-refined questions, and curated readings—ensuring you never miss what matters for life&apos;s biggest moments.
+            </p>
+          </div>
+          <div className="mt-28">
+            <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
+              <div className="bg-background rounded-xl border p-6 shadow">
+                <span className="flex items-center justify-center gap-2 font-medium">
+                  <Image
+                    src="/favicon.svg"
+                    alt="Templata"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 dark:invert-0 invert"
+                  />
+                  Templata
+                </span>
+                <Separator className="my-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Expert planning frameworks
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    90%+ validated coverage
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    200-500+ AI-refined questions per guide
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Curated expert readings integrated
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Per-guide organization (calendars, tasks)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Start planning in minutes
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Free forever (beta)
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-border/40 rounded-xl p-6">
+                <span className="flex items-center justify-center gap-2 font-medium">
+                  <svg className="h-7" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M6.017 4.313l55.333 -4.087c6.797 -0.583 8.543 -0.19 12.817 2.917l17.663 12.443c2.913 2.14 3.883 2.723 3.883 5.053v68.243c0 4.277 -1.553 6.807 -6.99 7.193L24.467 99.967c-4.08 0.193 -6.023 -0.39 -8.16 -3.113L3.3 79.94c-2.333 -3.113 -3.3 -5.443 -3.3 -8.167V11.113c0 -3.497 1.553 -6.413 6.017 -6.8z"/>
+                  </svg>
+                  Notion
+                </span>
+                <Separator className="my-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Blank pages, DIY structure
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No planning frameworks
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Create your own questions
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    DIY research required
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Manual setup per workspace
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Hours of customization needed
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    $10/month for meaningful features
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="mx-auto mt-16 max-w-3xl">
+            <h2 className="mb-4 text-3xl font-semibold">
+              Who is Notion suitable for?
+            </h2>
+            <p className="text-muted-foreground leading-6 md:text-lg">
+              Notion is excellent for teams who want complete flexibility and are willing to invest time building custom workflows. It&apos;s a powerful tool for software teams, project management, and knowledge bases where you already know exactly what structure you need. If you&apos;re planning a startup, managing engineering sprints, or building internal wikis, Notion&apos;s blank-slate approach gives you total control.
+            </p>
+            <h2 className="mb-4 mt-16 text-3xl font-semibold">
+              Why Choose Templata for Life Planning?
+            </h2>
+            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+              When planning life&apos;s biggest moments—weddings, career changes, home buying, financial planning—you don&apos;t want blank pages. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.
+            </p>
+            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+              Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you&apos;re learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.
+            </p>
+            <p className="text-muted-foreground leading-6 md:text-lg">
+              While Notion requires hours to set up and leaves you guessing what you might have missed, Templata gets you planning comprehensively in minutes. And unlike Notion&apos;s $10/month for meaningful features, Templata is free forever (currently in beta). For life planning, choose expert frameworks over blank pages.
+            </p>
           </div>
         </div>
       </section>
