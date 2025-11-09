@@ -18,7 +18,7 @@ async function getAllTags() {
   try {
     const { data: guides, error } = await supabase
       .from('guides')
-      .select('id, name, tags, category')
+      .select('id, name, description, tags, category, difficulty, estimated_time')
       .not('tags', 'is', null);
 
     if (error) {
@@ -56,9 +56,15 @@ export default async function TagsPage() {
     .sort(([, a], [, b]) => b.count - a.count)
     .map(([tag, data]) => ({ tag, count: data.count }));
 
+  // Create a map of tag -> guides
+  const allGuidesByTag: Record<string, any[]> = {};
+  Object.entries(tagCounts).forEach(([tag, data]) => {
+    allGuidesByTag[tag] = data.guides;
+  });
+
   return (
     <PageLayout>
-      <TagsHub tags={sortedTags} totalTags={sortedTags.length} />
+      <TagsHub tags={sortedTags} totalTags={sortedTags.length} allGuidesByTag={allGuidesByTag} />
 
       {/* Hidden SEO content */}
       <div className="sr-only" aria-hidden="true">
