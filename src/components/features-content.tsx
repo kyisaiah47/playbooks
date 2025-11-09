@@ -6,7 +6,7 @@ import { Sparkles, Brain, Target, Zap, Calendar, FileText, Search, Database, Loc
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export const FeaturesContent: React.FC = () => {
   const coreFeatures = [
@@ -148,16 +148,17 @@ export const FeaturesContent: React.FC = () => {
       </section>
 
       {/* Core Features */}
-      <section className="py-16 border-t border-border">
-        <div className="container max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-3">Core Features</h2>
-            <p className="text-muted-foreground text-lg">
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Core Features</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               The foundation of comprehensive life planning
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-8">
             {coreFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -165,22 +166,17 @@ export const FeaturesContent: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="flex items-start gap-4"
               >
-                <Card className="h-full">
-                  <CardHeader>
-                    <div className="flex items-start gap-3">
-                      <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
-                        <feature.icon className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-xl mb-2">{feature.title}</CardTitle>
-                        <CardDescription className="text-base">
-                          {feature.description}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
+                <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
+                  <feature.icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-foreground text-lg mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -188,16 +184,17 @@ export const FeaturesContent: React.FC = () => {
       </section>
 
       {/* Planning Tools */}
-      <section className="py-16 border-t border-border bg-muted/30">
-        <div className="container max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-3">Planning Tools</h2>
-            <p className="text-muted-foreground text-lg">
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Planning Tools</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Answer questions, track progress, and organize your thinking
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="space-y-8">
             {planningFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -205,22 +202,17 @@ export const FeaturesContent: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="flex items-start gap-4"
               >
-                <Card className="h-full">
-                  <CardHeader>
-                    <div className="flex items-start gap-3">
-                      <div className="bg-muted rounded-lg p-2 flex-shrink-0">
-                        <feature.icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-base mb-1">{feature.title}</CardTitle>
-                        <CardDescription className="text-sm">
-                          {feature.description}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
+                <div className="bg-muted rounded-lg p-3 flex-shrink-0">
+                  <feature.icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-foreground text-lg mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -228,16 +220,17 @@ export const FeaturesContent: React.FC = () => {
       </section>
 
       {/* Infrastructure */}
-      <section className="py-16 border-t border-border">
-        <div className="container max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-3">Infrastructure & Quality of Life</h2>
-            <p className="text-muted-foreground text-lg">
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Infrastructure & Quality of Life</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Professional tools and polish for a premium experience
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
             {toolingFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -245,22 +238,17 @@ export const FeaturesContent: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="flex items-start gap-4"
               >
-                <Card className="h-full">
-                  <CardHeader>
-                    <div className="flex items-start gap-3">
-                      <div className="bg-muted rounded-lg p-2 flex-shrink-0">
-                        <feature.icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-base mb-1">{feature.title}</CardTitle>
-                        <CardDescription className="text-sm">
-                          {feature.description}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                </Card>
+                <div className="bg-muted rounded-lg p-2 flex-shrink-0">
+                  <feature.icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-foreground mb-1">{feature.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -268,37 +256,36 @@ export const FeaturesContent: React.FC = () => {
       </section>
 
       {/* Why Different */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-3">Why Templata Is Different</h2>
-            <p className="text-muted-foreground text-lg">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Why Templata Is Different</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Not blank pages. Not scattered checklists. Comprehensive expert frameworks with a premium experience.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div className="text-center">
-              <h3 className="text-4xl font-bold mb-2">90%+</h3>
-              <p className="text-muted-foreground">Question coverage through Axiom Engine</p>
+          <div className="grid md:grid-cols-3 gap-8 mb-12 text-muted-foreground">
+            <div>
+              <h3 className="text-4xl font-bold text-foreground mb-2">90%+</h3>
+              <p className="leading-relaxed">Question coverage through Axiom Engine</p>
             </div>
-            <div className="text-center">
-              <h3 className="text-4xl font-bold mb-2">1000+</h3>
-              <p className="text-muted-foreground">Expert curated readings across all guides</p>
+            <div>
+              <h3 className="text-4xl font-bold text-foreground mb-2">1000+</h3>
+              <p className="leading-relaxed">Expert curated readings across all guides</p>
             </div>
-            <div className="text-center">
-              <h3 className="text-4xl font-bold mb-2">Free</h3>
-              <p className="text-muted-foreground">All core features, forever</p>
+            <div>
+              <h3 className="text-4xl font-bold text-foreground mb-2">Free</h3>
+              <p className="leading-relaxed">All core features, forever</p>
             </div>
           </div>
 
-          <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <CardContent className="p-8">
-              <p className="text-lg leading-relaxed">
-                Comprehensive planning deserves thoughtful design. We're building radial progress charts, radar visualizations, timeline graphs, and other sophisticated features because transforming life's biggest moments from overwhelming to exhilarating requires both expert content <em>and</em> a premium experience.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="border-l-4 border-primary pl-6 py-4">
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              Comprehensive planning deserves thoughtful design. We're building radial progress charts, radar visualizations, timeline graphs, and other sophisticated features because transforming life's biggest moments from overwhelming to exhilarating requires both expert content <em>and</em> a premium experience.
+            </p>
+          </div>
         </div>
       </section>
     </div>

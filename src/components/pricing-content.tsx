@@ -6,7 +6,7 @@ import { Check, Sparkles, Zap, Shield, Infinity, Heart, DollarSign, Target, Tren
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export const PricingContent: React.FC = () => {
   const features = [
@@ -22,8 +22,8 @@ export const PricingContent: React.FC = () => {
       <section className="relative py-32 pt-56">
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
           <Badge variant="secondary" className="flex items-center gap-2">
-            <Infinity className="w-3 h-3" />
-            Free Forever
+            <Sparkles className="w-3 h-3" />
+            Free in Beta
           </Badge>
 
           <h1 className="relative z-15 max-w-4xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
@@ -34,7 +34,7 @@ export const PricingContent: React.FC = () => {
                 perspective: "600px",
               }}
             >
-              {"Comprehensive Planning Free Forever".split(" ").map((word, i) => (
+              {"Comprehensive Planning Free in Beta".split(" ").map((word, i) => (
                 <motion.span
                   className="relative inline-block px-[6px] leading-[none]"
                   key={i}
@@ -61,7 +61,7 @@ export const PricingContent: React.FC = () => {
           </h1>
 
           <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            No credit card required. No hidden fees. No paywalls. All features free, forever.
+            All features free during beta. No credit card required. No paywalls.
           </p>
 
           <Particles
@@ -129,78 +129,144 @@ export const PricingContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing Card */}
-      <section className="py-16 border-t border-border">
+      {/* Intro Blurb */}
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <Card className="overflow-hidden border-2 border-primary">
-            <CardHeader className="bg-gradient-to-br from-primary/10 to-primary/5 border-b border-primary/20 text-center pb-8">
-              <div className="flex justify-center mb-4">
-                <div className="bg-primary text-primary-foreground rounded-full p-4">
-                  <Sparkles className="w-8 h-8" />
-                </div>
-              </div>
-              <CardTitle className="text-4xl mb-2">Free Forever</CardTitle>
-              <div className="flex items-baseline justify-center gap-2 mb-2">
-                <span className="text-6xl font-bold">$0</span>
-                <span className="text-2xl text-muted-foreground">/forever</span>
-              </div>
-              <p className="text-muted-foreground">All features included. Currently in beta.</p>
-            </CardHeader>
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-3 mb-8">
-                {features.map((feature) => (
-                  <div key={feature} className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-center text-sm text-muted-foreground">No credit card required • Beta access</p>
-            </CardContent>
-          </Card>
+          <Separator className="mb-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">Beta Access - Everything Free</h2>
+            <p>
+              We're currently in beta, focused on building the best comprehensive planning experience possible. During beta, all features are completely free with no restrictions, no credit card required, and no hidden catches.
+            </p>
+            <p>
+              Get expert frameworks with 90%+ validated coverage, 200-500+ AI-refined questions per guide, curated expert readings, integrated calendars and tasks, progress tracking, and more—all at no cost while we perfect the platform.
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            <Card>
-              <CardHeader>
-                <div className="bg-primary/10 rounded-lg p-3 w-fit mb-2">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="text-lg">No Limits</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Unlimited guides, questions, readings, notes, tasks. No artificial restrictions on free version.
-                </p>
-              </CardContent>
-            </Card>
+      {/* Pricing Card */}
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mx-auto flex w-full flex-col rounded-lg border p-6 sm:w-fit sm:min-w-80">
+            <div className="flex justify-center">
+              <span className="text-lg font-semibold">$</span>
+              <span className="text-6xl font-semibold">0</span>
+              <span className="text-muted-foreground self-end">/mo</span>
+            </div>
+            <div className="my-6">
+              <ul className="flex flex-col gap-3">
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  Unlimited planning guides <Check className="inline size-4 shrink-0" />
+                </li>
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  AI-refined questions (90%+ coverage) <Check className="inline size-4 shrink-0" />
+                </li>
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  Expert curated readings <Check className="inline size-4 shrink-0" />
+                </li>
+              </ul>
+              <Separator className="my-6" />
+              <ul className="flex flex-col gap-3">
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  Per-guide calendars & tasks <Check className="inline size-4 shrink-0" />
+                </li>
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  Progress tracking & analytics <Check className="inline size-4 shrink-0" />
+                </li>
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  Notes & documentation <Check className="inline size-4 shrink-0" />
+                </li>
+              </ul>
+              <Separator className="my-6" />
+              <ul className="flex flex-col gap-3">
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  Auto-save & cloud sync <Check className="inline size-4 shrink-0" />
+                </li>
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  Secure data storage <Check className="inline size-4 shrink-0" />
+                </li>
+                <li className="flex items-center justify-between gap-2 text-sm font-medium">
+                  No ads, no data selling <Check className="inline size-4 shrink-0" />
+                </li>
+              </ul>
+            </div>
+          </div>
 
-            <Card>
-              <CardHeader>
-                <div className="bg-primary/10 rounded-lg p-3 w-fit mb-2">
-                  <Shield className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="text-lg">No Catch</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  No trial period, no credit card, no forced upgrades. Free means free.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div>
+              <div className="bg-primary/10 rounded-lg p-3 w-fit mb-4">
+                <Zap className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-medium text-foreground text-lg mb-2">No Limits</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Unlimited guides, questions, readings, notes, tasks. No artificial restrictions during beta.
+              </p>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <div className="bg-primary/10 rounded-lg p-3 w-fit mb-2">
-                  <Infinity className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="text-lg">Free Forever</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Core features will always be free. Optional premium features may come later.
-                </p>
-              </CardContent>
-            </Card>
+            <div>
+              <div className="bg-primary/10 rounded-lg p-3 w-fit mb-4">
+                <Shield className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-medium text-foreground text-lg mb-2">No Catch</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                No trial period, no credit card, no forced upgrades. Beta means free access to everything.
+              </p>
+            </div>
+
+            <div>
+              <div className="bg-primary/10 rounded-lg p-3 w-fit mb-4">
+                <Infinity className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-medium text-foreground text-lg mb-2">Core Always Free</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Core planning features will remain free. Premium features coming later for advanced users.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Future Premium */}
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">Future Premium Features</h2>
+            <p>
+              We're building optional premium features for power users who want even more. Core planning will always remain free, but premium features may include advanced analytics, custom frameworks, team collaboration, priority support, and more sophisticated visualizations.
+            </p>
+            <p>
+              Right now in beta, everything is free. When premium features launch, you'll still have full access to comprehensive planning at no cost—premium will be entirely optional for those who want extra capabilities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Free in Beta */}
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">Why Everything Is Free in Beta</h2>
+            <p>
+              We're focused on building the best comprehensive planning platform. Your feedback during beta helps us perfect the experience. In exchange, you get full access to expert frameworks, AI-refined questions, curated readings, and all features—completely free.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 mt-12 text-muted-foreground">
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-2">90%+</h3>
+              <p className="leading-relaxed">Validated coverage</p>
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-2">200-500+</h3>
+              <p className="leading-relaxed">Questions per guide</p>
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-2">$0</h3>
+              <p className="leading-relaxed">During beta</p>
+            </div>
           </div>
         </div>
       </section>

@@ -6,7 +6,7 @@ import { Heart, Briefcase, Home, Rocket, DollarSign, Activity, Users, TrendingUp
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export const UseCasesContent: React.FC = () => {
   const useCases = [
@@ -171,14 +171,15 @@ export const UseCasesContent: React.FC = () => {
       </section>
 
       {/* Intro Blurb */}
-      <section className="py-16 border-t border-border bg-muted/30">
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-semibold mb-4">Life's Biggest Moments Deserve Expert Guidance</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+          <Separator className="mb-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">Life's Biggest Moments Deserve Expert Guidance</h2>
+            <p>
               Planning a wedding, changing careers, buying a home, or launching a business? These aren't just tasks to check off—they're life-defining moments with real consequences. Miss an important consideration during home buying and you might overpay by tens of thousands. Skip a critical wedding vendor question and you risk costly mistakes on your big day.
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p>
               Templata provides expert frameworks with 200-500+ AI-refined questions per guide, curated readings from trusted sources, and 90%+ validated coverage through our Axiom Engine. You get comprehensive guidance instead of blank pages and guesswork.
             </p>
           </div>
@@ -186,15 +187,16 @@ export const UseCasesContent: React.FC = () => {
       </section>
 
       {/* Use Cases */}
-      <section className="py-16 border-t border-border">
-        <div className="container max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-3">Common Use Cases</h2>
-            <p className="text-muted-foreground text-lg">
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Common Use Cases</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               See how people are using Templata to navigate major life events
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-8">
             {useCases.map((useCase, index) => (
               <motion.div
                 key={useCase.title}
@@ -202,21 +204,16 @@ export const UseCasesContent: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="flex items-start gap-4"
               >
-                <Card className="h-full">
-                  <CardHeader>
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className="bg-primary text-primary-foreground rounded-lg p-3">
-                        <useCase.icon className="w-6 h-6" />
-                      </div>
-                      <CardTitle>{useCase.title}</CardTitle>
-                    </div>
-                    <CardDescription className="text-base">{useCase.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{useCase.details}</p>
-                  </CardContent>
-                </Card>
+                <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
+                  <useCase.icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-medium text-foreground text-lg mb-2">{useCase.title}</h3>
+                  <p className="text-muted-foreground mb-2">{useCase.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{useCase.details}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -224,68 +221,78 @@ export const UseCasesContent: React.FC = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 border-t border-border bg-muted/30">
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-4">How Templata Works for Every Life Event</h2>
-            <p className="text-muted-foreground text-lg">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">How Templata Works for Every Life Event</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Same powerful approach, customized for each major moment
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+          <div className="space-y-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                 <span className="text-2xl font-bold text-primary">1</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Choose Your Guide</h3>
-              <p className="text-muted-foreground">
-                Select the life event you're planning. Each guide has expert frameworks tailored to that specific moment.
-              </p>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Choose Your Guide</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Select the life event you're planning. Each guide has expert frameworks tailored to that specific moment.
+                </p>
+              </div>
             </div>
 
-            <div className="text-center">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                 <span className="text-2xl font-bold text-primary">2</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Answer Questions</h3>
-              <p className="text-muted-foreground">
-                Work through 200-500+ AI-refined questions at your own pace. Each question helps you think through what matters.
-              </p>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Answer Questions</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Work through 200-500+ AI-refined questions at your own pace. Each question helps you think through what matters.
+                </p>
+              </div>
             </div>
 
-            <div className="text-center">
-              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                 <span className="text-2xl font-bold text-primary">3</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Learn & Plan</h3>
-              <p className="text-muted-foreground">
-                Read curated expert content, organize tasks and calendars, track progress—all in one integrated workspace.
-              </p>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Learn & Plan</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Read curated expert content, organize tasks and calendars, track progress—all in one integrated workspace.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA Alternative */}
-      <section className="py-16 border-t border-border">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold mb-4">Ready to Plan Comprehensively?</h2>
-          <p className="text-muted-foreground text-lg mb-6">
-            Stop guessing what you might be missing. Get expert frameworks, AI-refined questions, and curated readings for life's biggest moments—free forever.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            <div className="text-center">
-              <h3 className="text-3xl font-bold mb-1">90%+</h3>
-              <p className="text-sm text-muted-foreground">Validated coverage</p>
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">Ready to Plan Comprehensively?</h2>
+            <p>
+              Stop guessing what you might be missing. Get expert frameworks, AI-refined questions, and curated readings for life's biggest moments—free forever.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 mt-12 text-muted-foreground">
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-2">90%+</h3>
+              <p className="leading-relaxed">Validated coverage</p>
             </div>
-            <div className="text-center">
-              <h3 className="text-3xl font-bold mb-1">200-500+</h3>
-              <p className="text-sm text-muted-foreground">Questions per guide</p>
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-2">200-500+</h3>
+              <p className="leading-relaxed">Questions per guide</p>
             </div>
-            <div className="text-center">
-              <h3 className="text-3xl font-bold mb-1">Free</h3>
-              <p className="text-sm text-muted-foreground">Forever, no catch</p>
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-2">Free</h3>
+              <p className="leading-relaxed">Forever, no catch</p>
             </div>
           </div>
         </div>

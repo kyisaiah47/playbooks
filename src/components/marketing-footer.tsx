@@ -34,17 +34,12 @@ const sections = [
   {
     title: "Compare",
     links: [
+      { name: "Alternatives", href: "/alternatives" },
       { name: "vs Notion", href: "/vs/notion" },
       { name: "vs Google Docs", href: "/vs/google-docs" },
       { name: "vs Trello", href: "/vs/trello" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { name: "Privacy", href: "/privacy" },
-      { name: "Terms", href: "/terms" },
-      { name: "Changelog", href: "/changelog" },
+      { name: "vs Asana", href: "/vs/asana" },
+      { name: "vs Monday", href: "/vs/monday" },
     ],
   },
 ];
@@ -70,7 +65,7 @@ const MarketingFooter = ({
       <div className="container">
         <footer>
           <Separator className="my-14" />
-          <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
             <div className="lg:max-w-md">
               <div className="flex items-center justify-start gap-2">
                 <Link href="/">
@@ -110,6 +105,16 @@ const MarketingFooter = ({
                   </ul>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <Separator className="my-8" />
+
+          <div className="flex justify-end">
+            <div className="flex gap-4 text-xs text-muted-foreground">
+              <Link href="/privacy" className="hover:text-primary">Privacy</Link>
+              <Link href="/terms" className="hover:text-primary">Terms</Link>
+              <Link href="/changelog" className="hover:text-primary">Changelog</Link>
             </div>
           </div>
         </footer>
