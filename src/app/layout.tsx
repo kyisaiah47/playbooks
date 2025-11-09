@@ -33,8 +33,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'Templata Team' }],
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '16x16 32x32', type: 'image/x-icon' },
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
     ],
   },
   manifest: '/manifest.json',
@@ -45,7 +49,7 @@ export const metadata: Metadata = {
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.org/og-image.svg',
+        url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Templata - Organize Life\'s Biggest Moments',
@@ -58,7 +62,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Templata | Organize Life\'s Biggest Moments',
     description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments.',
-    images: ['https://templata.org/og-image.svg'],
+    images: ['https://templata.org/og-image.png'],
     creator: '@templata',
   },
   robots: {

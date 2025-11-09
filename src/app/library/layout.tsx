@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://templata.org/og-image.svg",
+        url: "https://templata.org/og-image.png",
         width: 1200,
         height: 630,
         alt: "Templata Reading Library",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Reading Library - Expert Insights & Guides | Templata",
     description:
       "Browse curated expert readings covering major life events. Practical, actionable knowledge from domain experts.",
-    images: ["https://templata.org/og-image.svg"],
+    images: ["https://templata.org/og-image.png"],
   },
 };
 

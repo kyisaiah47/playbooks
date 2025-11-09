@@ -79,10 +79,13 @@ const LandingHero = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="z-12 absolute w-full overflow-hidden"
           >
-            <img
+            <motion.img
               src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/green-shape.svg"
               className="h-215 -translate-y-90 -rotate-76 w-full"
-              alt="Abstract flowing green shape illustration"
+              alt="Decorative abstract shape"
+              loading="eager"
+              width={1200}
+              height={800}
             />
           </motion.div>
         </div>

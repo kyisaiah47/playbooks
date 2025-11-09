@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://templata.org/og-image.svg",
+        url: "https://templata.org/og-image.png",
         width: 1200,
         height: 630,
         alt: "Templata App",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "App - Templata",
     description:
       "Experience the premium planning platform for life's biggest moments. Comprehensive guides with premium analytics.",
-    images: ["https://templata.org/og-image.svg"],
+    images: ["https://templata.org/og-image.png"],
   },
   robots: {
     index: false, // Don't index the app page itself

@@ -83,7 +83,20 @@ const GuidesList = () => {
 
             return (
               <div key={category.id} className="flex flex-col gap-7">
-                <h2 className="text-xl">/ {category.name.toUpperCase()}</h2>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={`/guides/categories/${category.id}`}
+                    className="text-xl hover:text-primary transition-colors"
+                  >
+                    / {category.name.toUpperCase()}
+                  </Link>
+                  <Link
+                    href={`/guides/categories/${category.id}`}
+                    className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                  >
+                    View all →
+                  </Link>
+                </div>
                 <div>
                   {guides.map((guide) => {
                     // Get the icon component dynamically

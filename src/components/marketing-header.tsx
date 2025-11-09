@@ -68,7 +68,7 @@ const MarketingHeader = () => {
 
               <div className="hidden items-center space-x-8 md:flex">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
                     href={link.href}
                     className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
@@ -79,7 +79,7 @@ const MarketingHeader = () => {
                     <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
                       {link.name}
                     </span>
-                  </a>
+                  </Link>
                 ))}
                 <ModeToggle />
                 <Button
@@ -143,14 +143,14 @@ const MarketingHeader = () => {
                       </div>
                       <div className="flex flex-col space-y-4">
                         {navLinks.map((link) => (
-                          <a
+                          <Link
                             key={link.name}
                             href={link.href}
                             onClick={() => setIsOpen(false)}
                             className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg px-4 py-2 text-lg font-medium transition-colors"
                           >
                             {link.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                       <div className="border-border border-t pt-6">

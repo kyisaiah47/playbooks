@@ -41,7 +41,10 @@
       "mcp__vercel__get_deployment_build_logs",
       "Bash(npx vercel env ls:*)",
       "Bash(npx vercel env rm:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(node scripts/generate-favicon.js:*)",
+      "Bash(node scripts/generate-og-image.js:*)",
+      "Bash(echo:*)"
     ],
     "deny": [],
     "ask": []

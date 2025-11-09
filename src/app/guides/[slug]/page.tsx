@@ -119,7 +119,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'Templata',
       images: [
         {
-          url: '/og-image.svg',
+          url: '/og-image.png',
           width: 1200,
           height: 630,
           alt: `${guide.name} Guide`,
@@ -132,7 +132,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title,
       description,
-      images: ['/og-image.svg'],
+      images: ['/og-image.png'],
     },
     robots: {
       index: true,
@@ -232,6 +232,32 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     })),
   };
 
+  // Breadcrumb schema for navigation hierarchy
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://templata.org',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Guides',
+        item: 'https://templata.org/guides',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: guide.name,
+        item: `https://templata.org/guides/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <Script
@@ -243,6 +269,11 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         id="guide-faq-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <Script
+        id="guide-breadcrumb-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <GuideDetail
         params={params}

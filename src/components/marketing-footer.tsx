@@ -81,7 +81,7 @@ const MarketingFooter = ({
                   <ul className="text-muted-foreground space-y-2 text-sm">
                     {section.links.map((link, linkIdx) => (
                       <li key={linkIdx} className="hover:text-primary">
-                        <a href={link.href}>{link.name}</a>
+                        <Link href={link.href}>{link.name}</Link>
                       </li>
                     ))}
                   </ul>
