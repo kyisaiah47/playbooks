@@ -57,23 +57,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { questions } = await getGuideData(slug);
 
   // Use meta_title if exists in DB, otherwise generate
-  const title = guide.meta_title || `${guide.title} Template & Planning Guide | Templata`;
+  const title = guide.meta_title || `${guide.name} Template & Planning Guide | Templata`;
 
   // Use meta_description if exists in DB, otherwise generate
-  const description = guide.meta_description || `Complete ${guide.title.toLowerCase()} planning guide. ${guide.description} Expert framework with ${questions.length > 0 ? `${questions.length}` : ''} planning questions, curated expert readings, and proven strategies. Start planning today.`;
+  const description = guide.meta_description || `Complete ${guide.name.toLowerCase()} planning guide. ${guide.description} Expert framework with ${questions.length > 0 ? `${questions.length}` : ''} planning questions, curated expert readings, and proven strategies. Start planning today.`;
 
   // Generate comprehensive SEO keywords
   const baseKeywords = [
-    guide.title.toLowerCase(),
-    `${guide.title.toLowerCase()} template`,
-    `${guide.title.toLowerCase()} guide`,
-    `${guide.title.toLowerCase()} planning`,
-    `how to plan ${guide.title.toLowerCase()}`,
-    `${guide.title.toLowerCase()} step by step`,
-    `${guide.title.toLowerCase()} tips`,
-    `${guide.title.toLowerCase()} mistakes to avoid`,
-    `best ${guide.title.toLowerCase()} guide`,
-    `${guide.title.toLowerCase()} planning template`,
+    guide.name.toLowerCase(),
+    `${guide.name.toLowerCase()} template`,
+    `${guide.name.toLowerCase()} guide`,
+    `${guide.name.toLowerCase()} planning`,
+    `how to plan ${guide.name.toLowerCase()}`,
+    `${guide.name.toLowerCase()} step by step`,
+    `${guide.name.toLowerCase()} tips`,
+    `${guide.name.toLowerCase()} mistakes to avoid`,
+    `best ${guide.name.toLowerCase()} guide`,
+    `${guide.name.toLowerCase()} planning template`,
     `${guide.category.toLowerCase()} planning`,
     `${guide.category.toLowerCase()} guide`,
     'planning template',
@@ -103,7 +103,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: '/og-image.svg',
           width: 1200,
           height: 630,
-          alt: `${guide.title} Guide`,
+          alt: `${guide.name} Guide`,
         },
       ],
       locale: 'en_US',
@@ -145,7 +145,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   // Convert guide data for GuideDetail component
   const guideEntry = {
     id: guide.id,
-    name: guide.title,
+    name: guide.name,
     description: guide.description,
     category: guide.category,
     icon: guide.icon || '',
@@ -159,7 +159,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `${guide.title} Template & Guide`,
+    name: `${guide.name} Template & Guide`,
     description: guide.description,
     image: 'https://templata.org/og-image.svg',
     totalTime: guide.estimated_time || 'PT2H',
@@ -180,12 +180,12 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       {
         '@type': 'HowToStep',
         name: 'Answer Planning Questions',
-        text: `Complete AI-refined questions to systematically think through your ${guide.title.toLowerCase()}.`,
+        text: `Complete AI-refined questions to systematically think through your ${guide.name.toLowerCase()}.`,
       },
       {
         '@type': 'HowToStep',
         name: 'Read Expert Guides',
-        text: `Access curated expert readings covering all aspects of ${guide.title.toLowerCase()}.`,
+        text: `Access curated expert readings covering all aspects of ${guide.name.toLowerCase()}.`,
       },
       {
         '@type': 'HowToStep',
@@ -195,7 +195,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     ],
     about: {
       '@type': 'Thing',
-      name: guide.title,
+      name: guide.name,
     },
   };
 
