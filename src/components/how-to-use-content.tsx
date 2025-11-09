@@ -28,7 +28,6 @@ import {
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -216,11 +215,12 @@ export const HowToUseContent: React.FC = () => {
       </section>
 
       {/* Quick Start */}
-      <section className="py-8 border-b border-border">
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <div className="text-center">
-            <h2 className="text-2xl font-semibold mb-2">Get Started in 4 Simple Steps</h2>
-            <p className="text-muted-foreground">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Get Started in 4 Simple Steps</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               From choosing a guide to tracking your progress—here's everything you need to know
             </p>
           </div>
@@ -229,7 +229,7 @@ export const HowToUseContent: React.FC = () => {
 
       {/* Steps */}
       <section className="py-16">
-        <div className="container max-w-5xl">
+        <div className="container max-w-4xl">
           <div className="space-y-16">
             {steps.map((step, index) => (
               <motion.div
@@ -239,25 +239,19 @@ export const HowToUseContent: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="overflow-hidden">
-                  <CardHeader>
-                    <div className="flex items-start gap-6">
-                      <div className="bg-primary text-primary-foreground rounded-full p-4 flex-shrink-0">
-                        <step.icon className="w-8 h-8" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <Badge variant="outline">Step {step.number}</Badge>
-                        </div>
-                        <CardTitle className="text-2xl mb-2">{step.title}</CardTitle>
-                        <CardDescription className="text-base">
-                          {step.description}
-                        </CardDescription>
-                      </div>
+                <div className="flex items-start gap-6">
+                  <div className="bg-primary text-primary-foreground rounded-full p-4 flex-shrink-0">
+                    <step.icon className="w-8 h-8" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="mb-4">
+                      <Badge variant="outline" className="mb-3">Step {step.number}</Badge>
+                      <h3 className="text-2xl font-medium text-foreground mb-2">{step.title}</h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed">
+                        {step.description}
+                      </p>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <Separator className="mb-6" />
+                    <Separator className="my-6" />
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
                       {step.details.map((detail, idx) => (
                         <div key={idx} className="flex items-start gap-2">
@@ -272,8 +266,8 @@ export const HowToUseContent: React.FC = () => {
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -281,169 +275,143 @@ export const HowToUseContent: React.FC = () => {
       </section>
 
       {/* Tips Section */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <h2 className="text-3xl font-semibold mb-8 text-center">Tips for Success</h2>
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Tips for Success</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Best practices to get the most out of Templata
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Target className="w-5 h-5 text-primary" />
-                  Go at Your Own Pace
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Target className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Go at Your Own Pace</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   There's no rush. Templata saves your progress automatically, so you can work through planning questions and readings whenever it fits your schedule. Most guides take 2-4 hours total, but you can spread that over days or weeks.
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BookMarked className="w-5 h-5 text-primary" />
-                  Read Before Deciding
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <BookMarked className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Read Before Deciding</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Our expert readings contain invaluable insights that can save you months of trial and error. Before making major decisions, explore the curated content to learn from domain specialists and avoid common pitfalls.
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Search className="w-5 h-5 text-primary" />
-                  Use Search & Filters
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Search className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Use Search & Filters</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Every page has powerful search and filtering capabilities. Looking for specific topics? Use the search function to quickly find relevant questions, readings, or guides across the entire platform.
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-primary" />
-                  Explore Related Guides
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Sparkles className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Explore Related Guides</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Major life events rarely happen in isolation. Planning a wedding? Check out the home buying and financial planning guides too. Our comprehensive coverage helps you see the bigger picture.
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Common Use Cases */}
-      <section className="py-16 border-t border-border bg-muted/30">
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <h2 className="text-3xl font-semibold mb-8 text-center">Common Use Cases</h2>
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Common Use Cases</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              See how people use Templata for major life events
+            </p>
+          </div>
 
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Heart className="w-5 h-5" />
-                  Planning a Wedding
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
+          <div className="space-y-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
+                <Heart className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Planning a Wedding</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
                   Use our wedding planning guide to organize vendors, manage your budget, coordinate the guest list, create a detailed timeline, and track all wedding details in one place. No more scattered spreadsheets or forgotten tasks.
                 </p>
                 <Link href="/guides">
                   <Button variant="outline" size="sm">View Wedding Guide</Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Briefcase className="w-5 h-5" />
-                  Changing Careers
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
+                <Briefcase className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Changing Careers</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
                   Work through career assessment questions, research new paths, plan your transition timeline, build necessary skills, and access job search resources. Make confident career decisions backed by expert guidance.
                 </p>
                 <Link href="/guides">
                   <Button variant="outline" size="sm">View Career Guide</Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Home className="w-5 h-5" />
-                  Buying a Home
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
+                <Home className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Buying a Home</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
                   Track your home search criteria, organize financial preparations, understand the buying process, coordinate inspections and paperwork, and make informed decisions about the biggest purchase of your life.
                 </p>
                 <Link href="/guides">
                   <Button variant="outline" size="sm">View Home Buying Guide</Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Rocket className="w-5 h-5" />
-                  Starting a Business
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary text-primary-foreground rounded-lg p-3 flex-shrink-0">
+                <Rocket className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Starting a Business</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
                   Develop your comprehensive business plan, understand legal requirements, organize finances and funding, plan your launch strategy, and build a sustainable business with confidence using expert frameworks.
                 </p>
                 <Link href="/guides">
                   <Button variant="outline" size="sm">View Business Guide</Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 border-t border-border">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold mb-4">Ready to Get Started?</h2>
-          <p className="text-muted-foreground text-lg mb-8">
-            Choose a guide and start planning your next big moment with expert guidance
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/guides">
-              <Button size="lg" className="group">
-                Browse All Guides
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Link href="/about">
-              <Button size="lg" variant="outline">
-                Learn More About Templata
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

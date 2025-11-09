@@ -4,9 +4,9 @@ import { AboutFaq } from "@/components/about-faq";
 import { PageLayout } from "@/components/layout";
 
 export const metadata: Metadata = {
-  title: 'FAQ - Frequently Asked Questions | Templata',
-  description: 'Common questions about Templata life planning platform. Learn about our guides, features, pricing (free forever), Axiom Engine, and how to get started planning major life events.',
-  keywords: 'templata faq, frequently asked questions, life planning questions, templata help, how does templata work, templata features, templata pricing, planning guide help, axiom engine, templata support',
+  title: 'FAQ - Common Questions: Is Templata Free? How Does It Work? | Templata',
+  description: 'Get answers: How much does Templata cost? (Free forever). How does it work? (AI questions + expert readings). Better than Notion? (Yes, for life planning). 90%+ coverage? (Axiom Engine validated). See all FAQs about features, pricing, guides.',
+  keywords: 'templata faq, is templata free, how much does templata cost, how does templata work, templata vs notion faq, what is axiom engine, templata features explained, frequently asked questions planning, life planning platform faq, templata help, how to use templata, templata pricing questions, what guides does templata have, templata support questions, common templata questions',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

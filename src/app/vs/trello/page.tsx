@@ -4,9 +4,9 @@ import { VsTrelloContent } from '@/components/vs-trello-content';
 import { PageLayout } from '@/components/layout';
 
 export const metadata: Metadata = {
-  title: 'Templata vs Trello - Life Planning Comparison 2025 | Complete Frameworks',
-  description: 'Templata vs Trello comparison for life planning. Templata provides comprehensive frameworks with AI-refined questions and expert content. Trello offers basic kanban task management. Free forever vs $5+/month. See which is better.',
-  keywords: 'templata vs trello, trello alternative, life planning comparison, task management vs planning framework, trello limitations, comprehensive planning, templata benefits, structured planning, expert guidance vs checklists',
+  title: 'Templata vs Trello - Planning Frameworks vs Task Management',
+  description: 'Templata vs Trello: Expert planning (90%+ coverage, AI questions, readings) vs kanban task boards. Templata free vs Trello paid. Wedding planning: Templata. Project management: Trello (better task tracking). Life planning: Templata wins. Full comparison.',
+  keywords: 'templata vs trello, templata vs trello 2025, trello alternative life planning, trello vs templata comparison, best trello alternative for planning, life planning trello vs templata, wedding planning trello alternative, trello limitations for life planning, comprehensive planning vs trello, task management vs planning framework, expert frameworks vs trello boards, trello free vs templata free, trello pricing vs templata, planning guidance vs task lists',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

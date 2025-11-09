@@ -10,9 +10,9 @@ const supabase = createClient(
 );
 
 export const metadata: Metadata = {
-  title: 'Planning Collections | Curated Guide Bundles | Templata',
-  description: 'Curated collections of planning guides for major life events. New parent essentials, career changer pack, wedding planning complete, and more.',
-  keywords: 'planning collections, guide bundles, life planning resources, curated guides, planning packages',
+  title: 'Curated Planning Collections - Guide Bundles for Life Events | Templata',
+  description: 'Curated collections of planning guides for major life events: New parent essentials, career changer pack, wedding planning complete & more. Multiple related guides bundled together. Free access.',
+  keywords: 'planning collections, guide bundles, curated guide collections, life planning resources, planning packages, bundled planning guides, collection of guides, related planning guides, planning resource packs',
 };
 
 async function getAllCollections() {

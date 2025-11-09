@@ -6,9 +6,9 @@ import { PageLayout } from "@/components/layout";
 import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
-	title: 'Expert Reading Library | Life Planning Resources | Templata',
-	description: 'Access curated expert articles, guides, and resources for life\'s biggest moments. Learn from domain experts about wedding planning, career changes, home buying, and more.',
-	keywords: 'life planning resources, expert articles, planning library, curated content, wedding planning articles, career advice, home buying tips, expert guidance',
+	title: 'Expert Reading Library - Curated Planning Resources & Articles | Templata',
+	description: 'Access curated expert articles, guides & resources for life planning. Wedding planning tips, career change advice, home buying guides, business resources & more. All content vetted by domain experts. Free forever.',
+	keywords: 'life planning resources, expert articles library, planning library, curated content, wedding planning articles, career change advice, home buying tips, business planning resources, expert guidance free, planning reading list, life planning articles, expert blog curated',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',
 	publisher: 'Templata',

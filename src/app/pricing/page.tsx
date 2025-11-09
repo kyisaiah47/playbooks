@@ -4,9 +4,9 @@ import { PricingContent } from '@/components/pricing-content';
 import { PageLayout } from '@/components/layout';
 
 export const metadata: Metadata = {
-  title: 'Pricing - Free Forever Life Planning Platform | Templata',
-  description: 'Templata is completely free forever. Access all planning guides, AI-refined questions, expert readings, and organizational tools at no cost. Currently in beta with premium features coming soon. No credit card required, no hidden fees, no paywalls.',
-  keywords: 'templata pricing, free planning software, free life planning, templata cost, how much is templata, free wedding planning, free career planning, free home buying guide, no cost planning tools, free forever, beta pricing, premium features coming, free organizational tools, free expert guidance, free ai planning, life planning platform cost, free comprehensive planning',
+  title: 'Pricing - Free Forever | Wedding Planning, Career & Life Planning | Templata',
+  description: 'How much does Templata cost? Free. Completely free forever. No credit card, no trial, no paywalls, no limits. All features free: guides, AI questions, expert readings, analytics. Beta access now.',
+  keywords: 'templata pricing, templata cost, how much does templata cost, is templata free, free planning software, free life planning app, free wedding planning app, free career planning tool, free home buying guide, no cost planning, free forever planning, templata free vs paid, free notion alternative, free trello alternative, save money planning, planning app no subscription, zero cost life planning, free organizational tools, free expert guidance, free ai planning assistant, life planning platform cost, beta pricing free',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

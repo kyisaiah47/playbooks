@@ -124,15 +124,16 @@ export const VsNotionContent: React.FC = () => {
       </section>
 
       {/* Comparison Body */}
-      <section className="bg-muted/50 py-32">
-        <div className="container">
-          <div className="text-center">
-            <p className="text-muted-foreground mx-auto max-w-4xl md:text-xl">
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Templata isn&apos;t just an alternative to Notion. While Notion gives you blank pages and DIY structure, Templata provides expert frameworks with 90%+ validated coverage, AI-refined questions, and curated readings—ensuring you never miss what matters for life&apos;s biggest moments.
             </p>
           </div>
-          <div className="mt-28">
-            <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
+          <div className="mt-12">
+            <div className="mx-auto grid gap-6 md:grid-cols-2">
               <div className="bg-background rounded-xl border p-6 shadow">
                 <span className="flex items-center justify-center gap-2 font-medium">
                   <Image
@@ -217,23 +218,27 @@ export const VsNotionContent: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mx-auto mt-16 max-w-3xl">
-            <h2 className="mb-4 text-3xl font-semibold">
+          <Separator className="my-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">
               Who is Notion suitable for?
             </h2>
-            <p className="text-muted-foreground leading-6 md:text-lg">
+            <p>
               Notion is excellent for teams who want complete flexibility and are willing to invest time building custom workflows. It&apos;s a powerful tool for software teams, project management, and knowledge bases where you already know exactly what structure you need. If you&apos;re planning a startup, managing engineering sprints, or building internal wikis, Notion&apos;s blank-slate approach gives you total control.
             </p>
-            <h2 className="mb-4 mt-16 text-3xl font-semibold">
+          </div>
+          <Separator className="my-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">
               Why Choose Templata for Life Planning?
             </h2>
-            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+            <p>
               When planning life&apos;s biggest moments—weddings, career changes, home buying, financial planning—you don&apos;t want blank pages. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.
             </p>
-            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+            <p>
               Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you&apos;re learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.
             </p>
-            <p className="text-muted-foreground leading-6 md:text-lg">
+            <p>
               While Notion requires hours to set up and leaves you guessing what you might have missed, Templata gets you planning comprehensively in minutes. And unlike Notion&apos;s $10/month for meaningful features, Templata is free forever (currently in beta). For life planning, choose expert frameworks over blank pages.
             </p>
           </div>

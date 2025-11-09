@@ -5,9 +5,9 @@ import { PageLayout } from '@/components/layout';
 import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Use Cases - Plan Weddings, Careers, Homes & More | Templata',
-  description: 'Discover how Templata helps with wedding planning, career changes, home buying, business launches, financial planning, and other major life events. Real scenarios, proven frameworks.',
-  keywords: 'templata use cases, wedding planning, career change planning, home buying guide, business planning, financial planning, life event planning, real planning scenarios, planning examples, use case studies',
+  title: 'Use Cases - Wedding Planning, Career Change, Home Buying & More | Templata',
+  description: 'Real examples: How to plan weddings, career transitions, home buying, business launches, financial planning & more life events with Templata. See step-by-step scenarios. Better than Notion, Trello, or hiring a consultant. Free forever.',
+  keywords: 'wedding planning guide example, career change planning steps, home buying checklist real example, business planning use case, financial planning scenarios, life event planning examples, wedding planner app use case, career transition guide example, how to plan a wedding, how to change careers, how to buy a home, real planning scenarios, planning use case studies, templata examples, life planning step by step',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

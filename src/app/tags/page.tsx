@@ -10,9 +10,9 @@ const supabase = createClient(
 );
 
 export const metadata: Metadata = {
-  title: 'Planning Tags | Browse by Topic | Templata',
-  description: 'Browse planning guides by tag - anxiety, budgeting, career change, relationships, health, and more. Find exactly what you need.',
-  keywords: 'planning tags, life planning topics, planning categories, guide topics, planning resources by tag',
+  title: 'Browse Planning Guides by Topic Tags - Wedding, Career, Finance & More | Templata',
+  description: 'Browse planning guides by topic: anxiety, budgeting, career change, relationships, health, wedding, home buying & more. Find exactly what you need organized by tags. Free access.',
+  keywords: 'planning tags, life planning topics, browse by tag, planning categories, guide topics, planning resources by tag, find planning guides, search by topic, planning tag cloud, organized planning resources',
 };
 
 async function getAllTags() {

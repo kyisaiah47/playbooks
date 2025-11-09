@@ -1,21 +1,131 @@
-import { ArrowRight } from "lucide-react";
+"use client";
+
+import { ArrowRight, Sparkles, Zap, TrendingUp, Rocket, Heart, Target, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Particles } from "@/components/magicui/particles";
+import { SkiperUiMarquee } from "@/components/category-hero";
 
 const ChangelogTimeline = () => {
   return (
-    <section className="py-32">
-      <div className="container">
-        <div className="text-center">
-          <h1 className="mb-6 text-6xl font-semibold md:text-7xl">
-            Changelog
+    <>
+      {/* Hero Section */}
+      <section className="relative py-32 pt-56">
+        <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
+          <Badge variant="secondary" className="flex items-center gap-2">
+            <Sparkles className="w-3 h-3" />
+            Latest Updates
+          </Badge>
+
+          <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+            <span
+              className="overflow-hidden"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "600px",
+              }}
+            >
+              {"Changelog".split(" ").map((word, i) => (
+                <motion.span
+                  className="relative inline-block px-[6px] leading-[none]"
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    y: "70%",
+                    rotateX: "-28deg",
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: "0%",
+                    rotateX: "0deg",
+                  }}
+                  transition={{
+                    delay: i * 0.08 + 0.1,
+                    duration: 0.8,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </span>
           </h1>
-          <p className="mx-auto max-w-lg text-lg text-muted-foreground">
+
+          <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
             Track the latest updates, features, and improvements to Templata
           </p>
+
+          <Particles
+            className="absolute inset-0 z-0"
+            quantity={500}
+            ease={80}
+            refresh
+          />
+
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 1 }}
+            className="relative z-20 mt-10 flex items-center justify-center gap-4"
+          >
+            <SkiperUiMarquee
+              showCard={1}
+              className=""
+              reverse={true}
+              icons={[Sparkles, Zap, TrendingUp, Rocket]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[Heart, Target, CheckCircle2, Sparkles]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={3}
+              reverse={true}
+              className=""
+              icons={[Rocket, TrendingUp, Zap, Sparkles]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[Sparkles, Zap, TrendingUp, Rocket]}
+              highlighted
+            />
+            <SkiperUiMarquee
+              showCard={3}
+              reverse={true}
+              className=""
+              icons={[CheckCircle2, Heart, Target, Sparkles]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[Zap, Rocket, TrendingUp, Sparkles]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              reverse={true}
+              showCard={1}
+              className=""
+              icons={[Target, CheckCircle2, Heart, Sparkles]}
+              dimmed
+            />
+          </motion.div>
+
+          <div className="h-92 bg-background absolute bottom-20 left-0 right-0 w-full blur-xl" />
         </div>
+      </section>
+
+      {/* Timeline Content */}
+      <section className="py-16 border-t border-border">
+        <div className="container">
         <div className="border-border mx-auto mt-20 max-w-2xl space-y-10 border-l border-dashed pl-6">
           <div>
             <p className="text-muted-foreground relative font-mono text-sm">
@@ -149,8 +259,9 @@ const ChangelogTimeline = () => {
             Have feedback or suggestions? Contact us at templata.app@gmail.com
           </p>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 };
 

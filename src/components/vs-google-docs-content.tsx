@@ -124,15 +124,16 @@ export const VsGoogleDocsContent: React.FC = () => {
       </section>
 
       {/* Comparison Body */}
-      <section className="bg-muted/50 py-32">
-        <div className="container">
-          <div className="text-center">
-            <p className="text-muted-foreground mx-auto max-w-4xl md:text-xl">
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Google Docs gives you a blank document and a blinking cursor. Templata gives you expert frameworks with 200-500+ AI-refined questions, curated readings, and 90%+ validated coverage—so you plan comprehensively instead of wondering what you&apos;re forgetting.
             </p>
           </div>
-          <div className="mt-28">
-            <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
+          <div className="mt-12">
+            <div className="mx-auto grid gap-6 md:grid-cols-2">
               <div className="bg-background rounded-xl border p-6 shadow">
                 <span className="flex items-center justify-center gap-2 font-medium">
                   <Image
@@ -220,23 +221,27 @@ export const VsGoogleDocsContent: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mx-auto mt-16 max-w-3xl">
-            <h2 className="mb-4 text-3xl font-semibold">
+          <Separator className="my-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">
               Who is Google Docs suitable for?
             </h2>
-            <p className="text-muted-foreground leading-6 md:text-lg">
+            <p>
               Google Docs is perfect for collaborative writing, shared notes, and general documentation. If you&apos;re drafting a report with colleagues, taking meeting notes, or collaborating on written content in real-time, Docs excels. It&apos;s simple, familiar, and works great when you know exactly what you need to write and multiple people need simultaneous editing access.
             </p>
-            <h2 className="mb-4 mt-16 text-3xl font-semibold">
+          </div>
+          <Separator className="my-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">
               Why Choose Templata for Life Planning?
             </h2>
-            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+            <p>
               Planning a wedding, career change, or home purchase in a blank Google Doc means starting from zero. What questions should you ask? What research do you need? What are you forgetting? You&apos;re left guessing—and the consequences of missing something important can be expensive or stressful.
             </p>
-            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+            <p>
               Templata provides expert frameworks validated through our Axiom Engine to ensure 90%+ coverage of what actually matters for each life event. You get 200-500+ AI-refined questions per guide that prompt you to think through every important angle. Plus curated expert readings so you learn from vetted sources instead of random Google searches.
             </p>
-            <p className="text-muted-foreground leading-6 md:text-lg">
+            <p>
               Everything is integrated: questions, readings, calendars, tasks, notes, and progress tracking all work together in per-guide workspaces. While Google Docs leaves you with a blank page and your best guess, Templata ensures comprehensive planning from day one. And it&apos;s free forever (currently in beta)—no Google Workspace subscription needed.
             </p>
           </div>

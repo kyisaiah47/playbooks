@@ -5,9 +5,9 @@ import { PageLayout } from '@/components/layout';
 import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Features - Comprehensive Life Planning Platform | Templata',
-  description: 'Discover Templata\'s powerful features: Axiom Engine with 90%+ coverage, AI-refined questions, expert curated readings, per-guide organization, premium analytics, and more. Free forever.',
-  keywords: 'templata features, axiom engine, ai planning questions, expert readings, life planning tools, planning platform features, comprehensive coverage, premium analytics, per-guide organization, free planning software',
+  title: 'Features - Life Planning Platform with 90%+ Coverage | Templata',
+  description: 'Why Templata beats Notion, Trello & Google Docs: Axiom Engine with 90%+ guaranteed coverage, AI-refined questions per guide, expert curated readings, premium analytics, per-guide calendars & tasks. Free forever. See all features.',
+  keywords: 'life planning app features, best planning software 2025, axiom engine, ai planning questions, 90 percent coverage guarantee, expert curated readings, life planning tools comparison, planning platform features, comprehensive life planning, premium analytics free, per-guide organization, free planning software, notion alternative features, trello alternative planning, best free planning app, wedding planning app features, career planning tools, ai life coach alternative',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

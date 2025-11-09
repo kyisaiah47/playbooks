@@ -11,15 +11,15 @@ import { PageLayout } from "@/components/layout";
 import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
-	title: 'Templata | Organize Life\'s Biggest Moments',
-	description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments. From wedding planning to career changes, get organized in minutes with proven frameworks from domain experts.',
-	keywords: 'life planning templates, wedding planning, career change, home buying, business planning, expert guidance, structured frameworks, life organization, planning tools, life coach, planning resources, life events planning, major life transitions',
+	title: 'Templata - Free Life Planning Platform for Weddings, Career & More',
+	description: 'Stop stressing over blank pages. Get expert-crafted planning guides for weddings, career changes, home buying & more life events. 90%+ coverage guarantee. AI-refined questions. Curated expert readings. Free forever.',
+	keywords: 'life planning platform, life planning templates, wedding planning app free, career change planner, home buying checklist template, business planning guide, free life organizer, life planning software, expert planning frameworks, structured life planning, ai planning assistant, life coach alternative, wedding planner free, career transition guide, financial planning template, planning app, major life transitions, life event planning tool, comprehensive planning platform, free notion alternative for planning',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',
 	publisher: 'Templata',
 	openGraph: {
-		title: 'Templata | Organize Life\'s Biggest Moments',
-		description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments. Get organized in minutes with proven frameworks from domain experts.',
+		title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
+		description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Curated readings. 100% free forever. Start in 60 seconds.',
 		url: 'https://templata.org',
 		siteName: 'Templata',
 		images: [
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Templata | Organize Life\'s Biggest Moments',
-		description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments.',
+		title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
+		description: 'Expert guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Free forever.',
 		images: ['https://templata.org/og-image.png'],
 		creator: '@templata',
 	},
@@ -97,6 +97,66 @@ export default function HomePage() {
 		})),
 	};
 
+	// SoftwareApplication schema
+	const softwareSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareApplication',
+		name: 'Templata',
+		applicationCategory: 'LifestyleApplication',
+		operatingSystem: 'Web',
+		offers: {
+			'@type': 'Offer',
+			price: '0',
+			priceCurrency: 'USD',
+		},
+	};
+
+	// HowTo schema for using Templata
+	const howToSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'HowTo',
+		name: 'How to Plan Life\'s Biggest Moments with Templata',
+		description: 'Step-by-step guide to using Templata for comprehensive life planning',
+		totalTime: 'PT5M',
+		step: [
+			{
+				'@type': 'HowToStep',
+				position: 1,
+				name: 'Create Free Account',
+				text: 'Sign up with your email. No credit card required. Takes 30 seconds.',
+				url: 'https://templata.org',
+			},
+			{
+				'@type': 'HowToStep',
+				position: 2,
+				name: 'Choose Your Guide',
+				text: 'Browse 70+ expert-crafted planning guides. Select the life event you\'re planning (wedding, career change, home buying, etc.)',
+				url: 'https://templata.org/guides',
+			},
+			{
+				'@type': 'HowToStep',
+				position: 3,
+				name: 'Answer AI-Refined Questions',
+				text: 'Work through 200-500+ questions designed to ensure 90%+ comprehensive coverage. Skip what doesn\'t apply. Your answers auto-save.',
+				url: 'https://templata.org/how-to-use',
+			},
+			{
+				'@type': 'HowToStep',
+				position: 4,
+				name: 'Read Expert Content',
+				text: 'Learn from curated expert readings alongside questions. All content vetted for quality and relevance.',
+				url: 'https://templata.org/library',
+			},
+			{
+				'@type': 'HowToStep',
+				position: 5,
+				name: 'Track Progress',
+				text: 'Use integrated calendar, tasks, and notes. Monitor progress with visual analytics. Export your planning data anytime.',
+				url: 'https://templata.org/features',
+			},
+		],
+	};
+
 	return (
 		<>
 			<Script
@@ -113,6 +173,16 @@ export default function HomePage() {
 				id="home-faq-jsonld"
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+			/>
+			<Script
+				id="home-software-jsonld"
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+			/>
+			<Script
+				id="home-howto-jsonld"
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
 			/>
 
 			<PageLayout>

@@ -124,15 +124,16 @@ export const VsTrelloContent: React.FC = () => {
       </section>
 
       {/* Comparison Body */}
-      <section className="bg-muted/50 py-32">
-        <div className="container">
-          <div className="text-center">
-            <p className="text-muted-foreground mx-auto max-w-4xl md:text-xl">
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-12">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Trello helps you track tasks you&apos;ve already identified. Templata helps you figure out what tasks you need in the first place—with expert frameworks, 200-500+ AI-refined questions per guide, curated readings, and 90%+ validated coverage so nothing slips through the cracks.
             </p>
           </div>
-          <div className="mt-28">
-            <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
+          <div className="mt-12">
+            <div className="mx-auto grid gap-6 md:grid-cols-2">
               <div className="bg-background rounded-xl border p-6 shadow">
                 <span className="flex items-center justify-center gap-2 font-medium">
                   <Image
@@ -220,23 +221,27 @@ export const VsTrelloContent: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mx-auto mt-16 max-w-3xl">
-            <h2 className="mb-4 text-3xl font-semibold">
+          <Separator className="my-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">
               Who is Trello suitable for?
             </h2>
-            <p className="text-muted-foreground leading-6 md:text-lg">
+            <p>
               Trello is excellent for visualizing workflows you already understand. If you&apos;re managing a software development sprint where tasks are well-defined, tracking a content calendar where you know what needs publishing, or organizing a team project where everyone knows their responsibilities, Trello&apos;s kanban boards provide clear visual progress tracking. It works best when you already know what needs doing.
             </p>
-            <h2 className="mb-4 mt-16 text-3xl font-semibold">
+          </div>
+          <Separator className="my-16" />
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">
               Why Choose Templata for Life Planning?
             </h2>
-            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+            <p>
               The problem with using Trello for life events like wedding planning, career changes, or home buying is that Trello assumes you already know all the tasks. But with life&apos;s biggest moments, the hard part is figuring out what you need to do in the first place. What vendor meetings should you schedule? What career transition steps are you missing? What home-buying considerations haven&apos;t you thought of?
             </p>
-            <p className="text-muted-foreground leading-6 md:text-lg mb-4">
+            <p>
               Templata solves this with expert frameworks validated through our Axiom Engine to ensure 90%+ coverage. Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you&apos;re learning from vetted sources. You&apos;re not just managing tasks—you&apos;re guided through comprehensive planning that ensures you consider everything important.
             </p>
-            <p className="text-muted-foreground leading-6 md:text-lg">
+            <p>
               Everything is integrated: questions, readings, calendars, tasks, notes, and progress tracking all work together. While Trello leaves you responsible for determining completeness (and charges $5-10+/month for meaningful features), Templata provides expert guidance and is free forever (currently in beta). For life planning, choose comprehensive frameworks over blank task boards.
             </p>
           </div>

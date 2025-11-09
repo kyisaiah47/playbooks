@@ -11,9 +11,9 @@ const supabase = createClient(
 );
 
 export const metadata: Metadata = {
-  title: 'Planning Questions Database | Expert Life Planning Questions | Templata',
-  description: 'Browse hundreds of AI-refined planning questions across all life categories. Get structured guidance for career, finance, relationships, health, and major life events.',
-  keywords: 'planning questions, life planning questions, career planning questions, financial planning questions, wedding planning questions, home buying questions, life event questions, structured planning',
+  title: 'AI-Refined Planning Questions Database - 90%+ Coverage | Templata',
+  description: 'Browse AI-refined planning questions across all life categories. Wedding, career, finance, relationships, health & major life events. Structured guidance questions with 90%+ coverage. Free access.',
+  keywords: 'planning questions database, life planning questions, ai refined questions, career planning questions, financial planning questions, wedding planning questions, home buying questions, life event questions, structured planning questions, what to ask when planning, planning framework questions',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

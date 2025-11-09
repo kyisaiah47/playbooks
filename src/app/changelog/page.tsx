@@ -4,9 +4,9 @@ import { ChangelogTimeline } from "@/components/changelog-timeline";
 import { PageLayout } from "@/components/layout";
 
 export const metadata: Metadata = {
-	title: 'Changelog | Templata Updates & New Features',
-	description: 'Stay updated with the latest features, improvements, and updates to Templata. See what\'s new in our life planning platform.',
-	keywords: 'templata changelog, product updates, new features, platform improvements, release notes, templata updates, new planning guides, feature releases',
+	title: 'Changelog - Latest Updates, New Guides & Features | Templata',
+	description: 'See what\'s new in Templata: Latest planning guides, feature updates, improvements, bug fixes. Stay updated with new content, expert readings, AI question refinements & platform enhancements. Updated regularly.',
+	keywords: 'templata changelog, product updates, new features, what\'s new templata, platform improvements, release notes, templata updates, new planning guides, feature releases, latest updates, recent changes, version history, product roadmap',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',
 	publisher: 'Templata',

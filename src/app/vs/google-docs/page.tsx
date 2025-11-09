@@ -4,9 +4,9 @@ import { VsGoogleDocsContent } from '@/components/vs-google-docs-content';
 import { PageLayout } from '@/components/layout';
 
 export const metadata: Metadata = {
-  title: 'Templata vs Google Docs - Life Planning Comparison 2025 | Better Alternative',
-  description: 'Compare Templata vs Google Docs for life planning. Templata offers expert frameworks with 90%+ coverage, AI-refined questions, curated content vs Google Docs blank documents. Free forever. See which is better for weddings, careers, home buying.',
-  keywords: 'templata vs google docs, google docs alternative, life planning comparison, planning tool vs google docs, google docs limitations, templata benefits, structured planning vs blank documents, expert planning frameworks, google docs for wedding planning, career planning tools',
+  title: 'Templata vs Google Docs - Expert Planning Frameworks vs Blank Pages',
+  description: 'Templata vs Google Docs: 90%+ coverage frameworks with AI questions vs blank documents. Both free but Templata adds expert guidance, curated readings. Wedding planning: Templata wins. Career change: Templata wins. General notes: Google Docs fine. See comparison.',
+  keywords: 'templata vs google docs, templata vs google docs 2025, google docs alternative planning, google docs vs templata, best google docs alternative for planning, life planning google docs vs templata, wedding planning google docs alternative, career planning tools vs google docs, google docs limitations planning, structured planning vs google docs, expert frameworks vs blank documents, google docs for life planning, templata better than google docs, free planning tool vs google docs',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

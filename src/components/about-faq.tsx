@@ -264,13 +264,6 @@ const AboutFaq = () => {
                   ref={(el) => {
                     categoryRefs.current[category] = el;
                   }}
-                  className={cn(
-                    `rounded-xl`,
-                    activeCategory === category
-                      ? "bg-[#F2F2F2] dark:bg-[#24242B]"
-                      : "bg-[#F2F2F2]/40 dark:bg-[#24242B]/40",
-                    "px-6",
-                  )}
                   style={{
                     scrollMargin: `${TOP_PADDING}px`,
                   }}

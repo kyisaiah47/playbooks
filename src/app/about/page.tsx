@@ -8,9 +8,9 @@ import { PageLayout } from "@/components/layout";
 import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
-	title: 'About Templata | Expert-Crafted Life Planning Templates',
-	description: 'Learn how Templata helps you organize life\'s biggest moments with expert-crafted templates, curated readings, and AI-refined questions. Completely free, forever.',
-	keywords: 'about templata, life planning, expert templates, planning methodology, free planning tools, life organization platform, planning framework, expert guidance, life event planning, planning resources',
+	title: 'About Templata - Our Mission to Make Life Planning Accessible | Templata',
+	description: 'Why Templata exists: To help everyone navigate major life decisions with expert frameworks. Learn about our 90%+ coverage Axiom Engine, free forever mission, and how we help with weddings, careers, home buying & more. Meet the team building better planning tools.',
+	keywords: 'about templata, templata mission, why templata is free, axiom engine explained, life planning philosophy, templata team, company story, planning methodology, expert frameworks explained, free planning tools mission, life organization platform about, who created templata',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',
 	publisher: 'Templata',

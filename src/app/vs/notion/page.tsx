@@ -4,9 +4,9 @@ import { VsNotionContent } from '@/components/vs-notion-content';
 import { PageLayout } from '@/components/layout';
 
 export const metadata: Metadata = {
-  title: 'Templata vs Notion - Life Planning Comparison 2025 | Which is Better?',
-  description: 'Detailed comparison of Templata vs Notion for life planning. Templata provides expert frameworks with 90%+ coverage, AI-refined questions, and curated readings. Notion offers blank pages. Compare features, pricing (Templata free forever vs Notion $10/month), and which is better for weddings, careers, home buying.',
-  keywords: 'templata vs notion, notion alternative, life planning software comparison, templata or notion, notion vs templata, planning tool comparison, notion alternative for life events, wedding planning notion vs templata, career planning tools comparison, notion free alternative, structured planning vs blank pages, expert planning frameworks, notion limitations, templata benefits, which is better templata or notion',
+  title: 'Templata vs Notion - Which is Better for Life Planning?',
+  description: 'Templata vs Notion: Expert frameworks (90%+ coverage) vs blank pages. Templata free vs Notion paid. Best for weddings? Templata. Career planning? Templata. Notion better for: general notes. See full comparison, pricing, features.',
+  keywords: 'templata vs notion, templata vs notion 2025, notion alternative life planning, templata or notion which is better, notion vs templata comparison, best notion alternative free, life planning software comparison, wedding planning notion vs templata, career planning notion vs templata, notion alternative for planning, structured planning vs blank pages, expert frameworks vs notion, notion limitations for planning, templata benefits over notion, free alternative to notion for planning, notion pricing vs templata, notion $10 month vs free templata, best life planning tool notion alternative',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',

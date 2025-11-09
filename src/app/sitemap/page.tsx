@@ -10,9 +10,9 @@ const supabase = createClient(
 );
 
 export const metadata: Metadata = {
-  title: 'Sitemap | Templata Planning Resources',
-  description: 'Complete sitemap of all planning guides, categories, expert readings, and resources on Templata.',
-  keywords: 'sitemap, planning resources, all guides, all categories, expert readings',
+  title: 'Sitemap - All Planning Guides, Resources & Pages | Templata',
+  description: 'Complete sitemap of Templata: Browse all planning guides, categories, expert readings, and resources. Find everything for wedding planning, career change, home buying & more life events.',
+  keywords: 'templata sitemap, site map, all planning guides, all resources, planning categories list, guide directory, resource index, complete guide list, all planning pages',
 };
 
 async function getAllContent() {

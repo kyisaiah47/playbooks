@@ -4,9 +4,9 @@ import { PageLayout } from '@/components/layout';
 import { GlossaryContent } from '@/components/glossary-content';
 
 export const metadata: Metadata = {
-  title: 'Planning Glossary | Key Terms & Definitions | Templata',
-  description: 'Comprehensive glossary of planning terms, life planning concepts, and strategic planning definitions. Learn the language of effective planning.',
-  keywords: 'planning glossary, planning terms, life planning definitions, strategic planning vocabulary, planning concepts, what is life planning',
+  title: 'Planning Glossary - Definitions of Life Planning Terms & Concepts | Templata',
+  description: 'Complete planning glossary with definitions. What is life planning? Strategic planning? Goal setting? Learn key planning terms, concepts, methodologies. Free reference for wedding, career, financial & life planning vocabulary.',
+  keywords: 'planning glossary, planning terms definitions, life planning definitions, what is life planning, what is strategic planning, what is goal setting, planning concepts explained, strategic planning vocabulary, planning methodologies, planning terminology, life planning glossary, what is career planning, what is financial planning',
 };
 
 interface GlossaryTerm {
