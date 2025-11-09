@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { isValidUUID } from '@/lib/validation-utils';
 import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
@@ -14,14 +13,6 @@ export async function GET(
 ) {
   try {
     const { guideId } = await params;
-
-    // Validate UUID format
-    if (!isValidUUID(guideId)) {
-      return NextResponse.json(
-        { error: 'Invalid ID format' },
-        { status: 400 }
-      );
-    }
 
     const { data: guide, error } = await supabase
       .from('guides')
