@@ -24,6 +24,7 @@ const sections = [
     title: "Company",
     links: [
       { name: "About", href: "/about" },
+      { name: "How to Use", href: "/how-to-use" },
     ],
   },
   {
