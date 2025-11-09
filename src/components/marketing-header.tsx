@@ -26,6 +26,7 @@ const MarketingHeader = () => {
   const navLinks = [
     { name: "Library", href: "/library" },
     { name: "Guides", href: "/guides" },
+    { name: "Questions", href: "/questions" },
     { name: "About", href: "/about" },
   ];
 
