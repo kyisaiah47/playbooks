@@ -32,7 +32,7 @@ export default function AppPage() {
 					// User is authenticated
 				}
 				// Allow anonymous users - don't redirect
-			} catch (_error) {
+			} catch {
 				// Allow anonymous users - don't redirect
 			}
 		}

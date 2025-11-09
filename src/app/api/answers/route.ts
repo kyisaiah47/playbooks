@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { getAuthenticatedUser, unauthorizedResponse } from '@/lib/auth-utils';
+import { apiLimiter } from '@/lib/rate-limit';
+import { sanitizeErrorMessage } from '@/lib/validation-utils';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -9,6 +11,15 @@ const supabase = createClient(
 
 // GET - Fetch user's answers
 export async function GET(request: NextRequest) {
+  // Apply rate limiting
+  const rateLimitResult = await apiLimiter(request);
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429 }
+    );
+  }
+
   const user = await getAuthenticatedUser();
 
   if (!user) {
@@ -35,7 +46,7 @@ export async function GET(request: NextRequest) {
   const { data, error } = await query;
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error) }, { status: 500 });
   }
 
   return NextResponse.json({ answers: data });
@@ -43,6 +54,15 @@ export async function GET(request: NextRequest) {
 
 // POST - Save/update answer
 export async function POST(request: NextRequest) {
+  // Apply rate limiting
+  const rateLimitResult = await apiLimiter(request);
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { status: 429 }
+    );
+  }
+
   const user = await getAuthenticatedUser();
 
   if (!user) {
@@ -102,7 +122,7 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(error) }, { status: 500 });
   }
 
   return NextResponse.json({ success: true, data });

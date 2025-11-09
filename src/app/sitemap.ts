@@ -94,7 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     return [...staticPages, ...categoryPages, ...guidePages, ...readingPages];
-  } catch (_error) {
+  } catch {
     // Return just static pages if database fetch fails
     return staticPages;
   }

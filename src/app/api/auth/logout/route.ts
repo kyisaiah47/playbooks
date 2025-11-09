@@ -1,8 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { ErrorLogger } from '@/lib/error-logger';
 
-export async function POST(_request: NextRequest) {
+export async function POST() {
   try {
     const cookieStore = await cookies();
 
@@ -29,7 +30,11 @@ export async function POST(_request: NextRequest) {
 
     const response = NextResponse.json({ success: true });
     return response;
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'auth/logout',
+      action: 'POST',
+    });
     return NextResponse.json(
       { error: 'Failed to logout' },
       { status: 500 }

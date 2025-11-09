@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { updateUserSchema } from '@/lib/validations/auth';
+import { apiLimiter } from '@/lib/rate-limit';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -9,6 +11,15 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
+    // Apply rate limiting
+    const rateLimitResult = await apiLimiter(request);
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     // Get session from cookies
     const accessToken = request.cookies.get('sb-access-token')?.value;
 
@@ -41,14 +52,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email } = validationResult.data;
+    const { name } = validationResult.data;
 
-    // Update user in database
+    // Update user in database (email changes not supported for security)
     const { error } = await supabase
       .from('users')
       .update({
         name,
-        email,
         updated_at: new Date().toISOString()
       })
       .eq('email', user.email);
@@ -61,7 +71,11 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'user/update',
+      action: 'POST',
+    });
     return NextResponse.json(
       { error: 'Failed to update user' },
       { status: 500 }

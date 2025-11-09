@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { isValidUUID } from '@/lib/validation-utils';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -12,6 +14,14 @@ export async function GET(
 ) {
   try {
     const { guideId } = await params;
+
+    // Validate UUID format
+    if (!isValidUUID(guideId)) {
+      return NextResponse.json(
+        { error: 'Invalid ID format' },
+        { status: 400 }
+      );
+    }
 
     const { data: questions, error } = await supabase
       .from('questions')
@@ -35,7 +45,11 @@ export async function GET(
     return NextResponse.json({
       questions: mappedQuestions
     });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'guides/[guideId]/questions',
+      action: 'GET',
+    });
     return NextResponse.json(
       { error: 'Failed to fetch questions' },
       { status: 500 }

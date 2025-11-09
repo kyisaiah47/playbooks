@@ -77,7 +77,8 @@ const FloatingDockNav = ({ currentView, onViewChange, onThemeToggle, isDark, sel
       invalidateAll();
       await fetch('/api/auth/logout', { method: 'POST' });
       window.location.href = '/';
-    } catch (_error) {
+    } catch {
+      // Ignore logout errors
     }
   };
 

@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getAuthenticatedUser } from '@/lib/auth-utils';
+import { ErrorLogger } from '@/lib/error-logger';
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const user = await getAuthenticatedUser();
 
@@ -16,7 +17,11 @@ export async function GET(_request: NextRequest) {
         name: user.name,
       },
     });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'auth/me',
+      action: 'GET',
+    });
     return NextResponse.json({ user: null });
   }
 }

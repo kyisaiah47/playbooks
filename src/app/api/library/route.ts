@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { sanitizeErrorMessage } from '@/lib/validation-utils';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -23,7 +25,7 @@ export async function GET(request: NextRequest) {
           .select('guide');
 
         if (result.error) {
-          return NextResponse.json({ error: result.error.message }, { status: 500 });
+          return NextResponse.json({ error: sanitizeErrorMessage(result.error) }, { status: 500 });
         }
 
         // Group by guide and count
@@ -75,17 +77,23 @@ export async function GET(request: NextRequest) {
           { status: 400 }
         );
       }
-      query = query.or(`title.ilike.%${search}%,author.ilike.%${search}%,excerpt.ilike.%${search}%`);
+      // Escape ILIKE special characters to prevent SQL injection
+      const escapedSearch = search.replace(/[%_]/g, '\\$&');
+      query = query.or(`title.ilike.%${escapedSearch}%,author.ilike.%${escapedSearch}%,excerpt.ilike.%${escapedSearch}%`);
     }
 
     const { data: readings, error } = await query;
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ error: sanitizeErrorMessage(error) }, { status: 500 });
     }
 
     return NextResponse.json({ readings });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'library',
+      action: 'GET',
+    });
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

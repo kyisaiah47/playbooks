@@ -71,7 +71,8 @@ export function DockTrackSelector({
     setLoading(true);
     try {
       await fetchTracks(true);
-    } catch (error) {
+    } catch {
+      // Ignore fetch errors
     } finally {
       setLoading(false);
     }

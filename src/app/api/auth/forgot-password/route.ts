@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { forgotPasswordSchema } from '@/lib/validations/auth';
 import { authLimiter } from '@/lib/rate-limit';
+import { sanitizeErrorMessage } from '@/lib/validation-utils';
+import { ErrorLogger } from '@/lib/error-logger';
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       return NextResponse.json(
-        { error: error.message },
+        { error: sanitizeErrorMessage(error) },
         { status: 400 }
       );
     }
@@ -45,7 +47,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       message: 'Password reset email sent successfully'
     });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'auth/forgot-password',
+      action: 'POST',
+    });
     return NextResponse.json(
       { error: 'An error occurred while processing your request' },
       { status: 500 }

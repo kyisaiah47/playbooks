@@ -8,10 +8,13 @@ export const emailSchema = z.string()
   .toLowerCase()
   .trim();
 
-// Password validation schema
+// Password validation schema with stronger requirements
 export const passwordSchema = z.string()
-  .min(6, 'Password must be at least 6 characters')
-  .max(100, 'Password must be less than 100 characters');
+  .min(8, 'Password must be at least 8 characters')
+  .max(100, 'Password must be less than 100 characters')
+  .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+  .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+  .regex(/[0-9]/, 'Password must contain at least one number');
 
 // Name validation schema
 export const nameSchema = z.string()
@@ -44,9 +47,10 @@ export const resetPasswordSchema = z.object({
 });
 
 // Update user request schema
+// Note: Email changes are not supported for security reasons
+// Users must use the password reset flow to change their email
 export const updateUserSchema = z.object({
   name: nameSchema,
-  email: emailSchema.optional(),
 });
 
 export type LoginInput = z.infer<typeof loginSchema>;

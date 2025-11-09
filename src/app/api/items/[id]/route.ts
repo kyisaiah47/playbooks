@@ -1,6 +1,9 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { getAuthenticatedUser, unauthorizedResponse, errorResponse, successResponse } from '@/lib/auth-utils';
+import { apiLimiter } from '@/lib/rate-limit';
+import { isValidUUID } from '@/lib/validation-utils';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -12,12 +15,30 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Apply rate limiting
+    const rateLimitResult = await apiLimiter(request);
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     const user = await getAuthenticatedUser();
     if (!user) {
       return unauthorizedResponse();
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    if (!isValidUUID(id)) {
+      return NextResponse.json(
+        { error: 'Invalid ID format' },
+        { status: 400 }
+      );
+    }
+
     const body = await request.json();
     const { title, description, status, due_date, completed_at } = body;
 
@@ -62,7 +83,11 @@ export async function PATCH(
     }
 
     return successResponse({ item });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'items/[id]',
+      action: 'PATCH',
+    });
     return errorResponse('Internal server error');
   }
 }
@@ -72,12 +97,29 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // Apply rate limiting
+    const rateLimitResult = await apiLimiter(request);
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     const user = await getAuthenticatedUser();
     if (!user) {
       return unauthorizedResponse();
     }
 
     const { id } = await params;
+
+    // Validate UUID format
+    if (!isValidUUID(id)) {
+      return NextResponse.json(
+        { error: 'Invalid ID format' },
+        { status: 400 }
+      );
+    }
 
     const { error } = await supabase
       .from('items')
@@ -90,7 +132,11 @@ export async function DELETE(
     }
 
     return successResponse({ message: 'Item deleted successfully' });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'items/[id]',
+      action: 'DELETE',
+    });
     return errorResponse('Internal server error');
   }
 }

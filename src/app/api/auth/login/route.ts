@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { loginSchema } from '@/lib/validations/auth';
 import { authLimiter } from '@/lib/rate-limit';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -80,7 +81,11 @@ export async function POST(request: NextRequest) {
     });
 
     return response;
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'auth/login',
+      action: 'POST',
+    });
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

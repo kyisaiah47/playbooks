@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { signupSchema } from '@/lib/validations/auth';
 import { signupLimiter } from '@/lib/rate-limit';
+import { sanitizeErrorMessage } from '@/lib/validation-utils';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -45,7 +47,7 @@ export async function POST(request: NextRequest) {
 
     if (authError || !authData.user) {
       return NextResponse.json(
-        { error: authError?.message || 'Failed to create user' },
+        { error: authError ? sanitizeErrorMessage(authError) : 'Failed to create user' },
         { status: 400 }
       );
     }
@@ -103,7 +105,11 @@ export async function POST(request: NextRequest) {
     });
 
     return response;
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'auth/signup',
+      action: 'POST',
+    });
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

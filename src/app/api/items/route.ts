@@ -1,6 +1,8 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { getAuthenticatedUser, unauthorizedResponse, errorResponse, successResponse } from '@/lib/auth-utils';
+import { apiLimiter } from '@/lib/rate-limit';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -9,6 +11,15 @@ const supabase = createClient(
 
 export async function GET(request: NextRequest) {
   try {
+    // Apply rate limiting
+    const rateLimitResult = await apiLimiter(request);
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     const user = await getAuthenticatedUser();
     if (!user) {
       return unauthorizedResponse();
@@ -48,13 +59,26 @@ export async function GET(request: NextRequest) {
     }
 
     return successResponse({ items: items || [] });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'items',
+      action: 'GET',
+    });
     return errorResponse('Internal server error');
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
+    // Apply rate limiting
+    const rateLimitResult = await apiLimiter(request);
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     const user = await getAuthenticatedUser();
     if (!user) {
       return unauthorizedResponse();
@@ -114,7 +138,11 @@ export async function POST(request: NextRequest) {
     }
 
     return successResponse({ item }, 201);
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'items',
+      action: 'POST',
+    });
     return errorResponse('Internal server error');
   }
 }

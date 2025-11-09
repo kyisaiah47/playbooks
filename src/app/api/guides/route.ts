@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -120,7 +121,9 @@ export async function GET(request: Request) {
           { status: 400 }
         );
       }
-      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
+      // Escape ILIKE special characters to prevent SQL injection
+      const escapedSearch = search.replace(/[%_]/g, '\\$&');
+      query = query.or(`name.ilike.%${escapedSearch}%,description.ilike.%${escapedSearch}%`);
     }
 
     const { data: guides, error } = await query;
@@ -159,7 +162,11 @@ export async function GET(request: Request) {
       guides: guidesWithCounts || [],
       total: guidesWithCounts?.length || 0
     });
-  } catch (_error) {
+  } catch (error) {
+    ErrorLogger.logError(error, {
+      component: 'guides',
+      action: 'GET',
+    });
     return NextResponse.json(
       { error: 'Failed to fetch guides' },
       { status: 500 }

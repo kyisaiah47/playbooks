@@ -27,7 +27,7 @@ export default function SettingsPage() {
           setName(data.user.name || '');
           setEmail(data.user.email || '');
         }
-      } catch (_error) {
+      } catch {
         // Ignore errors
       } finally {
         setLoading(false);
