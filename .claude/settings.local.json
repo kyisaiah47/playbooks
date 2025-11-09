@@ -31,7 +31,17 @@
       "Bash(npm outdated:*)",
       "Bash(npm audit:*)",
       "Bash(npm install:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "mcp__vercel__list_deployments",
+      "mcp__supabase__get_logs",
+      "Bash(npm run dev:*)",
+      "Bash(npx vercel inspect:*)",
+      "mcp__vercel__list_projects",
+      "mcp__vercel__get_project",
+      "mcp__vercel__get_deployment_build_logs",
+      "Bash(npx vercel env ls:*)",
+      "Bash(npx vercel env rm:*)",
+      "Bash(npx vercel:*)"
     ],
     "deny": [],
     "ask": []

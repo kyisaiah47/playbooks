@@ -2,11 +2,7 @@ import type { Metadata } from 'next';
 import GuideDetail from './guide-detail';
 import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
-import DOMPurify from 'isomorphic-dompurify';
 import { createClient } from '@supabase/supabase-js';
-
-// Force Node.js runtime (not Edge) because isomorphic-dompurify requires Node.js APIs
-export const runtime = 'nodejs';
 
 // Create Supabase client for server-side data fetching
 const supabase = createClient(
@@ -256,16 +252,14 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       />
 
       {/* Hidden SEO content - full reading content for search engines */}
+      {/* Content is from our database so we can trust it for SEO purposes */}
       <div className="sr-only" aria-hidden="true">
         {readings.map((reading: any) => (
           <article key={`seo-${reading.id}`}>
             <h2>{reading.title}</h2>
-            <div dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(reading.content?.replace(/\n/g, '<br />') || '', {
-                ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'blockquote', 'code', 'pre'],
-                ALLOWED_ATTR: ['href', 'target', 'rel']
-              })
-            }} />
+            <div>
+              {reading.content?.replace(/\n/g, ' ') || ''}
+            </div>
           </article>
         ))}
       </div>
