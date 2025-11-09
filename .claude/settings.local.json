@@ -44,7 +44,8 @@
       "Bash(npx vercel:*)",
       "Bash(node scripts/generate-favicon.js:*)",
       "Bash(node scripts/generate-og-image.js:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "mcp__supabase__apply_migration"
     ],
     "deny": [],
     "ask": []

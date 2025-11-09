@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { createClient } from '@supabase/supabase-js';
 import { PageLayout } from '@/components/layout';
-import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
+import { CollectionGuidesDisplay } from '@/components/collection-guides-display';
 import { notFound } from 'next/navigation';
 
 const supabase = createClient(
@@ -54,17 +53,118 @@ async function getCollection(id: string) {
 
     const { data: guides } = await supabase
       .from('guides')
-      .select('id, name, description, category, difficulty, estimated_time')
+      .select('id, name, description, category, icon, difficulty, estimated_time, tags')
       .in('id', collection.guide_ids)
       .order('name');
 
+    // Check if each guide has content
+    const guidesWithContent = await Promise.all(
+      (guides || []).map(async (guide) => {
+        const [questionsResult, readingsResult] = await Promise.all([
+          supabase.from('questions').select('id').eq('guide_id', guide.id),
+          supabase.from('readings').select('id').eq('guide', guide.id)
+        ]);
+
+        return {
+          ...guide,
+          hasContent: (questionsResult.data?.length || 0) > 0 && (readingsResult.data?.length || 0) > 0,
+          questionsCount: questionsResult.data?.length || 0,
+          readingsCount: readingsResult.data?.length || 0,
+        };
+      })
+    );
+
     return {
       ...collection,
-      guides: guides || [],
+      guides: guidesWithContent,
     };
   } catch (e) {
     console.error('[getCollection] Exception:', e);
     return null;
+  }
+}
+
+async function getCollectionQuestionsGrouped(collectionId: string, guideIds: string[]) {
+  try {
+    if (!guideIds || guideIds.length === 0) return [];
+
+    const { data: guides } = await supabase
+      .from('guides')
+      .select('id, name')
+      .in('id', guideIds);
+
+    if (!guides || guides.length === 0) return [];
+
+    const questionsGrouped = await Promise.all(
+      guides.map(async (guide) => {
+        const { data: questions } = await supabase
+          .from('questions')
+          .select('id, question, question_number')
+          .eq('guide_id', guide.id)
+          .order('question_number')
+          .limit(10);
+
+        return {
+          guideName: guide.name,
+          guideId: guide.id,
+          questions: questions || [],
+          totalCount: questions?.length || 0,
+        };
+      })
+    );
+
+    return questionsGrouped.filter(g => g.questions.length > 0);
+  } catch {
+    return [];
+  }
+}
+
+async function getCollectionReadingsGrouped(collectionId: string, guideIds: string[]) {
+  try {
+    if (!guideIds || guideIds.length === 0) return [];
+
+    const { data: guides } = await supabase
+      .from('guides')
+      .select('id, name')
+      .in('id', guideIds);
+
+    if (!guides || guides.length === 0) return [];
+
+    const readingsGrouped = await Promise.all(
+      guides.map(async (guide) => {
+        const { data: readings } = await supabase
+          .from('readings')
+          .select('id, title, excerpt, author, read_time')
+          .eq('guide', guide.id)
+          .order('created_at', { ascending: false })
+          .limit(6);
+
+        return {
+          guideName: guide.name,
+          guideId: guide.id,
+          readings: readings || [],
+          totalCount: readings?.length || 0,
+        };
+      })
+    );
+
+    return readingsGrouped.filter(g => g.readings.length > 0);
+  } catch {
+    return [];
+  }
+}
+
+async function getAllCollections() {
+  try {
+    const { data: collections, error } = await supabase
+      .from('collections')
+      .select('id, name, description')
+      .order('created_at');
+
+    if (error) return [];
+    return collections || [];
+  } catch {
+    return [];
   }
 }
 
@@ -79,98 +179,122 @@ export default async function CollectionPage({
     notFound();
   }
 
-  // Group guides by category
-  const guidesByCategory = collection.guides.reduce((acc: any, guide: any) => {
-    if (!acc[guide.category]) {
-      acc[guide.category] = [];
-    }
-    acc[guide.category].push(guide);
-    return acc;
-  }, {});
+  const [allCollections, questionsGrouped, readingsGrouped] = await Promise.all([
+    getAllCollections(),
+    getCollectionQuestionsGrouped(params.id, collection.guide_ids || []),
+    getCollectionReadingsGrouped(params.id, collection.guide_ids || []),
+  ]);
+
+  const otherCollections = allCollections.filter(c => c.id !== params.id);
+
+  const totalQuestionsCount = collection.guides.reduce((sum: number, g: any) => sum + (g.questionsCount || 0), 0);
+  const totalReadingsCount = collection.guides.reduce((sum: number, g: any) => sum + (g.readingsCount || 0), 0);
+
+  // CollectionPage schema
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: collection.name,
+    description: collection.description,
+    url: `https://templata.org/collections/${collection.id}`,
+    numberOfItems: collection.guides.length,
+  };
+
+  // ItemList schema
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${collection.name} Guides`,
+    description: collection.description,
+    numberOfItems: collection.guides.length,
+    itemListElement: collection.guides.map((guide: any, index: number) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'HowTo',
+        name: guide.name,
+        description: guide.description,
+        url: `https://templata.org/guides/${guide.id}`,
+      },
+    })),
+  };
+
+  // Breadcrumb schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://templata.org',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Collections',
+        item: 'https://templata.org/collections',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: collection.name,
+        item: `https://templata.org/collections/${collection.id}`,
+      },
+    ],
+  };
 
   return (
-    <PageLayout>
-      <section className="py-32">
-        <div className="container max-w-4xl">
-          <Badge variant="secondary" className="mb-4">
-            Collection
-          </Badge>
+    <>
+      <Script
+        id="collection-page-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <Script
+        id="collection-itemlist-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <Script
+        id="collection-breadcrumb-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
-          <h1 className="text-4xl font-bold mb-4">{collection.name}</h1>
-          <p className="text-muted-foreground text-lg mb-8">
-            {collection.description}
-          </p>
+      <PageLayout>
+        <CollectionGuidesDisplay
+          collection={collection}
+          otherCollections={otherCollections}
+          questionsGrouped={questionsGrouped}
+          readingsGrouped={readingsGrouped}
+          totalQuestionsCount={totalQuestionsCount}
+          totalReadingsCount={totalReadingsCount}
+        />
+      </PageLayout>
 
-          <div className="mb-12">
-            <Badge variant="outline">
-              {collection.guides.length} {collection.guides.length === 1 ? 'Guide' : 'Guides'}
-            </Badge>
-          </div>
+      {/* Hidden SEO content */}
+      <div className="sr-only" aria-hidden="true">
+        <h2>{collection.name} - Complete Planning Collection</h2>
+        <p>{collection.description}</p>
+        <p>
+          This curated collection includes {collection.guides.length} comprehensive planning guides.
+        </p>
 
-          <Separator className="mb-12" />
-
-          {collection.guides.length === 0 ? (
-            <p className="text-muted-foreground text-center py-12">
-              This collection is being curated. Check back soon!
-            </p>
-          ) : (
-            <>
-              {Object.entries(guidesByCategory).map(([category, categoryGuides]: [string, any]) => (
-                <div key={category} className="mb-12">
-                  <h2 className="text-2xl font-semibold mb-4 capitalize">
-                    {category.replace(/-/g, ' ')}
-                  </h2>
-
-                  <div className="space-y-4">
-                    {categoryGuides.map((guide: any) => (
-                      <Link
-                        key={guide.id}
-                        href={`/guides/${guide.id}`}
-                        className="block border-border rounded-lg border p-6 hover:border-primary transition-colors"
-                      >
-                        <h3 className="text-lg font-semibold mb-2">{guide.name}</h3>
-                        <p className="text-muted-foreground text-sm mb-4">
-                          {guide.description}
-                        </p>
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          {guide.difficulty && (
-                            <Badge variant="outline" className="text-xs">
-                              {guide.difficulty}
-                            </Badge>
-                          )}
-                          {guide.estimated_time && <span>{guide.estimated_time}</span>}
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </>
-          )}
-
-          {/* Hidden SEO content */}
-          <div className="sr-only" aria-hidden="true">
-            <h2>{collection.name} - Complete Planning Collection</h2>
-            <p>{collection.description}</p>
-            <p>
-              This curated collection includes {collection.guides.length} comprehensive planning guides.
-            </p>
-
-            <h3>Guides in this Collection</h3>
-            <ul>
-              {collection.guides.map((guide: any) => (
-                <li key={guide.id}>
-                  <strong>{guide.name}</strong>
-                  <p>{guide.description}</p>
-                  <p>Category: {guide.category}</p>
-                  <p>Difficulty: {guide.difficulty || 'All levels'}</p>
-                  {guide.estimated_time && <p>Time: {guide.estimated_time}</p>}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-    </PageLayout>
+        <h3>Guides in this Collection</h3>
+        <ul>
+          {collection.guides.map((guide: any) => (
+            <li key={guide.id}>
+              <strong>{guide.name}</strong>
+              <p>{guide.description}</p>
+              <p>Category: {guide.category}</p>
+              <p>Difficulty: {guide.difficulty || 'All levels'}</p>
+              {guide.estimated_time && <p>Time: {guide.estimated_time}</p>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

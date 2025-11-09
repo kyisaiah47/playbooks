@@ -112,12 +112,12 @@ export const TagsHub: React.FC<TagsHubProps> = ({ tags, totalTags }) => {
             {filteredTags.map((tagData) => (
               <Link
                 key={tagData.tag}
-                href={`/tags/${encodeURIComponent(tagData.tag.toLowerCase().replace(/\s+/g, '-'))}`}
+                href={`/tags/${encodeURIComponent(tagData.tag.toLowerCase())}`}
                 className="border-border rounded-full border px-6 py-3 hover:border-primary transition-colors group"
               >
                 <div className="flex items-center gap-2">
-                  <span className="font-medium group-hover:text-primary transition-colors">
-                    {tagData.tag}
+                  <span className="font-medium group-hover:text-primary transition-colors capitalize">
+                    {tagData.tag.replace(/-/g, ' ')}
                   </span>
                   <Badge variant="secondary" className="text-xs">
                     {tagData.count}

@@ -16,12 +16,13 @@ export async function generateMetadata({
 }: {
   params: { tag: string };
 }): Promise<Metadata> {
-  const tag = decodeURIComponent(params.tag).replace(/-/g, ' ');
+  const tagSlug = decodeURIComponent(params.tag);
+  const tagDisplay = tagSlug.replace(/-/g, ' ');
 
   return {
-    title: `${tag} Planning Guides | Templata`,
-    description: `Find all planning guides and resources tagged with "${tag}". Expert guidance for ${tag} planning.`,
-    keywords: `${tag}, ${tag} planning, ${tag} guides, ${tag} resources, ${tag} templates`,
+    title: `${tagDisplay} Planning Guides | Templata`,
+    description: `Find all planning guides and resources tagged with "${tagDisplay}". Expert guidance for ${tagDisplay} planning.`,
+    keywords: `${tagDisplay}, ${tagDisplay} planning, ${tagDisplay} guides, ${tagDisplay} resources, ${tagDisplay} templates`,
   };
 }
 
@@ -51,9 +52,10 @@ export default async function TagPage({
   params: { tag: string };
 }) {
   const tagSlug = decodeURIComponent(params.tag);
-  const tag = tagSlug.replace(/-/g, ' ');
+  const tagDisplay = tagSlug.replace(/-/g, ' ');
 
-  const guides = await getGuidesByTag(tag);
+  // Query with the slug (hyphens) as that's how they're stored in DB
+  const guides = await getGuidesByTag(tagSlug);
 
   if (guides.length === 0) {
     notFound();
@@ -76,9 +78,9 @@ export default async function TagPage({
             {guides.length} {guides.length === 1 ? 'Guide' : 'Guides'}
           </Badge>
 
-          <h1 className="text-4xl font-bold mb-4 capitalize">{tag}</h1>
+          <h1 className="text-4xl font-bold mb-4 capitalize">{tagDisplay}</h1>
           <p className="text-muted-foreground mb-12">
-            Planning guides and resources tagged with "{tag}"
+            Planning guides and resources tagged with "{tagDisplay}"
           </p>
 
           {Object.entries(guidesByCategory).map(([category, categoryGuides]: [string, any]) => (
@@ -118,13 +120,13 @@ export default async function TagPage({
 
           {/* Hidden SEO content */}
           <div className="sr-only" aria-hidden="true">
-            <h2>{tag} Planning Resources</h2>
+            <h2>{tagDisplay} Planning Resources</h2>
             <p>
-              Comprehensive collection of {guides.length} planning guides for {tag}.
+              Comprehensive collection of {guides.length} planning guides for {tagDisplay}.
               Find expert resources, templates, and step-by-step guidance.
             </p>
 
-            <h3>All {tag} Guides</h3>
+            <h3>All {tagDisplay} Guides</h3>
             <ul>
               {guides.map((guide) => (
                 <li key={guide.id}>
