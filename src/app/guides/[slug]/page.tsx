@@ -19,9 +19,17 @@ async function getGuide(slug: string) {
       .eq('id', slug)
       .single();
 
-    if (error || !guide) return null;
+    if (error) {
+      console.error('[getGuide] Supabase error:', error);
+      return null;
+    }
+    if (!guide) {
+      console.error('[getGuide] No guide found for slug:', slug);
+      return null;
+    }
     return guide;
-  } catch {
+  } catch (e) {
+    console.error('[getGuide] Exception:', e);
     return null;
   }
 }
@@ -33,19 +41,20 @@ async function getGuideData(slug: string) {
         .from('questions')
         .select('*')
         .eq('guide_id', slug)
-        .order('order', { ascending: true }),
+        .order('question_number', { ascending: true }),
       supabase
         .from('readings')
         .select('*')
         .eq('guide', slug)
-        .order('order', { ascending: true })
+        .order('created_at', { ascending: true })
     ]);
 
     return {
       questions: questionsResult.data || [],
       readings: readingsResult.data || []
     };
-  } catch {
+  } catch (e) {
+    console.error('[getGuideData] Exception:', e);
     return { questions: [], readings: [] };
   }
 }
