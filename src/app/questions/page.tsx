@@ -40,41 +40,25 @@ export const metadata: Metadata = {
 
 async function getAllQuestionsWithGuides() {
   try {
-    // Fetch questions and guides separately, then join in code
-    const [questionsRes, guidesRes] = await Promise.all([
-      supabase
-        .from('questions')
-        .select('id, question, question_number, guide_id')
-        .order('question_number'),
-      supabase
-        .from('guides')
-        .select('id, name, category, description'),
-    ]);
+    const { data, error } = await supabase
+      .from('questions')
+      .select(`
+        *,
+        guides:guide_id (
+          id,
+          name,
+          category
+        )
+      `)
+      .order('question_number');
 
-    if (questionsRes.error) {
-      console.error('[getAllQuestionsWithGuides] Questions error:', questionsRes.error);
+    if (error) {
+      console.error('[getAllQuestionsWithGuides] Error:', error);
       return [];
     }
 
-    if (guidesRes.error) {
-      console.error('[getAllQuestionsWithGuides] Guides error:', guidesRes.error);
-      return [];
-    }
-
-    const questions = questionsRes.data || [];
-    const guides = guidesRes.data || [];
-
-    // Create a map of guides for quick lookup
-    const guidesMap = new Map(guides.map(g => [g.id, g]));
-
-    // Join questions with their guides
-    const questionsWithGuides = questions.map(q => ({
-      ...q,
-      guides: guidesMap.get(q.guide_id) || null,
-    }));
-
-    console.log('[getAllQuestionsWithGuides] Got', questionsWithGuides.length, 'questions');
-    return questionsWithGuides;
+    console.log('[getAllQuestionsWithGuides] Got', data?.length, 'questions');
+    return data || [];
   } catch (e) {
     console.error('[getAllQuestionsWithGuides] Exception:', e);
     return [];
