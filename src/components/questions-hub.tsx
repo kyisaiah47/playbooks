@@ -15,7 +15,6 @@ interface Question {
   id: string;
   question: string;
   question_number: number;
-  category_name: string;
   guideName: string;
   guideId: string;
 }
@@ -400,11 +399,6 @@ export const QuestionsHub: React.FC<QuestionsHubProps> = ({
                                 </Badge>
                                 <p className="flex-1">{question.question}</p>
                               </div>
-                              {question.category_name && (
-                                <p className="text-muted-foreground text-xs mt-2 ml-11">
-                                  Category: {question.category_name}
-                                </p>
-                              )}
                             </div>
                           ))}
                         </div>
