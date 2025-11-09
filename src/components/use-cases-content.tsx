@@ -170,9 +170,30 @@ export const UseCasesContent: React.FC = () => {
         </div>
       </section>
 
+      {/* Intro Blurb */}
+      <section className="py-16 border-t border-border bg-muted/30">
+        <div className="container max-w-4xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-semibold mb-4">Life's Biggest Moments Deserve Expert Guidance</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+              Planning a wedding, changing careers, buying a home, or launching a business? These aren't just tasks to check off—they're life-defining moments with real consequences. Miss an important consideration during home buying and you might overpay by tens of thousands. Skip a critical wedding vendor question and you risk costly mistakes on your big day.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Templata provides expert frameworks with 200-500+ AI-refined questions per guide, curated readings from trusted sources, and 90%+ validated coverage through our Axiom Engine. You get comprehensive guidance instead of blank pages and guesswork.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Use Cases */}
       <section className="py-16 border-t border-border">
         <div className="container max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-semibold mb-3">Common Use Cases</h2>
+            <p className="text-muted-foreground text-lg">
+              See how people are using Templata to navigate major life events
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {useCases.map((useCase, index) => (
               <motion.div
@@ -198,6 +219,74 @@ export const UseCasesContent: React.FC = () => {
                 </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 border-t border-border bg-muted/30">
+        <div className="container max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-semibold mb-4">How Templata Works for Every Life Event</h2>
+            <p className="text-muted-foreground text-lg">
+              Same powerful approach, customized for each major moment
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-primary">1</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Choose Your Guide</h3>
+              <p className="text-muted-foreground">
+                Select the life event you're planning. Each guide has expert frameworks tailored to that specific moment.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-primary">2</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Answer Questions</h3>
+              <p className="text-muted-foreground">
+                Work through 200-500+ AI-refined questions at your own pace. Each question helps you think through what matters.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-primary/10 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-primary">3</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Learn & Plan</h3>
+              <p className="text-muted-foreground">
+                Read curated expert content, organize tasks and calendars, track progress—all in one integrated workspace.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Alternative */}
+      <section className="py-16 border-t border-border">
+        <div className="container max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold mb-4">Ready to Plan Comprehensively?</h2>
+          <p className="text-muted-foreground text-lg mb-6">
+            Stop guessing what you might be missing. Get expert frameworks, AI-refined questions, and curated readings for life's biggest moments—free forever.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-1">90%+</h3>
+              <p className="text-sm text-muted-foreground">Validated coverage</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-1">200-500+</h3>
+              <p className="text-sm text-muted-foreground">Questions per guide</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-1">Free</h3>
+              <p className="text-sm text-muted-foreground">Forever, no catch</p>
+            </div>
           </div>
         </div>
       </section>
