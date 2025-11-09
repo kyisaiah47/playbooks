@@ -3,14 +3,24 @@ import GuideDetail from './guide-detail';
 import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
 import DOMPurify from 'isomorphic-dompurify';
+import { createClient } from '@supabase/supabase-js';
+
+// Use server-side Supabase client for SSR
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 async function getGuide(slug: string) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}`, {
-      next: { revalidate: 3600 } // Revalidate every hour (ISR)
-    });
-    if (!res.ok) return null;
-    return res.json();
+    const { data: guide, error } = await supabase
+      .from('guides')
+      .select('*')
+      .eq('id', slug)
+      .single();
+
+    if (error || !guide) return null;
+    return guide;
   } catch {
     return null;
   }
@@ -18,21 +28,22 @@ async function getGuide(slug: string) {
 
 async function getGuideData(slug: string) {
   try {
-    const [questionsRes, readingsRes] = await Promise.all([
-      fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}/questions`, {
-        next: { revalidate: 3600 } // Revalidate every hour (ISR)
-      }),
-      fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/guides/${slug}/readings`, {
-        next: { revalidate: 3600 } // Revalidate every hour (ISR)
-      })
+    const [questionsResult, readingsResult] = await Promise.all([
+      supabase
+        .from('questions')
+        .select('*')
+        .eq('guide_id', slug)
+        .order('order', { ascending: true }),
+      supabase
+        .from('readings')
+        .select('*')
+        .eq('guide', slug)
+        .order('order', { ascending: true })
     ]);
 
-    const questionsData = await questionsRes.json();
-    const readingsData = await readingsRes.json();
-
     return {
-      questions: questionsData.questions || [],
-      readings: readingsData.readings || []
+      questions: questionsResult.data || [],
+      readings: readingsResult.data || []
     };
   } catch {
     return { questions: [], readings: [] };
