@@ -32,7 +32,10 @@ export const metadata: Metadata = {
   keywords: 'life planning templates, wedding planning, career change, home buying, business planning, expert guidance, structured frameworks, life organization',
   authors: [{ name: 'Templata Team' }],
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32', type: 'image/x-icon' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
   },
   manifest: '/manifest.json',
   openGraph: {
