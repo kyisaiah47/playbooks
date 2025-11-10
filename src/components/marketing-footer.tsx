@@ -42,12 +42,10 @@ const sections = [
   {
     title: "Compare",
     links: [
-      { name: "Alternatives", href: "/alternatives" },
+      { name: "vs Google", href: "/vs/google" },
+      { name: "vs Wikipedia", href: "/vs/wikipedia" },
       { name: "vs Notion", href: "/vs/notion" },
       { name: "vs Google Docs", href: "/vs/google-docs" },
-      { name: "vs Trello", href: "/vs/trello" },
-      { name: "vs Asana", href: "/vs/asana" },
-      { name: "vs Monday", href: "/vs/monday" },
     ],
   },
 ];

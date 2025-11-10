@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
-export const VsAsanaContent: React.FC = () => {
+export const VsGoogleContent: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
@@ -28,7 +28,7 @@ export const VsAsanaContent: React.FC = () => {
                 perspective: "600px",
               }}
             >
-              {"Templata vs Asana".split(" ").map((word, i) => (
+              {"Templata vs Google Search".split(" ").map((word, i) => (
                 <motion.span
                   className="relative inline-block px-[6px] leading-[none]"
                   key={i}
@@ -55,7 +55,7 @@ export const VsAsanaContent: React.FC = () => {
           </h1>
 
           <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            Life planning frameworks with 90%+ coverage vs project task management
+            Organized expert frameworks vs scattered search results
           </p>
 
           <Particles
@@ -101,10 +101,25 @@ export const VsAsanaContent: React.FC = () => {
               showCard={3}
               reverse={true}
               className=""
-              icons={[Heart, Home, Users, Baby]}
+              icons={[Heart, Home, Briefcase, Activity]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[Rocket, Brain, DollarSign, Users]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              reverse={true}
+              showCard={1}
+              className=""
+              icons={[Target, Pill, PiggyBank, Baby]}
               dimmed
             />
           </motion.div>
+
+          <div className="h-92 bg-background absolute bottom-20 left-0 right-0 w-full blur-xl" />
         </div>
       </section>
 
@@ -114,7 +129,7 @@ export const VsAsanaContent: React.FC = () => {
           <Separator className="mb-16" />
           <div className="mb-12">
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Asana is an excellent project management tool built for teams to coordinate work tasks. Templata is a life planning platform built specifically for major personal life decisions and transitions. While both help you organize, they serve fundamentally different purposes.
+              We&apos;ve all been there: planning a major life event means opening 50 browser tabs, reading scattered blog posts with conflicting advice, trying to piece everything together yourself. Google is where everyone starts—but it&apos;s not where organized planning happens. Templata replaces scattered search results with one comprehensive, expert-validated framework.
             </p>
           </div>
           <div className="mt-12">
@@ -134,7 +149,7 @@ export const VsAsanaContent: React.FC = () => {
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Expert planning frameworks
+                    One comprehensive framework
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
@@ -142,19 +157,19 @@ export const VsAsanaContent: React.FC = () => {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    200-500+ AI-refined questions per guide
+                    200-500+ organized questions per guide
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Curated expert readings integrated
+                    Expert readings curated & integrated
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Per-guide organization (calendars, tasks)
+                    Built-in tasks, calendars, tracking
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Start planning in minutes
+                    Everything organized in one place
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
@@ -164,43 +179,43 @@ export const VsAsanaContent: React.FC = () => {
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <svg className="h-7" viewBox="0 0 200 200" fill="none">
-                    <circle cx="100" cy="100" r="90" fill="#f06a6a"/>
-                    <circle cx="100" cy="60" r="15" fill="white"/>
-                    <circle cx="100" cy="100" r="15" fill="white"/>
-                    <circle cx="100" cy="140" r="15" fill="white"/>
+                  <svg className="h-7" viewBox="0 0 272 92" fill="none">
+                    <path d="M115.75 47.18C115.75 45.49 115.58 43.79 115.25 42.13H68.5V51.82H93.87C92.87 56.7 90.01 61.09 85.77 64.04V70.28H101.2C110.3 61.94 115.75 50.14 115.75 47.18Z" fill="#4285F4"/>
+                    <path d="M68.5 76.35C77.37 76.35 84.77 73.45 90.11 68.45L74.68 62.21C70.81 64.71 65.87 66.18 60.87 66.18C52.37 66.18 45.18 57.91 42.68 47.64H27V54.08C32.58 65.18 49.87 76.35 68.5 76.35Z" fill="#34A853"/>
+                    <path d="M42.68 47.64C41.87 45.14 41.43 42.49 41.43 39.78C41.43 37.07 41.87 34.42 42.68 31.92V25.48H27C24.13 31.22 22.5 37.78 22.5 44.64C22.5 51.5 24.13 58.06 27 63.8L42.68 47.64Z" fill="#FBBC05"/>
+                    <path d="M68.5 23.38C74 23.38 79.13 25.38 83.13 29.18L96.94 15.37C88.37 7.25 77.37 2 68.5 2C49.87 2 32.58 13.17 27 24.27L42.68 30.71C45.18 20.44 52.37 12.17 60.87 12.17C65.87 12.17 70.81 13.64 74.68 16.14L68.5 23.38Z" fill="#EA4335"/>
                   </svg>
-                  Asana
+                  Google Search
                 </span>
                 <Separator className="my-6" />
                 <ul className="space-y-2">
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Scattered search results
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    50+ tabs to manage
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Conflicting advice from random blogs
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    You synthesize everything yourself
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No organization or tracking
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Overwhelm from information overload
+                  </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Work project management
-                  </li>
-                  <li className="text-muted-foreground flex items-center gap-2 line-through">
-                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    No life planning frameworks
-                  </li>
-                  <li className="text-muted-foreground flex items-center gap-2 line-through">
-                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    No AI-refined questions
-                  </li>
-                  <li className="text-muted-foreground flex items-center gap-2 line-through">
-                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    No expert content
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Team collaboration features
-                  </li>
-                  <li className="text-muted-foreground flex items-center gap-2 line-through">
-                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    Built for work, not life planning
-                  </li>
-                  <li className="text-muted-foreground flex items-center gap-2 line-through">
-                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    Paid plans for meaningful features
+                    Free to search
                   </li>
                 </ul>
               </div>
@@ -209,10 +224,10 @@ export const VsAsanaContent: React.FC = () => {
           <Separator className="my-16" />
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
             <h2 className="text-2xl font-medium text-foreground">
-              Who is Asana suitable for?
+              When is Google Search enough?
             </h2>
             <p>
-              Asana is excellent for managing work projects and coordinating teams. If you're tracking software development sprints, managing marketing campaigns, or organizing business workflows where everyone knows their responsibilities, Asana's project management features provide clear visibility and task assignment. It works best for professional team collaboration.
+              Google is perfect for quick lookups, finding specific information, or researching niche topics. If you just need to know "what flowers are in season in June" or "average wedding photography costs," Google gets you there fast. For simple questions with straightforward answers, search is unbeatable.
             </p>
           </div>
           <Separator className="my-16" />
@@ -221,13 +236,13 @@ export const VsAsanaContent: React.FC = () => {
               Why Choose Templata for Life Planning?
             </h2>
             <p>
-              When planning life's biggest moments—weddings, career changes, home buying, financial planning—you don't want work project management tools. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.
+              When you&apos;re planning a wedding, changing careers, buying a home, or starting a business, scattered Google searches leave you overwhelmed and uncertain. "Did I think of everything?" "Which advice should I actually follow?" "How do I organize all this?"
             </p>
             <p>
-              Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you're learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.
+              Templata replaces 50 tabs with one comprehensive framework. Our expert-validated guides ensure 90%+ coverage of what matters—no more wondering what you missed. Instead of piecing together conflicting blog posts, you get 200-500+ AI-refined questions that guide you through every angle, plus curated expert readings from trusted sources.
             </p>
             <p>
-              While Asana requires paid plans for meaningful features and is built for work teams, Templata is free forever (currently in beta) and built specifically for personal life planning. For life planning, choose expert frameworks over work project management.
+              Everything is integrated: questions, readings, tasks, calendars, and progress tracking all work together. While Google leaves you to organize scattered information in your head (or across multiple docs and spreadsheets), Templata keeps everything structured in per-guide workspaces. And unlike paid search ads pushing products, Templata is free forever (currently in beta). For life&apos;s biggest moments, choose organized frameworks over scattered tabs.
             </p>
           </div>
         </div>

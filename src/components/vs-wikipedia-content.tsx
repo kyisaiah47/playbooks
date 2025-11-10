@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
-export const VsTrelloContent: React.FC = () => {
+export const VsWikipediaContent: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
@@ -28,7 +28,7 @@ export const VsTrelloContent: React.FC = () => {
                 perspective: "600px",
               }}
             >
-              {"Templata vs Trello".split(" ").map((word, i) => (
+              {"Templata vs Wikipedia".split(" ").map((word, i) => (
                 <motion.span
                   className="relative inline-block px-[6px] leading-[none]"
                   key={i}
@@ -55,7 +55,7 @@ export const VsTrelloContent: React.FC = () => {
           </h1>
 
           <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            Comprehensive planning frameworks vs basic task management
+            Active planning frameworks vs passive encyclopedia reading
           </p>
 
           <Particles
@@ -129,7 +129,7 @@ export const VsTrelloContent: React.FC = () => {
           <Separator className="mb-16" />
           <div className="mb-12">
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Trello helps you track tasks you&apos;ve already identified. Templata helps you figure out what tasks you need in the first place—with expert frameworks, 200-500+ AI-refined questions per guide, curated readings, and 90%+ validated coverage so nothing slips through the cracks.
+              Wikipedia is often the first stop when researching major life events—"Wedding planning," "Career change," "Home buying process." But encyclopedia articles give you passive knowledge, not active planning frameworks. Templata transforms Wikipedia&apos;s general information into personalized, actionable planning with expert guidance and integrated tools.
             </p>
           </div>
           <div className="mt-12">
@@ -149,73 +149,72 @@ export const VsTrelloContent: React.FC = () => {
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Comprehensive planning frameworks
+                    Active planning frameworks
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    200-500+ AI-refined questions
+                    200-500+ actionable questions
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Curated expert readings integrated
+                    90%+ validated coverage of YOUR planning
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    90%+ validated coverage
+                    Expert readings curated & integrated
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Expert guidance ensures completeness
+                    Tasks, calendars, progress tracking
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Per-guide workspaces with tools
+                    Personalized to your specific situation
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Free forever
+                    Free forever (beta)
                   </li>
                 </ul>
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <svg className="h-7" viewBox="0 0 200 200" fill="none">
-                    <rect x="10" y="10" width="180" height="180" rx="20" fill="#0079BF"/>
-                    <rect x="25" y="25" width="70" height="50" rx="5" fill="white"/>
-                    <rect x="25" y="85" width="70" height="30" rx="5" fill="white"/>
-                    <rect x="105" y="25" width="70" height="70" rx="5" fill="white"/>
+                  <svg className="h-7" viewBox="0 0 200 200" fill="currentColor">
+                    <path d="M100 10C50 10 10 50 10 100C10 150 50 190 100 190C150 190 190 150 190 100C190 50 150 10 100 10ZM100 170C61 170 30 139 30 100C30 61 61 30 100 30C139 30 170 61 170 100C170 139 139 170 100 170Z"/>
+                    <path d="M100 50L80 85H95V120H105V85H120L100 50Z"/>
+                    <path d="M70 140H130V150H70V140Z"/>
                   </svg>
-                  Trello
+                  Wikipedia
                 </span>
                 <Separator className="my-6" />
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Kanban task boards
+                    General encyclopedia articles
                   </li>
                   <li className="text-muted-foreground flex items-center gap-2 line-through">
                     <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    No content, just task management
+                    Passive reading, no action
                   </li>
                   <li className="text-muted-foreground flex items-center gap-2 line-through">
                     <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    No planning guidance
+                    Same content for everyone
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No personalized guidance
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No planning tools or organization
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Doesn't track your progress
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Track tasks you identified
-                  </li>
-                  <li className="text-muted-foreground flex items-center gap-2 line-through">
-                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    You determine what's needed
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
-                    Flexible boards and cards
-                  </li>
-                  <li className="text-muted-foreground flex items-center gap-2 line-through">
-                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
-                    $5-10+/month for power-ups
+                    Free to read
                   </li>
                 </ul>
               </div>
@@ -224,10 +223,10 @@ export const VsTrelloContent: React.FC = () => {
           <Separator className="my-16" />
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
             <h2 className="text-2xl font-medium text-foreground">
-              Who is Trello suitable for?
+              What is Wikipedia good for?
             </h2>
             <p>
-              Trello is excellent for visualizing workflows you already understand. If you&apos;re managing a software development sprint where tasks are well-defined, tracking a content calendar where you know what needs publishing, or organizing a team project where everyone knows their responsibilities, Trello&apos;s kanban boards provide clear visual progress tracking. It works best when you already know what needs doing.
+              Wikipedia is excellent for learning general background knowledge, understanding terminology, and getting a broad overview of topics. If you want to understand what a wedding planner does, read about the history of career counseling, or learn about mortgage types, Wikipedia&apos;s encyclopedia articles provide solid foundational knowledge. It&apos;s perfect for passive learning and research.
             </p>
           </div>
           <Separator className="my-16" />
@@ -236,13 +235,16 @@ export const VsTrelloContent: React.FC = () => {
               Why Choose Templata for Life Planning?
             </h2>
             <p>
-              The problem with using Trello for life events like wedding planning, career changes, or home buying is that Trello assumes you already know all the tasks. But with life&apos;s biggest moments, the hard part is figuring out what you need to do in the first place. What vendor meetings should you schedule? What career transition steps are you missing? What home-buying considerations haven&apos;t you thought of?
+              Reading Wikipedia&apos;s "Wedding planning" article gives you general information—but it doesn&apos;t help YOU plan YOUR wedding. The same article applies to everyone, with no personalization, no action items, no organization, no tracking.
             </p>
             <p>
-              Templata solves this with expert frameworks validated through our Axiom Engine to ensure 90%+ coverage. Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you&apos;re learning from vetted sources. You&apos;re not just managing tasks—you&apos;re guided through comprehensive planning that ensures you consider everything important.
+              Templata transforms passive reading into active planning. Instead of a general article, you get 200-500+ AI-refined questions tailored to guide you through your specific planning journey. Our expert-validated frameworks ensure 90%+ coverage of what actually matters for YOUR situation—not just general knowledge.
             </p>
             <p>
-              Everything is integrated: questions, readings, calendars, tasks, notes, and progress tracking all work together. While Trello leaves you responsible for determining completeness (and charges $5-10+/month for meaningful features), Templata provides expert guidance and is free forever (currently in beta). For life planning, choose comprehensive frameworks over blank task boards.
+              While Wikipedia stops at providing information, Templata integrates everything you need: expert readings (yes, including Wikipedia articles when relevant), actionable questions, task lists, calendars, and progress tracking all working together. You&apos;re not just reading about planning—you&apos;re actually doing it, with expert frameworks ensuring you don&apos;t miss what matters.
+            </p>
+            <p>
+              Wikipedia is free to read. Templata is free to use for comprehensive, personalized planning (currently in beta). For life&apos;s biggest moments, choose active frameworks over passive articles.
             </p>
           </div>
         </div>
