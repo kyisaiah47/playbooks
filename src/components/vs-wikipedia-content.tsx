@@ -179,9 +179,13 @@ export const VsWikipediaContent: React.FC = () => {
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <svg className="h-7 w-7" viewBox="0 0 103 94" fill="none">
-                    <path d="M21.8 0L0 75H7.5L20.8 25L35.5 75H44L58 25L71.5 75H79L57.2 0H48.5L36 48L23.5 0H21.8Z" fill="#000000" className="dark:fill-white"/>
-                  </svg>
+                  <Image
+                    src="/wikipedia-logo.png"
+                    alt="Wikipedia"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 dark:invert"
+                  />
                   Wikipedia
                 </span>
                 <Separator className="my-6" />
