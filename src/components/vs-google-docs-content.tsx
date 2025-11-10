@@ -8,10 +8,10 @@ export const VsGoogleDocsContent: React.FC = () => {
     <VsComparisonContent
       title="Templata vs Google Docs"
       subtitle="Expert frameworks vs blank documents for life planning"
-      intro="Google Docs gives you a blank document and a blinking cursor. Templata gives you expert frameworks with 200-500+ AI-refined questions, curated readings, and 90%+ validated coverage—so you plan comprehensively instead of wondering what you're forgetting."
+      intro="Google Docs gives you a blank document and a blinking cursor. Templata gives you expert frameworks with comprehensive AI-refined questions, curated readings, and 90%+ validated coverage—so you plan comprehensively instead of wondering what you're forgetting."
       templataFeatures={[
         { text: "Expert planning frameworks", present: true },
-        { text: "200-500+ AI-refined questions per guide", present: true },
+        { text: "48+ AI-refined questions per guide", present: true },
         { text: "Curated expert readings", present: true },
         { text: "90%+ validated coverage", present: true },
         { text: "Integrated calendars & tasks", present: true },
@@ -37,7 +37,7 @@ export const VsGoogleDocsContent: React.FC = () => {
         title: "Why Choose Templata for Life Planning?",
         paragraphs: [
           "Planning a wedding, career change, or home purchase in a blank Google Doc means starting from zero. What questions should you ask? What research do you need? What are you forgetting? You're left guessing—and the consequences of missing something important can be expensive or stressful.",
-          "Templata provides expert frameworks validated through our Axiom Engine to ensure 90%+ coverage of what actually matters for each life event. You get 200-500+ AI-refined questions per guide that prompt you to think through every important angle. Plus curated expert readings so you learn from vetted sources instead of random Google searches.",
+          "Templata provides expert frameworks validated through our Axiom Engine to ensure 90%+ coverage of what actually matters for each life event. You get comprehensive AI-refined questions that prompt you to think through every important angle. Plus curated expert readings so you learn from vetted sources instead of random Google searches.",
           "Everything is integrated: questions, readings, calendars, tasks, notes, and progress tracking all work together in per-guide workspaces. While Google Docs leaves you with a blank page and your best guess, Templata ensures comprehensive planning from day one. And it's free forever (currently in beta)—no Google Workspace subscription needed.",
         ],
       }}

@@ -12,7 +12,7 @@ export const VsNotionContent: React.FC = () => {
       templataFeatures={[
         { text: "Expert planning frameworks", present: true },
         { text: "90%+ validated coverage", present: true },
-        { text: "200-500+ AI-refined questions per guide", present: true },
+        { text: "48+ AI-refined questions per guide", present: true },
         { text: "Curated expert readings integrated", present: true },
         { text: "Per-guide organization (calendars, tasks)", present: true },
         { text: "Start planning in minutes", present: true },
@@ -37,7 +37,7 @@ export const VsNotionContent: React.FC = () => {
         title: "Why Choose Templata for Life Planning?",
         paragraphs: [
           "When planning life's biggest moments—weddings, career changes, home buying, financial planning—you don't want blank pages. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.",
-          "Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you're learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.",
+          "Each guide includes comprehensive AI-refined questions that help you think through every angle, plus curated expert readings so you're learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.",
           "While Notion requires hours to set up and leaves you guessing what you might have missed, Templata gets you planning comprehensively in minutes. And unlike Notion's $10/month for meaningful features, Templata is free forever (currently in beta). For life planning, choose expert frameworks over blank pages.",
         ],
       }}
