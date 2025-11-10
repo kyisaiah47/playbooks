@@ -15,6 +15,14 @@ const sections = [
     ],
   },
   {
+    title: "Features",
+    links: [
+      { name: "Calendar", href: "/features/calendar" },
+      { name: "Tasks", href: "/features/tasks" },
+      { name: "Analytics", href: "/features/analytics" },
+    ],
+  },
+  {
     title: "Resources",
     links: [
       { name: "Tags", href: "/tags" },
