@@ -14,6 +14,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 import { LoginDialog } from "@/components/login-dialog";
 import { useAuth } from "@/contexts/auth-context";
 
@@ -23,7 +32,19 @@ const MarketingHeader = () => {
   const { isLoggedIn, loading } = useAuth();
   const router = useRouter();
 
-  const navLinks = [
+  const allMobileLinks = [
+    { name: "Features", href: "/features" },
+    { name: "Calendar", href: "/features/calendar" },
+    { name: "Tasks", href: "/features/tasks" },
+    { name: "Analytics", href: "/features/analytics" },
+    { name: "Use Cases", href: "/use-cases" },
+    { name: "vs Google", href: "/vs/google" },
+    { name: "vs Wikipedia", href: "/vs/wikipedia" },
+    { name: "vs Notion", href: "/vs/notion" },
+    { name: "vs Google Docs", href: "/vs/google-docs" },
+    { name: "FAQ", href: "/faq" },
+    { name: "How to Use", href: "/how-to-use" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Library", href: "/library" },
     { name: "Guides", href: "/guides" },
     { name: "About", href: "/about" },
@@ -48,6 +69,103 @@ const MarketingHeader = () => {
                 </span>
               </div>
 
+              {/* Left side: Beta tag + nav */}
+              <div className="hidden items-center space-x-8 md:flex">
+                <div className="bg-muted text-muted-foreground flex items-center rounded-full px-3 py-1 text-xs font-medium">
+                  Beta
+                </div>
+
+                <NavigationMenu viewport={false}>
+                  <NavigationMenuList>
+                    {/* Features dropdown */}
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground text-sm font-medium">
+                        Features
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[200px] gap-2 p-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/features">
+                                <div className="text-sm font-medium leading-none">Overview</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/features/calendar">
+                                <div className="text-sm font-medium leading-none">Calendar</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/features/tasks">
+                                <div className="text-sm font-medium leading-none">Tasks</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/features/analytics">
+                                <div className="text-sm font-medium leading-none">Analytics</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+
+                    {/* Use Cases */}
+                    <NavigationMenuItem>
+                      <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + " text-muted-foreground hover:text-foreground text-sm font-medium"}>
+                        <Link href="/use-cases">Use Cases</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+
+                    {/* Compare dropdown */}
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground text-sm font-medium">
+                        Compare
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[200px] gap-2 p-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/vs/google">
+                                <div className="text-sm font-medium leading-none">vs Google</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/vs/wikipedia">
+                                <div className="text-sm font-medium leading-none">vs Wikipedia</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/vs/notion">
+                                <div className="text-sm font-medium leading-none">vs Notion</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link href="/vs/google-docs">
+                                <div className="text-sm font-medium leading-none">vs Google Docs</div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
+
+              {/* Centered logo */}
               <div className="absolute left-1/2 hidden -translate-x-1/2 transform md:block">
                 <Link href="/" className="flex items-center gap-2">
                   <Image
@@ -62,25 +180,42 @@ const MarketingHeader = () => {
                   </span>
                 </Link>
               </div>
-              <div className="text-muted-foreground hidden items-center space-x-2 text-sm md:flex">
-                <span className="font-medium">Beta</span>
-              </div>
 
+              {/* Right side: nav + actions */}
               <div className="hidden items-center space-x-8 md:flex">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
-                  >
-                    <span className="block transition-transform duration-300 group-hover:-translate-y-full">
-                      {link.name}
-                    </span>
-                    <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
-                      {link.name}
-                    </span>
-                  </Link>
-                ))}
+                <Link
+                  href="/library"
+                  className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
+                >
+                  <span className="block transition-transform duration-300 group-hover:-translate-y-full">
+                    Library
+                  </span>
+                  <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
+                    Library
+                  </span>
+                </Link>
+                <Link
+                  href="/guides"
+                  className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
+                >
+                  <span className="block transition-transform duration-300 group-hover:-translate-y-full">
+                    Guides
+                  </span>
+                  <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
+                    Guides
+                  </span>
+                </Link>
+                <Link
+                  href="/about"
+                  className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
+                >
+                  <span className="block transition-transform duration-300 group-hover:-translate-y-full">
+                    About
+                  </span>
+                  <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
+                    About
+                  </span>
+                </Link>
                 <ModeToggle />
                 <Button
                   onClick={() => {
@@ -142,7 +277,7 @@ const MarketingHeader = () => {
                         </Link>
                       </div>
                       <div className="flex flex-col space-y-4">
-                        {navLinks.map((link) => (
+                        {allMobileLinks.map((link) => (
                           <Link
                             key={link.name}
                             href={link.href}
