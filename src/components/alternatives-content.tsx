@@ -2,114 +2,16 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles, ArrowRight } from "lucide-react";
+import { CheckCircle2, CircleMinus, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles, ArrowRight } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export const AlternativesContent: React.FC = () => {
-  const alternatives = [
-    {
-      name: "Templata",
-      isRecommended: true,
-      pros: [
-        "Expert-crafted frameworks for life events",
-        "90%+ coverage with AI-refined questions",
-        "Curated expert readings for each decision",
-        "Free forever - no hidden costs",
-        "Purpose-built for life planning"
-      ],
-      cons: [
-        "Focused on life planning (not general notes)"
-      ],
-      bestFor: "Wedding planning, career changes, home buying, business launches, and major life decisions",
-      pricing: "Free forever"
-    },
-    {
-      name: "Notion",
-      pros: [
-        "Flexible database and note system",
-        "Good for general organization",
-        "Team collaboration features"
-      ],
-      cons: [
-        "Blank pages require you to create everything",
-        "No expert guidance for life planning",
-        "Steep learning curve",
-        "No AI-refined planning questions"
-      ],
-      bestFor: "General note-taking and knowledge management",
-      pricing: "Free tier limited, paid plans required for teams"
-    },
-    {
-      name: "Google Docs",
-      pros: [
-        "Free to use",
-        "Simple and familiar interface",
-        "Good for basic writing"
-      ],
-      cons: [
-        "No planning structure or frameworks",
-        "No expert content",
-        "You start from blank page",
-        "No planning-specific features"
-      ],
-      bestFor: "Basic document creation and sharing",
-      pricing: "Free"
-    },
-    {
-      name: "Trello",
-      pros: [
-        "Visual kanban boards",
-        "Simple task tracking",
-        "Easy to learn"
-      ],
-      cons: [
-        "Only task lists, no planning guidance",
-        "No expert frameworks",
-        "Limited for complex planning",
-        "No AI-refined questions"
-      ],
-      bestFor: "Simple task management and checklists",
-      pricing: "Free tier limited, paid for advanced features"
-    },
-    {
-      name: "Asana",
-      pros: [
-        "Robust project management",
-        "Timeline and workflow views",
-        "Team collaboration"
-      ],
-      cons: [
-        "Built for work projects, not life planning",
-        "No expert life planning content",
-        "Paid plans for meaningful features",
-        "Overwhelming for personal use"
-      ],
-      bestFor: "Work project management and team coordination",
-      pricing: "Free tier very limited, paid plans required"
-    },
-    {
-      name: "Monday.com",
-      pros: [
-        "Customizable workflows",
-        "Visual project boards",
-        "Automation features"
-      ],
-      cons: [
-        "Work-focused, not for life planning",
-        "Expensive for individuals",
-        "No life planning expertise",
-        "Complex for personal use"
-      ],
-      bestFor: "Business workflows and team projects",
-      pricing: "Paid subscription required"
-    }
-  ];
-
   return (
     <div>
       {/* Hero Section */}
@@ -208,71 +110,59 @@ export const AlternativesContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Alternatives Comparison */}
+      {/* Comparison Body */}
       <section className="py-16">
-        <div className="container max-w-6xl">
+        <div className="container max-w-4xl">
           <Separator className="mb-16" />
-          <div className="space-y-8">
-          {alternatives.map((alt, index) => (
-            <motion.div
-              key={alt.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`border rounded-lg p-8 ${alt.isRecommended ? 'border-green-500 shadow-lg' : ''}`}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-2xl font-semibold flex items-center gap-2">
-                    {alt.name}
-                    {alt.isRecommended && (
-                      <Badge className="bg-green-500">Recommended</Badge>
-                    )}
-                  </h3>
-                  <p className="text-muted-foreground mt-2">{alt.bestFor}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-sm text-muted-foreground">Pricing</p>
-                  <p className="font-semibold">{alt.pricing}</p>
-                </div>
-              </div>
+          <div className="mb-12">
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Comparing Templata to popular alternatives: Notion, Google Docs, Trello, Asana, and Monday.com. While these tools serve various purposes, Templata is purpose-built for life planning with expert frameworks, AI-refined questions, and 90%+ validated coverage.
+            </p>
+          </div>
 
-              <Separator className="my-6" />
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold mb-3 flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-green-500" />
-                    Pros
-                  </h4>
-                  <ul className="space-y-2">
-                    {alt.pros.map((pro, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                        <span className="text-green-500 mt-1">•</span>
-                        {pro}
-                      </li>
-                    ))}
-                  </ul>
+          <div className="space-y-12">
+            {/* Templata */}
+            <div>
+              <h3 className="text-2xl font-medium text-foreground mb-4">Templata - Best for Life Planning</h3>
+              <div className="bg-background rounded-xl border p-6 shadow border-green-500">
+                <div className="flex items-center justify-center gap-2 font-medium mb-6">
+                  <Image
+                    src="/favicon.svg"
+                    alt="Templata"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 dark:invert-0 invert"
+                  />
+                  Templata
+                  <Badge className="bg-green-500 ml-2">Recommended</Badge>
                 </div>
-
-                <div>
-                  <h4 className="font-semibold mb-3 flex items-center gap-2">
-                    <XCircle className="w-5 h-5 text-red-500" />
-                    Cons
-                  </h4>
-                  <ul className="space-y-2">
-                    {alt.cons.map((con, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                        <span className="text-red-500 mt-1">•</span>
-                        {con}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {alt.isRecommended && (
+                <Separator className="mb-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Expert planning frameworks for life events
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    90%+ validated coverage
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    200-500+ AI-refined questions per guide
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Curated expert readings integrated
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Per-guide organization (calendars, tasks)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Free forever (beta)
+                  </li>
+                </ul>
                 <div className="mt-6">
                   <Link href="/guides">
                     <Button className="w-full">
@@ -280,56 +170,220 @@ export const AlternativesContent: React.FC = () => {
                     </Button>
                   </Link>
                 </div>
-              )}
-            </motion.div>
-          ))}
-        </div>
+              </div>
+            </div>
 
-          <Separator className="my-16" />
+            {/* Notion */}
+            <div>
+              <h3 className="text-2xl font-medium text-foreground mb-4">Notion</h3>
+              <div className="bg-border/40 rounded-xl p-6">
+                <div className="flex items-center justify-center gap-2 font-medium mb-6">
+                  <svg className="h-7" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M6.017 4.313l55.333 -4.087c6.797 -0.583 8.543 -0.19 12.817 2.917l17.663 12.443c2.913 2.14 3.883 2.723 3.883 5.053v68.243c0 4.277 -1.553 6.807 -6.99 7.193L24.467 99.967c-4.08 0.193 -6.023 -0.39 -8.16 -3.113L3.3 79.94c-2.333 -3.113 -3.3 -5.443 -3.3 -8.167V11.113c0 -3.497 1.553 -6.413 6.017 -6.8z"/>
+                  </svg>
+                  Notion
+                </div>
+                <Separator className="mb-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Blank pages, DIY structure
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No planning frameworks
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Create your own questions
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    General note-taking and databases
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    $10/month for meaningful features
+                  </li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">Best for: General organization and knowledge management</p>
+              </div>
+            </div>
 
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground max-w-4xl mx-auto">
-            <h2 className="text-2xl font-medium text-foreground">Choosing the Best Life Planning Tool</h2>
-            <p>
-              When choosing a life planning tool, consider what you actually need: Do you need expert frameworks and guidance for major life decisions? Or do you just need a place to write notes?
-            </p>
+            {/* Google Docs */}
+            <div>
+              <h3 className="text-2xl font-medium text-foreground mb-4">Google Docs</h3>
+              <div className="bg-border/40 rounded-xl p-6">
+                <div className="flex items-center justify-center gap-2 font-medium mb-6">
+                  <svg className="h-7" viewBox="0 0 87.3 78" fill="currentColor">
+                    <path fill="#4285f4" d="M48.4,36.2L65.1,0L3.4,0L19.4,36.2z"/>
+                    <path fill="#ea4335" d="M48.4,36.2l16.7,0v41.8H31.3v-3.5L3.4,78V0z"/>
+                    <path fill="#34a853" d="M31.3,74.5v3.5h33.8L83.9,39L65.1,0z"/>
+                    <path fill="#fbbc04" d="M48.4,36.2H19.4l-16,41.8h27.9z"/>
+                  </svg>
+                  Google Docs
+                </div>
+                <Separator className="mb-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Free and simple
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No planning frameworks
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Blank page, no guidance
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Basic document collaboration
+                  </li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">Best for: Simple document writing and sharing</p>
+              </div>
+            </div>
+
+            {/* Trello */}
+            <div>
+              <h3 className="text-2xl font-medium text-foreground mb-4">Trello</h3>
+              <div className="bg-border/40 rounded-xl p-6">
+                <div className="flex items-center justify-center gap-2 font-medium mb-6">
+                  <svg className="h-7" viewBox="0 0 200 200" fill="none">
+                    <rect x="10" y="10" width="180" height="180" rx="20" fill="#0079BF"/>
+                    <rect x="25" y="25" width="70" height="50" rx="5" fill="white"/>
+                    <rect x="25" y="85" width="70" height="30" rx="5" fill="white"/>
+                    <rect x="105" y="25" width="70" height="70" rx="5" fill="white"/>
+                  </svg>
+                  Trello
+                </div>
+                <Separator className="mb-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Kanban task boards
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No planning guidance
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    You determine tasks
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Simple visual boards
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    $5-10+/month for power-ups
+                  </li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">Best for: Simple task management and checklists</p>
+              </div>
+            </div>
+
+            {/* Asana */}
+            <div>
+              <h3 className="text-2xl font-medium text-foreground mb-4">Asana</h3>
+              <div className="bg-border/40 rounded-xl p-6">
+                <div className="flex items-center justify-center gap-2 font-medium mb-6">
+                  <svg className="h-7" viewBox="0 0 200 200" fill="none">
+                    <circle cx="100" cy="100" r="90" fill="#f06a6a"/>
+                    <circle cx="100" cy="60" r="15" fill="white"/>
+                    <circle cx="100" cy="100" r="15" fill="white"/>
+                    <circle cx="100" cy="140" r="15" fill="white"/>
+                  </svg>
+                  Asana
+                </div>
+                <Separator className="mb-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Work project management
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No life planning frameworks
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Built for work, not life
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Team collaboration features
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Paid plans for features
+                  </li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">Best for: Work project management and team coordination</p>
+              </div>
+            </div>
+
+            {/* Monday.com */}
+            <div>
+              <h3 className="text-2xl font-medium text-foreground mb-4">Monday.com</h3>
+              <div className="bg-border/40 rounded-xl p-6">
+                <div className="flex items-center justify-center gap-2 font-medium mb-6">
+                  <svg className="h-7" viewBox="0 0 200 200" fill="none">
+                    <rect x="20" y="20" width="160" height="160" rx="20" fill="#ff3d57"/>
+                    <rect x="40" y="60" width="50" height="8" rx="4" fill="white"/>
+                    <rect x="40" y="80" width="35" height="8" rx="4" fill="white"/>
+                    <rect x="110" y="60" width="50" height="8" rx="4" fill="white"/>
+                    <rect x="110" y="80" width="35" height="8" rx="4" fill="white"/>
+                    <rect x="40" y="110" width="50" height="8" rx="4" fill="white"/>
+                    <rect x="110" y="110" width="50" height="8" rx="4" fill="white"/>
+                  </svg>
+                  Monday.com
+                </div>
+                <Separator className="mb-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Work operating system
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No life planning frameworks
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Built for work teams
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Workflow automation
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Paid subscription required
+                  </li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">Best for: Business workflows and team projects</p>
+              </div>
+            </div>
           </div>
 
           <Separator className="my-16" />
 
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground max-w-4xl mx-auto">
-            <h3 className="text-2xl font-medium text-foreground">Why Templata Stands Out for Life Planning</h3>
-            <ul className="space-y-3">
-              <li><strong>Purpose-built for life planning</strong> - Unlike general tools adapted for planning, Templata is designed specifically for major life events</li>
-              <li><strong>Expert frameworks with 90%+ coverage</strong> - AI-refined question sets ensure you consider everything important</li>
-              <li><strong>Curated expert content</strong> - Learn from domain experts instead of random internet searches</li>
-              <li><strong>Free forever</strong> - No paywalls, no subscriptions, no hidden costs</li>
-            </ul>
-          </div>
-
-          <Separator className="my-16" />
-
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground max-w-4xl mx-auto">
-            <h3 className="text-2xl font-medium text-foreground">When Other Tools Make Sense</h3>
+          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-medium text-foreground">
+              Why Choose Templata for Life Planning?
+            </h2>
             <p>
-              <strong>Notion:</strong> Great for general note-taking and knowledge bases if you enjoy building custom systems.
+              When planning life's biggest moments—weddings, career changes, home buying, financial planning—you don't want blank pages or work tools. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.
             </p>
             <p>
-              <strong>Google Docs:</strong> Perfect for simple document writing and sharing.
+              Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you're learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.
             </p>
             <p>
-              <strong>Trello:</strong> Good for basic task lists and simple kanban boards.
-            </p>
-            <p>
-              <strong>Asana/Monday:</strong> Excellent for work project management and team collaboration.
-            </p>
-          </div>
-
-          <Separator className="my-16" />
-
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground max-w-4xl mx-auto">
-            <h3 className="text-2xl font-medium text-foreground">The Bottom Line</h3>
-            <p>
-              For major life planning (weddings, careers, home buying, business launches), Templata provides the expert guidance, comprehensive frameworks, and AI-refined questions that general tools don't offer. For simple notes or work projects, other tools may fit better. Choose based on your actual needs.
+              While other tools are designed for general note-taking (Notion, Google Docs), simple task tracking (Trello), or work project management (Asana, Monday.com), Templata is purpose-built for life planning. And it's free forever (currently in beta). For life's biggest moments, choose expert frameworks.
             </p>
           </div>
         </div>
