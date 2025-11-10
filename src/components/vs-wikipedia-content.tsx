@@ -179,13 +179,6 @@ export const VsWikipediaContent: React.FC = () => {
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <Image
-                    src="/wikipedia-logo.png"
-                    alt="Wikipedia"
-                    width={28}
-                    height={28}
-                    className="h-7 w-auto dark:invert"
-                  />
                   Wikipedia
                 </span>
                 <Separator className="my-6" />

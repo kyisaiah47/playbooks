@@ -179,13 +179,6 @@ export const VsGoogleContent: React.FC = () => {
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <Image
-                    src="/google-logo.png"
-                    alt="Google"
-                    width={28}
-                    height={28}
-                    className="h-7 w-auto"
-                  />
                   Google Search
                 </span>
                 <Separator className="my-6" />

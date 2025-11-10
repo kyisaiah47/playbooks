@@ -8,7 +8,6 @@ import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import { Notion } from "@/components/ui/svgs/notion";
 
 export const VsNotionContent: React.FC = () => {
   return (
@@ -180,7 +179,6 @@ export const VsNotionContent: React.FC = () => {
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <Notion className="h-7 w-7" />
                   Notion
                 </span>
                 <Separator className="my-6" />
