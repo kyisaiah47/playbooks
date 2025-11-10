@@ -184,7 +184,7 @@ export const VsGoogleDocsContent: React.FC = () => {
                     alt="Google Docs"
                     width={28}
                     height={28}
-                    className="h-7 w-7"
+                    className="h-7 w-auto"
                   />
                   Google Docs
                 </span>
