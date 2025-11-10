@@ -6,87 +6,29 @@ import {
   Calendar,
   CalendarDays,
   Clock,
-  CheckCircle2,
-  Bell,
   Heart,
   Briefcase,
   Home,
-  Target,
-  Sparkles,
+  Rocket,
   Users,
   Baby,
+  Target,
   TrendingUp,
-  Rocket
 } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
-import { SkiperUiMarquee } from "@/components/category-hero";
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export const CalendarFeatureContent: React.FC = () => {
-  const features = [
-    {
-      icon: CalendarDays,
-      title: "Per-Guide Organization",
-      description: "Each life event gets its own dedicated calendar. Wedding planning, career transitions, and home buying stay separate—no overwhelming mix of everything at once."
-    },
-    {
-      icon: Clock,
-      title: "Flexible Event Types",
-      description: "Create all-day events for deadlines and milestones, or timed events for specific appointments. Add detailed descriptions for important context."
-    },
-    {
-      icon: CheckCircle2,
-      title: "Milestone Tracking",
-      description: "Mark important milestones throughout your journey. Track venue bookings, interview dates, inspection appointments, and launch deadlines."
-    },
-    {
-      icon: Bell,
-      title: "Focus on What Matters",
-      description: "See only the timeline relevant to your current planning focus. Switch between guides to view different life event calendars as needed."
-    }
-  ];
-
-  const useCases = [
-    {
-      icon: Heart,
-      title: "Wedding Planning",
-      description: "Track vendor deadlines, dress fittings, rehearsal dinners, and the big day—all in your dedicated wedding calendar.",
-      examples: ["Venue booking deadline", "Final guest count due", "Dress fitting appointment", "Rehearsal dinner", "Wedding day"]
-    },
-    {
-      icon: Briefcase,
-      title: "Career Transitions",
-      description: "Organize networking events, interview schedules, application deadlines, and start dates.",
-      examples: ["Application deadline", "Phone screen", "Final interview", "Offer decision date", "Start date"]
-    },
-    {
-      icon: Home,
-      title: "Home Buying",
-      description: "Keep track of open houses, inspections, financing deadlines, and closing day.",
-      examples: ["Open house visits", "Offer deadline", "Home inspection", "Financing approval", "Closing day"]
-    },
-    {
-      icon: Rocket,
-      title: "Business Launch",
-      description: "Manage product launches, marketing campaigns, and business milestones.",
-      examples: ["Product development milestone", "Beta launch", "Marketing campaign start", "Official launch", "First revenue target"]
-    }
-  ];
-
   return (
     <div>
       {/* Hero Section */}
       <section className="relative py-32 pt-56">
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
-          <Badge variant="secondary" className="flex items-center gap-2">
-            <Calendar className="w-3 h-3" />
-            Planning Calendar
-          </Badge>
-
-          <h1 className="relative z-15 max-w-4xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+          <p className="text-muted-foreground">
+            Per-Guide Timeline Organization
+          </p>
+          <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
             <span
               className="overflow-hidden"
               style={{
@@ -94,7 +36,7 @@ export const CalendarFeatureContent: React.FC = () => {
                 perspective: "600px",
               }}
             >
-              {"Organize Milestones Per Life Event".split(" ").map((word, i) => (
+              {"Track Milestones Per Life Event".split(" ").map((word, i) => (
                 <motion.span
                   className="relative inline-block px-[6px] leading-[none]"
                   key={i}
@@ -119,11 +61,6 @@ export const CalendarFeatureContent: React.FC = () => {
               ))}
             </span>
           </h1>
-
-          <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            Dedicated calendars for each planning guide. Track wedding timelines, career deadlines, and home buying dates separately—no overwhelming mix.
-          </p>
-
           <Particles
             className="absolute inset-0 z-0"
             quantity={500}
@@ -142,46 +79,37 @@ export const CalendarFeatureContent: React.FC = () => {
               className=""
               reverse={true}
               icons={[Heart, Home, Users, Baby]}
-              dimmed
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
               icons={[Briefcase, Rocket, Target, TrendingUp]}
-              dimmed
             />
             <SkiperUiMarquee
               showCard={3}
               reverse={true}
-              className=""
-              icons={[CalendarDays, Clock, CheckCircle2, Bell]}
-              dimmed
+              icons={[Calendar, CalendarDays, Clock, Calendar]}
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
-              icons={[Calendar, Calendar, Calendar, Calendar]}
-              highlighted
+              icons={[Heart, Briefcase, Home, Rocket]}
             />
             <SkiperUiMarquee
               showCard={3}
               reverse={true}
-              className=""
-              icons={[Heart, Home, Briefcase, Sparkles]}
-              dimmed
+              icons={[Calendar, CalendarDays, Clock, Calendar]}
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
-              icons={[Rocket, Target, TrendingUp, Users]}
-              dimmed
+              icons={[Target, TrendingUp, Users, Baby]}
             />
             <SkiperUiMarquee
               reverse={true}
               showCard={1}
               className=""
-              icons={[Baby, Bell, CheckCircle2, CalendarDays]}
-              dimmed
+              icons={[Calendar, CalendarDays, Clock, Calendar]}
             />
           </motion.div>
 
@@ -189,114 +117,312 @@ export const CalendarFeatureContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Intro Blurb */}
+      {/* Introduction */}
       <section className="py-16">
         <div className="container max-w-4xl">
           <Separator className="mb-16" />
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h2 className="text-2xl font-medium text-foreground">Why Per-Guide Calendars?</h2>
             <p>
-              Traditional calendars mix everything together—work meetings, personal appointments, and major life planning all in one overwhelming view. Templata's per-guide calendar system gives each life event its own dedicated timeline.
+              Each planning guide gets its own dedicated calendar. Wedding timelines stay separate from career deadlines and home buying dates—preventing the overwhelm of seeing everything at once.
             </p>
             <p>
-              Planning a wedding while transitioning careers? Your wedding calendar shows only wedding-related milestones and deadlines. Your career calendar focuses only on interview dates and networking events. This intentional separation keeps you focused on the right timeline at the right time.
+              Track milestones, set important dates, and visualize your planning timeline without mixing different life events together. Switch between guides to see the calendar for each life event when you need it.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Visual Example - Wedding Calendar */}
       <section className="py-16">
-        <div className="container max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold mb-4">Calendar Features</h2>
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-8">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Wedding Planning Calendar</h2>
             <p className="text-muted-foreground text-lg">
-              Everything you need to track milestones and deadlines
+              Track vendor bookings, fittings, deadlines, and the big day—all in one timeline
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {features.map((feature, idx) => (
-              <div key={idx} className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-muted">
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
+          {/* Calendar Visual Mockup */}
+          <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="space-y-4">
+              {/* Month Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-semibold">June 2025</h3>
+                <div className="flex gap-2">
+                  <div className="px-3 py-1 rounded-md border border-border text-sm">Today</div>
                 </div>
               </div>
-            ))}
+
+              {/* Events List */}
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 p-3 rounded-md bg-background border border-border">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                    <div className="text-xs font-medium">JUN</div>
+                    <div className="text-lg font-bold">15</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Final Dress Fitting</h4>
+                    <p className="text-sm text-muted-foreground">2:00 PM - Bridal Boutique</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-md bg-background border border-border">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                    <div className="text-xs font-medium">JUN</div>
+                    <div className="text-lg font-bold">20</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Final Guest Count Deadline</h4>
+                    <p className="text-sm text-muted-foreground">All day - Venue requires final numbers</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-md bg-background border border-border">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                    <div className="text-xs font-medium">JUN</div>
+                    <div className="text-lg font-bold">27</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Rehearsal Dinner</h4>
+                    <p className="text-sm text-muted-foreground">6:00 PM - Restaurant Name</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-md bg-primary/20 border border-primary">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary text-primary-foreground flex-shrink-0">
+                    <div className="text-xs font-medium">JUN</div>
+                    <div className="text-lg font-bold">28</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Wedding Day!</h4>
+                    <p className="text-sm text-muted-foreground">4:00 PM - Venue Name</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <Separator className="my-16" />
-
-      {/* Use Cases */}
+      {/* Visual Example - Career Calendar */}
       <section className="py-16">
-        <div className="container max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold mb-4">Calendar Use Cases</h2>
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-8">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Career Transition Calendar</h2>
             <p className="text-muted-foreground text-lg">
-              How different life events use dedicated calendars
+              Organize interviews, networking events, and application deadlines
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {useCases.map((useCase, idx) => (
-              <div key={idx} className="border border-border rounded-lg p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <useCase.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="font-semibold text-lg">{useCase.title}</h3>
+          {/* Calendar Visual Mockup */}
+          <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="space-y-4">
+              {/* Month Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-semibold">March 2025</h3>
+                <div className="flex gap-2">
+                  <div className="px-3 py-1 rounded-md border border-border text-sm">Today</div>
                 </div>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  {useCase.description}
+              </div>
+
+              {/* Events List */}
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 p-3 rounded-md bg-background border border-border">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                    <div className="text-xs font-medium">MAR</div>
+                    <div className="text-lg font-bold">05</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Networking Event - Tech Meetup</h4>
+                    <p className="text-sm text-muted-foreground">6:30 PM - Downtown Conference Center</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-md bg-background border border-border">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                    <div className="text-xs font-medium">MAR</div>
+                    <div className="text-lg font-bold">12</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Phone Screen - Company A</h4>
+                    <p className="text-sm text-muted-foreground">10:00 AM - 30 min call with recruiter</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-md bg-background border border-border">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                    <div className="text-xs font-medium">MAR</div>
+                    <div className="text-lg font-bold">18</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Technical Interview - Company B</h4>
+                    <p className="text-sm text-muted-foreground">2:00 PM - Virtual interview (90 min)</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 rounded-md bg-background border border-border">
+                  <div className="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                    <div className="text-xs font-medium">MAR</div>
+                    <div className="text-lg font-bold">25</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Final Round - Company A</h4>
+                    <p className="text-sm text-muted-foreground">All day - On-site interviews</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-8">
+            <h2 className="text-2xl font-medium text-foreground mb-3">How Calendar Organization Works</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <CalendarDays className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">One Calendar Per Guide</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Each life event guide has its own calendar. Wedding planning events stay in the wedding calendar, career events in the career calendar—complete separation.
                 </p>
-                <div className="space-y-2">
-                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Example Events:</p>
-                  <ul className="space-y-1">
-                    {useCase.examples.map((example, exIdx) => (
-                      <li key={exIdx} className="text-sm flex items-start gap-2">
-                        <CalendarDays className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                        <span>{example}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      <Separator className="my-16" />
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Clock className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">All-Day or Timed Events</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Create all-day events for deadlines and milestones, or timed events for specific appointments like fittings or interviews.
+                </p>
+              </div>
+            </div>
 
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container max-w-4xl text-center">
-          <h2 className="text-3xl font-semibold mb-4">
-            Start Tracking Your Milestones
-          </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-            Choose a planning guide and start organizing your timeline. All features are free during beta.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Button asChild size="lg">
-              <Link href="/guides">Browse Planning Guides</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/features">View All Features</Link>
-            </Button>
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Calendar className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Switch Between Views</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Navigate between different guide calendars to see only the timeline relevant to your current planning focus. No overwhelming mix of all events.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Heart className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Stay Focused</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  See only wedding deadlines when planning your wedding, only career events when job searching. This focused approach reduces anxiety and keeps you organized.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </div>
   );
 };
+
+function Marquee({
+  className,
+  reverse,
+  children,
+  vertical = false,
+  repeat = 4,
+  ...props
+}: any) {
+  return (
+    <div
+      {...props}
+      className={cn(
+        "group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)]",
+        {
+          "flex-row": !vertical,
+          "flex-col": vertical,
+        },
+        className,
+      )}
+    >
+      {Array(repeat)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            key={i}
+            className={cn(
+              "flex shrink-0 justify-around ![animation-duration:12s] [animation-play-state:running] [gap:var(--gap)] group-hover:[animation-play-state:paused]",
+              {
+                "animate-marquee flex-row": !vertical,
+                "animate-marquee-vertical flex-col": vertical,
+                "[animation-direction:reverse]": reverse,
+              },
+            )}
+          >
+            {children}
+          </div>
+        ))}
+    </div>
+  );
+}
+
+interface SkiperUiMarqueeProps {
+  showCard: number;
+  reverse?: boolean;
+  className?: string;
+  icons: React.ComponentType<{ className?: string }>[];
+}
+
+function SkiperUiMarquee({
+  showCard,
+  reverse = false,
+  className,
+  icons,
+}: SkiperUiMarqueeProps) {
+  return (
+    <div
+      className={cn("relative overflow-hidden", className)}
+      style={{
+        height: showCard * 113,
+      }}
+    >
+      <Marquee reverse={reverse} vertical={true}>
+        {icons.map((Icon, idx) => (
+          <Card key={idx} Icon={Icon} />
+        ))}
+      </Marquee>
+      <div className="from-background absolute top-0 z-10 h-8 w-full bg-gradient-to-b to-transparent" />
+      <div className="from-background absolute bottom-0 z-10 h-8 w-full bg-gradient-to-t to-transparent" />
+    </div>
+  );
+}
+
+function Card({ Icon }: { Icon: React.ComponentType<{ className?: string }> }) {
+  return (
+    <div
+      className={cn(
+        "border-muted relative flex size-24 items-center justify-center overflow-hidden rounded-3xl border p-4",
+        "from-muted/50 to-background bg-gradient-to-b",
+        "dark:bg-transparent dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+      )}
+    >
+      <Icon className="size-8" />
+    </div>
+  );
+}

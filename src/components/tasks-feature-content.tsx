@@ -5,137 +5,33 @@ import { motion } from "framer-motion";
 import {
   ListTodo,
   ListChecks,
-  AlertCircle,
-  CheckCircle2,
-  Clock,
   Heart,
   Briefcase,
   Home,
-  Target,
-  Sparkles,
+  Rocket,
   Users,
   Baby,
+  Target,
   TrendingUp,
-  Rocket,
   Circle,
   CircleDashed,
-  CheckCircle
+  CheckCircle2
 } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
-import { SkiperUiMarquee } from "@/components/category-hero";
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export const TasksFeatureContent: React.FC = () => {
-  const features = [
-    {
-      icon: ListChecks,
-      title: "Per-Guide Organization",
-      description: "Each life event gets its own task list. Wedding planning tasks, career action items, and home buying to-dos stay separate—no overwhelming mix."
-    },
-    {
-      icon: AlertCircle,
-      title: "Priority Management",
-      description: "Set priority levels (low, medium, high) to focus on what matters most. Tackle high-priority items first, then handle nice-to-haves."
-    },
-    {
-      icon: CheckCircle2,
-      title: "Status Tracking",
-      description: "Track tasks through To Do, In Progress, and Done statuses. See at a glance what needs attention and what's been accomplished."
-    },
-    {
-      icon: Clock,
-      title: "Due Date Management",
-      description: "Add optional due dates to track deadlines. See upcoming tasks across all guides or focus on a specific life event."
-    }
-  ];
-
-  const useCases = [
-    {
-      icon: Heart,
-      title: "Wedding Planning",
-      description: "Track all wedding-related action items from vendor bookings to final details.",
-      tasks: [
-        { title: "Book venue", priority: "high", status: "done" },
-        { title: "Send invitations", priority: "high", status: "in_progress" },
-        { title: "Finalize menu", priority: "medium", status: "todo" },
-        { title: "Order cake", priority: "medium", status: "todo" },
-        { title: "Create seating chart", priority: "low", status: "todo" }
-      ]
-    },
-    {
-      icon: Briefcase,
-      title: "Career Transitions",
-      description: "Manage all action items for your career change or job search.",
-      tasks: [
-        { title: "Update resume", priority: "high", status: "done" },
-        { title: "Research target companies", priority: "high", status: "in_progress" },
-        { title: "Practice interview questions", priority: "medium", status: "todo" },
-        { title: "Reach out to contacts", priority: "medium", status: "todo" },
-        { title: "Update LinkedIn profile", priority: "low", status: "done" }
-      ]
-    },
-    {
-      icon: Home,
-      title: "Home Buying",
-      description: "Organize all to-dos for finding and purchasing your home.",
-      tasks: [
-        { title: "Get pre-approved for mortgage", priority: "high", status: "done" },
-        { title: "Schedule home inspections", priority: "high", status: "in_progress" },
-        { title: "Review purchase contract", priority: "high", status: "todo" },
-        { title: "Arrange movers", priority: "medium", status: "todo" },
-        { title: "Set up utilities", priority: "low", status: "todo" }
-      ]
-    },
-    {
-      icon: Rocket,
-      title: "Business Launch",
-      description: "Keep track of everything needed to launch your business.",
-      tasks: [
-        { title: "Finalize business plan", priority: "high", status: "done" },
-        { title: "Register LLC", priority: "high", status: "done" },
-        { title: "Build website", priority: "high", status: "in_progress" },
-        { title: "Launch marketing campaign", priority: "medium", status: "todo" },
-        { title: "Set up social media", priority: "low", status: "todo" }
-      ]
-    }
-  ];
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'done':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'in_progress':
-        return <CircleDashed className="h-4 w-4 text-blue-500" />;
-      default:
-        return <Circle className="h-4 w-4 text-muted-foreground" />;
-    }
-  };
-
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high':
-        return 'text-red-500';
-      case 'medium':
-        return 'text-yellow-500';
-      default:
-        return 'text-muted-foreground';
-    }
-  };
-
   return (
     <div>
       {/* Hero Section */}
       <section className="relative py-32 pt-56">
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
-          <Badge variant="secondary" className="flex items-center gap-2">
-            <ListTodo className="w-3 h-3" />
-            Task Management
-          </Badge>
-
-          <h1 className="relative z-15 max-w-4xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+          <p className="text-muted-foreground">
+            Per-Guide Action Item Organization
+          </p>
+          <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
             <span
               className="overflow-hidden"
               style={{
@@ -143,7 +39,7 @@ export const TasksFeatureContent: React.FC = () => {
                 perspective: "600px",
               }}
             >
-              {"Track Action Items Per Life Event".split(" ").map((word, i) => (
+              {"Manage Tasks Per Life Event".split(" ").map((word, i) => (
                 <motion.span
                   className="relative inline-block px-[6px] leading-[none]"
                   key={i}
@@ -168,11 +64,6 @@ export const TasksFeatureContent: React.FC = () => {
               ))}
             </span>
           </h1>
-
-          <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            Dedicated task lists for each planning guide. Organize wedding to-dos, career action items, and home buying tasks separately with priorities and due dates.
-          </p>
-
           <Particles
             className="absolute inset-0 z-0"
             quantity={500}
@@ -191,46 +82,37 @@ export const TasksFeatureContent: React.FC = () => {
               className=""
               reverse={true}
               icons={[Heart, Home, Users, Baby]}
-              dimmed
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
               icons={[Briefcase, Rocket, Target, TrendingUp]}
-              dimmed
             />
             <SkiperUiMarquee
               showCard={3}
               reverse={true}
-              className=""
-              icons={[ListChecks, AlertCircle, CheckCircle2, Clock]}
-              dimmed
+              icons={[ListTodo, ListChecks, CheckCircle2, ListTodo]}
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
-              icons={[ListTodo, ListTodo, ListTodo, ListTodo]}
-              highlighted
+              icons={[Heart, Briefcase, Home, Rocket]}
             />
             <SkiperUiMarquee
               showCard={3}
               reverse={true}
-              className=""
-              icons={[Heart, Home, Briefcase, Sparkles]}
-              dimmed
+              icons={[ListTodo, ListChecks, CheckCircle2, ListTodo]}
             />
             <SkiperUiMarquee
               showCard={2}
               className=""
-              icons={[Rocket, Target, TrendingUp, Users]}
-              dimmed
+              icons={[Target, TrendingUp, Users, Baby]}
             />
             <SkiperUiMarquee
               reverse={true}
               showCard={1}
               className=""
-              icons={[Baby, Clock, CheckCircle2, AlertCircle]}
-              dimmed
+              icons={[ListTodo, ListChecks, CheckCircle2, ListTodo]}
             />
           </motion.div>
 
@@ -238,117 +120,308 @@ export const TasksFeatureContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Intro Blurb */}
+      {/* Introduction */}
       <section className="py-16">
         <div className="container max-w-4xl">
           <Separator className="mb-16" />
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h2 className="text-2xl font-medium text-foreground">Why Per-Guide Task Lists?</h2>
             <p>
-              Traditional to-do apps mix everything together—work tasks, personal errands, and major life planning all in one overwhelming list. Templata's per-guide task system gives each life event its own dedicated action items.
+              Each planning guide gets its own task list. Wedding to-dos stay separate from career action items and home buying tasks—preventing the confusion of mixing everything together.
             </p>
             <p>
-              Planning a wedding while buying a home? Your wedding task list shows only wedding-related to-dos like booking vendors and sending invitations. Your home buying task list focuses only on financing and inspections. This intentional separation helps you focus on the right actions for each life event.
+              Set priorities, track status from To Do → In Progress → Done, add due dates, and focus on the right tasks for each life event. Switch between guides to see tasks organized by what you're currently planning.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Visual Example - Wedding Tasks */}
       <section className="py-16">
-        <div className="container max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold mb-4">Task Features</h2>
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-8">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Wedding Planning Tasks</h2>
             <p className="text-muted-foreground text-lg">
-              Everything you need to track action items and to-dos
+              Track vendor bookings, planning milestones, and wedding day preparation
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {features.map((feature, idx) => (
-              <div key={idx} className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-muted">
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
+          {/* Tasks Visual Mockup */}
+          <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="space-y-4">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-semibold">Wedding Tasks</h3>
+                <div className="flex gap-2 text-sm text-muted-foreground">
+                  <span>12 of 18 completed</span>
                 </div>
               </div>
-            ))}
+
+              {/* Tasks List */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-muted-foreground line-through">Book venue</h4>
+                  </div>
+                  <Badge variant="outline" className="text-red-500 border-red-500/50">High</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <CircleDashed className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Send invitations</h4>
+                    <p className="text-sm text-muted-foreground">Due in 3 days</p>
+                  </div>
+                  <Badge variant="outline" className="text-red-500 border-red-500/50">High</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <Circle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Finalize menu with caterer</h4>
+                    <p className="text-sm text-muted-foreground">Due June 1</p>
+                  </div>
+                  <Badge variant="outline" className="text-yellow-500 border-yellow-500/50">Medium</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <Circle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Order wedding cake</h4>
+                  </div>
+                  <Badge variant="outline" className="text-yellow-500 border-yellow-500/50">Medium</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <Circle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Create seating chart</h4>
+                  </div>
+                  <Badge variant="outline" className="text-muted-foreground border-muted">Low</Badge>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <Separator className="my-16" />
-
-      {/* Use Cases */}
+      {/* Visual Example - Career Tasks */}
       <section className="py-16">
-        <div className="container max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold mb-4">Task List Examples</h2>
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-8">
+            <h2 className="text-2xl font-medium text-foreground mb-3">Career Transition Tasks</h2>
             <p className="text-muted-foreground text-lg">
-              How different life events organize action items
+              Manage job applications, interview prep, and networking action items
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {useCases.map((useCase, idx) => (
-              <div key={idx} className="border border-border rounded-lg p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <useCase.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="font-semibold text-lg">{useCase.title}</h3>
+          {/* Tasks Visual Mockup */}
+          <div className="rounded-lg border border-border bg-muted/20 p-6">
+            <div className="space-y-4">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-semibold">Career Tasks</h3>
+                <div className="flex gap-2 text-sm text-muted-foreground">
+                  <span>5 of 10 completed</span>
                 </div>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  {useCase.description}
+              </div>
+
+              {/* Tasks List */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-muted-foreground line-through">Update resume with recent projects</h4>
+                  </div>
+                  <Badge variant="outline" className="text-red-500 border-red-500/50">High</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <CircleDashed className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Research target companies</h4>
+                    <p className="text-sm text-muted-foreground">Make list of 20 companies</p>
+                  </div>
+                  <Badge variant="outline" className="text-red-500 border-red-500/50">High</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <Circle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Practice behavioral interview questions</h4>
+                  </div>
+                  <Badge variant="outline" className="text-yellow-500 border-yellow-500/50">Medium</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <Circle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Reach out to 5 contacts for coffee chats</h4>
+                    <p className="text-sm text-muted-foreground">Informational interviews</p>
+                  </div>
+                  <Badge variant="outline" className="text-yellow-500 border-yellow-500/50">Medium</Badge>
+                </div>
+
+                <div className="flex items-center gap-3 p-3 rounded-md bg-background border border-border">
+                  <Circle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-medium text-foreground">Update LinkedIn profile and headline</h4>
+                  </div>
+                  <Badge variant="outline" className="text-muted-foreground border-muted">Low</Badge>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <Separator className="mb-16" />
+          <div className="mb-8">
+            <h2 className="text-2xl font-medium text-foreground mb-3">How Task Organization Works</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <ListChecks className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">One List Per Guide</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Each life event guide has its own task list. Wedding tasks stay in the wedding list, career tasks in the career list—complete separation.
                 </p>
-                <div className="space-y-2">
-                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Example Tasks:</p>
-                  <ul className="space-y-2">
-                    {useCase.tasks.map((task, taskIdx) => (
-                      <li key={taskIdx} className="flex items-center gap-3 text-sm py-1">
-                        {getStatusIcon(task.status)}
-                        <span className="flex-1">{task.title}</span>
-                        <Badge variant="outline" className={`text-xs ${getPriorityColor(task.priority)}`}>
-                          {task.priority}
-                        </Badge>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      <Separator className="my-16" />
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Target className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Priority Levels</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Set tasks as High, Medium, or Low priority. Focus on high-priority vendor bookings first, then move to medium-priority planning details.
+                </p>
+              </div>
+            </div>
 
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container max-w-4xl text-center">
-          <h2 className="text-3xl font-semibold mb-4">
-            Start Organizing Your Action Items
-          </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-            Choose a planning guide and start tracking your tasks. All features are free during beta.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Button asChild size="lg">
-              <Link href="/guides">Browse Planning Guides</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link href="/features">View All Features</Link>
-            </Button>
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <CircleDashed className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Status Tracking</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Track tasks through To Do (not started), In Progress (working on it), and Done (completed). See what needs attention at a glance.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="bg-primary/10 rounded-lg p-3 w-fit flex-shrink-0">
+                <Heart className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground text-lg mb-2">Stay Organized</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  See only wedding tasks when planning your wedding, only job search tasks when changing careers. Focused task lists reduce overwhelm.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </div>
   );
 };
+
+function Marquee({
+  className,
+  reverse,
+  children,
+  vertical = false,
+  repeat = 4,
+  ...props
+}: any) {
+  return (
+    <div
+      {...props}
+      className={cn(
+        "group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)]",
+        {
+          "flex-row": !vertical,
+          "flex-col": vertical,
+        },
+        className,
+      )}
+    >
+      {Array(repeat)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            key={i}
+            className={cn(
+              "flex shrink-0 justify-around ![animation-duration:12s] [animation-play-state:running] [gap:var(--gap)] group-hover:[animation-play-state:paused]",
+              {
+                "animate-marquee flex-row": !vertical,
+                "animate-marquee-vertical flex-col": vertical,
+                "[animation-direction:reverse]": reverse,
+              },
+            )}
+          >
+            {children}
+          </div>
+        ))}
+    </div>
+  );
+}
+
+interface SkiperUiMarqueeProps {
+  showCard: number;
+  reverse?: boolean;
+  className?: string;
+  icons: React.ComponentType<{ className?: string }>[];
+}
+
+function SkiperUiMarquee({
+  showCard,
+  reverse = false,
+  className,
+  icons,
+}: SkiperUiMarqueeProps) {
+  return (
+    <div
+      className={cn("relative overflow-hidden", className)}
+      style={{
+        height: showCard * 113,
+      }}
+    >
+      <Marquee reverse={reverse} vertical={true}>
+        {icons.map((Icon, idx) => (
+          <Card key={idx} Icon={Icon} />
+        ))}
+      </Marquee>
+      <div className="from-background absolute top-0 z-10 h-8 w-full bg-gradient-to-b to-transparent" />
+      <div className="from-background absolute bottom-0 z-10 h-8 w-full bg-gradient-to-t to-transparent" />
+    </div>
+  );
+}
+
+function Card({ Icon }: { Icon: React.ComponentType<{ className?: string }> }) {
+  return (
+    <div
+      className={cn(
+        "border-muted relative flex size-24 items-center justify-center overflow-hidden rounded-3xl border p-4",
+        "from-muted/50 to-background bg-gradient-to-b",
+        "dark:bg-transparent dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+      )}
+    >
+      <Icon className="size-8" />
+    </div>
+  );
+}
