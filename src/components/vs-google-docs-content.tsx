@@ -179,7 +179,7 @@ export const VsGoogleDocsContent: React.FC = () => {
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <svg className="h-7" viewBox="0 0 87.3 78" fill="currentColor">
+                  <svg className="h-7 w-7" viewBox="0 0 87.3 78" fill="none">
                     <path fill="#4285f4" d="M48.4,36.2L65.1,0L3.4,0L19.4,36.2z"/>
                     <path fill="#ea4335" d="M48.4,36.2l16.7,0v41.8H31.3v-3.5L3.4,78V0z"/>
                     <path fill="#34a853" d="M31.3,74.5v3.5h33.8L83.9,39L65.1,0z"/>

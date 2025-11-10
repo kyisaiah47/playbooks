@@ -179,10 +179,8 @@ export const VsWikipediaContent: React.FC = () => {
               </div>
               <div className="bg-border/40 rounded-xl p-6">
                 <span className="flex items-center justify-center gap-2 font-medium">
-                  <svg className="h-7" viewBox="0 0 200 200" fill="currentColor">
-                    <path d="M100 10C50 10 10 50 10 100C10 150 50 190 100 190C150 190 190 150 190 100C190 50 150 10 100 10ZM100 170C61 170 30 139 30 100C30 61 61 30 100 30C139 30 170 61 170 100C170 139 139 170 100 170Z"/>
-                    <path d="M100 50L80 85H95V120H105V85H120L100 50Z"/>
-                    <path d="M70 140H130V150H70V140Z"/>
+                  <svg className="h-7 w-7" viewBox="0 0 103 94" fill="none">
+                    <path d="M21.8 0L0 75H7.5L20.8 25L35.5 75H44L58 25L71.5 75H79L57.2 0H48.5L36 48L23.5 0H21.8Z" fill="#000000" className="dark:fill-white"/>
                   </svg>
                   Wikipedia
                 </span>
