@@ -2,11 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles } from "lucide-react";
+import { CheckCircle2, CircleMinus, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export const VsMondayContent: React.FC = () => {
   return (
@@ -107,92 +108,129 @@ export const VsMondayContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Comparison Content */}
+      {/* Comparison Body */}
       <section className="py-16">
         <div className="container max-w-4xl">
           <Separator className="mb-16" />
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h2 className="text-2xl font-medium text-foreground">Templata vs Monday.com for Life Planning</h2>
-            <p>
+          <div className="mb-12">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Monday.com is a powerful work operating system designed for teams to manage projects, workflows, and business processes. Templata is a life planning platform specifically built for navigating major personal life decisions. Both help with organization, but they target completely different use cases.
             </p>
           </div>
-
-          <Separator className="my-16" />
-
-          <div className="mb-12">
-            <h3 className="text-2xl font-medium text-foreground mb-6">Key Differences</h3>
-          </div>
-
-          <div className="grid gap-6 mb-12">
-            <div className="border rounded-lg p-6">
-              <h4 className="font-medium text-lg mb-3 flex items-center gap-2 text-foreground">
-                <CheckCircle2 className="w-5 h-5 text-green-500" />
-                Templata: Personal Life Planning
-              </h4>
-              <ul className="space-y-2 text-muted-foreground leading-relaxed">
-                <li>• Expert-crafted guides for weddings, careers, home buying & more</li>
-                <li>• AI-refined planning questions with 90%+ coverage</li>
-                <li>• Curated expert readings for informed decision-making</li>
-                <li>• Completely free for individuals</li>
-                <li>• Personal planning and life transitions</li>
-              </ul>
-            </div>
-
-            <div className="border rounded-lg p-6">
-              <h4 className="font-medium text-lg mb-3 flex items-center gap-2 text-foreground">
-                <CheckCircle2 className="w-5 h-5 text-blue-500" />
-                Monday.com: Work Operating System
-              </h4>
-              <ul className="space-y-2 text-muted-foreground leading-relaxed">
-                <li>• Team collaboration and workflow automation</li>
-                <li>• Customizable boards and project tracking</li>
-                <li>• Business process management</li>
-                <li>• Paid subscription required</li>
-                <li>• Work and business focus</li>
-              </ul>
-            </div>
-          </div>
-
-          <Separator className="my-16" />
-
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h3 className="text-2xl font-medium text-foreground">When to Use Templata vs Monday.com</h3>
-
-            <div className="space-y-4">
-              <div className="border-l-4 border-green-500 pl-4 py-2">
-                <p className="font-medium text-foreground">Use Templata for:</p>
-                <p className="text-muted-foreground">Planning weddings, career changes, home purchases, business launches, financial decisions, and other major life transitions requiring comprehensive frameworks and expert guidance.</p>
+          <div className="mt-12">
+            <div className="mx-auto grid gap-6 md:grid-cols-2">
+              <div className="bg-background rounded-xl border p-6 shadow">
+                <span className="flex items-center justify-center gap-2 font-medium">
+                  <Image
+                    src="/favicon.svg"
+                    alt="Templata"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 dark:invert-0 invert"
+                  />
+                  Templata
+                </span>
+                <Separator className="my-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Expert planning frameworks
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    90%+ validated coverage
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    200-500+ AI-refined questions per guide
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Curated expert readings integrated
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Per-guide organization (calendars, tasks)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Start planning in minutes
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Free forever (beta)
+                  </li>
+                </ul>
               </div>
-
-              <div className="border-l-4 border-blue-500 pl-4 py-2">
-                <p className="font-medium text-foreground">Use Monday.com for:</p>
-                <p className="text-muted-foreground">Managing work projects, coordinating teams, automating business workflows, tracking sales pipelines, and organizing company processes requiring team collaboration.</p>
+              <div className="bg-border/40 rounded-xl p-6">
+                <span className="flex items-center justify-center gap-2 font-medium">
+                  <svg className="h-7" viewBox="0 0 200 200" fill="none">
+                    <rect x="20" y="20" width="160" height="160" rx="20" fill="#ff3d57"/>
+                    <rect x="40" y="60" width="50" height="8" rx="4" fill="white"/>
+                    <rect x="40" y="80" width="35" height="8" rx="4" fill="white"/>
+                    <rect x="110" y="60" width="50" height="8" rx="4" fill="white"/>
+                    <rect x="110" y="80" width="35" height="8" rx="4" fill="white"/>
+                    <rect x="40" y="110" width="50" height="8" rx="4" fill="white"/>
+                    <rect x="110" y="110" width="50" height="8" rx="4" fill="white"/>
+                  </svg>
+                  Monday.com
+                </span>
+                <Separator className="my-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Work operating system
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No life planning frameworks
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No AI-refined questions
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No expert content
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Team workflow automation
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Built for work, not life planning
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Paid subscription required
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-
           <Separator className="my-16" />
-
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h3 className="text-2xl font-medium text-foreground">Pricing Comparison</h3>
+            <h2 className="text-2xl font-medium text-foreground">
+              Who is Monday.com suitable for?
+            </h2>
             <p>
-              <strong>Templata:</strong> Free forever. Access all planning guides, AI questions, and expert content at no cost.
-            </p>
-            <p>
-              <strong>Monday.com:</strong> Paid subscription required. Plans start at per-user pricing for teams.
+              Monday.com is excellent for business teams managing work projects and workflows. If you're coordinating marketing campaigns, tracking sales pipelines, managing product development, or automating business processes, Monday.com's customizable boards and workflow automation provide powerful team collaboration. It works best for professional work contexts.
             </p>
           </div>
-
           <Separator className="my-16" />
-
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h3 className="text-2xl font-medium text-foreground">The Bottom Line</h3>
+            <h2 className="text-2xl font-medium text-foreground">
+              Why Choose Templata for Life Planning?
+            </h2>
             <p>
-              Monday.com is built for business teams managing work projects and workflows. Templata is built for individuals navigating major life decisions with expert frameworks. They're designed for entirely different purposes - Monday.com for work collaboration, Templata for personal life planning.
+              When planning life's biggest moments—weddings, career changes, home buying, financial planning—you don't want work operating systems. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.
             </p>
             <p>
-              For life planning (weddings, careers, homes, personal finance), Templata offers expert-crafted frameworks, comprehensive question sets, and curated guidance that Monday.com's workflow boards don't provide. For business project management and team coordination, Monday.com's collaboration tools are purpose-built for that context.
+              Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you're learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.
+            </p>
+            <p>
+              While Monday.com requires paid subscriptions and is built for business teams, Templata is free forever (currently in beta) and built specifically for personal life planning. For life planning, choose expert frameworks over work operating systems.
             </p>
           </div>
         </div>

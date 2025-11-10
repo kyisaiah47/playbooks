@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 import {
@@ -11,6 +11,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Particles } from "@/components/magicui/particles";
+import { SkiperUiMarquee } from "@/components/category-hero";
+import { Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles, BookOpen, ListChecks, BookMarked, CheckCircle2 } from "lucide-react";
 
 type Category = "General" | "Guides" | "Features" | "Pricing" | "Technical";
 
@@ -220,16 +224,120 @@ const AboutFaq = () => {
   };
 
   return (
-    <section className="min-h-screen bg-background py-32">
-      <div className="container max-w-4xl">
-        <div className="text-center">
-          <h1 className="text-center text-4xl font-medium tracking-tight sm:text-5xl">
-            Frequently Asked Questions
+    <div>
+      {/* Hero Section */}
+      <section className="relative py-32 pt-56">
+        <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
+          <Badge variant="secondary" className="flex items-center gap-2">
+            <Sparkles className="w-3 h-3" />
+            Common Questions
+          </Badge>
+
+          <h1 className="relative z-15 max-w-3xl text-center text-6xl font-medium tracking-tighter md:text-7xl">
+            <span
+              className="overflow-hidden"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "600px",
+              }}
+            >
+              {"Frequently Asked Questions".split(" ").map((word, i) => (
+                <motion.span
+                  className="relative inline-block px-[6px] leading-[none]"
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    y: "70%",
+                    rotateX: "-28deg",
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: "0%",
+                    rotateX: "0deg",
+                  }}
+                  transition={{
+                    delay: i * 0.08 + 0.1,
+                    duration: 0.8,
+                    ease: [0.215, 0.61, 0.355, 1],
+                  }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </span>
           </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-xl text-balance text-center text-lg leading-relaxed">
-            Common questions about Templata, guides, features, and pricing.
+
+          <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
+            Common questions about Templata, guides, features, and pricing
           </p>
+
+          <Particles
+            className="absolute inset-0 z-0"
+            quantity={500}
+            ease={80}
+            refresh
+          />
+
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 1 }}
+            className="relative z-20 mt-10 flex items-center justify-center gap-4"
+          >
+            <SkiperUiMarquee
+              showCard={1}
+              className=""
+              reverse={true}
+              icons={[Heart, Home, Users, Baby]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[Briefcase, Rocket, Target, TrendingUp]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={3}
+              reverse={true}
+              className=""
+              icons={[Activity, Brain, Pill, Sparkles]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[BookOpen, ListChecks, BookMarked, CheckCircle2]}
+              highlighted
+            />
+            <SkiperUiMarquee
+              showCard={3}
+              reverse={true}
+              className=""
+              icons={[Heart, Home, Briefcase, Activity]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              showCard={2}
+              className=""
+              icons={[Rocket, Brain, DollarSign, Users]}
+              dimmed
+            />
+            <SkiperUiMarquee
+              reverse={true}
+              showCard={1}
+              className=""
+              icons={[Target, Pill, PiggyBank, Baby]}
+              dimmed
+            />
+          </motion.div>
+
+          <div className="h-92 bg-background absolute bottom-20 left-0 right-0 w-full blur-xl" />
         </div>
+      </section>
+
+      <section className="min-h-screen bg-background py-16">
+      <div className="container max-w-4xl">
 
         <div className="mt-8 grid max-w-5xl gap-8 md:mt-12 md:grid-cols-[200px_1fr] md:gap-12 lg:mt-16">
           {/* Sidebar */}
@@ -296,6 +404,7 @@ const AboutFaq = () => {
         </div>
       </div>
     </section>
+    </div>
   );
 };
 

@@ -2,11 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles } from "lucide-react";
+import { CheckCircle2, CircleMinus, Heart, Briefcase, Activity, DollarSign, Home, Users, Rocket, Brain, TrendingUp, Wallet, Baby, Target, Pill, PiggyBank, Sparkles } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
 import { SkiperUiMarquee } from "@/components/category-hero";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export const VsAsanaContent: React.FC = () => {
   return (
@@ -107,92 +108,126 @@ export const VsAsanaContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Comparison Content */}
+      {/* Comparison Body */}
       <section className="py-16">
         <div className="container max-w-4xl">
           <Separator className="mb-16" />
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h2 className="text-2xl font-medium text-foreground">Templata vs Asana for Life Planning</h2>
-            <p>
+          <div className="mb-12">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Asana is an excellent project management tool built for teams to coordinate work tasks. Templata is a life planning platform built specifically for major personal life decisions and transitions. While both help you organize, they serve fundamentally different purposes.
             </p>
           </div>
-
-          <Separator className="my-16" />
-
-          <div className="mb-12">
-            <h3 className="text-2xl font-medium text-foreground mb-6">Key Differences</h3>
-          </div>
-
-          <div className="grid gap-6 mb-12">
-            <div className="border rounded-lg p-6">
-              <h4 className="font-medium text-lg mb-3 flex items-center gap-2 text-foreground">
-                <CheckCircle2 className="w-5 h-5 text-green-500" />
-                Templata: Life Planning Platform
-              </h4>
-              <ul className="space-y-2 text-muted-foreground leading-relaxed">
-                <li>• Expert frameworks for life events (weddings, careers, home buying)</li>
-                <li>• AI-refined questions with 90%+ coverage guarantee</li>
-                <li>• Curated expert readings for each life decision</li>
-                <li>• Free forever - no cost for individuals</li>
-                <li>• Personal planning focus</li>
-              </ul>
-            </div>
-
-            <div className="border rounded-lg p-6">
-              <h4 className="font-medium text-lg mb-3 flex items-center gap-2 text-foreground">
-                <CheckCircle2 className="w-5 h-5 text-blue-500" />
-                Asana: Project Management Tool
-              </h4>
-              <ul className="space-y-2 text-muted-foreground leading-relaxed">
-                <li>• Task tracking and team collaboration</li>
-                <li>• Project timelines and workflows</li>
-                <li>• Team coordination features</li>
-                <li>• Paid plans for meaningful features</li>
-                <li>• Work/business focus</li>
-              </ul>
-            </div>
-          </div>
-
-          <Separator className="my-16" />
-
-          <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h3 className="text-2xl font-medium text-foreground">When to Use Templata vs Asana</h3>
-
-            <div className="space-y-4">
-              <div className="border-l-4 border-green-500 pl-4 py-2">
-                <p className="font-medium text-foreground">Use Templata for:</p>
-                <p className="text-muted-foreground">Wedding planning, career transitions, home buying, business launches, financial planning, and other major personal life decisions requiring expert guidance and comprehensive frameworks.</p>
+          <div className="mt-12">
+            <div className="mx-auto grid gap-6 md:grid-cols-2">
+              <div className="bg-background rounded-xl border p-6 shadow">
+                <span className="flex items-center justify-center gap-2 font-medium">
+                  <Image
+                    src="/favicon.svg"
+                    alt="Templata"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 dark:invert-0 invert"
+                  />
+                  Templata
+                </span>
+                <Separator className="my-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Expert planning frameworks
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    90%+ validated coverage
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    200-500+ AI-refined questions per guide
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Curated expert readings integrated
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Per-guide organization (calendars, tasks)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Start planning in minutes
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Free forever (beta)
+                  </li>
+                </ul>
               </div>
-
-              <div className="border-l-4 border-blue-500 pl-4 py-2">
-                <p className="font-medium text-foreground">Use Asana for:</p>
-                <p className="text-muted-foreground">Work project management, team task coordination, business workflow tracking, and collaborative team projects requiring timeline management and task assignment.</p>
+              <div className="bg-border/40 rounded-xl p-6">
+                <span className="flex items-center justify-center gap-2 font-medium">
+                  <svg className="h-7" viewBox="0 0 200 200" fill="none">
+                    <circle cx="100" cy="100" r="90" fill="#f06a6a"/>
+                    <circle cx="100" cy="60" r="15" fill="white"/>
+                    <circle cx="100" cy="100" r="15" fill="white"/>
+                    <circle cx="100" cy="140" r="15" fill="white"/>
+                  </svg>
+                  Asana
+                </span>
+                <Separator className="my-6" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Work project management
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No life planning frameworks
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No AI-refined questions
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    No expert content
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-700" />
+                    Team collaboration features
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Built for work, not life planning
+                  </li>
+                  <li className="text-muted-foreground flex items-center gap-2 line-through">
+                    <CircleMinus className="h-5 w-5 shrink-0 opacity-50" />
+                    Paid plans for meaningful features
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-
           <Separator className="my-16" />
-
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h3 className="text-2xl font-medium text-foreground">Pricing Comparison</h3>
+            <h2 className="text-2xl font-medium text-foreground">
+              Who is Asana suitable for?
+            </h2>
             <p>
-              <strong>Templata:</strong> Free forever. All planning guides, AI-refined questions, and expert readings at no cost.
-            </p>
-            <p>
-              <strong>Asana:</strong> Free tier limited. Paid plans required for timeline views, advanced features, and meaningful collaboration.
+              Asana is excellent for managing work projects and coordinating teams. If you're tracking software development sprints, managing marketing campaigns, or organizing business workflows where everyone knows their responsibilities, Asana's project management features provide clear visibility and task assignment. It works best for professional team collaboration.
             </p>
           </div>
-
           <Separator className="my-16" />
-
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h3 className="text-2xl font-medium text-foreground">The Bottom Line</h3>
+            <h2 className="text-2xl font-medium text-foreground">
+              Why Choose Templata for Life Planning?
+            </h2>
             <p>
-              Asana excels at managing work projects and coordinating teams. Templata excels at helping you navigate major personal life decisions with expert frameworks and comprehensive guidance. They serve different needs - Asana for professional project management, Templata for personal life planning.
+              When planning life's biggest moments—weddings, career changes, home buying, financial planning—you don't want work project management tools. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.
             </p>
             <p>
-              For life planning (weddings, careers, homes, business launches), Templata provides structured frameworks, expert content, and AI-refined questions that Asana's task management approach doesn't offer. For work projects and team coordination, Asana's collaboration features are purpose-built.
+              Each guide includes 200-500+ AI-refined questions that help you think through every angle, plus curated expert readings so you're learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.
+            </p>
+            <p>
+              While Asana requires paid plans for meaningful features and is built for work teams, Templata is free forever (currently in beta) and built specifically for personal life planning. For life planning, choose expert frameworks over work project management.
             </p>
           </div>
         </div>
