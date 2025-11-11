@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
@@ -117,10 +118,12 @@ const AboutHeroImage = () => {
           className="mb-16"
         >
           <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-3xl">
-            <img
+            <Image
               src="/geometric-monuments.webp"
-              alt="Background"
-              className="block size-full object-cover object-center"
+              alt="Geometric monuments representing life's major milestones and planning moments"
+              fill
+              className="object-cover object-center"
+              priority
             />
           </AspectRatio>
         </motion.div>

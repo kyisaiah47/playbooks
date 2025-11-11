@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { ManifestoAudio } from "@/components/manifesto-audio";
 
@@ -11,10 +12,12 @@ const AboutHero = () => {
         <div className="mb-16 space-y-8">
           <div className="flex justify-start">
             <div className="bg-muted rounded-full p-6">
-              <img
+              <Image
                 src="/favicon.svg"
-                alt="Templata"
-                className="h-16 dark:invert-0 invert"
+                alt="Templata logo"
+                width={64}
+                height={64}
+                className="dark:invert-0 invert"
               />
             </div>
           </div>

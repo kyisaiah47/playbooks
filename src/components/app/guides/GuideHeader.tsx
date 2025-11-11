@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import NextImage from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
@@ -373,10 +374,11 @@ export function GuideHeader({
       {/* Cover Image - Smaller */}
       <div className="h-20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 relative">
         {coverImage && (
-          <img
+          <NextImage
             src={coverImage}
-            alt="Guide cover"
-            className="w-full h-full object-cover"
+            alt="Guide cover image"
+            fill
+            className="object-cover"
           />
         )}
         {onCoverChange && (
