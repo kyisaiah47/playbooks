@@ -166,6 +166,31 @@ export default function HomePage() {
 		],
 	};
 
+	// Product schema for SEO - represents Templata as a product/service
+	const productSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'Product',
+		name: 'Templata Life Planning Platform',
+		description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions with 90%+ coverage guarantee. Curated expert readings. Integrated calendar, tasks, and analytics.',
+		brand: {
+			'@type': 'Brand',
+			name: 'Templata'
+		},
+		category: 'Software > Productivity Software > Life Planning',
+		offers: {
+			'@type': 'Offer',
+			url: 'https://templata.org',
+			priceCurrency: 'USD',
+			price: '0.00',
+			priceValidUntil: '2026-12-31',
+			availability: 'https://schema.org/InStock',
+			seller: {
+				'@type': 'Organization',
+				name: 'Templata'
+			}
+		}
+	};
+
 	return (
 		<>
 			<Script
@@ -192,6 +217,11 @@ export default function HomePage() {
 				id="home-howto-jsonld"
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+			/>
+			<Script
+				id="home-product-jsonld"
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
 			/>
 
 			<PageLayout>

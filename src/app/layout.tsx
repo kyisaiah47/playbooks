@@ -81,6 +81,12 @@ export const metadata: Metadata = {
     canonical: 'https://templata.org',
   },
   category: 'productivity',
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
+    },
+  },
 };
 
 export default function RootLayout({

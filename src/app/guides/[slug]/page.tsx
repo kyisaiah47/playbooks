@@ -140,7 +140,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'Templata',
       images: [
         {
-          url: '/og-image.png',
+          url: `https://templata.org/api/og?title=${encodeURIComponent(guide.name)}&subtitle=${encodeURIComponent('Expert planning guide')}&type=guide`,
           width: 1200,
           height: 630,
           alt: `${guide.name} Planning Guide: Expert framework with AI-refined questions, curated readings, and comprehensive ${guide.category.toLowerCase()} planning guidance. Free access to professional ${guide.name.toLowerCase()} template.`,
@@ -153,7 +153,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title,
       description,
-      images: ['/og-image.png'],
+      images: [`https://templata.org/api/og?title=${encodeURIComponent(guide.name)}&subtitle=${encodeURIComponent('Expert planning guide')}&type=guide`],
     },
     robots: {
       index: true,

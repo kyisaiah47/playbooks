@@ -126,7 +126,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'Templata',
       images: [
         {
-          url: '/og-image.png',
+          url: `https://templata.org/api/og?title=${encodeURIComponent(reading.title)}&subtitle=${encodeURIComponent(guideName + ' Guide')}&type=library`,
           width: 1200,
           height: 630,
           alt: reading.title,
@@ -141,7 +141,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary_large_image',
       title,
       description,
-      images: ['/og-image.png'],
+      images: [`https://templata.org/api/og?title=${encodeURIComponent(reading.title)}&subtitle=${encodeURIComponent(guideName + ' Guide')}&type=library`],
       ...(reading.author && { creator: `@${reading.author.replace(/\s+/g, '')}` }),
     },
     robots: {
