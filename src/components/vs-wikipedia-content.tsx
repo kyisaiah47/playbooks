@@ -16,7 +16,7 @@ export const VsWikipediaContent: React.FC = () => {
         { text: "Expert readings curated & integrated", present: true },
         { text: "Tasks, calendars, progress tracking", present: true },
         { text: "Personalized to your specific situation", present: true },
-        { text: "Free forever (beta)", present: true },
+        { text: "Free beta access", present: true },
       ]}
       competitorName="Wikipedia"
       competitorFeatures={[

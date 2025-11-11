@@ -114,7 +114,7 @@ export default function VsGooglePage() {
 
         <h3>How Templata Solves This</h3>
         <p>
-          Templata replaces scattered search results with one comprehensive framework per life event. Each guide provides 200-500+ AI-refined questions ensuring 90%+ coverage of what matters, plus curated expert readings integrated with your planning. Everything organized in dedicated workspaces with built-in tasks, calendars, and progress tracking.
+          Templata replaces scattered search results with one comprehensive framework per life event. Each guide provides 50+ AI-refined questions ensuring 90%+ coverage of what matters, plus curated expert readings integrated with your planning. Everything organized in dedicated workspaces with built-in tasks, calendars, and progress tracking.
         </p>
 
         <h3>Key Differences</h3>

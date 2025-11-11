@@ -16,7 +16,7 @@ export const VsNotionContent: React.FC = () => {
         { text: "Curated expert readings integrated", present: true },
         { text: "Per-guide organization (calendars, tasks)", present: true },
         { text: "Start planning in minutes", present: true },
-        { text: "Free forever (beta)", present: true },
+        { text: "Free beta access", present: true },
       ]}
       competitorName="Notion"
       competitorFeatures={[
@@ -38,7 +38,7 @@ export const VsNotionContent: React.FC = () => {
         paragraphs: [
           "When planning life's biggest moments—weddings, career changes, home buying, financial planning—you don't want blank pages. You need expert guidance. Templata provides comprehensive frameworks developed by experts, validated through our Axiom Engine to ensure 90%+ coverage of what actually matters.",
           "Each guide includes comprehensive AI-refined questions that help you think through every angle, plus curated expert readings so you're learning from the best sources—not Googling randomly. Everything is integrated: questions, readings, calendars, tasks, and notes all work together in per-guide workspaces.",
-          "While Notion requires hours to set up and leaves you guessing what you might have missed, Templata gets you planning comprehensively in minutes. And unlike Notion's $10/month for meaningful features, Templata is free forever (currently in beta). For life planning, choose expert frameworks over blank pages.",
+          "While Notion requires hours to set up and leaves you guessing what you might have missed, Templata gets you planning comprehensively in minutes. And unlike Notion's $10/month for meaningful features, Templata is free during beta. For life planning, choose expert frameworks over blank pages.",
         ],
       }}
     />

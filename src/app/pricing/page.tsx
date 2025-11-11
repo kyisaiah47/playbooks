@@ -4,15 +4,15 @@ import { PricingContent } from '@/components/pricing-content';
 import { PageLayout } from '@/components/layout';
 
 export const metadata: Metadata = {
-  title: 'Pricing - Free Forever | Wedding Planning, Career & Life Planning | Templata',
-  description: 'How much does Templata cost? Free. Completely free forever. No credit card, no trial, no paywalls, no limits. All features free: guides, AI questions, expert readings, analytics. Beta access now.',
-  keywords: 'templata pricing, templata cost, how much does templata cost, is templata free, free planning software, free life planning app, free wedding planning app, free career planning tool, free home buying guide, no cost planning, free forever planning, templata free vs paid, free notion alternative, free trello alternative, save money planning, planning app no subscription, zero cost life planning, free organizational tools, free expert guidance, free ai planning assistant, life planning platform cost, beta pricing free',
+  title: 'Pricing - Free Beta | Wedding Planning, Career & Life Planning | Templata',
+  description: 'How much does Templata cost? Free. Currently free during beta. No credit card, no trial, no paywalls, no limits during beta. All features free: guides, AI questions, expert readings, analytics.',
+  keywords: 'templata pricing, templata cost, how much does templata cost, is templata free, free planning software, free life planning app, free wedding planning app, free career planning tool, free home buying guide, no cost planning, free beta planning, templata free vs paid, free notion alternative, free trello alternative, save money planning, planning app no subscription, free organizational tools, free expert guidance, free ai planning assistant, life planning platform cost, beta pricing free',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
   publisher: 'Templata',
   openGraph: {
-    title: 'Pricing - Free Forever Life Planning Platform | Templata',
-    description: 'Completely free forever. Access all planning guides, AI-refined questions, and expert readings at no cost. Currently in beta.',
+    title: 'Pricing - Free Beta Life Planning Platform | Templata',
+    description: 'Currently free during beta. Access all planning guides, AI-refined questions, and expert readings at no cost during beta period.',
     url: 'https://templata.org/pricing',
     siteName: 'Templata',
     images: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Templata Pricing - Free Forever',
+        alt: 'Templata Pricing - Free Beta',
       },
     ],
     locale: 'en_US',
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pricing - Free Forever Life Planning Platform | Templata',
-    description: 'Completely free forever. Access all planning guides and expert content at no cost.',
+    title: 'Pricing - Free Beta Life Planning Platform | Templata',
+    description: 'Currently free during beta. Access all planning guides and expert content at no cost during beta period.',
     images: ['https://templata.org/og-image.png'],
     creator: '@templata',
   },
@@ -64,7 +64,7 @@ export default function PricingPage() {
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       priceValidUntil: '2099-12-31',
-      description: 'Free forever access to all core features including planning guides, AI-refined questions, expert readings, and organizational tools'
+      description: 'Free beta access to all core features including planning guides, AI-refined questions, expert readings, and organizational tools'
     },
     featureList: [
       'Unlimited planning guides',
@@ -98,7 +98,7 @@ export default function PricingPage() {
         name: 'Will Templata always be free?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, core features will remain free forever. All planning guides, AI-refined questions, expert readings, and basic organizational tools will always be accessible at no cost. We are currently in beta and may introduce optional premium features in the future, but the comprehensive planning framework will always be free.'
+          text: 'Currently free during beta. All planning guides, AI-refined questions, expert readings, and basic organizational tools are accessible at no cost during beta. We are currently in beta and may introduce pricing options in the future.'
         }
       },
       {
@@ -122,7 +122,7 @@ export default function PricingPage() {
         name: 'What are premium features and when will they launch?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'We are currently in beta and focusing on perfecting the core free experience. Premium features under consideration for the future include advanced collaboration tools for shared planning, external calendar integrations, premium analytics dashboards, AI-powered planning assistance, and custom guide builders. These would be optional add-ons while core planning features remain free forever.'
+          text: 'We are currently in beta and focusing on perfecting the core experience. Premium features under consideration for the future include advanced collaboration tools for shared planning, external calendar integrations, premium analytics dashboards, AI-powered planning assistance, and custom guide builders.'
         }
       },
       {
@@ -193,7 +193,7 @@ export default function PricingPage() {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: 'Templata Pricing',
-    description: 'Free forever life planning platform with no hidden costs',
+    description: 'Free beta life planning platform with no costs during beta',
     url: 'https://templata.org/pricing',
   };
 
@@ -226,11 +226,11 @@ export default function PricingPage() {
 
       {/* Extensive Hidden SEO Content */}
       <div className="sr-only" aria-hidden="true">
-        <h2>Templata Pricing - Completely Free Forever</h2>
+        <h2>Templata Pricing - Free Beta Access</h2>
 
         <h3>Free Life Planning Platform</h3>
         <p>
-          Templata is completely free to use, forever. Access all planning guides, AI-refined questions, expert curated readings, and organizational tools at absolutely no cost. No credit card required, no hidden fees, no trial periods, no paywalls. We believe comprehensive planning for life's biggest moments should be accessible to everyone, regardless of budget.
+          Templata is currently free during beta. Access all planning guides, AI-refined questions, expert curated readings, and organizational tools at no cost during beta. No credit card required during beta period. We believe comprehensive planning for life's biggest moments should be accessible to everyone.
         </p>
 
         <h3>What's Included in Free (Everything)</h3>
@@ -242,7 +242,7 @@ export default function PricingPage() {
 
         <h4>AI-Refined Questions with 90%+ Coverage</h4>
         <p>
-          Every planning guide includes 200-500+ questions refined through our proprietary Axiom Engine. These questions have been tested through months of AI-assisted validation to ensure comprehensive coverage of 90%+ of considerations for each life event. No limit on how many questions you can answer or guides you can complete.
+          Every planning guide includes 50+ questions refined through our proprietary Axiom Engine. These questions have been tested through months of AI-assisted validation to ensure comprehensive coverage of 90%+ of considerations for each life event. No limit on how many questions you can answer or guides you can complete.
         </p>
 
         <h4>Expert Curated Readings - Thousands of Articles</h4>
@@ -287,17 +287,17 @@ export default function PricingPage() {
 
         <h3>Currently in Beta</h3>
         <p>
-          Templata is currently in beta, which means we're actively refining features, adding new guides, and improving the platform based on user feedback. Beta access is completely free with no limitations. All features currently available will remain free when we exit beta. We're focused on building the best possible planning experience before considering any premium offerings.
+          Templata is currently in beta, which means we're actively refining features, adding new guides, and improving the platform based on user feedback. Beta access is completely free with no limitations. We're focused on building the best possible planning experience before considering any pricing options.
         </p>
 
         <h3>Future Premium Features (Optional)</h3>
         <p>
-          While core features will always be free, we are considering optional premium features for the future. These would be truly optional enhancements, not requirements for effective planning. Potential premium features under consideration include:
+          We are considering premium features for the future. Potential features under consideration include:
         </p>
 
         <h4>Advanced Collaboration Tools</h4>
         <p>
-          Shared planning workspaces for partners, families, or teams. Collaborate in real-time on wedding planning, business launches, or family decisions. This would be optional for those who need shared planning; individual planning remains free forever.
+          Shared planning workspaces for partners, families, or teams. Collaborate in real-time on wedding planning, business launches, or family decisions.
         </p>
 
         <h4>External Calendar Integrations</h4>
@@ -396,7 +396,7 @@ export default function PricingPage() {
 
         <h4>Long-Term Value Creation</h4>
         <p>
-          By providing exceptional value for free, we build trust and help as many people as possible. If we introduce premium features in the future, they'll be optional enhancements for users who've already experienced the core value. But the comprehensive planning framework remains free forever.
+          By providing exceptional value for free during beta, we build trust and help as many people as possible. If we introduce premium features in the future, they'll be enhancements for users who've already experienced the core value.
         </p>
 
         <h3>What Users Save with Templata Free</h3>
@@ -421,7 +421,7 @@ export default function PricingPage() {
 
         <h4>How much does Templata cost?</h4>
         <p>
-          $0. Completely free. All features available at no cost. No credit card required to sign up. No trial period that converts to paid subscription. No hidden fees or surprise charges. Free forever for all core planning features.
+          $0. Currently free during beta. All features available at no cost during beta. No credit card required to sign up. No trial period that converts to paid subscription. No hidden fees during beta period.
         </p>
 
         <h4>Is Templata really free or is it a trial?</h4>
@@ -441,7 +441,7 @@ export default function PricingPage() {
 
         <h4>When will you start charging for Templata?</h4>
         <p>
-          Core features will remain free forever. We may introduce optional premium features in the future, but all current functionality will stay free. Any premium offerings would be true enhancements, not requirements for effective planning.
+          Currently free during beta. We may introduce pricing options in the future as we continue to develop the platform.
         </p>
 
         <h4>What if I'm planning something expensive like a wedding - is it still free?</h4>
@@ -472,9 +472,9 @@ export default function PricingPage() {
           Everything included free. No upgrades required. No feature restrictions. Comprehensive planning accessible to everyone.
         </p>
 
-        <h3>Conclusion: Free Forever Planning</h3>
+        <h3>Conclusion: Free Beta Access</h3>
         <p>
-          Templata is committed to keeping comprehensive life planning free and accessible. All current features remain free when we exit beta. Any future premium features would be optional enhancements. We believe everyone deserves access to expert planning frameworks for life's biggest moments, regardless of budget. That's why Templata is free, and why it will stay free.
+          Templata is currently free during beta as we continue to build and refine the platform. We believe everyone deserves access to expert planning frameworks for life's biggest moments. That's why Templata is currently free during beta.
         </p>
       </div>
     </>

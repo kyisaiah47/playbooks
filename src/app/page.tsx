@@ -12,14 +12,14 @@ import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
 	title: 'Templata - Free Life Planning Platform for Weddings, Career & More',
-	description: 'Stop stressing over blank pages. Get expert-crafted planning guides for weddings, career changes, home buying & more life events. 90%+ coverage guarantee. AI-refined questions. Curated expert readings. Free forever.',
+	description: 'Stop stressing over blank pages. Get expert-crafted planning guides for weddings, career changes, home buying & more life events. 90%+ coverage guarantee. AI-refined questions. Curated expert readings. Free beta access.',
 	keywords: 'life planning platform, life planning templates, wedding planning app free, career change planner, home buying checklist template, business planning guide, free life organizer, life planning software, expert planning frameworks, structured life planning, ai planning assistant, life coach alternative, wedding planner free, career transition guide, financial planning template, planning app, major life transitions, life event planning tool, comprehensive planning platform, free notion alternative for planning',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',
 	publisher: 'Templata',
 	openGraph: {
 		title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
-		description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Curated readings. 100% free forever. Start in 60 seconds.',
+		description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Curated readings. Free beta access. Start in 60 seconds.',
 		url: 'https://templata.org',
 		siteName: 'Templata',
 		images: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
-		description: 'Expert guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Free forever.',
+		description: 'Expert guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Free beta access.',
 		images: ['https://templata.org/og-image.png'],
 		creator: '@templata',
 	},
@@ -137,7 +137,7 @@ export default function HomePage() {
 				'@type': 'HowToStep',
 				position: 3,
 				name: 'Answer AI-Refined Questions',
-				text: 'Work through 200-500+ questions designed to ensure 90%+ comprehensive coverage. Skip what doesn\'t apply. Your answers auto-save.',
+				text: 'Work through 50+ questions designed to ensure 90%+ comprehensive coverage. Skip what doesn\'t apply. Your answers auto-save.',
 				url: 'https://templata.org/how-to-use',
 			},
 			{

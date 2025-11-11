@@ -5,7 +5,7 @@ import { PageLayout } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: 'FAQ - Common Questions: Is Templata Free? How Does It Work? | Templata',
-  description: 'Get answers: How much does Templata cost? (Free forever). How does it work? (AI questions + expert readings). Better than Notion? (Yes, for life planning). 90%+ coverage? (Axiom Engine validated). See all FAQs about features, pricing, guides.',
+  description: 'Get answers: How much does Templata cost? (Free beta). How does it work? (AI questions + expert readings). Better than Notion? (Yes, for life planning). 90%+ coverage? (Axiom Engine validated). See all FAQs about features, pricing, guides.',
   keywords: 'templata faq, is templata free, how much does templata cost, how does templata work, templata vs notion faq, what is axiom engine, templata features explained, frequently asked questions planning, life planning platform faq, templata help, how to use templata, templata pricing questions, what guides does templata have, templata support questions, common templata questions',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
@@ -257,7 +257,7 @@ export default function FAQPage() {
         <p>Templata is completely free to use. Access all planning guides, AI-refined questions, expert readings, and planning tools at no cost. No paywalls, no hidden fees. We believe effective planning should be accessible to everyone.</p>
 
         <p><strong>Will Templata always be free?</strong></p>
-        <p>Core features will remain free forever. All guides, questions, and readings are accessible without payment. We may introduce premium features in the future, but the comprehensive planning framework will always be free.</p>
+        <p>Currently free during beta. All guides, questions, and readings are accessible without payment during beta. We may introduce pricing options in the future as we continue to develop the platform.</p>
 
         <h3>Getting Started and Technical Questions</h3>
         <p><strong>How do I get started with Templata?</strong></p>

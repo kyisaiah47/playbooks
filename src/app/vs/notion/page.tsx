@@ -106,7 +106,7 @@ export default function VsNotionPage() {
 
         <h2>Executive Summary: Templata vs Notion</h2>
         <p>
-          <strong>Templata</strong> is purpose-built for life planning with expert frameworks, AI-refined questions ensuring 90%+ coverage, curated readings, and integrated organization. Free forever.
+          <strong>Templata</strong> is purpose-built for life planning with expert frameworks, AI-refined questions ensuring 90%+ coverage, curated readings, and integrated organization. Free beta access.
           <strong>Notion</strong> is a flexible workspace tool offering blank pages you structure yourself. Starts at $10/month for meaningful features.
         </p>
         <p>
@@ -123,7 +123,7 @@ export default function VsNotionPage() {
           <strong>Expert-Crafted Frameworks:</strong> Every planning guide built by domain experts for specific life events. Wedding planning guide created with wedding professionals. Career transition guide developed with career coaches. Home buying guide informed by real estate experts. You get professional-grade frameworks, not generic templates.
         </p>
         <p>
-          <strong>AI-Refined Questions (90%+ Coverage):</strong> 200-500+ questions per guide refined through months of AI testing using our Axiom Engine. These aren't random prompts—they're systematically validated to cover 90%+ of considerations for each life event. Questions are organized by topic, helping you think through aspects you might have overlooked.
+          <strong>AI-Refined Questions (90%+ Coverage):</strong> 50+ questions per guide refined through months of AI testing using our Axiom Engine. These aren't random prompts—they're systematically validated to cover 90%+ of considerations for each life event. Questions are organized by topic, helping you think through aspects you might have overlooked.
         </p>
         <p>
           <strong>Expert Curated Readings:</strong> Thousands of articles, guides, and resources vetted for quality. Every reading selected by domain experts, not algorithms. Learn from wedding planners, career coaches, real estate professionals, financial advisors. No random blog posts or low-quality content.
@@ -152,10 +152,10 @@ export default function VsNotionPage() {
 
         <h4>Templata Pricing</h4>
         <p>
-          <strong>Free Forever:</strong> $0. All features free with no limitations. Unlimited guides, unlimited questions, unlimited expert readings, unlimited notes and tasks. No credit card required. No trial period. No forced upgrades. Genuinely free forever for all core planning features.
+          <strong>Free Beta:</strong> $0 during beta. All features free with no limitations during beta. Unlimited guides, unlimited questions, unlimited expert readings, unlimited notes and tasks. No credit card required. No trial period.
         </p>
         <p>
-          <strong>No Hidden Costs:</strong> What's free stays free. All current features will remain free when Templata exits beta. Any future premium features would be optional enhancements, not requirements for effective planning.
+          <strong>No Hidden Costs During Beta:</strong> Currently free during beta period. We may introduce pricing options in the future as we continue to develop the platform.
         </p>
         <p>
           <strong>Beta Advantage:</strong> Currently in beta means access to all features before any premium options exist. Early users get comprehensive planning completely free.
@@ -172,7 +172,7 @@ export default function VsNotionPage() {
           <strong>Cost Over Time:</strong> $10/month = $120/year = $1,200 over 10 years. Using Notion for ongoing life planning (career development, financial planning, health tracking) adds up significantly.
         </p>
 
-        <p><strong>Winner: Templata.</strong> Free forever vs $120+/year for Notion paid plans.</p>
+        <p><strong>Winner: Templata.</strong> Free beta vs $120+/year for Notion paid plans.</p>
 
         <h3>3. Life Event Specialization</h3>
 
@@ -213,7 +213,7 @@ export default function VsNotionPage() {
           <strong>Immediate Planning:</strong> Choose guide → Start answering questions → Read expert content → Track progress. You're planning effectively within minutes, not days.
         </p>
         <p>
-          <strong>No Setup Required:</strong> Expert frameworks ready immediately. 200-500+ questions already organized. Expert readings already curated. Organization structure already built. You focus on answering and planning, not on building systems.
+          <strong>No Setup Required:</strong> Expert frameworks ready immediately. 50+ questions already organized. Expert readings already curated. Organization structure already built. You focus on answering and planning, not on building systems.
         </p>
         <p>
           <strong>Guided Process:</strong> Questions walk you through considerations systematically. Expert readings appear alongside relevant questions. You're guided through comprehensive planning, not figuring it out alone.
@@ -354,7 +354,7 @@ export default function VsNotionPage() {
           <strong>For life planning and major decisions, Templata is superior.</strong> Expert frameworks with validated 90%+ coverage, AI-refined questions, curated readings, and focused per-event organization beat Notion's blank-page flexibility. Templata is purpose-built for life planning; Notion is purpose-built for flexible workspaces.
         </p>
         <p>
-          <strong>Pricing advantage:</strong> Templata free forever vs Notion $120+/year for meaningful features.
+          <strong>Pricing advantage:</strong> Templata free beta vs Notion $120+/year for meaningful features.
         </p>
         <p>
           <strong>Time advantage:</strong> Minutes to effective planning in Templata vs hours of setup in Notion.

@@ -16,7 +16,7 @@ export const VsGoogleDocsContent: React.FC = () => {
         { text: "90%+ validated coverage", present: true },
         { text: "Integrated calendars & tasks", present: true },
         { text: "Start planning in minutes", present: true },
-        { text: "Free forever with expert content", present: true },
+        { text: "Free beta with expert content", present: true },
       ]}
       competitorName="Google Docs"
       competitorFeatures={[
@@ -38,7 +38,7 @@ export const VsGoogleDocsContent: React.FC = () => {
         paragraphs: [
           "Planning a wedding, career change, or home purchase in a blank Google Doc means starting from zero. What questions should you ask? What research do you need? What are you forgetting? You're left guessing—and the consequences of missing something important can be expensive or stressful.",
           "Templata provides expert frameworks validated through our Axiom Engine to ensure 90%+ coverage of what actually matters for each life event. You get comprehensive AI-refined questions that prompt you to think through every important angle. Plus curated expert readings so you learn from vetted sources instead of random Google searches.",
-          "Everything is integrated: questions, readings, calendars, tasks, notes, and progress tracking all work together in per-guide workspaces. While Google Docs leaves you with a blank page and your best guess, Templata ensures comprehensive planning from day one. And it's free forever (currently in beta)—no Google Workspace subscription needed.",
+          "Everything is integrated: questions, readings, calendars, tasks, notes, and progress tracking all work together in per-guide workspaces. While Google Docs leaves you with a blank page and your best guess, Templata ensures comprehensive planning from day one. And it's free during beta—no Google Workspace subscription needed.",
         ],
       }}
     />

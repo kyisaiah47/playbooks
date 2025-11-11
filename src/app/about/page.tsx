@@ -9,7 +9,7 @@ import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
 	title: 'About Templata - Our Mission to Make Life Planning Accessible | Templata',
-	description: 'Why Templata exists: To help everyone navigate major life decisions with expert frameworks. Learn about our 90%+ coverage Axiom Engine, free forever mission, and how we help with weddings, careers, home buying & more. Meet the team building better planning tools.',
+	description: 'Why Templata exists: To help everyone navigate major life decisions with expert frameworks. Learn about our 90%+ coverage Axiom Engine, free beta mission, and how we help with weddings, careers, home buying & more. Meet the team building better planning tools.',
 	keywords: 'about templata, templata mission, why templata is free, axiom engine explained, life planning philosophy, templata team, company story, planning methodology, expert frameworks explained, free planning tools mission, life organization platform about, who created templata',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',

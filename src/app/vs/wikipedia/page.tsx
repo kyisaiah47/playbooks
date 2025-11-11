@@ -5,7 +5,7 @@ import { VsWikipediaContent } from '@/components/vs-wikipedia-content';
 
 export const metadata: Metadata = {
   title: 'Templata vs Wikipedia - Active Planning vs Passive Reading',
-  description: 'Compare Templata to Wikipedia for life planning. Personalized planning frameworks with 200-500+ questions vs general encyclopedia articles. Active planning vs passive reading. Free comprehensive guidance.',
+  description: 'Compare Templata to Wikipedia for life planning. Personalized planning frameworks with 50+ questions vs general encyclopedia articles. Active planning vs passive reading. Free comprehensive guidance.',
   keywords: 'templata vs wikipedia, wikipedia alternative planning, active planning framework, life planning tool, personalized planning, wedding planning vs wikipedia, comprehensive planning, planning framework, life planning platform',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
@@ -114,7 +114,7 @@ export default function VsWikipediaPage() {
 
         <h3>How Templata Transforms This</h3>
         <p>
-          Templata transforms passive encyclopedia reading into active, personalized planning. Instead of one general article for everyone, each guide provides 200-500+ AI-refined questions tailored to YOUR situation. Expert-validated frameworks ensure 90%+ coverage of what matters for YOUR specific planning journey.
+          Templata transforms passive encyclopedia reading into active, personalized planning. Instead of one general article for everyone, each guide provides 50+ AI-refined questions tailored to YOUR situation. Expert-validated frameworks ensure 90%+ coverage of what matters for YOUR specific planning journey.
         </p>
 
         <h3>Key Differences</h3>

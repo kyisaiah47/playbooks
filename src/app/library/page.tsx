@@ -7,7 +7,7 @@ import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
 	title: 'Expert Reading Library - Curated Planning Resources & Articles | Templata',
-	description: 'Access curated expert articles, guides & resources for life planning. Wedding planning tips, career change advice, home buying guides, business resources & more. All content vetted by domain experts. Free forever.',
+	description: 'Access curated expert articles, guides & resources for life planning. Wedding planning tips, career change advice, home buying guides, business resources & more. All content vetted by domain experts. Free beta.',
 	keywords: 'life planning resources, expert articles library, planning library, curated content, wedding planning articles, career change advice, home buying tips, business planning resources, expert guidance free, planning reading list, life planning articles, expert blog curated',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',

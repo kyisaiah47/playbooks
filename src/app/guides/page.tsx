@@ -13,14 +13,14 @@ const supabase = createClient(
 
 export const metadata: Metadata = {
 	title: 'Free Life Planning Guides - Wedding, Career, Home Buying & More | Templata',
-	description: 'Browse expert planning guides: Wedding, Career Change, Home Buying, Business Launch, Financial Planning & more. Each with AI-refined questions, curated readings, 90%+ coverage. Free forever.',
+	description: 'Browse expert planning guides: Wedding, Career Change, Home Buying, Business Launch, Financial Planning & more. Each with AI-refined questions, curated readings, 90%+ coverage. Free beta.',
 	keywords: 'free planning guides, life event planning guides, wedding planning guide free, career change guide, home buying guide checklist, business planning template free, expert planning frameworks, comprehensive life guides, major life event templates, planning guide library, free life planning templates, ai planning guides, expert curated planning, 90 percent coverage guides, complete planning frameworks',
 	authors: [{ name: 'Templata' }],
 	creator: 'Templata',
 	publisher: 'Templata',
 	openGraph: {
 		title: 'Expert Planning Guides & Templates | Templata',
-		description: 'Browse expert-crafted planning guides for life\'s biggest moments. Free forever.',
+		description: 'Browse expert-crafted planning guides for life\'s biggest moments. Free beta.',
 		url: 'https://templata.org/guides',
 		siteName: 'Templata',
 		images: [

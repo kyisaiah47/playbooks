@@ -180,7 +180,7 @@ export const UseCasesContent: React.FC = () => {
               Planning a wedding, changing careers, buying a home, or launching a business? These aren't just tasks to check off—they're life-defining moments with real consequences. Miss an important consideration during home buying and you might overpay by tens of thousands. Skip a critical wedding vendor question and you risk costly mistakes on your big day.
             </p>
             <p>
-              Templata provides expert frameworks with 200-500+ AI-refined questions per guide, curated readings from trusted sources, and 90%+ validated coverage through our Axiom Engine. You get comprehensive guidance instead of blank pages and guesswork.
+              Templata provides expert frameworks with 50+ AI-refined questions per guide, curated readings from trusted sources, and 90%+ validated coverage through our Axiom Engine. You get comprehensive guidance instead of blank pages and guesswork.
             </p>
           </div>
         </div>
@@ -251,7 +251,7 @@ export const UseCasesContent: React.FC = () => {
               <div>
                 <h3 className="font-medium text-foreground text-lg mb-2">Answer Questions</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Work through 200-500+ AI-refined questions at your own pace. Each question helps you think through what matters.
+                  Work through 50+ AI-refined questions at your own pace. Each question helps you think through what matters.
                 </p>
               </div>
             </div>
@@ -278,7 +278,7 @@ export const UseCasesContent: React.FC = () => {
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
             <h2 className="text-2xl font-medium text-foreground">Ready to Plan Comprehensively?</h2>
             <p>
-              Stop guessing what you might be missing. Get expert frameworks, AI-refined questions, and curated readings for life's biggest moments—free forever.
+              Stop guessing what you might be missing. Get expert frameworks, AI-refined questions, and curated readings for life's biggest moments—free beta access.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 mt-12 text-muted-foreground">
@@ -287,12 +287,12 @@ export const UseCasesContent: React.FC = () => {
               <p className="leading-relaxed">Validated coverage</p>
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-foreground mb-2">200-500+</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-2">50+</h3>
               <p className="leading-relaxed">Questions per guide</p>
             </div>
             <div>
               <h3 className="text-3xl font-bold text-foreground mb-2">Free</h3>
-              <p className="leading-relaxed">Forever, no catch</p>
+              <p className="leading-relaxed">Beta access</p>
             </div>
           </div>
         </div>

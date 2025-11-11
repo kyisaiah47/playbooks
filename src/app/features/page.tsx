@@ -6,7 +6,7 @@ import { TEMPLATA_FAQ } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Features - Life Planning Platform with 90%+ Coverage | Templata',
-  description: 'Why Templata beats Notion, Trello & Google Docs: Axiom Engine with 90%+ guaranteed coverage, AI-refined questions per guide, expert curated readings, premium analytics, per-guide calendars & tasks. Free forever. See all features.',
+  description: 'Why Templata beats Notion, Trello & Google Docs: Axiom Engine with 90%+ guaranteed coverage, AI-refined questions per guide, expert curated readings, premium analytics, per-guide calendars & tasks. Free beta. See all features.',
   keywords: 'life planning app features, best planning software 2025, axiom engine, ai planning questions, 90 percent coverage guarantee, expert curated readings, life planning tools comparison, planning platform features, comprehensive life planning, premium analytics free, per-guide organization, free planning software, notion alternative features, trello alternative planning, best free planning app, wedding planning app features, career planning tools, ai life coach alternative',
   authors: [{ name: 'Templata' }],
   creator: 'Templata',
@@ -212,7 +212,7 @@ export default function FeaturesPage() {
 
         <h4>Comprehensive Question Sets</h4>
         <p>
-          200-500+ questions per guide covering every aspect of your planning needs. Questions are systematically organized by topic and category, helping you think through considerations you might have overlooked. Skip questions that don't apply, and come back to saved questions later.
+          50+ questions per guide covering every aspect of your planning needs. Questions are systematically organized by topic and category, helping you think through considerations you might have overlooked. Skip questions that don't apply, and come back to saved questions later.
         </p>
 
         <h4>Expert Reading Library</h4>
@@ -264,9 +264,9 @@ export default function FeaturesPage() {
           Other tools give you blank pages (Notion, Google Docs) or basic checklists (Trello, Asana). Templata combines comprehensive expert content with sophisticated design. You get both the substance and the experience.
         </p>
 
-        <h4>Free Forever</h4>
+        <h4>Free Beta Access</h4>
         <p>
-          All core features are free. Access every guide, all AI-refined questions, expert readings, and basic planning tools at no cost. We believe effective planning should be accessible to everyone. Premium features may be added in the future, but the comprehensive framework remains free forever.
+          Currently free during beta. Access every guide, all AI-refined questions, expert readings, and planning tools at no cost during beta. We believe effective planning should be accessible to everyone. We may introduce pricing options in the future as we continue to develop the platform.
         </p>
 
         <h3>Upcoming Features (Beta Roadmap)</h3>

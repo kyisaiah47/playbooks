@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 export const FeaturesContent: React.FC = () => {
   const coreFeatures = [
     { icon: Brain, title: "Axiom Engine", description: "90%+ coverage validation ensures you consider everything that matters" },
-    { icon: Sparkles, title: "AI-Refined Questions", description: "200-500+ thoughtfully crafted questions per guide" },
+    { icon: Sparkles, title: "AI-Refined Questions", description: "50+ thoughtfully crafted questions per guide" },
     { icon: BookOpen, title: "Expert Readings", description: "Curated content from trusted sources, integrated with planning" },
     { icon: Target, title: "Per-Guide Organization", description: "Separate workspaces for each life event with integrated tools" },
   ];
@@ -79,7 +79,7 @@ export const FeaturesContent: React.FC = () => {
           </h1>
 
           <p className="text-muted-foreground max-w-2xl text-center text-lg mt-4">
-            Expert frameworks, AI-refined questions, curated readings, and integrated planning tools—all free forever
+            Expert frameworks, AI-refined questions, curated readings, and integrated planning tools—free beta access
           </p>
 
           <Particles

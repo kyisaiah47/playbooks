@@ -139,7 +139,7 @@ export const PricingContent: React.FC = () => {
               We're currently in beta, focused on building the best comprehensive planning experience possible. During beta, all features are completely free with no restrictions, no credit card required, and no hidden catches.
             </p>
             <p>
-              Get expert frameworks with 90%+ validated coverage, 200-500+ AI-refined questions per guide, curated expert readings, integrated calendars and tasks, progress tracking, and more—all at no cost while we perfect the platform.
+              Get expert frameworks with 90%+ validated coverage, 50+ AI-refined questions per guide, curated expert readings, integrated calendars and tasks, progress tracking, and more—all at no cost while we perfect the platform.
             </p>
           </div>
         </div>
@@ -260,7 +260,7 @@ export const PricingContent: React.FC = () => {
               <p className="leading-relaxed">Validated coverage</p>
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-foreground mb-2">200-500+</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-2">50+</h3>
               <p className="leading-relaxed">Questions per guide</p>
             </div>
             <div>
