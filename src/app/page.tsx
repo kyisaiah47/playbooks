@@ -70,7 +70,7 @@ export default function HomePage() {
 		],
 	};
 
-	// WebSite schema
+	// WebSite schema with SearchAction for sitelinks search box
 	const websiteSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
@@ -80,6 +80,14 @@ export default function HomePage() {
 		publisher: {
 			'@type': 'Organization',
 			name: 'Templata',
+		},
+		potentialAction: {
+			'@type': 'SearchAction',
+			target: {
+				'@type': 'EntryPoint',
+				urlTemplate: 'https://templata.org/guides?q={search_term_string}',
+			},
+			'query-input': 'required name=search_term_string',
 		},
 	};
 

@@ -6,6 +6,10 @@ import { CategoryGuidesList } from '@/components/category-guides-list';
 import { notFound } from 'next/navigation';
 import { TEMPLATA_FAQ } from '@/lib/seo';
 
+// Enable ISR (Incremental Static Regeneration)
+// Pages will be cached and revalidated every hour
+export const revalidate = 3600;
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!

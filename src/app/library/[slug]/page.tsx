@@ -4,6 +4,10 @@ import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
 import { createClient } from '@supabase/supabase-js';
 
+// Enable ISR (Incremental Static Regeneration)
+// Pages will be cached and revalidated every hour
+export const revalidate = 3600;
+
 // Use server-side Supabase client for SSR
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -157,6 +161,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+// Pre-generate the most popular readings at build time
+export async function generateStaticParams() {
+  try {
+    const { data: readings } = await supabase
+      .from('readings')
+      .select('id')
+      .order('created_at', { ascending: false })
+      .limit(100); // Pre-generate top 100 readings
+
+    return readings?.map((reading) => ({
+      slug: reading.id,
+    })) || [];
+  } catch (e) {
+    console.error('[generateStaticParams] Error:', e);
+    return [];
+  }
+}
+
 export default async function ReadingPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const reading = await getReading(slug);
@@ -200,6 +222,7 @@ export default async function ReadingPage({ params }: { params: Promise<{ slug: 
     },
     keywords: reading.tags ? reading.tags.join(', ') : guideName.toLowerCase(),
     articleSection: guideName,
+    inLanguage: 'en-US',
     about: {
       '@type': 'Thing',
       name: guideName,

@@ -4,6 +4,10 @@ import Script from 'next/script';
 import { TEMPLATA_FAQ } from '@/lib/seo';
 import { createClient } from '@supabase/supabase-js';
 
+// Enable ISR (Incremental Static Regeneration)
+// Pages will be cached and revalidated every hour
+export const revalidate = 3600;
+
 // Create Supabase client for server-side data fetching
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -149,6 +153,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `https://templata.org/guides/${slug}`,
     },
   };
+}
+
+// Pre-generate the most popular guides at build time
+export async function generateStaticParams() {
+  try {
+    const { data: guides } = await supabase
+      .from('guides')
+      .select('id')
+      .order('created_at', { ascending: false })
+      .limit(50); // Pre-generate top 50 guides
+
+    return guides?.map((guide) => ({
+      slug: guide.id,
+    })) || [];
+  } catch (e) {
+    console.error('[generateStaticParams] Error:', e);
+    return [];
+  }
 }
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
