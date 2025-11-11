@@ -43,5 +43,4 @@ Allow: /*.jpeg$
 Allow: /*.svg$
 
 # Sitemaps
-Sitemap: https://templata.org/sitemap.xml
-Sitemap: https://templata.org/sitemap-images.xml
+Sitemap: https://templata.org/sitemap-index.xml
