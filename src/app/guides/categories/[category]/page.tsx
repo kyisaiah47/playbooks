@@ -15,6 +15,94 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+// Category-specific FAQs for SEO
+const CATEGORY_FAQS = {
+  'career-work': [
+    {
+      question: 'What career planning guides does Templata offer?',
+      answer: 'Templata provides comprehensive career planning guides including job search strategies, career change frameworks, leadership transition planning, freelancing guides, remote work success, and burnout recovery. Each guide includes expert questions, curated readings, and proven methodologies.',
+    },
+    {
+      question: 'How do career planning templates help with job search?',
+      answer: 'Our career planning templates provide structured frameworks with 50+ expert questions covering resume optimization, networking strategies, interview preparation, salary negotiation, and offer evaluation. The templates ensure you consider all critical factors for successful career transitions.',
+    },
+    {
+      question: 'Are career planning guides free?',
+      answer: 'Yes, all career planning guides on Templata are completely free during our beta period. You get full access to expert questions, curated readings, and integrated planning tools with no credit card required.',
+    },
+  ],
+  'finance': [
+    {
+      question: 'What financial planning guides are available?',
+      answer: 'Templata offers expert guides for budgeting, debt payoff, investing, retirement planning, emergency fund creation, home buying financial preparation, and achieving financial freedom. Each guide provides comprehensive questions and expert insights.',
+    },
+    {
+      question: 'How do financial planning templates work?',
+      answer: 'Our financial planning templates guide you through 50+ expert questions covering income analysis, expense tracking, debt management, investment strategies, and long-term goals. The structured approach ensures you build comprehensive financial plans.',
+    },
+    {
+      question: 'Can Templata help with budgeting and debt payoff?',
+      answer: 'Yes! Our budgeting and debt payoff guides provide detailed frameworks for analyzing expenses, creating realistic budgets, prioritizing debt repayment, and building sustainable financial habits. Includes expert readings on proven debt elimination strategies.',
+    },
+  ],
+  'relationships': [
+    {
+      question: 'What relationship planning guides does Templata provide?',
+      answer: 'Templata offers guides for family dynamics, communication skills, social connection building, wedding planning, and relationship strengthening. Each guide includes expert questions and curated content for building healthy relationships.',
+    },
+    {
+      question: 'How can planning improve relationships?',
+      answer: 'Structured planning helps identify relationship goals, communication patterns, and areas for growth. Our guides provide frameworks for meaningful conversations, setting boundaries, and strengthening connections through intentional actions.',
+    },
+    {
+      question: 'Are wedding planning guides included?',
+      answer: 'Yes! Our comprehensive wedding planning guide includes 400+ questions covering venue selection, vendor management, budget tracking, guest list organization, and day-of timeline creation. Everything needed for stress-free wedding planning.',
+    },
+  ],
+  'life-events': [
+    {
+      question: 'What life event planning guides are available?',
+      answer: 'Templata provides planning guides for major life transitions including moving/relocation, home buying, life planning, emergency preparedness, and safety planning. Each guide offers comprehensive frameworks for managing significant life changes.',
+    },
+    {
+      question: 'How do life event templates help with transitions?',
+      answer: 'Our life event templates provide structured approaches with 50+ expert questions covering logistics, emotional preparation, financial considerations, and timeline management. The frameworks ensure you navigate major transitions smoothly and comprehensively.',
+    },
+    {
+      question: 'Can Templata help with moving and relocation?',
+      answer: 'Yes! Our moving guide includes detailed checklists for packing, utilities transfer, address changes, new area research, and settling in. Covers both local moves and long-distance relocations with expert tips and proven strategies.',
+    },
+  ],
+  'health-wellness': [
+    {
+      question: 'What health and wellness planning guides does Templata offer?',
+      answer: 'Templata provides comprehensive guides for physical fitness, mental health, nutrition planning, stress management, sleep optimization, and overall wellbeing. Each guide includes evidence-based questions and curated expert content.',
+    },
+    {
+      question: 'How do wellness planning templates work?',
+      answer: 'Our wellness templates guide you through 50+ questions covering current health status, goals, barriers, action plans, and progress tracking. The structured approach helps you build sustainable health habits and achieve wellness goals.',
+    },
+    {
+      question: 'Are fitness and nutrition guides included?',
+      answer: 'Yes! Our fitness guide covers workout planning, exercise selection, progression strategies, and recovery. The nutrition guide addresses meal planning, dietary goals, food relationships, and sustainable eating patterns. Both include expert readings from health professionals.',
+    },
+  ],
+  'personal-growth': [
+    {
+      question: 'What personal growth guides are available on Templata?',
+      answer: 'Templata offers guides for learning new skills, developing creativity, pursuing hobbies, building habits, and self-improvement. Each guide provides structured frameworks with expert questions and curated content for personal development.',
+    },
+    {
+      question: 'How do personal growth templates support learning?',
+      answer: 'Our personal growth templates provide structured approaches with 50+ questions covering skill assessment, learning strategies, practice planning, obstacle management, and progress tracking. Ensures comprehensive approach to skill development and personal transformation.',
+    },
+    {
+      question: 'Can Templata help with habit building?',
+      answer: 'Yes! Our habit building guides include frameworks for identifying desired habits, understanding triggers, designing systems, overcoming resistance, and maintaining consistency. Includes expert readings on behavioral psychology and proven habit formation techniques.',
+    },
+  ],
+};
+
 // Category metadata mapping for better SEO
 const CATEGORY_META = {
   'career-work': {
@@ -434,11 +522,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     ],
   };
 
-  // FAQ schema for rich snippets
+  // FAQ schema for rich snippets - use category-specific FAQs if available
+  const categoryFaqs = CATEGORY_FAQS[categorySlug as keyof typeof CATEGORY_FAQS] || TEMPLATA_FAQ.slice(0, 3);
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: TEMPLATA_FAQ.map((faq) => ({
+    mainEntity: categoryFaqs.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {

@@ -11,6 +11,13 @@ Allow: /about
 Allow: /changelog
 Allow: /privacy
 Allow: /terms
+Allow: /vs/*
+Allow: /features/*
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
 
 # Disallow user-specific pages
 Disallow: /app
@@ -21,5 +28,20 @@ Disallow: /forgot-password
 Disallow: /reset-password
 Disallow: /api/
 
-# Sitemap
+# Googlebot-specific directives
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Googlebot Image
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
+
+# Sitemaps
 Sitemap: https://templata.org/sitemap.xml
+Sitemap: https://templata.org/sitemap-images.xml
