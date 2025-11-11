@@ -27,6 +27,7 @@ export const viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://templata.org'),
   title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
   description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Curated readings. Free beta access. Better than Notion, Trello, or Google Docs for life planning.',
   keywords: 'life planning platform, life planning templates, free planning app, wedding planning, career change, home buying, business planning, expert guidance, structured frameworks, life organization, ai planning assistant, free notion alternative',
