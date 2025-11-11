@@ -12,8 +12,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch all guides from database
   const { data: guides } = await supabase
     .from('guides')
-    .select('id, updated_at')
-    .order('updated_at', { ascending: false });
+    .select('id, created_at')
+    .order('created_at', { ascending: false });
 
   // Fetch all guide categories
   const { data: categories } = await supabase
@@ -24,9 +24,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get unique categories
   const uniqueCategories = [...new Set(categories?.map(c => c.category) || [])];
 
-  // Fetch all library items
+  // Fetch all library items (readings table)
   const { data: library } = await supabase
-    .from('library')
+    .from('readings')
     .select('id, updated_at')
     .order('updated_at', { ascending: false });
 
@@ -202,7 +202,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const guidePages: MetadataRoute.Sitemap =
     guides?.map((guide) => ({
       url: `${baseUrl}/guides/${guide.id}`,
-      lastModified: new Date(guide.updated_at || Date.now()),
+      lastModified: new Date(guide.created_at || Date.now()),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })) || [];
