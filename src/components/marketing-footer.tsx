@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import Image from "next/image";
+import { LogoWithName } from "@/components/logo-with-name";
 
 const sections = [
   {
@@ -73,21 +73,7 @@ const MarketingFooter = ({
           <Separator className="my-14" />
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
             <div className="lg:max-w-md">
-              <div className="flex items-center justify-start gap-2">
-                <Link href="/">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    title={logo.title}
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 dark:invert-0 invert"
-                  />
-                </Link>
-                <h2 className="text-xl font-semibold tracking-tighter">
-                  {logo.title}
-                </h2>
-              </div>
+              <LogoWithName href="/" size="lg" />
               <p className="text-muted-foreground mt-2 text-left text-sm italic">
                 Notion meets a life coach
               </p>

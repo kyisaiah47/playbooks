@@ -4,10 +4,10 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
+import { LogoWithName } from "@/components/logo-with-name";
 import {
   Sheet,
   SheetContent,
@@ -56,17 +56,8 @@ const MarketingHeader = () => {
         <nav className="border-border w-full">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
-              <div className="flex items-center gap-2 md:hidden">
-                <Image
-                  src="/logo.svg"
-                  width={24}
-                  height={24}
-                  className="h-6 w-6 dark:invert invert-0"
-                  alt="Templata"
-                />
-                <span className="text-lg font-semibold tracking-tighter">
-                  Templata
-                </span>
+              <div className="md:hidden">
+                <LogoWithName href="/" />
               </div>
 
               {/* Left side: Beta tag + nav */}
@@ -167,18 +158,7 @@ const MarketingHeader = () => {
 
               {/* Centered logo */}
               <div className="absolute left-1/2 hidden -translate-x-1/2 transform md:block">
-                <Link href="/" className="flex items-center gap-2">
-                  <Image
-                    src="/logo.svg"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6 dark:invert invert-0"
-                    alt="Templata"
-                  />
-                  <span className="text-lg font-semibold tracking-tighter">
-                    Templata
-                  </span>
-                </Link>
+                <LogoWithName href="/" />
               </div>
 
               {/* Right side: nav + actions */}
@@ -262,19 +242,9 @@ const MarketingHeader = () => {
 
                     <div className="m-4 flex flex-col space-y-6">
                       <div className="ml-3">
-                        <Link
-                          href="/"
-                          className="text-foreground flex items-center justify-start gap-2 text-2xl font-bold tracking-tighter"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <Image
-                            src="/logo.svg"
-                            width={24}
-                            height={24}
-                            className="h-6 w-6 dark:invert invert-0"
-                            alt="Templata"
-                          />
-                        </Link>
+                        <div onClick={() => setIsOpen(false)}>
+                          <LogoWithName href="/" showName={false} />
+                        </div>
                       </div>
                       <div className="flex flex-col space-y-4">
                         {allMobileLinks.map((link) => (
