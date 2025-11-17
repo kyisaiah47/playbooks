@@ -60,15 +60,18 @@ const MarketingHeader = () => {
                 <LogoWithName href="/" />
               </div>
 
-              {/* Left side: Beta tag + nav */}
-              <div className="hidden items-center space-x-8 md:flex">
+              {/* Centered logo */}
+              <div className="absolute left-1/2 hidden -translate-x-1/2 transform md:block">
+                <LogoWithName href="/" />
+              </div>
+
+              {/* Left side */}
+              <div className="hidden items-center space-x-4 md:flex">
                 <div className="bg-muted text-muted-foreground flex items-center rounded-full px-3 py-1 text-xs font-medium">
                   Beta
                 </div>
-
                 <NavigationMenu viewport={false}>
-                  <NavigationMenuList>
-                    {/* Features dropdown */}
+                  <NavigationMenuList className="gap-4">
                     <NavigationMenuItem>
                       <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground text-sm font-medium">
                         Features
@@ -106,15 +109,11 @@ const MarketingHeader = () => {
                         </ul>
                       </NavigationMenuContent>
                     </NavigationMenuItem>
-
-                    {/* Use Cases */}
                     <NavigationMenuItem>
                       <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + " text-muted-foreground hover:text-foreground text-sm font-medium"}>
                         <Link href="/use-cases">Use Cases</Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
-
-                    {/* Compare dropdown */}
                     <NavigationMenuItem>
                       <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground text-sm font-medium">
                         Compare
@@ -156,46 +155,27 @@ const MarketingHeader = () => {
                 </NavigationMenu>
               </div>
 
-              {/* Centered logo */}
-              <div className="absolute left-1/2 hidden -translate-x-1/2 transform md:block">
-                <LogoWithName href="/" />
-              </div>
-
-              {/* Right side: nav + actions */}
-              <div className="hidden items-center space-x-8 md:flex">
-                <Link
-                  href="/library"
-                  className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
-                >
-                  <span className="block transition-transform duration-300 group-hover:-translate-y-full">
-                    Library
-                  </span>
-                  <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
-                    Library
-                  </span>
-                </Link>
-                <Link
-                  href="/guides"
-                  className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
-                >
-                  <span className="block transition-transform duration-300 group-hover:-translate-y-full">
-                    Guides
-                  </span>
-                  <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
-                    Guides
-                  </span>
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-muted-foreground hover:text-foreground group relative inline-block h-6 overflow-hidden text-sm font-medium"
-                >
-                  <span className="block transition-transform duration-300 group-hover:-translate-y-full">
-                    About
-                  </span>
-                  <span className="text-muted-foreground border-border absolute left-0 top-full block w-full transition-transform duration-300 group-hover:translate-y-[-100%] group-hover:border-b">
-                    About
-                  </span>
-                </Link>
+              {/* Right side */}
+              <div className="hidden items-center space-x-4 md:flex">
+                <NavigationMenu viewport={false}>
+                  <NavigationMenuList className="gap-4">
+                    <NavigationMenuItem>
+                      <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + " text-muted-foreground hover:text-foreground text-sm font-medium"}>
+                        <Link href="/library">Library</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + " text-muted-foreground hover:text-foreground text-sm font-medium"}>
+                        <Link href="/guides">Guides</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                      <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + " text-muted-foreground hover:text-foreground text-sm font-medium"}>
+                        <Link href="/about">About</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
                 <ModeToggle />
                 <Button
                   onClick={() => {
