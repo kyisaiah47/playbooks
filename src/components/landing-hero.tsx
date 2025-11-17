@@ -18,7 +18,7 @@ const LandingHero = () => {
   return (
     <>
       <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
-    <section className="pt-56 pb-32">
+    <section className="pt-32 pb-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
         <p className="text-muted-foreground">
           Notion meets a life coach

@@ -18,7 +18,10 @@ export function PageLayout({
 	return (
 		<div className="min-h-screen bg-transparent">
 			{includeHeader && <MarketingHeader />}
-			{children}
+			{/* Add padding-top to prevent layout shift from fixed header */}
+			<div className={includeHeader ? "pt-24" : ""}>
+				{children}
+			</div>
 			{includeFooter && <MarketingFooter />}
 		</div>
 	);

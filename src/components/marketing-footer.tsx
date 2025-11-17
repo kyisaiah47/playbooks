@@ -73,7 +73,7 @@ const MarketingFooter = ({
           <Separator className="my-14" />
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
             <div className="lg:max-w-md">
-              <LogoWithName href="/" size="lg" />
+              <LogoWithName href="/" />
               <p className="text-muted-foreground mt-2 text-left text-sm italic">
                 Notion meets a life coach
               </p>

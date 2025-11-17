@@ -26,7 +26,7 @@ export const TasksFeatureContent: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-32 pt-56">
+      <section className="relative py-32 pt-32">
         <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
           <p className="text-muted-foreground">
             Per-Guide Action Item Organization

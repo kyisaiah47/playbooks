@@ -26,7 +26,7 @@ const stats = [
 
 const AboutHeroImage = () => {
   return (
-    <section className="pt-48 pb-24 relative">
+    <section className="pt-24 pb-24 relative">
       <Particles
         className="absolute inset-0 z-0"
         quantity={500}

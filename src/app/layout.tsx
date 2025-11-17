@@ -13,11 +13,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const outfit = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 const firaCode = Fira_Code({
   variable: "--font-mono",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 export const viewport = {

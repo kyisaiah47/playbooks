@@ -33,7 +33,7 @@ const CategoryHero: React.FC<CategoryHeroProps> = ({ categoryName, description, 
   const centerIcon = icons[0];
 
   return (
-    <section className="relative py-32 pt-56">
+    <section className="relative py-32 pt-32">
       <div className="container flex flex-col items-center justify-center gap-4 overflow-hidden">
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Badge variant="secondary" className="flex items-center gap-2">
