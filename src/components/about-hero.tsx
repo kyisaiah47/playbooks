@@ -87,13 +87,13 @@ const AboutHero = () => {
             moments.
           </p>
 
+          <p className="text-foreground font-medium">Our original manifesto still holds true:</p>
+
           {/* Manifesto Callout */}
           <Card className="border-2 border-primary/20 bg-primary/5 my-12 relative">
             <ManifestoAudio />
             <CardContent className="p-8 md:p-12">
               <div className="space-y-6 text-lg leading-relaxed">
-                <p className="text-foreground font-medium">Our original manifesto still holds true:</p>
-
                 <p>Life shouldn't start with a blank page.</p>
 
                 <p>But for too long, that's all we've been given.<br />
@@ -110,9 +110,28 @@ const AboutHero = () => {
 
                 <p className="text-foreground font-medium">Templata is the end of the blank page era.</p>
 
-                <p>Not emptiness — abundance.<br />
+                <p className="text-foreground font-medium">The first encyclopedia for living.</p>
+
+                <p>Templates. Reflection prompts. Articles.<br />
+                Not emptiness — abundance.<br />
                 Not silence — guidance.<br />
                 Not guessing — clarity.</p>
+
+                <p>Every prompt sharpens your thinking.<br />
+                Every resource carries the wisdom of experience.<br />
+                Every template is a map through the chaos of life's biggest moments.</p>
+
+                <p>This isn't stationery.<br />
+                This isn't software.<br />
+                This is your co-pilot for existence.<br />
+                Your library of clarity.<br />
+                Your guide through the uncharted.</p>
+
+                <p>Life shouldn't start with a blank page.</p>
+
+                <p>And starting today — it never will again.</p>
+
+                <p className="text-foreground font-medium">Templata. The blank page is dead.</p>
               </div>
             </CardContent>
           </Card>
