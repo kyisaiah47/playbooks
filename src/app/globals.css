@@ -133,11 +133,11 @@
   --primary-950: #1e1b4b;
   --primary-1000: #0f0d29;
 
-  --background: #d4d4d8;
+  --background: #f5f5fc;
   --foreground: var(--base-800);
-  --card: #e4e4e7;
+  --card: #fafaff;
   --card-foreground: var(--base-800);
-  --popover: #e4e4e7;
+  --popover: #fafaff;
   --popover-foreground: var(--base-800);
   --primary: var(--primary-700);
   --primary-foreground: #ffffff;
