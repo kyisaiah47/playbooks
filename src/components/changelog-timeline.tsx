@@ -143,6 +143,7 @@ const ChangelogTimeline = () => {
                 <li>Reduced stark contrasts for a more comfortable reading experience</li>
                 <li>Updated to Outfit font family for improved readability</li>
                 <li>New icon design for better brand consistency</li>
+                <li>Redesigned 404 page with animated particles and marquee icons</li>
               </ul>
             </div>
           </div>
