@@ -35,6 +35,20 @@ export async function generateMetadata({
     title: `${collection.name} | Planning Collection | Templata`,
     description: collection.description || `Curated collection of planning guides: ${collection.name}`,
     keywords: `${collection.name}, planning collection, guide bundle, ${collection.name.toLowerCase()} planning`,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    alternates: {
+      canonical: `https://templata.org/collections/${params.id}`,
+    },
   };
 }
 

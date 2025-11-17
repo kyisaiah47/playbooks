@@ -28,6 +28,20 @@ export async function generateMetadata({
     title: `${tagDisplay} Planning Guides | Templata`,
     description: `Find all planning guides and resources tagged with "${tagDisplay}". Expert guidance for ${tagDisplay} planning.`,
     keywords: `${tagDisplay}, ${tagDisplay} planning, ${tagDisplay} guides, ${tagDisplay} resources, ${tagDisplay} templates`,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    alternates: {
+      canonical: `https://templata.org/tags/${params.tag}`,
+    },
   };
 }
 
