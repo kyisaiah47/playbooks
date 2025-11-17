@@ -58,10 +58,10 @@ const MarketingHeader = () => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center gap-2 md:hidden">
                 <Image
-                  src="/favicon.svg"
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 dark:invert-0 invert"
+                  src="/logo.svg"
+                  width={24}
+                  height={24}
+                  className="h-6 w-6 dark:invert invert-0"
                   alt="Templata"
                 />
                 <span className="text-lg font-semibold tracking-tighter">
@@ -169,10 +169,10 @@ const MarketingHeader = () => {
               <div className="absolute left-1/2 hidden -translate-x-1/2 transform md:block">
                 <Link href="/" className="flex items-center gap-2">
                   <Image
-                    src="/favicon.svg"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 dark:invert-0 invert"
+                    src="/logo.svg"
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 dark:invert invert-0"
                     alt="Templata"
                   />
                   <span className="text-lg font-semibold tracking-tighter">
@@ -268,10 +268,10 @@ const MarketingHeader = () => {
                           onClick={() => setIsOpen(false)}
                         >
                           <Image
-                            src="/favicon.svg"
-                            width={32}
-                            height={32}
-                            className="h-8 w-8 dark:invert-0 invert"
+                            src="/logo.svg"
+                            width={24}
+                            height={24}
+                            className="h-6 w-6 dark:invert invert-0"
                             alt="Templata"
                           />
                         </Link>
