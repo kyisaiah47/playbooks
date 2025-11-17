@@ -50,7 +50,7 @@ export default function VsGoogleDocsPage() {
       url: 'https://templata.org',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://templata.org/brand/templata-logo.png',
+        url: 'https://templata.org/logo.png',
       },
     },
     datePublished: '2025-01-10',

@@ -23,7 +23,7 @@ export async function GET() {
       caption: 'Visual representation of major life planning moments',
     },
     {
-      loc: `${baseUrl}/brand/templata-logo.png`,
+      loc: `${baseUrl}/logo.png`,
       title: 'Templata Full Logo',
       caption: 'Templata official brand logo',
     },

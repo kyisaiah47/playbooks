@@ -211,7 +211,7 @@ export default async function ReadingPage({ params }: { params: Promise<{ slug: 
       url: 'https://templata.org',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://templata.org/brand/templata-logo.png',
+        url: 'https://templata.org/logo.png',
       },
     },
     datePublished: reading.published_at || reading.created_at,

@@ -121,7 +121,7 @@ export default function RootLayout({
               "name": "Templata",
               "description": "Expert-crafted templates for life's biggest moments",
               "url": "https://templata.org",
-              "logo": "https://templata.org/brand/templata-logo.png",
+              "logo": "https://templata.org/logo.png",
               "sameAs": [
                 "https://twitter.com/templata",
                 "https://linkedin.com/company/templata"

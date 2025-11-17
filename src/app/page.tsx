@@ -64,7 +64,7 @@ export default function HomePage() {
 		'@type': 'Organization',
 		name: 'Templata',
 		url: 'https://templata.org',
-		logo: 'https://templata.org/brand/templata-logo.png',
+		logo: 'https://templata.org/logo.png',
 		description: 'Expert-crafted templates and planning guides for life\'s biggest moments',
 		sameAs: [
 			'https://twitter.com/templata',

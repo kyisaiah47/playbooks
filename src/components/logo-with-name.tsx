@@ -26,7 +26,7 @@ export function LogoWithName({
         src="/logo.svg"
         width={24}
         height={24}
-        className={`${sizeClasses[size].image} dark:invert invert-0`}
+        className={`${sizeClasses[size].image} invert dark:invert-0`}
         alt="Templata"
       />
       {showName && (
