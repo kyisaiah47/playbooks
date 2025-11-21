@@ -213,7 +213,7 @@ export default function VsNotionPage() {
 
         <h4>Templata for Specific Life Events</h4>
         <p>
-          <strong>Wedding Planning:</strong> 400+ questions covering venue, vendors, budget, guests, timeline, attire, honeymoon. Expert readings from wedding professionals on vendor negotiations, budget allocation, timeline management. All vendor contacts, budget tracking, and guest management in one organized workspace.
+          <strong>Wedding Planning:</strong> 50+ questions covering venue, vendors, budget, guests, timeline, attire, honeymoon. Expert readings from wedding professionals on vendor negotiations, budget allocation, timeline management. All vendor contacts, budget tracking, and guest management in one organized workspace.
         </p>
         <p>
           <strong>Career Transitions:</strong> Comprehensive career assessment questions covering values, skills, interests, target roles. Expert guidance on industry research, transition timelines, skill development, networking strategies, job search tactics. Track applications, networking contacts, and learning progress.

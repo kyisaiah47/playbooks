@@ -302,7 +302,7 @@ export default function HomePage() {
 
 				<h3>Why Choose Templata</h3>
 				<p>
-					<strong>For Wedding Planning:</strong> Templata provides 400+ wedding-specific questions, expert vendor guidance, budget tracking, and timeline management. Compare to <Link href="/vs/notion">planning your wedding in Notion</Link> or <Link href="/vs/google">researching on Google</Link> - Templata offers comprehensive coverage from day one.
+					<strong>For Wedding Planning:</strong> Templata provides 50+ wedding-specific questions, expert vendor guidance, budget tracking, and timeline management. Compare to <Link href="/vs/notion">planning your wedding in Notion</Link> or <Link href="/vs/google">researching on Google</Link> - Templata offers comprehensive coverage from day one.
 				</p>
 				<p>
 					<strong>For Career Transitions:</strong> Get expert career assessment questions, transition strategies, and job search tactics. More effective than <Link href="/vs/google-docs">creating your own career plan in Google Docs</Link>.

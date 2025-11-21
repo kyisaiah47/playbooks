@@ -14,7 +14,7 @@ export const UseCasesContent: React.FC = () => {
       icon: Heart,
       title: "Wedding Planning",
       description: "Organize vendors, manage budget, coordinate guests, track timeline",
-      details: "400+ questions covering engagement to honeymoon. Coordinate vendors, manage RSVPs, track expenses, plan timeline.",
+      details: "50+ questions covering engagement to honeymoon. Coordinate vendors, manage RSVPs, track expenses, plan timeline.",
     },
     {
       icon: Briefcase,

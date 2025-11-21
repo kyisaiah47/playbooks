@@ -56,7 +56,7 @@ const CATEGORY_FAQS = {
     },
     {
       question: 'Are wedding planning guides included?',
-      answer: 'Yes! Our comprehensive wedding planning guide includes 400+ questions covering venue selection, vendor management, budget tracking, guest list organization, and day-of timeline creation. Everything needed for stress-free wedding planning.',
+      answer: 'Yes! Our comprehensive wedding planning guide includes 50+ questions covering venue selection, vendor management, budget tracking, guest list organization, and day-of timeline creation. Everything needed for stress-free wedding planning.',
     },
   ],
   'life-events': [

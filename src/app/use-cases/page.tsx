@@ -122,7 +122,7 @@ export default function UseCasesPage() {
 
         <h3>Wedding Planning with Templata</h3>
         <p>
-          Planning a wedding involves hundreds of decisions: venue selection, vendor coordination, budget management, guest list organization, timeline planning, and countless details. Templata's wedding planning guide provides 400+ AI-refined questions covering every aspect from engagement to honeymoon. Learn from expert readings on vendor negotiations, budget allocation, and timeline management. Organize vendors, track RSVPs, manage budgets, and coordinate timelines in one integrated workspace. Never lose track of important wedding tasks with per-guide calendar and task organization.
+          Planning a wedding involves hundreds of decisions: venue selection, vendor coordination, budget management, guest list organization, timeline planning, and countless details. Templata's wedding planning guide provides 50+ AI-refined questions covering every aspect from engagement to honeymoon. Learn from expert readings on vendor negotiations, budget allocation, and timeline management. Organize vendors, track RSVPs, manage budgets, and coordinate timelines in one integrated workspace. Never lose track of important wedding tasks with per-guide calendar and task organization.
         </p>
 
         <h3>Career Change Planning</h3>
