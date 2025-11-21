@@ -152,7 +152,7 @@ export default function AboutPage() {
 						<strong>Curated Expert Readings</strong> - Hand-selected articles and resources from industry leaders and domain specialists.
 					</li>
 					<li>
-						<strong>Completely Free</strong> - All planning resources are available at no cost, forever.
+						<strong>Free During Beta</strong> - All planning resources are available at no cost during beta.
 					</li>
 				</ul>
 
@@ -169,7 +169,7 @@ export default function AboutPage() {
 
 				<h3>Why Choose Templata</h3>
 				<p>
-					Unlike generic planning tools or expensive consultants, Templata combines expert frameworks with AI-powered organization. Each guide is crafted by domain specialists and refined through user feedback. You get professional-grade planning resources for free.
+					Unlike generic planning tools or expensive consultants, Templata combines expert frameworks with AI-powered organization. Each guide is crafted by domain specialists and refined through user feedback. You get professional-grade planning resources free during beta.
 				</p>
 			</div>
 		</>

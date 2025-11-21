@@ -87,7 +87,7 @@ const faqItems: FAQItem[] = [
     category: "Pricing",
     question: "How much does Templata cost?",
     answer:
-      "Templata is completely free to use. Access all guides, questions, expert readings, and planning tools at no cost.",
+      "Templata is currently free during beta. Access all guides, questions, expert readings, and planning tools at no cost during beta.",
   },
   // Technical Questions
   {

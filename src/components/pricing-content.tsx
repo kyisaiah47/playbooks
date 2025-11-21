@@ -134,9 +134,9 @@ export const PricingContent: React.FC = () => {
         <div className="container max-w-4xl">
           <Separator className="mb-16" />
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h2 className="text-2xl font-medium text-foreground">Beta Access - Everything Free</h2>
+            <h2 className="text-2xl font-medium text-foreground">Beta Access - Everything Free During Beta</h2>
             <p>
-              We're currently in beta, focused on building the best comprehensive planning experience possible. During beta, all features are completely free with no restrictions, no credit card required, and no hidden catches.
+              We're currently in beta, focused on building the best comprehensive planning experience possible. During beta, all features are free with no restrictions, no credit card required, and no hidden catches.
             </p>
             <p>
               Get expert frameworks with 90%+ validated coverage, 50+ AI-refined questions per guide, curated expert readings, integrated calendars and tasks, progress tracking, and more—all at no cost while we perfect the platform.
@@ -249,9 +249,9 @@ export const PricingContent: React.FC = () => {
         <div className="container max-w-4xl">
           <Separator className="mb-16" />
           <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <h2 className="text-2xl font-medium text-foreground">Why Everything Is Free in Beta</h2>
+            <h2 className="text-2xl font-medium text-foreground">Why Everything Is Free During Beta</h2>
             <p>
-              We're focused on building the best comprehensive planning platform. Your feedback during beta helps us perfect the experience. In exchange, you get full access to expert frameworks, AI-refined questions, curated readings, and all features—completely free.
+              We're focused on building the best comprehensive planning platform. Your feedback during beta helps us perfect the experience. In exchange, you get full access to expert frameworks, AI-refined questions, curated readings, and all features—free during beta.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 mt-12 text-muted-foreground">

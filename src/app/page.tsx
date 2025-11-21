@@ -265,7 +265,7 @@ export default function HomePage() {
 
 				<h3>What Makes Templata Different</h3>
 				<p>
-					Unlike generic planning tools, Templata offers expert-crafted frameworks from domain specialists. Each guide includes AI-refined planning questions, curated expert readings, and proven methodologies. Completely free, forever.
+					Unlike generic planning tools, Templata offers expert-crafted frameworks from domain specialists. Each guide includes AI-refined planning questions, curated expert readings, and proven methodologies. Free during beta.
 				</p>
 
 				<h3>Popular Planning Guides</h3>
@@ -291,7 +291,7 @@ export default function HomePage() {
 
 				<h3>Powerful Features for Life Planning</h3>
 				<p>
-					Templata includes premium features completely free:
+					Templata includes premium features free during beta:
 				</p>
 				<ul>
 					<li><Link href="/features">All Features</Link> - Comprehensive overview of Templata&apos;s planning tools.</li>

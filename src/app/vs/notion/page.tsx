@@ -193,7 +193,7 @@ export default function VsNotionPage() {
           <strong>No Hidden Costs During Beta:</strong> Currently free during beta period. We may introduce pricing options in the future as we continue to develop the platform.
         </p>
         <p>
-          <strong>Beta Advantage:</strong> Currently in beta means access to all features before any premium options exist. Early users get comprehensive planning completely free.
+          <strong>Beta Advantage:</strong> Currently in beta means access to all features before any premium options exist. Early users get comprehensive planning free during beta.
         </p>
 
         <h4>Notion Pricing</h4>

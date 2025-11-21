@@ -107,7 +107,7 @@ export default function TasksFeaturePage() {
         name: 'Is task management free in Templata?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, task management is completely free. You get unlimited tasks across all your guides with full priority management, status tracking, and due dates at no cost.',
+          text: 'Yes, task management is free during beta. You get unlimited tasks across all your guides with full priority management, status tracking, and due dates at no cost during beta.',
         },
       },
     ],

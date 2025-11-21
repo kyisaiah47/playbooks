@@ -107,7 +107,7 @@ export default function CalendarFeaturePage() {
         name: 'Is the planning calendar free?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, the planning calendar is completely free. You get unlimited calendars, one for each guide you use, with no limitations or paywalls.',
+          text: 'Yes, the planning calendar is free during beta. You get unlimited calendars, one for each guide you use, with no limitations or paywalls during beta.',
         },
       },
     ],

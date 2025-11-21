@@ -136,7 +136,7 @@ export default function FAQPage() {
         name: 'How much does Templata cost?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Templata is completely free to use. Access all guides, questions, expert readings, and planning tools at no cost.',
+          text: 'Templata is currently free during beta. Access all guides, questions, expert readings, and planning tools at no cost during beta.',
         },
       },
       // Technical
@@ -254,7 +254,7 @@ export default function FAQPage() {
 
         <h3>Pricing and Access</h3>
         <p><strong>How much does Templata cost?</strong></p>
-        <p>Templata is completely free to use. Access all planning guides, AI-refined questions, expert readings, and planning tools at no cost. No paywalls, no hidden fees. We believe effective planning should be accessible to everyone.</p>
+        <p>Templata is currently free during beta. Access all planning guides, AI-refined questions, expert readings, and planning tools at no cost during beta. No paywalls, no hidden fees during beta. We believe effective planning should be accessible to everyone.</p>
 
         <p><strong>Will Templata always be free?</strong></p>
         <p>Currently free during beta. All guides, questions, and readings are accessible without payment during beta. We may introduce pricing options in the future as we continue to develop the platform.</p>

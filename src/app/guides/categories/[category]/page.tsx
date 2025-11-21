@@ -28,7 +28,7 @@ const CATEGORY_FAQS = {
     },
     {
       question: 'Are career planning guides free?',
-      answer: 'Yes, all career planning guides on Templata are completely free during our beta period. You get full access to expert questions, curated readings, and integrated planning tools with no credit card required.',
+      answer: 'Yes, all career planning guides on Templata are free during beta. You get full access to expert questions, curated readings, and integrated planning tools with no credit card required during beta.',
     },
   ],
   'finance': [
