@@ -31,28 +31,16 @@ export async function getAuthenticatedUser(): Promise<AuthSession | null> {
       }
     );
 
-    // Get the current user using Supabase's secure method
     const { data: { user }, error } = await supabase.auth.getUser();
 
     if (error || !user) {
       return null;
     }
 
-    // Get user profile - we need the users.id, not auth.users.id for foreign keys
-    const { data: profile } = await supabase
-      .from('users')
-      .select('id, name')
-      .eq('user_id', user.id)
-      .single();
-
-    if (!profile) {
-      return null;
-    }
-
     return {
-      userId: profile.id, // Use users.id for foreign key relationships
+      userId: user.id,
       email: user.email!,
-      name: profile.name || user.user_metadata?.name || undefined,
+      name: user.user_metadata?.name || undefined,
       createdAt: new Date(user.created_at).getTime(),
     };
   } catch {

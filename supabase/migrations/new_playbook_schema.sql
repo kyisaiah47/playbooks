@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS playbooks (
   title         TEXT NOT NULL,
   description   TEXT,
   context       TEXT NOT NULL,          -- user's original natural language prompt
-  is_public     BOOLEAN DEFAULT true,   -- visible in community browse
+  is_public     BOOLEAN DEFAULT true,
   is_forked     BOOLEAN DEFAULT false,
   forked_from   UUID REFERENCES playbooks(id) ON DELETE SET NULL,
   created_at    TIMESTAMPTZ DEFAULT NOW(),

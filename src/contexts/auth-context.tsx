@@ -7,6 +7,7 @@ interface User {
   id: string;
   email: string;
   name?: string;
+  tier?: 'free' | 'pro';
 }
 
 interface AuthContextType {
@@ -31,13 +32,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Get initial user using secure method
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (user) {
         setIsLoggedIn(true);
+        const { data: sub } = await supabase
+          .from('subscriptions')
+          .select('tier')
+          .eq('user_id', user.id)
+          .eq('status', 'active')
+          .single();
         setUser({
           id: user.id,
           email: user.email!,
           name: user.user_metadata?.name,
+          tier: sub?.tier === 'pro' ? 'pro' : 'free',
         });
       }
       setLoading(false);

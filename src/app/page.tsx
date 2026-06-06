@@ -1,319 +1,231 @@
-import type { Metadata } from 'next';
-import Script from 'next/script';
-import Link from 'next/link';
-import { LandingHero } from "@/components/landing-hero";
-import { LandingAbout } from "@/components/landing-about";
-import { LandingFeatures } from "@/components/landing-features";
-import { LandingTestimonials } from "@/components/landing-testimonials";
-import { LandingStats } from "@/components/landing-stats";
-import { LandingTechStack } from "@/components/landing-tech-stack";
-import { LandingIntegrations } from "@/components/landing-integrations";
-import { PageLayout } from "@/components/layout";
-import { TEMPLATA_FAQ } from '@/lib/seo';
+'use client';
 
-export const metadata: Metadata = {
-	title: 'Templata - Free Life Planning Platform for Weddings, Career & More',
-	description: 'Stop stressing over blank pages. Get expert-crafted planning guides for weddings, career changes, home buying & more life events. 90%+ coverage guarantee. AI-refined questions. Curated expert readings. Free beta access.',
-	keywords: 'life planning platform, life planning templates, wedding planning app free, career change planner, home buying checklist template, business planning guide, free life organizer, life planning software, expert planning frameworks, structured life planning, ai planning assistant, life coach alternative, wedding planner free, career transition guide, financial planning template, planning app, major life transitions, life event planning tool, comprehensive planning platform, free notion alternative for planning',
-	authors: [{ name: 'Templata' }],
-	creator: 'Templata',
-	publisher: 'Templata',
-	openGraph: {
-		title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
-		description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Curated readings. Free beta access. Start in 60 seconds.',
-		url: 'https://templata.org',
-		siteName: 'Templata',
-		images: [
-			{
-				url: 'https://templata.org/og-image.png',
-				width: 1200,
-				height: 630,
-				alt: 'Templata - Organize Life\'s Biggest Moments',
-			},
-		],
-		locale: 'en_US',
-		type: 'website',
-	},
-	twitter: {
-		card: 'summary_large_image',
-		title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
-		description: 'Expert guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Free beta access.',
-		images: ['https://templata.org/og-image.png'],
-		creator: '@templata',
-	},
-	robots: {
-		index: true,
-		follow: true,
-		googleBot: {
-			index: true,
-			follow: true,
-			'max-video-preview': -1,
-			'max-image-preview': 'large',
-			'max-snippet': -1,
-		},
-	},
-	alternates: {
-		canonical: 'https://templata.org',
-	},
-};
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { LoginDialog } from '@/components/login-dialog';
+import { useAuth } from '@/contexts/auth-context';
+import { ArrowRight, HelpCircle, Sparkles, Zap, Users, GitFork, BookOpen, Brain } from 'lucide-react';
+
+import Image from 'next/image';
+
 
 export default function HomePage() {
-	// Organization schema
-	const organizationSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'Organization',
-		name: 'Templata',
-		url: 'https://templata.org',
-		logo: 'https://templata.org/logo.png',
-		description: 'Expert-crafted templates and planning guides for life\'s biggest moments',
-		sameAs: [
-			'https://twitter.com/templata',
-		],
-	};
+  const [loginOpen, setLoginOpen] = useState(false);
+  const { isLoggedIn, loading } = useAuth();
+  const router = useRouter();
 
-	// WebSite schema with SearchAction for sitelinks search box
-	const websiteSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'WebSite',
-		name: 'Templata',
-		url: 'https://templata.org',
-		description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments.',
-		publisher: {
-			'@type': 'Organization',
-			name: 'Templata'
-		},
-		potentialAction: {
-			'@type': 'SearchAction',
-			target: {
-				'@type': 'EntryPoint',
-				urlTemplate: 'https://templata.org/guides?q={search_term_string}'
-			},
-			'query-input': 'required name=search_term_string'
-		}
-	};
+  function handleCTA() {
+    if (isLoggedIn) router.push('/app');
+    else setLoginOpen(true);
+  }
 
-	// FAQ schema
-	const faqSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'FAQPage',
-		mainEntity: TEMPLATA_FAQ.map((faq) => ({
-			'@type': 'Question',
-			name: faq.question,
-			acceptedAnswer: {
-				'@type': 'Answer',
-				text: faq.answer,
-			},
-		})),
-	};
+  return (
+    <div className="min-h-screen bg-background font-sans">
+      {/* Nav */}
+      <nav className="flex items-center justify-between px-6 h-14 border-b border-border">
+        <Image src="/logo.png" alt="Templata" width={22} height={26} className="invert" />
+        <Button size="sm" variant="outline" asChild>
+          <a href="/community">Community</a>
+        </Button>
+      </nav>
 
-	// SoftwareApplication schema
-	const softwareSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'SoftwareApplication',
-		name: 'Templata',
-		applicationCategory: 'LifestyleApplication',
-		operatingSystem: 'Web',
-		offers: {
-			'@type': 'Offer',
-			price: '0',
-			priceCurrency: 'USD',
-		},
-	};
+      {/* Marquee banner */}
+      <div className="border-b border-border bg-secondary/40 overflow-hidden py-2.5">
+        <div className="flex whitespace-nowrap animate-marquee-banner" style={{ width: 'max-content' }}>
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center shrink-0" aria-hidden={i === 1}>
+              {[
+                { icon: <Zap className="w-3 h-3" />, text: 'Powered by Claude' },
+                { icon: <GitFork className="w-3 h-3" />, text: 'Browse & fork community playbooks' },
+                { icon: <Users className="w-3 h-3" />, text: 'Wedding, career, home buying & more' },
+                { icon: <Brain className="w-3 h-3" />, text: 'AI insight on every answer you write' },
+              ].map((item, j) => (
+                <span key={j} className="inline-flex items-center gap-2 text-xs px-6 text-muted-foreground">
+                  {item.icon}
+                  {item.text}
+                  <span className="ml-4 text-border">·</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
 
-	// HowTo schema for using Templata
-	const howToSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'HowTo',
-		name: 'How to Plan Life\'s Biggest Moments with Templata',
-		description: 'Step-by-step guide to using Templata for comprehensive life planning',
-		totalTime: 'PT5M',
-		step: [
-			{
-				'@type': 'HowToStep',
-				position: 1,
-				name: 'Create Free Account',
-				text: 'Sign up with your email. No credit card required. Takes 30 seconds.',
-				url: 'https://templata.org',
-			},
-			{
-				'@type': 'HowToStep',
-				position: 2,
-				name: 'Choose Your Guide',
-				text: 'Browse 70+ expert-crafted planning guides. Select the life event you\'re planning (wedding, career change, home buying, etc.)',
-				url: 'https://templata.org/guides',
-			},
-			{
-				'@type': 'HowToStep',
-				position: 3,
-				name: 'Answer AI-Refined Questions',
-				text: 'Work through 50+ questions designed to ensure 90%+ comprehensive coverage. Skip what doesn\'t apply. Your answers auto-save.',
-				url: 'https://templata.org/how-to-use',
-			},
-			{
-				'@type': 'HowToStep',
-				position: 4,
-				name: 'Read Expert Content',
-				text: 'Learn from curated expert readings alongside questions. All content vetted for quality and relevance.',
-				url: 'https://templata.org/library',
-			},
-			{
-				'@type': 'HowToStep',
-				position: 5,
-				name: 'Track Progress',
-				text: 'Use integrated calendar, tasks, and notes. Monitor progress with visual analytics. Export your planning data anytime.',
-				url: 'https://templata.org/features',
-			},
-		],
-	};
+      {/* One continuous page */}
+      <div className="relative overflow-hidden">
+        {/* Grid background — runs the full page */}
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0"
+          style={{
+            backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)',
+            backgroundSize: '100% 100%',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)',
+            maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)',
+            opacity: 0.45,
+          }}
+        />
 
-	// Product schema for SEO - represents Templata as a product/service
-	const productSchema = {
-		'@context': 'https://schema.org',
-		'@type': 'Product',
-		name: 'Templata Life Planning Platform',
-		description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions with 90%+ coverage guarantee. Curated expert readings. Integrated calendar, tasks, and analytics.',
-		brand: {
-			'@type': 'Brand',
-			name: 'Templata'
-		},
-		category: 'Software > Productivity Software > Life Planning',
-		offers: {
-			'@type': 'Offer',
-			url: 'https://templata.org',
-			priceCurrency: 'USD',
-			price: '0.00',
-			priceValidUntil: '2026-12-31',
-			availability: 'https://schema.org/InStock',
-			seller: {
-				'@type': 'Organization',
-				name: 'Templata'
-			}
-		}
-	};
+        <div className="relative z-10">
+          {/* Hero */}
+          <div className="flex flex-col items-center text-center px-4 pt-16 pb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center gap-5"
+            >
+              <h1 className="max-w-2xl text-5xl md:text-7xl font-semibold tracking-tighter leading-[1.05] bg-gradient-to-r from-stone-900 via-stone-700 to-stone-800 bg-clip-text text-transparent py-1">
+                The playbook for whatever's next
+              </h1>
 
-	return (
-		<>
-			<Script
-				id="home-organization-jsonld"
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-			/>
-			<Script
-				id="home-website-jsonld"
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-			/>
-			<Script
-				id="home-faq-jsonld"
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-			/>
-			<Script
-				id="home-software-jsonld"
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
-			/>
-			<Script
-				id="home-howto-jsonld"
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-			/>
-			<Script
-				id="home-product-jsonld"
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-			/>
+              <p className="max-w-md text-base md:text-lg text-muted-foreground leading-relaxed">
+                Describe what you're planning. Get a personalized, AI-generated playbook in seconds — not a generic template.
+              </p>
 
-			<PageLayout>
-				<LandingHero />
-				<LandingAbout />
-				<LandingFeatures />
-				<LandingTestimonials />
-				<LandingStats />
-				<LandingTechStack />
-				<LandingIntegrations />
-			</PageLayout>
+              <div className="flex flex-col items-center gap-2 pt-2">
+                <Button size="lg" onClick={handleCTA} disabled={loading} className="gap-2">
+                  Build my playbook
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+                <div className="flex items-center gap-4 text-xs text-muted-foreground mt-1">
+                  <span>Free — 1 playbook/mo</span>
+                  <span>·</span>
+                  <span>Pro — $9/mo · 10 playbooks</span>
+                </div>
+</div>
+            </motion.div>
+          </div>
 
-			{/* Hidden SEO content */}
-			<div className="sr-only" aria-hidden="true">
-				<h2>Templata - Life Planning Platform</h2>
-				<p>
-					Templata is the leading platform for organizing life's biggest moments. Get access to expert-crafted planning templates, curated readings, and AI-refined questions for major life events.
-				</p>
+          {/* Playbook mockup */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-2xl mx-auto px-4 pb-20"
+          >
+            <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm shadow-sm overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-background/60">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-300" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-300" />
+                  <div className="w-3 h-3 rounded-full bg-green-300" />
+                </div>
+                <span className="text-xs text-muted-foreground">Wedding in NYC — October, 80 guests</span>
+                <div className="flex items-center gap-2">
+                  <div className="h-1 w-16 bg-border rounded-full overflow-hidden">
+                    <div className="h-full w-1/3 bg-stone-400 rounded-full" />
+                  </div>
+                  <span className="text-xs text-muted-foreground">33%</span>
+                </div>
+              </div>
+              <div className="px-6 py-5 text-left space-y-8">
 
-				<h3>Life Planning Categories</h3>
-				<ul>
-					<li>
-						<strong>Career & Work Planning</strong> - Job search, career change, leadership transitions, freelancing, and professional development
-					</li>
-					<li>
-						<strong>Finance & Money Planning</strong> - Budgeting, investing, debt payoff, retirement planning, and financial freedom
-					</li>
-					<li>
-						<strong>Relationships & Family</strong> - Wedding planning, family dynamics, communication, and relationship building
-					</li>
-					<li>
-						<strong>Life Events</strong> - Moving, home buying, major life transitions, and safety planning
-					</li>
-					<li>
-						<strong>Health & Wellness</strong> - Fitness planning, mental health, nutrition, and overall wellbeing
-					</li>
-					<li>
-						<strong>Personal Growth</strong> - Learning new skills, creativity, hobbies, and self-improvement
-					</li>
-				</ul>
+                {/* Phase 1 */}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 pb-2 border-b border-border">Before You Start</p>
+                  <div className="space-y-2.5">
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded border-2 border-stone-300 mt-0.5 shrink-0 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-sm bg-stone-800" />
+                      </div>
+                      <span className="text-sm text-muted-foreground line-through">Lock in venue (12–18 months out in NYC)</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded border-2 border-stone-300 mt-0.5 shrink-0 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-sm bg-stone-800" />
+                      </div>
+                      <span className="text-sm text-muted-foreground line-through">Set your non-negotiables before talking to vendors</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <HelpCircle className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                      <div className="flex-1">
+                        <span className="text-sm">What does intimate but elegant mean to you visually?</span>
+                        <div className="mt-1.5">
+                          <p className="text-xs text-muted-foreground italic">"Candlelit loft spaces, private dining rooms..."</p>
+                          <div className="mt-1.5 pl-3 border-l-2 border-stone-200">
+                            <div className="flex items-center gap-1 text-xs text-stone-500 mb-1">
+                              <Sparkles className="w-3 h-3" />
+                              AI insight
+                            </div>
+                            <p className="text-xs text-stone-500 leading-relaxed">With that vibe, prioritize restaurant private dining rooms and loft venues in SoHo or West Village — they'll come in under $8k for the space...</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-				<h3>What Makes Templata Different</h3>
-				<p>
-					Unlike generic planning tools, Templata offers expert-crafted frameworks from domain specialists. Each guide includes AI-refined planning questions, curated expert readings, and proven methodologies. Free during beta.
-				</p>
+                {/* Phase 2 */}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 pb-2 border-b border-border">Budget & Vendors</p>
+                  <div className="space-y-2.5">
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded border-2 border-stone-300 mt-0.5 shrink-0" />
+                      <span className="text-sm">Allocate your $50k across: venue, catering, photography, florals, music, attire</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded border-2 border-stone-300 mt-0.5 shrink-0" />
+                      <span className="text-sm">Get 3 quotes per vendor category before committing</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <HelpCircle className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                      <span className="text-sm text-muted-foreground">Which category are you willing to splurge on, and where will you cut?</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-sm shrink-0 mt-0.5">📍</span>
+                      <div>
+                        <span className="text-sm">Ravel Events — West Village loft, seats 80, all-inclusive</span>
+                        <span className="ml-2 text-xs px-1.5 py-0.5 rounded bg-stone-100 text-stone-500">venue</span>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-sm shrink-0 mt-0.5">📍</span>
+                      <div>
+                        <span className="text-sm">501 Union — Brooklyn, exposed brick, garden courtyard</span>
+                        <span className="ml-2 text-xs px-1.5 py-0.5 rounded bg-stone-100 text-stone-500">venue</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-				<h3>Popular Planning Guides</h3>
-				<ul>
-					<li>Wedding Planning Template & Guide - Complete wedding organization from engagement to honeymoon</li>
-					<li>Career Change Guide - Strategic career transition planning with expert frameworks</li>
-					<li>Home Buying Checklist - Step-by-step guide from search to closing</li>
-					<li>Financial Planning Templates - Budget, invest, and achieve financial freedom</li>
-					<li>Starting a Business Guide - Launch and grow your business with confidence</li>
-					<li>Moving Checklist & Guide - Stress-free relocation planning</li>
-				</ul>
+                {/* Phase 3 */}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 pb-2 border-b border-border">6 Months Out</p>
+                  <div className="space-y-2.5">
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded border-2 border-stone-300 mt-0.5 shrink-0" />
+                      <span className="text-sm">Book photographer — NYC photographers fill fast, especially October</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded border-2 border-stone-300 mt-0.5 shrink-0" />
+                      <span className="text-sm">Send save-the-dates, include hotel block info for out-of-town guests</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <HelpCircle className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                      <span className="text-sm text-muted-foreground">How many guests are traveling from out of town? This changes your hotel block strategy.</span>
+                    </div>
+                  </div>
+                </div>
 
-				<h3>Compare Templata to Other Tools</h3>
-				<p>
-					See how Templata compares to other popular tools for life planning:
-				</p>
-				<ul>
-					<li><Link href="/vs/notion">Templata vs Notion</Link> - Expert frameworks vs blank databases. Why Templata wins for life planning.</li>
-					<li><Link href="/vs/google">Templata vs Google Search</Link> - Organized planning vs 50 scattered browser tabs.</li>
-					<li><Link href="/vs/google-docs">Templata vs Google Docs</Link> - Expert guidance vs blank documents.</li>
-					<li><Link href="/vs/wikipedia">Templata vs Wikipedia</Link> - Active planning vs passive encyclopedia reading.</li>
-				</ul>
+              </div>
+            </div>
+          </motion.div>
 
-				<h3>Powerful Features for Life Planning</h3>
-				<p>
-					Templata includes premium features free during beta:
-				</p>
-				<ul>
-					<li><Link href="/features">All Features</Link> - Comprehensive overview of Templata&apos;s planning tools.</li>
-					<li><Link href="/features/calendar">Planning Calendar</Link> - Per-guide calendars to track milestones and deadlines separately.</li>
-					<li><Link href="/features/tasks">Task Management</Link> - Organize action items by priority and status for each life event.</li>
-					<li><Link href="/features/analytics">Progress Analytics</Link> - Visual charts and insights to track your planning progress.</li>
-				</ul>
 
-				<h3>Why Choose Templata</h3>
-				<p>
-					<strong>For Wedding Planning:</strong> Templata provides 50+ wedding-specific questions, expert vendor guidance, budget tracking, and timeline management. Compare to <Link href="/vs/notion">planning your wedding in Notion</Link> or <Link href="/vs/google">researching on Google</Link> - Templata offers comprehensive coverage from day one.
-				</p>
-				<p>
-					<strong>For Career Transitions:</strong> Get expert career assessment questions, transition strategies, and job search tactics. More effective than <Link href="/vs/google-docs">creating your own career plan in Google Docs</Link>.
-				</p>
-				<p>
-					<strong>For Home Buying:</strong> Expert guidance on financing, location criteria, inspection priorities, and negotiation strategies. Better than <Link href="/vs/google">googling home buying tips</Link> across dozens of websites.
-				</p>
-				<p>
-					Learn more about <Link href="/pricing">Templata&apos;s free pricing</Link>, explore our <Link href="/guides">70+ planning guides</Link>, or browse our <Link href="/library">expert reading library</Link>.
-				</p>
-			</div>
-		</>
-	);
+          {/* Footer */}
+          <div className="border-t border-border px-6 py-6 flex items-center justify-between text-xs text-muted-foreground">
+            <Image src="/logo.png" alt="Templata" width={16} height={20} className="invert opacity-40" />
+            <span>© {new Date().getFullYear()} Templata</span>
+          </div>
+        </div>
+      </div>
+
+      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
+    </div>
+  );
 }

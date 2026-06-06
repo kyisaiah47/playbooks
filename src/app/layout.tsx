@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import { Outfit, Fira_Code } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "@/components/providers/session-provider"
 import { UIProvider } from "@/components/providers/ui-provider"
 import { QueryProvider } from "@/components/providers/QueryProvider"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { AuthProvider } from "@/contexts/auth-context"
-import { DataCacheProvider } from "@/contexts/DataCacheContext"
 import { Analytics } from "@/components/analytics"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const outfit = Outfit({
+const geist = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
   display: 'swap',
 });
 
-const firaCode = Fira_Code({
+const geistMono = Geist_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: 'swap',
@@ -30,10 +29,10 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://templata.org'),
-  title: 'Templata - Free Life Planning Platform | 90%+ Coverage Guarantee',
-  description: 'Expert-crafted planning guides for weddings, careers, home buying & 70+ life events. AI-refined questions. Curated readings. Free beta access. Better than Notion, Trello, or Google Docs for life planning.',
-  keywords: 'life planning platform, life planning templates, free planning app, wedding planning, career change, home buying, business planning, expert guidance, structured frameworks, life organization, ai planning assistant, free notion alternative',
-  authors: [{ name: 'Templata Team' }],
+  title: 'Templata — AI Playbooks for Life\'s Biggest Moments',
+  description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds. Tasks, questions, and AI insight tailored to your situation — not a generic template.',
+  keywords: 'ai planning, life planning, wedding planning app, career change planner, home buying guide, ai playbook, personalized planning, claude ai, life events',
+  authors: [{ name: 'Templata' }],
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
@@ -47,8 +46,8 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Templata | Organize Life\'s Biggest Moments',
-    description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments. Get organized in minutes with proven frameworks from domain experts.',
+    title: 'Templata — AI Playbooks for Life\'s Biggest Moments',
+    description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds. Not a generic template — yours.',
     url: 'https://templata.org',
     siteName: 'Templata',
     images: [
@@ -56,7 +55,7 @@ export const metadata: Metadata = {
         url: 'https://templata.org/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Templata - Organize Life\'s Biggest Moments',
+        alt: 'Templata — AI Playbooks for Life\'s Biggest Moments',
       },
     ],
     locale: 'en_US',
@@ -64,8 +63,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Templata | Organize Life\'s Biggest Moments',
-    description: 'Skip the blank page with expertly crafted templates for life\'s biggest moments.',
+    title: 'Templata — AI Playbooks for Life\'s Biggest Moments',
+    description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds.',
     images: ['https://templata.org/og-image.png'],
     creator: '@templata',
   },
@@ -98,20 +97,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="light">
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('theme');
-                if (theme === 'dark') {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -143,19 +130,17 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${outfit.variable} ${firaCode.variable} antialiased`}
+        className={`${geist.variable} ${geistMono.variable} antialiased`}
       >
         <ErrorBoundary>
           <QueryProvider>
             <SessionProvider>
               <AuthProvider>
-                <DataCacheProvider>
                   <UIProvider>
                     <Analytics />
                     <SpeedInsights />
                     {children}
                   </UIProvider>
-                </DataCacheProvider>
               </AuthProvider>
             </SessionProvider>
           </QueryProvider>

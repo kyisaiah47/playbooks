@@ -2,7 +2,7 @@
 
 import React from "react"
 import { ThemeProvider } from "next-themes"
-import { useToast } from "@/components/ui/toast"
+import { Toaster } from "@/components/ui/sonner"
 import { useConfetti, Confetti } from "@/components/ui/confetti"
 
 interface UIProviderProps {
@@ -10,13 +10,12 @@ interface UIProviderProps {
 }
 
 export function UIProvider({ children }: UIProviderProps) {
-  const { ToastContainer } = useToast()
   const { isActive } = useConfetti()
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
       {children}
-      <ToastContainer />
+      <Toaster />
       <Confetti active={isActive} />
     </ThemeProvider>
   )
