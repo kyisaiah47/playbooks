@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
   // Call Claude
   const message = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 4096,
+    max_tokens: 8096,
     messages: [
       {
         role: 'user',
@@ -45,11 +45,14 @@ export async function POST(request: NextRequest) {
   });
 
   const rawText = message.content[0].type === 'text' ? message.content[0].text : '';
+  // Strip markdown code fences if Claude wrapped the JSON
+  const cleaned = rawText.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
 
   let generated: GeneratedPlaybook;
   try {
-    generated = JSON.parse(rawText);
+    generated = JSON.parse(cleaned);
   } catch {
+    console.error('Failed to parse AI response:', cleaned.slice(0, 500));
     return NextResponse.json({ error: 'Failed to parse AI response. Please try again.' }, { status: 500 });
   }
 

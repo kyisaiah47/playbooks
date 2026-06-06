@@ -6,7 +6,6 @@ import { UIProvider } from "@/components/providers/ui-provider"
 import { QueryProvider } from "@/components/providers/QueryProvider"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { AuthProvider } from "@/contexts/auth-context"
-import { DataCacheProvider } from "@/contexts/DataCacheContext"
 import { Analytics } from "@/components/analytics"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
@@ -149,13 +148,11 @@ export default function RootLayout({
           <QueryProvider>
             <SessionProvider>
               <AuthProvider>
-                <DataCacheProvider>
                   <UIProvider>
                     <Analytics />
                     <SpeedInsights />
                     {children}
                   </UIProvider>
-                </DataCacheProvider>
               </AuthProvider>
             </SessionProvider>
           </QueryProvider>
