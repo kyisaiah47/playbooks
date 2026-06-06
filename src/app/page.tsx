@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
@@ -27,7 +28,7 @@ export default function HomePage() {
       <nav className="flex items-center justify-between px-6 h-14 border-b border-border">
         <Image src="/logo.png" alt="Templata" width={22} height={26} className="invert" />
         <Button size="sm" variant="outline" asChild>
-          <a href="/community">Community</a>
+          <Link href="/community">Community</Link>
         </Button>
       </nav>
 
