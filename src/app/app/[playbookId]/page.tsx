@@ -7,7 +7,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Sparkles, Loader2, HelpCircle, ExternalLink, ChevronDown, ChevronUp, MapPin, BookOpen, User, Video, Wrench, Globe, Link } from 'lucide-react';
+import { Loader2, HelpCircle, ExternalLink, ChevronDown, ChevronUp, MapPin, BookOpen, User, Video, Wrench, Globe, Link } from 'lucide-react';
+import { TemplataIcon } from '@/components/ui/templata-icon';
 import { AppNav } from '@/components/app-nav';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
 
@@ -194,7 +195,7 @@ function ItemRow({ item, activeItemId, setActiveItemId, draftAnswers, setDraftAn
             <div className="mt-2">
               <button className="flex items-center gap-1.5 text-xs text-stone-500 hover:text-stone-700 transition-colors"
                 onClick={() => setExpandedFeedback(p => ({ ...p, [item.id]: !p[item.id] }))}>
-                <Sparkles className="w-3 h-3" />
+                <TemplataIcon size={12} />
                 AI insight
                 {feedbackExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
               </button>
@@ -216,7 +217,7 @@ function ItemRow({ item, activeItemId, setActiveItemId, draftAnswers, setDraftAn
                 className="min-h-[100px] resize-none text-sm mb-2 bg-card" disabled={submitting === item.id} />
               <div className="flex gap-2">
                 <Button size="sm" onClick={() => onSubmitAnswer(item)} disabled={!draftAnswers[item.id]?.trim() || submitting === item.id}>
-                  {submitting === item.id ? <><Loader2 className="w-3 h-3 mr-1.5 animate-spin" />Getting insight...</> : <><Sparkles className="w-3 h-3 mr-1.5" />Save & get insight</>}
+                  {submitting === item.id ? <><Loader2 className="w-3 h-3 mr-1.5 animate-spin" />Getting insight...</> : <><TemplataIcon size={12} className="mr-1.5" />Save & get insight</>}
                 </Button>
                 <Button size="sm" variant="ghost" onClick={() => setActiveItemId(null)} disabled={submitting === item.id}>Cancel</Button>
               </div>

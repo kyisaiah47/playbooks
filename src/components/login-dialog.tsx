@@ -5,7 +5,8 @@ import { createBrowserClient } from '@supabase/ssr';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
-import { Sparkles, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowRight, Loader2, AlertCircle } from 'lucide-react';
+import { TemplataIcon } from '@/components/ui/templata-icon';
 import Image from 'next/image';
 
 interface LoginDialogProps {
@@ -52,7 +53,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
         {sent ? (
           <div className="text-center">
             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4">
-              <Sparkles className="w-5 h-5 text-muted-foreground" />
+              <TemplataIcon size={20} className="opacity-50" />
             </div>
             <h2 className="font-semibold text-lg tracking-tight mb-2">Check your email</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">

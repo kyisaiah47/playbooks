@@ -7,7 +7,8 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
-import { ArrowRight, HelpCircle, Sparkles, Zap, Users, GitFork, BookOpen, Brain } from 'lucide-react';
+import { ArrowRight, HelpCircle, Zap, Users, GitFork, BookOpen, Brain } from 'lucide-react';
+import { TemplataIcon } from '@/components/ui/templata-icon';
 
 import Image from 'next/image';
 
@@ -154,7 +155,7 @@ export default function HomePage() {
                           <p className="text-xs text-muted-foreground italic">"Candlelit loft spaces, private dining rooms..."</p>
                           <div className="mt-1.5 pl-3 border-l-2 border-stone-200">
                             <div className="flex items-center gap-1 text-xs text-stone-500 mb-1">
-                              <Sparkles className="w-3 h-3" />
+                              <TemplataIcon size={12} />
                               AI insight
                             </div>
                             <p className="text-xs text-stone-500 leading-relaxed">With that vibe, prioritize restaurant private dining rooms and loft venues in SoHo or West Village — they'll come in under $8k for the space...</p>

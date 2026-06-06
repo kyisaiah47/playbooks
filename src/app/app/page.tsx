@@ -5,7 +5,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Loader2, ArrowRight, Trash2, BookOpen, AlertCircle } from 'lucide-react';
+import { Loader2, ArrowRight, Trash2, BookOpen, AlertCircle } from 'lucide-react';
+import { TemplataIcon } from '@/components/ui/templata-icon';
 import { AppNav } from '@/components/app-nav';
 import { toast } from 'sonner';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
@@ -130,7 +131,7 @@ export default function AppPage() {
                 {generating ? (
                   <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Generating...</>
                 ) : (
-                  <><Sparkles className="w-3.5 h-3.5 mr-1.5" />Generate</>
+                  <><TemplataIcon size={14} className="mr-1.5" />Generate</>
                 )}
               </Button>
             </div>
