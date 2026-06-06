@@ -7,6 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { LogOut } from 'lucide-react';
 import { useAuth } from '@/contexts/auth-context';
 
+
 interface AppNavProps {
   showCommunity?: boolean;
   showMyPlaybooks?: boolean;
@@ -16,7 +17,7 @@ interface AppNavProps {
 
 export function AppNav({ showCommunity, showMyPlaybooks, showUserMenu, rightContent }: AppNavProps) {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isLoggedIn } = useAuth();
   const initial = user?.name?.[0]?.toUpperCase() ?? user?.email?.[0]?.toUpperCase() ?? '?';
 
   return (
@@ -29,11 +30,11 @@ export function AppNav({ showCommunity, showMyPlaybooks, showUserMenu, rightCont
         {showCommunity && (
           <Button variant="outline" size="sm" onClick={() => router.push('/community')}>Community</Button>
         )}
-        {showMyPlaybooks && (
+        {showMyPlaybooks && isLoggedIn && (
           <Button variant="outline" size="sm" onClick={() => router.push('/app')}>My Playbooks</Button>
         )}
         {rightContent}
-        {showUserMenu && (
+        {showUserMenu && isLoggedIn && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="w-7 h-7 rounded-full bg-stone-200 text-stone-600 text-xs font-medium flex items-center justify-center hover:bg-stone-300 transition-colors">

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Heart, MessageSquare, ArrowRight, Loader2, Flame, Clock } from 'lucide-react';
 import { AppNav } from '@/components/app-nav';
+import { useAuth } from '@/contexts/auth-context';
 
 interface CommunityPlaybook {
   id: string;
@@ -30,6 +31,7 @@ const GRID_BG = {
 
 export default function CommunityPage() {
   const router = useRouter();
+  const { isLoggedIn } = useAuth();
   const [playbooks, setPlaybooks] = useState<CommunityPlaybook[]>([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState<'new' | 'popular'>('new');
@@ -51,7 +53,7 @@ export default function CommunityPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <AppNav showMyPlaybooks showUserMenu />
+      <AppNav showMyPlaybooks={isLoggedIn} showUserMenu={isLoggedIn} />
 
       <div className="relative overflow-hidden">
         {/* Grid background */}
