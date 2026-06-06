@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
-import { ArrowRight, Sparkles, HelpCircle } from 'lucide-react';
+import { ArrowRight, HelpCircle, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 
@@ -30,6 +30,32 @@ export default function HomePage() {
         </Button>
       </nav>
 
+      {/* Marquee banner */}
+      <div className="border-b border-border bg-secondary/40 overflow-hidden py-2.5">
+        <div className="flex whitespace-nowrap animate-marquee-banner">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center shrink-0">
+              {[
+                { icon: <Sparkles className="w-3 h-3" />, text: 'Powered by Claude' },
+                { icon: <HelpCircle className="w-3 h-3" />, text: 'AI insight on every answer' },
+                { icon: <Sparkles className="w-3 h-3" />, text: 'Generated in seconds' },
+                { icon: <HelpCircle className="w-3 h-3" />, text: 'Wedding, career, home buying & more' },
+                { icon: <Sparkles className="w-3 h-3" />, text: 'Free to use' },
+                { icon: <HelpCircle className="w-3 h-3" />, text: 'Share & fork community playbooks' },
+                { icon: <Sparkles className="w-3 h-3" />, text: 'Tailored to your budget & location' },
+                { icon: <HelpCircle className="w-3 h-3" />, text: 'Not a generic template' },
+              ].map((item, j) => (
+                <span key={j} className="inline-flex items-center gap-2 text-xs text-muted-foreground px-6">
+                  {item.icon}
+                  {item.text}
+                  <span className="ml-6 text-border">·</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* One continuous page */}
       <div className="relative overflow-hidden">
         {/* Grid background — runs the full page */}
@@ -49,18 +75,13 @@ export default function HomePage() {
 
         <div className="relative z-10">
           {/* Hero */}
-          <div className="flex flex-col items-center text-center px-4 pt-24 pb-16">
+          <div className="flex flex-col items-center text-center px-4 pt-16 pb-16">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="flex flex-col items-center gap-5"
             >
-              <div className="inline-flex items-center gap-1.5 text-xs text-muted-foreground border border-border bg-card/60 backdrop-blur-sm rounded-full px-3 py-1">
-                <Sparkles className="w-3 h-3" />
-                Powered by Claude
-              </div>
-
               <h1 className="max-w-2xl text-5xl md:text-7xl font-semibold tracking-tighter leading-[1.05] bg-gradient-to-r from-stone-900 via-stone-700 to-stone-800 bg-clip-text text-transparent py-1">
                 The playbook for whatever's next
               </h1>

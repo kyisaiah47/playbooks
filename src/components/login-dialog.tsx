@@ -1,24 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { createBrowserClient } from '@supabase/ssr';
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Sparkles, ArrowRight, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 interface LoginDialogProps {
   open: boolean;
@@ -26,209 +14,102 @@ interface LoginDialogProps {
 }
 
 export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
-  const router = useRouter();
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [signupName, setSignupName] = useState("");
-  const [signupEmail, setSignupEmail] = useState("");
-  const [signupPassword, setSignupPassword] = useState("");
-  const [loginError, setLoginError] = useState("");
-  const [signupError, setSignupError] = useState("");
-  const [loginLoading, setLoginLoading] = useState(false);
-  const [signupLoading, setSignupLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 
-  const handleLogin = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoginError("");
-    setLoginLoading(true);
+    if (!email.trim() || loading) return;
+    setLoading(true);
+    setError('');
 
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: loginEmail,
-        password: loginPassword,
-      });
+    const { error } = await supabase.auth.signInWithOtp({
+      email: email.trim(),
+      options: {
+        emailRedirectTo: `${window.location.origin}/app`,
+      },
+    });
 
-      if (error) {
-        setLoginError(error.message);
-        return;
-      }
-
-      router.push("/app");
-      router.refresh();
-      onOpenChange(false);
-    } catch {
-      setLoginError("An error occurred. Please try again.");
-    } finally {
-      setLoginLoading(false);
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+      return;
     }
-  };
 
-  const handleSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSignupError("");
-    setSignupLoading(true);
+    setSent(true);
+    setLoading(false);
+  }
 
-    try {
-      const { error } = await supabase.auth.signUp({
-        email: signupEmail,
-        password: signupPassword,
-        options: {
-          data: {
-            name: signupName,
-          },
-        },
-      });
-
-      if (error) {
-        setSignupError(error.message);
-        return;
-      }
-
-      // Clear onboarding flag for new user
-      localStorage.removeItem('templata-onboarding-seen');
-
-      router.push("/app");
-      router.refresh();
-      onOpenChange(false);
-    } catch {
-      setSignupError("An error occurred. Please try again.");
-    } finally {
-      setSignupLoading(false);
+  function handleClose(val: boolean) {
+    onOpenChange(val);
+    if (!val) {
+      setTimeout(() => {
+        setEmail('');
+        setSent(false);
+        setError('');
+      }, 300);
     }
-  };
+  }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[calc(100%-2rem)] sm:max-w-[400px] max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>Welcome</DialogTitle>
-          <DialogDescription>
-            Login or create an account to get started
-          </DialogDescription>
-        </DialogHeader>
-        <Tabs defaultValue="login" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="login">Login</TabsTrigger>
-            <TabsTrigger value="signup">Sign Up</TabsTrigger>
-          </TabsList>
-          <TabsContent value="login">
-            <form onSubmit={handleLogin}>
-              <FieldGroup>
-                {loginError && (
-                  <div className="text-sm text-destructive text-center">{loginError}</div>
-                )}
-                <Field>
-                  <FieldLabel htmlFor="login-email">Email</FieldLabel>
-                  <Input
-                    id="login-email"
-                    type="email"
-                    placeholder="m@example.com"
-                    autoComplete="email"
-                    inputMode="email"
-                    autoCapitalize="none"
-                    required
-                    value={loginEmail}
-                    onChange={(e) => setLoginEmail(e.target.value)}
-                  />
-                </Field>
-                <Field>
-                  <FieldLabel htmlFor="login-password">Password</FieldLabel>
-                  <Input
-                    id="login-password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                    value={loginPassword}
-                    onChange={(e) => setLoginPassword(e.target.value)}
-                  />
-                  <FieldDescription>
-                    <a href="#" className="underline-offset-4 hover:underline">
-                      Forgot password?
-                    </a>
-                  </FieldDescription>
-                </Field>
-                <FieldGroup>
-                  <Field>
-                    <Button type="submit" disabled={loginLoading}>
-                      {loginLoading ? "Logging in..." : "Login"}
-                    </Button>
-                  </Field>
-                </FieldGroup>
-              </FieldGroup>
+    <Dialog open={open} onOpenChange={handleClose}>
+      <DialogContent className="sm:max-w-sm p-8 gap-0">
+        {sent ? (
+          <div className="text-center">
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4">
+              <Sparkles className="w-5 h-5 text-muted-foreground" />
+            </div>
+            <h2 className="font-semibold text-lg tracking-tight mb-2">Check your email</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              We sent a magic link to <span className="text-foreground font-medium">{email}</span>. Click it to sign in — no password needed.
+            </p>
+            <button
+              className="text-xs text-muted-foreground hover:text-foreground mt-6 underline underline-offset-2 transition-colors"
+              onClick={() => setSent(false)}
+            >
+              Use a different email
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className="flex justify-center mb-6">
+              <Image src="/logo.png" alt="Templata" width={28} height={34} className="invert" />
+            </div>
+            <h2 className="font-semibold text-xl tracking-tight text-center mb-1">Welcome to Templata</h2>
+            <p className="text-sm text-muted-foreground text-center mb-8">Enter your email to sign in or create an account.</p>
+
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <Input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoFocus
+                required
+                disabled={loading}
+                className="bg-background"
+              />
+              {error && <p className="text-xs text-destructive">{error}</p>}
+              <Button type="submit" className="w-full gap-2" disabled={!email.trim() || loading}>
+                {loading
+                  ? <><Loader2 className="w-4 h-4 animate-spin" />Sending...</>
+                  : <>Continue <ArrowRight className="w-4 h-4" /></>
+                }
+              </Button>
             </form>
-          </TabsContent>
-          <TabsContent value="signup">
-            <form onSubmit={handleSignup}>
-              <FieldGroup>
-                {signupError && (
-                  <div className="text-sm text-destructive text-center">{signupError}</div>
-                )}
-                <Field>
-                  <FieldLabel htmlFor="signup-name">Full Name</FieldLabel>
-                  <Input
-                    id="signup-name"
-                    type="text"
-                    placeholder="John Doe"
-                    autoComplete="name"
-                    required
-                    value={signupName}
-                    onChange={(e) => setSignupName(e.target.value)}
-                  />
-                </Field>
-                <Field>
-                  <FieldLabel htmlFor="signup-email">Email</FieldLabel>
-                  <Input
-                    id="signup-email"
-                    type="email"
-                    placeholder="m@example.com"
-                    autoComplete="email"
-                    inputMode="email"
-                    autoCapitalize="none"
-                    required
-                    value={signupEmail}
-                    onChange={(e) => setSignupEmail(e.target.value)}
-                  />
-                  <FieldDescription>
-                    We'll use this to contact you. We will not share your email with anyone else.
-                  </FieldDescription>
-                </Field>
-                <Field>
-                  <FieldLabel htmlFor="signup-password">Password</FieldLabel>
-                  <Input
-                    id="signup-password"
-                    type="password"
-                    autoComplete="new-password"
-                    required
-                    value={signupPassword}
-                    onChange={(e) => setSignupPassword(e.target.value)}
-                  />
-                  <FieldDescription>
-                    Must be at least 8 characters long.
-                  </FieldDescription>
-                </Field>
-                <Field>
-                  <FieldLabel htmlFor="signup-confirm-password">
-                    Confirm Password
-                  </FieldLabel>
-                  <Input id="signup-confirm-password" type="password" autoComplete="new-password" required />
-                  <FieldDescription>Please confirm your password.</FieldDescription>
-                </Field>
-                <FieldGroup>
-                  <Field>
-                    <Button type="submit" disabled={signupLoading}>
-                      {signupLoading ? "Creating account..." : "Create Account"}
-                    </Button>
-                  </Field>
-                </FieldGroup>
-              </FieldGroup>
-            </form>
-          </TabsContent>
-        </Tabs>
+
+            <p className="text-xs text-muted-foreground text-center mt-6">
+              We'll send you a magic link. No password required.
+            </p>
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );

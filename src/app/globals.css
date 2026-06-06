@@ -56,6 +56,15 @@
 }
 
 
+@keyframes marquee-banner {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee-banner {
+  animation: marquee-banner 25s linear infinite;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
