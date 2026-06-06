@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Heart, MessageSquare, ArrowRight, Loader2, Flame, Clock } from 'lucide-react';
-import Image from 'next/image';
+import { AppNav } from '@/components/app-nav';
 
 interface CommunityPlaybook {
   id: string;
@@ -51,15 +51,7 @@ export default function CommunityPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-4 border-b border-border">
-        <button onClick={() => router.push('/')}>
-          <Image src="/logo.png" alt="Templata" width={22} height={26} className="invert" />
-        </button>
-        <Button size="sm" onClick={() => router.push('/app')}>
-          My Playbooks
-        </Button>
-      </nav>
+      <AppNav showMyPlaybooks />
 
       <div className="relative overflow-hidden">
         {/* Grid background */}

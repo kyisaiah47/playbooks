@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Heart, Loader2, HelpCircle, ExternalLink, X, Send } from 'lucide-react';
-import Image from 'next/image';
+import { Heart, Loader2, HelpCircle, ExternalLink, X, Send } from 'lucide-react';
+import { AppNav } from '@/components/app-nav';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
 
 interface Comment {
@@ -103,13 +103,7 @@ export default function CommunityPlaybookPage({ params }: { params: Promise<{ id
     <div className="min-h-screen bg-background">
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
-      <nav className="relative z-10 flex items-center justify-between px-6 py-4 border-b border-border">
-        <button onClick={() => router.push('/community')} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
-          <ArrowLeft className="w-4 h-4" />
-          Community
-        </button>
-        <Image src="/logo.png" alt="Templata" width={22} height={26} className="invert" />
-      </nav>
+      <AppNav showMyPlaybooks />
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 pt-10 pb-24">
         {/* Header */}

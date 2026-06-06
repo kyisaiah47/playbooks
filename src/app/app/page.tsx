@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Loader2, ArrowRight, Trash2, BookOpen, LogOut } from 'lucide-react';
-import Image from 'next/image';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Sparkles, Loader2, ArrowRight, Trash2, BookOpen } from 'lucide-react';
+import { AppNav } from '@/components/app-nav';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import type { Playbook } from '@/types/playbook';
 
 const EXAMPLES = [
@@ -25,6 +25,7 @@ export default function AppPage() {
   const [generating, setGenerating] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchPlaybooks();
@@ -84,29 +85,7 @@ export default function AppPage() {
     <div className="min-h-screen bg-background">
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
-      {/* Nav */}
-      <nav className="relative z-10 flex items-center justify-between px-6 py-4 border-b border-border">
-        <Image src="/logo.png" alt="Templata" width={24} height={28} className="invert" />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="w-7 h-7 rounded-full bg-stone-200 text-stone-600 text-xs font-medium flex items-center justify-center hover:bg-stone-300 transition-colors">
-              I
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem
-              className="text-destructive focus:text-destructive cursor-pointer"
-              onClick={async () => {
-                await fetch('/api/auth/logout', { method: 'POST' });
-                router.push('/');
-              }}
-            >
-              <LogOut className="w-3.5 h-3.5 mr-2" />
-              Logout
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </nav>
+      <AppNav showCommunity showUserMenu />
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 pt-16 pb-24">
 
@@ -208,7 +187,10 @@ export default function AppPage() {
                     <div className="flex items-center gap-1 shrink-0">
                       <button
                         className="p-1.5 rounded-md opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-all"
-                        onClick={(e) => { e.stopPropagation(); deletePlaybook(p.id); }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setDeleteId(p.id);
+                        }}
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -221,6 +203,24 @@ export default function AppPage() {
           )}
         </div>
       </div>
+
+      <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete this playbook?</AlertDialogTitle>
+            <AlertDialogDescription>This cannot be undone.</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-white hover:bg-destructive/90"
+              onClick={() => { if (deleteId) deletePlaybook(deleteId); setDeleteId(null); }}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

@@ -41,14 +41,16 @@ async function getUserTier(_userId: string): Promise<'free' | 'pro'> {
 export async function checkPlaybookLimit(userId: string): Promise<{ allowed: boolean; used: number; limit: number }> {
   const [usage, tier] = await Promise.all([getOrCreateUsage(userId), getUserTier(userId)]);
   const limit = tier === 'pro' ? PRO_LIMITS.playbooks : FREE_LIMITS.playbooks;
-  const used = usage?.playbooks_used ?? 0;
+  if (!usage) return { allowed: false, used: 0, limit };
+  const used = usage.playbooks_used ?? 0;
   return { allowed: used < limit, used, limit };
 }
 
 export async function checkFeedbackLimit(userId: string): Promise<{ allowed: boolean; used: number; limit: number }> {
   const [usage, tier] = await Promise.all([getOrCreateUsage(userId), getUserTier(userId)]);
   const limit = tier === 'pro' ? PRO_LIMITS.feedback : FREE_LIMITS.feedback;
-  const used = usage?.feedback_used ?? 0;
+  if (!usage) return { allowed: false, used: 0, limit };
+  const used = usage.feedback_used ?? 0;
   return { allowed: used < limit, used, limit };
 }
 

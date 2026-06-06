@@ -23,7 +23,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background font-sans">
       {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-4 border-b border-border">
+      <nav className="flex items-center justify-between px-6 h-14 border-b border-border">
         <Image src="/logo.png" alt="Templata" width={22} height={26} className="invert" />
         <Button size="sm" variant="outline" asChild>
           <a href="/community">Community</a>
