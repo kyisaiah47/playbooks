@@ -1,292 +1,182 @@
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FloatingDockNav } from "@/components/floating-dock-nav";
-import { GuidesViewWrapper } from '@/app/app/views/GuidesViewWrapper';
-import { NotesViewWrapper } from '@/app/app/views/NotesViewWrapper';
-import { OverviewView } from '@/app/app/views/OverviewView';
-import { DataCacheProvider } from '@/contexts/DataCacheContext';
-
-type View = 'guides' | 'notes' | 'overview';
+import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Sparkles, Plus, ArrowRight, Loader2, BookOpen, Trash2 } from 'lucide-react';
+import type { Playbook } from '@/types/playbook';
 
 export default function AppPage() {
-	const [currentView, setCurrentView] = useState<View>('guides');
-	const [selectedTrackIds, setSelectedTrackIds] = useState<string[]>([]);
-	const [isDark, setIsDark] = useState(false);
-	const [trackSelectorOpen, setTrackSelectorOpen] = useState(false);
-	const [calendarSelectorOpen, setCalendarSelectorOpen] = useState(false);
-	const [tasksSelectorOpen, setTasksSelectorOpen] = useState(false);
+  const router = useRouter();
+  const [playbooks, setPlaybooks] = useState<Playbook[]>([]);
+  const [context, setContext] = useState('');
+  const [generating, setGenerating] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [error, setError] = useState('');
 
-	useEffect(() => {
-		loadUser();
-		loadSelectedTracks();
-		checkTheme();
+  useEffect(() => {
+    fetchPlaybooks();
+  }, []);
 
-		async function loadUser() {
-			try {
-				const res = await fetch('/api/auth/me');
-				const data = await res.json();
+  async function fetchPlaybooks() {
+    try {
+      const res = await fetch('/api/playbooks');
+      if (res.ok) {
+        const data = await res.json();
+        setPlaybooks(data.playbooks ?? []);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
 
-				if (data.user) {
-					// User is authenticated
-				}
-				// Allow anonymous users - don't redirect
-			} catch {
-				// Allow anonymous users - don't redirect
-			}
-		}
+  async function generate() {
+    if (!context.trim() || generating) return;
+    setGenerating(true);
+    setError('');
 
-		function loadSelectedTracks() {
-			const saved = localStorage.getItem('selectedTrackIds');
-			if (saved) {
-				try {
-					setSelectedTrackIds(JSON.parse(saved));
-				} catch (_e) {
-					// Ignore parse errors
-				}
-			}
-		}
+    try {
+      const res = await fetch('/api/playbooks/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ context }),
+      });
 
-		function checkTheme() {
-			const isDarkMode = document.documentElement.classList.contains("dark");
-			setIsDark(isDarkMode);
-		}
-	}, []);
+      const data = await res.json();
 
-	// Persist selected tracks to localStorage
-	useEffect(() => {
-		localStorage.setItem('selectedTrackIds', JSON.stringify(selectedTrackIds));
-	}, [selectedTrackIds]);
+      if (!res.ok) {
+        setError(data.error ?? 'Something went wrong.');
+        return;
+      }
 
-	const handleViewChange = (newView: View) => {
-		setCurrentView(newView);
-	};
+      router.push(`/app/${data.playbook.id}`);
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setGenerating(false);
+    }
+  }
 
-	const handleThemeToggle = () => {
-		const newIsDark = !isDark;
-		setIsDark(newIsDark);
+  async function deletePlaybook(id: string) {
+    await fetch(`/api/playbooks/${id}`, { method: 'DELETE' });
+    setPlaybooks((prev) => prev.filter((p) => p.id !== id));
+  }
 
-		if (newIsDark) {
-			document.documentElement.classList.add("dark");
-			localStorage.setItem("theme", "dark");
-		} else {
-			document.documentElement.classList.remove("dark");
-			localStorage.setItem("theme", "light");
-		}
-	};
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="max-w-3xl mx-auto px-4 py-12">
 
-	return (
-		<DataCacheProvider>
-		<div className="h-screen flex flex-col bg-background">
-			{/* Info Banner */}
-			<div className="border-b bg-primary/5 border-primary/20 overflow-hidden">
-				<div className="py-3">
-					<div className="inline-flex animate-scroll hover:pause-animation whitespace-nowrap">
-						<div className="inline-flex items-center gap-3 text-sm text-foreground px-6">
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">1</span>
-								Choose a{' '}
-								<button
-									onClick={() => setTrackSelectorOpen(!trackSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Track
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">2</span>
-								Explore{' '}
-								<button
-									onClick={() => handleViewChange('guides')}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Guides
-								</button>
-								{' '}and capture{' '}
-								<button
-									onClick={() => handleViewChange('notes')}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Notes
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
-								Schedule with{' '}
-								<button
-									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Tasks
-								</button>
-								{' '}and{' '}
-								<button
-									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Calendar
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
-								Review in{' '}
-								<button
-									onClick={() => handleViewChange('overview')}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Overview
-								</button>
-							</span>
-						</div>
-						{/* Duplicate for seamless loop */}
-						<div className="inline-flex items-center gap-3 text-sm text-foreground px-6">
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">1</span>
-								Choose a{' '}
-								<button
-									onClick={() => setTrackSelectorOpen(!trackSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Track
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">2</span>
-								Explore{' '}
-								<button
-									onClick={() => handleViewChange('guides')}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Guides
-								</button>
-								{' '}and capture{' '}
-								<button
-									onClick={() => handleViewChange('notes')}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Notes
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">3</span>
-								Schedule with{' '}
-								<button
-									onClick={() => setTasksSelectorOpen(!tasksSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Tasks
-								</button>
-								{' '}and{' '}
-								<button
-									onClick={() => setCalendarSelectorOpen(!calendarSelectorOpen)}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Calendar
-								</button>
-							</span>
-							<span className="text-muted-foreground">→</span>
-							<span className="inline-flex items-center gap-1.5">
-								<span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/20 text-primary text-xs font-semibold">4</span>
-								Review in{' '}
-								<button
-									onClick={() => handleViewChange('overview')}
-									className="px-1.5 py-0.5 rounded bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 hover:bg-yellow-500/20 font-medium transition-colors"
-								>
-									Overview
-								</button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<style jsx>{`
-					@keyframes scroll {
-						0% { transform: translateX(0); }
-						100% { transform: translateX(-50%); }
-					}
-					.animate-scroll {
-						animation: scroll 60s linear infinite;
-					}
-					.hover\\:pause-animation:hover {
-						animation-play-state: paused;
-					}
-				`}</style>
-			</div>
+        {/* Header */}
+        <div className="mb-10">
+          <h1 className="text-3xl font-bold tracking-tight mb-1">Your Playbooks</h1>
+          <p className="text-muted-foreground">AI-generated plans for life's biggest moments.</p>
+        </div>
 
-			{/* View Viewport with transitions */}
-			<div className={`flex-1 relative bg-background pb-20 ${currentView === 'overview' ? 'overflow-y-auto' : 'overflow-hidden'}`}>
-				<motion.div
-					initial={{ opacity: 1, y: 0 }}
-					animate={{
-						opacity: currentView === 'guides' ? 1 : 0,
-						y: currentView === 'guides' ? 0 : 20,
-					}}
-					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className="absolute inset-0"
-					style={{
-						pointerEvents: currentView === 'guides' ? 'auto' : 'none',
-						zIndex: currentView === 'guides' ? 10 : 0
-					}}
-				>
-					<GuidesViewWrapper
-						selectedTrackIds={selectedTrackIds}
-					/>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{
-						opacity: currentView === 'notes' ? 1 : 0,
-						y: currentView === 'notes' ? 0 : 20,
-					}}
-					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className="absolute inset-0"
-					style={{
-						pointerEvents: currentView === 'notes' ? 'auto' : 'none',
-						zIndex: currentView === 'notes' ? 10 : 0
-					}}
-				>
-					<NotesViewWrapper
-						selectedTrackIds={selectedTrackIds}
-					/>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{
-						opacity: currentView === 'overview' ? 1 : 0,
-						y: currentView === 'overview' ? 0 : 20,
-					}}
-					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className="absolute inset-0"
-					style={{
-						pointerEvents: currentView === 'overview' ? 'auto' : 'none',
-						zIndex: currentView === 'overview' ? 10 : 0
-					}}
-				>
-					<OverviewView />
-				</motion.div>
-			</div>
+        {/* Generate form */}
+        <AnimatePresence>
+          {showForm ? (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="mb-8"
+            >
+              <Card className="p-5 border-primary/20">
+                <p className="text-sm font-medium mb-3">Describe what you're planning</p>
+                <Textarea
+                  placeholder="e.g. I'm planning a wedding in NYC next October, budget around $50k, about 80 guests. My partner and I want something intimate but elegant."
+                  value={context}
+                  onChange={(e) => setContext(e.target.value)}
+                  className="min-h-[120px] resize-none mb-3 text-sm"
+                  disabled={generating}
+                />
+                {error && <p className="text-sm text-destructive mb-3">{error}</p>}
+                <div className="flex gap-2 justify-end">
+                  <Button variant="ghost" size="sm" onClick={() => { setShowForm(false); setError(''); }} disabled={generating}>
+                    Cancel
+                  </Button>
+                  <Button size="sm" onClick={generate} disabled={!context.trim() || generating}>
+                    {generating ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Generating...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="w-4 h-4 mr-2" />
+                        Generate Playbook
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </Card>
+            </motion.div>
+          ) : (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
+              <Button onClick={() => setShowForm(true)} className="gap-2">
+                <Plus className="w-4 h-4" />
+                New Playbook
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-			{/* Floating Dock Navigation */}
-			<FloatingDockNav
-				currentView={currentView}
-				onViewChange={handleViewChange}
-				onThemeToggle={handleThemeToggle}
-				isDark={isDark}
-				selectedTrackIds={selectedTrackIds}
-				onTrackSelectionChange={setSelectedTrackIds}
-				trackSelectorOpen={trackSelectorOpen}
-				setTrackSelectorOpen={setTrackSelectorOpen}
-				calendarSelectorOpen={calendarSelectorOpen}
-				setCalendarSelectorOpen={setCalendarSelectorOpen}
-				tasksSelectorOpen={tasksSelectorOpen}
-				setTasksSelectorOpen={setTasksSelectorOpen}
-			/>
-		</div>
-		</DataCacheProvider>
-	);
+        {/* Playbook list */}
+        {loading ? (
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+          </div>
+        ) : playbooks.length === 0 ? (
+          <div className="text-center py-20">
+            <BookOpen className="w-10 h-10 text-muted-foreground mx-auto mb-4" />
+            <p className="text-muted-foreground text-sm">No playbooks yet. Create your first one above.</p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {playbooks.map((p) => (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <Card
+                  className="p-4 hover:border-primary/30 transition-colors group cursor-pointer"
+                  onClick={() => router.push(`/app/${p.id}`)}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium truncate">{p.title}</p>
+                      {p.description && (
+                        <p className="text-sm text-muted-foreground mt-0.5 line-clamp-2">{p.description}</p>
+                      )}
+                      <p className="text-xs text-muted-foreground mt-2">
+                        {new Date(p.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {p.is_public && <Badge variant="secondary" className="text-xs">Public</Badge>}
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+                        onClick={(e) => { e.stopPropagation(); deletePlaybook(p.id); }}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground" />
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
