@@ -23,7 +23,14 @@ export async function GET(
 
   if (error) return NextResponse.json({ error: 'Failed to fetch comments.' }, { status: 500 });
 
-  return NextResponse.json({ comments: data ?? [] });
+  const comments = data ?? [];
+  const userIds = [...new Set(comments.map((c) => c.user_id))];
+  const { data: { users } } = await supabase.auth.admin.listUsers();
+  const userMap = Object.fromEntries(
+    users.filter((u) => userIds.includes(u.id)).map((u) => [u.id, u.email?.split('@')[0] ?? u.id.slice(0, 8)])
+  );
+
+  return NextResponse.json({ comments: comments.map((c) => ({ ...c, user_name: userMap[c.user_id] ?? c.user_id.slice(0, 8) })) });
 }
 
 // POST /api/playbooks/[id]/comments
@@ -47,7 +54,7 @@ export async function POST(
     .insert({
       playbook_id: id,
       user_id: user.userId,
-      content: content.trim(),
+content: content.trim(),
       quoted_text: quoted_text ?? null,
       quoted_user: quoted_user ?? null,
     })

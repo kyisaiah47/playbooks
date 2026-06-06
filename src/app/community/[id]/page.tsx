@@ -14,6 +14,7 @@ import type { Playbook, PlaybookItem } from '@/types/playbook';
 interface Comment {
   id: string;
   user_id: string;
+  user_name: string | null;
   content: string;
   quoted_text: string | null;
   quoted_user: string | null;
@@ -197,7 +198,7 @@ export default function CommunityPlaybookPage({ params }: { params: Promise<{ id
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs font-medium text-muted-foreground">@{c.user_id.slice(0, 8)}</span>
+                      <span className="text-xs font-medium text-muted-foreground">@{c.user_name ?? c.user_id.slice(0, 8)}</span>
                       <span className="text-xs text-muted-foreground">
                         {new Date(c.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                       </span>
