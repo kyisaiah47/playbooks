@@ -15,18 +15,7 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: false,
-  },
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  // Production optimizations
-  productionBrowserSourceMaps: false, // Reduce bundle size in production
-  onDemandEntries: {
-    maxInactiveAge: 60 * 60 * 1000, // Keep pages for 1 hour
-    pagesBufferLength: 5,
-  },
+  productionBrowserSourceMaps: false,
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
