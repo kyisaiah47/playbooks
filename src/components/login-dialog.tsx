@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Sparkles, ArrowRight, Loader2 } from 'lucide-react';
 import Image from 'next/image';
@@ -61,6 +61,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-sm p-8 gap-0">
+        <DialogTitle className="sr-only">Sign in to Templata</DialogTitle>
         {sent ? (
           <div className="text-center">
             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mx-auto mb-4">

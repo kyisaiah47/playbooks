@@ -107,8 +107,10 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Nav — matches dashboard */}
-      <nav className="flex items-center justify-between px-6 py-4 border-b border-border">
+      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
+      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
+      {/* Nav */}
+      <nav className="relative z-10 flex items-center justify-between px-6 py-4 border-b border-border">
         <button
           onClick={() => router.push('/app')}
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
@@ -129,7 +131,7 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
         </div>
       </nav>
 
-      <div className="max-w-2xl mx-auto px-4 pt-12 pb-24">
+      <div className="relative z-10 max-w-2xl mx-auto px-4 pt-12 pb-24">
         {/* Header */}
         <div className="mb-10">
           <h1 className="text-2xl font-semibold tracking-tight mb-2">{playbook.title}</h1>
