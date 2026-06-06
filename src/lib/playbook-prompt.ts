@@ -49,3 +49,38 @@ Rules:
 
 Respond with only valid JSON. No markdown, no explanation.`;
 }
+
+export function buildForkPrompt(userContext: string, originalContext: string): string {
+  return `You are a world-class life planning expert. A user is forking an existing playbook and wants it re-tailored to their specific situation.
+
+Original playbook context:
+"${originalContext}"
+
+This user's situation:
+"${userContext}"
+
+Generate a new Playbook as a JSON object with this exact shape:
+
+{
+  "title": "Short, specific title for this playbook",
+  "description": "2-3 sentence overview tailored to their specific situation",
+  "items": [
+    {
+      "type": "task" | "question" | "resource",
+      "content": "The task instruction, question text, or resource name",
+      "phase": "Phase name",
+      "position": 1,
+      "resource_type": "venue | book | person | video | tool | website",
+      "url": "https://..."
+    }
+  ]
+}
+
+Rules:
+- Use the original playbook as a structural reference but fully re-tailor every item to the new user's context.
+- Generate 8-15 tasks, 8-15 questions, and 5-10 resources.
+- Everything must reflect the new user's specific details — their budget, location, timeline, preferences.
+- Do not copy items verbatim from the original. Make it genuinely theirs.
+
+Respond with only valid JSON. No markdown, no explanation.`;
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -20,6 +20,8 @@ const EXAMPLES = [
 
 export default function AppPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const forkFrom = searchParams.get('fork');
   const [playbooks, setPlaybooks] = useState<Playbook[]>([]);
   const [context, setContext] = useState('');
   const [generating, setGenerating] = useState(false);
@@ -52,7 +54,7 @@ export default function AppPage() {
       const res = await fetch('/api/playbooks/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ context }),
+        body: JSON.stringify({ context, fork_from: forkFrom }),
       });
 
       const data = await res.json();
@@ -92,10 +94,12 @@ export default function AppPage() {
         {/* Hero input */}
         <div className="mb-16">
           <h1 className="text-2xl font-semibold tracking-tight text-foreground mb-1">
-            What are you planning?
+            {forkFrom ? 'Fork this playbook' : 'What are you planning?'}
           </h1>
           <p className="text-sm text-muted-foreground mb-6">
-            Describe your situation and Claude will build a personalized playbook for you.
+            {forkFrom
+              ? 'Describe your situation and Claude will re-tailor this playbook specifically for you.'
+              : 'Describe your situation and Claude will build a personalized playbook for you.'}
           </p>
 
           <div className="relative">

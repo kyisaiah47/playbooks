@@ -32,30 +32,17 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
 
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
+      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
     });
 
-    if (error) {
-      setError(error.message);
-      setLoading(false);
-      return;
-    }
-
+    if (error) { setError(error.message); setLoading(false); return; }
     setSent(true);
     setLoading(false);
   }
 
   function handleClose(val: boolean) {
     onOpenChange(val);
-    if (!val) {
-      setTimeout(() => {
-        setEmail('');
-        setSent(false);
-        setError('');
-      }, 300);
-    }
+    if (!val) setTimeout(() => { setEmail(''); setSent(false); setError(''); }, 300);
   }
 
   return (
@@ -69,12 +56,9 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
             </div>
             <h2 className="font-semibold text-lg tracking-tight mb-2">Check your email</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              We sent a magic link to <span className="text-foreground font-medium">{email}</span>. Click it to sign in — no password needed.
+              We sent a magic link to <span className="text-foreground font-medium">{email}</span>. Click it to sign in.
             </p>
-            <button
-              className="text-xs text-muted-foreground hover:text-foreground mt-6 underline underline-offset-2 transition-colors"
-              onClick={() => setSent(false)}
-            >
+            <button className="text-xs text-muted-foreground hover:text-foreground mt-6 underline underline-offset-2 transition-colors" onClick={() => setSent(false)}>
               Use a different email
             </button>
           </div>
@@ -85,30 +69,14 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
             </div>
             <h2 className="font-semibold text-xl tracking-tight text-center mb-1">Welcome to Templata</h2>
             <p className="text-sm text-muted-foreground text-center mb-8">Enter your email to sign in or create an account.</p>
-
             <form onSubmit={handleSubmit} className="space-y-3">
-              <Input
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoFocus
-                required
-                disabled={loading}
-                className="bg-background"
-              />
+              <Input type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus required disabled={loading} className="bg-background" />
               {error && <p className="text-xs text-destructive">{error}</p>}
               <Button type="submit" className="w-full gap-2" disabled={!email.trim() || loading}>
-                {loading
-                  ? <><Loader2 className="w-4 h-4 animate-spin" />Sending...</>
-                  : <>Continue <ArrowRight className="w-4 h-4" /></>
-                }
+                {loading ? <><Loader2 className="w-4 h-4 animate-spin" />Sending...</> : <>Continue <ArrowRight className="w-4 h-4" /></>}
               </Button>
             </form>
-
-            <p className="text-xs text-muted-foreground text-center mt-6">
-              We'll send you a magic link. No password required.
-            </p>
+            <p className="text-xs text-muted-foreground text-center mt-6">We'll send you a magic link. No password required.</p>
           </div>
         )}
       </DialogContent>

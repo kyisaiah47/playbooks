@@ -3,7 +3,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { createClient } from '@supabase/supabase-js';
 import { getAuthenticatedUser } from '@/lib/auth-utils';
 import { apiLimiter } from '@/lib/rate-limit';
-import { buildPlaybookPrompt, GeneratedPlaybook } from '@/lib/playbook-prompt';
+import { buildPlaybookPrompt, buildForkPrompt, GeneratedPlaybook } from '@/lib/playbook-prompt';
 import { checkPlaybookLimit, incrementPlaybooks } from '@/lib/usage';
 
 const supabase = createClient(
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: `You've used ${limit.used}/${limit.limit} playbooks this month. Upgrade to Pro for more.`, limitReached: true }, { status: 403 });
   }
 
-  const { context } = await request.json();
+  const { context, fork_from } = await request.json();
 
   if (!context || context.trim().length < 10) {
     return NextResponse.json({ error: 'Please describe what you are planning.' }, { status: 400 });
@@ -39,16 +39,22 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Description is too long.' }, { status: 400 });
   }
 
+  // If forking, fetch original context
+  let originalContext: string | null = null;
+  if (fork_from) {
+    const { data: original } = await supabase.from('playbooks').select('context').eq('id', fork_from).single();
+    originalContext = original?.context ?? null;
+  }
+
+  const prompt = originalContext
+    ? buildForkPrompt(context.trim(), originalContext)
+    : buildPlaybookPrompt(context.trim());
+
   // Call Claude
   const message = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 8096,
-    messages: [
-      {
-        role: 'user',
-        content: buildPlaybookPrompt(context.trim()),
-      },
-    ],
+    messages: [{ role: 'user', content: prompt }],
   });
 
   const rawText = message.content[0].type === 'text' ? message.content[0].text : '';
@@ -72,6 +78,8 @@ export async function POST(request: NextRequest) {
       description: generated.description,
       context: context.trim(),
       is_public: true,
+      is_forked: !!fork_from,
+      forked_from: fork_from ?? null,
     })
     .select('*')
     .single();
