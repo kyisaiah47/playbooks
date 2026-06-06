@@ -8,7 +8,7 @@ export function TemplataIcon({ className, size = 14 }: { className?: string; siz
       alt=""
       width={size}
       height={size}
-      className={cn('invert', className)}
+      className={cn(className)}
     />
   );
 }
