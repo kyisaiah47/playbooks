@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -16,6 +16,10 @@ export default function HomePage() {
   const [loginOpen, setLoginOpen] = useState(false);
   const { isLoggedIn, loading } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && isLoggedIn) router.push('/app');
+  }, [isLoggedIn, loading]);
 
   function handleCTA() {
     if (isLoggedIn) router.push('/app');
