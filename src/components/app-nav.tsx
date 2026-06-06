@@ -41,16 +41,29 @@ export function AppNav({ showCommunity, showMyPlaybooks, showUserMenu, rightCont
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem
-                className="cursor-pointer"
-                onClick={async () => {
-                  const res = await fetch('/api/stripe/checkout', { method: 'POST' });
-                  const data = await res.json();
-                  if (data.url) window.location.href = data.url;
-                }}
-              >
-                Upgrade to Pro
-              </DropdownMenuItem>
+              {user?.tier !== 'pro' ? (
+                <DropdownMenuItem
+                  className="cursor-pointer"
+                  onClick={async () => {
+                    const res = await fetch('/api/stripe/checkout', { method: 'POST' });
+                    const data = await res.json();
+                    if (data.url) window.location.href = data.url;
+                  }}
+                >
+                  Upgrade to Pro
+                </DropdownMenuItem>
+              ) : (
+                <DropdownMenuItem
+                  className="cursor-pointer"
+                  onClick={async () => {
+                    const res = await fetch('/api/stripe/portal', { method: 'POST' });
+                    const data = await res.json();
+                    if (data.url) window.location.href = data.url;
+                  }}
+                >
+                  Manage Subscription
+                </DropdownMenuItem>
+              )}
               <DropdownMenuItem
                 className="cursor-pointer"
                 onClick={async () => {
