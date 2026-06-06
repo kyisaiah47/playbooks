@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
     .from('playbooks')
     .select('*')
     .eq('user_id', user.userId)
+    .is('deleted_at', null)
     .order('created_at', { ascending: false });
 
   if (error) {
