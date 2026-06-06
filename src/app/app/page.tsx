@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Sparkles, Loader2, ArrowRight, Trash2, BookOpen } from 'lucide-react';
+import { Sparkles, Loader2, ArrowRight, Trash2, BookOpen, LogOut } from 'lucide-react';
+import Image from 'next/image';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import type { Playbook } from '@/types/playbook';
 
 const EXAMPLES = [
@@ -82,13 +84,26 @@ export default function AppPage() {
     <div className="min-h-screen bg-background">
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-4 border-b border-border">
-        <span className="font-semibold tracking-tight text-foreground">Templata</span>
-        <button
-          onClick={() => router.push('/app/settings')}
-          className="w-7 h-7 rounded-full bg-stone-200 text-stone-600 text-xs font-medium flex items-center justify-center hover:bg-stone-300 transition-colors"
-        >
-          I
-        </button>
+        <Image src="/logo.png" alt="Templata" width={24} height={28} className="invert" />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="w-7 h-7 rounded-full bg-stone-200 text-stone-600 text-xs font-medium flex items-center justify-center hover:bg-stone-300 transition-colors">
+              I
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem
+              className="text-destructive focus:text-destructive cursor-pointer"
+              onClick={async () => {
+                await fetch('/api/auth/logout', { method: 'POST' });
+                router.push('/');
+              }}
+            >
+              <LogOut className="w-3.5 h-3.5 mr-2" />
+              Logout
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </nav>
 
       <div className="max-w-2xl mx-auto px-4 pt-16 pb-24">
