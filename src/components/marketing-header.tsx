@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
-import { ModeToggle } from '@/components/mode-toggle';
 import { Button } from '@/components/ui/button';
 import { LogoWithName } from '@/components/logo-with-name';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
@@ -45,7 +44,6 @@ const MarketingHeader = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <ModeToggle />
           <Button onClick={handleCTA} disabled={loading}>
             {isLoggedIn ? 'Go to App' : 'Get Started'}
           </Button>
@@ -56,7 +54,6 @@ const MarketingHeader = () => {
           <Button size="sm" onClick={handleCTA} disabled={loading}>
             {isLoggedIn ? 'App' : 'Get Started'}
           </Button>
-          <ModeToggle />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">

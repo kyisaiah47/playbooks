@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Fira_Code } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "@/components/providers/session-provider"
 import { UIProvider } from "@/components/providers/ui-provider"
@@ -9,13 +9,13 @@ import { AuthProvider } from "@/contexts/auth-context"
 import { Analytics } from "@/components/analytics"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const outfit = Outfit({
+const geist = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
   display: 'swap',
 });
 
-const firaCode = Fira_Code({
+const geistMono = Geist_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: 'swap',
@@ -97,20 +97,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="light">
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('theme');
-                if (theme === 'dark') {
-                  document.documentElement.classList.add('dark');
-                }
-              })();
-            `,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -142,7 +130,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${outfit.variable} ${firaCode.variable} antialiased`}
+        className={`${geist.variable} ${geistMono.variable} antialiased`}
       >
         <ErrorBoundary>
           <QueryProvider>
