@@ -51,7 +51,7 @@ export default function CommunityPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <AppNav showMyPlaybooks />
+      <AppNav showMyPlaybooks showUserMenu />
 
       <div className="relative overflow-hidden">
         {/* Grid background */}

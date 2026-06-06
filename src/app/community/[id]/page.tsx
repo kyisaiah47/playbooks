@@ -103,7 +103,7 @@ export default function CommunityPlaybookPage({ params }: { params: Promise<{ id
     <div className="min-h-screen bg-background">
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
-      <AppNav showMyPlaybooks />
+      <AppNav showMyPlaybooks showUserMenu />
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 pt-10 pb-24">
         {/* Header */}

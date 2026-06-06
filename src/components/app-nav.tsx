@@ -18,7 +18,7 @@ export function AppNav({ showCommunity, showMyPlaybooks, showUserMenu, rightCont
 
   return (
     <nav className="relative z-10 flex items-center justify-between px-6 h-14 border-b border-border bg-background/80 backdrop-blur-sm shrink-0">
-      <button onClick={() => router.push('/')}>
+      <button onClick={() => router.push('/app')}>
         <Image src="/logo.png" alt="Templata" width={22} height={26} className="invert" />
       </button>
 
