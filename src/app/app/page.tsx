@@ -61,6 +61,10 @@ export default function AppPage() {
       const data = await res.json();
 
       if (!res.ok) {
+        if (data.limitReached) {
+          router.push('/pricing');
+          return;
+        }
         setError(data.error ?? 'Something went wrong.');
         return;
       }

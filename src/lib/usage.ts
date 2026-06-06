@@ -33,9 +33,14 @@ async function getOrCreateUsage(userId: string) {
   return created;
 }
 
-// For now everyone is free tier — swap in Stripe lookup later
-async function getUserTier(_userId: string): Promise<'free' | 'pro'> {
-  return 'free';
+async function getUserTier(userId: string): Promise<'free' | 'pro'> {
+  const { data } = await supabase
+    .from('subscriptions')
+    .select('tier')
+    .eq('user_id', userId)
+    .eq('status', 'active')
+    .single();
+  return data?.tier === 'pro' ? 'pro' : 'free';
 }
 
 export async function checkPlaybookLimit(userId: string): Promise<{ allowed: boolean; used: number; limit: number }> {
