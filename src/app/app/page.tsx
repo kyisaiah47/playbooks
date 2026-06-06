@@ -3,12 +3,18 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Sparkles, Plus, ArrowRight, Loader2, BookOpen, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Sparkles, Loader2, ArrowRight, Trash2, BookOpen } from 'lucide-react';
 import type { Playbook } from '@/types/playbook';
+
+const EXAMPLES = [
+  'Planning a wedding in NYC next October, ~80 guests, $50k budget',
+  'Switching careers from finance to software engineering',
+  'Buying my first home in Austin, budget around $400k',
+  'Starting a small bakery business from home',
+  'Moving to a new city alone for a job',
+];
 
 export default function AppPage() {
   const router = useRouter();
@@ -16,7 +22,6 @@ export default function AppPage() {
   const [context, setContext] = useState('');
   const [generating, setGenerating] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -67,115 +72,137 @@ export default function AppPage() {
     setPlaybooks((prev) => prev.filter((p) => p.id !== id));
   }
 
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+      generate();
+    }
+  }
+
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-4 py-12">
+      {/* Nav */}
+      <nav className="flex items-center justify-between px-6 py-4 border-b border-border">
+        <span className="font-semibold tracking-tight text-foreground">Templata</span>
+        <button
+          onClick={() => router.push('/app/settings')}
+          className="w-7 h-7 rounded-full bg-stone-200 text-stone-600 text-xs font-medium flex items-center justify-center hover:bg-stone-300 transition-colors"
+        >
+          I
+        </button>
+      </nav>
 
-        {/* Header */}
-        <div className="mb-10">
-          <h1 className="text-3xl font-bold tracking-tight mb-1">Your Playbooks</h1>
-          <p className="text-muted-foreground">AI-generated plans for life's biggest moments.</p>
+      <div className="max-w-2xl mx-auto px-4 pt-16 pb-24">
+
+        {/* Hero input */}
+        <div className="mb-16">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground mb-1">
+            What are you planning?
+          </h1>
+          <p className="text-sm text-muted-foreground mb-6">
+            Describe your situation and Claude will build a personalized playbook for you.
+          </p>
+
+          <div className="relative">
+            <Textarea
+              placeholder="e.g. I'm planning a wedding in NYC next October, budget around $50k, about 80 guests. We want something intimate but elegant."
+              value={context}
+              onChange={(e) => setContext(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="min-h-[140px] resize-none text-sm pr-4 pb-12 bg-card border-border rounded-xl shadow-sm focus:ring-1 focus:ring-stone-400"
+              disabled={generating}
+            />
+            <div className="absolute bottom-3 right-3 flex items-center gap-2">
+              {context.trim() && (
+                <span className="text-xs text-muted-foreground">⌘↵</span>
+              )}
+              <Button
+                size="sm"
+                onClick={generate}
+                disabled={!context.trim() || generating}
+                className="rounded-lg"
+              >
+                {generating ? (
+                  <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Generating...</>
+                ) : (
+                  <><Sparkles className="w-3.5 h-3.5 mr-1.5" />Generate</>
+                )}
+              </Button>
+            </div>
+          </div>
+
+          {error && (
+            <p className="text-sm text-destructive mt-2">{error}</p>
+          )}
+
+          {/* Example chips */}
+          {!context && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {EXAMPLES.map((ex) => (
+                <button
+                  key={ex}
+                  onClick={() => setContext(ex)}
+                  className="text-xs px-3 py-1.5 rounded-full border border-border bg-card text-muted-foreground hover:text-foreground hover:border-stone-400 transition-colors"
+                >
+                  {ex}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Generate form */}
-        <AnimatePresence>
-          {showForm ? (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              className="mb-8"
-            >
-              <Card className="p-5 border-primary/20">
-                <p className="text-sm font-medium mb-3">Describe what you're planning</p>
-                <Textarea
-                  placeholder="e.g. I'm planning a wedding in NYC next October, budget around $50k, about 80 guests. My partner and I want something intimate but elegant."
-                  value={context}
-                  onChange={(e) => setContext(e.target.value)}
-                  className="min-h-[120px] resize-none mb-3 text-sm"
-                  disabled={generating}
-                />
-                {error && <p className="text-sm text-destructive mb-3">{error}</p>}
-                <div className="flex gap-2 justify-end">
-                  <Button variant="ghost" size="sm" onClick={() => { setShowForm(false); setError(''); }} disabled={generating}>
-                    Cancel
-                  </Button>
-                  <Button size="sm" onClick={generate} disabled={!context.trim() || generating}>
-                    {generating ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Generating...
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-4 h-4 mr-2" />
-                        Generate Playbook
-                      </>
-                    )}
-                  </Button>
-                </div>
-              </Card>
-            </motion.div>
-          ) : (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8">
-              <Button onClick={() => setShowForm(true)} className="gap-2">
-                <Plus className="w-4 h-4" />
-                New Playbook
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Playbooks */}
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              Your Playbooks
+            </h2>
+            {!loading && playbooks.length > 0 && (
+              <span className="text-xs text-muted-foreground">{playbooks.length}</span>
+            )}
+          </div>
 
-        {/* Playbook list */}
-        {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
-          </div>
-        ) : playbooks.length === 0 ? (
-          <div className="text-center py-20">
-            <BookOpen className="w-10 h-10 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground text-sm">No playbooks yet. Create your first one above.</p>
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {playbooks.map((p) => (
-              <motion.div
-                key={p.id}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <Card
-                  className="p-4 hover:border-primary/30 transition-colors group cursor-pointer"
-                  onClick={() => router.push(`/app/${p.id}`)}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium truncate">{p.title}</p>
-                      {p.description && (
-                        <p className="text-sm text-muted-foreground mt-0.5 line-clamp-2">{p.description}</p>
-                      )}
-                      <p className="text-xs text-muted-foreground mt-2">
+          {loading ? (
+            <div className="flex items-center justify-center py-16">
+              <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+            </div>
+          ) : playbooks.length === 0 ? (
+            <div className="text-center py-16 border border-dashed border-border rounded-xl">
+              <BookOpen className="w-8 h-8 text-muted-foreground/40 mx-auto mb-3" />
+              <p className="text-sm text-muted-foreground">Your playbooks will appear here.</p>
+            </div>
+          ) : (
+            <AnimatePresence>
+              <div className="divide-y divide-border border border-border rounded-xl overflow-hidden bg-card">
+                {playbooks.map((p, i) => (
+                  <motion.div
+                    key={p.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: i * 0.04 }}
+                    className="flex items-center justify-between px-4 py-3.5 group hover:bg-accent/50 transition-colors cursor-pointer"
+                    onClick={() => router.push(`/app/${p.id}`)}
+                  >
+                    <div className="flex-1 min-w-0 mr-3">
+                      <p className="text-sm font-medium truncate">{p.title}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">
                         {new Date(p.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                      {p.is_public && <Badge variant="secondary" className="text-xs">Public</Badge>}
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-destructive"
+                    <div className="flex items-center gap-1 shrink-0">
+                      <button
+                        className="p-1.5 rounded-md opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-all"
                         onClick={(e) => { e.stopPropagation(); deletePlaybook(p.id); }}
                       >
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground" />
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                      <ArrowRight className="w-3.5 h-3.5 text-muted-foreground" />
                     </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        )}
+                  </motion.div>
+                ))}
+              </div>
+            </AnimatePresence>
+          )}
+        </div>
       </div>
     </div>
   );
