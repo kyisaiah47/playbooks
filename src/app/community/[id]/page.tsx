@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useEffect, use } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import { Heart, Loader2, HelpCircle, ExternalLink, X, Send } from 'lucide-react';
+import { Heart, Loader2, HelpCircle, ExternalLink, X, Send, MapPin, BookOpen, User, Video, Wrench, Globe, Link } from 'lucide-react';
 import { AppNav } from '@/components/app-nav';
+import { LoginDialog } from '@/components/login-dialog';
+import { useAuth } from '@/contexts/auth-context';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
 
 interface Comment {
@@ -21,14 +23,21 @@ interface Comment {
   created_at: string;
 }
 
-const RESOURCE_ICONS: Record<string, string> = {
-  venue: '📍', book: '📚', person: '👤', video: '🎬', tool: '🔧', website: '🌐',
+const RESOURCE_ICONS: Record<string, React.ReactNode> = {
+  venue: <MapPin className="w-4 h-4 text-muted-foreground" />,
+  book: <BookOpen className="w-4 h-4 text-muted-foreground" />,
+  person: <User className="w-4 h-4 text-muted-foreground" />,
+  video: <Video className="w-4 h-4 text-muted-foreground" />,
+  tool: <Wrench className="w-4 h-4 text-muted-foreground" />,
+  website: <Globe className="w-4 h-4 text-muted-foreground" />,
 };
 
 export default function CommunityPlaybookPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const router = useRouter();
 
+  const { isLoggedIn } = useAuth();
+  const [loginOpen, setLoginOpen] = useState(false);
   const [playbook, setPlaybook] = useState<Playbook | null>(null);
   const [items, setItems] = useState<PlaybookItem[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
@@ -59,6 +68,7 @@ export default function CommunityPlaybookPage({ params }: { params: Promise<{ id
   }
 
   async function toggleLike() {
+    if (!isLoggedIn) { setLoginOpen(true); return; }
     setLiked((l) => !l);
     setLikesCount((c) => liked ? c - 1 : c + 1);
     await fetch(`/api/playbooks/${id}/like`, { method: liked ? 'DELETE' : 'POST' });
@@ -102,6 +112,7 @@ export default function CommunityPlaybookPage({ params }: { params: Promise<{ id
 
   return (
     <div className="min-h-screen bg-background">
+      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
       <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
       <AppNav showMyPlaybooks showUserMenu />
@@ -123,7 +134,7 @@ export default function CommunityPlaybookPage({ params }: { params: Promise<{ id
               <Heart className={`w-3 h-3 ${liked ? 'fill-red-500' : ''}`} />
               {likesCount}
             </button>
-            <Button size="sm" variant="outline" onClick={() => router.push(`/app?fork=${id}`)}>
+            <Button size="sm" variant="outline" onClick={() => { if (!isLoggedIn) { setLoginOpen(true); return; } router.push(`/app?fork=${id}`); }}>
               Fork this playbook
             </Button>
           </div>
@@ -148,13 +159,13 @@ export default function CommunityPlaybookPage({ params }: { params: Promise<{ id
                   );
                   if (item.type === 'resource') return (
                     <div key={item.id} className="flex items-start gap-3 py-2">
-                      <span className="text-sm shrink-0 mt-0.5">{RESOURCE_ICONS[item.resource_type ?? ''] ?? '🔗'}</span>
-                      <div className="flex items-center gap-2 flex-wrap">
+                      <span className="shrink-0 mt-0.5">{RESOURCE_ICONS[item.resource_type ?? ''] ?? <Link className="w-4 h-4 text-muted-foreground" />}</span>
+                      <div className="flex flex-col gap-1.5">
                         {item.url
-                          ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-sm hover:underline underline-offset-2 flex items-center gap-1">{item.content}<ExternalLink className="w-3 h-3 text-muted-foreground" /></a>
+                          ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-sm hover:underline underline-offset-2 inline-flex items-start gap-1.5">{item.content}<ExternalLink className="w-3.5 h-3.5 text-muted-foreground shrink-0 mt-0.5" /></a>
                           : <span className="text-sm">{item.content}</span>
                         }
-                        {item.resource_type && <Badge variant="secondary" className="text-xs capitalize">{item.resource_type}</Badge>}
+                        {item.resource_type && <Badge variant="secondary" className="text-xs capitalize w-fit">{item.resource_type}</Badge>}
                       </div>
                     </div>
                   );
