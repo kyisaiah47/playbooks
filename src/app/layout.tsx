@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     siteName: 'Templata',
     images: [
       {
-        url: 'https://templata.org/og-image.png',
-        width: 1200,
-        height: 630,
+        url: 'https://templata.org/templata-social.png',
+        width: 400,
+        height: 400,
         alt: 'Templata — AI Playbooks for Life\'s Biggest Moments',
       },
     ],
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Templata — AI Playbooks for Life\'s Biggest Moments',
     description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds.',
-    images: ['https://templata.org/og-image.png'],
+    images: ['https://templata.org/templata-social.png'],
     creator: '@templata',
   },
   robots: {
@@ -108,7 +108,7 @@ export default function RootLayout({
               "name": "Templata",
               "description": "Expert-crafted templates for life's biggest moments",
               "url": "https://templata.org",
-              "logo": "https://templata.org/logo.png",
+              "logo": "https://templata.org/templata-social.png",
               "sameAs": [
                 "https://twitter.com/templata",
                 "https://linkedin.com/company/templata"

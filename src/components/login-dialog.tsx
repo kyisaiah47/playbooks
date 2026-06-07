@@ -53,7 +53,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
         {sent ? (
           <div className="text-center">
             <div className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center mx-auto mb-4">
-              <TemplataIcon size={20} className="invert" />
+              <TemplataIcon size={20} />
             </div>
             <h2 className="font-semibold text-lg tracking-tight mb-2">Check your email</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
