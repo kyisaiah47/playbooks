@@ -46,7 +46,9 @@
       "Bash(node scripts/generate-og-image.js:*)",
       "Bash(echo:*)",
       "mcp__supabase__apply_migration",
-      "Bash(node *)"
+      "Bash(node *)",
+      "Bash(npm uninstall *)",
+      "Bash(npm run *)"
     ],
     "deny": [],
     "ask": []

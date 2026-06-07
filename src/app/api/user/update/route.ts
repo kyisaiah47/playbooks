@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { updateUserSchema } from '@/lib/validations/auth';
+import { z } from 'zod';
 import { apiLimiter } from '@/lib/rate-limit';
+
+const updateUserSchema = z.object({
+  name: z.string().min(1).max(100),
+});
 import { ErrorLogger } from '@/lib/error-logger';
 
 const supabase = createClient(
