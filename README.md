@@ -4,6 +4,9 @@
 
 Live at **[templata.org](https://templata.org)**
 
+
+[![Watch Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-FF0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=6dtePu7HaWI)
+
 ---
 
 ## The Idea
