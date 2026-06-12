@@ -1,6 +1,6 @@
 {
-  "name": "Playbook — AI Playbooks for Life's Biggest Moments",
-  "short_name": "Playbook",
+  "name": "Playbooks — AI Playbooks for Life's Biggest Moments",
+  "short_name": "Playbooks",
   "description": "Describe what you're planning and Claude builds a personalized, step-by-step playbook around your situation.",
   "start_url": "/",
   "display": "standalone",

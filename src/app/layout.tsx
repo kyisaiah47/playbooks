@@ -29,11 +29,11 @@ export const viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://playbook-tau-henna.vercel.app'),
-  title: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
+  metadataBase: new URL('https://playbooksai.vercel.app'),
+  title: 'Playbooks — AI Playbooks for Life\'s Biggest Moments',
   description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds. Tasks, questions, and AI insight tailored to your situation — not a generic template.',
   keywords: 'ai planning, life planning, wedding planning app, career change planner, home buying guide, ai playbook, personalized planning, claude ai, life events',
-  authors: [{ name: 'Playbook' }],
+  authors: [{ name: 'Playbooks' }],
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
@@ -47,16 +47,16 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
+    title: 'Playbooks — AI Playbooks for Life\'s Biggest Moments',
     description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds. Not a generic template — yours.',
-    url: 'https://playbook-tau-henna.vercel.app',
-    siteName: 'Playbook',
+    url: 'https://playbooksai.vercel.app',
+    siteName: 'Playbooks',
     images: [
       {
         url: '/social.png',
         width: 400,
         height: 400,
-        alt: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
+        alt: 'Playbooks — AI Playbooks for Life\'s Biggest Moments',
       },
     ],
     locale: 'en_US',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
+    title: 'Playbooks — AI Playbooks for Life\'s Biggest Moments',
     description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds.',
     images: ['/social.png'],
     creator: '@templata',
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://playbook-tau-henna.vercel.app',
+    canonical: 'https://playbooksai.vercel.app',
   },
   category: 'productivity',
   verification: {
@@ -106,9 +106,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Playbook",
+              "name": "Playbooks",
               "description": "AI playbook generator for life's biggest moments. Describe your goal and get a personalized, step-by-step playbook in seconds.",
-              "url": "https://playbook-tau-henna.vercel.app",
+              "url": "https://playbooksai.vercel.app",
               "logo": "/social.png",
               "sameAs": [
                 "https://twitter.com/templata",
@@ -128,14 +128,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Playbook",
-              "url": "https://playbook-tau-henna.vercel.app",
+              "name": "Playbooks",
+              "url": "https://playbooksai.vercel.app",
               "description": "AI-generated personalized playbooks for life's biggest moments.",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://playbook-tau-henna.vercel.app/community?q={search_term_string}"
+                  "urlTemplate": "https://playbooksai.vercel.app/community?q={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
               }
@@ -148,10 +148,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "Playbook",
+              "name": "Playbooks",
               "applicationCategory": "ProductivityApplication",
               "operatingSystem": "Web",
-              "url": "https://playbook-tau-henna.vercel.app",
+              "url": "https://playbooksai.vercel.app",
               "description": "Describe what you're planning and get a personalized AI-generated playbook in seconds — tasks, reflection questions, and resources tailored to your situation.",
               "offers": [
                 {

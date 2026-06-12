@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://playbook-tau-henna.vercel.app';
+  const baseUrl = 'https://playbooksai.vercel.app';
 
   return {
     rules: [

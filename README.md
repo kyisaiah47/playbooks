@@ -2,7 +2,7 @@
 
 <img src="assets/banner.png" alt="banner" width="100%" />
 
-# Playbook
+# Playbooks
 
 **The social feed for life's biggest moments — describe your situation, Claude builds the plan, the community makes it better.**
 
@@ -15,7 +15,7 @@
 
 <br/>
 
-Notion is a blank canvas. ChatGPT is a wall of text. Playbook is a feed of real plans: describe what you're planning in one sentence and Claude generates a personalized, structured playbook — phases, checkable tasks, questions with inline AI feedback, and resources. The homepage is the community feed itself: browse what other people are planning, fork any playbook, and Claude re-tailors it to your situation.
+Notion is a blank canvas. ChatGPT is a wall of text. Playbooks is a feed of real plans: describe what you're planning in one sentence and Claude generates a personalized, structured playbook — phases, checkable tasks, questions with inline AI feedback, and resources. The homepage is the community feed itself: browse what other people are planning, fork any playbook, and Claude re-tailors it to your situation.
 
 ## ✨ Features
 

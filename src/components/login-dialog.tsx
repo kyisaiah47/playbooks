@@ -48,7 +48,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-sm p-8 gap-0">
-        <DialogTitle className="sr-only">Sign in to Playbook</DialogTitle>
+        <DialogTitle className="sr-only">Sign in to Playbooks</DialogTitle>
         {sent ? (
           <div className="text-center">
             <div className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center mx-auto mb-4">
@@ -67,7 +67,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
             <div className="flex justify-center mb-6">
               <PlaybookIcon size={28} className="text-primary" />
             </div>
-            <h2 className="font-semibold text-xl tracking-tight text-center mb-1">Welcome to Playbook</h2>
+            <h2 className="font-semibold text-xl tracking-tight text-center mb-1">Welcome to Playbooks</h2>
             <p className="text-sm text-muted-foreground text-center mb-8">Enter your email to sign in or create an account.</p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <Input type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus required disabled={loading} className="bg-background" />

@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   const user = await getAuthenticatedUser();
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const appUrl = (process.env.NEXT_PUBLIC_APP_URL ?? '').replace(/\/$/, '') || 'https://playbook-tau-henna.vercel.app';
+  const appUrl = (process.env.NEXT_PUBLIC_APP_URL ?? '').replace(/\/$/, '') || 'https://playbooksai.vercel.app';
 
   try {
   const session = await stripe.checkout.sessions.create({

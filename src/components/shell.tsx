@@ -332,7 +332,7 @@ export function CategoriesBox({ playbooks, active, onSelect }: {
 
 export function RailFooter() {
   return (
-    <p className="text-xs text-muted-foreground px-1">© {new Date().getFullYear()} Playbook</p>
+    <p className="text-xs text-muted-foreground px-1">© {new Date().getFullYear()} Playbooks</p>
   );
 }
 
@@ -351,7 +351,7 @@ export function NavRail({ onNewPlaybook }: { onNewPlaybook?: () => void }) {
     <div className="flex flex-col h-full pt-2">
       <button onClick={() => router.push('/app')} className="flex items-center gap-3 px-3 mb-6">
         <Logo size={28} />
-        <span className="text-xl font-bold tracking-tight">Playbook</span>
+        <span className="text-xl font-bold tracking-tight">Playbooks</span>
       </button>
 
       <nav className="space-y-1">

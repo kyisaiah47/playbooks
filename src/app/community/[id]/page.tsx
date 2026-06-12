@@ -10,7 +10,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const baseUrl = 'https://playbook-tau-henna.vercel.app';
+const baseUrl = 'https://playbooksai.vercel.app';
 
 async function getPlaybook(id: string): Promise<{ playbook: Playbook; items: PlaybookItem[] } | null> {
   const { data: playbook, error } = await supabase
@@ -39,7 +39,7 @@ export async function generateMetadata(
   const result = await getPlaybook(id);
 
   if (!result) {
-    return { title: 'Playbook Not Found — Playbook' };
+    return { title: 'Playbook Not Found — Playbooks' };
   }
 
   const { playbook } = result;
@@ -47,7 +47,7 @@ export async function generateMetadata(
     ?? `A step-by-step AI-generated playbook for ${playbook.title}. Browse tasks, reflection questions, and curated resources.`;
 
   return {
-    title: `${playbook.title} — Playbook`,
+    title: `${playbook.title} — Playbooks`,
     description,
     openGraph: {
       title: playbook.title,

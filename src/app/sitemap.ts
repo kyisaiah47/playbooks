@@ -6,7 +6,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const baseUrl = 'https://playbook-tau-henna.vercel.app';
+const baseUrl = 'https://playbooksai.vercel.app';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data: playbooks } = await supabase

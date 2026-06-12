@@ -1,20 +1,20 @@
-# Playbook — Product Vision & Data Model
+# Playbooks — Product Vision & Data Model
 
 ## Vision
 
-Pivot Playbook from a static life planning template library into an AI-powered **Playbook** platform.
+Pivot Playbooks from a static life planning template library into an AI-powered **Playbooks** platform.
 
-**The problem:** Notion is a blank canvas — powerful but overwhelming. ChatGPT gives you a wall of text. Playbook's old model gave you rigid pre-written templates. None of these feel tailored.
+**The problem:** Notion is a blank canvas — powerful but overwhelming. ChatGPT gives you a wall of text. Playbooks's old model gave you rigid pre-written templates. None of these feel tailored.
 
-**The solution:** User describes their situation in natural language → Claude generates a personalized Playbook in one shot → user works through it with AI as a thinking partner inline.
+**The solution:** User describes their situation in natural language → Claude generates a personalized Playbooks in one shot → user works through it with AI as a thinking partner inline.
 
-> Notion is for organizing your life. Playbook is for executing the big moments in it.
+> Notion is for organizing your life. Playbooks is for executing the big moments in it.
 
 ---
 
 ## Core Concept: Playbooks
 
-A **Playbook** is an AI-generated, personalized planning guide for a specific life event or goal. It's not a generic template — it's built around *your* context ("wedding planning in NYC, $50k budget, 12 months out").
+A **Playbooks** is an AI-generated, personalized planning guide for a specific life event or goal. It's not a generic template — it's built around *your* context ("wedding planning in NYC, $50k budget, 12 months out").
 
 Playbooks are shareable. The community can browse, fork, and re-tailor each other's playbooks.
 
@@ -22,7 +22,7 @@ Playbooks are shareable. The community can browse, fork, and re-tailor each othe
 
 ## Data Model
 
-### Playbook
+### Playbooks
 The top-level entity. Replaces the old Guide + Track split (those collapse into one thing since the AI generates it for you specifically).
 
 ### Item (3 types)
@@ -41,7 +41,7 @@ AI decides the ordering and phasing of items — no manual categories.
 
 ### 1. Generation (one-shot)
 - User describes their situation in natural language
-- One Claude API call returns a full structured Playbook as JSON (tasks + questions + resources)
+- One Claude API call returns a full structured Playbooks as JSON (tasks + questions + resources)
 - Saved to DB, immediately usable
 - No streaming, no chat — just one structured response
 
@@ -63,10 +63,10 @@ AI decides the ordering and phasing of items — no manual categories.
 
 ## Terminology
 
-| Old (Playbook) | New |
+| Old (Playbooks) | New |
 |---|---|
-| Guide | Playbook |
-| Track | (gone — merged into Playbook) |
+| Guide | Playbooks |
+| Track | (gone — merged into Playbooks) |
 | Question | Question (Item) |
 | Reading | Resource (Item) |
 | Task | Task (Item) |
