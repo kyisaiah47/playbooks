@@ -1,5 +1,5 @@
 {
-  "name": "templata",
+  "name": "playbooks",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -12,9 +12,6 @@
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "lint:template": "node scripts/template-linter.js",
-    "lint:template:wedding": "node scripts/template-linter.js src/app/templates/wedding-planning",
-    "lint:all-templates": "node scripts/lint-all-templates.js",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --noEmit"
   },

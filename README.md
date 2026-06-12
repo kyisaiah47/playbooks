@@ -48,7 +48,7 @@ Notion is a blank canvas. ChatGPT is a wall of text. Playbooks is a feed of real
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/kyisaiah47/templata.git playbook
+git clone https://github.com/kyisaiah47/playbooks.git playbook
 cd playbook
 npm install
 ```
