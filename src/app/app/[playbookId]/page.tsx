@@ -9,7 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, HelpCircle, ExternalLink, ChevronDown, ChevronUp, MapPin, BookOpen, User, Video, Wrench, Globe, Link, CheckCircle2, ArrowLeft, Pencil, Plus, Trash2 } from 'lucide-react';
 import { PlaybookIcon } from '@/components/ui/playbook-icon';
-import { Shell, NavRail, RailFooter } from '@/components/shell';
+import { Shell, NavRail, RailFooter, goToCheckout } from '@/components/shell';
+import { toast } from 'sonner';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
 
 const RESOURCE_ICONS: Record<string, React.ReactNode> = {
@@ -71,6 +72,10 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
         setItems(prev => prev.map(i => i.id === item.id ? { ...i, answer, ai_feedback: data.feedback } : i));
         setExpandedFeedback(prev => ({ ...prev, [item.id]: true }));
         setActiveItemId(null);
+      } else {
+        toast.error(data.error ?? 'Something went wrong.', data.limitReached
+          ? { action: { label: 'Go Pro', onClick: goToCheckout } }
+          : undefined);
       }
     } finally {
       setSubmitting(null);
@@ -268,6 +273,7 @@ function ReplanSection({ playbookId, onReplanned }: { playbookId: string; onRepl
   const [replanning, setReplanning] = useState(false);
   const [stage, setStage] = useState(0);
   const [error, setError] = useState('');
+  const [limitReached, setLimitReached] = useState(false);
 
   useEffect(() => {
     if (!replanning) return;
@@ -289,6 +295,7 @@ function ReplanSection({ playbookId, onReplanned }: { playbookId: string; onRepl
       const data = await res.json();
       if (!res.ok) {
         setError(data.error ?? 'Something went wrong.');
+        setLimitReached(!!data.limitReached);
         return;
       }
       await onReplanned();
@@ -348,7 +355,12 @@ function ReplanSection({ playbookId, onReplanned }: { playbookId: string; onRepl
               className="min-h-[80px] resize-none text-sm bg-card"
               disabled={replanning}
             />
-            {error && <p className="text-sm text-destructive">{error}</p>}
+            {error && (
+              <div className="flex items-center gap-3">
+                <p className="text-sm text-destructive">{error}</p>
+                {limitReached && <Button size="sm" className="shrink-0" onClick={goToCheckout}>Go Pro — $9/mo</Button>}
+              </div>
+            )}
             <div className="flex gap-2">
               <Button size="sm" className="bg-amber-400 text-zinc-950 hover:bg-amber-300 gap-1.5" onClick={replan} disabled={!change.trim() || replanning}>
                 <PlaybookIcon size={12} />

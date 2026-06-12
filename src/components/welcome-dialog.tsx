@@ -48,7 +48,6 @@ export function WelcomeDialog({ onGetStarted }: { onGetStarted: () => void }) {
       <DialogContent className="sm:max-w-[min(1100px,94vw)] p-0 overflow-hidden gap-0 max-h-[92vh] overflow-y-auto">
         <DialogTitle className="sr-only">Welcome to Playbooks</DialogTitle>
         <div className="relative">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/welcome.jpg"
             alt=""

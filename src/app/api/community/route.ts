@@ -16,14 +16,23 @@ export async function GET(request: NextRequest) {
 
   const { searchParams } = new URL(request.url);
   const sort = searchParams.get('sort') ?? 'new'; // 'new' | 'popular'
+  const q = (searchParams.get('q') ?? '').replace(/[%,()]/g, ' ').trim();
+  const offset = Math.max(0, parseInt(searchParams.get('offset') ?? '0', 10) || 0);
+  const limit = Math.min(50, Math.max(1, parseInt(searchParams.get('limit') ?? '20', 10) || 20));
 
-  const { data: playbooks, error } = await supabase
+  let query = supabase
     .from('playbooks')
     .select('id, title, description, context, created_at, user_id, is_forked, forked_from, items(type, content, completed, position)')
     .eq('is_public', true)
     .order('position', { referencedTable: 'items', ascending: true })
-    .order('created_at', { ascending: false })
-    .limit(50);
+    .order('created_at', { ascending: false });
+
+  if (q) query = query.or(`title.ilike.%${q}%,description.ilike.%${q}%`);
+
+  // 'popular' ranks by likes, which live in another table — rank within a recent window
+  query = sort === 'popular' ? query.limit(100) : query.range(offset, offset + limit - 1);
+
+  const { data: playbooks, error } = await query;
 
   if (error) {
     return NextResponse.json({ error: 'Failed to fetch community.' }, { status: 500 });
@@ -53,9 +62,14 @@ export async function GET(request: NextRequest) {
     comments_count: commentsMap[p.id] ?? 0,
   }));
 
+  let hasMore: boolean;
   if (sort === 'popular') {
     enriched = enriched.sort((a, b) => b.likes_count - a.likes_count);
+    hasMore = offset + limit < enriched.length;
+    enriched = enriched.slice(offset, offset + limit);
+  } else {
+    hasMore = enriched.length === limit;
   }
 
-  return NextResponse.json({ playbooks: enriched });
+  return NextResponse.json({ playbooks: enriched, hasMore });
 }

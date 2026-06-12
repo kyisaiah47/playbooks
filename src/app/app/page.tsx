@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Loader2, ArrowUp, Trash2, AlertCircle } from 'lucide-react';
 import { PlaybookIcon } from '@/components/ui/playbook-icon';
-import { Shell, NavRail, PlaybookAvatar, MomentumBox, CategoryChip, RailFooter, timeAgo, type FeedPlaybook } from '@/components/shell';
+import { Shell, NavRail, PlaybookAvatar, MomentumBox, CategoryChip, UpgradeCard, RailFooter, goToCheckout, timeAgo, type FeedPlaybook } from '@/components/shell';
 import { toast } from 'sonner';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import type { Playbook } from '@/types/playbook';
@@ -65,6 +65,7 @@ export default function AppPage() {
   const [generating, setGenerating] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [limitReached, setLimitReached] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const composerRef = useRef<HTMLTextAreaElement>(null);
 
@@ -92,6 +93,7 @@ export default function AppPage() {
     if (!context.trim() || generating) return;
     setGenerating(true);
     setError('');
+    setLimitReached(false);
 
     try {
       const res = await fetch('/api/playbooks/generate', {
@@ -104,6 +106,7 @@ export default function AppPage() {
 
       if (!res.ok) {
         setError(data.error ?? 'Something went wrong.');
+        setLimitReached(!!data.limitReached);
         return;
       }
 
@@ -135,6 +138,7 @@ export default function AppPage() {
         left={<NavRail onNewPlaybook={() => composerRef.current?.focus()} />}
         right={
           <>
+            <UpgradeCard />
             <MomentumBox playbooks={community} />
             <RailFooter />
           </>
@@ -189,7 +193,12 @@ export default function AppPage() {
                 </Button>
               </div>
               {error && (
-                <p className="text-sm text-destructive mt-2 flex items-center gap-1.5"><AlertCircle className="w-3.5 h-3.5 shrink-0" />{error}</p>
+                <div className="mt-2 flex items-center gap-3">
+                  <p className="text-sm text-destructive flex items-center gap-1.5"><AlertCircle className="w-3.5 h-3.5 shrink-0" />{error}</p>
+                  {limitReached && (
+                    <Button size="sm" className="shrink-0" onClick={goToCheckout}>Go Pro — $9/mo</Button>
+                  )}
+                </div>
               )}
             </div>
           </div>

@@ -1,6 +1,8 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { Loader2 } from 'lucide-react';
 import { Heart, MessageSquare, GitFork, Search, Home, Compass, SquarePen, LogOut, LogIn, Square, CheckSquare, HelpCircle, Link2, Flame } from 'lucide-react';
 import { PlaybookIcon } from '@/components/ui/playbook-icon';
 import { Button } from '@/components/ui/button';
@@ -100,6 +102,11 @@ function MobileTabBar() {
                 <button className="w-8 h-8 rounded-full bg-primary/20 text-primary text-xs font-bold flex items-center justify-center">{initial}</button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" side="top" className="w-48">
+                {user?.tier !== 'pro' && (
+                  <DropdownMenuItem className="cursor-pointer" onClick={goToCheckout}>
+                    Upgrade to Pro
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem
                   className="cursor-pointer"
                   onClick={async () => {
@@ -333,6 +340,142 @@ export function CategoriesBox({ playbooks, active, onSelect }: {
 export function RailFooter() {
   return (
     <p className="text-xs text-muted-foreground px-1">© {new Date().getFullYear()} Playbooks</p>
+  );
+}
+
+async function fetchFeedPage(sort: string, q: string, offset: number): Promise<{ playbooks: FeedPlaybook[]; hasMore: boolean }> {
+  const params = new URLSearchParams({ sort, offset: String(offset), limit: '20' });
+  if (q) params.set('q', q);
+  try {
+    const res = await fetch(`/api/community?${params}`);
+    if (!res.ok) return { playbooks: [], hasMore: false };
+    const data = await res.json();
+    return { playbooks: data.playbooks ?? [], hasMore: !!data.hasMore };
+  } catch {
+    return { playbooks: [], hasMore: false };
+  }
+}
+
+export function useCommunityFeed(sort: string, query: string) {
+  const [playbooks, setPlaybooks] = useState<FeedPlaybook[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
+  const [debouncedQ, setDebouncedQ] = useState(query.trim());
+  const offsetRef = useRef(0);
+  const loadingMoreRef = useRef(false);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const id = setTimeout(() => setDebouncedQ(query.trim()), 300);
+    return () => clearTimeout(id);
+  }, [query]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    (async () => {
+      const data = await fetchFeedPage(sort, debouncedQ, 0);
+      if (cancelled) return;
+      setPlaybooks(data.playbooks);
+      setHasMore(data.hasMore);
+      offsetRef.current = data.playbooks.length;
+      setLoading(false);
+    })();
+    return () => { cancelled = true; };
+  }, [sort, debouncedQ]);
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el || !hasMore || loading) return;
+    const obs = new IntersectionObserver(async (entries) => {
+      if (!entries[0].isIntersecting || loadingMoreRef.current) return;
+      loadingMoreRef.current = true;
+      const data = await fetchFeedPage(sort, debouncedQ, offsetRef.current);
+      setPlaybooks(prev => [...prev, ...data.playbooks]);
+      setHasMore(data.hasMore);
+      offsetRef.current += data.playbooks.length;
+      loadingMoreRef.current = false;
+    }, { rootMargin: '600px' });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [sort, debouncedQ, hasMore, loading]);
+
+  return { playbooks, loading, hasMore, sentinelRef };
+}
+
+export function FeedSentinel({ hasMore, sentinelRef }: { hasMore: boolean; sentinelRef: React.RefObject<HTMLDivElement | null> }) {
+  if (!hasMore) return null;
+  return (
+    <div ref={sentinelRef} className="flex items-center justify-center py-8">
+      <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+    </div>
+  );
+}
+
+export async function goToCheckout() {
+  const res = await fetch('/api/stripe/checkout', { method: 'POST' });
+  const data = await res.json();
+  if (data.url) window.location.href = data.url;
+}
+
+interface Usage {
+  tier: 'free' | 'pro';
+  playbooks: { used: number; limit: number | null };
+  insights: { used: number; limit: number | null };
+}
+
+function UsageMeter({ label, used, limit }: { label: string; used: number; limit: number | null }) {
+  const pct = limit ? Math.min(100, Math.round((used / limit) * 100)) : 0;
+  return (
+    <div>
+      <div className="flex items-center justify-between text-xs mb-1">
+        <span className="text-muted-foreground">{label}</span>
+        <span className="text-muted-foreground tabular-nums">{used}/{limit ?? '∞'}</span>
+      </div>
+      {limit !== null && (
+        <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
+          <div className={`h-full rounded-full transition-all ${pct >= 100 ? 'bg-destructive' : 'bg-primary'}`} style={{ width: `${pct}%` }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function UpgradeCard() {
+  const [usage, setUsage] = useState<Usage | null>(null);
+
+  useEffect(() => {
+    fetch('/api/user/usage')
+      .then(res => (res.ok ? res.json() : null))
+      .then(setUsage)
+      .catch(() => {});
+  }, []);
+
+  if (!usage) return null;
+
+  if (usage.tier === 'pro') {
+    return (
+      <div className="rounded-2xl border border-border bg-popover/60 p-4">
+        <p className="text-sm font-bold mb-3">Pro <span className="ml-1 text-[11px] font-medium text-primary bg-primary/15 px-2 py-0.5 rounded-full align-middle">active</span></p>
+        <UsageMeter label="AI insights this month" used={usage.insights.used} limit={usage.insights.limit} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-2xl border border-border bg-popover/60 p-4">
+      <p className="text-sm font-bold mb-3">Free plan</p>
+      <div className="space-y-3 mb-4">
+        <UsageMeter label="Playbooks this month" used={usage.playbooks.used} limit={usage.playbooks.limit} />
+        <UsageMeter label="AI insights this month" used={usage.insights.used} limit={usage.insights.limit} />
+      </div>
+      <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+        Pro gets unlimited playbooks and 100 AI insights a month — guidance, replans, the works.
+      </p>
+      <Button size="sm" className="w-full" onClick={goToCheckout}>
+        Go Pro — $9/mo
+      </Button>
+    </div>
   );
 }
 

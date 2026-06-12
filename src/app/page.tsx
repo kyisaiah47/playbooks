@@ -6,41 +6,26 @@ import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
 import { WelcomeDialog } from '@/components/welcome-dialog';
 import { useAuth } from '@/contexts/auth-context';
-import { Shell, Logo, FeedTabs, FeedRow, SearchBox, MomentumBox, CategoriesBox, RailFooter, categorize, type FeedPlaybook } from '@/components/shell';
+import { Shell, Logo, FeedTabs, FeedRow, SearchBox, MomentumBox, CategoriesBox, RailFooter, FeedSentinel, useCommunityFeed, categorize } from '@/components/shell';
 import { Loader2 } from 'lucide-react';
 
 export default function HomePage() {
   const [loginOpen, setLoginOpen] = useState(false);
-  const [feed, setFeed] = useState<FeedPlaybook[]>([]);
-  const [loadingFeed, setLoadingFeed] = useState(true);
   const [tab, setTab] = useState('popular');
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
   const { isLoggedIn, loading } = useAuth();
   const router = useRouter();
+  const { playbooks: feed, loading: loadingFeed, hasMore, sentinelRef } = useCommunityFeed(tab, query);
 
   useEffect(() => {
     if (!loading && isLoggedIn) router.push('/app');
   }, [isLoggedIn, loading]);
 
-  useEffect(() => {
-    setLoadingFeed(true);
-    fetch(`/api/community?sort=${tab}`)
-      .then(res => (res.ok ? res.json() : { playbooks: [] }))
-      .then(data => setFeed(data.playbooks ?? []))
-      .catch(() => setFeed([]))
-      .finally(() => setLoadingFeed(false));
-  }, [tab]);
-
   const visible = useMemo(() => {
-    let list = feed;
-    if (category) list = list.filter(p => categorize(p).tag === category);
-    if (query.trim()) {
-      const q = query.toLowerCase();
-      list = list.filter(p => p.title.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q));
-    }
-    return list;
-  }, [feed, query, category]);
+    if (!category) return feed;
+    return feed.filter(p => categorize(p).tag === category);
+  }, [feed, category]);
 
   return (
     <>
@@ -96,6 +81,7 @@ export default function HomePage() {
         ) : (
           <div>
             {visible.map(p => <FeedRow key={p.id} playbook={p} />)}
+            <FeedSentinel hasMore={hasMore} sentinelRef={sentinelRef} />
           </div>
         )}
       </Shell>

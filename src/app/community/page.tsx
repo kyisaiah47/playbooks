@@ -1,39 +1,24 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
-import { Shell, Logo, NavRail, FeedTabs, FeedRow, SearchBox, MomentumBox, CategoriesBox, RailFooter, categorize, type FeedPlaybook } from '@/components/shell';
+import { Shell, Logo, NavRail, FeedTabs, FeedRow, SearchBox, MomentumBox, CategoriesBox, RailFooter, FeedSentinel, useCommunityFeed, categorize } from '@/components/shell';
 import { Loader2 } from 'lucide-react';
 
 export default function CommunityPage() {
   const { isLoggedIn } = useAuth();
   const [loginOpen, setLoginOpen] = useState(false);
-  const [playbooks, setPlaybooks] = useState<FeedPlaybook[]>([]);
-  const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState('popular');
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(`/api/community?sort=${sort}`)
-      .then(res => (res.ok ? res.json() : { playbooks: [] }))
-      .then(data => setPlaybooks(data.playbooks ?? []))
-      .catch(() => setPlaybooks([]))
-      .finally(() => setLoading(false));
-  }, [sort]);
+  const { playbooks, loading, hasMore, sentinelRef } = useCommunityFeed(sort, query);
 
   const visible = useMemo(() => {
-    let list = playbooks;
-    if (category) list = list.filter(p => categorize(p).tag === category);
-    if (query.trim()) {
-      const q = query.toLowerCase();
-      list = list.filter(p => p.title.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q));
-    }
-    return list;
-  }, [playbooks, query, category]);
+    if (!category) return playbooks;
+    return playbooks.filter(p => categorize(p).tag === category);
+  }, [playbooks, category]);
 
   return (
     <>
@@ -83,6 +68,7 @@ export default function CommunityPage() {
         ) : (
           <div>
             {visible.map(p => <FeedRow key={p.id} playbook={p} />)}
+            <FeedSentinel hasMore={hasMore} sentinelRef={sentinelRef} />
           </div>
         )}
       </Shell>
