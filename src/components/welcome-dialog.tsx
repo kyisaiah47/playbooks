@@ -56,11 +56,9 @@ export function WelcomeDialog({ onGetStarted }: { onGetStarted: () => void }) {
             onError={(e) => { e.currentTarget.style.display = 'none'; }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c1118] via-[#0c1118]/30 to-transparent" />
-          <div className="absolute bottom-0 inset-x-0 px-8 sm:px-12 pb-7 flex items-end gap-5">
-            <PlaybookIcon size={56} className="text-primary shrink-0 mb-1.5" />
-            <div>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight leading-tight max-w-3xl">Big moments don&apos;t come with a manual</h2>
-            </div>
+          <div className="absolute bottom-0 inset-x-0 px-8 sm:px-12 pb-7 flex items-center gap-6">
+            <PlaybookIcon size={96} className="text-primary shrink-0" />
+            <h2 className="text-4xl sm:text-6xl font-bold tracking-tighter leading-[1.05] max-w-3xl">Big moments don&apos;t come with a manual</h2>
           </div>
         </div>
 
