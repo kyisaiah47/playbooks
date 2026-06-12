@@ -1,38 +1,79 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Loader2, ArrowRight, Trash2, BookOpen, AlertCircle } from 'lucide-react';
+import { Loader2, ArrowUp, Trash2, AlertCircle } from 'lucide-react';
 import { TemplataIcon } from '@/components/ui/templata-icon';
-import { AppNav } from '@/components/app-nav';
+import { Shell, NavRail, PlaybookAvatar, TrendingBox, RailFooter, timeAgo, type FeedPlaybook } from '@/components/shell';
 import { toast } from 'sonner';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import type { Playbook } from '@/types/playbook';
 
 const EXAMPLES = [
-  'Planning a wedding in NYC next October, ~80 guests, $50k budget',
-  'Switching careers from finance to software engineering',
-  'Buying my first home in Austin, budget around $400k',
-  'Starting a small bakery business from home',
-  'Moving to a new city alone for a job',
+  'Wedding in NYC, ~80 guests, $50k',
+  'Finance → software engineering',
+  'First home in Austin, $400k',
+  'Starting a home bakery',
 ];
+
+const GENERATING_STAGES = [
+  'Reading your situation…',
+  'Breaking it into phases…',
+  'Writing tasks you can actually check off…',
+  'Adding questions worth thinking about…',
+  'Finding resources for your context…',
+  'Putting it all together…',
+];
+
+function GeneratingOverlay() {
+  const [stage, setStage] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setStage(s => Math.min(s + 1, GENERATING_STAGES.length - 1)), 3500);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/90 backdrop-blur-sm">
+      <motion.div animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}>
+        <TemplataIcon size={36} className="text-primary" />
+      </motion.div>
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={stage}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3 }}
+          className="mt-6 text-sm font-medium text-foreground"
+        >
+          {GENERATING_STAGES[stage]}
+        </motion.p>
+      </AnimatePresence>
+      <p className="mt-2 text-xs text-muted-foreground">Claude is building your playbook — about 20 seconds</p>
+    </div>
+  );
+}
 
 export default function AppPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const forkFrom = searchParams.get('fork');
   const [playbooks, setPlaybooks] = useState<Playbook[]>([]);
+  const [community, setCommunity] = useState<FeedPlaybook[]>([]);
   const [context, setContext] = useState('');
   const [generating, setGenerating] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const composerRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     fetchPlaybooks();
+    fetch('/api/community?sort=popular')
+      .then(res => (res.ok ? res.json() : { playbooks: [] }))
+      .then(data => setCommunity(data.playbooks ?? []))
+      .catch(() => {});
   }, []);
 
   async function fetchPlaybooks() {
@@ -62,10 +103,6 @@ export default function AppPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        if (data.limitReached) {
-          setError(data.error);
-          return;
-        }
         setError(data.error ?? 'Something went wrong.');
         return;
       }
@@ -91,129 +128,127 @@ export default function AppPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
-      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
-      <AppNav showCommunity showUserMenu />
+    <>
+      <AnimatePresence>{generating && <GeneratingOverlay />}</AnimatePresence>
 
-      <div className="relative z-10 max-w-2xl mx-auto px-4 pt-16 pb-24">
-
-        {/* Hero input */}
-        <div className="mb-16">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground mb-1">
-            {forkFrom ? 'Fork this playbook' : 'What are you planning?'}
-          </h1>
-          <p className="text-sm text-muted-foreground mb-6">
-            {forkFrom
-              ? 'Describe your situation and Claude will re-tailor this playbook specifically for you.'
-              : 'Describe your situation and Claude will build a personalized playbook for you.'}
-          </p>
-
-          <div className="relative">
-            <Textarea
-              placeholder="e.g. I'm planning a wedding in NYC next October, budget around $50k, about 80 guests. We want something intimate but elegant."
-              value={context}
-              onChange={(e) => setContext(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="min-h-[140px] resize-none text-sm pr-4 pb-12 bg-card border-border rounded-xl shadow-sm focus:ring-1 focus:ring-stone-400"
-              disabled={generating}
-            />
-            <div className="absolute bottom-3 right-3 flex items-center gap-2">
-              {context.trim() && (
-                <span className="text-xs text-muted-foreground">⌘↵</span>
-              )}
-              <Button
-                size="sm"
-                onClick={generate}
-                disabled={!context.trim() || generating}
-                className="rounded-lg"
-              >
-                {generating ? (
-                  <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Generating...</>
-                ) : (
-                  <><TemplataIcon size={14} className="mr-1.5" />Generate</>
-                )}
-              </Button>
-            </div>
-          </div>
-
-          {error && (
-            <p className="text-sm text-destructive mt-2 flex items-center gap-1.5"><AlertCircle className="w-3.5 h-3.5 shrink-0" />{error}</p>
-          )}
-
-          {/* Example chips */}
-          {!context && (
-            <div className="flex flex-wrap gap-2 mt-4">
-              {EXAMPLES.map((ex) => (
-                <button
-                  key={ex}
-                  onClick={() => setContext(ex)}
-                  className="text-xs px-3 py-1.5 rounded-full border border-border bg-card text-muted-foreground hover:text-foreground hover:border-stone-400 transition-colors"
-                >
-                  {ex}
-                </button>
-              ))}
-            </div>
-          )}
+      <Shell
+        left={<NavRail onNewPlaybook={() => composerRef.current?.focus()} />}
+        right={
+          <>
+            <TrendingBox playbooks={community} />
+            <RailFooter />
+          </>
+        }
+      >
+        {/* Sticky header */}
+        <div className="sticky top-0 z-20 px-4 py-3.5 border-b border-border bg-background/90 backdrop-blur-md">
+          <h1 className="text-sm font-bold">Home</h1>
         </div>
 
-        {/* Playbooks */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Your Playbooks
-            </h2>
-            {!loading && playbooks.length > 0 && (
-              <span className="text-xs text-muted-foreground">{playbooks.length}</span>
-            )}
+        {/* Composer */}
+        <div className="px-4 py-4 border-b border-border">
+          <div className="flex gap-3">
+            <div className="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+              <TemplataIcon size={18} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <textarea
+                ref={composerRef}
+                placeholder={forkFrom ? 'Describe your situation — Claude will re-tailor this playbook to you…' : 'What are you planning?'}
+                value={context}
+                onChange={(e) => setContext(e.target.value)}
+                onKeyDown={handleKeyDown}
+                disabled={generating}
+                rows={context ? 4 : 2}
+                className="w-full resize-none bg-transparent text-[15px] leading-relaxed placeholder:text-muted-foreground outline-none pt-1.5"
+              />
+              {!context && (
+                <div className="flex flex-wrap gap-1.5 mb-2">
+                  {EXAMPLES.map((ex) => (
+                    <button
+                      key={ex}
+                      onClick={() => { setContext(ex); composerRef.current?.focus(); }}
+                      className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground hover:text-foreground hover:bg-input transition-colors"
+                    >
+                      {ex}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <div className="flex items-center justify-between border-t border-border pt-2.5">
+                <span className="text-xs text-muted-foreground">{context.trim() ? '⌘↵ to generate' : 'One sentence is enough'}</span>
+                <Button
+                  size="sm"
+                  onClick={generate}
+                  disabled={!context.trim() || generating}
+                  className="gap-1.5"
+                >
+                  {generating
+                    ? <><Loader2 className="w-3.5 h-3.5 animate-spin" />Generating</>
+                    : <>Generate<ArrowUp className="w-3.5 h-3.5" /></>}
+                </Button>
+              </div>
+              {error && (
+                <p className="text-sm text-destructive mt-2 flex items-center gap-1.5"><AlertCircle className="w-3.5 h-3.5 shrink-0" />{error}</p>
+              )}
+            </div>
           </div>
+        </div>
 
-          {loading ? (
-            <div className="flex items-center justify-center py-16">
-              <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
-            </div>
-          ) : playbooks.length === 0 ? (
-            <div className="text-center py-16 border border-dashed border-border rounded-xl">
-              <BookOpen className="w-8 h-8 text-muted-foreground/40 mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground">Your playbooks will appear here.</p>
-            </div>
-          ) : (
-            <AnimatePresence>
-              <div className="divide-y divide-border border border-border rounded-xl overflow-hidden bg-card">
-                {playbooks.map((p, i) => (
-                  <motion.div
-                    key={p.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: i * 0.04 }}
-                    className="flex items-center justify-between px-4 py-3.5 group hover:bg-accent/50 transition-colors cursor-pointer"
-                    onClick={() => router.push(`/app/${p.id}`)}
-                  >
-                    <div className="flex-1 min-w-0 mr-3">
-                      <p className="text-sm font-medium truncate">{p.title}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">
-                        {new Date(p.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-1 shrink-0">
+        {/* Playbook feed */}
+        {loading ? (
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+          </div>
+        ) : playbooks.length === 0 ? (
+          <div className="text-center py-20 px-6">
+            <p className="text-sm text-muted-foreground">No playbooks yet. Describe what you&apos;re planning above — Claude does the rest.</p>
+          </div>
+        ) : (
+          <div>
+            {playbooks.map((p, i) => {
+              const tasks = (p.items ?? []).filter(it => it.type === 'task');
+              const done = tasks.filter(it => it.completed).length;
+              const pct = tasks.length > 0 ? Math.round((done / tasks.length) * 100) : 0;
+              return (
+                <motion.article
+                  key={p.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: i * 0.03 }}
+                  className="flex gap-3 px-4 py-3.5 border-b border-border hover:bg-accent/60 transition-colors cursor-pointer group"
+                  onClick={() => router.push(`/app/${p.id}`)}
+                >
+                  <PlaybookAvatar title={p.title} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <p className="text-[15px] font-semibold leading-snug truncate">{p.title}</p>
+                      <span className="text-sm text-muted-foreground shrink-0">· {timeAgo(p.created_at)}</span>
                       <button
-                        className="p-1.5 rounded-md opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-all"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setDeleteId(p.id);
-                        }}
+                        className="ml-auto p-1.5 rounded-full opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all shrink-0"
+                        onClick={(e) => { e.stopPropagation(); setDeleteId(p.id); }}
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
-                      <ArrowRight className="w-3.5 h-3.5 text-muted-foreground" />
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </AnimatePresence>
-          )}
-        </div>
-      </div>
+                    {p.description && (
+                      <p className="text-sm text-muted-foreground leading-relaxed mt-0.5 line-clamp-2">{p.description}</p>
+                    )}
+                    <div className="flex items-center gap-3 mt-2.5">
+                      <div className="h-1.5 w-28 bg-secondary rounded-full overflow-hidden">
+                        <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${pct}%` }} />
+                      </div>
+                      <span className="text-xs text-muted-foreground">
+                        {tasks.length > 0 ? `${done}/${tasks.length} tasks` : 'No tasks'}
+                      </span>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        )}
+      </Shell>
 
       <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
         <AlertDialogContent>
@@ -232,6 +267,6 @@ export default function AppPage() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </div>
+    </>
   );
 }

@@ -66,7 +66,7 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
         ) : (
           <div>
             <div className="flex justify-center mb-6">
-              <Image src="/logo.png" alt="Templata" width={28} height={34} className="invert" />
+              <Image src="/logo.png" alt="Templata" width={28} height={34} />
             </div>
             <h2 className="font-semibold text-xl tracking-tight text-center mb-1">Welcome to Templata</h2>
             <p className="text-sm text-muted-foreground text-center mb-8">Enter your email to sign in or create an account.</p>

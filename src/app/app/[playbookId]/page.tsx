@@ -7,9 +7,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, HelpCircle, ExternalLink, ChevronDown, ChevronUp, MapPin, BookOpen, User, Video, Wrench, Globe, Link } from 'lucide-react';
+import { Loader2, HelpCircle, ExternalLink, ChevronDown, ChevronUp, MapPin, BookOpen, User, Video, Wrench, Globe, Link, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { TemplataIcon } from '@/components/ui/templata-icon';
-import { AppNav } from '@/components/app-nav';
+import { Shell, NavRail, RailFooter } from '@/components/shell';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
 
 const RESOURCE_ICONS: Record<string, React.ReactNode> = {
@@ -82,6 +82,12 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
     return acc;
   }, {});
 
+  const allTasks = items.filter(i => i.type === 'task');
+  const doneTasks = allTasks.filter(i => i.completed).length;
+  const progress = allTasks.length > 0 ? Math.round((doneTasks / allTasks.length) * 100) : 0;
+
+  const phaseId = (phase: string) => `phase-${phase.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center">
       <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
@@ -91,53 +97,91 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
   if (!playbook) return null;
 
   return (
-    <div className="h-screen flex flex-col bg-background overflow-hidden">
-      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
-      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
-
-      <AppNav />
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-1 overflow-hidden">
-
-        {/* Playbook */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="max-w-2xl mx-auto px-4 pt-16 pb-24">
-            <div className="mb-8">
-              <h1 className="text-2xl font-semibold tracking-tight mb-2">{playbook.title}</h1>
-              {playbook.description && <p className="text-sm text-muted-foreground leading-relaxed">{playbook.description}</p>}
+    <Shell
+      left={<NavRail />}
+      right={
+        <>
+          <div className="rounded-2xl border border-border bg-popover/60 p-4">
+            <p className="text-sm font-bold mb-1">Progress</p>
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="h-1.5 flex-1 bg-secondary rounded-full overflow-hidden">
+                <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
+              </div>
+              <span className="text-xs font-medium text-muted-foreground tabular-nums">{progress}%</span>
             </div>
-
-            <div className="space-y-10">
-              {Object.entries(phases).map(([phase, phaseItems]) => (
-                <div key={phase}>
-                  <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 pb-2 border-b border-border">{phase}</h2>
-                  <div className="space-y-1">
-                    {phaseItems.map(item => (
-                      <ItemRow
-                        key={item.id}
-                        item={item}
-                        playbookId={playbookId}
-                        activeItemId={activeItemId}
-                        setActiveItemId={setActiveItemId}
-                        draftAnswers={draftAnswers}
-                        setDraftAnswers={setDraftAnswers}
-                        submitting={submitting}
-                        expandedFeedback={expandedFeedback}
-                        setExpandedFeedback={setExpandedFeedback}
-                        onToggleTask={toggleTask}
-                        onSubmitAnswer={submitAnswer}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
+            <div className="space-y-0.5">
+              {Object.entries(phases).map(([phase, phaseItems]) => {
+                const pTasks = phaseItems.filter(i => i.type === 'task');
+                const pDone = pTasks.filter(i => i.completed).length;
+                const complete = pTasks.length > 0 && pDone === pTasks.length;
+                return (
+                  <a
+                    key={phase}
+                    href={`#${phaseId(phase)}`}
+                    className="flex items-center justify-between gap-2 px-2 py-1.5 -mx-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    <span className="truncate">{phase}</span>
+                    {complete ? (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                    ) : pTasks.length > 0 ? (
+                      <span className="text-xs tabular-nums shrink-0">{pDone}/{pTasks.length}</span>
+                    ) : null}
+                  </a>
+                );
+              })}
             </div>
           </div>
+          <RailFooter />
+        </>
+      }
+    >
+      {/* Sticky header */}
+      <div className="sticky top-0 z-20 flex items-center gap-3 px-4 py-2.5 border-b border-border bg-background/90 backdrop-blur-md">
+        <button onClick={() => router.push('/app')} className="p-2 -ml-2 rounded-full hover:bg-accent transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+        </button>
+        <div className="flex-1 min-w-0">
+          <h1 className="text-sm font-bold truncate">{playbook.title}</h1>
+          <p className="text-xs text-muted-foreground tabular-nums">{doneTasks}/{allTasks.length} tasks · {progress}%</p>
+        </div>
+        <div className="h-1.5 w-24 bg-secondary rounded-full overflow-hidden shrink-0">
+          <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
+        </div>
+      </div>
+
+      <div className="px-4 pt-6 pb-24">
+        <div className="mb-8">
+          <h1 className="text-2xl font-bold tracking-tight mb-2">{playbook.title}</h1>
+          {playbook.description && <p className="text-sm text-muted-foreground leading-relaxed">{playbook.description}</p>}
         </div>
 
+        <div className="space-y-10">
+          {Object.entries(phases).map(([phase, phaseItems]) => (
+            <div key={phase} id={phaseId(phase)} className="scroll-mt-20">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 pb-2 border-b border-border">{phase}</h2>
+              <div className="space-y-1">
+                {phaseItems.map(item => (
+                  <ItemRow
+                    key={item.id}
+                    item={item}
+                    playbookId={playbookId}
+                    activeItemId={activeItemId}
+                    setActiveItemId={setActiveItemId}
+                    draftAnswers={draftAnswers}
+                    setDraftAnswers={setDraftAnswers}
+                    submitting={submitting}
+                    expandedFeedback={expandedFeedback}
+                    setExpandedFeedback={setExpandedFeedback}
+                    onToggleTask={toggleTask}
+                    onSubmitAnswer={submitAnswer}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </Shell>
   );
 }
 
@@ -193,7 +237,7 @@ function ItemRow({ item, activeItemId, setActiveItemId, draftAnswers, setDraftAn
           )}
           {hasFeedback && !isActive && (
             <div className="mt-2">
-              <button className="flex items-center gap-1.5 text-xs text-stone-500 hover:text-stone-700 transition-colors"
+              <button className="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
                 onClick={() => setExpandedFeedback(p => ({ ...p, [item.id]: !p[item.id] }))}>
                 <TemplataIcon size={12} />
                 AI insight
@@ -202,8 +246,8 @@ function ItemRow({ item, activeItemId, setActiveItemId, draftAnswers, setDraftAn
               <AnimatePresence>
                 {feedbackExpanded && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                    <div className="mt-2 pl-3 border-l-2 border-stone-200">
-                      <p className="text-sm text-stone-600 leading-relaxed">{item.ai_feedback}</p>
+                    <div className="mt-2 pl-3 border-l-2 border-primary/30">
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.ai_feedback}</p>
                     </div>
                   </motion.div>
                 )}

@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import { Heart, Loader2, HelpCircle, ExternalLink, X, Send, MapPin, BookOpen, User, Video, Wrench, Globe, Link } from 'lucide-react';
-import { AppNav } from '@/components/app-nav';
+import { Heart, Loader2, HelpCircle, ExternalLink, X, Send, MapPin, BookOpen, User, Video, Wrench, Globe, Link, ArrowLeft, GitFork } from 'lucide-react';
+import { Shell, Logo, NavRail, PlaybookAvatar, RailFooter, timeAgo } from '@/components/shell';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
@@ -97,31 +97,78 @@ export function PlaybookView({ id, initialPlaybook, initialItems }: Props) {
   }, {});
 
   return (
-    <div className="min-h-screen bg-background">
+    <Shell
+      left={
+        isLoggedIn ? (
+          <NavRail />
+        ) : (
+          <div className="flex flex-col gap-5 pt-2">
+            <Logo size={36} />
+            <h1 className="text-[32px] font-bold leading-[1.15] tracking-tight">
+              Plan your next<br />big thing
+            </h1>
+            <p className="text-sm text-muted-foreground leading-relaxed -mt-2">
+              Fork this playbook and Claude re-tailors it to your situation.
+            </p>
+            <div className="flex items-center gap-2.5">
+              <Button onClick={() => setLoginOpen(true)} className="px-5">Create account</Button>
+              <Button variant="secondary" onClick={() => setLoginOpen(true)} className="px-5">Sign in</Button>
+            </div>
+          </div>
+        )
+      }
+      right={
+        <>
+          <div className="rounded-2xl border border-border bg-popover/60 p-4">
+            <p className="text-sm font-bold mb-1">Make it yours</p>
+            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+              Fork this playbook and Claude rebuilds it around your specific situation.
+            </p>
+            <Button size="sm" className="w-full gap-1.5" onClick={() => { if (!isLoggedIn) { setLoginOpen(true); return; } router.push(`/app?fork=${id}`); }}>
+              <GitFork className="w-3.5 h-3.5" />
+              Fork this playbook
+            </Button>
+          </div>
+          <RailFooter />
+        </>
+      }
+    >
       <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
-      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)', backgroundSize: '100% 100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)', opacity: 0.45 }} />
-      <div aria-hidden className="pointer-events-none fixed inset-0" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)' }} />
-      <AppNav showMyPlaybooks showUserMenu />
 
-      <div className="relative z-10 max-w-2xl mx-auto px-4 pt-10 pb-24">
-        {/* Header */}
+      {/* Sticky header */}
+      <div className="sticky top-0 z-20 flex items-center gap-3 px-4 py-2.5 border-b border-border bg-background/90 backdrop-blur-md">
+        <button onClick={() => router.push(isLoggedIn ? '/community' : '/')} className="p-2 -ml-2 rounded-full hover:bg-accent transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+        </button>
+        <h1 className="text-sm font-bold truncate flex-1">Playbook</h1>
+      </div>
+
+      <div className="px-4 pt-5 pb-24">
+        {/* Post-style header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-semibold tracking-tight mb-2">{playbook.title}</h1>
+          <div className="flex items-start gap-3 mb-3">
+            <PlaybookAvatar title={playbook.title} size={44} />
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl font-bold tracking-tight leading-snug">{playbook.title}</h1>
+              <p className="text-xs text-muted-foreground mt-0.5">{timeAgo(playbook.created_at)} ago</p>
+            </div>
+          </div>
           {playbook.description && (
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">{playbook.description}</p>
           )}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 pb-1 border-b border-border">
             <button
               onClick={toggleLike}
-              className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-colors ${
-                liked ? 'border-red-300 bg-red-50 text-red-500' : 'border-border text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-1.5 text-xs px-3 py-1.5 mb-3 rounded-full border transition-colors ${
+                liked ? 'border-rose-500/40 bg-rose-500/10 text-rose-400' : 'border-border text-muted-foreground hover:text-foreground'
               }`}
             >
-              <Heart className={`w-3 h-3 ${liked ? 'fill-red-500' : ''}`} />
+              <Heart className={`w-3 h-3 ${liked ? 'fill-rose-400' : ''}`} />
               {likesCount}
             </button>
-            <Button size="sm" variant="outline" onClick={() => { if (!isLoggedIn) { setLoginOpen(true); return; } router.push(`/app?fork=${id}`); }}>
-              Fork this playbook
+            <Button size="sm" variant="secondary" className="mb-3 gap-1.5" onClick={() => { if (!isLoggedIn) { setLoginOpen(true); return; } router.push(`/app?fork=${id}`); }}>
+              <GitFork className="w-3.5 h-3.5" />
+              Fork
             </Button>
           </div>
         </div>
@@ -245,6 +292,6 @@ export function PlaybookView({ id, initialPlaybook, initialItems }: Props) {
           </div>
         </div>
       </div>
-    </div>
+    </Shell>
   );
 }

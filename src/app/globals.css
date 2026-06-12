@@ -34,27 +34,70 @@
 }
 
 :root {
-  --background: #fafaf8;
-  --foreground: #1c1917;
-  --card: #fffffe;
-  --card-foreground: #1c1917;
-  --popover: #fffffe;
-  --popover-foreground: #1c1917;
-  --primary: #1c1917;
-  --primary-foreground: #fafaf8;
-  --secondary: #f2f0ec;
-  --secondary-foreground: #1c1917;
-  --muted: #f2f0ec;
-  --muted-foreground: #78716c;
-  --accent: #ede9e4;
-  --accent-foreground: #1c1917;
-  --destructive: #b45309;
-  --border: #e7e4de;
-  --input: #e7e4de;
-  --ring: #1c1917;
-  --radius: 0.5rem;
+  --background: #0c1118;
+  --foreground: #f1f3f5;
+  --card: #0c1118;
+  --card-foreground: #f1f3f5;
+  --popover: #161e29;
+  --popover-foreground: #f1f3f5;
+  --primary: #1083fe;
+  --primary-foreground: #ffffff;
+  --secondary: #1e2936;
+  --secondary-foreground: #f1f3f5;
+  --muted: #1e2936;
+  --muted-foreground: #8d9cb0;
+  --accent: #161e29;
+  --accent-foreground: #f1f3f5;
+  --destructive: #ef4444;
+  --border: #1f2a38;
+  --input: #2a3848;
+  --ring: #1083fe;
+  --radius: 0.75rem;
 }
 
+
+/* Subtle raised card with hover lift */
+.card-raised {
+  box-shadow:
+    0 1px 2px rgba(15,23,42,0.03),
+    0 2px 8px rgba(15,23,42,0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.card-raised:hover {
+  box-shadow:
+    0 2px 4px rgba(15,23,42,0.04),
+    0 8px 24px rgba(15,23,42,0.08);
+  transform: translateY(-2px);
+}
+
+@keyframes btn-shine {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(220%)  skewX(-20deg); }
+}
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: translateX(-120%) skewX(-20deg);
+}
+.btn-shimmer:hover::after {
+  animation: btn-shine 0.55s ease forwards;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up         { animation: fade-up 0.6s ease-out both; }
+.animate-fade-up-delay-1 { animation: fade-up 0.6s 0.12s ease-out both; }
+.animate-fade-up-delay-2 { animation: fade-up 0.6s 0.24s ease-out both; }
+.animate-fade-up-delay-3 { animation: fade-up 0.6s 0.36s ease-out both; }
 
 @keyframes marquee-banner {
   from { transform: translateX(0); }

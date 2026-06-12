@@ -1,159 +1,87 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Heart, MessageSquare, ArrowRight, Loader2, Flame, Clock } from 'lucide-react';
-import { AppNav } from '@/components/app-nav';
+import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
-
-interface CommunityPlaybook {
-  id: string;
-  title: string;
-  description: string | null;
-  context: string;
-  created_at: string;
-  likes_count: number;
-  comments_count: number;
-  is_forked: boolean;
-}
-
-const GRID_BG = {
-  backgroundImage: 'url(https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/grid-1.svg)',
-  backgroundSize: '100% 100%',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)',
-  maskImage: 'radial-gradient(ellipse 100% 100% at 50% 50%, black 0%, transparent 75%)',
-  opacity: 0.45,
-};
+import { Shell, Logo, NavRail, FeedTabs, FeedRow, SearchBox, TrendingBox, RailFooter, type FeedPlaybook } from '@/components/shell';
+import { Loader2 } from 'lucide-react';
 
 export default function CommunityPage() {
-  const router = useRouter();
   const { isLoggedIn } = useAuth();
-  const [playbooks, setPlaybooks] = useState<CommunityPlaybook[]>([]);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [playbooks, setPlaybooks] = useState<FeedPlaybook[]>([]);
   const [loading, setLoading] = useState(true);
-  const [sort, setSort] = useState<'new' | 'popular'>('new');
+  const [sort, setSort] = useState('popular');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    fetchCommunity();
+    setLoading(true);
+    fetch(`/api/community?sort=${sort}`)
+      .then(res => (res.ok ? res.json() : { playbooks: [] }))
+      .then(data => setPlaybooks(data.playbooks ?? []))
+      .catch(() => setPlaybooks([]))
+      .finally(() => setLoading(false));
   }, [sort]);
 
-  async function fetchCommunity() {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/community?sort=${sort}`);
-      const data = await res.json();
-      setPlaybooks(data.playbooks ?? []);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const visible = useMemo(() => {
+    if (!query.trim()) return playbooks;
+    const q = query.toLowerCase();
+    return playbooks.filter(p => p.title.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q));
+  }, [playbooks, query]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <AppNav showMyPlaybooks={isLoggedIn} showUserMenu={isLoggedIn} />
-
-      <div className="relative overflow-hidden">
-        {/* Grid background */}
-        <div aria-hidden className="pointer-events-none fixed inset-0" style={GRID_BG} />
-        {/* Warm overlay */}
-        <div aria-hidden className="pointer-events-none fixed inset-0" style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 20%, rgba(245, 235, 220, 0.4) 0%, transparent 70%)',
-        }} />
-
-        <div className="relative z-10 max-w-2xl mx-auto px-4 pt-16 pb-24">
-
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mb-10"
-          >
-            <h1 className="text-4xl font-semibold tracking-tighter bg-gradient-to-r from-stone-900 via-stone-700 to-stone-800 bg-clip-text text-transparent mb-2">
-              Community
-            </h1>
-            <p className="text-sm text-muted-foreground">Playbooks created and shared by everyone.</p>
-          </motion.div>
-
-          {/* Sort */}
-          <div className="flex gap-2 mb-8">
-            <button
-              onClick={() => setSort('new')}
-              className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-colors backdrop-blur-sm ${
-                sort === 'new'
-                  ? 'border-foreground bg-foreground text-background'
-                  : 'border-border bg-card/60 text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Clock className="w-3 h-3" />
-              New
-            </button>
-            <button
-              onClick={() => setSort('popular')}
-              className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-colors backdrop-blur-sm ${
-                sort === 'popular'
-                  ? 'border-foreground bg-foreground text-background'
-                  : 'border-border bg-card/60 text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Flame className="w-3 h-3" />
-              Popular
-            </button>
-          </div>
-
-          {/* Feed */}
-          {loading ? (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
-            </div>
-          ) : playbooks.length === 0 ? (
-            <div className="text-center py-20 border border-dashed border-border rounded-xl bg-card/60 backdrop-blur-sm">
-              <p className="text-sm text-muted-foreground">No public playbooks yet.</p>
-              <Button variant="outline" size="sm" className="mt-4" onClick={() => router.push('/app')}>
-                Create the first one
-              </Button>
-            </div>
+    <>
+      <Shell
+        left={
+          isLoggedIn ? (
+            <NavRail />
           ) : (
-            <div className="divide-y divide-border border border-border rounded-xl overflow-hidden bg-card/80 backdrop-blur-sm shadow-sm">
-              {playbooks.map((p, i) => (
-                <motion.div
-                  key={p.id}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.04 }}
-                  className="flex items-start justify-between px-4 py-4 group hover:bg-accent/50 transition-colors cursor-pointer gap-4"
-                  onClick={() => router.push(`/community/${p.id}`)}
-                >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium">{p.title}</p>
-                    {p.description && (
-                      <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{p.description}</p>
-                    )}
-                    <div className="flex items-center gap-4 mt-2">
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Heart className="w-3 h-3" />
-                        {p.likes_count}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <MessageSquare className="w-3 h-3" />
-                        {p.comments_count}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {new Date(p.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                      </span>
-                      {p.is_forked && <span className="text-xs text-muted-foreground">forked</span>}
-                    </div>
-                  </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground shrink-0 mt-1" />
-                </motion.div>
-              ))}
+            <div className="flex flex-col gap-5 pt-2">
+              <Logo size={36} />
+              <h1 className="text-[32px] font-bold leading-[1.15] tracking-tight">
+                Plan your next<br />big thing
+              </h1>
+              <p className="text-sm text-muted-foreground leading-relaxed -mt-2">
+                Fork any playbook and Claude re-tailors it to your situation.
+              </p>
+              <div className="flex items-center gap-2.5">
+                <Button onClick={() => setLoginOpen(true)} className="px-5">Create account</Button>
+                <Button variant="secondary" onClick={() => setLoginOpen(true)} className="px-5">Sign in</Button>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
-    </div>
+          )
+        }
+        right={
+          <>
+            <SearchBox value={query} onChange={setQuery} />
+            <TrendingBox playbooks={playbooks} />
+            <RailFooter />
+          </>
+        }
+      >
+        <FeedTabs
+          tabs={[{ key: 'popular', label: 'Discover' }, { key: 'new', label: 'Newest' }]}
+          active={sort}
+          onChange={setSort}
+        />
+
+        {loading ? (
+          <div className="flex items-center justify-center py-24">
+            <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+          </div>
+        ) : visible.length === 0 ? (
+          <div className="text-center py-24 px-6">
+            <p className="text-sm text-muted-foreground">{query ? 'No playbooks match your search.' : 'No public playbooks yet.'}</p>
+          </div>
+        ) : (
+          <div>
+            {visible.map(p => <FeedRow key={p.id} playbook={p} />)}
+          </div>
+        )}
+      </Shell>
+
+      <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
+    </>
   );
 }

@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
   const { data: playbooks, error } = await supabase
     .from('playbooks')
-    .select('*')
+    .select('*, items(type, completed)')
     .eq('user_id', user.userId)
     .is('deleted_at', null)
     .order('created_at', { ascending: false });
