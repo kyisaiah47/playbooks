@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
+import { WelcomeDialog } from '@/components/welcome-dialog';
 import { useAuth } from '@/contexts/auth-context';
 import { Shell, Logo, FeedTabs, FeedRow, SearchBox, MomentumBox, CategoriesBox, RailFooter, categorize, type FeedPlaybook } from '@/components/shell';
 import { Loader2 } from 'lucide-react';
@@ -100,6 +101,7 @@ export default function HomePage() {
       </Shell>
 
       <LoginDialog open={loginOpen} onOpenChange={setLoginOpen} />
+      {!loading && !isLoggedIn && <WelcomeDialog onGetStarted={() => setLoginOpen(true)} />}
     </>
   );
 }
