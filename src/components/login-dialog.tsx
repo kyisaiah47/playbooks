@@ -51,8 +51,8 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
         <DialogTitle className="sr-only">Sign in to Playbooks</DialogTitle>
         {sent ? (
           <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center mx-auto mb-4">
-              <PlaybookIcon size={20} />
+            <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center mx-auto mb-4">
+              <PlaybookIcon size={22} className="text-primary" />
             </div>
             <h2 className="font-semibold text-lg tracking-tight mb-2">Check your email</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
