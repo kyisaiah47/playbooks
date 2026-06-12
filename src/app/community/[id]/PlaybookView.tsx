@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Heart, Loader2, HelpCircle, ExternalLink, X, Send, MapPin, BookOpen, User, Video, Wrench, Globe, Link, ArrowLeft, GitFork, ChevronDown, CheckCircle2 } from 'lucide-react';
-import { Shell, Logo, NavRail, PlaybookAvatar, RailFooter, timeAgo } from '@/components/shell';
+import { Shell, JoinRail, NavRail, PlaybookAvatar, RailFooter, timeAgo } from '@/components/shell';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
@@ -103,23 +103,10 @@ export function PlaybookView({ id, initialPlaybook, initialItems }: Props) {
         isLoggedIn ? (
           <NavRail />
         ) : (
-          <div className="flex flex-col gap-5 pt-2">
-            <Logo size={36} />
-            <h1 className="text-[32px] font-bold leading-[1.15] tracking-tight">
-              Plan your next<br />big thing
-            </h1>
-            <p className="text-sm text-muted-foreground leading-relaxed -mt-2">
-              Fork this playbook and Claude re-tailors it to your situation.
-            </p>
-            <div className="flex items-center gap-2.5">
-              <Button onClick={() => setLoginOpen(true)} className="px-5">Create account</Button>
-              <Button variant="secondary" onClick={() => setLoginOpen(true)} className="px-5">Sign in</Button>
-            </div>
-            <div className="border-t border-border pt-4 mt-1 space-y-1.5 text-xs text-muted-foreground">
-              <p><span className="font-semibold text-foreground">Free</span> — 2 playbooks + 5 AI insights/mo</p>
-              <p><span className="font-semibold text-foreground">Pro $9/mo</span> — unlimited playbooks + 100 insights</p>
-            </div>
-          </div>
+          <JoinRail
+            subtitle="Fork this playbook and Claude re-tailors it to your situation."
+            onAuth={() => setLoginOpen(true)}
+          />
         )
       }
       right={

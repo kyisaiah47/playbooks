@@ -479,6 +479,28 @@ export function UpgradeCard() {
   );
 }
 
+export function JoinRail({ subtitle, onAuth, disabled }: { subtitle: string; onAuth: () => void; disabled?: boolean }) {
+  return (
+    <div className="flex flex-col h-full pt-2">
+      <div className="flex flex-col gap-5">
+        <Logo size={36} />
+        <h1 className="text-[32px] font-bold leading-[1.15] tracking-tight">
+          Plan your next<br />big thing
+        </h1>
+        <p className="text-sm text-muted-foreground leading-relaxed -mt-2">{subtitle}</p>
+        <div className="flex items-center gap-2.5">
+          <Button onClick={onAuth} disabled={disabled} className="px-5">Create account</Button>
+          <Button variant="secondary" onClick={onAuth} disabled={disabled} className="px-5">Sign in</Button>
+        </div>
+      </div>
+      <div className="mt-auto pb-2 space-y-1 text-[11px] leading-relaxed text-muted-foreground/60">
+        <p>Free — 2 playbooks + 5 AI insights/mo</p>
+        <p>Pro $9/mo — unlimited playbooks + 100 insights</p>
+      </div>
+    </div>
+  );
+}
+
 export function NavRail({ onNewPlaybook }: { onNewPlaybook?: () => void }) {
   const router = useRouter();
   const pathname = usePathname();
