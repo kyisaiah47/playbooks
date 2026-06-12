@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
-import { Shell, Logo, FeedTabs, FeedRow, SearchBox, TrendingBox, RailFooter, type FeedPlaybook } from '@/components/shell';
+import { Shell, Logo, FeedTabs, FeedRow, SearchBox, MomentumBox, CategoriesBox, RailFooter, categorize, type FeedPlaybook } from '@/components/shell';
 import { Loader2 } from 'lucide-react';
 
 export default function HomePage() {
@@ -14,6 +14,7 @@ export default function HomePage() {
   const [loadingFeed, setLoadingFeed] = useState(true);
   const [tab, setTab] = useState('popular');
   const [query, setQuery] = useState('');
+  const [category, setCategory] = useState<string | null>(null);
   const { isLoggedIn, loading } = useAuth();
   const router = useRouter();
 
@@ -31,10 +32,14 @@ export default function HomePage() {
   }, [tab]);
 
   const visible = useMemo(() => {
-    if (!query.trim()) return feed;
-    const q = query.toLowerCase();
-    return feed.filter(p => p.title.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q));
-  }, [feed, query]);
+    let list = feed;
+    if (category) list = list.filter(p => categorize(p).tag === category);
+    if (query.trim()) {
+      const q = query.toLowerCase();
+      list = list.filter(p => p.title.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q));
+    }
+    return list;
+  }, [feed, query, category]);
 
   return (
     <>
@@ -57,7 +62,8 @@ export default function HomePage() {
         right={
           <>
             <SearchBox value={query} onChange={setQuery} />
-            <TrendingBox playbooks={feed} />
+            <CategoriesBox playbooks={feed} active={category} onSelect={setCategory} />
+            <MomentumBox playbooks={feed} />
             <RailFooter />
           </>
         }
@@ -83,8 +89,8 @@ export default function HomePage() {
           </div>
         ) : visible.length === 0 ? (
           <div className="text-center py-24 px-6">
-            <p className="text-sm text-muted-foreground">{query ? 'No playbooks match your search.' : 'No playbooks yet — be the first.'}</p>
-            {!query && <Button className="mt-4" onClick={() => setLoginOpen(true)}>Create the first playbook</Button>}
+            <p className="text-sm text-muted-foreground">{query || category ? 'No playbooks match.' : 'No playbooks yet — be the first.'}</p>
+            {!query && !category && <Button className="mt-4" onClick={() => setLoginOpen(true)}>Create the first playbook</Button>}
           </div>
         ) : (
           <div>

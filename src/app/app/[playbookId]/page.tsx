@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, HelpCircle, ExternalLink, ChevronDown, ChevronUp, MapPin, BookOpen, User, Video, Wrench, Globe, Link, CheckCircle2, ArrowLeft } from 'lucide-react';
-import { TemplataIcon } from '@/components/ui/templata-icon';
+import { PlaybookIcon } from '@/components/ui/playbook-icon';
 import { Shell, NavRail, RailFooter } from '@/components/shell';
 import type { Playbook, PlaybookItem } from '@/types/playbook';
 
@@ -32,6 +32,7 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
   const [draftAnswers, setDraftAnswers] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState<string | null>(null);
   const [expandedFeedback, setExpandedFeedback] = useState<Record<string, boolean>>({});
+  const [expandedPhases, setExpandedPhases] = useState<Record<string, boolean>>({});
 
   useEffect(() => { fetchPlaybook(); }, [playbookId]);
 
@@ -118,6 +119,7 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
                   <a
                     key={phase}
                     href={`#${phaseId(phase)}`}
+                    onClick={() => setExpandedPhases(prev => ({ ...prev, [phase]: true }))}
                     className="flex items-center justify-between gap-2 px-2 py-1.5 -mx-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     <span className="truncate">{phase}</span>
@@ -155,30 +157,63 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
           {playbook.description && <p className="text-sm text-muted-foreground leading-relaxed">{playbook.description}</p>}
         </div>
 
-        <div className="space-y-10">
-          {Object.entries(phases).map(([phase, phaseItems]) => (
-            <div key={phase} id={phaseId(phase)} className="scroll-mt-20">
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 pb-2 border-b border-border">{phase}</h2>
-              <div className="space-y-1">
-                {phaseItems.map(item => (
-                  <ItemRow
-                    key={item.id}
-                    item={item}
-                    playbookId={playbookId}
-                    activeItemId={activeItemId}
-                    setActiveItemId={setActiveItemId}
-                    draftAnswers={draftAnswers}
-                    setDraftAnswers={setDraftAnswers}
-                    submitting={submitting}
-                    expandedFeedback={expandedFeedback}
-                    setExpandedFeedback={setExpandedFeedback}
-                    onToggleTask={toggleTask}
-                    onSubmitAnswer={submitAnswer}
-                  />
-                ))}
+        <div className="space-y-3">
+          {Object.entries(phases).map(([phase, phaseItems]) => {
+            const pTasks = phaseItems.filter(i => i.type === 'task');
+            const pDone = pTasks.filter(i => i.completed).length;
+            const complete = pTasks.length > 0 && pDone === pTasks.length;
+            const open = !!expandedPhases[phase];
+            return (
+              <div key={phase} id={phaseId(phase)} className="scroll-mt-20 rounded-2xl border border-border overflow-hidden">
+                <button
+                  onClick={() => setExpandedPhases(prev => ({ ...prev, [phase]: !prev[phase] }))}
+                  className="flex items-center justify-between gap-3 w-full px-4 py-3.5 text-left hover:bg-accent/60 transition-colors"
+                >
+                  <span className="text-sm font-bold">{phase}</span>
+                  <span className="flex items-center gap-3 shrink-0">
+                    {complete ? (
+                      <span className="flex items-center gap-1 text-xs text-green-400"><CheckCircle2 className="w-3.5 h-3.5" />Done</span>
+                    ) : pTasks.length > 0 ? (
+                      <span className="text-xs text-muted-foreground tabular-nums">{pDone}/{pTasks.length}</span>
+                    ) : (
+                      <span className="text-xs text-muted-foreground">{phaseItems.length} items</span>
+                    )}
+                    <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {open && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-4 pb-4 pt-1 space-y-1 border-t border-border">
+                        {phaseItems.map(item => (
+                          <ItemRow
+                            key={item.id}
+                            item={item}
+                            playbookId={playbookId}
+                            activeItemId={activeItemId}
+                            setActiveItemId={setActiveItemId}
+                            draftAnswers={draftAnswers}
+                            setDraftAnswers={setDraftAnswers}
+                            submitting={submitting}
+                            expandedFeedback={expandedFeedback}
+                            setExpandedFeedback={setExpandedFeedback}
+                            onToggleTask={toggleTask}
+                            onSubmitAnswer={submitAnswer}
+                          />
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </Shell>
@@ -237,16 +272,16 @@ function ItemRow({ item, activeItemId, setActiveItemId, draftAnswers, setDraftAn
           )}
           {hasFeedback && !isActive && (
             <div className="mt-2">
-              <button className="flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+              <button className="flex items-center gap-1.5 text-xs font-medium text-amber-400 hover:text-amber-300 transition-colors"
                 onClick={() => setExpandedFeedback(p => ({ ...p, [item.id]: !p[item.id] }))}>
-                <TemplataIcon size={12} />
+                <PlaybookIcon size={12} />
                 AI insight
                 {feedbackExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
               </button>
               <AnimatePresence>
                 {feedbackExpanded && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
-                    <div className="mt-2 pl-3 border-l-2 border-primary/30">
+                    <div className="mt-2 pl-3 border-l-2 border-amber-400/30">
                       <p className="text-sm text-muted-foreground leading-relaxed">{item.ai_feedback}</p>
                     </div>
                   </motion.div>
@@ -260,8 +295,8 @@ function ItemRow({ item, activeItemId, setActiveItemId, draftAnswers, setDraftAn
                 onChange={e => setDraftAnswers(p => ({ ...p, [item.id]: e.target.value }))}
                 className="min-h-[100px] resize-none text-sm mb-2 bg-card" disabled={submitting === item.id} />
               <div className="flex gap-2">
-                <Button size="sm" onClick={() => onSubmitAnswer(item)} disabled={!draftAnswers[item.id]?.trim() || submitting === item.id}>
-                  {submitting === item.id ? <><Loader2 className="w-3 h-3 mr-1.5 animate-spin" />Getting insight...</> : <><TemplataIcon size={12} className="mr-1.5" />Save & get insight</>}
+                <Button size="sm" className="bg-amber-400 text-zinc-950 hover:bg-amber-300" onClick={() => onSubmitAnswer(item)} disabled={!draftAnswers[item.id]?.trim() || submitting === item.id}>
+                  {submitting === item.id ? <><Loader2 className="w-3 h-3 mr-1.5 animate-spin" />Getting insight...</> : <><PlaybookIcon size={12} className="mr-1.5" />Save & get insight</>}
                 </Button>
                 <Button size="sm" variant="ghost" onClick={() => setActiveItemId(null)} disabled={submitting === item.id}>Cancel</Button>
               </div>

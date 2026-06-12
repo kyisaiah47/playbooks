@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Playbooks - Templata",
+  title: "My Playbooks - Playbook",
   description: "Your AI-generated playbooks. Build step-by-step plans for any goal.",
   robots: {
     index: false,

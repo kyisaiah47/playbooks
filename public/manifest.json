@@ -1,11 +1,11 @@
 {
-  "name": "Templata - Organize Life's Biggest Moments",
-  "short_name": "Templata",
-  "description": "Expert-crafted guides for life's biggest moments. From wedding planning to career changes, get organized with proven frameworks.",
+  "name": "Playbook — AI Playbooks for Life's Biggest Moments",
+  "short_name": "Playbook",
+  "description": "Describe what you're planning and Claude builds a personalized, step-by-step playbook around your situation.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#0c1118",
+  "theme_color": "#0c1118",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -15,39 +15,26 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["productivity", "lifestyle", "education"],
+  "categories": ["productivity", "lifestyle"],
   "shortcuts": [
     {
-      "name": "Browse Guides",
-      "short_name": "Guides",
-      "description": "Explore expert guides for life's biggest moments",
-      "url": "/guides",
-      "icons": [
-        {
-          "src": "/favicon.svg",
-          "sizes": "any",
-          "type": "image/svg+xml"
-        }
-      ]
-    },
-    {
-      "name": "Library",
-      "short_name": "Library",
-      "description": "Access your reading library",
-      "url": "/library",
-      "icons": [
-        {
-          "src": "/favicon.svg",
-          "sizes": "any",
-          "type": "image/svg+xml"
-        }
-      ]
-    },
-    {
-      "name": "My App",
-      "short_name": "App",
-      "description": "Open your personal workspace",
+      "name": "New playbook",
+      "short_name": "New",
+      "description": "Describe what you're planning",
       "url": "/app",
+      "icons": [
+        {
+          "src": "/favicon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Discover",
+      "short_name": "Discover",
+      "description": "Browse community playbooks",
+      "url": "/community",
       "icons": [
         {
           "src": "/favicon.svg",

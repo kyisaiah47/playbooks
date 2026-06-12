@@ -19,8 +19,9 @@ export async function GET(request: NextRequest) {
 
   const { data: playbooks, error } = await supabase
     .from('playbooks')
-    .select('id, title, description, context, created_at, user_id, is_forked, forked_from')
+    .select('id, title, description, context, created_at, user_id, is_forked, forked_from, items(type, content, completed, position)')
     .eq('is_public', true)
+    .order('position', { referencedTable: 'items', ascending: true })
     .order('created_at', { ascending: false })
     .limit(50);
 

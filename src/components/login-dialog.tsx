@@ -6,8 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { ArrowRight, Loader2, AlertCircle } from 'lucide-react';
-import { TemplataIcon } from '@/components/ui/templata-icon';
-import Image from 'next/image';
+import { PlaybookIcon } from '@/components/ui/playbook-icon';
 
 interface LoginDialogProps {
   open: boolean;
@@ -49,11 +48,11 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-sm p-8 gap-0">
-        <DialogTitle className="sr-only">Sign in to Templata</DialogTitle>
+        <DialogTitle className="sr-only">Sign in to Playbook</DialogTitle>
         {sent ? (
           <div className="text-center">
             <div className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center mx-auto mb-4">
-              <TemplataIcon size={20} />
+              <PlaybookIcon size={20} />
             </div>
             <h2 className="font-semibold text-lg tracking-tight mb-2">Check your email</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -66,9 +65,9 @@ export function LoginDialog({ open, onOpenChange }: LoginDialogProps) {
         ) : (
           <div>
             <div className="flex justify-center mb-6">
-              <Image src="/logo.png" alt="Templata" width={28} height={34} />
+              <PlaybookIcon size={28} className="text-primary" />
             </div>
-            <h2 className="font-semibold text-xl tracking-tight text-center mb-1">Welcome to Templata</h2>
+            <h2 className="font-semibold text-xl tracking-tight text-center mb-1">Welcome to Playbook</h2>
             <p className="text-sm text-muted-foreground text-center mb-8">Enter your email to sign in or create an account.</p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <Input type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus required disabled={loading} className="bg-background" />

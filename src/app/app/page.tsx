@@ -5,8 +5,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Loader2, ArrowUp, Trash2, AlertCircle } from 'lucide-react';
-import { TemplataIcon } from '@/components/ui/templata-icon';
-import { Shell, NavRail, PlaybookAvatar, TrendingBox, RailFooter, timeAgo, type FeedPlaybook } from '@/components/shell';
+import { PlaybookIcon } from '@/components/ui/playbook-icon';
+import { Shell, NavRail, PlaybookAvatar, MomentumBox, CategoryChip, RailFooter, timeAgo, type FeedPlaybook } from '@/components/shell';
 import { toast } from 'sonner';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import type { Playbook } from '@/types/playbook';
@@ -36,7 +36,7 @@ function GeneratingOverlay() {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/90 backdrop-blur-sm">
       <motion.div animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}>
-        <TemplataIcon size={36} className="text-primary" />
+        <PlaybookIcon size={36} className="text-amber-400" />
       </motion.div>
       <AnimatePresence mode="wait">
         <motion.p
@@ -135,7 +135,7 @@ export default function AppPage() {
         left={<NavRail onNewPlaybook={() => composerRef.current?.focus()} />}
         right={
           <>
-            <TrendingBox playbooks={community} />
+            <MomentumBox playbooks={community} />
             <RailFooter />
           </>
         }
@@ -148,8 +148,8 @@ export default function AppPage() {
         {/* Composer */}
         <div className="px-4 py-4 border-b border-border">
           <div className="flex gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
-              <TemplataIcon size={18} />
+            <div className="w-10 h-10 rounded-full bg-amber-400/15 text-amber-400 flex items-center justify-center shrink-0">
+              <PlaybookIcon size={18} />
             </div>
             <div className="flex-1 min-w-0">
               <textarea
@@ -181,7 +181,7 @@ export default function AppPage() {
                   size="sm"
                   onClick={generate}
                   disabled={!context.trim() || generating}
-                  className="gap-1.5"
+                  className="gap-1.5 bg-amber-400 text-zinc-950 hover:bg-amber-300"
                 >
                   {generating
                     ? <><Loader2 className="w-3.5 h-3.5 animate-spin" />Generating</>
@@ -219,7 +219,7 @@ export default function AppPage() {
                   className="flex gap-3 px-4 py-3.5 border-b border-border hover:bg-accent/60 transition-colors cursor-pointer group"
                   onClick={() => router.push(`/app/${p.id}`)}
                 >
-                  <PlaybookAvatar title={p.title} />
+                  <PlaybookAvatar title={p.title} progress={tasks.length > 0 ? pct : undefined} />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <p className="text-[15px] font-semibold leading-snug truncate">{p.title}</p>
@@ -241,6 +241,7 @@ export default function AppPage() {
                       <span className="text-xs text-muted-foreground">
                         {tasks.length > 0 ? `${done}/${tasks.length} tasks` : 'No tasks'}
                       </span>
+                      <span className="ml-auto"><CategoryChip playbook={p} /></span>
                     </div>
                   </div>
                 </motion.article>

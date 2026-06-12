@@ -77,7 +77,7 @@ export function FeedbackDialog({ open, onOpenChange }: FeedbackDialogProps) {
         <DialogHeader>
           <DialogTitle>Send Feedback</DialogTitle>
           <DialogDescription>
-            Help us improve Templata by sharing your thoughts, reporting bugs, or suggesting features.
+            Help us improve Playbook by sharing your thoughts, reporting bugs, or suggesting features.
           </DialogDescription>
         </DialogHeader>
 

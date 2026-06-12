@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import { Heart, Loader2, HelpCircle, ExternalLink, X, Send, MapPin, BookOpen, User, Video, Wrench, Globe, Link, ArrowLeft, GitFork } from 'lucide-react';
+import { Heart, Loader2, HelpCircle, ExternalLink, X, Send, MapPin, BookOpen, User, Video, Wrench, Globe, Link, ArrowLeft, GitFork, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { Shell, Logo, NavRail, PlaybookAvatar, RailFooter, timeAgo } from '@/components/shell';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
@@ -50,6 +50,7 @@ export function PlaybookView({ id, initialPlaybook, initialItems }: Props) {
   const [comment, setComment] = useState('');
   const [quoting, setQuoting] = useState<Comment | null>(null);
   const [posting, setPosting] = useState(false);
+  const [expandedPhases, setExpandedPhases] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     fetchComments();
@@ -174,13 +175,32 @@ export function PlaybookView({ id, initialPlaybook, initialItems }: Props) {
         </div>
 
         {/* Playbook items */}
-        <div className="space-y-10 mb-16">
-          {Object.entries(phases).map(([phase, phaseItems]) => (
-            <div key={phase}>
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 pb-2 border-b border-border">
-                {phase}
-              </h2>
-              <div className="space-y-1">
+        <div className="space-y-3 mb-16">
+          {Object.entries(phases).map(([phase, phaseItems]) => {
+            const pTasks = phaseItems.filter(i => i.type === 'task');
+            const pDone = pTasks.filter(i => i.completed).length;
+            const complete = pTasks.length > 0 && pDone === pTasks.length;
+            const open = !!expandedPhases[phase];
+            return (
+            <div key={phase} className="rounded-2xl border border-border overflow-hidden">
+              <button
+                onClick={() => setExpandedPhases(prev => ({ ...prev, [phase]: !prev[phase] }))}
+                className="flex items-center justify-between gap-3 w-full px-4 py-3.5 text-left hover:bg-accent/60 transition-colors"
+              >
+                <span className="text-sm font-bold">{phase}</span>
+                <span className="flex items-center gap-3 shrink-0">
+                  {complete ? (
+                    <span className="flex items-center gap-1 text-xs text-green-400"><CheckCircle2 className="w-3.5 h-3.5" />Done</span>
+                  ) : pTasks.length > 0 ? (
+                    <span className="text-xs text-muted-foreground tabular-nums">{pDone}/{pTasks.length}</span>
+                  ) : (
+                    <span className="text-xs text-muted-foreground">{phaseItems.length} items</span>
+                  )}
+                  <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
+                </span>
+              </button>
+              {open && (
+              <div className="space-y-1 px-4 pb-4 pt-1 border-t border-border">
                 {phaseItems.map((item) => {
                   if (item.type === 'task') return (
                     <div key={item.id} className="flex items-start gap-3 py-2">
@@ -210,8 +230,10 @@ export function PlaybookView({ id, initialPlaybook, initialItems }: Props) {
                   );
                 })}
               </div>
+              )}
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Comments */}

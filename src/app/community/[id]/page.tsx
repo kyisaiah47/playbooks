@@ -39,7 +39,7 @@ export async function generateMetadata(
   const result = await getPlaybook(id);
 
   if (!result) {
-    return { title: 'Playbook Not Found — Templata' };
+    return { title: 'Playbook Not Found — Playbook' };
   }
 
   const { playbook } = result;
@@ -47,7 +47,7 @@ export async function generateMetadata(
     ?? `A step-by-step AI-generated playbook for ${playbook.title}. Browse tasks, reflection questions, and curated resources.`;
 
   return {
-    title: `${playbook.title} — Templata`,
+    title: `${playbook.title} — Playbook`,
     description,
     openGraph: {
       title: playbook.title,

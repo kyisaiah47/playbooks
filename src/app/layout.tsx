@@ -30,10 +30,10 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://templata.org'),
-  title: 'Templata — AI Playbooks for Life\'s Biggest Moments',
+  title: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
   description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds. Tasks, questions, and AI insight tailored to your situation — not a generic template.',
   keywords: 'ai planning, life planning, wedding planning app, career change planner, home buying guide, ai playbook, personalized planning, claude ai, life events',
-  authors: [{ name: 'Templata' }],
+  authors: [{ name: 'Playbook' }],
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
@@ -47,16 +47,16 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Templata — AI Playbooks for Life\'s Biggest Moments',
+    title: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
     description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds. Not a generic template — yours.',
     url: 'https://templata.org',
-    siteName: 'Templata',
+    siteName: 'Playbook',
     images: [
       {
-        url: 'https://templata.org/templata-social.png',
+        url: '/social.png',
         width: 400,
         height: 400,
-        alt: 'Templata — AI Playbooks for Life\'s Biggest Moments',
+        alt: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
       },
     ],
     locale: 'en_US',
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Templata — AI Playbooks for Life\'s Biggest Moments',
+    title: 'Playbook — AI Playbooks for Life\'s Biggest Moments',
     description: 'Describe what you\'re planning and Claude builds a personalized playbook in seconds.',
-    images: ['https://templata.org/templata-social.png'],
+    images: ['/social.png'],
     creator: '@templata',
   },
   robots: {
@@ -106,10 +106,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Templata",
+              "name": "Playbook",
               "description": "AI playbook generator for life's biggest moments. Describe your goal and get a personalized, step-by-step playbook in seconds.",
               "url": "https://templata.org",
-              "logo": "https://templata.org/templata-social.png",
+              "logo": "/social.png",
               "sameAs": [
                 "https://twitter.com/templata",
                 "https://linkedin.com/company/templata"
@@ -128,7 +128,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Templata",
+              "name": "Playbook",
               "url": "https://templata.org",
               "description": "AI-generated personalized playbooks for life's biggest moments.",
               "potentialAction": {
@@ -148,7 +148,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "Templata",
+              "name": "Playbook",
               "applicationCategory": "ProductivityApplication",
               "operatingSystem": "Web",
               "url": "https://templata.org",

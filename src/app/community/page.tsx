@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { LoginDialog } from '@/components/login-dialog';
 import { useAuth } from '@/contexts/auth-context';
-import { Shell, Logo, NavRail, FeedTabs, FeedRow, SearchBox, TrendingBox, RailFooter, type FeedPlaybook } from '@/components/shell';
+import { Shell, Logo, NavRail, FeedTabs, FeedRow, SearchBox, MomentumBox, CategoriesBox, RailFooter, categorize, type FeedPlaybook } from '@/components/shell';
 import { Loader2 } from 'lucide-react';
 
 export default function CommunityPage() {
@@ -14,6 +14,7 @@ export default function CommunityPage() {
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState('popular');
   const [query, setQuery] = useState('');
+  const [category, setCategory] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -25,10 +26,14 @@ export default function CommunityPage() {
   }, [sort]);
 
   const visible = useMemo(() => {
-    if (!query.trim()) return playbooks;
-    const q = query.toLowerCase();
-    return playbooks.filter(p => p.title.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q));
-  }, [playbooks, query]);
+    let list = playbooks;
+    if (category) list = list.filter(p => categorize(p).tag === category);
+    if (query.trim()) {
+      const q = query.toLowerCase();
+      list = list.filter(p => p.title.toLowerCase().includes(q) || p.description?.toLowerCase().includes(q));
+    }
+    return list;
+  }, [playbooks, query, category]);
 
   return (
     <>
@@ -55,7 +60,8 @@ export default function CommunityPage() {
         right={
           <>
             <SearchBox value={query} onChange={setQuery} />
-            <TrendingBox playbooks={playbooks} />
+            <CategoriesBox playbooks={playbooks} active={category} onSelect={setCategory} />
+            <MomentumBox playbooks={playbooks} />
             <RailFooter />
           </>
         }
@@ -72,7 +78,7 @@ export default function CommunityPage() {
           </div>
         ) : visible.length === 0 ? (
           <div className="text-center py-24 px-6">
-            <p className="text-sm text-muted-foreground">{query ? 'No playbooks match your search.' : 'No public playbooks yet.'}</p>
+            <p className="text-sm text-muted-foreground">{query || category ? 'No playbooks match.' : 'No public playbooks yet.'}</p>
           </div>
         ) : (
           <div>
