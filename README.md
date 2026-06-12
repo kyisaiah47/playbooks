@@ -24,7 +24,7 @@ Notion is a blank canvas. ChatGPT is a wall of text. Playbooks is a feed of real
 - **Inline AI Feedback** — answer any question and Claude responds with situation-specific guidance, saved permanently inline
 - **Fork & re-tailor** — take anyone's playbook and Claude rebuilds it around your context
 - **Progress everywhere** — progress-ring avatars, phase completion counts, collapsed-by-default phase cards
-- **Usage Tiers** — Free (1 playbook / 5 AI insights per month) and Pro ($9/month for 10 playbooks / 50 insights) via Stripe
+- **Usage Tiers** — Free (2 playbooks / 5 AI insights per month) and Pro ($9/month for unlimited playbooks / 100 insights) via Stripe
 - **Magic Link Auth** — passwordless login; no friction to get started
 
 ## 🛠️ Tech Stack
