@@ -115,6 +115,10 @@ export function PlaybookView({ id, initialPlaybook, initialItems }: Props) {
               <Button onClick={() => setLoginOpen(true)} className="px-5">Create account</Button>
               <Button variant="secondary" onClick={() => setLoginOpen(true)} className="px-5">Sign in</Button>
             </div>
+            <div className="border-t border-border pt-4 mt-1 space-y-1.5 text-xs text-muted-foreground">
+              <p><span className="font-semibold text-foreground">Free</span> — 2 playbooks + 5 AI insights/mo</p>
+              <p><span className="font-semibold text-foreground">Pro $9/mo</span> — unlimited playbooks + 100 insights</p>
+            </div>
           </div>
         )
       }

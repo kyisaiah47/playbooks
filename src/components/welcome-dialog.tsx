@@ -87,7 +87,8 @@ export function WelcomeDialog({ onGetStarted }: { onGetStarted: () => void }) {
               Just browse the feed
             </Button>
           </div>
-          <label className="flex items-center justify-center gap-2 mt-5 text-xs text-muted-foreground cursor-pointer select-none">
+          <p className="text-xs text-muted-foreground text-center mt-4">Free to start · Pro is $9/mo for unlimited playbooks</p>
+          <label className="flex items-center justify-center gap-2 mt-3 text-xs text-muted-foreground cursor-pointer select-none">
             <Checkbox checked={dontShowAgain} onCheckedChange={(v) => setDontShowAgain(v === true)} className="size-3.5" />
             Don&apos;t show this again
           </label>
