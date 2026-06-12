@@ -50,6 +50,63 @@ Rules:
 Respond with only valid JSON. No markdown, no explanation.`;
 }
 
+export interface ReplanKeptItem {
+  type: string;
+  content: string;
+  phase: string | null;
+  completed: boolean;
+  answer: string | null;
+}
+
+export function buildReplanPrompt(
+  originalContext: string,
+  change: string,
+  keptItems: ReplanKeptItem[],
+  openItems: ReplanKeptItem[],
+): string {
+  const kept = keptItems.map(i => `- [${i.type}${i.completed ? ', done' : ''}] (${i.phase ?? 'General'}) ${i.content}${i.answer ? ` — answered: "${i.answer}"` : ''}`).join('\n');
+  const open = openItems.map(i => `- [${i.type}] (${i.phase ?? 'General'}) ${i.content}`).join('\n');
+
+  return `You are a world-class life planning expert. A user has an in-progress Playbook and their situation just changed. Your job is to replan the remaining work.
+
+Original situation:
+"${originalContext}"
+
+What changed:
+"${change}"
+
+Items the user has ALREADY COMPLETED or ANSWERED (these will be kept as-is — do NOT regenerate or duplicate them):
+${kept || '(none yet)'}
+
+Current REMAINING items (these will be REPLACED by your new plan):
+${open || '(none)'}
+
+Generate the replacement plan for the remaining work as a JSON object with this exact shape:
+
+{
+  "items": [
+    {
+      "type": "task" | "question" | "resource",
+      "content": "The task instruction, question text, or resource name",
+      "phase": "Phase name",
+      "position": 1,
+      "resource_type": "venue | book | person | video | tool | website",  // only for resources
+      "url": "https://..."  // only for resources, include if well-known and reliable
+    }
+  ]
+}
+
+Rules:
+- Account for the change: drop items that no longer make sense, adjust ones that need rework, add new ones the change requires.
+- Keep what still applies from the remaining items — carry them over (rephrased if needed). This is a replan, not a fresh start.
+- Reuse the existing phase names where they still fit so kept items and new items group together; introduce new phases only if the change demands it.
+- Do not duplicate anything from the completed/answered list.
+- Tasks must be concrete and actionable. Questions should provoke real thinking. Resources must be genuinely relevant.
+- If you include a URL, only use well-known reliable sources. Do not hallucinate URLs.
+
+Respond with only valid JSON. No markdown, no explanation.`;
+}
+
 export function buildForkPrompt(userContext: string, originalContext: string): string {
   return `You are a world-class life planning expert. A user is forking an existing playbook and wants it re-tailored to their specific situation.
 

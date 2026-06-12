@@ -5,8 +5,8 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const FREE_LIMITS = { playbooks: 1, feedback: 5 };
-const PRO_LIMITS  = { playbooks: 10, feedback: 50 };
+const FREE_LIMITS = { playbooks: 2, feedback: 5 };
+const PRO_LIMITS  = { playbooks: Infinity, feedback: 100 };
 
 function currentMonth() {
   const d = new Date();

@@ -159,14 +159,14 @@ export default function RootLayout({
                   "name": "Free",
                   "price": "0",
                   "priceCurrency": "USD",
-                  "description": "1 playbook per month, community browsing"
+                  "description": "2 playbooks and 5 AI insights per month, community browsing"
                 },
                 {
                   "@type": "Offer",
                   "name": "Pro",
                   "price": "9",
                   "priceCurrency": "USD",
-                  "description": "10 playbooks per month, full community access"
+                  "description": "Unlimited playbooks and 100 AI insights per month"
                 }
               ]
             })

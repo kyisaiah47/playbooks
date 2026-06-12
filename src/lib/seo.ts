@@ -11,7 +11,7 @@ export const TEMPLATA_FAQ = [
   },
   {
     question: "Is Playbooks free to use?",
-    answer: "Free users can generate 1 playbook per month. Pro users get up to 10 playbooks per month plus full access to the community feed."
+    answer: "Free users get 2 playbooks and 5 AI insights per month. Pro ($9/month) gets unlimited playbooks and 100 AI insights — insights power the inline feedback and replanning."
   },
   {
     question: "What can I use Playbooks for?",

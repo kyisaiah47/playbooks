@@ -248,8 +248,118 @@ export default function PlaybookPage({ params }: { params: Promise<{ playbookId:
             );
           })}
         </div>
+
+        <ReplanSection playbookId={playbookId} onReplanned={fetchPlaybook} />
       </div>
     </Shell>
+  );
+}
+
+const REPLAN_STAGES = [
+  'Re-reading your plan…',
+  'Keeping what you’ve already done…',
+  'Replanning the rest around the change…',
+  'Putting it back together…',
+];
+
+function ReplanSection({ playbookId, onReplanned }: { playbookId: string; onReplanned: () => Promise<void> }) {
+  const [open, setOpen] = useState(false);
+  const [change, setChange] = useState('');
+  const [replanning, setReplanning] = useState(false);
+  const [stage, setStage] = useState(0);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (!replanning) return;
+    setStage(0);
+    const id = setInterval(() => setStage(s => Math.min(s + 1, REPLAN_STAGES.length - 1)), 4000);
+    return () => clearInterval(id);
+  }, [replanning]);
+
+  async function replan() {
+    if (!change.trim() || replanning) return;
+    setReplanning(true);
+    setError('');
+    try {
+      const res = await fetch(`/api/playbooks/${playbookId}/replan`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ change: change.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? 'Something went wrong.');
+        return;
+      }
+      await onReplanned();
+      setChange('');
+      setOpen(false);
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setReplanning(false);
+    }
+  }
+
+  return (
+    <>
+      <AnimatePresence>
+        {replanning && (
+          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/90 backdrop-blur-sm">
+            <motion.div animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}>
+              <PlaybookIcon size={36} className="text-amber-400" />
+            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={stage}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+                className="mt-6 text-sm font-medium text-foreground"
+              >
+                {REPLAN_STAGES[stage]}
+              </motion.p>
+            </AnimatePresence>
+            <p className="mt-2 text-xs text-muted-foreground">Completed tasks and answered questions stay put</p>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <div className="mt-10 rounded-2xl border border-amber-400/20 bg-amber-400/5 p-4">
+        {!open ? (
+          <button className="flex items-center gap-2.5 w-full text-left" onClick={() => setOpen(true)}>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-400/15 text-amber-400 shrink-0">
+              <PlaybookIcon size={16} />
+            </span>
+            <span>
+              <span className="block text-sm font-semibold">Something changed?</span>
+              <span className="block text-xs text-muted-foreground">Replan with AI — keeps everything you&apos;ve already done.</span>
+            </span>
+          </button>
+        ) : (
+          <div className="space-y-2">
+            <p className="text-sm font-semibold">What changed?</p>
+            <Textarea
+              autoFocus
+              placeholder="e.g. Our venue fell through, or the budget dropped to $30k…"
+              value={change}
+              onChange={e => setChange(e.target.value)}
+              className="min-h-[80px] resize-none text-sm bg-card"
+              disabled={replanning}
+            />
+            {error && <p className="text-sm text-destructive">{error}</p>}
+            <div className="flex gap-2">
+              <Button size="sm" className="bg-amber-400 text-zinc-950 hover:bg-amber-300 gap-1.5" onClick={replan} disabled={!change.trim() || replanning}>
+                <PlaybookIcon size={12} />
+                Replan
+              </Button>
+              <Button size="sm" variant="ghost" onClick={() => { setOpen(false); setError(''); }} disabled={replanning}>Cancel</Button>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
