@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Loader2, ArrowUp, Trash2, AlertCircle } from 'lucide-react';
 import { PlaybookIcon } from '@/components/ui/playbook-icon';
@@ -26,34 +26,6 @@ const GENERATING_STAGES = [
   'Finding resources for your context…',
   'Putting it all together…',
 ];
-
-function GeneratingOverlay() {
-  const [stage, setStage] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setStage(s => Math.min(s + 1, GENERATING_STAGES.length - 1)), 3500);
-    return () => clearInterval(id);
-  }, []);
-  return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/90 backdrop-blur-sm">
-      <motion.div animate={{ scale: [1, 1.12, 1] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}>
-        <PlaybookIcon size={36} className="text-amber-400" />
-      </motion.div>
-      <AnimatePresence mode="wait">
-        <motion.p
-          key={stage}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.3 }}
-          className="mt-6 text-sm font-medium text-foreground"
-        >
-          {GENERATING_STAGES[stage]}
-        </motion.p>
-      </AnimatePresence>
-      <p className="mt-2 text-xs text-muted-foreground">Claude is building your playbook — about 20 seconds</p>
-    </div>
-  );
-}
 
 export default function AppPage() {
   const router = useRouter();
@@ -95,25 +67,50 @@ export default function AppPage() {
     setError('');
     setLimitReached(false);
 
+    const savedContext = context.trim();
+    setContext('');
+
+    const toastId = 'generating-playbook';
+    toast.loading(GENERATING_STAGES[0], { id: toastId });
+    let stageIdx = 0;
+    const stageTimer = setInterval(() => {
+      stageIdx = Math.min(stageIdx + 1, GENERATING_STAGES.length - 1);
+      toast.loading(GENERATING_STAGES[stageIdx], { id: toastId });
+    }, 3500);
+
     try {
       const res = await fetch('/api/playbooks/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ context, fork_from: forkFrom }),
+        body: JSON.stringify({ context: savedContext, fork_from: forkFrom }),
       });
 
       const data = await res.json();
+      clearInterval(stageTimer);
 
       if (!res.ok) {
+        toast.dismiss(toastId);
         setError(data.error ?? 'Something went wrong.');
         setLimitReached(!!data.limitReached);
+        setContext(savedContext);
         return;
       }
 
-      if (forkFrom) toast.success('Playbook forked and tailored to you!');
-      router.push(`/app/${data.playbook.id}`);
+      toast.success(
+        forkFrom ? 'Playbook forked and tailored to you!' : `"${data.playbook.title}" is ready`,
+        {
+          id: toastId,
+          duration: 8000,
+          action: { label: 'View', onClick: () => router.push(`/app/${data.playbook.id}`) },
+        }
+      );
+
+      fetchPlaybooks();
     } catch {
+      clearInterval(stageTimer);
+      toast.dismiss(toastId);
       setError('Something went wrong. Please try again.');
+      setContext(savedContext);
     } finally {
       setGenerating(false);
     }
@@ -132,8 +129,6 @@ export default function AppPage() {
 
   return (
     <>
-      <AnimatePresence>{generating && <GeneratingOverlay />}</AnimatePresence>
-
       <Shell
         left={<NavRail onNewPlaybook={() => composerRef.current?.focus()} />}
         right={
@@ -162,7 +157,6 @@ export default function AppPage() {
                 value={context}
                 onChange={(e) => setContext(e.target.value)}
                 onKeyDown={handleKeyDown}
-                disabled={generating}
                 rows={context ? 4 : 2}
                 className="w-full resize-none bg-transparent text-[15px] leading-relaxed placeholder:text-muted-foreground outline-none pt-1.5"
               />
